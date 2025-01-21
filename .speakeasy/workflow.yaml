@@ -1,0 +1,13 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    latest:
+        inputs:
+            - location: registry.speakeasyapi.dev/moov/moov/api-latest
+targets:
+    moov:
+        target: typescript
+        source: latest
+        publish:
+            npm:
+                token: $npm_token

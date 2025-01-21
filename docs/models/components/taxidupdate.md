@@ -1,0 +1,21 @@
+# TaxIDUpdate
+
+An EIN (employer identification number) for the business. For sole proprietors, an SSN can be used as the EIN.
+
+## Example Usage
+
+```typescript
+import { TaxIDUpdate } from "moov-sdk/models/components";
+
+let value: TaxIDUpdate = {
+  ein: {
+    number: "12-3456789",
+  },
+};
+```
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `ein`                                                                  | [components.TaxIDUpdateEin](../../models/components/taxidupdateein.md) | :heavy_minus_sign:                                                     | N/A                                                                    |

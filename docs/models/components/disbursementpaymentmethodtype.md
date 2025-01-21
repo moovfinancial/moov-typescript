@@ -1,0 +1,17 @@
+# DisbursementPaymentMethodType
+
+Payment methods allowed for disbursing funds.
+
+## Example Usage
+
+```typescript
+import { DisbursementPaymentMethodType } from "moov-sdk/models/components";
+
+let value: DisbursementPaymentMethodType = "ach-credit-standard";
+```
+
+## Values
+
+```typescript
+"push-to-card" | "rtp-credit" | "ach-credit-same-day" | "ach-credit-standard"
+```

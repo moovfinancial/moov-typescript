@@ -1,0 +1,19 @@
+# Phone
+
+## Example Usage
+
+```typescript
+import { Phone } from "moov-sdk/models/components";
+
+let value: Phone = {
+  number: "8185551212",
+  countryCode: "1",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `number`           | *string*           | :heavy_minus_sign: | N/A                | 8185551212         |
+| `countryCode`      | *string*           | :heavy_minus_sign: | N/A                | 1                  |

@@ -1,0 +1,20 @@
+# ListPartnerPricingAgreementsRequest
+
+## Example Usage
+
+```typescript
+import { ListPartnerPricingAgreementsRequest } from "moov-sdk/models/operations";
+
+let value: ListPartnerPricingAgreementsRequest = {
+  accountID: "7670a70f-32c5-4906-a033-f4d6da01013c",
+};
+```
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `xMoovVersion`                                                                           | [components.Versions](../../models/components/versions.md)                               | :heavy_minus_sign:                                                                       | Specify an API version.                                                                  |
+| `accountID`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `agreementID`                                                                            | *string*[]                                                                               | :heavy_minus_sign:                                                                       | A comma-separated list of agreement IDs to filter the results by.                        |
+| `status`                                                                                 | [components.FeePlanAgreementStatus](../../models/components/feeplanagreementstatus.md)[] | :heavy_minus_sign:                                                                       | A comma-separated list of statuses to filter the results by.                             |

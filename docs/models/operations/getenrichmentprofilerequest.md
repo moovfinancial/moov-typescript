@@ -1,0 +1,18 @@
+# GetEnrichmentProfileRequest
+
+## Example Usage
+
+```typescript
+import { GetEnrichmentProfileRequest } from "moov-sdk/models/operations";
+
+let value: GetEnrichmentProfileRequest = {
+  email: "Abigayle_Bartell24@hotmail.com",
+};
+```
+
+## Fields
+
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
+| `email`                                                    | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |

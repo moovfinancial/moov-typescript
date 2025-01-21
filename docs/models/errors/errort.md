@@ -1,0 +1,21 @@
+# ErrorT
+
+## Example Usage
+
+```typescript
+import { ErrorT } from "moov-sdk/models/errors";
+
+let value: ErrorT = {};
+```
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `name`                                                                                                           | [components.IndividualNameError](../../models/components/individualnameerror.md)                                 | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `phone`                                                                                                          | [components.PhoneNumberError](../../models/components/phonenumbererror.md)                                       | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `email`                                                                                                          | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `address`                                                                                                        | [components.AddressError](../../models/components/addresserror.md)                                               | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `birthDate`                                                                                                      | [components.BirthDateValidationError](../../models/components/birthdatevalidationerror.md)                       | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `governmentID`                                                                                                   | [components.GovernmentIDError](../../models/components/governmentiderror.md)                                     | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `responsibilities`                                                                                               | [components.RepresentativeResponsibilitiesError](../../models/components/representativeresponsibilitieserror.md) | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |

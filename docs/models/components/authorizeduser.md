@@ -1,0 +1,21 @@
+# AuthorizedUser
+
+Fields for identifying an authorized individual.
+
+## Example Usage
+
+```typescript
+import { AuthorizedUser } from "moov-sdk/models/components";
+
+let value: AuthorizedUser = {
+  firstName: "Melissa",
+  lastName: "Tremblay",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `firstName`        | *string*           | :heavy_check_mark: | N/A                |
+| `lastName`         | *string*           | :heavy_check_mark: | N/A                |

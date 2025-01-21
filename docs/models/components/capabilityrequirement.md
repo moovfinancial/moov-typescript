@@ -1,0 +1,22 @@
+# CapabilityRequirement
+
+Represents individual and business data necessary to facilitate the enabling of a capability for an account.
+
+## Example Usage
+
+```typescript
+import { CapabilityRequirement } from "moov-sdk/models/components";
+
+let value: CapabilityRequirement = {
+  currentlyDue: [
+    "individual.ssn",
+  ],
+};
+```
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `currentlyDue`                                                               | [components.RequirementID](../../models/components/requirementid.md)[]       | :heavy_check_mark:                                                           | N/A                                                                          |
+| `errors`                                                                     | [components.RequirementError](../../models/components/requirementerror.md)[] | :heavy_minus_sign:                                                           | N/A                                                                          |

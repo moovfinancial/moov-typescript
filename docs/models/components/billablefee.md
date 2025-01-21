@@ -1,0 +1,37 @@
+# BillableFee
+
+## Example Usage
+
+```typescript
+import { BillableFee } from "moov-sdk/models/components";
+
+let value: BillableFee = {
+  billableEvent: "ach-volume",
+  feeName: "ACH Direct Debit",
+  feeModel: "fixed",
+  feeCategory: "card-pull",
+  feeProperties: {
+    fixedAmount: "0.15",
+    variableRate: "0.14",
+    minPerTransaction: "1.75",
+    maxPerTransaction: "3.50",
+  },
+  feeConditions: {
+    "cardBrand": [
+      "visa",
+    ],
+  },
+};
+```
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `billableFeeID`                                                             | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |                                                                             |
+| `billableEvent`                                                             | *string*                                                                    | :heavy_minus_sign:                                                          | A unique code identifying a charge.                                         | ach-volume                                                                  |
+| `feeName`                                                                   | *string*                                                                    | :heavy_minus_sign:                                                          | Specifies the name of the fee that will be billed.                          | ACH Direct Debit                                                            |
+| `feeModel`                                                                  | [components.FeeModel](../../models/components/feemodel.md)                  | :heavy_check_mark:                                                          | Specifies the pricing model used for the calculation of the final fee.      |                                                                             |
+| `feeCategory`                                                               | [components.FeeCategory](../../models/components/feecategory.md)            | :heavy_check_mark:                                                          | N/A                                                                         |                                                                             |
+| `feeProperties`                                                             | [components.FeeProperties](../../models/components/feeproperties.md)        | :heavy_minus_sign:                                                          | N/A                                                                         |                                                                             |
+| `feeConditions`                                                             | Record<string, *any*>                                                       | :heavy_minus_sign:                                                          | Defines the specific conditions that must be met for the fee to be applied. | {<br/>"cardBrand": [<br/>"visa"<br/>]<br/>}                                 |
