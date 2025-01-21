@@ -23,3 +23,6 @@ workflow:
         moov:
             target: typescript
             source: latest
+            publish:
+                npm:
+                    token: $npm_token
