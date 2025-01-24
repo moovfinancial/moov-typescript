@@ -8,8 +8,8 @@ Fields for identifying an authorized individual.
 import { AuthorizedUser } from "moov-sdk/models/components";
 
 let value: AuthorizedUser = {
-  firstName: "Melissa",
-  lastName: "Tremblay",
+  firstName: "Hassie",
+  lastName: "Feest",
 };
 ```
 

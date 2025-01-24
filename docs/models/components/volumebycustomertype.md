@@ -6,8 +6,8 @@
 import { VolumeByCustomerType } from "moov-sdk/models/components";
 
 let value: VolumeByCustomerType = {
-  businessToBusinessPercentage: 664491,
-  consumerToBusinessPercentage: 958962,
+  businessToBusinessPercentage: 421111,
+  consumerToBusinessPercentage: 261219,
 };
 ```
 

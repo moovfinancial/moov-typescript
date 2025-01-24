@@ -7,7 +7,7 @@ Status codes for RTP failures.
 ```typescript
 import { RTPFailureCode } from "moov-sdk/models/components";
 
-let value: RTPFailureCode = "account-blocked";
+let value: RTPFailureCode = "processing-error";
 ```
 
 ## Values

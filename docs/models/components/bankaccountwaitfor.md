@@ -5,7 +5,7 @@
 ```typescript
 import { BankAccountWaitFor } from "moov-sdk/models/components";
 
-let value: BankAccountWaitFor = "rail-response";
+let value: BankAccountWaitFor = "payment-method";
 ```
 
 ## Values

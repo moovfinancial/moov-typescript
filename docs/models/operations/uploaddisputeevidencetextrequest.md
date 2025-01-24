@@ -6,11 +6,11 @@
 import { UploadDisputeEvidenceTextRequest } from "moov-sdk/models/operations";
 
 let value: UploadDisputeEvidenceTextRequest = {
-  accountID: "82c7b6ba-8d99-44e8-8682-448b428d674c",
-  disputeID: "2fa8cf3c-5bbf-410b-a9bc-75c69e204c9f",
+  accountID: "bf95277c-83d2-4805-8a28-8e7124c49139",
+  disputeID: "b74da1a3-e293-4f59-a279-c8bd4508fbf7",
   createEvidenceText: {
     text: "<value>",
-    evidenceType: "cancelation-policy",
+    evidenceType: "proof-of-delivery",
   },
 };
 ```

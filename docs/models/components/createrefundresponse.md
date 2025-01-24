@@ -7,13 +7,13 @@
 
 ```typescript
 const value: components.CardAcquiringRefund = {
-  refundID: "4ec39b56-97c0-4659-8c12-ab9f72a998f2",
-  createdOn: new Date("2023-06-18T21:53:52.884Z"),
-  updatedOn: new Date("2023-09-26T12:13:20.933Z"),
-  status: "completed",
+  refundID: "d91f3b87-3b1f-4d86-848e-48353f9b15e1",
+  createdOn: new Date("2024-11-16T10:59:05.362Z"),
+  updatedOn: new Date("2024-11-13T13:50:30.123Z"),
+  status: "failed",
   amount: {
-    currency: "Naira",
-    value: 232602,
+    currency: "USD",
+    value: 1204,
   },
 };
 ```
@@ -22,11 +22,11 @@ const value: components.CardAcquiringRefund = {
 
 ```typescript
 const value: components.AsyncCreatedRefund = {
-  refundID: "777c7c28-d279-42c1-bf75-16a14da32e42",
-  createdOn: new Date("2023-12-05T20:58:54.616Z"),
+  refundID: "e2460137-4e5e-4f73-94c4-679f354515e4",
+  createdOn: new Date("2025-11-01T03:26:54.317Z"),
   amount: {
-    currency: "Brazilian Real",
-    value: 461758,
+    currency: "USD",
+    value: 1204,
   },
 };
 ```

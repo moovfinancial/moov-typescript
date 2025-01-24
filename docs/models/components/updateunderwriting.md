@@ -6,24 +6,24 @@
 import { UpdateUnderwriting } from "moov-sdk/models/components";
 
 let value: UpdateUnderwriting = {
-  averageTransactionSize: 485160,
-  maxTransactionSize: 98238,
-  averageMonthlyTransactionVolume: 34109,
+  averageTransactionSize: 454386,
+  maxTransactionSize: 976274,
+  averageMonthlyTransactionVolume: 944260,
   volumeByCustomerType: {
-    businessToBusinessPercentage: 664501,
-    consumerToBusinessPercentage: 867688,
+    businessToBusinessPercentage: 139730,
+    consumerToBusinessPercentage: 882586,
   },
   cardVolumeDistribution: {
-    ecommercePercentage: 337570,
-    cardPresentPercentage: 875766,
-    mailOrPhonePercentage: 117053,
-    debtRepaymentPercentage: 237960,
+    ecommercePercentage: 80206,
+    cardPresentPercentage: 507635,
+    mailOrPhonePercentage: 163910,
+    debtRepaymentPercentage: 365892,
   },
   fulfillment: {
     hasPhysicalGoods: false,
     isShippingProduct: false,
-    shipmentDurationDays: 901607,
-    returnPolicy: "withinThirtyDays",
+    shipmentDurationDays: 743340,
+    returnPolicy: "exchangeOnly",
   },
 };
 ```

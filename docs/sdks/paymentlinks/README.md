@@ -55,21 +55,24 @@ async function run() {
   }, {
     accountID: "831ce989-44b7-4d2f-8990-b0ab3c903956",
     createPaymentLink: {
-      partnerAccountID: "d0d0cf2f-fdd4-483d-957a-f12f86d9640f",
-      merchantPaymentMethodID: "0d21fbfd-baa7-4dcc-ac61-71c5130ab376",
+      partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
+      merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
       amount: {
-        currency: "Iranian Rial",
-        value: 335397,
+        currency: "USD",
+        value: 1204,
       },
       display: {
-        title: "<value>",
-        description: "platypus resource lest ugh",
-        callToAction: "book",
+        title: "Example Payment Link",
+        description: "This is an example payment link.",
+        callToAction: "pay",
+      },
+      customer: {
+        requirePhone: true,
       },
       payment: {
         allowedMethods: [
-          "ach-debit-collect",
           "card-payment",
+          "ach-debit-collect",
         ],
         cardDetails: {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
@@ -118,21 +121,24 @@ async function run() {
   }, {
     accountID: "831ce989-44b7-4d2f-8990-b0ab3c903956",
     createPaymentLink: {
-      partnerAccountID: "d0d0cf2f-fdd4-483d-957a-f12f86d9640f",
-      merchantPaymentMethodID: "0d21fbfd-baa7-4dcc-ac61-71c5130ab376",
+      partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
+      merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
       amount: {
-        currency: "Iranian Rial",
-        value: 335397,
+        currency: "USD",
+        value: 1204,
       },
       display: {
-        title: "<value>",
-        description: "platypus resource lest ugh",
-        callToAction: "book",
+        title: "Example Payment Link",
+        description: "This is an example payment link.",
+        callToAction: "pay",
+      },
+      customer: {
+        requirePhone: true,
       },
       payment: {
         allowedMethods: [
-          "ach-debit-collect",
           "card-payment",
+          "ach-debit-collect",
         ],
         cardDetails: {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
@@ -386,6 +392,14 @@ async function run() {
     accountID: "94fe6aeb-a005-4850-b45d-bb0fa580425d",
     paymentLinkCode: "uc7ZYKrMhi",
     updatePaymentLink: {
+      amount: {
+        currency: "USD",
+        value: 1204,
+      },
+      customer: {
+        requireAddress: true,
+        requirePhone: true,
+      },
       payment: {
         cardDetails: {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
@@ -432,6 +446,14 @@ async function run() {
     accountID: "94fe6aeb-a005-4850-b45d-bb0fa580425d",
     paymentLinkCode: "uc7ZYKrMhi",
     updatePaymentLink: {
+      amount: {
+        currency: "USD",
+        value: 1204,
+      },
+      customer: {
+        requireAddress: true,
+        requirePhone: true,
+      },
       payment: {
         cardDetails: {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",

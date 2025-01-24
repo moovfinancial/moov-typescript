@@ -6,7 +6,7 @@
 import { CreateFeePlanAgreement } from "moov-sdk/models/components";
 
 let value: CreateFeePlanAgreement = {
-  planID: "5badfecb-5213-468c-9f11-9bdef662aad1",
+  planID: "a71b3000-ebea-484f-9576-f25a19743857",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { DisablePaymentLinkRequest } from "moov-sdk/models/operations";
 
 let value: DisablePaymentLinkRequest = {
-  accountID: "bab0de09-a3da-43f3-ba7b-1f3385703ce3",
+  accountID: "38c2f7c5-7fb0-434f-8ca1-c22d01e4ca1c",
   paymentLinkCode: "uc7ZYKrMhi",
 };
 ```

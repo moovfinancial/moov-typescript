@@ -6,9 +6,9 @@
 import { GetRefundRequest } from "moov-sdk/models/operations";
 
 let value: GetRefundRequest = {
-  transferID: "ccc2a70d-30a2-40e2-9850-557bf8f89294",
-  accountID: "6a94037e-9e97-45f7-a5ec-9971a60b2c49",
-  refundID: "27df0290-c9a9-4913-975c-a4fade360298",
+  transferID: "597c090f-8415-4af1-934c-1e3bce3b5682",
+  accountID: "f25c323f-66c1-42b5-bb09-821e802a797e",
+  refundID: "ffb0f70f-9706-42b0-b80b-f018f69ce2ea",
 };
 ```
 

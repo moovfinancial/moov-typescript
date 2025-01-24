@@ -7,7 +7,7 @@ Payment methods allowed for disbursing funds.
 ```typescript
 import { DisbursementPaymentMethodType } from "moov-sdk/models/components";
 
-let value: DisbursementPaymentMethodType = "ach-credit-standard";
+let value: DisbursementPaymentMethodType = "push-to-card";
 ```
 
 ## Values

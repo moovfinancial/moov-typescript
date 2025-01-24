@@ -7,7 +7,7 @@ import { OnboardingInvite } from "moov-sdk/models/components";
 
 let value: OnboardingInvite = {
   code: "N1IA5eWYNh",
-  link: "https://passionate-airman.org/",
+  link: "https://spiffy-handover.net",
   scopes: [
     "accounts.read",
   ],
@@ -26,11 +26,11 @@ let value: OnboardingInvite = {
     },
   },
   partner: {
-    accountID: "204e4864-ecc8-4d77-b73e-433dc60f2dcf",
+    accountID: "61874e60-66dc-43d3-8510-ae7dcafc4cb6",
     accountMode: "production",
     displayName: "Bob's Widgets",
   },
-  createdOn: new Date("2023-12-30T04:23:53.970Z"),
+  createdOn: new Date("2023-08-23T22:30:47.041Z"),
 };
 ```
 

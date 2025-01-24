@@ -6,7 +6,7 @@
 import { DisconnectAccountRequest } from "moov-sdk/models/operations";
 
 let value: DisconnectAccountRequest = {
-  accountID: "2034ca00-9a29-4356-81ff-74fdb76c8a9b",
+  accountID: "cfa99d6c-a403-4b94-b6a2-66885c106e42",
 };
 ```
 

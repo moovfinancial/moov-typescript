@@ -6,10 +6,10 @@
 import { AddCapabilitiesRequest } from "moov-sdk/models/operations";
 
 let value: AddCapabilitiesRequest = {
-  accountID: "9dc30420-48a6-439c-bbd4-875a2c0696a0",
+  accountID: "066d3b0e-a642-496b-ae4a-6095071a88ee",
   addCapabilities: {
     capabilities: [
-      "transfers",
+      "collect-funds",
     ],
   },
 };

@@ -7,7 +7,7 @@ Status of a transaction within the ACH lifecycle.
 ```typescript
 import { ACHTransactionStatus } from "moov-sdk/models/components";
 
-let value: ACHTransactionStatus = "initiated";
+let value: ACHTransactionStatus = "completed";
 ```
 
 ## Values

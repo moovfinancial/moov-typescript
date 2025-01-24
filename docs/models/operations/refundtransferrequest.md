@@ -6,9 +6,9 @@
 import { RefundTransferRequest } from "moov-sdk/models/operations";
 
 let value: RefundTransferRequest = {
-  xIdempotencyKey: "ee1d6081-175e-45d0-af04-0f05a503b6db",
-  accountID: "1f849b7a-1dac-418b-a810-9cf93616d602",
-  transferID: "b3c484b6-c7ae-4683-8b3b-efc8d76b3155",
+  xIdempotencyKey: "ea236758-ea5d-4b98-9196-81c8d3f915f9",
+  accountID: "e5b2b763-f136-42ee-b770-dc67a7448f70",
+  transferID: "4012a5ec-5fa0-47e4-ae99-5f6aaa4d9651",
   createRefund: {
     amount: 1000,
   },

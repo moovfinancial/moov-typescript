@@ -6,7 +6,7 @@
 import { GetMerchantProcessingAgreementRequest } from "moov-sdk/models/operations";
 
 let value: GetMerchantProcessingAgreementRequest = {
-  accountID: "0dac7e01-6119-43ae-ad31-ff572b6c905c",
+  accountID: "be704de5-4e5a-4418-8e93-ac58a2f7f372",
 };
 ```
 

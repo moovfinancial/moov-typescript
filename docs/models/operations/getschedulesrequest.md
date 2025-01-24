@@ -6,8 +6,8 @@
 import { GetSchedulesRequest } from "moov-sdk/models/operations";
 
 let value: GetSchedulesRequest = {
-  accountID: "76ce7c24-be12-4f10-9834-95f3de7f4190",
-  scheduleID: "d634ea27-98c0-4498-b12c-8ad95824a00e",
+  accountID: "b321d336-a9ea-48ba-ac9c-eb54aa0b302a",
+  scheduleID: "d1da3bb1-4a6c-48d1-ab78-443533f7a597",
 };
 ```
 

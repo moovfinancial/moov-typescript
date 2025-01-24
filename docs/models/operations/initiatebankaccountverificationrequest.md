@@ -7,8 +7,8 @@ import { InitiateBankAccountVerificationRequest } from "moov-sdk/models/operatio
 
 let value: InitiateBankAccountVerificationRequest = {
   xWaitFor: "rail-response",
-  accountID: "bc0f62ec-6936-46c6-acc6-7803dc1a082d",
-  bankAccountID: "1aeb1a9a-c453-4761-a318-25d98f6e965e",
+  accountID: "c0919d37-c22e-4bbd-b878-b612f0bf2b43",
+  bankAccountID: "e5a2ce5a-e0d9-468d-ab87-e31ab9449475",
 };
 ```
 

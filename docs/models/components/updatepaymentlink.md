@@ -6,19 +6,13 @@
 import { UpdatePaymentLink } from "moov-sdk/models/components";
 
 let value: UpdatePaymentLink = {
-  payment: {
-    cardDetails: {
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-    },
-    achDetails: {
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-    },
+  amount: {
+    currency: "USD",
+    value: 12099,
   },
-  payout: {
-    recipient: {
-      email: "jordan.lee@classbooker.dev",
-    },
+  customer: {
+    requireAddress: true,
+    requirePhone: true,
   },
 };
 ```

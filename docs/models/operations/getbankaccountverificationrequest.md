@@ -6,8 +6,8 @@
 import { GetBankAccountVerificationRequest } from "moov-sdk/models/operations";
 
 let value: GetBankAccountVerificationRequest = {
-  accountID: "72b7e0d2-e580-4b3e-ba44-2c74fc9c1a5b",
-  bankAccountID: "c9b740a2-7ae9-437a-a3bc-8d38ebc395a8",
+  accountID: "0b3402d3-f24d-464b-b0ed-1cf79a4a76ec",
+  bankAccountID: "d09ba460-1893-4770-829f-a1d619365a61",
 };
 ```
 

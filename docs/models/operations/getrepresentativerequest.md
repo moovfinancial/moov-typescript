@@ -6,8 +6,8 @@
 import { GetRepresentativeRequest } from "moov-sdk/models/operations";
 
 let value: GetRepresentativeRequest = {
-  accountID: "64948980-5c58-4533-abae-6a77d7e911f6",
-  representativeID: "62239850-56cb-433a-aa81-40cce1eefc44",
+  accountID: "b5c95206-65c1-4138-abe4-284f03c68da9",
+  representativeID: "1195fde2-90b0-4a39-a40a-7b0802c3122d",
 };
 ```
 

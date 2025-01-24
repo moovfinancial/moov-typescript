@@ -10,7 +10,7 @@ If set to "auto" the UI will automatically select between
 ```typescript
 import { CallToAction } from "moov-sdk/models/components";
 
-let value: CallToAction = "donate";
+let value: CallToAction = "subscribe";
 ```
 
 ## Values

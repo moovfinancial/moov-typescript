@@ -6,7 +6,7 @@
 import { UpdateCardRequest } from "moov-sdk/models/operations";
 
 let value: UpdateCardRequest = {
-  accountID: "4b0ed1cf-79a4-4a76-9ece-d09ba4601893",
+  accountID: "327ccf66-0dac-47e0-8161-193aed31ff57",
   cardID: "01234567-89ab-cdef-0123-456789abcdef",
   updateCard: {
     cardCvv: "456",

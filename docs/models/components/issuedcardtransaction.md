@@ -6,11 +6,11 @@
 import { IssuedCardTransaction } from "moov-sdk/models/components";
 
 let value: IssuedCardTransaction = {
-  cardTransactionID: "98d00fdb-27ee-40c0-8f6f-545b3d9ff2f0",
-  issuedCardID: "ff277dac-7abb-4015-9066-e9be704de54e",
-  fundingWalletID: "a418e93a-c58a-42f7-9f37-20366ea6f95b",
+  cardTransactionID: "4f5167cf-de7b-4415-ab4d-c35d355c0196",
+  issuedCardID: "4ec1cffb-194f-4b9b-875e-506caf1e5761",
+  fundingWalletID: "b020d92c-fee0-4949-a527-7f04dadac73c",
   amount: "-14.89",
-  authorizedOn: new Date("2025-08-23T18:14:06.090Z"),
+  authorizedOn: new Date("2023-06-02T21:32:40.622Z"),
   merchantData: {
     name: "Whole Body Fitness",
     city: "San Francisco",
@@ -19,7 +19,7 @@ let value: IssuedCardTransaction = {
     state: "CA",
     mcc: "7298",
   },
-  createdOn: new Date("2025-09-09T13:49:56.055Z"),
+  createdOn: new Date("2025-06-01T03:55:56.938Z"),
 };
 ```
 

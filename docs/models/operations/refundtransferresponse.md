@@ -7,11 +7,11 @@
 
 ```typescript
 const value: components.CreateRefundResponse = {
-  refundID: "a0828c69-8972-43eb-bf05-f7992b0883ce",
-  createdOn: new Date("2023-01-30T09:23:33.677Z"),
+  refundID: "6e27a9ea-da54-456d-8bde-dff569b7ca92",
+  createdOn: new Date("2023-12-10T08:42:26.183Z"),
   amount: {
-    currency: "Gibraltar Pound",
-    value: 924824,
+    currency: "USD",
+    value: 1204,
   },
 };
 ```
@@ -20,13 +20,13 @@ const value: components.CreateRefundResponse = {
 
 ```typescript
 const value: components.CardAcquiringRefund = {
-  refundID: "048b3437-8ecb-4951-a433-3665e321e395",
-  createdOn: new Date("2024-12-05T06:03:53.905Z"),
-  updatedOn: new Date("2025-07-09T17:23:10.289Z"),
-  status: "completed",
+  refundID: "f1f76dd2-c851-49ce-8f16-0aea6cf0d5b3",
+  createdOn: new Date("2025-06-06T07:40:09.796Z"),
+  updatedOn: new Date("2025-04-21T01:22:42.197Z"),
+  status: "failed",
   amount: {
-    currency: "Quetzal",
-    value: 181080,
+    currency: "USD",
+    value: 1204,
   },
 };
 ```

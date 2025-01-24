@@ -7,8 +7,8 @@ import { TransferAccount } from "moov-sdk/models/components";
 
 let value: TransferAccount = {
   accountID: "<id>",
-  email: "Zella_Morissette@yahoo.com",
-  displayName: "Lane.Stamm",
+  email: "Lou20@hotmail.com",
+  displayName: "Maurine_Lehner",
 };
 ```
 

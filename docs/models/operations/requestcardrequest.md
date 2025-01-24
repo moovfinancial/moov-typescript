@@ -6,12 +6,12 @@
 import { RequestCardRequest } from "moov-sdk/models/operations";
 
 let value: RequestCardRequest = {
-  accountID: "244c276c-7317-43a3-a8ae-ea30c51d8f9f",
+  accountID: "90c9a991-375c-4a4f-aade-3602987b46f9",
   requestCard: {
-    fundingWalletID: "2f12fcd7-6400-453a-92ef-7024eef42856",
+    fundingWalletID: "b767d5e0-4ee3-43c5-a334-d72551db6b5e",
     authorizedUser: {
-      firstName: "Angelica",
-      lastName: "Roberts",
+      firstName: "Berry",
+      lastName: "Hessel",
       birthDate: {
         day: 9,
         month: 11,

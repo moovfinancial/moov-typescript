@@ -6,8 +6,8 @@
 import { UpdateRepresentativeRequest } from "moov-sdk/models/operations";
 
 let value: UpdateRepresentativeRequest = {
-  accountID: "aa5849cb-68c3-4377-b096-9e5134d8f414",
-  representativeID: "be94f364-a6ff-41ec-ab5a-cdc5284c06c1",
+  accountID: "c4ae8d3f-1c31-4853-87fa-4f4b4ca9739d",
+  representativeID: "be945b50-1465-4c36-8dc3-52185899f3e0",
   updateRepresentative: {
     name: {
       firstName: "Jordan",

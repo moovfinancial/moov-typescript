@@ -6,7 +6,7 @@
 import { GetApplePayMerchantDomainsRequest } from "moov-sdk/models/operations";
 
 let value: GetApplePayMerchantDomainsRequest = {
-  accountID: "764149c8-c29e-433b-8c35-a697cdd99704",
+  accountID: "33dc60f2-dcfc-4536-a3bd-a2097358a7f0",
 };
 ```
 

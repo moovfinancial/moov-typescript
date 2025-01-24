@@ -8,93 +8,65 @@ Details of a Transfer.
 import { Transfer } from "moov-sdk/models/components";
 
 let value: Transfer = {
-  transferID: "e41b690f-e906-4fa2-a7f8-094168088c68",
-  createdOn: new Date("2025-09-10T06:31:30.041Z"),
+  transferID: "d835gf30-4b19-4850-a9b2-c0624c41ecb3",
+  createdOn: new Date("2025-01-21T21:32:16Z"),
   source: {
-    paymentMethodID: "<id>",
-    paymentMethodType: "<value>",
+    paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
+    paymentMethodType: "card-payment",
     account: {
-      accountID: "<id>",
-      email: "Leann37@yahoo.com",
-      displayName: "Jannie66",
+      accountID: "7e4b26c2-b399-49ef-8390-50e1ea44d550",
+      email: "jules@julesjackson.com",
+      displayName: "Jules Jackson",
     },
-    bankAccount: {
-      bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
-      fingerprint:
-        "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e",
-      status: "new",
-      holderName: "John Doe",
-      holderType: "individual",
-      bankName: "Gringotts Bank",
-      bankAccountType: "checking",
-      routingNumber: "123456780",
-      lastFourAccountNumber: "6789",
-      updatedOn: new Date("2024-11-26T22:37:06Z"),
-      statusReason: "bank-account-created",
+    card: {
+      "cardID": "aefd5563-93c6-413c-875e-1bd0ebfc116d",
+      "fingerprint": "2f5d782ceef1c3bd31ed5...",
+      "brand": "Visa",
+      "cardType": "credit",
+      "lastFourCardNumber": "2000",
+      "bin": "400020",
+      "expiration": {
+        "month": "01",
+        "year": "28",
+      },
+      "holderName": "Jules Jackson",
+      "billingAddress": {
+        "postalCode": "80301",
+      },
+      "cardVerification": {
+        "cvv": "unavailable",
+        "addressLine1": "unavailable",
+        "postalCode": "unavailable",
+        "accountName": {},
+      },
+      "issuer": "Moov Visa Sandbox",
+      "issuerCountry": "US",
+      "cardAccountUpdater": {},
     },
     cardDetails: {
       status: "confirmed",
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      feeProgram:
-        "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
-    },
-    achDetails: {
-      status: "returned",
-      traceNumber: "124782618117",
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-      debitHoldPeriod: "2-days",
+      confirmedOn: new Date("2025-01-21T21:32:16.799681237Z"),
     },
   },
   destination: {
-    paymentMethodID: "<id>",
-    paymentMethodType: "<value>",
+    paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
+    paymentMethodType: "moov-wallet",
     account: {
-      accountID: "<id>",
-      email: "Verdie25@yahoo.com",
-      displayName: "Mozell_Emmerich",
+      accountID: "34233b72-780c-4a0d-8b08-cbbe23k878f8",
+      email: "john@wholebodyfitness.io",
+      displayName: "Whole Body Fitness",
     },
-    bankAccount: {
-      bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
-      fingerprint:
-        "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e",
-      status: "new",
-      holderName: "John Doe",
-      holderType: "individual",
-      bankName: "Gringotts Bank",
-      bankAccountType: "checking",
-      routingNumber: "123456780",
-      lastFourAccountNumber: "6789",
-      updatedOn: new Date("2024-11-26T22:37:06Z"),
-      statusReason: "bank-account-created",
-    },
-    achDetails: {
-      status: "returned",
-      traceNumber: "124782618117",
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-      debitHoldPeriod: "2-days",
-    },
-    cardDetails: {
-      status: "settled",
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      feeProgram:
-        "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
+    wallet: {
+      "walletID": "744b2e78-8cc8-4a6a-af42-611e3b844503",
     },
   },
   status: "pending",
   amount: {
-    currency: "Pound Sterling",
-    value: 313420,
+    currency: "USD",
+    value: 32945,
   },
-  description: "Pay Instructor for May 15 Class",
-  metadata: {
-    "optional": "metadata",
-  },
-  facilitatorFee: {
-    totalDecimal: "12.987654321",
-    markupDecimal: "0.987654321",
-  },
+  description: "Transfer from card to wallet",
 };
 ```
 

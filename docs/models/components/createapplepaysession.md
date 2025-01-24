@@ -7,7 +7,7 @@ import { CreateApplePaySession } from "moov-sdk/models/components";
 
 let value: CreateApplePaySession = {
   domain: "checkout.classbooker.dev",
-  displayName: "Cornelius_Welch49",
+  displayName: "Elvis94",
 };
 ```
 

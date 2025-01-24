@@ -7,7 +7,7 @@ Status of a transaction within the card payment lifecycle.
 ```typescript
 import { CardTransactionStatus } from "moov-sdk/models/components";
 
-let value: CardTransactionStatus = "canceled";
+let value: CardTransactionStatus = "completed";
 ```
 
 ## Values

@@ -7,7 +7,7 @@ The phase of a dispute within the dispute lifecycle.
 ```typescript
 import { DisputePhase } from "moov-sdk/models/components";
 
-let value: DisputePhase = "unknown";
+let value: DisputePhase = "pre-dispute";
 ```
 
 ## Values

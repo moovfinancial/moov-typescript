@@ -6,7 +6,7 @@
 import { AchDebitFundPaymentMethod } from "moov-sdk/models/components";
 
 let value: AchDebitFundPaymentMethod = {
-  paymentMethodID: "7eac8f90-369c-46bc-85fa-e8bce286e1fe",
+  paymentMethodID: "9fff1f37-c392-4115-906a-61142f2c998f",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:

@@ -6,8 +6,8 @@
 import { GetPaymentMethodRequest } from "moov-sdk/models/operations";
 
 let value: GetPaymentMethodRequest = {
-  accountID: "bad6e12a-42e1-4fdd-aa3c-097c06726e74",
-  paymentMethodID: "04ca093f-c267-42bd-a024-f621ec98c5ab",
+  accountID: "db7efe4d-51bc-4f74-9169-725e78760379",
+  paymentMethodID: "5cbf0b04-eca6-4047-8670-a70f32c59060",
 };
 ```
 

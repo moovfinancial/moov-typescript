@@ -6,7 +6,7 @@
 import { ListIssuedCardTransactionsRequest } from "moov-sdk/models/operations";
 
 let value: ListIssuedCardTransactionsRequest = {
-  accountID: "7ce9e6cc-b673-44a5-9b95-255a0da04299",
+  accountID: "d0b5e35b-1ba4-4bec-982e-76835b9ccc2a",
   skip: 60,
   count: 20,
 };

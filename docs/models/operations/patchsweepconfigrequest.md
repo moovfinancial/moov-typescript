@@ -6,8 +6,8 @@
 import { PatchSweepConfigRequest } from "moov-sdk/models/operations";
 
 let value: PatchSweepConfigRequest = {
-  accountID: "397d50ea-2367-458e-ba5d-b9819681c8d3",
-  sweepConfigID: "915f96e5-b2b7-463f-9136-2ee770dc67a7",
+  accountID: "b0e737d4-e119-48a0-84b5-4dcbaf02744f",
+  sweepConfigID: "0e207e4e-d46e-4103-a320-b27156ebe726",
   patchSweepConfig: {},
 };
 ```

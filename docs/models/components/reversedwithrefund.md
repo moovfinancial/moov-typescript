@@ -7,13 +7,13 @@ import { ReversedWithRefund } from "moov-sdk/models/components";
 
 let value: ReversedWithRefund = {
   refund: {
-    refundID: "50a31ef4-427d-4bd3-9be4-b64f5167cfde",
-    createdOn: new Date("2025-02-27T08:54:10.839Z"),
-    updatedOn: new Date("2023-12-05T17:14:25.023Z"),
-    status: "created",
+    refundID: "96d596e4-1b69-40fe-8906-fa27f8094168",
+    createdOn: new Date("2024-09-04T17:10:02.116Z"),
+    updatedOn: new Date("2024-07-14T06:41:15.268Z"),
+    status: "failed",
     amount: {
-      currency: "Rupiah",
-      value: 697915,
+      currency: "USD",
+      value: 1204,
     },
   },
 };

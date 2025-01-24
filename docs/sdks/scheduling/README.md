@@ -38,8 +38,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Kyat",
-              value: 169093,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -70,8 +70,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Jordanian Dinar",
-              value: 859489,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -102,8 +102,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Ouguiya",
-              value: 670277,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -134,8 +134,8 @@ async function run() {
         recurrenceRule: "<value>",
         runTransfer: {
           amount: {
-            currency: "Rial Omani",
-            value: 14774,
+            currency: "USD",
+            value: 1204,
           },
           destination: {
             paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -199,8 +199,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Kyat",
-              value: 169093,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -231,8 +231,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Jordanian Dinar",
-              value: 859489,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -263,8 +263,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Ouguiya",
-              value: 670277,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -295,8 +295,8 @@ async function run() {
         recurrenceRule: "<value>",
         runTransfer: {
           amount: {
-            currency: "Rial Omani",
-            value: 14774,
+            currency: "USD",
+            value: 1204,
           },
           destination: {
             paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -475,8 +475,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Ouguiya",
-              value: 116555,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -507,8 +507,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Bahamian Dollar",
-              value: 78068,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -539,8 +539,8 @@ async function run() {
         recurrenceRule: "<value>",
         runTransfer: {
           amount: {
-            currency: "Mauritius Rupee",
-            value: 856383,
+            currency: "USD",
+            value: 1204,
           },
           destination: {
             paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -605,8 +605,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Ouguiya",
-              value: 116555,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -637,8 +637,8 @@ async function run() {
           runOn: new Date("2009-11-10T23:00:00Z"),
           runTransfer: {
             amount: {
-              currency: "Bahamian Dollar",
-              value: 78068,
+              currency: "USD",
+              value: 1204,
             },
             destination: {
               paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -669,8 +669,8 @@ async function run() {
         recurrenceRule: "<value>",
         runTransfer: {
           amount: {
-            currency: "Mauritius Rupee",
-            value: 856383,
+            currency: "USD",
+            value: 1204,
           },
           destination: {
             paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",

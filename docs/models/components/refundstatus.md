@@ -5,7 +5,7 @@
 ```typescript
 import { RefundStatus } from "moov-sdk/models/components";
 
-let value: RefundStatus = "created";
+let value: RefundStatus = "failed";
 ```
 
 ## Values

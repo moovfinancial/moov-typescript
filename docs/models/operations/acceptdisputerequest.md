@@ -6,8 +6,8 @@
 import { AcceptDisputeRequest } from "moov-sdk/models/operations";
 
 let value: AcceptDisputeRequest = {
-  accountID: "fa6f862b-9333-4704-8b9d-b0975fa481b5",
-  disputeID: "20cb746e-1038-401b-97fe-46e95cea3d6b",
+  accountID: "d98f6e96-5e94-4833-b2bc-56c0548e0d89",
+  disputeID: "24379b06-e7d1-44b9-97ac-e7a6e76f05d7",
 };
 ```
 

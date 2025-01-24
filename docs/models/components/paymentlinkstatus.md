@@ -5,7 +5,7 @@
 ```typescript
 import { PaymentLinkStatus } from "moov-sdk/models/components";
 
-let value: PaymentLinkStatus = "expired";
+let value: PaymentLinkStatus = "used";
 ```
 
 ## Values

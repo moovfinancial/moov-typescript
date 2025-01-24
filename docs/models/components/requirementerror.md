@@ -6,7 +6,7 @@
 import { RequirementError } from "moov-sdk/models/components";
 
 let value: RequirementError = {
-  requirement: "representative.{rep-uuid}.firstname",
+  requirement: "business.dba",
 };
 ```
 

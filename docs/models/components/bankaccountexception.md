@@ -8,9 +8,9 @@ Reason for, and details related to, an `errored` or `verificationFailed` bank ac
 import { BankAccountException } from "moov-sdk/models/components";
 
 let value: BankAccountException = {
-  achReturnCode: "R02",
-  rtpRejectionCode: "MD07",
-  description: "pish present an uh-huh vice but calmly finished",
+  achReturnCode: "R07",
+  rtpRejectionCode: "AC03",
+  description: "now whose afraid",
 };
 ```
 

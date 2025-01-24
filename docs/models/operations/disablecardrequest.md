@@ -6,7 +6,7 @@
 import { DisableCardRequest } from "moov-sdk/models/operations";
 
 let value: DisableCardRequest = {
-  accountID: "7029fa1d-6193-465a-b613-8c0919d37c22",
+  accountID: "b6c905cb-aa9a-498c-9576-35056133352b",
   cardID: "01234567-89ab-cdef-0123-456789abcdef",
 };
 ```

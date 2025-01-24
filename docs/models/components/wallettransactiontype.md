@@ -5,7 +5,7 @@
 ```typescript
 import { WalletTransactionType } from "moov-sdk/models/components";
 
-let value: WalletTransactionType = "refund";
+let value: WalletTransactionType = "card-payment";
 ```
 
 ## Values

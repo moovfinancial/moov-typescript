@@ -7,7 +7,7 @@ Status of a transaction within the RTP lifecycle.
 ```typescript
 import { RTPTransactionStatus } from "moov-sdk/models/components";
 
-let value: RTPTransactionStatus = "accepted-without-posting";
+let value: RTPTransactionStatus = "completed";
 ```
 
 ## Values

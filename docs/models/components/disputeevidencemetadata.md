@@ -6,15 +6,15 @@
 import { DisputeEvidenceMetadata } from "moov-sdk/models/components";
 
 let value: DisputeEvidenceMetadata = {
-  evidenceID: "42019ff6-2a7f-41c4-93a3-a8684b65de03",
-  disputeID: "dffe4f31-f3b0-4be4-a65b-3274d38fadfc",
+  evidenceID: "cf79d7f9-ded2-4a61-964d-0f55026e1fd7",
+  disputeID: "39006143-4201-49ff-962a-7f1c43a3a868",
   mimeType: "<value>",
   filename: "example.file",
-  size: 967966,
-  evidenceType: "other",
+  size: 706575,
+  evidenceType: "terms-of-service",
   text: "<value>",
-  createdOn: new Date("2024-05-10T04:43:03.147Z"),
-  updatedOn: new Date("2023-03-19T16:09:31.123Z"),
+  createdOn: new Date("2024-01-31T03:47:25.523Z"),
+  updatedOn: new Date("2025-06-27T04:59:29.330Z"),
 };
 ```
 

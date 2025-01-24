@@ -6,11 +6,11 @@
 import { EvidenceText } from "moov-sdk/models/components";
 
 let value: EvidenceText = {
-  evidenceID: "26296ef8-49e6-4847-a638-458c5ed04715",
-  disputeID: "a9b35ae8-40b0-458e-a160-594319baf0a9",
+  evidenceID: "035dffe4-f31f-43b0-bbe4-65b3274d38fa",
+  disputeID: "fcbff714-2629-46ef-9849-e6847638458c",
   evidenceType: "other",
   text: "<value>",
-  createdOn: new Date("2023-01-19T11:47:32.986Z"),
+  createdOn: new Date("2025-08-03T02:25:37.402Z"),
 };
 ```
 

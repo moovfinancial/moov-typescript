@@ -6,8 +6,8 @@
 import { BasicPaymentMethod } from "moov-sdk/models/components";
 
 let value: BasicPaymentMethod = {
-  paymentMethodID: "43803657-49d1-482b-8692-275fcbe189f4",
-  paymentMethodType: "ach-debit-fund",
+  paymentMethodID: "fb438036-5749-4d18-b2b6-92275fcbe189",
+  paymentMethodType: "ach-debit-collect",
 };
 ```
 

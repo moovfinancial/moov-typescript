@@ -6,8 +6,8 @@
 import { AsyncTransfer } from "moov-sdk/models/components";
 
 let value: AsyncTransfer = {
-  transferID: "4fa10f35-3ea8-4859-a63a-5c68c7fcdf69",
-  createdOn: new Date("2025-01-08T02:39:07.024Z"),
+  transferID: "e7ac84a9-e0e8-405b-a7f6-5d8aca619e6e",
+  createdOn: new Date("2024-11-11T10:36:59.251Z"),
 };
 ```
 

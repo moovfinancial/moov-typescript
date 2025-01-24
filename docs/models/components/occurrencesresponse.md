@@ -7,11 +7,11 @@ import { OccurrencesResponse } from "moov-sdk/models/components";
 
 let value: OccurrencesResponse = {
   mode: "production",
-  runOn: new Date("2025-06-08T10:10:54.665Z"),
+  runOn: new Date("2024-02-18T11:40:55.217Z"),
   runTransfer: {
     amount: {
-      currency: "Cayman Islands Dollar",
-      value: 523156,
+      currency: "USD",
+      value: 1204,
     },
     destination: {
       paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -34,7 +34,8 @@ let value: OccurrencesResponse = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description: "excepting reschedule splash whale within",
+    description:
+      "slope whenever scarcely spew ick fondly aside cake uh-huh while",
   },
 };
 ```

@@ -6,7 +6,7 @@
 import { ListBankAccountsRequest } from "moov-sdk/models/operations";
 
 let value: ListBankAccountsRequest = {
-  accountID: "8db87e31-ab94-4494-b758-33b63d61b499",
+  accountID: "3d5fde94-38ab-4286-b384-83e591a4f693",
 };
 ```
 

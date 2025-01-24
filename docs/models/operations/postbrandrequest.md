@@ -6,7 +6,7 @@
 import { PostBrandRequest } from "moov-sdk/models/operations";
 
 let value: PostBrandRequest = {
-  accountID: "04b708de-e873-4dcd-931b-ee8a148e790f",
+  accountID: "abc5e247-94e7-41df-b589-c2db09079ae4",
   brand: {
     colors: {
       dark: {

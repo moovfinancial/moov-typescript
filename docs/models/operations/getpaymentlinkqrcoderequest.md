@@ -6,7 +6,7 @@
 import { GetPaymentLinkQRCodeRequest } from "moov-sdk/models/operations";
 
 let value: GetPaymentLinkQRCodeRequest = {
-  accountID: "00622adc-5ed8-4702-918a-9dad22e53efa",
+  accountID: "b68f4445-9ce0-4a99-bcfb-2fd41cf2a00c",
   paymentLinkCode: "uc7ZYKrMhi",
 };
 ```

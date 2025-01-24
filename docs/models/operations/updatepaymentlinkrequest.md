@@ -6,22 +6,16 @@
 import { UpdatePaymentLinkRequest } from "moov-sdk/models/operations";
 
 let value: UpdatePaymentLinkRequest = {
-  accountID: "8c03f714-09f9-4953-b8e0-969d736216a4",
+  accountID: "a992dcfc-9ea4-429b-9d4e-9bce46ed67b0",
   paymentLinkCode: "uc7ZYKrMhi",
   updatePaymentLink: {
-    payment: {
-      cardDetails: {
-        dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      },
-      achDetails: {
-        companyEntryDescription: "Gym dues",
-        originatingCompanyName: "Whole Body Fit",
-      },
+    amount: {
+      currency: "USD",
+      value: 12099,
     },
-    payout: {
-      recipient: {
-        email: "jordan.lee@classbooker.dev",
-      },
+    customer: {
+      requireAddress: true,
+      requirePhone: true,
     },
   },
 };
@@ -29,9 +23,9 @@ let value: UpdatePaymentLinkRequest = {
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `xMoovVersion`                                                               | [components.Versions](../../models/components/versions.md)                   | :heavy_minus_sign:                                                           | Specify an API version.                                                      |                                                                              |
-| `accountID`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |                                                                              |
-| `paymentLinkCode`                                                            | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          | uc7ZYKrMhi                                                                   |
-| `updatePaymentLink`                                                          | [components.UpdatePaymentLink](../../models/components/updatepaymentlink.md) | :heavy_check_mark:                                                           | N/A                                                                          |                                                                              |
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       | Example                                                                                                           |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `xMoovVersion`                                                                                                    | [components.Versions](../../models/components/versions.md)                                                        | :heavy_minus_sign:                                                                                                | Specify an API version.                                                                                           |                                                                                                                   |
+| `accountID`                                                                                                       | *string*                                                                                                          | :heavy_check_mark:                                                                                                | N/A                                                                                                               |                                                                                                                   |
+| `paymentLinkCode`                                                                                                 | *string*                                                                                                          | :heavy_check_mark:                                                                                                | N/A                                                                                                               | uc7ZYKrMhi                                                                                                        |
+| `updatePaymentLink`                                                                                               | [components.UpdatePaymentLink](../../models/components/updatepaymentlink.md)                                      | :heavy_check_mark:                                                                                                | N/A                                                                                                               | {<br/>"amount": {<br/>"currency": "USD",<br/>"value": 12099<br/>},<br/>"customer": {<br/>"requirePhone": true,<br/>"requireAddress": true<br/>}<br/>} |

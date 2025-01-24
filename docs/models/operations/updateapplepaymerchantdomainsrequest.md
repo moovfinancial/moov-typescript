@@ -6,7 +6,7 @@
 import { UpdateApplePayMerchantDomainsRequest } from "moov-sdk/models/operations";
 
 let value: UpdateApplePayMerchantDomainsRequest = {
-  accountID: "fa861729-bf46-42ed-bc08-31c3883700e6",
+  accountID: "24e7350c-390d-4204-9e48-64ecc8d7773e",
   updateApplePayMerchantDomains: {
     addDomains: [
       "pay.classbooker.dev",

@@ -6,8 +6,8 @@
 import { DisableCapabilityRequest } from "moov-sdk/models/operations";
 
 let value: DisableCapabilityRequest = {
-  accountID: "6f86f145-dc4d-417a-9414-75610e14ad5a",
-  capabilityID: "transfers",
+  accountID: "950a0122-c127-42b7-be0d-2e580b3ea442",
+  capabilityID: "collect-funds",
 };
 ```
 

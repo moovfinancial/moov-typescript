@@ -6,8 +6,8 @@
 import { LinkedApplePayPaymentMethod } from "moov-sdk/models/components";
 
 let value: LinkedApplePayPaymentMethod = {
-  paymentMethodID: "4064b620-1a78-4ef3-8a40-c569dad4c2fa",
-  paymentMethodType: "apple-pay",
+  paymentMethodID: "734064b6-201a-478e-bf3a-40c569dad4c2",
+  paymentMethodType: "card-payment",
   applePay: {
     brand: "Visa",
     cardType: "credit",

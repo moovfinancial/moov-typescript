@@ -7,7 +7,7 @@ The type of event that occurred on the card.
 ```typescript
 import { IssuedCardEventType } from "moov-sdk/models/components";
 
-let value: IssuedCardEventType = "clearing";
+let value: IssuedCardEventType = "authorization-advice";
 ```
 
 ## Values

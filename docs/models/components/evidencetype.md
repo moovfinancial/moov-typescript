@@ -5,7 +5,7 @@
 ```typescript
 import { EvidenceType } from "moov-sdk/models/components";
 
-let value: EvidenceType = "cancelation-policy";
+let value: EvidenceType = "other";
 ```
 
 ## Values

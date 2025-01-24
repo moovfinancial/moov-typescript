@@ -6,7 +6,7 @@
 import { ListSweepConfigsRequest } from "moov-sdk/models/operations";
 
 let value: ListSweepConfigsRequest = {
-  accountID: "f953aead-af6c-4800-a6ad-0feda7c342f3",
+  accountID: "705af325-8a53-4021-b351-6296ac16f077",
 };
 ```
 

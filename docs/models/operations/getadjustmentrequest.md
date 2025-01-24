@@ -6,8 +6,8 @@
 import { GetAdjustmentRequest } from "moov-sdk/models/operations";
 
 let value: GetAdjustmentRequest = {
-  accountID: "0c5a060d-2a42-4e9e-a4df-6e55ff3d5fde",
-  adjustmentID: "438ab286-3848-43e5-b91a-4f693dc3e0c7",
+  accountID: "02e016b4-44d3-48fb-a5cf-5b1e1584a8b5",
+  adjustmentID: "ccb8a17d-9f41-4a1c-b48c-c7f744b6604d",
 };
 ```
 

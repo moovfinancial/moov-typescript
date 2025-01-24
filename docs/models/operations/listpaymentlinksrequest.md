@@ -6,7 +6,7 @@
 import { ListPaymentLinksRequest } from "moov-sdk/models/operations";
 
 let value: ListPaymentLinksRequest = {
-  accountID: "612b7556-a912-410c-9d6f-dd5fb5e0981d",
+  accountID: "723eb9b0-2bbd-4986-9dd7-60ca78ee2d81",
 };
 ```
 

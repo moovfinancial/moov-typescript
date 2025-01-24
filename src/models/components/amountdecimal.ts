@@ -14,6 +14,10 @@ export type AmountDecimal = {
   currency: string;
   /**
    * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
    */
   valueDecimal: string;
 };

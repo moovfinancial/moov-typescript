@@ -12,8 +12,8 @@ let value: UpsertSchedule = {
       runOn: new Date("2009-11-10T23:00:00Z"),
       runTransfer: {
         amount: {
-          currency: "Malaysian Ringgit",
-          value: 63369,
+          currency: "USD",
+          value: 1204,
         },
         destination: {
           paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -36,7 +36,7 @@ let value: UpsertSchedule = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "blah pfft pigpen aha now ouch",
+        description: "founder how sprinkles",
       },
     },
   ],
@@ -44,8 +44,8 @@ let value: UpsertSchedule = {
     recurrenceRule: "<value>",
     runTransfer: {
       amount: {
-        currency: "New Leu",
-        value: 968212,
+        currency: "USD",
+        value: 1204,
       },
       destination: {
         paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -68,7 +68,7 @@ let value: UpsertSchedule = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "ah excepting inexperienced mothball oh",
+      description: "anti waterspout consequently republican depend ha after",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },

@@ -14,37 +14,25 @@ to a specific recipient.
 import { CreatePaymentLink } from "moov-sdk/models/components";
 
 let value: CreatePaymentLink = {
-  partnerAccountID: "cd72f271-ffb5-4442-b825-ab06ad7f4074",
-  merchantPaymentMethodID: "34cb8b60-0810-4fd2-a0f4-2b14fa86c2fd",
+  partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
+  merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
   amount: {
-    currency: "Argentine Peso",
-    value: 700856,
+    currency: "USD",
+    value: 10000,
   },
   display: {
-    title: "<value>",
-    description:
-      "solidly doing lightly inside carpool yuck mmm canter bah before",
-    callToAction: "donate",
+    title: "Example Payment Link",
+    description: "This is an example payment link.",
+    callToAction: "pay",
+  },
+  customer: {
+    requirePhone: true,
   },
   payment: {
     allowedMethods: [
+      "card-payment",
       "ach-debit-collect",
     ],
-    cardDetails: {
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-    },
-    achDetails: {
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-    },
-  },
-  payout: {
-    allowedMethods: [
-      "push-to-card",
-    ],
-    recipient: {
-      email: "jordan.lee@classbooker.dev",
-    },
   },
 };
 ```

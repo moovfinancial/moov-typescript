@@ -9,8 +9,8 @@ import { RunTransfer } from "moov-sdk/models/components";
 
 let value: RunTransfer = {
   amount: {
-    currency: "East Caribbean Dollar",
-    value: 160260,
+    currency: "USD",
+    value: 1204,
   },
   destination: {
     paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -33,7 +33,7 @@ let value: RunTransfer = {
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
     },
   },
-  description: "bah um mid bloom redound grounded about mature",
+  description: "vengeful gee funny brief where daintily role infatuated ew",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { ListWalletsRequest } from "moov-sdk/models/operations";
 
 let value: ListWalletsRequest = {
-  accountID: "fc6b4a8a-6267-4a4a-93cb-191f5081abde",
+  accountID: "76032091-21ce-4199-a496-1faf2c6ea202",
 };
 ```
 

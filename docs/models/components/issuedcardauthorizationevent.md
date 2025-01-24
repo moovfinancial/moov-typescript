@@ -6,11 +6,11 @@
 import { IssuedCardAuthorizationEvent } from "moov-sdk/models/components";
 
 let value: IssuedCardAuthorizationEvent = {
-  eventID: "6ca403b9-46a2-4668-985c-106e42e25b43",
+  eventID: "b51681d7-39c5-4b6f-8c50-a31ef4427dbd",
   eventType: "authorization-incremental",
   amount: "-14.89",
   result: "processed",
-  createdOn: new Date("2023-02-04T07:07:07.154Z"),
+  createdOn: new Date("2023-11-05T10:22:10.086Z"),
 };
 ```
 

@@ -7,7 +7,7 @@ Code used to identify the ACH authorization method.
 ```typescript
 import { SECCode } from "moov-sdk/models/components";
 
-let value: SECCode = "PPD";
+let value: SECCode = "CCD";
 ```
 
 ## Values

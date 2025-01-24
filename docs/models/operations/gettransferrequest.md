@@ -6,8 +6,8 @@
 import { GetTransferRequest } from "moov-sdk/models/operations";
 
 let value: GetTransferRequest = {
-  transferID: "5a6be7a4-aa82-4b56-bda1-91a6dcf42295",
-  accountID: "1c7a98b8-e8ec-4de3-95e2-7129668a7537",
+  transferID: "12023b1a-62f8-4405-b939-4065386f953a",
+  accountID: "adaf6c80-06ad-40fe-ada7-c342f3b701eb",
 };
 ```
 

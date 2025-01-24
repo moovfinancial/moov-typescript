@@ -6,7 +6,7 @@
 import { UpdateBrandRequest } from "moov-sdk/models/operations";
 
 let value: UpdateBrandRequest = {
-  accountID: "2805a288-e712-44c4-a913-91b74da1a3e2",
+  accountID: "d1a6d5b6-8cf2-4820-9bf9-10560d7fe8a5",
   updateBrand: {},
 };
 ```

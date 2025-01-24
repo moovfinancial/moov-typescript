@@ -6,7 +6,7 @@
 import { GetEnrichmentProfileRequest } from "moov-sdk/models/operations";
 
 let value: GetEnrichmentProfileRequest = {
-  email: "Abigayle_Bartell24@hotmail.com",
+  email: "Scottie51@gmail.com",
 };
 ```
 

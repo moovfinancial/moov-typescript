@@ -10,11 +10,11 @@ let value: ScheduleResponse = {
   mode: "production",
   occurrences: {
     mode: "production",
-    runOn: new Date("2025-12-09T08:09:09.462Z"),
+    runOn: new Date("2023-02-16T10:20:38.020Z"),
     runTransfer: {
       amount: {
-        currency: "Barbados Dollar",
-        value: 766670,
+        currency: "USD",
+        value: 1204,
       },
       destination: {
         paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -37,7 +37,7 @@ let value: ScheduleResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "bakeware flickering in vamoose sit",
+      description: "steel promptly pull optimistically",
     },
   },
   ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -46,8 +46,8 @@ let value: ScheduleResponse = {
     recurrenceRule: "<value>",
     runTransfer: {
       amount: {
-        currency: "Hong Kong Dollar",
-        value: 152047,
+        currency: "USD",
+        value: 1204,
       },
       destination: {
         paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -70,15 +70,14 @@ let value: ScheduleResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description:
-        "happily likewise pace fall ick incidentally gullible decongestant clonk",
+      description: "separately content to as needily near",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },
   scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-  createdOn: new Date("2025-08-03T11:34:04.757Z"),
-  updatedOn: new Date("2023-10-06T16:47:41.923Z"),
+  createdOn: new Date("2025-03-02T17:47:11.428Z"),
+  updatedOn: new Date("2023-12-15T02:59:19.660Z"),
 };
 ```
 

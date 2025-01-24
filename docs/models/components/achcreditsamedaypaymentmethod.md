@@ -6,7 +6,7 @@
 import { AchCreditSameDayPaymentMethod } from "moov-sdk/models/components";
 
 let value: AchCreditSameDayPaymentMethod = {
-  paymentMethodID: "7be2e64f-f3a1-4ada-b666-9ee021358abe",
+  paymentMethodID: "62dbefcf-9005-4ddf-a10e-48f6a6c83448",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:

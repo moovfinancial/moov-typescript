@@ -5,7 +5,7 @@
 ```typescript
 import { BankAccountVerificationStatus } from "moov-sdk/models/components";
 
-let value: BankAccountVerificationStatus = "sent-credit";
+let value: BankAccountVerificationStatus = "successful";
 ```
 
 ## Values

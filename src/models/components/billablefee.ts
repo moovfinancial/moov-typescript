@@ -38,6 +38,9 @@ export type BillableFee = {
    */
   feeModel: FeeModel;
   feeCategory: FeeCategory;
+  /**
+   * Defines the specific parameters used for fee calculation.
+   */
   feeProperties?: FeeProperties | undefined;
   /**
    * Defines the specific conditions that must be met for the fee to be applied.
