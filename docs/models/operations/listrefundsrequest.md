@@ -6,8 +6,8 @@
 import { ListRefundsRequest } from "moov-sdk/models/operations";
 
 let value: ListRefundsRequest = {
-  accountID: "92d0d37b-c670-4546-a42f-6ae92cc6863c",
-  transferID: "a7744dd0-b5e3-45b1-aba4-bec82e76835b",
+  accountID: "c1e6395b-bdfc-42c9-a952-20cbdb2b81ee",
+  transferID: "631cf071-6960-4fec-a6bb-509fb3868b7e",
 };
 ```
 

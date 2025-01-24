@@ -1,11 +1,13 @@
-# AmountDecimal
+# FixedAmount
+
+A fixed fee that is applied to the amount of each transaction in the `fixed` and `blended` fee models.
 
 ## Example Usage
 
 ```typescript
-import { AmountDecimal } from "moov-sdk/models/components";
+import { FixedAmount } from "moov-sdk/models/components";
 
-let value: AmountDecimal = {
+let value: FixedAmount = {
   currency: "USD",
   valueDecimal: "12.987654321",
 };

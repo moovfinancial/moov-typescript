@@ -7,7 +7,7 @@ Status of the completed occurrence.
 ```typescript
 import { OccurrenceStatus } from "moov-sdk/models/components";
 
-let value: OccurrenceStatus = "failed";
+let value: OccurrenceStatus = "completed";
 ```
 
 ## Values

@@ -8,11 +8,11 @@ Asynchronous refund response
 import { AsyncCreatedRefund } from "moov-sdk/models/components";
 
 let value: AsyncCreatedRefund = {
-  refundID: "6e211e72-9839-4538-943e-24643c51825e",
-  createdOn: new Date("2024-11-24T05:30:57.815Z"),
+  refundID: "b8c17132-56f4-47cd-ac47-236b8ed099f0",
+  createdOn: new Date("2023-08-13T10:34:08.199Z"),
   amount: {
-    currency: "Libyan Dinar",
-    value: 137724,
+    currency: "USD",
+    value: 1204,
   },
 };
 ```

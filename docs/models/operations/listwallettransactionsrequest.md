@@ -6,8 +6,8 @@
 import { ListWalletTransactionsRequest } from "moov-sdk/models/operations";
 
 let value: ListWalletTransactionsRequest = {
-  accountID: "b2b1eb1d-ab79-469c-a3e4-2a84ab418457",
-  walletID: "071d4602-05c9-4d2a-ab51-b87d74b4431c",
+  accountID: "aa82b56d-a191-4a6d-acf4-2295e1c7a98b",
+  walletID: "e8ecde35-e271-4296-968a-75376d099fe8",
   skip: 60,
   count: 20,
 };

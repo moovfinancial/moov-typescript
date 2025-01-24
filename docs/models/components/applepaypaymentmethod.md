@@ -6,7 +6,7 @@
 import { ApplePayPaymentMethod } from "moov-sdk/models/components";
 
 let value: ApplePayPaymentMethod = {
-  paymentMethodID: "6b525ef3-c4e2-4a1f-abd9-7987c22651dc",
+  paymentMethodID: "3ad0a7e5-782b-4d04-80fa-f8c556a5ef03",
   paymentMethodType: "apple-pay",
   applePay: "<value>",
 };

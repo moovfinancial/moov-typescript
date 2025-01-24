@@ -6,7 +6,7 @@
 import { LinkApplePayTokenRequest } from "moov-sdk/models/operations";
 
 let value: LinkApplePayTokenRequest = {
-  accountID: "1158b7d6-0615-4fd3-a66c-001a6d47b852",
+  accountID: "2c22c554-55b3-45ce-a918-a5dc92be4fc4",
   linkApplePay: {
     token: {
       paymentData: {

@@ -7,7 +7,7 @@ import { LinkCardRequest } from "moov-sdk/models/operations";
 
 let value: LinkCardRequest = {
   xWaitFor: "payment-method",
-  accountID: "2f82b1c7-20f4-4f88-81fb-812658108006",
+  accountID: "41da926e-2034-4ca0-a09a-293561ff74fd",
   linkCard: {
     cardNumber: "4111111111111111",
     cardCvv: "123",

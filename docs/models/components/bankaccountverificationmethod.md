@@ -5,7 +5,7 @@
 ```typescript
 import { BankAccountVerificationMethod } from "moov-sdk/models/components";
 
-let value: BankAccountVerificationMethod = "instant";
+let value: BankAccountVerificationMethod = "ach";
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { SweepStatus } from "moov-sdk/models/components";
 
-let value: SweepStatus = "canceled";
+let value: SweepStatus = "accruing";
 ```
 
 ## Values

@@ -6,8 +6,8 @@
 import { GetScheduledOccurrenceRequest } from "moov-sdk/models/operations";
 
 let value: GetScheduledOccurrenceRequest = {
-  accountID: "0c1dc367-633b-4241-930b-667459379248",
-  scheduleID: "b37d2e77-a8d2-424f-a18c-dff838b74dd8",
+  accountID: "140cce1e-efc4-44ba-aa58-49cb68c33770",
+  scheduleID: "69e5134d-8f41-44fb-9e94-f364a6ff1ecb",
   occurrenceFilter: "<value>",
 };
 ```

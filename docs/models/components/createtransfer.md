@@ -7,34 +7,19 @@ import { CreateTransfer } from "moov-sdk/models/components";
 
 let value: CreateTransfer = {
   source: {
+    paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
     cardDetails: {
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
-    },
-    achDetails: {
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-      debitHoldPeriod: "2-days",
     },
   },
   destination: {
-    paymentMethodID: "<id>",
-    cardDetails: {
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-    },
-    achDetails: {
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-    },
+    paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
   },
   amount: {
-    currency: "CFA Franc BCEAO",
-    value: 288348,
+    currency: "USD",
+    value: 32945,
   },
-  facilitatorFee: {
-    totalDecimal: "12.987654321",
-    markupDecimal: "0.987654321",
-  },
-  description: "Pay Instructor for May 15 Class",
+  description: "Transfer from card to wallet",
   metadata: {
     "optional": "metadata",
   },

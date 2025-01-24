@@ -1,11 +1,13 @@
-# AmountDecimal
+# MinPerTransaction
+
+Specifies the minimum allowable spending for a single transaction, working as a transaction floor.
 
 ## Example Usage
 
 ```typescript
-import { AmountDecimal } from "moov-sdk/models/components";
+import { MinPerTransaction } from "moov-sdk/models/components";
 
-let value: AmountDecimal = {
+let value: MinPerTransaction = {
   currency: "USD",
   valueDecimal: "12.987654321",
 };

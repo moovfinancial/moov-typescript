@@ -15,7 +15,7 @@ The rejection code of an RTP transaction that caused the bank account status to 
 ```typescript
 import { RTPRejectionCode } from "moov-sdk/models/components";
 
-let value: RTPRejectionCode = "AC03";
+let value: RTPRejectionCode = "AC06";
 ```
 
 ## Values

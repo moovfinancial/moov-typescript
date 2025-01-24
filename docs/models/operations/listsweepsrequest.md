@@ -6,8 +6,8 @@
 import { ListSweepsRequest } from "moov-sdk/models/operations";
 
 let value: ListSweepsRequest = {
-  accountID: "48f70f40-12a5-4ec5-9fa0-7e4e995f6aaa",
-  walletID: "d96519c6-e27a-49ea-ada5-456dbdedff56",
+  accountID: "8e94f27e-b8b7-46ab-aedf-1f31aafc699c",
+  walletID: "6a351d14-e83f-4e13-ba38-2a8f28493e76",
   skip: 60,
   count: 20,
 };

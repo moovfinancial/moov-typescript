@@ -6,8 +6,8 @@
 import { GetWalletRequest } from "moov-sdk/models/operations";
 
 let value: GetWalletRequest = {
-  accountID: "5f66e277-b6da-4e4c-b1cd-6bf2905289ff",
-  walletID: "9e5388e0-d9fb-45a5-be08-8364acc63489",
+  accountID: "078c7030-fa00-43c6-b8de-6c32faae04b7",
+  walletID: "72e0c073-f60c-45a6-974c-70f775a6be7a",
 };
 ```
 

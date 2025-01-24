@@ -7,7 +7,7 @@ A permission that the application requests on another account.
 ```typescript
 import { ApplicationScope } from "moov-sdk/models/components";
 
-let value: ApplicationScope = "documents.read";
+let value: ApplicationScope = "profile-enrichment.read";
 ```
 
 ## Values

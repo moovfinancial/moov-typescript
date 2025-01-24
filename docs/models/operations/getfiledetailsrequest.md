@@ -6,8 +6,8 @@
 import { GetFileDetailsRequest } from "moov-sdk/models/operations";
 
 let value: GetFileDetailsRequest = {
-  accountID: "c9e189dd-790b-40a8-bf26-d8d8ae0e2c95",
-  fileID: "d43552ee-d7c5-4de8-8783-16cad718063d",
+  accountID: "9428460a-0b32-49f6-ad08-a6206bf74517",
+  fileID: "90aa8f4d-243e-4c76-80bf-c34663ccb0e5",
 };
 ```
 

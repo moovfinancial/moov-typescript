@@ -7,7 +7,7 @@ The reason the bank account status changed to the current value.
 ```typescript
 import { BankAccountStatusReason } from "moov-sdk/models/components";
 
-let value: BankAccountStatusReason = "max-verification-failures";
+let value: BankAccountStatusReason = "other";
 ```
 
 ## Values

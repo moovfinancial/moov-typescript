@@ -8,8 +8,8 @@ import { FulfillmentDetails } from "moov-sdk/models/components";
 let value: FulfillmentDetails = {
   hasPhysicalGoods: false,
   isShippingProduct: false,
-  shipmentDurationDays: 567821,
-  returnPolicy: "none",
+  shipmentDurationDays: 700204,
+  returnPolicy: "other",
 };
 ```
 

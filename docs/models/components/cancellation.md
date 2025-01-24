@@ -6,8 +6,8 @@
 import { Cancellation } from "moov-sdk/models/components";
 
 let value: Cancellation = {
-  status: "pending",
-  createdOn: new Date("2025-11-22T14:24:07.004Z"),
+  status: "completed",
+  createdOn: new Date("2024-10-02T18:29:29.401Z"),
 };
 ```
 

@@ -7,93 +7,8 @@
 
 ```typescript
 const value: operations.CreateTransferResponseBody = {
-  transferID: "0593b178-d108-4290-9762-771ae9abef7f",
-  createdOn: new Date("2025-03-08T11:58:07.925Z"),
-  source: {
-    paymentMethodID: "<id>",
-    paymentMethodType: "<value>",
-    account: {
-      accountID: "<id>",
-      email: "Aglae.Torp40@hotmail.com",
-      displayName: "Nedra63",
-    },
-    bankAccount: {
-      bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
-      fingerprint:
-        "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e",
-      status: "new",
-      holderName: "John Doe",
-      holderType: "individual",
-      bankName: "Gringotts Bank",
-      bankAccountType: "checking",
-      routingNumber: "123456780",
-      lastFourAccountNumber: "6789",
-      updatedOn: new Date("2024-11-26T22:37:06Z"),
-      statusReason: "bank-account-created",
-    },
-    cardDetails: {
-      status: "initiated",
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      feeProgram:
-        "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
-    },
-    achDetails: {
-      status: "initiated",
-      traceNumber: "124782618117",
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-      debitHoldPeriod: "2-days",
-    },
-  },
-  destination: {
-    paymentMethodID: "<id>",
-    paymentMethodType: "<value>",
-    account: {
-      accountID: "<id>",
-      email: "Ima.Abbott@hotmail.com",
-      displayName: "Robbie.VonRueden",
-    },
-    bankAccount: {
-      bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
-      fingerprint:
-        "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e",
-      status: "new",
-      holderName: "John Doe",
-      holderType: "individual",
-      bankName: "Gringotts Bank",
-      bankAccountType: "checking",
-      routingNumber: "123456780",
-      lastFourAccountNumber: "6789",
-      updatedOn: new Date("2024-11-26T22:37:06Z"),
-      statusReason: "bank-account-created",
-    },
-    achDetails: {
-      status: "corrected",
-      traceNumber: "124782618117",
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-      debitHoldPeriod: "2-days",
-    },
-    cardDetails: {
-      status: "settled",
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      feeProgram:
-        "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
-    },
-  },
-  status: "reversed",
-  amount: {
-    currency: "Azerbaijanian Manat",
-    value: 617530,
-  },
-  description: "Pay Instructor for May 15 Class",
-  metadata: {
-    "optional": "metadata",
-  },
-  facilitatorFee: {
-    totalDecimal: "12.987654321",
-    markupDecimal: "0.987654321",
-  },
+  transferID: "565db260-c31a-4382-8cf1-d7087e5c2682",
+  createdOn: new Date("2023-09-26T21:26:47.589Z"),
 };
 ```
 
@@ -101,8 +16,8 @@ const value: operations.CreateTransferResponseBody = {
 
 ```typescript
 const value: components.AsyncTransfer = {
-  transferID: "26e23604-179b-4e7a-a07d-9617e186c22b",
-  createdOn: new Date("2024-07-21T09:07:41.522Z"),
+  transferID: "bf282006-6a63-4193-b603-a1add27ebd67",
+  createdOn: new Date("2024-04-15T04:46:35.940Z"),
 };
 ```
 
@@ -110,93 +25,65 @@ const value: components.AsyncTransfer = {
 
 ```typescript
 const value: components.Transfer = {
-  transferID: "0dfaeca5-1077-4603-b209-121ce1994961",
-  createdOn: new Date("2025-01-13T18:49:36.050Z"),
+  transferID: "d835gf30-4b19-4850-a9b2-c0624c41ecb3",
+  createdOn: new Date("2025-01-21T21:32:16Z"),
   source: {
-    paymentMethodID: "<id>",
-    paymentMethodType: "<value>",
+    paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
+    paymentMethodType: "card-payment",
     account: {
-      accountID: "<id>",
-      email: "Camille_Johnston68@hotmail.com",
-      displayName: "Alexandro.Ratke",
+      accountID: "7e4b26c2-b399-49ef-8390-50e1ea44d550",
+      email: "jules@julesjackson.com",
+      displayName: "Jules Jackson",
     },
-    bankAccount: {
-      bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
-      fingerprint:
-        "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e",
-      status: "new",
-      holderName: "John Doe",
-      holderType: "individual",
-      bankName: "Gringotts Bank",
-      bankAccountType: "checking",
-      routingNumber: "123456780",
-      lastFourAccountNumber: "6789",
-      updatedOn: new Date("2024-11-26T22:37:06Z"),
-      statusReason: "bank-account-created",
+    card: {
+      "cardID": "aefd5563-93c6-413c-875e-1bd0ebfc116d",
+      "fingerprint": "2f5d782ceef1c3bd31ed5...",
+      "brand": "Visa",
+      "cardType": "credit",
+      "lastFourCardNumber": "2000",
+      "bin": "400020",
+      "expiration": {
+        "month": "01",
+        "year": "28",
+      },
+      "holderName": "Jules Jackson",
+      "billingAddress": {
+        "postalCode": "80301",
+      },
+      "cardVerification": {
+        "cvv": "unavailable",
+        "addressLine1": "unavailable",
+        "postalCode": "unavailable",
+        "accountName": {},
+      },
+      "issuer": "Moov Visa Sandbox",
+      "issuerCountry": "US",
+      "cardAccountUpdater": {},
     },
     cardDetails: {
-      status: "failed",
+      status: "confirmed",
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      feeProgram:
-        "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
-    },
-    achDetails: {
-      status: "corrected",
-      traceNumber: "124782618117",
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-      debitHoldPeriod: "2-days",
+      confirmedOn: new Date("2025-01-21T21:32:16.799681237Z"),
     },
   },
   destination: {
-    paymentMethodID: "<id>",
-    paymentMethodType: "<value>",
+    paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
+    paymentMethodType: "moov-wallet",
     account: {
-      accountID: "<id>",
-      email: "Dagmar_Wuckert0@gmail.com",
-      displayName: "Dangelo87",
+      accountID: "34233b72-780c-4a0d-8b08-cbbe23k878f8",
+      email: "john@wholebodyfitness.io",
+      displayName: "Whole Body Fitness",
     },
-    bankAccount: {
-      bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
-      fingerprint:
-        "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e",
-      status: "new",
-      holderName: "John Doe",
-      holderType: "individual",
-      bankName: "Gringotts Bank",
-      bankAccountType: "checking",
-      routingNumber: "123456780",
-      lastFourAccountNumber: "6789",
-      updatedOn: new Date("2024-11-26T22:37:06Z"),
-      statusReason: "bank-account-created",
-    },
-    achDetails: {
-      status: "corrected",
-      traceNumber: "124782618117",
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-      debitHoldPeriod: "2-days",
-    },
-    cardDetails: {
-      status: "failed",
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      feeProgram:
-        "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
+    wallet: {
+      "walletID": "744b2e78-8cc8-4a6a-af42-611e3b844503",
     },
   },
   status: "pending",
   amount: {
-    currency: "Swiss Franc",
-    value: 976295,
+    currency: "USD",
+    value: 32945,
   },
-  description: "Pay Instructor for May 15 Class",
-  metadata: {
-    "optional": "metadata",
-  },
-  facilitatorFee: {
-    totalDecimal: "12.987654321",
-    markupDecimal: "0.987654321",
-  },
+  description: "Transfer from card to wallet",
 };
 ```
 

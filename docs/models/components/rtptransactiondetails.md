@@ -8,7 +8,7 @@ RTP specific details about the transaction.
 import { RTPTransactionDetails } from "moov-sdk/models/components";
 
 let value: RTPTransactionDetails = {
-  status: "failed",
+  status: "initiated",
 };
 ```
 

@@ -7,7 +7,7 @@ The payment method type that represents a payment rail and directionality
 ```typescript
 import { PaymentMethodType } from "moov-sdk/models/components";
 
-let value: PaymentMethodType = "push-to-card";
+let value: PaymentMethodType = "ach-debit-collect";
 ```
 
 ## Values

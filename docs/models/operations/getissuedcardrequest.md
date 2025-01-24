@@ -6,8 +6,8 @@
 import { GetIssuedCardRequest } from "moov-sdk/models/operations";
 
 let value: GetIssuedCardRequest = {
-  accountID: "eaec21f2-a387-4bdf-b366-038e5bf21f04",
-  issuedCardID: "42cb18e6-3b3e-467b-95f4-f6cc9c992e28",
+  accountID: "3d38c086-1d65-4a75-885c-ccc8d4e68201",
+  issuedCardID: "cc692d95-db65-4327-8504-2c722d887b81",
 };
 ```
 

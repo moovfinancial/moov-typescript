@@ -6,10 +6,10 @@
 import { LinkBankAccountRequest } from "moov-sdk/models/operations";
 
 let value: LinkBankAccountRequest = {
-  accountID: "bbd878b6-12f0-4bf2-ab43-de5a2ce5ae0d",
+  accountID: "192026ba-0c5a-4060-bd2a-42e9e4df6e55",
   linkBankAccount: {
-    plaid: {
-      token: "<value>",
+    mx: {
+      authorizationCode: "<value>",
     },
   },
 };

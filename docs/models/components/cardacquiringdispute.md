@@ -8,11 +8,11 @@ Details of a card dispute.
 import { CardAcquiringDispute } from "moov-sdk/models/components";
 
 let value: CardAcquiringDispute = {
-  disputeID: "3ed75f38-039a-49df-bc7d-1a82f59e81d5",
-  createdOn: new Date("2025-08-26T16:08:40.356Z"),
+  disputeID: "094345b9-cdd6-46ea-a185-f09b4fde094d",
+  createdOn: new Date("2024-08-13T14:37:14.598Z"),
   amount: {
-    currency: "Turkish Lira",
-    value: 356253,
+    currency: "USD",
+    value: 1204,
   },
 };
 ```

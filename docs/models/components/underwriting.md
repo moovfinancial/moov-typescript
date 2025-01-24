@@ -8,25 +8,25 @@ Describes underwriting values (in USD) used for card payment acceptance.
 import { Underwriting } from "moov-sdk/models/components";
 
 let value: Underwriting = {
-  averageTransactionSize: 495096,
-  maxTransactionSize: 989766,
-  averageMonthlyTransactionVolume: 42387,
-  status: "rejected",
+  averageTransactionSize: 115137,
+  maxTransactionSize: 818739,
+  averageMonthlyTransactionVolume: 353214,
+  status: "notRequested",
   volumeByCustomerType: {
-    businessToBusinessPercentage: 851894,
-    consumerToBusinessPercentage: 659696,
+    businessToBusinessPercentage: 883826,
+    consumerToBusinessPercentage: 853450,
   },
   cardVolumeDistribution: {
-    ecommercePercentage: 826683,
-    cardPresentPercentage: 660291,
-    mailOrPhonePercentage: 759537,
-    debtRepaymentPercentage: 492922,
+    ecommercePercentage: 356253,
+    cardPresentPercentage: 757130,
+    mailOrPhonePercentage: 986330,
+    debtRepaymentPercentage: 526322,
   },
   fulfillment: {
     hasPhysicalGoods: false,
     isShippingProduct: false,
-    shipmentDurationDays: 204877,
-    returnPolicy: "other",
+    shipmentDurationDays: 470732,
+    returnPolicy: "none",
   },
 };
 ```

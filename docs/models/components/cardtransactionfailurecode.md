@@ -5,7 +5,7 @@
 ```typescript
 import { CardTransactionFailureCode } from "moov-sdk/models/components";
 
-let value: CardTransactionFailureCode = "processing-error";
+let value: CardTransactionFailureCode = "call-issuer";
 ```
 
 ## Values

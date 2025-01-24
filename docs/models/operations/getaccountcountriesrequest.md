@@ -6,7 +6,7 @@
 import { GetAccountCountriesRequest } from "moov-sdk/models/operations";
 
 let value: GetAccountCountriesRequest = {
-  accountID: "623380f8-0a41-4d31-90ba-03b2937d4a71",
+  accountID: "25b436ce-02f9-48d0-90fd-b27ee0c0f6f5",
 };
 ```
 

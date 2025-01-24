@@ -6,12 +6,12 @@
 import { CreateSweepConfigRequest } from "moov-sdk/models/operations";
 
 let value: CreateSweepConfigRequest = {
-  accountID: "8ce0f565-db26-40c3-b1a3-82cf1d7087e5",
+  accountID: "acdc5284-c06c-41a3-a240-a5f1e71d1a37",
   createSweepConfig: {
-    walletID: "268233bf-2820-4066-9a63-193603a1add2",
+    walletID: "e4635288-9360-4047-9bc6-cba248d6fa58",
     status: "disabled",
-    pushPaymentMethodID: "bd67e6a6-b978-49ea-abf1-35f39144b1c4",
-    pullPaymentMethodID: "56218a12-023b-41a6-92f8-405939406538",
+    pushPaymentMethodID: "031c3b8d-f22a-40d6-a695-43bc93b2e773",
+    pullPaymentMethodID: "f9a45382-9791-4e63-a8eb-54a157c5cc03",
   },
 };
 ```

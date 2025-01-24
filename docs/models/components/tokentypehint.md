@@ -7,7 +7,7 @@ The type of token being revoked.
 ```typescript
 import { TokenTypeHint } from "moov-sdk/models/components";
 
-let value: TokenTypeHint = "access_token";
+let value: TokenTypeHint = "refresh_token";
 ```
 
 ## Values

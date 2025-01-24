@@ -6,7 +6,7 @@
 import { ListCapabilitiesRequest } from "moov-sdk/models/operations";
 
 let value: ListCapabilitiesRequest = {
-  accountID: "3f59279c-8bd4-4508-9fbf-7b26a705a67d",
+  accountID: "28175c6e-3e91-484b-9a16-e6b1d8f8cfb9",
 };
 ```
 

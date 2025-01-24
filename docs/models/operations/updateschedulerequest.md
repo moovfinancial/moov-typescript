@@ -6,8 +6,8 @@
 import { UpdateScheduleRequest } from "moov-sdk/models/operations";
 
 let value: UpdateScheduleRequest = {
-  accountID: "219b80cb-b31f-47b1-9881-5ebbe4c19863",
-  scheduleID: "db7fc0cb-0e73-47d4-be11-98a04b54dcba",
+  accountID: "a9dad22e-53ef-4a6b-a025-d4063065b165",
+  scheduleID: "e2d90c8c-6a33-458b-8ad6-e12a42e1fdda",
   upsertSchedule: {
     occurrences: [
       {
@@ -15,8 +15,8 @@ let value: UpdateScheduleRequest = {
         runOn: new Date("2009-11-10T23:00:00Z"),
         runTransfer: {
           amount: {
-            currency: "Armenian Dram",
-            value: 152643,
+            currency: "USD",
+            value: 1204,
           },
           destination: {
             paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -39,7 +39,8 @@ let value: UpdateScheduleRequest = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description: "even emboss doubtfully aha eek lend",
+          description:
+            "mechanically across weatherize wherever but quizzically questionably pale whereas",
         },
       },
     ],
@@ -47,8 +48,8 @@ let value: UpdateScheduleRequest = {
       recurrenceRule: "<value>",
       runTransfer: {
         amount: {
-          currency: "Uganda Shilling",
-          value: 709922,
+          currency: "USD",
+          value: 1204,
         },
         destination: {
           paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -71,7 +72,7 @@ let value: UpdateScheduleRequest = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "tasty till other blaspheme blah into translation",
+        description: "save energetically natural ah",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },

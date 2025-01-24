@@ -7,7 +7,7 @@ Status of a transfer.
 ```typescript
 import { TransferStatus } from "moov-sdk/models/components";
 
-let value: TransferStatus = "pending";
+let value: TransferStatus = "created";
 ```
 
 ## Values

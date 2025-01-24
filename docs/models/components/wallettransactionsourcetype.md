@@ -5,7 +5,7 @@
 ```typescript
 import { WalletTransactionSourceType } from "moov-sdk/models/components";
 
-let value: WalletTransactionSourceType = "dispute";
+let value: WalletTransactionSourceType = "transfer";
 ```
 
 ## Values

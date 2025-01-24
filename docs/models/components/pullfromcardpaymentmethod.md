@@ -6,7 +6,7 @@
 import { PullFromCardPaymentMethod } from "moov-sdk/models/components";
 
 let value: PullFromCardPaymentMethod = {
-  paymentMethodID: "ce13b342-2715-4606-a17d-d19d3cec1034",
+  paymentMethodID: "7eeb726b-41eb-49cd-97ee-4988f4fe7dca",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
     fingerprint:

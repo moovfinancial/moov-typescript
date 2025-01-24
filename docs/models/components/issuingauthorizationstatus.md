@@ -7,7 +7,7 @@ Status of a card issuing authorization.
 ```typescript
 import { IssuingAuthorizationStatus } from "moov-sdk/models/components";
 
-let value: IssuingAuthorizationStatus = "cleared";
+let value: IssuingAuthorizationStatus = "expired";
 ```
 
 ## Values

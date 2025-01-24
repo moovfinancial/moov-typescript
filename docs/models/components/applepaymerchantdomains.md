@@ -7,12 +7,12 @@ import { ApplePayMerchantDomains } from "moov-sdk/models/components";
 
 let value: ApplePayMerchantDomains = {
   accountID: "<id>",
-  displayName: "David58",
+  displayName: "Lillie_Ferry",
   domains: [
     "checkout.classbooker.dev",
   ],
-  createdOn: new Date("2023-12-08T21:24:04.180Z"),
-  updatedOn: new Date("2024-03-12T10:48:24.554Z"),
+  createdOn: new Date("2024-10-08T12:59:31.265Z"),
+  updatedOn: new Date("2025-03-11T05:07:47.512Z"),
 };
 ```
 

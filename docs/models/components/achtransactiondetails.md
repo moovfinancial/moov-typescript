@@ -8,7 +8,7 @@ ACH specific details about the transaction.
 import { ACHTransactionDetails } from "moov-sdk/models/components";
 
 let value: ACHTransactionDetails = {
-  status: "completed",
+  status: "originated",
   traceNumber: "124782618117",
   companyEntryDescription: "Gym dues",
   originatingCompanyName: "Whole Body Fit",

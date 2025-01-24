@@ -6,8 +6,8 @@
 import { CancelScheduleRequest } from "moov-sdk/models/operations";
 
 let value: CancelScheduleRequest = {
-  accountID: "e3c71ccb-ff2c-4abf-ad6e-ebe7b09b6d74",
-  scheduleID: "eaf7aa3b-1923-4f68-ba7b-0a5e20083c03",
+  accountID: "bac21573-cbeb-41a6-a494-89805c58533b",
+  scheduleID: "e6a77d7e-911f-4696-a223-985056cb33aa",
 };
 ```
 

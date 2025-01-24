@@ -9,8 +9,8 @@ import { PaymentLinkDisplayOptions } from "moov-sdk/models/components";
 
 let value: PaymentLinkDisplayOptions = {
   title: "<value>",
-  description: "rightfully psst following geez",
-  callToAction: "donate",
+  description: "trek what selfishly reasoning safely ick discourse besides",
+  callToAction: "subscribe",
 };
 ```
 

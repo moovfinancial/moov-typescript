@@ -5,7 +5,7 @@
 ```typescript
 import { RequirementErrorCode } from "moov-sdk/models/components";
 
-let value: RequirementErrorCode = "document-expired";
+let value: RequirementErrorCode = "document-id-mismatch";
 ```
 
 ## Values

@@ -92,6 +92,7 @@ async function run() {
     accountID: "0bdee4f2-70df-485e-8104-60745a118ebb",
     createTransfer: {
       source: {
+        paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
         cardDetails: {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
@@ -102,7 +103,7 @@ async function run() {
         },
       },
       destination: {
-        paymentMethodID: "<id>",
+        paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
         cardDetails: {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
@@ -112,8 +113,8 @@ async function run() {
         },
       },
       amount: {
-        currency: "Swedish Krona",
-        value: 401018,
+        currency: "USD",
+        value: 1204,
       },
       facilitatorFee: {
         totalDecimal: "12.987654321",
@@ -156,6 +157,7 @@ async function run() {
     accountID: "0bdee4f2-70df-485e-8104-60745a118ebb",
     createTransfer: {
       source: {
+        paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
         cardDetails: {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
@@ -166,7 +168,7 @@ async function run() {
         },
       },
       destination: {
-        paymentMethodID: "<id>",
+        paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
         cardDetails: {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
@@ -176,8 +178,8 @@ async function run() {
         },
       },
       amount: {
-        currency: "Swedish Krona",
-        value: 401018,
+        currency: "USD",
+        value: 1204,
       },
       facilitatorFee: {
         totalDecimal: "12.987654321",

@@ -6,9 +6,9 @@
 import { ReverseTransferRequest } from "moov-sdk/models/operations";
 
 let value: ReverseTransferRequest = {
-  xIdempotencyKey: "b46f9ab7-67d5-4e04-bee3-3c5334d72551",
-  accountID: "b6b5e817-505f-44b2-8240-7f4adf0d15b5",
-  transferID: "b876ae66-53d3-48c0-a861-d65a7585cccc",
+  xIdempotencyKey: "483d3860-6c84-47ca-b183-fb1315d1249f",
+  accountID: "3b87e922-e12a-43d6-8720-c1a884c62059",
+  transferID: "b178d108-2907-4627-b71a-e9abef7f5be0",
   createReversal: {
     amount: 1000,
   },

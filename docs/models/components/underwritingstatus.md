@@ -7,7 +7,7 @@
 ```typescript
 import { UnderwritingStatus } from "moov-sdk/models/components";
 
-let value: UnderwritingStatus = "approved";
+let value: UnderwritingStatus = "pendingReview";
 ```
 
 ## Values

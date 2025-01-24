@@ -6,8 +6,8 @@
 import { PatchTransferRequest } from "moov-sdk/models/operations";
 
 let value: PatchTransferRequest = {
-  transferID: "d099fe84-03df-4b99-9a05-5f0b61520a00",
-  accountID: "2751aaad-0087-4f56-bd91-086ba00d29ff",
+  transferID: "30c432c9-aeea-4f30-be4f-34ed19219179",
+  accountID: "e98aef0f-c1ca-4e78-8d78-35409dc397d5",
 };
 ```
 

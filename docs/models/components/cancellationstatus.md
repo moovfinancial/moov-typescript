@@ -5,7 +5,7 @@
 ```typescript
 import { CancellationStatus } from "moov-sdk/models/components";
 
-let value: CancellationStatus = "completed";
+let value: CancellationStatus = "pending";
 ```
 
 ## Values

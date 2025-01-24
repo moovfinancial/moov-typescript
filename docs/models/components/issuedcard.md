@@ -6,7 +6,7 @@
 import { IssuedCard } from "moov-sdk/models/components";
 
 let value: IssuedCard = {
-  issuedCardID: "584afd51-f645-47ff-a458-02e016b444d3",
+  issuedCardID: "f541af27-10ad-45e1-93e8-9020e2d5c541",
   brand: "Visa",
   lastFourCardNumber: "<value>",
   expiration: {
@@ -14,8 +14,8 @@ let value: IssuedCard = {
     year: "21",
   },
   authorizedUser: {
-    firstName: "Zula",
-    lastName: "Hauck",
+    firstName: "Janiya",
+    lastName: "Kling",
   },
   fundingWalletID: "<id>",
   state: "closed",
@@ -28,7 +28,7 @@ let value: IssuedCard = {
       },
     ],
   },
-  createdOn: new Date("2025-11-11T11:47:55.562Z"),
+  createdOn: new Date("2024-08-16T15:06:52.983Z"),
 };
 ```
 

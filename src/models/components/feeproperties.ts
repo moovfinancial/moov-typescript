@@ -7,24 +7,252 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * A fixed fee that is applied to the amount of each transaction in the `fixed` and `blended` fee models.
+ */
+export type FixedAmount = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency: string;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal: string;
+};
+
+/**
+ * Specifies the minimum allowable spending for a single transaction, working as a transaction floor.
+ */
+export type MinPerTransaction = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency: string;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal: string;
+};
+
+/**
+ * Specifies the maximum allowable spending for a single transaction, working as a transaction ceiling.
+ */
+export type MaxPerTransaction = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency: string;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal: string;
+};
+
+/**
+ * Defines the specific parameters used for fee calculation.
+ */
 export type FeeProperties = {
   /**
-   * A fixed fee that is applied to the amount of each transaction in the `fixed` and `blended` fee models, expressed as a decimal.
+   * A fixed fee that is applied to the amount of each transaction in the `fixed` and `blended` fee models.
    */
-  fixedAmount?: string | undefined;
+  fixedAmount?: FixedAmount | null | undefined;
   /**
    * A percentage fee that is applied to the amount of each transaction in the `blended` fee model, expressed as a decimal.
+   *
+   * @remarks
+   *
+   * For example, 0.05% is '0.05'.
    */
   variableRate?: string | undefined;
   /**
    * Specifies the minimum allowable spending for a single transaction, working as a transaction floor.
    */
-  minPerTransaction?: string | undefined;
+  minPerTransaction?: MinPerTransaction | null | undefined;
   /**
    * Specifies the maximum allowable spending for a single transaction, working as a transaction ceiling.
    */
-  maxPerTransaction?: string | undefined;
+  maxPerTransaction?: MaxPerTransaction | null | undefined;
 };
+
+/** @internal */
+export const FixedAmount$inboundSchema: z.ZodType<
+  FixedAmount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+/** @internal */
+export type FixedAmount$Outbound = {
+  currency: string;
+  valueDecimal: string;
+};
+
+/** @internal */
+export const FixedAmount$outboundSchema: z.ZodType<
+  FixedAmount$Outbound,
+  z.ZodTypeDef,
+  FixedAmount
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace FixedAmount$ {
+  /** @deprecated use `FixedAmount$inboundSchema` instead. */
+  export const inboundSchema = FixedAmount$inboundSchema;
+  /** @deprecated use `FixedAmount$outboundSchema` instead. */
+  export const outboundSchema = FixedAmount$outboundSchema;
+  /** @deprecated use `FixedAmount$Outbound` instead. */
+  export type Outbound = FixedAmount$Outbound;
+}
+
+export function fixedAmountToJSON(fixedAmount: FixedAmount): string {
+  return JSON.stringify(FixedAmount$outboundSchema.parse(fixedAmount));
+}
+
+export function fixedAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<FixedAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FixedAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FixedAmount' from JSON`,
+  );
+}
+
+/** @internal */
+export const MinPerTransaction$inboundSchema: z.ZodType<
+  MinPerTransaction,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+/** @internal */
+export type MinPerTransaction$Outbound = {
+  currency: string;
+  valueDecimal: string;
+};
+
+/** @internal */
+export const MinPerTransaction$outboundSchema: z.ZodType<
+  MinPerTransaction$Outbound,
+  z.ZodTypeDef,
+  MinPerTransaction
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MinPerTransaction$ {
+  /** @deprecated use `MinPerTransaction$inboundSchema` instead. */
+  export const inboundSchema = MinPerTransaction$inboundSchema;
+  /** @deprecated use `MinPerTransaction$outboundSchema` instead. */
+  export const outboundSchema = MinPerTransaction$outboundSchema;
+  /** @deprecated use `MinPerTransaction$Outbound` instead. */
+  export type Outbound = MinPerTransaction$Outbound;
+}
+
+export function minPerTransactionToJSON(
+  minPerTransaction: MinPerTransaction,
+): string {
+  return JSON.stringify(
+    MinPerTransaction$outboundSchema.parse(minPerTransaction),
+  );
+}
+
+export function minPerTransactionFromJSON(
+  jsonString: string,
+): SafeParseResult<MinPerTransaction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MinPerTransaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MinPerTransaction' from JSON`,
+  );
+}
+
+/** @internal */
+export const MaxPerTransaction$inboundSchema: z.ZodType<
+  MaxPerTransaction,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+/** @internal */
+export type MaxPerTransaction$Outbound = {
+  currency: string;
+  valueDecimal: string;
+};
+
+/** @internal */
+export const MaxPerTransaction$outboundSchema: z.ZodType<
+  MaxPerTransaction$Outbound,
+  z.ZodTypeDef,
+  MaxPerTransaction
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MaxPerTransaction$ {
+  /** @deprecated use `MaxPerTransaction$inboundSchema` instead. */
+  export const inboundSchema = MaxPerTransaction$inboundSchema;
+  /** @deprecated use `MaxPerTransaction$outboundSchema` instead. */
+  export const outboundSchema = MaxPerTransaction$outboundSchema;
+  /** @deprecated use `MaxPerTransaction$Outbound` instead. */
+  export type Outbound = MaxPerTransaction$Outbound;
+}
+
+export function maxPerTransactionToJSON(
+  maxPerTransaction: MaxPerTransaction,
+): string {
+  return JSON.stringify(
+    MaxPerTransaction$outboundSchema.parse(maxPerTransaction),
+  );
+}
+
+export function maxPerTransactionFromJSON(
+  jsonString: string,
+): SafeParseResult<MaxPerTransaction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MaxPerTransaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MaxPerTransaction' from JSON`,
+  );
+}
 
 /** @internal */
 export const FeeProperties$inboundSchema: z.ZodType<
@@ -32,18 +260,20 @@ export const FeeProperties$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fixedAmount: z.string().optional(),
+  fixedAmount: z.nullable(z.lazy(() => FixedAmount$inboundSchema)).optional(),
   variableRate: z.string().optional(),
-  minPerTransaction: z.string().optional(),
-  maxPerTransaction: z.string().optional(),
+  minPerTransaction: z.nullable(z.lazy(() => MinPerTransaction$inboundSchema))
+    .optional(),
+  maxPerTransaction: z.nullable(z.lazy(() => MaxPerTransaction$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
 export type FeeProperties$Outbound = {
-  fixedAmount?: string | undefined;
+  fixedAmount?: FixedAmount$Outbound | null | undefined;
   variableRate?: string | undefined;
-  minPerTransaction?: string | undefined;
-  maxPerTransaction?: string | undefined;
+  minPerTransaction?: MinPerTransaction$Outbound | null | undefined;
+  maxPerTransaction?: MaxPerTransaction$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -52,10 +282,12 @@ export const FeeProperties$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FeeProperties
 > = z.object({
-  fixedAmount: z.string().optional(),
+  fixedAmount: z.nullable(z.lazy(() => FixedAmount$outboundSchema)).optional(),
   variableRate: z.string().optional(),
-  minPerTransaction: z.string().optional(),
-  maxPerTransaction: z.string().optional(),
+  minPerTransaction: z.nullable(z.lazy(() => MinPerTransaction$outboundSchema))
+    .optional(),
+  maxPerTransaction: z.nullable(z.lazy(() => MaxPerTransaction$outboundSchema))
+    .optional(),
 });
 
 /**

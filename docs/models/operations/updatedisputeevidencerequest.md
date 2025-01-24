@@ -6,9 +6,9 @@
 import { UpdateDisputeEvidenceRequest } from "moov-sdk/models/operations";
 
 let value: UpdateDisputeEvidenceRequest = {
-  accountID: "479f3f8b-c2ff-4dd5-bde4-2c9165a6acb9",
-  disputeID: "38c33ace-7b25-4a2f-b2c5-b6be92f836be",
-  evidenceID: "2d967cda-0c06-4784-b6c4-d02e7097159a",
+  accountID: "fa6e9fc5-bb5e-425a-a7af-1cd4476837de",
+  disputeID: "4d632f18-3d3b-42fa-b6f8-62b9333704b9",
+  evidenceID: "b0975fa4-81b5-4220-bcb7-46e103801b7f",
   updateEvidence: {},
 };
 ```

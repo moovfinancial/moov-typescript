@@ -8,13 +8,13 @@ Details of a card refund.
 import { CardAcquiringRefund } from "moov-sdk/models/components";
 
 let value: CardAcquiringRefund = {
-  refundID: "cf870bd3-5811-4646-b7ff-2e1825b6cbf8",
-  createdOn: new Date("2023-12-20T21:44:54.690Z"),
-  updatedOn: new Date("2024-01-14T22:29:55.353Z"),
-  status: "pending",
+  refundID: "18af9ffa-87e0-411c-95a9-68af991f8c06",
+  createdOn: new Date("2023-10-20T14:32:02.541Z"),
+  updatedOn: new Date("2025-05-17T10:23:56.087Z"),
+  status: "completed",
   amount: {
-    currency: "Jamaican Dollar",
-    value: 103253,
+    currency: "USD",
+    value: 1204,
   },
 };
 ```

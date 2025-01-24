@@ -7,8 +7,8 @@ import { ReversedWithCancellation } from "moov-sdk/models/components";
 
 let value: ReversedWithCancellation = {
   cancellation: {
-    status: "pending",
-    createdOn: new Date("2025-02-07T19:37:59.654Z"),
+    status: "completed",
+    createdOn: new Date("2025-02-27T02:36:07.300Z"),
   },
 };
 ```

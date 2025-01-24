@@ -6,11 +6,11 @@
 import { Capability } from "moov-sdk/models/components";
 
 let value: Capability = {
-  capability: "send-funds",
-  accountID: "370c1849-fa06-488a-9426-f2e87e7b6ebb",
+  capability: "transfers",
+  accountID: "6320b0c2-11a3-468d-bb42-0447ab462c0b",
   status: "in-review",
-  createdOn: new Date("2024-11-28T02:57:00.009Z"),
-  updatedOn: new Date("2023-09-21T01:29:35.775Z"),
+  createdOn: new Date("2023-10-12T07:51:04.077Z"),
+  updatedOn: new Date("2024-02-14T16:46:50.809Z"),
 };
 ```
 

@@ -8,10 +8,10 @@ A Moov wallet to store funds for transfers.
 import { Wallet } from "moov-sdk/models/components";
 
 let value: Wallet = {
-  walletID: "9020e2d5-c541-447d-b7f8-06b3b80c8174",
+  walletID: "cbf8c556-6181-4e07-b42c-b2acc1abd87f",
   availableBalance: {
-    currency: "Falkland Islands Pound",
-    value: 941688,
+    currency: "USD",
+    value: 1204,
     valueDecimal: "<value>",
   },
 };

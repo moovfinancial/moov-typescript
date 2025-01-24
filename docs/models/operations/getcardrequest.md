@@ -6,7 +6,7 @@
 import { GetCardRequest } from "moov-sdk/models/operations";
 
 let value: GetCardRequest = {
-  accountID: "eaa84f74-b954-431a-9830-0b3402d3f24d",
+  accountID: "37d4a715-dfd2-45d8-acc1-57fe6168e44a",
   cardID: "01234567-89ab-cdef-0123-456789abcdef",
 };
 ```

@@ -6,12 +6,12 @@
 import { IssuedCardAuthorization } from "moov-sdk/models/components";
 
 let value: IssuedCardAuthorization = {
-  authorizationID: "fb799f24-b3d5-4209-bd4e-c0993570226b",
-  issuedCardID: "2caef11c-23ef-45dd-8999-49326b9fa221",
-  fundingWalletID: "9de68c49-2727-4663-b243-bb91910539eb",
-  network: "visa",
+  authorizationID: "993777c7-c28d-4279-b2c1-f7516a14da32",
+  issuedCardID: "42f4176e-211e-4729-9839-53843e24643c",
+  fundingWalletID: "1825e5a8-2ad1-4cbd-914b-0bd76402fd4f",
+  network: "discover",
   authorizedAmount: "-14.89",
-  status: "cleared",
+  status: "pending",
   merchantData: {
     name: "Whole Body Fitness",
     city: "San Francisco",
@@ -20,7 +20,7 @@ let value: IssuedCardAuthorization = {
     state: "CA",
     mcc: "7298",
   },
-  createdOn: new Date("2024-09-25T04:38:04.858Z"),
+  createdOn: new Date("2025-09-15T03:58:39.261Z"),
 };
 ```
 

@@ -7,7 +7,7 @@ The unique ID of what the requirement is asking to be filled out.
 ```typescript
 import { RequirementID } from "moov-sdk/models/components";
 
-let value: RequirementID = "business.average-transaction-size";
+let value: RequirementID = "business.legalname";
 ```
 
 ## Values

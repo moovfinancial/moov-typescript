@@ -6,7 +6,7 @@
 import { GetBrandRequest } from "moov-sdk/models/operations";
 
 let value: GetBrandRequest = {
-  accountID: "25823ed1-4a40-4b35-b422-2fbf95277c83",
+  accountID: "7acbcace-e5f0-4973-9818-d25a56575231",
 };
 ```
 

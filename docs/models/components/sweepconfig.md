@@ -6,17 +6,17 @@
 import { SweepConfig } from "moov-sdk/models/components";
 
 let value: SweepConfig = {
-  sweepConfigID: "ea185f09-b4fd-4e09-84da-818af9ffa87e",
-  walletID: "11c5a968-af99-41f8-bc06-44c970ff308f",
-  status: "disabled",
+  sweepConfigID: "f8d95368-0293-4d51-81e1-2d4ad9fb18bc",
+  walletID: "bdb878be-9eb1-4844-9559-a420920e81df",
+  status: "enabled",
   pushPaymentMethod: {
-    paymentMethodID: "45e72341-7ea1-4045-acf6-afba15e3db58",
+    paymentMethodID: "16e2d07a-09f2-4b92-b008-fab792ecf432",
   },
   pullPaymentMethod: {
-    paymentMethodID: "b82c6f44-59e2-4497-97de-7ac84a9e0e80",
+    paymentMethodID: "c28622f4-f172-4081-8bb2-fb4bb5659e2e",
   },
-  createdOn: new Date("2025-03-04T20:52:12.231Z"),
-  updatedOn: new Date("2024-06-19T07:44:38.202Z"),
+  createdOn: new Date("2024-12-24T17:32:47.143Z"),
+  updatedOn: new Date("2024-03-30T05:24:00.433Z"),
 };
 ```
 

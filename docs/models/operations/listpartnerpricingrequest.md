@@ -6,7 +6,7 @@
 import { ListPartnerPricingRequest } from "moov-sdk/models/operations";
 
 let value: ListPartnerPricingRequest = {
-  accountID: "4169725e-7876-4037-9975-cbf0b04eca60",
+  accountID: "42c9165a-6acb-49e3-b8c3-3ace7b25a2f2",
 };
 ```
 

@@ -7,7 +7,7 @@ import { BankAccountVerification } from "moov-sdk/models/components";
 
 let value: BankAccountVerification = {
   verificationMethod: "ach",
-  status: "expired",
+  status: "successful",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { ListIssuedCardAuthorizationsRequest } from "moov-sdk/models/operations";
 
 let value: ListIssuedCardAuthorizationsRequest = {
-  accountID: "3d4b9d38-d904-4a9e-8ec2-5f75fbb61f1a",
+  accountID: "8109cf93-616d-4602-8ab3-c484b6c7ae68",
   skip: 60,
   count: 20,
 };

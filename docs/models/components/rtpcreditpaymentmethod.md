@@ -6,7 +6,7 @@
 import { RtpCreditPaymentMethod } from "moov-sdk/models/components";
 
 let value: RtpCreditPaymentMethod = {
-  paymentMethodID: "adc4e004-7a1a-4c26-887c-fc1c13238a7f",
+  paymentMethodID: "fbc256a4-45c9-4115-8cbb-c488bf4ca9cf",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:

@@ -7,7 +7,7 @@ import { CreateEvidenceText } from "moov-sdk/models/components";
 
 let value: CreateEvidenceText = {
   text: "<value>",
-  evidenceType: "generic-evidence",
+  evidenceType: "receipt",
 };
 ```
 

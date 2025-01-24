@@ -10,8 +10,8 @@ let value: TransferDestination = {
   paymentMethodType: "<value>",
   account: {
     accountID: "<id>",
-    email: "Ottis79@gmail.com",
-    displayName: "Audrey_Rau",
+    email: "Vallie32@yahoo.com",
+    displayName: "Jerad.Franey",
   },
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",

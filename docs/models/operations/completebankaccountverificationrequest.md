@@ -6,8 +6,8 @@
 import { CompleteBankAccountVerificationRequest } from "moov-sdk/models/operations";
 
 let value: CompleteBankAccountVerificationRequest = {
-  accountID: "48332bc5-6c05-448e-b0d8-9f24379b06e7",
-  bankAccountID: "14b97ace-7a6e-476f-a05d-7596545ef1ba",
+  accountID: "33b63d61-b499-4f34-aeb7-b66284a6dc29",
+  bankAccountID: "81865953-b3cf-47c2-acf8-42e5766ceaf3",
   completeBankAccountVerification: {
     code: "MV1234",
   },

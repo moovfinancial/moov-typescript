@@ -6,8 +6,8 @@
 import { InitiateMicroDepositsRequest } from "moov-sdk/models/operations";
 
 let value: InitiateMicroDepositsRequest = {
-  accountID: "20bf9105-60d7-4fe8-aa54-28175c6e3e91",
-  bankAccountID: "4ba16e6b-1d8f-48cf-ab95-066d3b0ea642",
+  accountID: "4a2a74b3-20d7-4811-b58b-7d60615fd366",
+  bankAccountID: "001a6d47-b852-482f-a82b-1c720f4f881f",
 };
 ```
 

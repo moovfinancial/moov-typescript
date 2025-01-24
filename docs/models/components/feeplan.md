@@ -6,20 +6,29 @@
 import { FeePlan } from "moov-sdk/models/components";
 
 let value: FeePlan = {
-  planID: "932d0717-f6d1-4466-9a5b-a6691dab8166",
+  planID: "f2159a6f-5bad-4fec-bb52-1368cf119bde",
   name: "Fixed Rate Merchant Plan",
   cardAcquringModel: "cost-plus",
   billableFees: [
     {
       billableEvent: "ach-volume",
       feeName: "ACH Direct Debit",
-      feeModel: "blended",
-      feeCategory: "card-acquiring",
+      feeModel: "fixed",
+      feeCategory: "card-push",
       feeProperties: {
-        fixedAmount: "0.15",
-        variableRate: "0.14",
-        minPerTransaction: "1.75",
-        maxPerTransaction: "3.50",
+        fixedAmount: {
+          currency: "USD",
+          valueDecimal: "0.0195",
+        },
+        variableRate: "0.15",
+        minPerTransaction: {
+          currency: "USD",
+          valueDecimal: "0.0195",
+        },
+        maxPerTransaction: {
+          currency: "USD",
+          valueDecimal: "0.035",
+        },
       },
       feeConditions: {
         "cardBrand": [
@@ -28,7 +37,7 @@ let value: FeePlan = {
       },
     },
   ],
-  createdAt: new Date("2024-10-26T12:19:44.874Z"),
+  createdAt: new Date("2025-01-20T16:30:55.711Z"),
 };
 ```
 

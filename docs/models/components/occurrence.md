@@ -12,8 +12,8 @@ let value: Occurrence = {
   runOn: new Date("2009-11-10T23:00:00Z"),
   runTransfer: {
     amount: {
-      currency: "Kenyan Shilling",
-      value: 908273,
+      currency: "USD",
+      value: 1204,
     },
     destination: {
       paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -36,7 +36,7 @@ let value: Occurrence = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description: "reiterate besides milestone suckle yum knottily",
+    description: "oof if deserted meh failing up subsidy",
   },
 };
 ```

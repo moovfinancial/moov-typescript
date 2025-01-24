@@ -6,10 +6,10 @@
 import { CreateApplePaySessionRequest } from "moov-sdk/models/operations";
 
 let value: CreateApplePaySessionRequest = {
-  accountID: "7d9a342d-4821-4555-a95c-15a9174a2a74",
+  accountID: "e33c7f9e-02a6-4d6b-991b-b185761213d0",
   createApplePaySession: {
     domain: "checkout.classbooker.dev",
-    displayName: "Cierra_Armstrong",
+    displayName: "Presley_Farrell",
   },
 };
 ```

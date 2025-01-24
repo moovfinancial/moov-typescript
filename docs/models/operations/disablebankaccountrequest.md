@@ -6,8 +6,8 @@
 import { DisableBankAccountRequest } from "moov-sdk/models/operations";
 
 let value: DisableBankAccountRequest = {
-  accountID: "df589c2d-b090-479a-ae4d-7acbcacee5f0",
-  bankAccountID: "73818d25-a565-4752-a317-d1a6d5b68cf2",
+  accountID: "3700e6e7-6414-49c8-bc29-e33bc35a697c",
+  bankAccountID: "d9970417-d9a3-442d-9482-155595c15a91",
 };
 ```
 

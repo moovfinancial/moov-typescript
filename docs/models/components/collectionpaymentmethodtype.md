@@ -7,7 +7,7 @@ Payment methods allowed for collecting a payment.
 ```typescript
 import { CollectionPaymentMethodType } from "moov-sdk/models/components";
 
-let value: CollectionPaymentMethodType = "apple-pay";
+let value: CollectionPaymentMethodType = "card-payment";
 ```
 
 ## Values

@@ -1,11 +1,13 @@
-# AmountDecimal
+# MaxPerTransaction
+
+Specifies the maximum allowable spending for a single transaction, working as a transaction ceiling.
 
 ## Example Usage
 
 ```typescript
-import { AmountDecimal } from "moov-sdk/models/components";
+import { MaxPerTransaction } from "moov-sdk/models/components";
 
-let value: AmountDecimal = {
+let value: MaxPerTransaction = {
   currency: "USD",
   valueDecimal: "12.987654321",
 };

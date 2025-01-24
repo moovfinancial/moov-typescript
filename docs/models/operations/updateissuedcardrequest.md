@@ -6,8 +6,8 @@
 import { UpdateIssuedCardRequest } from "moov-sdk/models/operations";
 
 let value: UpdateIssuedCardRequest = {
-  accountID: "428d75e2-7cee-4183-92d5-136a9e5641f1",
-  issuedCardID: "9b486116-000c-4ee0-8a41-118422d07127",
+  accountID: "4f18e139-0e10-439f-b787-84bb8da7d91c",
+  issuedCardID: "0cfc6b4a-8a62-467a-b4a3-cb191f5081ab",
   updateIssuedCard: {
     authorizedUser: {
       birthDate: {

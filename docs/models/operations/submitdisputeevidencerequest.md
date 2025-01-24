@@ -6,8 +6,8 @@
 import { SubmitDisputeEvidenceRequest } from "moov-sdk/models/operations";
 
 let value: SubmitDisputeEvidenceRequest = {
-  accountID: "cada7404-063b-431d-80ce-187c9407ee2d",
-  disputeID: "1f617008-3952-4f30-8444-5c051f277c4b",
+  accountID: "6a705a67-d49d-4c30-9420-48a639cbd487",
+  disputeID: "a2c0696a-0d14-4401-bdcb-b140003003c0",
 };
 ```
 

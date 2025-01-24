@@ -10,7 +10,7 @@ Omit for customer-initiated e-commerce transactions.
 ```typescript
 import { TransactionSource } from "moov-sdk/models/components";
 
-let value: TransactionSource = "first-recurring";
+let value: TransactionSource = "unscheduled";
 ```
 
 ## Values

@@ -6,9 +6,9 @@
 import { DeleteDisputeEvidenceFileRequest } from "moov-sdk/models/operations";
 
 let value: DeleteDisputeEvidenceFileRequest = {
-  accountID: "71162e36-85a9-4fd9-b799-428460a0b329",
-  disputeID: "6d08a620-6bf7-4451-97a9-0aa8f4d243ec",
-  evidenceID: "60bfc346-63cc-4b0e-950a-ba6d58eb1ced",
+  accountID: "46e95cea-3d6b-47f1-8233-32b3336f5415",
+  disputeID: "c1244dc9-459b-468e-8a81-239105bbcb97",
+  evidenceID: "9a191821-1e94-4182-8c7b-6ba8d994e868",
 };
 ```
 

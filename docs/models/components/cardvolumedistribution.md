@@ -6,10 +6,10 @@
 import { CardVolumeDistribution } from "moov-sdk/models/components";
 
 let value: CardVolumeDistribution = {
-  ecommercePercentage: 958586,
-  cardPresentPercentage: 346164,
-  mailOrPhonePercentage: 293512,
-  debtRepaymentPercentage: 81775,
+  ecommercePercentage: 315024,
+  cardPresentPercentage: 500677,
+  mailOrPhonePercentage: 72080,
+  debtRepaymentPercentage: 89642,
 };
 ```
 

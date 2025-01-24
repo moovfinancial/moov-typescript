@@ -6,8 +6,8 @@
 import { GetCapabilityRequest } from "moov-sdk/models/operations";
 
 let value: GetCapabilityRequest = {
-  accountID: "4401dcbb-1400-4030-803c-0fadac44a982",
-  capabilityID: "collect-funds",
+  accountID: "40153986-cbb8-4067-870a-408e009801d7",
+  capabilityID: "transfers",
 };
 ```
 

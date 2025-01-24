@@ -11,8 +11,8 @@ let value: Recur = {
   recurrenceRule: "<value>",
   runTransfer: {
     amount: {
-      currency: "Kina",
-      value: 816726,
+      currency: "USD",
+      value: 1204,
     },
     destination: {
       paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -35,7 +35,7 @@ let value: Recur = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description: "aboard same below celsius along upward than",
+    description: "sans annual before hotfoot pulp",
   },
   start: new Date("2009-11-10T23:00:00Z"),
 };

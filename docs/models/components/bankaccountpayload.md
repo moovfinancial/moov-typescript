@@ -10,7 +10,7 @@ import { BankAccountPayload } from "moov-sdk/models/components";
 let value: BankAccountPayload = {
   account: {
     holderName: "<value>",
-    holderType: "individual",
+    holderType: "business",
     accountNumber: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",

@@ -5,7 +5,7 @@
 ```typescript
 import { ReturnPolicyType } from "moov-sdk/models/components";
 
-let value: ReturnPolicyType = "other";
+let value: ReturnPolicyType = "none";
 ```
 
 ## Values

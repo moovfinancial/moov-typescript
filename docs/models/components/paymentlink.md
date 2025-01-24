@@ -6,46 +6,34 @@
 import { PaymentLink } from "moov-sdk/models/components";
 
 let value: PaymentLink = {
-  code: "uc7ZYKrMhi",
-  mode: "production",
-  status: "disabled",
-  partnerAccountID: "eb2725ee-459f-424d-b7e2-855765ebb49c",
-  merchantAccountID: "5cb2d777-997d-4a66-ac53-0ee1521e0f1d",
-  merchantPaymentMethodID: "55c5a87e-8db0-4c3e-a051-7d425d231b64",
-  link: "https://shabby-singing.biz/",
+  code: "3QLHtONjd5",
+  mode: "sandbox",
+  status: "active",
+  partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
+  merchantAccountID: "34233b72-780c-4e0e-8b08-cbbe1bc878f8",
+  merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
+  link: "https://moov.money/3QLHtONjd5",
   amount: {
-    currency: "Rand",
-    value: 162358,
+    currency: "USD",
+    value: 10000,
   },
-  uses: 290841,
+  uses: 0,
   display: {
-    title: "<value>",
-    description: "questioningly blacken around separate",
-    callToAction: "donate",
+    title: "Example Payment Link",
+    description: "This is an example payment link.",
+    callToAction: "pay",
   },
-  customer: {},
+  customer: {
+    requirePhone: true,
+  },
   payment: {
     allowedMethods: [
+      "card-payment",
       "ach-debit-collect",
     ],
-    cardDetails: {
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-    },
-    achDetails: {
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-    },
   },
-  payout: {
-    allowedMethods: [
-      "rtp-credit",
-    ],
-    recipient: {
-      email: "jordan.lee@classbooker.dev",
-    },
-  },
-  createdOn: new Date("2025-08-15T17:16:53.828Z"),
-  updatedOn: new Date("2025-07-03T01:03:11.378Z"),
+  createdOn: new Date("2025-01-09T17:09:13.33Z"),
+  updatedOn: new Date("2025-01-09T17:09:13.33Z"),
 };
 ```
 

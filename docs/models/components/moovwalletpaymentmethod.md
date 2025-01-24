@@ -6,7 +6,7 @@
 import { MoovWalletPaymentMethod } from "moov-sdk/models/components";
 
 let value: MoovWalletPaymentMethod = {
-  paymentMethodID: "7e5782bd-040f-4af8-8c55-6a5ef031037d",
+  paymentMethodID: "edde4568-a406-44fe-bda5-8d1c0dc0a822",
   paymentMethodType: "moov-wallet",
   wallet: "<value>",
 };

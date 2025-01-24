@@ -9,7 +9,7 @@ import { CapabilityRequirement } from "moov-sdk/models/components";
 
 let value: CapabilityRequirement = {
   currentlyDue: [
-    "individual.ssn",
+    "business.underwriting-documents-tier-one",
   ],
 };
 ```

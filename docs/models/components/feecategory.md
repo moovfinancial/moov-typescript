@@ -5,7 +5,7 @@
 ```typescript
 import { FeeCategory } from "moov-sdk/models/components";
 
-let value: FeeCategory = "rtp";
+let value: FeeCategory = "other";
 ```
 
 ## Values

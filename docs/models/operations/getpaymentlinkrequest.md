@@ -6,7 +6,7 @@
 import { GetPaymentLinkRequest } from "moov-sdk/models/operations";
 
 let value: GetPaymentLinkRequest = {
-  accountID: "67d99547-457d-4ed8-ab57-f527a214ea39",
+  accountID: "ae19a4c1-3084-41e3-a949-ab40dfe1c7a9",
   paymentLinkCode: "uc7ZYKrMhi",
 };
 ```

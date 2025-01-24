@@ -6,8 +6,8 @@
 import { GetSweepConfigRequest } from "moov-sdk/models/operations";
 
 let value: GetSweepConfigRequest = {
-  accountID: "701eb830-c432-4c9a-8eea-f30e4f34ed19",
-  sweepConfigID: "19179fe9-8aef-40fc-b1ca-e78d7835409d",
+  accountID: "4c075c61-b057-4b51-bd0d-1222cc219b80",
+  sweepConfigID: "bb31f7b1-8815-4ebb-be4c-198636db7fc0",
 };
 ```
 

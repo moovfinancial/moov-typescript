@@ -6,7 +6,7 @@
 import { DisputeTransferDetails } from "moov-sdk/models/components";
 
 let value: DisputeTransferDetails = {
-  transferID: "f9ded2a6-164d-40f5-8502-6e1fd7539006",
+  transferID: "1849fa06-88a4-426f-82e8-7e7b6ebb5ca3",
 };
 ```
 
