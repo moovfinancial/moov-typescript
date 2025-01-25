@@ -5,7 +5,7 @@ The type of token being revoked.
 ## Example Usage
 
 ```typescript
-import { TokenTypeHint } from "moov-sdk/models/components";
+import { TokenTypeHint } from "@moovio/sdk/models/components";
 
 let value: TokenTypeHint = "refresh_token";
 ```

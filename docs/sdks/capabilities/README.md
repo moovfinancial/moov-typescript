@@ -27,7 +27,7 @@ Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -53,8 +53,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { capabilitiesListCapabilities } from "moov-sdk/funcs/capabilitiesListCapabilities.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { capabilitiesListCapabilities } from "@moovio/sdk/funcs/capabilitiesListCapabilities.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -112,7 +112,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -143,8 +143,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { capabilitiesAddCapabilities } from "moov-sdk/funcs/capabilitiesAddCapabilities.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { capabilitiesAddCapabilities } from "@moovio/sdk/funcs/capabilitiesAddCapabilities.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -209,7 +209,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -236,8 +236,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { capabilitiesGetCapability } from "moov-sdk/funcs/capabilitiesGetCapability.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { capabilitiesGetCapability } from "@moovio/sdk/funcs/capabilitiesGetCapability.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -296,7 +296,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -322,8 +322,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { capabilitiesDisableCapability } from "moov-sdk/funcs/capabilitiesDisableCapability.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { capabilitiesDisableCapability } from "@moovio/sdk/funcs/capabilitiesDisableCapability.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

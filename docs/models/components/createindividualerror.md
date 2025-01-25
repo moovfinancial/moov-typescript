@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIndividualError } from "moov-sdk/models/components";
+import { CreateIndividualError } from "@moovio/sdk/models/components";
 
 let value: CreateIndividualError = {};
 ```

@@ -5,7 +5,7 @@ An industry's MCC/SIC/NAICS codes, along with descriptive title.
 ## Example Usage
 
 ```typescript
-import { EnrichedIndustry } from "moov-sdk/models/components";
+import { EnrichedIndustry } from "@moovio/sdk/models/components";
 
 let value: EnrichedIndustry = {
   title: "AC, Refrigeration Repair",

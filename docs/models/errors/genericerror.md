@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GenericError } from "moov-sdk/models/errors";
+import { GenericError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

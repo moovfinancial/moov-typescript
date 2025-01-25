@@ -26,7 +26,7 @@ The return code of an ACH transaction that caused the bank account status to cha
 ## Example Usage
 
 ```typescript
-import { ACHReturnCode } from "moov-sdk/models/components";
+import { ACHReturnCode } from "@moovio/sdk/models/components";
 
 let value: ACHReturnCode = "R04";
 ```

@@ -37,7 +37,7 @@ to specify the `/accounts/{accountID}/profile.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -63,8 +63,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { billingListFeePlanAgreements } from "moov-sdk/funcs/billingListFeePlanAgreements.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { billingListFeePlanAgreements } from "@moovio/sdk/funcs/billingListFeePlanAgreements.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -123,7 +123,7 @@ to specify the `/accounts/{accountID}/profile.write` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -152,8 +152,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { billingCreateFeePlanAgreements } from "moov-sdk/funcs/billingCreateFeePlanAgreements.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { billingCreateFeePlanAgreements } from "@moovio/sdk/funcs/billingCreateFeePlanAgreements.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -218,7 +218,7 @@ to specify the `/accounts/{accountID}/profile.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -244,8 +244,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { billingListFeePlans } from "moov-sdk/funcs/billingListFeePlans.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { billingListFeePlans } from "@moovio/sdk/funcs/billingListFeePlans.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -304,7 +304,7 @@ to specify the `/accounts/{accountID}/profile.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -330,8 +330,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { billingListPartnerPricing } from "moov-sdk/funcs/billingListPartnerPricing.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { billingListPartnerPricing } from "@moovio/sdk/funcs/billingListPartnerPricing.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -390,7 +390,7 @@ to specify the `/accounts/{accountID}/profile.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -416,8 +416,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { billingListPartnerPricingAgreements } from "moov-sdk/funcs/billingListPartnerPricingAgreements.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { billingListPartnerPricingAgreements } from "@moovio/sdk/funcs/billingListPartnerPricingAgreements.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

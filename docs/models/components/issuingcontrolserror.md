@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { IssuingControlsError } from "moov-sdk/models/components";
+import { IssuingControlsError } from "@moovio/sdk/models/components";
 
 let value: IssuingControlsError = {
   velocityLimits: {

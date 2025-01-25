@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RevokeOnboardingInviteSecurity } from "moov-sdk/models/operations";
+import { RevokeOnboardingInviteSecurity } from "@moovio/sdk/models/operations";
 
 let value: RevokeOnboardingInviteSecurity = {
   basicAuth: {

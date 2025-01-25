@@ -5,7 +5,7 @@ Where funds for a transfer originate. For the source, you must include either a 
 ## Example Usage
 
 ```typescript
-import { CreateTransferSource } from "moov-sdk/models/components";
+import { CreateTransferSource } from "@moovio/sdk/models/components";
 
 let value: CreateTransferSource = {
   cardDetails: {

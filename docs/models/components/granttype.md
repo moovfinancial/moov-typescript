@@ -8,7 +8,7 @@ The type of grant being requested.
 ## Example Usage
 
 ```typescript
-import { GrantType } from "moov-sdk/models/components";
+import { GrantType } from "@moovio/sdk/models/components";
 
 let value: GrantType = "refresh_token";
 ```

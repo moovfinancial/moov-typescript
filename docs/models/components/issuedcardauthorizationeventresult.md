@@ -5,7 +5,7 @@ The result of an event.
 ## Example Usage
 
 ```typescript
-import { IssuedCardAuthorizationEventResult } from "moov-sdk/models/components";
+import { IssuedCardAuthorizationEventResult } from "@moovio/sdk/models/components";
 
 let value: IssuedCardAuthorizationEventResult = "processed";
 ```

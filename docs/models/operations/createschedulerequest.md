@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateScheduleRequest } from "moov-sdk/models/operations";
+import { CreateScheduleRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateScheduleRequest = {
   accountID: "1a8228f2-419e-437e-8b8a-bb743e05b961",

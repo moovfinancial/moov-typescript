@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateRepresentativeAddress } from "moov-sdk/models/components";
+import { UpdateRepresentativeAddress } from "@moovio/sdk/models/components";
 
 let value: UpdateRepresentativeAddress = {
   addressLine1: "123 Main Street",

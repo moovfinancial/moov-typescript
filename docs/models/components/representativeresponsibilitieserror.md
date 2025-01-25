@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RepresentativeResponsibilitiesError } from "moov-sdk/models/components";
+import { RepresentativeResponsibilitiesError } from "@moovio/sdk/models/components";
 
 let value: RepresentativeResponsibilitiesError = {};
 ```

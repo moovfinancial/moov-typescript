@@ -5,7 +5,7 @@ A permission that the application requests on another account.
 ## Example Usage
 
 ```typescript
-import { ApplicationScope } from "moov-sdk/models/components";
+import { ApplicationScope } from "@moovio/sdk/models/components";
 
 let value: ApplicationScope = "profile-enrichment.read";
 ```

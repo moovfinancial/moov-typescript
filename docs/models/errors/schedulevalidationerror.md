@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ScheduleValidationError } from "moov-sdk/models/errors";
+import { ScheduleValidationError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

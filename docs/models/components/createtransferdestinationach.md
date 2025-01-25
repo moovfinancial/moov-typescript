@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateTransferDestinationACH } from "moov-sdk/models/components";
+import { CreateTransferDestinationACH } from "@moovio/sdk/models/components";
 
 let value: CreateTransferDestinationACH = {
   companyEntryDescription: "Gym dues",

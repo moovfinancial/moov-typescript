@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { IssuingVelocityLimitError } from "moov-sdk/models/components";
+import { IssuingVelocityLimitError } from "@moovio/sdk/models/components";
 
 let value: IssuingVelocityLimitError = {};
 ```

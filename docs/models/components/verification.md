@@ -5,7 +5,7 @@ Describes identity verification status and relevant identity verification docume
 ## Example Usage
 
 ```typescript
-import { Verification } from "moov-sdk/models/components";
+import { Verification } from "@moovio/sdk/models/components";
 
 let value: Verification = {
   status: "verified",

@@ -5,7 +5,7 @@ ACH specific details about the transaction.
 ## Example Usage
 
 ```typescript
-import { ACHTransactionDetails } from "moov-sdk/models/components";
+import { ACHTransactionDetails } from "@moovio/sdk/models/components";
 
 let value: ACHTransactionDetails = {
   status: "originated",

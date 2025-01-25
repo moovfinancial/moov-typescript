@@ -5,7 +5,7 @@ An optional override of your default ACH hold period in banking days. The hold p
 ## Example Usage
 
 ```typescript
-import { DebitHoldPeriod } from "moov-sdk/models/components";
+import { DebitHoldPeriod } from "@moovio/sdk/models/components";
 
 let value: DebitHoldPeriod = "2-days";
 ```

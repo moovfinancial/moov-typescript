@@ -5,7 +5,7 @@ Contains details on why the occurrence errored.
 ## Example Usage
 
 ```typescript
-import { ErrorT } from "moov-sdk/models/components";
+import { ErrorT } from "@moovio/sdk/models/components";
 
 let value: ErrorT = {};
 ```

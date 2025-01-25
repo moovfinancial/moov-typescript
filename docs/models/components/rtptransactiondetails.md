@@ -5,7 +5,7 @@ RTP specific details about the transaction.
 ## Example Usage
 
 ```typescript
-import { RTPTransactionDetails } from "moov-sdk/models/components";
+import { RTPTransactionDetails } from "@moovio/sdk/models/components";
 
 let value: RTPTransactionDetails = {
   status: "initiated",

@@ -50,7 +50,7 @@ To use this endpoint from the browser, you’ll need to specify the `/accounts/{
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -106,8 +106,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { representativesCreateRepresentative } from "moov-sdk/funcs/representativesCreateRepresentative.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { representativesCreateRepresentative } from "@moovio/sdk/funcs/representativesCreateRepresentative.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -200,7 +200,7 @@ To use this endpoint from the browser, you’ll need to specify the `/accounts/{
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -226,8 +226,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { representativesListRepresentatives } from "moov-sdk/funcs/representativesListRepresentatives.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { representativesListRepresentatives } from "@moovio/sdk/funcs/representativesListRepresentatives.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -285,7 +285,7 @@ To use this endpoint from the browser, you’ll need to specify the `/accounts/{
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -311,8 +311,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { representativesDeleteRepresentative } from "moov-sdk/funcs/representativesDeleteRepresentative.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { representativesDeleteRepresentative } from "@moovio/sdk/funcs/representativesDeleteRepresentative.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -371,7 +371,7 @@ To use this endpoint from the browser, you’ll need to specify the `/accounts/{
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -398,8 +398,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { representativesGetRepresentative } from "moov-sdk/funcs/representativesGetRepresentative.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { representativesGetRepresentative } from "@moovio/sdk/funcs/representativesGetRepresentative.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -471,7 +471,7 @@ If you need to update information in a locked state, please contact Moov support
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -527,8 +527,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { representativesUpdateRepresentative } from "moov-sdk/funcs/representativesUpdateRepresentative.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { representativesUpdateRepresentative } from "@moovio/sdk/funcs/representativesUpdateRepresentative.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

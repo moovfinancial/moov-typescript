@@ -5,7 +5,7 @@ User provided settings to manage an account.
 ## Example Usage
 
 ```typescript
-import { SettingsUpdate } from "moov-sdk/models/components";
+import { SettingsUpdate } from "@moovio/sdk/models/components";
 
 let value: SettingsUpdate = {
   cardPayment: {

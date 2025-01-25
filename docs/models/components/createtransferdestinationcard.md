@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateTransferDestinationCard } from "moov-sdk/models/components";
+import { CreateTransferDestinationCard } from "@moovio/sdk/models/components";
 
 let value: CreateTransferDestinationCard = {
   dynamicDescriptor: "WhlBdy *Yoga 11-12",

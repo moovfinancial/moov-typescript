@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PartnerPricingAgreement } from "moov-sdk/models/components";
+import { PartnerPricingAgreement } from "@moovio/sdk/models/components";
 
 let value: PartnerPricingAgreement = {
   aggreementID: "0b19baf1-d086-4853-b08d-531131411d28",

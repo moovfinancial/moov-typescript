@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OnboardingInvite } from "moov-sdk/models/components";
+import { OnboardingInvite } from "@moovio/sdk/models/components";
 
 let value: OnboardingInvite = {
   code: "N1IA5eWYNh",

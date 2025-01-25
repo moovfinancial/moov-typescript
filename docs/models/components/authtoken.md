@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AuthToken } from "moov-sdk/models/components";
+import { AuthToken } from "@moovio/sdk/models/components";
 
 let value: AuthToken = {
   tokenType: "opaque",

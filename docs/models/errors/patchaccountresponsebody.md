@@ -5,7 +5,7 @@ The request was well-formed, but the contents failed validation. Check the reque
 ## Example Usage
 
 ```typescript
-import { PatchAccountResponseBody } from "moov-sdk/models/errors";
+import { PatchAccountResponseBody } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

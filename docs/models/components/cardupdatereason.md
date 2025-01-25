@@ -5,7 +5,7 @@ The results of the card update request.
 ## Example Usage
 
 ```typescript
-import { CardUpdateReason } from "moov-sdk/models/components";
+import { CardUpdateReason } from "@moovio/sdk/models/components";
 
 let value: CardUpdateReason = "number-update";
 ```

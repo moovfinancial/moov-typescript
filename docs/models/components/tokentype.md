@@ -8,7 +8,7 @@ Type of token returned.
 ## Example Usage
 
 ```typescript
-import { TokenType } from "moov-sdk/models/components";
+import { TokenType } from "@moovio/sdk/models/components";
 
 let value: TokenType = "opaque";
 ```

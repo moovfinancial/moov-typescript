@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchAccountRequest } from "moov-sdk/models/operations";
+import { PatchAccountRequest } from "@moovio/sdk/models/operations";
 
 let value: PatchAccountRequest = {
   accountID: "39de68c4-9272-4766-a324-3bb91910539e",

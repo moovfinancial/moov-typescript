@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PingRequest } from "moov-sdk/models/operations";
+import { PingRequest } from "@moovio/sdk/models/operations";
 
 let value: PingRequest = {};
 ```

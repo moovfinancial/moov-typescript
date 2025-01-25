@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIndividualErrorItin } from "moov-sdk/models/components";
+import { CreateIndividualErrorItin } from "@moovio/sdk/models/components";
 
 let value: CreateIndividualErrorItin = {};
 ```

@@ -5,7 +5,7 @@ Defines configuration for recurring transfers.
 ## Example Usage
 
 ```typescript
-import { Recur } from "moov-sdk/models/components";
+import { Recur } from "@moovio/sdk/models/components";
 
 let value: Recur = {
   recurrenceRule: "<value>",

@@ -5,7 +5,7 @@ Total or markup fee.
 ## Example Usage
 
 ```typescript
-import { FacilitatorFee } from "moov-sdk/models/components";
+import { FacilitatorFee } from "@moovio/sdk/models/components";
 
 let value: FacilitatorFee = {
   totalDecimal: "12.987654321",

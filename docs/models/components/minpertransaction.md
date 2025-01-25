@@ -5,7 +5,7 @@ Specifies the minimum allowable spending for a single transaction, working as a 
 ## Example Usage
 
 ```typescript
-import { MinPerTransaction } from "moov-sdk/models/components";
+import { MinPerTransaction } from "@moovio/sdk/models/components";
 
 let value: MinPerTransaction = {
   currency: "USD",

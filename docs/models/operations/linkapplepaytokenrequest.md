@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LinkApplePayTokenRequest } from "moov-sdk/models/operations";
+import { LinkApplePayTokenRequest } from "@moovio/sdk/models/operations";
 
 let value: LinkApplePayTokenRequest = {
   accountID: "2c22c554-55b3-45ce-a918-a5dc92be4fc4",

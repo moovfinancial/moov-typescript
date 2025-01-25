@@ -5,7 +5,7 @@ The account that created the onboarding invite.
 ## Example Usage
 
 ```typescript
-import { OnboardingPartnerAccount } from "moov-sdk/models/components";
+import { OnboardingPartnerAccount } from "@moovio/sdk/models/components";
 
 let value: OnboardingPartnerAccount = {
   accountID: "c3fb799f-24b3-4d52-909d-4ec099357022",

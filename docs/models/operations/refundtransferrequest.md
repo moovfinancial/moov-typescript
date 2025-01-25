@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RefundTransferRequest } from "moov-sdk/models/operations";
+import { RefundTransferRequest } from "@moovio/sdk/models/operations";
 
 let value: RefundTransferRequest = {
   xIdempotencyKey: "ea236758-ea5d-4b98-9196-81c8d3f915f9",

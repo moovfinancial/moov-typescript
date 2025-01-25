@@ -5,7 +5,7 @@ The payment method type that represents a payment rail and directionality
 ## Example Usage
 
 ```typescript
-import { PaymentMethodType } from "moov-sdk/models/components";
+import { PaymentMethodType } from "@moovio/sdk/models/components";
 
 let value: PaymentMethodType = "ach-debit-collect";
 ```

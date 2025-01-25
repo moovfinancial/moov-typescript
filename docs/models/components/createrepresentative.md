@@ -5,7 +5,7 @@ The template for omitting properties.
 ## Example Usage
 
 ```typescript
-import { CreateRepresentative } from "moov-sdk/models/components";
+import { CreateRepresentative } from "@moovio/sdk/models/components";
 
 let value: CreateRepresentative = {
   name: {

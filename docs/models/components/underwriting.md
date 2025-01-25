@@ -5,7 +5,7 @@ Describes underwriting values (in USD) used for card payment acceptance.
 ## Example Usage
 
 ```typescript
-import { Underwriting } from "moov-sdk/models/components";
+import { Underwriting } from "@moovio/sdk/models/components";
 
 let value: Underwriting = {
   averageTransactionSize: 115137,

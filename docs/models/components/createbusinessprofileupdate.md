@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateBusinessProfileUpdate } from "moov-sdk/models/components";
+import { CreateBusinessProfileUpdate } from "@moovio/sdk/models/components";
 
 let value: CreateBusinessProfileUpdate = {
   legalBusinessName: "Classbooker, LLC",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostBrandSecurity } from "moov-sdk/models/operations";
+import { PostBrandSecurity } from "@moovio/sdk/models/operations";
 
 let value: PostBrandSecurity = {
   basicAuth: {

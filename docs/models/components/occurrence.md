@@ -5,7 +5,7 @@ Occurrences to either create or modify.
 ## Example Usage
 
 ```typescript
-import { Occurrence } from "moov-sdk/models/components";
+import { Occurrence } from "@moovio/sdk/models/components";
 
 let value: Occurrence = {
   occurrenceID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",

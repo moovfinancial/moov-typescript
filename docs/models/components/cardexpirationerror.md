@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CardExpirationError } from "moov-sdk/models/components";
+import { CardExpirationError } from "@moovio/sdk/models/components";
 
 let value: CardExpirationError = {};
 ```

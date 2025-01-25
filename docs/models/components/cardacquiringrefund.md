@@ -5,7 +5,7 @@ Details of a card refund.
 ## Example Usage
 
 ```typescript
-import { CardAcquiringRefund } from "moov-sdk/models/components";
+import { CardAcquiringRefund } from "@moovio/sdk/models/components";
 
 let value: CardAcquiringRefund = {
   refundID: "18af9ffa-87e0-411c-95a9-68af991f8c06",

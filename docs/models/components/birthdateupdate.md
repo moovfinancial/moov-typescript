@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BirthDateUpdate } from "moov-sdk/models/components";
+import { BirthDateUpdate } from "@moovio/sdk/models/components";
 
 let value: BirthDateUpdate = {
   day: 9,

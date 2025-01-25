@@ -5,7 +5,7 @@ The expiration date of the card or token.
 ## Example Usage
 
 ```typescript
-import { CardExpiration } from "moov-sdk/models/components";
+import { CardExpiration } from "@moovio/sdk/models/components";
 
 let value: CardExpiration = {
   month: "01",

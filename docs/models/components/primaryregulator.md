@@ -5,7 +5,7 @@ If the business is a financial institution, this field describes its primary reg
 ## Example Usage
 
 ```typescript
-import { PrimaryRegulator } from "moov-sdk/models/components";
+import { PrimaryRegulator } from "@moovio/sdk/models/components";
 
 let value: PrimaryRegulator = "FDIC";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateReversal } from "moov-sdk/models/components";
+import { CreateReversal } from "@moovio/sdk/models/components";
 
 let value: CreateReversal = {
   amount: 1000,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchTransferRequest } from "moov-sdk/models/operations";
+import { PatchTransferRequest } from "@moovio/sdk/models/operations";
 
 let value: PatchTransferRequest = {
   transferID: "30c432c9-aeea-4f30-be4f-34ed19219179",

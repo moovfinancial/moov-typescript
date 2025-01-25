@@ -5,7 +5,7 @@ The countries in which an account operates.
 ## Example Usage
 
 ```typescript
-import { AccountCountries } from "moov-sdk/models/components";
+import { AccountCountries } from "@moovio/sdk/models/components";
 
 let value: AccountCountries = {
   countries: [

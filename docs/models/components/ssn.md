@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Ssn } from "moov-sdk/models/components";
+import { Ssn } from "@moovio/sdk/models/components";
 
 let value: Ssn = {};
 ```

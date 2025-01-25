@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CardVolumeDistributionError } from "moov-sdk/models/components";
+import { CardVolumeDistributionError } from "@moovio/sdk/models/components";
 
 let value: CardVolumeDistributionError = {};
 ```

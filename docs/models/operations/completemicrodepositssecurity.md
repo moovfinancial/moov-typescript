@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CompleteMicroDepositsSecurity } from "moov-sdk/models/operations";
+import { CompleteMicroDepositsSecurity } from "@moovio/sdk/models/operations";
 
 let value: CompleteMicroDepositsSecurity = {
   basicAuth: {

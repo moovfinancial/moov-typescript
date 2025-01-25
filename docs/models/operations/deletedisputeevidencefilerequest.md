@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteDisputeEvidenceFileRequest } from "moov-sdk/models/operations";
+import { DeleteDisputeEvidenceFileRequest } from "@moovio/sdk/models/operations";
 
 let value: DeleteDisputeEvidenceFileRequest = {
   accountID: "46e95cea-3d6b-47f1-8233-32b3336f5415",

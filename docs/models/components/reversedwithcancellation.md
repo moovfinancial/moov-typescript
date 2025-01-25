@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ReversedWithCancellation } from "moov-sdk/models/components";
+import { ReversedWithCancellation } from "@moovio/sdk/models/components";
 
 let value: ReversedWithCancellation = {
   cancellation: {

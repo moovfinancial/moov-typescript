@@ -5,7 +5,7 @@ Reason for a transfer's failure.
 ## Example Usage
 
 ```typescript
-import { TransferFailureReason } from "moov-sdk/models/components";
+import { TransferFailureReason } from "@moovio/sdk/models/components";
 
 let value: TransferFailureReason = "destination-payment-error";
 ```

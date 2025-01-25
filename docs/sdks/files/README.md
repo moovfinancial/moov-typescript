@@ -34,7 +34,7 @@ To access this endpoint using a [token](https://docs.moov.io/api/authentication/
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
 
 const moov = new Moov();
@@ -66,8 +66,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { filesUploadFile } from "moov-sdk/funcs/filesUploadFile.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { filesUploadFile } from "@moovio/sdk/funcs/filesUploadFile.js";
 import { openAsBlob } from "node:fs";
 
 // Use `MoovCore` for best tree-shaking performance.
@@ -134,7 +134,7 @@ To access this endpoint using a [token](https://docs.moov.io/api/authentication/
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -160,8 +160,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { filesListFiles } from "moov-sdk/funcs/filesListFiles.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { filesListFiles } from "@moovio/sdk/funcs/filesListFiles.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -220,7 +220,7 @@ To access this endpoint using a [token](https://docs.moov.io/api/authentication/
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -247,8 +247,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { filesGetFileDetails } from "moov-sdk/funcs/filesGetFileDetails.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { filesGetFileDetails } from "@moovio/sdk/funcs/filesGetFileDetails.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

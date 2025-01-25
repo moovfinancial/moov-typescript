@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteRepresentativeSecurity } from "moov-sdk/models/operations";
+import { DeleteRepresentativeSecurity } from "@moovio/sdk/models/operations";
 
 let value: DeleteRepresentativeSecurity = {
   basicAuth: {

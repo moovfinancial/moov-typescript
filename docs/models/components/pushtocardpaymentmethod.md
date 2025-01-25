@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PushToCardPaymentMethod } from "moov-sdk/models/components";
+import { PushToCardPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: PushToCardPaymentMethod = {
   paymentMethodID: "e10e83aa-1403-423a-a012-544cf8f61647",

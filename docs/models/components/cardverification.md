@@ -5,7 +5,7 @@ The results of submitting cardholder data to a card network for verification.
 ## Example Usage
 
 ```typescript
-import { CardVerification } from "moov-sdk/models/components";
+import { CardVerification } from "@moovio/sdk/models/components";
 
 let value: CardVerification = {
   cvv: "match",

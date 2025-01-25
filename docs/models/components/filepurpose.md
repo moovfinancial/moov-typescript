@@ -5,7 +5,7 @@ The file's purpose.
 ## Example Usage
 
 ```typescript
-import { FilePurpose } from "moov-sdk/models/components";
+import { FilePurpose } from "@moovio/sdk/models/components";
 
 let value: FilePurpose = "representative_verification";
 ```

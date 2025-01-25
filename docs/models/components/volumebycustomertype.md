@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { VolumeByCustomerType } from "moov-sdk/models/components";
+import { VolumeByCustomerType } from "@moovio/sdk/models/components";
 
 let value: VolumeByCustomerType = {
   businessToBusinessPercentage: 421111,

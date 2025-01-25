@@ -19,7 +19,7 @@ Describes the schedule to create or modify.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -177,8 +177,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { schedulingCreateSchedule } from "moov-sdk/funcs/schedulingCreateSchedule.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { schedulingCreateSchedule } from "@moovio/sdk/funcs/schedulingCreateSchedule.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -368,7 +368,7 @@ Describes a list of schedules associated with an account. Requires at least 1 oc
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -396,8 +396,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { schedulingListSchedules } from "moov-sdk/funcs/schedulingListSchedules.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { schedulingListSchedules } from "@moovio/sdk/funcs/schedulingListSchedules.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -455,7 +455,7 @@ Describes the schedule to modify.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -582,8 +582,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { schedulingUpdateSchedule } from "moov-sdk/funcs/schedulingUpdateSchedule.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { schedulingUpdateSchedule } from "@moovio/sdk/funcs/schedulingUpdateSchedule.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -742,7 +742,7 @@ Describes a schedule associated with an account. Requires at least 1 occurrence 
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -769,8 +769,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { schedulingGetSchedules } from "moov-sdk/funcs/schedulingGetSchedules.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { schedulingGetSchedules } from "@moovio/sdk/funcs/schedulingGetSchedules.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -827,7 +827,7 @@ Describes the schedule to cancel.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -853,8 +853,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { schedulingCancelSchedule } from "moov-sdk/funcs/schedulingCancelSchedule.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { schedulingCancelSchedule } from "@moovio/sdk/funcs/schedulingCancelSchedule.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -911,7 +911,7 @@ Defines an occurrence for when to run a transfer.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -939,8 +939,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { schedulingGetScheduledOccurrence } from "moov-sdk/funcs/schedulingGetScheduledOccurrence.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { schedulingGetScheduledOccurrence } from "@moovio/sdk/funcs/schedulingGetScheduledOccurrence.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

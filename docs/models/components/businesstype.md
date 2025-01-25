@@ -5,7 +5,7 @@ The type of entity represented by this business.
 ## Example Usage
 
 ```typescript
-import { BusinessType } from "moov-sdk/models/components";
+import { BusinessType } from "@moovio/sdk/models/components";
 
 let value: BusinessType = "llc";
 ```

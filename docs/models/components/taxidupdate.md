@@ -5,7 +5,7 @@ An EIN (employer identification number) for the business. For sole proprietors, 
 ## Example Usage
 
 ```typescript
-import { TaxIDUpdate } from "moov-sdk/models/components";
+import { TaxIDUpdate } from "@moovio/sdk/models/components";
 
 let value: TaxIDUpdate = {
   ein: {

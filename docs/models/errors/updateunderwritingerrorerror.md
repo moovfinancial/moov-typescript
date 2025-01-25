@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateUnderwritingErrorError } from "moov-sdk/models/errors";
+import { UpdateUnderwritingErrorError } from "@moovio/sdk/models/errors";
 
 let value: UpdateUnderwritingErrorError = {};
 ```

@@ -7,7 +7,7 @@ This information will be used to authenticate the end user when they follow the 
 ## Example Usage
 
 ```typescript
-import { PayoutRecipient } from "moov-sdk/models/components";
+import { PayoutRecipient } from "@moovio/sdk/models/components";
 
 let value: PayoutRecipient = {
   email: "jordan.lee@classbooker.dev",

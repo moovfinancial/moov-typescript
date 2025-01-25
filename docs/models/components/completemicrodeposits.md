@@ -5,7 +5,7 @@ Request to complete the micro-deposit verification workflow.
 ## Example Usage
 
 ```typescript
-import { CompleteMicroDeposits } from "moov-sdk/models/components";
+import { CompleteMicroDeposits } from "@moovio/sdk/models/components";
 
 let value: CompleteMicroDeposits = {
   amounts: [

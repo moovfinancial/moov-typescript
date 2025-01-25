@@ -5,7 +5,7 @@ Payment methods allowed for disbursing funds.
 ## Example Usage
 
 ```typescript
-import { DisbursementPaymentMethodType } from "moov-sdk/models/components";
+import { DisbursementPaymentMethodType } from "@moovio/sdk/models/components";
 
 let value: DisbursementPaymentMethodType = "push-to-card";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateBusinessErrorTaxID } from "moov-sdk/models/components";
+import { CreateBusinessErrorTaxID } from "@moovio/sdk/models/components";
 
 let value: CreateBusinessErrorTaxID = {};
 ```

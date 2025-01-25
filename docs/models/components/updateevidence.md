@@ -5,7 +5,7 @@ The template for adding optional properties.
 ## Example Usage
 
 ```typescript
-import { UpdateEvidence } from "moov-sdk/models/components";
+import { UpdateEvidence } from "@moovio/sdk/models/components";
 
 let value: UpdateEvidence = {};
 ```

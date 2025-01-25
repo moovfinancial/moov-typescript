@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetScheduledOccurrenceRequest } from "moov-sdk/models/operations";
+import { GetScheduledOccurrenceRequest } from "@moovio/sdk/models/operations";
 
 let value: GetScheduledOccurrenceRequest = {
   accountID: "140cce1e-efc4-44ba-aa58-49cb68c33770",

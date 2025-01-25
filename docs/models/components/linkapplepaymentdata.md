@@ -8,7 +8,7 @@
 ## Example Usage
 
 ```typescript
-import { LinkApplePaymentData } from "moov-sdk/models/components";
+import { LinkApplePaymentData } from "@moovio/sdk/models/components";
 
 let value: LinkApplePaymentData = {
   version: "EC_v1",

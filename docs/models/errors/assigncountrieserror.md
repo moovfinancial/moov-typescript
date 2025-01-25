@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AssignCountriesError } from "moov-sdk/models/errors";
+import { AssignCountriesError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

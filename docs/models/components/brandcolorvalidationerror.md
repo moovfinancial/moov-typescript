@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BrandColorValidationError } from "moov-sdk/models/components";
+import { BrandColorValidationError } from "@moovio/sdk/models/components";
 
 let value: BrandColorValidationError = {};
 ```

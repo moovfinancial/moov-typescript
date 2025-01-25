@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BankAccountWaitFor } from "moov-sdk/models/components";
+import { BankAccountWaitFor } from "@moovio/sdk/models/components";
 
 let value: BankAccountWaitFor = "payment-method";
 ```

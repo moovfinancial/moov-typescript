@@ -5,7 +5,7 @@ Request to create an onboarding invite.
 ## Example Usage
 
 ```typescript
-import { OnboardingInviteRequest } from "moov-sdk/models/components";
+import { OnboardingInviteRequest } from "@moovio/sdk/models/components";
 
 let value: OnboardingInviteRequest = {
   scopes: [

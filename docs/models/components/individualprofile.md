@@ -5,7 +5,7 @@ Describes an individual.
 ## Example Usage
 
 ```typescript
-import { IndividualProfile } from "moov-sdk/models/components";
+import { IndividualProfile } from "@moovio/sdk/models/components";
 
 let value: IndividualProfile = {
   name: {

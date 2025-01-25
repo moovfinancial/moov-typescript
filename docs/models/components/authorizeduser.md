@@ -5,7 +5,7 @@ Fields for identifying an authorized individual.
 ## Example Usage
 
 ```typescript
-import { AuthorizedUser } from "moov-sdk/models/components";
+import { AuthorizedUser } from "@moovio/sdk/models/components";
 
 let value: AuthorizedUser = {
   firstName: "Hassie",

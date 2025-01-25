@@ -13,7 +13,7 @@ details.
 ## Example Usage
 
 ```typescript
-import { PlaidLinkIntegration } from "moov-sdk/models/components";
+import { PlaidLinkIntegration } from "@moovio/sdk/models/components";
 
 let value: PlaidLinkIntegration = {
   publicToken: "<value>",

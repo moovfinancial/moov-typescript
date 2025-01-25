@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadDisputeEvidenceTextSecurity } from "moov-sdk/models/operations";
+import { UploadDisputeEvidenceTextSecurity } from "@moovio/sdk/models/operations";
 
 let value: UploadDisputeEvidenceTextSecurity = {
   basicAuth: {

@@ -5,7 +5,7 @@ Asynchronous refund response
 ## Example Usage
 
 ```typescript
-import { AsyncCreatedRefund } from "moov-sdk/models/components";
+import { AsyncCreatedRefund } from "@moovio/sdk/models/components";
 
 let value: AsyncCreatedRefund = {
   refundID: "b8c17132-56f4-47cd-ac47-236b8ed099f0",

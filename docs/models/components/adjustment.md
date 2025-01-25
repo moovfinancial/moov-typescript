@@ -5,7 +5,7 @@ An adjustment to a wallet.
 ## Example Usage
 
 ```typescript
-import { Adjustment } from "moov-sdk/models/components";
+import { Adjustment } from "@moovio/sdk/models/components";
 
 let value: Adjustment = {
   adjustmentID: "ebb8fa69-04a4-4962-a499-9aa6e56ecb1e",

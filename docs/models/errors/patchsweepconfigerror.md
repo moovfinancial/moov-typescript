@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchSweepConfigError } from "moov-sdk/models/errors";
+import { PatchSweepConfigError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

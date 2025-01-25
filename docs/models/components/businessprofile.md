@@ -5,7 +5,7 @@ Describes a business.
 ## Example Usage
 
 ```typescript
-import { BusinessProfile } from "moov-sdk/models/components";
+import { BusinessProfile } from "@moovio/sdk/models/components";
 
 let value: BusinessProfile = {
   legalBusinessName: "Classbooker, LLC",

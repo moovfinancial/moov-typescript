@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetEnrichmentAddressSecurity } from "moov-sdk/models/operations";
+import { GetEnrichmentAddressSecurity } from "@moovio/sdk/models/operations";
 
 let value: GetEnrichmentAddressSecurity = {
   basicAuth: {

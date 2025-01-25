@@ -5,7 +5,7 @@ The results of submitting cardholder name to a card network for verification.
 ## Example Usage
 
 ```typescript
-import { AccountNameVerification } from "moov-sdk/models/components";
+import { AccountNameVerification } from "@moovio/sdk/models/components";
 
 let value: AccountNameVerification = {
   firstName: "match",

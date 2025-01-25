@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SweepStatus } from "moov-sdk/models/components";
+import { SweepStatus } from "@moovio/sdk/models/components";
 
 let value: SweepStatus = "accruing";
 ```

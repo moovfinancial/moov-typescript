@@ -5,7 +5,7 @@ The type of entity represented by this account.
 ## Example Usage
 
 ```typescript
-import { AccountType } from "moov-sdk/models/components";
+import { AccountType } from "@moovio/sdk/models/components";
 
 let value: AccountType = "business";
 ```

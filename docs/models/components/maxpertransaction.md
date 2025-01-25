@@ -5,7 +5,7 @@ Specifies the maximum allowable spending for a single transaction, working as a 
 ## Example Usage
 
 ```typescript
-import { MaxPerTransaction } from "moov-sdk/models/components";
+import { MaxPerTransaction } from "@moovio/sdk/models/components";
 
 let value: MaxPerTransaction = {
   currency: "USD",

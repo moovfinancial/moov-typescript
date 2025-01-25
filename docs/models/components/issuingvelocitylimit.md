@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { IssuingVelocityLimit } from "moov-sdk/models/components";
+import { IssuingVelocityLimit } from "@moovio/sdk/models/components";
 
 let value: IssuingVelocityLimit = {
   amount: 10000,

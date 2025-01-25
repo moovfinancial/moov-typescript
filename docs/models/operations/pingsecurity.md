@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PingSecurity } from "moov-sdk/models/operations";
+import { PingSecurity } from "@moovio/sdk/models/operations";
 
 let value: PingSecurity = {
   basicAuth: {

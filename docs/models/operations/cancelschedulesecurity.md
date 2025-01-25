@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelScheduleSecurity } from "moov-sdk/models/operations";
+import { CancelScheduleSecurity } from "@moovio/sdk/models/operations";
 
 let value: CancelScheduleSecurity = {
   basicAuth: {

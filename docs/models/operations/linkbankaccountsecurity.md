@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LinkBankAccountSecurity } from "moov-sdk/models/operations";
+import { LinkBankAccountSecurity } from "@moovio/sdk/models/operations";
 
 let value: LinkBankAccountSecurity = {
   basicAuth: {

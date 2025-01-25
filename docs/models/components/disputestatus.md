@@ -7,7 +7,7 @@ Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-paym
 ## Example Usage
 
 ```typescript
-import { DisputeStatus } from "moov-sdk/models/components";
+import { DisputeStatus } from "@moovio/sdk/models/components";
 
 let value: DisputeStatus = "won";
 ```

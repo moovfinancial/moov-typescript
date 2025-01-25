@@ -5,7 +5,7 @@ Describes an action or set of actions that an account is permitted to perform.
 ## Example Usage
 
 ```typescript
-import { AccountCapability } from "moov-sdk/models/components";
+import { AccountCapability } from "@moovio/sdk/models/components";
 
 let value: AccountCapability = {
   capability: "<value>",

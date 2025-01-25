@@ -21,7 +21,7 @@ to specify the `/ping.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -48,8 +48,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { endToEndEncryptionTestEndToEndToken } from "moov-sdk/funcs/endToEndEncryptionTestEndToEndToken.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { endToEndEncryptionTestEndToEndToken } from "@moovio/sdk/funcs/endToEndEncryptionTestEndToEndToken.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -107,7 +107,7 @@ Generates a public key used to create a JWE token for passing secure authenticat
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
@@ -131,8 +131,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { endToEndEncryptionGenerateEndToEndKey } from "moov-sdk/funcs/endToEndEncryptionGenerateEndToEndKey.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { endToEndEncryptionGenerateEndToEndKey } from "@moovio/sdk/funcs/endToEndEncryptionGenerateEndToEndKey.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

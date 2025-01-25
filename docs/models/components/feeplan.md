@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FeePlan } from "moov-sdk/models/components";
+import { FeePlan } from "@moovio/sdk/models/components";
 
 let value: FeePlan = {
   planID: "f2159a6f-5bad-4fec-bb52-1368cf119bde",

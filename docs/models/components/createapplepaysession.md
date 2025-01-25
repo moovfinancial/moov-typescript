@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateApplePaySession } from "moov-sdk/models/components";
+import { CreateApplePaySession } from "@moovio/sdk/models/components";
 
 let value: CreateApplePaySession = {
   domain: "checkout.classbooker.dev",

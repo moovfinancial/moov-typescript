@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AchDebitCollectPaymentMethodPaymentMethodType } from "moov-sdk/models/components";
+import { AchDebitCollectPaymentMethodPaymentMethodType } from "@moovio/sdk/models/components";
 
 let value: AchDebitCollectPaymentMethodPaymentMethodType = "ach-debit-collect";
 ```

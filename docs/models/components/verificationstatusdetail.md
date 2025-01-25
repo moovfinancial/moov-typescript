@@ -7,7 +7,7 @@ Additional detail for a verification status.
 ## Example Usage
 
 ```typescript
-import { VerificationStatusDetail } from "moov-sdk/models/components";
+import { VerificationStatusDetail } from "@moovio/sdk/models/components";
 
 let value: VerificationStatusDetail = "potentialAccountSanctionsMatch";
 ```

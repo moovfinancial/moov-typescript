@@ -5,7 +5,7 @@ Details of a Transfer.
 ## Example Usage
 
 ```typescript
-import { Transfer } from "moov-sdk/models/errors";
+import { Transfer } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

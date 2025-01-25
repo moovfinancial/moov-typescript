@@ -1,6 +1,6 @@
 {
-  "name": "moov-sdk",
-  "version": "0.1.0",
+  "name": "@moovio/sdk",
+  "version": "0.1.1",
   "author": "Moov",
   "main": "./index.js",
   "sideEffects": false,

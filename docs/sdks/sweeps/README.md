@@ -19,7 +19,7 @@ Create a sweep config for a wallet.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -51,8 +51,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { sweepsCreateSweepConfig } from "moov-sdk/funcs/sweepsCreateSweepConfig.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { sweepsCreateSweepConfig } from "@moovio/sdk/funcs/sweepsCreateSweepConfig.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -116,7 +116,7 @@ List sweep configs associated with an account.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -142,8 +142,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { sweepsListSweepConfigs } from "moov-sdk/funcs/sweepsListSweepConfigs.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { sweepsListSweepConfigs } from "@moovio/sdk/funcs/sweepsListSweepConfigs.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -199,7 +199,7 @@ Get a sweep config associated with a wallet.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -226,8 +226,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { sweepsGetSweepConfig } from "moov-sdk/funcs/sweepsGetSweepConfig.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { sweepsGetSweepConfig } from "@moovio/sdk/funcs/sweepsGetSweepConfig.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -284,7 +284,7 @@ Update settings on a sweep config.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -314,8 +314,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { sweepsPatchSweepConfig } from "moov-sdk/funcs/sweepsPatchSweepConfig.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { sweepsPatchSweepConfig } from "@moovio/sdk/funcs/sweepsPatchSweepConfig.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -377,7 +377,7 @@ List sweeps associated with a wallet.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -406,8 +406,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { sweepsListSweeps } from "moov-sdk/funcs/sweepsListSweeps.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { sweepsListSweeps } from "@moovio/sdk/funcs/sweepsListSweeps.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -466,7 +466,7 @@ Get details on a specific sweep.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -494,8 +494,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { sweepsGetSweep } from "moov-sdk/funcs/sweepsGetSweep.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { sweepsGetSweep } from "@moovio/sdk/funcs/sweepsGetSweep.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

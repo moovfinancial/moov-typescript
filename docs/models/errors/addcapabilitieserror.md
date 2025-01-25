@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AddCapabilitiesError } from "moov-sdk/models/errors";
+import { AddCapabilitiesError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

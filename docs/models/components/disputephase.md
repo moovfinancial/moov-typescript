@@ -5,7 +5,7 @@ The phase of a dispute within the dispute lifecycle.
 ## Example Usage
 
 ```typescript
-import { DisputePhase } from "moov-sdk/models/components";
+import { DisputePhase } from "@moovio/sdk/models/components";
 
 let value: DisputePhase = "pre-dispute";
 ```

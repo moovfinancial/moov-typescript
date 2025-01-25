@@ -5,7 +5,7 @@ The status of the capability requested for an account.
 ## Example Usage
 
 ```typescript
-import { CapabilityStatus } from "moov-sdk/models/components";
+import { CapabilityStatus } from "@moovio/sdk/models/components";
 
 let value: CapabilityStatus = "pending";
 ```

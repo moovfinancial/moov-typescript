@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateEvidenceFileMultiPart } from "moov-sdk/models/components";
+import { CreateEvidenceFileMultiPart } from "@moovio/sdk/models/components";
 
 // No examples available for this model
 ```

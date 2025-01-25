@@ -5,7 +5,7 @@ Describes the acceptance of the Terms of Service.
 ## Example Usage
 
 ```typescript
-import { TermsOfService } from "moov-sdk/models/components";
+import { TermsOfService } from "@moovio/sdk/models/components";
 
 let value: TermsOfService = {
   acceptedDate: new Date("2024-04-09T07:48:57.030Z"),

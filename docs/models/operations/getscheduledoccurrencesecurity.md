@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetScheduledOccurrenceSecurity } from "moov-sdk/models/operations";
+import { GetScheduledOccurrenceSecurity } from "@moovio/sdk/models/operations";
 
 let value: GetScheduledOccurrenceSecurity = {
   basicAuth: {

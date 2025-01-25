@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { UnderwritingStatus } from "moov-sdk/models/components";
+import { UnderwritingStatus } from "@moovio/sdk/models/components";
 
 let value: UnderwritingStatus = "pendingReview";
 ```

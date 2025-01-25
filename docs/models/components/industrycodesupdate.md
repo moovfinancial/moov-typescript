@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { IndustryCodesUpdate } from "moov-sdk/models/components";
+import { IndustryCodesUpdate } from "@moovio/sdk/models/components";
 
 let value: IndustryCodesUpdate = {
   naics: "713940",

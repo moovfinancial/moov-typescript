@@ -19,7 +19,7 @@ Allows clients to notify the authorization server that a previously obtained ref
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
@@ -48,8 +48,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { authenticationRevokeAuthToken } from "moov-sdk/funcs/authenticationRevokeAuthToken.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { authenticationRevokeAuthToken } from "@moovio/sdk/funcs/authenticationRevokeAuthToken.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -109,7 +109,7 @@ Create or refresh an access token.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
@@ -141,8 +141,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { authenticationCreateAuthToken } from "moov-sdk/funcs/authenticationCreateAuthToken.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { authenticationCreateAuthToken } from "@moovio/sdk/funcs/authenticationCreateAuthToken.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -5,7 +5,7 @@ Defines the specific parameters used for fee calculation.
 ## Example Usage
 
 ```typescript
-import { FeeProperties } from "moov-sdk/models/components";
+import { FeeProperties } from "@moovio/sdk/models/components";
 
 let value: FeeProperties = {
   fixedAmount: {

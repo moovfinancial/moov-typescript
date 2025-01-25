@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FileT } from "moov-sdk/models/components";
+import { FileT } from "@moovio/sdk/models/components";
 
 // No examples available for this model
 ```

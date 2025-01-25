@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PaymentLinkPayoutDetailsUpdate } from "moov-sdk/models/components";
+import { PaymentLinkPayoutDetailsUpdate } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkPayoutDetailsUpdate = {
   recipient: {

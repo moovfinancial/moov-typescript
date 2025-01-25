@@ -5,7 +5,7 @@ Options for payment links used to collect payment.
 ## Example Usage
 
 ```typescript
-import { PaymentLinkPaymentDetailsUpdate } from "moov-sdk/models/components";
+import { PaymentLinkPaymentDetailsUpdate } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkPaymentDetailsUpdate = {
   cardDetails: {

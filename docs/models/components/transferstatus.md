@@ -5,7 +5,7 @@ Status of a transfer.
 ## Example Usage
 
 ```typescript
-import { TransferStatus } from "moov-sdk/models/components";
+import { TransferStatus } from "@moovio/sdk/models/components";
 
 let value: TransferStatus = "created";
 ```

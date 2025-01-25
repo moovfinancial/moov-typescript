@@ -5,7 +5,7 @@ Describes a file linked to a Moov account.
 ## Example Usage
 
 ```typescript
-import { FileDetails } from "moov-sdk/models/components";
+import { FileDetails } from "@moovio/sdk/models/components";
 
 let value: FileDetails = {
   fileID: "848e84e5-035d-4775-beff-6fca332e477c",

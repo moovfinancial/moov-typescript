@@ -13,7 +13,7 @@ be used. The following default data will be used to generate the bank account in
 ## Example Usage
 
 ```typescript
-import { MxPayload } from "moov-sdk/models/components";
+import { MxPayload } from "@moovio/sdk/models/components";
 
 let value: MxPayload = {
   mx: {

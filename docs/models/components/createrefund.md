@@ -7,7 +7,7 @@ This request body is optional, an empty body will issue a refund for the full am
 ## Example Usage
 
 ```typescript
-import { CreateRefund } from "moov-sdk/models/components";
+import { CreateRefund } from "@moovio/sdk/models/components";
 
 let value: CreateRefund = {
   amount: 1000,

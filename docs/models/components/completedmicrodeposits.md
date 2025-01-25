@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CompletedMicroDeposits } from "moov-sdk/models/components";
+import { CompletedMicroDeposits } from "@moovio/sdk/models/components";
 
 let value: CompletedMicroDeposits = {
   status: "verified",

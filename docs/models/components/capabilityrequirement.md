@@ -5,7 +5,7 @@ Represents individual and business data necessary to facilitate the enabling of 
 ## Example Usage
 
 ```typescript
-import { CapabilityRequirement } from "moov-sdk/models/components";
+import { CapabilityRequirement } from "@moovio/sdk/models/components";
 
 let value: CapabilityRequirement = {
   currentlyDue: [

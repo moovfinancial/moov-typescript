@@ -5,7 +5,7 @@ The final stage of a transfer and the ultimate recipient of the funds.
 ## Example Usage
 
 ```typescript
-import { CreateTransferDestination } from "moov-sdk/models/components";
+import { CreateTransferDestination } from "@moovio/sdk/models/components";
 
 let value: CreateTransferDestination = {
   paymentMethodID: "<id>",

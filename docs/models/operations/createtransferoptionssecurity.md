@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateTransferOptionsSecurity } from "moov-sdk/models/operations";
+import { CreateTransferOptionsSecurity } from "@moovio/sdk/models/operations";
 
 let value: CreateTransferOptionsSecurity = {
   basicAuth: {

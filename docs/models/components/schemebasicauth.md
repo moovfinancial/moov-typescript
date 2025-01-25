@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SchemeBasicAuth } from "moov-sdk/models/components";
+import { SchemeBasicAuth } from "@moovio/sdk/models/components";
 
 let value: SchemeBasicAuth = {
   username: "",

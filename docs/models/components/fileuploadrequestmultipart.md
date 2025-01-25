@@ -5,7 +5,7 @@ Request to upload a file for an account.
 ## Example Usage
 
 ```typescript
-import { FileUploadRequestMultiPart } from "moov-sdk/models/components";
+import { FileUploadRequestMultiPart } from "@moovio/sdk/models/components";
 
 // No examples available for this model
 ```

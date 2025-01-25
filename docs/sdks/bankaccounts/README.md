@@ -98,7 +98,7 @@ endpoint to wait for the new payment methods to be available for use.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -129,8 +129,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { bankAccountsLinkBankAccount } from "moov-sdk/funcs/bankAccountsLinkBankAccount.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { bankAccountsLinkBankAccount } from "@moovio/sdk/funcs/bankAccountsLinkBankAccount.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -197,7 +197,7 @@ from the browser, you'll need to specify the `/accounts/{accountID}/bank-account
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -223,8 +223,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { bankAccountsListBankAccounts } from "moov-sdk/funcs/bankAccountsListBankAccounts.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { bankAccountsListBankAccounts } from "@moovio/sdk/funcs/bankAccountsListBankAccounts.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -284,7 +284,7 @@ generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -311,8 +311,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { bankAccountsGetBankAccount } from "moov-sdk/funcs/bankAccountsGetBankAccount.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { bankAccountsGetBankAccount } from "@moovio/sdk/funcs/bankAccountsGetBankAccount.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -372,7 +372,7 @@ when generating a [token](https://docs.moov.io/api/authentication/access-tokens/
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -398,8 +398,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { bankAccountsDisableBankAccount } from "moov-sdk/funcs/bankAccountsDisableBankAccount.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { bankAccountsDisableBankAccount } from "@moovio/sdk/funcs/bankAccountsDisableBankAccount.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -464,7 +464,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -490,8 +490,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { bankAccountsInitiateMicroDeposits } from "moov-sdk/funcs/bankAccountsInitiateMicroDeposits.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { bankAccountsInitiateMicroDeposits } from "@moovio/sdk/funcs/bankAccountsInitiateMicroDeposits.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -551,7 +551,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -584,8 +584,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { bankAccountsCompleteMicroDeposits } from "moov-sdk/funcs/bankAccountsCompleteMicroDeposits.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { bankAccountsCompleteMicroDeposits } from "@moovio/sdk/funcs/bankAccountsCompleteMicroDeposits.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -662,7 +662,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -689,8 +689,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { bankAccountsGetBankAccountVerification } from "moov-sdk/funcs/bankAccountsGetBankAccountVerification.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { bankAccountsGetBankAccountVerification } from "@moovio/sdk/funcs/bankAccountsGetBankAccountVerification.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -765,7 +765,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -793,8 +793,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { bankAccountsInitiateBankAccountVerification } from "moov-sdk/funcs/bankAccountsInitiateBankAccountVerification.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { bankAccountsInitiateBankAccountVerification } from "@moovio/sdk/funcs/bankAccountsInitiateBankAccountVerification.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -863,7 +863,7 @@ generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -893,8 +893,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { bankAccountsCompleteBankAccountVerification } from "moov-sdk/funcs/bankAccountsCompleteBankAccountVerification.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { bankAccountsCompleteBankAccountVerification } from "@moovio/sdk/funcs/bankAccountsCompleteBankAccountVerification.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

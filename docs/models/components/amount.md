@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Amount } from "moov-sdk/models/components";
+import { Amount } from "@moovio/sdk/models/components";
 
 let value: Amount = {
   currency: "USD",

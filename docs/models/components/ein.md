@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Ein } from "moov-sdk/models/components";
+import { Ein } from "@moovio/sdk/models/components";
 
 let value: Ein = {
   number: "12-3456789",

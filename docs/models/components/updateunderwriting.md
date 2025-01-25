@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateUnderwriting } from "moov-sdk/models/components";
+import { UpdateUnderwriting } from "@moovio/sdk/models/components";
 
 let value: UpdateUnderwriting = {
   averageTransactionSize: 454386,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AddressError } from "moov-sdk/models/components";
+import { AddressError } from "@moovio/sdk/models/components";
 
 let value: AddressError = {};
 ```

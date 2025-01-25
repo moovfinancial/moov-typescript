@@ -5,7 +5,7 @@ A Moov wallet to store funds for transfers.
 ## Example Usage
 
 ```typescript
-import { Wallet } from "moov-sdk/models/components";
+import { Wallet } from "@moovio/sdk/models/components";
 
 let value: Wallet = {
   walletID: "cbf8c556-6181-4e07-b42c-b2acc1abd87f",

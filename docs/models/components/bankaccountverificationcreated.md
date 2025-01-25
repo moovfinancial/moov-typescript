@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BankAccountVerificationCreated } from "moov-sdk/models/components";
+import { BankAccountVerificationCreated } from "@moovio/sdk/models/components";
 
 let value: BankAccountVerificationCreated = {
   verificationMethod: "ach",

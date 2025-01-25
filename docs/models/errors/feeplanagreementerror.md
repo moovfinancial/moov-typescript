@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FeePlanAgreementError } from "moov-sdk/models/errors";
+import { FeePlanAgreementError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

@@ -13,7 +13,7 @@ The `latest` version represents the most recent development state. It may includ
 ## Example Usage
 
 ```typescript
-import { Versions } from "moov-sdk/models/components";
+import { Versions } from "@moovio/sdk/models/components";
 
 let value: Versions = "latest";
 ```

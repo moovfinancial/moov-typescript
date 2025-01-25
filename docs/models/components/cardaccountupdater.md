@@ -5,7 +5,7 @@ The results of the most recent card update request.
 ## Example Usage
 
 ```typescript
-import { CardAccountUpdater } from "moov-sdk/models/components";
+import { CardAccountUpdater } from "@moovio/sdk/models/components";
 
 let value: CardAccountUpdater = {
   updatedOn: new Date("2024-05-06T12:20:38.184Z"),

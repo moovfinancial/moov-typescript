@@ -5,7 +5,7 @@ Customizable display options for a payment link.
 ## Example Usage
 
 ```typescript
-import { PaymentLinkDisplayOptions } from "moov-sdk/models/components";
+import { PaymentLinkDisplayOptions } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkDisplayOptions = {
   title: "<value>",

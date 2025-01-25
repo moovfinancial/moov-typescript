@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ReturnPolicyType } from "moov-sdk/models/components";
+import { ReturnPolicyType } from "@moovio/sdk/models/components";
 
 let value: ReturnPolicyType = "none";
 ```

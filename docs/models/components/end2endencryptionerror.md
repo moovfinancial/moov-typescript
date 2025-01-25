@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { End2EndEncryptionError } from "moov-sdk/models/components";
+import { End2EndEncryptionError } from "@moovio/sdk/models/components";
 
 let value: End2EndEncryptionError = {};
 ```

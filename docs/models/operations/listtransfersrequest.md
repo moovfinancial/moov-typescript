@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ListTransfersRequest } from "moov-sdk/models/operations";
+import { ListTransfersRequest } from "@moovio/sdk/models/operations";
 
 let value: ListTransfersRequest = {
   skip: 60,

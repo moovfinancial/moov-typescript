@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OnboardingInviteError } from "moov-sdk/models/errors";
+import { OnboardingInviteError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

@@ -100,7 +100,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -131,8 +131,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsRegisterApplePayMerchantDomains } from "moov-sdk/funcs/cardsRegisterApplePayMerchantDomains.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsRegisterApplePayMerchantDomains } from "@moovio/sdk/funcs/cardsRegisterApplePayMerchantDomains.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -200,7 +200,7 @@ run();
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -233,8 +233,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsUpdateApplePayMerchantDomains } from "moov-sdk/funcs/cardsUpdateApplePayMerchantDomains.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsUpdateApplePayMerchantDomains } from "@moovio/sdk/funcs/cardsUpdateApplePayMerchantDomains.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -303,7 +303,7 @@ run();
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -329,8 +329,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsGetApplePayMerchantDomains } from "moov-sdk/funcs/cardsGetApplePayMerchantDomains.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsGetApplePayMerchantDomains } from "@moovio/sdk/funcs/cardsGetApplePayMerchantDomains.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -392,7 +392,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -422,8 +422,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsCreateApplePaySession } from "moov-sdk/funcs/cardsCreateApplePaySession.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsCreateApplePaySession } from "@moovio/sdk/funcs/cardsCreateApplePaySession.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -490,7 +490,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -545,8 +545,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsLinkApplePayToken } from "moov-sdk/funcs/cardsLinkApplePayToken.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsLinkApplePayToken } from "@moovio/sdk/funcs/cardsLinkApplePayToken.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -650,7 +650,7 @@ when generating a [token](https://docs.moov.io/api/authentication/access-tokens/
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -697,8 +697,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsLinkCard } from "moov-sdk/funcs/cardsLinkCard.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsLinkCard } from "@moovio/sdk/funcs/cardsLinkCard.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -782,7 +782,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -808,8 +808,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsListCards } from "moov-sdk/funcs/cardsListCards.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsListCards } from "@moovio/sdk/funcs/cardsListCards.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -870,7 +870,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -897,8 +897,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsGetCard } from "moov-sdk/funcs/cardsGetCard.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsGetCard } from "@moovio/sdk/funcs/cardsGetCard.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -967,7 +967,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -997,8 +997,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsUpdateCard } from "moov-sdk/funcs/cardsUpdateCard.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsUpdateCard } from "@moovio/sdk/funcs/cardsUpdateCard.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1063,7 +1063,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -1089,8 +1089,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { cardsDisableCard } from "moov-sdk/funcs/cardsDisableCard.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsDisableCard } from "@moovio/sdk/funcs/cardsDisableCard.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

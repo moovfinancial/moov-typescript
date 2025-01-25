@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CompleteBankAccountVerification } from "moov-sdk/models/components";
+import { CompleteBankAccountVerification } from "@moovio/sdk/models/components";
 
 let value: CompleteBankAccountVerification = {
   code: "MV1234",

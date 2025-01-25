@@ -5,7 +5,7 @@ Indicates which level of domestic push-to-card transfer is supported by the card
 ## Example Usage
 
 ```typescript
-import { DomesticPushToCard } from "moov-sdk/models/components";
+import { DomesticPushToCard } from "@moovio/sdk/models/components";
 
 let value: DomesticPushToCard = "standard";
 ```

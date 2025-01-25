@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateIssuedCardError } from "moov-sdk/models/errors";
+import { UpdateIssuedCardError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

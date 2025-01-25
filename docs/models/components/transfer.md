@@ -5,7 +5,7 @@ Details of a Transfer.
 ## Example Usage
 
 ```typescript
-import { Transfer } from "moov-sdk/models/components";
+import { Transfer } from "@moovio/sdk/models/components";
 
 let value: Transfer = {
   transferID: "d835gf30-4b19-4850-a9b2-c0624c41ecb3",

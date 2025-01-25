@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TransferSource } from "moov-sdk/models/components";
+import { TransferSource } from "@moovio/sdk/models/components";
 
 let value: TransferSource = {
   paymentMethodID: "<id>",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadFileRequest } from "moov-sdk/models/operations";
+import { UploadFileRequest } from "@moovio/sdk/models/operations";
 
 // No examples available for this model
 ```

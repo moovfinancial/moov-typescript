@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateSweepConfig } from "moov-sdk/models/components";
+import { CreateSweepConfig } from "@moovio/sdk/models/components";
 
 let value: CreateSweepConfig = {
   walletID: "0d69f02c-cc8f-4691-a6b3-fa4c1f0e4c04",

@@ -5,7 +5,7 @@ Describes a bank account linked to a Moov account.
 ## Example Usage
 
 ```typescript
-import { BankAccount } from "moov-sdk/models/components";
+import { BankAccount } from "@moovio/sdk/models/components";
 
 let value: BankAccount = {
   bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",

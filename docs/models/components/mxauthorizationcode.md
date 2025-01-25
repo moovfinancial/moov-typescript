@@ -8,7 +8,7 @@ The MX authorization code provided must be generated from MX's sandbox environme
 ## Example Usage
 
 ```typescript
-import { MXAuthorizationCode } from "moov-sdk/models/components";
+import { MXAuthorizationCode } from "@moovio/sdk/models/components";
 
 let value: MXAuthorizationCode = {
   authorizationCode: "<value>",

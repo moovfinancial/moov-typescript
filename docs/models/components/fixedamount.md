@@ -5,7 +5,7 @@ A fixed fee that is applied to the amount of each transaction in the `fixed` and
 ## Example Usage
 
 ```typescript
-import { FixedAmount } from "moov-sdk/models/components";
+import { FixedAmount } from "@moovio/sdk/models/components";
 
 let value: FixedAmount = {
   currency: "USD",

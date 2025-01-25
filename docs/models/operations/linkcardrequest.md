@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LinkCardRequest } from "moov-sdk/models/operations";
+import { LinkCardRequest } from "@moovio/sdk/models/operations";
 
 let value: LinkCardRequest = {
   xWaitFor: "payment-method",

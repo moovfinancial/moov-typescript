@@ -8,7 +8,7 @@ Omit for customer-initiated e-commerce transactions.
 ## Example Usage
 
 ```typescript
-import { TransactionSource } from "moov-sdk/models/components";
+import { TransactionSource } from "@moovio/sdk/models/components";
 
 let value: TransactionSource = "unscheduled";
 ```

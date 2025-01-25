@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { InitiateBankAccountVerificationRequest } from "moov-sdk/models/operations";
+import { InitiateBankAccountVerificationRequest } from "@moovio/sdk/models/operations";
 
 let value: InitiateBankAccountVerificationRequest = {
   xWaitFor: "rail-response",

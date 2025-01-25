@@ -7,7 +7,7 @@ This token is encrypted using the public key from /end-to-end-keys and wraps an 
 ## Example Usage
 
 ```typescript
-import { E2EEToken } from "moov-sdk/models/components";
+import { E2EEToken } from "@moovio/sdk/models/components";
 
 let value: E2EEToken = {
   token:

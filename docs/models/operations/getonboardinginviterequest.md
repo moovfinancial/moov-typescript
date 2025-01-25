@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetOnboardingInviteRequest } from "moov-sdk/models/operations";
+import { GetOnboardingInviteRequest } from "@moovio/sdk/models/operations";
 
 let value: GetOnboardingInviteRequest = {
   code: "N1IA5eWYNh",

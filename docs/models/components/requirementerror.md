@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RequirementError } from "moov-sdk/models/components";
+import { RequirementError } from "@moovio/sdk/models/components";
 
 let value: RequirementError = {
   requirement: "business.dba",

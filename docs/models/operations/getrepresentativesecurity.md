@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetRepresentativeSecurity } from "moov-sdk/models/operations";
+import { GetRepresentativeSecurity } from "@moovio/sdk/models/operations";
 
 let value: GetRepresentativeSecurity = {
   basicAuth: {

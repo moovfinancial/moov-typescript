@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetEnrichmentAddressRequest } from "moov-sdk/models/operations";
+import { GetEnrichmentAddressRequest } from "@moovio/sdk/models/operations";
 
 let value: GetEnrichmentAddressRequest = {
   search: "<value>",

@@ -18,7 +18,7 @@
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -44,8 +44,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { enrichedProfileGetEnrichmentProfile } from "moov-sdk/funcs/enrichedProfileGetEnrichmentProfile.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { enrichedProfileGetEnrichmentProfile } from "@moovio/sdk/funcs/enrichedProfileGetEnrichmentProfile.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

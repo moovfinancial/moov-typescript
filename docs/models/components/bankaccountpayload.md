@@ -5,7 +5,7 @@ Describes the bank account to link to the Moov account.
 ## Example Usage
 
 ```typescript
-import { BankAccountPayload } from "moov-sdk/models/components";
+import { BankAccountPayload } from "@moovio/sdk/models/components";
 
 let value: BankAccountPayload = {
   account: {

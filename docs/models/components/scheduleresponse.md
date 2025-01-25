@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ScheduleResponse } from "moov-sdk/models/components";
+import { ScheduleResponse } from "@moovio/sdk/models/components";
 
 let value: ScheduleResponse = {
   destinationAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",

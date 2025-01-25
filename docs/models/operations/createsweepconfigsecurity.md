@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateSweepConfigSecurity } from "moov-sdk/models/operations";
+import { CreateSweepConfigSecurity } from "@moovio/sdk/models/operations";
 
 let value: CreateSweepConfigSecurity = {
   basicAuth: {

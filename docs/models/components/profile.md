@@ -5,7 +5,7 @@ Describes a Moov account profile. A profile will have a business or an individua
 ## Example Usage
 
 ```typescript
-import { Profile } from "moov-sdk/models/components";
+import { Profile } from "@moovio/sdk/models/components";
 
 let value: Profile = {
   individual: {

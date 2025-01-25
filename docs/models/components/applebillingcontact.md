@@ -8,7 +8,7 @@
 ## Example Usage
 
 ```typescript
-import { AppleBillingContact } from "moov-sdk/models/components";
+import { AppleBillingContact } from "@moovio/sdk/models/components";
 
 let value: AppleBillingContact = {
   addressLines: [

@@ -21,7 +21,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -47,8 +47,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { paymentMethodsListPaymentMethods } from "moov-sdk/funcs/paymentMethodsListPaymentMethods.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { paymentMethodsListPaymentMethods } from "@moovio/sdk/funcs/paymentMethodsListPaymentMethods.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -106,7 +106,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -133,8 +133,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { paymentMethodsGetPaymentMethod } from "moov-sdk/funcs/paymentMethodsGetPaymentMethod.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { paymentMethodsGetPaymentMethod } from "@moovio/sdk/funcs/paymentMethodsGetPaymentMethod.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RevokeTokenRequestError } from "moov-sdk/models/errors";
+import { RevokeTokenRequestError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

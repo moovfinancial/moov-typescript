@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetBrandRequest } from "moov-sdk/models/operations";
+import { GetBrandRequest } from "@moovio/sdk/models/operations";
 
 let value: GetBrandRequest = {
   accountID: "7acbcace-e5f0-4973-9818-d25a56575231",

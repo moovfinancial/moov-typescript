@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FileUploadRequestMultiPartFile } from "moov-sdk/models/components";
+import { FileUploadRequestMultiPartFile } from "@moovio/sdk/models/components";
 
 // No examples available for this model
 ```

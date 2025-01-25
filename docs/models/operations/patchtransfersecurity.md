@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchTransferSecurity } from "moov-sdk/models/operations";
+import { PatchTransferSecurity } from "@moovio/sdk/models/operations";
 
 let value: PatchTransferSecurity = {
   basicAuth: {

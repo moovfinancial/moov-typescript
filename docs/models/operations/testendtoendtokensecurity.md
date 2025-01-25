@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TestEndToEndTokenSecurity } from "moov-sdk/models/operations";
+import { TestEndToEndTokenSecurity } from "@moovio/sdk/models/operations";
 
 let value: TestEndToEndTokenSecurity = {
   basicAuth: {

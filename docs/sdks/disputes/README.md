@@ -87,7 +87,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -115,8 +115,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesListDisputes } from "moov-sdk/funcs/disputesListDisputes.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesListDisputes } from "@moovio/sdk/funcs/disputesListDisputes.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -179,7 +179,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -206,8 +206,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesGetDispute } from "moov-sdk/funcs/disputesGetDispute.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesGetDispute } from "@moovio/sdk/funcs/disputesGetDispute.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -269,7 +269,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -296,8 +296,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesAcceptDispute } from "moov-sdk/funcs/disputesAcceptDispute.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesAcceptDispute } from "@moovio/sdk/funcs/disputesAcceptDispute.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -360,7 +360,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -387,8 +387,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesListDisputeEvidence } from "moov-sdk/funcs/disputesListDisputeEvidence.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesListDisputeEvidence } from "@moovio/sdk/funcs/disputesListDisputeEvidence.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -450,7 +450,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
 
 const moov = new Moov();
@@ -481,8 +481,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesUploadDisputeEvidenceFile } from "moov-sdk/funcs/disputesUploadDisputeEvidenceFile.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesUploadDisputeEvidenceFile } from "@moovio/sdk/funcs/disputesUploadDisputeEvidenceFile.js";
 import { openAsBlob } from "node:fs";
 
 // Use `MoovCore` for best tree-shaking performance.
@@ -549,7 +549,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -580,8 +580,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesUploadDisputeEvidenceText } from "moov-sdk/funcs/disputesUploadDisputeEvidenceText.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesUploadDisputeEvidenceText } from "@moovio/sdk/funcs/disputesUploadDisputeEvidenceText.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -651,7 +651,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -678,8 +678,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesSubmitDisputeEvidence } from "moov-sdk/funcs/disputesSubmitDisputeEvidence.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesSubmitDisputeEvidence } from "@moovio/sdk/funcs/disputesSubmitDisputeEvidence.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -742,7 +742,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -770,8 +770,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesGetDisputeEvidence } from "moov-sdk/funcs/disputesGetDisputeEvidence.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesGetDisputeEvidence } from "@moovio/sdk/funcs/disputesGetDisputeEvidence.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -834,7 +834,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -863,8 +863,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesUpdateDisputeEvidence } from "moov-sdk/funcs/disputesUpdateDisputeEvidence.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesUpdateDisputeEvidence } from "@moovio/sdk/funcs/disputesUpdateDisputeEvidence.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -929,7 +929,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -956,8 +956,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesDeleteDisputeEvidenceFile } from "moov-sdk/funcs/disputesDeleteDisputeEvidenceFile.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesDeleteDisputeEvidenceFile } from "@moovio/sdk/funcs/disputesDeleteDisputeEvidenceFile.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1020,7 +1020,7 @@ a [token](https://docs.moov.io/api/authentication/access-tokens/).
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -1048,8 +1048,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { disputesGetDisputeEvidenceData } from "moov-sdk/funcs/disputesGetDisputeEvidenceData.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { disputesGetDisputeEvidenceData } from "@moovio/sdk/funcs/disputesGetDisputeEvidenceData.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -5,7 +5,7 @@ An encrypted value used to record acceptance of Moov's Terms of Service.
 ## Example Usage
 
 ```typescript
-import { TermsOfServiceTokenUpdate } from "moov-sdk/models/components";
+import { TermsOfServiceTokenUpdate } from "@moovio/sdk/models/components";
 
 let value: TermsOfServiceTokenUpdate = {
   token:

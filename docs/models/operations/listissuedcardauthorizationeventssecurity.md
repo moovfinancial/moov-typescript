@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ListIssuedCardAuthorizationEventsSecurity } from "moov-sdk/models/operations";
+import { ListIssuedCardAuthorizationEventsSecurity } from "@moovio/sdk/models/operations";
 
 let value: ListIssuedCardAuthorizationEventsSecurity = {
   basicAuth: {

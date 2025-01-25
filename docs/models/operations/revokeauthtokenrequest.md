@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RevokeAuthTokenRequest } from "moov-sdk/models/operations";
+import { RevokeAuthTokenRequest } from "@moovio/sdk/models/operations";
 
 let value: RevokeAuthTokenRequest = {
   revokeTokenRequest: {

@@ -36,7 +36,7 @@ the `/accounts/{accountID}/issued-cards.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -64,8 +64,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { issuingTransactionsListIssuedCardAuthorizations } from "moov-sdk/funcs/issuingTransactionsListIssuedCardAuthorizations.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { issuingTransactionsListIssuedCardAuthorizations } from "@moovio/sdk/funcs/issuingTransactionsListIssuedCardAuthorizations.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -126,7 +126,7 @@ the `/accounts/{accountID}/issued-cards.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -153,8 +153,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { issuingTransactionsGetIssuedCardAuthorization } from "moov-sdk/funcs/issuingTransactionsGetIssuedCardAuthorization.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { issuingTransactionsGetIssuedCardAuthorization } from "@moovio/sdk/funcs/issuingTransactionsGetIssuedCardAuthorization.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -214,7 +214,7 @@ the `/accounts/{accountID}/issued-cards.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -243,8 +243,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { issuingTransactionsListIssuedCardAuthorizationEvents } from "moov-sdk/funcs/issuingTransactionsListIssuedCardAuthorizationEvents.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { issuingTransactionsListIssuedCardAuthorizationEvents } from "@moovio/sdk/funcs/issuingTransactionsListIssuedCardAuthorizationEvents.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -306,7 +306,7 @@ the `/accounts/{accountID}/issued-cards.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -334,8 +334,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { issuingTransactionsListIssuedCardTransactions } from "moov-sdk/funcs/issuingTransactionsListIssuedCardTransactions.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { issuingTransactionsListIssuedCardTransactions } from "@moovio/sdk/funcs/issuingTransactionsListIssuedCardTransactions.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -396,7 +396,7 @@ the `/accounts/{accountID}/issued-cards.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -423,8 +423,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { issuingTransactionsGetIssuedCardTransaction } from "moov-sdk/funcs/issuingTransactionsGetIssuedCardTransaction.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { issuingTransactionsGetIssuedCardTransaction } from "@moovio/sdk/funcs/issuingTransactionsGetIssuedCardTransaction.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

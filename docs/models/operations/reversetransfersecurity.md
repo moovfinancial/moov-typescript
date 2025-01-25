@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ReverseTransferSecurity } from "moov-sdk/models/operations";
+import { ReverseTransferSecurity } from "@moovio/sdk/models/operations";
 
 let value: ReverseTransferSecurity = {
   basicAuth: {

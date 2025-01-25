@@ -5,7 +5,7 @@ Status of the completed occurrence.
 ## Example Usage
 
 ```typescript
-import { OccurrenceStatus } from "moov-sdk/models/components";
+import { OccurrenceStatus } from "@moovio/sdk/models/components";
 
 let value: OccurrenceStatus = "completed";
 ```

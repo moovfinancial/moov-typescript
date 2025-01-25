@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { VolumeByCustomerTypeError } from "moov-sdk/models/components";
+import { VolumeByCustomerTypeError } from "@moovio/sdk/models/components";
 
 let value: VolumeByCustomerTypeError = {};
 ```

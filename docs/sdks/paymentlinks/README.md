@@ -42,7 +42,7 @@ to specify the `/accounts/{accountID}/transfers.write` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -105,8 +105,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { paymentLinksCreatePaymentLink } from "moov-sdk/funcs/paymentLinksCreatePaymentLink.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { paymentLinksCreatePaymentLink } from "@moovio/sdk/funcs/paymentLinksCreatePaymentLink.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -204,7 +204,7 @@ to specify the `/accounts/{accountID}/transfers.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -230,8 +230,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { paymentLinksListPaymentLinks } from "moov-sdk/funcs/paymentLinksListPaymentLinks.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { paymentLinksListPaymentLinks } from "@moovio/sdk/funcs/paymentLinksListPaymentLinks.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -290,7 +290,7 @@ to specify the `/accounts/{accountID}/transfers.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -317,8 +317,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { paymentLinksGetPaymentLink } from "moov-sdk/funcs/paymentLinksGetPaymentLink.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { paymentLinksGetPaymentLink } from "@moovio/sdk/funcs/paymentLinksGetPaymentLink.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -378,7 +378,7 @@ to specify the `/accounts/{accountID}/transfers.write` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -429,8 +429,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { paymentLinksUpdatePaymentLink } from "moov-sdk/funcs/paymentLinksUpdatePaymentLink.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { paymentLinksUpdatePaymentLink } from "@moovio/sdk/funcs/paymentLinksUpdatePaymentLink.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -516,7 +516,7 @@ to specify the `/accounts/{accountID}/transfers.write` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -542,8 +542,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { paymentLinksDisablePaymentLink } from "moov-sdk/funcs/paymentLinksDisablePaymentLink.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { paymentLinksDisablePaymentLink } from "@moovio/sdk/funcs/paymentLinksDisablePaymentLink.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -604,7 +604,7 @@ to specify the `/accounts/{accountID}/transfers.write` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -631,8 +631,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { paymentLinksGetPaymentLinkQRCode } from "moov-sdk/funcs/paymentLinksGetPaymentLinkQRCode.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { paymentLinksGetPaymentLinkQRCode } from "@moovio/sdk/funcs/paymentLinksGetPaymentLinkQRCode.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -7,7 +7,7 @@ Describes the account to link to the Moov account using a Plaid using a Plaid pu
 ## Example Usage
 
 ```typescript
-import { PlaidLinkPayload } from "moov-sdk/models/components";
+import { PlaidLinkPayload } from "@moovio/sdk/models/components";
 
 let value: PlaidLinkPayload = {
   plaidLink: {

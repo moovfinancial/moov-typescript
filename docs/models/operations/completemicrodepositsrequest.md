@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CompleteMicroDepositsRequest } from "moov-sdk/models/operations";
+import { CompleteMicroDepositsRequest } from "@moovio/sdk/models/operations";
 
 let value: CompleteMicroDepositsRequest = {
   accountID: "81265810-8006-4063-a361-56de44925061",

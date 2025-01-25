@@ -5,7 +5,7 @@ Describes the account to link to the Moov account using a Plaid processor token.
 ## Example Usage
 
 ```typescript
-import { PlaidPayload } from "moov-sdk/models/components";
+import { PlaidPayload } from "@moovio/sdk/models/components";
 
 let value: PlaidPayload = {
   plaid: {

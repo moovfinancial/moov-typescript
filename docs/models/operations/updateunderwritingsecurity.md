@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateUnderwritingSecurity } from "moov-sdk/models/operations";
+import { UpdateUnderwritingSecurity } from "@moovio/sdk/models/operations";
 
 let value: UpdateUnderwritingSecurity = {
   basicAuth: {

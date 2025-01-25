@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { MoovWalletPaymentMethodPaymentMethodType } from "moov-sdk/models/components";
+import { MoovWalletPaymentMethodPaymentMethodType } from "@moovio/sdk/models/components";
 
 let value: MoovWalletPaymentMethodPaymentMethodType = "moov-wallet";
 ```

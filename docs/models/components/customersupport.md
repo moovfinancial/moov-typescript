@@ -6,7 +6,7 @@ contacting a customer support team. This data is only allowed on a business acco
 ## Example Usage
 
 ```typescript
-import { CustomerSupport } from "moov-sdk/models/components";
+import { CustomerSupport } from "@moovio/sdk/models/components";
 
 let value: CustomerSupport = {
   phone: {

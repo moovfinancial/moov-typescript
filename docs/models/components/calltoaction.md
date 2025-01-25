@@ -8,7 +8,7 @@ If set to "auto" the UI will automatically select between
 ## Example Usage
 
 ```typescript
-import { CallToAction } from "moov-sdk/models/components";
+import { CallToAction } from "@moovio/sdk/models/components";
 
 let value: CallToAction = "subscribe";
 ```

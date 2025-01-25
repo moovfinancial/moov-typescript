@@ -77,7 +77,7 @@ scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -139,8 +139,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { transfersCreateTransfer } from "moov-sdk/funcs/transfersCreateTransfer.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersCreateTransfer } from "@moovio/sdk/funcs/transfersCreateTransfer.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -245,7 +245,7 @@ scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -273,8 +273,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { transfersListTransfers } from "moov-sdk/funcs/transfersListTransfers.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersListTransfers } from "@moovio/sdk/funcs/transfersListTransfers.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -338,7 +338,7 @@ scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -365,8 +365,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { transfersGetTransfer } from "moov-sdk/funcs/transfersGetTransfer.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersGetTransfer } from "@moovio/sdk/funcs/transfersGetTransfer.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -428,7 +428,7 @@ scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -455,8 +455,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { transfersPatchTransfer } from "moov-sdk/funcs/transfersPatchTransfer.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersPatchTransfer } from "@moovio/sdk/funcs/transfersPatchTransfer.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -519,7 +519,7 @@ scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -550,8 +550,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { transfersRefundTransfer } from "moov-sdk/funcs/transfersRefundTransfer.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersRefundTransfer } from "@moovio/sdk/funcs/transfersRefundTransfer.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -618,7 +618,7 @@ scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -645,8 +645,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { transfersListRefunds } from "moov-sdk/funcs/transfersListRefunds.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersListRefunds } from "@moovio/sdk/funcs/transfersListRefunds.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -706,7 +706,7 @@ scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -734,8 +734,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { transfersGetRefund } from "moov-sdk/funcs/transfersGetRefund.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersGetRefund } from "@moovio/sdk/funcs/transfersGetRefund.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -798,7 +798,7 @@ to specify the `/accounts/{accountID}/transfers.write` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -829,8 +829,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { transfersReverseTransfer } from "moov-sdk/funcs/transfersReverseTransfer.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersReverseTransfer } from "@moovio/sdk/funcs/transfersReverseTransfer.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -900,7 +900,7 @@ accountID on the [Business details](https://dashboard.moov.io/settings/business)
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -924,8 +924,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { transfersCreateTransferOptions } from "moov-sdk/funcs/transfersCreateTransferOptions.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersCreateTransferOptions } from "@moovio/sdk/funcs/transfersCreateTransferOptions.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { QRCode } from "moov-sdk/models/components";
+import { QRCode } from "@moovio/sdk/models/components";
 
 let value: QRCode = {
   qrCode:

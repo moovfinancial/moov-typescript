@@ -24,7 +24,7 @@ to specify the `/accounts/{accountID}/wallets.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -50,8 +50,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { adjustmentsListAdjustments } from "moov-sdk/funcs/adjustmentsListAdjustments.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { adjustmentsListAdjustments } from "@moovio/sdk/funcs/adjustmentsListAdjustments.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -110,7 +110,7 @@ to specify the `/accounts/{accountID}/wallets.read` scope.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -137,8 +137,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { adjustmentsGetAdjustment } from "moov-sdk/funcs/adjustmentsGetAdjustment.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { adjustmentsGetAdjustment } from "@moovio/sdk/funcs/adjustmentsGetAdjustment.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

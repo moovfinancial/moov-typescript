@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AsyncTransfer } from "moov-sdk/models/components";
+import { AsyncTransfer } from "@moovio/sdk/models/components";
 
 let value: AsyncTransfer = {
   transferID: "e7ac84a9-e0e8-405b-a7f6-5d8aca619e6e",

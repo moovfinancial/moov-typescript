@@ -5,7 +5,7 @@ Defines the attributes of a transfer.
 ## Example Usage
 
 ```typescript
-import { RunTransfer } from "moov-sdk/models/components";
+import { RunTransfer } from "@moovio/sdk/models/components";
 
 let value: RunTransfer = {
   amount: {

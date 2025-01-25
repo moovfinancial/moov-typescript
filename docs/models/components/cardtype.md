@@ -5,7 +5,7 @@ The type of the card.
 ## Example Usage
 
 ```typescript
-import { CardType } from "moov-sdk/models/components";
+import { CardType } from "@moovio/sdk/models/components";
 
 let value: CardType = "credit";
 ```

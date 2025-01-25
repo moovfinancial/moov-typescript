@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetEnrichmentProfileSecurity } from "moov-sdk/models/operations";
+import { GetEnrichmentProfileSecurity } from "@moovio/sdk/models/operations";
 
 let value: GetEnrichmentProfileSecurity = {
   basicAuth: {

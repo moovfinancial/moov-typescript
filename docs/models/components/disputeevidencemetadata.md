@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DisputeEvidenceMetadata } from "moov-sdk/models/components";
+import { DisputeEvidenceMetadata } from "@moovio/sdk/models/components";
 
 let value: DisputeEvidenceMetadata = {
   evidenceID: "cf79d7f9-ded2-4a61-964d-0f55026e1fd7",

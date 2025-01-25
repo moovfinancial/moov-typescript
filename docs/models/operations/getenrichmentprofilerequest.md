@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetEnrichmentProfileRequest } from "moov-sdk/models/operations";
+import { GetEnrichmentProfileRequest } from "@moovio/sdk/models/operations";
 
 let value: GetEnrichmentProfileRequest = {
   email: "Scottie51@gmail.com",

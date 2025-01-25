@@ -5,7 +5,7 @@ Describes the job responsibilities of a business representative.
 ## Example Usage
 
 ```typescript
-import { Responsibilities } from "moov-sdk/models/components";
+import { Responsibilities } from "@moovio/sdk/models/components";
 
 let value: Responsibilities = {
   ownershipPercentage: 38,

@@ -15,7 +15,7 @@ response will be used. The following default data will be used to generate the b
 ## Example Usage
 
 ```typescript
-import { PlaidIntegration } from "moov-sdk/models/components";
+import { PlaidIntegration } from "@moovio/sdk/models/components";
 
 let value: PlaidIntegration = {
   token: "<value>",

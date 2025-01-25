@@ -5,7 +5,7 @@ Describes the acceptance of the Terms of Service. All data is required, and must
 ## Example Usage
 
 ```typescript
-import { ManualTermsOfService } from "moov-sdk/models/components";
+import { ManualTermsOfService } from "@moovio/sdk/models/components";
 
 let value: ManualTermsOfService = {
   acceptedDate: new Date("2025-07-16T15:56:01.395Z"),

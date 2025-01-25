@@ -5,7 +5,7 @@ Details of a card transaction dispute.
 ## Example Usage
 
 ```typescript
-import { Dispute } from "moov-sdk/models/components";
+import { Dispute } from "@moovio/sdk/models/components";
 
 let value: Dispute = {
   disputeID: "6e356108-fdfa-4910-bbe4-1e3c8abf5520",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpsertSchedule } from "moov-sdk/models/components";
+import { UpsertSchedule } from "@moovio/sdk/models/components";
 
 let value: UpsertSchedule = {
   occurrences: [

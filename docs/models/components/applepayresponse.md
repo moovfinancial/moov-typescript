@@ -5,7 +5,7 @@ Describes an Apple Pay token on a Moov account.
 ## Example Usage
 
 ```typescript
-import { ApplePayResponse } from "moov-sdk/models/components";
+import { ApplePayResponse } from "@moovio/sdk/models/components";
 
 let value: ApplePayResponse = {
   brand: "Visa",

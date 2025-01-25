@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AuthTokenRequest } from "moov-sdk/models/components";
+import { AuthTokenRequest } from "@moovio/sdk/models/components";
 
 let value: AuthTokenRequest = {
   grantType: "client_credentials",

@@ -7,7 +7,7 @@ Possible states an account verification can be in.
 ## Example Usage
 
 ```typescript
-import { VerificationStatus } from "moov-sdk/models/components";
+import { VerificationStatus } from "@moovio/sdk/models/components";
 
 let value: VerificationStatus = "verified";
 ```

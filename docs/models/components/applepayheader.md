@@ -8,7 +8,7 @@ for more information.
 ## Example Usage
 
 ```typescript
-import { ApplePayHeader } from "moov-sdk/models/components";
+import { ApplePayHeader } from "@moovio/sdk/models/components";
 
 let value: ApplePayHeader = {
   ephemeralPublicKey: "MFkwEK...Md==",

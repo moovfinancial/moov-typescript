@@ -5,7 +5,7 @@ User provided settings to manage card payments. This data is only allowed on a b
 ## Example Usage
 
 ```typescript
-import { CardPaymentSettings } from "moov-sdk/models/components";
+import { CardPaymentSettings } from "@moovio/sdk/models/components";
 
 let value: CardPaymentSettings = {
   statementDescriptor: "Whole Body Fitness",

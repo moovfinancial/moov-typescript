@@ -5,7 +5,7 @@ Status codes for RTP failures.
 ## Example Usage
 
 ```typescript
-import { RTPFailureCode } from "moov-sdk/models/components";
+import { RTPFailureCode } from "@moovio/sdk/models/components";
 
 let value: RTPFailureCode = "processing-error";
 ```

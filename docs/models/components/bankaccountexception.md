@@ -5,7 +5,7 @@ Reason for, and details related to, an `errored` or `verificationFailed` bank ac
 ## Example Usage
 
 ```typescript
-import { BankAccountException } from "moov-sdk/models/components";
+import { BankAccountException } from "@moovio/sdk/models/components";
 
 let value: BankAccountException = {
   achReturnCode: "R07",

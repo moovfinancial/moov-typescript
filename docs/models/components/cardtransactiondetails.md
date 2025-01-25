@@ -5,7 +5,7 @@ Card-specific details about the transaction.
 ## Example Usage
 
 ```typescript
-import { CardTransactionDetails } from "moov-sdk/models/components";
+import { CardTransactionDetails } from "@moovio/sdk/models/components";
 
 let value: CardTransactionDetails = {
   status: "canceled",

@@ -5,7 +5,7 @@ The unique ID of what the requirement is asking to be filled out.
 ## Example Usage
 
 ```typescript
-import { RequirementID } from "moov-sdk/models/components";
+import { RequirementID } from "@moovio/sdk/models/components";
 
 let value: RequirementID = "business.legalname";
 ```

@@ -5,7 +5,7 @@ Options for payment links used to collect a card payment.
 ## Example Usage
 
 ```typescript
-import { CardPaymentDetails } from "moov-sdk/models/components";
+import { CardPaymentDetails } from "@moovio/sdk/models/components";
 
 let value: CardPaymentDetails = {
   dynamicDescriptor: "WhlBdy *Yoga 11-12",

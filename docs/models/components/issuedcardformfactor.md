@@ -5,7 +5,7 @@ Specifies the type of spend card to be issued. Presently supports virtual only, 
 ## Example Usage
 
 ```typescript
-import { IssuedCardFormFactor } from "moov-sdk/models/components";
+import { IssuedCardFormFactor } from "@moovio/sdk/models/components";
 
 let value: IssuedCardFormFactor = "virtual";
 ```

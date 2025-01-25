@@ -19,9 +19,9 @@ specific category of applications.
 ## Example
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { accountsCreateAccount } from "moov-sdk/funcs/accountsCreateAccount.js";
-import { SDKValidationError } from "moov-sdk/models/errors/sdkvalidationerror.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { accountsCreateAccount } from "@moovio/sdk/funcs/accountsCreateAccount.js";
+import { SDKValidationError } from "@moovio/sdk/models/errors/sdkvalidationerror.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -5,7 +5,7 @@ The reason the bank account status changed to the current value.
 ## Example Usage
 
 ```typescript
-import { BankAccountStatusReason } from "moov-sdk/models/components";
+import { BankAccountStatusReason } from "@moovio/sdk/models/components";
 
 let value: BankAccountStatusReason = "other";
 ```

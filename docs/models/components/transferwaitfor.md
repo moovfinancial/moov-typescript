@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TransferWaitFor } from "moov-sdk/models/components";
+import { TransferWaitFor } from "@moovio/sdk/models/components";
 
 let value: TransferWaitFor = "rail-response";
 ```

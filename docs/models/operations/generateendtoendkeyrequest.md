@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GenerateEndToEndKeyRequest } from "moov-sdk/models/operations";
+import { GenerateEndToEndKeyRequest } from "@moovio/sdk/models/operations";
 
 let value: GenerateEndToEndKeyRequest = {};
 ```

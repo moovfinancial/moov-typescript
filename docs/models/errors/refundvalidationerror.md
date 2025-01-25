@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RefundValidationError } from "moov-sdk/models/errors";
+import { RefundValidationError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

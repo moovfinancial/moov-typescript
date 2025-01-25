@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancellationStatus } from "moov-sdk/models/components";
+import { CancellationStatus } from "@moovio/sdk/models/components";
 
 let value: CancellationStatus = "pending";
 ```

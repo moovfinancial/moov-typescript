@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateUnderwritingRequest } from "moov-sdk/models/operations";
+import { UpdateUnderwritingRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateUnderwritingRequest = {
   accountID: "6e236041-79be-47a0-a7d9-617e186c22ba",

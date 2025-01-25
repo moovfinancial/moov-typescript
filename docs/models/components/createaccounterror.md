@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateAccountError } from "moov-sdk/models/components";
+import { CreateAccountError } from "@moovio/sdk/models/components";
 
 let value: CreateAccountError = {
   capabilities: {

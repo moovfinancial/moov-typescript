@@ -5,7 +5,7 @@ Payment methods allowed for collecting a payment.
 ## Example Usage
 
 ```typescript
-import { CollectionPaymentMethodType } from "moov-sdk/models/components";
+import { CollectionPaymentMethodType } from "@moovio/sdk/models/components";
 
 let value: CollectionPaymentMethodType = "card-payment";
 ```

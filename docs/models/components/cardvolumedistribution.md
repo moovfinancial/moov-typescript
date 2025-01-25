@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CardVolumeDistribution } from "moov-sdk/models/components";
+import { CardVolumeDistribution } from "@moovio/sdk/models/components";
 
 let value: CardVolumeDistribution = {
   ecommercePercentage: 315024,

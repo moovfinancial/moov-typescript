@@ -5,7 +5,7 @@ Describes a card on a Moov account.
 ## Example Usage
 
 ```typescript
-import { Card } from "moov-sdk/models/components";
+import { Card } from "@moovio/sdk/models/components";
 
 let value: Card = {
   cardID: "01234567-89ab-cdef-0123-456789abcdef",

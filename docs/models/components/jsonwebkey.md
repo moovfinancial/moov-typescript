@@ -5,7 +5,7 @@ Describes an [RFC7517](https://datatracker.ietf.org/doc/html/rfc7517) web key.
 ## Example Usage
 
 ```typescript
-import { JSONWebKey } from "moov-sdk/models/components";
+import { JSONWebKey } from "@moovio/sdk/models/components";
 
 let value: JSONWebKey = {
   kty: "EC",

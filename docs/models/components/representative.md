@@ -5,7 +5,7 @@ Describes a business representative.
 ## Example Usage
 
 ```typescript
-import { Representative } from "moov-sdk/models/components";
+import { Representative } from "@moovio/sdk/models/components";
 
 let value: Representative = {
   representativeID: "f9b04141-561b-4948-a19e-5a2b4290d0a4",

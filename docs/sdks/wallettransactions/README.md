@@ -21,7 +21,7 @@ To use this endpoint from the browser, you'll need to specify the `/accounts/{ac
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -50,8 +50,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { walletTransactionsListWalletTransactions } from "moov-sdk/funcs/walletTransactionsListWalletTransactions.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { walletTransactionsListWalletTransactions } from "@moovio/sdk/funcs/walletTransactionsListWalletTransactions.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -112,7 +112,7 @@ To use this endpoint from a browser, you'll need to specify the `/accounts/{acco
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -140,8 +140,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { walletTransactionsGetWalletTransaction } from "moov-sdk/funcs/walletTransactionsGetWalletTransaction.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { walletTransactionsGetWalletTransaction } from "@moovio/sdk/funcs/walletTransactionsGetWalletTransaction.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

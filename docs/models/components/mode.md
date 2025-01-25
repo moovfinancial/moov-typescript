@@ -5,7 +5,7 @@ The operating mode for an account.
 ## Example Usage
 
 ```typescript
-import { Mode } from "moov-sdk/models/components";
+import { Mode } from "@moovio/sdk/models/components";
 
 let value: Mode = "production";
 ```

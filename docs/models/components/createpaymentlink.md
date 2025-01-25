@@ -11,7 +11,7 @@ to a specific recipient.
 ## Example Usage
 
 ```typescript
-import { CreatePaymentLink } from "moov-sdk/models/components";
+import { CreatePaymentLink } from "@moovio/sdk/models/components";
 
 let value: CreatePaymentLink = {
   partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",

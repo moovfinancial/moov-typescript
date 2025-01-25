@@ -5,7 +5,7 @@ Processing and pass-through costs that add up to the moovFee.
 ## Example Usage
 
 ```typescript
-import { MoovFeeDetails } from "moov-sdk/models/components";
+import { MoovFeeDetails } from "@moovio/sdk/models/components";
 
 let value: MoovFeeDetails = {
   moovProcessing: "<value>",

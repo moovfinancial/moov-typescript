@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateApplePayMerchantDomains } from "moov-sdk/models/components";
+import { UpdateApplePayMerchantDomains } from "@moovio/sdk/models/components";
 
 let value: UpdateApplePayMerchantDomains = {
   addDomains: [

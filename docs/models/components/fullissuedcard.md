@@ -5,7 +5,7 @@ The full details of an issued card, including PAN and CVV.
 ## Example Usage
 
 ```typescript
-import { FullIssuedCard } from "moov-sdk/models/components";
+import { FullIssuedCard } from "@moovio/sdk/models/components";
 
 let value: FullIssuedCard = {
   issuedCardID: "afe21ce7-b132-4930-b4a9-5d448772846b",

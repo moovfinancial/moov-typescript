@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LinkApplePayTokenSecurity } from "moov-sdk/models/operations";
+import { LinkApplePayTokenSecurity } from "@moovio/sdk/models/operations";
 
 let value: LinkApplePayTokenSecurity = {
   basicAuth: {

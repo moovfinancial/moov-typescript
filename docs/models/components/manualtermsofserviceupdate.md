@@ -5,7 +5,7 @@ Describes the acceptance of the Terms of Service. All data is required, and must
 ## Example Usage
 
 ```typescript
-import { ManualTermsOfServiceUpdate } from "moov-sdk/models/components";
+import { ManualTermsOfServiceUpdate } from "@moovio/sdk/models/components";
 
 let value: ManualTermsOfServiceUpdate = {
   acceptedIP: "172.217.2.46",

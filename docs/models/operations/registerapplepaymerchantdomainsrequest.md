@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RegisterApplePayMerchantDomainsRequest } from "moov-sdk/models/operations";
+import { RegisterApplePayMerchantDomainsRequest } from "@moovio/sdk/models/operations";
 
 let value: RegisterApplePayMerchantDomainsRequest = {
   accountID: "b0047e64-9ebd-4228-9bf5-58a9b6d25c5a",

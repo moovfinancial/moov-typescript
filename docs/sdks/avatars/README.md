@@ -18,7 +18,7 @@ To use this endpoint from the browser, you'll need to specify the `/profile-enri
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -44,8 +44,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { avatarsGetAvatar } from "moov-sdk/funcs/avatarsGetAvatar.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { avatarsGetAvatar } from "@moovio/sdk/funcs/avatarsGetAvatar.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

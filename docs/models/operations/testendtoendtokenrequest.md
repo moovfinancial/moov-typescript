@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TestEndToEndTokenRequest } from "moov-sdk/models/operations";
+import { TestEndToEndTokenRequest } from "@moovio/sdk/models/operations";
 
 let value: TestEndToEndTokenRequest = {
   e2EEToken: {

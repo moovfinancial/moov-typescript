@@ -5,7 +5,7 @@ Options for payment links used to collect an ACH payment.
 ## Example Usage
 
 ```typescript
-import { ACHPaymentDetails } from "moov-sdk/models/components";
+import { ACHPaymentDetails } from "@moovio/sdk/models/components";
 
 let value: ACHPaymentDetails = {
   companyEntryDescription: "Gym dues",

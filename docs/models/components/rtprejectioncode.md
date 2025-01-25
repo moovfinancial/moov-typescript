@@ -13,7 +13,7 @@ The rejection code of an RTP transaction that caused the bank account status to 
 ## Example Usage
 
 ```typescript
-import { RTPRejectionCode } from "moov-sdk/models/components";
+import { RTPRejectionCode } from "@moovio/sdk/models/components";
 
 let value: RTPRejectionCode = "AC06";
 ```

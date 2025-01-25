@@ -16,7 +16,7 @@ Creates the brand properties for the specified account.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -52,8 +52,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { brandingPostBrand } from "moov-sdk/funcs/brandingPostBrand.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { brandingPostBrand } from "@moovio/sdk/funcs/brandingPostBrand.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -121,7 +121,7 @@ Gets the brand properties for the specified account.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -147,8 +147,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { brandingGetBrand } from "moov-sdk/funcs/brandingGetBrand.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { brandingGetBrand } from "@moovio/sdk/funcs/brandingGetBrand.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -204,7 +204,7 @@ Updates the brand properties for the specified account.
 ### Example Usage
 
 ```typescript
-import { Moov } from "moov-sdk";
+import { Moov } from "@moovio/sdk";
 
 const moov = new Moov();
 
@@ -231,8 +231,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { MoovCore } from "moov-sdk/core.js";
-import { brandingUpdateBrand } from "moov-sdk/funcs/brandingUpdateBrand.js";
+import { MoovCore } from "@moovio/sdk/core.js";
+import { brandingUpdateBrand } from "@moovio/sdk/funcs/brandingUpdateBrand.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

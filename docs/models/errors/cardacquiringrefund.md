@@ -5,7 +5,7 @@ Details of a card refund.
 ## Example Usage
 
 ```typescript
-import { CardAcquiringRefund } from "moov-sdk/models/errors";
+import { CardAcquiringRefund } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BrandColor } from "moov-sdk/models/components";
+import { BrandColor } from "@moovio/sdk/models/components";
 
 let value: BrandColor = {
   accent: "#111111",

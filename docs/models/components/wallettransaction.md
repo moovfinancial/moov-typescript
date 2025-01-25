@@ -5,7 +5,7 @@ A transaction that funds or deducts from the wallet.
 ## Example Usage
 
 ```typescript
-import { WalletTransaction } from "moov-sdk/models/components";
+import { WalletTransaction } from "@moovio/sdk/models/components";
 
 let value: WalletTransaction = {
   walletID: "85d717d7-09fd-49ed-b79b-d0c7ac8261bf",
