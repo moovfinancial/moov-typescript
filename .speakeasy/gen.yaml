@@ -40,7 +40,7 @@ typescript:
   methodArguments: require-security-and-request
   moduleFormat: commonjs
   outputModelSuffix: output
-  packageName: moov-sdk
+  packageName: moovio/sdk
   responseFormat: flat
   templateVersion: v2
   useIndexModules: true
