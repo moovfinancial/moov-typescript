@@ -6,7 +6,7 @@
 import { AchCreditSameDayPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: AchCreditSameDayPaymentMethod = {
-  paymentMethodID: "62dbefcf-9005-4ddf-a10e-48f6a6c83448",
+  paymentMethodID: "fe68dbb4-9043-46b4-82de-7346c89f1778",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:

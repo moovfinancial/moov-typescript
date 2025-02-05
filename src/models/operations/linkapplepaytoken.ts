@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type LinkApplePayTokenSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type LinkApplePayTokenGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type LinkApplePayTokenRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * ID of the Moov account representing the cardholder.
    */
@@ -26,39 +34,39 @@ export type LinkApplePayTokenRequest = {
   linkApplePay: components.LinkApplePay;
 };
 
+export type LinkApplePayTokenResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.LinkedApplePayPaymentMethod;
+};
+
 /** @internal */
-export const LinkApplePayTokenSecurity$inboundSchema: z.ZodType<
-  LinkApplePayTokenSecurity,
+export const LinkApplePayTokenGlobals$inboundSchema: z.ZodType<
+  LinkApplePayTokenGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type LinkApplePayTokenSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type LinkApplePayTokenGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const LinkApplePayTokenSecurity$outboundSchema: z.ZodType<
-  LinkApplePayTokenSecurity$Outbound,
+export const LinkApplePayTokenGlobals$outboundSchema: z.ZodType<
+  LinkApplePayTokenGlobals$Outbound,
   z.ZodTypeDef,
-  LinkApplePayTokenSecurity
+  LinkApplePayTokenGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -66,30 +74,30 @@ export const LinkApplePayTokenSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LinkApplePayTokenSecurity$ {
-  /** @deprecated use `LinkApplePayTokenSecurity$inboundSchema` instead. */
-  export const inboundSchema = LinkApplePayTokenSecurity$inboundSchema;
-  /** @deprecated use `LinkApplePayTokenSecurity$outboundSchema` instead. */
-  export const outboundSchema = LinkApplePayTokenSecurity$outboundSchema;
-  /** @deprecated use `LinkApplePayTokenSecurity$Outbound` instead. */
-  export type Outbound = LinkApplePayTokenSecurity$Outbound;
+export namespace LinkApplePayTokenGlobals$ {
+  /** @deprecated use `LinkApplePayTokenGlobals$inboundSchema` instead. */
+  export const inboundSchema = LinkApplePayTokenGlobals$inboundSchema;
+  /** @deprecated use `LinkApplePayTokenGlobals$outboundSchema` instead. */
+  export const outboundSchema = LinkApplePayTokenGlobals$outboundSchema;
+  /** @deprecated use `LinkApplePayTokenGlobals$Outbound` instead. */
+  export type Outbound = LinkApplePayTokenGlobals$Outbound;
 }
 
-export function linkApplePayTokenSecurityToJSON(
-  linkApplePayTokenSecurity: LinkApplePayTokenSecurity,
+export function linkApplePayTokenGlobalsToJSON(
+  linkApplePayTokenGlobals: LinkApplePayTokenGlobals,
 ): string {
   return JSON.stringify(
-    LinkApplePayTokenSecurity$outboundSchema.parse(linkApplePayTokenSecurity),
+    LinkApplePayTokenGlobals$outboundSchema.parse(linkApplePayTokenGlobals),
   );
 }
 
-export function linkApplePayTokenSecurityFromJSON(
+export function linkApplePayTokenGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<LinkApplePayTokenSecurity, SDKValidationError> {
+): SafeParseResult<LinkApplePayTokenGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LinkApplePayTokenSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LinkApplePayTokenSecurity' from JSON`,
+    (x) => LinkApplePayTokenGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkApplePayTokenGlobals' from JSON`,
   );
 }
 
@@ -99,19 +107,16 @@ export const LinkApplePayTokenRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   LinkApplePay: components.LinkApplePay$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "LinkApplePay": "linkApplePay",
   });
 });
 
 /** @internal */
 export type LinkApplePayTokenRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   LinkApplePay: components.LinkApplePay$Outbound;
 };
@@ -122,12 +127,10 @@ export const LinkApplePayTokenRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LinkApplePayTokenRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   linkApplePay: components.LinkApplePay$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     linkApplePay: "LinkApplePay",
   });
 });
@@ -160,5 +163,72 @@ export function linkApplePayTokenRequestFromJSON(
     jsonString,
     (x) => LinkApplePayTokenRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'LinkApplePayTokenRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const LinkApplePayTokenResponse$inboundSchema: z.ZodType<
+  LinkApplePayTokenResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.LinkedApplePayPaymentMethod$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type LinkApplePayTokenResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.LinkedApplePayPaymentMethod$Outbound;
+};
+
+/** @internal */
+export const LinkApplePayTokenResponse$outboundSchema: z.ZodType<
+  LinkApplePayTokenResponse$Outbound,
+  z.ZodTypeDef,
+  LinkApplePayTokenResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.LinkedApplePayPaymentMethod$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LinkApplePayTokenResponse$ {
+  /** @deprecated use `LinkApplePayTokenResponse$inboundSchema` instead. */
+  export const inboundSchema = LinkApplePayTokenResponse$inboundSchema;
+  /** @deprecated use `LinkApplePayTokenResponse$outboundSchema` instead. */
+  export const outboundSchema = LinkApplePayTokenResponse$outboundSchema;
+  /** @deprecated use `LinkApplePayTokenResponse$Outbound` instead. */
+  export type Outbound = LinkApplePayTokenResponse$Outbound;
+}
+
+export function linkApplePayTokenResponseToJSON(
+  linkApplePayTokenResponse: LinkApplePayTokenResponse,
+): string {
+  return JSON.stringify(
+    LinkApplePayTokenResponse$outboundSchema.parse(linkApplePayTokenResponse),
+  );
+}
+
+export function linkApplePayTokenResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkApplePayTokenResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkApplePayTokenResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkApplePayTokenResponse' from JSON`,
   );
 }

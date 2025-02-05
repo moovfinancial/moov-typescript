@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListWalletsSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListWalletsGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListWalletsRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type ListWalletsResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.Wallet>;
+};
+
 /** @internal */
-export const ListWalletsSecurity$inboundSchema: z.ZodType<
-  ListWalletsSecurity,
+export const ListWalletsGlobals$inboundSchema: z.ZodType<
+  ListWalletsGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListWalletsSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListWalletsGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListWalletsSecurity$outboundSchema: z.ZodType<
-  ListWalletsSecurity$Outbound,
+export const ListWalletsGlobals$outboundSchema: z.ZodType<
+  ListWalletsGlobals$Outbound,
   z.ZodTypeDef,
-  ListWalletsSecurity
+  ListWalletsGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,30 +70,30 @@ export const ListWalletsSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListWalletsSecurity$ {
-  /** @deprecated use `ListWalletsSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListWalletsSecurity$inboundSchema;
-  /** @deprecated use `ListWalletsSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListWalletsSecurity$outboundSchema;
-  /** @deprecated use `ListWalletsSecurity$Outbound` instead. */
-  export type Outbound = ListWalletsSecurity$Outbound;
+export namespace ListWalletsGlobals$ {
+  /** @deprecated use `ListWalletsGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListWalletsGlobals$inboundSchema;
+  /** @deprecated use `ListWalletsGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListWalletsGlobals$outboundSchema;
+  /** @deprecated use `ListWalletsGlobals$Outbound` instead. */
+  export type Outbound = ListWalletsGlobals$Outbound;
 }
 
-export function listWalletsSecurityToJSON(
-  listWalletsSecurity: ListWalletsSecurity,
+export function listWalletsGlobalsToJSON(
+  listWalletsGlobals: ListWalletsGlobals,
 ): string {
   return JSON.stringify(
-    ListWalletsSecurity$outboundSchema.parse(listWalletsSecurity),
+    ListWalletsGlobals$outboundSchema.parse(listWalletsGlobals),
   );
 }
 
-export function listWalletsSecurityFromJSON(
+export function listWalletsGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListWalletsSecurity, SDKValidationError> {
+): SafeParseResult<ListWalletsGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListWalletsSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListWalletsSecurity' from JSON`,
+    (x) => ListWalletsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListWalletsGlobals' from JSON`,
   );
 }
 
@@ -95,17 +103,11 @@ export const ListWalletsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListWalletsRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -115,12 +117,7 @@ export const ListWalletsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListWalletsRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -151,5 +148,72 @@ export function listWalletsRequestFromJSON(
     jsonString,
     (x) => ListWalletsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListWalletsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListWalletsResponse$inboundSchema: z.ZodType<
+  ListWalletsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.Wallet$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListWalletsResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.Wallet$Outbound>;
+};
+
+/** @internal */
+export const ListWalletsResponse$outboundSchema: z.ZodType<
+  ListWalletsResponse$Outbound,
+  z.ZodTypeDef,
+  ListWalletsResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.Wallet$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListWalletsResponse$ {
+  /** @deprecated use `ListWalletsResponse$inboundSchema` instead. */
+  export const inboundSchema = ListWalletsResponse$inboundSchema;
+  /** @deprecated use `ListWalletsResponse$outboundSchema` instead. */
+  export const outboundSchema = ListWalletsResponse$outboundSchema;
+  /** @deprecated use `ListWalletsResponse$Outbound` instead. */
+  export type Outbound = ListWalletsResponse$Outbound;
+}
+
+export function listWalletsResponseToJSON(
+  listWalletsResponse: ListWalletsResponse,
+): string {
+  return JSON.stringify(
+    ListWalletsResponse$outboundSchema.parse(listWalletsResponse),
+  );
+}
+
+export function listWalletsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListWalletsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListWalletsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListWalletsResponse' from JSON`,
   );
 }

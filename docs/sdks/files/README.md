@@ -5,31 +5,31 @@
 
 ### Available Operations
 
-* [uploadFile](#uploadfile) - Upload a file and link it to the specified Moov account. 
+* [upload](#upload) - Upload a file and link it to the specified Moov account. 
 
 The maximum file size is 10MB. Each account is allowed a maximum of 50 files. Acceptable file types include csv, jpg, pdf, 
 and png. 
 
-To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need to specify the 
-`/accounts/{accountID}/files.write` scope.
-* [listFiles](#listfiles) - List all the files associated with a particular Moov account.
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/files.write` scope.
+* [list](#list) - List all the files associated with a particular Moov account.
 
-To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need to specify the 
-`/accounts/{accountID}/files.read` scope.
-* [getFileDetails](#getfiledetails) - Retrieve file details associated with a specific Moov account.
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/files.read` scope.
+* [get](#get) - Retrieve file details associated with a specific Moov account.
 
-To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need to specify the 
-`/accounts/{accountID}/files.read` scope.
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
-## uploadFile
+## upload
 
 Upload a file and link it to the specified Moov account. 
 
 The maximum file size is 10MB. Each account is allowed a maximum of 50 files. Acceptable file types include csv, jpg, pdf, 
 and png. 
 
-To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need to specify the 
-`/accounts/{accountID}/files.write` scope.
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/files.write` scope.
 
 ### Example Usage
 
@@ -37,15 +37,15 @@ To access this endpoint using a [token](https://docs.moov.io/api/authentication/
 import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.files.uploadFile({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.files.upload({
     accountID: "997f59d4-6b68-4f95-a825-1ae3f3faf278",
     fileUploadRequestMultiPart: {
       file: await openAsBlob("example.file"),
@@ -67,20 +67,20 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { filesUploadFile } from "@moovio/sdk/funcs/filesUploadFile.js";
+import { filesUpload } from "@moovio/sdk/funcs/filesUpload.js";
 import { openAsBlob } from "node:fs";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await filesUploadFile(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await filesUpload(moov, {
     accountID: "997f59d4-6b68-4f95-a825-1ae3f3faf278",
     fileUploadRequestMultiPart: {
       file: await openAsBlob("example.file"),
@@ -107,14 +107,13 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.UploadFileRequest](../../models/operations/uploadfilerequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.UploadFileSecurity](../../models/operations/uploadfilesecurity.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.FileDetails](../../models/components/filedetails.md)\>**
+**Promise\<[operations.UploadFileResponse](../../models/operations/uploadfileresponse.md)\>**
 
 ### Errors
 
@@ -124,27 +123,27 @@ run();
 | errors.FileValidationError | 422                        | application/json           |
 | errors.APIError            | 4XX, 5XX                   | \*/\*                      |
 
-## listFiles
+## list
 
 List all the files associated with a particular Moov account.
 
-To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need to specify the 
-`/accounts/{accountID}/files.read` scope.
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.files.listFiles({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.files.list({
     accountID: "a3c35406-9eb6-4801-bbac-0649c31c058a",
   });
 
@@ -161,19 +160,19 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { filesListFiles } from "@moovio/sdk/funcs/filesListFiles.js";
+import { filesList } from "@moovio/sdk/funcs/filesList.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await filesListFiles(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await filesList(moov, {
     accountID: "a3c35406-9eb6-4801-bbac-0649c31c058a",
   });
 
@@ -195,14 +194,13 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.ListFilesRequest](../../models/operations/listfilesrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.ListFilesSecurity](../../models/operations/listfilessecurity.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.FileDetails[]](../../models/.md)\>**
+**Promise\<[operations.ListFilesResponse](../../models/operations/listfilesresponse.md)\>**
 
 ### Errors
 
@@ -210,27 +208,27 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## getFileDetails
+## get
 
 Retrieve file details associated with a specific Moov account.
 
-To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need to specify the 
-`/accounts/{accountID}/files.read` scope.
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.files.getFileDetails({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.files.get({
     accountID: "346add0a-4dae-4729-8e74-1a50d00d677a",
     fileID: "bf657841-ba2d-4060-ad21-eb2b7372cf85",
   });
@@ -248,19 +246,19 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { filesGetFileDetails } from "@moovio/sdk/funcs/filesGetFileDetails.js";
+import { filesGet } from "@moovio/sdk/funcs/filesGet.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await filesGetFileDetails(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await filesGet(moov, {
     accountID: "346add0a-4dae-4729-8e74-1a50d00d677a",
     fileID: "bf657841-ba2d-4060-ad21-eb2b7372cf85",
   });
@@ -283,14 +281,13 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetFileDetailsRequest](../../models/operations/getfiledetailsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetFileDetailsSecurity](../../models/operations/getfiledetailssecurity.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.FileDetails](../../models/components/filedetails.md)\>**
+**Promise\<[operations.GetFileDetailsResponse](../../models/operations/getfiledetailsresponse.md)\>**
 
 ### Errors
 

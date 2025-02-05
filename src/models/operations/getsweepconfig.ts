@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetSweepConfigSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetSweepConfigGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetSweepConfigRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   sweepConfigID: string;
 };
 
+export type GetSweepConfigResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.SweepConfig;
+};
+
 /** @internal */
-export const GetSweepConfigSecurity$inboundSchema: z.ZodType<
-  GetSweepConfigSecurity,
+export const GetSweepConfigGlobals$inboundSchema: z.ZodType<
+  GetSweepConfigGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetSweepConfigSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetSweepConfigGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetSweepConfigSecurity$outboundSchema: z.ZodType<
-  GetSweepConfigSecurity$Outbound,
+export const GetSweepConfigGlobals$outboundSchema: z.ZodType<
+  GetSweepConfigGlobals$Outbound,
   z.ZodTypeDef,
-  GetSweepConfigSecurity
+  GetSweepConfigGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +71,30 @@ export const GetSweepConfigSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetSweepConfigSecurity$ {
-  /** @deprecated use `GetSweepConfigSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetSweepConfigSecurity$inboundSchema;
-  /** @deprecated use `GetSweepConfigSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetSweepConfigSecurity$outboundSchema;
-  /** @deprecated use `GetSweepConfigSecurity$Outbound` instead. */
-  export type Outbound = GetSweepConfigSecurity$Outbound;
+export namespace GetSweepConfigGlobals$ {
+  /** @deprecated use `GetSweepConfigGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetSweepConfigGlobals$inboundSchema;
+  /** @deprecated use `GetSweepConfigGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetSweepConfigGlobals$outboundSchema;
+  /** @deprecated use `GetSweepConfigGlobals$Outbound` instead. */
+  export type Outbound = GetSweepConfigGlobals$Outbound;
 }
 
-export function getSweepConfigSecurityToJSON(
-  getSweepConfigSecurity: GetSweepConfigSecurity,
+export function getSweepConfigGlobalsToJSON(
+  getSweepConfigGlobals: GetSweepConfigGlobals,
 ): string {
   return JSON.stringify(
-    GetSweepConfigSecurity$outboundSchema.parse(getSweepConfigSecurity),
+    GetSweepConfigGlobals$outboundSchema.parse(getSweepConfigGlobals),
   );
 }
 
-export function getSweepConfigSecurityFromJSON(
+export function getSweepConfigGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetSweepConfigSecurity, SDKValidationError> {
+): SafeParseResult<GetSweepConfigGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetSweepConfigSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSweepConfigSecurity' from JSON`,
+    (x) => GetSweepConfigGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSweepConfigGlobals' from JSON`,
   );
 }
 
@@ -96,18 +104,12 @@ export const GetSweepConfigRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   sweepConfigID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetSweepConfigRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   sweepConfigID: string;
 };
@@ -118,13 +120,8 @@ export const GetSweepConfigRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetSweepConfigRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   sweepConfigID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +152,72 @@ export function getSweepConfigRequestFromJSON(
     jsonString,
     (x) => GetSweepConfigRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetSweepConfigRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetSweepConfigResponse$inboundSchema: z.ZodType<
+  GetSweepConfigResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.SweepConfig$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetSweepConfigResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.SweepConfig$Outbound;
+};
+
+/** @internal */
+export const GetSweepConfigResponse$outboundSchema: z.ZodType<
+  GetSweepConfigResponse$Outbound,
+  z.ZodTypeDef,
+  GetSweepConfigResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.SweepConfig$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetSweepConfigResponse$ {
+  /** @deprecated use `GetSweepConfigResponse$inboundSchema` instead. */
+  export const inboundSchema = GetSweepConfigResponse$inboundSchema;
+  /** @deprecated use `GetSweepConfigResponse$outboundSchema` instead. */
+  export const outboundSchema = GetSweepConfigResponse$outboundSchema;
+  /** @deprecated use `GetSweepConfigResponse$Outbound` instead. */
+  export type Outbound = GetSweepConfigResponse$Outbound;
+}
+
+export function getSweepConfigResponseToJSON(
+  getSweepConfigResponse: GetSweepConfigResponse,
+): string {
+  return JSON.stringify(
+    GetSweepConfigResponse$outboundSchema.parse(getSweepConfigResponse),
+  );
+}
+
+export function getSweepConfigResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSweepConfigResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetSweepConfigResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSweepConfigResponse' from JSON`,
   );
 }

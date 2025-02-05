@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [revokeAuthToken](#revokeauthtoken) - Revoke an auth token.
+* [revokeAccessToken](#revokeaccesstoken) - Revoke an auth token.
 
 Allows clients to notify the authorization server that a previously obtained refresh or access token is no longer needed.
-* [createAuthToken](#createauthtoken) - Create or refresh an access token.
+* [createAccessToken](#createaccesstoken) - Create or refresh an access token.
 
-## revokeAuthToken
+## revokeAccessToken
 
 Revoke an auth token.
 
@@ -29,15 +29,14 @@ const moov = new Moov({
 });
 
 async function run() {
-  await moov.authentication.revokeAuthToken({
-    revokeTokenRequest: {
-      token: "<value>",
-      clientId: "5clTR_MdVrrkgxw2",
-      clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
-    },
+  const result = await moov.authentication.revokeAccessToken({
+    token: "<value>",
+    clientId: "5clTR_MdVrrkgxw2",
+    clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
   });
 
-
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -49,7 +48,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { authenticationRevokeAuthToken } from "@moovio/sdk/funcs/authenticationRevokeAuthToken.js";
+import { authenticationRevokeAccessToken } from "@moovio/sdk/funcs/authenticationRevokeAccessToken.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -61,12 +60,10 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await authenticationRevokeAuthToken(moov, {
-    revokeTokenRequest: {
-      token: "<value>",
-      clientId: "5clTR_MdVrrkgxw2",
-      clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
-    },
+  const res = await authenticationRevokeAccessToken(moov, {
+    token: "<value>",
+    clientId: "5clTR_MdVrrkgxw2",
+    clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
   });
 
   if (!res.ok) {
@@ -75,7 +72,8 @@ async function run() {
 
   const { value: result } = res;
 
-  
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -85,14 +83,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.RevokeAuthTokenRequest](../../models/operations/revokeauthtokenrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.RevokeTokenRequest](../../models/components/revoketokenrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[operations.RevokeAccessTokenResponse](../../models/operations/revokeaccesstokenresponse.md)\>**
 
 ### Errors
 
@@ -102,7 +100,7 @@ run();
 | errors.RevokeTokenRequestError | 422                            | application/json               |
 | errors.APIError                | 4XX, 5XX                       | \*/\*                          |
 
-## createAuthToken
+## createAccessToken
 
 Create or refresh an access token.
 
@@ -119,14 +117,12 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.authentication.createAuthToken({
-    authTokenRequest: {
-      grantType: "refresh_token",
-      clientId: "5clTR_MdVrrkgxw2",
-      clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
-      scope: "/accounts.read /accounts.write",
-      refreshToken: "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a...",
-    },
+  const result = await moov.authentication.createAccessToken({
+    grantType: "client_credentials",
+    clientId: "5clTR_MdVrrkgxw2",
+    clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
+    scope: "/accounts.read /accounts.write",
+    refreshToken: "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a...",
   });
 
   // Handle the result
@@ -142,7 +138,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { authenticationCreateAuthToken } from "@moovio/sdk/funcs/authenticationCreateAuthToken.js";
+import { authenticationCreateAccessToken } from "@moovio/sdk/funcs/authenticationCreateAccessToken.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -154,14 +150,12 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await authenticationCreateAuthToken(moov, {
-    authTokenRequest: {
-      grantType: "refresh_token",
-      clientId: "5clTR_MdVrrkgxw2",
-      clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
-      scope: "/accounts.read /accounts.write",
-      refreshToken: "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a...",
-    },
+  const res = await authenticationCreateAccessToken(moov, {
+    grantType: "client_credentials",
+    clientId: "5clTR_MdVrrkgxw2",
+    clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
+    scope: "/accounts.read /accounts.write",
+    refreshToken: "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a...",
   });
 
   if (!res.ok) {
@@ -181,14 +175,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.CreateAuthTokenRequest](../../models/operations/createauthtokenrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.AuthTokenRequest](../../models/components/authtokenrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.AuthToken](../../models/components/authtoken.md)\>**
+**Promise\<[operations.CreateAccessTokenResponse](../../models/operations/createaccesstokenresponse.md)\>**
 
 ### Errors
 

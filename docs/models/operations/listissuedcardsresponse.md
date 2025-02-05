@@ -1,0 +1,49 @@
+# ListIssuedCardsResponse
+
+## Example Usage
+
+```typescript
+import { ListIssuedCardsResponse } from "@moovio/sdk/models/operations";
+
+let value: ListIssuedCardsResponse = {
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
+  result: [
+    {
+      issuedCardID: "f5081abd-e45f-466e-b277-b6dae4c1cd6b",
+      brand: "Visa",
+      lastFourCardNumber: "<value>",
+      expiration: {
+        month: "01",
+        year: "21",
+      },
+      authorizedUser: {
+        firstName: "Christine",
+        lastName: "Beahan",
+      },
+      fundingWalletID: "<id>",
+      state: "inactive",
+      formFactor: "virtual",
+      controls: {
+        velocityLimits: [
+          {
+            amount: 10000,
+            interval: "per-transaction",
+          },
+        ],
+      },
+      createdOn: new Date("2023-06-04T17:46:37.810Z"),
+    },
+  ],
+};
+```
+
+## Fields
+
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `headers`                                                        | Record<string, *string*[]>                                       | :heavy_check_mark:                                               | N/A                                                              |
+| `result`                                                         | [components.IssuedCard](../../models/components/issuedcard.md)[] | :heavy_check_mark:                                               | N/A                                                              |

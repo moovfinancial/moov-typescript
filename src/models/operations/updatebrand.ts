@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type UpdateBrandSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type UpdateBrandGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type UpdateBrandRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   updateBrand: components.UpdateBrand;
 };
 
+export type UpdateBrandResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Brand;
+};
+
 /** @internal */
-export const UpdateBrandSecurity$inboundSchema: z.ZodType<
-  UpdateBrandSecurity,
+export const UpdateBrandGlobals$inboundSchema: z.ZodType<
+  UpdateBrandGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type UpdateBrandSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type UpdateBrandGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const UpdateBrandSecurity$outboundSchema: z.ZodType<
-  UpdateBrandSecurity$Outbound,
+export const UpdateBrandGlobals$outboundSchema: z.ZodType<
+  UpdateBrandGlobals$Outbound,
   z.ZodTypeDef,
-  UpdateBrandSecurity
+  UpdateBrandGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +71,30 @@ export const UpdateBrandSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateBrandSecurity$ {
-  /** @deprecated use `UpdateBrandSecurity$inboundSchema` instead. */
-  export const inboundSchema = UpdateBrandSecurity$inboundSchema;
-  /** @deprecated use `UpdateBrandSecurity$outboundSchema` instead. */
-  export const outboundSchema = UpdateBrandSecurity$outboundSchema;
-  /** @deprecated use `UpdateBrandSecurity$Outbound` instead. */
-  export type Outbound = UpdateBrandSecurity$Outbound;
+export namespace UpdateBrandGlobals$ {
+  /** @deprecated use `UpdateBrandGlobals$inboundSchema` instead. */
+  export const inboundSchema = UpdateBrandGlobals$inboundSchema;
+  /** @deprecated use `UpdateBrandGlobals$outboundSchema` instead. */
+  export const outboundSchema = UpdateBrandGlobals$outboundSchema;
+  /** @deprecated use `UpdateBrandGlobals$Outbound` instead. */
+  export type Outbound = UpdateBrandGlobals$Outbound;
 }
 
-export function updateBrandSecurityToJSON(
-  updateBrandSecurity: UpdateBrandSecurity,
+export function updateBrandGlobalsToJSON(
+  updateBrandGlobals: UpdateBrandGlobals,
 ): string {
   return JSON.stringify(
-    UpdateBrandSecurity$outboundSchema.parse(updateBrandSecurity),
+    UpdateBrandGlobals$outboundSchema.parse(updateBrandGlobals),
   );
 }
 
-export function updateBrandSecurityFromJSON(
+export function updateBrandGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateBrandSecurity, SDKValidationError> {
+): SafeParseResult<UpdateBrandGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateBrandSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateBrandSecurity' from JSON`,
+    (x) => UpdateBrandGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateBrandGlobals' from JSON`,
   );
 }
 
@@ -96,19 +104,16 @@ export const UpdateBrandRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   UpdateBrand: components.UpdateBrand$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "UpdateBrand": "updateBrand",
   });
 });
 
 /** @internal */
 export type UpdateBrandRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   UpdateBrand: components.UpdateBrand$Outbound;
 };
@@ -119,12 +124,10 @@ export const UpdateBrandRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateBrandRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   updateBrand: components.UpdateBrand$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     updateBrand: "UpdateBrand",
   });
 });
@@ -157,5 +160,72 @@ export function updateBrandRequestFromJSON(
     jsonString,
     (x) => UpdateBrandRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateBrandRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateBrandResponse$inboundSchema: z.ZodType<
+  UpdateBrandResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Brand$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type UpdateBrandResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Brand$Outbound;
+};
+
+/** @internal */
+export const UpdateBrandResponse$outboundSchema: z.ZodType<
+  UpdateBrandResponse$Outbound,
+  z.ZodTypeDef,
+  UpdateBrandResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Brand$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateBrandResponse$ {
+  /** @deprecated use `UpdateBrandResponse$inboundSchema` instead. */
+  export const inboundSchema = UpdateBrandResponse$inboundSchema;
+  /** @deprecated use `UpdateBrandResponse$outboundSchema` instead. */
+  export const outboundSchema = UpdateBrandResponse$outboundSchema;
+  /** @deprecated use `UpdateBrandResponse$Outbound` instead. */
+  export type Outbound = UpdateBrandResponse$Outbound;
+}
+
+export function updateBrandResponseToJSON(
+  updateBrandResponse: UpdateBrandResponse,
+): string {
+  return JSON.stringify(
+    UpdateBrandResponse$outboundSchema.parse(updateBrandResponse),
+  );
+}
+
+export function updateBrandResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateBrandResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateBrandResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateBrandResponse' from JSON`,
   );
 }

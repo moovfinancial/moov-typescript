@@ -8,20 +8,20 @@ A transaction that funds or deducts from the wallet.
 import { WalletTransaction } from "@moovio/sdk/models/components";
 
 let value: WalletTransaction = {
-  walletID: "85d717d7-09fd-49ed-b79b-d0c7ac8261bf",
-  transactionID: "69484b4f-a10f-4353-bea8-85963a5c68c7",
-  transactionType: "refund",
-  sourceType: "sweep",
-  sourceID: "f69baf44-ec39-4b56-897c-0659c12ab9f7",
-  status: "canceled",
+  walletID: "b1bd0530-d8b3-412d-a495-7db5e5cc5879",
+  transactionID: "e9ef84ab-a033-43fa-a320-454b91a4b722",
+  transactionType: "dispute",
+  sourceType: "issuing-card-transaction",
+  sourceID: "c8eb21a8-b8ff-44cc-ad6e-6b953ae61466",
+  status: "pending",
   memo: "<value>",
-  createdOn: new Date("2024-10-21T20:59:40.329Z"),
+  createdOn: new Date("2023-05-04T10:00:03.073Z"),
   currency: "USD",
-  grossAmount: 590422,
+  grossAmount: 173543,
   grossAmountDecimal: "<value>",
-  fee: 545854,
+  fee: 165733,
   feeDecimal: "<value>",
-  netAmount: 939096,
+  netAmount: 175759,
   netAmountDecimal: "<value>",
 };
 ```

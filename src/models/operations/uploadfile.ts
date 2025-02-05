@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type UploadFileSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type UploadFileGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type UploadFileRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   fileUploadRequestMultiPart: components.FileUploadRequestMultiPart;
 };
 
+export type UploadFileResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.FileDetails;
+};
+
 /** @internal */
-export const UploadFileSecurity$inboundSchema: z.ZodType<
-  UploadFileSecurity,
+export const UploadFileGlobals$inboundSchema: z.ZodType<
+  UploadFileGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type UploadFileSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type UploadFileGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const UploadFileSecurity$outboundSchema: z.ZodType<
-  UploadFileSecurity$Outbound,
+export const UploadFileGlobals$outboundSchema: z.ZodType<
+  UploadFileGlobals$Outbound,
   z.ZodTypeDef,
-  UploadFileSecurity
+  UploadFileGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +71,30 @@ export const UploadFileSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UploadFileSecurity$ {
-  /** @deprecated use `UploadFileSecurity$inboundSchema` instead. */
-  export const inboundSchema = UploadFileSecurity$inboundSchema;
-  /** @deprecated use `UploadFileSecurity$outboundSchema` instead. */
-  export const outboundSchema = UploadFileSecurity$outboundSchema;
-  /** @deprecated use `UploadFileSecurity$Outbound` instead. */
-  export type Outbound = UploadFileSecurity$Outbound;
+export namespace UploadFileGlobals$ {
+  /** @deprecated use `UploadFileGlobals$inboundSchema` instead. */
+  export const inboundSchema = UploadFileGlobals$inboundSchema;
+  /** @deprecated use `UploadFileGlobals$outboundSchema` instead. */
+  export const outboundSchema = UploadFileGlobals$outboundSchema;
+  /** @deprecated use `UploadFileGlobals$Outbound` instead. */
+  export type Outbound = UploadFileGlobals$Outbound;
 }
 
-export function uploadFileSecurityToJSON(
-  uploadFileSecurity: UploadFileSecurity,
+export function uploadFileGlobalsToJSON(
+  uploadFileGlobals: UploadFileGlobals,
 ): string {
   return JSON.stringify(
-    UploadFileSecurity$outboundSchema.parse(uploadFileSecurity),
+    UploadFileGlobals$outboundSchema.parse(uploadFileGlobals),
   );
 }
 
-export function uploadFileSecurityFromJSON(
+export function uploadFileGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<UploadFileSecurity, SDKValidationError> {
+): SafeParseResult<UploadFileGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UploadFileSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadFileSecurity' from JSON`,
+    (x) => UploadFileGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFileGlobals' from JSON`,
   );
 }
 
@@ -96,20 +104,17 @@ export const UploadFileRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   FileUploadRequestMultiPart:
     components.FileUploadRequestMultiPart$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "FileUploadRequestMultiPart": "fileUploadRequestMultiPart",
   });
 });
 
 /** @internal */
 export type UploadFileRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   FileUploadRequestMultiPart: components.FileUploadRequestMultiPart$Outbound;
 };
@@ -120,13 +125,11 @@ export const UploadFileRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UploadFileRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   fileUploadRequestMultiPart:
     components.FileUploadRequestMultiPart$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     fileUploadRequestMultiPart: "FileUploadRequestMultiPart",
   });
 });
@@ -159,5 +162,72 @@ export function uploadFileRequestFromJSON(
     jsonString,
     (x) => UploadFileRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UploadFileRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadFileResponse$inboundSchema: z.ZodType<
+  UploadFileResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.FileDetails$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type UploadFileResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.FileDetails$Outbound;
+};
+
+/** @internal */
+export const UploadFileResponse$outboundSchema: z.ZodType<
+  UploadFileResponse$Outbound,
+  z.ZodTypeDef,
+  UploadFileResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.FileDetails$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UploadFileResponse$ {
+  /** @deprecated use `UploadFileResponse$inboundSchema` instead. */
+  export const inboundSchema = UploadFileResponse$inboundSchema;
+  /** @deprecated use `UploadFileResponse$outboundSchema` instead. */
+  export const outboundSchema = UploadFileResponse$outboundSchema;
+  /** @deprecated use `UploadFileResponse$Outbound` instead. */
+  export type Outbound = UploadFileResponse$Outbound;
+}
+
+export function uploadFileResponseToJSON(
+  uploadFileResponse: UploadFileResponse,
+): string {
+  return JSON.stringify(
+    UploadFileResponse$outboundSchema.parse(uploadFileResponse),
+  );
+}
+
+export function uploadFileResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFileResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadFileResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFileResponse' from JSON`,
   );
 }

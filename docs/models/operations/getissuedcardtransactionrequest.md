@@ -6,8 +6,8 @@
 import { GetIssuedCardTransactionRequest } from "@moovio/sdk/models/operations";
 
 let value: GetIssuedCardTransactionRequest = {
-  accountID: "0d30a20e-2850-4557-8bf8-f8929446a940",
-  cardTransactionID: "7e9e975f-75ec-4997-81a6-0b2c49927df0",
+  accountID: "2e76835b-9ccc-42a7-a0d3-0a20e2850557",
+  cardTransactionID: "f8f89294-46a9-4403-87e9-e975f75ec997",
 };
 ```
 
@@ -15,6 +15,5 @@ let value: GetIssuedCardTransactionRequest = {
 
 | Field                                                       | Type                                                        | Required                                                    | Description                                                 |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `xMoovVersion`                                              | [components.Versions](../../models/components/versions.md)  | :heavy_minus_sign:                                          | Specify an API version.                                     |
 | `accountID`                                                 | *string*                                                    | :heavy_check_mark:                                          | The Moov business account for which cards have been issued. |
 | `cardTransactionID`                                         | *string*                                                    | :heavy_check_mark:                                          | N/A                                                         |

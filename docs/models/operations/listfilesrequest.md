@@ -6,13 +6,12 @@
 import { ListFilesRequest } from "@moovio/sdk/models/operations";
 
 let value: ListFilesRequest = {
-  accountID: "4d02e709-7159-4ae7-a116-2e3685a9fd97",
+  accountID: "613c3fb7-99f2-44b3-8d52-09d4ec099357",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |

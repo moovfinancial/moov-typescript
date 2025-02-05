@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { Accounts } from "./accounts.js";
 import { Adjustments } from "./adjustments.js";
+import { ApplePay } from "./applepay.js";
 import { Authentication } from "./authentication.js";
 import { Avatars } from "./avatars.js";
 import { BankAccounts } from "./bankaccounts.js";
@@ -44,9 +45,9 @@ export class Moov extends ClientSDK {
     return (this._adjustments ??= new Adjustments(this._options));
   }
 
-  private _cards?: Cards;
-  get cards(): Cards {
-    return (this._cards ??= new Cards(this._options));
+  private _applePay?: ApplePay;
+  get applePay(): ApplePay {
+    return (this._applePay ??= new ApplePay(this._options));
   }
 
   private _bankAccounts?: BankAccounts;
@@ -62,6 +63,11 @@ export class Moov extends ClientSDK {
   private _capabilities?: Capabilities;
   get capabilities(): Capabilities {
     return (this._capabilities ??= new Capabilities(this._options));
+  }
+
+  private _cards?: Cards;
+  get cards(): Cards {
+    return (this._cards ??= new Cards(this._options));
   }
 
   private _disputes?: Disputes;

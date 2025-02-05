@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetAccountCountriesSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetAccountCountriesGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetAccountCountriesRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type GetAccountCountriesResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.AccountCountries;
+};
+
 /** @internal */
-export const GetAccountCountriesSecurity$inboundSchema: z.ZodType<
-  GetAccountCountriesSecurity,
+export const GetAccountCountriesGlobals$inboundSchema: z.ZodType<
+  GetAccountCountriesGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetAccountCountriesSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetAccountCountriesGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetAccountCountriesSecurity$outboundSchema: z.ZodType<
-  GetAccountCountriesSecurity$Outbound,
+export const GetAccountCountriesGlobals$outboundSchema: z.ZodType<
+  GetAccountCountriesGlobals$Outbound,
   z.ZodTypeDef,
-  GetAccountCountriesSecurity
+  GetAccountCountriesGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,32 +70,30 @@ export const GetAccountCountriesSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetAccountCountriesSecurity$ {
-  /** @deprecated use `GetAccountCountriesSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetAccountCountriesSecurity$inboundSchema;
-  /** @deprecated use `GetAccountCountriesSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetAccountCountriesSecurity$outboundSchema;
-  /** @deprecated use `GetAccountCountriesSecurity$Outbound` instead. */
-  export type Outbound = GetAccountCountriesSecurity$Outbound;
+export namespace GetAccountCountriesGlobals$ {
+  /** @deprecated use `GetAccountCountriesGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetAccountCountriesGlobals$inboundSchema;
+  /** @deprecated use `GetAccountCountriesGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetAccountCountriesGlobals$outboundSchema;
+  /** @deprecated use `GetAccountCountriesGlobals$Outbound` instead. */
+  export type Outbound = GetAccountCountriesGlobals$Outbound;
 }
 
-export function getAccountCountriesSecurityToJSON(
-  getAccountCountriesSecurity: GetAccountCountriesSecurity,
+export function getAccountCountriesGlobalsToJSON(
+  getAccountCountriesGlobals: GetAccountCountriesGlobals,
 ): string {
   return JSON.stringify(
-    GetAccountCountriesSecurity$outboundSchema.parse(
-      getAccountCountriesSecurity,
-    ),
+    GetAccountCountriesGlobals$outboundSchema.parse(getAccountCountriesGlobals),
   );
 }
 
-export function getAccountCountriesSecurityFromJSON(
+export function getAccountCountriesGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetAccountCountriesSecurity, SDKValidationError> {
+): SafeParseResult<GetAccountCountriesGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetAccountCountriesSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAccountCountriesSecurity' from JSON`,
+    (x) => GetAccountCountriesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAccountCountriesGlobals' from JSON`,
   );
 }
 
@@ -97,17 +103,11 @@ export const GetAccountCountriesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetAccountCountriesRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -117,12 +117,7 @@ export const GetAccountCountriesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAccountCountriesRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -153,5 +148,74 @@ export function getAccountCountriesRequestFromJSON(
     jsonString,
     (x) => GetAccountCountriesRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetAccountCountriesRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAccountCountriesResponse$inboundSchema: z.ZodType<
+  GetAccountCountriesResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.AccountCountries$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetAccountCountriesResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.AccountCountries$Outbound;
+};
+
+/** @internal */
+export const GetAccountCountriesResponse$outboundSchema: z.ZodType<
+  GetAccountCountriesResponse$Outbound,
+  z.ZodTypeDef,
+  GetAccountCountriesResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.AccountCountries$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAccountCountriesResponse$ {
+  /** @deprecated use `GetAccountCountriesResponse$inboundSchema` instead. */
+  export const inboundSchema = GetAccountCountriesResponse$inboundSchema;
+  /** @deprecated use `GetAccountCountriesResponse$outboundSchema` instead. */
+  export const outboundSchema = GetAccountCountriesResponse$outboundSchema;
+  /** @deprecated use `GetAccountCountriesResponse$Outbound` instead. */
+  export type Outbound = GetAccountCountriesResponse$Outbound;
+}
+
+export function getAccountCountriesResponseToJSON(
+  getAccountCountriesResponse: GetAccountCountriesResponse,
+): string {
+  return JSON.stringify(
+    GetAccountCountriesResponse$outboundSchema.parse(
+      getAccountCountriesResponse,
+    ),
+  );
+}
+
+export function getAccountCountriesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAccountCountriesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAccountCountriesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAccountCountriesResponse' from JSON`,
   );
 }

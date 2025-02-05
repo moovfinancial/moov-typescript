@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type UpdateApplePayMerchantDomainsSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type UpdateApplePayMerchantDomainsGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type UpdateApplePayMerchantDomainsRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * ID of the Moov account representing the merchant.
    */
@@ -26,39 +34,38 @@ export type UpdateApplePayMerchantDomainsRequest = {
   updateApplePayMerchantDomains: components.UpdateApplePayMerchantDomains;
 };
 
+export type UpdateApplePayMerchantDomainsResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const UpdateApplePayMerchantDomainsSecurity$inboundSchema: z.ZodType<
-  UpdateApplePayMerchantDomainsSecurity,
+export const UpdateApplePayMerchantDomainsGlobals$inboundSchema: z.ZodType<
+  UpdateApplePayMerchantDomainsGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type UpdateApplePayMerchantDomainsSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type UpdateApplePayMerchantDomainsGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const UpdateApplePayMerchantDomainsSecurity$outboundSchema: z.ZodType<
-  UpdateApplePayMerchantDomainsSecurity$Outbound,
+export const UpdateApplePayMerchantDomainsGlobals$outboundSchema: z.ZodType<
+  UpdateApplePayMerchantDomainsGlobals$Outbound,
   z.ZodTypeDef,
-  UpdateApplePayMerchantDomainsSecurity
+  UpdateApplePayMerchantDomainsGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -66,35 +73,35 @@ export const UpdateApplePayMerchantDomainsSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateApplePayMerchantDomainsSecurity$ {
-  /** @deprecated use `UpdateApplePayMerchantDomainsSecurity$inboundSchema` instead. */
+export namespace UpdateApplePayMerchantDomainsGlobals$ {
+  /** @deprecated use `UpdateApplePayMerchantDomainsGlobals$inboundSchema` instead. */
   export const inboundSchema =
-    UpdateApplePayMerchantDomainsSecurity$inboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomainsSecurity$outboundSchema` instead. */
+    UpdateApplePayMerchantDomainsGlobals$inboundSchema;
+  /** @deprecated use `UpdateApplePayMerchantDomainsGlobals$outboundSchema` instead. */
   export const outboundSchema =
-    UpdateApplePayMerchantDomainsSecurity$outboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomainsSecurity$Outbound` instead. */
-  export type Outbound = UpdateApplePayMerchantDomainsSecurity$Outbound;
+    UpdateApplePayMerchantDomainsGlobals$outboundSchema;
+  /** @deprecated use `UpdateApplePayMerchantDomainsGlobals$Outbound` instead. */
+  export type Outbound = UpdateApplePayMerchantDomainsGlobals$Outbound;
 }
 
-export function updateApplePayMerchantDomainsSecurityToJSON(
-  updateApplePayMerchantDomainsSecurity: UpdateApplePayMerchantDomainsSecurity,
+export function updateApplePayMerchantDomainsGlobalsToJSON(
+  updateApplePayMerchantDomainsGlobals: UpdateApplePayMerchantDomainsGlobals,
 ): string {
   return JSON.stringify(
-    UpdateApplePayMerchantDomainsSecurity$outboundSchema.parse(
-      updateApplePayMerchantDomainsSecurity,
+    UpdateApplePayMerchantDomainsGlobals$outboundSchema.parse(
+      updateApplePayMerchantDomainsGlobals,
     ),
   );
 }
 
-export function updateApplePayMerchantDomainsSecurityFromJSON(
+export function updateApplePayMerchantDomainsGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateApplePayMerchantDomainsSecurity, SDKValidationError> {
+): SafeParseResult<UpdateApplePayMerchantDomainsGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateApplePayMerchantDomainsSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateApplePayMerchantDomainsSecurity' from JSON`,
+      UpdateApplePayMerchantDomainsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateApplePayMerchantDomainsGlobals' from JSON`,
   );
 }
 
@@ -104,20 +111,17 @@ export const UpdateApplePayMerchantDomainsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   UpdateApplePayMerchantDomains:
     components.UpdateApplePayMerchantDomains$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "UpdateApplePayMerchantDomains": "updateApplePayMerchantDomains",
   });
 });
 
 /** @internal */
 export type UpdateApplePayMerchantDomainsRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   UpdateApplePayMerchantDomains:
     components.UpdateApplePayMerchantDomains$Outbound;
@@ -129,13 +133,11 @@ export const UpdateApplePayMerchantDomainsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateApplePayMerchantDomainsRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   updateApplePayMerchantDomains:
     components.UpdateApplePayMerchantDomains$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     updateApplePayMerchantDomains: "UpdateApplePayMerchantDomains",
   });
 });
@@ -173,5 +175,72 @@ export function updateApplePayMerchantDomainsRequestFromJSON(
     (x) =>
       UpdateApplePayMerchantDomainsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateApplePayMerchantDomainsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateApplePayMerchantDomainsResponse$inboundSchema: z.ZodType<
+  UpdateApplePayMerchantDomainsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type UpdateApplePayMerchantDomainsResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const UpdateApplePayMerchantDomainsResponse$outboundSchema: z.ZodType<
+  UpdateApplePayMerchantDomainsResponse$Outbound,
+  z.ZodTypeDef,
+  UpdateApplePayMerchantDomainsResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateApplePayMerchantDomainsResponse$ {
+  /** @deprecated use `UpdateApplePayMerchantDomainsResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateApplePayMerchantDomainsResponse$inboundSchema;
+  /** @deprecated use `UpdateApplePayMerchantDomainsResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateApplePayMerchantDomainsResponse$outboundSchema;
+  /** @deprecated use `UpdateApplePayMerchantDomainsResponse$Outbound` instead. */
+  export type Outbound = UpdateApplePayMerchantDomainsResponse$Outbound;
+}
+
+export function updateApplePayMerchantDomainsResponseToJSON(
+  updateApplePayMerchantDomainsResponse: UpdateApplePayMerchantDomainsResponse,
+): string {
+  return JSON.stringify(
+    UpdateApplePayMerchantDomainsResponse$outboundSchema.parse(
+      updateApplePayMerchantDomainsResponse,
+    ),
+  );
+}
+
+export function updateApplePayMerchantDomainsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateApplePayMerchantDomainsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateApplePayMerchantDomainsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateApplePayMerchantDomainsResponse' from JSON`,
   );
 }

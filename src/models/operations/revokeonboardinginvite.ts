@@ -6,55 +6,61 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type RevokeOnboardingInviteSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type RevokeOnboardingInviteGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type RevokeOnboardingInviteRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   code: string;
 };
 
+export type RevokeOnboardingInviteResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const RevokeOnboardingInviteSecurity$inboundSchema: z.ZodType<
-  RevokeOnboardingInviteSecurity,
+export const RevokeOnboardingInviteGlobals$inboundSchema: z.ZodType<
+  RevokeOnboardingInviteGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type RevokeOnboardingInviteSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type RevokeOnboardingInviteGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const RevokeOnboardingInviteSecurity$outboundSchema: z.ZodType<
-  RevokeOnboardingInviteSecurity$Outbound,
+export const RevokeOnboardingInviteGlobals$outboundSchema: z.ZodType<
+  RevokeOnboardingInviteGlobals$Outbound,
   z.ZodTypeDef,
-  RevokeOnboardingInviteSecurity
+  RevokeOnboardingInviteGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,32 +68,32 @@ export const RevokeOnboardingInviteSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RevokeOnboardingInviteSecurity$ {
-  /** @deprecated use `RevokeOnboardingInviteSecurity$inboundSchema` instead. */
-  export const inboundSchema = RevokeOnboardingInviteSecurity$inboundSchema;
-  /** @deprecated use `RevokeOnboardingInviteSecurity$outboundSchema` instead. */
-  export const outboundSchema = RevokeOnboardingInviteSecurity$outboundSchema;
-  /** @deprecated use `RevokeOnboardingInviteSecurity$Outbound` instead. */
-  export type Outbound = RevokeOnboardingInviteSecurity$Outbound;
+export namespace RevokeOnboardingInviteGlobals$ {
+  /** @deprecated use `RevokeOnboardingInviteGlobals$inboundSchema` instead. */
+  export const inboundSchema = RevokeOnboardingInviteGlobals$inboundSchema;
+  /** @deprecated use `RevokeOnboardingInviteGlobals$outboundSchema` instead. */
+  export const outboundSchema = RevokeOnboardingInviteGlobals$outboundSchema;
+  /** @deprecated use `RevokeOnboardingInviteGlobals$Outbound` instead. */
+  export type Outbound = RevokeOnboardingInviteGlobals$Outbound;
 }
 
-export function revokeOnboardingInviteSecurityToJSON(
-  revokeOnboardingInviteSecurity: RevokeOnboardingInviteSecurity,
+export function revokeOnboardingInviteGlobalsToJSON(
+  revokeOnboardingInviteGlobals: RevokeOnboardingInviteGlobals,
 ): string {
   return JSON.stringify(
-    RevokeOnboardingInviteSecurity$outboundSchema.parse(
-      revokeOnboardingInviteSecurity,
+    RevokeOnboardingInviteGlobals$outboundSchema.parse(
+      revokeOnboardingInviteGlobals,
     ),
   );
 }
 
-export function revokeOnboardingInviteSecurityFromJSON(
+export function revokeOnboardingInviteGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<RevokeOnboardingInviteSecurity, SDKValidationError> {
+): SafeParseResult<RevokeOnboardingInviteGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RevokeOnboardingInviteSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RevokeOnboardingInviteSecurity' from JSON`,
+    (x) => RevokeOnboardingInviteGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RevokeOnboardingInviteGlobals' from JSON`,
   );
 }
 
@@ -97,17 +103,11 @@ export const RevokeOnboardingInviteRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   code: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type RevokeOnboardingInviteRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   code: string;
 };
 
@@ -117,12 +117,7 @@ export const RevokeOnboardingInviteRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RevokeOnboardingInviteRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   code: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +150,69 @@ export function revokeOnboardingInviteRequestFromJSON(
     jsonString,
     (x) => RevokeOnboardingInviteRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'RevokeOnboardingInviteRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const RevokeOnboardingInviteResponse$inboundSchema: z.ZodType<
+  RevokeOnboardingInviteResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type RevokeOnboardingInviteResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const RevokeOnboardingInviteResponse$outboundSchema: z.ZodType<
+  RevokeOnboardingInviteResponse$Outbound,
+  z.ZodTypeDef,
+  RevokeOnboardingInviteResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RevokeOnboardingInviteResponse$ {
+  /** @deprecated use `RevokeOnboardingInviteResponse$inboundSchema` instead. */
+  export const inboundSchema = RevokeOnboardingInviteResponse$inboundSchema;
+  /** @deprecated use `RevokeOnboardingInviteResponse$outboundSchema` instead. */
+  export const outboundSchema = RevokeOnboardingInviteResponse$outboundSchema;
+  /** @deprecated use `RevokeOnboardingInviteResponse$Outbound` instead. */
+  export type Outbound = RevokeOnboardingInviteResponse$Outbound;
+}
+
+export function revokeOnboardingInviteResponseToJSON(
+  revokeOnboardingInviteResponse: RevokeOnboardingInviteResponse,
+): string {
+  return JSON.stringify(
+    RevokeOnboardingInviteResponse$outboundSchema.parse(
+      revokeOnboardingInviteResponse,
+    ),
+  );
+}
+
+export function revokeOnboardingInviteResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RevokeOnboardingInviteResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RevokeOnboardingInviteResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RevokeOnboardingInviteResponse' from JSON`,
   );
 }

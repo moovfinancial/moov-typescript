@@ -6,7 +6,7 @@
 import { LinkApplePayTokenRequest } from "@moovio/sdk/models/operations";
 
 let value: LinkApplePayTokenRequest = {
-  accountID: "2c22c554-55b3-45ce-a918-a5dc92be4fc4",
+  accountID: "178b1369-e92f-4d8e-a8ed-fe026f42e7e2",
   linkApplePay: {
     token: {
       paymentData: {
@@ -43,6 +43,5 @@ let value: LinkApplePayTokenRequest = {
 
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `xMoovVersion`                                                     | [components.Versions](../../models/components/versions.md)         | :heavy_minus_sign:                                                 | Specify an API version.                                            |
 | `accountID`                                                        | *string*                                                           | :heavy_check_mark:                                                 | ID of the Moov account representing the cardholder.                |
 | `linkApplePay`                                                     | [components.LinkApplePay](../../models/components/linkapplepay.md) | :heavy_check_mark:                                                 | N/A                                                                |

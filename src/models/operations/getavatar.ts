@@ -6,62 +6,69 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetAvatarSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetAvatarGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetAvatarRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * Any unique ID associated with an account such as accountID, representativeID, routing number, or userID.
    */
   uniqueID: string;
 };
 
-export type GetAvatarResponse =
+export type GetAvatarResponseResult =
   | ReadableStream<Uint8Array>
   | ReadableStream<Uint8Array>;
 
+export type GetAvatarResponse = {
+  headers: { [k: string]: Array<string> };
+  result: ReadableStream<Uint8Array> | ReadableStream<Uint8Array>;
+};
+
 /** @internal */
-export const GetAvatarSecurity$inboundSchema: z.ZodType<
-  GetAvatarSecurity,
+export const GetAvatarGlobals$inboundSchema: z.ZodType<
+  GetAvatarGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetAvatarSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetAvatarGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetAvatarSecurity$outboundSchema: z.ZodType<
-  GetAvatarSecurity$Outbound,
+export const GetAvatarGlobals$outboundSchema: z.ZodType<
+  GetAvatarGlobals$Outbound,
   z.ZodTypeDef,
-  GetAvatarSecurity
+  GetAvatarGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -69,30 +76,30 @@ export const GetAvatarSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetAvatarSecurity$ {
-  /** @deprecated use `GetAvatarSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetAvatarSecurity$inboundSchema;
-  /** @deprecated use `GetAvatarSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetAvatarSecurity$outboundSchema;
-  /** @deprecated use `GetAvatarSecurity$Outbound` instead. */
-  export type Outbound = GetAvatarSecurity$Outbound;
+export namespace GetAvatarGlobals$ {
+  /** @deprecated use `GetAvatarGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetAvatarGlobals$inboundSchema;
+  /** @deprecated use `GetAvatarGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetAvatarGlobals$outboundSchema;
+  /** @deprecated use `GetAvatarGlobals$Outbound` instead. */
+  export type Outbound = GetAvatarGlobals$Outbound;
 }
 
-export function getAvatarSecurityToJSON(
-  getAvatarSecurity: GetAvatarSecurity,
+export function getAvatarGlobalsToJSON(
+  getAvatarGlobals: GetAvatarGlobals,
 ): string {
   return JSON.stringify(
-    GetAvatarSecurity$outboundSchema.parse(getAvatarSecurity),
+    GetAvatarGlobals$outboundSchema.parse(getAvatarGlobals),
   );
 }
 
-export function getAvatarSecurityFromJSON(
+export function getAvatarGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetAvatarSecurity, SDKValidationError> {
+): SafeParseResult<GetAvatarGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetAvatarSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAvatarSecurity' from JSON`,
+    (x) => GetAvatarGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAvatarGlobals' from JSON`,
   );
 }
 
@@ -102,17 +109,11 @@ export const GetAvatarRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   uniqueID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetAvatarRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   uniqueID: string;
 };
 
@@ -122,12 +123,7 @@ export const GetAvatarRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAvatarRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   uniqueID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -162,8 +158,8 @@ export function getAvatarRequestFromJSON(
 }
 
 /** @internal */
-export const GetAvatarResponse$inboundSchema: z.ZodType<
-  GetAvatarResponse,
+export const GetAvatarResponseResult$inboundSchema: z.ZodType<
+  GetAvatarResponseResult,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -172,19 +168,92 @@ export const GetAvatarResponse$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type GetAvatarResponse$Outbound =
+export type GetAvatarResponseResult$Outbound =
   | ReadableStream<Uint8Array>
   | ReadableStream<Uint8Array>;
+
+/** @internal */
+export const GetAvatarResponseResult$outboundSchema: z.ZodType<
+  GetAvatarResponseResult$Outbound,
+  z.ZodTypeDef,
+  GetAvatarResponseResult
+> = z.union([
+  z.instanceof(ReadableStream<Uint8Array>),
+  z.instanceof(ReadableStream<Uint8Array>),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAvatarResponseResult$ {
+  /** @deprecated use `GetAvatarResponseResult$inboundSchema` instead. */
+  export const inboundSchema = GetAvatarResponseResult$inboundSchema;
+  /** @deprecated use `GetAvatarResponseResult$outboundSchema` instead. */
+  export const outboundSchema = GetAvatarResponseResult$outboundSchema;
+  /** @deprecated use `GetAvatarResponseResult$Outbound` instead. */
+  export type Outbound = GetAvatarResponseResult$Outbound;
+}
+
+export function getAvatarResponseResultToJSON(
+  getAvatarResponseResult: GetAvatarResponseResult,
+): string {
+  return JSON.stringify(
+    GetAvatarResponseResult$outboundSchema.parse(getAvatarResponseResult),
+  );
+}
+
+export function getAvatarResponseResultFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAvatarResponseResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAvatarResponseResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAvatarResponseResult' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAvatarResponse$inboundSchema: z.ZodType<
+  GetAvatarResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ]),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetAvatarResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: ReadableStream<Uint8Array> | ReadableStream<Uint8Array>;
+};
 
 /** @internal */
 export const GetAvatarResponse$outboundSchema: z.ZodType<
   GetAvatarResponse$Outbound,
   z.ZodTypeDef,
   GetAvatarResponse
-> = z.union([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ]),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
 
 /**
  * @internal

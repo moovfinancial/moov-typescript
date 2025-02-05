@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CreatePaymentLinkSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type CreatePaymentLinkGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type CreatePaymentLinkRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   createPaymentLink: components.CreatePaymentLink;
 };
 
+export type CreatePaymentLinkResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.PaymentLink;
+};
+
 /** @internal */
-export const CreatePaymentLinkSecurity$inboundSchema: z.ZodType<
-  CreatePaymentLinkSecurity,
+export const CreatePaymentLinkGlobals$inboundSchema: z.ZodType<
+  CreatePaymentLinkGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type CreatePaymentLinkSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type CreatePaymentLinkGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const CreatePaymentLinkSecurity$outboundSchema: z.ZodType<
-  CreatePaymentLinkSecurity$Outbound,
+export const CreatePaymentLinkGlobals$outboundSchema: z.ZodType<
+  CreatePaymentLinkGlobals$Outbound,
   z.ZodTypeDef,
-  CreatePaymentLinkSecurity
+  CreatePaymentLinkGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +71,30 @@ export const CreatePaymentLinkSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreatePaymentLinkSecurity$ {
-  /** @deprecated use `CreatePaymentLinkSecurity$inboundSchema` instead. */
-  export const inboundSchema = CreatePaymentLinkSecurity$inboundSchema;
-  /** @deprecated use `CreatePaymentLinkSecurity$outboundSchema` instead. */
-  export const outboundSchema = CreatePaymentLinkSecurity$outboundSchema;
-  /** @deprecated use `CreatePaymentLinkSecurity$Outbound` instead. */
-  export type Outbound = CreatePaymentLinkSecurity$Outbound;
+export namespace CreatePaymentLinkGlobals$ {
+  /** @deprecated use `CreatePaymentLinkGlobals$inboundSchema` instead. */
+  export const inboundSchema = CreatePaymentLinkGlobals$inboundSchema;
+  /** @deprecated use `CreatePaymentLinkGlobals$outboundSchema` instead. */
+  export const outboundSchema = CreatePaymentLinkGlobals$outboundSchema;
+  /** @deprecated use `CreatePaymentLinkGlobals$Outbound` instead. */
+  export type Outbound = CreatePaymentLinkGlobals$Outbound;
 }
 
-export function createPaymentLinkSecurityToJSON(
-  createPaymentLinkSecurity: CreatePaymentLinkSecurity,
+export function createPaymentLinkGlobalsToJSON(
+  createPaymentLinkGlobals: CreatePaymentLinkGlobals,
 ): string {
   return JSON.stringify(
-    CreatePaymentLinkSecurity$outboundSchema.parse(createPaymentLinkSecurity),
+    CreatePaymentLinkGlobals$outboundSchema.parse(createPaymentLinkGlobals),
   );
 }
 
-export function createPaymentLinkSecurityFromJSON(
+export function createPaymentLinkGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<CreatePaymentLinkSecurity, SDKValidationError> {
+): SafeParseResult<CreatePaymentLinkGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatePaymentLinkSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePaymentLinkSecurity' from JSON`,
+    (x) => CreatePaymentLinkGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePaymentLinkGlobals' from JSON`,
   );
 }
 
@@ -96,19 +104,16 @@ export const CreatePaymentLinkRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   CreatePaymentLink: components.CreatePaymentLink$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "CreatePaymentLink": "createPaymentLink",
   });
 });
 
 /** @internal */
 export type CreatePaymentLinkRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   CreatePaymentLink: components.CreatePaymentLink$Outbound;
 };
@@ -119,12 +124,10 @@ export const CreatePaymentLinkRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreatePaymentLinkRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   createPaymentLink: components.CreatePaymentLink$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     createPaymentLink: "CreatePaymentLink",
   });
 });
@@ -157,5 +160,72 @@ export function createPaymentLinkRequestFromJSON(
     jsonString,
     (x) => CreatePaymentLinkRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreatePaymentLinkRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreatePaymentLinkResponse$inboundSchema: z.ZodType<
+  CreatePaymentLinkResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.PaymentLink$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type CreatePaymentLinkResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.PaymentLink$Outbound;
+};
+
+/** @internal */
+export const CreatePaymentLinkResponse$outboundSchema: z.ZodType<
+  CreatePaymentLinkResponse$Outbound,
+  z.ZodTypeDef,
+  CreatePaymentLinkResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.PaymentLink$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreatePaymentLinkResponse$ {
+  /** @deprecated use `CreatePaymentLinkResponse$inboundSchema` instead. */
+  export const inboundSchema = CreatePaymentLinkResponse$inboundSchema;
+  /** @deprecated use `CreatePaymentLinkResponse$outboundSchema` instead. */
+  export const outboundSchema = CreatePaymentLinkResponse$outboundSchema;
+  /** @deprecated use `CreatePaymentLinkResponse$Outbound` instead. */
+  export type Outbound = CreatePaymentLinkResponse$Outbound;
+}
+
+export function createPaymentLinkResponseToJSON(
+  createPaymentLinkResponse: CreatePaymentLinkResponse,
+): string {
+  return JSON.stringify(
+    CreatePaymentLinkResponse$outboundSchema.parse(createPaymentLinkResponse),
+  );
+}
+
+export function createPaymentLinkResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatePaymentLinkResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatePaymentLinkResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePaymentLinkResponse' from JSON`,
   );
 }

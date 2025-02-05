@@ -10,7 +10,6 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
   ConnectionError,
@@ -24,10 +23,11 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- *   Generates a non-expiring token that can then be used to accept Moov’s terms of service.
+ * Generates a non-expiring token that can then be used to accept Moov's terms of service.
  *
- *   This token can only be generated via API. Any Moov account requesting the collect funds, send funds, wallet, or card issuing capabilities
- *   must accept Moov’s terms of service, then have the generated terms of service token patched to the account. Read more in our [documentation](https://docs.moov.io/guides/accounts/requirements/platform-agreement/).
+ * This token can only be generated via API. Any Moov account requesting the collect funds, send funds, wallet,
+ * or card issuing capabilities must accept Moov's terms of service, then have the generated terms of service
+ * token patched to the account. Read more in our [documentation](https://docs.moov.io/guides/accounts/requirements/platform-agreement/).
  */
 export async function accountsGetTermsOfServiceToken(
   client: MoovCore,
@@ -35,7 +35,7 @@ export async function accountsGetTermsOfServiceToken(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.TermsOfServiceToken,
+    operations.GetTermsOfServiceTokenResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -71,7 +71,7 @@ export async function accountsGetTermsOfServiceToken(
     }),
     "x-moov-version": encodeSimple(
       "x-moov-version",
-      payload["x-moov-version"],
+      client._options.xMoovVersion,
       { explode: false, charEncoding: "none" },
     ),
   }));
@@ -117,8 +117,12 @@ export async function accountsGetTermsOfServiceToken(
   }
   const response = doResult.value;
 
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
+  };
+
   const [result] = await M.match<
-    components.TermsOfServiceToken,
+    operations.GetTermsOfServiceTokenResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -127,10 +131,15 @@ export async function accountsGetTermsOfServiceToken(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.TermsOfServiceToken$inboundSchema),
-    M.fail([401, 403, 404, 429, "4XX"]),
-    M.fail([500, 504, "5XX"]),
-  )(response);
+    M.json(200, operations.GetTermsOfServiceTokenResponse$inboundSchema, {
+      hdrs: true,
+      key: "Result",
+    }),
+    M.fail([401, 403, 404, 429]),
+    M.fail([500, 504]),
+    M.fail("4XX"),
+    M.fail("5XX"),
+  )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;
   }

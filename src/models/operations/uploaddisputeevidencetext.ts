@@ -9,54 +9,62 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type UploadDisputeEvidenceTextSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type UploadDisputeEvidenceTextGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type UploadDisputeEvidenceTextRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   disputeID: string;
   createEvidenceText: components.CreateEvidenceText;
 };
 
+export type UploadDisputeEvidenceTextResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.EvidenceText;
+};
+
 /** @internal */
-export const UploadDisputeEvidenceTextSecurity$inboundSchema: z.ZodType<
-  UploadDisputeEvidenceTextSecurity,
+export const UploadDisputeEvidenceTextGlobals$inboundSchema: z.ZodType<
+  UploadDisputeEvidenceTextGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type UploadDisputeEvidenceTextSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type UploadDisputeEvidenceTextGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const UploadDisputeEvidenceTextSecurity$outboundSchema: z.ZodType<
-  UploadDisputeEvidenceTextSecurity$Outbound,
+export const UploadDisputeEvidenceTextGlobals$outboundSchema: z.ZodType<
+  UploadDisputeEvidenceTextGlobals$Outbound,
   z.ZodTypeDef,
-  UploadDisputeEvidenceTextSecurity
+  UploadDisputeEvidenceTextGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -64,33 +72,32 @@ export const UploadDisputeEvidenceTextSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UploadDisputeEvidenceTextSecurity$ {
-  /** @deprecated use `UploadDisputeEvidenceTextSecurity$inboundSchema` instead. */
-  export const inboundSchema = UploadDisputeEvidenceTextSecurity$inboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceTextSecurity$outboundSchema` instead. */
-  export const outboundSchema =
-    UploadDisputeEvidenceTextSecurity$outboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceTextSecurity$Outbound` instead. */
-  export type Outbound = UploadDisputeEvidenceTextSecurity$Outbound;
+export namespace UploadDisputeEvidenceTextGlobals$ {
+  /** @deprecated use `UploadDisputeEvidenceTextGlobals$inboundSchema` instead. */
+  export const inboundSchema = UploadDisputeEvidenceTextGlobals$inboundSchema;
+  /** @deprecated use `UploadDisputeEvidenceTextGlobals$outboundSchema` instead. */
+  export const outboundSchema = UploadDisputeEvidenceTextGlobals$outboundSchema;
+  /** @deprecated use `UploadDisputeEvidenceTextGlobals$Outbound` instead. */
+  export type Outbound = UploadDisputeEvidenceTextGlobals$Outbound;
 }
 
-export function uploadDisputeEvidenceTextSecurityToJSON(
-  uploadDisputeEvidenceTextSecurity: UploadDisputeEvidenceTextSecurity,
+export function uploadDisputeEvidenceTextGlobalsToJSON(
+  uploadDisputeEvidenceTextGlobals: UploadDisputeEvidenceTextGlobals,
 ): string {
   return JSON.stringify(
-    UploadDisputeEvidenceTextSecurity$outboundSchema.parse(
-      uploadDisputeEvidenceTextSecurity,
+    UploadDisputeEvidenceTextGlobals$outboundSchema.parse(
+      uploadDisputeEvidenceTextGlobals,
     ),
   );
 }
 
-export function uploadDisputeEvidenceTextSecurityFromJSON(
+export function uploadDisputeEvidenceTextGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<UploadDisputeEvidenceTextSecurity, SDKValidationError> {
+): SafeParseResult<UploadDisputeEvidenceTextGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UploadDisputeEvidenceTextSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadDisputeEvidenceTextSecurity' from JSON`,
+    (x) => UploadDisputeEvidenceTextGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDisputeEvidenceTextGlobals' from JSON`,
   );
 }
 
@@ -100,20 +107,17 @@ export const UploadDisputeEvidenceTextRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
   CreateEvidenceText: components.CreateEvidenceText$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "CreateEvidenceText": "createEvidenceText",
   });
 });
 
 /** @internal */
 export type UploadDisputeEvidenceTextRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   disputeID: string;
   CreateEvidenceText: components.CreateEvidenceText$Outbound;
@@ -125,13 +129,11 @@ export const UploadDisputeEvidenceTextRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UploadDisputeEvidenceTextRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
   createEvidenceText: components.CreateEvidenceText$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     createEvidenceText: "CreateEvidenceText",
   });
 });
@@ -166,5 +168,75 @@ export function uploadDisputeEvidenceTextRequestFromJSON(
     jsonString,
     (x) => UploadDisputeEvidenceTextRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UploadDisputeEvidenceTextRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadDisputeEvidenceTextResponse$inboundSchema: z.ZodType<
+  UploadDisputeEvidenceTextResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.EvidenceText$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type UploadDisputeEvidenceTextResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.EvidenceText$Outbound;
+};
+
+/** @internal */
+export const UploadDisputeEvidenceTextResponse$outboundSchema: z.ZodType<
+  UploadDisputeEvidenceTextResponse$Outbound,
+  z.ZodTypeDef,
+  UploadDisputeEvidenceTextResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.EvidenceText$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UploadDisputeEvidenceTextResponse$ {
+  /** @deprecated use `UploadDisputeEvidenceTextResponse$inboundSchema` instead. */
+  export const inboundSchema = UploadDisputeEvidenceTextResponse$inboundSchema;
+  /** @deprecated use `UploadDisputeEvidenceTextResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    UploadDisputeEvidenceTextResponse$outboundSchema;
+  /** @deprecated use `UploadDisputeEvidenceTextResponse$Outbound` instead. */
+  export type Outbound = UploadDisputeEvidenceTextResponse$Outbound;
+}
+
+export function uploadDisputeEvidenceTextResponseToJSON(
+  uploadDisputeEvidenceTextResponse: UploadDisputeEvidenceTextResponse,
+): string {
+  return JSON.stringify(
+    UploadDisputeEvidenceTextResponse$outboundSchema.parse(
+      uploadDisputeEvidenceTextResponse,
+    ),
+  );
+}
+
+export function uploadDisputeEvidenceTextResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDisputeEvidenceTextResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadDisputeEvidenceTextResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDisputeEvidenceTextResponse' from JSON`,
   );
 }

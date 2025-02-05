@@ -6,56 +6,62 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type InitiateMicroDepositsSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type InitiateMicroDepositsGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type InitiateMicroDepositsRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   bankAccountID: string;
 };
 
+export type InitiateMicroDepositsResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const InitiateMicroDepositsSecurity$inboundSchema: z.ZodType<
-  InitiateMicroDepositsSecurity,
+export const InitiateMicroDepositsGlobals$inboundSchema: z.ZodType<
+  InitiateMicroDepositsGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type InitiateMicroDepositsSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type InitiateMicroDepositsGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const InitiateMicroDepositsSecurity$outboundSchema: z.ZodType<
-  InitiateMicroDepositsSecurity$Outbound,
+export const InitiateMicroDepositsGlobals$outboundSchema: z.ZodType<
+  InitiateMicroDepositsGlobals$Outbound,
   z.ZodTypeDef,
-  InitiateMicroDepositsSecurity
+  InitiateMicroDepositsGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,32 +69,32 @@ export const InitiateMicroDepositsSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace InitiateMicroDepositsSecurity$ {
-  /** @deprecated use `InitiateMicroDepositsSecurity$inboundSchema` instead. */
-  export const inboundSchema = InitiateMicroDepositsSecurity$inboundSchema;
-  /** @deprecated use `InitiateMicroDepositsSecurity$outboundSchema` instead. */
-  export const outboundSchema = InitiateMicroDepositsSecurity$outboundSchema;
-  /** @deprecated use `InitiateMicroDepositsSecurity$Outbound` instead. */
-  export type Outbound = InitiateMicroDepositsSecurity$Outbound;
+export namespace InitiateMicroDepositsGlobals$ {
+  /** @deprecated use `InitiateMicroDepositsGlobals$inboundSchema` instead. */
+  export const inboundSchema = InitiateMicroDepositsGlobals$inboundSchema;
+  /** @deprecated use `InitiateMicroDepositsGlobals$outboundSchema` instead. */
+  export const outboundSchema = InitiateMicroDepositsGlobals$outboundSchema;
+  /** @deprecated use `InitiateMicroDepositsGlobals$Outbound` instead. */
+  export type Outbound = InitiateMicroDepositsGlobals$Outbound;
 }
 
-export function initiateMicroDepositsSecurityToJSON(
-  initiateMicroDepositsSecurity: InitiateMicroDepositsSecurity,
+export function initiateMicroDepositsGlobalsToJSON(
+  initiateMicroDepositsGlobals: InitiateMicroDepositsGlobals,
 ): string {
   return JSON.stringify(
-    InitiateMicroDepositsSecurity$outboundSchema.parse(
-      initiateMicroDepositsSecurity,
+    InitiateMicroDepositsGlobals$outboundSchema.parse(
+      initiateMicroDepositsGlobals,
     ),
   );
 }
 
-export function initiateMicroDepositsSecurityFromJSON(
+export function initiateMicroDepositsGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<InitiateMicroDepositsSecurity, SDKValidationError> {
+): SafeParseResult<InitiateMicroDepositsGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => InitiateMicroDepositsSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InitiateMicroDepositsSecurity' from JSON`,
+    (x) => InitiateMicroDepositsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InitiateMicroDepositsGlobals' from JSON`,
   );
 }
 
@@ -98,18 +104,12 @@ export const InitiateMicroDepositsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   bankAccountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type InitiateMicroDepositsRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   bankAccountID: string;
 };
@@ -120,13 +120,8 @@ export const InitiateMicroDepositsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InitiateMicroDepositsRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   bankAccountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -159,5 +154,69 @@ export function initiateMicroDepositsRequestFromJSON(
     jsonString,
     (x) => InitiateMicroDepositsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'InitiateMicroDepositsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const InitiateMicroDepositsResponse$inboundSchema: z.ZodType<
+  InitiateMicroDepositsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type InitiateMicroDepositsResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const InitiateMicroDepositsResponse$outboundSchema: z.ZodType<
+  InitiateMicroDepositsResponse$Outbound,
+  z.ZodTypeDef,
+  InitiateMicroDepositsResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InitiateMicroDepositsResponse$ {
+  /** @deprecated use `InitiateMicroDepositsResponse$inboundSchema` instead. */
+  export const inboundSchema = InitiateMicroDepositsResponse$inboundSchema;
+  /** @deprecated use `InitiateMicroDepositsResponse$outboundSchema` instead. */
+  export const outboundSchema = InitiateMicroDepositsResponse$outboundSchema;
+  /** @deprecated use `InitiateMicroDepositsResponse$Outbound` instead. */
+  export type Outbound = InitiateMicroDepositsResponse$Outbound;
+}
+
+export function initiateMicroDepositsResponseToJSON(
+  initiateMicroDepositsResponse: InitiateMicroDepositsResponse,
+): string {
+  return JSON.stringify(
+    InitiateMicroDepositsResponse$outboundSchema.parse(
+      initiateMicroDepositsResponse,
+    ),
+  );
+}
+
+export function initiateMicroDepositsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<InitiateMicroDepositsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InitiateMicroDepositsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InitiateMicroDepositsResponse' from JSON`,
   );
 }

@@ -9,7 +9,7 @@ A method of moving money
 
 ```typescript
 const value: components.MoovWalletPaymentMethod = {
-  paymentMethodID: "ebb49cc5-cb2d-4777-8997-da66c530ee15",
+  paymentMethodID: "cf2e0aae-328f-44c5-94ac-0986c586772c",
   paymentMethodType: "moov-wallet",
   wallet: "<value>",
 };
@@ -19,7 +19,7 @@ const value: components.MoovWalletPaymentMethod = {
 
 ```typescript
 const value: components.AchDebitFundPaymentMethod = {
-  paymentMethodID: "1e0f1d95-5c5a-487e-b8db-0c3e0517d425",
+  paymentMethodID: "84ddf5ed-92bf-4d10-b7eb-faec812d594e",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:
@@ -42,7 +42,7 @@ const value: components.AchDebitFundPaymentMethod = {
 
 ```typescript
 const value: components.AchDebitCollectPaymentMethod = {
-  paymentMethodID: "231b64b5-bd3f-4242-a578-de3917557b1e",
+  paymentMethodID: "fe99f5a7-5e97-4028-bf7a-de52f8e41e67",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:
@@ -65,7 +65,7 @@ const value: components.AchDebitCollectPaymentMethod = {
 
 ```typescript
 const value: components.AchCreditStandardPaymentMethod = {
-  paymentMethodID: "2f8f3844-9ecb-48e7-8dd3-c0538b18f3a9",
+  paymentMethodID: "69b34bc3-406e-46c0-a9ff-90db0cb188e7",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:
@@ -88,7 +88,7 @@ const value: components.AchCreditStandardPaymentMethod = {
 
 ```typescript
 const value: components.AchCreditSameDayPaymentMethod = {
-  paymentMethodID: "7b0e803f-9147-4067-b39c-39afcd72f271",
+  paymentMethodID: "88dfe3d5-0817-4bd5-bd09-5833dcd7a730",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:
@@ -111,7 +111,7 @@ const value: components.AchCreditSameDayPaymentMethod = {
 
 ```typescript
 const value: components.RtpCreditPaymentMethod = {
-  paymentMethodID: "fb544282-5ab0-46ad-87f4-074d34cb8b60",
+  paymentMethodID: "bc1e2dcb-a3a1-4d37-9ec0-78d916af6f87",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:
@@ -134,7 +134,7 @@ const value: components.RtpCreditPaymentMethod = {
 
 ```typescript
 const value: components.CardPaymentPaymentMethod = {
-  paymentMethodID: "810fd20f-42b1-44fa-886c-2fd90be851ce",
+  paymentMethodID: "966f7c83-fe2e-439e-9934-ab942a322bbe",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
     fingerprint:
@@ -205,7 +205,7 @@ const value: components.CardPaymentPaymentMethod = {
 
 ```typescript
 const value: components.PushToCardPaymentMethod = {
-  paymentMethodID: "c0f984e4-dfc8-4177-b365-27480ed8df1a",
+  paymentMethodID: "9e37ff87-f938-4986-82d1-220de1762ddb",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
     fingerprint:
@@ -276,7 +276,7 @@ const value: components.PushToCardPaymentMethod = {
 
 ```typescript
 const value: components.PullFromCardPaymentMethod = {
-  paymentMethodID: "f92903f5-a4fb-45c1-963a-16485b0a34cf",
+  paymentMethodID: "43d7204f-0e0a-4573-b54b-d6d0c8d36bd7",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
     fingerprint:
@@ -347,7 +347,7 @@ const value: components.PullFromCardPaymentMethod = {
 
 ```typescript
 const value: components.ApplePayPaymentMethod = {
-  paymentMethodID: "d1ac26e1-096c-4e46-a79f-b64f2bea635b",
+  paymentMethodID: "8fe6fc8f-b314-4b86-bc0d-b2600f753cb0",
   paymentMethodType: "apple-pay",
   applePay: "<value>",
 };

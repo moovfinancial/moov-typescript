@@ -6,56 +6,62 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type DisableCardSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type DisableCardGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type DisableCardRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   cardID: string;
 };
 
+export type DisableCardResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const DisableCardSecurity$inboundSchema: z.ZodType<
-  DisableCardSecurity,
+export const DisableCardGlobals$inboundSchema: z.ZodType<
+  DisableCardGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type DisableCardSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type DisableCardGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const DisableCardSecurity$outboundSchema: z.ZodType<
-  DisableCardSecurity$Outbound,
+export const DisableCardGlobals$outboundSchema: z.ZodType<
+  DisableCardGlobals$Outbound,
   z.ZodTypeDef,
-  DisableCardSecurity
+  DisableCardGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +69,30 @@ export const DisableCardSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DisableCardSecurity$ {
-  /** @deprecated use `DisableCardSecurity$inboundSchema` instead. */
-  export const inboundSchema = DisableCardSecurity$inboundSchema;
-  /** @deprecated use `DisableCardSecurity$outboundSchema` instead. */
-  export const outboundSchema = DisableCardSecurity$outboundSchema;
-  /** @deprecated use `DisableCardSecurity$Outbound` instead. */
-  export type Outbound = DisableCardSecurity$Outbound;
+export namespace DisableCardGlobals$ {
+  /** @deprecated use `DisableCardGlobals$inboundSchema` instead. */
+  export const inboundSchema = DisableCardGlobals$inboundSchema;
+  /** @deprecated use `DisableCardGlobals$outboundSchema` instead. */
+  export const outboundSchema = DisableCardGlobals$outboundSchema;
+  /** @deprecated use `DisableCardGlobals$Outbound` instead. */
+  export type Outbound = DisableCardGlobals$Outbound;
 }
 
-export function disableCardSecurityToJSON(
-  disableCardSecurity: DisableCardSecurity,
+export function disableCardGlobalsToJSON(
+  disableCardGlobals: DisableCardGlobals,
 ): string {
   return JSON.stringify(
-    DisableCardSecurity$outboundSchema.parse(disableCardSecurity),
+    DisableCardGlobals$outboundSchema.parse(disableCardGlobals),
   );
 }
 
-export function disableCardSecurityFromJSON(
+export function disableCardGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<DisableCardSecurity, SDKValidationError> {
+): SafeParseResult<DisableCardGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DisableCardSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DisableCardSecurity' from JSON`,
+    (x) => DisableCardGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisableCardGlobals' from JSON`,
   );
 }
 
@@ -96,18 +102,12 @@ export const DisableCardRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   cardID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type DisableCardRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   cardID: string;
 };
@@ -118,13 +118,8 @@ export const DisableCardRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DisableCardRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   cardID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +150,67 @@ export function disableCardRequestFromJSON(
     jsonString,
     (x) => DisableCardRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'DisableCardRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const DisableCardResponse$inboundSchema: z.ZodType<
+  DisableCardResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type DisableCardResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const DisableCardResponse$outboundSchema: z.ZodType<
+  DisableCardResponse$Outbound,
+  z.ZodTypeDef,
+  DisableCardResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DisableCardResponse$ {
+  /** @deprecated use `DisableCardResponse$inboundSchema` instead. */
+  export const inboundSchema = DisableCardResponse$inboundSchema;
+  /** @deprecated use `DisableCardResponse$outboundSchema` instead. */
+  export const outboundSchema = DisableCardResponse$outboundSchema;
+  /** @deprecated use `DisableCardResponse$Outbound` instead. */
+  export type Outbound = DisableCardResponse$Outbound;
+}
+
+export function disableCardResponseToJSON(
+  disableCardResponse: DisableCardResponse,
+): string {
+  return JSON.stringify(
+    DisableCardResponse$outboundSchema.parse(disableCardResponse),
+  );
+}
+
+export function disableCardResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DisableCardResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DisableCardResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisableCardResponse' from JSON`,
   );
 }

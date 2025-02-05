@@ -6,15 +6,14 @@
 import { GetAdjustmentRequest } from "@moovio/sdk/models/operations";
 
 let value: GetAdjustmentRequest = {
-  accountID: "02e016b4-44d3-48fb-a5cf-5b1e1584a8b5",
-  adjustmentID: "ccb8a17d-9f41-4a1c-b48c-c7f744b6604d",
+  accountID: "4d9052f7-7a52-4d38-b31d-ffec516320b0",
+  adjustmentID: "211a368d-b420-4447-8ab4-62c0bcc45945",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `adjustmentID`                                             | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `adjustmentID`     | *string*           | :heavy_check_mark: | N/A                |

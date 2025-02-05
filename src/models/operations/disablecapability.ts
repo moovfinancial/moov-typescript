@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type DisableCapabilitySecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type DisableCapabilityGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type DisableCapabilityRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   /**
    * Moov account capabilities.
@@ -26,39 +34,38 @@ export type DisableCapabilityRequest = {
   capabilityID: components.CapabilityID;
 };
 
+export type DisableCapabilityResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const DisableCapabilitySecurity$inboundSchema: z.ZodType<
-  DisableCapabilitySecurity,
+export const DisableCapabilityGlobals$inboundSchema: z.ZodType<
+  DisableCapabilityGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type DisableCapabilitySecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type DisableCapabilityGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const DisableCapabilitySecurity$outboundSchema: z.ZodType<
-  DisableCapabilitySecurity$Outbound,
+export const DisableCapabilityGlobals$outboundSchema: z.ZodType<
+  DisableCapabilityGlobals$Outbound,
   z.ZodTypeDef,
-  DisableCapabilitySecurity
+  DisableCapabilityGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -66,30 +73,30 @@ export const DisableCapabilitySecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DisableCapabilitySecurity$ {
-  /** @deprecated use `DisableCapabilitySecurity$inboundSchema` instead. */
-  export const inboundSchema = DisableCapabilitySecurity$inboundSchema;
-  /** @deprecated use `DisableCapabilitySecurity$outboundSchema` instead. */
-  export const outboundSchema = DisableCapabilitySecurity$outboundSchema;
-  /** @deprecated use `DisableCapabilitySecurity$Outbound` instead. */
-  export type Outbound = DisableCapabilitySecurity$Outbound;
+export namespace DisableCapabilityGlobals$ {
+  /** @deprecated use `DisableCapabilityGlobals$inboundSchema` instead. */
+  export const inboundSchema = DisableCapabilityGlobals$inboundSchema;
+  /** @deprecated use `DisableCapabilityGlobals$outboundSchema` instead. */
+  export const outboundSchema = DisableCapabilityGlobals$outboundSchema;
+  /** @deprecated use `DisableCapabilityGlobals$Outbound` instead. */
+  export type Outbound = DisableCapabilityGlobals$Outbound;
 }
 
-export function disableCapabilitySecurityToJSON(
-  disableCapabilitySecurity: DisableCapabilitySecurity,
+export function disableCapabilityGlobalsToJSON(
+  disableCapabilityGlobals: DisableCapabilityGlobals,
 ): string {
   return JSON.stringify(
-    DisableCapabilitySecurity$outboundSchema.parse(disableCapabilitySecurity),
+    DisableCapabilityGlobals$outboundSchema.parse(disableCapabilityGlobals),
   );
 }
 
-export function disableCapabilitySecurityFromJSON(
+export function disableCapabilityGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<DisableCapabilitySecurity, SDKValidationError> {
+): SafeParseResult<DisableCapabilityGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DisableCapabilitySecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DisableCapabilitySecurity' from JSON`,
+    (x) => DisableCapabilityGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisableCapabilityGlobals' from JSON`,
   );
 }
 
@@ -99,18 +106,12 @@ export const DisableCapabilityRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   capabilityID: components.CapabilityID$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type DisableCapabilityRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   capabilityID: string;
 };
@@ -121,13 +122,8 @@ export const DisableCapabilityRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DisableCapabilityRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   capabilityID: components.CapabilityID$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -158,5 +154,67 @@ export function disableCapabilityRequestFromJSON(
     jsonString,
     (x) => DisableCapabilityRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'DisableCapabilityRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const DisableCapabilityResponse$inboundSchema: z.ZodType<
+  DisableCapabilityResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type DisableCapabilityResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const DisableCapabilityResponse$outboundSchema: z.ZodType<
+  DisableCapabilityResponse$Outbound,
+  z.ZodTypeDef,
+  DisableCapabilityResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DisableCapabilityResponse$ {
+  /** @deprecated use `DisableCapabilityResponse$inboundSchema` instead. */
+  export const inboundSchema = DisableCapabilityResponse$inboundSchema;
+  /** @deprecated use `DisableCapabilityResponse$outboundSchema` instead. */
+  export const outboundSchema = DisableCapabilityResponse$outboundSchema;
+  /** @deprecated use `DisableCapabilityResponse$Outbound` instead. */
+  export type Outbound = DisableCapabilityResponse$Outbound;
+}
+
+export function disableCapabilityResponseToJSON(
+  disableCapabilityResponse: DisableCapabilityResponse,
+): string {
+  return JSON.stringify(
+    DisableCapabilityResponse$outboundSchema.parse(disableCapabilityResponse),
+  );
+}
+
+export function disableCapabilityResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DisableCapabilityResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DisableCapabilityResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisableCapabilityResponse' from JSON`,
   );
 }

@@ -6,15 +6,14 @@
 import { GetSweepConfigRequest } from "@moovio/sdk/models/operations";
 
 let value: GetSweepConfigRequest = {
-  accountID: "4c075c61-b057-4b51-bd0d-1222cc219b80",
-  sweepConfigID: "bb31f7b1-8815-4ebb-be4c-198636db7fc0",
+  accountID: "d760ca78-ee2d-4814-aae1-9a4c130841e3",
+  sweepConfigID: "49ab40df-e1c7-4a98-ba99-2dcfc9ea429b",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `sweepConfigID`                                            | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `sweepConfigID`    | *string*           | :heavy_check_mark: | N/A                |

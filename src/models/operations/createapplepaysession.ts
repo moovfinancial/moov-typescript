@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CreateApplePaySessionSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type CreateApplePaySessionGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type CreateApplePaySessionRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * ID of the Moov account representing the merchant.
    */
@@ -26,39 +34,39 @@ export type CreateApplePaySessionRequest = {
   createApplePaySession: components.CreateApplePaySession;
 };
 
+export type CreateApplePaySessionResponse = {
+  headers: { [k: string]: Array<string> };
+  result: string;
+};
+
 /** @internal */
-export const CreateApplePaySessionSecurity$inboundSchema: z.ZodType<
-  CreateApplePaySessionSecurity,
+export const CreateApplePaySessionGlobals$inboundSchema: z.ZodType<
+  CreateApplePaySessionGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type CreateApplePaySessionSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type CreateApplePaySessionGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const CreateApplePaySessionSecurity$outboundSchema: z.ZodType<
-  CreateApplePaySessionSecurity$Outbound,
+export const CreateApplePaySessionGlobals$outboundSchema: z.ZodType<
+  CreateApplePaySessionGlobals$Outbound,
   z.ZodTypeDef,
-  CreateApplePaySessionSecurity
+  CreateApplePaySessionGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -66,32 +74,32 @@ export const CreateApplePaySessionSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateApplePaySessionSecurity$ {
-  /** @deprecated use `CreateApplePaySessionSecurity$inboundSchema` instead. */
-  export const inboundSchema = CreateApplePaySessionSecurity$inboundSchema;
-  /** @deprecated use `CreateApplePaySessionSecurity$outboundSchema` instead. */
-  export const outboundSchema = CreateApplePaySessionSecurity$outboundSchema;
-  /** @deprecated use `CreateApplePaySessionSecurity$Outbound` instead. */
-  export type Outbound = CreateApplePaySessionSecurity$Outbound;
+export namespace CreateApplePaySessionGlobals$ {
+  /** @deprecated use `CreateApplePaySessionGlobals$inboundSchema` instead. */
+  export const inboundSchema = CreateApplePaySessionGlobals$inboundSchema;
+  /** @deprecated use `CreateApplePaySessionGlobals$outboundSchema` instead. */
+  export const outboundSchema = CreateApplePaySessionGlobals$outboundSchema;
+  /** @deprecated use `CreateApplePaySessionGlobals$Outbound` instead. */
+  export type Outbound = CreateApplePaySessionGlobals$Outbound;
 }
 
-export function createApplePaySessionSecurityToJSON(
-  createApplePaySessionSecurity: CreateApplePaySessionSecurity,
+export function createApplePaySessionGlobalsToJSON(
+  createApplePaySessionGlobals: CreateApplePaySessionGlobals,
 ): string {
   return JSON.stringify(
-    CreateApplePaySessionSecurity$outboundSchema.parse(
-      createApplePaySessionSecurity,
+    CreateApplePaySessionGlobals$outboundSchema.parse(
+      createApplePaySessionGlobals,
     ),
   );
 }
 
-export function createApplePaySessionSecurityFromJSON(
+export function createApplePaySessionGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<CreateApplePaySessionSecurity, SDKValidationError> {
+): SafeParseResult<CreateApplePaySessionGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateApplePaySessionSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateApplePaySessionSecurity' from JSON`,
+    (x) => CreateApplePaySessionGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateApplePaySessionGlobals' from JSON`,
   );
 }
 
@@ -101,19 +109,16 @@ export const CreateApplePaySessionRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   CreateApplePaySession: components.CreateApplePaySession$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "CreateApplePaySession": "createApplePaySession",
   });
 });
 
 /** @internal */
 export type CreateApplePaySessionRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   CreateApplePaySession: components.CreateApplePaySession$Outbound;
 };
@@ -124,12 +129,10 @@ export const CreateApplePaySessionRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateApplePaySessionRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   createApplePaySession: components.CreateApplePaySession$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     createApplePaySession: "CreateApplePaySession",
   });
 });
@@ -164,5 +167,74 @@ export function createApplePaySessionRequestFromJSON(
     jsonString,
     (x) => CreateApplePaySessionRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateApplePaySessionRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateApplePaySessionResponse$inboundSchema: z.ZodType<
+  CreateApplePaySessionResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type CreateApplePaySessionResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: string;
+};
+
+/** @internal */
+export const CreateApplePaySessionResponse$outboundSchema: z.ZodType<
+  CreateApplePaySessionResponse$Outbound,
+  z.ZodTypeDef,
+  CreateApplePaySessionResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateApplePaySessionResponse$ {
+  /** @deprecated use `CreateApplePaySessionResponse$inboundSchema` instead. */
+  export const inboundSchema = CreateApplePaySessionResponse$inboundSchema;
+  /** @deprecated use `CreateApplePaySessionResponse$outboundSchema` instead. */
+  export const outboundSchema = CreateApplePaySessionResponse$outboundSchema;
+  /** @deprecated use `CreateApplePaySessionResponse$Outbound` instead. */
+  export type Outbound = CreateApplePaySessionResponse$Outbound;
+}
+
+export function createApplePaySessionResponseToJSON(
+  createApplePaySessionResponse: CreateApplePaySessionResponse,
+): string {
+  return JSON.stringify(
+    CreateApplePaySessionResponse$outboundSchema.parse(
+      createApplePaySessionResponse,
+    ),
+  );
+}
+
+export function createApplePaySessionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateApplePaySessionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateApplePaySessionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateApplePaySessionResponse' from JSON`,
   );
 }

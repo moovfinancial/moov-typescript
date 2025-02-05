@@ -6,15 +6,14 @@
 import { GetBankAccountVerificationRequest } from "@moovio/sdk/models/operations";
 
 let value: GetBankAccountVerificationRequest = {
-  accountID: "0b3402d3-f24d-464b-b0ed-1cf79a4a76ec",
-  bankAccountID: "d09ba460-1893-4770-829f-a1d619365a61",
+  accountID: "0c3e0517-d425-4d23-a1b6-4b5bd3f24257",
+  bankAccountID: "de391755-7b1e-4b2f-88f3-8449ecb8e7dd",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `bankAccountID`                                            | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `bankAccountID`    | *string*           | :heavy_check_mark: | N/A                |

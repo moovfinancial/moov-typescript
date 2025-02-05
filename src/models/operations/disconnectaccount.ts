@@ -6,55 +6,61 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type DisconnectAccountSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type DisconnectAccountGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type DisconnectAccountRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type DisconnectAccountResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const DisconnectAccountSecurity$inboundSchema: z.ZodType<
-  DisconnectAccountSecurity,
+export const DisconnectAccountGlobals$inboundSchema: z.ZodType<
+  DisconnectAccountGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type DisconnectAccountSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type DisconnectAccountGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const DisconnectAccountSecurity$outboundSchema: z.ZodType<
-  DisconnectAccountSecurity$Outbound,
+export const DisconnectAccountGlobals$outboundSchema: z.ZodType<
+  DisconnectAccountGlobals$Outbound,
   z.ZodTypeDef,
-  DisconnectAccountSecurity
+  DisconnectAccountGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,30 +68,30 @@ export const DisconnectAccountSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DisconnectAccountSecurity$ {
-  /** @deprecated use `DisconnectAccountSecurity$inboundSchema` instead. */
-  export const inboundSchema = DisconnectAccountSecurity$inboundSchema;
-  /** @deprecated use `DisconnectAccountSecurity$outboundSchema` instead. */
-  export const outboundSchema = DisconnectAccountSecurity$outboundSchema;
-  /** @deprecated use `DisconnectAccountSecurity$Outbound` instead. */
-  export type Outbound = DisconnectAccountSecurity$Outbound;
+export namespace DisconnectAccountGlobals$ {
+  /** @deprecated use `DisconnectAccountGlobals$inboundSchema` instead. */
+  export const inboundSchema = DisconnectAccountGlobals$inboundSchema;
+  /** @deprecated use `DisconnectAccountGlobals$outboundSchema` instead. */
+  export const outboundSchema = DisconnectAccountGlobals$outboundSchema;
+  /** @deprecated use `DisconnectAccountGlobals$Outbound` instead. */
+  export type Outbound = DisconnectAccountGlobals$Outbound;
 }
 
-export function disconnectAccountSecurityToJSON(
-  disconnectAccountSecurity: DisconnectAccountSecurity,
+export function disconnectAccountGlobalsToJSON(
+  disconnectAccountGlobals: DisconnectAccountGlobals,
 ): string {
   return JSON.stringify(
-    DisconnectAccountSecurity$outboundSchema.parse(disconnectAccountSecurity),
+    DisconnectAccountGlobals$outboundSchema.parse(disconnectAccountGlobals),
   );
 }
 
-export function disconnectAccountSecurityFromJSON(
+export function disconnectAccountGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<DisconnectAccountSecurity, SDKValidationError> {
+): SafeParseResult<DisconnectAccountGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DisconnectAccountSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DisconnectAccountSecurity' from JSON`,
+    (x) => DisconnectAccountGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisconnectAccountGlobals' from JSON`,
   );
 }
 
@@ -95,17 +101,11 @@ export const DisconnectAccountRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type DisconnectAccountRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -115,12 +115,7 @@ export const DisconnectAccountRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DisconnectAccountRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -151,5 +146,67 @@ export function disconnectAccountRequestFromJSON(
     jsonString,
     (x) => DisconnectAccountRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'DisconnectAccountRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const DisconnectAccountResponse$inboundSchema: z.ZodType<
+  DisconnectAccountResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type DisconnectAccountResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const DisconnectAccountResponse$outboundSchema: z.ZodType<
+  DisconnectAccountResponse$Outbound,
+  z.ZodTypeDef,
+  DisconnectAccountResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DisconnectAccountResponse$ {
+  /** @deprecated use `DisconnectAccountResponse$inboundSchema` instead. */
+  export const inboundSchema = DisconnectAccountResponse$inboundSchema;
+  /** @deprecated use `DisconnectAccountResponse$outboundSchema` instead. */
+  export const outboundSchema = DisconnectAccountResponse$outboundSchema;
+  /** @deprecated use `DisconnectAccountResponse$Outbound` instead. */
+  export type Outbound = DisconnectAccountResponse$Outbound;
+}
+
+export function disconnectAccountResponseToJSON(
+  disconnectAccountResponse: DisconnectAccountResponse,
+): string {
+  return JSON.stringify(
+    DisconnectAccountResponse$outboundSchema.parse(disconnectAccountResponse),
+  );
+}
+
+export function disconnectAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DisconnectAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DisconnectAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisconnectAccountResponse' from JSON`,
   );
 }

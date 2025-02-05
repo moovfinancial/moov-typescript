@@ -142,7 +142,7 @@ export type Card = {
   /**
    * Indicates cardholder has authorized card to be stored for future payments.
    */
-  cardOnFile: boolean;
+  cardOnFile?: boolean | undefined;
   merchantAccountID?: string | undefined;
   /**
    * The results of the most recent card update request.
@@ -179,7 +179,7 @@ export const Card$inboundSchema: z.ZodType<Card, z.ZodTypeDef, unknown> = z
     issuerPhone: z.string(),
     commercial: z.boolean().optional(),
     regulated: z.boolean().optional(),
-    cardOnFile: z.boolean(),
+    cardOnFile: z.boolean().optional(),
     merchantAccountID: z.string().optional(),
     cardAccountUpdater: CardAccountUpdater$inboundSchema.optional(),
     domesticPushToCard: DomesticPushToCard$inboundSchema,
@@ -206,7 +206,7 @@ export type Card$Outbound = {
   issuerPhone: string;
   commercial?: boolean | undefined;
   regulated?: boolean | undefined;
-  cardOnFile: boolean;
+  cardOnFile?: boolean | undefined;
   merchantAccountID?: string | undefined;
   cardAccountUpdater?: CardAccountUpdater$Outbound | undefined;
   domesticPushToCard: string;
@@ -234,7 +234,7 @@ export const Card$outboundSchema: z.ZodType<Card$Outbound, z.ZodTypeDef, Card> =
     issuerPhone: z.string(),
     commercial: z.boolean().optional(),
     regulated: z.boolean().optional(),
-    cardOnFile: z.boolean(),
+    cardOnFile: z.boolean().optional(),
     merchantAccountID: z.string().optional(),
     cardAccountUpdater: CardAccountUpdater$outboundSchema.optional(),
     domesticPushToCard: DomesticPushToCard$outboundSchema,

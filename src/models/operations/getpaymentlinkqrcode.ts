@@ -9,57 +9,65 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetPaymentLinkQRCodeSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetPaymentLinkQRCodeGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetPaymentLinkQRCodeRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   paymentLinkCode: string;
 };
 
-export type GetPaymentLinkQRCodeResponse =
+export type GetPaymentLinkQRCodeResponseResult =
   | components.QRCode
   | ReadableStream<Uint8Array>;
 
+export type GetPaymentLinkQRCodeResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.QRCode | ReadableStream<Uint8Array>;
+};
+
 /** @internal */
-export const GetPaymentLinkQRCodeSecurity$inboundSchema: z.ZodType<
-  GetPaymentLinkQRCodeSecurity,
+export const GetPaymentLinkQRCodeGlobals$inboundSchema: z.ZodType<
+  GetPaymentLinkQRCodeGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetPaymentLinkQRCodeSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetPaymentLinkQRCodeGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetPaymentLinkQRCodeSecurity$outboundSchema: z.ZodType<
-  GetPaymentLinkQRCodeSecurity$Outbound,
+export const GetPaymentLinkQRCodeGlobals$outboundSchema: z.ZodType<
+  GetPaymentLinkQRCodeGlobals$Outbound,
   z.ZodTypeDef,
-  GetPaymentLinkQRCodeSecurity
+  GetPaymentLinkQRCodeGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -67,32 +75,32 @@ export const GetPaymentLinkQRCodeSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetPaymentLinkQRCodeSecurity$ {
-  /** @deprecated use `GetPaymentLinkQRCodeSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetPaymentLinkQRCodeSecurity$inboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetPaymentLinkQRCodeSecurity$outboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeSecurity$Outbound` instead. */
-  export type Outbound = GetPaymentLinkQRCodeSecurity$Outbound;
+export namespace GetPaymentLinkQRCodeGlobals$ {
+  /** @deprecated use `GetPaymentLinkQRCodeGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetPaymentLinkQRCodeGlobals$inboundSchema;
+  /** @deprecated use `GetPaymentLinkQRCodeGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetPaymentLinkQRCodeGlobals$outboundSchema;
+  /** @deprecated use `GetPaymentLinkQRCodeGlobals$Outbound` instead. */
+  export type Outbound = GetPaymentLinkQRCodeGlobals$Outbound;
 }
 
-export function getPaymentLinkQRCodeSecurityToJSON(
-  getPaymentLinkQRCodeSecurity: GetPaymentLinkQRCodeSecurity,
+export function getPaymentLinkQRCodeGlobalsToJSON(
+  getPaymentLinkQRCodeGlobals: GetPaymentLinkQRCodeGlobals,
 ): string {
   return JSON.stringify(
-    GetPaymentLinkQRCodeSecurity$outboundSchema.parse(
-      getPaymentLinkQRCodeSecurity,
+    GetPaymentLinkQRCodeGlobals$outboundSchema.parse(
+      getPaymentLinkQRCodeGlobals,
     ),
   );
 }
 
-export function getPaymentLinkQRCodeSecurityFromJSON(
+export function getPaymentLinkQRCodeGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetPaymentLinkQRCodeSecurity, SDKValidationError> {
+): SafeParseResult<GetPaymentLinkQRCodeGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetPaymentLinkQRCodeSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetPaymentLinkQRCodeSecurity' from JSON`,
+    (x) => GetPaymentLinkQRCodeGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetPaymentLinkQRCodeGlobals' from JSON`,
   );
 }
 
@@ -102,18 +110,12 @@ export const GetPaymentLinkQRCodeRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   paymentLinkCode: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetPaymentLinkQRCodeRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   paymentLinkCode: string;
 };
@@ -124,13 +126,8 @@ export const GetPaymentLinkQRCodeRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetPaymentLinkQRCodeRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   paymentLinkCode: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -167,8 +164,8 @@ export function getPaymentLinkQRCodeRequestFromJSON(
 }
 
 /** @internal */
-export const GetPaymentLinkQRCodeResponse$inboundSchema: z.ZodType<
-  GetPaymentLinkQRCodeResponse,
+export const GetPaymentLinkQRCodeResponseResult$inboundSchema: z.ZodType<
+  GetPaymentLinkQRCodeResponseResult,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -177,19 +174,96 @@ export const GetPaymentLinkQRCodeResponse$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type GetPaymentLinkQRCodeResponse$Outbound =
+export type GetPaymentLinkQRCodeResponseResult$Outbound =
   | components.QRCode$Outbound
   | ReadableStream<Uint8Array>;
+
+/** @internal */
+export const GetPaymentLinkQRCodeResponseResult$outboundSchema: z.ZodType<
+  GetPaymentLinkQRCodeResponseResult$Outbound,
+  z.ZodTypeDef,
+  GetPaymentLinkQRCodeResponseResult
+> = z.union([
+  components.QRCode$outboundSchema,
+  z.instanceof(ReadableStream<Uint8Array>),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetPaymentLinkQRCodeResponseResult$ {
+  /** @deprecated use `GetPaymentLinkQRCodeResponseResult$inboundSchema` instead. */
+  export const inboundSchema = GetPaymentLinkQRCodeResponseResult$inboundSchema;
+  /** @deprecated use `GetPaymentLinkQRCodeResponseResult$outboundSchema` instead. */
+  export const outboundSchema =
+    GetPaymentLinkQRCodeResponseResult$outboundSchema;
+  /** @deprecated use `GetPaymentLinkQRCodeResponseResult$Outbound` instead. */
+  export type Outbound = GetPaymentLinkQRCodeResponseResult$Outbound;
+}
+
+export function getPaymentLinkQRCodeResponseResultToJSON(
+  getPaymentLinkQRCodeResponseResult: GetPaymentLinkQRCodeResponseResult,
+): string {
+  return JSON.stringify(
+    GetPaymentLinkQRCodeResponseResult$outboundSchema.parse(
+      getPaymentLinkQRCodeResponseResult,
+    ),
+  );
+}
+
+export function getPaymentLinkQRCodeResponseResultFromJSON(
+  jsonString: string,
+): SafeParseResult<GetPaymentLinkQRCodeResponseResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetPaymentLinkQRCodeResponseResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetPaymentLinkQRCodeResponseResult' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetPaymentLinkQRCodeResponse$inboundSchema: z.ZodType<
+  GetPaymentLinkQRCodeResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.union([
+    components.QRCode$inboundSchema,
+    z.instanceof(ReadableStream<Uint8Array>),
+  ]),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetPaymentLinkQRCodeResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.QRCode$Outbound | ReadableStream<Uint8Array>;
+};
 
 /** @internal */
 export const GetPaymentLinkQRCodeResponse$outboundSchema: z.ZodType<
   GetPaymentLinkQRCodeResponse$Outbound,
   z.ZodTypeDef,
   GetPaymentLinkQRCodeResponse
-> = z.union([
-  components.QRCode$outboundSchema,
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.union([
+    components.QRCode$outboundSchema,
+    z.instanceof(ReadableStream<Uint8Array>),
+  ]),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
 
 /**
  * @internal

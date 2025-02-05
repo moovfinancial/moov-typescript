@@ -9,51 +9,58 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListIndustriesSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
-};
-
-export type ListIndustriesRequest = {
+export type ListIndustriesGlobals = {
   /**
    * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
    */
-  xMoovVersion?: components.Versions | undefined;
+  xMoovVersion?: string | undefined;
+};
+
+export type ListIndustriesRequest = {};
+
+export type ListIndustriesResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.EnrichedIndustry>;
 };
 
 /** @internal */
-export const ListIndustriesSecurity$inboundSchema: z.ZodType<
-  ListIndustriesSecurity,
+export const ListIndustriesGlobals$inboundSchema: z.ZodType<
+  ListIndustriesGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListIndustriesSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListIndustriesGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListIndustriesSecurity$outboundSchema: z.ZodType<
-  ListIndustriesSecurity$Outbound,
+export const ListIndustriesGlobals$outboundSchema: z.ZodType<
+  ListIndustriesGlobals$Outbound,
   z.ZodTypeDef,
-  ListIndustriesSecurity
+  ListIndustriesGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -61,30 +68,30 @@ export const ListIndustriesSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListIndustriesSecurity$ {
-  /** @deprecated use `ListIndustriesSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListIndustriesSecurity$inboundSchema;
-  /** @deprecated use `ListIndustriesSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListIndustriesSecurity$outboundSchema;
-  /** @deprecated use `ListIndustriesSecurity$Outbound` instead. */
-  export type Outbound = ListIndustriesSecurity$Outbound;
+export namespace ListIndustriesGlobals$ {
+  /** @deprecated use `ListIndustriesGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListIndustriesGlobals$inboundSchema;
+  /** @deprecated use `ListIndustriesGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListIndustriesGlobals$outboundSchema;
+  /** @deprecated use `ListIndustriesGlobals$Outbound` instead. */
+  export type Outbound = ListIndustriesGlobals$Outbound;
 }
 
-export function listIndustriesSecurityToJSON(
-  listIndustriesSecurity: ListIndustriesSecurity,
+export function listIndustriesGlobalsToJSON(
+  listIndustriesGlobals: ListIndustriesGlobals,
 ): string {
   return JSON.stringify(
-    ListIndustriesSecurity$outboundSchema.parse(listIndustriesSecurity),
+    ListIndustriesGlobals$outboundSchema.parse(listIndustriesGlobals),
   );
 }
 
-export function listIndustriesSecurityFromJSON(
+export function listIndustriesGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListIndustriesSecurity, SDKValidationError> {
+): SafeParseResult<ListIndustriesGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListIndustriesSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListIndustriesSecurity' from JSON`,
+    (x) => ListIndustriesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListIndustriesGlobals' from JSON`,
   );
 }
 
@@ -93,31 +100,17 @@ export const ListIndustriesRequest$inboundSchema: z.ZodType<
   ListIndustriesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
-});
+> = z.object({});
 
 /** @internal */
-export type ListIndustriesRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
-};
+export type ListIndustriesRequest$Outbound = {};
 
 /** @internal */
 export const ListIndustriesRequest$outboundSchema: z.ZodType<
   ListIndustriesRequest$Outbound,
   z.ZodTypeDef,
   ListIndustriesRequest
-> = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
-});
+> = z.object({});
 
 /**
  * @internal
@@ -147,5 +140,72 @@ export function listIndustriesRequestFromJSON(
     jsonString,
     (x) => ListIndustriesRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListIndustriesRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListIndustriesResponse$inboundSchema: z.ZodType<
+  ListIndustriesResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.EnrichedIndustry$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListIndustriesResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.EnrichedIndustry$Outbound>;
+};
+
+/** @internal */
+export const ListIndustriesResponse$outboundSchema: z.ZodType<
+  ListIndustriesResponse$Outbound,
+  z.ZodTypeDef,
+  ListIndustriesResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.EnrichedIndustry$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListIndustriesResponse$ {
+  /** @deprecated use `ListIndustriesResponse$inboundSchema` instead. */
+  export const inboundSchema = ListIndustriesResponse$inboundSchema;
+  /** @deprecated use `ListIndustriesResponse$outboundSchema` instead. */
+  export const outboundSchema = ListIndustriesResponse$outboundSchema;
+  /** @deprecated use `ListIndustriesResponse$Outbound` instead. */
+  export type Outbound = ListIndustriesResponse$Outbound;
+}
+
+export function listIndustriesResponseToJSON(
+  listIndustriesResponse: ListIndustriesResponse,
+): string {
+  return JSON.stringify(
+    ListIndustriesResponse$outboundSchema.parse(listIndustriesResponse),
+  );
+}
+
+export function listIndustriesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListIndustriesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListIndustriesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListIndustriesResponse' from JSON`,
   );
 }

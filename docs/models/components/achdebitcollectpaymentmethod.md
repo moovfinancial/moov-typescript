@@ -6,7 +6,7 @@
 import { AchDebitCollectPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: AchDebitCollectPaymentMethod = {
-  paymentMethodID: "c86f916c-be4c-479f-9fd5-ea60c8cbc4c8",
+  paymentMethodID: "6ce24716-4e3b-43a9-87d3-7f2841d99829",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:

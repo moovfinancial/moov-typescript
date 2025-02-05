@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type AssignAccountCountriesSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type AssignAccountCountriesGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type AssignAccountCountriesRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   accountCountries: components.AccountCountries;
 };
 
+export type AssignAccountCountriesResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.AccountCountries;
+};
+
 /** @internal */
-export const AssignAccountCountriesSecurity$inboundSchema: z.ZodType<
-  AssignAccountCountriesSecurity,
+export const AssignAccountCountriesGlobals$inboundSchema: z.ZodType<
+  AssignAccountCountriesGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type AssignAccountCountriesSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type AssignAccountCountriesGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const AssignAccountCountriesSecurity$outboundSchema: z.ZodType<
-  AssignAccountCountriesSecurity$Outbound,
+export const AssignAccountCountriesGlobals$outboundSchema: z.ZodType<
+  AssignAccountCountriesGlobals$Outbound,
   z.ZodTypeDef,
-  AssignAccountCountriesSecurity
+  AssignAccountCountriesGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,32 +71,32 @@ export const AssignAccountCountriesSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AssignAccountCountriesSecurity$ {
-  /** @deprecated use `AssignAccountCountriesSecurity$inboundSchema` instead. */
-  export const inboundSchema = AssignAccountCountriesSecurity$inboundSchema;
-  /** @deprecated use `AssignAccountCountriesSecurity$outboundSchema` instead. */
-  export const outboundSchema = AssignAccountCountriesSecurity$outboundSchema;
-  /** @deprecated use `AssignAccountCountriesSecurity$Outbound` instead. */
-  export type Outbound = AssignAccountCountriesSecurity$Outbound;
+export namespace AssignAccountCountriesGlobals$ {
+  /** @deprecated use `AssignAccountCountriesGlobals$inboundSchema` instead. */
+  export const inboundSchema = AssignAccountCountriesGlobals$inboundSchema;
+  /** @deprecated use `AssignAccountCountriesGlobals$outboundSchema` instead. */
+  export const outboundSchema = AssignAccountCountriesGlobals$outboundSchema;
+  /** @deprecated use `AssignAccountCountriesGlobals$Outbound` instead. */
+  export type Outbound = AssignAccountCountriesGlobals$Outbound;
 }
 
-export function assignAccountCountriesSecurityToJSON(
-  assignAccountCountriesSecurity: AssignAccountCountriesSecurity,
+export function assignAccountCountriesGlobalsToJSON(
+  assignAccountCountriesGlobals: AssignAccountCountriesGlobals,
 ): string {
   return JSON.stringify(
-    AssignAccountCountriesSecurity$outboundSchema.parse(
-      assignAccountCountriesSecurity,
+    AssignAccountCountriesGlobals$outboundSchema.parse(
+      assignAccountCountriesGlobals,
     ),
   );
 }
 
-export function assignAccountCountriesSecurityFromJSON(
+export function assignAccountCountriesGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<AssignAccountCountriesSecurity, SDKValidationError> {
+): SafeParseResult<AssignAccountCountriesGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AssignAccountCountriesSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssignAccountCountriesSecurity' from JSON`,
+    (x) => AssignAccountCountriesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssignAccountCountriesGlobals' from JSON`,
   );
 }
 
@@ -98,19 +106,16 @@ export const AssignAccountCountriesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   AccountCountries: components.AccountCountries$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "AccountCountries": "accountCountries",
   });
 });
 
 /** @internal */
 export type AssignAccountCountriesRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   AccountCountries: components.AccountCountries$Outbound;
 };
@@ -121,12 +126,10 @@ export const AssignAccountCountriesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AssignAccountCountriesRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   accountCountries: components.AccountCountries$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     accountCountries: "AccountCountries",
   });
 });
@@ -161,5 +164,74 @@ export function assignAccountCountriesRequestFromJSON(
     jsonString,
     (x) => AssignAccountCountriesRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'AssignAccountCountriesRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const AssignAccountCountriesResponse$inboundSchema: z.ZodType<
+  AssignAccountCountriesResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.AccountCountries$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type AssignAccountCountriesResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.AccountCountries$Outbound;
+};
+
+/** @internal */
+export const AssignAccountCountriesResponse$outboundSchema: z.ZodType<
+  AssignAccountCountriesResponse$Outbound,
+  z.ZodTypeDef,
+  AssignAccountCountriesResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.AccountCountries$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AssignAccountCountriesResponse$ {
+  /** @deprecated use `AssignAccountCountriesResponse$inboundSchema` instead. */
+  export const inboundSchema = AssignAccountCountriesResponse$inboundSchema;
+  /** @deprecated use `AssignAccountCountriesResponse$outboundSchema` instead. */
+  export const outboundSchema = AssignAccountCountriesResponse$outboundSchema;
+  /** @deprecated use `AssignAccountCountriesResponse$Outbound` instead. */
+  export type Outbound = AssignAccountCountriesResponse$Outbound;
+}
+
+export function assignAccountCountriesResponseToJSON(
+  assignAccountCountriesResponse: AssignAccountCountriesResponse,
+): string {
+  return JSON.stringify(
+    AssignAccountCountriesResponse$outboundSchema.parse(
+      assignAccountCountriesResponse,
+    ),
+  );
+}
+
+export function assignAccountCountriesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AssignAccountCountriesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssignAccountCountriesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssignAccountCountriesResponse' from JSON`,
   );
 }

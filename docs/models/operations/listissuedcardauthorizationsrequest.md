@@ -6,7 +6,7 @@
 import { ListIssuedCardAuthorizationsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListIssuedCardAuthorizationsRequest = {
-  accountID: "8109cf93-616d-4602-8ab3-c484b6c7ae68",
+  accountID: "f7f5be0e-e361-4bce-97ad-11d7c0156d8e",
   skip: 60,
   count: 20,
 };
@@ -16,7 +16,6 @@ let value: ListIssuedCardAuthorizationsRequest = {
 
 | Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `xMoovVersion`                                                                                   | [components.Versions](../../models/components/versions.md)                                       | :heavy_minus_sign:                                                                               | Specify an API version.                                                                          |                                                                                                  |
 | `accountID`                                                                                      | *string*                                                                                         | :heavy_check_mark:                                                                               | The Moov business account for which cards have been issued.                                      |                                                                                                  |
 | `skip`                                                                                           | *number*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              | 60                                                                                               |
 | `count`                                                                                          | *number*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              | 20                                                                                               |

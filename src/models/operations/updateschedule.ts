@@ -9,54 +9,62 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type UpdateScheduleSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type UpdateScheduleGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type UpdateScheduleRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   scheduleID: string;
   upsertSchedule: components.UpsertSchedule;
 };
 
+export type UpdateScheduleResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.ScheduleResponse;
+};
+
 /** @internal */
-export const UpdateScheduleSecurity$inboundSchema: z.ZodType<
-  UpdateScheduleSecurity,
+export const UpdateScheduleGlobals$inboundSchema: z.ZodType<
+  UpdateScheduleGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type UpdateScheduleSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type UpdateScheduleGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const UpdateScheduleSecurity$outboundSchema: z.ZodType<
-  UpdateScheduleSecurity$Outbound,
+export const UpdateScheduleGlobals$outboundSchema: z.ZodType<
+  UpdateScheduleGlobals$Outbound,
   z.ZodTypeDef,
-  UpdateScheduleSecurity
+  UpdateScheduleGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -64,30 +72,30 @@ export const UpdateScheduleSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateScheduleSecurity$ {
-  /** @deprecated use `UpdateScheduleSecurity$inboundSchema` instead. */
-  export const inboundSchema = UpdateScheduleSecurity$inboundSchema;
-  /** @deprecated use `UpdateScheduleSecurity$outboundSchema` instead. */
-  export const outboundSchema = UpdateScheduleSecurity$outboundSchema;
-  /** @deprecated use `UpdateScheduleSecurity$Outbound` instead. */
-  export type Outbound = UpdateScheduleSecurity$Outbound;
+export namespace UpdateScheduleGlobals$ {
+  /** @deprecated use `UpdateScheduleGlobals$inboundSchema` instead. */
+  export const inboundSchema = UpdateScheduleGlobals$inboundSchema;
+  /** @deprecated use `UpdateScheduleGlobals$outboundSchema` instead. */
+  export const outboundSchema = UpdateScheduleGlobals$outboundSchema;
+  /** @deprecated use `UpdateScheduleGlobals$Outbound` instead. */
+  export type Outbound = UpdateScheduleGlobals$Outbound;
 }
 
-export function updateScheduleSecurityToJSON(
-  updateScheduleSecurity: UpdateScheduleSecurity,
+export function updateScheduleGlobalsToJSON(
+  updateScheduleGlobals: UpdateScheduleGlobals,
 ): string {
   return JSON.stringify(
-    UpdateScheduleSecurity$outboundSchema.parse(updateScheduleSecurity),
+    UpdateScheduleGlobals$outboundSchema.parse(updateScheduleGlobals),
   );
 }
 
-export function updateScheduleSecurityFromJSON(
+export function updateScheduleGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateScheduleSecurity, SDKValidationError> {
+): SafeParseResult<UpdateScheduleGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateScheduleSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateScheduleSecurity' from JSON`,
+    (x) => UpdateScheduleGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateScheduleGlobals' from JSON`,
   );
 }
 
@@ -97,20 +105,17 @@ export const UpdateScheduleRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   scheduleID: z.string(),
   UpsertSchedule: components.UpsertSchedule$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "UpsertSchedule": "upsertSchedule",
   });
 });
 
 /** @internal */
 export type UpdateScheduleRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   scheduleID: string;
   UpsertSchedule: components.UpsertSchedule$Outbound;
@@ -122,13 +127,11 @@ export const UpdateScheduleRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateScheduleRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   scheduleID: z.string(),
   upsertSchedule: components.UpsertSchedule$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     upsertSchedule: "UpsertSchedule",
   });
 });
@@ -161,5 +164,72 @@ export function updateScheduleRequestFromJSON(
     jsonString,
     (x) => UpdateScheduleRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateScheduleRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateScheduleResponse$inboundSchema: z.ZodType<
+  UpdateScheduleResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.ScheduleResponse$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type UpdateScheduleResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.ScheduleResponse$Outbound;
+};
+
+/** @internal */
+export const UpdateScheduleResponse$outboundSchema: z.ZodType<
+  UpdateScheduleResponse$Outbound,
+  z.ZodTypeDef,
+  UpdateScheduleResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.ScheduleResponse$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateScheduleResponse$ {
+  /** @deprecated use `UpdateScheduleResponse$inboundSchema` instead. */
+  export const inboundSchema = UpdateScheduleResponse$inboundSchema;
+  /** @deprecated use `UpdateScheduleResponse$outboundSchema` instead. */
+  export const outboundSchema = UpdateScheduleResponse$outboundSchema;
+  /** @deprecated use `UpdateScheduleResponse$Outbound` instead. */
+  export type Outbound = UpdateScheduleResponse$Outbound;
+}
+
+export function updateScheduleResponseToJSON(
+  updateScheduleResponse: UpdateScheduleResponse,
+): string {
+  return JSON.stringify(
+    UpdateScheduleResponse$outboundSchema.parse(updateScheduleResponse),
+  );
+}
+
+export function updateScheduleResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateScheduleResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateScheduleResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateScheduleResponse' from JSON`,
   );
 }

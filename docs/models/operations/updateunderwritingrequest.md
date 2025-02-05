@@ -6,25 +6,25 @@
 import { UpdateUnderwritingRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateUnderwritingRequest = {
-  accountID: "6e236041-79be-47a0-a7d9-617e186c22ba",
+  accountID: "03a1add2-7ebd-467e-b6a6-b9789eabf135",
   updateUnderwriting: {
-    averageTransactionSize: 4558,
-    maxTransactionSize: 855665,
-    averageMonthlyTransactionVolume: 987398,
+    averageTransactionSize: 228555,
+    maxTransactionSize: 565095,
+    averageMonthlyTransactionVolume: 117761,
     volumeByCustomerType: {
-      businessToBusinessPercentage: 667444,
-      consumerToBusinessPercentage: 933228,
+      businessToBusinessPercentage: 270667,
+      consumerToBusinessPercentage: 276109,
     },
     cardVolumeDistribution: {
-      ecommercePercentage: 757815,
-      cardPresentPercentage: 684162,
-      mailOrPhonePercentage: 351263,
-      debtRepaymentPercentage: 79659,
+      ecommercePercentage: 708466,
+      cardPresentPercentage: 108829,
+      mailOrPhonePercentage: 756985,
+      debtRepaymentPercentage: 303546,
     },
     fulfillment: {
       hasPhysicalGoods: false,
       isShippingProduct: false,
-      shipmentDurationDays: 32170,
+      shipmentDurationDays: 733471,
       returnPolicy: "exchangeOnly",
     },
   },
@@ -35,6 +35,5 @@ let value: UpdateUnderwritingRequest = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `xMoovVersion`                                                                 | [components.Versions](../../models/components/versions.md)                     | :heavy_minus_sign:                                                             | Specify an API version.                                                        |
 | `accountID`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `updateUnderwriting`                                                           | [components.UpdateUnderwriting](../../models/components/updateunderwriting.md) | :heavy_check_mark:                                                             | N/A                                                                            |

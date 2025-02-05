@@ -6,7 +6,7 @@
 import { UpdateBrandRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateBrandRequest = {
-  accountID: "d1a6d5b6-8cf2-4820-9bf9-10560d7fe8a5",
+  accountID: "a635baed-de45-468a-b406-4feda58d1c0d",
   updateBrand: {},
 };
 ```
@@ -15,6 +15,5 @@ let value: UpdateBrandRequest = {
 
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `xMoovVersion`                                                   | [components.Versions](../../models/components/versions.md)       | :heavy_minus_sign:                                               | Specify an API version.                                          |
 | `accountID`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
 | `updateBrand`                                                    | [components.UpdateBrand](../../models/components/updatebrand.md) | :heavy_check_mark:                                               | N/A                                                              |

@@ -2,21 +2,19 @@
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.accounts.createAccount({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
-    createAccount: {
-      accountType: "business",
-      profile: {
-        business: {
-          legalBusinessName: "Classbooker, LLC",
-        },
+  const result = await moov.accounts.create({
+    accountType: "business",
+    profile: {
+      business: {
+        legalBusinessName: "Classbooker, LLC",
       },
     },
   });

@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetCardSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetCardGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetCardRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   cardID: string;
 };
 
+export type GetCardResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Card;
+};
+
 /** @internal */
-export const GetCardSecurity$inboundSchema: z.ZodType<
-  GetCardSecurity,
+export const GetCardGlobals$inboundSchema: z.ZodType<
+  GetCardGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetCardSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetCardGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetCardSecurity$outboundSchema: z.ZodType<
-  GetCardSecurity$Outbound,
+export const GetCardGlobals$outboundSchema: z.ZodType<
+  GetCardGlobals$Outbound,
   z.ZodTypeDef,
-  GetCardSecurity
+  GetCardGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,28 +71,26 @@ export const GetCardSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetCardSecurity$ {
-  /** @deprecated use `GetCardSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetCardSecurity$inboundSchema;
-  /** @deprecated use `GetCardSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetCardSecurity$outboundSchema;
-  /** @deprecated use `GetCardSecurity$Outbound` instead. */
-  export type Outbound = GetCardSecurity$Outbound;
+export namespace GetCardGlobals$ {
+  /** @deprecated use `GetCardGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetCardGlobals$inboundSchema;
+  /** @deprecated use `GetCardGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetCardGlobals$outboundSchema;
+  /** @deprecated use `GetCardGlobals$Outbound` instead. */
+  export type Outbound = GetCardGlobals$Outbound;
 }
 
-export function getCardSecurityToJSON(
-  getCardSecurity: GetCardSecurity,
-): string {
-  return JSON.stringify(GetCardSecurity$outboundSchema.parse(getCardSecurity));
+export function getCardGlobalsToJSON(getCardGlobals: GetCardGlobals): string {
+  return JSON.stringify(GetCardGlobals$outboundSchema.parse(getCardGlobals));
 }
 
-export function getCardSecurityFromJSON(
+export function getCardGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetCardSecurity, SDKValidationError> {
+): SafeParseResult<GetCardGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetCardSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetCardSecurity' from JSON`,
+    (x) => GetCardGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCardGlobals' from JSON`,
   );
 }
 
@@ -94,18 +100,12 @@ export const GetCardRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   cardID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetCardRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   cardID: string;
 };
@@ -116,13 +116,8 @@ export const GetCardRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetCardRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   cardID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -149,5 +144,70 @@ export function getCardRequestFromJSON(
     jsonString,
     (x) => GetCardRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetCardRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetCardResponse$inboundSchema: z.ZodType<
+  GetCardResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Card$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetCardResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Card$Outbound;
+};
+
+/** @internal */
+export const GetCardResponse$outboundSchema: z.ZodType<
+  GetCardResponse$Outbound,
+  z.ZodTypeDef,
+  GetCardResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Card$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetCardResponse$ {
+  /** @deprecated use `GetCardResponse$inboundSchema` instead. */
+  export const inboundSchema = GetCardResponse$inboundSchema;
+  /** @deprecated use `GetCardResponse$outboundSchema` instead. */
+  export const outboundSchema = GetCardResponse$outboundSchema;
+  /** @deprecated use `GetCardResponse$Outbound` instead. */
+  export type Outbound = GetCardResponse$Outbound;
+}
+
+export function getCardResponseToJSON(
+  getCardResponse: GetCardResponse,
+): string {
+  return JSON.stringify(GetCardResponse$outboundSchema.parse(getCardResponse));
+}
+
+export function getCardResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetCardResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetCardResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCardResponse' from JSON`,
   );
 }

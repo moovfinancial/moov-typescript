@@ -10,7 +10,7 @@ import { BankAccountPayload } from "@moovio/sdk/models/components";
 let value: BankAccountPayload = {
   account: {
     holderName: "<value>",
-    holderType: "business",
+    holderType: "individual",
     accountNumber: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",

@@ -6,15 +6,15 @@
 import { DisputeEvidenceMetadata } from "@moovio/sdk/models/components";
 
 let value: DisputeEvidenceMetadata = {
-  evidenceID: "cf79d7f9-ded2-4a61-964d-0f55026e1fd7",
-  disputeID: "39006143-4201-49ff-962a-7f1c43a3a868",
+  evidenceID: "80ce42cb-ce08-4c88-a90e-30a82f641822",
+  disputeID: "1b161f35-38e7-4b54-a1f6-d9a757ce78bf",
   mimeType: "<value>",
   filename: "example.file",
-  size: 706575,
+  size: 850049,
   evidenceType: "terms-of-service",
   text: "<value>",
-  createdOn: new Date("2024-01-31T03:47:25.523Z"),
-  updatedOn: new Date("2025-06-27T04:59:29.330Z"),
+  createdOn: new Date("2023-07-16T17:13:10.658Z"),
+  updatedOn: new Date("2025-02-11T08:48:56.871Z"),
 };
 ```
 

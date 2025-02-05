@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListSweepsSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListSweepsGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListSweepsRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   walletID: string;
   skip?: number | undefined;
@@ -33,39 +41,39 @@ export type ListSweepsRequest = {
   statementDescriptor?: string | undefined;
 };
 
+export type ListSweepsResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.Sweep>;
+};
+
 /** @internal */
-export const ListSweepsSecurity$inboundSchema: z.ZodType<
-  ListSweepsSecurity,
+export const ListSweepsGlobals$inboundSchema: z.ZodType<
+  ListSweepsGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListSweepsSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListSweepsGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListSweepsSecurity$outboundSchema: z.ZodType<
-  ListSweepsSecurity$Outbound,
+export const ListSweepsGlobals$outboundSchema: z.ZodType<
+  ListSweepsGlobals$Outbound,
   z.ZodTypeDef,
-  ListSweepsSecurity
+  ListSweepsGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -73,30 +81,30 @@ export const ListSweepsSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListSweepsSecurity$ {
-  /** @deprecated use `ListSweepsSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListSweepsSecurity$inboundSchema;
-  /** @deprecated use `ListSweepsSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListSweepsSecurity$outboundSchema;
-  /** @deprecated use `ListSweepsSecurity$Outbound` instead. */
-  export type Outbound = ListSweepsSecurity$Outbound;
+export namespace ListSweepsGlobals$ {
+  /** @deprecated use `ListSweepsGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListSweepsGlobals$inboundSchema;
+  /** @deprecated use `ListSweepsGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListSweepsGlobals$outboundSchema;
+  /** @deprecated use `ListSweepsGlobals$Outbound` instead. */
+  export type Outbound = ListSweepsGlobals$Outbound;
 }
 
-export function listSweepsSecurityToJSON(
-  listSweepsSecurity: ListSweepsSecurity,
+export function listSweepsGlobalsToJSON(
+  listSweepsGlobals: ListSweepsGlobals,
 ): string {
   return JSON.stringify(
-    ListSweepsSecurity$outboundSchema.parse(listSweepsSecurity),
+    ListSweepsGlobals$outboundSchema.parse(listSweepsGlobals),
   );
 }
 
-export function listSweepsSecurityFromJSON(
+export function listSweepsGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListSweepsSecurity, SDKValidationError> {
+): SafeParseResult<ListSweepsGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListSweepsSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSweepsSecurity' from JSON`,
+    (x) => ListSweepsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSweepsGlobals' from JSON`,
   );
 }
 
@@ -106,22 +114,16 @@ export const ListSweepsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   walletID: z.string(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   status: components.SweepStatus$inboundSchema.optional(),
   statementDescriptor: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListSweepsRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   walletID: string;
   skip?: number | undefined;
@@ -136,17 +138,12 @@ export const ListSweepsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListSweepsRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   walletID: z.string(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   status: components.SweepStatus$outboundSchema.optional(),
   statementDescriptor: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -177,5 +174,72 @@ export function listSweepsRequestFromJSON(
     jsonString,
     (x) => ListSweepsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListSweepsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListSweepsResponse$inboundSchema: z.ZodType<
+  ListSweepsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.Sweep$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListSweepsResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.Sweep$Outbound>;
+};
+
+/** @internal */
+export const ListSweepsResponse$outboundSchema: z.ZodType<
+  ListSweepsResponse$Outbound,
+  z.ZodTypeDef,
+  ListSweepsResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.Sweep$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListSweepsResponse$ {
+  /** @deprecated use `ListSweepsResponse$inboundSchema` instead. */
+  export const inboundSchema = ListSweepsResponse$inboundSchema;
+  /** @deprecated use `ListSweepsResponse$outboundSchema` instead. */
+  export const outboundSchema = ListSweepsResponse$outboundSchema;
+  /** @deprecated use `ListSweepsResponse$Outbound` instead. */
+  export type Outbound = ListSweepsResponse$Outbound;
+}
+
+export function listSweepsResponseToJSON(
+  listSweepsResponse: ListSweepsResponse,
+): string {
+  return JSON.stringify(
+    ListSweepsResponse$outboundSchema.parse(listSweepsResponse),
+  );
+}
+
+export function listSweepsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListSweepsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSweepsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSweepsResponse' from JSON`,
   );
 }

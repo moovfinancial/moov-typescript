@@ -6,15 +6,14 @@
 import { GetFileDetailsRequest } from "@moovio/sdk/models/operations";
 
 let value: GetFileDetailsRequest = {
-  accountID: "9428460a-0b32-49f6-ad08-a6206bf74517",
-  fileID: "90aa8f4d-243e-4c76-80bf-c34663ccb0e5",
+  accountID: "bcfa99d6-ca40-43b9-846a-266885c106e4",
+  fileID: "e25b436c-e02f-498d-900f-db27ee0c0f6f",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `fileID`                                                   | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `fileID`           | *string*           | :heavy_check_mark: | N/A                |

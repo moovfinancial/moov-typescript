@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type RequestCardSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type RequestCardGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type RequestCardRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * The Moov business account for which the card is to be issued.
    */
@@ -26,39 +34,39 @@ export type RequestCardRequest = {
   requestCard: components.RequestCard;
 };
 
+export type RequestCardResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.IssuedCard;
+};
+
 /** @internal */
-export const RequestCardSecurity$inboundSchema: z.ZodType<
-  RequestCardSecurity,
+export const RequestCardGlobals$inboundSchema: z.ZodType<
+  RequestCardGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type RequestCardSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type RequestCardGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const RequestCardSecurity$outboundSchema: z.ZodType<
-  RequestCardSecurity$Outbound,
+export const RequestCardGlobals$outboundSchema: z.ZodType<
+  RequestCardGlobals$Outbound,
   z.ZodTypeDef,
-  RequestCardSecurity
+  RequestCardGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -66,30 +74,30 @@ export const RequestCardSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RequestCardSecurity$ {
-  /** @deprecated use `RequestCardSecurity$inboundSchema` instead. */
-  export const inboundSchema = RequestCardSecurity$inboundSchema;
-  /** @deprecated use `RequestCardSecurity$outboundSchema` instead. */
-  export const outboundSchema = RequestCardSecurity$outboundSchema;
-  /** @deprecated use `RequestCardSecurity$Outbound` instead. */
-  export type Outbound = RequestCardSecurity$Outbound;
+export namespace RequestCardGlobals$ {
+  /** @deprecated use `RequestCardGlobals$inboundSchema` instead. */
+  export const inboundSchema = RequestCardGlobals$inboundSchema;
+  /** @deprecated use `RequestCardGlobals$outboundSchema` instead. */
+  export const outboundSchema = RequestCardGlobals$outboundSchema;
+  /** @deprecated use `RequestCardGlobals$Outbound` instead. */
+  export type Outbound = RequestCardGlobals$Outbound;
 }
 
-export function requestCardSecurityToJSON(
-  requestCardSecurity: RequestCardSecurity,
+export function requestCardGlobalsToJSON(
+  requestCardGlobals: RequestCardGlobals,
 ): string {
   return JSON.stringify(
-    RequestCardSecurity$outboundSchema.parse(requestCardSecurity),
+    RequestCardGlobals$outboundSchema.parse(requestCardGlobals),
   );
 }
 
-export function requestCardSecurityFromJSON(
+export function requestCardGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<RequestCardSecurity, SDKValidationError> {
+): SafeParseResult<RequestCardGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RequestCardSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestCardSecurity' from JSON`,
+    (x) => RequestCardGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestCardGlobals' from JSON`,
   );
 }
 
@@ -99,19 +107,16 @@ export const RequestCardRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   RequestCard: components.RequestCard$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "RequestCard": "requestCard",
   });
 });
 
 /** @internal */
 export type RequestCardRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   RequestCard: components.RequestCard$Outbound;
 };
@@ -122,12 +127,10 @@ export const RequestCardRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RequestCardRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   requestCard: components.RequestCard$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     requestCard: "RequestCard",
   });
 });
@@ -160,5 +163,72 @@ export function requestCardRequestFromJSON(
     jsonString,
     (x) => RequestCardRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'RequestCardRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const RequestCardResponse$inboundSchema: z.ZodType<
+  RequestCardResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.IssuedCard$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type RequestCardResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.IssuedCard$Outbound;
+};
+
+/** @internal */
+export const RequestCardResponse$outboundSchema: z.ZodType<
+  RequestCardResponse$Outbound,
+  z.ZodTypeDef,
+  RequestCardResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.IssuedCard$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RequestCardResponse$ {
+  /** @deprecated use `RequestCardResponse$inboundSchema` instead. */
+  export const inboundSchema = RequestCardResponse$inboundSchema;
+  /** @deprecated use `RequestCardResponse$outboundSchema` instead. */
+  export const outboundSchema = RequestCardResponse$outboundSchema;
+  /** @deprecated use `RequestCardResponse$Outbound` instead. */
+  export type Outbound = RequestCardResponse$Outbound;
+}
+
+export function requestCardResponseToJSON(
+  requestCardResponse: RequestCardResponse,
+): string {
+  return JSON.stringify(
+    RequestCardResponse$outboundSchema.parse(requestCardResponse),
+  );
+}
+
+export function requestCardResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RequestCardResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequestCardResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestCardResponse' from JSON`,
   );
 }

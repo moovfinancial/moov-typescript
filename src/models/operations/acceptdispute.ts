@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type AcceptDisputeSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type AcceptDisputeGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type AcceptDisputeRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   disputeID: string;
 };
 
+export type AcceptDisputeResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Dispute;
+};
+
 /** @internal */
-export const AcceptDisputeSecurity$inboundSchema: z.ZodType<
-  AcceptDisputeSecurity,
+export const AcceptDisputeGlobals$inboundSchema: z.ZodType<
+  AcceptDisputeGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type AcceptDisputeSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type AcceptDisputeGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const AcceptDisputeSecurity$outboundSchema: z.ZodType<
-  AcceptDisputeSecurity$Outbound,
+export const AcceptDisputeGlobals$outboundSchema: z.ZodType<
+  AcceptDisputeGlobals$Outbound,
   z.ZodTypeDef,
-  AcceptDisputeSecurity
+  AcceptDisputeGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +71,30 @@ export const AcceptDisputeSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AcceptDisputeSecurity$ {
-  /** @deprecated use `AcceptDisputeSecurity$inboundSchema` instead. */
-  export const inboundSchema = AcceptDisputeSecurity$inboundSchema;
-  /** @deprecated use `AcceptDisputeSecurity$outboundSchema` instead. */
-  export const outboundSchema = AcceptDisputeSecurity$outboundSchema;
-  /** @deprecated use `AcceptDisputeSecurity$Outbound` instead. */
-  export type Outbound = AcceptDisputeSecurity$Outbound;
+export namespace AcceptDisputeGlobals$ {
+  /** @deprecated use `AcceptDisputeGlobals$inboundSchema` instead. */
+  export const inboundSchema = AcceptDisputeGlobals$inboundSchema;
+  /** @deprecated use `AcceptDisputeGlobals$outboundSchema` instead. */
+  export const outboundSchema = AcceptDisputeGlobals$outboundSchema;
+  /** @deprecated use `AcceptDisputeGlobals$Outbound` instead. */
+  export type Outbound = AcceptDisputeGlobals$Outbound;
 }
 
-export function acceptDisputeSecurityToJSON(
-  acceptDisputeSecurity: AcceptDisputeSecurity,
+export function acceptDisputeGlobalsToJSON(
+  acceptDisputeGlobals: AcceptDisputeGlobals,
 ): string {
   return JSON.stringify(
-    AcceptDisputeSecurity$outboundSchema.parse(acceptDisputeSecurity),
+    AcceptDisputeGlobals$outboundSchema.parse(acceptDisputeGlobals),
   );
 }
 
-export function acceptDisputeSecurityFromJSON(
+export function acceptDisputeGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<AcceptDisputeSecurity, SDKValidationError> {
+): SafeParseResult<AcceptDisputeGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AcceptDisputeSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AcceptDisputeSecurity' from JSON`,
+    (x) => AcceptDisputeGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcceptDisputeGlobals' from JSON`,
   );
 }
 
@@ -96,18 +104,12 @@ export const AcceptDisputeRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type AcceptDisputeRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   disputeID: string;
 };
@@ -118,13 +120,8 @@ export const AcceptDisputeRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AcceptDisputeRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +152,72 @@ export function acceptDisputeRequestFromJSON(
     jsonString,
     (x) => AcceptDisputeRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'AcceptDisputeRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const AcceptDisputeResponse$inboundSchema: z.ZodType<
+  AcceptDisputeResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Dispute$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type AcceptDisputeResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Dispute$Outbound;
+};
+
+/** @internal */
+export const AcceptDisputeResponse$outboundSchema: z.ZodType<
+  AcceptDisputeResponse$Outbound,
+  z.ZodTypeDef,
+  AcceptDisputeResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Dispute$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AcceptDisputeResponse$ {
+  /** @deprecated use `AcceptDisputeResponse$inboundSchema` instead. */
+  export const inboundSchema = AcceptDisputeResponse$inboundSchema;
+  /** @deprecated use `AcceptDisputeResponse$outboundSchema` instead. */
+  export const outboundSchema = AcceptDisputeResponse$outboundSchema;
+  /** @deprecated use `AcceptDisputeResponse$Outbound` instead. */
+  export type Outbound = AcceptDisputeResponse$Outbound;
+}
+
+export function acceptDisputeResponseToJSON(
+  acceptDisputeResponse: AcceptDisputeResponse,
+): string {
+  return JSON.stringify(
+    AcceptDisputeResponse$outboundSchema.parse(acceptDisputeResponse),
+  );
+}
+
+export function acceptDisputeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AcceptDisputeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AcceptDisputeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcceptDisputeResponse' from JSON`,
   );
 }

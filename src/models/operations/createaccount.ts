@@ -9,128 +9,56 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CreateAccountSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
-};
-
-export type CreateAccountRequest = {
+export type CreateAccountGlobals = {
   /**
    * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
    */
-  xMoovVersion?: components.Versions | undefined;
-  /**
-   * Optional header that indicates whether to wait for the connection to be created before returning from the account creation.
-   */
-  xWaitFor?: components.AccountWaitFor | undefined;
-  createAccount: components.CreateAccount;
+  xMoovVersion?: string | undefined;
+};
+
+export type CreateAccountResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Account;
 };
 
 /** @internal */
-export const CreateAccountSecurity$inboundSchema: z.ZodType<
-  CreateAccountSecurity,
+export const CreateAccountGlobals$inboundSchema: z.ZodType<
+  CreateAccountGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
-  });
-});
-
-/** @internal */
-export type CreateAccountSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
-};
-
-/** @internal */
-export const CreateAccountSecurity$outboundSchema: z.ZodType<
-  CreateAccountSecurity$Outbound,
-  z.ZodTypeDef,
-  CreateAccountSecurity
-> = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountSecurity$ {
-  /** @deprecated use `CreateAccountSecurity$inboundSchema` instead. */
-  export const inboundSchema = CreateAccountSecurity$inboundSchema;
-  /** @deprecated use `CreateAccountSecurity$outboundSchema` instead. */
-  export const outboundSchema = CreateAccountSecurity$outboundSchema;
-  /** @deprecated use `CreateAccountSecurity$Outbound` instead. */
-  export type Outbound = CreateAccountSecurity$Outbound;
-}
-
-export function createAccountSecurityToJSON(
-  createAccountSecurity: CreateAccountSecurity,
-): string {
-  return JSON.stringify(
-    CreateAccountSecurity$outboundSchema.parse(createAccountSecurity),
-  );
-}
-
-export function createAccountSecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAccountSecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAccountSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAccountSecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateAccountRequest$inboundSchema: z.ZodType<
-  CreateAccountRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
-  "x-wait-for": components.AccountWaitFor$inboundSchema.optional(),
-  CreateAccount: components.CreateAccount$inboundSchema,
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
     "x-moov-version": "xMoovVersion",
-    "x-wait-for": "xWaitFor",
-    "CreateAccount": "createAccount",
   });
 });
 
 /** @internal */
-export type CreateAccountRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
-  "x-wait-for"?: string | undefined;
-  CreateAccount: components.CreateAccount$Outbound;
+export type CreateAccountGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const CreateAccountRequest$outboundSchema: z.ZodType<
-  CreateAccountRequest$Outbound,
+export const CreateAccountGlobals$outboundSchema: z.ZodType<
+  CreateAccountGlobals$Outbound,
   z.ZodTypeDef,
-  CreateAccountRequest
+  CreateAccountGlobals
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
-  xWaitFor: components.AccountWaitFor$outboundSchema.optional(),
-  createAccount: components.CreateAccount$outboundSchema,
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
     xMoovVersion: "x-moov-version",
-    xWaitFor: "x-wait-for",
-    createAccount: "CreateAccount",
   });
 });
 
@@ -138,29 +66,96 @@ export const CreateAccountRequest$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateAccountRequest$ {
-  /** @deprecated use `CreateAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateAccountRequest$inboundSchema;
-  /** @deprecated use `CreateAccountRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateAccountRequest$outboundSchema;
-  /** @deprecated use `CreateAccountRequest$Outbound` instead. */
-  export type Outbound = CreateAccountRequest$Outbound;
+export namespace CreateAccountGlobals$ {
+  /** @deprecated use `CreateAccountGlobals$inboundSchema` instead. */
+  export const inboundSchema = CreateAccountGlobals$inboundSchema;
+  /** @deprecated use `CreateAccountGlobals$outboundSchema` instead. */
+  export const outboundSchema = CreateAccountGlobals$outboundSchema;
+  /** @deprecated use `CreateAccountGlobals$Outbound` instead. */
+  export type Outbound = CreateAccountGlobals$Outbound;
 }
 
-export function createAccountRequestToJSON(
-  createAccountRequest: CreateAccountRequest,
+export function createAccountGlobalsToJSON(
+  createAccountGlobals: CreateAccountGlobals,
 ): string {
   return JSON.stringify(
-    CreateAccountRequest$outboundSchema.parse(createAccountRequest),
+    CreateAccountGlobals$outboundSchema.parse(createAccountGlobals),
   );
 }
 
-export function createAccountRequestFromJSON(
+export function createAccountGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<CreateAccountRequest, SDKValidationError> {
+): SafeParseResult<CreateAccountGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateAccountRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAccountRequest' from JSON`,
+    (x) => CreateAccountGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAccountGlobals' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateAccountResponse$inboundSchema: z.ZodType<
+  CreateAccountResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Account$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type CreateAccountResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Account$Outbound;
+};
+
+/** @internal */
+export const CreateAccountResponse$outboundSchema: z.ZodType<
+  CreateAccountResponse$Outbound,
+  z.ZodTypeDef,
+  CreateAccountResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Account$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateAccountResponse$ {
+  /** @deprecated use `CreateAccountResponse$inboundSchema` instead. */
+  export const inboundSchema = CreateAccountResponse$inboundSchema;
+  /** @deprecated use `CreateAccountResponse$outboundSchema` instead. */
+  export const outboundSchema = CreateAccountResponse$outboundSchema;
+  /** @deprecated use `CreateAccountResponse$Outbound` instead. */
+  export type Outbound = CreateAccountResponse$Outbound;
+}
+
+export function createAccountResponseToJSON(
+  createAccountResponse: CreateAccountResponse,
+): string {
+  return JSON.stringify(
+    CreateAccountResponse$outboundSchema.parse(createAccountResponse),
+  );
+}
+
+export function createAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAccountResponse' from JSON`,
   );
 }

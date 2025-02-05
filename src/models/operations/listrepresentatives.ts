@@ -9,55 +9,63 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListRepresentativesSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListRepresentativesGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListRepresentativesRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * ID of the account.
    */
   accountID: string;
 };
 
+export type ListRepresentativesResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.Representative>;
+};
+
 /** @internal */
-export const ListRepresentativesSecurity$inboundSchema: z.ZodType<
-  ListRepresentativesSecurity,
+export const ListRepresentativesGlobals$inboundSchema: z.ZodType<
+  ListRepresentativesGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListRepresentativesSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListRepresentativesGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListRepresentativesSecurity$outboundSchema: z.ZodType<
-  ListRepresentativesSecurity$Outbound,
+export const ListRepresentativesGlobals$outboundSchema: z.ZodType<
+  ListRepresentativesGlobals$Outbound,
   z.ZodTypeDef,
-  ListRepresentativesSecurity
+  ListRepresentativesGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -65,32 +73,30 @@ export const ListRepresentativesSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListRepresentativesSecurity$ {
-  /** @deprecated use `ListRepresentativesSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListRepresentativesSecurity$inboundSchema;
-  /** @deprecated use `ListRepresentativesSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListRepresentativesSecurity$outboundSchema;
-  /** @deprecated use `ListRepresentativesSecurity$Outbound` instead. */
-  export type Outbound = ListRepresentativesSecurity$Outbound;
+export namespace ListRepresentativesGlobals$ {
+  /** @deprecated use `ListRepresentativesGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListRepresentativesGlobals$inboundSchema;
+  /** @deprecated use `ListRepresentativesGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListRepresentativesGlobals$outboundSchema;
+  /** @deprecated use `ListRepresentativesGlobals$Outbound` instead. */
+  export type Outbound = ListRepresentativesGlobals$Outbound;
 }
 
-export function listRepresentativesSecurityToJSON(
-  listRepresentativesSecurity: ListRepresentativesSecurity,
+export function listRepresentativesGlobalsToJSON(
+  listRepresentativesGlobals: ListRepresentativesGlobals,
 ): string {
   return JSON.stringify(
-    ListRepresentativesSecurity$outboundSchema.parse(
-      listRepresentativesSecurity,
-    ),
+    ListRepresentativesGlobals$outboundSchema.parse(listRepresentativesGlobals),
   );
 }
 
-export function listRepresentativesSecurityFromJSON(
+export function listRepresentativesGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListRepresentativesSecurity, SDKValidationError> {
+): SafeParseResult<ListRepresentativesGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListRepresentativesSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListRepresentativesSecurity' from JSON`,
+    (x) => ListRepresentativesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListRepresentativesGlobals' from JSON`,
   );
 }
 
@@ -100,17 +106,11 @@ export const ListRepresentativesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListRepresentativesRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -120,12 +120,7 @@ export const ListRepresentativesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListRepresentativesRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -156,5 +151,74 @@ export function listRepresentativesRequestFromJSON(
     jsonString,
     (x) => ListRepresentativesRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListRepresentativesRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListRepresentativesResponse$inboundSchema: z.ZodType<
+  ListRepresentativesResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.Representative$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListRepresentativesResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.Representative$Outbound>;
+};
+
+/** @internal */
+export const ListRepresentativesResponse$outboundSchema: z.ZodType<
+  ListRepresentativesResponse$Outbound,
+  z.ZodTypeDef,
+  ListRepresentativesResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.Representative$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListRepresentativesResponse$ {
+  /** @deprecated use `ListRepresentativesResponse$inboundSchema` instead. */
+  export const inboundSchema = ListRepresentativesResponse$inboundSchema;
+  /** @deprecated use `ListRepresentativesResponse$outboundSchema` instead. */
+  export const outboundSchema = ListRepresentativesResponse$outboundSchema;
+  /** @deprecated use `ListRepresentativesResponse$Outbound` instead. */
+  export type Outbound = ListRepresentativesResponse$Outbound;
+}
+
+export function listRepresentativesResponseToJSON(
+  listRepresentativesResponse: ListRepresentativesResponse,
+): string {
+  return JSON.stringify(
+    ListRepresentativesResponse$outboundSchema.parse(
+      listRepresentativesResponse,
+    ),
+  );
+}
+
+export function listRepresentativesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListRepresentativesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListRepresentativesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListRepresentativesResponse' from JSON`,
   );
 }

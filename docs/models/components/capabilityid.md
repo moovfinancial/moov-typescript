@@ -7,7 +7,7 @@ Moov account capabilities.
 ```typescript
 import { CapabilityID } from "@moovio/sdk/models/components";
 
-let value: CapabilityID = "collect-funds";
+let value: CapabilityID = "transfers";
 ```
 
 ## Values

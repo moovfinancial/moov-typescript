@@ -6,15 +6,14 @@
 import { DisablePaymentLinkRequest } from "@moovio/sdk/models/operations";
 
 let value: DisablePaymentLinkRequest = {
-  accountID: "38c2f7c5-7fb0-434f-8ca1-c22d01e4ca1c",
+  accountID: "e7350c39-0d20-44e4-8864-ecc8d7773e43",
   paymentLinkCode: "uc7ZYKrMhi",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                | Example                                                    |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |                                                            |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |                                                            |
-| `paymentLinkCode`                                          | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        | uc7ZYKrMhi                                                 |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |                    |
+| `paymentLinkCode`  | *string*           | :heavy_check_mark: | N/A                | uc7ZYKrMhi         |

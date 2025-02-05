@@ -6,15 +6,14 @@
 import { GetRepresentativeRequest } from "@moovio/sdk/models/operations";
 
 let value: GetRepresentativeRequest = {
-  accountID: "b5c95206-65c1-4138-abe4-284f03c68da9",
-  representativeID: "1195fde2-90b0-4a39-a40a-7b0802c3122d",
+  accountID: "700e6e76-4149-4c8c-b29e-33bc35a697cd",
+  representativeID: "9970417d-9a34-42d4-9821-55595c15a917",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | ID of the account.                                         |
-| `representativeID`                                         | *string*                                                   | :heavy_check_mark:                                         | ID of the representative.                                  |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `accountID`               | *string*                  | :heavy_check_mark:        | ID of the account.        |
+| `representativeID`        | *string*                  | :heavy_check_mark:        | ID of the representative. |

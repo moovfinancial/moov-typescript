@@ -6,122 +6,57 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type TestEndToEndTokenSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
-};
-
-export type TestEndToEndTokenRequest = {
+export type TestEndToEndTokenGlobals = {
   /**
    * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
    */
-  xMoovVersion?: components.Versions | undefined;
-  e2EEToken: components.E2EEToken;
+  xMoovVersion?: string | undefined;
+};
+
+export type TestEndToEndTokenResponse = {
+  headers: { [k: string]: Array<string> };
 };
 
 /** @internal */
-export const TestEndToEndTokenSecurity$inboundSchema: z.ZodType<
-  TestEndToEndTokenSecurity,
+export const TestEndToEndTokenGlobals$inboundSchema: z.ZodType<
+  TestEndToEndTokenGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
-  });
-});
-
-/** @internal */
-export type TestEndToEndTokenSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
-};
-
-/** @internal */
-export const TestEndToEndTokenSecurity$outboundSchema: z.ZodType<
-  TestEndToEndTokenSecurity$Outbound,
-  z.ZodTypeDef,
-  TestEndToEndTokenSecurity
-> = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TestEndToEndTokenSecurity$ {
-  /** @deprecated use `TestEndToEndTokenSecurity$inboundSchema` instead. */
-  export const inboundSchema = TestEndToEndTokenSecurity$inboundSchema;
-  /** @deprecated use `TestEndToEndTokenSecurity$outboundSchema` instead. */
-  export const outboundSchema = TestEndToEndTokenSecurity$outboundSchema;
-  /** @deprecated use `TestEndToEndTokenSecurity$Outbound` instead. */
-  export type Outbound = TestEndToEndTokenSecurity$Outbound;
-}
-
-export function testEndToEndTokenSecurityToJSON(
-  testEndToEndTokenSecurity: TestEndToEndTokenSecurity,
-): string {
-  return JSON.stringify(
-    TestEndToEndTokenSecurity$outboundSchema.parse(testEndToEndTokenSecurity),
-  );
-}
-
-export function testEndToEndTokenSecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<TestEndToEndTokenSecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TestEndToEndTokenSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TestEndToEndTokenSecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const TestEndToEndTokenRequest$inboundSchema: z.ZodType<
-  TestEndToEndTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
-  E2EEToken: components.E2EEToken$inboundSchema,
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
     "x-moov-version": "xMoovVersion",
-    "E2EEToken": "e2EEToken",
   });
 });
 
 /** @internal */
-export type TestEndToEndTokenRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
-  E2EEToken: components.E2EEToken$Outbound;
+export type TestEndToEndTokenGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const TestEndToEndTokenRequest$outboundSchema: z.ZodType<
-  TestEndToEndTokenRequest$Outbound,
+export const TestEndToEndTokenGlobals$outboundSchema: z.ZodType<
+  TestEndToEndTokenGlobals$Outbound,
   z.ZodTypeDef,
-  TestEndToEndTokenRequest
+  TestEndToEndTokenGlobals
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
-  e2EEToken: components.E2EEToken$outboundSchema,
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
     xMoovVersion: "x-moov-version",
-    e2EEToken: "E2EEToken",
   });
 });
 
@@ -129,29 +64,91 @@ export const TestEndToEndTokenRequest$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TestEndToEndTokenRequest$ {
-  /** @deprecated use `TestEndToEndTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = TestEndToEndTokenRequest$inboundSchema;
-  /** @deprecated use `TestEndToEndTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = TestEndToEndTokenRequest$outboundSchema;
-  /** @deprecated use `TestEndToEndTokenRequest$Outbound` instead. */
-  export type Outbound = TestEndToEndTokenRequest$Outbound;
+export namespace TestEndToEndTokenGlobals$ {
+  /** @deprecated use `TestEndToEndTokenGlobals$inboundSchema` instead. */
+  export const inboundSchema = TestEndToEndTokenGlobals$inboundSchema;
+  /** @deprecated use `TestEndToEndTokenGlobals$outboundSchema` instead. */
+  export const outboundSchema = TestEndToEndTokenGlobals$outboundSchema;
+  /** @deprecated use `TestEndToEndTokenGlobals$Outbound` instead. */
+  export type Outbound = TestEndToEndTokenGlobals$Outbound;
 }
 
-export function testEndToEndTokenRequestToJSON(
-  testEndToEndTokenRequest: TestEndToEndTokenRequest,
+export function testEndToEndTokenGlobalsToJSON(
+  testEndToEndTokenGlobals: TestEndToEndTokenGlobals,
 ): string {
   return JSON.stringify(
-    TestEndToEndTokenRequest$outboundSchema.parse(testEndToEndTokenRequest),
+    TestEndToEndTokenGlobals$outboundSchema.parse(testEndToEndTokenGlobals),
   );
 }
 
-export function testEndToEndTokenRequestFromJSON(
+export function testEndToEndTokenGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<TestEndToEndTokenRequest, SDKValidationError> {
+): SafeParseResult<TestEndToEndTokenGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TestEndToEndTokenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TestEndToEndTokenRequest' from JSON`,
+    (x) => TestEndToEndTokenGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TestEndToEndTokenGlobals' from JSON`,
+  );
+}
+
+/** @internal */
+export const TestEndToEndTokenResponse$inboundSchema: z.ZodType<
+  TestEndToEndTokenResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type TestEndToEndTokenResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const TestEndToEndTokenResponse$outboundSchema: z.ZodType<
+  TestEndToEndTokenResponse$Outbound,
+  z.ZodTypeDef,
+  TestEndToEndTokenResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TestEndToEndTokenResponse$ {
+  /** @deprecated use `TestEndToEndTokenResponse$inboundSchema` instead. */
+  export const inboundSchema = TestEndToEndTokenResponse$inboundSchema;
+  /** @deprecated use `TestEndToEndTokenResponse$outboundSchema` instead. */
+  export const outboundSchema = TestEndToEndTokenResponse$outboundSchema;
+  /** @deprecated use `TestEndToEndTokenResponse$Outbound` instead. */
+  export type Outbound = TestEndToEndTokenResponse$Outbound;
+}
+
+export function testEndToEndTokenResponseToJSON(
+  testEndToEndTokenResponse: TestEndToEndTokenResponse,
+): string {
+  return JSON.stringify(
+    TestEndToEndTokenResponse$outboundSchema.parse(testEndToEndTokenResponse),
+  );
+}
+
+export function testEndToEndTokenResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<TestEndToEndTokenResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TestEndToEndTokenResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TestEndToEndTokenResponse' from JSON`,
   );
 }

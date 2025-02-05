@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetEnrichmentProfileSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetEnrichmentProfileGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetEnrichmentProfileRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   email: string;
 };
 
+export type GetEnrichmentProfileResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.EnrichedBusinessProfile;
+};
+
 /** @internal */
-export const GetEnrichmentProfileSecurity$inboundSchema: z.ZodType<
-  GetEnrichmentProfileSecurity,
+export const GetEnrichmentProfileGlobals$inboundSchema: z.ZodType<
+  GetEnrichmentProfileGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetEnrichmentProfileSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetEnrichmentProfileGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetEnrichmentProfileSecurity$outboundSchema: z.ZodType<
-  GetEnrichmentProfileSecurity$Outbound,
+export const GetEnrichmentProfileGlobals$outboundSchema: z.ZodType<
+  GetEnrichmentProfileGlobals$Outbound,
   z.ZodTypeDef,
-  GetEnrichmentProfileSecurity
+  GetEnrichmentProfileGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,32 +70,32 @@ export const GetEnrichmentProfileSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetEnrichmentProfileSecurity$ {
-  /** @deprecated use `GetEnrichmentProfileSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetEnrichmentProfileSecurity$inboundSchema;
-  /** @deprecated use `GetEnrichmentProfileSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetEnrichmentProfileSecurity$outboundSchema;
-  /** @deprecated use `GetEnrichmentProfileSecurity$Outbound` instead. */
-  export type Outbound = GetEnrichmentProfileSecurity$Outbound;
+export namespace GetEnrichmentProfileGlobals$ {
+  /** @deprecated use `GetEnrichmentProfileGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetEnrichmentProfileGlobals$inboundSchema;
+  /** @deprecated use `GetEnrichmentProfileGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetEnrichmentProfileGlobals$outboundSchema;
+  /** @deprecated use `GetEnrichmentProfileGlobals$Outbound` instead. */
+  export type Outbound = GetEnrichmentProfileGlobals$Outbound;
 }
 
-export function getEnrichmentProfileSecurityToJSON(
-  getEnrichmentProfileSecurity: GetEnrichmentProfileSecurity,
+export function getEnrichmentProfileGlobalsToJSON(
+  getEnrichmentProfileGlobals: GetEnrichmentProfileGlobals,
 ): string {
   return JSON.stringify(
-    GetEnrichmentProfileSecurity$outboundSchema.parse(
-      getEnrichmentProfileSecurity,
+    GetEnrichmentProfileGlobals$outboundSchema.parse(
+      getEnrichmentProfileGlobals,
     ),
   );
 }
 
-export function getEnrichmentProfileSecurityFromJSON(
+export function getEnrichmentProfileGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetEnrichmentProfileSecurity, SDKValidationError> {
+): SafeParseResult<GetEnrichmentProfileGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetEnrichmentProfileSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetEnrichmentProfileSecurity' from JSON`,
+    (x) => GetEnrichmentProfileGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEnrichmentProfileGlobals' from JSON`,
   );
 }
 
@@ -97,17 +105,11 @@ export const GetEnrichmentProfileRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   email: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetEnrichmentProfileRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   email: string;
 };
 
@@ -117,12 +119,7 @@ export const GetEnrichmentProfileRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetEnrichmentProfileRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   email: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +152,74 @@ export function getEnrichmentProfileRequestFromJSON(
     jsonString,
     (x) => GetEnrichmentProfileRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetEnrichmentProfileRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetEnrichmentProfileResponse$inboundSchema: z.ZodType<
+  GetEnrichmentProfileResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.EnrichedBusinessProfile$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetEnrichmentProfileResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.EnrichedBusinessProfile$Outbound;
+};
+
+/** @internal */
+export const GetEnrichmentProfileResponse$outboundSchema: z.ZodType<
+  GetEnrichmentProfileResponse$Outbound,
+  z.ZodTypeDef,
+  GetEnrichmentProfileResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.EnrichedBusinessProfile$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetEnrichmentProfileResponse$ {
+  /** @deprecated use `GetEnrichmentProfileResponse$inboundSchema` instead. */
+  export const inboundSchema = GetEnrichmentProfileResponse$inboundSchema;
+  /** @deprecated use `GetEnrichmentProfileResponse$outboundSchema` instead. */
+  export const outboundSchema = GetEnrichmentProfileResponse$outboundSchema;
+  /** @deprecated use `GetEnrichmentProfileResponse$Outbound` instead. */
+  export type Outbound = GetEnrichmentProfileResponse$Outbound;
+}
+
+export function getEnrichmentProfileResponseToJSON(
+  getEnrichmentProfileResponse: GetEnrichmentProfileResponse,
+): string {
+  return JSON.stringify(
+    GetEnrichmentProfileResponse$outboundSchema.parse(
+      getEnrichmentProfileResponse,
+    ),
+  );
+}
+
+export function getEnrichmentProfileResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetEnrichmentProfileResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetEnrichmentProfileResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEnrichmentProfileResponse' from JSON`,
   );
 }

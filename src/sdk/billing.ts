@@ -8,7 +8,6 @@ import { billingListFeePlans } from "../funcs/billingListFeePlans.js";
 import { billingListPartnerPricing } from "../funcs/billingListPartnerPricing.js";
 import { billingListPartnerPricingAgreements } from "../funcs/billingListPartnerPricingAgreements.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -16,17 +15,15 @@ export class Billing extends ClientSDK {
   /**
    * List all fee plan agreements associated with an account.
    *
-   * To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
-   * to specify the `/accounts/{accountID}/profile.read` scope.
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
    */
   async listFeePlanAgreements(
-    security: operations.ListFeePlanAgreementsSecurity,
     request: operations.ListFeePlanAgreementsRequest,
     options?: RequestOptions,
-  ): Promise<Array<components.FeePlanAgreement>> {
+  ): Promise<operations.ListFeePlanAgreementsResponse> {
     return unwrapAsync(billingListFeePlanAgreements(
       this,
-      security,
       request,
       options,
     ));
@@ -35,17 +32,15 @@ export class Billing extends ClientSDK {
   /**
    * Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
    *
-   * To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
-   * to specify the `/accounts/{accountID}/profile.write` scope.
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/profile.write` scope.
    */
   async createFeePlanAgreements(
-    security: operations.CreateFeePlanAgreementsSecurity,
     request: operations.CreateFeePlanAgreementsRequest,
     options?: RequestOptions,
-  ): Promise<components.FeePlanAgreement> {
+  ): Promise<operations.CreateFeePlanAgreementsResponse> {
     return unwrapAsync(billingCreateFeePlanAgreements(
       this,
-      security,
       request,
       options,
     ));
@@ -55,17 +50,15 @@ export class Billing extends ClientSDK {
    * List all fee plans available for use by an account. This is intended to be used by an account when
    * selecting a fee plan to apply to a connected account.
    *
-   * To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
-   * to specify the `/accounts/{accountID}/profile.read` scope.
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
    */
   async listFeePlans(
-    security: operations.ListFeePlansSecurity,
     request: operations.ListFeePlansRequest,
     options?: RequestOptions,
-  ): Promise<Array<components.FeePlan>> {
+  ): Promise<operations.ListFeePlansResponse> {
     return unwrapAsync(billingListFeePlans(
       this,
-      security,
       request,
       options,
     ));
@@ -74,17 +67,15 @@ export class Billing extends ClientSDK {
   /**
    * List all partner pricing plans available for use by an account.
    *
-   * To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
-   * to specify the `/accounts/{accountID}/profile.read` scope.
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
    */
   async listPartnerPricing(
-    security: operations.ListPartnerPricingSecurity,
     request: operations.ListPartnerPricingRequest,
     options?: RequestOptions,
-  ): Promise<Array<components.PartnerPricing>> {
+  ): Promise<operations.ListPartnerPricingResponse> {
     return unwrapAsync(billingListPartnerPricing(
       this,
-      security,
       request,
       options,
     ));
@@ -93,17 +84,15 @@ export class Billing extends ClientSDK {
   /**
    * List all partner pricing agreements associated with an account.
    *
-   * To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
-   * to specify the `/accounts/{accountID}/profile.read` scope.
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
    */
   async listPartnerPricingAgreements(
-    security: operations.ListPartnerPricingAgreementsSecurity,
     request: operations.ListPartnerPricingAgreementsRequest,
     options?: RequestOptions,
-  ): Promise<Array<components.PartnerPricingAgreement>> {
+  ): Promise<operations.ListPartnerPricingAgreementsResponse> {
     return unwrapAsync(billingListPartnerPricingAgreements(
       this,
-      security,
       request,
       options,
     ));

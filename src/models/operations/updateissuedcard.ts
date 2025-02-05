@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type UpdateIssuedCardSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type UpdateIssuedCardGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type UpdateIssuedCardRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * The Moov business account for which the card was issued.
    */
@@ -27,39 +35,38 @@ export type UpdateIssuedCardRequest = {
   updateIssuedCard: components.UpdateIssuedCard;
 };
 
+export type UpdateIssuedCardResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const UpdateIssuedCardSecurity$inboundSchema: z.ZodType<
-  UpdateIssuedCardSecurity,
+export const UpdateIssuedCardGlobals$inboundSchema: z.ZodType<
+  UpdateIssuedCardGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type UpdateIssuedCardSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type UpdateIssuedCardGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const UpdateIssuedCardSecurity$outboundSchema: z.ZodType<
-  UpdateIssuedCardSecurity$Outbound,
+export const UpdateIssuedCardGlobals$outboundSchema: z.ZodType<
+  UpdateIssuedCardGlobals$Outbound,
   z.ZodTypeDef,
-  UpdateIssuedCardSecurity
+  UpdateIssuedCardGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -67,30 +74,30 @@ export const UpdateIssuedCardSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateIssuedCardSecurity$ {
-  /** @deprecated use `UpdateIssuedCardSecurity$inboundSchema` instead. */
-  export const inboundSchema = UpdateIssuedCardSecurity$inboundSchema;
-  /** @deprecated use `UpdateIssuedCardSecurity$outboundSchema` instead. */
-  export const outboundSchema = UpdateIssuedCardSecurity$outboundSchema;
-  /** @deprecated use `UpdateIssuedCardSecurity$Outbound` instead. */
-  export type Outbound = UpdateIssuedCardSecurity$Outbound;
+export namespace UpdateIssuedCardGlobals$ {
+  /** @deprecated use `UpdateIssuedCardGlobals$inboundSchema` instead. */
+  export const inboundSchema = UpdateIssuedCardGlobals$inboundSchema;
+  /** @deprecated use `UpdateIssuedCardGlobals$outboundSchema` instead. */
+  export const outboundSchema = UpdateIssuedCardGlobals$outboundSchema;
+  /** @deprecated use `UpdateIssuedCardGlobals$Outbound` instead. */
+  export type Outbound = UpdateIssuedCardGlobals$Outbound;
 }
 
-export function updateIssuedCardSecurityToJSON(
-  updateIssuedCardSecurity: UpdateIssuedCardSecurity,
+export function updateIssuedCardGlobalsToJSON(
+  updateIssuedCardGlobals: UpdateIssuedCardGlobals,
 ): string {
   return JSON.stringify(
-    UpdateIssuedCardSecurity$outboundSchema.parse(updateIssuedCardSecurity),
+    UpdateIssuedCardGlobals$outboundSchema.parse(updateIssuedCardGlobals),
   );
 }
 
-export function updateIssuedCardSecurityFromJSON(
+export function updateIssuedCardGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateIssuedCardSecurity, SDKValidationError> {
+): SafeParseResult<UpdateIssuedCardGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateIssuedCardSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateIssuedCardSecurity' from JSON`,
+    (x) => UpdateIssuedCardGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateIssuedCardGlobals' from JSON`,
   );
 }
 
@@ -100,20 +107,17 @@ export const UpdateIssuedCardRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   issuedCardID: z.string(),
   UpdateIssuedCard: components.UpdateIssuedCard$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "UpdateIssuedCard": "updateIssuedCard",
   });
 });
 
 /** @internal */
 export type UpdateIssuedCardRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   issuedCardID: string;
   UpdateIssuedCard: components.UpdateIssuedCard$Outbound;
@@ -125,13 +129,11 @@ export const UpdateIssuedCardRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateIssuedCardRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   issuedCardID: z.string(),
   updateIssuedCard: components.UpdateIssuedCard$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     updateIssuedCard: "UpdateIssuedCard",
   });
 });
@@ -164,5 +166,67 @@ export function updateIssuedCardRequestFromJSON(
     jsonString,
     (x) => UpdateIssuedCardRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateIssuedCardRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateIssuedCardResponse$inboundSchema: z.ZodType<
+  UpdateIssuedCardResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type UpdateIssuedCardResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const UpdateIssuedCardResponse$outboundSchema: z.ZodType<
+  UpdateIssuedCardResponse$Outbound,
+  z.ZodTypeDef,
+  UpdateIssuedCardResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateIssuedCardResponse$ {
+  /** @deprecated use `UpdateIssuedCardResponse$inboundSchema` instead. */
+  export const inboundSchema = UpdateIssuedCardResponse$inboundSchema;
+  /** @deprecated use `UpdateIssuedCardResponse$outboundSchema` instead. */
+  export const outboundSchema = UpdateIssuedCardResponse$outboundSchema;
+  /** @deprecated use `UpdateIssuedCardResponse$Outbound` instead. */
+  export type Outbound = UpdateIssuedCardResponse$Outbound;
+}
+
+export function updateIssuedCardResponseToJSON(
+  updateIssuedCardResponse: UpdateIssuedCardResponse,
+): string {
+  return JSON.stringify(
+    UpdateIssuedCardResponse$outboundSchema.parse(updateIssuedCardResponse),
+  );
+}
+
+export function updateIssuedCardResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateIssuedCardResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateIssuedCardResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateIssuedCardResponse' from JSON`,
   );
 }

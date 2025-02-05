@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetBrandSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetBrandGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetBrandRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type GetBrandResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Brand;
+};
+
 /** @internal */
-export const GetBrandSecurity$inboundSchema: z.ZodType<
-  GetBrandSecurity,
+export const GetBrandGlobals$inboundSchema: z.ZodType<
+  GetBrandGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetBrandSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetBrandGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetBrandSecurity$outboundSchema: z.ZodType<
-  GetBrandSecurity$Outbound,
+export const GetBrandGlobals$outboundSchema: z.ZodType<
+  GetBrandGlobals$Outbound,
   z.ZodTypeDef,
-  GetBrandSecurity
+  GetBrandGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,30 +70,28 @@ export const GetBrandSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetBrandSecurity$ {
-  /** @deprecated use `GetBrandSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetBrandSecurity$inboundSchema;
-  /** @deprecated use `GetBrandSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetBrandSecurity$outboundSchema;
-  /** @deprecated use `GetBrandSecurity$Outbound` instead. */
-  export type Outbound = GetBrandSecurity$Outbound;
+export namespace GetBrandGlobals$ {
+  /** @deprecated use `GetBrandGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetBrandGlobals$inboundSchema;
+  /** @deprecated use `GetBrandGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetBrandGlobals$outboundSchema;
+  /** @deprecated use `GetBrandGlobals$Outbound` instead. */
+  export type Outbound = GetBrandGlobals$Outbound;
 }
 
-export function getBrandSecurityToJSON(
-  getBrandSecurity: GetBrandSecurity,
+export function getBrandGlobalsToJSON(
+  getBrandGlobals: GetBrandGlobals,
 ): string {
-  return JSON.stringify(
-    GetBrandSecurity$outboundSchema.parse(getBrandSecurity),
-  );
+  return JSON.stringify(GetBrandGlobals$outboundSchema.parse(getBrandGlobals));
 }
 
-export function getBrandSecurityFromJSON(
+export function getBrandGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetBrandSecurity, SDKValidationError> {
+): SafeParseResult<GetBrandGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetBrandSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBrandSecurity' from JSON`,
+    (x) => GetBrandGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBrandGlobals' from JSON`,
   );
 }
 
@@ -95,17 +101,11 @@ export const GetBrandRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetBrandRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -115,12 +115,7 @@ export const GetBrandRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetBrandRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -149,5 +144,72 @@ export function getBrandRequestFromJSON(
     jsonString,
     (x) => GetBrandRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetBrandRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetBrandResponse$inboundSchema: z.ZodType<
+  GetBrandResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Brand$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetBrandResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Brand$Outbound;
+};
+
+/** @internal */
+export const GetBrandResponse$outboundSchema: z.ZodType<
+  GetBrandResponse$Outbound,
+  z.ZodTypeDef,
+  GetBrandResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Brand$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetBrandResponse$ {
+  /** @deprecated use `GetBrandResponse$inboundSchema` instead. */
+  export const inboundSchema = GetBrandResponse$inboundSchema;
+  /** @deprecated use `GetBrandResponse$outboundSchema` instead. */
+  export const outboundSchema = GetBrandResponse$outboundSchema;
+  /** @deprecated use `GetBrandResponse$Outbound` instead. */
+  export type Outbound = GetBrandResponse$Outbound;
+}
+
+export function getBrandResponseToJSON(
+  getBrandResponse: GetBrandResponse,
+): string {
+  return JSON.stringify(
+    GetBrandResponse$outboundSchema.parse(getBrandResponse),
+  );
+}
+
+export function getBrandResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBrandResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBrandResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBrandResponse' from JSON`,
   );
 }

@@ -12,7 +12,6 @@ let value: RevokeOnboardingInviteRequest = {
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                | Example                                                    |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |                                                            |
-| `code`                                                     | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        | N1IA5eWYNh                                                 |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `code`             | *string*           | :heavy_check_mark: | N/A                | N1IA5eWYNh         |

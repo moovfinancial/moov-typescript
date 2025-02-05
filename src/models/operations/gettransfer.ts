@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetTransferSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetTransferGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetTransferRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * Identifier for the transfer.
    */
@@ -26,39 +34,39 @@ export type GetTransferRequest = {
   accountID: string;
 };
 
+export type GetTransferResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Transfer;
+};
+
 /** @internal */
-export const GetTransferSecurity$inboundSchema: z.ZodType<
-  GetTransferSecurity,
+export const GetTransferGlobals$inboundSchema: z.ZodType<
+  GetTransferGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetTransferSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetTransferGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetTransferSecurity$outboundSchema: z.ZodType<
-  GetTransferSecurity$Outbound,
+export const GetTransferGlobals$outboundSchema: z.ZodType<
+  GetTransferGlobals$Outbound,
   z.ZodTypeDef,
-  GetTransferSecurity
+  GetTransferGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -66,30 +74,30 @@ export const GetTransferSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetTransferSecurity$ {
-  /** @deprecated use `GetTransferSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetTransferSecurity$inboundSchema;
-  /** @deprecated use `GetTransferSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetTransferSecurity$outboundSchema;
-  /** @deprecated use `GetTransferSecurity$Outbound` instead. */
-  export type Outbound = GetTransferSecurity$Outbound;
+export namespace GetTransferGlobals$ {
+  /** @deprecated use `GetTransferGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetTransferGlobals$inboundSchema;
+  /** @deprecated use `GetTransferGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetTransferGlobals$outboundSchema;
+  /** @deprecated use `GetTransferGlobals$Outbound` instead. */
+  export type Outbound = GetTransferGlobals$Outbound;
 }
 
-export function getTransferSecurityToJSON(
-  getTransferSecurity: GetTransferSecurity,
+export function getTransferGlobalsToJSON(
+  getTransferGlobals: GetTransferGlobals,
 ): string {
   return JSON.stringify(
-    GetTransferSecurity$outboundSchema.parse(getTransferSecurity),
+    GetTransferGlobals$outboundSchema.parse(getTransferGlobals),
   );
 }
 
-export function getTransferSecurityFromJSON(
+export function getTransferGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetTransferSecurity, SDKValidationError> {
+): SafeParseResult<GetTransferGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetTransferSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTransferSecurity' from JSON`,
+    (x) => GetTransferGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTransferGlobals' from JSON`,
   );
 }
 
@@ -99,18 +107,12 @@ export const GetTransferRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   transferID: z.string(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetTransferRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   transferID: string;
   accountID: string;
 };
@@ -121,13 +123,8 @@ export const GetTransferRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTransferRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   transferID: z.string(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -158,5 +155,72 @@ export function getTransferRequestFromJSON(
     jsonString,
     (x) => GetTransferRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetTransferRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetTransferResponse$inboundSchema: z.ZodType<
+  GetTransferResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Transfer$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetTransferResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Transfer$Outbound;
+};
+
+/** @internal */
+export const GetTransferResponse$outboundSchema: z.ZodType<
+  GetTransferResponse$Outbound,
+  z.ZodTypeDef,
+  GetTransferResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Transfer$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetTransferResponse$ {
+  /** @deprecated use `GetTransferResponse$inboundSchema` instead. */
+  export const inboundSchema = GetTransferResponse$inboundSchema;
+  /** @deprecated use `GetTransferResponse$outboundSchema` instead. */
+  export const outboundSchema = GetTransferResponse$outboundSchema;
+  /** @deprecated use `GetTransferResponse$Outbound` instead. */
+  export type Outbound = GetTransferResponse$Outbound;
+}
+
+export function getTransferResponseToJSON(
+  getTransferResponse: GetTransferResponse,
+): string {
+  return JSON.stringify(
+    GetTransferResponse$outboundSchema.parse(getTransferResponse),
+  );
+}
+
+export function getTransferResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTransferResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTransferResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTransferResponse' from JSON`,
   );
 }

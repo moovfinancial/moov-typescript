@@ -6,13 +6,12 @@
 import { GetAccountRequest } from "@moovio/sdk/models/operations";
 
 let value: GetAccountRequest = {
-  accountID: "d2caef11-c23e-4f5d-8d99-949326b9fa22",
+  accountID: "8b986a7e-f6c8-49e1-910d-cdfc7c1a2f86",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |

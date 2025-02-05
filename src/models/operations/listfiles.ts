@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListFilesSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListFilesGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListFilesRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type ListFilesResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.FileDetails>;
+};
+
 /** @internal */
-export const ListFilesSecurity$inboundSchema: z.ZodType<
-  ListFilesSecurity,
+export const ListFilesGlobals$inboundSchema: z.ZodType<
+  ListFilesGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListFilesSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListFilesGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListFilesSecurity$outboundSchema: z.ZodType<
-  ListFilesSecurity$Outbound,
+export const ListFilesGlobals$outboundSchema: z.ZodType<
+  ListFilesGlobals$Outbound,
   z.ZodTypeDef,
-  ListFilesSecurity
+  ListFilesGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,30 +70,30 @@ export const ListFilesSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListFilesSecurity$ {
-  /** @deprecated use `ListFilesSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListFilesSecurity$inboundSchema;
-  /** @deprecated use `ListFilesSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListFilesSecurity$outboundSchema;
-  /** @deprecated use `ListFilesSecurity$Outbound` instead. */
-  export type Outbound = ListFilesSecurity$Outbound;
+export namespace ListFilesGlobals$ {
+  /** @deprecated use `ListFilesGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListFilesGlobals$inboundSchema;
+  /** @deprecated use `ListFilesGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListFilesGlobals$outboundSchema;
+  /** @deprecated use `ListFilesGlobals$Outbound` instead. */
+  export type Outbound = ListFilesGlobals$Outbound;
 }
 
-export function listFilesSecurityToJSON(
-  listFilesSecurity: ListFilesSecurity,
+export function listFilesGlobalsToJSON(
+  listFilesGlobals: ListFilesGlobals,
 ): string {
   return JSON.stringify(
-    ListFilesSecurity$outboundSchema.parse(listFilesSecurity),
+    ListFilesGlobals$outboundSchema.parse(listFilesGlobals),
   );
 }
 
-export function listFilesSecurityFromJSON(
+export function listFilesGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListFilesSecurity, SDKValidationError> {
+): SafeParseResult<ListFilesGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListFilesSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListFilesSecurity' from JSON`,
+    (x) => ListFilesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFilesGlobals' from JSON`,
   );
 }
 
@@ -95,17 +103,11 @@ export const ListFilesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListFilesRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -115,12 +117,7 @@ export const ListFilesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListFilesRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -151,5 +148,72 @@ export function listFilesRequestFromJSON(
     jsonString,
     (x) => ListFilesRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListFilesRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFilesResponse$inboundSchema: z.ZodType<
+  ListFilesResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.FileDetails$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListFilesResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.FileDetails$Outbound>;
+};
+
+/** @internal */
+export const ListFilesResponse$outboundSchema: z.ZodType<
+  ListFilesResponse$Outbound,
+  z.ZodTypeDef,
+  ListFilesResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.FileDetails$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListFilesResponse$ {
+  /** @deprecated use `ListFilesResponse$inboundSchema` instead. */
+  export const inboundSchema = ListFilesResponse$inboundSchema;
+  /** @deprecated use `ListFilesResponse$outboundSchema` instead. */
+  export const outboundSchema = ListFilesResponse$outboundSchema;
+  /** @deprecated use `ListFilesResponse$Outbound` instead. */
+  export type Outbound = ListFilesResponse$Outbound;
+}
+
+export function listFilesResponseToJSON(
+  listFilesResponse: ListFilesResponse,
+): string {
+  return JSON.stringify(
+    ListFilesResponse$outboundSchema.parse(listFilesResponse),
+  );
+}
+
+export function listFilesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFilesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFilesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFilesResponse' from JSON`,
   );
 }

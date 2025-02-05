@@ -5,30 +5,32 @@
 
 ### Available Operations
 
-* [getAvatar](#getavatar) - Get avatar image for an account using a unique ID.    
+* [get](#get) - Get avatar image for an account using a unique ID.    
 
-To use this endpoint from the browser, you'll need to specify the `/profile-enrichment.read` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/profile-enrichment.read` scope.
 
-## getAvatar
+## get
 
 Get avatar image for an account using a unique ID.    
 
-To use this endpoint from the browser, you'll need to specify the `/profile-enrichment.read` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/profile-enrichment.read` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.avatars.getAvatar({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.avatars.get({
     uniqueID: "<id>",
   });
 
@@ -45,19 +47,19 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { avatarsGetAvatar } from "@moovio/sdk/funcs/avatarsGetAvatar.js";
+import { avatarsGet } from "@moovio/sdk/funcs/avatarsGet.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await avatarsGetAvatar(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await avatarsGet(moov, {
     uniqueID: "<id>",
   });
 
@@ -79,7 +81,6 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetAvatarRequest](../../models/operations/getavatarrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetAvatarSecurity](../../models/operations/getavatarsecurity.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

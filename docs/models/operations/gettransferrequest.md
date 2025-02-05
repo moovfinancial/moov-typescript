@@ -6,15 +6,14 @@
 import { GetTransferRequest } from "@moovio/sdk/models/operations";
 
 let value: GetTransferRequest = {
-  transferID: "12023b1a-62f8-4405-b939-4065386f953a",
-  accountID: "adaf6c80-06ad-40fe-ada7-c342f3b701eb",
+  transferID: "de8b88fb-9621-44b3-b21d-336a9ea8bac9",
+  accountID: "eb54aa0b-302a-48d1-ada3-bb14a6c8d1b7",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `transferID`                                               | *string*                                                   | :heavy_check_mark:                                         | Identifier for the transfer.                               |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `transferID`                 | *string*                     | :heavy_check_mark:           | Identifier for the transfer. |
+| `accountID`                  | *string*                     | :heavy_check_mark:           | N/A                          |

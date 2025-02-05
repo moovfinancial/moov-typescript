@@ -6,15 +6,14 @@
 import { GetDisputeRequest } from "@moovio/sdk/models/operations";
 
 let value: GetDisputeRequest = {
-  accountID: "8ebc395a-8a9b-4c0f-a62e-c69366c6cc67",
-  disputeID: "03dc1a08-2d91-4aeb-91a9-ac4537613182",
+  accountID: "e0047a1a-c268-47cf-9c1c-13238a7f3cd8",
+  disputeID: "96866b12-dc46-4ed9-b306-add0353cc8f2",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `disputeID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `disputeID`        | *string*           | :heavy_check_mark: | N/A                |

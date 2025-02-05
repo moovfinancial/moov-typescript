@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetFullIssuedCardSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetFullIssuedCardGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetFullIssuedCardRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * The Moov business account for which the card was issued.
    */
@@ -26,39 +34,39 @@ export type GetFullIssuedCardRequest = {
   issuedCardID: string;
 };
 
+export type GetFullIssuedCardResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.FullIssuedCard;
+};
+
 /** @internal */
-export const GetFullIssuedCardSecurity$inboundSchema: z.ZodType<
-  GetFullIssuedCardSecurity,
+export const GetFullIssuedCardGlobals$inboundSchema: z.ZodType<
+  GetFullIssuedCardGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetFullIssuedCardSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetFullIssuedCardGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetFullIssuedCardSecurity$outboundSchema: z.ZodType<
-  GetFullIssuedCardSecurity$Outbound,
+export const GetFullIssuedCardGlobals$outboundSchema: z.ZodType<
+  GetFullIssuedCardGlobals$Outbound,
   z.ZodTypeDef,
-  GetFullIssuedCardSecurity
+  GetFullIssuedCardGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -66,30 +74,30 @@ export const GetFullIssuedCardSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFullIssuedCardSecurity$ {
-  /** @deprecated use `GetFullIssuedCardSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetFullIssuedCardSecurity$inboundSchema;
-  /** @deprecated use `GetFullIssuedCardSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetFullIssuedCardSecurity$outboundSchema;
-  /** @deprecated use `GetFullIssuedCardSecurity$Outbound` instead. */
-  export type Outbound = GetFullIssuedCardSecurity$Outbound;
+export namespace GetFullIssuedCardGlobals$ {
+  /** @deprecated use `GetFullIssuedCardGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetFullIssuedCardGlobals$inboundSchema;
+  /** @deprecated use `GetFullIssuedCardGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetFullIssuedCardGlobals$outboundSchema;
+  /** @deprecated use `GetFullIssuedCardGlobals$Outbound` instead. */
+  export type Outbound = GetFullIssuedCardGlobals$Outbound;
 }
 
-export function getFullIssuedCardSecurityToJSON(
-  getFullIssuedCardSecurity: GetFullIssuedCardSecurity,
+export function getFullIssuedCardGlobalsToJSON(
+  getFullIssuedCardGlobals: GetFullIssuedCardGlobals,
 ): string {
   return JSON.stringify(
-    GetFullIssuedCardSecurity$outboundSchema.parse(getFullIssuedCardSecurity),
+    GetFullIssuedCardGlobals$outboundSchema.parse(getFullIssuedCardGlobals),
   );
 }
 
-export function getFullIssuedCardSecurityFromJSON(
+export function getFullIssuedCardGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetFullIssuedCardSecurity, SDKValidationError> {
+): SafeParseResult<GetFullIssuedCardGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFullIssuedCardSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFullIssuedCardSecurity' from JSON`,
+    (x) => GetFullIssuedCardGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFullIssuedCardGlobals' from JSON`,
   );
 }
 
@@ -99,18 +107,12 @@ export const GetFullIssuedCardRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   issuedCardID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetFullIssuedCardRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   issuedCardID: string;
 };
@@ -121,13 +123,8 @@ export const GetFullIssuedCardRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetFullIssuedCardRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   issuedCardID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -158,5 +155,72 @@ export function getFullIssuedCardRequestFromJSON(
     jsonString,
     (x) => GetFullIssuedCardRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetFullIssuedCardRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetFullIssuedCardResponse$inboundSchema: z.ZodType<
+  GetFullIssuedCardResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.FullIssuedCard$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetFullIssuedCardResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.FullIssuedCard$Outbound;
+};
+
+/** @internal */
+export const GetFullIssuedCardResponse$outboundSchema: z.ZodType<
+  GetFullIssuedCardResponse$Outbound,
+  z.ZodTypeDef,
+  GetFullIssuedCardResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.FullIssuedCard$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetFullIssuedCardResponse$ {
+  /** @deprecated use `GetFullIssuedCardResponse$inboundSchema` instead. */
+  export const inboundSchema = GetFullIssuedCardResponse$inboundSchema;
+  /** @deprecated use `GetFullIssuedCardResponse$outboundSchema` instead. */
+  export const outboundSchema = GetFullIssuedCardResponse$outboundSchema;
+  /** @deprecated use `GetFullIssuedCardResponse$Outbound` instead. */
+  export type Outbound = GetFullIssuedCardResponse$Outbound;
+}
+
+export function getFullIssuedCardResponseToJSON(
+  getFullIssuedCardResponse: GetFullIssuedCardResponse,
+): string {
+  return JSON.stringify(
+    GetFullIssuedCardResponse$outboundSchema.parse(getFullIssuedCardResponse),
+  );
+}
+
+export function getFullIssuedCardResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFullIssuedCardResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFullIssuedCardResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFullIssuedCardResponse' from JSON`,
   );
 }

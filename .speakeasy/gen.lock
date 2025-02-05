@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 5565b71e7da4150e92d10b9020d0b922
+  docChecksum: f556249e67aba6f6878df2141974b495
   docVersion: latest
-  speakeasyVersion: 1.476.1
-  generationVersion: 2.495.1
-  releaseVersion: 0.1.1
-  configChecksum: 80f14dbc514fd2ffec2f0eac6aeed4ed
+  speakeasyVersion: 1.484.1
+  generationVersion: 2.503.2
+  releaseVersion: 0.2.0
+  configChecksum: 83cc4cd12a78525cd15f22a302deebf2
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -14,7 +14,8 @@ features:
   typescript:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
-    core: 3.18.17
+    constsAndDefaults: 0.1.11
+    core: 3.18.22
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -24,7 +25,8 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.4
     globals: 2.82.2
-    methodSecurity: 2.82.5
+    hiddenGlobals: 0.1.0
+    nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.2.3
     retries: 2.83.0
@@ -32,7 +34,6 @@ features:
     unions: 2.85.8
     uploadStreams: 0.1.0
 generatedFiles:
-  - .eslintrc.cjs
   - .gitattributes
   - .npmignore
   - FUNCTIONS.md
@@ -45,7 +46,6 @@ generatedFiles:
   - docs/models/components/accountnameverification.md
   - docs/models/components/accounttype.md
   - docs/models/components/accountverificationstatus.md
-  - docs/models/components/accountwaitfor.md
   - docs/models/components/achcreditsamedaypaymentmethod.md
   - docs/models/components/achcreditsamedaypaymentmethodpaymentmethodtype.md
   - docs/models/components/achcreditstandardpaymentmethod.md
@@ -355,7 +355,6 @@ generatedFiles:
   - docs/models/components/runtransfer.md
   - docs/models/components/schedulepaymentmethod.md
   - docs/models/components/scheduleresponse.md
-  - docs/models/components/schemebasicauth.md
   - docs/models/components/seccode.md
   - docs/models/components/security.md
   - docs/models/components/settings.md
@@ -381,6 +380,7 @@ generatedFiles:
   - docs/models/components/transferdestination.md
   - docs/models/components/transferfailurereason.md
   - docs/models/components/transferoptions.md
+  - docs/models/components/transferresponse.md
   - docs/models/components/transfersource.md
   - docs/models/components/transferstatus.md
   - docs/models/components/transferwaitfor.md
@@ -409,7 +409,6 @@ generatedFiles:
   - docs/models/components/verification.md
   - docs/models/components/verificationstatus.md
   - docs/models/components/verificationstatusdetail.md
-  - docs/models/components/versions.md
   - docs/models/components/volumebycustomertype.md
   - docs/models/components/volumebycustomertypeerror.md
   - docs/models/components/wallet.md
@@ -435,7 +434,6 @@ generatedFiles:
   - docs/models/errors/linkcarderror.md
   - docs/models/errors/microdepositvalidationerror.md
   - docs/models/errors/onboardinginviteerror.md
-  - docs/models/errors/patchaccountresponsebody.md
   - docs/models/errors/patchsweepconfigerror.md
   - docs/models/errors/refundvalidationerror.md
   - docs/models/errors/representativevalidationerror.md
@@ -446,255 +444,375 @@ generatedFiles:
   - docs/models/errors/transfer.md
   - docs/models/errors/transferoptionsvalidationerror.md
   - docs/models/errors/transfervalidationerror.md
+  - docs/models/errors/updateaccountresponsebody.md
   - docs/models/errors/updatecarderror.md
   - docs/models/errors/updateissuedcarderror.md
   - docs/models/errors/updatepaymentlinkerror.md
   - docs/models/errors/updateunderwritingerror.md
   - docs/models/errors/updateunderwritingerrorerror.md
+  - docs/models/operations/acceptdisputeglobals.md
   - docs/models/operations/acceptdisputerequest.md
-  - docs/models/operations/acceptdisputesecurity.md
-  - docs/models/operations/addcapabilitiesrequest.md
-  - docs/models/operations/addcapabilitiessecurity.md
+  - docs/models/operations/acceptdisputeresponse.md
+  - docs/models/operations/assignaccountcountriesglobals.md
   - docs/models/operations/assignaccountcountriesrequest.md
-  - docs/models/operations/assignaccountcountriessecurity.md
+  - docs/models/operations/assignaccountcountriesresponse.md
+  - docs/models/operations/cancelscheduleglobals.md
   - docs/models/operations/cancelschedulerequest.md
-  - docs/models/operations/cancelschedulesecurity.md
+  - docs/models/operations/cancelscheduleresponse.md
+  - docs/models/operations/completebankaccountverificationglobals.md
   - docs/models/operations/completebankaccountverificationrequest.md
-  - docs/models/operations/completebankaccountverificationsecurity.md
+  - docs/models/operations/completebankaccountverificationresponse.md
+  - docs/models/operations/completemicrodepositsglobals.md
   - docs/models/operations/completemicrodepositsrequest.md
-  - docs/models/operations/completemicrodepositssecurity.md
-  - docs/models/operations/createaccountrequest.md
-  - docs/models/operations/createaccountsecurity.md
+  - docs/models/operations/completemicrodepositsresponse.md
+  - docs/models/operations/createaccesstokenglobals.md
+  - docs/models/operations/createaccesstokenresponse.md
+  - docs/models/operations/createaccountglobals.md
+  - docs/models/operations/createaccountresponse.md
+  - docs/models/operations/createapplepaysessionglobals.md
   - docs/models/operations/createapplepaysessionrequest.md
-  - docs/models/operations/createapplepaysessionsecurity.md
-  - docs/models/operations/createauthtokenrequest.md
+  - docs/models/operations/createapplepaysessionresponse.md
+  - docs/models/operations/createbrandglobals.md
+  - docs/models/operations/createbrandrequest.md
+  - docs/models/operations/createbrandresponse.md
+  - docs/models/operations/createfeeplanagreementsglobals.md
   - docs/models/operations/createfeeplanagreementsrequest.md
-  - docs/models/operations/createfeeplanagreementssecurity.md
-  - docs/models/operations/createonboardinginviterequest.md
-  - docs/models/operations/createonboardinginvitesecurity.md
+  - docs/models/operations/createfeeplanagreementsresponse.md
+  - docs/models/operations/createonboardinginviteglobals.md
+  - docs/models/operations/createonboardinginviteresponse.md
+  - docs/models/operations/createpaymentlinkglobals.md
   - docs/models/operations/createpaymentlinkrequest.md
-  - docs/models/operations/createpaymentlinksecurity.md
+  - docs/models/operations/createpaymentlinkresponse.md
+  - docs/models/operations/createrepresentativeglobals.md
   - docs/models/operations/createrepresentativerequest.md
-  - docs/models/operations/createrepresentativesecurity.md
+  - docs/models/operations/createrepresentativeresponse.md
+  - docs/models/operations/createreversalglobals.md
+  - docs/models/operations/createreversalrequest.md
+  - docs/models/operations/createreversalresponse.md
+  - docs/models/operations/createscheduleglobals.md
   - docs/models/operations/createschedulerequest.md
-  - docs/models/operations/createschedulesecurity.md
+  - docs/models/operations/createscheduleresponse.md
+  - docs/models/operations/createsweepconfigglobals.md
   - docs/models/operations/createsweepconfigrequest.md
-  - docs/models/operations/createsweepconfigsecurity.md
+  - docs/models/operations/createsweepconfigresponse.md
+  - docs/models/operations/createtransferglobals.md
+  - docs/models/operations/createtransferoptionsglobals.md
   - docs/models/operations/createtransferoptionsrequest.md
-  - docs/models/operations/createtransferoptionssecurity.md
+  - docs/models/operations/createtransferoptionsresponse.md
   - docs/models/operations/createtransferrequest.md
   - docs/models/operations/createtransferresponse.md
-  - docs/models/operations/createtransferresponsebody.md
-  - docs/models/operations/createtransfersecurity.md
+  - docs/models/operations/createtransferresponseresult.md
+  - docs/models/operations/deletedisputeevidencefileglobals.md
   - docs/models/operations/deletedisputeevidencefilerequest.md
-  - docs/models/operations/deletedisputeevidencefilesecurity.md
+  - docs/models/operations/deletedisputeevidencefileresponse.md
+  - docs/models/operations/deleterepresentativeglobals.md
   - docs/models/operations/deleterepresentativerequest.md
-  - docs/models/operations/deleterepresentativesecurity.md
+  - docs/models/operations/deleterepresentativeresponse.md
+  - docs/models/operations/disablebankaccountglobals.md
   - docs/models/operations/disablebankaccountrequest.md
-  - docs/models/operations/disablebankaccountsecurity.md
+  - docs/models/operations/disablebankaccountresponse.md
+  - docs/models/operations/disablecapabilityglobals.md
   - docs/models/operations/disablecapabilityrequest.md
-  - docs/models/operations/disablecapabilitysecurity.md
+  - docs/models/operations/disablecapabilityresponse.md
+  - docs/models/operations/disablecardglobals.md
   - docs/models/operations/disablecardrequest.md
-  - docs/models/operations/disablecardsecurity.md
+  - docs/models/operations/disablecardresponse.md
+  - docs/models/operations/disablepaymentlinkglobals.md
   - docs/models/operations/disablepaymentlinkrequest.md
-  - docs/models/operations/disablepaymentlinksecurity.md
+  - docs/models/operations/disablepaymentlinkresponse.md
+  - docs/models/operations/disconnectaccountglobals.md
   - docs/models/operations/disconnectaccountrequest.md
-  - docs/models/operations/disconnectaccountsecurity.md
+  - docs/models/operations/disconnectaccountresponse.md
+  - docs/models/operations/generateendtoendkeyglobals.md
   - docs/models/operations/generateendtoendkeyrequest.md
+  - docs/models/operations/generateendtoendkeyresponse.md
+  - docs/models/operations/getaccountcountriesglobals.md
   - docs/models/operations/getaccountcountriesrequest.md
-  - docs/models/operations/getaccountcountriessecurity.md
+  - docs/models/operations/getaccountcountriesresponse.md
+  - docs/models/operations/getaccountglobals.md
   - docs/models/operations/getaccountrequest.md
-  - docs/models/operations/getaccountsecurity.md
+  - docs/models/operations/getaccountresponse.md
+  - docs/models/operations/getadjustmentglobals.md
   - docs/models/operations/getadjustmentrequest.md
-  - docs/models/operations/getadjustmentsecurity.md
+  - docs/models/operations/getadjustmentresponse.md
+  - docs/models/operations/getapplepaymerchantdomainsglobals.md
   - docs/models/operations/getapplepaymerchantdomainsrequest.md
-  - docs/models/operations/getapplepaymerchantdomainssecurity.md
+  - docs/models/operations/getapplepaymerchantdomainsresponse.md
+  - docs/models/operations/getavatarglobals.md
   - docs/models/operations/getavatarrequest.md
   - docs/models/operations/getavatarresponse.md
-  - docs/models/operations/getavatarsecurity.md
+  - docs/models/operations/getavatarresponseresult.md
+  - docs/models/operations/getbankaccountglobals.md
   - docs/models/operations/getbankaccountrequest.md
-  - docs/models/operations/getbankaccountsecurity.md
+  - docs/models/operations/getbankaccountresponse.md
+  - docs/models/operations/getbankaccountverificationglobals.md
   - docs/models/operations/getbankaccountverificationrequest.md
-  - docs/models/operations/getbankaccountverificationsecurity.md
+  - docs/models/operations/getbankaccountverificationresponse.md
+  - docs/models/operations/getbrandglobals.md
   - docs/models/operations/getbrandrequest.md
-  - docs/models/operations/getbrandsecurity.md
+  - docs/models/operations/getbrandresponse.md
+  - docs/models/operations/getcapabilityglobals.md
   - docs/models/operations/getcapabilityrequest.md
-  - docs/models/operations/getcapabilitysecurity.md
+  - docs/models/operations/getcapabilityresponse.md
+  - docs/models/operations/getcardglobals.md
   - docs/models/operations/getcardrequest.md
-  - docs/models/operations/getcardsecurity.md
+  - docs/models/operations/getcardresponse.md
+  - docs/models/operations/getdisputeevidencedataglobals.md
   - docs/models/operations/getdisputeevidencedatarequest.md
   - docs/models/operations/getdisputeevidencedataresponse.md
-  - docs/models/operations/getdisputeevidencedatasecurity.md
+  - docs/models/operations/getdisputeevidencedataresponseresult.md
+  - docs/models/operations/getdisputeevidenceglobals.md
   - docs/models/operations/getdisputeevidencerequest.md
-  - docs/models/operations/getdisputeevidencesecurity.md
+  - docs/models/operations/getdisputeevidenceresponse.md
+  - docs/models/operations/getdisputeglobals.md
   - docs/models/operations/getdisputerequest.md
-  - docs/models/operations/getdisputesecurity.md
+  - docs/models/operations/getdisputeresponse.md
+  - docs/models/operations/getenrichmentaddressglobals.md
   - docs/models/operations/getenrichmentaddressrequest.md
-  - docs/models/operations/getenrichmentaddresssecurity.md
+  - docs/models/operations/getenrichmentaddressresponse.md
+  - docs/models/operations/getenrichmentprofileglobals.md
   - docs/models/operations/getenrichmentprofilerequest.md
-  - docs/models/operations/getenrichmentprofilesecurity.md
+  - docs/models/operations/getenrichmentprofileresponse.md
+  - docs/models/operations/getfiledetailsglobals.md
   - docs/models/operations/getfiledetailsrequest.md
-  - docs/models/operations/getfiledetailssecurity.md
+  - docs/models/operations/getfiledetailsresponse.md
+  - docs/models/operations/getfullissuedcardglobals.md
   - docs/models/operations/getfullissuedcardrequest.md
-  - docs/models/operations/getfullissuedcardsecurity.md
+  - docs/models/operations/getfullissuedcardresponse.md
+  - docs/models/operations/getissuedcardauthorizationglobals.md
   - docs/models/operations/getissuedcardauthorizationrequest.md
-  - docs/models/operations/getissuedcardauthorizationsecurity.md
+  - docs/models/operations/getissuedcardauthorizationresponse.md
+  - docs/models/operations/getissuedcardglobals.md
   - docs/models/operations/getissuedcardrequest.md
-  - docs/models/operations/getissuedcardsecurity.md
+  - docs/models/operations/getissuedcardresponse.md
+  - docs/models/operations/getissuedcardtransactionglobals.md
   - docs/models/operations/getissuedcardtransactionrequest.md
-  - docs/models/operations/getissuedcardtransactionsecurity.md
+  - docs/models/operations/getissuedcardtransactionresponse.md
+  - docs/models/operations/getmerchantprocessingagreementglobals.md
   - docs/models/operations/getmerchantprocessingagreementrequest.md
-  - docs/models/operations/getmerchantprocessingagreementsecurity.md
+  - docs/models/operations/getmerchantprocessingagreementresponse.md
+  - docs/models/operations/getonboardinginviteglobals.md
   - docs/models/operations/getonboardinginviterequest.md
-  - docs/models/operations/getonboardinginvitesecurity.md
+  - docs/models/operations/getonboardinginviteresponse.md
+  - docs/models/operations/getpaymentlinkglobals.md
+  - docs/models/operations/getpaymentlinkqrcodeglobals.md
   - docs/models/operations/getpaymentlinkqrcoderequest.md
   - docs/models/operations/getpaymentlinkqrcoderesponse.md
-  - docs/models/operations/getpaymentlinkqrcodesecurity.md
+  - docs/models/operations/getpaymentlinkqrcoderesponseresult.md
   - docs/models/operations/getpaymentlinkrequest.md
-  - docs/models/operations/getpaymentlinksecurity.md
+  - docs/models/operations/getpaymentlinkresponse.md
+  - docs/models/operations/getpaymentmethodglobals.md
   - docs/models/operations/getpaymentmethodrequest.md
-  - docs/models/operations/getpaymentmethodsecurity.md
+  - docs/models/operations/getpaymentmethodresponse.md
+  - docs/models/operations/getrefundglobals.md
   - docs/models/operations/getrefundrequest.md
-  - docs/models/operations/getrefundsecurity.md
+  - docs/models/operations/getrefundresponse.md
+  - docs/models/operations/getrepresentativeglobals.md
   - docs/models/operations/getrepresentativerequest.md
-  - docs/models/operations/getrepresentativesecurity.md
+  - docs/models/operations/getrepresentativeresponse.md
+  - docs/models/operations/getscheduledoccurrenceglobals.md
   - docs/models/operations/getscheduledoccurrencerequest.md
-  - docs/models/operations/getscheduledoccurrencesecurity.md
+  - docs/models/operations/getscheduledoccurrenceresponse.md
+  - docs/models/operations/getschedulesglobals.md
   - docs/models/operations/getschedulesrequest.md
-  - docs/models/operations/getschedulessecurity.md
+  - docs/models/operations/getschedulesresponse.md
+  - docs/models/operations/getsweepconfigglobals.md
   - docs/models/operations/getsweepconfigrequest.md
-  - docs/models/operations/getsweepconfigsecurity.md
+  - docs/models/operations/getsweepconfigresponse.md
+  - docs/models/operations/getsweepglobals.md
   - docs/models/operations/getsweeprequest.md
-  - docs/models/operations/getsweepsecurity.md
+  - docs/models/operations/getsweepresponse.md
+  - docs/models/operations/gettermsofservicetokenglobals.md
   - docs/models/operations/gettermsofservicetokenrequest.md
+  - docs/models/operations/gettermsofservicetokenresponse.md
+  - docs/models/operations/gettransferglobals.md
   - docs/models/operations/gettransferrequest.md
-  - docs/models/operations/gettransfersecurity.md
+  - docs/models/operations/gettransferresponse.md
+  - docs/models/operations/getunderwritingglobals.md
   - docs/models/operations/getunderwritingrequest.md
-  - docs/models/operations/getunderwritingsecurity.md
+  - docs/models/operations/getunderwritingresponse.md
+  - docs/models/operations/getwalletglobals.md
   - docs/models/operations/getwalletrequest.md
-  - docs/models/operations/getwalletsecurity.md
+  - docs/models/operations/getwalletresponse.md
+  - docs/models/operations/getwallettransactionglobals.md
   - docs/models/operations/getwallettransactionrequest.md
-  - docs/models/operations/getwallettransactionsecurity.md
+  - docs/models/operations/getwallettransactionresponse.md
+  - docs/models/operations/initiatebankaccountverificationglobals.md
   - docs/models/operations/initiatebankaccountverificationrequest.md
-  - docs/models/operations/initiatebankaccountverificationsecurity.md
+  - docs/models/operations/initiatebankaccountverificationresponse.md
+  - docs/models/operations/initiatemicrodepositsglobals.md
   - docs/models/operations/initiatemicrodepositsrequest.md
-  - docs/models/operations/initiatemicrodepositssecurity.md
+  - docs/models/operations/initiatemicrodepositsresponse.md
+  - docs/models/operations/initiaterefundglobals.md
+  - docs/models/operations/initiaterefundrequest.md
+  - docs/models/operations/initiaterefundresponse.md
+  - docs/models/operations/initiaterefundresponseresult.md
+  - docs/models/operations/linkapplepaytokenglobals.md
   - docs/models/operations/linkapplepaytokenrequest.md
-  - docs/models/operations/linkapplepaytokensecurity.md
+  - docs/models/operations/linkapplepaytokenresponse.md
+  - docs/models/operations/linkbankaccountglobals.md
   - docs/models/operations/linkbankaccountrequest.md
-  - docs/models/operations/linkbankaccountsecurity.md
+  - docs/models/operations/linkbankaccountresponse.md
+  - docs/models/operations/linkcardglobals.md
   - docs/models/operations/linkcardrequest.md
-  - docs/models/operations/linkcardsecurity.md
+  - docs/models/operations/linkcardresponse.md
+  - docs/models/operations/listaccountsglobals.md
   - docs/models/operations/listaccountsrequest.md
-  - docs/models/operations/listaccountssecurity.md
+  - docs/models/operations/listaccountsresponse.md
+  - docs/models/operations/listadjustmentsglobals.md
   - docs/models/operations/listadjustmentsrequest.md
-  - docs/models/operations/listadjustmentssecurity.md
+  - docs/models/operations/listadjustmentsresponse.md
+  - docs/models/operations/listbankaccountsglobals.md
   - docs/models/operations/listbankaccountsrequest.md
-  - docs/models/operations/listbankaccountssecurity.md
+  - docs/models/operations/listbankaccountsresponse.md
+  - docs/models/operations/listcapabilitiesglobals.md
   - docs/models/operations/listcapabilitiesrequest.md
-  - docs/models/operations/listcapabilitiessecurity.md
+  - docs/models/operations/listcapabilitiesresponse.md
+  - docs/models/operations/listcardsglobals.md
   - docs/models/operations/listcardsrequest.md
-  - docs/models/operations/listcardssecurity.md
+  - docs/models/operations/listcardsresponse.md
+  - docs/models/operations/listdisputeevidenceglobals.md
   - docs/models/operations/listdisputeevidencerequest.md
-  - docs/models/operations/listdisputeevidencesecurity.md
+  - docs/models/operations/listdisputeevidenceresponse.md
+  - docs/models/operations/listdisputesglobals.md
   - docs/models/operations/listdisputesrequest.md
-  - docs/models/operations/listdisputessecurity.md
+  - docs/models/operations/listdisputesresponse.md
+  - docs/models/operations/listfeeplanagreementsglobals.md
   - docs/models/operations/listfeeplanagreementsrequest.md
-  - docs/models/operations/listfeeplanagreementssecurity.md
+  - docs/models/operations/listfeeplanagreementsresponse.md
+  - docs/models/operations/listfeeplansglobals.md
   - docs/models/operations/listfeeplansrequest.md
-  - docs/models/operations/listfeeplanssecurity.md
+  - docs/models/operations/listfeeplansresponse.md
+  - docs/models/operations/listfilesglobals.md
   - docs/models/operations/listfilesrequest.md
-  - docs/models/operations/listfilessecurity.md
+  - docs/models/operations/listfilesresponse.md
+  - docs/models/operations/listindustriesglobals.md
   - docs/models/operations/listindustriesrequest.md
-  - docs/models/operations/listindustriessecurity.md
+  - docs/models/operations/listindustriesresponse.md
+  - docs/models/operations/listinstitutionsglobals.md
   - docs/models/operations/listinstitutionsrequest.md
-  - docs/models/operations/listinstitutionssecurity.md
+  - docs/models/operations/listinstitutionsresponse.md
+  - docs/models/operations/listissuedcardauthorizationeventsglobals.md
   - docs/models/operations/listissuedcardauthorizationeventsrequest.md
-  - docs/models/operations/listissuedcardauthorizationeventssecurity.md
+  - docs/models/operations/listissuedcardauthorizationeventsresponse.md
+  - docs/models/operations/listissuedcardauthorizationsglobals.md
   - docs/models/operations/listissuedcardauthorizationsrequest.md
-  - docs/models/operations/listissuedcardauthorizationssecurity.md
+  - docs/models/operations/listissuedcardauthorizationsresponse.md
+  - docs/models/operations/listissuedcardsglobals.md
   - docs/models/operations/listissuedcardsrequest.md
-  - docs/models/operations/listissuedcardssecurity.md
+  - docs/models/operations/listissuedcardsresponse.md
+  - docs/models/operations/listissuedcardtransactionsglobals.md
   - docs/models/operations/listissuedcardtransactionsrequest.md
-  - docs/models/operations/listissuedcardtransactionssecurity.md
+  - docs/models/operations/listissuedcardtransactionsresponse.md
+  - docs/models/operations/listonboardinginvitesglobals.md
   - docs/models/operations/listonboardinginvitesrequest.md
-  - docs/models/operations/listonboardinginvitessecurity.md
+  - docs/models/operations/listonboardinginvitesresponse.md
+  - docs/models/operations/listpartnerpricingagreementsglobals.md
   - docs/models/operations/listpartnerpricingagreementsrequest.md
-  - docs/models/operations/listpartnerpricingagreementssecurity.md
+  - docs/models/operations/listpartnerpricingagreementsresponse.md
+  - docs/models/operations/listpartnerpricingglobals.md
   - docs/models/operations/listpartnerpricingrequest.md
-  - docs/models/operations/listpartnerpricingsecurity.md
+  - docs/models/operations/listpartnerpricingresponse.md
+  - docs/models/operations/listpaymentlinksglobals.md
   - docs/models/operations/listpaymentlinksrequest.md
-  - docs/models/operations/listpaymentlinkssecurity.md
+  - docs/models/operations/listpaymentlinksresponse.md
+  - docs/models/operations/listpaymentmethodsglobals.md
   - docs/models/operations/listpaymentmethodsrequest.md
-  - docs/models/operations/listpaymentmethodssecurity.md
+  - docs/models/operations/listpaymentmethodsresponse.md
+  - docs/models/operations/listrefundsglobals.md
   - docs/models/operations/listrefundsrequest.md
-  - docs/models/operations/listrefundssecurity.md
+  - docs/models/operations/listrefundsresponse.md
+  - docs/models/operations/listrepresentativesglobals.md
   - docs/models/operations/listrepresentativesrequest.md
-  - docs/models/operations/listrepresentativessecurity.md
+  - docs/models/operations/listrepresentativesresponse.md
+  - docs/models/operations/listschedulesglobals.md
   - docs/models/operations/listschedulesrequest.md
-  - docs/models/operations/listschedulessecurity.md
+  - docs/models/operations/listschedulesresponse.md
+  - docs/models/operations/listsweepconfigsglobals.md
   - docs/models/operations/listsweepconfigsrequest.md
-  - docs/models/operations/listsweepconfigssecurity.md
+  - docs/models/operations/listsweepconfigsresponse.md
+  - docs/models/operations/listsweepsglobals.md
   - docs/models/operations/listsweepsrequest.md
-  - docs/models/operations/listsweepssecurity.md
+  - docs/models/operations/listsweepsresponse.md
+  - docs/models/operations/listtransfersglobals.md
   - docs/models/operations/listtransfersrequest.md
-  - docs/models/operations/listtransferssecurity.md
+  - docs/models/operations/listtransfersresponse.md
+  - docs/models/operations/listwalletsglobals.md
   - docs/models/operations/listwalletsrequest.md
-  - docs/models/operations/listwalletssecurity.md
+  - docs/models/operations/listwalletsresponse.md
+  - docs/models/operations/listwallettransactionsglobals.md
   - docs/models/operations/listwallettransactionsrequest.md
-  - docs/models/operations/listwallettransactionssecurity.md
-  - docs/models/operations/patchaccountrequest.md
-  - docs/models/operations/patchaccountsecurity.md
-  - docs/models/operations/patchsweepconfigrequest.md
-  - docs/models/operations/patchsweepconfigsecurity.md
-  - docs/models/operations/patchtransferrequest.md
-  - docs/models/operations/patchtransfersecurity.md
+  - docs/models/operations/listwallettransactionsresponse.md
+  - docs/models/operations/pingglobals.md
   - docs/models/operations/pingrequest.md
-  - docs/models/operations/pingsecurity.md
-  - docs/models/operations/postbrandrequest.md
-  - docs/models/operations/postbrandsecurity.md
-  - docs/models/operations/refundtransferrequest.md
-  - docs/models/operations/refundtransferresponse.md
-  - docs/models/operations/refundtransfersecurity.md
+  - docs/models/operations/pingresponse.md
+  - docs/models/operations/registerapplepaymerchantdomainsglobals.md
   - docs/models/operations/registerapplepaymerchantdomainsrequest.md
-  - docs/models/operations/registerapplepaymerchantdomainssecurity.md
+  - docs/models/operations/registerapplepaymerchantdomainsresponse.md
+  - docs/models/operations/requestcapabilitiesglobals.md
+  - docs/models/operations/requestcapabilitiesrequest.md
+  - docs/models/operations/requestcapabilitiesresponse.md
+  - docs/models/operations/requestcardglobals.md
   - docs/models/operations/requestcardrequest.md
-  - docs/models/operations/requestcardsecurity.md
-  - docs/models/operations/reversetransferrequest.md
-  - docs/models/operations/reversetransfersecurity.md
-  - docs/models/operations/revokeauthtokenrequest.md
+  - docs/models/operations/requestcardresponse.md
+  - docs/models/operations/revokeaccesstokenglobals.md
+  - docs/models/operations/revokeaccesstokenresponse.md
+  - docs/models/operations/revokeonboardinginviteglobals.md
   - docs/models/operations/revokeonboardinginviterequest.md
-  - docs/models/operations/revokeonboardinginvitesecurity.md
+  - docs/models/operations/revokeonboardinginviteresponse.md
+  - docs/models/operations/submitdisputeevidenceglobals.md
   - docs/models/operations/submitdisputeevidencerequest.md
-  - docs/models/operations/submitdisputeevidencesecurity.md
-  - docs/models/operations/testendtoendtokenrequest.md
-  - docs/models/operations/testendtoendtokensecurity.md
+  - docs/models/operations/submitdisputeevidenceresponse.md
+  - docs/models/operations/testendtoendtokenglobals.md
+  - docs/models/operations/testendtoendtokenresponse.md
+  - docs/models/operations/updateaccountglobals.md
+  - docs/models/operations/updateaccountrequest.md
+  - docs/models/operations/updateaccountresponse.md
+  - docs/models/operations/updateapplepaymerchantdomainsglobals.md
   - docs/models/operations/updateapplepaymerchantdomainsrequest.md
-  - docs/models/operations/updateapplepaymerchantdomainssecurity.md
+  - docs/models/operations/updateapplepaymerchantdomainsresponse.md
+  - docs/models/operations/updatebrandglobals.md
   - docs/models/operations/updatebrandrequest.md
-  - docs/models/operations/updatebrandsecurity.md
+  - docs/models/operations/updatebrandresponse.md
+  - docs/models/operations/updatecardglobals.md
   - docs/models/operations/updatecardrequest.md
-  - docs/models/operations/updatecardsecurity.md
+  - docs/models/operations/updatecardresponse.md
+  - docs/models/operations/updatedisputeevidenceglobals.md
   - docs/models/operations/updatedisputeevidencerequest.md
-  - docs/models/operations/updatedisputeevidencesecurity.md
+  - docs/models/operations/updatedisputeevidenceresponse.md
+  - docs/models/operations/updateissuedcardglobals.md
   - docs/models/operations/updateissuedcardrequest.md
-  - docs/models/operations/updateissuedcardsecurity.md
+  - docs/models/operations/updateissuedcardresponse.md
+  - docs/models/operations/updatepaymentlinkglobals.md
   - docs/models/operations/updatepaymentlinkrequest.md
-  - docs/models/operations/updatepaymentlinksecurity.md
+  - docs/models/operations/updatepaymentlinkresponse.md
+  - docs/models/operations/updaterepresentativeglobals.md
   - docs/models/operations/updaterepresentativerequest.md
-  - docs/models/operations/updaterepresentativesecurity.md
+  - docs/models/operations/updaterepresentativeresponse.md
+  - docs/models/operations/updatescheduleglobals.md
   - docs/models/operations/updateschedulerequest.md
-  - docs/models/operations/updateschedulesecurity.md
+  - docs/models/operations/updatescheduleresponse.md
+  - docs/models/operations/updatesweepconfigglobals.md
+  - docs/models/operations/updatesweepconfigrequest.md
+  - docs/models/operations/updatesweepconfigresponse.md
+  - docs/models/operations/updatetransferglobals.md
+  - docs/models/operations/updatetransferrequest.md
+  - docs/models/operations/updatetransferresponse.md
+  - docs/models/operations/updateunderwritingglobals.md
   - docs/models/operations/updateunderwritingrequest.md
-  - docs/models/operations/updateunderwritingsecurity.md
+  - docs/models/operations/updateunderwritingresponse.md
+  - docs/models/operations/uploaddisputeevidencefileglobals.md
   - docs/models/operations/uploaddisputeevidencefilerequest.md
-  - docs/models/operations/uploaddisputeevidencefilesecurity.md
+  - docs/models/operations/uploaddisputeevidencefileresponse.md
+  - docs/models/operations/uploaddisputeevidencetextglobals.md
   - docs/models/operations/uploaddisputeevidencetextrequest.md
-  - docs/models/operations/uploaddisputeevidencetextsecurity.md
+  - docs/models/operations/uploaddisputeevidencetextresponse.md
+  - docs/models/operations/uploadfileglobals.md
   - docs/models/operations/uploadfilerequest.md
-  - docs/models/operations/uploadfilesecurity.md
+  - docs/models/operations/uploadfileresponse.md
   - docs/sdks/accounts/README.md
   - docs/sdks/adjustments/README.md
+  - docs/sdks/applepay/README.md
   - docs/sdks/authentication/README.md
   - docs/sdks/avatars/README.md
   - docs/sdks/bankaccounts/README.md
@@ -723,129 +841,130 @@ generatedFiles:
   - docs/sdks/underwriting/README.md
   - docs/sdks/wallets/README.md
   - docs/sdks/wallettransactions/README.md
+  - eslint.config.mjs
   - jsr.json
   - package.json
   - src/core.ts
-  - src/funcs/accountsAssignAccountCountries.ts
-  - src/funcs/accountsCreateAccount.ts
-  - src/funcs/accountsDisconnectAccount.ts
-  - src/funcs/accountsGetAccount.ts
-  - src/funcs/accountsGetAccountCountries.ts
+  - src/funcs/accountsAssignCountries.ts
+  - src/funcs/accountsCreate.ts
+  - src/funcs/accountsDisconnect.ts
+  - src/funcs/accountsGet.ts
+  - src/funcs/accountsGetCountries.ts
   - src/funcs/accountsGetMerchantProcessingAgreement.ts
   - src/funcs/accountsGetTermsOfServiceToken.ts
-  - src/funcs/accountsListAccounts.ts
-  - src/funcs/accountsPatchAccount.ts
-  - src/funcs/adjustmentsGetAdjustment.ts
-  - src/funcs/adjustmentsListAdjustments.ts
-  - src/funcs/authenticationCreateAuthToken.ts
-  - src/funcs/authenticationRevokeAuthToken.ts
-  - src/funcs/avatarsGetAvatar.ts
-  - src/funcs/bankAccountsCompleteBankAccountVerification.ts
+  - src/funcs/accountsList.ts
+  - src/funcs/accountsUpdate.ts
+  - src/funcs/adjustmentsGet.ts
+  - src/funcs/adjustmentsList.ts
+  - src/funcs/applePayCreateSession.ts
+  - src/funcs/applePayGetMerchantDomains.ts
+  - src/funcs/applePayLinkToken.ts
+  - src/funcs/applePayRegisterMerchantDomains.ts
+  - src/funcs/applePayUpdateMerchantDomains.ts
+  - src/funcs/authenticationCreateAccessToken.ts
+  - src/funcs/authenticationRevokeAccessToken.ts
+  - src/funcs/avatarsGet.ts
   - src/funcs/bankAccountsCompleteMicroDeposits.ts
-  - src/funcs/bankAccountsDisableBankAccount.ts
-  - src/funcs/bankAccountsGetBankAccount.ts
-  - src/funcs/bankAccountsGetBankAccountVerification.ts
-  - src/funcs/bankAccountsInitiateBankAccountVerification.ts
+  - src/funcs/bankAccountsCompleteVerification.ts
+  - src/funcs/bankAccountsDisable.ts
+  - src/funcs/bankAccountsGet.ts
+  - src/funcs/bankAccountsGetVerification.ts
   - src/funcs/bankAccountsInitiateMicroDeposits.ts
-  - src/funcs/bankAccountsLinkBankAccount.ts
-  - src/funcs/bankAccountsListBankAccounts.ts
+  - src/funcs/bankAccountsInitiateVerification.ts
+  - src/funcs/bankAccountsLink.ts
+  - src/funcs/bankAccountsList.ts
   - src/funcs/billingCreateFeePlanAgreements.ts
   - src/funcs/billingListFeePlanAgreements.ts
   - src/funcs/billingListFeePlans.ts
   - src/funcs/billingListPartnerPricing.ts
   - src/funcs/billingListPartnerPricingAgreements.ts
-  - src/funcs/brandingGetBrand.ts
-  - src/funcs/brandingPostBrand.ts
-  - src/funcs/brandingUpdateBrand.ts
-  - src/funcs/capabilitiesAddCapabilities.ts
-  - src/funcs/capabilitiesDisableCapability.ts
-  - src/funcs/capabilitiesGetCapability.ts
-  - src/funcs/capabilitiesListCapabilities.ts
-  - src/funcs/cardIssuingGetFullIssuedCard.ts
-  - src/funcs/cardIssuingGetIssuedCard.ts
-  - src/funcs/cardIssuingListIssuedCards.ts
-  - src/funcs/cardIssuingRequestCard.ts
-  - src/funcs/cardIssuingUpdateIssuedCard.ts
-  - src/funcs/cardsCreateApplePaySession.ts
-  - src/funcs/cardsDisableCard.ts
-  - src/funcs/cardsGetApplePayMerchantDomains.ts
-  - src/funcs/cardsGetCard.ts
-  - src/funcs/cardsLinkApplePayToken.ts
-  - src/funcs/cardsLinkCard.ts
-  - src/funcs/cardsListCards.ts
-  - src/funcs/cardsRegisterApplePayMerchantDomains.ts
-  - src/funcs/cardsUpdateApplePayMerchantDomains.ts
-  - src/funcs/cardsUpdateCard.ts
-  - src/funcs/disputesAcceptDispute.ts
-  - src/funcs/disputesDeleteDisputeEvidenceFile.ts
-  - src/funcs/disputesGetDispute.ts
-  - src/funcs/disputesGetDisputeEvidence.ts
-  - src/funcs/disputesGetDisputeEvidenceData.ts
-  - src/funcs/disputesListDisputeEvidence.ts
-  - src/funcs/disputesListDisputes.ts
-  - src/funcs/disputesSubmitDisputeEvidence.ts
-  - src/funcs/disputesUpdateDisputeEvidence.ts
-  - src/funcs/disputesUploadDisputeEvidenceFile.ts
-  - src/funcs/disputesUploadDisputeEvidenceText.ts
-  - src/funcs/endToEndEncryptionGenerateEndToEndKey.ts
-  - src/funcs/endToEndEncryptionTestEndToEndToken.ts
-  - src/funcs/enrichedAddressGetEnrichmentAddress.ts
-  - src/funcs/enrichedProfileGetEnrichmentProfile.ts
-  - src/funcs/filesGetFileDetails.ts
-  - src/funcs/filesListFiles.ts
-  - src/funcs/filesUploadFile.ts
-  - src/funcs/industriesListIndustries.ts
-  - src/funcs/institutionsListInstitutions.ts
-  - src/funcs/issuingTransactionsGetIssuedCardAuthorization.ts
-  - src/funcs/issuingTransactionsGetIssuedCardTransaction.ts
-  - src/funcs/issuingTransactionsListIssuedCardAuthorizationEvents.ts
-  - src/funcs/issuingTransactionsListIssuedCardAuthorizations.ts
-  - src/funcs/issuingTransactionsListIssuedCardTransactions.ts
-  - src/funcs/onboardingCreateOnboardingInvite.ts
-  - src/funcs/onboardingGetOnboardingInvite.ts
-  - src/funcs/onboardingListOnboardingInvites.ts
-  - src/funcs/onboardingRevokeOnboardingInvite.ts
-  - src/funcs/paymentLinksCreatePaymentLink.ts
-  - src/funcs/paymentLinksDisablePaymentLink.ts
-  - src/funcs/paymentLinksGetPaymentLink.ts
-  - src/funcs/paymentLinksGetPaymentLinkQRCode.ts
-  - src/funcs/paymentLinksListPaymentLinks.ts
-  - src/funcs/paymentLinksUpdatePaymentLink.ts
-  - src/funcs/paymentMethodsGetPaymentMethod.ts
-  - src/funcs/paymentMethodsListPaymentMethods.ts
+  - src/funcs/brandingCreate.ts
+  - src/funcs/brandingGet.ts
+  - src/funcs/brandingUpdate.ts
+  - src/funcs/capabilitiesDisable.ts
+  - src/funcs/capabilitiesGet.ts
+  - src/funcs/capabilitiesList.ts
+  - src/funcs/capabilitiesRequest.ts
+  - src/funcs/cardIssuingGet.ts
+  - src/funcs/cardIssuingGetFull.ts
+  - src/funcs/cardIssuingList.ts
+  - src/funcs/cardIssuingRequest.ts
+  - src/funcs/cardIssuingUpdate.ts
+  - src/funcs/cardsDisable.ts
+  - src/funcs/cardsGet.ts
+  - src/funcs/cardsLink.ts
+  - src/funcs/cardsList.ts
+  - src/funcs/cardsUpdate.ts
+  - src/funcs/disputesAccept.ts
+  - src/funcs/disputesDeleteEvidence.ts
+  - src/funcs/disputesGet.ts
+  - src/funcs/disputesGetEvidence.ts
+  - src/funcs/disputesGetEvidenceData.ts
+  - src/funcs/disputesList.ts
+  - src/funcs/disputesListEvidence.ts
+  - src/funcs/disputesSubmitEvidence.ts
+  - src/funcs/disputesUpdateEvidence.ts
+  - src/funcs/disputesUploadEvidenceFile.ts
+  - src/funcs/disputesUploadEvidenceText.ts
+  - src/funcs/endToEndEncryptionGenerateKey.ts
+  - src/funcs/endToEndEncryptionTestEncryptedToken.ts
+  - src/funcs/enrichedAddressGet.ts
+  - src/funcs/enrichedProfileGet.ts
+  - src/funcs/filesGet.ts
+  - src/funcs/filesList.ts
+  - src/funcs/filesUpload.ts
+  - src/funcs/industriesList.ts
+  - src/funcs/institutionsSearch.ts
+  - src/funcs/issuingTransactionsGet.ts
+  - src/funcs/issuingTransactionsGetAuthorization.ts
+  - src/funcs/issuingTransactionsList.ts
+  - src/funcs/issuingTransactionsListAuthorizationEvents.ts
+  - src/funcs/issuingTransactionsListAuthorizations.ts
+  - src/funcs/onboardingCreateInvite.ts
+  - src/funcs/onboardingGetInvite.ts
+  - src/funcs/onboardingListInvites.ts
+  - src/funcs/onboardingRevokeInvite.ts
+  - src/funcs/paymentLinksCreate.ts
+  - src/funcs/paymentLinksDisable.ts
+  - src/funcs/paymentLinksGet.ts
+  - src/funcs/paymentLinksGetQRCode.ts
+  - src/funcs/paymentLinksList.ts
+  - src/funcs/paymentLinksUpdate.ts
+  - src/funcs/paymentMethodsGet.ts
+  - src/funcs/paymentMethodsList.ts
   - src/funcs/pingPing.ts
-  - src/funcs/representativesCreateRepresentative.ts
-  - src/funcs/representativesDeleteRepresentative.ts
-  - src/funcs/representativesGetRepresentative.ts
-  - src/funcs/representativesListRepresentatives.ts
-  - src/funcs/representativesUpdateRepresentative.ts
-  - src/funcs/schedulingCancelSchedule.ts
-  - src/funcs/schedulingCreateSchedule.ts
-  - src/funcs/schedulingGetScheduledOccurrence.ts
-  - src/funcs/schedulingGetSchedules.ts
-  - src/funcs/schedulingListSchedules.ts
-  - src/funcs/schedulingUpdateSchedule.ts
-  - src/funcs/sweepsCreateSweepConfig.ts
-  - src/funcs/sweepsGetSweep.ts
-  - src/funcs/sweepsGetSweepConfig.ts
-  - src/funcs/sweepsListSweepConfigs.ts
-  - src/funcs/sweepsListSweeps.ts
-  - src/funcs/sweepsPatchSweepConfig.ts
-  - src/funcs/transfersCreateTransfer.ts
-  - src/funcs/transfersCreateTransferOptions.ts
+  - src/funcs/representativesCreate.ts
+  - src/funcs/representativesDelete.ts
+  - src/funcs/representativesGet.ts
+  - src/funcs/representativesList.ts
+  - src/funcs/representativesUpdate.ts
+  - src/funcs/schedulingCancel.ts
+  - src/funcs/schedulingCreate.ts
+  - src/funcs/schedulingGet.ts
+  - src/funcs/schedulingGetOccurrance.ts
+  - src/funcs/schedulingList.ts
+  - src/funcs/schedulingUpdate.ts
+  - src/funcs/sweepsCreateConfig.ts
+  - src/funcs/sweepsGet.ts
+  - src/funcs/sweepsGetConfig.ts
+  - src/funcs/sweepsList.ts
+  - src/funcs/sweepsListConfigs.ts
+  - src/funcs/sweepsUpdateConfig.ts
+  - src/funcs/transfersCreate.ts
+  - src/funcs/transfersCreateReversal.ts
+  - src/funcs/transfersGenerateOptions.ts
+  - src/funcs/transfersGet.ts
   - src/funcs/transfersGetRefund.ts
-  - src/funcs/transfersGetTransfer.ts
+  - src/funcs/transfersInitiateRefund.ts
+  - src/funcs/transfersList.ts
   - src/funcs/transfersListRefunds.ts
-  - src/funcs/transfersListTransfers.ts
-  - src/funcs/transfersPatchTransfer.ts
-  - src/funcs/transfersRefundTransfer.ts
-  - src/funcs/transfersReverseTransfer.ts
-  - src/funcs/underwritingGetUnderwriting.ts
-  - src/funcs/underwritingUpdateUnderwriting.ts
-  - src/funcs/walletTransactionsGetWalletTransaction.ts
-  - src/funcs/walletTransactionsListWalletTransactions.ts
-  - src/funcs/walletsGetWallet.ts
-  - src/funcs/walletsListWallets.ts
+  - src/funcs/transfersUpdate.ts
+  - src/funcs/underwritingGet.ts
+  - src/funcs/underwritingUpdate.ts
+  - src/funcs/walletTransactionsGet.ts
+  - src/funcs/walletTransactionsList.ts
+  - src/funcs/walletsGet.ts
+  - src/funcs/walletsList.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -871,7 +990,6 @@ generatedFiles:
   - src/models/components/accountnameverification.ts
   - src/models/components/accounttype.ts
   - src/models/components/accountverificationstatus.ts
-  - src/models/components/accountwaitfor.ts
   - src/models/components/achcreditsamedaypaymentmethod.ts
   - src/models/components/achcreditstandardpaymentmethod.ts
   - src/models/components/achdebitcollectpaymentmethod.ts
@@ -1145,7 +1263,6 @@ generatedFiles:
   - src/models/components/runtransfer.ts
   - src/models/components/schedulepaymentmethod.ts
   - src/models/components/scheduleresponse.ts
-  - src/models/components/schemebasicauth.ts
   - src/models/components/seccode.ts
   - src/models/components/security.ts
   - src/models/components/settings.ts
@@ -1168,6 +1285,7 @@ generatedFiles:
   - src/models/components/transferdestination.ts
   - src/models/components/transferfailurereason.ts
   - src/models/components/transferoptions.ts
+  - src/models/components/transferresponse.ts
   - src/models/components/transfersource.ts
   - src/models/components/transferstatus.ts
   - src/models/components/transferwaitfor.ts
@@ -1189,7 +1307,6 @@ generatedFiles:
   - src/models/components/verification.ts
   - src/models/components/verificationstatus.ts
   - src/models/components/verificationstatusdetail.ts
-  - src/models/components/versions.ts
   - src/models/components/volumebycustomertype.ts
   - src/models/components/volumebycustomertypeerror.ts
   - src/models/components/wallet.ts
@@ -1217,7 +1334,6 @@ generatedFiles:
   - src/models/errors/linkcarderror.ts
   - src/models/errors/microdepositvalidationerror.ts
   - src/models/errors/onboardinginviteerror.ts
-  - src/models/errors/patchaccount.ts
   - src/models/errors/patchsweepconfigerror.ts
   - src/models/errors/refundvalidationerror.ts
   - src/models/errors/representativevalidationerror.ts
@@ -1229,23 +1345,25 @@ generatedFiles:
   - src/models/errors/transfer.ts
   - src/models/errors/transferoptionsvalidationerror.ts
   - src/models/errors/transfervalidationerror.ts
+  - src/models/errors/updateaccount.ts
   - src/models/errors/updatecarderror.ts
   - src/models/errors/updateissuedcarderror.ts
   - src/models/errors/updatepaymentlinkerror.ts
   - src/models/errors/updateunderwritingerror.ts
   - src/models/operations/acceptdispute.ts
-  - src/models/operations/addcapabilities.ts
   - src/models/operations/assignaccountcountries.ts
   - src/models/operations/cancelschedule.ts
   - src/models/operations/completebankaccountverification.ts
   - src/models/operations/completemicrodeposits.ts
+  - src/models/operations/createaccesstoken.ts
   - src/models/operations/createaccount.ts
   - src/models/operations/createapplepaysession.ts
-  - src/models/operations/createauthtoken.ts
+  - src/models/operations/createbrand.ts
   - src/models/operations/createfeeplanagreements.ts
   - src/models/operations/createonboardinginvite.ts
   - src/models/operations/createpaymentlink.ts
   - src/models/operations/createrepresentative.ts
+  - src/models/operations/createreversal.ts
   - src/models/operations/createschedule.ts
   - src/models/operations/createsweepconfig.ts
   - src/models/operations/createtransfer.ts
@@ -1297,6 +1415,7 @@ generatedFiles:
   - src/models/operations/index.ts
   - src/models/operations/initiatebankaccountverification.ts
   - src/models/operations/initiatemicrodeposits.ts
+  - src/models/operations/initiaterefund.ts
   - src/models/operations/linkapplepaytoken.ts
   - src/models/operations/linkbankaccount.ts
   - src/models/operations/linkcard.ts
@@ -1329,19 +1448,15 @@ generatedFiles:
   - src/models/operations/listtransfers.ts
   - src/models/operations/listwallets.ts
   - src/models/operations/listwallettransactions.ts
-  - src/models/operations/patchaccount.ts
-  - src/models/operations/patchsweepconfig.ts
-  - src/models/operations/patchtransfer.ts
   - src/models/operations/ping.ts
-  - src/models/operations/postbrand.ts
-  - src/models/operations/refundtransfer.ts
   - src/models/operations/registerapplepaymerchantdomains.ts
+  - src/models/operations/requestcapabilities.ts
   - src/models/operations/requestcard.ts
-  - src/models/operations/reversetransfer.ts
-  - src/models/operations/revokeauthtoken.ts
+  - src/models/operations/revokeaccesstoken.ts
   - src/models/operations/revokeonboardinginvite.ts
   - src/models/operations/submitdisputeevidence.ts
   - src/models/operations/testendtoendtoken.ts
+  - src/models/operations/updateaccount.ts
   - src/models/operations/updateapplepaymerchantdomains.ts
   - src/models/operations/updatebrand.ts
   - src/models/operations/updatecard.ts
@@ -1350,12 +1465,15 @@ generatedFiles:
   - src/models/operations/updatepaymentlink.ts
   - src/models/operations/updaterepresentative.ts
   - src/models/operations/updateschedule.ts
+  - src/models/operations/updatesweepconfig.ts
+  - src/models/operations/updatetransfer.ts
   - src/models/operations/updateunderwriting.ts
   - src/models/operations/uploaddisputeevidencefile.ts
   - src/models/operations/uploaddisputeevidencetext.ts
   - src/models/operations/uploadfile.ts
   - src/sdk/accounts.ts
   - src/sdk/adjustments.ts
+  - src/sdk/applepay.ts
   - src/sdk/authentication.ts
   - src/sdk/avatars.ts
   - src/sdk/bankaccounts.ts
@@ -2746,5 +2864,140 @@ examples:
           code: "N1IA5eWYNh"
         header: {}
   ping: {}
+  updateAccount:
+    speakeasy-default-update-account:
+      parameters:
+        path:
+          accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd"
+        header: {}
+      requestBody:
+        application/json: {"accountType": "business", "profile": {"business": {"legalBusinessName": "Classbooker, LLC"}}}
+      responses:
+        "200":
+          application/json: {"accountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "accountType": "business", "displayName": "Whole Body Fitness", "profile": {"business": {"legalBusinessName": "Classbooker, LLC", "ownersProvided": false}}, "verification": {"verificationStatus": "unverified", "status": "unverified"}, "settings": {"cardPayment": {"statementDescriptor": "Whole Body Fitness"}, "achPayment": {"companyName": "WholeBodyFitness"}}, "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {"error": {}}
+  createBrand:
+    speakeasy-default-create-brand:
+      parameters:
+        path:
+          accountID: "7a621cf0-21cd-49cf-8540-3315211a509a"
+        header: {}
+      requestBody:
+        application/json: {"colors": {"dark": {"accent": "#111111"}, "light": {"accent": "#111111"}}}
+      responses:
+        "200":
+          application/json: {"colors": {"dark": {"accent": "#111111"}, "light": {"accent": "#111111"}}}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  requestCapabilities:
+    "":
+      parameters:
+        path:
+          accountID: "32613610-de25-446e-8662-ec2709ffea9d"
+        header: {}
+      requestBody:
+        application/json: {"capabilities": ["collect-funds"]}
+      responses:
+        "200":
+          application/json: [{"capability": "transfers", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "enabled", "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}, {"capability": "collect-funds", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "in-review", "requirements": [{"currentlyDue": ["business.owners"]}], "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}]
+  updateSweepConfig:
+    "":
+      parameters:
+        path:
+          accountID: "7573cb48-6325-4d3d-841d-81108fcfe6f2"
+          sweepConfigID: "49e8f3b1-259f-458e-9367-adb3b938f8c8"
+        header: {}
+      requestBody:
+        application/json: {"status": "disabled"}
+      responses:
+        "200":
+          application/json: {"sweepConfigID": "01234567-89ab-cdef-0123-456789abcdef", "walletID": "01234567-89ab-cdef-0123-456789abcdef", "status": "disabled", "pushPaymentMethod": {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef"}, "pullPaymentMethod": {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef"}, "minimumBalance": "0.00", "statementDescriptor": "swp_012345", "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z", "disabledOn": "2024-05-06T12:20:38.184Z"}
+  updateTransfer:
+    speakeasy-default-update-transfer:
+      parameters:
+        path:
+          transferID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd"
+          accountID: "b85898c1-25a1-4907-a1c5-562af6646dad"
+        header: {}
+      responses:
+        "200":
+          application/json: {"transferID": "d835gf30-4b19-4850-a9b2-c0624c41ecb3", "createdOn": "2025-01-21T21:32:16Z", "source": {"paymentMethodID": "9506dbf6-4208-44c3-ad8a-e4431660e1f2", "paymentMethodType": "card-payment", "account": {"accountID": "7e4b26c2-b399-49ef-8390-50e1ea44d550", "email": "jules@julesjackson.com", "displayName": "Jules Jackson"}, "card": {"cardID": "aefd5563-93c6-413c-875e-1bd0ebfc116d", "fingerprint": "2f5d782ceef1c3bd31ed5...", "brand": "Visa", "cardType": "credit", "lastFourCardNumber": "2000", "bin": "400020", "expiration": {"month": "01", "year": "28"}, "holderName": "Jules Jackson", "billingAddress": {"postalCode": "80301"}, "cardVerification": {"cvv": "unavailable", "addressLine1": "unavailable", "postalCode": "unavailable", "accountName": {}}, "issuer": "Moov Visa Sandbox", "issuerCountry": "US", "cardAccountUpdater": {}}, "cardDetails": {"status": "confirmed", "dynamicDescriptor": "WhlBdy *Yoga 11-12", "confirmedOn": "2025-01-21T21:32:16.799681237Z"}}, "destination": {"paymentMethodID": "3f9969cf-a1f3-4d83-8ddc-229a506651cf", "paymentMethodType": "moov-wallet", "account": {"accountID": "34233b72-780c-4a0d-8b08-cbbe23k878f8", "email": "john@wholebodyfitness.io", "displayName": "Whole Body Fitness"}, "wallet": {"walletID": "744b2e78-8cc8-4a6a-af42-611e3b844503"}}, "status": "pending", "amount": {"currency": "USD", "value": 1204}, "description": "Pay Instructor for May 15 Class"}
+  initiateRefund:
+    Successful async refund:
+      parameters:
+        path:
+          accountID: "9b1350b2-a5be-41e3-92be-61f5cf4372a8"
+          transferID: "7390ad29-1a0d-4a0c-8c17-da1708ee9ac2"
+        header:
+          x-idempotency-key: "bdfa6a76-31f8-4cdf-a007-3d8aac713b91"
+      requestBody:
+        application/json: {"amount": 1000}
+      responses:
+        "200":
+          application/json: {"refundID": "d4963079-5b35-4d17-981e-8f851753f786", "createdOn": "2023-09-09T14:15:22Z", "amount": {"currency": "USD", "value": 1204}}
+    Successful sync refund:
+      parameters:
+        path:
+          accountID: "ccfc533e-5996-4e24-8420-916af11978a3"
+          transferID: "2acedbbd-f150-40ee-8b4a-551b470dad35"
+        header:
+          x-idempotency-key: "c047af31-733e-4e5f-b1ef-0fb36fa1f73e"
+      requestBody:
+        application/json: {"amount": 1000}
+      responses:
+        "200":
+          application/json: {"refundID": "d4963079-5b35-4d17-981e-8f851753f786", "createdOn": "2023-09-09T14:15:22Z", "updatedOn": "2023-09-09T14:17:41Z", "status": "pending", "amount": {"currency": "USD", "value": 1204}, "cardDetails": {"status": "confirmed", "initiatedOn": "2023-09-09T14:16:22Z", "confirmedOn": "2023-09-09T14:17:41Z"}}
+  createReversal:
+    Reversed by refund:
+      parameters:
+        path:
+          accountID: "16452b89-d33c-4be9-8f92-205130a46467"
+          transferID: "c7f1b114-0545-47ba-9d79-fdba229c3df7"
+        header:
+          x-idempotency-key: "9d4b2ed0-777b-40e6-ba88-d6ca730c3503"
+      requestBody:
+        application/json: {"amount": 1000}
+      responses:
+        "200":
+          application/json: {"refund": {"refundID": "89ca7f54-13ba-4714-b9af-17163eae2057", "createdOn": "2025-01-19T03:07:26.001024809Z", "updatedOn": "2025-01-19T03:07:26.602114307Z", "status": "pending", "amount": {"currency": "USD", "value": 1938}, "cardDetails": {"status": "confirmed", "confirmedOn": "2025-01-19T03:07:26.602114307Z"}}}
+    Reversed by cancellation:
+      parameters:
+        path:
+          accountID: "76fd150d-ead7-429a-8a7b-c8ce51d8f414"
+          transferID: "2579dd72-45eb-4430-8d62-2e74e3a2c00b"
+        header:
+          x-idempotency-key: "9d2faf04-b3ed-4b23-be6f-609b94e053fd"
+      requestBody:
+        application/json: {"amount": 1000}
+      responses:
+        "200":
+          application/json: {"cancellation": {"status": "completed", "createdOn": "2025-01-19T03:02:43.255309588Z"}}
+  revokeAccessToken:
+    speakeasy-default-revoke-access-token:
+      requestBody:
+        application/json: {"token": "<value>", "client_id": "5clTR_MdVrrkgxw2", "client_secret": "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-"}
+        application/x-www-form-urlencoded: {"token": "<value>", "client_id": "5clTR_MdVrrkgxw2", "client_secret": "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-"}
+      responses:
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  createAccessToken:
+    speakeasy-default-create-access-token:
+      requestBody:
+        application/json: {"grant_type": "client_credentials", "client_id": "5clTR_MdVrrkgxw2", "client_secret": "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-", "scope": "/accounts.read /accounts.write", "refresh_token": "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a..."}
+        application/x-www-form-urlencoded: {"grant_type": "client_credentials", "client_id": "5clTR_MdVrrkgxw2", "client_secret": "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-", "scope": "/accounts.read /accounts.write", "refresh_token": "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a..."}
+      responses:
+        "200":
+          application/json: {"token_type": "Bearer", "access_token": "eyJhbGciOiJFZERTQSIsImN0eSI6IkpXVCIsImtpZCI6IkR...", "refresh_token": "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a...", "expires_in": 1736964352, "scope": "/accounts.read /accounts.write"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.0
 generatedTests: {}
