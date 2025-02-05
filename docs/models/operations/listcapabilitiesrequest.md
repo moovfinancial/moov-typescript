@@ -6,13 +6,12 @@
 import { ListCapabilitiesRequest } from "@moovio/sdk/models/operations";
 
 let value: ListCapabilitiesRequest = {
-  accountID: "28175c6e-3e91-484b-9a16-e6b1d8f8cfb9",
+  accountID: "0a822c9f-ff1f-437c-8392-11506a61142f",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |

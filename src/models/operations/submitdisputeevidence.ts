@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type SubmitDisputeEvidenceSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type SubmitDisputeEvidenceGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type SubmitDisputeEvidenceRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   disputeID: string;
 };
 
+export type SubmitDisputeEvidenceResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Dispute;
+};
+
 /** @internal */
-export const SubmitDisputeEvidenceSecurity$inboundSchema: z.ZodType<
-  SubmitDisputeEvidenceSecurity,
+export const SubmitDisputeEvidenceGlobals$inboundSchema: z.ZodType<
+  SubmitDisputeEvidenceGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type SubmitDisputeEvidenceSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type SubmitDisputeEvidenceGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const SubmitDisputeEvidenceSecurity$outboundSchema: z.ZodType<
-  SubmitDisputeEvidenceSecurity$Outbound,
+export const SubmitDisputeEvidenceGlobals$outboundSchema: z.ZodType<
+  SubmitDisputeEvidenceGlobals$Outbound,
   z.ZodTypeDef,
-  SubmitDisputeEvidenceSecurity
+  SubmitDisputeEvidenceGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,32 +71,32 @@ export const SubmitDisputeEvidenceSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SubmitDisputeEvidenceSecurity$ {
-  /** @deprecated use `SubmitDisputeEvidenceSecurity$inboundSchema` instead. */
-  export const inboundSchema = SubmitDisputeEvidenceSecurity$inboundSchema;
-  /** @deprecated use `SubmitDisputeEvidenceSecurity$outboundSchema` instead. */
-  export const outboundSchema = SubmitDisputeEvidenceSecurity$outboundSchema;
-  /** @deprecated use `SubmitDisputeEvidenceSecurity$Outbound` instead. */
-  export type Outbound = SubmitDisputeEvidenceSecurity$Outbound;
+export namespace SubmitDisputeEvidenceGlobals$ {
+  /** @deprecated use `SubmitDisputeEvidenceGlobals$inboundSchema` instead. */
+  export const inboundSchema = SubmitDisputeEvidenceGlobals$inboundSchema;
+  /** @deprecated use `SubmitDisputeEvidenceGlobals$outboundSchema` instead. */
+  export const outboundSchema = SubmitDisputeEvidenceGlobals$outboundSchema;
+  /** @deprecated use `SubmitDisputeEvidenceGlobals$Outbound` instead. */
+  export type Outbound = SubmitDisputeEvidenceGlobals$Outbound;
 }
 
-export function submitDisputeEvidenceSecurityToJSON(
-  submitDisputeEvidenceSecurity: SubmitDisputeEvidenceSecurity,
+export function submitDisputeEvidenceGlobalsToJSON(
+  submitDisputeEvidenceGlobals: SubmitDisputeEvidenceGlobals,
 ): string {
   return JSON.stringify(
-    SubmitDisputeEvidenceSecurity$outboundSchema.parse(
-      submitDisputeEvidenceSecurity,
+    SubmitDisputeEvidenceGlobals$outboundSchema.parse(
+      submitDisputeEvidenceGlobals,
     ),
   );
 }
 
-export function submitDisputeEvidenceSecurityFromJSON(
+export function submitDisputeEvidenceGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<SubmitDisputeEvidenceSecurity, SDKValidationError> {
+): SafeParseResult<SubmitDisputeEvidenceGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SubmitDisputeEvidenceSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SubmitDisputeEvidenceSecurity' from JSON`,
+    (x) => SubmitDisputeEvidenceGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SubmitDisputeEvidenceGlobals' from JSON`,
   );
 }
 
@@ -98,18 +106,12 @@ export const SubmitDisputeEvidenceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type SubmitDisputeEvidenceRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   disputeID: string;
 };
@@ -120,13 +122,8 @@ export const SubmitDisputeEvidenceRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SubmitDisputeEvidenceRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -159,5 +156,74 @@ export function submitDisputeEvidenceRequestFromJSON(
     jsonString,
     (x) => SubmitDisputeEvidenceRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SubmitDisputeEvidenceRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const SubmitDisputeEvidenceResponse$inboundSchema: z.ZodType<
+  SubmitDisputeEvidenceResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Dispute$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type SubmitDisputeEvidenceResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Dispute$Outbound;
+};
+
+/** @internal */
+export const SubmitDisputeEvidenceResponse$outboundSchema: z.ZodType<
+  SubmitDisputeEvidenceResponse$Outbound,
+  z.ZodTypeDef,
+  SubmitDisputeEvidenceResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Dispute$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SubmitDisputeEvidenceResponse$ {
+  /** @deprecated use `SubmitDisputeEvidenceResponse$inboundSchema` instead. */
+  export const inboundSchema = SubmitDisputeEvidenceResponse$inboundSchema;
+  /** @deprecated use `SubmitDisputeEvidenceResponse$outboundSchema` instead. */
+  export const outboundSchema = SubmitDisputeEvidenceResponse$outboundSchema;
+  /** @deprecated use `SubmitDisputeEvidenceResponse$Outbound` instead. */
+  export type Outbound = SubmitDisputeEvidenceResponse$Outbound;
+}
+
+export function submitDisputeEvidenceResponseToJSON(
+  submitDisputeEvidenceResponse: SubmitDisputeEvidenceResponse,
+): string {
+  return JSON.stringify(
+    SubmitDisputeEvidenceResponse$outboundSchema.parse(
+      submitDisputeEvidenceResponse,
+    ),
+  );
+}
+
+export function submitDisputeEvidenceResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<SubmitDisputeEvidenceResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SubmitDisputeEvidenceResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SubmitDisputeEvidenceResponse' from JSON`,
   );
 }

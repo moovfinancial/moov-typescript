@@ -8,7 +8,7 @@ Describes the acceptance of the Terms of Service.
 import { TermsOfService } from "@moovio/sdk/models/components";
 
 let value: TermsOfService = {
-  acceptedDate: new Date("2024-04-09T07:48:57.030Z"),
+  acceptedDate: new Date("2024-02-05T07:00:12.804Z"),
   acceptedIP: "172.217.2.46",
 };
 ```

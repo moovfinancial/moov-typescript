@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListBankAccountsSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListBankAccountsGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListBankAccountsRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type ListBankAccountsResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.BankAccount>;
+};
+
 /** @internal */
-export const ListBankAccountsSecurity$inboundSchema: z.ZodType<
-  ListBankAccountsSecurity,
+export const ListBankAccountsGlobals$inboundSchema: z.ZodType<
+  ListBankAccountsGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListBankAccountsSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListBankAccountsGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListBankAccountsSecurity$outboundSchema: z.ZodType<
-  ListBankAccountsSecurity$Outbound,
+export const ListBankAccountsGlobals$outboundSchema: z.ZodType<
+  ListBankAccountsGlobals$Outbound,
   z.ZodTypeDef,
-  ListBankAccountsSecurity
+  ListBankAccountsGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,30 +70,30 @@ export const ListBankAccountsSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListBankAccountsSecurity$ {
-  /** @deprecated use `ListBankAccountsSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListBankAccountsSecurity$inboundSchema;
-  /** @deprecated use `ListBankAccountsSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListBankAccountsSecurity$outboundSchema;
-  /** @deprecated use `ListBankAccountsSecurity$Outbound` instead. */
-  export type Outbound = ListBankAccountsSecurity$Outbound;
+export namespace ListBankAccountsGlobals$ {
+  /** @deprecated use `ListBankAccountsGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListBankAccountsGlobals$inboundSchema;
+  /** @deprecated use `ListBankAccountsGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListBankAccountsGlobals$outboundSchema;
+  /** @deprecated use `ListBankAccountsGlobals$Outbound` instead. */
+  export type Outbound = ListBankAccountsGlobals$Outbound;
 }
 
-export function listBankAccountsSecurityToJSON(
-  listBankAccountsSecurity: ListBankAccountsSecurity,
+export function listBankAccountsGlobalsToJSON(
+  listBankAccountsGlobals: ListBankAccountsGlobals,
 ): string {
   return JSON.stringify(
-    ListBankAccountsSecurity$outboundSchema.parse(listBankAccountsSecurity),
+    ListBankAccountsGlobals$outboundSchema.parse(listBankAccountsGlobals),
   );
 }
 
-export function listBankAccountsSecurityFromJSON(
+export function listBankAccountsGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListBankAccountsSecurity, SDKValidationError> {
+): SafeParseResult<ListBankAccountsGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListBankAccountsSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListBankAccountsSecurity' from JSON`,
+    (x) => ListBankAccountsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListBankAccountsGlobals' from JSON`,
   );
 }
 
@@ -95,17 +103,11 @@ export const ListBankAccountsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListBankAccountsRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -115,12 +117,7 @@ export const ListBankAccountsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListBankAccountsRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -151,5 +148,72 @@ export function listBankAccountsRequestFromJSON(
     jsonString,
     (x) => ListBankAccountsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListBankAccountsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListBankAccountsResponse$inboundSchema: z.ZodType<
+  ListBankAccountsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.BankAccount$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListBankAccountsResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.BankAccount$Outbound>;
+};
+
+/** @internal */
+export const ListBankAccountsResponse$outboundSchema: z.ZodType<
+  ListBankAccountsResponse$Outbound,
+  z.ZodTypeDef,
+  ListBankAccountsResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.BankAccount$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListBankAccountsResponse$ {
+  /** @deprecated use `ListBankAccountsResponse$inboundSchema` instead. */
+  export const inboundSchema = ListBankAccountsResponse$inboundSchema;
+  /** @deprecated use `ListBankAccountsResponse$outboundSchema` instead. */
+  export const outboundSchema = ListBankAccountsResponse$outboundSchema;
+  /** @deprecated use `ListBankAccountsResponse$Outbound` instead. */
+  export type Outbound = ListBankAccountsResponse$Outbound;
+}
+
+export function listBankAccountsResponseToJSON(
+  listBankAccountsResponse: ListBankAccountsResponse,
+): string {
+  return JSON.stringify(
+    ListBankAccountsResponse$outboundSchema.parse(listBankAccountsResponse),
+  );
+}
+
+export function listBankAccountsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListBankAccountsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListBankAccountsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListBankAccountsResponse' from JSON`,
   );
 }

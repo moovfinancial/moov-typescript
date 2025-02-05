@@ -6,54 +6,59 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type PingSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
-};
-
-export type PingRequest = {
+export type PingGlobals = {
   /**
    * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
    */
-  xMoovVersion?: components.Versions | undefined;
+  xMoovVersion?: string | undefined;
+};
+
+export type PingRequest = {};
+
+export type PingResponse = {
+  headers: { [k: string]: Array<string> };
 };
 
 /** @internal */
-export const PingSecurity$inboundSchema: z.ZodType<
-  PingSecurity,
+export const PingGlobals$inboundSchema: z.ZodType<
+  PingGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type PingSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type PingGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const PingSecurity$outboundSchema: z.ZodType<
-  PingSecurity$Outbound,
+export const PingGlobals$outboundSchema: z.ZodType<
+  PingGlobals$Outbound,
   z.ZodTypeDef,
-  PingSecurity
+  PingGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -61,26 +66,26 @@ export const PingSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PingSecurity$ {
-  /** @deprecated use `PingSecurity$inboundSchema` instead. */
-  export const inboundSchema = PingSecurity$inboundSchema;
-  /** @deprecated use `PingSecurity$outboundSchema` instead. */
-  export const outboundSchema = PingSecurity$outboundSchema;
-  /** @deprecated use `PingSecurity$Outbound` instead. */
-  export type Outbound = PingSecurity$Outbound;
+export namespace PingGlobals$ {
+  /** @deprecated use `PingGlobals$inboundSchema` instead. */
+  export const inboundSchema = PingGlobals$inboundSchema;
+  /** @deprecated use `PingGlobals$outboundSchema` instead. */
+  export const outboundSchema = PingGlobals$outboundSchema;
+  /** @deprecated use `PingGlobals$Outbound` instead. */
+  export type Outbound = PingGlobals$Outbound;
 }
 
-export function pingSecurityToJSON(pingSecurity: PingSecurity): string {
-  return JSON.stringify(PingSecurity$outboundSchema.parse(pingSecurity));
+export function pingGlobalsToJSON(pingGlobals: PingGlobals): string {
+  return JSON.stringify(PingGlobals$outboundSchema.parse(pingGlobals));
 }
 
-export function pingSecurityFromJSON(
+export function pingGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<PingSecurity, SDKValidationError> {
+): SafeParseResult<PingGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PingSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PingSecurity' from JSON`,
+    (x) => PingGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PingGlobals' from JSON`,
   );
 }
 
@@ -89,31 +94,17 @@ export const PingRequest$inboundSchema: z.ZodType<
   PingRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
-});
+> = z.object({});
 
 /** @internal */
-export type PingRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
-};
+export type PingRequest$Outbound = {};
 
 /** @internal */
 export const PingRequest$outboundSchema: z.ZodType<
   PingRequest$Outbound,
   z.ZodTypeDef,
   PingRequest
-> = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
-});
+> = z.object({});
 
 /**
  * @internal
@@ -139,5 +130,63 @@ export function pingRequestFromJSON(
     jsonString,
     (x) => PingRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'PingRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const PingResponse$inboundSchema: z.ZodType<
+  PingResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type PingResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const PingResponse$outboundSchema: z.ZodType<
+  PingResponse$Outbound,
+  z.ZodTypeDef,
+  PingResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PingResponse$ {
+  /** @deprecated use `PingResponse$inboundSchema` instead. */
+  export const inboundSchema = PingResponse$inboundSchema;
+  /** @deprecated use `PingResponse$outboundSchema` instead. */
+  export const outboundSchema = PingResponse$outboundSchema;
+  /** @deprecated use `PingResponse$Outbound` instead. */
+  export type Outbound = PingResponse$Outbound;
+}
+
+export function pingResponseToJSON(pingResponse: PingResponse): string {
+  return JSON.stringify(PingResponse$outboundSchema.parse(pingResponse));
+}
+
+export function pingResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PingResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PingResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PingResponse' from JSON`,
   );
 }

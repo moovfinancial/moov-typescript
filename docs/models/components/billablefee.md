@@ -9,7 +9,7 @@ let value: BillableFee = {
   billableEvent: "ach-volume",
   feeName: "ACH Direct Debit",
   feeModel: "fixed",
-  feeCategory: "card-push",
+  feeCategory: "ach",
   feeProperties: {
     fixedAmount: {
       currency: "USD",

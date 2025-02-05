@@ -5,30 +5,32 @@
 
 ### Available Operations
 
-* [getEnrichmentProfile](#getenrichmentprofile) -   Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
+* [get](#get) - Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
 
-  To use this endpoint from the browser, you'll need to specify the `/profile-enrichment.read` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/profile-enrichment.read` scope.
 
-## getEnrichmentProfile
+## get
 
-  Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
+Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
 
-  To use this endpoint from the browser, you'll need to specify the `/profile-enrichment.read` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/profile-enrichment.read` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.enrichedProfile.getEnrichmentProfile({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.enrichedProfile.get({
     email: "Sheldon.Effertz@gmail.com",
   });
 
@@ -45,19 +47,19 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { enrichedProfileGetEnrichmentProfile } from "@moovio/sdk/funcs/enrichedProfileGetEnrichmentProfile.js";
+import { enrichedProfileGet } from "@moovio/sdk/funcs/enrichedProfileGet.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await enrichedProfileGetEnrichmentProfile(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await enrichedProfileGet(moov, {
     email: "Sheldon.Effertz@gmail.com",
   });
 
@@ -79,14 +81,13 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetEnrichmentProfileRequest](../../models/operations/getenrichmentprofilerequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetEnrichmentProfileSecurity](../../models/operations/getenrichmentprofilesecurity.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.EnrichedBusinessProfile](../../models/components/enrichedbusinessprofile.md)\>**
+**Promise\<[operations.GetEnrichmentProfileResponse](../../models/operations/getenrichmentprofileresponse.md)\>**
 
 ### Errors
 

@@ -6,56 +6,62 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CancelScheduleSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type CancelScheduleGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type CancelScheduleRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   scheduleID: string;
 };
 
+export type CancelScheduleResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const CancelScheduleSecurity$inboundSchema: z.ZodType<
-  CancelScheduleSecurity,
+export const CancelScheduleGlobals$inboundSchema: z.ZodType<
+  CancelScheduleGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type CancelScheduleSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type CancelScheduleGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const CancelScheduleSecurity$outboundSchema: z.ZodType<
-  CancelScheduleSecurity$Outbound,
+export const CancelScheduleGlobals$outboundSchema: z.ZodType<
+  CancelScheduleGlobals$Outbound,
   z.ZodTypeDef,
-  CancelScheduleSecurity
+  CancelScheduleGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +69,30 @@ export const CancelScheduleSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CancelScheduleSecurity$ {
-  /** @deprecated use `CancelScheduleSecurity$inboundSchema` instead. */
-  export const inboundSchema = CancelScheduleSecurity$inboundSchema;
-  /** @deprecated use `CancelScheduleSecurity$outboundSchema` instead. */
-  export const outboundSchema = CancelScheduleSecurity$outboundSchema;
-  /** @deprecated use `CancelScheduleSecurity$Outbound` instead. */
-  export type Outbound = CancelScheduleSecurity$Outbound;
+export namespace CancelScheduleGlobals$ {
+  /** @deprecated use `CancelScheduleGlobals$inboundSchema` instead. */
+  export const inboundSchema = CancelScheduleGlobals$inboundSchema;
+  /** @deprecated use `CancelScheduleGlobals$outboundSchema` instead. */
+  export const outboundSchema = CancelScheduleGlobals$outboundSchema;
+  /** @deprecated use `CancelScheduleGlobals$Outbound` instead. */
+  export type Outbound = CancelScheduleGlobals$Outbound;
 }
 
-export function cancelScheduleSecurityToJSON(
-  cancelScheduleSecurity: CancelScheduleSecurity,
+export function cancelScheduleGlobalsToJSON(
+  cancelScheduleGlobals: CancelScheduleGlobals,
 ): string {
   return JSON.stringify(
-    CancelScheduleSecurity$outboundSchema.parse(cancelScheduleSecurity),
+    CancelScheduleGlobals$outboundSchema.parse(cancelScheduleGlobals),
   );
 }
 
-export function cancelScheduleSecurityFromJSON(
+export function cancelScheduleGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<CancelScheduleSecurity, SDKValidationError> {
+): SafeParseResult<CancelScheduleGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelScheduleSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelScheduleSecurity' from JSON`,
+    (x) => CancelScheduleGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelScheduleGlobals' from JSON`,
   );
 }
 
@@ -96,18 +102,12 @@ export const CancelScheduleRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   scheduleID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type CancelScheduleRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   scheduleID: string;
 };
@@ -118,13 +118,8 @@ export const CancelScheduleRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelScheduleRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   scheduleID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +150,67 @@ export function cancelScheduleRequestFromJSON(
     jsonString,
     (x) => CancelScheduleRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CancelScheduleRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelScheduleResponse$inboundSchema: z.ZodType<
+  CancelScheduleResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type CancelScheduleResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const CancelScheduleResponse$outboundSchema: z.ZodType<
+  CancelScheduleResponse$Outbound,
+  z.ZodTypeDef,
+  CancelScheduleResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelScheduleResponse$ {
+  /** @deprecated use `CancelScheduleResponse$inboundSchema` instead. */
+  export const inboundSchema = CancelScheduleResponse$inboundSchema;
+  /** @deprecated use `CancelScheduleResponse$outboundSchema` instead. */
+  export const outboundSchema = CancelScheduleResponse$outboundSchema;
+  /** @deprecated use `CancelScheduleResponse$Outbound` instead. */
+  export type Outbound = CancelScheduleResponse$Outbound;
+}
+
+export function cancelScheduleResponseToJSON(
+  cancelScheduleResponse: CancelScheduleResponse,
+): string {
+  return JSON.stringify(
+    CancelScheduleResponse$outboundSchema.parse(cancelScheduleResponse),
+  );
+}
+
+export function cancelScheduleResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelScheduleResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelScheduleResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelScheduleResponse' from JSON`,
   );
 }

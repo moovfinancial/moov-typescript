@@ -8,9 +8,6 @@ import { CreateTransfer } from "@moovio/sdk/models/components";
 let value: CreateTransfer = {
   source: {
     paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
-    cardDetails: {
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-    },
   },
   destination: {
     paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",

@@ -6,7 +6,7 @@
 import { CreateScheduleRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateScheduleRequest = {
-  accountID: "1a8228f2-419e-437e-8b8a-bb743e05b961",
+  accountID: "2d3f24d6-4b0e-4d1c-af79-a4a76eced09b",
   upsertSchedule: {
     occurrences: [
       {
@@ -38,8 +38,7 @@ let value: CreateScheduleRequest = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description:
-            "blank waft tabletop jealously liberalize monthly large democratize",
+          description: "drat case healthily yuck sternly",
         },
       },
     ],
@@ -71,7 +70,7 @@ let value: CreateScheduleRequest = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "once numeracy horde bore rotten fooey now",
+        description: "lumbering and unethically farmer",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },
@@ -83,6 +82,5 @@ let value: CreateScheduleRequest = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `xMoovVersion`                                                         | [components.Versions](../../models/components/versions.md)             | :heavy_minus_sign:                                                     | Specify an API version.                                                |
 | `accountID`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `upsertSchedule`                                                       | [components.UpsertSchedule](../../models/components/upsertschedule.md) | :heavy_check_mark:                                                     | N/A                                                                    |

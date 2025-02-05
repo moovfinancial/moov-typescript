@@ -7,7 +7,7 @@ The bank account type.
 ```typescript
 import { BankAccountType } from "@moovio/sdk/models/components";
 
-let value: BankAccountType = "savings";
+let value: BankAccountType = "general-ledger";
 ```
 
 ## Values

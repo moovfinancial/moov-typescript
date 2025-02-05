@@ -6,15 +6,14 @@
 import { GetSchedulesRequest } from "@moovio/sdk/models/operations";
 
 let value: GetSchedulesRequest = {
-  accountID: "b321d336-a9ea-48ba-ac9c-eb54aa0b302a",
-  scheduleID: "d1da3bb1-4a6c-48d1-ab78-443533f7a597",
+  accountID: "124c4913-91b7-44da-a1a3-e293f59279c8",
+  scheduleID: "d4508fbf-7b26-4a70-a5a6-7d49dc304204",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `scheduleID`                                               | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `scheduleID`       | *string*           | :heavy_check_mark: | N/A                |

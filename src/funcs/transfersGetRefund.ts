@@ -8,9 +8,8 @@ import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { resolveSecurity } from "../lib/security.js";
+import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
   ConnectionError,
@@ -26,17 +25,16 @@ import { Result } from "../types/fp.js";
 /**
  * Get details of a refund for a card transfer.
  *
- * To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need to specify the `/accounts/{accountID}/transfers.read`
- * scope.
+ * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+ * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
  */
 export async function transfersGetRefund(
   client: MoovCore,
-  security: operations.GetRefundSecurity,
   request: operations.GetRefundRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.CardAcquiringRefund,
+    operations.GetRefundResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -80,29 +78,13 @@ export async function transfersGetRefund(
     Accept: "application/json",
     "x-moov-version": encodeSimple(
       "x-moov-version",
-      payload["x-moov-version"],
+      client._options.xMoovVersion,
       { explode: false, charEncoding: "none" },
     ),
   }));
 
-  const requestSecurity = resolveSecurity(
-    [
-      {
-        type: "http:basic",
-        value: {
-          username: security?.basicAuth?.username,
-          password: security?.basicAuth?.password,
-        },
-      },
-    ],
-    [
-      {
-        fieldName: "Authorization",
-        type: "oauth2",
-        value: security?.oAuth2Auth,
-      },
-    ],
-  );
+  const securityInput = await extractSecurity(client._options.security);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     operationID: "getRefund",
@@ -110,7 +92,7 @@ export async function transfersGetRefund(
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: security,
+    securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -142,8 +124,12 @@ export async function transfersGetRefund(
   }
   const response = doResult.value;
 
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
+  };
+
   const [result] = await M.match<
-    components.CardAcquiringRefund,
+    operations.GetRefundResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -152,10 +138,15 @@ export async function transfersGetRefund(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.CardAcquiringRefund$inboundSchema),
-    M.fail([401, 403, 404, 429, "4XX"]),
-    M.fail([500, 504, "5XX"]),
-  )(response);
+    M.json(200, operations.GetRefundResponse$inboundSchema, {
+      hdrs: true,
+      key: "Result",
+    }),
+    M.fail([401, 403, 404, 429]),
+    M.fail([500, 504]),
+    M.fail("4XX"),
+    M.fail("5XX"),
+  )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;
   }

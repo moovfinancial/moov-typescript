@@ -6,8 +6,8 @@
 import { UpdateRepresentativeRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateRepresentativeRequest = {
-  accountID: "c4ae8d3f-1c31-4853-87fa-4f4b4ca9739d",
-  representativeID: "be945b50-1465-4c36-8dc3-52185899f3e0",
+  accountID: "a6d47b85-282f-482b-81c7-20f4f881fb81",
+  representativeID: "65810800-6063-4361-856d-e449250618af",
   updateRepresentative: {
     name: {
       firstName: "Jordan",
@@ -44,7 +44,6 @@ let value: UpdateRepresentativeRequest = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `xMoovVersion`                                                                     | [components.Versions](../../models/components/versions.md)                         | :heavy_minus_sign:                                                                 | Specify an API version.                                                            |
 | `accountID`                                                                        | *string*                                                                           | :heavy_check_mark:                                                                 | ID of the account.                                                                 |
 | `representativeID`                                                                 | *string*                                                                           | :heavy_check_mark:                                                                 | ID of the representative.                                                          |
 | `updateRepresentative`                                                             | [components.UpdateRepresentative](../../models/components/updaterepresentative.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

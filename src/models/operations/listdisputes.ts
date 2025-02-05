@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListDisputesSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListDisputesGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListDisputesRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   skip?: number | undefined;
   count?: number | undefined;
@@ -61,39 +69,39 @@ export type ListDisputesRequest = {
   orderBy?: string | undefined;
 };
 
+export type ListDisputesResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.Dispute>;
+};
+
 /** @internal */
-export const ListDisputesSecurity$inboundSchema: z.ZodType<
-  ListDisputesSecurity,
+export const ListDisputesGlobals$inboundSchema: z.ZodType<
+  ListDisputesGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListDisputesSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListDisputesGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListDisputesSecurity$outboundSchema: z.ZodType<
-  ListDisputesSecurity$Outbound,
+export const ListDisputesGlobals$outboundSchema: z.ZodType<
+  ListDisputesGlobals$Outbound,
   z.ZodTypeDef,
-  ListDisputesSecurity
+  ListDisputesGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -101,30 +109,30 @@ export const ListDisputesSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListDisputesSecurity$ {
-  /** @deprecated use `ListDisputesSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListDisputesSecurity$inboundSchema;
-  /** @deprecated use `ListDisputesSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListDisputesSecurity$outboundSchema;
-  /** @deprecated use `ListDisputesSecurity$Outbound` instead. */
-  export type Outbound = ListDisputesSecurity$Outbound;
+export namespace ListDisputesGlobals$ {
+  /** @deprecated use `ListDisputesGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListDisputesGlobals$inboundSchema;
+  /** @deprecated use `ListDisputesGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListDisputesGlobals$outboundSchema;
+  /** @deprecated use `ListDisputesGlobals$Outbound` instead. */
+  export type Outbound = ListDisputesGlobals$Outbound;
 }
 
-export function listDisputesSecurityToJSON(
-  listDisputesSecurity: ListDisputesSecurity,
+export function listDisputesGlobalsToJSON(
+  listDisputesGlobals: ListDisputesGlobals,
 ): string {
   return JSON.stringify(
-    ListDisputesSecurity$outboundSchema.parse(listDisputesSecurity),
+    ListDisputesGlobals$outboundSchema.parse(listDisputesGlobals),
   );
 }
 
-export function listDisputesSecurityFromJSON(
+export function listDisputesGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListDisputesSecurity, SDKValidationError> {
+): SafeParseResult<ListDisputesGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListDisputesSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListDisputesSecurity' from JSON`,
+    (x) => ListDisputesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDisputesGlobals' from JSON`,
   );
 }
 
@@ -134,7 +142,6 @@ export const ListDisputesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
@@ -155,15 +162,10 @@ export const ListDisputesRequest$inboundSchema: z.ZodType<
   disputeIDs: z.array(z.string()).optional(),
   transferIDs: z.array(z.string()).optional(),
   orderBy: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListDisputesRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   skip?: number | undefined;
   count?: number | undefined;
@@ -185,7 +187,6 @@ export const ListDisputesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListDisputesRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
@@ -199,10 +200,6 @@ export const ListDisputesRequest$outboundSchema: z.ZodType<
   disputeIDs: z.array(z.string()).optional(),
   transferIDs: z.array(z.string()).optional(),
   orderBy: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -233,5 +230,72 @@ export function listDisputesRequestFromJSON(
     jsonString,
     (x) => ListDisputesRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListDisputesRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListDisputesResponse$inboundSchema: z.ZodType<
+  ListDisputesResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.Dispute$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListDisputesResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.Dispute$Outbound>;
+};
+
+/** @internal */
+export const ListDisputesResponse$outboundSchema: z.ZodType<
+  ListDisputesResponse$Outbound,
+  z.ZodTypeDef,
+  ListDisputesResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.Dispute$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListDisputesResponse$ {
+  /** @deprecated use `ListDisputesResponse$inboundSchema` instead. */
+  export const inboundSchema = ListDisputesResponse$inboundSchema;
+  /** @deprecated use `ListDisputesResponse$outboundSchema` instead. */
+  export const outboundSchema = ListDisputesResponse$outboundSchema;
+  /** @deprecated use `ListDisputesResponse$Outbound` instead. */
+  export type Outbound = ListDisputesResponse$Outbound;
+}
+
+export function listDisputesResponseToJSON(
+  listDisputesResponse: ListDisputesResponse,
+): string {
+  return JSON.stringify(
+    ListDisputesResponse$outboundSchema.parse(listDisputesResponse),
+  );
+}
+
+export function listDisputesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListDisputesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListDisputesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDisputesResponse' from JSON`,
   );
 }

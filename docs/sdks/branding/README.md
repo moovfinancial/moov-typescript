@@ -5,29 +5,41 @@
 
 ### Available Operations
 
-* [postBrand](#postbrand) - Creates the brand properties for the specified account.
-* [getBrand](#getbrand) - Gets the brand properties for the specified account.
-* [updateBrand](#updatebrand) - Updates the brand properties for the specified account.
+* [create](#create) - Create brand properties for the specified account.
 
-## postBrand
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/branding.write` scope.
+* [get](#get) - Get brand properties for the specified account.
 
-Creates the brand properties for the specified account.
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/branding.read` scope.
+* [update](#update) - Updates the brand properties for the specified account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/branding.write` scope.
+
+## create
+
+Create brand properties for the specified account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.branding.postBrand({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
-    accountID: "e0ae5cc2-d23b-44c7-b778-06f786dadb4b",
+  const result = await moov.branding.create({
+    accountID: "7a621cf0-21cd-49cf-8540-3315211a509a",
     brand: {
       colors: {
         dark: {
@@ -53,20 +65,20 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { brandingPostBrand } from "@moovio/sdk/funcs/brandingPostBrand.js";
+import { brandingCreate } from "@moovio/sdk/funcs/brandingCreate.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await brandingPostBrand(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
-    accountID: "e0ae5cc2-d23b-44c7-b778-06f786dadb4b",
+  const res = await brandingCreate(moov, {
+    accountID: "7a621cf0-21cd-49cf-8540-3315211a509a",
     brand: {
       colors: {
         dark: {
@@ -96,15 +108,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostBrandRequest](../../models/operations/postbrandrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.PostBrandSecurity](../../models/operations/postbrandsecurity.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `request`                                                                                                                                                                      | [operations.CreateBrandRequest](../../models/operations/createbrandrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.Brand](../../models/components/brand.md)\>**
+**Promise\<[operations.CreateBrandResponse](../../models/operations/createbrandresponse.md)\>**
 
 ### Errors
 
@@ -114,24 +125,27 @@ run();
 | errors.BrandValidationError | 422                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## getBrand
+## get
 
-Gets the brand properties for the specified account.
+Get brand properties for the specified account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/branding.read` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.branding.getBrand({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.branding.get({
     accountID: "07eb5173-1869-4649-9aa6-f399787a2751",
   });
 
@@ -148,19 +162,19 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { brandingGetBrand } from "@moovio/sdk/funcs/brandingGetBrand.js";
+import { brandingGet } from "@moovio/sdk/funcs/brandingGet.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await brandingGetBrand(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await brandingGet(moov, {
     accountID: "07eb5173-1869-4649-9aa6-f399787a2751",
   });
 
@@ -182,14 +196,13 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetBrandRequest](../../models/operations/getbrandrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetBrandSecurity](../../models/operations/getbrandsecurity.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.Brand](../../models/components/brand.md)\>**
+**Promise\<[operations.GetBrandResponse](../../models/operations/getbrandresponse.md)\>**
 
 ### Errors
 
@@ -197,24 +210,27 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## updateBrand
+## update
 
 Updates the brand properties for the specified account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.branding.updateBrand({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.branding.update({
     accountID: "6c1f5632-7f37-4b3d-861e-10e31b8853de",
     updateBrand: {},
   });
@@ -232,19 +248,19 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { brandingUpdateBrand } from "@moovio/sdk/funcs/brandingUpdateBrand.js";
+import { brandingUpdate } from "@moovio/sdk/funcs/brandingUpdate.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await brandingUpdateBrand(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await brandingUpdate(moov, {
     accountID: "6c1f5632-7f37-4b3d-861e-10e31b8853de",
     updateBrand: {},
   });
@@ -267,14 +283,13 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.UpdateBrandRequest](../../models/operations/updatebrandrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.UpdateBrandSecurity](../../models/operations/updatebrandsecurity.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.Brand](../../models/components/brand.md)\>**
+**Promise\<[operations.UpdateBrandResponse](../../models/operations/updatebrandresponse.md)\>**
 
 ### Errors
 

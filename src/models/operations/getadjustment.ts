@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetAdjustmentSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetAdjustmentGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetAdjustmentRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   adjustmentID: string;
 };
 
+export type GetAdjustmentResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Adjustment;
+};
+
 /** @internal */
-export const GetAdjustmentSecurity$inboundSchema: z.ZodType<
-  GetAdjustmentSecurity,
+export const GetAdjustmentGlobals$inboundSchema: z.ZodType<
+  GetAdjustmentGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetAdjustmentSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetAdjustmentGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetAdjustmentSecurity$outboundSchema: z.ZodType<
-  GetAdjustmentSecurity$Outbound,
+export const GetAdjustmentGlobals$outboundSchema: z.ZodType<
+  GetAdjustmentGlobals$Outbound,
   z.ZodTypeDef,
-  GetAdjustmentSecurity
+  GetAdjustmentGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +71,30 @@ export const GetAdjustmentSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetAdjustmentSecurity$ {
-  /** @deprecated use `GetAdjustmentSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetAdjustmentSecurity$inboundSchema;
-  /** @deprecated use `GetAdjustmentSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetAdjustmentSecurity$outboundSchema;
-  /** @deprecated use `GetAdjustmentSecurity$Outbound` instead. */
-  export type Outbound = GetAdjustmentSecurity$Outbound;
+export namespace GetAdjustmentGlobals$ {
+  /** @deprecated use `GetAdjustmentGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetAdjustmentGlobals$inboundSchema;
+  /** @deprecated use `GetAdjustmentGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetAdjustmentGlobals$outboundSchema;
+  /** @deprecated use `GetAdjustmentGlobals$Outbound` instead. */
+  export type Outbound = GetAdjustmentGlobals$Outbound;
 }
 
-export function getAdjustmentSecurityToJSON(
-  getAdjustmentSecurity: GetAdjustmentSecurity,
+export function getAdjustmentGlobalsToJSON(
+  getAdjustmentGlobals: GetAdjustmentGlobals,
 ): string {
   return JSON.stringify(
-    GetAdjustmentSecurity$outboundSchema.parse(getAdjustmentSecurity),
+    GetAdjustmentGlobals$outboundSchema.parse(getAdjustmentGlobals),
   );
 }
 
-export function getAdjustmentSecurityFromJSON(
+export function getAdjustmentGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetAdjustmentSecurity, SDKValidationError> {
+): SafeParseResult<GetAdjustmentGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetAdjustmentSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAdjustmentSecurity' from JSON`,
+    (x) => GetAdjustmentGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAdjustmentGlobals' from JSON`,
   );
 }
 
@@ -96,18 +104,12 @@ export const GetAdjustmentRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   adjustmentID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetAdjustmentRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   adjustmentID: string;
 };
@@ -118,13 +120,8 @@ export const GetAdjustmentRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAdjustmentRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   adjustmentID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +152,72 @@ export function getAdjustmentRequestFromJSON(
     jsonString,
     (x) => GetAdjustmentRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetAdjustmentRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAdjustmentResponse$inboundSchema: z.ZodType<
+  GetAdjustmentResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Adjustment$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetAdjustmentResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Adjustment$Outbound;
+};
+
+/** @internal */
+export const GetAdjustmentResponse$outboundSchema: z.ZodType<
+  GetAdjustmentResponse$Outbound,
+  z.ZodTypeDef,
+  GetAdjustmentResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Adjustment$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAdjustmentResponse$ {
+  /** @deprecated use `GetAdjustmentResponse$inboundSchema` instead. */
+  export const inboundSchema = GetAdjustmentResponse$inboundSchema;
+  /** @deprecated use `GetAdjustmentResponse$outboundSchema` instead. */
+  export const outboundSchema = GetAdjustmentResponse$outboundSchema;
+  /** @deprecated use `GetAdjustmentResponse$Outbound` instead. */
+  export type Outbound = GetAdjustmentResponse$Outbound;
+}
+
+export function getAdjustmentResponseToJSON(
+  getAdjustmentResponse: GetAdjustmentResponse,
+): string {
+  return JSON.stringify(
+    GetAdjustmentResponse$outboundSchema.parse(getAdjustmentResponse),
+  );
+}
+
+export function getAdjustmentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAdjustmentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAdjustmentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAdjustmentResponse' from JSON`,
   );
 }

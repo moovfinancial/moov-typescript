@@ -6,7 +6,7 @@
 import { RtpCreditPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: RtpCreditPaymentMethod = {
-  paymentMethodID: "fbc256a4-45c9-4115-8cbb-c488bf4ca9cf",
+  paymentMethodID: "26947f07-7b4c-461a-90b0-9db9655682ea",
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
     fingerprint:

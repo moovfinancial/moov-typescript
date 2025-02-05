@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetRefundSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetRefundGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetRefundRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * Identifier for the transfer.
    */
@@ -30,39 +38,39 @@ export type GetRefundRequest = {
   refundID: string;
 };
 
+export type GetRefundResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.CardAcquiringRefund;
+};
+
 /** @internal */
-export const GetRefundSecurity$inboundSchema: z.ZodType<
-  GetRefundSecurity,
+export const GetRefundGlobals$inboundSchema: z.ZodType<
+  GetRefundGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetRefundSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetRefundGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetRefundSecurity$outboundSchema: z.ZodType<
-  GetRefundSecurity$Outbound,
+export const GetRefundGlobals$outboundSchema: z.ZodType<
+  GetRefundGlobals$Outbound,
   z.ZodTypeDef,
-  GetRefundSecurity
+  GetRefundGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -70,30 +78,30 @@ export const GetRefundSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetRefundSecurity$ {
-  /** @deprecated use `GetRefundSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetRefundSecurity$inboundSchema;
-  /** @deprecated use `GetRefundSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetRefundSecurity$outboundSchema;
-  /** @deprecated use `GetRefundSecurity$Outbound` instead. */
-  export type Outbound = GetRefundSecurity$Outbound;
+export namespace GetRefundGlobals$ {
+  /** @deprecated use `GetRefundGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetRefundGlobals$inboundSchema;
+  /** @deprecated use `GetRefundGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetRefundGlobals$outboundSchema;
+  /** @deprecated use `GetRefundGlobals$Outbound` instead. */
+  export type Outbound = GetRefundGlobals$Outbound;
 }
 
-export function getRefundSecurityToJSON(
-  getRefundSecurity: GetRefundSecurity,
+export function getRefundGlobalsToJSON(
+  getRefundGlobals: GetRefundGlobals,
 ): string {
   return JSON.stringify(
-    GetRefundSecurity$outboundSchema.parse(getRefundSecurity),
+    GetRefundGlobals$outboundSchema.parse(getRefundGlobals),
   );
 }
 
-export function getRefundSecurityFromJSON(
+export function getRefundGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetRefundSecurity, SDKValidationError> {
+): SafeParseResult<GetRefundGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetRefundSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRefundSecurity' from JSON`,
+    (x) => GetRefundGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRefundGlobals' from JSON`,
   );
 }
 
@@ -103,19 +111,13 @@ export const GetRefundRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   transferID: z.string(),
   accountID: z.string(),
   refundID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetRefundRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   transferID: string;
   accountID: string;
   refundID: string;
@@ -127,14 +129,9 @@ export const GetRefundRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetRefundRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   transferID: z.string(),
   accountID: z.string(),
   refundID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -165,5 +162,72 @@ export function getRefundRequestFromJSON(
     jsonString,
     (x) => GetRefundRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetRefundRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRefundResponse$inboundSchema: z.ZodType<
+  GetRefundResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.CardAcquiringRefund$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetRefundResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.CardAcquiringRefund$Outbound;
+};
+
+/** @internal */
+export const GetRefundResponse$outboundSchema: z.ZodType<
+  GetRefundResponse$Outbound,
+  z.ZodTypeDef,
+  GetRefundResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.CardAcquiringRefund$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetRefundResponse$ {
+  /** @deprecated use `GetRefundResponse$inboundSchema` instead. */
+  export const inboundSchema = GetRefundResponse$inboundSchema;
+  /** @deprecated use `GetRefundResponse$outboundSchema` instead. */
+  export const outboundSchema = GetRefundResponse$outboundSchema;
+  /** @deprecated use `GetRefundResponse$Outbound` instead. */
+  export type Outbound = GetRefundResponse$Outbound;
+}
+
+export function getRefundResponseToJSON(
+  getRefundResponse: GetRefundResponse,
+): string {
+  return JSON.stringify(
+    GetRefundResponse$outboundSchema.parse(getRefundResponse),
+  );
+}
+
+export function getRefundResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRefundResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRefundResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRefundResponse' from JSON`,
   );
 }

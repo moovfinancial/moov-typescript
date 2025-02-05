@@ -6,13 +6,12 @@
 import { ListBankAccountsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListBankAccountsRequest = {
-  accountID: "3d5fde94-38ab-4286-b384-83e591a4f693",
+  accountID: "d17932d0-717f-46d1-8466-a5ba6691dab8",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |

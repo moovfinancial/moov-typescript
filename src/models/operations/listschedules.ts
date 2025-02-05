@@ -9,54 +9,62 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListSchedulesSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListSchedulesGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListSchedulesRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   skip?: number | undefined;
   count?: number | undefined;
   accountID: string;
 };
 
+export type ListSchedulesResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.ScheduleResponse>;
+};
+
 /** @internal */
-export const ListSchedulesSecurity$inboundSchema: z.ZodType<
-  ListSchedulesSecurity,
+export const ListSchedulesGlobals$inboundSchema: z.ZodType<
+  ListSchedulesGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListSchedulesSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListSchedulesGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListSchedulesSecurity$outboundSchema: z.ZodType<
-  ListSchedulesSecurity$Outbound,
+export const ListSchedulesGlobals$outboundSchema: z.ZodType<
+  ListSchedulesGlobals$Outbound,
   z.ZodTypeDef,
-  ListSchedulesSecurity
+  ListSchedulesGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -64,30 +72,30 @@ export const ListSchedulesSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListSchedulesSecurity$ {
-  /** @deprecated use `ListSchedulesSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListSchedulesSecurity$inboundSchema;
-  /** @deprecated use `ListSchedulesSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListSchedulesSecurity$outboundSchema;
-  /** @deprecated use `ListSchedulesSecurity$Outbound` instead. */
-  export type Outbound = ListSchedulesSecurity$Outbound;
+export namespace ListSchedulesGlobals$ {
+  /** @deprecated use `ListSchedulesGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListSchedulesGlobals$inboundSchema;
+  /** @deprecated use `ListSchedulesGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListSchedulesGlobals$outboundSchema;
+  /** @deprecated use `ListSchedulesGlobals$Outbound` instead. */
+  export type Outbound = ListSchedulesGlobals$Outbound;
 }
 
-export function listSchedulesSecurityToJSON(
-  listSchedulesSecurity: ListSchedulesSecurity,
+export function listSchedulesGlobalsToJSON(
+  listSchedulesGlobals: ListSchedulesGlobals,
 ): string {
   return JSON.stringify(
-    ListSchedulesSecurity$outboundSchema.parse(listSchedulesSecurity),
+    ListSchedulesGlobals$outboundSchema.parse(listSchedulesGlobals),
   );
 }
 
-export function listSchedulesSecurityFromJSON(
+export function listSchedulesGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListSchedulesSecurity, SDKValidationError> {
+): SafeParseResult<ListSchedulesGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListSchedulesSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSchedulesSecurity' from JSON`,
+    (x) => ListSchedulesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSchedulesGlobals' from JSON`,
   );
 }
 
@@ -97,19 +105,13 @@ export const ListSchedulesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListSchedulesRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   skip?: number | undefined;
   count?: number | undefined;
   accountID: string;
@@ -121,14 +123,9 @@ export const ListSchedulesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListSchedulesRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -159,5 +156,72 @@ export function listSchedulesRequestFromJSON(
     jsonString,
     (x) => ListSchedulesRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListSchedulesRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListSchedulesResponse$inboundSchema: z.ZodType<
+  ListSchedulesResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.ScheduleResponse$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListSchedulesResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.ScheduleResponse$Outbound>;
+};
+
+/** @internal */
+export const ListSchedulesResponse$outboundSchema: z.ZodType<
+  ListSchedulesResponse$Outbound,
+  z.ZodTypeDef,
+  ListSchedulesResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.ScheduleResponse$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListSchedulesResponse$ {
+  /** @deprecated use `ListSchedulesResponse$inboundSchema` instead. */
+  export const inboundSchema = ListSchedulesResponse$inboundSchema;
+  /** @deprecated use `ListSchedulesResponse$outboundSchema` instead. */
+  export const outboundSchema = ListSchedulesResponse$outboundSchema;
+  /** @deprecated use `ListSchedulesResponse$Outbound` instead. */
+  export type Outbound = ListSchedulesResponse$Outbound;
+}
+
+export function listSchedulesResponseToJSON(
+  listSchedulesResponse: ListSchedulesResponse,
+): string {
+  return JSON.stringify(
+    ListSchedulesResponse$outboundSchema.parse(listSchedulesResponse),
+  );
+}
+
+export function listSchedulesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListSchedulesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSchedulesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSchedulesResponse' from JSON`,
   );
 }

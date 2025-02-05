@@ -1,23 +1,16 @@
 # GetDisputeEvidenceDataResponse
 
-
-## Supported Types
-
-### `ReadableStream<Uint8Array>`
+## Example Usage
 
 ```typescript
-const value: ReadableStream<Uint8Array> = await openAsBlob("example.file");
+import { GetDisputeEvidenceDataResponse } from "@moovio/sdk/models/operations";
+
+// No examples available for this model
 ```
 
-### `ReadableStream<Uint8Array>`
+## Fields
 
-```typescript
-const value: ReadableStream<Uint8Array> = await openAsBlob("example.file");
-```
-
-### `ReadableStream<Uint8Array>`
-
-```typescript
-const value: ReadableStream<Uint8Array> = await openAsBlob("example.file");
-```
-
+| Field                                             | Type                                              | Required                                          | Description                                       |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| `headers`                                         | Record<string, *string*[]>                        | :heavy_check_mark:                                | N/A                                               |
+| `result`                                          | *operations.GetDisputeEvidenceDataResponseResult* | :heavy_check_mark:                                | N/A                                               |

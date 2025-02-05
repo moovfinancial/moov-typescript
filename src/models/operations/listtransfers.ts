@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListTransfersSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListTransfersGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListTransfersRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * Optional, comma-separated account IDs by which the response is filtered based on whether the account ID is the source or destination.
    */
@@ -52,39 +60,39 @@ export type ListTransfersRequest = {
   accountID: string;
 };
 
+export type ListTransfersResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.Transfer>;
+};
+
 /** @internal */
-export const ListTransfersSecurity$inboundSchema: z.ZodType<
-  ListTransfersSecurity,
+export const ListTransfersGlobals$inboundSchema: z.ZodType<
+  ListTransfersGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListTransfersSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListTransfersGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListTransfersSecurity$outboundSchema: z.ZodType<
-  ListTransfersSecurity$Outbound,
+export const ListTransfersGlobals$outboundSchema: z.ZodType<
+  ListTransfersGlobals$Outbound,
   z.ZodTypeDef,
-  ListTransfersSecurity
+  ListTransfersGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -92,30 +100,30 @@ export const ListTransfersSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListTransfersSecurity$ {
-  /** @deprecated use `ListTransfersSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListTransfersSecurity$inboundSchema;
-  /** @deprecated use `ListTransfersSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListTransfersSecurity$outboundSchema;
-  /** @deprecated use `ListTransfersSecurity$Outbound` instead. */
-  export type Outbound = ListTransfersSecurity$Outbound;
+export namespace ListTransfersGlobals$ {
+  /** @deprecated use `ListTransfersGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListTransfersGlobals$inboundSchema;
+  /** @deprecated use `ListTransfersGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListTransfersGlobals$outboundSchema;
+  /** @deprecated use `ListTransfersGlobals$Outbound` instead. */
+  export type Outbound = ListTransfersGlobals$Outbound;
 }
 
-export function listTransfersSecurityToJSON(
-  listTransfersSecurity: ListTransfersSecurity,
+export function listTransfersGlobalsToJSON(
+  listTransfersGlobals: ListTransfersGlobals,
 ): string {
   return JSON.stringify(
-    ListTransfersSecurity$outboundSchema.parse(listTransfersSecurity),
+    ListTransfersGlobals$outboundSchema.parse(listTransfersGlobals),
   );
 }
 
-export function listTransfersSecurityFromJSON(
+export function listTransfersGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListTransfersSecurity, SDKValidationError> {
+): SafeParseResult<ListTransfersGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListTransfersSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListTransfersSecurity' from JSON`,
+    (x) => ListTransfersGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTransfersGlobals' from JSON`,
   );
 }
 
@@ -125,7 +133,6 @@ export const ListTransfersRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountIDs: z.array(z.string()).optional(),
   status: components.TransferStatus$inboundSchema.optional(),
   startDateTime: z.string().datetime({ offset: true }).transform(v =>
@@ -139,15 +146,10 @@ export const ListTransfersRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListTransfersRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountIDs?: Array<string> | undefined;
   status?: string | undefined;
   startDateTime?: string | undefined;
@@ -166,7 +168,6 @@ export const ListTransfersRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListTransfersRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountIDs: z.array(z.string()).optional(),
   status: components.TransferStatus$outboundSchema.optional(),
   startDateTime: z.date().transform(v => v.toISOString()).optional(),
@@ -177,10 +178,6 @@ export const ListTransfersRequest$outboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -211,5 +208,72 @@ export function listTransfersRequestFromJSON(
     jsonString,
     (x) => ListTransfersRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListTransfersRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListTransfersResponse$inboundSchema: z.ZodType<
+  ListTransfersResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.Transfer$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListTransfersResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.Transfer$Outbound>;
+};
+
+/** @internal */
+export const ListTransfersResponse$outboundSchema: z.ZodType<
+  ListTransfersResponse$Outbound,
+  z.ZodTypeDef,
+  ListTransfersResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.Transfer$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTransfersResponse$ {
+  /** @deprecated use `ListTransfersResponse$inboundSchema` instead. */
+  export const inboundSchema = ListTransfersResponse$inboundSchema;
+  /** @deprecated use `ListTransfersResponse$outboundSchema` instead. */
+  export const outboundSchema = ListTransfersResponse$outboundSchema;
+  /** @deprecated use `ListTransfersResponse$Outbound` instead. */
+  export type Outbound = ListTransfersResponse$Outbound;
+}
+
+export function listTransfersResponseToJSON(
+  listTransfersResponse: ListTransfersResponse,
+): string {
+  return JSON.stringify(
+    ListTransfersResponse$outboundSchema.parse(listTransfersResponse),
+  );
+}
+
+export function listTransfersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTransfersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTransfersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTransfersResponse' from JSON`,
   );
 }

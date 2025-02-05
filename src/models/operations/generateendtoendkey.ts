@@ -9,20 +9,37 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GenerateEndToEndKeyRequest = {
+export type GenerateEndToEndKeyGlobals = {
   /**
    * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
    */
-  xMoovVersion?: components.Versions | undefined;
+  xMoovVersion?: string | undefined;
+};
+
+export type GenerateEndToEndKeyRequest = {};
+
+export type GenerateEndToEndKeyResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.JSONWebKey;
 };
 
 /** @internal */
-export const GenerateEndToEndKeyRequest$inboundSchema: z.ZodType<
-  GenerateEndToEndKeyRequest,
+export const GenerateEndToEndKeyGlobals$inboundSchema: z.ZodType<
+  GenerateEndToEndKeyGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
     "x-moov-version": "xMoovVersion",
@@ -30,22 +47,70 @@ export const GenerateEndToEndKeyRequest$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GenerateEndToEndKeyRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
+export type GenerateEndToEndKeyGlobals$Outbound = {
+  "x-moov-version": string;
 };
+
+/** @internal */
+export const GenerateEndToEndKeyGlobals$outboundSchema: z.ZodType<
+  GenerateEndToEndKeyGlobals$Outbound,
+  z.ZodTypeDef,
+  GenerateEndToEndKeyGlobals
+> = z.object({
+  xMoovVersion: z.string().default("v2024.01"),
+}).transform((v) => {
+  return remap$(v, {
+    xMoovVersion: "x-moov-version",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GenerateEndToEndKeyGlobals$ {
+  /** @deprecated use `GenerateEndToEndKeyGlobals$inboundSchema` instead. */
+  export const inboundSchema = GenerateEndToEndKeyGlobals$inboundSchema;
+  /** @deprecated use `GenerateEndToEndKeyGlobals$outboundSchema` instead. */
+  export const outboundSchema = GenerateEndToEndKeyGlobals$outboundSchema;
+  /** @deprecated use `GenerateEndToEndKeyGlobals$Outbound` instead. */
+  export type Outbound = GenerateEndToEndKeyGlobals$Outbound;
+}
+
+export function generateEndToEndKeyGlobalsToJSON(
+  generateEndToEndKeyGlobals: GenerateEndToEndKeyGlobals,
+): string {
+  return JSON.stringify(
+    GenerateEndToEndKeyGlobals$outboundSchema.parse(generateEndToEndKeyGlobals),
+  );
+}
+
+export function generateEndToEndKeyGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GenerateEndToEndKeyGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GenerateEndToEndKeyGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenerateEndToEndKeyGlobals' from JSON`,
+  );
+}
+
+/** @internal */
+export const GenerateEndToEndKeyRequest$inboundSchema: z.ZodType<
+  GenerateEndToEndKeyRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type GenerateEndToEndKeyRequest$Outbound = {};
 
 /** @internal */
 export const GenerateEndToEndKeyRequest$outboundSchema: z.ZodType<
   GenerateEndToEndKeyRequest$Outbound,
   z.ZodTypeDef,
   GenerateEndToEndKeyRequest
-> = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
-});
+> = z.object({});
 
 /**
  * @internal
@@ -75,5 +140,74 @@ export function generateEndToEndKeyRequestFromJSON(
     jsonString,
     (x) => GenerateEndToEndKeyRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GenerateEndToEndKeyRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GenerateEndToEndKeyResponse$inboundSchema: z.ZodType<
+  GenerateEndToEndKeyResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.JSONWebKey$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GenerateEndToEndKeyResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.JSONWebKey$Outbound;
+};
+
+/** @internal */
+export const GenerateEndToEndKeyResponse$outboundSchema: z.ZodType<
+  GenerateEndToEndKeyResponse$Outbound,
+  z.ZodTypeDef,
+  GenerateEndToEndKeyResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.JSONWebKey$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GenerateEndToEndKeyResponse$ {
+  /** @deprecated use `GenerateEndToEndKeyResponse$inboundSchema` instead. */
+  export const inboundSchema = GenerateEndToEndKeyResponse$inboundSchema;
+  /** @deprecated use `GenerateEndToEndKeyResponse$outboundSchema` instead. */
+  export const outboundSchema = GenerateEndToEndKeyResponse$outboundSchema;
+  /** @deprecated use `GenerateEndToEndKeyResponse$Outbound` instead. */
+  export type Outbound = GenerateEndToEndKeyResponse$Outbound;
+}
+
+export function generateEndToEndKeyResponseToJSON(
+  generateEndToEndKeyResponse: GenerateEndToEndKeyResponse,
+): string {
+  return JSON.stringify(
+    GenerateEndToEndKeyResponse$outboundSchema.parse(
+      generateEndToEndKeyResponse,
+    ),
+  );
+}
+
+export function generateEndToEndKeyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GenerateEndToEndKeyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GenerateEndToEndKeyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenerateEndToEndKeyResponse' from JSON`,
   );
 }

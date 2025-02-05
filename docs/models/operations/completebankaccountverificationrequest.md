@@ -6,8 +6,8 @@
 import { CompleteBankAccountVerificationRequest } from "@moovio/sdk/models/operations";
 
 let value: CompleteBankAccountVerificationRequest = {
-  accountID: "33b63d61-b499-4f34-aeb7-b66284a6dc29",
-  bankAccountID: "81865953-b3cf-47c2-acf8-42e5766ceaf3",
+  accountID: "4cb8b600-810f-4d20-8f42-b14fa86c2fd9",
+  bankAccountID: "be851ce1-c0f9-484e-84df-c81773652748",
   completeBankAccountVerification: {
     code: "MV1234",
   },
@@ -18,7 +18,6 @@ let value: CompleteBankAccountVerificationRequest = {
 
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `xMoovVersion`                                                                                           | [components.Versions](../../models/components/versions.md)                                               | :heavy_minus_sign:                                                                                       | Specify an API version.                                                                                  |
 | `accountID`                                                                                              | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `bankAccountID`                                                                                          | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `completeBankAccountVerification`                                                                        | [components.CompleteBankAccountVerification](../../models/components/completebankaccountverification.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |

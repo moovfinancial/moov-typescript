@@ -9,11 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetTermsOfServiceTokenRequest = {
+export type GetTermsOfServiceTokenGlobals = {
   /**
    * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
    */
-  xMoovVersion?: components.Versions | undefined;
+  xMoovVersion?: string | undefined;
+};
+
+export type GetTermsOfServiceTokenRequest = {
   /**
    * Indicates the domain from which the request originated. Required if referer header is not present.
    */
@@ -24,15 +37,18 @@ export type GetTermsOfServiceTokenRequest = {
   referer?: string | undefined;
 };
 
+export type GetTermsOfServiceTokenResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.TermsOfServiceToken;
+};
+
 /** @internal */
-export const GetTermsOfServiceTokenRequest$inboundSchema: z.ZodType<
-  GetTermsOfServiceTokenRequest,
+export const GetTermsOfServiceTokenGlobals$inboundSchema: z.ZodType<
+  GetTermsOfServiceTokenGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
-  origin: z.string().optional(),
-  referer: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
     "x-moov-version": "xMoovVersion",
@@ -40,8 +56,68 @@ export const GetTermsOfServiceTokenRequest$inboundSchema: z.ZodType<
 });
 
 /** @internal */
+export type GetTermsOfServiceTokenGlobals$Outbound = {
+  "x-moov-version": string;
+};
+
+/** @internal */
+export const GetTermsOfServiceTokenGlobals$outboundSchema: z.ZodType<
+  GetTermsOfServiceTokenGlobals$Outbound,
+  z.ZodTypeDef,
+  GetTermsOfServiceTokenGlobals
+> = z.object({
+  xMoovVersion: z.string().default("v2024.01"),
+}).transform((v) => {
+  return remap$(v, {
+    xMoovVersion: "x-moov-version",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetTermsOfServiceTokenGlobals$ {
+  /** @deprecated use `GetTermsOfServiceTokenGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetTermsOfServiceTokenGlobals$inboundSchema;
+  /** @deprecated use `GetTermsOfServiceTokenGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetTermsOfServiceTokenGlobals$outboundSchema;
+  /** @deprecated use `GetTermsOfServiceTokenGlobals$Outbound` instead. */
+  export type Outbound = GetTermsOfServiceTokenGlobals$Outbound;
+}
+
+export function getTermsOfServiceTokenGlobalsToJSON(
+  getTermsOfServiceTokenGlobals: GetTermsOfServiceTokenGlobals,
+): string {
+  return JSON.stringify(
+    GetTermsOfServiceTokenGlobals$outboundSchema.parse(
+      getTermsOfServiceTokenGlobals,
+    ),
+  );
+}
+
+export function getTermsOfServiceTokenGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTermsOfServiceTokenGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTermsOfServiceTokenGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTermsOfServiceTokenGlobals' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetTermsOfServiceTokenRequest$inboundSchema: z.ZodType<
+  GetTermsOfServiceTokenRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  origin: z.string().optional(),
+  referer: z.string().optional(),
+});
+
+/** @internal */
 export type GetTermsOfServiceTokenRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   origin?: string | undefined;
   referer?: string | undefined;
 };
@@ -52,13 +128,8 @@ export const GetTermsOfServiceTokenRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTermsOfServiceTokenRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   origin: z.string().optional(),
   referer: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -91,5 +162,74 @@ export function getTermsOfServiceTokenRequestFromJSON(
     jsonString,
     (x) => GetTermsOfServiceTokenRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetTermsOfServiceTokenRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetTermsOfServiceTokenResponse$inboundSchema: z.ZodType<
+  GetTermsOfServiceTokenResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.TermsOfServiceToken$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetTermsOfServiceTokenResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.TermsOfServiceToken$Outbound;
+};
+
+/** @internal */
+export const GetTermsOfServiceTokenResponse$outboundSchema: z.ZodType<
+  GetTermsOfServiceTokenResponse$Outbound,
+  z.ZodTypeDef,
+  GetTermsOfServiceTokenResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.TermsOfServiceToken$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetTermsOfServiceTokenResponse$ {
+  /** @deprecated use `GetTermsOfServiceTokenResponse$inboundSchema` instead. */
+  export const inboundSchema = GetTermsOfServiceTokenResponse$inboundSchema;
+  /** @deprecated use `GetTermsOfServiceTokenResponse$outboundSchema` instead. */
+  export const outboundSchema = GetTermsOfServiceTokenResponse$outboundSchema;
+  /** @deprecated use `GetTermsOfServiceTokenResponse$Outbound` instead. */
+  export type Outbound = GetTermsOfServiceTokenResponse$Outbound;
+}
+
+export function getTermsOfServiceTokenResponseToJSON(
+  getTermsOfServiceTokenResponse: GetTermsOfServiceTokenResponse,
+): string {
+  return JSON.stringify(
+    GetTermsOfServiceTokenResponse$outboundSchema.parse(
+      getTermsOfServiceTokenResponse,
+    ),
+  );
+}
+
+export function getTermsOfServiceTokenResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTermsOfServiceTokenResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTermsOfServiceTokenResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTermsOfServiceTokenResponse' from JSON`,
   );
 }

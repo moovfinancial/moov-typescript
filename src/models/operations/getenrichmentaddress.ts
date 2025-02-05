@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetEnrichmentAddressSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetEnrichmentAddressGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetEnrichmentAddressRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * Partial or complete address to search.
    */
@@ -60,7 +68,7 @@ export type GetEnrichmentAddressRequest = {
    */
   preferRatio?: number | undefined;
   /**
-   *   If omitted or set to `city`, it uses the sender’s IP address to determine location, then automatically adds the city and state
+   *   If omitted or set to `city`, it uses the sender's IP address to determine location, then automatically adds the city and state
    *
    * @remarks
    *   to the preferCities value. This parameter takes precedence over other `include` or `exclude` parameters meaning that if it is
@@ -77,39 +85,39 @@ export type GetEnrichmentAddressRequest = {
   source?: string | undefined;
 };
 
+export type GetEnrichmentAddressResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.EnrichedAddressResponse;
+};
+
 /** @internal */
-export const GetEnrichmentAddressSecurity$inboundSchema: z.ZodType<
-  GetEnrichmentAddressSecurity,
+export const GetEnrichmentAddressGlobals$inboundSchema: z.ZodType<
+  GetEnrichmentAddressGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetEnrichmentAddressSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetEnrichmentAddressGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetEnrichmentAddressSecurity$outboundSchema: z.ZodType<
-  GetEnrichmentAddressSecurity$Outbound,
+export const GetEnrichmentAddressGlobals$outboundSchema: z.ZodType<
+  GetEnrichmentAddressGlobals$Outbound,
   z.ZodTypeDef,
-  GetEnrichmentAddressSecurity
+  GetEnrichmentAddressGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -117,32 +125,32 @@ export const GetEnrichmentAddressSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetEnrichmentAddressSecurity$ {
-  /** @deprecated use `GetEnrichmentAddressSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetEnrichmentAddressSecurity$inboundSchema;
-  /** @deprecated use `GetEnrichmentAddressSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetEnrichmentAddressSecurity$outboundSchema;
-  /** @deprecated use `GetEnrichmentAddressSecurity$Outbound` instead. */
-  export type Outbound = GetEnrichmentAddressSecurity$Outbound;
+export namespace GetEnrichmentAddressGlobals$ {
+  /** @deprecated use `GetEnrichmentAddressGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetEnrichmentAddressGlobals$inboundSchema;
+  /** @deprecated use `GetEnrichmentAddressGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetEnrichmentAddressGlobals$outboundSchema;
+  /** @deprecated use `GetEnrichmentAddressGlobals$Outbound` instead. */
+  export type Outbound = GetEnrichmentAddressGlobals$Outbound;
 }
 
-export function getEnrichmentAddressSecurityToJSON(
-  getEnrichmentAddressSecurity: GetEnrichmentAddressSecurity,
+export function getEnrichmentAddressGlobalsToJSON(
+  getEnrichmentAddressGlobals: GetEnrichmentAddressGlobals,
 ): string {
   return JSON.stringify(
-    GetEnrichmentAddressSecurity$outboundSchema.parse(
-      getEnrichmentAddressSecurity,
+    GetEnrichmentAddressGlobals$outboundSchema.parse(
+      getEnrichmentAddressGlobals,
     ),
   );
 }
 
-export function getEnrichmentAddressSecurityFromJSON(
+export function getEnrichmentAddressGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetEnrichmentAddressSecurity, SDKValidationError> {
+): SafeParseResult<GetEnrichmentAddressGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetEnrichmentAddressSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetEnrichmentAddressSecurity' from JSON`,
+    (x) => GetEnrichmentAddressGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEnrichmentAddressGlobals' from JSON`,
   );
 }
 
@@ -152,7 +160,6 @@ export const GetEnrichmentAddressRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   search: z.string(),
   maxResults: z.number().int().optional(),
   includeCities: z.string().optional(),
@@ -166,15 +173,10 @@ export const GetEnrichmentAddressRequest$inboundSchema: z.ZodType<
   preferGeolocation: z.string().optional(),
   selected: z.string().optional(),
   source: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetEnrichmentAddressRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   search: string;
   maxResults?: number | undefined;
   includeCities?: string | undefined;
@@ -196,7 +198,6 @@ export const GetEnrichmentAddressRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetEnrichmentAddressRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   search: z.string(),
   maxResults: z.number().int().optional(),
   includeCities: z.string().optional(),
@@ -210,10 +211,6 @@ export const GetEnrichmentAddressRequest$outboundSchema: z.ZodType<
   preferGeolocation: z.string().optional(),
   selected: z.string().optional(),
   source: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -246,5 +243,74 @@ export function getEnrichmentAddressRequestFromJSON(
     jsonString,
     (x) => GetEnrichmentAddressRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetEnrichmentAddressRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetEnrichmentAddressResponse$inboundSchema: z.ZodType<
+  GetEnrichmentAddressResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.EnrichedAddressResponse$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetEnrichmentAddressResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.EnrichedAddressResponse$Outbound;
+};
+
+/** @internal */
+export const GetEnrichmentAddressResponse$outboundSchema: z.ZodType<
+  GetEnrichmentAddressResponse$Outbound,
+  z.ZodTypeDef,
+  GetEnrichmentAddressResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.EnrichedAddressResponse$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetEnrichmentAddressResponse$ {
+  /** @deprecated use `GetEnrichmentAddressResponse$inboundSchema` instead. */
+  export const inboundSchema = GetEnrichmentAddressResponse$inboundSchema;
+  /** @deprecated use `GetEnrichmentAddressResponse$outboundSchema` instead. */
+  export const outboundSchema = GetEnrichmentAddressResponse$outboundSchema;
+  /** @deprecated use `GetEnrichmentAddressResponse$Outbound` instead. */
+  export type Outbound = GetEnrichmentAddressResponse$Outbound;
+}
+
+export function getEnrichmentAddressResponseToJSON(
+  getEnrichmentAddressResponse: GetEnrichmentAddressResponse,
+): string {
+  return JSON.stringify(
+    GetEnrichmentAddressResponse$outboundSchema.parse(
+      getEnrichmentAddressResponse,
+    ),
+  );
+}
+
+export function getEnrichmentAddressResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetEnrichmentAddressResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetEnrichmentAddressResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEnrichmentAddressResponse' from JSON`,
   );
 }

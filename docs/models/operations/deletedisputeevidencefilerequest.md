@@ -6,17 +6,16 @@
 import { DeleteDisputeEvidenceFileRequest } from "@moovio/sdk/models/operations";
 
 let value: DeleteDisputeEvidenceFileRequest = {
-  accountID: "46e95cea-3d6b-47f1-8233-32b3336f5415",
-  disputeID: "c1244dc9-459b-468e-8a81-239105bbcb97",
-  evidenceID: "9a191821-1e94-4182-8c7b-6ba8d994e868",
+  accountID: "cdc47236-b8ed-4099-9f08-309cc0603335",
+  disputeID: "f5e2c070-cf0e-4c5e-9461-a07ad2cb8919",
+  evidenceID: "d596e41b-690f-4e90-a6fa-27f809416808",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `disputeID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `evidenceID`                                               | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `disputeID`        | *string*           | :heavy_check_mark: | N/A                |
+| `evidenceID`       | *string*           | :heavy_check_mark: | N/A                |

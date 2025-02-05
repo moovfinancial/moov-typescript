@@ -8,10 +8,10 @@ Details of a card refund.
 import { CardAcquiringRefund } from "@moovio/sdk/models/components";
 
 let value: CardAcquiringRefund = {
-  refundID: "18af9ffa-87e0-411c-95a9-68af991f8c06",
-  createdOn: new Date("2023-10-20T14:32:02.541Z"),
-  updatedOn: new Date("2025-05-17T10:23:56.087Z"),
-  status: "completed",
+  refundID: "4180375d-45e2-4961-8cf6-9dc844d1977c",
+  createdOn: new Date("2025-12-19T10:05:41.682Z"),
+  updatedOn: new Date("2023-12-11T18:45:08.569Z"),
+  status: "failed",
   amount: {
     currency: "USD",
     value: 1204,

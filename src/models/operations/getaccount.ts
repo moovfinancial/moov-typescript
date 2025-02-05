@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetAccountSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetAccountGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetAccountRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type GetAccountResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Account;
+};
+
 /** @internal */
-export const GetAccountSecurity$inboundSchema: z.ZodType<
-  GetAccountSecurity,
+export const GetAccountGlobals$inboundSchema: z.ZodType<
+  GetAccountGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetAccountSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetAccountGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetAccountSecurity$outboundSchema: z.ZodType<
-  GetAccountSecurity$Outbound,
+export const GetAccountGlobals$outboundSchema: z.ZodType<
+  GetAccountGlobals$Outbound,
   z.ZodTypeDef,
-  GetAccountSecurity
+  GetAccountGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,30 +70,30 @@ export const GetAccountSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetAccountSecurity$ {
-  /** @deprecated use `GetAccountSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetAccountSecurity$inboundSchema;
-  /** @deprecated use `GetAccountSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetAccountSecurity$outboundSchema;
-  /** @deprecated use `GetAccountSecurity$Outbound` instead. */
-  export type Outbound = GetAccountSecurity$Outbound;
+export namespace GetAccountGlobals$ {
+  /** @deprecated use `GetAccountGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetAccountGlobals$inboundSchema;
+  /** @deprecated use `GetAccountGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetAccountGlobals$outboundSchema;
+  /** @deprecated use `GetAccountGlobals$Outbound` instead. */
+  export type Outbound = GetAccountGlobals$Outbound;
 }
 
-export function getAccountSecurityToJSON(
-  getAccountSecurity: GetAccountSecurity,
+export function getAccountGlobalsToJSON(
+  getAccountGlobals: GetAccountGlobals,
 ): string {
   return JSON.stringify(
-    GetAccountSecurity$outboundSchema.parse(getAccountSecurity),
+    GetAccountGlobals$outboundSchema.parse(getAccountGlobals),
   );
 }
 
-export function getAccountSecurityFromJSON(
+export function getAccountGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetAccountSecurity, SDKValidationError> {
+): SafeParseResult<GetAccountGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetAccountSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAccountSecurity' from JSON`,
+    (x) => GetAccountGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAccountGlobals' from JSON`,
   );
 }
 
@@ -95,17 +103,11 @@ export const GetAccountRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetAccountRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -115,12 +117,7 @@ export const GetAccountRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAccountRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -151,5 +148,72 @@ export function getAccountRequestFromJSON(
     jsonString,
     (x) => GetAccountRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetAccountRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAccountResponse$inboundSchema: z.ZodType<
+  GetAccountResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Account$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetAccountResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Account$Outbound;
+};
+
+/** @internal */
+export const GetAccountResponse$outboundSchema: z.ZodType<
+  GetAccountResponse$Outbound,
+  z.ZodTypeDef,
+  GetAccountResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Account$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAccountResponse$ {
+  /** @deprecated use `GetAccountResponse$inboundSchema` instead. */
+  export const inboundSchema = GetAccountResponse$inboundSchema;
+  /** @deprecated use `GetAccountResponse$outboundSchema` instead. */
+  export const outboundSchema = GetAccountResponse$outboundSchema;
+  /** @deprecated use `GetAccountResponse$Outbound` instead. */
+  export type Outbound = GetAccountResponse$Outbound;
+}
+
+export function getAccountResponseToJSON(
+  getAccountResponse: GetAccountResponse,
+): string {
+  return JSON.stringify(
+    GetAccountResponse$outboundSchema.parse(getAccountResponse),
+  );
+}
+
+export function getAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAccountResponse' from JSON`,
   );
 }

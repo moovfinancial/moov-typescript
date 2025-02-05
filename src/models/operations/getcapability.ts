@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetCapabilitySecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetCapabilityGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetCapabilityRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   /**
    * Moov account capabilities.
@@ -26,39 +34,39 @@ export type GetCapabilityRequest = {
   capabilityID: components.CapabilityID;
 };
 
+export type GetCapabilityResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Capability;
+};
+
 /** @internal */
-export const GetCapabilitySecurity$inboundSchema: z.ZodType<
-  GetCapabilitySecurity,
+export const GetCapabilityGlobals$inboundSchema: z.ZodType<
+  GetCapabilityGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetCapabilitySecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetCapabilityGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetCapabilitySecurity$outboundSchema: z.ZodType<
-  GetCapabilitySecurity$Outbound,
+export const GetCapabilityGlobals$outboundSchema: z.ZodType<
+  GetCapabilityGlobals$Outbound,
   z.ZodTypeDef,
-  GetCapabilitySecurity
+  GetCapabilityGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -66,30 +74,30 @@ export const GetCapabilitySecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetCapabilitySecurity$ {
-  /** @deprecated use `GetCapabilitySecurity$inboundSchema` instead. */
-  export const inboundSchema = GetCapabilitySecurity$inboundSchema;
-  /** @deprecated use `GetCapabilitySecurity$outboundSchema` instead. */
-  export const outboundSchema = GetCapabilitySecurity$outboundSchema;
-  /** @deprecated use `GetCapabilitySecurity$Outbound` instead. */
-  export type Outbound = GetCapabilitySecurity$Outbound;
+export namespace GetCapabilityGlobals$ {
+  /** @deprecated use `GetCapabilityGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetCapabilityGlobals$inboundSchema;
+  /** @deprecated use `GetCapabilityGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetCapabilityGlobals$outboundSchema;
+  /** @deprecated use `GetCapabilityGlobals$Outbound` instead. */
+  export type Outbound = GetCapabilityGlobals$Outbound;
 }
 
-export function getCapabilitySecurityToJSON(
-  getCapabilitySecurity: GetCapabilitySecurity,
+export function getCapabilityGlobalsToJSON(
+  getCapabilityGlobals: GetCapabilityGlobals,
 ): string {
   return JSON.stringify(
-    GetCapabilitySecurity$outboundSchema.parse(getCapabilitySecurity),
+    GetCapabilityGlobals$outboundSchema.parse(getCapabilityGlobals),
   );
 }
 
-export function getCapabilitySecurityFromJSON(
+export function getCapabilityGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetCapabilitySecurity, SDKValidationError> {
+): SafeParseResult<GetCapabilityGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetCapabilitySecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetCapabilitySecurity' from JSON`,
+    (x) => GetCapabilityGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCapabilityGlobals' from JSON`,
   );
 }
 
@@ -99,18 +107,12 @@ export const GetCapabilityRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   capabilityID: components.CapabilityID$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetCapabilityRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   capabilityID: string;
 };
@@ -121,13 +123,8 @@ export const GetCapabilityRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetCapabilityRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   capabilityID: components.CapabilityID$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -158,5 +155,72 @@ export function getCapabilityRequestFromJSON(
     jsonString,
     (x) => GetCapabilityRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetCapabilityRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetCapabilityResponse$inboundSchema: z.ZodType<
+  GetCapabilityResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Capability$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetCapabilityResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Capability$Outbound;
+};
+
+/** @internal */
+export const GetCapabilityResponse$outboundSchema: z.ZodType<
+  GetCapabilityResponse$Outbound,
+  z.ZodTypeDef,
+  GetCapabilityResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Capability$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetCapabilityResponse$ {
+  /** @deprecated use `GetCapabilityResponse$inboundSchema` instead. */
+  export const inboundSchema = GetCapabilityResponse$inboundSchema;
+  /** @deprecated use `GetCapabilityResponse$outboundSchema` instead. */
+  export const outboundSchema = GetCapabilityResponse$outboundSchema;
+  /** @deprecated use `GetCapabilityResponse$Outbound` instead. */
+  export type Outbound = GetCapabilityResponse$Outbound;
+}
+
+export function getCapabilityResponseToJSON(
+  getCapabilityResponse: GetCapabilityResponse,
+): string {
+  return JSON.stringify(
+    GetCapabilityResponse$outboundSchema.parse(getCapabilityResponse),
+  );
+}
+
+export function getCapabilityResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetCapabilityResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetCapabilityResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCapabilityResponse' from JSON`,
   );
 }

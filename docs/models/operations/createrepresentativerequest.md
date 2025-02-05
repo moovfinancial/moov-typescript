@@ -6,7 +6,7 @@
 import { CreateRepresentativeRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateRepresentativeRequest = {
-  accountID: "3f4d6da0-1013-4cb3-86d1-91f7e2f00dc3",
+  accountID: "a8327ccf-660d-4ac7-9e01-61193aed31ff",
   createRepresentative: {
     name: {
       firstName: "Jordan",
@@ -44,6 +44,5 @@ let value: CreateRepresentativeRequest = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `xMoovVersion`                                                                     | [components.Versions](../../models/components/versions.md)                         | :heavy_minus_sign:                                                                 | Specify an API version.                                                            |
 | `accountID`                                                                        | *string*                                                                           | :heavy_check_mark:                                                                 | ID of the account.                                                                 |
 | `createRepresentative`                                                             | [components.CreateRepresentative](../../models/components/createrepresentative.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

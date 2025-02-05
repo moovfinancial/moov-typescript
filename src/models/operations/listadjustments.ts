@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListAdjustmentsSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListAdjustmentsGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListAdjustmentsRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   /**
    * A wallet ID to filter adjustments by.
@@ -26,39 +34,39 @@ export type ListAdjustmentsRequest = {
   walletID?: string | undefined;
 };
 
+export type ListAdjustmentsResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.Adjustment>;
+};
+
 /** @internal */
-export const ListAdjustmentsSecurity$inboundSchema: z.ZodType<
-  ListAdjustmentsSecurity,
+export const ListAdjustmentsGlobals$inboundSchema: z.ZodType<
+  ListAdjustmentsGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListAdjustmentsSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListAdjustmentsGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListAdjustmentsSecurity$outboundSchema: z.ZodType<
-  ListAdjustmentsSecurity$Outbound,
+export const ListAdjustmentsGlobals$outboundSchema: z.ZodType<
+  ListAdjustmentsGlobals$Outbound,
   z.ZodTypeDef,
-  ListAdjustmentsSecurity
+  ListAdjustmentsGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -66,30 +74,30 @@ export const ListAdjustmentsSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListAdjustmentsSecurity$ {
-  /** @deprecated use `ListAdjustmentsSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListAdjustmentsSecurity$inboundSchema;
-  /** @deprecated use `ListAdjustmentsSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListAdjustmentsSecurity$outboundSchema;
-  /** @deprecated use `ListAdjustmentsSecurity$Outbound` instead. */
-  export type Outbound = ListAdjustmentsSecurity$Outbound;
+export namespace ListAdjustmentsGlobals$ {
+  /** @deprecated use `ListAdjustmentsGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListAdjustmentsGlobals$inboundSchema;
+  /** @deprecated use `ListAdjustmentsGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListAdjustmentsGlobals$outboundSchema;
+  /** @deprecated use `ListAdjustmentsGlobals$Outbound` instead. */
+  export type Outbound = ListAdjustmentsGlobals$Outbound;
 }
 
-export function listAdjustmentsSecurityToJSON(
-  listAdjustmentsSecurity: ListAdjustmentsSecurity,
+export function listAdjustmentsGlobalsToJSON(
+  listAdjustmentsGlobals: ListAdjustmentsGlobals,
 ): string {
   return JSON.stringify(
-    ListAdjustmentsSecurity$outboundSchema.parse(listAdjustmentsSecurity),
+    ListAdjustmentsGlobals$outboundSchema.parse(listAdjustmentsGlobals),
   );
 }
 
-export function listAdjustmentsSecurityFromJSON(
+export function listAdjustmentsGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListAdjustmentsSecurity, SDKValidationError> {
+): SafeParseResult<ListAdjustmentsGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListAdjustmentsSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAdjustmentsSecurity' from JSON`,
+    (x) => ListAdjustmentsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAdjustmentsGlobals' from JSON`,
   );
 }
 
@@ -99,18 +107,12 @@ export const ListAdjustmentsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   walletID: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListAdjustmentsRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   walletID?: string | undefined;
 };
@@ -121,13 +123,8 @@ export const ListAdjustmentsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListAdjustmentsRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   walletID: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -158,5 +155,72 @@ export function listAdjustmentsRequestFromJSON(
     jsonString,
     (x) => ListAdjustmentsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListAdjustmentsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAdjustmentsResponse$inboundSchema: z.ZodType<
+  ListAdjustmentsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.Adjustment$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListAdjustmentsResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.Adjustment$Outbound>;
+};
+
+/** @internal */
+export const ListAdjustmentsResponse$outboundSchema: z.ZodType<
+  ListAdjustmentsResponse$Outbound,
+  z.ZodTypeDef,
+  ListAdjustmentsResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.Adjustment$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAdjustmentsResponse$ {
+  /** @deprecated use `ListAdjustmentsResponse$inboundSchema` instead. */
+  export const inboundSchema = ListAdjustmentsResponse$inboundSchema;
+  /** @deprecated use `ListAdjustmentsResponse$outboundSchema` instead. */
+  export const outboundSchema = ListAdjustmentsResponse$outboundSchema;
+  /** @deprecated use `ListAdjustmentsResponse$Outbound` instead. */
+  export type Outbound = ListAdjustmentsResponse$Outbound;
+}
+
+export function listAdjustmentsResponseToJSON(
+  listAdjustmentsResponse: ListAdjustmentsResponse,
+): string {
+  return JSON.stringify(
+    ListAdjustmentsResponse$outboundSchema.parse(listAdjustmentsResponse),
+  );
+}
+
+export function listAdjustmentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAdjustmentsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAdjustmentsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAdjustmentsResponse' from JSON`,
   );
 }

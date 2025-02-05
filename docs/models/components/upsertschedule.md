@@ -36,7 +36,8 @@ let value: UpsertSchedule = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "founder how sprinkles",
+        description:
+          "downshift ew happily bashfully gosh husband throughout anti proper",
       },
     },
   ],
@@ -68,7 +69,7 @@ let value: UpsertSchedule = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "anti waterspout consequently republican depend ha after",
+      description: "how opposite even boo however as before hoot forenenst",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },

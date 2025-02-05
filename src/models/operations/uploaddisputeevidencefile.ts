@@ -9,54 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type UploadDisputeEvidenceFileSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type UploadDisputeEvidenceFileGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type UploadDisputeEvidenceFileRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   disputeID: string;
   createEvidenceFileMultiPart: components.CreateEvidenceFileMultiPart;
 };
 
+export type UploadDisputeEvidenceFileResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const UploadDisputeEvidenceFileSecurity$inboundSchema: z.ZodType<
-  UploadDisputeEvidenceFileSecurity,
+export const UploadDisputeEvidenceFileGlobals$inboundSchema: z.ZodType<
+  UploadDisputeEvidenceFileGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type UploadDisputeEvidenceFileSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type UploadDisputeEvidenceFileGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const UploadDisputeEvidenceFileSecurity$outboundSchema: z.ZodType<
-  UploadDisputeEvidenceFileSecurity$Outbound,
+export const UploadDisputeEvidenceFileGlobals$outboundSchema: z.ZodType<
+  UploadDisputeEvidenceFileGlobals$Outbound,
   z.ZodTypeDef,
-  UploadDisputeEvidenceFileSecurity
+  UploadDisputeEvidenceFileGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -64,33 +71,32 @@ export const UploadDisputeEvidenceFileSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UploadDisputeEvidenceFileSecurity$ {
-  /** @deprecated use `UploadDisputeEvidenceFileSecurity$inboundSchema` instead. */
-  export const inboundSchema = UploadDisputeEvidenceFileSecurity$inboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceFileSecurity$outboundSchema` instead. */
-  export const outboundSchema =
-    UploadDisputeEvidenceFileSecurity$outboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceFileSecurity$Outbound` instead. */
-  export type Outbound = UploadDisputeEvidenceFileSecurity$Outbound;
+export namespace UploadDisputeEvidenceFileGlobals$ {
+  /** @deprecated use `UploadDisputeEvidenceFileGlobals$inboundSchema` instead. */
+  export const inboundSchema = UploadDisputeEvidenceFileGlobals$inboundSchema;
+  /** @deprecated use `UploadDisputeEvidenceFileGlobals$outboundSchema` instead. */
+  export const outboundSchema = UploadDisputeEvidenceFileGlobals$outboundSchema;
+  /** @deprecated use `UploadDisputeEvidenceFileGlobals$Outbound` instead. */
+  export type Outbound = UploadDisputeEvidenceFileGlobals$Outbound;
 }
 
-export function uploadDisputeEvidenceFileSecurityToJSON(
-  uploadDisputeEvidenceFileSecurity: UploadDisputeEvidenceFileSecurity,
+export function uploadDisputeEvidenceFileGlobalsToJSON(
+  uploadDisputeEvidenceFileGlobals: UploadDisputeEvidenceFileGlobals,
 ): string {
   return JSON.stringify(
-    UploadDisputeEvidenceFileSecurity$outboundSchema.parse(
-      uploadDisputeEvidenceFileSecurity,
+    UploadDisputeEvidenceFileGlobals$outboundSchema.parse(
+      uploadDisputeEvidenceFileGlobals,
     ),
   );
 }
 
-export function uploadDisputeEvidenceFileSecurityFromJSON(
+export function uploadDisputeEvidenceFileGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<UploadDisputeEvidenceFileSecurity, SDKValidationError> {
+): SafeParseResult<UploadDisputeEvidenceFileGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UploadDisputeEvidenceFileSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadDisputeEvidenceFileSecurity' from JSON`,
+    (x) => UploadDisputeEvidenceFileGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDisputeEvidenceFileGlobals' from JSON`,
   );
 }
 
@@ -100,21 +106,18 @@ export const UploadDisputeEvidenceFileRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
   CreateEvidenceFileMultiPart:
     components.CreateEvidenceFileMultiPart$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "CreateEvidenceFileMultiPart": "createEvidenceFileMultiPart",
   });
 });
 
 /** @internal */
 export type UploadDisputeEvidenceFileRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   disputeID: string;
   CreateEvidenceFileMultiPart: components.CreateEvidenceFileMultiPart$Outbound;
@@ -126,14 +129,12 @@ export const UploadDisputeEvidenceFileRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UploadDisputeEvidenceFileRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
   createEvidenceFileMultiPart:
     components.CreateEvidenceFileMultiPart$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     createEvidenceFileMultiPart: "CreateEvidenceFileMultiPart",
   });
 });
@@ -168,5 +169,70 @@ export function uploadDisputeEvidenceFileRequestFromJSON(
     jsonString,
     (x) => UploadDisputeEvidenceFileRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UploadDisputeEvidenceFileRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadDisputeEvidenceFileResponse$inboundSchema: z.ZodType<
+  UploadDisputeEvidenceFileResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type UploadDisputeEvidenceFileResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const UploadDisputeEvidenceFileResponse$outboundSchema: z.ZodType<
+  UploadDisputeEvidenceFileResponse$Outbound,
+  z.ZodTypeDef,
+  UploadDisputeEvidenceFileResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UploadDisputeEvidenceFileResponse$ {
+  /** @deprecated use `UploadDisputeEvidenceFileResponse$inboundSchema` instead. */
+  export const inboundSchema = UploadDisputeEvidenceFileResponse$inboundSchema;
+  /** @deprecated use `UploadDisputeEvidenceFileResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    UploadDisputeEvidenceFileResponse$outboundSchema;
+  /** @deprecated use `UploadDisputeEvidenceFileResponse$Outbound` instead. */
+  export type Outbound = UploadDisputeEvidenceFileResponse$Outbound;
+}
+
+export function uploadDisputeEvidenceFileResponseToJSON(
+  uploadDisputeEvidenceFileResponse: UploadDisputeEvidenceFileResponse,
+): string {
+  return JSON.stringify(
+    UploadDisputeEvidenceFileResponse$outboundSchema.parse(
+      uploadDisputeEvidenceFileResponse,
+    ),
+  );
+}
+
+export function uploadDisputeEvidenceFileResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDisputeEvidenceFileResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadDisputeEvidenceFileResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDisputeEvidenceFileResponse' from JSON`,
   );
 }

@@ -6,8 +6,8 @@
 import { ListSweepsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListSweepsRequest = {
-  accountID: "8e94f27e-b8b7-46ab-aedf-1f31aafc699c",
-  walletID: "6a351d14-e83f-4e13-ba38-2a8f28493e76",
+  accountID: "03c68da9-a119-45fd-ae29-0b0a3940a7b0",
+  walletID: "02c3122d-9c4a-4e8d-a3f1-c318537fa4f4",
   skip: 60,
   count: 20,
 };
@@ -17,7 +17,6 @@ let value: ListSweepsRequest = {
 
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `xMoovVersion`                                                   | [components.Versions](../../models/components/versions.md)       | :heavy_minus_sign:                                               | Specify an API version.                                          |                                                                  |
 | `accountID`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |                                                                  |
 | `walletID`                                                       | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |                                                                  |
 | `skip`                                                           | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              | 60                                                               |

@@ -7,7 +7,7 @@ The status of the capability requested for an account.
 ```typescript
 import { CapabilityStatus } from "@moovio/sdk/models/components";
 
-let value: CapabilityStatus = "pending";
+let value: CapabilityStatus = "disabled";
 ```
 
 ## Values

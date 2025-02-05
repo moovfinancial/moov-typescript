@@ -5,39 +5,48 @@
 
 ### Available Operations
 
-* [listCapabilities](#listcapabilities) - Retrieve all the capabilities an account has requested.
+* [list](#list) - Retrieve all the capabilities an account has requested.
 
 Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
-* [addCapabilities](#addcapabilities) - Request capabilities for a specific account. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
 
-To use this endpoint from the browser, you'll need to specify the `/accounts/{accountID}/capabilities.write` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
-* [getCapability](#getcapability) - Retrieve a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
+* [request](#request) - Request capabilities for a specific account. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
 
-To use this endpoint from the browser, you'll need to specify the `/accounts/{accountID}/capabilities.read` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
-* [disableCapability](#disablecapability) - Disable a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
+* [get](#get) - Retrieve a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
 
-To use this endpoint from the browser, you'll need to specify the `/accounts/{accountID}/capabilities.write` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
+* [disable](#disable) - Disable a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
 
-## listCapabilities
+  To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
+
+## list
 
 Retrieve all the capabilities an account has requested.
 
 Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.capabilities.listCapabilities({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.capabilities.list({
     accountID: "c236a258-0a99-455d-9fbb-2312bc028cd2",
   });
 
@@ -54,19 +63,19 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { capabilitiesListCapabilities } from "@moovio/sdk/funcs/capabilitiesListCapabilities.js";
+import { capabilitiesList } from "@moovio/sdk/funcs/capabilitiesList.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await capabilitiesListCapabilities(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await capabilitiesList(moov, {
     accountID: "c236a258-0a99-455d-9fbb-2312bc028cd2",
   });
 
@@ -88,14 +97,13 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.ListCapabilitiesRequest](../../models/operations/listcapabilitiesrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.ListCapabilitiesSecurity](../../models/operations/listcapabilitiessecurity.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.Capability[]](../../models/.md)\>**
+**Promise\<[operations.ListCapabilitiesResponse](../../models/operations/listcapabilitiesresponse.md)\>**
 
 ### Errors
 
@@ -103,27 +111,28 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## addCapabilities
+## request
 
 Request capabilities for a specific account. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
 
-To use this endpoint from the browser, you'll need to specify the `/accounts/{accountID}/capabilities.write` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.capabilities.addCapabilities({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
-    accountID: "1f48b82c-3158-4fa6-a507-0bd22afd441e",
+  const result = await moov.capabilities.request({
+    accountID: "32613610-de25-446e-8662-ec2709ffea9d",
     addCapabilities: {
       capabilities: [
         "collect-funds",
@@ -144,20 +153,20 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { capabilitiesAddCapabilities } from "@moovio/sdk/funcs/capabilitiesAddCapabilities.js";
+import { capabilitiesRequest } from "@moovio/sdk/funcs/capabilitiesRequest.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await capabilitiesAddCapabilities(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
-    accountID: "1f48b82c-3158-4fa6-a507-0bd22afd441e",
+  const res = await capabilitiesRequest(moov, {
+    accountID: "32613610-de25-446e-8662-ec2709ffea9d",
     addCapabilities: {
       capabilities: [
         "collect-funds",
@@ -182,15 +191,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AddCapabilitiesRequest](../../models/operations/addcapabilitiesrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.AddCapabilitiesSecurity](../../models/operations/addcapabilitiessecurity.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `request`                                                                                                                                                                      | [operations.RequestCapabilitiesRequest](../../models/operations/requestcapabilitiesrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.Capability[]](../../models/.md)\>**
+**Promise\<[operations.RequestCapabilitiesResponse](../../models/operations/requestcapabilitiesresponse.md)\>**
 
 ### Errors
 
@@ -200,26 +208,27 @@ run();
 | errors.AddCapabilitiesError | 422                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## getCapability
+## get
 
 Retrieve a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
 
-To use this endpoint from the browser, you'll need to specify the `/accounts/{accountID}/capabilities.read` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const result = await moov.capabilities.getCapability({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.capabilities.get({
     accountID: "15fbc94d-721f-44a3-b5fb-77f58657305f",
     capabilityID: "transfers",
   });
@@ -237,19 +246,19 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { capabilitiesGetCapability } from "@moovio/sdk/funcs/capabilitiesGetCapability.js";
+import { capabilitiesGet } from "@moovio/sdk/funcs/capabilitiesGet.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await capabilitiesGetCapability(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await capabilitiesGet(moov, {
     accountID: "15fbc94d-721f-44a3-b5fb-77f58657305f",
     capabilityID: "transfers",
   });
@@ -272,14 +281,13 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.GetCapabilityRequest](../../models/operations/getcapabilityrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.GetCapabilitySecurity](../../models/operations/getcapabilitysecurity.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.Capability](../../models/components/capability.md)\>**
+**Promise\<[operations.GetCapabilityResponse](../../models/operations/getcapabilityresponse.md)\>**
 
 ### Errors
 
@@ -287,31 +295,33 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## disableCapability
+## disable
 
 Disable a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
 
-To use this endpoint from the browser, you'll need to specify the `/accounts/{accountID}/capabilities.write` scope when generating a [token](https://docs.moov.io/api/authentication/access-tokens/).
+  To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 
 ### Example Usage
 
 ```typescript
 import { Moov } from "@moovio/sdk";
 
-const moov = new Moov();
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  await moov.capabilities.disableCapability({
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const result = await moov.capabilities.disable({
     accountID: "c57b48d7-4182-4632-a345-eeed5a742b0d",
     capabilityID: "card-issuing",
   });
 
-
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -323,19 +333,19 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { capabilitiesDisableCapability } from "@moovio/sdk/funcs/capabilitiesDisableCapability.js";
+import { capabilitiesDisable } from "@moovio/sdk/funcs/capabilitiesDisable.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await capabilitiesDisableCapability(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
+  const res = await capabilitiesDisable(moov, {
     accountID: "c57b48d7-4182-4632-a345-eeed5a742b0d",
     capabilityID: "card-issuing",
   });
@@ -346,7 +356,8 @@ async function run() {
 
   const { value: result } = res;
 
-  
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -357,14 +368,13 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [operations.DisableCapabilityRequest](../../models/operations/disablecapabilityrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `security`                                                                                                                                                                     | [operations.DisableCapabilitySecurity](../../models/operations/disablecapabilitysecurity.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[operations.DisableCapabilityResponse](../../models/operations/disablecapabilityresponse.md)\>**
 
 ### Errors
 

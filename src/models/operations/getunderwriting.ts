@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetUnderwritingSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetUnderwritingGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetUnderwritingRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type GetUnderwritingResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Underwriting;
+};
+
 /** @internal */
-export const GetUnderwritingSecurity$inboundSchema: z.ZodType<
-  GetUnderwritingSecurity,
+export const GetUnderwritingGlobals$inboundSchema: z.ZodType<
+  GetUnderwritingGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetUnderwritingSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetUnderwritingGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetUnderwritingSecurity$outboundSchema: z.ZodType<
-  GetUnderwritingSecurity$Outbound,
+export const GetUnderwritingGlobals$outboundSchema: z.ZodType<
+  GetUnderwritingGlobals$Outbound,
   z.ZodTypeDef,
-  GetUnderwritingSecurity
+  GetUnderwritingGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,30 +70,30 @@ export const GetUnderwritingSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetUnderwritingSecurity$ {
-  /** @deprecated use `GetUnderwritingSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetUnderwritingSecurity$inboundSchema;
-  /** @deprecated use `GetUnderwritingSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetUnderwritingSecurity$outboundSchema;
-  /** @deprecated use `GetUnderwritingSecurity$Outbound` instead. */
-  export type Outbound = GetUnderwritingSecurity$Outbound;
+export namespace GetUnderwritingGlobals$ {
+  /** @deprecated use `GetUnderwritingGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetUnderwritingGlobals$inboundSchema;
+  /** @deprecated use `GetUnderwritingGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetUnderwritingGlobals$outboundSchema;
+  /** @deprecated use `GetUnderwritingGlobals$Outbound` instead. */
+  export type Outbound = GetUnderwritingGlobals$Outbound;
 }
 
-export function getUnderwritingSecurityToJSON(
-  getUnderwritingSecurity: GetUnderwritingSecurity,
+export function getUnderwritingGlobalsToJSON(
+  getUnderwritingGlobals: GetUnderwritingGlobals,
 ): string {
   return JSON.stringify(
-    GetUnderwritingSecurity$outboundSchema.parse(getUnderwritingSecurity),
+    GetUnderwritingGlobals$outboundSchema.parse(getUnderwritingGlobals),
   );
 }
 
-export function getUnderwritingSecurityFromJSON(
+export function getUnderwritingGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetUnderwritingSecurity, SDKValidationError> {
+): SafeParseResult<GetUnderwritingGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetUnderwritingSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetUnderwritingSecurity' from JSON`,
+    (x) => GetUnderwritingGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetUnderwritingGlobals' from JSON`,
   );
 }
 
@@ -95,17 +103,11 @@ export const GetUnderwritingRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetUnderwritingRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -115,12 +117,7 @@ export const GetUnderwritingRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetUnderwritingRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -151,5 +148,72 @@ export function getUnderwritingRequestFromJSON(
     jsonString,
     (x) => GetUnderwritingRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetUnderwritingRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetUnderwritingResponse$inboundSchema: z.ZodType<
+  GetUnderwritingResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Underwriting$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetUnderwritingResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Underwriting$Outbound;
+};
+
+/** @internal */
+export const GetUnderwritingResponse$outboundSchema: z.ZodType<
+  GetUnderwritingResponse$Outbound,
+  z.ZodTypeDef,
+  GetUnderwritingResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Underwriting$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetUnderwritingResponse$ {
+  /** @deprecated use `GetUnderwritingResponse$inboundSchema` instead. */
+  export const inboundSchema = GetUnderwritingResponse$inboundSchema;
+  /** @deprecated use `GetUnderwritingResponse$outboundSchema` instead. */
+  export const outboundSchema = GetUnderwritingResponse$outboundSchema;
+  /** @deprecated use `GetUnderwritingResponse$Outbound` instead. */
+  export type Outbound = GetUnderwritingResponse$Outbound;
+}
+
+export function getUnderwritingResponseToJSON(
+  getUnderwritingResponse: GetUnderwritingResponse,
+): string {
+  return JSON.stringify(
+    GetUnderwritingResponse$outboundSchema.parse(getUnderwritingResponse),
+  );
+}
+
+export function getUnderwritingResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetUnderwritingResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetUnderwritingResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetUnderwritingResponse' from JSON`,
   );
 }

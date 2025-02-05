@@ -6,13 +6,12 @@
 import { DisconnectAccountRequest } from "@moovio/sdk/models/operations";
 
 let value: DisconnectAccountRequest = {
-  accountID: "cfa99d6c-a403-4b94-b6a2-66885c106e42",
+  accountID: "a235d1d1-f7f9-4b04-8141-561b94819e5a",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |

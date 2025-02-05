@@ -6,56 +6,62 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type DisableBankAccountSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type DisableBankAccountGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type DisableBankAccountRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   bankAccountID: string;
 };
 
+export type DisableBankAccountResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const DisableBankAccountSecurity$inboundSchema: z.ZodType<
-  DisableBankAccountSecurity,
+export const DisableBankAccountGlobals$inboundSchema: z.ZodType<
+  DisableBankAccountGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type DisableBankAccountSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type DisableBankAccountGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const DisableBankAccountSecurity$outboundSchema: z.ZodType<
-  DisableBankAccountSecurity$Outbound,
+export const DisableBankAccountGlobals$outboundSchema: z.ZodType<
+  DisableBankAccountGlobals$Outbound,
   z.ZodTypeDef,
-  DisableBankAccountSecurity
+  DisableBankAccountGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +69,30 @@ export const DisableBankAccountSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DisableBankAccountSecurity$ {
-  /** @deprecated use `DisableBankAccountSecurity$inboundSchema` instead. */
-  export const inboundSchema = DisableBankAccountSecurity$inboundSchema;
-  /** @deprecated use `DisableBankAccountSecurity$outboundSchema` instead. */
-  export const outboundSchema = DisableBankAccountSecurity$outboundSchema;
-  /** @deprecated use `DisableBankAccountSecurity$Outbound` instead. */
-  export type Outbound = DisableBankAccountSecurity$Outbound;
+export namespace DisableBankAccountGlobals$ {
+  /** @deprecated use `DisableBankAccountGlobals$inboundSchema` instead. */
+  export const inboundSchema = DisableBankAccountGlobals$inboundSchema;
+  /** @deprecated use `DisableBankAccountGlobals$outboundSchema` instead. */
+  export const outboundSchema = DisableBankAccountGlobals$outboundSchema;
+  /** @deprecated use `DisableBankAccountGlobals$Outbound` instead. */
+  export type Outbound = DisableBankAccountGlobals$Outbound;
 }
 
-export function disableBankAccountSecurityToJSON(
-  disableBankAccountSecurity: DisableBankAccountSecurity,
+export function disableBankAccountGlobalsToJSON(
+  disableBankAccountGlobals: DisableBankAccountGlobals,
 ): string {
   return JSON.stringify(
-    DisableBankAccountSecurity$outboundSchema.parse(disableBankAccountSecurity),
+    DisableBankAccountGlobals$outboundSchema.parse(disableBankAccountGlobals),
   );
 }
 
-export function disableBankAccountSecurityFromJSON(
+export function disableBankAccountGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<DisableBankAccountSecurity, SDKValidationError> {
+): SafeParseResult<DisableBankAccountGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DisableBankAccountSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DisableBankAccountSecurity' from JSON`,
+    (x) => DisableBankAccountGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisableBankAccountGlobals' from JSON`,
   );
 }
 
@@ -96,18 +102,12 @@ export const DisableBankAccountRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   bankAccountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type DisableBankAccountRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   bankAccountID: string;
 };
@@ -118,13 +118,8 @@ export const DisableBankAccountRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DisableBankAccountRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   bankAccountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +150,67 @@ export function disableBankAccountRequestFromJSON(
     jsonString,
     (x) => DisableBankAccountRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'DisableBankAccountRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const DisableBankAccountResponse$inboundSchema: z.ZodType<
+  DisableBankAccountResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type DisableBankAccountResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const DisableBankAccountResponse$outboundSchema: z.ZodType<
+  DisableBankAccountResponse$Outbound,
+  z.ZodTypeDef,
+  DisableBankAccountResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DisableBankAccountResponse$ {
+  /** @deprecated use `DisableBankAccountResponse$inboundSchema` instead. */
+  export const inboundSchema = DisableBankAccountResponse$inboundSchema;
+  /** @deprecated use `DisableBankAccountResponse$outboundSchema` instead. */
+  export const outboundSchema = DisableBankAccountResponse$outboundSchema;
+  /** @deprecated use `DisableBankAccountResponse$Outbound` instead. */
+  export type Outbound = DisableBankAccountResponse$Outbound;
+}
+
+export function disableBankAccountResponseToJSON(
+  disableBankAccountResponse: DisableBankAccountResponse,
+): string {
+  return JSON.stringify(
+    DisableBankAccountResponse$outboundSchema.parse(disableBankAccountResponse),
+  );
+}
+
+export function disableBankAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DisableBankAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DisableBankAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisableBankAccountResponse' from JSON`,
   );
 }

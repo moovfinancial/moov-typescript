@@ -6,62 +6,72 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetDisputeEvidenceDataSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetDisputeEvidenceDataGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetDisputeEvidenceDataRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   disputeID: string;
   evidenceID: string;
 };
 
-export type GetDisputeEvidenceDataResponse =
+export type GetDisputeEvidenceDataResponseResult =
   | ReadableStream<Uint8Array>
   | ReadableStream<Uint8Array>
   | ReadableStream<Uint8Array>;
 
+export type GetDisputeEvidenceDataResponse = {
+  headers: { [k: string]: Array<string> };
+  result:
+    | ReadableStream<Uint8Array>
+    | ReadableStream<Uint8Array>
+    | ReadableStream<Uint8Array>;
+};
+
 /** @internal */
-export const GetDisputeEvidenceDataSecurity$inboundSchema: z.ZodType<
-  GetDisputeEvidenceDataSecurity,
+export const GetDisputeEvidenceDataGlobals$inboundSchema: z.ZodType<
+  GetDisputeEvidenceDataGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetDisputeEvidenceDataSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetDisputeEvidenceDataGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetDisputeEvidenceDataSecurity$outboundSchema: z.ZodType<
-  GetDisputeEvidenceDataSecurity$Outbound,
+export const GetDisputeEvidenceDataGlobals$outboundSchema: z.ZodType<
+  GetDisputeEvidenceDataGlobals$Outbound,
   z.ZodTypeDef,
-  GetDisputeEvidenceDataSecurity
+  GetDisputeEvidenceDataGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -69,32 +79,32 @@ export const GetDisputeEvidenceDataSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDisputeEvidenceDataSecurity$ {
-  /** @deprecated use `GetDisputeEvidenceDataSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetDisputeEvidenceDataSecurity$inboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetDisputeEvidenceDataSecurity$outboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataSecurity$Outbound` instead. */
-  export type Outbound = GetDisputeEvidenceDataSecurity$Outbound;
+export namespace GetDisputeEvidenceDataGlobals$ {
+  /** @deprecated use `GetDisputeEvidenceDataGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetDisputeEvidenceDataGlobals$inboundSchema;
+  /** @deprecated use `GetDisputeEvidenceDataGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetDisputeEvidenceDataGlobals$outboundSchema;
+  /** @deprecated use `GetDisputeEvidenceDataGlobals$Outbound` instead. */
+  export type Outbound = GetDisputeEvidenceDataGlobals$Outbound;
 }
 
-export function getDisputeEvidenceDataSecurityToJSON(
-  getDisputeEvidenceDataSecurity: GetDisputeEvidenceDataSecurity,
+export function getDisputeEvidenceDataGlobalsToJSON(
+  getDisputeEvidenceDataGlobals: GetDisputeEvidenceDataGlobals,
 ): string {
   return JSON.stringify(
-    GetDisputeEvidenceDataSecurity$outboundSchema.parse(
-      getDisputeEvidenceDataSecurity,
+    GetDisputeEvidenceDataGlobals$outboundSchema.parse(
+      getDisputeEvidenceDataGlobals,
     ),
   );
 }
 
-export function getDisputeEvidenceDataSecurityFromJSON(
+export function getDisputeEvidenceDataGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetDisputeEvidenceDataSecurity, SDKValidationError> {
+): SafeParseResult<GetDisputeEvidenceDataGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDisputeEvidenceDataSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDisputeEvidenceDataSecurity' from JSON`,
+    (x) => GetDisputeEvidenceDataGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDisputeEvidenceDataGlobals' from JSON`,
   );
 }
 
@@ -104,19 +114,13 @@ export const GetDisputeEvidenceDataRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
   evidenceID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetDisputeEvidenceDataRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   disputeID: string;
   evidenceID: string;
@@ -128,14 +132,9 @@ export const GetDisputeEvidenceDataRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDisputeEvidenceDataRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
   evidenceID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -172,8 +171,8 @@ export function getDisputeEvidenceDataRequestFromJSON(
 }
 
 /** @internal */
-export const GetDisputeEvidenceDataResponse$inboundSchema: z.ZodType<
-  GetDisputeEvidenceDataResponse,
+export const GetDisputeEvidenceDataResponseResult$inboundSchema: z.ZodType<
+  GetDisputeEvidenceDataResponseResult,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -183,21 +182,104 @@ export const GetDisputeEvidenceDataResponse$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type GetDisputeEvidenceDataResponse$Outbound =
+export type GetDisputeEvidenceDataResponseResult$Outbound =
   | ReadableStream<Uint8Array>
   | ReadableStream<Uint8Array>
   | ReadableStream<Uint8Array>;
+
+/** @internal */
+export const GetDisputeEvidenceDataResponseResult$outboundSchema: z.ZodType<
+  GetDisputeEvidenceDataResponseResult$Outbound,
+  z.ZodTypeDef,
+  GetDisputeEvidenceDataResponseResult
+> = z.union([
+  z.instanceof(ReadableStream<Uint8Array>),
+  z.instanceof(ReadableStream<Uint8Array>),
+  z.instanceof(ReadableStream<Uint8Array>),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDisputeEvidenceDataResponseResult$ {
+  /** @deprecated use `GetDisputeEvidenceDataResponseResult$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDisputeEvidenceDataResponseResult$inboundSchema;
+  /** @deprecated use `GetDisputeEvidenceDataResponseResult$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDisputeEvidenceDataResponseResult$outboundSchema;
+  /** @deprecated use `GetDisputeEvidenceDataResponseResult$Outbound` instead. */
+  export type Outbound = GetDisputeEvidenceDataResponseResult$Outbound;
+}
+
+export function getDisputeEvidenceDataResponseResultToJSON(
+  getDisputeEvidenceDataResponseResult: GetDisputeEvidenceDataResponseResult,
+): string {
+  return JSON.stringify(
+    GetDisputeEvidenceDataResponseResult$outboundSchema.parse(
+      getDisputeEvidenceDataResponseResult,
+    ),
+  );
+}
+
+export function getDisputeEvidenceDataResponseResultFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDisputeEvidenceDataResponseResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDisputeEvidenceDataResponseResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDisputeEvidenceDataResponseResult' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDisputeEvidenceDataResponse$inboundSchema: z.ZodType<
+  GetDisputeEvidenceDataResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ]),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetDisputeEvidenceDataResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result:
+    | ReadableStream<Uint8Array>
+    | ReadableStream<Uint8Array>
+    | ReadableStream<Uint8Array>;
+};
 
 /** @internal */
 export const GetDisputeEvidenceDataResponse$outboundSchema: z.ZodType<
   GetDisputeEvidenceDataResponse$Outbound,
   z.ZodTypeDef,
   GetDisputeEvidenceDataResponse
-> = z.union([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ]),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
 
 /**
  * @internal

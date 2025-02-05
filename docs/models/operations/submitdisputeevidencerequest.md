@@ -6,15 +6,14 @@
 import { SubmitDisputeEvidenceRequest } from "@moovio/sdk/models/operations";
 
 let value: SubmitDisputeEvidenceRequest = {
-  accountID: "6a705a67-d49d-4c30-9420-48a639cbd487",
-  disputeID: "a2c0696a-0d14-4401-bdcb-b140003003c0",
+  accountID: "6420047b-7e02-459d-a540-d69f02ccc8f6",
+  disputeID: "16b3fa4c-1f0e-44c0-a4b8-1669ad762cb6",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `disputeID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `disputeID`        | *string*           | :heavy_check_mark: | N/A                |

@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListPaymentLinksSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListPaymentLinksGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListPaymentLinksRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type ListPaymentLinksResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.PaymentLink>;
+};
+
 /** @internal */
-export const ListPaymentLinksSecurity$inboundSchema: z.ZodType<
-  ListPaymentLinksSecurity,
+export const ListPaymentLinksGlobals$inboundSchema: z.ZodType<
+  ListPaymentLinksGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListPaymentLinksSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListPaymentLinksGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListPaymentLinksSecurity$outboundSchema: z.ZodType<
-  ListPaymentLinksSecurity$Outbound,
+export const ListPaymentLinksGlobals$outboundSchema: z.ZodType<
+  ListPaymentLinksGlobals$Outbound,
   z.ZodTypeDef,
-  ListPaymentLinksSecurity
+  ListPaymentLinksGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,30 +70,30 @@ export const ListPaymentLinksSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListPaymentLinksSecurity$ {
-  /** @deprecated use `ListPaymentLinksSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListPaymentLinksSecurity$inboundSchema;
-  /** @deprecated use `ListPaymentLinksSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListPaymentLinksSecurity$outboundSchema;
-  /** @deprecated use `ListPaymentLinksSecurity$Outbound` instead. */
-  export type Outbound = ListPaymentLinksSecurity$Outbound;
+export namespace ListPaymentLinksGlobals$ {
+  /** @deprecated use `ListPaymentLinksGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListPaymentLinksGlobals$inboundSchema;
+  /** @deprecated use `ListPaymentLinksGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListPaymentLinksGlobals$outboundSchema;
+  /** @deprecated use `ListPaymentLinksGlobals$Outbound` instead. */
+  export type Outbound = ListPaymentLinksGlobals$Outbound;
 }
 
-export function listPaymentLinksSecurityToJSON(
-  listPaymentLinksSecurity: ListPaymentLinksSecurity,
+export function listPaymentLinksGlobalsToJSON(
+  listPaymentLinksGlobals: ListPaymentLinksGlobals,
 ): string {
   return JSON.stringify(
-    ListPaymentLinksSecurity$outboundSchema.parse(listPaymentLinksSecurity),
+    ListPaymentLinksGlobals$outboundSchema.parse(listPaymentLinksGlobals),
   );
 }
 
-export function listPaymentLinksSecurityFromJSON(
+export function listPaymentLinksGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListPaymentLinksSecurity, SDKValidationError> {
+): SafeParseResult<ListPaymentLinksGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListPaymentLinksSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListPaymentLinksSecurity' from JSON`,
+    (x) => ListPaymentLinksGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPaymentLinksGlobals' from JSON`,
   );
 }
 
@@ -95,17 +103,11 @@ export const ListPaymentLinksRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListPaymentLinksRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -115,12 +117,7 @@ export const ListPaymentLinksRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListPaymentLinksRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -151,5 +148,72 @@ export function listPaymentLinksRequestFromJSON(
     jsonString,
     (x) => ListPaymentLinksRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListPaymentLinksRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPaymentLinksResponse$inboundSchema: z.ZodType<
+  ListPaymentLinksResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.PaymentLink$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListPaymentLinksResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.PaymentLink$Outbound>;
+};
+
+/** @internal */
+export const ListPaymentLinksResponse$outboundSchema: z.ZodType<
+  ListPaymentLinksResponse$Outbound,
+  z.ZodTypeDef,
+  ListPaymentLinksResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.PaymentLink$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListPaymentLinksResponse$ {
+  /** @deprecated use `ListPaymentLinksResponse$inboundSchema` instead. */
+  export const inboundSchema = ListPaymentLinksResponse$inboundSchema;
+  /** @deprecated use `ListPaymentLinksResponse$outboundSchema` instead. */
+  export const outboundSchema = ListPaymentLinksResponse$outboundSchema;
+  /** @deprecated use `ListPaymentLinksResponse$Outbound` instead. */
+  export type Outbound = ListPaymentLinksResponse$Outbound;
+}
+
+export function listPaymentLinksResponseToJSON(
+  listPaymentLinksResponse: ListPaymentLinksResponse,
+): string {
+  return JSON.stringify(
+    ListPaymentLinksResponse$outboundSchema.parse(listPaymentLinksResponse),
+  );
+}
+
+export function listPaymentLinksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPaymentLinksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPaymentLinksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPaymentLinksResponse' from JSON`,
   );
 }

@@ -9,52 +9,60 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetOnboardingInviteSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetOnboardingInviteGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetOnboardingInviteRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   code: string;
 };
 
+export type GetOnboardingInviteResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.OnboardingInvite;
+};
+
 /** @internal */
-export const GetOnboardingInviteSecurity$inboundSchema: z.ZodType<
-  GetOnboardingInviteSecurity,
+export const GetOnboardingInviteGlobals$inboundSchema: z.ZodType<
+  GetOnboardingInviteGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetOnboardingInviteSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetOnboardingInviteGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetOnboardingInviteSecurity$outboundSchema: z.ZodType<
-  GetOnboardingInviteSecurity$Outbound,
+export const GetOnboardingInviteGlobals$outboundSchema: z.ZodType<
+  GetOnboardingInviteGlobals$Outbound,
   z.ZodTypeDef,
-  GetOnboardingInviteSecurity
+  GetOnboardingInviteGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,32 +70,30 @@ export const GetOnboardingInviteSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetOnboardingInviteSecurity$ {
-  /** @deprecated use `GetOnboardingInviteSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetOnboardingInviteSecurity$inboundSchema;
-  /** @deprecated use `GetOnboardingInviteSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetOnboardingInviteSecurity$outboundSchema;
-  /** @deprecated use `GetOnboardingInviteSecurity$Outbound` instead. */
-  export type Outbound = GetOnboardingInviteSecurity$Outbound;
+export namespace GetOnboardingInviteGlobals$ {
+  /** @deprecated use `GetOnboardingInviteGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetOnboardingInviteGlobals$inboundSchema;
+  /** @deprecated use `GetOnboardingInviteGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetOnboardingInviteGlobals$outboundSchema;
+  /** @deprecated use `GetOnboardingInviteGlobals$Outbound` instead. */
+  export type Outbound = GetOnboardingInviteGlobals$Outbound;
 }
 
-export function getOnboardingInviteSecurityToJSON(
-  getOnboardingInviteSecurity: GetOnboardingInviteSecurity,
+export function getOnboardingInviteGlobalsToJSON(
+  getOnboardingInviteGlobals: GetOnboardingInviteGlobals,
 ): string {
   return JSON.stringify(
-    GetOnboardingInviteSecurity$outboundSchema.parse(
-      getOnboardingInviteSecurity,
-    ),
+    GetOnboardingInviteGlobals$outboundSchema.parse(getOnboardingInviteGlobals),
   );
 }
 
-export function getOnboardingInviteSecurityFromJSON(
+export function getOnboardingInviteGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetOnboardingInviteSecurity, SDKValidationError> {
+): SafeParseResult<GetOnboardingInviteGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetOnboardingInviteSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetOnboardingInviteSecurity' from JSON`,
+    (x) => GetOnboardingInviteGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOnboardingInviteGlobals' from JSON`,
   );
 }
 
@@ -97,17 +103,11 @@ export const GetOnboardingInviteRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   code: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetOnboardingInviteRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   code: string;
 };
 
@@ -117,12 +117,7 @@ export const GetOnboardingInviteRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOnboardingInviteRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   code: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -153,5 +148,74 @@ export function getOnboardingInviteRequestFromJSON(
     jsonString,
     (x) => GetOnboardingInviteRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetOnboardingInviteRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetOnboardingInviteResponse$inboundSchema: z.ZodType<
+  GetOnboardingInviteResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.OnboardingInvite$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetOnboardingInviteResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.OnboardingInvite$Outbound;
+};
+
+/** @internal */
+export const GetOnboardingInviteResponse$outboundSchema: z.ZodType<
+  GetOnboardingInviteResponse$Outbound,
+  z.ZodTypeDef,
+  GetOnboardingInviteResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.OnboardingInvite$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetOnboardingInviteResponse$ {
+  /** @deprecated use `GetOnboardingInviteResponse$inboundSchema` instead. */
+  export const inboundSchema = GetOnboardingInviteResponse$inboundSchema;
+  /** @deprecated use `GetOnboardingInviteResponse$outboundSchema` instead. */
+  export const outboundSchema = GetOnboardingInviteResponse$outboundSchema;
+  /** @deprecated use `GetOnboardingInviteResponse$Outbound` instead. */
+  export type Outbound = GetOnboardingInviteResponse$Outbound;
+}
+
+export function getOnboardingInviteResponseToJSON(
+  getOnboardingInviteResponse: GetOnboardingInviteResponse,
+): string {
+  return JSON.stringify(
+    GetOnboardingInviteResponse$outboundSchema.parse(
+      getOnboardingInviteResponse,
+    ),
+  );
+}
+
+export function getOnboardingInviteResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOnboardingInviteResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOnboardingInviteResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOnboardingInviteResponse' from JSON`,
   );
 }

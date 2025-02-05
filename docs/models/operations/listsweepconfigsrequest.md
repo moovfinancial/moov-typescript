@@ -6,13 +6,12 @@
 import { ListSweepConfigsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListSweepConfigsRequest = {
-  accountID: "705af325-8a53-4021-b351-6296ac16f077",
+  accountID: "e2d967cd-a0c0-4678-a46c-4d02e7097159",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |

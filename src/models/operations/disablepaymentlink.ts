@@ -6,56 +6,62 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type DisablePaymentLinkSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type DisablePaymentLinkGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type DisablePaymentLinkRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   paymentLinkCode: string;
 };
 
+export type DisablePaymentLinkResponse = {
+  headers: { [k: string]: Array<string> };
+};
+
 /** @internal */
-export const DisablePaymentLinkSecurity$inboundSchema: z.ZodType<
-  DisablePaymentLinkSecurity,
+export const DisablePaymentLinkGlobals$inboundSchema: z.ZodType<
+  DisablePaymentLinkGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type DisablePaymentLinkSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type DisablePaymentLinkGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const DisablePaymentLinkSecurity$outboundSchema: z.ZodType<
-  DisablePaymentLinkSecurity$Outbound,
+export const DisablePaymentLinkGlobals$outboundSchema: z.ZodType<
+  DisablePaymentLinkGlobals$Outbound,
   z.ZodTypeDef,
-  DisablePaymentLinkSecurity
+  DisablePaymentLinkGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +69,30 @@ export const DisablePaymentLinkSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DisablePaymentLinkSecurity$ {
-  /** @deprecated use `DisablePaymentLinkSecurity$inboundSchema` instead. */
-  export const inboundSchema = DisablePaymentLinkSecurity$inboundSchema;
-  /** @deprecated use `DisablePaymentLinkSecurity$outboundSchema` instead. */
-  export const outboundSchema = DisablePaymentLinkSecurity$outboundSchema;
-  /** @deprecated use `DisablePaymentLinkSecurity$Outbound` instead. */
-  export type Outbound = DisablePaymentLinkSecurity$Outbound;
+export namespace DisablePaymentLinkGlobals$ {
+  /** @deprecated use `DisablePaymentLinkGlobals$inboundSchema` instead. */
+  export const inboundSchema = DisablePaymentLinkGlobals$inboundSchema;
+  /** @deprecated use `DisablePaymentLinkGlobals$outboundSchema` instead. */
+  export const outboundSchema = DisablePaymentLinkGlobals$outboundSchema;
+  /** @deprecated use `DisablePaymentLinkGlobals$Outbound` instead. */
+  export type Outbound = DisablePaymentLinkGlobals$Outbound;
 }
 
-export function disablePaymentLinkSecurityToJSON(
-  disablePaymentLinkSecurity: DisablePaymentLinkSecurity,
+export function disablePaymentLinkGlobalsToJSON(
+  disablePaymentLinkGlobals: DisablePaymentLinkGlobals,
 ): string {
   return JSON.stringify(
-    DisablePaymentLinkSecurity$outboundSchema.parse(disablePaymentLinkSecurity),
+    DisablePaymentLinkGlobals$outboundSchema.parse(disablePaymentLinkGlobals),
   );
 }
 
-export function disablePaymentLinkSecurityFromJSON(
+export function disablePaymentLinkGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<DisablePaymentLinkSecurity, SDKValidationError> {
+): SafeParseResult<DisablePaymentLinkGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DisablePaymentLinkSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DisablePaymentLinkSecurity' from JSON`,
+    (x) => DisablePaymentLinkGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisablePaymentLinkGlobals' from JSON`,
   );
 }
 
@@ -96,18 +102,12 @@ export const DisablePaymentLinkRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   paymentLinkCode: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type DisablePaymentLinkRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   paymentLinkCode: string;
 };
@@ -118,13 +118,8 @@ export const DisablePaymentLinkRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DisablePaymentLinkRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   paymentLinkCode: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +150,67 @@ export function disablePaymentLinkRequestFromJSON(
     jsonString,
     (x) => DisablePaymentLinkRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'DisablePaymentLinkRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const DisablePaymentLinkResponse$inboundSchema: z.ZodType<
+  DisablePaymentLinkResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+  });
+});
+
+/** @internal */
+export type DisablePaymentLinkResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+};
+
+/** @internal */
+export const DisablePaymentLinkResponse$outboundSchema: z.ZodType<
+  DisablePaymentLinkResponse$Outbound,
+  z.ZodTypeDef,
+  DisablePaymentLinkResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DisablePaymentLinkResponse$ {
+  /** @deprecated use `DisablePaymentLinkResponse$inboundSchema` instead. */
+  export const inboundSchema = DisablePaymentLinkResponse$inboundSchema;
+  /** @deprecated use `DisablePaymentLinkResponse$outboundSchema` instead. */
+  export const outboundSchema = DisablePaymentLinkResponse$outboundSchema;
+  /** @deprecated use `DisablePaymentLinkResponse$Outbound` instead. */
+  export type Outbound = DisablePaymentLinkResponse$Outbound;
+}
+
+export function disablePaymentLinkResponseToJSON(
+  disablePaymentLinkResponse: DisablePaymentLinkResponse,
+): string {
+  return JSON.stringify(
+    DisablePaymentLinkResponse$outboundSchema.parse(disablePaymentLinkResponse),
+  );
+}
+
+export function disablePaymentLinkResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DisablePaymentLinkResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DisablePaymentLinkResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisablePaymentLinkResponse' from JSON`,
   );
 }

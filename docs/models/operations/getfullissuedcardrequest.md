@@ -6,15 +6,14 @@
 import { GetFullIssuedCardRequest } from "@moovio/sdk/models/operations";
 
 let value: GetFullIssuedCardRequest = {
-  accountID: "e45f66e2-77b6-4dae-b4c1-cd6bf2905289",
-  issuedCardID: "fe9e5388-e0d9-4fb5-aa5e-088364acc634",
+  accountID: "62fb7700-c0cb-4a85-afe7-230d578c9167",
+  issuedCardID: "c090d353-d4b9-4d38-ad90-4a9eec25f75f",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | The Moov business account for which the card was issued.   |
-| `issuedCardID`                                             | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `accountID`                                              | *string*                                                 | :heavy_check_mark:                                       | The Moov business account for which the card was issued. |
+| `issuedCardID`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |

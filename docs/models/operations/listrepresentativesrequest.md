@@ -6,13 +6,12 @@
 import { ListRepresentativesRequest } from "@moovio/sdk/models/operations";
 
 let value: ListRepresentativesRequest = {
-  accountID: "7fadd29f-17cf-416c-89e1-89dd790b0a8f",
+  accountID: "192026ba-0c5a-4060-bd2a-42e9e4df6e55",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | ID of the account.                                         |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | ID of the account. |

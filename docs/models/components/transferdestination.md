@@ -10,8 +10,8 @@ let value: TransferDestination = {
   paymentMethodType: "<value>",
   account: {
     accountID: "<id>",
-    email: "Vallie32@yahoo.com",
-    displayName: "Jerad.Franey",
+    email: "Maximillia.Koelpin21@yahoo.com",
+    displayName: "Nina.Rosenbaum67",
   },
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
@@ -28,14 +28,14 @@ let value: TransferDestination = {
     statusReason: "bank-account-created",
   },
   achDetails: {
-    status: "completed",
+    status: "corrected",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
     debitHoldPeriod: "2-days",
   },
   cardDetails: {
-    status: "failed",
+    status: "initiated",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

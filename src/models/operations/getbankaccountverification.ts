@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetBankAccountVerificationSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetBankAccountVerificationGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetBankAccountVerificationRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   bankAccountID: string;
 };
 
+export type GetBankAccountVerificationResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.BankAccountVerification;
+};
+
 /** @internal */
-export const GetBankAccountVerificationSecurity$inboundSchema: z.ZodType<
-  GetBankAccountVerificationSecurity,
+export const GetBankAccountVerificationGlobals$inboundSchema: z.ZodType<
+  GetBankAccountVerificationGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetBankAccountVerificationSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetBankAccountVerificationGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetBankAccountVerificationSecurity$outboundSchema: z.ZodType<
-  GetBankAccountVerificationSecurity$Outbound,
+export const GetBankAccountVerificationGlobals$outboundSchema: z.ZodType<
+  GetBankAccountVerificationGlobals$Outbound,
   z.ZodTypeDef,
-  GetBankAccountVerificationSecurity
+  GetBankAccountVerificationGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,34 +71,33 @@ export const GetBankAccountVerificationSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetBankAccountVerificationSecurity$ {
-  /** @deprecated use `GetBankAccountVerificationSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetBankAccountVerificationSecurity$inboundSchema;
-  /** @deprecated use `GetBankAccountVerificationSecurity$outboundSchema` instead. */
+export namespace GetBankAccountVerificationGlobals$ {
+  /** @deprecated use `GetBankAccountVerificationGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetBankAccountVerificationGlobals$inboundSchema;
+  /** @deprecated use `GetBankAccountVerificationGlobals$outboundSchema` instead. */
   export const outboundSchema =
-    GetBankAccountVerificationSecurity$outboundSchema;
-  /** @deprecated use `GetBankAccountVerificationSecurity$Outbound` instead. */
-  export type Outbound = GetBankAccountVerificationSecurity$Outbound;
+    GetBankAccountVerificationGlobals$outboundSchema;
+  /** @deprecated use `GetBankAccountVerificationGlobals$Outbound` instead. */
+  export type Outbound = GetBankAccountVerificationGlobals$Outbound;
 }
 
-export function getBankAccountVerificationSecurityToJSON(
-  getBankAccountVerificationSecurity: GetBankAccountVerificationSecurity,
+export function getBankAccountVerificationGlobalsToJSON(
+  getBankAccountVerificationGlobals: GetBankAccountVerificationGlobals,
 ): string {
   return JSON.stringify(
-    GetBankAccountVerificationSecurity$outboundSchema.parse(
-      getBankAccountVerificationSecurity,
+    GetBankAccountVerificationGlobals$outboundSchema.parse(
+      getBankAccountVerificationGlobals,
     ),
   );
 }
 
-export function getBankAccountVerificationSecurityFromJSON(
+export function getBankAccountVerificationGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetBankAccountVerificationSecurity, SDKValidationError> {
+): SafeParseResult<GetBankAccountVerificationGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetBankAccountVerificationSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBankAccountVerificationSecurity' from JSON`,
+    (x) => GetBankAccountVerificationGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBankAccountVerificationGlobals' from JSON`,
   );
 }
 
@@ -100,18 +107,12 @@ export const GetBankAccountVerificationRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   bankAccountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetBankAccountVerificationRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   bankAccountID: string;
 };
@@ -122,13 +123,8 @@ export const GetBankAccountVerificationRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetBankAccountVerificationRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   bankAccountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -162,5 +158,76 @@ export function getBankAccountVerificationRequestFromJSON(
     jsonString,
     (x) => GetBankAccountVerificationRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetBankAccountVerificationRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetBankAccountVerificationResponse$inboundSchema: z.ZodType<
+  GetBankAccountVerificationResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.BankAccountVerification$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetBankAccountVerificationResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.BankAccountVerification$Outbound;
+};
+
+/** @internal */
+export const GetBankAccountVerificationResponse$outboundSchema: z.ZodType<
+  GetBankAccountVerificationResponse$Outbound,
+  z.ZodTypeDef,
+  GetBankAccountVerificationResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.BankAccountVerification$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetBankAccountVerificationResponse$ {
+  /** @deprecated use `GetBankAccountVerificationResponse$inboundSchema` instead. */
+  export const inboundSchema = GetBankAccountVerificationResponse$inboundSchema;
+  /** @deprecated use `GetBankAccountVerificationResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    GetBankAccountVerificationResponse$outboundSchema;
+  /** @deprecated use `GetBankAccountVerificationResponse$Outbound` instead. */
+  export type Outbound = GetBankAccountVerificationResponse$Outbound;
+}
+
+export function getBankAccountVerificationResponseToJSON(
+  getBankAccountVerificationResponse: GetBankAccountVerificationResponse,
+): string {
+  return JSON.stringify(
+    GetBankAccountVerificationResponse$outboundSchema.parse(
+      getBankAccountVerificationResponse,
+    ),
+  );
+}
+
+export function getBankAccountVerificationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBankAccountVerificationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetBankAccountVerificationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBankAccountVerificationResponse' from JSON`,
   );
 }

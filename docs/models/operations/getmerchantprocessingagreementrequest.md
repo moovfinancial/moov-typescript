@@ -6,13 +6,12 @@
 import { GetMerchantProcessingAgreementRequest } from "@moovio/sdk/models/operations";
 
 let value: GetMerchantProcessingAgreementRequest = {
-  accountID: "be704de5-4e5a-4418-8e93-ac58a2f7f372",
+  accountID: "dc961b7b-dfd0-45b2-a803-0c35eb02993e",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |

@@ -6,15 +6,14 @@
 import { DeleteRepresentativeRequest } from "@moovio/sdk/models/operations";
 
 let value: DeleteRepresentativeRequest = {
-  accountID: "6d8d8ae0-e2c9-45fd-a435-52eed7c5de87",
-  representativeID: "316cad71-8063-4d27-96d8-793851c54004",
+  accountID: "3e0c7d71-3f52-4c01-a40f-b8ca23d5760b",
+  representativeID: "a4636afa-8617-429b-8f46-2edc0831c388",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | ID of the account.                                         |
-| `representativeID`                                         | *string*                                                   | :heavy_check_mark:                                         | ID of the representative.                                  |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `accountID`               | *string*                  | :heavy_check_mark:        | ID of the account.        |
+| `representativeID`        | *string*                  | :heavy_check_mark:        | ID of the representative. |

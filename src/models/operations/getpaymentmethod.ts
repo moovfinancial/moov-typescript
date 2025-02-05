@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetPaymentMethodSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetPaymentMethodGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetPaymentMethodRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   paymentMethodID: string;
 };
 
+export type GetPaymentMethodResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.PaymentMethod;
+};
+
 /** @internal */
-export const GetPaymentMethodSecurity$inboundSchema: z.ZodType<
-  GetPaymentMethodSecurity,
+export const GetPaymentMethodGlobals$inboundSchema: z.ZodType<
+  GetPaymentMethodGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetPaymentMethodSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetPaymentMethodGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetPaymentMethodSecurity$outboundSchema: z.ZodType<
-  GetPaymentMethodSecurity$Outbound,
+export const GetPaymentMethodGlobals$outboundSchema: z.ZodType<
+  GetPaymentMethodGlobals$Outbound,
   z.ZodTypeDef,
-  GetPaymentMethodSecurity
+  GetPaymentMethodGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +71,30 @@ export const GetPaymentMethodSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetPaymentMethodSecurity$ {
-  /** @deprecated use `GetPaymentMethodSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetPaymentMethodSecurity$inboundSchema;
-  /** @deprecated use `GetPaymentMethodSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetPaymentMethodSecurity$outboundSchema;
-  /** @deprecated use `GetPaymentMethodSecurity$Outbound` instead. */
-  export type Outbound = GetPaymentMethodSecurity$Outbound;
+export namespace GetPaymentMethodGlobals$ {
+  /** @deprecated use `GetPaymentMethodGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetPaymentMethodGlobals$inboundSchema;
+  /** @deprecated use `GetPaymentMethodGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetPaymentMethodGlobals$outboundSchema;
+  /** @deprecated use `GetPaymentMethodGlobals$Outbound` instead. */
+  export type Outbound = GetPaymentMethodGlobals$Outbound;
 }
 
-export function getPaymentMethodSecurityToJSON(
-  getPaymentMethodSecurity: GetPaymentMethodSecurity,
+export function getPaymentMethodGlobalsToJSON(
+  getPaymentMethodGlobals: GetPaymentMethodGlobals,
 ): string {
   return JSON.stringify(
-    GetPaymentMethodSecurity$outboundSchema.parse(getPaymentMethodSecurity),
+    GetPaymentMethodGlobals$outboundSchema.parse(getPaymentMethodGlobals),
   );
 }
 
-export function getPaymentMethodSecurityFromJSON(
+export function getPaymentMethodGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetPaymentMethodSecurity, SDKValidationError> {
+): SafeParseResult<GetPaymentMethodGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetPaymentMethodSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetPaymentMethodSecurity' from JSON`,
+    (x) => GetPaymentMethodGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetPaymentMethodGlobals' from JSON`,
   );
 }
 
@@ -96,18 +104,12 @@ export const GetPaymentMethodRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   paymentMethodID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetPaymentMethodRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   paymentMethodID: string;
 };
@@ -118,13 +120,8 @@ export const GetPaymentMethodRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetPaymentMethodRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   paymentMethodID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -155,5 +152,72 @@ export function getPaymentMethodRequestFromJSON(
     jsonString,
     (x) => GetPaymentMethodRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetPaymentMethodRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetPaymentMethodResponse$inboundSchema: z.ZodType<
+  GetPaymentMethodResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.PaymentMethod$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetPaymentMethodResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.PaymentMethod$Outbound;
+};
+
+/** @internal */
+export const GetPaymentMethodResponse$outboundSchema: z.ZodType<
+  GetPaymentMethodResponse$Outbound,
+  z.ZodTypeDef,
+  GetPaymentMethodResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.PaymentMethod$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetPaymentMethodResponse$ {
+  /** @deprecated use `GetPaymentMethodResponse$inboundSchema` instead. */
+  export const inboundSchema = GetPaymentMethodResponse$inboundSchema;
+  /** @deprecated use `GetPaymentMethodResponse$outboundSchema` instead. */
+  export const outboundSchema = GetPaymentMethodResponse$outboundSchema;
+  /** @deprecated use `GetPaymentMethodResponse$Outbound` instead. */
+  export type Outbound = GetPaymentMethodResponse$Outbound;
+}
+
+export function getPaymentMethodResponseToJSON(
+  getPaymentMethodResponse: GetPaymentMethodResponse,
+): string {
+  return JSON.stringify(
+    GetPaymentMethodResponse$outboundSchema.parse(getPaymentMethodResponse),
+  );
+}
+
+export function getPaymentMethodResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetPaymentMethodResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetPaymentMethodResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetPaymentMethodResponse' from JSON`,
   );
 }

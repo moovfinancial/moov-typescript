@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CreateSweepConfigSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type CreateSweepConfigGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type CreateSweepConfigRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   createSweepConfig: components.CreateSweepConfig;
 };
 
+export type CreateSweepConfigResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.SweepConfig;
+};
+
 /** @internal */
-export const CreateSweepConfigSecurity$inboundSchema: z.ZodType<
-  CreateSweepConfigSecurity,
+export const CreateSweepConfigGlobals$inboundSchema: z.ZodType<
+  CreateSweepConfigGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type CreateSweepConfigSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type CreateSweepConfigGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const CreateSweepConfigSecurity$outboundSchema: z.ZodType<
-  CreateSweepConfigSecurity$Outbound,
+export const CreateSweepConfigGlobals$outboundSchema: z.ZodType<
+  CreateSweepConfigGlobals$Outbound,
   z.ZodTypeDef,
-  CreateSweepConfigSecurity
+  CreateSweepConfigGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,30 +71,30 @@ export const CreateSweepConfigSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateSweepConfigSecurity$ {
-  /** @deprecated use `CreateSweepConfigSecurity$inboundSchema` instead. */
-  export const inboundSchema = CreateSweepConfigSecurity$inboundSchema;
-  /** @deprecated use `CreateSweepConfigSecurity$outboundSchema` instead. */
-  export const outboundSchema = CreateSweepConfigSecurity$outboundSchema;
-  /** @deprecated use `CreateSweepConfigSecurity$Outbound` instead. */
-  export type Outbound = CreateSweepConfigSecurity$Outbound;
+export namespace CreateSweepConfigGlobals$ {
+  /** @deprecated use `CreateSweepConfigGlobals$inboundSchema` instead. */
+  export const inboundSchema = CreateSweepConfigGlobals$inboundSchema;
+  /** @deprecated use `CreateSweepConfigGlobals$outboundSchema` instead. */
+  export const outboundSchema = CreateSweepConfigGlobals$outboundSchema;
+  /** @deprecated use `CreateSweepConfigGlobals$Outbound` instead. */
+  export type Outbound = CreateSweepConfigGlobals$Outbound;
 }
 
-export function createSweepConfigSecurityToJSON(
-  createSweepConfigSecurity: CreateSweepConfigSecurity,
+export function createSweepConfigGlobalsToJSON(
+  createSweepConfigGlobals: CreateSweepConfigGlobals,
 ): string {
   return JSON.stringify(
-    CreateSweepConfigSecurity$outboundSchema.parse(createSweepConfigSecurity),
+    CreateSweepConfigGlobals$outboundSchema.parse(createSweepConfigGlobals),
   );
 }
 
-export function createSweepConfigSecurityFromJSON(
+export function createSweepConfigGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<CreateSweepConfigSecurity, SDKValidationError> {
+): SafeParseResult<CreateSweepConfigGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateSweepConfigSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateSweepConfigSecurity' from JSON`,
+    (x) => CreateSweepConfigGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateSweepConfigGlobals' from JSON`,
   );
 }
 
@@ -96,19 +104,16 @@ export const CreateSweepConfigRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   CreateSweepConfig: components.CreateSweepConfig$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "CreateSweepConfig": "createSweepConfig",
   });
 });
 
 /** @internal */
 export type CreateSweepConfigRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   CreateSweepConfig: components.CreateSweepConfig$Outbound;
 };
@@ -119,12 +124,10 @@ export const CreateSweepConfigRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateSweepConfigRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   createSweepConfig: components.CreateSweepConfig$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     createSweepConfig: "CreateSweepConfig",
   });
 });
@@ -157,5 +160,72 @@ export function createSweepConfigRequestFromJSON(
     jsonString,
     (x) => CreateSweepConfigRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateSweepConfigRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateSweepConfigResponse$inboundSchema: z.ZodType<
+  CreateSweepConfigResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.SweepConfig$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type CreateSweepConfigResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.SweepConfig$Outbound;
+};
+
+/** @internal */
+export const CreateSweepConfigResponse$outboundSchema: z.ZodType<
+  CreateSweepConfigResponse$Outbound,
+  z.ZodTypeDef,
+  CreateSweepConfigResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.SweepConfig$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateSweepConfigResponse$ {
+  /** @deprecated use `CreateSweepConfigResponse$inboundSchema` instead. */
+  export const inboundSchema = CreateSweepConfigResponse$inboundSchema;
+  /** @deprecated use `CreateSweepConfigResponse$outboundSchema` instead. */
+  export const outboundSchema = CreateSweepConfigResponse$outboundSchema;
+  /** @deprecated use `CreateSweepConfigResponse$Outbound` instead. */
+  export type Outbound = CreateSweepConfigResponse$Outbound;
+}
+
+export function createSweepConfigResponseToJSON(
+  createSweepConfigResponse: CreateSweepConfigResponse,
+): string {
+  return JSON.stringify(
+    CreateSweepConfigResponse$outboundSchema.parse(createSweepConfigResponse),
+  );
+}
+
+export function createSweepConfigResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateSweepConfigResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateSweepConfigResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateSweepConfigResponse' from JSON`,
   );
 }

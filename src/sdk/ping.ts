@@ -11,17 +11,15 @@ export class Ping extends ClientSDK {
   /**
    * A simple endpoint to check auth.
    *
-   * To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
-   * to specify the `/ping.read` scope.
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/ping.read` scope.
    */
   async ping(
-    security: operations.PingSecurity,
     request: operations.PingRequest,
     options?: RequestOptions,
-  ): Promise<void> {
+  ): Promise<operations.PingResponse | undefined> {
     return unwrapAsync(pingPing(
       this,
-      security,
       request,
       options,
     ));

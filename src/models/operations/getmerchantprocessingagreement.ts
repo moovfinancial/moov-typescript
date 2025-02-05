@@ -6,55 +6,62 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetMerchantProcessingAgreementSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetMerchantProcessingAgreementGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetMerchantProcessingAgreementRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
 };
 
+export type GetMerchantProcessingAgreementResponse = {
+  headers: { [k: string]: Array<string> };
+  result: ReadableStream<Uint8Array>;
+};
+
 /** @internal */
-export const GetMerchantProcessingAgreementSecurity$inboundSchema: z.ZodType<
-  GetMerchantProcessingAgreementSecurity,
+export const GetMerchantProcessingAgreementGlobals$inboundSchema: z.ZodType<
+  GetMerchantProcessingAgreementGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetMerchantProcessingAgreementSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetMerchantProcessingAgreementGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetMerchantProcessingAgreementSecurity$outboundSchema: z.ZodType<
-  GetMerchantProcessingAgreementSecurity$Outbound,
+export const GetMerchantProcessingAgreementGlobals$outboundSchema: z.ZodType<
+  GetMerchantProcessingAgreementGlobals$Outbound,
   z.ZodTypeDef,
-  GetMerchantProcessingAgreementSecurity
+  GetMerchantProcessingAgreementGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -62,36 +69,35 @@ export const GetMerchantProcessingAgreementSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetMerchantProcessingAgreementSecurity$ {
-  /** @deprecated use `GetMerchantProcessingAgreementSecurity$inboundSchema` instead. */
+export namespace GetMerchantProcessingAgreementGlobals$ {
+  /** @deprecated use `GetMerchantProcessingAgreementGlobals$inboundSchema` instead. */
   export const inboundSchema =
-    GetMerchantProcessingAgreementSecurity$inboundSchema;
-  /** @deprecated use `GetMerchantProcessingAgreementSecurity$outboundSchema` instead. */
+    GetMerchantProcessingAgreementGlobals$inboundSchema;
+  /** @deprecated use `GetMerchantProcessingAgreementGlobals$outboundSchema` instead. */
   export const outboundSchema =
-    GetMerchantProcessingAgreementSecurity$outboundSchema;
-  /** @deprecated use `GetMerchantProcessingAgreementSecurity$Outbound` instead. */
-  export type Outbound = GetMerchantProcessingAgreementSecurity$Outbound;
+    GetMerchantProcessingAgreementGlobals$outboundSchema;
+  /** @deprecated use `GetMerchantProcessingAgreementGlobals$Outbound` instead. */
+  export type Outbound = GetMerchantProcessingAgreementGlobals$Outbound;
 }
 
-export function getMerchantProcessingAgreementSecurityToJSON(
-  getMerchantProcessingAgreementSecurity:
-    GetMerchantProcessingAgreementSecurity,
+export function getMerchantProcessingAgreementGlobalsToJSON(
+  getMerchantProcessingAgreementGlobals: GetMerchantProcessingAgreementGlobals,
 ): string {
   return JSON.stringify(
-    GetMerchantProcessingAgreementSecurity$outboundSchema.parse(
-      getMerchantProcessingAgreementSecurity,
+    GetMerchantProcessingAgreementGlobals$outboundSchema.parse(
+      getMerchantProcessingAgreementGlobals,
     ),
   );
 }
 
-export function getMerchantProcessingAgreementSecurityFromJSON(
+export function getMerchantProcessingAgreementGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetMerchantProcessingAgreementSecurity, SDKValidationError> {
+): SafeParseResult<GetMerchantProcessingAgreementGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      GetMerchantProcessingAgreementSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetMerchantProcessingAgreementSecurity' from JSON`,
+      GetMerchantProcessingAgreementGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMerchantProcessingAgreementGlobals' from JSON`,
   );
 }
 
@@ -101,17 +107,11 @@ export const GetMerchantProcessingAgreementRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetMerchantProcessingAgreementRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
 };
 
@@ -121,12 +121,7 @@ export const GetMerchantProcessingAgreementRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetMerchantProcessingAgreementRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -162,5 +157,78 @@ export function getMerchantProcessingAgreementRequestFromJSON(
     (x) =>
       GetMerchantProcessingAgreementRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetMerchantProcessingAgreementRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMerchantProcessingAgreementResponse$inboundSchema: z.ZodType<
+  GetMerchantProcessingAgreementResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.instanceof(ReadableStream<Uint8Array>),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetMerchantProcessingAgreementResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: ReadableStream<Uint8Array>;
+};
+
+/** @internal */
+export const GetMerchantProcessingAgreementResponse$outboundSchema: z.ZodType<
+  GetMerchantProcessingAgreementResponse$Outbound,
+  z.ZodTypeDef,
+  GetMerchantProcessingAgreementResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.instanceof(ReadableStream<Uint8Array>),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetMerchantProcessingAgreementResponse$ {
+  /** @deprecated use `GetMerchantProcessingAgreementResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    GetMerchantProcessingAgreementResponse$inboundSchema;
+  /** @deprecated use `GetMerchantProcessingAgreementResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    GetMerchantProcessingAgreementResponse$outboundSchema;
+  /** @deprecated use `GetMerchantProcessingAgreementResponse$Outbound` instead. */
+  export type Outbound = GetMerchantProcessingAgreementResponse$Outbound;
+}
+
+export function getMerchantProcessingAgreementResponseToJSON(
+  getMerchantProcessingAgreementResponse:
+    GetMerchantProcessingAgreementResponse,
+): string {
+  return JSON.stringify(
+    GetMerchantProcessingAgreementResponse$outboundSchema.parse(
+      getMerchantProcessingAgreementResponse,
+    ),
+  );
+}
+
+export function getMerchantProcessingAgreementResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMerchantProcessingAgreementResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMerchantProcessingAgreementResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMerchantProcessingAgreementResponse' from JSON`,
   );
 }

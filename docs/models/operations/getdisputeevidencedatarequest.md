@@ -6,17 +6,16 @@
 import { GetDisputeEvidenceDataRequest } from "@moovio/sdk/models/operations";
 
 let value: GetDisputeEvidenceDataRequest = {
-  accountID: "448b428d-674c-412f-ba8c-f3c5bbf10b9b",
-  disputeID: "75c69e20-4c9f-484c-bada-7404063b31d0",
-  evidenceID: "e187c940-7ee2-4d01-9f61-70083952f304",
+  accountID: "c68be69b-0c6a-47bb-b3ad-3caf4244cba3",
+  disputeID: "f8a84453-ed75-4f38-9039-a9dfc7d1a82f",
+  evidenceID: "9e81d5fe-d5cf-4870-8bd3-58116467ff2e",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `disputeID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `evidenceID`                                               | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `disputeID`        | *string*           | :heavy_check_mark: | N/A                |
+| `evidenceID`       | *string*           | :heavy_check_mark: | N/A                |

@@ -20,26 +20,24 @@ specific category of applications.
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { accountsCreateAccount } from "@moovio/sdk/funcs/accountsCreateAccount.js";
+import { accountsCreate } from "@moovio/sdk/funcs/accountsCreate.js";
 import { SDKValidationError } from "@moovio/sdk/models/errors/sdkvalidationerror.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const moov = new MoovCore();
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
 
 async function run() {
-  const res = await accountsCreateAccount(moov, {
-    basicAuth: {
-      username: "",
-      password: "",
-    },
-  }, {
-    createAccount: {
-      accountType: "business",
-      profile: {
-        business: {
-          legalBusinessName: "Classbooker, LLC",
-        },
+  const res = await accountsCreate(moov, {
+    accountType: "business",
+    profile: {
+      business: {
+        legalBusinessName: "Classbooker, LLC",
       },
     },
   });

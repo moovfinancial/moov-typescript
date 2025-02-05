@@ -1,20 +1,16 @@
 # GetPaymentLinkQRCodeResponse
 
-
-## Supported Types
-
-### `components.QRCode`
+## Example Usage
 
 ```typescript
-const value: components.QRCode = {
-  qrCode:
-    "iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAIAAADaA7F0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA...",
-};
+import { GetPaymentLinkQRCodeResponse } from "@moovio/sdk/models/operations";
+
+// No examples available for this model
 ```
 
-### `ReadableStream<Uint8Array>`
+## Fields
 
-```typescript
-const value: ReadableStream<Uint8Array> = await openAsBlob("example.file");
-```
-
+| Field                                           | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `headers`                                       | Record<string, *string*[]>                      | :heavy_check_mark:                              | N/A                                             |
+| `result`                                        | *operations.GetPaymentLinkQRCodeResponseResult* | :heavy_check_mark:                              | N/A                                             |

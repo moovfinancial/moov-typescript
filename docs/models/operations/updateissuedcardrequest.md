@@ -6,8 +6,8 @@
 import { UpdateIssuedCardRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateIssuedCardRequest = {
-  accountID: "4f18e139-0e10-439f-b787-84bb8da7d91c",
-  issuedCardID: "0cfc6b4a-8a62-467a-b4a3-cb191f5081ab",
+  accountID: "6bf77843-7849-4cb2-ba06-7cebce745654",
+  issuedCardID: "facba22e-0acb-42a1-97a5-8f42e77f4c8b",
   updateIssuedCard: {
     authorizedUser: {
       birthDate: {
@@ -24,7 +24,6 @@ let value: UpdateIssuedCardRequest = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `xMoovVersion`                                                             | [components.Versions](../../models/components/versions.md)                 | :heavy_minus_sign:                                                         | Specify an API version.                                                    |
 | `accountID`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | The Moov business account for which the card was issued.                   |
 | `issuedCardID`                                                             | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `updateIssuedCard`                                                         | [components.UpdateIssuedCard](../../models/components/updateissuedcard.md) | :heavy_check_mark:                                                         | N/A                                                                        |

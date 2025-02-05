@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CreateTransferSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type CreateTransferGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type CreateTransferRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * Prevents duplicate transfers from being created.
    */
@@ -37,52 +45,47 @@ export type CreateTransferRequest = {
   createTransfer: components.CreateTransfer;
 };
 
-/**
- * The request completed successfully.
- */
-export type CreateTransferResponseBody =
-  | components.AsyncTransfer
-  | components.Transfer;
-
-export type CreateTransferResponse =
+export type CreateTransferResponseResult =
   | components.AsyncTransfer
   | components.Transfer
-  | components.AsyncTransfer
-  | components.Transfer;
+  | components.TransferResponse;
+
+export type CreateTransferResponse = {
+  headers: { [k: string]: Array<string> };
+  result:
+    | components.AsyncTransfer
+    | components.Transfer
+    | components.TransferResponse;
+};
 
 /** @internal */
-export const CreateTransferSecurity$inboundSchema: z.ZodType<
-  CreateTransferSecurity,
+export const CreateTransferGlobals$inboundSchema: z.ZodType<
+  CreateTransferGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type CreateTransferSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type CreateTransferGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const CreateTransferSecurity$outboundSchema: z.ZodType<
-  CreateTransferSecurity$Outbound,
+export const CreateTransferGlobals$outboundSchema: z.ZodType<
+  CreateTransferGlobals$Outbound,
   z.ZodTypeDef,
-  CreateTransferSecurity
+  CreateTransferGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -90,30 +93,30 @@ export const CreateTransferSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateTransferSecurity$ {
-  /** @deprecated use `CreateTransferSecurity$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferSecurity$inboundSchema;
-  /** @deprecated use `CreateTransferSecurity$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferSecurity$outboundSchema;
-  /** @deprecated use `CreateTransferSecurity$Outbound` instead. */
-  export type Outbound = CreateTransferSecurity$Outbound;
+export namespace CreateTransferGlobals$ {
+  /** @deprecated use `CreateTransferGlobals$inboundSchema` instead. */
+  export const inboundSchema = CreateTransferGlobals$inboundSchema;
+  /** @deprecated use `CreateTransferGlobals$outboundSchema` instead. */
+  export const outboundSchema = CreateTransferGlobals$outboundSchema;
+  /** @deprecated use `CreateTransferGlobals$Outbound` instead. */
+  export type Outbound = CreateTransferGlobals$Outbound;
 }
 
-export function createTransferSecurityToJSON(
-  createTransferSecurity: CreateTransferSecurity,
+export function createTransferGlobalsToJSON(
+  createTransferGlobals: CreateTransferGlobals,
 ): string {
   return JSON.stringify(
-    CreateTransferSecurity$outboundSchema.parse(createTransferSecurity),
+    CreateTransferGlobals$outboundSchema.parse(createTransferGlobals),
   );
 }
 
-export function createTransferSecurityFromJSON(
+export function createTransferGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<CreateTransferSecurity, SDKValidationError> {
+): SafeParseResult<CreateTransferGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateTransferSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateTransferSecurity' from JSON`,
+    (x) => CreateTransferGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransferGlobals' from JSON`,
   );
 }
 
@@ -123,14 +126,12 @@ export const CreateTransferRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   "x-idempotency-key": z.string(),
   "x-wait-for": components.TransferWaitFor$inboundSchema.optional(),
   accountID: z.string(),
   CreateTransfer: components.CreateTransfer$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "x-idempotency-key": "xIdempotencyKey",
     "x-wait-for": "xWaitFor",
     "CreateTransfer": "createTransfer",
@@ -139,7 +140,6 @@ export const CreateTransferRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateTransferRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   "x-idempotency-key": string;
   "x-wait-for"?: string | undefined;
   accountID: string;
@@ -152,14 +152,12 @@ export const CreateTransferRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateTransferRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   xIdempotencyKey: z.string(),
   xWaitFor: components.TransferWaitFor$outboundSchema.optional(),
   accountID: z.string(),
   createTransfer: components.CreateTransfer$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     xIdempotencyKey: "x-idempotency-key",
     xWaitFor: "x-wait-for",
     createTransfer: "CreateTransfer",
@@ -198,58 +196,63 @@ export function createTransferRequestFromJSON(
 }
 
 /** @internal */
-export const CreateTransferResponseBody$inboundSchema: z.ZodType<
-  CreateTransferResponseBody,
+export const CreateTransferResponseResult$inboundSchema: z.ZodType<
+  CreateTransferResponseResult,
   z.ZodTypeDef,
   unknown
 > = z.union([
   components.AsyncTransfer$inboundSchema,
   components.Transfer$inboundSchema,
+  components.TransferResponse$inboundSchema,
 ]);
 
 /** @internal */
-export type CreateTransferResponseBody$Outbound =
+export type CreateTransferResponseResult$Outbound =
   | components.AsyncTransfer$Outbound
-  | components.Transfer$Outbound;
+  | components.Transfer$Outbound
+  | components.TransferResponse$Outbound;
 
 /** @internal */
-export const CreateTransferResponseBody$outboundSchema: z.ZodType<
-  CreateTransferResponseBody$Outbound,
+export const CreateTransferResponseResult$outboundSchema: z.ZodType<
+  CreateTransferResponseResult$Outbound,
   z.ZodTypeDef,
-  CreateTransferResponseBody
+  CreateTransferResponseResult
 > = z.union([
   components.AsyncTransfer$outboundSchema,
   components.Transfer$outboundSchema,
+  components.TransferResponse$outboundSchema,
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateTransferResponseBody$ {
-  /** @deprecated use `CreateTransferResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferResponseBody$inboundSchema;
-  /** @deprecated use `CreateTransferResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferResponseBody$outboundSchema;
-  /** @deprecated use `CreateTransferResponseBody$Outbound` instead. */
-  export type Outbound = CreateTransferResponseBody$Outbound;
+export namespace CreateTransferResponseResult$ {
+  /** @deprecated use `CreateTransferResponseResult$inboundSchema` instead. */
+  export const inboundSchema = CreateTransferResponseResult$inboundSchema;
+  /** @deprecated use `CreateTransferResponseResult$outboundSchema` instead. */
+  export const outboundSchema = CreateTransferResponseResult$outboundSchema;
+  /** @deprecated use `CreateTransferResponseResult$Outbound` instead. */
+  export type Outbound = CreateTransferResponseResult$Outbound;
 }
 
-export function createTransferResponseBodyToJSON(
-  createTransferResponseBody: CreateTransferResponseBody,
+export function createTransferResponseResultToJSON(
+  createTransferResponseResult: CreateTransferResponseResult,
 ): string {
   return JSON.stringify(
-    CreateTransferResponseBody$outboundSchema.parse(createTransferResponseBody),
+    CreateTransferResponseResult$outboundSchema.parse(
+      createTransferResponseResult,
+    ),
   );
 }
 
-export function createTransferResponseBodyFromJSON(
+export function createTransferResponseResultFromJSON(
   jsonString: string,
-): SafeParseResult<CreateTransferResponseBody, SDKValidationError> {
+): SafeParseResult<CreateTransferResponseResult, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateTransferResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateTransferResponseBody' from JSON`,
+    (x) => CreateTransferResponseResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransferResponseResult' from JSON`,
   );
 }
 
@@ -258,35 +261,47 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
   CreateTransferResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  components.AsyncTransfer$inboundSchema,
-  components.Transfer$inboundSchema,
-  z.union([
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.union([
     components.AsyncTransfer$inboundSchema,
     components.Transfer$inboundSchema,
+    components.TransferResponse$inboundSchema,
   ]),
-]);
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
 
 /** @internal */
-export type CreateTransferResponse$Outbound =
-  | components.AsyncTransfer$Outbound
-  | components.Transfer$Outbound
-  | components.AsyncTransfer$Outbound
-  | components.Transfer$Outbound;
+export type CreateTransferResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result:
+    | components.AsyncTransfer$Outbound
+    | components.Transfer$Outbound
+    | components.TransferResponse$Outbound;
+};
 
 /** @internal */
 export const CreateTransferResponse$outboundSchema: z.ZodType<
   CreateTransferResponse$Outbound,
   z.ZodTypeDef,
   CreateTransferResponse
-> = z.union([
-  components.AsyncTransfer$outboundSchema,
-  components.Transfer$outboundSchema,
-  z.union([
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.union([
     components.AsyncTransfer$outboundSchema,
     components.Transfer$outboundSchema,
+    components.TransferResponse$outboundSchema,
   ]),
-]);
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
 
 /**
  * @internal

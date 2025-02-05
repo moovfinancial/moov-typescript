@@ -14,16 +14,8 @@ let value: LinkCard = {
   },
   holderName: "Jules Jackson",
   billingAddress: {
-    addressLine1: "123 Main Street",
-    addressLine2: "Apt 302",
-    city: "Boulder",
-    stateOrProvince: "CO",
     postalCode: "80301",
-    country: "US",
   },
-  cardOnFile: true,
-  merchantAccountID: "01234567-89ab-cdef-0123-456789abcdef",
-  verifyName: true,
 };
 ```
 

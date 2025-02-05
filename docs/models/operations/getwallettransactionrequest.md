@@ -6,17 +6,16 @@
 import { GetWalletTransactionRequest } from "@moovio/sdk/models/operations";
 
 let value: GetWalletTransactionRequest = {
-  accountID: "03dfb99a-055f-40b6-b152-0a0062751aaa",
-  walletID: "0087f56d-9108-46ba-800d-29ffdee1d608",
-  transactionID: "175e5d0f-040f-405a-a503-b6db91f849b7",
+  accountID: "960fec6b-b509-4fb3-a868-b7eb597c090f",
+  walletID: "415af134-c1e3-4bce-93b5-6825f25c323f",
+  transactionID: "6c12b5b0-9821-4e80-a2a7-97edffb0f70f",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `walletID`                                                 | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `transactionID`                                            | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `walletID`         | *string*           | :heavy_check_mark: | N/A                |
+| `transactionID`    | *string*           | :heavy_check_mark: | N/A                |

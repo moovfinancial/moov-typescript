@@ -6,7 +6,7 @@
 import { CardPaymentPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: CardPaymentPaymentMethod = {
-  paymentMethodID: "2c1834b0-d788-4a51-b528-5ff99fec5537",
+  paymentMethodID: "fd955153-9b48-4cab-93a4-345735e230b8",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
     fingerprint:

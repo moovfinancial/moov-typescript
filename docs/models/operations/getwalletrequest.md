@@ -6,15 +6,14 @@
 import { GetWalletRequest } from "@moovio/sdk/models/operations";
 
 let value: GetWalletRequest = {
-  accountID: "078c7030-fa00-43c6-b8de-6c32faae04b7",
-  walletID: "72e0c073-f60c-45a6-974c-70f775a6be7a",
+  accountID: "9aeeaf30-e4f3-44ed-8192-19179fe98aef",
+  walletID: "fc1cae78-d783-4540-99dc-397d50ea2367",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `walletID`                                                 | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `walletID`         | *string*           | :heavy_check_mark: | N/A                |

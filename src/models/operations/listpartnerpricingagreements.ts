@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListPartnerPricingAgreementsSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListPartnerPricingAgreementsGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListPartnerPricingAgreementsRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   /**
    * A comma-separated list of agreement IDs to filter the results by.
@@ -30,39 +38,39 @@ export type ListPartnerPricingAgreementsRequest = {
   status?: Array<components.FeePlanAgreementStatus> | undefined;
 };
 
+export type ListPartnerPricingAgreementsResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.PartnerPricingAgreement>;
+};
+
 /** @internal */
-export const ListPartnerPricingAgreementsSecurity$inboundSchema: z.ZodType<
-  ListPartnerPricingAgreementsSecurity,
+export const ListPartnerPricingAgreementsGlobals$inboundSchema: z.ZodType<
+  ListPartnerPricingAgreementsGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListPartnerPricingAgreementsSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListPartnerPricingAgreementsGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListPartnerPricingAgreementsSecurity$outboundSchema: z.ZodType<
-  ListPartnerPricingAgreementsSecurity$Outbound,
+export const ListPartnerPricingAgreementsGlobals$outboundSchema: z.ZodType<
+  ListPartnerPricingAgreementsGlobals$Outbound,
   z.ZodTypeDef,
-  ListPartnerPricingAgreementsSecurity
+  ListPartnerPricingAgreementsGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -70,35 +78,35 @@ export const ListPartnerPricingAgreementsSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListPartnerPricingAgreementsSecurity$ {
-  /** @deprecated use `ListPartnerPricingAgreementsSecurity$inboundSchema` instead. */
+export namespace ListPartnerPricingAgreementsGlobals$ {
+  /** @deprecated use `ListPartnerPricingAgreementsGlobals$inboundSchema` instead. */
   export const inboundSchema =
-    ListPartnerPricingAgreementsSecurity$inboundSchema;
-  /** @deprecated use `ListPartnerPricingAgreementsSecurity$outboundSchema` instead. */
+    ListPartnerPricingAgreementsGlobals$inboundSchema;
+  /** @deprecated use `ListPartnerPricingAgreementsGlobals$outboundSchema` instead. */
   export const outboundSchema =
-    ListPartnerPricingAgreementsSecurity$outboundSchema;
-  /** @deprecated use `ListPartnerPricingAgreementsSecurity$Outbound` instead. */
-  export type Outbound = ListPartnerPricingAgreementsSecurity$Outbound;
+    ListPartnerPricingAgreementsGlobals$outboundSchema;
+  /** @deprecated use `ListPartnerPricingAgreementsGlobals$Outbound` instead. */
+  export type Outbound = ListPartnerPricingAgreementsGlobals$Outbound;
 }
 
-export function listPartnerPricingAgreementsSecurityToJSON(
-  listPartnerPricingAgreementsSecurity: ListPartnerPricingAgreementsSecurity,
+export function listPartnerPricingAgreementsGlobalsToJSON(
+  listPartnerPricingAgreementsGlobals: ListPartnerPricingAgreementsGlobals,
 ): string {
   return JSON.stringify(
-    ListPartnerPricingAgreementsSecurity$outboundSchema.parse(
-      listPartnerPricingAgreementsSecurity,
+    ListPartnerPricingAgreementsGlobals$outboundSchema.parse(
+      listPartnerPricingAgreementsGlobals,
     ),
   );
 }
 
-export function listPartnerPricingAgreementsSecurityFromJSON(
+export function listPartnerPricingAgreementsGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListPartnerPricingAgreementsSecurity, SDKValidationError> {
+): SafeParseResult<ListPartnerPricingAgreementsGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      ListPartnerPricingAgreementsSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListPartnerPricingAgreementsSecurity' from JSON`,
+      ListPartnerPricingAgreementsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnerPricingAgreementsGlobals' from JSON`,
   );
 }
 
@@ -108,19 +116,13 @@ export const ListPartnerPricingAgreementsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   agreementID: z.array(z.string()).optional(),
   status: z.array(components.FeePlanAgreementStatus$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListPartnerPricingAgreementsRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   agreementID?: Array<string> | undefined;
   status?: Array<string> | undefined;
@@ -132,14 +134,9 @@ export const ListPartnerPricingAgreementsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListPartnerPricingAgreementsRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   agreementID: z.array(z.string()).optional(),
   status: z.array(components.FeePlanAgreementStatus$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -175,5 +172,77 @@ export function listPartnerPricingAgreementsRequestFromJSON(
     (x) =>
       ListPartnerPricingAgreementsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListPartnerPricingAgreementsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPartnerPricingAgreementsResponse$inboundSchema: z.ZodType<
+  ListPartnerPricingAgreementsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.PartnerPricingAgreement$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListPartnerPricingAgreementsResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.PartnerPricingAgreement$Outbound>;
+};
+
+/** @internal */
+export const ListPartnerPricingAgreementsResponse$outboundSchema: z.ZodType<
+  ListPartnerPricingAgreementsResponse$Outbound,
+  z.ZodTypeDef,
+  ListPartnerPricingAgreementsResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.PartnerPricingAgreement$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListPartnerPricingAgreementsResponse$ {
+  /** @deprecated use `ListPartnerPricingAgreementsResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    ListPartnerPricingAgreementsResponse$inboundSchema;
+  /** @deprecated use `ListPartnerPricingAgreementsResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    ListPartnerPricingAgreementsResponse$outboundSchema;
+  /** @deprecated use `ListPartnerPricingAgreementsResponse$Outbound` instead. */
+  export type Outbound = ListPartnerPricingAgreementsResponse$Outbound;
+}
+
+export function listPartnerPricingAgreementsResponseToJSON(
+  listPartnerPricingAgreementsResponse: ListPartnerPricingAgreementsResponse,
+): string {
+  return JSON.stringify(
+    ListPartnerPricingAgreementsResponse$outboundSchema.parse(
+      listPartnerPricingAgreementsResponse,
+    ),
+  );
+}
+
+export function listPartnerPricingAgreementsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPartnerPricingAgreementsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPartnerPricingAgreementsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPartnerPricingAgreementsResponse' from JSON`,
   );
 }

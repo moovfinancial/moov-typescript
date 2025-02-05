@@ -6,17 +6,16 @@
 import { GetSweepRequest } from "@moovio/sdk/models/operations";
 
 let value: GetSweepRequest = {
-  accountID: "e7c24be1-2f10-4834-895f-3de7f41907d6",
-  walletID: "4ea2798c-0498-412c-b8ad-95824a00efe3",
-  sweepID: "71ccbff2-cabf-4d6e-bebe-7b09b6d748ea",
+  accountID: "99f3e001-a822-48f2-b419-e37eb8abb743",
+  walletID: "05b9612b-7556-4a91-a210-cd6fdd5fb5e0",
+  sweepID: "81d467d9-9547-4457-bded-8b57f527a214",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `walletID`                                                 | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `sweepID`                                                  | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |
+| `walletID`         | *string*           | :heavy_check_mark: | N/A                |
+| `sweepID`          | *string*           | :heavy_check_mark: | N/A                |

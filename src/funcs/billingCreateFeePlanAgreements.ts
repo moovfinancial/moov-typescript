@@ -8,9 +8,8 @@ import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { resolveSecurity } from "../lib/security.js";
+import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
   ConnectionError,
@@ -27,17 +26,16 @@ import { Result } from "../types/fp.js";
 /**
  * Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
  *
- * To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
- * to specify the `/accounts/{accountID}/profile.write` scope.
+ * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+ * you'll need to specify the `/accounts/{accountID}/profile.write` scope.
  */
 export async function billingCreateFeePlanAgreements(
   client: MoovCore,
-  security: operations.CreateFeePlanAgreementsSecurity,
   request: operations.CreateFeePlanAgreementsRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.FeePlanAgreement,
+    operations.CreateFeePlanAgreementsResponse,
     | errors.GenericError
     | errors.FeePlanAgreementError
     | APIError
@@ -79,29 +77,13 @@ export async function billingCreateFeePlanAgreements(
     Accept: "application/json",
     "x-moov-version": encodeSimple(
       "x-moov-version",
-      payload["x-moov-version"],
+      client._options.xMoovVersion,
       { explode: false, charEncoding: "none" },
     ),
   }));
 
-  const requestSecurity = resolveSecurity(
-    [
-      {
-        type: "http:basic",
-        value: {
-          username: security?.basicAuth?.username,
-          password: security?.basicAuth?.password,
-        },
-      },
-    ],
-    [
-      {
-        fieldName: "Authorization",
-        type: "oauth2",
-        value: security?.oAuth2Auth,
-      },
-    ],
-  );
+  const securityInput = await extractSecurity(client._options.security);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     operationID: "createFeePlanAgreements",
@@ -109,7 +91,7 @@ export async function billingCreateFeePlanAgreements(
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: security,
+    securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -158,7 +140,7 @@ export async function billingCreateFeePlanAgreements(
   };
 
   const [result] = await M.match<
-    components.FeePlanAgreement,
+    operations.CreateFeePlanAgreementsResponse,
     | errors.GenericError
     | errors.FeePlanAgreementError
     | APIError
@@ -169,11 +151,16 @@ export async function billingCreateFeePlanAgreements(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(201, components.FeePlanAgreement$inboundSchema),
-    M.jsonErr([400, 409], errors.GenericError$inboundSchema),
-    M.fail([401, 403, 404, 429, "4XX"]),
-    M.jsonErr(422, errors.FeePlanAgreementError$inboundSchema),
-    M.fail([500, 504, "5XX"]),
+    M.json(201, operations.CreateFeePlanAgreementsResponse$inboundSchema, {
+      hdrs: true,
+      key: "Result",
+    }),
+    M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr(422, errors.FeePlanAgreementError$inboundSchema, { hdrs: true }),
+    M.fail([401, 403, 404, 429]),
+    M.fail([500, 504]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

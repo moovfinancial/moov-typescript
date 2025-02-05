@@ -6,13 +6,12 @@
 import { ListPaymentLinksRequest } from "@moovio/sdk/models/operations";
 
 let value: ListPaymentLinksRequest = {
-  accountID: "723eb9b0-2bbd-4986-9dd7-60ca78ee2d81",
+  accountID: "e016b444-d38f-4b5c-bf5b-1e1584a8b58c",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `xMoovVersion`                                             | [components.Versions](../../models/components/versions.md) | :heavy_minus_sign:                                         | Specify an API version.                                    |
-| `accountID`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accountID`        | *string*           | :heavy_check_mark: | N/A                |

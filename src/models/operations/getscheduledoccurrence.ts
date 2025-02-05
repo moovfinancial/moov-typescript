@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetScheduledOccurrenceSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type GetScheduledOccurrenceGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type GetScheduledOccurrenceRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   scheduleID: string;
   /**
@@ -33,39 +41,39 @@ export type GetScheduledOccurrenceRequest = {
   occurrenceFilter: string;
 };
 
+export type GetScheduledOccurrenceResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.ScheduleResponse;
+};
+
 /** @internal */
-export const GetScheduledOccurrenceSecurity$inboundSchema: z.ZodType<
-  GetScheduledOccurrenceSecurity,
+export const GetScheduledOccurrenceGlobals$inboundSchema: z.ZodType<
+  GetScheduledOccurrenceGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type GetScheduledOccurrenceSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type GetScheduledOccurrenceGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const GetScheduledOccurrenceSecurity$outboundSchema: z.ZodType<
-  GetScheduledOccurrenceSecurity$Outbound,
+export const GetScheduledOccurrenceGlobals$outboundSchema: z.ZodType<
+  GetScheduledOccurrenceGlobals$Outbound,
   z.ZodTypeDef,
-  GetScheduledOccurrenceSecurity
+  GetScheduledOccurrenceGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -73,32 +81,32 @@ export const GetScheduledOccurrenceSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetScheduledOccurrenceSecurity$ {
-  /** @deprecated use `GetScheduledOccurrenceSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetScheduledOccurrenceSecurity$inboundSchema;
-  /** @deprecated use `GetScheduledOccurrenceSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetScheduledOccurrenceSecurity$outboundSchema;
-  /** @deprecated use `GetScheduledOccurrenceSecurity$Outbound` instead. */
-  export type Outbound = GetScheduledOccurrenceSecurity$Outbound;
+export namespace GetScheduledOccurrenceGlobals$ {
+  /** @deprecated use `GetScheduledOccurrenceGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetScheduledOccurrenceGlobals$inboundSchema;
+  /** @deprecated use `GetScheduledOccurrenceGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetScheduledOccurrenceGlobals$outboundSchema;
+  /** @deprecated use `GetScheduledOccurrenceGlobals$Outbound` instead. */
+  export type Outbound = GetScheduledOccurrenceGlobals$Outbound;
 }
 
-export function getScheduledOccurrenceSecurityToJSON(
-  getScheduledOccurrenceSecurity: GetScheduledOccurrenceSecurity,
+export function getScheduledOccurrenceGlobalsToJSON(
+  getScheduledOccurrenceGlobals: GetScheduledOccurrenceGlobals,
 ): string {
   return JSON.stringify(
-    GetScheduledOccurrenceSecurity$outboundSchema.parse(
-      getScheduledOccurrenceSecurity,
+    GetScheduledOccurrenceGlobals$outboundSchema.parse(
+      getScheduledOccurrenceGlobals,
     ),
   );
 }
 
-export function getScheduledOccurrenceSecurityFromJSON(
+export function getScheduledOccurrenceGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<GetScheduledOccurrenceSecurity, SDKValidationError> {
+): SafeParseResult<GetScheduledOccurrenceGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetScheduledOccurrenceSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetScheduledOccurrenceSecurity' from JSON`,
+    (x) => GetScheduledOccurrenceGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetScheduledOccurrenceGlobals' from JSON`,
   );
 }
 
@@ -108,19 +116,13 @@ export const GetScheduledOccurrenceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   scheduleID: z.string(),
   occurrenceFilter: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type GetScheduledOccurrenceRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   scheduleID: string;
   occurrenceFilter: string;
@@ -132,14 +134,9 @@ export const GetScheduledOccurrenceRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetScheduledOccurrenceRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   scheduleID: z.string(),
   occurrenceFilter: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -172,5 +169,74 @@ export function getScheduledOccurrenceRequestFromJSON(
     jsonString,
     (x) => GetScheduledOccurrenceRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetScheduledOccurrenceRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetScheduledOccurrenceResponse$inboundSchema: z.ZodType<
+  GetScheduledOccurrenceResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.ScheduleResponse$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type GetScheduledOccurrenceResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.ScheduleResponse$Outbound;
+};
+
+/** @internal */
+export const GetScheduledOccurrenceResponse$outboundSchema: z.ZodType<
+  GetScheduledOccurrenceResponse$Outbound,
+  z.ZodTypeDef,
+  GetScheduledOccurrenceResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.ScheduleResponse$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetScheduledOccurrenceResponse$ {
+  /** @deprecated use `GetScheduledOccurrenceResponse$inboundSchema` instead. */
+  export const inboundSchema = GetScheduledOccurrenceResponse$inboundSchema;
+  /** @deprecated use `GetScheduledOccurrenceResponse$outboundSchema` instead. */
+  export const outboundSchema = GetScheduledOccurrenceResponse$outboundSchema;
+  /** @deprecated use `GetScheduledOccurrenceResponse$Outbound` instead. */
+  export type Outbound = GetScheduledOccurrenceResponse$Outbound;
+}
+
+export function getScheduledOccurrenceResponseToJSON(
+  getScheduledOccurrenceResponse: GetScheduledOccurrenceResponse,
+): string {
+  return JSON.stringify(
+    GetScheduledOccurrenceResponse$outboundSchema.parse(
+      getScheduledOccurrenceResponse,
+    ),
+  );
+}
+
+export function getScheduledOccurrenceResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetScheduledOccurrenceResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetScheduledOccurrenceResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetScheduledOccurrenceResponse' from JSON`,
   );
 }

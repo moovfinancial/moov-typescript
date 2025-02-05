@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListDisputeEvidenceSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type ListDisputeEvidenceGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type ListDisputeEvidenceRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   disputeID: string;
 };
 
+export type ListDisputeEvidenceResponse = {
+  headers: { [k: string]: Array<string> };
+  result: Array<components.DisputeEvidenceMetadata>;
+};
+
 /** @internal */
-export const ListDisputeEvidenceSecurity$inboundSchema: z.ZodType<
-  ListDisputeEvidenceSecurity,
+export const ListDisputeEvidenceGlobals$inboundSchema: z.ZodType<
+  ListDisputeEvidenceGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type ListDisputeEvidenceSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type ListDisputeEvidenceGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const ListDisputeEvidenceSecurity$outboundSchema: z.ZodType<
-  ListDisputeEvidenceSecurity$Outbound,
+export const ListDisputeEvidenceGlobals$outboundSchema: z.ZodType<
+  ListDisputeEvidenceGlobals$Outbound,
   z.ZodTypeDef,
-  ListDisputeEvidenceSecurity
+  ListDisputeEvidenceGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,32 +71,30 @@ export const ListDisputeEvidenceSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListDisputeEvidenceSecurity$ {
-  /** @deprecated use `ListDisputeEvidenceSecurity$inboundSchema` instead. */
-  export const inboundSchema = ListDisputeEvidenceSecurity$inboundSchema;
-  /** @deprecated use `ListDisputeEvidenceSecurity$outboundSchema` instead. */
-  export const outboundSchema = ListDisputeEvidenceSecurity$outboundSchema;
-  /** @deprecated use `ListDisputeEvidenceSecurity$Outbound` instead. */
-  export type Outbound = ListDisputeEvidenceSecurity$Outbound;
+export namespace ListDisputeEvidenceGlobals$ {
+  /** @deprecated use `ListDisputeEvidenceGlobals$inboundSchema` instead. */
+  export const inboundSchema = ListDisputeEvidenceGlobals$inboundSchema;
+  /** @deprecated use `ListDisputeEvidenceGlobals$outboundSchema` instead. */
+  export const outboundSchema = ListDisputeEvidenceGlobals$outboundSchema;
+  /** @deprecated use `ListDisputeEvidenceGlobals$Outbound` instead. */
+  export type Outbound = ListDisputeEvidenceGlobals$Outbound;
 }
 
-export function listDisputeEvidenceSecurityToJSON(
-  listDisputeEvidenceSecurity: ListDisputeEvidenceSecurity,
+export function listDisputeEvidenceGlobalsToJSON(
+  listDisputeEvidenceGlobals: ListDisputeEvidenceGlobals,
 ): string {
   return JSON.stringify(
-    ListDisputeEvidenceSecurity$outboundSchema.parse(
-      listDisputeEvidenceSecurity,
-    ),
+    ListDisputeEvidenceGlobals$outboundSchema.parse(listDisputeEvidenceGlobals),
   );
 }
 
-export function listDisputeEvidenceSecurityFromJSON(
+export function listDisputeEvidenceGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<ListDisputeEvidenceSecurity, SDKValidationError> {
+): SafeParseResult<ListDisputeEvidenceGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListDisputeEvidenceSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListDisputeEvidenceSecurity' from JSON`,
+    (x) => ListDisputeEvidenceGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDisputeEvidenceGlobals' from JSON`,
   );
 }
 
@@ -98,18 +104,12 @@ export const ListDisputeEvidenceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-moov-version": "xMoovVersion",
-  });
 });
 
 /** @internal */
 export type ListDisputeEvidenceRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   disputeID: string;
 };
@@ -120,13 +120,8 @@ export const ListDisputeEvidenceRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListDisputeEvidenceRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   disputeID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "x-moov-version",
-  });
 });
 
 /**
@@ -157,5 +152,74 @@ export function listDisputeEvidenceRequestFromJSON(
     jsonString,
     (x) => ListDisputeEvidenceRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListDisputeEvidenceRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListDisputeEvidenceResponse$inboundSchema: z.ZodType<
+  ListDisputeEvidenceResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: z.array(components.DisputeEvidenceMetadata$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type ListDisputeEvidenceResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: Array<components.DisputeEvidenceMetadata$Outbound>;
+};
+
+/** @internal */
+export const ListDisputeEvidenceResponse$outboundSchema: z.ZodType<
+  ListDisputeEvidenceResponse$Outbound,
+  z.ZodTypeDef,
+  ListDisputeEvidenceResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: z.array(components.DisputeEvidenceMetadata$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListDisputeEvidenceResponse$ {
+  /** @deprecated use `ListDisputeEvidenceResponse$inboundSchema` instead. */
+  export const inboundSchema = ListDisputeEvidenceResponse$inboundSchema;
+  /** @deprecated use `ListDisputeEvidenceResponse$outboundSchema` instead. */
+  export const outboundSchema = ListDisputeEvidenceResponse$outboundSchema;
+  /** @deprecated use `ListDisputeEvidenceResponse$Outbound` instead. */
+  export type Outbound = ListDisputeEvidenceResponse$Outbound;
+}
+
+export function listDisputeEvidenceResponseToJSON(
+  listDisputeEvidenceResponse: ListDisputeEvidenceResponse,
+): string {
+  return JSON.stringify(
+    ListDisputeEvidenceResponse$outboundSchema.parse(
+      listDisputeEvidenceResponse,
+    ),
+  );
+}
+
+export function listDisputeEvidenceResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListDisputeEvidenceResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListDisputeEvidenceResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDisputeEvidenceResponse' from JSON`,
   );
 }

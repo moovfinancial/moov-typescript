@@ -9,53 +9,61 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CreateFeePlanAgreementsSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type CreateFeePlanAgreementsGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type CreateFeePlanAgreementsRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   accountID: string;
   createFeePlanAgreement: components.CreateFeePlanAgreement;
 };
 
+export type CreateFeePlanAgreementsResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.FeePlanAgreement;
+};
+
 /** @internal */
-export const CreateFeePlanAgreementsSecurity$inboundSchema: z.ZodType<
-  CreateFeePlanAgreementsSecurity,
+export const CreateFeePlanAgreementsGlobals$inboundSchema: z.ZodType<
+  CreateFeePlanAgreementsGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type CreateFeePlanAgreementsSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type CreateFeePlanAgreementsGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const CreateFeePlanAgreementsSecurity$outboundSchema: z.ZodType<
-  CreateFeePlanAgreementsSecurity$Outbound,
+export const CreateFeePlanAgreementsGlobals$outboundSchema: z.ZodType<
+  CreateFeePlanAgreementsGlobals$Outbound,
   z.ZodTypeDef,
-  CreateFeePlanAgreementsSecurity
+  CreateFeePlanAgreementsGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -63,32 +71,32 @@ export const CreateFeePlanAgreementsSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateFeePlanAgreementsSecurity$ {
-  /** @deprecated use `CreateFeePlanAgreementsSecurity$inboundSchema` instead. */
-  export const inboundSchema = CreateFeePlanAgreementsSecurity$inboundSchema;
-  /** @deprecated use `CreateFeePlanAgreementsSecurity$outboundSchema` instead. */
-  export const outboundSchema = CreateFeePlanAgreementsSecurity$outboundSchema;
-  /** @deprecated use `CreateFeePlanAgreementsSecurity$Outbound` instead. */
-  export type Outbound = CreateFeePlanAgreementsSecurity$Outbound;
+export namespace CreateFeePlanAgreementsGlobals$ {
+  /** @deprecated use `CreateFeePlanAgreementsGlobals$inboundSchema` instead. */
+  export const inboundSchema = CreateFeePlanAgreementsGlobals$inboundSchema;
+  /** @deprecated use `CreateFeePlanAgreementsGlobals$outboundSchema` instead. */
+  export const outboundSchema = CreateFeePlanAgreementsGlobals$outboundSchema;
+  /** @deprecated use `CreateFeePlanAgreementsGlobals$Outbound` instead. */
+  export type Outbound = CreateFeePlanAgreementsGlobals$Outbound;
 }
 
-export function createFeePlanAgreementsSecurityToJSON(
-  createFeePlanAgreementsSecurity: CreateFeePlanAgreementsSecurity,
+export function createFeePlanAgreementsGlobalsToJSON(
+  createFeePlanAgreementsGlobals: CreateFeePlanAgreementsGlobals,
 ): string {
   return JSON.stringify(
-    CreateFeePlanAgreementsSecurity$outboundSchema.parse(
-      createFeePlanAgreementsSecurity,
+    CreateFeePlanAgreementsGlobals$outboundSchema.parse(
+      createFeePlanAgreementsGlobals,
     ),
   );
 }
 
-export function createFeePlanAgreementsSecurityFromJSON(
+export function createFeePlanAgreementsGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<CreateFeePlanAgreementsSecurity, SDKValidationError> {
+): SafeParseResult<CreateFeePlanAgreementsGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateFeePlanAgreementsSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFeePlanAgreementsSecurity' from JSON`,
+    (x) => CreateFeePlanAgreementsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFeePlanAgreementsGlobals' from JSON`,
   );
 }
 
@@ -98,19 +106,16 @@ export const CreateFeePlanAgreementsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   CreateFeePlanAgreement: components.CreateFeePlanAgreement$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "CreateFeePlanAgreement": "createFeePlanAgreement",
   });
 });
 
 /** @internal */
 export type CreateFeePlanAgreementsRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   CreateFeePlanAgreement: components.CreateFeePlanAgreement$Outbound;
 };
@@ -121,12 +126,10 @@ export const CreateFeePlanAgreementsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateFeePlanAgreementsRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   createFeePlanAgreement: components.CreateFeePlanAgreement$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     createFeePlanAgreement: "CreateFeePlanAgreement",
   });
 });
@@ -161,5 +164,74 @@ export function createFeePlanAgreementsRequestFromJSON(
     jsonString,
     (x) => CreateFeePlanAgreementsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateFeePlanAgreementsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFeePlanAgreementsResponse$inboundSchema: z.ZodType<
+  CreateFeePlanAgreementsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.FeePlanAgreement$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type CreateFeePlanAgreementsResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.FeePlanAgreement$Outbound;
+};
+
+/** @internal */
+export const CreateFeePlanAgreementsResponse$outboundSchema: z.ZodType<
+  CreateFeePlanAgreementsResponse$Outbound,
+  z.ZodTypeDef,
+  CreateFeePlanAgreementsResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.FeePlanAgreement$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateFeePlanAgreementsResponse$ {
+  /** @deprecated use `CreateFeePlanAgreementsResponse$inboundSchema` instead. */
+  export const inboundSchema = CreateFeePlanAgreementsResponse$inboundSchema;
+  /** @deprecated use `CreateFeePlanAgreementsResponse$outboundSchema` instead. */
+  export const outboundSchema = CreateFeePlanAgreementsResponse$outboundSchema;
+  /** @deprecated use `CreateFeePlanAgreementsResponse$Outbound` instead. */
+  export type Outbound = CreateFeePlanAgreementsResponse$Outbound;
+}
+
+export function createFeePlanAgreementsResponseToJSON(
+  createFeePlanAgreementsResponse: CreateFeePlanAgreementsResponse,
+): string {
+  return JSON.stringify(
+    CreateFeePlanAgreementsResponse$outboundSchema.parse(
+      createFeePlanAgreementsResponse,
+    ),
+  );
+}
+
+export function createFeePlanAgreementsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFeePlanAgreementsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateFeePlanAgreementsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFeePlanAgreementsResponse' from JSON`,
   );
 }

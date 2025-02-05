@@ -6,8 +6,8 @@
 import { GetIssuedCardAuthorizationRequest } from "@moovio/sdk/models/operations";
 
 let value: GetIssuedCardAuthorizationRequest = {
-  accountID: "b3befc8d-76b3-4155-b1da-0828c6989723",
-  authorizationID: "bf05f799-2b08-483c-bef0-4e048b34378e",
+  accountID: "8de6c32f-aae0-44b7-9f72-e0c073f60c5a",
+  authorizationID: "74c70f77-5a6b-4e7a-b4aa-82b56da191a6",
 };
 ```
 
@@ -15,6 +15,5 @@ let value: GetIssuedCardAuthorizationRequest = {
 
 | Field                                                       | Type                                                        | Required                                                    | Description                                                 |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `xMoovVersion`                                              | [components.Versions](../../models/components/versions.md)  | :heavy_minus_sign:                                          | Specify an API version.                                     |
 | `accountID`                                                 | *string*                                                    | :heavy_check_mark:                                          | The Moov business account for which cards have been issued. |
 | `authorizationID`                                           | *string*                                                    | :heavy_check_mark:                                          | N/A                                                         |

@@ -9,16 +9,24 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type UpdateRepresentativeSecurity = {
-  basicAuth?: components.SchemeBasicAuth | undefined;
-  oAuth2Auth?: string | undefined;
+export type UpdateRepresentativeGlobals = {
+  /**
+   * Specify an API version.
+   *
+   * @remarks
+   *
+   * API versioning follows the format `vYYYY.QQ.BB`, where
+   *   - `YYYY` is the year
+   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
+   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *
+   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   */
+  xMoovVersion?: string | undefined;
 };
 
 export type UpdateRepresentativeRequest = {
-  /**
-   * Specify an API version.
-   */
-  xMoovVersion?: components.Versions | undefined;
   /**
    * ID of the account.
    */
@@ -30,39 +38,39 @@ export type UpdateRepresentativeRequest = {
   updateRepresentative: components.UpdateRepresentative;
 };
 
+export type UpdateRepresentativeResponse = {
+  headers: { [k: string]: Array<string> };
+  result: components.Representative;
+};
+
 /** @internal */
-export const UpdateRepresentativeSecurity$inboundSchema: z.ZodType<
-  UpdateRepresentativeSecurity,
+export const UpdateRepresentativeGlobals$inboundSchema: z.ZodType<
+  UpdateRepresentativeGlobals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BasicAuth: components.SchemeBasicAuth$inboundSchema.optional(),
-  OAuth2Auth: z.string().optional(),
+  "x-moov-version": z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    "BasicAuth": "basicAuth",
-    "OAuth2Auth": "oAuth2Auth",
+    "x-moov-version": "xMoovVersion",
   });
 });
 
 /** @internal */
-export type UpdateRepresentativeSecurity$Outbound = {
-  BasicAuth?: components.SchemeBasicAuth$Outbound | undefined;
-  OAuth2Auth?: string | undefined;
+export type UpdateRepresentativeGlobals$Outbound = {
+  "x-moov-version": string;
 };
 
 /** @internal */
-export const UpdateRepresentativeSecurity$outboundSchema: z.ZodType<
-  UpdateRepresentativeSecurity$Outbound,
+export const UpdateRepresentativeGlobals$outboundSchema: z.ZodType<
+  UpdateRepresentativeGlobals$Outbound,
   z.ZodTypeDef,
-  UpdateRepresentativeSecurity
+  UpdateRepresentativeGlobals
 > = z.object({
-  basicAuth: components.SchemeBasicAuth$outboundSchema.optional(),
-  oAuth2Auth: z.string().optional(),
+  xMoovVersion: z.string().default("v2024.01"),
 }).transform((v) => {
   return remap$(v, {
-    basicAuth: "BasicAuth",
-    oAuth2Auth: "OAuth2Auth",
+    xMoovVersion: "x-moov-version",
   });
 });
 
@@ -70,32 +78,32 @@ export const UpdateRepresentativeSecurity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateRepresentativeSecurity$ {
-  /** @deprecated use `UpdateRepresentativeSecurity$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentativeSecurity$inboundSchema;
-  /** @deprecated use `UpdateRepresentativeSecurity$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentativeSecurity$outboundSchema;
-  /** @deprecated use `UpdateRepresentativeSecurity$Outbound` instead. */
-  export type Outbound = UpdateRepresentativeSecurity$Outbound;
+export namespace UpdateRepresentativeGlobals$ {
+  /** @deprecated use `UpdateRepresentativeGlobals$inboundSchema` instead. */
+  export const inboundSchema = UpdateRepresentativeGlobals$inboundSchema;
+  /** @deprecated use `UpdateRepresentativeGlobals$outboundSchema` instead. */
+  export const outboundSchema = UpdateRepresentativeGlobals$outboundSchema;
+  /** @deprecated use `UpdateRepresentativeGlobals$Outbound` instead. */
+  export type Outbound = UpdateRepresentativeGlobals$Outbound;
 }
 
-export function updateRepresentativeSecurityToJSON(
-  updateRepresentativeSecurity: UpdateRepresentativeSecurity,
+export function updateRepresentativeGlobalsToJSON(
+  updateRepresentativeGlobals: UpdateRepresentativeGlobals,
 ): string {
   return JSON.stringify(
-    UpdateRepresentativeSecurity$outboundSchema.parse(
-      updateRepresentativeSecurity,
+    UpdateRepresentativeGlobals$outboundSchema.parse(
+      updateRepresentativeGlobals,
     ),
   );
 }
 
-export function updateRepresentativeSecurityFromJSON(
+export function updateRepresentativeGlobalsFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateRepresentativeSecurity, SDKValidationError> {
+): SafeParseResult<UpdateRepresentativeGlobals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateRepresentativeSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateRepresentativeSecurity' from JSON`,
+    (x) => UpdateRepresentativeGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateRepresentativeGlobals' from JSON`,
   );
 }
 
@@ -105,20 +113,17 @@ export const UpdateRepresentativeRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": components.Versions$inboundSchema.optional(),
   accountID: z.string(),
   representativeID: z.string(),
   UpdateRepresentative: components.UpdateRepresentative$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
     "UpdateRepresentative": "updateRepresentative",
   });
 });
 
 /** @internal */
 export type UpdateRepresentativeRequest$Outbound = {
-  "x-moov-version"?: string | undefined;
   accountID: string;
   representativeID: string;
   UpdateRepresentative: components.UpdateRepresentative$Outbound;
@@ -130,13 +135,11 @@ export const UpdateRepresentativeRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateRepresentativeRequest
 > = z.object({
-  xMoovVersion: components.Versions$outboundSchema.optional(),
   accountID: z.string(),
   representativeID: z.string(),
   updateRepresentative: components.UpdateRepresentative$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
     updateRepresentative: "UpdateRepresentative",
   });
 });
@@ -171,5 +174,74 @@ export function updateRepresentativeRequestFromJSON(
     jsonString,
     (x) => UpdateRepresentativeRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateRepresentativeRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateRepresentativeResponse$inboundSchema: z.ZodType<
+  UpdateRepresentativeResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  Headers: z.record(z.array(z.string())),
+  Result: components.Representative$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "Headers": "headers",
+    "Result": "result",
+  });
+});
+
+/** @internal */
+export type UpdateRepresentativeResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: components.Representative$Outbound;
+};
+
+/** @internal */
+export const UpdateRepresentativeResponse$outboundSchema: z.ZodType<
+  UpdateRepresentativeResponse$Outbound,
+  z.ZodTypeDef,
+  UpdateRepresentativeResponse
+> = z.object({
+  headers: z.record(z.array(z.string())),
+  result: components.Representative$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    headers: "Headers",
+    result: "Result",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateRepresentativeResponse$ {
+  /** @deprecated use `UpdateRepresentativeResponse$inboundSchema` instead. */
+  export const inboundSchema = UpdateRepresentativeResponse$inboundSchema;
+  /** @deprecated use `UpdateRepresentativeResponse$outboundSchema` instead. */
+  export const outboundSchema = UpdateRepresentativeResponse$outboundSchema;
+  /** @deprecated use `UpdateRepresentativeResponse$Outbound` instead. */
+  export type Outbound = UpdateRepresentativeResponse$Outbound;
+}
+
+export function updateRepresentativeResponseToJSON(
+  updateRepresentativeResponse: UpdateRepresentativeResponse,
+): string {
+  return JSON.stringify(
+    UpdateRepresentativeResponse$outboundSchema.parse(
+      updateRepresentativeResponse,
+    ),
+  );
+}
+
+export function updateRepresentativeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateRepresentativeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateRepresentativeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateRepresentativeResponse' from JSON`,
   );
 }
