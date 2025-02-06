@@ -28,12 +28,12 @@ export type CreateBrandGlobals = {
 
 export type CreateBrandRequest = {
   accountID: string;
-  brand: components.Brand;
+  brandProperties: components.BrandProperties;
 };
 
 export type CreateBrandResponse = {
   headers: { [k: string]: Array<string> };
-  result: components.Brand;
+  result: components.BrandProperties;
 };
 
 /** @internal */
@@ -105,17 +105,17 @@ export const CreateBrandRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accountID: z.string(),
-  Brand: components.Brand$inboundSchema,
+  BrandProperties: components.BrandProperties$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "Brand": "brand",
+    "BrandProperties": "brandProperties",
   });
 });
 
 /** @internal */
 export type CreateBrandRequest$Outbound = {
   accountID: string;
-  Brand: components.Brand$Outbound;
+  BrandProperties: components.BrandProperties$Outbound;
 };
 
 /** @internal */
@@ -125,10 +125,10 @@ export const CreateBrandRequest$outboundSchema: z.ZodType<
   CreateBrandRequest
 > = z.object({
   accountID: z.string(),
-  brand: components.Brand$outboundSchema,
+  brandProperties: components.BrandProperties$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    brand: "Brand",
+    brandProperties: "BrandProperties",
   });
 });
 
@@ -170,7 +170,7 @@ export const CreateBrandResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: components.Brand$inboundSchema,
+  Result: components.BrandProperties$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -181,7 +181,7 @@ export const CreateBrandResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateBrandResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: components.Brand$Outbound;
+  Result: components.BrandProperties$Outbound;
 };
 
 /** @internal */
@@ -191,7 +191,7 @@ export const CreateBrandResponse$outboundSchema: z.ZodType<
   CreateBrandResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: components.Brand$outboundSchema,
+  result: components.BrandProperties$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

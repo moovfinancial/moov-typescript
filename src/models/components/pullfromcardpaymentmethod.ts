@@ -8,11 +8,11 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Card,
-  Card$inboundSchema,
-  Card$Outbound,
-  Card$outboundSchema,
-} from "./card.js";
+  PaymentMethodsCard,
+  PaymentMethodsCard$inboundSchema,
+  PaymentMethodsCard$Outbound,
+  PaymentMethodsCard$outboundSchema,
+} from "./paymentmethodscard.js";
 
 export const PullFromCardPaymentMethodPaymentMethodType = {
   PullFromCard: "pull-from-card",
@@ -26,11 +26,11 @@ export type PullFromCardPaymentMethod = {
    * ID of the payment method.
    */
   paymentMethodID: string;
-  /**
-   * Describes a card on a Moov account.
-   */
-  card: Card;
   paymentMethodType: PullFromCardPaymentMethodPaymentMethodType;
+  /**
+   * A card as contained within a payment method.
+   */
+  card: PaymentMethodsCard;
 };
 
 /** @internal */
@@ -63,15 +63,15 @@ export const PullFromCardPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  card: Card$inboundSchema,
   paymentMethodType: PullFromCardPaymentMethodPaymentMethodType$inboundSchema,
+  card: PaymentMethodsCard$inboundSchema,
 });
 
 /** @internal */
 export type PullFromCardPaymentMethod$Outbound = {
   paymentMethodID: string;
-  card: Card$Outbound;
   paymentMethodType: string;
+  card: PaymentMethodsCard$Outbound;
 };
 
 /** @internal */
@@ -81,8 +81,8 @@ export const PullFromCardPaymentMethod$outboundSchema: z.ZodType<
   PullFromCardPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  card: Card$outboundSchema,
   paymentMethodType: PullFromCardPaymentMethodPaymentMethodType$outboundSchema,
+  card: PaymentMethodsCard$outboundSchema,
 });
 
 /**

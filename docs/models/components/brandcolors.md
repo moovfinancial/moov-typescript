@@ -1,11 +1,13 @@
-# Colors
+# BrandColors
+
+Brand colors for light and dark modes.
 
 ## Example Usage
 
 ```typescript
-import { Colors } from "@moovio/sdk/models/components";
+import { BrandColors } from "@moovio/sdk/models/components";
 
-let value: Colors = {
+let value: BrandColors = {
   dark: {
     accent: "#111111",
   },

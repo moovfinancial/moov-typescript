@@ -8,11 +8,11 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  BankAccount,
-  BankAccount$inboundSchema,
-  BankAccount$Outbound,
-  BankAccount$outboundSchema,
-} from "./bankaccount.js";
+  PaymentMethodsBankAccount,
+  PaymentMethodsBankAccount$inboundSchema,
+  PaymentMethodsBankAccount$Outbound,
+  PaymentMethodsBankAccount$outboundSchema,
+} from "./paymentmethodsbankaccount.js";
 
 export const AchCreditSameDayPaymentMethodPaymentMethodType = {
   AchCreditSameDay: "ach-credit-same-day",
@@ -26,11 +26,11 @@ export type AchCreditSameDayPaymentMethod = {
    * ID of the payment method.
    */
   paymentMethodID: string;
-  /**
-   * Describes a bank account linked to a Moov account.
-   */
-  bankAccount: BankAccount;
   paymentMethodType: AchCreditSameDayPaymentMethodPaymentMethodType;
+  /**
+   * A bank account as contained within a payment method.
+   */
+  bankAccount: PaymentMethodsBankAccount;
 };
 
 /** @internal */
@@ -63,16 +63,16 @@ export const AchCreditSameDayPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  bankAccount: BankAccount$inboundSchema,
   paymentMethodType:
     AchCreditSameDayPaymentMethodPaymentMethodType$inboundSchema,
+  bankAccount: PaymentMethodsBankAccount$inboundSchema,
 });
 
 /** @internal */
 export type AchCreditSameDayPaymentMethod$Outbound = {
   paymentMethodID: string;
-  bankAccount: BankAccount$Outbound;
   paymentMethodType: string;
+  bankAccount: PaymentMethodsBankAccount$Outbound;
 };
 
 /** @internal */
@@ -82,9 +82,9 @@ export const AchCreditSameDayPaymentMethod$outboundSchema: z.ZodType<
   AchCreditSameDayPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  bankAccount: BankAccount$outboundSchema,
   paymentMethodType:
     AchCreditSameDayPaymentMethodPaymentMethodType$outboundSchema,
+  bankAccount: PaymentMethodsBankAccount$outboundSchema,
 });
 
 /**

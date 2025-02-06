@@ -13,11 +13,11 @@ let value: ListCapabilitiesResponse = {
   },
   result: [
     {
-      capability: "card-issuing",
-      accountID: "998f5c86-f916-4cbe-a4c7-9ffd5ea60c8c",
-      status: "in-review",
-      createdOn: new Date("2023-11-26T12:19:41.082Z"),
-      updatedOn: new Date("2025-05-27T16:12:22.860Z"),
+      capability: "wallet",
+      accountID: "c4c87a01-4f25-4055-afd6-0da2f1d46caf",
+      status: "enabled",
+      createdOn: new Date("2025-08-27T06:12:53.981Z"),
+      updatedOn: new Date("2025-04-22T23:52:00.946Z"),
     },
   ],
 };

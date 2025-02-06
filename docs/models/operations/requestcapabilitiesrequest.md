@@ -6,10 +6,10 @@
 import { RequestCapabilitiesRequest } from "@moovio/sdk/models/operations";
 
 let value: RequestCapabilitiesRequest = {
-  accountID: "87a014f2-5055-4fd6-b0da-2f1d46caf91e",
+  accountID: "b062dbef-cf90-405d-9df1-0e48f6a6c834",
   addCapabilities: {
     capabilities: [
-      "wallet",
+      "collect-funds",
     ],
   },
 };

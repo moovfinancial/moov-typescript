@@ -6,8 +6,8 @@
 import { UpdateTransferRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateTransferRequest = {
-  transferID: "443533f7-a597-49ba-9c21-573cbeb1a649",
-  accountID: "89805c58-533b-4ae6-8a77-d7e911f69622",
+  transferID: "805c5853-3bae-46a7-a7d7-e911f6962239",
+  accountID: "5056cb33-aa81-440c-ace1-eefc44baa584",
 };
 ```
 

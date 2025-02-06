@@ -32,7 +32,7 @@ export type GetBrandRequest = {
 
 export type GetBrandResponse = {
   headers: { [k: string]: Array<string> };
-  result: components.Brand;
+  result: components.BrandProperties;
 };
 
 /** @internal */
@@ -154,7 +154,7 @@ export const GetBrandResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: components.Brand$inboundSchema,
+  Result: components.BrandProperties$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -165,7 +165,7 @@ export const GetBrandResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type GetBrandResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: components.Brand$Outbound;
+  Result: components.BrandProperties$Outbound;
 };
 
 /** @internal */
@@ -175,7 +175,7 @@ export const GetBrandResponse$outboundSchema: z.ZodType<
   GetBrandResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: components.Brand$outboundSchema,
+  result: components.BrandProperties$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

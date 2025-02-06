@@ -6,7 +6,7 @@
 import { ListCapabilitiesRequest } from "@moovio/sdk/models/operations";
 
 let value: ListCapabilitiesRequest = {
-  accountID: "0a822c9f-ff1f-437c-8392-11506a61142f",
+  accountID: "c998f5c8-6f91-46cb-be4c-79ffd5ea60c8",
 };
 ```
 

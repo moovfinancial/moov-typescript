@@ -6,7 +6,7 @@
 import { RequirementError } from "@moovio/sdk/models/components";
 
 let value: RequirementError = {
-  requirement: "document.{doc-uuid}",
+  requirement: "representative.{rep-uuid}.email",
 };
 ```
 

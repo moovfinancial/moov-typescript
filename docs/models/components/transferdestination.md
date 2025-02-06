@@ -10,8 +10,8 @@ let value: TransferDestination = {
   paymentMethodType: "<value>",
   account: {
     accountID: "<id>",
-    email: "Maximillia.Koelpin21@yahoo.com",
-    displayName: "Nina.Rosenbaum67",
+    email: "Carrie0@hotmail.com",
+    displayName: "Cathrine14",
   },
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
@@ -35,7 +35,7 @@ let value: TransferDestination = {
     debitHoldPeriod: "2-days",
   },
   cardDetails: {
-    status: "initiated",
+    status: "canceled",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

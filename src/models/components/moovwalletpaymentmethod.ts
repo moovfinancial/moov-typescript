@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  PaymentMethodsWallet,
+  PaymentMethodsWallet$inboundSchema,
+  PaymentMethodsWallet$Outbound,
+  PaymentMethodsWallet$outboundSchema,
+} from "./paymentmethodswallet.js";
 
 export const MoovWalletPaymentMethodPaymentMethodType = {
   MoovWallet: "moov-wallet",
@@ -21,7 +27,7 @@ export type MoovWalletPaymentMethod = {
    */
   paymentMethodID: string;
   paymentMethodType: MoovWalletPaymentMethodPaymentMethodType;
-  wallet?: any | undefined;
+  wallet: PaymentMethodsWallet;
 };
 
 /** @internal */
@@ -55,14 +61,14 @@ export const MoovWalletPaymentMethod$inboundSchema: z.ZodType<
 > = z.object({
   paymentMethodID: z.string(),
   paymentMethodType: MoovWalletPaymentMethodPaymentMethodType$inboundSchema,
-  wallet: z.any().optional(),
+  wallet: PaymentMethodsWallet$inboundSchema,
 });
 
 /** @internal */
 export type MoovWalletPaymentMethod$Outbound = {
   paymentMethodID: string;
   paymentMethodType: string;
-  wallet?: any | undefined;
+  wallet: PaymentMethodsWallet$Outbound;
 };
 
 /** @internal */
@@ -73,7 +79,7 @@ export const MoovWalletPaymentMethod$outboundSchema: z.ZodType<
 > = z.object({
   paymentMethodID: z.string(),
   paymentMethodType: MoovWalletPaymentMethodPaymentMethodType$outboundSchema,
-  wallet: z.any().optional(),
+  wallet: PaymentMethodsWallet$outboundSchema,
 });
 
 /**

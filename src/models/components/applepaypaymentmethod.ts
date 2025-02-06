@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  ApplePayResponse,
+  ApplePayResponse$inboundSchema,
+  ApplePayResponse$Outbound,
+  ApplePayResponse$outboundSchema,
+} from "./applepayresponse.js";
 
 export const ApplePayPaymentMethodPaymentMethodType = {
   ApplePay: "apple-pay",
@@ -21,7 +27,10 @@ export type ApplePayPaymentMethod = {
    */
   paymentMethodID: string;
   paymentMethodType: ApplePayPaymentMethodPaymentMethodType;
-  applePay?: any | undefined;
+  /**
+   * Describes an Apple Pay token on a Moov account.
+   */
+  applePay: ApplePayResponse;
 };
 
 /** @internal */
@@ -56,14 +65,14 @@ export const ApplePayPaymentMethod$inboundSchema: z.ZodType<
 > = z.object({
   paymentMethodID: z.string(),
   paymentMethodType: ApplePayPaymentMethodPaymentMethodType$inboundSchema,
-  applePay: z.any().optional(),
+  applePay: ApplePayResponse$inboundSchema,
 });
 
 /** @internal */
 export type ApplePayPaymentMethod$Outbound = {
   paymentMethodID: string;
   paymentMethodType: string;
-  applePay?: any | undefined;
+  applePay: ApplePayResponse$Outbound;
 };
 
 /** @internal */
@@ -74,7 +83,7 @@ export const ApplePayPaymentMethod$outboundSchema: z.ZodType<
 > = z.object({
   paymentMethodID: z.string(),
   paymentMethodType: ApplePayPaymentMethodPaymentMethodType$outboundSchema,
-  applePay: z.any().optional(),
+  applePay: ApplePayResponse$outboundSchema,
 });
 
 /**

@@ -8,11 +8,11 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  BankAccount,
-  BankAccount$inboundSchema,
-  BankAccount$Outbound,
-  BankAccount$outboundSchema,
-} from "./bankaccount.js";
+  PaymentMethodsBankAccount,
+  PaymentMethodsBankAccount$inboundSchema,
+  PaymentMethodsBankAccount$Outbound,
+  PaymentMethodsBankAccount$outboundSchema,
+} from "./paymentmethodsbankaccount.js";
 
 export const RtpCreditPaymentMethodPaymentMethodType = {
   RtpCredit: "rtp-credit",
@@ -26,11 +26,11 @@ export type RtpCreditPaymentMethod = {
    * ID of the payment method.
    */
   paymentMethodID: string;
-  /**
-   * Describes a bank account linked to a Moov account.
-   */
-  bankAccount: BankAccount;
   paymentMethodType: RtpCreditPaymentMethodPaymentMethodType;
+  /**
+   * A bank account as contained within a payment method.
+   */
+  bankAccount: PaymentMethodsBankAccount;
 };
 
 /** @internal */
@@ -63,15 +63,15 @@ export const RtpCreditPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  bankAccount: BankAccount$inboundSchema,
   paymentMethodType: RtpCreditPaymentMethodPaymentMethodType$inboundSchema,
+  bankAccount: PaymentMethodsBankAccount$inboundSchema,
 });
 
 /** @internal */
 export type RtpCreditPaymentMethod$Outbound = {
   paymentMethodID: string;
-  bankAccount: BankAccount$Outbound;
   paymentMethodType: string;
+  bankAccount: PaymentMethodsBankAccount$Outbound;
 };
 
 /** @internal */
@@ -81,8 +81,8 @@ export const RtpCreditPaymentMethod$outboundSchema: z.ZodType<
   RtpCreditPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  bankAccount: BankAccount$outboundSchema,
   paymentMethodType: RtpCreditPaymentMethodPaymentMethodType$outboundSchema,
+  bankAccount: PaymentMethodsBankAccount$outboundSchema,
 });
 
 /**

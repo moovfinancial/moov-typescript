@@ -14,7 +14,7 @@ let value: ListOnboardingInvitesResponse = {
   result: [
     {
       code: "N1IA5eWYNh",
-      link: "https://oily-pants.biz",
+      link: "https://possible-formamide.biz",
       scopes: [
         "accounts.read",
       ],
@@ -33,11 +33,11 @@ let value: ListOnboardingInvitesResponse = {
         },
       },
       partner: {
-        accountID: "be03ec13-5502-442d-a83d-c6da91616037",
+        accountID: "55a0da04-2995-4c0d-ae2f-bec13d0ba794",
         accountMode: "production",
         displayName: "Bob's Widgets",
       },
-      createdOn: new Date("2023-07-18T08:10:20.804Z"),
+      createdOn: new Date("2025-01-24T03:18:42.746Z"),
     },
   ],
 };

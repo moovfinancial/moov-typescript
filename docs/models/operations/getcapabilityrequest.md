@@ -6,8 +6,8 @@
 import { GetCapabilityRequest } from "@moovio/sdk/models/operations";
 
 let value: GetCapabilityRequest = {
-  accountID: "256a445c-9115-4cbb-8c48-8bf4ca9cf02c",
-  capabilityID: "collect-funds",
+  accountID: "834b0d78-8a51-4528-85ff-99fec5537fe1",
+  capabilityID: "card-issuing",
 };
 ```
 
