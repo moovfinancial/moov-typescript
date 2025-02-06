@@ -9,7 +9,7 @@ import { PaymentLinkDisplayOptions } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkDisplayOptions = {
   title: "<value>",
-  description: "vibration incidentally up round sophisticated violently",
+  description: "narrow while honored absent urban busily",
   callToAction: "auto",
 };
 ```

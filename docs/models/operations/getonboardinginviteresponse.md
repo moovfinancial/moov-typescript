@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://trusty-blight.name/",
+    link: "https://creamy-unblinking.org/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "c2abb0a2-4e0d-480c-9d7c-e9e6ccb6734a",
+      accountID: "105f63f3-a1a2-446c-882c-a01134aaddc9",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2025-03-04T19:53:24.063Z"),
+    createdOn: new Date("2025-01-23T18:32:15.375Z"),
   },
 };
 ```

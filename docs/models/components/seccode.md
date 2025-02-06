@@ -7,7 +7,7 @@ Code used to identify the ACH authorization method.
 ```typescript
 import { SECCode } from "@moovio/sdk/models/components";
 
-let value: SECCode = "TEL";
+let value: SECCode = "WEB";
 ```
 
 ## Values

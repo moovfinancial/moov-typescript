@@ -9,7 +9,7 @@ import { PaymentLinkPaymentDetails } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkPaymentDetails = {
   allowedMethods: [
-    "card-payment",
+    "apple-pay",
   ],
   cardDetails: {
     dynamicDescriptor: "WhlBdy *Yoga 11-12",

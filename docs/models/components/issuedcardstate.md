@@ -12,7 +12,7 @@ The `state` represents the operational status of an issued card. A card can only
 ```typescript
 import { IssuedCardState } from "@moovio/sdk/models/components";
 
-let value: IssuedCardState = "closed";
+let value: IssuedCardState = "active";
 ```
 
 ## Values

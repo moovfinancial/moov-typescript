@@ -5,7 +5,7 @@
 ```typescript
 import { BankAccountStatus } from "@moovio/sdk/models/components";
 
-let value: BankAccountStatus = "verified";
+let value: BankAccountStatus = "new";
 ```
 
 ## Values

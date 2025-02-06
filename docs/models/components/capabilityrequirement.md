@@ -9,7 +9,7 @@ import { CapabilityRequirement } from "@moovio/sdk/models/components";
 
 let value: CapabilityRequirement = {
   currentlyDue: [
-    "business.average-monthly-transaction-volume",
+    "business.max-transaction-size",
   ],
 };
 ```

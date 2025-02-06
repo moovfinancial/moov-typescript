@@ -8,11 +8,11 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  BankAccount,
-  BankAccount$inboundSchema,
-  BankAccount$Outbound,
-  BankAccount$outboundSchema,
-} from "./bankaccount.js";
+  PaymentMethodsBankAccount,
+  PaymentMethodsBankAccount$inboundSchema,
+  PaymentMethodsBankAccount$Outbound,
+  PaymentMethodsBankAccount$outboundSchema,
+} from "./paymentmethodsbankaccount.js";
 
 export const AchCreditStandardPaymentMethodPaymentMethodType = {
   AchCreditStandard: "ach-credit-standard",
@@ -26,11 +26,11 @@ export type AchCreditStandardPaymentMethod = {
    * ID of the payment method.
    */
   paymentMethodID: string;
-  /**
-   * Describes a bank account linked to a Moov account.
-   */
-  bankAccount: BankAccount;
   paymentMethodType: AchCreditStandardPaymentMethodPaymentMethodType;
+  /**
+   * A bank account as contained within a payment method.
+   */
+  bankAccount: PaymentMethodsBankAccount;
 };
 
 /** @internal */
@@ -63,16 +63,16 @@ export const AchCreditStandardPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  bankAccount: BankAccount$inboundSchema,
   paymentMethodType:
     AchCreditStandardPaymentMethodPaymentMethodType$inboundSchema,
+  bankAccount: PaymentMethodsBankAccount$inboundSchema,
 });
 
 /** @internal */
 export type AchCreditStandardPaymentMethod$Outbound = {
   paymentMethodID: string;
-  bankAccount: BankAccount$Outbound;
   paymentMethodType: string;
+  bankAccount: PaymentMethodsBankAccount$Outbound;
 };
 
 /** @internal */
@@ -82,9 +82,9 @@ export const AchCreditStandardPaymentMethod$outboundSchema: z.ZodType<
   AchCreditStandardPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  bankAccount: BankAccount$outboundSchema,
   paymentMethodType:
     AchCreditStandardPaymentMethodPaymentMethodType$outboundSchema,
+  bankAccount: PaymentMethodsBankAccount$outboundSchema,
 });
 
 /**

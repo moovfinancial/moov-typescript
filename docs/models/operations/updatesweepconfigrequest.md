@@ -6,8 +6,8 @@
 import { UpdateSweepConfigRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateSweepConfigRequest = {
-  accountID: "25e78760-3797-45cb-af0b-04eca6047670",
-  sweepConfigID: "70f32c59-0603-43f4-ad6d-a01013cb36d1",
+  accountID: "2f00dc33-7fad-4d29-9f17-cf16c9e189dd",
+  sweepConfigID: "90b0a8f2-6d8d-48ae-b0e2-c95fd43552ee",
   patchSweepConfig: {},
 };
 ```

@@ -13,22 +13,21 @@ let value: ListPaymentMethodsResponse = {
   },
   result: [
     {
-      paymentMethodID: "ba92c22c-5545-45b3-b5ce-918a5dc92be4",
-      bankAccount: {
-        bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
+      paymentMethodID: "c4941da9-26e2-4034-9ca0-09a293561ff7",
+      paymentMethodType: "apple-pay",
+      applePay: {
+        brand: "Visa",
+        cardType: "credit",
+        cardDisplayName: "Visa 1256",
         fingerprint:
-          "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e",
-        status: "new",
-        holderName: "John Doe",
-        holderType: "individual",
-        bankName: "Gringotts Bank",
-        bankAccountType: "checking",
-        routingNumber: "123456780",
-        lastFourAccountNumber: "6789",
-        updatedOn: new Date("2024-11-26T22:37:06Z"),
-        statusReason: "bank-account-created",
+          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+        expiration: {
+          month: "01",
+          year: "21",
+        },
+        dynamicLastFour: "<value>",
+        issuerCountry: "US",
       },
-      paymentMethodType: "ach-debit-collect",
     },
   ],
 };

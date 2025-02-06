@@ -7,8 +7,8 @@
 
 ```typescript
 const value: components.TransferResponse = {
-  transferID: "6b025d40-6306-45b1-965a-e2d90c8c6a33",
-  createdOn: new Date("2024-07-23T07:21:47.082Z"),
+  transferID: "a093fc26-72bd-4024-bf62-1ec98c5ab92f",
+  createdOn: new Date("2024-06-21T17:27:04.014Z"),
 };
 ```
 
@@ -16,8 +16,8 @@ const value: components.TransferResponse = {
 
 ```typescript
 const value: components.AsyncTransfer = {
-  transferID: "bad6e12a-42e1-4fdd-aa3c-097c06726e74",
-  createdOn: new Date("2023-03-08T16:23:57.837Z"),
+  transferID: "9c7bc739-880c-486d-b34a-6447ccce0f63",
+  createdOn: new Date("2025-06-23T09:35:44.956Z"),
 };
 ```
 

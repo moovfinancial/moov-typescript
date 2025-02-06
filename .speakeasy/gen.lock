@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: f556249e67aba6f6878df2141974b495
+  docChecksum: 471d21f198bac3a3555224cea51546bd
   docVersion: latest
-  speakeasyVersion: 1.484.1
-  generationVersion: 2.503.2
-  releaseVersion: 0.2.0
-  configChecksum: 83cc4cd12a78525cd15f22a302deebf2
+  speakeasyVersion: 1.486.0
+  generationVersion: 2.505.0
+  releaseVersion: 0.3.0
+  configChecksum: 279b365c2e1cec8310e8b07771d0d5e8
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.22
+    core: 3.19.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -106,9 +106,10 @@ generatedFiles:
   - docs/models/components/birthdateerror.md
   - docs/models/components/birthdateupdate.md
   - docs/models/components/birthdatevalidationerror.md
-  - docs/models/components/brand.md
   - docs/models/components/brandcolor.md
+  - docs/models/components/brandcolors.md
   - docs/models/components/brandcolorvalidationerror.md
+  - docs/models/components/brandproperties.md
   - docs/models/components/businessprofile.md
   - docs/models/components/businesstype.md
   - docs/models/components/calltoaction.md
@@ -147,7 +148,6 @@ generatedFiles:
   - docs/models/components/cardvolumedistribution.md
   - docs/models/components/cardvolumedistributionerror.md
   - docs/models/components/collectionpaymentmethodtype.md
-  - docs/models/components/colors.md
   - docs/models/components/colorsvalidationerror.md
   - docs/models/components/completebankaccountverification.md
   - docs/models/components/completedmicrodeposits.md
@@ -309,6 +309,9 @@ generatedFiles:
   - docs/models/components/paymentlinkpayoutdetailsupdate.md
   - docs/models/components/paymentlinkstatus.md
   - docs/models/components/paymentmethod.md
+  - docs/models/components/paymentmethodsbankaccount.md
+  - docs/models/components/paymentmethodscard.md
+  - docs/models/components/paymentmethodswallet.md
   - docs/models/components/paymentmethodtype.md
   - docs/models/components/payoutdetailserror.md
   - docs/models/components/payoutrecipient.md
@@ -810,6 +813,9 @@ generatedFiles:
   - docs/models/operations/uploadfileglobals.md
   - docs/models/operations/uploadfilerequest.md
   - docs/models/operations/uploadfileresponse.md
+  - docs/models/operations/upsertbrandglobals.md
+  - docs/models/operations/upsertbrandrequest.md
+  - docs/models/operations/upsertbrandresponse.md
   - docs/sdks/accounts/README.md
   - docs/sdks/adjustments/README.md
   - docs/sdks/applepay/README.md
@@ -881,6 +887,7 @@ generatedFiles:
   - src/funcs/brandingCreate.ts
   - src/funcs/brandingGet.ts
   - src/funcs/brandingUpdate.ts
+  - src/funcs/brandingUpsert.ts
   - src/funcs/capabilitiesDisable.ts
   - src/funcs/capabilitiesGet.ts
   - src/funcs/capabilitiesList.ts
@@ -1043,9 +1050,10 @@ generatedFiles:
   - src/models/components/birthdateerror.ts
   - src/models/components/birthdateupdate.ts
   - src/models/components/birthdatevalidationerror.ts
-  - src/models/components/brand.ts
   - src/models/components/brandcolor.ts
+  - src/models/components/brandcolors.ts
   - src/models/components/brandcolorvalidationerror.ts
+  - src/models/components/brandproperties.ts
   - src/models/components/businessprofile.ts
   - src/models/components/businesstype.ts
   - src/models/components/calltoaction.ts
@@ -1081,7 +1089,6 @@ generatedFiles:
   - src/models/components/cardvolumedistribution.ts
   - src/models/components/cardvolumedistributionerror.ts
   - src/models/components/collectionpaymentmethodtype.ts
-  - src/models/components/colors.ts
   - src/models/components/colorsvalidationerror.ts
   - src/models/components/completebankaccountverification.ts
   - src/models/components/completedmicrodeposits.ts
@@ -1222,6 +1229,9 @@ generatedFiles:
   - src/models/components/paymentlinkpayoutdetailsupdate.ts
   - src/models/components/paymentlinkstatus.ts
   - src/models/components/paymentmethod.ts
+  - src/models/components/paymentmethodsbankaccount.ts
+  - src/models/components/paymentmethodscard.ts
+  - src/models/components/paymentmethodswallet.ts
   - src/models/components/paymentmethodtype.ts
   - src/models/components/payoutdetailserror.ts
   - src/models/components/payoutrecipient.ts
@@ -1471,6 +1481,7 @@ generatedFiles:
   - src/models/operations/uploaddisputeevidencefile.ts
   - src/models/operations/uploaddisputeevidencetext.ts
   - src/models/operations/uploadfile.ts
+  - src/models/operations/upsertbrand.ts
   - src/sdk/accounts.ts
   - src/sdk/adjustments.ts
   - src/sdk/applepay.ts
@@ -2230,7 +2241,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "moov-wallet", "wallet": {}}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "apple-pay", "applePay": {}}]
+          application/json: [{"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "moov-wallet", "wallet": {"walletID": "01234567-89ab-cdef-0123-456789abcdef"}}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "apple-pay", "applePay": {"brand": "Visa", "cardType": "credit", "cardDisplayName": "Visa 1256", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "expiration": {"month": "01", "year": "21"}, "dynamicLastFour": "1256", "issuerCountry": "US"}}]
   getPaymentMethod:
     "":
       parameters:
@@ -2240,7 +2251,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "moov-wallet", "wallet": {}}
+          application/json: {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "moov-wallet", "wallet": {"walletID": "01234567-89ab-cdef-0123-456789abcdef"}}
   createRepresentative:
     speakeasy-default-create-representative:
       parameters:
@@ -2568,7 +2579,7 @@ examples:
     speakeasy-default-create-transfer-options:
       responses:
         "200":
-          application/json: {"sourceOptions": [{"paymentMethodID": "069874bd-7731-4e53-b37c-17d4cf9c58d4", "bankAccount": {"bankAccountID": "833fa3ef-14d3-4c97-ba45-6af66f739832", "fingerprint": "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e", "status": "new", "holderName": "John Doe", "holderType": "individual", "bankName": "Gringotts Bank", "bankAccountType": "checking", "routingNumber": "123456780", "lastFourAccountNumber": "6789", "updatedOn": "2024-11-26T22:37:06Z", "statusReason": "bank-account-created"}, "paymentMethodType": "ach-debit-collect"}, {"paymentMethodID": "fb2a15d5-71f2-4f59-91d1-42322f250094", "paymentMethodType": "apple-pay", "applePay": "<value>"}, {"paymentMethodID": "485d092c-4964-48ef-bc16-103e629aa23d", "card": {"cardID": "01234567-89ab-cdef-0123-456789abcdef", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "brand": "Visa", "cardType": "credit", "cardCategory": "CLASSIC", "lastFourCardNumber": "1234", "bin": "123456", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "cardVerification": {"cvv": "match", "addressLine1": "match", "postalCode": "match", "accountName": {"firstName": "match", "lastName": "match", "middleName": "match", "fullName": "match"}}, "issuer": "GRINGOTTS BANK", "issuerCountry": "US", "issuerURL": "HTTPS://WWW.EXAMPLE.COM/", "issuerPhone": "8185551212", "commercial": false, "regulated": false, "cardOnFile": true, "merchantAccountID": "01234567-89ab-cdef-0123-456789abcdef", "cardAccountUpdater": {"updatedOn": "2024-05-06T12:20:38.184Z", "updateType": "number-update"}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported", "paymentMethods": [{"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "card-payment"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "push-to-card"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "pull-from-card"}]}, "paymentMethodType": "pull-from-card"}], "destinationOptions": [{"paymentMethodID": "4a1a61a0-c8af-47a1-bf84-f11a73a9632d", "bankAccount": {"bankAccountID": "833fa3ef-14d3-4c97-ba45-6af66f739832", "fingerprint": "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e", "status": "new", "holderName": "John Doe", "holderType": "individual", "bankName": "Gringotts Bank", "bankAccountType": "checking", "routingNumber": "123456780", "lastFourAccountNumber": "6789", "updatedOn": "2024-11-26T22:37:06Z", "statusReason": "bank-account-created"}, "paymentMethodType": "rtp-credit"}]}
+          application/json: {"sourceOptions": [{"paymentMethodID": "069874bd-7731-4e53-b37c-17d4cf9c58d4", "paymentMethodType": "ach-debit-collect", "bankAccount": {"bankAccountID": "833fa3ef-14d3-4c97-ba45-6af66f739832", "fingerprint": "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e", "status": "new", "holderName": "John Doe", "holderType": "individual", "bankName": "Gringotts Bank", "bankAccountType": "checking", "routingNumber": "123456780", "lastFourAccountNumber": "6789", "updatedOn": "2024-11-26T22:37:06Z"}}, {"paymentMethodID": "fb2a15d5-71f2-4f59-91d1-42322f250094", "paymentMethodType": "apple-pay", "applePay": {"brand": "Visa", "cardType": "credit", "cardDisplayName": "Visa 1256", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "expiration": {"month": "01", "year": "21"}, "dynamicLastFour": "<value>"}}, {"paymentMethodID": "485d092c-4964-48ef-bc16-103e629aa23d", "paymentMethodType": "pull-from-card", "card": {"cardID": "01234567-89ab-cdef-0123-456789abcdef", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "brand": "Visa", "cardType": "credit", "lastFourCardNumber": "1234", "bin": "123456", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "cardVerification": {"cvv": "match", "addressLine1": "match", "postalCode": "match", "accountName": {"firstName": "match", "lastName": "match", "middleName": "match", "fullName": "match"}}, "issuer": "GRINGOTTS BANK", "issuerCountry": "US", "cardOnFile": true, "merchantAccountID": "01234567-89ab-cdef-0123-456789abcdef", "cardAccountUpdater": {"updatedOn": "2024-05-06T12:20:38.184Z", "updateType": "number-update"}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported"}}], "destinationOptions": [{"paymentMethodID": "4a1a61a0-c8af-47a1-bf84-f11a73a9632d", "paymentMethodType": "rtp-credit", "bankAccount": {"bankAccountID": "833fa3ef-14d3-4c97-ba45-6af66f739832", "fingerprint": "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e", "status": "new", "holderName": "John Doe", "holderType": "individual", "bankName": "Gringotts Bank", "bankAccountType": "checking", "routingNumber": "123456780", "lastFourAccountNumber": "6789", "updatedOn": "2024-11-26T22:37:06Z"}}]}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -2995,6 +3006,21 @@ examples:
       responses:
         "200":
           application/json: {"token_type": "Bearer", "access_token": "eyJhbGciOiJFZERTQSIsImN0eSI6IkpXVCIsImtpZCI6IkR...", "refresh_token": "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a...", "expires_in": 1736964352, "scope": "/accounts.read /accounts.write"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  upsertBrand:
+    speakeasy-default-upsert-brand:
+      parameters:
+        path:
+          accountID: "87673c22-1b80-4b69-b5bb-e92af8dcce02"
+        header: {}
+      requestBody:
+        application/json: {"colors": {"dark": {"accent": "#111111"}, "light": {"accent": "#111111"}}}
+      responses:
+        "200":
+          application/json: {"colors": {"dark": {"accent": "#111111"}, "light": {"accent": "#111111"}}}
         "400":
           application/json: {"error": "<value>"}
         "422":

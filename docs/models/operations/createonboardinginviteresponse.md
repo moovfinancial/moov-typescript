@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://elegant-possession.com",
+    link: "https://both-surface.com/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "72d9f2db-60b1-4cc3-8fc9-b71a6f12e735",
+      accountID: "9c2abb0a-24e0-4d80-acd7-ce9e6ccb6734",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2024-11-25T18:23:53.239Z"),
+    createdOn: new Date("2023-12-23T16:20:25.002Z"),
   },
 };
 ```

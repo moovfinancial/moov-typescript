@@ -12,11 +12,11 @@ let value: UploadDisputeEvidenceTextResponse = {
     ],
   },
   result: {
-    evidenceID: "008fab79-2ecf-4432-8fc2-8622f4f17208",
-    disputeID: "bb2fb4bb-5659-4e2e-80a6-cb7a8c784949",
-    evidenceType: "proof-of-delivery",
+    evidenceID: "bb2fb4bb-5659-4e2e-80a6-cb7a8c784949",
+    disputeID: "26642004-7b7e-4025-b9d5-40d69f02ccc8",
+    evidenceType: "terms-of-service",
     text: "<value>",
-    createdOn: new Date("2024-04-02T01:33:01.124Z"),
+    createdOn: new Date("2024-10-21T17:31:37.327Z"),
   },
 };
 ```

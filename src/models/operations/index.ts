@@ -122,3 +122,4 @@ export * from "./updateunderwriting.js";
 export * from "./uploaddisputeevidencefile.js";
 export * from "./uploaddisputeevidencetext.js";
 export * from "./uploadfile.js";
+export * from "./upsertbrand.js";

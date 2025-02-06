@@ -56,7 +56,7 @@ export async function brandingCreate(
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.Brand, { explode: true });
+  const body = encodeJSON("body", payload.BrandProperties, { explode: true });
 
   const pathParams = {
     accountID: encodeSimple("accountID", payload.accountID, {

@@ -7,7 +7,7 @@ import { CreateBrandRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateBrandRequest = {
   accountID: "8df1aff9-2903-4f5a-84fb-5c163a16485b",
-  brand: {
+  brandProperties: {
     colors: {
       dark: {
         accent: "#111111",
@@ -22,7 +22,7 @@ let value: CreateBrandRequest = {
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `accountID`                                          | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `brand`                                              | [components.Brand](../../models/components/brand.md) | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `accountID`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `brandProperties`                                                        | [components.BrandProperties](../../models/components/brandproperties.md) | :heavy_check_mark:                                                       | N/A                                                                      |

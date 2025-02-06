@@ -8,29 +8,38 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "0804e676-b681-4b8f-8d55-a78f19a39c4f",
-      paymentMethodType: "apple-pay",
-      applePay: "<value>",
+      paymentMethodID: "d5d64c1e-6539-4f53-a313-ab6f2b6332f6",
+      paymentMethodType: "ach-debit-fund",
+      bankAccount: {
+        bankAccountID: "6cc0afd4-9798-4b56-b904-72b1bdaeb3d3",
+        fingerprint: "<value>",
+        status: "verificationFailed",
+        holderName: "<value>",
+        holderType: "business",
+        bankName: "<value>",
+        bankAccountType: "general-ledger",
+        routingNumber: "<value>",
+        lastFourAccountNumber: "<value>",
+        updatedOn: new Date("2024-03-07T09:08:30.448Z"),
+      },
     },
   ],
   destinationOptions: [
     {
-      paymentMethodID: "b787051c-76ca-4627-936e-460e1afe0416",
+      paymentMethodID: "7298aae8-0e1b-431f-9007-92bf71dfd9d6",
+      paymentMethodType: "ach-debit-collect",
       bankAccount: {
-        bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
-        fingerprint:
-          "dd4cbfe5fbaf47b392770b5b595bec604fd99394749b7d017153e2b9cfbea40e",
-        status: "new",
-        holderName: "John Doe",
+        bankAccountID: "15ed9e6f-f90e-4ef7-841e-bccd15dbcc1d",
+        fingerprint: "<value>",
+        status: "errored",
+        holderName: "<value>",
         holderType: "individual",
-        bankName: "Gringotts Bank",
+        bankName: "<value>",
         bankAccountType: "checking",
-        routingNumber: "123456780",
-        lastFourAccountNumber: "6789",
-        updatedOn: new Date("2024-11-26T22:37:06Z"),
-        statusReason: "bank-account-created",
+        routingNumber: "<value>",
+        lastFourAccountNumber: "<value>",
+        updatedOn: new Date("2023-08-03T17:06:34.541Z"),
       },
-      paymentMethodType: "ach-credit-same-day",
     },
   ],
 };

@@ -44,7 +44,7 @@ import {
 } from "./representativeresponsibilities.js";
 
 /**
- * The template for omitting properties.
+ * Describes a business representative to create.
  */
 export type CreateRepresentative = {
   name: IndividualName;

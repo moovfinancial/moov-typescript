@@ -6,9 +6,9 @@
 import { UpdateDisputeEvidenceRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateDisputeEvidenceRequest = {
-  accountID: "45e72341-7ea1-4045-acf6-afba15e3db58",
-  disputeID: "b82c6f44-59e2-4497-97de-7ac84a9e0e80",
-  evidenceID: "b7f65d8a-ca61-49e6-be89-d91f3b873b1f",
+  accountID: "b82c6f44-59e2-4497-97de-7ac84a9e0e80",
+  disputeID: "b7f65d8a-ca61-49e6-be89-d91f3b873b1f",
+  evidenceID: "8648e483-53f9-4b15-be12-a9de24601374",
   updateEvidence: {},
 };
 ```

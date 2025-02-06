@@ -6,8 +6,8 @@
 import { DeleteRepresentativeRequest } from "@moovio/sdk/models/operations";
 
 let value: DeleteRepresentativeRequest = {
-  accountID: "3e0c7d71-3f52-4c01-a40f-b8ca23d5760b",
-  representativeID: "a4636afa-8617-429b-8f46-2edc0831c388",
+  accountID: "6e764149-c8c2-49e3-83bc-35a697cdd997",
+  representativeID: "417d9a34-2d48-4215-9559-5c15a9174a2a",
 };
 ```
 

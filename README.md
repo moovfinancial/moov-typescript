@@ -414,6 +414,10 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/branding.write` scope.
+* [upsert](docs/sdks/branding/README.md#upsert) - Create or replace brand properties for the specified account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 * [get](docs/sdks/branding/README.md#get) - Get brand properties for the specified account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1186,6 +1190,10 @@ you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/branding.read` scope.
 - [`brandingUpdate`](docs/sdks/branding/README.md#update) - Updates the brand properties for the specified account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/branding.write` scope.
+- [`brandingUpsert`](docs/sdks/branding/README.md#upsert) - Create or replace brand properties for the specified account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/branding.write` scope.

@@ -7,10 +7,10 @@ import { ReversedWithRefund } from "@moovio/sdk/models/components";
 
 let value: ReversedWithRefund = {
   refund: {
-    refundID: "00a290b6-cb78-41aa-8d03-a860d457837e",
-    createdOn: new Date("2024-08-26T10:02:28.026Z"),
-    updatedOn: new Date("2025-12-02T12:41:20.649Z"),
-    status: "pending",
+    refundID: "e0b5d392-e2a3-4c2c-98b8-89394473942e",
+    createdOn: new Date("2025-10-30T10:46:00.137Z"),
+    updatedOn: new Date("2024-03-30T12:47:48.425Z"),
+    status: "created",
     amount: {
       currency: "USD",
       value: 1204,

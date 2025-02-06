@@ -6,7 +6,7 @@
 import { GetBrandRequest } from "@moovio/sdk/models/operations";
 
 let value: GetBrandRequest = {
-  accountID: "a34cf5d1-ac26-4e10-b96c-e4679fb64f2b",
+  accountID: "a635baed-de45-468a-b406-4feda58d1c0d",
 };
 ```
 
