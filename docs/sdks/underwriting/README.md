@@ -11,7 +11,7 @@ Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-* [update](#update) - Update the account's underwriting by passing new values for one or more of the fields. 
+* [upsert](#upsert) - Create or update the account's underwriting.
 
 Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.
 
@@ -105,9 +105,9 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## update
+## upsert
 
-Update the account's underwriting by passing new values for one or more of the fields. 
+Create or update the account's underwriting.
 
 Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.
 
@@ -127,27 +127,27 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.underwriting.update({
-    accountID: "455b1698-1657-4c75-944b-57db42578d81",
+  const result = await moov.underwriting.upsert({
+    accountID: "695bbe92-af8d-4cce-802f-ca871830906f",
     updateUnderwriting: {
-      averageTransactionSize: 686,
-      maxTransactionSize: 927778,
-      averageMonthlyTransactionVolume: 363635,
+      averageTransactionSize: 543422,
+      maxTransactionSize: 470183,
+      averageMonthlyTransactionVolume: 390496,
       volumeByCustomerType: {
-        businessToBusinessPercentage: 103054,
-        consumerToBusinessPercentage: 891201,
+        businessToBusinessPercentage: 478438,
+        consumerToBusinessPercentage: 232067,
       },
       cardVolumeDistribution: {
-        ecommercePercentage: 139066,
-        cardPresentPercentage: 457019,
-        mailOrPhonePercentage: 477438,
-        debtRepaymentPercentage: 372012,
+        ecommercePercentage: 766938,
+        cardPresentPercentage: 138671,
+        mailOrPhonePercentage: 146928,
+        debtRepaymentPercentage: 114639,
       },
       fulfillment: {
         hasPhysicalGoods: false,
-        isShippingProduct: true,
-        shipmentDurationDays: 571329,
-        returnPolicy: "other",
+        isShippingProduct: false,
+        shipmentDurationDays: 5009,
+        returnPolicy: "withinThirtyDays",
       },
     },
   });
@@ -165,7 +165,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { underwritingUpdate } from "@moovio/sdk/funcs/underwritingUpdate.js";
+import { underwritingUpsert } from "@moovio/sdk/funcs/underwritingUpsert.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -177,27 +177,27 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await underwritingUpdate(moov, {
-    accountID: "455b1698-1657-4c75-944b-57db42578d81",
+  const res = await underwritingUpsert(moov, {
+    accountID: "695bbe92-af8d-4cce-802f-ca871830906f",
     updateUnderwriting: {
-      averageTransactionSize: 686,
-      maxTransactionSize: 927778,
-      averageMonthlyTransactionVolume: 363635,
+      averageTransactionSize: 543422,
+      maxTransactionSize: 470183,
+      averageMonthlyTransactionVolume: 390496,
       volumeByCustomerType: {
-        businessToBusinessPercentage: 103054,
-        consumerToBusinessPercentage: 891201,
+        businessToBusinessPercentage: 478438,
+        consumerToBusinessPercentage: 232067,
       },
       cardVolumeDistribution: {
-        ecommercePercentage: 139066,
-        cardPresentPercentage: 457019,
-        mailOrPhonePercentage: 477438,
-        debtRepaymentPercentage: 372012,
+        ecommercePercentage: 766938,
+        cardPresentPercentage: 138671,
+        mailOrPhonePercentage: 146928,
+        debtRepaymentPercentage: 114639,
       },
       fulfillment: {
         hasPhysicalGoods: false,
-        isShippingProduct: true,
-        shipmentDurationDays: 571329,
-        returnPolicy: "other",
+        isShippingProduct: false,
+        shipmentDurationDays: 5009,
+        returnPolicy: "withinThirtyDays",
       },
     },
   });
@@ -219,14 +219,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.UpdateUnderwritingRequest](../../models/operations/updateunderwritingrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.UpsertUnderwritingRequest](../../models/operations/upsertunderwritingrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.UpdateUnderwritingResponse](../../models/operations/updateunderwritingresponse.md)\>**
+**Promise\<[operations.UpsertUnderwritingResponse](../../models/operations/upsertunderwritingresponse.md)\>**
 
 ### Errors
 

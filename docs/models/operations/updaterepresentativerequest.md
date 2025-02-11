@@ -6,8 +6,8 @@
 import { UpdateRepresentativeRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateRepresentativeRequest = {
-  accountID: "d3dd38ea-a84f-474b-b954-31a8300b3402",
-  representativeID: "3f24d64b-0ed1-4cf7-99a4-a76eced09ba4",
+  accountID: "bbd878b6-12f0-4bf2-ab43-de5a2ce5ae0d",
+  representativeID: "68db87e3-1ab9-4449-a475-833b63d61b49",
   updateRepresentative: {
     name: {
       firstName: "Jordan",

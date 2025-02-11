@@ -6,11 +6,11 @@
 import { UploadDisputeEvidenceTextRequest } from "@moovio/sdk/models/operations";
 
 let value: UploadDisputeEvidenceTextRequest = {
-  accountID: "559a4209-20e8-41df-a701-6e2d07a09f2b",
-  disputeID: "2008fab7-92ec-4f43-a2fc-28622f4f1720",
+  accountID: "b2fb4bb5-659e-42e0-8a6c-b7a8c7849492",
+  disputeID: "66420047-b7e0-4259-9d54-0d69f02ccc8f",
   createEvidenceText: {
     text: "<value>",
-    evidenceType: "receipt",
+    evidenceType: "customer-communication",
   },
 };
 ```

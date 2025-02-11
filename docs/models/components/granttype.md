@@ -10,7 +10,7 @@ The type of grant being requested.
 ```typescript
 import { GrantType } from "@moovio/sdk/models/components";
 
-let value: GrantType = "refresh_token";
+let value: GrantType = "client_credentials";
 ```
 
 ## Values

@@ -34,6 +34,7 @@ export type UploadDisputeEvidenceFileRequest = {
 
 export type UploadDisputeEvidenceFileResponse = {
   headers: { [k: string]: Array<string> };
+  result: components.EvidenceUploadResponse;
 };
 
 /** @internal */
@@ -179,15 +180,18 @@ export const UploadDisputeEvidenceFileResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
+  Result: components.EvidenceUploadResponse$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
+    "Result": "result",
   });
 });
 
 /** @internal */
 export type UploadDisputeEvidenceFileResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
+  Result: components.EvidenceUploadResponse$Outbound;
 };
 
 /** @internal */
@@ -197,9 +201,11 @@ export const UploadDisputeEvidenceFileResponse$outboundSchema: z.ZodType<
   UploadDisputeEvidenceFileResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
+  result: components.EvidenceUploadResponse$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",
+    result: "Result",
   });
 });
 

@@ -7,7 +7,7 @@ The payment method type that represents a payment rail and directionality
 ```typescript
 import { PaymentMethodType } from "@moovio/sdk/models/components";
 
-let value: PaymentMethodType = "card-payment";
+let value: PaymentMethodType = "moov-wallet";
 ```
 
 ## Values

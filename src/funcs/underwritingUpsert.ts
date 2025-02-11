@@ -24,20 +24,20 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update the account's underwriting by passing new values for one or more of the fields.
+ * Create or update the account's underwriting.
  *
  * Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/profile.write` scope.
  */
-export async function underwritingUpdate(
+export async function underwritingUpsert(
   client: MoovCore,
-  request: operations.UpdateUnderwritingRequest,
+  request: operations.UpsertUnderwritingRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    operations.UpdateUnderwritingResponse,
+    operations.UpsertUnderwritingResponse,
     | errors.GenericError
     | errors.UpdateUnderwritingError
     | APIError
@@ -51,7 +51,7 @@ export async function underwritingUpdate(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.UpdateUnderwritingRequest$outboundSchema.parse(value),
+    (value) => operations.UpsertUnderwritingRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -85,7 +85,7 @@ export async function underwritingUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "updateUnderwriting",
+    operationID: "upsertUnderwriting",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -139,7 +139,7 @@ export async function underwritingUpdate(
   };
 
   const [result] = await M.match<
-    operations.UpdateUnderwritingResponse,
+    operations.UpsertUnderwritingResponse,
     | errors.GenericError
     | errors.UpdateUnderwritingError
     | APIError
@@ -150,7 +150,7 @@ export async function underwritingUpdate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.UpdateUnderwritingResponse$inboundSchema, {
+    M.json(200, operations.UpsertUnderwritingResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),

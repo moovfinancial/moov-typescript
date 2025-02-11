@@ -8,9 +8,9 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IndustryCodes = {
-  naics: string;
-  sic: string;
-  mcc: string;
+  naics?: string | undefined;
+  sic?: string | undefined;
+  mcc?: string | undefined;
 };
 
 /** @internal */
@@ -19,16 +19,16 @@ export const IndustryCodes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  naics: z.string(),
-  sic: z.string(),
-  mcc: z.string(),
+  naics: z.string().optional(),
+  sic: z.string().optional(),
+  mcc: z.string().optional(),
 });
 
 /** @internal */
 export type IndustryCodes$Outbound = {
-  naics: string;
-  sic: string;
-  mcc: string;
+  naics?: string | undefined;
+  sic?: string | undefined;
+  mcc?: string | undefined;
 };
 
 /** @internal */
@@ -37,9 +37,9 @@ export const IndustryCodes$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IndustryCodes
 > = z.object({
-  naics: z.string(),
-  sic: z.string(),
-  mcc: z.string(),
+  naics: z.string().optional(),
+  sic: z.string().optional(),
+  mcc: z.string().optional(),
 });
 
 /**

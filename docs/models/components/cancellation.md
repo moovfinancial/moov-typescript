@@ -7,7 +7,7 @@ import { Cancellation } from "@moovio/sdk/models/components";
 
 let value: Cancellation = {
   status: "pending",
-  createdOn: new Date("2023-10-01T16:51:40.339Z"),
+  createdOn: new Date("2025-08-22T20:14:42.910Z"),
 };
 ```
 

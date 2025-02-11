@@ -6,7 +6,7 @@
 import { CreatePaymentLinkRequest } from "@moovio/sdk/models/operations";
 
 let value: CreatePaymentLinkRequest = {
-  accountID: "e016b444-d38f-4b5c-bf5b-1e1584a8b58c",
+  accountID: "7e649ebd-228b-4f55-98a9-b6d25c5a424e",
   createPaymentLink: {
     partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
     merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",

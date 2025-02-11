@@ -10,7 +10,7 @@ let value: ScheduleResponse = {
   mode: "production",
   occurrences: {
     mode: "production",
-    runOn: new Date("2024-10-02T00:29:09.828Z"),
+    runOn: new Date("2024-08-01T05:19:33.987Z"),
     runTransfer: {
       amount: {
         currency: "USD",
@@ -37,7 +37,7 @@ let value: ScheduleResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "slump deeply pish that versus bonfire",
+      description: "selfishly boohoo ew however exotic snuggle but whereas",
     },
   },
   ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -70,14 +70,14 @@ let value: ScheduleResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "ack skyline dandelion aw boiling tomography",
+      description: "oof even qualified cone emotional lest last whereas wise",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },
   scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-  createdOn: new Date("2023-07-20T01:30:01.199Z"),
-  updatedOn: new Date("2024-02-17T19:53:32.318Z"),
+  createdOn: new Date("2025-07-24T09:12:46.368Z"),
+  updatedOn: new Date("2024-12-17T22:25:43.751Z"),
 };
 ```
 

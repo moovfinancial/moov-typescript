@@ -12,8 +12,8 @@ let value: CompleteBankAccountVerificationResponse = {
     ],
   },
   result: {
-    verificationMethod: "ach",
-    status: "expired",
+    verificationMethod: "instant",
+    status: "successful",
   },
 };
 ```

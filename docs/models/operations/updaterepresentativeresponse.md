@@ -12,7 +12,7 @@ let value: UpdateRepresentativeResponse = {
     ],
   },
   result: {
-    representativeID: "01893770-29fa-41d6-b193-65a6138c0919",
+    representativeID: "f34eb7b6-6284-4a6d-bc29-b81865953b3c",
     name: {
       firstName: "Jordan",
       middleName: "Reese",
@@ -36,8 +36,8 @@ let value: UpdateRepresentativeResponse = {
       ownershipPercentage: 38,
       jobTitle: "CEO",
     },
-    createdOn: new Date("2023-09-08T10:00:57.420Z"),
-    updatedOn: new Date("2024-06-27T02:01:12.177Z"),
+    createdOn: new Date("2024-04-28T14:20:35.511Z"),
+    updatedOn: new Date("2025-06-09T09:10:09.556Z"),
   },
 };
 ```

@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://both-surface.com/",
+    link: "https://smooth-governance.org",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "9c2abb0a-24e0-4d80-acd7-ce9e6ccb6734",
+      accountID: "a9161603-7921-4d19-bc2a-bb0a24e0d80c",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2023-12-23T16:20:25.002Z"),
+    createdOn: new Date("2024-05-16T11:26:11.280Z"),
   },
 };
 ```

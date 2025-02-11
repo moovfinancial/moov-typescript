@@ -14,7 +14,7 @@ let value: ListOnboardingInvitesResponse = {
   result: [
     {
       code: "N1IA5eWYNh",
-      link: "https://possible-formamide.biz",
+      link: "https://unusual-metabolite.org",
       scopes: [
         "accounts.read",
       ],
@@ -33,11 +33,11 @@ let value: ListOnboardingInvitesResponse = {
         },
       },
       partner: {
-        accountID: "55a0da04-2995-4c0d-ae2f-bec13d0ba794",
+        accountID: "6ccb6734-a5b9-4525-85a0-da042995c0de",
         accountMode: "production",
         displayName: "Bob's Widgets",
       },
-      createdOn: new Date("2025-01-24T03:18:42.746Z"),
+      createdOn: new Date("2025-10-27T17:26:52.816Z"),
     },
   ],
 };

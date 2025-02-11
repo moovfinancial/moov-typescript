@@ -1,11 +1,11 @@
-# UpdateUnderwritingGlobals
+# UpsertUnderwritingGlobals
 
 ## Example Usage
 
 ```typescript
-import { UpdateUnderwritingGlobals } from "@moovio/sdk/models/operations";
+import { UpsertUnderwritingGlobals } from "@moovio/sdk/models/operations";
 
-let value: UpdateUnderwritingGlobals = {};
+let value: UpsertUnderwritingGlobals = {};
 ```
 
 ## Fields

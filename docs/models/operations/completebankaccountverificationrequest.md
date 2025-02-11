@@ -6,8 +6,8 @@
 import { CompleteBankAccountVerificationRequest } from "@moovio/sdk/models/operations";
 
 let value: CompleteBankAccountVerificationRequest = {
-  accountID: "4cb8b600-810f-4d20-8f42-b14fa86c2fd9",
-  bankAccountID: "be851ce1-c0f9-484e-84df-c81773652748",
+  accountID: "34cb8b60-0810-4fd2-a0f4-2b14fa86c2fd",
+  bankAccountID: "0be851ce-1c0f-4984-ae4d-fc8177365274",
   completeBankAccountVerification: {
     code: "MV1234",
   },

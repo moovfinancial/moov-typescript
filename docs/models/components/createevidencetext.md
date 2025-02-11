@@ -7,7 +7,7 @@ import { CreateEvidenceText } from "@moovio/sdk/models/components";
 
 let value: CreateEvidenceText = {
   text: "<value>",
-  evidenceType: "cover-letter",
+  evidenceType: "terms-of-service",
 };
 ```
 

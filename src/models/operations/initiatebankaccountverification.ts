@@ -34,7 +34,7 @@ export type InitiateBankAccountVerificationRequest = {
    *
    * When this header is set to `rail-response`, the endpoint will wait for a sent-credit or failed status from the payment rail.
    */
-  xWaitFor: components.BankAccountWaitFor;
+  xWaitFor?: components.BankAccountWaitFor | undefined;
   accountID: string;
   bankAccountID: string;
 };
@@ -118,7 +118,7 @@ export const InitiateBankAccountVerificationRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-wait-for": components.BankAccountWaitFor$inboundSchema,
+  "x-wait-for": components.BankAccountWaitFor$inboundSchema.optional(),
   accountID: z.string(),
   bankAccountID: z.string(),
 }).transform((v) => {
@@ -129,7 +129,7 @@ export const InitiateBankAccountVerificationRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type InitiateBankAccountVerificationRequest$Outbound = {
-  "x-wait-for": string;
+  "x-wait-for"?: string | undefined;
   accountID: string;
   bankAccountID: string;
 };
@@ -140,7 +140,7 @@ export const InitiateBankAccountVerificationRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InitiateBankAccountVerificationRequest
 > = z.object({
-  xWaitFor: components.BankAccountWaitFor$outboundSchema,
+  xWaitFor: components.BankAccountWaitFor$outboundSchema.optional(),
   accountID: z.string(),
   bankAccountID: z.string(),
 }).transform((v) => {

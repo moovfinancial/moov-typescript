@@ -8,7 +8,7 @@ The account that created the onboarding invite.
 import { OnboardingPartnerAccount } from "@moovio/sdk/models/components";
 
 let value: OnboardingPartnerAccount = {
-  accountID: "48a00089-8784-4ed8-a993-2e6ebb2ec0e8",
+  accountID: "438f0fce-0416-421a-88e2-591ef8d7168b",
   accountMode: "production",
   displayName: "Bob's Widgets",
 };

@@ -5,7 +5,7 @@
 ```typescript
 import { WalletTransactionType } from "@moovio/sdk/models/components";
 
-let value: WalletTransactionType = "cash-out";
+let value: WalletTransactionType = "issuing-auth-release";
 ```
 
 ## Values

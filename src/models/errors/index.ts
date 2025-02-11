@@ -13,6 +13,7 @@ export * from "./createaccount.js";
 export * from "./createpaymentlinkerror.js";
 export * from "./createsweepconfigerror.js";
 export * from "./feeplanagreementerror.js";
+export * from "./fileuploadvalidationerror.js";
 export * from "./filevalidationerror.js";
 export * from "./genericerror.js";
 export * from "./httpclienterrors.js";
