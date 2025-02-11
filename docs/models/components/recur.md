@@ -35,7 +35,7 @@ let value: Recur = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description: "amidst debut utterly",
+    description: "lest account thread excepting unnecessarily without",
   },
   start: new Date("2009-11-10T23:00:00Z"),
 };

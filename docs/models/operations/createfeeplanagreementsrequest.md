@@ -6,9 +6,9 @@
 import { CreateFeePlanAgreementsRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateFeePlanAgreementsRequest = {
-  accountID: "72a998f2-1239-4937-977c-7c28d2792c1f",
+  accountID: "3e24643c-5182-45e5-9a82-ad1cbd14b0bd",
   createFeePlanAgreement: {
-    planID: "516a14da-32e4-42f4-8176-e211e7298395",
+    planID: "6402fd4f-542e-4f5b-9516-81d739c5b6fc",
   },
 };
 ```

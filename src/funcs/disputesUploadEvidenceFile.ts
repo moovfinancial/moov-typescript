@@ -40,8 +40,9 @@ export async function disputesUploadEvidenceFile(
   options?: RequestOptions,
 ): Promise<
   Result<
-    operations.UploadDisputeEvidenceFileResponse | undefined,
+    operations.UploadDisputeEvidenceFileResponse,
     | errors.GenericError
+    | errors.FileUploadValidationError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -151,6 +152,7 @@ export async function disputesUploadEvidenceFile(
       "403",
       "404",
       "409",
+      "422",
       "429",
       "4XX",
       "500",
@@ -170,8 +172,9 @@ export async function disputesUploadEvidenceFile(
   };
 
   const [result] = await M.match<
-    operations.UploadDisputeEvidenceFileResponse | undefined,
+    operations.UploadDisputeEvidenceFileResponse,
     | errors.GenericError
+    | errors.FileUploadValidationError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -180,12 +183,14 @@ export async function disputesUploadEvidenceFile(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.nil(
-      204,
-      operations.UploadDisputeEvidenceFileResponse$inboundSchema.optional(),
-      { hdrs: true },
-    ),
+    M.json(201, operations.UploadDisputeEvidenceFileResponse$inboundSchema, {
+      hdrs: true,
+      key: "Result",
+    }),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr(422, errors.FileUploadValidationError$inboundSchema, {
+      hdrs: true,
+    }),
     M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),

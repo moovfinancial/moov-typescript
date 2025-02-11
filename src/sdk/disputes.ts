@@ -110,7 +110,7 @@ export class Disputes extends ClientSDK {
   async uploadEvidenceFile(
     request: operations.UploadDisputeEvidenceFileRequest,
     options?: RequestOptions,
-  ): Promise<operations.UploadDisputeEvidenceFileResponse | undefined> {
+  ): Promise<operations.UploadDisputeEvidenceFileResponse> {
     return unwrapAsync(disputesUploadEvidenceFile(
       this,
       request,

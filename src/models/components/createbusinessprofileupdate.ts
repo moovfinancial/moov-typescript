@@ -18,11 +18,11 @@ import {
   BusinessType$outboundSchema,
 } from "./businesstype.js";
 import {
-  IndustryCodesUpdate,
-  IndustryCodesUpdate$inboundSchema,
-  IndustryCodesUpdate$Outbound,
-  IndustryCodesUpdate$outboundSchema,
-} from "./industrycodesupdate.js";
+  IndustryCodes,
+  IndustryCodes$inboundSchema,
+  IndustryCodes$Outbound,
+  IndustryCodes$outboundSchema,
+} from "./industrycodes.js";
 import {
   PhoneNumber,
   PhoneNumber$inboundSchema,
@@ -63,7 +63,7 @@ export type CreateBusinessProfileUpdate = {
    * An EIN (employer identification number) for the business. For sole proprietors, an SSN can be used as the EIN.
    */
   taxID?: TaxIDUpdate | undefined;
-  industryCodes?: IndustryCodesUpdate | undefined;
+  industryCodes?: IndustryCodes | undefined;
   /**
    * If the business is a financial institution, this field describes its primary regulator.
    */
@@ -85,7 +85,7 @@ export const CreateBusinessProfileUpdate$inboundSchema: z.ZodType<
   website: z.string().optional(),
   description: z.string().optional(),
   taxID: TaxIDUpdate$inboundSchema.optional(),
-  industryCodes: IndustryCodesUpdate$inboundSchema.optional(),
+  industryCodes: IndustryCodes$inboundSchema.optional(),
   primaryRegulator: PrimaryRegulator$inboundSchema.optional(),
 });
 
@@ -100,7 +100,7 @@ export type CreateBusinessProfileUpdate$Outbound = {
   website?: string | undefined;
   description?: string | undefined;
   taxID?: TaxIDUpdate$Outbound | undefined;
-  industryCodes?: IndustryCodesUpdate$Outbound | undefined;
+  industryCodes?: IndustryCodes$Outbound | undefined;
   primaryRegulator?: string | undefined;
 };
 
@@ -119,7 +119,7 @@ export const CreateBusinessProfileUpdate$outboundSchema: z.ZodType<
   website: z.string().optional(),
   description: z.string().optional(),
   taxID: TaxIDUpdate$outboundSchema.optional(),
-  industryCodes: IndustryCodesUpdate$outboundSchema.optional(),
+  industryCodes: IndustryCodes$outboundSchema.optional(),
   primaryRegulator: PrimaryRegulator$outboundSchema.optional(),
 });
 

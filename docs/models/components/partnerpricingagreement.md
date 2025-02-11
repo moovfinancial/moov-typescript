@@ -6,17 +6,17 @@
 import { PartnerPricingAgreement } from "@moovio/sdk/models/components";
 
 let value: PartnerPricingAgreement = {
-  aggreementID: "05e382fd-5c93-423a-9fce-3e1f2555bd98",
-  planID: "e96811e3-4878-4562-876f-29f1bd59153a",
-  acceptedOn: new Date("2024-06-13T14:51:19.921Z"),
+  aggreementID: "e0968a4c-eec8-47bc-a007-d32ee4dcf2e0",
+  planID: "ae328f4c-54ac-4098-96c5-86772c484ddf",
+  acceptedOn: new Date("2025-08-30T02:25:42.565Z"),
   status: "terminated",
   cardAcquringModel: "flat-rate",
   billableFees: [
     {
       billableEvent: "ach-volume",
       feeName: "ACH Direct Debit",
-      feeModel: "blended",
-      feeCategory: "card-acquiring",
+      feeModel: "fixed",
+      feeCategory: "card-other",
       feeProperties: {
         fixedAmount: {
           currency: "USD",

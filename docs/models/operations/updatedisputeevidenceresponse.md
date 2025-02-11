@@ -12,15 +12,15 @@ let value: UpdateDisputeEvidenceResponse = {
     ],
   },
   result: {
-    evidenceID: "5ef734c4-679f-4354-9515-e45fb8c17132",
-    disputeID: "6f47cdc4-7236-4b8e-8d09-9f08309cc060",
+    evidenceID: "54f5e2c0-70cf-40ec-85e4-61a07ad2cb89",
+    disputeID: "96d596e4-1b69-40fe-8906-fa27f8094168",
     mimeType: "<value>",
     filename: "example.file",
-    size: 192880,
-    evidenceType: "proof-of-delivery",
+    size: 559047,
+    evidenceType: "customer-communication",
     text: "<value>",
-    createdOn: new Date("2024-01-07T16:10:14.746Z"),
-    updatedOn: new Date("2023-11-01T01:12:15.021Z"),
+    createdOn: new Date("2025-05-20T02:57:57.993Z"),
+    updatedOn: new Date("2024-04-09T05:03:15.773Z"),
   },
 };
 ```

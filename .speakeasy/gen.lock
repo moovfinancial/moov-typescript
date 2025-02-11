@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 471d21f198bac3a3555224cea51546bd
+  docChecksum: 6846219714717ef4ae90f1f0d59fb712
   docVersion: latest
-  speakeasyVersion: 1.486.0
-  generationVersion: 2.505.0
-  releaseVersion: 0.3.0
-  configChecksum: 279b365c2e1cec8310e8b07771d0d5e8
+  speakeasyVersion: 1.488.0
+  generationVersion: 2.506.0
+  releaseVersion: 0.3.1
+  configChecksum: 25ea337973b409ee88c04557281b4fb7
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -221,6 +221,7 @@ generatedFiles:
   - docs/models/components/errort.md
   - docs/models/components/evidencetext.md
   - docs/models/components/evidencetype.md
+  - docs/models/components/evidenceuploadresponse.md
   - docs/models/components/facilitatorfee.md
   - docs/models/components/feecategory.md
   - docs/models/components/feemodel.md
@@ -249,7 +250,6 @@ generatedFiles:
   - docs/models/components/individualnameupdate.md
   - docs/models/components/individualprofile.md
   - docs/models/components/industrycodes.md
-  - docs/models/components/industrycodesupdate.md
   - docs/models/components/issuedcard.md
   - docs/models/components/issuedcardauthorization.md
   - docs/models/components/issuedcardauthorizationevent.md
@@ -431,6 +431,8 @@ generatedFiles:
   - docs/models/errors/createsweepconfigerror.md
   - docs/models/errors/errort.md
   - docs/models/errors/feeplanagreementerror.md
+  - docs/models/errors/filet.md
+  - docs/models/errors/fileuploadvalidationerror.md
   - docs/models/errors/filevalidationerror.md
   - docs/models/errors/genericerror.md
   - docs/models/errors/linkapplepayerror.md
@@ -801,9 +803,6 @@ generatedFiles:
   - docs/models/operations/updatetransferglobals.md
   - docs/models/operations/updatetransferrequest.md
   - docs/models/operations/updatetransferresponse.md
-  - docs/models/operations/updateunderwritingglobals.md
-  - docs/models/operations/updateunderwritingrequest.md
-  - docs/models/operations/updateunderwritingresponse.md
   - docs/models/operations/uploaddisputeevidencefileglobals.md
   - docs/models/operations/uploaddisputeevidencefilerequest.md
   - docs/models/operations/uploaddisputeevidencefileresponse.md
@@ -816,6 +815,9 @@ generatedFiles:
   - docs/models/operations/upsertbrandglobals.md
   - docs/models/operations/upsertbrandrequest.md
   - docs/models/operations/upsertbrandresponse.md
+  - docs/models/operations/upsertunderwritingglobals.md
+  - docs/models/operations/upsertunderwritingrequest.md
+  - docs/models/operations/upsertunderwritingresponse.md
   - docs/sdks/accounts/README.md
   - docs/sdks/adjustments/README.md
   - docs/sdks/applepay/README.md
@@ -967,7 +969,7 @@ generatedFiles:
   - src/funcs/transfersListRefunds.ts
   - src/funcs/transfersUpdate.ts
   - src/funcs/underwritingGet.ts
-  - src/funcs/underwritingUpdate.ts
+  - src/funcs/underwritingUpsert.ts
   - src/funcs/walletTransactionsGet.ts
   - src/funcs/walletTransactionsList.ts
   - src/funcs/walletsGet.ts
@@ -1151,6 +1153,7 @@ generatedFiles:
   - src/models/components/enrichedindustrycodes.ts
   - src/models/components/evidencetext.ts
   - src/models/components/evidencetype.ts
+  - src/models/components/evidenceuploadresponse.ts
   - src/models/components/facilitatorfee.ts
   - src/models/components/feecategory.ts
   - src/models/components/feemodel.ts
@@ -1175,7 +1178,6 @@ generatedFiles:
   - src/models/components/individualnameupdate.ts
   - src/models/components/individualprofile.ts
   - src/models/components/industrycodes.ts
-  - src/models/components/industrycodesupdate.ts
   - src/models/components/issuedcard.ts
   - src/models/components/issuedcardauthorization.ts
   - src/models/components/issuedcardauthorizationevent.ts
@@ -1336,6 +1338,7 @@ generatedFiles:
   - src/models/errors/createpaymentlinkerror.ts
   - src/models/errors/createsweepconfigerror.ts
   - src/models/errors/feeplanagreementerror.ts
+  - src/models/errors/fileuploadvalidationerror.ts
   - src/models/errors/filevalidationerror.ts
   - src/models/errors/genericerror.ts
   - src/models/errors/httpclienterrors.ts
@@ -1477,11 +1480,11 @@ generatedFiles:
   - src/models/operations/updateschedule.ts
   - src/models/operations/updatesweepconfig.ts
   - src/models/operations/updatetransfer.ts
-  - src/models/operations/updateunderwriting.ts
   - src/models/operations/uploaddisputeevidencefile.ts
   - src/models/operations/uploaddisputeevidencetext.ts
   - src/models/operations/uploadfile.ts
   - src/models/operations/upsertbrand.ts
+  - src/models/operations/upsertunderwriting.ts
   - src/sdk/accounts.ts
   - src/sdk/adjustments.ts
   - src/sdk/applepay.ts
@@ -1913,7 +1916,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"capability": "transfers", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "enabled", "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}, {"capability": "collect-funds", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "in-review", "requirements": [{"currentlyDue": ["business.owners"]}], "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}]
+          application/json: [{"capability": "transfers", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "enabled", "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}, {"capability": "collect-funds", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "in-review", "requirements": {"currentlyDue": ["business.owners"]}, "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}]
   addCapabilities:
     "":
       parameters:
@@ -1999,6 +2002,10 @@ examples:
       responses:
         "400":
           application/json: {"error": "<value>"}
+        "201":
+          application/json: {"evidenceID": "9190d267-bea7-4723-a193-9ba89cb7df82", "disputeID": "494aabdd-cd85-450e-b6b0-a1e547e0dcc9", "filename": "example.file", "mimeType": "<value>", "size": 662669, "evidenceType": "generic-evidence", "createdOn": "2023-08-12T06:14:09.174Z"}
+        "422":
+          application/json: {}
   uploadDisputeEvidenceText:
     speakeasy-default-upload-dispute-evidence-text:
       parameters:
@@ -2915,7 +2922,7 @@ examples:
         application/json: {"capabilities": ["collect-funds"]}
       responses:
         "200":
-          application/json: [{"capability": "transfers", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "enabled", "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}, {"capability": "collect-funds", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "in-review", "requirements": [{"currentlyDue": ["business.owners"]}], "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}]
+          application/json: [{"capability": "transfers", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "enabled", "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}, {"capability": "collect-funds", "accountID": "01234567-89ab-cdef-0123-456789abcdef", "status": "in-review", "requirements": {"currentlyDue": ["business.owners"]}, "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z"}]
   updateSweepConfig:
     "":
       parameters:
@@ -3025,5 +3032,20 @@ examples:
           application/json: {"error": "<value>"}
         "422":
           application/json: {}
+  upsertUnderwriting:
+    speakeasy-default-upsert-underwriting:
+      parameters:
+        path:
+          accountID: "695bbe92-af8d-4cce-802f-ca871830906f"
+        header: {}
+      requestBody:
+        application/json: {"averageTransactionSize": 543422, "maxTransactionSize": 470183, "averageMonthlyTransactionVolume": 390496, "volumeByCustomerType": {"businessToBusinessPercentage": 478438, "consumerToBusinessPercentage": 232067}, "cardVolumeDistribution": {"ecommercePercentage": 766938, "cardPresentPercentage": 138671, "mailOrPhonePercentage": 146928, "debtRepaymentPercentage": 114639}, "fulfillment": {"hasPhysicalGoods": false, "isShippingProduct": false, "shipmentDurationDays": 5009, "returnPolicy": "withinThirtyDays"}}
+      responses:
+        "200":
+          application/json: {"averageTransactionSize": 733071, "maxTransactionSize": 9626, "averageMonthlyTransactionVolume": 18086, "status": "rejected", "volumeByCustomerType": {"businessToBusinessPercentage": 371041, "consumerToBusinessPercentage": 342018}, "cardVolumeDistribution": {"ecommercePercentage": 273856, "cardPresentPercentage": 808923, "mailOrPhonePercentage": 594354, "debtRepaymentPercentage": 822559}, "fulfillment": {"hasPhysicalGoods": false, "isShippingProduct": true, "shipmentDurationDays": 774983, "returnPolicy": "withinThirtyDays"}}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {"error": {}}
 examplesVersion: 1.0.0
 generatedTests: {}

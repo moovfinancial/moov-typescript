@@ -1,30 +1,30 @@
-# UpdateUnderwritingRequest
+# UpsertUnderwritingRequest
 
 ## Example Usage
 
 ```typescript
-import { UpdateUnderwritingRequest } from "@moovio/sdk/models/operations";
+import { UpsertUnderwritingRequest } from "@moovio/sdk/models/operations";
 
-let value: UpdateUnderwritingRequest = {
-  accountID: "6f953aea-daf6-4c80-806a-d0feda7c342f",
+let value: UpsertUnderwritingRequest = {
+  accountID: "f8405939-4065-4386-9f95-3aeadaf6c800",
   updateUnderwriting: {
-    averageTransactionSize: 700751,
-    maxTransactionSize: 462072,
-    averageMonthlyTransactionVolume: 33295,
+    averageTransactionSize: 659975,
+    maxTransactionSize: 863273,
+    averageMonthlyTransactionVolume: 32623,
     volumeByCustomerType: {
-      businessToBusinessPercentage: 81263,
-      consumerToBusinessPercentage: 929429,
+      businessToBusinessPercentage: 941845,
+      consumerToBusinessPercentage: 884761,
     },
     cardVolumeDistribution: {
-      ecommercePercentage: 744543,
-      cardPresentPercentage: 546010,
-      mailOrPhonePercentage: 209465,
-      debtRepaymentPercentage: 6356,
+      ecommercePercentage: 873618,
+      cardPresentPercentage: 642670,
+      mailOrPhonePercentage: 466658,
+      debtRepaymentPercentage: 803994,
     },
     fulfillment: {
       hasPhysicalGoods: false,
       isShippingProduct: false,
-      shipmentDurationDays: 772650,
+      shipmentDurationDays: 206174,
       returnPolicy: "exchangeOnly",
     },
   },

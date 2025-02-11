@@ -33,7 +33,7 @@ export type FileDetails = {
    */
   fileStatus: FileStatus;
   metadata: string;
-  decisionReason: string;
+  decisionReason?: string | undefined;
   fileSizeBytes: number;
   createdOn: Date;
   updatedOn: Date;
@@ -51,7 +51,7 @@ export const FileDetails$inboundSchema: z.ZodType<
   filePurpose: FilePurpose$inboundSchema,
   fileStatus: FileStatus$inboundSchema,
   metadata: z.string(),
-  decisionReason: z.string(),
+  decisionReason: z.string().optional(),
   fileSizeBytes: z.number().int(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -65,7 +65,7 @@ export type FileDetails$Outbound = {
   filePurpose: string;
   fileStatus: string;
   metadata: string;
-  decisionReason: string;
+  decisionReason?: string | undefined;
   fileSizeBytes: number;
   createdOn: string;
   updatedOn: string;
@@ -83,7 +83,7 @@ export const FileDetails$outboundSchema: z.ZodType<
   filePurpose: FilePurpose$outboundSchema,
   fileStatus: FileStatus$outboundSchema,
   metadata: z.string(),
-  decisionReason: z.string(),
+  decisionReason: z.string().optional(),
   fileSizeBytes: z.number().int(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),

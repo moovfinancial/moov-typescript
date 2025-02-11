@@ -6,7 +6,7 @@
 import { UpdateCardRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateCardRequest = {
-  accountID: "69b55004-bacc-4dbf-8e99-0f2bd531b7be",
+  accountID: "569b5500-4bac-4cdb-bfe9-90f2bd531b7b",
   cardID: "01234567-89ab-cdef-0123-456789abcdef",
   updateCard: {
     cardCvv: "456",

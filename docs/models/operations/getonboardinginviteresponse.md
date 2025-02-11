@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://creamy-unblinking.org/",
+    link: "https://unknown-scratch.com",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "105f63f3-a1a2-446c-882c-a01134aaddc9",
+      accountID: "3d0ba794-9b62-4ff1-805f-63f3a1a246c8",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2025-01-23T18:32:15.375Z"),
+    createdOn: new Date("2025-04-07T08:49:58.108Z"),
   },
 };
 ```

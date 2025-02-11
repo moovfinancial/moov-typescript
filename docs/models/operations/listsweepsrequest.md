@@ -6,8 +6,8 @@
 import { ListSweepsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListSweepsRequest = {
-  accountID: "739d0be9-45b5-4014-a65c-36dc35218589",
-  walletID: "f3e001a8-228f-4241-99e3-7eb8abb743e0",
+  accountID: "65c36dc3-5218-4589-89f3-e001a8228f24",
+  walletID: "9e37eb8a-bb74-43e0-85b9-612b7556a912",
   skip: 60,
   count: 20,
 };

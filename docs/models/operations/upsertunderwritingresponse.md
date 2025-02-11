@@ -1,36 +1,36 @@
-# UpdateUnderwritingResponse
+# UpsertUnderwritingResponse
 
 ## Example Usage
 
 ```typescript
-import { UpdateUnderwritingResponse } from "@moovio/sdk/models/operations";
+import { UpsertUnderwritingResponse } from "@moovio/sdk/models/operations";
 
-let value: UpdateUnderwritingResponse = {
+let value: UpsertUnderwritingResponse = {
   headers: {
     "key": [
       "<value>",
     ],
   },
   result: {
-    averageTransactionSize: 214040,
-    maxTransactionSize: 172311,
-    averageMonthlyTransactionVolume: 808797,
+    averageTransactionSize: 172693,
+    maxTransactionSize: 997982,
+    averageMonthlyTransactionVolume: 192181,
     status: "pending",
     volumeByCustomerType: {
-      businessToBusinessPercentage: 641301,
-      consumerToBusinessPercentage: 925438,
+      businessToBusinessPercentage: 462072,
+      consumerToBusinessPercentage: 33295,
     },
     cardVolumeDistribution: {
-      ecommercePercentage: 891799,
-      cardPresentPercentage: 680461,
-      mailOrPhonePercentage: 961027,
-      debtRepaymentPercentage: 228961,
+      ecommercePercentage: 81263,
+      cardPresentPercentage: 929429,
+      mailOrPhonePercentage: 744543,
+      debtRepaymentPercentage: 546010,
     },
     fulfillment: {
       hasPhysicalGoods: false,
       isShippingProduct: false,
-      shipmentDurationDays: 19602,
-      returnPolicy: "other",
+      shipmentDurationDays: 209465,
+      returnPolicy: "none",
     },
   },
 };

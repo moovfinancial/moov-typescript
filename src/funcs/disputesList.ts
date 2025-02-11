@@ -18,6 +18,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
@@ -37,6 +38,7 @@ export async function disputesList(
 ): Promise<
   Result<
     operations.ListDisputesResponse,
+    | errors.GenericError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -123,7 +125,7 @@ export async function disputesList(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "403", "429", "4XX", "500", "504", "5XX"],
+    errorCodes: ["400", "401", "403", "409", "429", "4XX", "500", "504", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -138,6 +140,7 @@ export async function disputesList(
 
   const [result] = await M.match<
     operations.ListDisputesResponse,
+    | errors.GenericError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -150,6 +153,7 @@ export async function disputesList(
       hdrs: true,
       key: "Result",
     }),
+    M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
     M.fail([401, 403, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),

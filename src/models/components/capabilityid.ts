@@ -7,6 +7,10 @@ import { ClosedEnum } from "../../types/enums.js";
 
 /**
  * Moov account capabilities.
+ *
+ * @remarks
+ *
+ * The `production-app` capability might appear in your list. This is a read-only capability that Moov requests and uses for account verification purposes. The capability remains active with your account and requires no additional action.
  */
 export const CapabilityID = {
   Transfers: "transfers",
@@ -14,9 +18,14 @@ export const CapabilityID = {
   CollectFunds: "collect-funds",
   Wallet: "wallet",
   CardIssuing: "card-issuing",
+  ProductionApp: "production-app",
 } as const;
 /**
  * Moov account capabilities.
+ *
+ * @remarks
+ *
+ * The `production-app` capability might appear in your list. This is a read-only capability that Moov requests and uses for account verification purposes. The capability remains active with your account and requires no additional action.
  */
 export type CapabilityID = ClosedEnum<typeof CapabilityID>;
 

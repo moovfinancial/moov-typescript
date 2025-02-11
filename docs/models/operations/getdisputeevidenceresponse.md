@@ -12,15 +12,15 @@ let value: GetDisputeEvidenceResponse = {
     ],
   },
   result: {
-    evidenceID: "7e011c5a-968a-4f99-81f8-c0644c970ff3",
-    disputeID: "8fe945e7-2341-47ea-b104-5cf6afba15e3",
+    evidenceID: "88b82c6f-4459-4e24-a977-de7ac84a9e0e",
+    disputeID: "05b7f65d-8aca-4619-8e6e-89d91f3b873b",
     mimeType: "<value>",
     filename: "example.file",
-    size: 696324,
-    evidenceType: "cancelation-policy",
+    size: 990454,
+    evidenceType: "cover-letter",
     text: "<value>",
-    createdOn: new Date("2024-08-02T23:23:59.966Z"),
-    updatedOn: new Date("2024-08-17T21:58:52.875Z"),
+    createdOn: new Date("2024-08-08T19:43:23.369Z"),
+    updatedOn: new Date("2024-04-10T07:26:27.442Z"),
   },
 };
 ```

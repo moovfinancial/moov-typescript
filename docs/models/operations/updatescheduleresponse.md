@@ -16,7 +16,7 @@ let value: UpdateScheduleResponse = {
     mode: "production",
     occurrences: {
       mode: "production",
-      runOn: new Date("2025-09-23T15:40:36.762Z"),
+      runOn: new Date("2023-06-26T16:25:20.617Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -43,7 +43,7 @@ let value: UpdateScheduleResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "as under queasily nucleotidase angrily damaged",
+        description: "drat baa gift matter despite generously",
       },
     },
     ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -76,14 +76,14 @@ let value: UpdateScheduleResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "drat baa gift matter despite generously",
+        description: "after adventurously out definite unit",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },
     scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-    createdOn: new Date("2023-11-18T12:46:33.465Z"),
-    updatedOn: new Date("2023-01-13T22:44:45.283Z"),
+    createdOn: new Date("2023-04-11T09:48:38.635Z"),
+    updatedOn: new Date("2023-10-25T20:57:12.614Z"),
   },
 };
 ```

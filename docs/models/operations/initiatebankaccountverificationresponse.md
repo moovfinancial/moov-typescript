@@ -12,8 +12,8 @@ let value: InitiateBankAccountVerificationResponse = {
     ],
   },
   result: {
-    verificationMethod: "ach",
-    status: "sent-credit",
+    verificationMethod: "instant",
+    status: "expired",
   },
 };
 ```

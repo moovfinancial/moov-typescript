@@ -7,7 +7,7 @@ A permission that the application requests on another account.
 ```typescript
 import { ApplicationScope } from "@moovio/sdk/models/components";
 
-let value: ApplicationScope = "profile.disconnect";
+let value: ApplicationScope = "documents.write";
 ```
 
 ## Values

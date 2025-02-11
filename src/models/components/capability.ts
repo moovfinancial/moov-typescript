@@ -26,6 +26,10 @@ import {
 export type Capability = {
   /**
    * Moov account capabilities.
+   *
+   * @remarks
+   *
+   * The `production-app` capability might appear in your list. This is a read-only capability that Moov requests and uses for account verification purposes. The capability remains active with your account and requires no additional action.
    */
   capability: CapabilityID;
   accountID: string;
@@ -33,7 +37,10 @@ export type Capability = {
    * The status of the capability requested for an account.
    */
   status: CapabilityStatus;
-  requirements?: Array<CapabilityRequirement> | undefined;
+  /**
+   * Represents individual and business data necessary to facilitate the enabling of a capability for an account.
+   */
+  requirements?: CapabilityRequirement | undefined;
   disabledReason?: string | undefined;
   createdOn: Date;
   updatedOn: Date;
@@ -49,7 +56,7 @@ export const Capability$inboundSchema: z.ZodType<
   capability: CapabilityID$inboundSchema,
   accountID: z.string(),
   status: CapabilityStatus$inboundSchema,
-  requirements: z.array(CapabilityRequirement$inboundSchema).optional(),
+  requirements: CapabilityRequirement$inboundSchema.optional(),
   disabledReason: z.string().optional(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -62,7 +69,7 @@ export type Capability$Outbound = {
   capability: string;
   accountID: string;
   status: string;
-  requirements?: Array<CapabilityRequirement$Outbound> | undefined;
+  requirements?: CapabilityRequirement$Outbound | undefined;
   disabledReason?: string | undefined;
   createdOn: string;
   updatedOn: string;
@@ -78,7 +85,7 @@ export const Capability$outboundSchema: z.ZodType<
   capability: CapabilityID$outboundSchema,
   accountID: z.string(),
   status: CapabilityStatus$outboundSchema,
-  requirements: z.array(CapabilityRequirement$outboundSchema).optional(),
+  requirements: CapabilityRequirement$outboundSchema.optional(),
   disabledReason: z.string().optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
