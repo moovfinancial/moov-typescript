@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, test } from "bun:test";
-import { moov } from "./setup";
+import { moov } from "../setup";
 import { createAccount, createBankAccount } from "../utils/utils";
 import type { BankAccount } from "../../models/components";
 
@@ -35,7 +35,7 @@ describe("Bank Accounts", () => {
 		// Create a bank account if it doesn't exist yet
 		beforeEach(async () => {
 			if (!bankAccount.bankAccountID) {
-				bankAccount = await createBankAccount(moov, accountID);
+				bankAccount = await createBankAccount(accountID);
 			}
 		});
 		test("should be able to retrieve a bank account", async () => {
@@ -80,7 +80,7 @@ describe("Bank Accounts", () => {
 				accountID,
 				bankAccountID: bankAccount.bankAccountID!,
 				completeBankAccountVerification: {
-					code: "000",
+					code: "0000",
 				},
 			});
 			expect(result).toBeDefined();

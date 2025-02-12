@@ -1,6 +1,6 @@
 import { beforeAll, afterAll } from "bun:test";
 import { Moov } from "@moovio/sdk";
-import secrets from "../.secrets.json";
+import secrets from "./.secrets.json";
 
 export let moov: Moov;
 
