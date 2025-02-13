@@ -1,6 +1,14 @@
 import { Chance } from "chance";
 import { ids, moov } from "../setup";
-import type { Account, BankAccount, CreateAccount } from "../../models/components";
+import type {
+	Account,
+	BankAccount,
+	BankAccountPayload,
+	Card,
+	CreateAccount,
+	LinkBankAccount,
+	LinkCard,
+} from "../../models/components";
 import { merge } from "remeda";
 const chance = new Chance();
 
@@ -42,19 +50,44 @@ export const createAccount = async (account: DeepPartial<Account> = {}) => {
  * @returns The created bank account.
  */
 export const createBankAccount = async (accountID: string, bankAccount: Partial<BankAccount> = {}) => {
+	const defaultBankAccount = {
+		account: {
+			holderName: "Marcellus Wallace",
+			holderType: "individual",
+			accountNumber: chance.integer({ min: 1000000000, max: 9999999999 }).toString(),
+			bankAccountType: "checking",
+			routingNumber: "121000248",
+		},
+	};
+	const mergedBankAccount = merge(defaultBankAccount, bankAccount) as BankAccountPayload;
 	const { result } = await moov.bankAccounts.link({
 		accountID,
-		linkBankAccount: {
-			account: {
-				holderName: "Marcellus Wallace",
-				holderType: "individual",
-				accountNumber: chance.integer({ min: 1000000000, max: 9999999999 }).toString(),
-				bankAccountType: "checking",
-				routingNumber: "121000248",
-			},
-			...bankAccount,
-		},
+		linkBankAccount: mergedBankAccount,
 	});
 	ids.seen({ accountID, bankAccountID: result.bankAccountID });
-	return result;
+	return { bankAccount: result, accountNumber: mergedBankAccount.account.accountNumber };
+};
+
+export const createCard = async (accountID: string, card: DeepPartial<LinkCard> = {}) => {
+	const defaultCard = {
+		cardNumber: "4111111111111111",
+		cardCvv: "123",
+		expiration: {
+			month: "01",
+			year: "2025",
+		},
+		billingAddress: {
+			addressLine1: "123 Main St",
+			city: "Anytown",
+			country: "US",
+			postalCode: "12345",
+		},
+	};
+	const mergedCard = merge(defaultCard, card) as LinkCard;
+	const { result } = await moov.cards.link({
+		accountID,
+		linkCard: mergedCard,
+	});
+	ids.seen({ accountID, cardID: result.cardID });
+	return { card: result, cardNumber: mergedCard.cardNumber };
 };

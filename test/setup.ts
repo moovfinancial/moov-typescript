@@ -9,6 +9,7 @@ const verbose = process.env.VERBOSE === "1";
 type Seen = {
 	accountID: string;
 	bankAccountID?: string;
+	cardID?: string;
 };
 
 const idsSeen: Set<Seen> = new Set();
@@ -24,6 +25,13 @@ export const ids = {
 					await moov.bankAccounts.disable({ accountID: seen.accountID, bankAccountID: seen.bankAccountID! });
 				} catch (e) {
 					// eslint-disable
+				}
+			}
+			if (seen.cardID) {
+				try {
+					await moov.cards.disable({ accountID: seen.accountID, cardID: seen.cardID! });
+				} catch (e) {
+					// empty
 				}
 			}
 			try {
