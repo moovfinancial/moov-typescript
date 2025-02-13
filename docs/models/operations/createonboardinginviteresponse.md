@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://wasteful-reach.org/",
+    link: "https://late-scratch.org",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "c13d0ba7-949b-462f-bf10-5f63f3a1a246",
+      accountID: "9e6ccb67-34a5-4b95-b255-a0da042995c0",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2024-08-31T10:53:14.069Z"),
+    createdOn: new Date("2025-08-31T19:50:37.625Z"),
   },
 };
 ```

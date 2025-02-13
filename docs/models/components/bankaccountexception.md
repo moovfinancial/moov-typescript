@@ -8,9 +8,10 @@ Reason for, and details related to, an `errored` or `verificationFailed` bank ac
 import { BankAccountException } from "@moovio/sdk/models/components";
 
 let value: BankAccountException = {
-  achReturnCode: "R08",
+  achReturnCode: "R23",
   rtpRejectionCode: "AC14",
-  description: "speedily psst quietly mosh hassle whoever instead",
+  description:
+    "musty fundraising besides fantastic makeover correctly where always before blacken",
 };
 ```
 

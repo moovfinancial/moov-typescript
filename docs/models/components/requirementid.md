@@ -7,7 +7,7 @@ The unique ID of what the requirement is asking to be filled out.
 ```typescript
 import { RequirementID } from "@moovio/sdk/models/components";
 
-let value: RequirementID = "business.dba";
+let value: RequirementID = "representative.{rep-uuid}.birthdate";
 ```
 
 ## Values

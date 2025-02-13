@@ -5,7 +5,7 @@
 ```typescript
 import { EvidenceType } from "@moovio/sdk/models/components";
 
-let value: EvidenceType = "receipt";
+let value: EvidenceType = "cover-letter";
 ```
 
 ## Values

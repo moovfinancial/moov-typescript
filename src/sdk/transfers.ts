@@ -41,7 +41,7 @@ export class Transfers extends ClientSDK {
    * Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
    *
    * When you run this request, you retrieve 200 transfers at a time. You can advance past a results set of 200 transfers by using the `skip` parameter (for example,
-   * if you set `skip`= 10, you will see a results set of 200 transfers after the first 2000). If you are searching a high volume of transfers, the request will likely
+   * if you set `skip`= 10, you will see a results set of 200 transfers after the first 10). If you are searching a high volume of transfers, the request will likely
    * process very slowly. To achieve faster performance, restrict the data as much as you can by using the `StartDateTime` and `EndDateTime` parameters for a limited
    * period of time. You can run multiple requests in smaller time window increments until you've retrieved all the transfers you need.
    *

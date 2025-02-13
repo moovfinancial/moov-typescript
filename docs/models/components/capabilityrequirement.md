@@ -9,7 +9,7 @@ import { CapabilityRequirement } from "@moovio/sdk/models/components";
 
 let value: CapabilityRequirement = {
   currentlyDue: [
-    "business.indicate-owners-provided",
+    "representative.{rep-uuid}.firstname",
   ],
 };
 ```

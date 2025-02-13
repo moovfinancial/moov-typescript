@@ -14,7 +14,7 @@ let value: ListOnboardingInvitesResponse = {
   result: [
     {
       code: "N1IA5eWYNh",
-      link: "https://slimy-pacemaker.com/",
+      link: "https://wasteful-reach.org/",
       scopes: [
         "accounts.read",
       ],
@@ -33,11 +33,11 @@ let value: ListOnboardingInvitesResponse = {
         },
       },
       partner: {
-        accountID: "1134aadd-c91b-44c5-829e-244c276c7317",
+        accountID: "c13d0ba7-949b-462f-bf10-5f63f3a1a246",
         accountMode: "production",
         displayName: "Bob's Widgets",
       },
-      createdOn: new Date("2025-01-21T07:34:15.679Z"),
+      createdOn: new Date("2024-08-31T10:53:14.069Z"),
     },
   ],
 };

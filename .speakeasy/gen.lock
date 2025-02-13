@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: aabc1a50f30a66e241ee82386b89a11e
+  docChecksum: 7b28e615af8399468aa3536e1ee4ba8e
   docVersion: latest
   speakeasyVersion: 1.491.0
   generationVersion: 2.512.4
-  releaseVersion: 0.3.2
-  configChecksum: 1ad1272afc10fe72315492f07677a14f
+  releaseVersion: 0.3.3
+  configChecksum: 0f71d03b39575dfe11a6c8eeebac31fd
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -69,6 +69,7 @@ generatedFiles:
   - docs/models/components/addcapabilities.md
   - docs/models/components/address.md
   - docs/models/components/addresserror.md
+  - docs/models/components/addresssuggestion.md
   - docs/models/components/addressupdate.md
   - docs/models/components/adjustment.md
   - docs/models/components/amount.md
@@ -1016,6 +1017,7 @@ generatedFiles:
   - src/models/components/addcapabilities.ts
   - src/models/components/address.ts
   - src/models/components/addresserror.ts
+  - src/models/components/addresssuggestion.ts
   - src/models/components/addressupdate.ts
   - src/models/components/adjustment.ts
   - src/models/components/amount.ts
@@ -2390,7 +2392,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"destinationAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "occurrences": {"mode": "production", "runOn": "2024-10-20T06:17:50.529Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "circa or shore within barring lest"}}, "ownerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "that atop grumpy"}, "start": "2009-11-10T23:00:00Z"}, "scheduleID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "sourceAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "createdOn": "2024-06-21T02:30:00.896Z", "updatedOn": "2025-10-20T07:55:10.582Z"}
+          application/json: {"scheduleID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "runOn": "2025-05-07T19:54:17.798Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "bleakly humor order snow profane and bidet please icebreaker"}}
   createSweepConfig:
     "":
       parameters:

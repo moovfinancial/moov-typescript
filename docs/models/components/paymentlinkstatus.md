@@ -5,7 +5,7 @@
 ```typescript
 import { PaymentLinkStatus } from "@moovio/sdk/models/components";
 
-let value: PaymentLinkStatus = "used";
+let value: PaymentLinkStatus = "expired";
 ```
 
 ## Values

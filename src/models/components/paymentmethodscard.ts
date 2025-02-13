@@ -90,7 +90,7 @@ export type PaymentMethodsCard = {
   /**
    * The name of the cardholder as it appears on the card.
    */
-  holderName: string;
+  holderName?: string | undefined;
   billingAddress: CardAddress;
   /**
    * The results of submitting cardholder data to a card network for verification.
@@ -136,7 +136,7 @@ export const PaymentMethodsCard$inboundSchema: z.ZodType<
   lastFourCardNumber: z.string(),
   bin: z.string(),
   expiration: CardExpiration$inboundSchema,
-  holderName: z.string(),
+  holderName: z.string().optional(),
   billingAddress: CardAddress$inboundSchema,
   cardVerification: CardVerification$inboundSchema,
   issuer: z.string(),
@@ -157,7 +157,7 @@ export type PaymentMethodsCard$Outbound = {
   lastFourCardNumber: string;
   bin: string;
   expiration: CardExpiration$Outbound;
-  holderName: string;
+  holderName?: string | undefined;
   billingAddress: CardAddress$Outbound;
   cardVerification: CardVerification$Outbound;
   issuer: string;
@@ -182,7 +182,7 @@ export const PaymentMethodsCard$outboundSchema: z.ZodType<
   lastFourCardNumber: z.string(),
   bin: z.string(),
   expiration: CardExpiration$outboundSchema,
-  holderName: z.string(),
+  holderName: z.string().optional(),
   billingAddress: CardAddress$outboundSchema,
   cardVerification: CardVerification$outboundSchema,
   issuer: z.string(),

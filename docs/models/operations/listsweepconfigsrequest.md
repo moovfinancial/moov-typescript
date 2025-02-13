@@ -6,7 +6,7 @@
 import { ListSweepConfigsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListSweepConfigsRequest = {
-  accountID: "d7d14d06-d717-4b5e-bf21-4723eb9b02bb",
+  accountID: "f4d243ec-760b-4fc3-b466-3ccb0e50aba6",
 };
 ```
 

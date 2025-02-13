@@ -11,7 +11,11 @@ let value: GetEnrichmentAddressResponse = {
       "<value>",
     ],
   },
-  result: {},
+  result: {
+    suggestions: [
+      {},
+    ],
+  },
 };
 ```
 

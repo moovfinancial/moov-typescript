@@ -14,38 +14,37 @@ let value: CreateTransferOptionsResponse = {
   result: {
     sourceOptions: [
       {
-        paymentMethodID: "2820066a-6319-4360-a3a1-add27ebd67e6",
-        paymentMethodType: "apple-pay",
-        applePay: {
-          brand: "Visa",
-          cardType: "credit",
-          cardDisplayName: "Visa 1256",
-          fingerprint:
-            "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
-          expiration: {
-            month: "01",
-            year: "21",
-          },
-          dynamicLastFour: "<value>",
-          issuerCountry: "US",
+        paymentMethodID: "6b37d2e7-7a8d-4224-af18-cdff838b74dd",
+        paymentMethodType: "rtp-credit",
+        bankAccount: {
+          bankAccountID: "98ce0f56-5db2-460c-931a-382cf1d7087e",
+          fingerprint: "<value>",
+          status: "pending",
+          holderName: "<value>",
+          holderType: "individual",
+          bankName: "<value>",
+          bankAccountType: "savings",
+          routingNumber: "<value>",
+          lastFourAccountNumber: "<value>",
+          updatedOn: new Date("2024-08-14T03:17:41.400Z"),
         },
       },
     ],
     destinationOptions: [
       {
-        paymentMethodID: "b9789eab-f135-4f39-8144-b1c4b56218a1",
-        paymentMethodType: "ach-credit-same-day",
+        paymentMethodID: "33bf2820-066a-4631-9936-03a1add27ebd",
+        paymentMethodType: "ach-debit-fund",
         bankAccount: {
-          bankAccountID: "023b1a62-f840-4593-b940-65386f953aea",
+          bankAccountID: "7e6a6b97-89ea-4bf1-835f-39144b1c4b56",
           fingerprint: "<value>",
-          status: "pending",
+          status: "new",
           holderName: "<value>",
           holderType: "business",
           bankName: "<value>",
-          bankAccountType: "savings",
+          bankAccountType: "general-ledger",
           routingNumber: "<value>",
           lastFourAccountNumber: "<value>",
-          updatedOn: new Date("2025-04-26T21:45:53.740Z"),
+          updatedOn: new Date("2023-04-11T23:24:18.548Z"),
         },
       },
     ],

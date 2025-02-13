@@ -103,7 +103,7 @@ export type Card = {
   /**
    * The name of the cardholder as it appears on the card.
    */
-  holderName: string;
+  holderName?: string | undefined;
   billingAddress: CardAddress;
   /**
    * The results of submitting cardholder data to a card network for verification.
@@ -170,7 +170,7 @@ export const Card$inboundSchema: z.ZodType<Card, z.ZodTypeDef, unknown> = z
     lastFourCardNumber: z.string(),
     bin: z.string(),
     expiration: CardExpiration$inboundSchema,
-    holderName: z.string(),
+    holderName: z.string().optional(),
     billingAddress: CardAddress$inboundSchema,
     cardVerification: CardVerification$inboundSchema,
     issuer: z.string(),
@@ -197,7 +197,7 @@ export type Card$Outbound = {
   lastFourCardNumber: string;
   bin: string;
   expiration: CardExpiration$Outbound;
-  holderName: string;
+  holderName?: string | undefined;
   billingAddress: CardAddress$Outbound;
   cardVerification: CardVerification$Outbound;
   issuer: string;
@@ -225,7 +225,7 @@ export const Card$outboundSchema: z.ZodType<Card$Outbound, z.ZodTypeDef, Card> =
     lastFourCardNumber: z.string(),
     bin: z.string(),
     expiration: CardExpiration$outboundSchema,
-    holderName: z.string(),
+    holderName: z.string().optional(),
     billingAddress: CardAddress$outboundSchema,
     cardVerification: CardVerification$outboundSchema,
     issuer: z.string(),
