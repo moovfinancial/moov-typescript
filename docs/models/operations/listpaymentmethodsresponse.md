@@ -13,19 +13,10 @@ let value: ListPaymentMethodsResponse = {
   },
   result: [
     {
-      paymentMethodID: "937d4a71-5dfd-425d-a8cc-157fe6168e44",
-      paymentMethodType: "ach-debit-fund",
-      bankAccount: {
-        bankAccountID: "8327ccf6-60da-4c7e-9016-1193aed31ff5",
-        fingerprint: "<value>",
-        status: "new",
-        holderName: "<value>",
-        holderType: "business",
-        bankName: "<value>",
-        bankAccountType: "savings",
-        routingNumber: "<value>",
-        lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2025-05-30T02:30:37.371Z"),
+      paymentMethodID: "3b2937d4-a715-4dfd-b25d-8cc157fe6168",
+      paymentMethodType: "moov-wallet",
+      wallet: {
+        walletID: "44a8327c-cf66-40da-bc7e-0161193aed31",
       },
     },
   ],

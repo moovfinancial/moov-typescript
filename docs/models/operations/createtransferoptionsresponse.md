@@ -14,28 +14,29 @@ let value: CreateTransferOptionsResponse = {
   result: {
     sourceOptions: [
       {
-        paymentMethodID: "c03d0c1d-c367-4633-ab24-130b66745937",
-        paymentMethodType: "ach-debit-collect",
-        bankAccount: {
-          bankAccountID: "2486b37d-2e77-4a8d-9224-f18cdff838b7",
-          fingerprint: "<value>",
-          status: "errored",
-          holderName: "<value>",
-          holderType: "business",
-          bankName: "<value>",
-          bankAccountType: "general-ledger",
-          routingNumber: "<value>",
-          lastFourAccountNumber: "<value>",
-          updatedOn: new Date("2024-10-21T07:26:03.546Z"),
+        paymentMethodID: "2820066a-6319-4360-a3a1-add27ebd67e6",
+        paymentMethodType: "apple-pay",
+        applePay: {
+          brand: "Visa",
+          cardType: "credit",
+          cardDisplayName: "Visa 1256",
+          fingerprint:
+            "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+          expiration: {
+            month: "01",
+            year: "21",
+          },
+          dynamicLastFour: "<value>",
+          issuerCountry: "US",
         },
       },
     ],
     destinationOptions: [
       {
-        paymentMethodID: "ce0f565d-b260-4c31-8a38-2cf1d7087e5c",
-        paymentMethodType: "rtp-credit",
+        paymentMethodID: "b9789eab-f135-4f39-8144-b1c4b56218a1",
+        paymentMethodType: "ach-credit-same-day",
         bankAccount: {
-          bankAccountID: "68233bf2-8200-466a-b631-93603a1add27",
+          bankAccountID: "023b1a62-f840-4593-b940-65386f953aea",
           fingerprint: "<value>",
           status: "pending",
           holderName: "<value>",
@@ -44,7 +45,7 @@ let value: CreateTransferOptionsResponse = {
           bankAccountType: "savings",
           routingNumber: "<value>",
           lastFourAccountNumber: "<value>",
-          updatedOn: new Date("2024-06-30T22:01:44.842Z"),
+          updatedOn: new Date("2025-04-26T21:45:53.740Z"),
         },
       },
     ],

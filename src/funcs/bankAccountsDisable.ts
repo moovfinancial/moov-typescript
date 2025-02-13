@@ -85,6 +85,7 @@ export async function bankAccountsDisable(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "disableBankAccount",
     oAuth2Scopes: [],
 

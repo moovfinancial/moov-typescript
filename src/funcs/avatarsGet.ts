@@ -82,6 +82,7 @@ export async function avatarsGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getAvatar",
     oAuth2Scopes: [],
 

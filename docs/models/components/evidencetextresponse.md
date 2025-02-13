@@ -1,16 +1,16 @@
-# EvidenceText
+# EvidenceTextResponse
 
 ## Example Usage
 
 ```typescript
-import { EvidenceText } from "@moovio/sdk/models/components";
+import { EvidenceTextResponse } from "@moovio/sdk/models/components";
 
-let value: EvidenceText = {
-  evidenceID: "86289ab0-6525-4078-b721-cb4afd42087c",
-  disputeID: "1f4590b3-e363-4a63-8db7-4d673d8a6040",
-  evidenceType: "other",
+let value: EvidenceTextResponse = {
+  evidenceID: "74d673d8-a604-400f-817d-636d0730c068",
+  disputeID: "e629a60a-32d8-47c7-b96e-9eec8a3edc03",
+  evidenceType: "cover-letter",
   text: "<value>",
-  createdOn: new Date("2023-04-14T20:13:02.673Z"),
+  createdOn: new Date("2025-07-16T09:22:57.749Z"),
 };
 ```
 

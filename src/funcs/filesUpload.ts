@@ -115,6 +115,7 @@ export async function filesUpload(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "uploadFile",
     oAuth2Scopes: [],
 

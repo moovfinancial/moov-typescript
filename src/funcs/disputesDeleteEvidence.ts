@@ -92,6 +92,7 @@ export async function disputesDeleteEvidence(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "deleteDisputeEvidenceFile",
     oAuth2Scopes: [],
 

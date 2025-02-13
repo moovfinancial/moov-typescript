@@ -84,6 +84,7 @@ export async function accountsAssignCountries(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "assignAccountCountries",
     oAuth2Scopes: [],
 

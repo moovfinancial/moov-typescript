@@ -79,6 +79,7 @@ export async function underwritingGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getUnderwriting",
     oAuth2Scopes: [],
 

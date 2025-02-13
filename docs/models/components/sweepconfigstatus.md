@@ -5,7 +5,7 @@
 ```typescript
 import { SweepConfigStatus } from "@moovio/sdk/models/components";
 
-let value: SweepConfigStatus = "enabled";
+let value: SweepConfigStatus = "disabled";
 ```
 
 ## Values

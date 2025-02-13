@@ -64,6 +64,7 @@ export async function transfersGenerateOptions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "createTransferOptions",
     oAuth2Scopes: [],
 

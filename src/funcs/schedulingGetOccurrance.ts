@@ -89,6 +89,7 @@ export async function schedulingGetOccurrance(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getScheduledOccurrence",
     oAuth2Scopes: [],
 

@@ -81,6 +81,7 @@ export async function adjustmentsList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listAdjustments",
     oAuth2Scopes: [],
 

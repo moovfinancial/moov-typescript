@@ -72,6 +72,7 @@ export async function authenticationCreateAccessToken(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "createAccessToken",
     oAuth2Scopes: [],
 

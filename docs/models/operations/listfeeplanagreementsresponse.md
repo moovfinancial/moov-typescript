@@ -13,10 +13,10 @@ let value: ListFeePlanAgreementsResponse = {
   },
   result: [
     {
-      aggreementID: "b9f72a99-8f21-4239-b937-77c7c28d2792",
-      planID: "1f7516a1-4da3-42e4-82f4-176e211e7298",
-      acceptedOn: new Date("2024-10-22T22:18:54.790Z"),
-      status: "active",
+      aggreementID: "12ab9f72-a998-4f21-9239-93777c7c28d2",
+      planID: "92c1f751-6a14-4da3-82e4-2f4176e211e7",
+      acceptedOn: new Date("2024-10-12T20:06:24.868Z"),
+      status: "terminated",
       cardAcquringModel: "cost-plus",
       billableFees: [
         {

@@ -14,7 +14,7 @@ let value: ListOnboardingInvitesResponse = {
   result: [
     {
       code: "N1IA5eWYNh",
-      link: "https://unusual-metabolite.org",
+      link: "https://slimy-pacemaker.com/",
       scopes: [
         "accounts.read",
       ],
@@ -33,11 +33,11 @@ let value: ListOnboardingInvitesResponse = {
         },
       },
       partner: {
-        accountID: "6ccb6734-a5b9-4525-85a0-da042995c0de",
+        accountID: "1134aadd-c91b-44c5-829e-244c276c7317",
         accountMode: "production",
         displayName: "Bob's Widgets",
       },
-      createdOn: new Date("2025-10-27T17:26:52.816Z"),
+      createdOn: new Date("2025-01-21T07:34:15.679Z"),
     },
   ],
 };

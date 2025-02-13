@@ -87,6 +87,7 @@ export async function schedulingUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "updateSchedule",
     oAuth2Scopes: [],
 

@@ -6,7 +6,7 @@
 import { FeePlan } from "@moovio/sdk/models/components";
 
 let value: FeePlan = {
-  planID: "6351b05e-382f-4d5c-9932-3afce3e1f255",
+  planID: "56276f29-f1bd-4591-b53a-078ee0968a4c",
   name: "Fixed Rate Merchant Plan",
   cardAcquringModel: "flat-rate",
   billableFees: [
@@ -37,7 +37,7 @@ let value: FeePlan = {
       },
     },
   ],
-  createdAt: new Date("2024-08-21T11:57:29.079Z"),
+  createdAt: new Date("2024-06-15T18:30:15.527Z"),
 };
 ```
 

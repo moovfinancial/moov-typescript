@@ -98,6 +98,7 @@ export async function bankAccountsCompleteVerification(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "completeBankAccountVerification",
     oAuth2Scopes: [],
 

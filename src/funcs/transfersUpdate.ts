@@ -3,7 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -55,7 +55,7 @@ export async function transfersUpdate(
     return parsed;
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.PatchTransfer, { explode: true });
 
   const pathParams = {
     accountID: encodeSimple("accountID", payload.accountID, {
@@ -73,6 +73,7 @@ export async function transfersUpdate(
   );
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
     "x-moov-version": encodeSimple(
       "x-moov-version",
@@ -85,6 +86,7 @@ export async function transfersUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "updateTransfer",
     oAuth2Scopes: [],
 

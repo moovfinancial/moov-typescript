@@ -83,6 +83,7 @@ export async function cardIssuingGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getIssuedCard",
     oAuth2Scopes: [],
 

@@ -58,6 +58,7 @@ export async function onboardingListInvites(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listOnboardingInvites",
     oAuth2Scopes: [],
 

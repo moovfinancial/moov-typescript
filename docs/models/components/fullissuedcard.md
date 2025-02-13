@@ -8,7 +8,7 @@ The full details of an issued card, including PAN and CVV.
 import { FullIssuedCard } from "@moovio/sdk/models/components";
 
 let value: FullIssuedCard = {
-  issuedCardID: "c5adc9e4-6cca-429f-a410-90eeea081101",
+  issuedCardID: "3612a549-304d-4ee3-ba74-a92ce415d7c9",
   brand: "Visa",
   lastFourCardNumber: "<value>",
   expiration: {
@@ -16,8 +16,8 @@ let value: FullIssuedCard = {
     year: "21",
   },
   authorizedUser: {
-    firstName: "Kenton",
-    lastName: "Sawayn",
+    firstName: "Keagan",
+    lastName: "Hoppe",
   },
   fundingWalletID: "<id>",
   state: "inactive",
@@ -30,9 +30,9 @@ let value: FullIssuedCard = {
       },
     ],
   },
-  createdOn: new Date("2024-05-02T07:36:13.592Z"),
+  createdOn: new Date("2023-10-24T05:26:05.632Z"),
   pan: "<value>",
-  cvv: "508",
+  cvv: "256",
 };
 ```
 

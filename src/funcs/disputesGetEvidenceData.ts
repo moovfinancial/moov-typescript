@@ -99,6 +99,7 @@ export async function disputesGetEvidenceData(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getDisputeEvidenceData",
     oAuth2Scopes: [],
 

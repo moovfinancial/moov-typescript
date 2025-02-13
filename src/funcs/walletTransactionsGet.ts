@@ -90,6 +90,7 @@ export async function walletTransactionsGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getWalletTransaction",
     oAuth2Scopes: [],
 

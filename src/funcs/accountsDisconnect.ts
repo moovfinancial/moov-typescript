@@ -81,6 +81,7 @@ export async function accountsDisconnect(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "disconnectAccount",
     oAuth2Scopes: [],
 

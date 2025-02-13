@@ -80,6 +80,7 @@ export async function accountsGetTermsOfServiceToken(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getTermsOfServiceToken",
     oAuth2Scopes: [],
 

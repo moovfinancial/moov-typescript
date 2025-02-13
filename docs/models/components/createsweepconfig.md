@@ -6,10 +6,10 @@
 import { CreateSweepConfig } from "@moovio/sdk/models/components";
 
 let value: CreateSweepConfig = {
-  walletID: "a99bb1bd-0530-4d8b-9312-d4957db5e5cc",
-  status: "disabled",
-  pushPaymentMethodID: "79be9ef8-4aba-4033-93fa-320454b91a4b",
-  pullPaymentMethodID: "22846c8e-b21a-48b8-9ff4-ccd6e6b953ae",
+  walletID: "0a99bb1b-d053-40d8-bb31-2d4957db5e5c",
+  status: "enabled",
+  pushPaymentMethodID: "879be9ef-84ab-4a03-a33f-a320454b91a4",
+  pullPaymentMethodID: "722846c8-eb21-4a8b-b8ff-4ccd6e6b953a",
 };
 ```
 

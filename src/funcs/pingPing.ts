@@ -58,6 +58,7 @@ export async function pingPing(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ping",
     oAuth2Scopes: [],
 

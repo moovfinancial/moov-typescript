@@ -74,6 +74,7 @@ export async function endToEndEncryptionTestEncryptedToken(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "testEndToEndToken",
     oAuth2Scopes: [],
 

@@ -81,6 +81,7 @@ export async function brandingUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "updateBrand",
     oAuth2Scopes: [],
 

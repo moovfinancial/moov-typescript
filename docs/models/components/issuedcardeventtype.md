@@ -7,7 +7,7 @@ The type of event that occurred on the card.
 ```typescript
 import { IssuedCardEventType } from "@moovio/sdk/models/components";
 
-let value: IssuedCardEventType = "authorization-incremental";
+let value: IssuedCardEventType = "authorization-expiration";
 ```
 
 ## Values

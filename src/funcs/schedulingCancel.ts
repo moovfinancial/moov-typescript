@@ -85,6 +85,7 @@ export async function schedulingCancel(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "cancelSchedule",
     oAuth2Scopes: [],
 

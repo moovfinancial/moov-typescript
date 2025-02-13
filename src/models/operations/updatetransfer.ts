@@ -18,8 +18,8 @@ export type UpdateTransferGlobals = {
    * API versioning follows the format `vYYYY.QQ.BB`, where
    *   - `YYYY` is the year
    *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
-   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
+   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
    *
    * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
    */
@@ -32,6 +32,7 @@ export type UpdateTransferRequest = {
    */
   transferID: string;
   accountID: string;
+  patchTransfer: components.PatchTransfer;
 };
 
 export type UpdateTransferResponse = {
@@ -45,7 +46,7 @@ export const UpdateTransferGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": z.string().default("v2024.01"),
+  "x-moov-version": z.string().default("v2024.01.00"),
 }).transform((v) => {
   return remap$(v, {
     "x-moov-version": "xMoovVersion",
@@ -63,7 +64,7 @@ export const UpdateTransferGlobals$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateTransferGlobals
 > = z.object({
-  xMoovVersion: z.string().default("v2024.01"),
+  xMoovVersion: z.string().default("v2024.01.00"),
 }).transform((v) => {
   return remap$(v, {
     xMoovVersion: "x-moov-version",
@@ -109,12 +110,18 @@ export const UpdateTransferRequest$inboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string(),
   accountID: z.string(),
+  PatchTransfer: components.PatchTransfer$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "PatchTransfer": "patchTransfer",
+  });
 });
 
 /** @internal */
 export type UpdateTransferRequest$Outbound = {
   transferID: string;
   accountID: string;
+  PatchTransfer: components.PatchTransfer$Outbound;
 };
 
 /** @internal */
@@ -125,6 +132,11 @@ export const UpdateTransferRequest$outboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string(),
   accountID: z.string(),
+  patchTransfer: components.PatchTransfer$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    patchTransfer: "PatchTransfer",
+  });
 });
 
 /**

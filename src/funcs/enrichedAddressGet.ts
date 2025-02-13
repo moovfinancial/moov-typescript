@@ -87,6 +87,7 @@ export async function enrichedAddressGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getEnrichmentAddress",
     oAuth2Scopes: [],
 

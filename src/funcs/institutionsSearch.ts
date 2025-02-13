@@ -79,6 +79,7 @@ export async function institutionsSearch(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listInstitutions",
     oAuth2Scopes: [],
 

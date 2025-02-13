@@ -84,6 +84,7 @@ export async function issuingTransactionsGetAuthorization(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getIssuedCardAuthorization",
     oAuth2Scopes: [],
 

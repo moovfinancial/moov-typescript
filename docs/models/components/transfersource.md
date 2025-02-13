@@ -10,8 +10,8 @@ let value: TransferSource = {
   paymentMethodType: "<value>",
   account: {
     accountID: "<id>",
-    email: "Dangelo_Littel10@yahoo.com",
-    displayName: "Nyah_Bernhard13",
+    email: "Ludie_Rutherford89@gmail.com",
+    displayName: "Claire.Harvey70",
   },
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
@@ -28,7 +28,7 @@ let value: TransferSource = {
     statusReason: "bank-account-created",
   },
   cardDetails: {
-    status: "settled",
+    status: "initiated",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

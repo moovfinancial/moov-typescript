@@ -85,6 +85,7 @@ export async function capabilitiesDisable(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "disableCapability",
     oAuth2Scopes: [],
 

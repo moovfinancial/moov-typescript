@@ -83,6 +83,7 @@ export async function cardsDisable(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "disableCard",
     oAuth2Scopes: [],
 

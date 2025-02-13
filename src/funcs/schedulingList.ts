@@ -82,6 +82,7 @@ export async function schedulingList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listSchedules",
     oAuth2Scopes: [],
 

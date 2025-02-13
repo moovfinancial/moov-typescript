@@ -6,26 +6,26 @@
 import { UpsertUnderwritingRequest } from "@moovio/sdk/models/operations";
 
 let value: UpsertUnderwritingRequest = {
-  accountID: "f8405939-4065-4386-9f95-3aeadaf6c800",
+  accountID: "34ed1921-9179-4fe9-a8ae-f0fc1cae78d7",
   updateUnderwriting: {
-    averageTransactionSize: 659975,
-    maxTransactionSize: 863273,
-    averageMonthlyTransactionVolume: 32623,
+    averageTransactionSize: 244359,
+    maxTransactionSize: 330422,
+    averageMonthlyTransactionVolume: 287648,
     volumeByCustomerType: {
-      businessToBusinessPercentage: 941845,
-      consumerToBusinessPercentage: 884761,
+      businessToBusinessPercentage: 45663,
+      consumerToBusinessPercentage: 583034,
     },
     cardVolumeDistribution: {
-      ecommercePercentage: 873618,
-      cardPresentPercentage: 642670,
-      mailOrPhonePercentage: 466658,
-      debtRepaymentPercentage: 803994,
+      ecommercePercentage: 842652,
+      cardPresentPercentage: 770313,
+      mailOrPhonePercentage: 246585,
+      debtRepaymentPercentage: 586310,
     },
     fulfillment: {
       hasPhysicalGoods: false,
       isShippingProduct: false,
-      shipmentDurationDays: 206174,
-      returnPolicy: "exchangeOnly",
+      shipmentDurationDays: 490431,
+      returnPolicy: "other",
     },
   },
 };

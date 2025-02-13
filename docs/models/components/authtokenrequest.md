@@ -6,7 +6,7 @@
 import { AuthTokenRequest } from "@moovio/sdk/models/components";
 
 let value: AuthTokenRequest = {
-  grantType: "refresh_token",
+  grantType: "client_credentials",
   clientId: "5clTR_MdVrrkgxw2",
   clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
   scope: "/accounts.read /accounts.write",

@@ -118,6 +118,7 @@ export async function disputesUploadEvidenceFile(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "uploadDisputeEvidenceFile",
     oAuth2Scopes: [],
 

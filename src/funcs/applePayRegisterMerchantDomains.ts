@@ -90,6 +90,7 @@ export async function applePayRegisterMerchantDomains(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "registerApplePayMerchantDomains",
     oAuth2Scopes: [],
 

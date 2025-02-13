@@ -81,6 +81,7 @@ export async function representativesList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listRepresentatives",
     oAuth2Scopes: [],
 

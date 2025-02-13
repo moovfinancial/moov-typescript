@@ -12,7 +12,7 @@ import {
   EvidenceType$outboundSchema,
 } from "./evidencetype.js";
 
-export type EvidenceText = {
+export type EvidenceTextResponse = {
   evidenceID: string;
   disputeID: string;
   evidenceType: EvidenceType;
@@ -21,8 +21,8 @@ export type EvidenceText = {
 };
 
 /** @internal */
-export const EvidenceText$inboundSchema: z.ZodType<
-  EvidenceText,
+export const EvidenceTextResponse$inboundSchema: z.ZodType<
+  EvidenceTextResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -34,7 +34,7 @@ export const EvidenceText$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EvidenceText$Outbound = {
+export type EvidenceTextResponse$Outbound = {
   evidenceID: string;
   disputeID: string;
   evidenceType: string;
@@ -43,10 +43,10 @@ export type EvidenceText$Outbound = {
 };
 
 /** @internal */
-export const EvidenceText$outboundSchema: z.ZodType<
-  EvidenceText$Outbound,
+export const EvidenceTextResponse$outboundSchema: z.ZodType<
+  EvidenceTextResponse$Outbound,
   z.ZodTypeDef,
-  EvidenceText
+  EvidenceTextResponse
 > = z.object({
   evidenceID: z.string(),
   disputeID: z.string(),
@@ -59,25 +59,29 @@ export const EvidenceText$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EvidenceText$ {
-  /** @deprecated use `EvidenceText$inboundSchema` instead. */
-  export const inboundSchema = EvidenceText$inboundSchema;
-  /** @deprecated use `EvidenceText$outboundSchema` instead. */
-  export const outboundSchema = EvidenceText$outboundSchema;
-  /** @deprecated use `EvidenceText$Outbound` instead. */
-  export type Outbound = EvidenceText$Outbound;
+export namespace EvidenceTextResponse$ {
+  /** @deprecated use `EvidenceTextResponse$inboundSchema` instead. */
+  export const inboundSchema = EvidenceTextResponse$inboundSchema;
+  /** @deprecated use `EvidenceTextResponse$outboundSchema` instead. */
+  export const outboundSchema = EvidenceTextResponse$outboundSchema;
+  /** @deprecated use `EvidenceTextResponse$Outbound` instead. */
+  export type Outbound = EvidenceTextResponse$Outbound;
 }
 
-export function evidenceTextToJSON(evidenceText: EvidenceText): string {
-  return JSON.stringify(EvidenceText$outboundSchema.parse(evidenceText));
+export function evidenceTextResponseToJSON(
+  evidenceTextResponse: EvidenceTextResponse,
+): string {
+  return JSON.stringify(
+    EvidenceTextResponse$outboundSchema.parse(evidenceTextResponse),
+  );
 }
 
-export function evidenceTextFromJSON(
+export function evidenceTextResponseFromJSON(
   jsonString: string,
-): SafeParseResult<EvidenceText, SDKValidationError> {
+): SafeParseResult<EvidenceTextResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EvidenceText$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EvidenceText' from JSON`,
+    (x) => EvidenceTextResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EvidenceTextResponse' from JSON`,
   );
 }

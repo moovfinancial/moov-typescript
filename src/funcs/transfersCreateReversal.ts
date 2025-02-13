@@ -94,6 +94,7 @@ export async function transfersCreateReversal(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "createReversal",
     oAuth2Scopes: [],
 

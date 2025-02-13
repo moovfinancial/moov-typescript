@@ -12,18 +12,18 @@ let value: UploadDisputeEvidenceTextResponse = {
     ],
   },
   result: {
-    evidenceID: "16b3fa4c-1f0e-44c0-a4b8-1669ad762cb6",
-    disputeID: "a20597bd-72d9-4bbf-a4b5-635f43947d36",
+    evidenceID: "916b3fa4-c1f0-4e4c-904b-81669ad762cb",
+    disputeID: "8a20597b-d72d-49bb-9f4b-5635f43947d3",
     evidenceType: "customer-communication",
     text: "<value>",
-    createdOn: new Date("2025-12-04T07:07:12.134Z"),
+    createdOn: new Date("2024-08-21T00:13:23.635Z"),
   },
 };
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `headers`                                                          | Record<string, *string*[]>                                         | :heavy_check_mark:                                                 | N/A                                                                |
-| `result`                                                           | [components.EvidenceText](../../models/components/evidencetext.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `headers`                                                                          | Record<string, *string*[]>                                                         | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `result`                                                                           | [components.EvidenceTextResponse](../../models/components/evidencetextresponse.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

@@ -6,24 +6,24 @@
 import { UpdateUnderwriting } from "@moovio/sdk/models/components";
 
 let value: UpdateUnderwriting = {
-  averageTransactionSize: 949128,
-  maxTransactionSize: 97554,
-  averageMonthlyTransactionVolume: 230217,
+  averageTransactionSize: 858543,
+  maxTransactionSize: 771809,
+  averageMonthlyTransactionVolume: 546608,
   volumeByCustomerType: {
-    businessToBusinessPercentage: 299227,
-    consumerToBusinessPercentage: 361241,
+    businessToBusinessPercentage: 555825,
+    consumerToBusinessPercentage: 203003,
   },
   cardVolumeDistribution: {
-    ecommercePercentage: 96454,
-    cardPresentPercentage: 154672,
-    mailOrPhonePercentage: 865585,
-    debtRepaymentPercentage: 480790,
+    ecommercePercentage: 15195,
+    cardPresentPercentage: 559250,
+    mailOrPhonePercentage: 697655,
+    debtRepaymentPercentage: 396022,
   },
   fulfillment: {
     hasPhysicalGoods: false,
     isShippingProduct: false,
-    shipmentDurationDays: 159937,
-    returnPolicy: "other",
+    shipmentDurationDays: 642924,
+    returnPolicy: "exchangeOnly",
   },
 };
 ```

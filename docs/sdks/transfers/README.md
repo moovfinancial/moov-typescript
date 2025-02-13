@@ -437,6 +437,11 @@ async function run() {
   const result = await moov.transfers.update({
     transferID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
     accountID: "b85898c1-25a1-4907-a1c5-562af6646dad",
+    patchTransfer: {
+      metadata: {
+        "optional": "metadata",
+      },
+    },
   });
 
   // Handle the result
@@ -467,6 +472,11 @@ async function run() {
   const res = await transfersUpdate(moov, {
     transferID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
     accountID: "b85898c1-25a1-4907-a1c5-562af6646dad",
+    patchTransfer: {
+      metadata: {
+        "optional": "metadata",
+      },
+    },
   });
 
   if (!res.ok) {

@@ -75,6 +75,7 @@ export async function enrichedProfileGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getEnrichmentProfile",
     oAuth2Scopes: [],
 

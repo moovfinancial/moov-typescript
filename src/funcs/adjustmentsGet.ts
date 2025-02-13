@@ -83,6 +83,7 @@ export async function adjustmentsGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getAdjustment",
     oAuth2Scopes: [],
 

@@ -83,6 +83,7 @@ export async function paymentLinksDisable(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "disablePaymentLink",
     oAuth2Scopes: [],
 

@@ -12,11 +12,11 @@ let value: GetIssuedCardTransactionResponse = {
     ],
   },
   result: {
-    cardTransactionID: "33c5334d-7255-41db-96b5-e817505f4b22",
-    issuedCardID: "07f4adf0-d15b-450b-9876-ae6653d38c08",
-    fundingWalletID: "1d65a758-5ccc-4c8d-94e6-82010cc692d9",
+    cardTransactionID: "5cccc8d4-e682-4010-9cc6-92d95db65327",
+    issuedCardID: "042c722d-887b-4811-94f1-8e1390e1039f",
+    fundingWalletID: "8784bb8d-a7d9-41cd-90cf-c6b4a8a6267a",
     amount: "-14.89",
-    authorizedOn: new Date("2025-07-27T11:49:44.190Z"),
+    authorizedOn: new Date("2024-12-08T15:11:52.881Z"),
     merchantData: {
       name: "Whole Body Fitness",
       city: "San Francisco",
@@ -25,7 +25,7 @@ let value: GetIssuedCardTransactionResponse = {
       state: "CA",
       mcc: "7298",
     },
-    createdOn: new Date("2025-02-17T20:22:17.576Z"),
+    createdOn: new Date("2023-09-14T06:51:41.271Z"),
   },
 };
 ```
