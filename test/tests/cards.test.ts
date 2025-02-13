@@ -2,8 +2,6 @@ import { beforeAll, beforeEach, describe, expect, test } from "bun:test";
 import { ids, moov } from "../setup";
 import { createAccount, createBankAccount, createCard } from "../utils/utils";
 import type { Card } from "../../models/components";
-import { sleep } from "bun";
-import { APIError } from "../../models/errors/apierror";
 
 let accountID = "a920f147-ed53-4aa1-977c-d11cc192979c"; // default account ID
 let card: Partial<Card> = {};

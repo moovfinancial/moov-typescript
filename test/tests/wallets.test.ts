@@ -1,31 +1,22 @@
 import { beforeAll, beforeEach, describe, expect, test } from "bun:test";
 import { ids, moov } from "../setup";
-import { createAccount, createBankAccount, createCard } from "../utils/utils";
-import type { BankAccount, Card } from "../../models/components";
+import { createAccount, createAccountWithWallet } from "../utils/utils";
 
 let accountID = "a920f147-ed53-4aa1-977c-d11cc192979c"; // default account ID
-let card: Partial<Card> = {};
-let bankAccount: Partial<BankAccount> = {};
-let cardNumber: string;
-describe("PaymentMethods", () => {
+describe("Wallets", () => {
 	beforeAll(async () => {
-		const account = await createAccount();
+		const account = await createAccountWithWallet();
 		accountID = account.accountID;
-		const result = await createCard(accountID);
-		card = result.card;
-		cardNumber = result.cardNumber;
-		const bankAccountResult = await createBankAccount(accountID);
-		bankAccount = bankAccountResult.bankAccount;
 	});
 
 	describe("Listing", () => {
-		test("should be able to list payment methods", async () => {
-			const { result } = await moov.paymentMethods.list({ accountID });
+		test("should be able to list wallets", async () => {
+			const { result } = await moov.wallets.list({ accountID });
 			expect(result).toBeDefined();
-			expect(result.length).toEqual(3);
+			expect(result.length).toEqual(0);
 		});
 		test("listing should fail if accountID is not provided", async () => {
-			expect(() => moov.paymentMethods.list({ accountID: "" })).toThrowError(
+			expect(() => moov.wallets.list({ accountID: "" })).toThrowError(
 				"API error occurred: Status 403 Content-Type  Body",
 			);
 		});
