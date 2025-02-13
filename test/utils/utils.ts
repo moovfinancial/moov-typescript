@@ -48,7 +48,7 @@ export const createBankAccount = async (accountID: string, bankAccount: Partial<
 			account: {
 				holderName: "Marcellus Wallace",
 				holderType: "individual",
-				accountNumber: "1234567890",
+				accountNumber: chance.integer({ min: 1000000000, max: 9999999999 }).toString(),
 				bankAccountType: "checking",
 				routingNumber: "121000248",
 			},
