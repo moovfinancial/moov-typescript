@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, test } from "bun:test";
-import { moov } from "../setup";
+import { ids, moov } from "../setup";
 import { createAccount, createBankAccount } from "../utils/utils";
 import type { BankAccount } from "../../models/components";
 import { sleep } from "bun";
@@ -31,6 +31,7 @@ describe("Bank Accounts", () => {
 		expect(result.bankAccountID).toBeDefined();
 		expect(result.bankAccountType).toEqual("checking");
 		bankAccount = result;
+		ids.seen({ accountID, bankAccountID: result.bankAccountID });
 	});
 	describe("Bank-account dependent tests", () => {
 		describe("Getting and listing bank accounts", () => {

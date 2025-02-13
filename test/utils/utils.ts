@@ -74,13 +74,14 @@ export const createCard = async (accountID: string, card: DeepPartial<LinkCard> 
 		cardCvv: "123",
 		expiration: {
 			month: "01",
-			year: "2025",
+			year: "52",
 		},
 		billingAddress: {
 			addressLine1: "123 Main St",
 			city: "Anytown",
 			country: "US",
 			postalCode: "12345",
+			stateOrProvince: "CA",
 		},
 	};
 	const mergedCard = merge(defaultCard, card) as LinkCard;
