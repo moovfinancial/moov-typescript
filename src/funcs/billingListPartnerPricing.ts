@@ -81,6 +81,7 @@ export async function billingListPartnerPricing(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listPartnerPricing",
     oAuth2Scopes: [],
 

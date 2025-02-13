@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://unknown-scratch.com",
+    link: "https://muted-ownership.org/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "3d0ba794-9b62-4ff1-805f-63f3a1a246c8",
+      accountID: "ea30c51d-8f9f-482f-b12f-cd7640053a2e",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2025-04-07T08:49:58.108Z"),
+    createdOn: new Date("2024-06-04T11:33:54.284Z"),
   },
 };
 ```

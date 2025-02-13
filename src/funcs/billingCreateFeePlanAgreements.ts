@@ -86,6 +86,7 @@ export async function billingCreateFeePlanAgreements(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "createFeePlanAgreements",
     oAuth2Scopes: [],
 

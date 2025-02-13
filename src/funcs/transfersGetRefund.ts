@@ -87,6 +87,7 @@ export async function transfersGetRefund(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getRefund",
     oAuth2Scopes: [],
 

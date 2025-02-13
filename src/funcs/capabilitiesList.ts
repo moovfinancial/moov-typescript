@@ -79,6 +79,7 @@ export async function capabilitiesList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listCapabilities",
     oAuth2Scopes: [],
 

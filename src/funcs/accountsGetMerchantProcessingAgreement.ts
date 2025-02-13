@@ -82,6 +82,7 @@ export async function accountsGetMerchantProcessingAgreement(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getMerchantProcessingAgreement",
     oAuth2Scopes: [],
 

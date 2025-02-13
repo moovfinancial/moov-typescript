@@ -12,17 +12,17 @@ let value: GetSweepConfigResponse = {
     ],
   },
   result: {
-    sweepConfigID: "4c37ba8a-0431-43de-b877-ff310563edb7",
-    walletID: "fe4d51bc-f741-4697-b25e-7876037975cb",
+    sweepConfigID: "169725e7-8760-4379-975c-bf0b04eca604",
+    walletID: "670a70f3-2c59-4060-833f-4d6da01013cb",
     status: "enabled",
     pushPaymentMethod: {
-      paymentMethodID: "b04eca60-4767-40a7-90f3-2c5906033f4d",
+      paymentMethodID: "d191f7e2-f00d-4c33-a7fa-dd29f17cf16c",
     },
     pullPaymentMethod: {
-      paymentMethodID: "da01013c-b36d-4191-bf7e-2f00dc337fad",
+      paymentMethodID: "e189dd79-0b0a-48f2-96d8-d8ae0e2c95fd",
     },
-    createdOn: new Date("2023-05-28T08:33:24.565Z"),
-    updatedOn: new Date("2024-09-26T08:58:46.574Z"),
+    createdOn: new Date("2023-08-11T03:22:39.673Z"),
+    updatedOn: new Date("2024-01-29T10:53:12.721Z"),
   },
 };
 ```

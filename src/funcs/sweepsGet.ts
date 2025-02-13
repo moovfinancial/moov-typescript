@@ -87,6 +87,7 @@ export async function sweepsGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getSweep",
     oAuth2Scopes: [],
 

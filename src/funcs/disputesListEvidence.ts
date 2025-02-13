@@ -86,6 +86,7 @@ export async function disputesListEvidence(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listDisputeEvidence",
     oAuth2Scopes: [],
 

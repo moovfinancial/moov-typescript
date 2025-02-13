@@ -1,7 +1,5 @@
 # UpdateEvidence
 
-The template for adding optional properties.
-
 ## Example Usage
 
 ```typescript
@@ -12,7 +10,7 @@ let value: UpdateEvidence = {};
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `text`                                                             | *string*                                                           | :heavy_minus_sign:                                                 | The text to associate with the dispute as evidence.                |
-| `evidenceType`                                                     | [components.EvidenceType](../../models/components/evidencetype.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `evidenceType`                                                         | [components.EvidenceType](../../models/components/evidencetype.md)     | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `text`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | If updating text evidence, the new text to associate with the dispute. |

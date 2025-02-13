@@ -81,6 +81,7 @@ export async function schedulingCreate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "createSchedule",
     oAuth2Scopes: [],
 

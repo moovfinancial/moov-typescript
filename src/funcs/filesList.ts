@@ -77,6 +77,7 @@ export async function filesList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listFiles",
     oAuth2Scopes: [],
 

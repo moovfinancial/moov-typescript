@@ -1,20 +1,16 @@
-# DisputeEvidenceMetadata
+# DisputeEvidenceResponse
 
 ## Example Usage
 
 ```typescript
-import { DisputeEvidenceMetadata } from "@moovio/sdk/models/components";
+import { DisputeEvidenceResponse } from "@moovio/sdk/models/components";
 
-let value: DisputeEvidenceMetadata = {
-  evidenceID: "dc793cbc-fee6-4cf4-ac34-67b1d206c5da",
-  disputeID: "892e67ae-b774-40f1-b4f9-db0217db36be",
-  mimeType: "<value>",
-  filename: "example.file",
-  size: 504633,
-  evidenceType: "terms-of-service",
-  text: "<value>",
-  createdOn: new Date("2024-12-15T07:00:39.939Z"),
-  updatedOn: new Date("2024-12-27T03:46:43.992Z"),
+let value: DisputeEvidenceResponse = {
+  evidenceID: "db0217db-36be-4e86-9aaf-787b5084b2dc",
+  disputeID: "2d518022-75b1-444b-ae78-cdc413988160",
+  evidenceType: "proof-of-delivery",
+  createdOn: new Date("2025-02-13T22:14:08.082Z"),
+  updatedOn: new Date("2024-08-06T08:14:46.348Z"),
 };
 ```
 
@@ -24,10 +20,10 @@ let value: DisputeEvidenceMetadata = {
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `evidenceID`                                                                                  | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `disputeID`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `mimeType`                                                                                    | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `filename`                                                                                    | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `size`                                                                                        | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `evidenceType`                                                                                | [components.EvidenceType](../../models/components/evidencetype.md)                            | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `text`                                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | The text submited as evidence.                                                                |
+| `text`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | For text evidence, the text submitted as evidence.                                            |
+| `mimeType`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | For file evidence, the MIME type of the file.                                                 |
+| `filename`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | For file evidence, the name of the file.                                                      |
+| `size`                                                                                        | *number*                                                                                      | :heavy_minus_sign:                                                                            | For file evidence, the size of the file.                                                      |
 | `createdOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `updatedOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |

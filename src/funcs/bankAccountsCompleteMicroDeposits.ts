@@ -90,6 +90,7 @@ export async function bankAccountsCompleteMicroDeposits(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "completeMicroDeposits",
     oAuth2Scopes: [],
 

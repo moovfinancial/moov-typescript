@@ -16,7 +16,7 @@ let value: GetScheduledOccurrenceResponse = {
     mode: "production",
     occurrences: {
       mode: "production",
-      runOn: new Date("2024-04-03T09:10:36.479Z"),
+      runOn: new Date("2025-01-27T04:45:11.023Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -43,7 +43,8 @@ let value: GetScheduledOccurrenceResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "ugh privilege resource cumbersome drag battle",
+        description:
+          "cumbersome drag battle briskly nor tame bravely fill essence",
       },
     },
     ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -76,14 +77,14 @@ let value: GetScheduledOccurrenceResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "spork where christen nor ceramics",
+        description: "invite butter platter abacus which",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },
     scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-    createdOn: new Date("2025-12-14T21:42:23.324Z"),
-    updatedOn: new Date("2023-10-01T22:27:32.374Z"),
+    createdOn: new Date("2025-10-10T23:18:29.379Z"),
+    updatedOn: new Date("2025-04-01T06:33:23.449Z"),
   },
 };
 ```

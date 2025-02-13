@@ -91,6 +91,7 @@ export async function accountsUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "updateAccount",
     oAuth2Scopes: [],
 

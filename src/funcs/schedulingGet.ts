@@ -83,6 +83,7 @@ export async function schedulingGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getSchedules",
     oAuth2Scopes: [],
 

@@ -90,6 +90,7 @@ export async function applePayUpdateMerchantDomains(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "updateApplePayMerchantDomains",
     oAuth2Scopes: [],
 

@@ -9,7 +9,7 @@ import { CapabilityRequirement } from "@moovio/sdk/models/components";
 
 let value: CapabilityRequirement = {
   currentlyDue: [
-    "business.max-transaction-size",
+    "business.indicate-owners-provided",
   ],
 };
 ```

@@ -18,8 +18,8 @@ export type GetDisputeEvidenceGlobals = {
    * API versioning follows the format `vYYYY.QQ.BB`, where
    *   - `YYYY` is the year
    *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is an **optional** build number starting at `.01` for subsequent builds in the same quarter.
-   *     - If no build number is specified, the version refers to the initial release of the quarter.
+   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
+   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
    *
    * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
    */
@@ -34,7 +34,7 @@ export type GetDisputeEvidenceRequest = {
 
 export type GetDisputeEvidenceResponse = {
   headers: { [k: string]: Array<string> };
-  result: components.DisputeEvidenceMetadata;
+  result: components.DisputeEvidenceResponse;
 };
 
 /** @internal */
@@ -43,7 +43,7 @@ export const GetDisputeEvidenceGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": z.string().default("v2024.01"),
+  "x-moov-version": z.string().default("v2024.01.00"),
 }).transform((v) => {
   return remap$(v, {
     "x-moov-version": "xMoovVersion",
@@ -61,7 +61,7 @@ export const GetDisputeEvidenceGlobals$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDisputeEvidenceGlobals
 > = z.object({
-  xMoovVersion: z.string().default("v2024.01"),
+  xMoovVersion: z.string().default("v2024.01.00"),
 }).transform((v) => {
   return remap$(v, {
     xMoovVersion: "x-moov-version",
@@ -166,7 +166,7 @@ export const GetDisputeEvidenceResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: components.DisputeEvidenceMetadata$inboundSchema,
+  Result: components.DisputeEvidenceResponse$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -177,7 +177,7 @@ export const GetDisputeEvidenceResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDisputeEvidenceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: components.DisputeEvidenceMetadata$Outbound;
+  Result: components.DisputeEvidenceResponse$Outbound;
 };
 
 /** @internal */
@@ -187,7 +187,7 @@ export const GetDisputeEvidenceResponse$outboundSchema: z.ZodType<
   GetDisputeEvidenceResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: components.DisputeEvidenceMetadata$outboundSchema,
+  result: components.DisputeEvidenceResponse$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

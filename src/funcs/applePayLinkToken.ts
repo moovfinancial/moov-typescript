@@ -84,6 +84,7 @@ export async function applePayLinkToken(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "linkApplePayToken",
     oAuth2Scopes: [],
 

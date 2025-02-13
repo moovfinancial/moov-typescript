@@ -85,6 +85,7 @@ export async function underwritingUpsert(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "upsertUnderwriting",
     oAuth2Scopes: [],
 

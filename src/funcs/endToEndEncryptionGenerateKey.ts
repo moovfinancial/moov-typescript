@@ -55,6 +55,7 @@ export async function endToEndEncryptionGenerateKey(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "generateEndToEndKey",
     oAuth2Scopes: [],
 

@@ -12,15 +12,11 @@ let value: UpdateDisputeEvidenceResponse = {
     ],
   },
   result: {
-    evidenceID: "54f5e2c0-70cf-40ec-85e4-61a07ad2cb89",
-    disputeID: "96d596e4-1b69-40fe-8906-fa27f8094168",
-    mimeType: "<value>",
-    filename: "example.file",
-    size: 559047,
+    evidenceID: "3354f5e2-c070-4cf0-aec5-e461a07ad2cb",
+    disputeID: "9196d596-e41b-4690-9fe9-06fa27f80941",
     evidenceType: "customer-communication",
-    text: "<value>",
-    createdOn: new Date("2025-05-20T02:57:57.993Z"),
-    updatedOn: new Date("2024-04-09T05:03:15.773Z"),
+    createdOn: new Date("2023-01-19T16:14:20.571Z"),
+    updatedOn: new Date("2024-09-04T17:10:02.116Z"),
   },
 };
 ```
@@ -30,4 +26,4 @@ let value: UpdateDisputeEvidenceResponse = {
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `headers`                                                                                | Record<string, *string*[]>                                                               | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `result`                                                                                 | [components.DisputeEvidenceMetadata](../../models/components/disputeevidencemetadata.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `result`                                                                                 | [components.DisputeEvidenceResponse](../../models/components/disputeevidenceresponse.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |

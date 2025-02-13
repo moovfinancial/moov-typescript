@@ -58,6 +58,7 @@ export async function industriesList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listIndustries",
     oAuth2Scopes: [],
 

@@ -97,6 +97,7 @@ export async function bankAccountsInitiateMicroDeposits(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "initiateMicroDeposits",
     oAuth2Scopes: [],
 

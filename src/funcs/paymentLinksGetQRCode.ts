@@ -92,6 +92,7 @@ export async function paymentLinksGetQRCode(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getPaymentLinkQRCode",
     oAuth2Scopes: [],
 

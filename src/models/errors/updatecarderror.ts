@@ -7,8 +7,8 @@ import * as components from "../components/index.js";
 
 export type UpdateCardErrorData = {
   e2ee?: components.End2EndEncryptionError | undefined;
-  billingAddress?: components.CardAddressError | undefined;
-  expiration?: components.CardExpirationError | undefined;
+  billingAddress?: string | undefined;
+  expiration?: string | undefined;
   cardCvv?: string | undefined;
   cardOnFile?: string | undefined;
   merchantAccountID?: string | undefined;
@@ -18,8 +18,8 @@ export type UpdateCardErrorData = {
 
 export class UpdateCardError extends Error {
   e2ee?: components.End2EndEncryptionError | undefined;
-  billingAddress?: components.CardAddressError | undefined;
-  expiration?: components.CardExpirationError | undefined;
+  billingAddress?: string | undefined;
+  expiration?: string | undefined;
   cardCvv?: string | undefined;
   cardOnFile?: string | undefined;
   merchantAccountID?: string | undefined;
@@ -58,8 +58,8 @@ export const UpdateCardError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   e2ee: components.End2EndEncryptionError$inboundSchema.optional(),
-  billingAddress: components.CardAddressError$inboundSchema.optional(),
-  expiration: components.CardExpirationError$inboundSchema.optional(),
+  billingAddress: z.string().optional(),
+  expiration: z.string().optional(),
   cardCvv: z.string().optional(),
   cardOnFile: z.string().optional(),
   merchantAccountID: z.string().optional(),
@@ -73,8 +73,8 @@ export const UpdateCardError$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateCardError$Outbound = {
   e2ee?: components.End2EndEncryptionError$Outbound | undefined;
-  billingAddress?: components.CardAddressError$Outbound | undefined;
-  expiration?: components.CardExpirationError$Outbound | undefined;
+  billingAddress?: string | undefined;
+  expiration?: string | undefined;
   cardCvv?: string | undefined;
   cardOnFile?: string | undefined;
   merchantAccountID?: string | undefined;
@@ -91,8 +91,8 @@ export const UpdateCardError$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     e2ee: components.End2EndEncryptionError$outboundSchema.optional(),
-    billingAddress: components.CardAddressError$outboundSchema.optional(),
-    expiration: components.CardExpirationError$outboundSchema.optional(),
+    billingAddress: z.string().optional(),
+    expiration: z.string().optional(),
     cardCvv: z.string().optional(),
     cardOnFile: z.string().optional(),
     merchantAccountID: z.string().optional(),

@@ -96,6 +96,7 @@ export async function transfersList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listTransfers",
     oAuth2Scopes: [],
 

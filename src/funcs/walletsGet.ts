@@ -85,6 +85,7 @@ export async function walletsGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getWallet",
     oAuth2Scopes: [],
 

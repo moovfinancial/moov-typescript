@@ -10,9 +10,9 @@ export type LinkCardErrorData = {
   e2ee?: components.End2EndEncryptionError | undefined;
   cardNumber?: string | undefined;
   cardCvv?: string | undefined;
-  expiration?: components.CardExpirationError | undefined;
+  expiration?: string | undefined;
   holderName?: string | undefined;
-  billingAddress?: components.CardAddressError | undefined;
+  billingAddress?: string | undefined;
   cardOnFile?: string | undefined;
   merchantAccountID?: string | undefined;
   verifyName?: string | undefined;
@@ -23,9 +23,9 @@ export class LinkCardError extends Error {
   e2ee?: components.End2EndEncryptionError | undefined;
   cardNumber?: string | undefined;
   cardCvv?: string | undefined;
-  expiration?: components.CardExpirationError | undefined;
+  expiration?: string | undefined;
   holderName?: string | undefined;
-  billingAddress?: components.CardAddressError | undefined;
+  billingAddress?: string | undefined;
   cardOnFile?: string | undefined;
   merchantAccountID?: string | undefined;
   verifyName?: string | undefined;
@@ -67,9 +67,9 @@ export const LinkCardError$inboundSchema: z.ZodType<
   e2ee: components.End2EndEncryptionError$inboundSchema.optional(),
   cardNumber: z.string().optional(),
   cardCvv: z.string().optional(),
-  expiration: components.CardExpirationError$inboundSchema.optional(),
+  expiration: z.string().optional(),
   holderName: z.string().optional(),
-  billingAddress: components.CardAddressError$inboundSchema.optional(),
+  billingAddress: z.string().optional(),
   cardOnFile: z.string().optional(),
   merchantAccountID: z.string().optional(),
   verifyName: z.string().optional(),
@@ -84,9 +84,9 @@ export type LinkCardError$Outbound = {
   e2ee?: components.End2EndEncryptionError$Outbound | undefined;
   cardNumber?: string | undefined;
   cardCvv?: string | undefined;
-  expiration?: components.CardExpirationError$Outbound | undefined;
+  expiration?: string | undefined;
   holderName?: string | undefined;
-  billingAddress?: components.CardAddressError$Outbound | undefined;
+  billingAddress?: string | undefined;
   cardOnFile?: string | undefined;
   merchantAccountID?: string | undefined;
   verifyName?: string | undefined;
@@ -104,9 +104,9 @@ export const LinkCardError$outboundSchema: z.ZodType<
     e2ee: components.End2EndEncryptionError$outboundSchema.optional(),
     cardNumber: z.string().optional(),
     cardCvv: z.string().optional(),
-    expiration: components.CardExpirationError$outboundSchema.optional(),
+    expiration: z.string().optional(),
     holderName: z.string().optional(),
-    billingAddress: components.CardAddressError$outboundSchema.optional(),
+    billingAddress: z.string().optional(),
     cardOnFile: z.string().optional(),
     merchantAccountID: z.string().optional(),
     verifyName: z.string().optional(),

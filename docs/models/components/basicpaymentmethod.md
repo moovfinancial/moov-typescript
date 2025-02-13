@@ -6,8 +6,8 @@
 import { BasicPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: BasicPaymentMethod = {
-  paymentMethodID: "118422d0-7127-43a6-bcaf-57a6304d90c0",
-  paymentMethodType: "rtp-credit",
+  paymentMethodID: "3ce8f8c5-3c34-4595-b577-057379dc4206",
+  paymentMethodType: "ach-debit-fund",
 };
 ```
 

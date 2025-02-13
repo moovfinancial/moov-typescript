@@ -7,9 +7,9 @@ import { BankAccountIntegration } from "@moovio/sdk/models/components";
 
 let value: BankAccountIntegration = {
   holderName: "<value>",
-  holderType: "individual",
+  holderType: "business",
   accountNumber: "<value>",
-  bankAccountType: "general-ledger",
+  bankAccountType: "loan",
   routingNumber: "<value>",
 };
 ```

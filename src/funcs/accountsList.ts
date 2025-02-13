@@ -86,6 +86,7 @@ export async function accountsList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listAccounts",
     oAuth2Scopes: [],
 

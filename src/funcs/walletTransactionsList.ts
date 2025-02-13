@@ -100,6 +100,7 @@ export async function walletTransactionsList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listWalletTransactions",
     oAuth2Scopes: [],
 

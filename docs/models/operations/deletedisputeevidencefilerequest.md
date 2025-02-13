@@ -6,9 +6,9 @@
 import { DeleteDisputeEvidenceFileRequest } from "@moovio/sdk/models/operations";
 
 let value: DeleteDisputeEvidenceFileRequest = {
-  accountID: "8be69b0c-6a7b-4b3a-ad3c-af4244cba3df",
-  disputeID: "a84453ed-75f3-4803-b9a9-dfc7d1a82f59",
-  evidenceID: "81d5fed5-cf87-40bd-8358-116467ff2e18",
+  accountID: "8c68be69-b0c6-4a7b-8b3a-d3caf4244cba",
+  disputeID: "df8a8445-3ed7-45f3-b803-9a9dfc7d1a82",
+  evidenceID: "59e81d5f-ed5c-4f87-b0bd-358116467ff2",
 };
 ```
 

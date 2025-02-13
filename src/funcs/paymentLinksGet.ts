@@ -83,6 +83,7 @@ export async function paymentLinksGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getPaymentLink",
     oAuth2Scopes: [],
 

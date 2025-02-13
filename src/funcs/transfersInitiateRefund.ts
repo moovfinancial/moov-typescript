@@ -100,6 +100,7 @@ export async function transfersInitiateRefund(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "initiateRefund",
     oAuth2Scopes: [],
 

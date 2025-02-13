@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://smooth-governance.org",
+    link: "https://wasteful-reach.org/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "a9161603-7921-4d19-bc2a-bb0a24e0d80c",
+      accountID: "c13d0ba7-949b-462f-bf10-5f63f3a1a246",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2024-05-16T11:26:11.280Z"),
+    createdOn: new Date("2024-08-31T10:53:14.069Z"),
   },
 };
 ```

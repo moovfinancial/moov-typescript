@@ -83,6 +83,7 @@ export async function capabilitiesGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getCapability",
     oAuth2Scopes: [],
 

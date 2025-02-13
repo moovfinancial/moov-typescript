@@ -5,7 +5,7 @@
 ```typescript
 import { PaymentLinkStatus } from "@moovio/sdk/models/components";
 
-let value: PaymentLinkStatus = "disabled";
+let value: PaymentLinkStatus = "used";
 ```
 
 ## Values

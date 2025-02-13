@@ -7,7 +7,7 @@ Status of a transfer.
 ```typescript
 import { TransferStatus } from "@moovio/sdk/models/components";
 
-let value: TransferStatus = "created";
+let value: TransferStatus = "failed";
 ```
 
 ## Values

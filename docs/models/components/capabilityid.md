@@ -9,7 +9,7 @@ The `production-app` capability might appear in your list. This is a read-only c
 ```typescript
 import { CapabilityID } from "@moovio/sdk/models/components";
 
-let value: CapabilityID = "production-app";
+let value: CapabilityID = "wallet";
 ```
 
 ## Values

@@ -83,6 +83,7 @@ export async function cardsGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getCard",
     oAuth2Scopes: [],
 

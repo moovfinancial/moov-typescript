@@ -12,15 +12,12 @@ import {
   EvidenceType$outboundSchema,
 } from "./evidencetype.js";
 
-/**
- * The template for adding optional properties.
- */
 export type UpdateEvidence = {
+  evidenceType?: EvidenceType | undefined;
   /**
-   * The text to associate with the dispute as evidence.
+   * If updating text evidence, the new text to associate with the dispute.
    */
   text?: string | undefined;
-  evidenceType?: EvidenceType | undefined;
 };
 
 /** @internal */
@@ -29,14 +26,14 @@ export const UpdateEvidence$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  text: z.string().optional(),
   evidenceType: EvidenceType$inboundSchema.optional(),
+  text: z.string().optional(),
 });
 
 /** @internal */
 export type UpdateEvidence$Outbound = {
-  text?: string | undefined;
   evidenceType?: string | undefined;
+  text?: string | undefined;
 };
 
 /** @internal */
@@ -45,8 +42,8 @@ export const UpdateEvidence$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateEvidence
 > = z.object({
-  text: z.string().optional(),
   evidenceType: EvidenceType$outboundSchema.optional(),
+  text: z.string().optional(),
 });
 
 /**

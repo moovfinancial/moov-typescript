@@ -78,6 +78,7 @@ export async function onboardingRevokeInvite(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "revokeOnboardingInvite",
     oAuth2Scopes: [],
 

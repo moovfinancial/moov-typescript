@@ -83,6 +83,7 @@ export async function paymentMethodsList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "listPaymentMethods",
     oAuth2Scopes: [],
 
