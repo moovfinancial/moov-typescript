@@ -7,7 +7,7 @@ import { CreateApplePaySession } from "@moovio/sdk/models/components";
 
 let value: CreateApplePaySession = {
   domain: "checkout.classbooker.dev",
-  displayName: "Jonathon_Torphy37",
+  displayName: "Summer.OKeefe6",
 };
 ```
 

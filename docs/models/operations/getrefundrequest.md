@@ -6,9 +6,9 @@
 import { GetRefundRequest } from "@moovio/sdk/models/operations";
 
 let value: GetRefundRequest = {
-  transferID: "6ce7c24b-e12f-4108-b349-5f3de7f41907",
-  accountID: "634ea279-8c04-4981-b2c8-ad95824a00ef",
-  refundID: "3c71ccbf-f2ca-4bfd-b6ee-be7b09b6d748",
+  transferID: "dcbaf027-44f0-40e2-a07e-4ed46e103320",
+  accountID: "27156ebe-7269-48e9-84f2-7eb8b76abedf",
+  refundID: "f31aafc6-99c9-46a3-851d-14e83fe13a38",
 };
 ```
 

@@ -43,7 +43,7 @@ export type GetScheduledOccurrenceRequest = {
 
 export type GetScheduledOccurrenceResponse = {
   headers: { [k: string]: Array<string> };
-  result: components.ScheduleResponse;
+  result: components.OccurrencesResponse;
 };
 
 /** @internal */
@@ -179,7 +179,7 @@ export const GetScheduledOccurrenceResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: components.ScheduleResponse$inboundSchema,
+  Result: components.OccurrencesResponse$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -190,7 +190,7 @@ export const GetScheduledOccurrenceResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type GetScheduledOccurrenceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: components.ScheduleResponse$Outbound;
+  Result: components.OccurrencesResponse$Outbound;
 };
 
 /** @internal */
@@ -200,7 +200,7 @@ export const GetScheduledOccurrenceResponse$outboundSchema: z.ZodType<
   GetScheduledOccurrenceResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: components.ScheduleResponse$outboundSchema,
+  result: components.OccurrencesResponse$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

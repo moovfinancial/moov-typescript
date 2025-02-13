@@ -6,7 +6,7 @@
 import { GetEnrichmentProfileRequest } from "@moovio/sdk/models/operations";
 
 let value: GetEnrichmentProfileRequest = {
-  email: "Loyal.Batz@hotmail.com",
+  email: "Bridie.Mosciski14@gmail.com",
 };
 ```
 

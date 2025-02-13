@@ -5,7 +5,7 @@
 ```typescript
 import { RequirementErrorCode } from "@moovio/sdk/models/components";
 
-let value: RequirementErrorCode = "document-expired";
+let value: RequirementErrorCode = "failed-automatic-verification";
 ```
 
 ## Values

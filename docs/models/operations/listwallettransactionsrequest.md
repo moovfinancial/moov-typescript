@@ -6,10 +6,10 @@
 import { ListWalletTransactionsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListWalletTransactionsRequest = {
-  accountID: "95bbdfc2-c995-4220-bcbd-b2b81eea631c",
+  accountID: "76dd2c85-19ce-4f16-b0ae-a6cf0d5b33cc",
   skip: 60,
   count: 20,
-  walletID: "0716960f-ec6b-4b50-89fb-3868b7eb597c",
+  walletID: "c1e6395b-bdfc-42c9-a952-20cbdb2b81ee",
 };
 ```
 

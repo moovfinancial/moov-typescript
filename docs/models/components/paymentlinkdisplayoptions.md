@@ -9,7 +9,7 @@ import { PaymentLinkDisplayOptions } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkDisplayOptions = {
   title: "<value>",
-  description: "carouse given wilt interesting",
+  description: "lavish suffice quantify archive",
   callToAction: "subscribe",
 };
 ```

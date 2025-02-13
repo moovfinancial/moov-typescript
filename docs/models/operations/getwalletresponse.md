@@ -12,7 +12,7 @@ let value: GetWalletResponse = {
     ],
   },
   result: {
-    walletID: "c8519cef-160a-4ea6-8cf0-d5b33cccc1e6",
+    walletID: "a9eada54-56db-4ded-bff5-69b7ca9225f1",
     availableBalance: {
       currency: "USD",
       value: 1204,

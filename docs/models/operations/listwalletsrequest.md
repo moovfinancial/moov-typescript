@@ -6,7 +6,7 @@
 import { ListWalletsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListWalletsRequest = {
-  accountID: "5db98196-81c8-4d3f-8915-f96e5b2b763f",
+  accountID: "f0fc1cae-78d7-4835-9409-dc397d50ea23",
 };
 ```
 

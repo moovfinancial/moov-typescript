@@ -6,7 +6,7 @@
 import { RequirementError } from "@moovio/sdk/models/components";
 
 let value: RequirementError = {
-  requirement: "representative.{rep-uuid}.email-or-mobile",
+  requirement: "business.underwriting-documents-tier-one",
 };
 ```
 

@@ -25,6 +25,7 @@ export * from "./achtransactionstatus.js";
 export * from "./addcapabilities.js";
 export * from "./address.js";
 export * from "./addresserror.js";
+export * from "./addresssuggestion.js";
 export * from "./addressupdate.js";
 export * from "./adjustment.js";
 export * from "./amount.js";

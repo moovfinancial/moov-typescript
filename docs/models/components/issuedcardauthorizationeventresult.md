@@ -7,7 +7,7 @@ The result of an event.
 ```typescript
 import { IssuedCardAuthorizationEventResult } from "@moovio/sdk/models/components";
 
-let value: IssuedCardAuthorizationEventResult = "declined";
+let value: IssuedCardAuthorizationEventResult = "processed";
 ```
 
 ## Values

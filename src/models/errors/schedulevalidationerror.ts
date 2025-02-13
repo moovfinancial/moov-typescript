@@ -5,13 +5,13 @@
 import * as z from "zod";
 
 export type ScheduleValidationErrorData = {
-  occurrences?: string | undefined;
+  occurrences?: { [k: string]: string } | undefined;
   recur?: string | undefined;
   description?: string | undefined;
 };
 
 export class ScheduleValidationError extends Error {
-  occurrences?: string | undefined;
+  occurrences?: { [k: string]: string } | undefined;
   recur?: string | undefined;
   description?: string | undefined;
 
@@ -39,7 +39,7 @@ export const ScheduleValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  occurrences: z.string().optional(),
+  occurrences: z.record(z.string()).optional(),
   recur: z.string().optional(),
   description: z.string().optional(),
 })
@@ -49,7 +49,7 @@ export const ScheduleValidationError$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ScheduleValidationError$Outbound = {
-  occurrences?: string | undefined;
+  occurrences?: { [k: string]: string } | undefined;
   recur?: string | undefined;
   description?: string | undefined;
 };
@@ -62,7 +62,7 @@ export const ScheduleValidationError$outboundSchema: z.ZodType<
 > = z.instanceof(ScheduleValidationError)
   .transform(v => v.data$)
   .pipe(z.object({
-    occurrences: z.string().optional(),
+    occurrences: z.record(z.string()).optional(),
     recur: z.string().optional(),
     description: z.string().optional(),
   }));

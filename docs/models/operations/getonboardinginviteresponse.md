@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://muted-ownership.org/",
+    link: "https://slimy-pacemaker.com/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "ea30c51d-8f9f-482f-b12f-cd7640053a2e",
+      accountID: "1134aadd-c91b-44c5-829e-244c276c7317",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2024-06-04T11:33:54.284Z"),
+    createdOn: new Date("2025-01-21T07:34:15.679Z"),
   },
 };
 ```

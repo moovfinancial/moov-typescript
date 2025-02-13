@@ -6,17 +6,15 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  AddressSuggestion,
+  AddressSuggestion$inboundSchema,
+  AddressSuggestion$Outbound,
+  AddressSuggestion$outboundSchema,
+} from "./addresssuggestion.js";
 
 export type EnrichedAddressResponse = {
-  addressLine1?: string | undefined;
-  addressLine2?: string | undefined;
-  city?: string | undefined;
-  /**
-   * The number of units at an address. For example the number of apartments or businesses in a building.
-   */
-  entries?: number | undefined;
-  postalCode?: string | undefined;
-  stateOrProvince?: string | undefined;
+  suggestions: Array<AddressSuggestion>;
 };
 
 /** @internal */
@@ -25,22 +23,12 @@ export const EnrichedAddressResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  entries: z.number().int().optional(),
-  postalCode: z.string().optional(),
-  stateOrProvince: z.string().optional(),
+  suggestions: z.array(AddressSuggestion$inboundSchema),
 });
 
 /** @internal */
 export type EnrichedAddressResponse$Outbound = {
-  addressLine1?: string | undefined;
-  addressLine2?: string | undefined;
-  city?: string | undefined;
-  entries?: number | undefined;
-  postalCode?: string | undefined;
-  stateOrProvince?: string | undefined;
+  suggestions: Array<AddressSuggestion$Outbound>;
 };
 
 /** @internal */
@@ -49,12 +37,7 @@ export const EnrichedAddressResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EnrichedAddressResponse
 > = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  entries: z.number().int().optional(),
-  postalCode: z.string().optional(),
-  stateOrProvince: z.string().optional(),
+  suggestions: z.array(AddressSuggestion$outboundSchema),
 });
 
 /**

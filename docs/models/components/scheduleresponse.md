@@ -10,7 +10,7 @@ let value: ScheduleResponse = {
   mode: "production",
   occurrences: {
     mode: "production",
-    runOn: new Date("2024-04-19T15:27:13.958Z"),
+    runOn: new Date("2025-03-08T03:34:20.613Z"),
     runTransfer: {
       amount: {
         currency: "USD",
@@ -37,7 +37,7 @@ let value: ScheduleResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "royal machine eyebrow along",
+      description: "supposing meanwhile phew aboard really",
     },
   },
   ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -70,15 +70,14 @@ let value: ScheduleResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description:
-        "hence ack oval anenst petty which unlined although righteously",
+      description: "along dead pfft reassemble heighten",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },
   scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-  createdOn: new Date("2025-12-04T03:13:51.971Z"),
-  updatedOn: new Date("2025-07-24T09:12:46.368Z"),
+  createdOn: new Date("2023-06-21T18:31:02.392Z"),
+  updatedOn: new Date("2023-06-24T19:09:59.837Z"),
 };
 ```
 

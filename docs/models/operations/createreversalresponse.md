@@ -12,9 +12,15 @@ let value: CreateReversalResponse = {
     ],
   },
   result: {
-    cancellation: {
+    refund: {
+      refundID: "3c03d0c1-dc36-4763-93b2-4130b6674593",
+      createdOn: new Date("2024-09-22T02:45:55.509Z"),
+      updatedOn: new Date("2023-06-01T08:25:28.208Z"),
       status: "pending",
-      createdOn: new Date("2025-03-25T02:31:03.835Z"),
+      amount: {
+        currency: "USD",
+        value: 1204,
+      },
     },
   },
 };

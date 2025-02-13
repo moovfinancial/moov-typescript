@@ -6,9 +6,9 @@
 import { CreateReversalRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateReversalRequest = {
-  xIdempotencyKey: "c367633b-2413-40b6-b674-593792486b37",
-  accountID: "2e77a8d2-24f1-48cd-8ff8-38b74dd898ce",
-  transferID: "f565db26-0c31-4a38-82cf-1d7087e5c268",
+  xIdempotencyKey: "f41907d6-34ea-4279-88c0-49812c8ad958",
+  accountID: "4a00efe3-c71c-4cbf-af2c-abfd6eebe7b0",
+  transferID: "b6d748ea-f7aa-43b1-8923-f68a7b0a5e20",
   createReversal: {
     amount: 1000,
   },
