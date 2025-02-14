@@ -30,7 +30,7 @@ export type ListIndustriesRequest = {};
 
 export type ListIndustriesResponse = {
   headers: { [k: string]: Array<string> };
-  result: Array<components.EnrichedIndustry>;
+  result: components.EnrichedIndustries;
 };
 
 /** @internal */
@@ -150,7 +150,7 @@ export const ListIndustriesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: z.array(components.EnrichedIndustry$inboundSchema),
+  Result: components.EnrichedIndustries$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -161,7 +161,7 @@ export const ListIndustriesResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type ListIndustriesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: Array<components.EnrichedIndustry$Outbound>;
+  Result: components.EnrichedIndustries$Outbound;
 };
 
 /** @internal */
@@ -171,7 +171,7 @@ export const ListIndustriesResponse$outboundSchema: z.ZodType<
   ListIndustriesResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.array(components.EnrichedIndustry$outboundSchema),
+  result: components.EnrichedIndustries$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

@@ -7,7 +7,7 @@
 ```typescript
 import { UnderwritingStatus } from "@moovio/sdk/models/components";
 
-let value: UnderwritingStatus = "pending";
+let value: UnderwritingStatus = "rejected";
 ```
 
 ## Values

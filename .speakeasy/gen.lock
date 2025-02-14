@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 7b28e615af8399468aa3536e1ee4ba8e
+  docChecksum: cc2583485ef45acd0ba0422160127576
   docVersion: latest
-  speakeasyVersion: 1.491.0
+  speakeasyVersion: 1.492.0
   generationVersion: 2.512.4
-  releaseVersion: 0.3.3
-  configChecksum: 0f71d03b39575dfe11a6c8eeebac31fd
+  releaseVersion: 0.3.4
+  configChecksum: 602e31413b63d8810109cd151d95444c
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -216,6 +216,8 @@ generatedFiles:
   - docs/models/components/end2endencryptionerror.md
   - docs/models/components/enrichedaddressresponse.md
   - docs/models/components/enrichedbusinessprofile.md
+  - docs/models/components/enrichedbusinessresponse.md
+  - docs/models/components/enrichedindustries.md
   - docs/models/components/enrichedindustry.md
   - docs/models/components/enrichedindustrycodes.md
   - docs/models/components/errort.md
@@ -547,7 +549,6 @@ generatedFiles:
   - docs/models/operations/getavatarglobals.md
   - docs/models/operations/getavatarrequest.md
   - docs/models/operations/getavatarresponse.md
-  - docs/models/operations/getavatarresponseresult.md
   - docs/models/operations/getbankaccountglobals.md
   - docs/models/operations/getbankaccountrequest.md
   - docs/models/operations/getbankaccountresponse.md
@@ -1150,6 +1151,8 @@ generatedFiles:
   - src/models/components/end2endencryptionerror.ts
   - src/models/components/enrichedaddressresponse.ts
   - src/models/components/enrichedbusinessprofile.ts
+  - src/models/components/enrichedbusinessresponse.ts
+  - src/models/components/enrichedindustries.ts
   - src/models/components/enrichedindustry.ts
   - src/models/components/enrichedindustrycodes.ts
   - src/models/components/evidencetextresponse.ts
@@ -2699,17 +2702,17 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "email": "jordan.lee@classbooker.dev", "industryCodes": {"naics": "713940", "sic": "7991"}, "phone": {"number": "8185551212", "countryCode": "1"}}
+          application/json: {"business": {"address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "email": "jordan.lee@classbooker.dev", "industryCodes": {"naics": "713940", "sic": "7991"}, "phone": {"number": "8185551212", "countryCode": "1"}}}
   listIndustries:
     speakeasy-default-list-industries:
       responses:
         "200":
-          application/json: [{"title": "AC, Refrigeration Repair", "naics": "811412", "sic": "7623", "mcc": "7623"}, {"title": "AC, Refrigeration Repair", "naics": "811412", "sic": "7623", "mcc": "7623"}]
+          application/json: {"industries": [{"title": "AC, Refrigeration Repair", "naics": "811412", "sic": "7623", "mcc": "7623"}, {"title": "AC, Refrigeration Repair", "naics": "811412", "sic": "7623", "mcc": "7623"}, {"title": "AC, Refrigeration Repair", "naics": "811412", "sic": "7623", "mcc": "7623"}]}
   listInstitutions:
     speakeasy-default-list-institutions:
       responses:
         "200":
-          application/json: [{"achParticipants": [{"achLocation": {"address": "123 Main Street", "city": "Boulder", "postalCode": "80301", "postalCodeExtension": "0000", "state": "Colorado"}, "customerName": "Main Street Bank", "newRoutingNumber": "987654321", "officeCode": "0", "phoneNumber": "1234567789", "recordTypeCode": "1", "revised": "041921", "routingNumber": "123456789", "servicingFRBNumber": "123456789", "statusCode": "1", "viewCode": "1", "cleanName": "Main Street Bank", "logo": null}, {"achLocation": {"address": "123 Main Street", "city": "Boulder", "postalCode": "80301", "postalCodeExtension": "0000", "state": "Colorado"}, "customerName": "Main Street Bank", "newRoutingNumber": "987654321", "officeCode": "0", "phoneNumber": "1234567789", "recordTypeCode": "1", "revised": "041921", "routingNumber": "123456789", "servicingFRBNumber": "123456789", "statusCode": "1", "viewCode": "1", "cleanName": "Main Street Bank", "logo": null}]}, {"achParticipants": [{"achLocation": {"address": "123 Main Street", "city": "Boulder", "postalCode": "80301", "postalCodeExtension": "0000", "state": "Colorado"}, "customerName": "Main Street Bank", "newRoutingNumber": "987654321", "officeCode": "0", "phoneNumber": "1234567789", "recordTypeCode": "1", "revised": "041921", "routingNumber": "123456789", "servicingFRBNumber": "123456789", "statusCode": "1", "viewCode": "1", "cleanName": "Main Street Bank", "logo": null}]}]
+          application/json: {"achParticipants": [{"achLocation": {"address": "123 Main Street", "city": "Boulder", "postalCode": "80301", "postalCodeExtension": "0000", "state": "Colorado"}, "customerName": "Main Street Bank", "newRoutingNumber": "987654321", "officeCode": "0", "phoneNumber": "1234567789", "recordTypeCode": "1", "revised": "041921", "routingNumber": "123456789", "servicingFRBNumber": "123456789", "statusCode": "1", "viewCode": "1", "cleanName": "Main Street Bank", "logo": null}]}
         "400":
           application/json: {"error": "<value>"}
   listIssuedCardAuthorizations:

@@ -8,25 +8,25 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "98aae80e-1b31-4f00-9792-bf71dfd9d671",
-      paymentMethodType: "ach-debit-fund",
+      paymentMethodID: "1dfd9d67-15ed-49e6-8ff9-0eef741ebccd",
+      paymentMethodType: "ach-credit-same-day",
       bankAccount: {
-        bankAccountID: "ed9e6ff9-0eef-4741-9ebc-cd15dbcc1d1d",
+        bankAccountID: "5dbcc1d1-d533-417c-aafc-b616d51891c8",
         fingerprint: "<value>",
-        status: "verified",
+        status: "new",
         holderName: "<value>",
         holderType: "individual",
         bankName: "<value>",
-        bankAccountType: "checking",
+        bankAccountType: "savings",
         routingNumber: "<value>",
         lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2024-06-30T02:18:36.520Z"),
+        updatedOn: new Date("2023-04-25T01:56:50.230Z"),
       },
     },
   ],
   destinationOptions: [
     {
-      paymentMethodID: "afcb616d-5189-41c8-a903-71b3504d8b33",
+      paymentMethodID: "3504d8b3-3933-41c1-8ed2-f5e127049216",
       paymentMethodType: "push-to-card",
       card: {
         cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -59,7 +59,7 @@ let value: TransferOptions = {
             fullName: "match",
           },
         },
-        issuer: "diners_club",
+        issuer: "jcb",
         issuerCountry: "<value>",
         cardAccountUpdater: {
           updatedOn: new Date("2024-05-06T12:20:38.184Z"),

@@ -5,7 +5,7 @@
 ```typescript
 import { CardTransactionFailureCode } from "@moovio/sdk/models/components";
 
-let value: CardTransactionFailureCode = "amount-limit-exceeded";
+let value: CardTransactionFailureCode = "expired-card";
 ```
 
 ## Values

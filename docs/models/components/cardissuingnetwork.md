@@ -7,7 +7,7 @@ The name of the network a card transaction is routed through.
 ```typescript
 import { CardIssuingNetwork } from "@moovio/sdk/models/components";
 
-let value: CardIssuingNetwork = "discover";
+let value: CardIssuingNetwork = "visa";
 ```
 
 ## Values

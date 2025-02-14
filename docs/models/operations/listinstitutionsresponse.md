@@ -11,39 +11,37 @@ let value: ListInstitutionsResponse = {
       "<value>",
     ],
   },
-  result: [
-    {
-      achParticipants: [
-        {
-          achLocation: {
-            address: "123 Main Street",
-            city: "Boulder",
-            postalCode: "80301",
-            postalCodeExtension: "0000",
-            state: "Colorado",
-          },
-          customerName: "Main Street Bank",
-          newRoutingNumber: "987654321",
-          officeCode: "0",
-          phoneNumber: "1234567789",
-          recordTypeCode: "1",
-          revised: "041921",
-          routingNumber: "123456789",
-          servicingFRBNumber: "123456789",
-          statusCode: "1",
-          viewCode: "1",
-          cleanName: "Main Street Bank",
-          logo: null,
+  result: {
+    achParticipants: [
+      {
+        achLocation: {
+          address: "123 Main Street",
+          city: "Boulder",
+          postalCode: "80301",
+          postalCodeExtension: "0000",
+          state: "Colorado",
         },
-      ],
-    },
-  ],
+        customerName: "Main Street Bank",
+        newRoutingNumber: "987654321",
+        officeCode: "0",
+        phoneNumber: "1234567789",
+        recordTypeCode: "1",
+        revised: "041921",
+        routingNumber: "123456789",
+        servicingFRBNumber: "123456789",
+        statusCode: "1",
+        viewCode: "1",
+        cleanName: "Main Street Bank",
+        logo: null,
+      },
+    ],
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `headers`                                                                              | Record<string, *string*[]>                                                             | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `result`                                                                               | [components.FinancialInstitutions](../../models/components/financialinstitutions.md)[] | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `headers`                                                                            | Record<string, *string*[]>                                                           | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `result`                                                                             | [components.FinancialInstitutions](../../models/components/financialinstitutions.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |

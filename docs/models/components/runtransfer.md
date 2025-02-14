@@ -33,7 +33,7 @@ let value: RunTransfer = {
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
     },
   },
-  description: "quarterly thankfully oddly yum yet dislocate an ack",
+  description: "cemetery aha courteous scaly on during",
 };
 ```
 

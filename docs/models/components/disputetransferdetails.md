@@ -6,7 +6,7 @@
 import { DisputeTransferDetails } from "@moovio/sdk/models/components";
 
 let value: DisputeTransferDetails = {
-  transferID: "93cbcfee-6cf4-4c34-867b-1d206c5dab89",
+  transferID: "793cbcfe-e6cf-44c3-a467-b1d206c5dab8",
 };
 ```
 

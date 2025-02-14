@@ -47,7 +47,7 @@ export type ListInstitutionsRequest = {
 
 export type ListInstitutionsResponse = {
   headers: { [k: string]: Array<string> };
-  result: Array<components.FinancialInstitutions>;
+  result: components.FinancialInstitutions;
 };
 
 /** @internal */
@@ -182,7 +182,7 @@ export const ListInstitutionsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: z.array(components.FinancialInstitutions$inboundSchema),
+  Result: components.FinancialInstitutions$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -193,7 +193,7 @@ export const ListInstitutionsResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type ListInstitutionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: Array<components.FinancialInstitutions$Outbound>;
+  Result: components.FinancialInstitutions$Outbound;
 };
 
 /** @internal */
@@ -203,7 +203,7 @@ export const ListInstitutionsResponse$outboundSchema: z.ZodType<
   ListInstitutionsResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.array(components.FinancialInstitutions$outboundSchema),
+  result: components.FinancialInstitutions$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

@@ -5,7 +5,7 @@
 ```typescript
 import { FeeCategory } from "@moovio/sdk/models/components";
 
-let value: FeeCategory = "rtp";
+let value: FeeCategory = "card-push";
 ```
 
 ## Values
