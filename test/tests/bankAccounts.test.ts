@@ -9,163 +9,163 @@ let bankAccount: Partial<BankAccount> = {};
 let accountNumber = "1234567890";
 
 describe("Bank Accounts", () => {
-	beforeAll(async () => {
-		const account = await createAccount();
-		accountID = account.accountID;
-	});
+  beforeAll(async () => {
+    const account = await createAccount();
+    accountID = account.accountID;
+  });
 
-	test("should be able to link a bank account", async () => {
-		const { result } = await moov.bankAccounts.link({
-			accountID,
-			linkBankAccount: {
-				account: {
-					holderName: "Marcellus Wallace",
-					holderType: "individual",
-					accountNumber,
-					bankAccountType: "checking",
-					routingNumber: "121000248",
-				},
-			},
-		});
-		expect(result).toBeDefined();
-		expect(result.bankAccountID).toBeDefined();
-		expect(result.bankAccountType).toEqual("checking");
-		bankAccount = result;
-		ids.seen({ accountID, bankAccountID: result.bankAccountID });
-	});
-	describe("Bank-account dependent tests", () => {
-		describe("Getting and listing bank accounts", () => {
-			// Create a bank account if it doesn't exist yet
-			beforeAll(async () => {
-				if (!bankAccount.bankAccountID) {
-					const result = await createBankAccount(accountID);
-					bankAccount = result.bankAccount;
-					accountNumber = result.accountNumber;
-				}
-			});
-			test("should be able to retrieve a bank account", async () => {
-				const { result } = await moov.bankAccounts.get({
-					accountID,
-					bankAccountID: bankAccount.bankAccountID!,
-				});
-				expect(result).toBeDefined();
-				expect(result.bankAccountID).toEqual(bankAccount.bankAccountID!);
-				expect(result.bankAccountType).toEqual(bankAccount.bankAccountType!);
-				expect(result.holderName).toEqual(bankAccount.holderName!);
-				expect(result.holderType).toEqual(bankAccount.holderType!);
-				expect(result.routingNumber).toEqual(bankAccount.routingNumber!);
-				expect(result.lastFourAccountNumber).toEqual(accountNumber.slice(-4));
-			});
+  test("should be able to link a bank account", async () => {
+    const { result } = await moov.bankAccounts.link({
+      accountID,
+      linkBankAccount: {
+        account: {
+          holderName: "Marcellus Wallace",
+          holderType: "individual",
+          accountNumber,
+          bankAccountType: "checking",
+          routingNumber: "121000248",
+        },
+      },
+    });
+    expect(result).toBeDefined();
+    expect(result.bankAccountID).toBeDefined();
+    expect(result.bankAccountType).toEqual("checking");
+    bankAccount = result;
+    ids.seen({ accountID, bankAccountID: result.bankAccountID });
+  });
+  describe("Bank-account dependent tests", () => {
+    describe("Getting and listing bank accounts", () => {
+      // Create a bank account if it doesn't exist yet
+      beforeAll(async () => {
+        if (!bankAccount.bankAccountID) {
+          const result = await createBankAccount(accountID);
+          bankAccount = result.bankAccount;
+          accountNumber = result.accountNumber;
+        }
+      });
+      test("should be able to retrieve a bank account", async () => {
+        const { result } = await moov.bankAccounts.get({
+          accountID,
+          bankAccountID: bankAccount.bankAccountID!,
+        });
+        expect(result).toBeDefined();
+        expect(result.bankAccountID).toEqual(bankAccount.bankAccountID!);
+        expect(result.bankAccountType).toEqual(bankAccount.bankAccountType!);
+        expect(result.holderName).toEqual(bankAccount.holderName!);
+        expect(result.holderType).toEqual(bankAccount.holderType!);
+        expect(result.routingNumber).toEqual(bankAccount.routingNumber!);
+        expect(result.lastFourAccountNumber).toEqual(accountNumber.slice(-4));
+      });
 
-			test("should be able to list bank accounts", async () => {
-				const { result } = await moov.bankAccounts.list({
-					accountID,
-				});
-				expect(result).toBeDefined();
-				expect(result.length).toBeGreaterThan(0);
-				expect(result[0].bankAccountID).toEqual(bankAccount.bankAccountID!);
-				expect(result[0].bankAccountType).toEqual(bankAccount.bankAccountType!);
-				expect(result[0].holderName).toEqual(bankAccount.holderName!);
-				expect(result[0].holderType).toEqual(bankAccount.holderType!);
-				expect(result[0].routingNumber).toEqual(bankAccount.routingNumber!);
-				expect(result[0].lastFourAccountNumber).toEqual(accountNumber.slice(-4));
-			});
-		});
+      test("should be able to list bank accounts", async () => {
+        const { result } = await moov.bankAccounts.list({
+          accountID,
+        });
+        expect(result).toBeDefined();
+        expect(result.length).toBeGreaterThan(0);
+        expect(result[0].bankAccountID).toEqual(bankAccount.bankAccountID!);
+        expect(result[0].bankAccountType).toEqual(bankAccount.bankAccountType!);
+        expect(result[0].holderName).toEqual(bankAccount.holderName!);
+        expect(result[0].holderType).toEqual(bankAccount.holderType!);
+        expect(result[0].routingNumber).toEqual(bankAccount.routingNumber!);
+        expect(result[0].lastFourAccountNumber).toEqual(accountNumber.slice(-4));
+      });
+    });
 
-		describe("Bank account verification", () => {
-			beforeEach(async () => {
-				const result = await createBankAccount(accountID);
-				bankAccount = result.bankAccount;
-				accountNumber = result.accountNumber;
-			});
-			describe("RTP verification", () => {
-				test("should be able to initiate bank account verification and complete it, and get a 409 error when I try to verify an already-verified bank account", async () => {
-					const { result } = await moov.bankAccounts.initiateVerification({
-						accountID,
-						bankAccountID: bankAccount.bankAccountID!,
-						xWaitFor: "rail-response",
-					});
-					expect(result).toBeDefined();
-					expect(result.status).toEqual("sent-credit");
-					const { result: result2 } = await moov.bankAccounts.completeVerification({
-						accountID,
-						bankAccountID: bankAccount.bankAccountID!,
-						completeBankAccountVerification: {
-							code: "0001",
-						},
-					});
-					expect(result2).toBeDefined();
-					expect(result2.status).toEqual("successful");
-					expect(
-						async () =>
-							await moov.bankAccounts.initiateVerification({
-								accountID,
-								bankAccountID: bankAccount.bankAccountID!,
-							}),
-					).toThrowError(
-						expect.objectContaining({ error: "unacceptable bank account status verified for verification" }),
-					);
-				});
-				test("should be able to get the bank account verification status", async () => {
-					const { result } = await moov.bankAccounts.initiateVerification({
-						accountID,
-						bankAccountID: bankAccount.bankAccountID!,
-					});
-					expect(result).toBeDefined();
-					expect(result.status).toEqual("new");
-					await sleep(2000);
-					const { result: result2 } = await moov.bankAccounts.getVerification({
-						accountID,
-						bankAccountID: bankAccount.bankAccountID!,
-					});
-					expect(result2).toBeDefined();
-					expect(result2.status).toEqual("sent-credit");
-				});
-			});
+    describe("Bank account verification", () => {
+      beforeEach(async () => {
+        const result = await createBankAccount(accountID);
+        bankAccount = result.bankAccount;
+        accountNumber = result.accountNumber;
+      });
+      describe("RTP verification", () => {
+        test("should be able to initiate bank account verification and complete it, and get a 409 error when I try to verify an already-verified bank account", async () => {
+          const { result } = await moov.bankAccounts.initiateVerification({
+            accountID,
+            bankAccountID: bankAccount.bankAccountID!,
+            xWaitFor: "rail-response",
+          });
+          expect(result).toBeDefined();
+          expect(result.status).toEqual("sent-credit");
+          const { result: result2 } = await moov.bankAccounts.completeVerification({
+            accountID,
+            bankAccountID: bankAccount.bankAccountID!,
+            completeBankAccountVerification: {
+              code: "0001",
+            },
+          });
+          expect(result2).toBeDefined();
+          expect(result2.status).toEqual("successful");
+          expect(
+            async () =>
+              await moov.bankAccounts.initiateVerification({
+                accountID,
+                bankAccountID: bankAccount.bankAccountID!,
+              }),
+          ).toThrowError(
+            expect.objectContaining({ error: "unacceptable bank account status verified for verification" }),
+          );
+        });
+        test("should be able to get the bank account verification status", async () => {
+          const { result } = await moov.bankAccounts.initiateVerification({
+            accountID,
+            bankAccountID: bankAccount.bankAccountID!,
+          });
+          expect(result).toBeDefined();
+          expect(result.status).toEqual("new");
+          await sleep(2000);
+          const { result: result2 } = await moov.bankAccounts.getVerification({
+            accountID,
+            bankAccountID: bankAccount.bankAccountID!,
+          });
+          expect(result2).toBeDefined();
+          expect(result2.status).toEqual("sent-credit");
+        });
+      });
 
-			describe("Micro deposits", () => {
-				beforeEach(async () => {
-					const result = await createBankAccount(accountID);
-					bankAccount = result.bankAccount;
-					accountNumber = result.accountNumber;
-				});
-				test("should be able to initiate micro deposits and complete them and should get a 409 error when we try to complete micro deposits for an already-completed bank account", async () => {
-					const result = await moov.bankAccounts.initiateMicroDeposits({
-						accountID,
-						bankAccountID: bankAccount.bankAccountID!,
-					});
-					expect(result).toBeDefined();
-					await sleep(2000);
-					const { result: result2 } = await moov.bankAccounts.completeMicroDeposits({
-						accountID,
-						bankAccountID: bankAccount.bankAccountID!,
-						completeMicroDeposits: {
-							amounts: [0, 0],
-						},
-					});
-					expect(result2).toBeDefined();
-					expect(result2.status).toEqual("verified");
-					expect(
-						async () =>
-							await moov.bankAccounts.initiateMicroDeposits({
-								accountID,
-								bankAccountID: bankAccount.bankAccountID!,
-							}),
-					).toThrowError(
-						expect.objectContaining({
-							error: "unexpected account status: expected 'new' or 'verificationFailed', found 'verified'",
-						}),
-					);
-				});
-			});
-		});
+      describe("Micro deposits", () => {
+        beforeEach(async () => {
+          const result = await createBankAccount(accountID);
+          bankAccount = result.bankAccount;
+          accountNumber = result.accountNumber;
+        });
+        test("should be able to initiate micro deposits and complete them and should get a 409 error when we try to complete micro deposits for an already-completed bank account", async () => {
+          const result = await moov.bankAccounts.initiateMicroDeposits({
+            accountID,
+            bankAccountID: bankAccount.bankAccountID!,
+          });
+          expect(result).toBeDefined();
+          await sleep(2000);
+          const { result: result2 } = await moov.bankAccounts.completeMicroDeposits({
+            accountID,
+            bankAccountID: bankAccount.bankAccountID!,
+            completeMicroDeposits: {
+              amounts: [0, 0],
+            },
+          });
+          expect(result2).toBeDefined();
+          expect(result2.status).toEqual("verified");
+          expect(
+            async () =>
+              await moov.bankAccounts.initiateMicroDeposits({
+                accountID,
+                bankAccountID: bankAccount.bankAccountID!,
+              }),
+          ).toThrowError(
+            expect.objectContaining({
+              error: "unexpected account status: expected 'new' or 'verificationFailed', found 'verified'",
+            }),
+          );
+        });
+      });
+    });
 
-		test("should be able to disable a bank account", async () => {
-			const result = await moov.bankAccounts.disable({
-				accountID,
-				bankAccountID: bankAccount.bankAccountID!,
-			});
-			expect(result).toBeDefined();
-		});
-	});
+    test("should be able to disable a bank account", async () => {
+      const result = await moov.bankAccounts.disable({
+        accountID,
+        bankAccountID: bankAccount.bankAccountID!,
+      });
+      expect(result).toBeDefined();
+    });
+  });
 });
