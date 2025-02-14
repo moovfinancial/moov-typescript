@@ -6,19 +6,19 @@
 import { RtpCreditPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: RtpCreditPaymentMethod = {
-  paymentMethodID: "658ae040-db4c-4aac-8298-5b673b078425",
+  paymentMethodID: "673b0784-251b-490f-bcfa-fc4c18e8f689",
   paymentMethodType: "rtp-credit",
   bankAccount: {
-    bankAccountID: "b90fcfaf-c4c1-48e8-8f68-9fb91318fd78",
+    bankAccountID: "b91318fd-780d-460e-97a8-cf9190514e3c",
     fingerprint: "<value>",
-    status: "errored",
+    status: "verified",
     holderName: "<value>",
-    holderType: "individual",
+    holderType: "business",
     bankName: "<value>",
-    bankAccountType: "checking",
+    bankAccountType: "savings",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-10-10T00:41:05.605Z"),
+    updatedOn: new Date("2025-12-12T17:13:53.718Z"),
   },
 };
 ```

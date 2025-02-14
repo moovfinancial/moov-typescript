@@ -22,11 +22,6 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
-export enum GetAcceptEnum {
-  imageJpeg = "image/jpeg",
-  imagePng = "image/png",
-}
-
 /**
  * Get avatar image for an account using a unique ID.
  *
@@ -36,7 +31,7 @@ export enum GetAcceptEnum {
 export async function avatarsGet(
   client: MoovCore,
   request: operations.GetAvatarRequest,
-  options?: RequestOptions & { acceptHeaderOverride?: GetAcceptEnum },
+  options?: RequestOptions,
 ): Promise<
   Result<
     operations.GetAvatarResponse,
@@ -70,7 +65,7 @@ export async function avatarsGet(
   const path = pathToFunc("/avatars/{uniqueID}")(pathParams);
 
   const headers = new Headers(compactMap({
-    Accept: options?.acceptHeaderOverride || "image/jpeg;q=1, image/png;q=0",
+    Accept: "image/*",
     "x-moov-version": encodeSimple(
       "x-moov-version",
       client._options.xMoovVersion,
@@ -135,12 +130,7 @@ export async function avatarsGet(
     | ConnectionError
   >(
     M.stream(200, operations.GetAvatarResponse$inboundSchema, {
-      ctype: "image/png",
-      hdrs: true,
-      key: "Result",
-    }),
-    M.stream(200, operations.GetAvatarResponse$inboundSchema, {
-      ctype: "image/jpeg",
+      ctype: "image/*",
       hdrs: true,
       key: "Result",
     }),

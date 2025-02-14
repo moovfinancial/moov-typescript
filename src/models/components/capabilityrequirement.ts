@@ -22,7 +22,7 @@ import {
  * Represents individual and business data necessary to facilitate the enabling of a capability for an account.
  */
 export type CapabilityRequirement = {
-  currentlyDue: Array<RequirementID>;
+  currentlyDue?: Array<RequirementID> | undefined;
   errors?: Array<RequirementError> | undefined;
 };
 
@@ -32,13 +32,13 @@ export const CapabilityRequirement$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentlyDue: z.array(RequirementID$inboundSchema),
+  currentlyDue: z.array(RequirementID$inboundSchema).optional(),
   errors: z.array(RequirementError$inboundSchema).optional(),
 });
 
 /** @internal */
 export type CapabilityRequirement$Outbound = {
-  currentlyDue: Array<string>;
+  currentlyDue?: Array<string> | undefined;
   errors?: Array<RequirementError$Outbound> | undefined;
 };
 
@@ -48,7 +48,7 @@ export const CapabilityRequirement$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CapabilityRequirement
 > = z.object({
-  currentlyDue: z.array(RequirementID$outboundSchema),
+  currentlyDue: z.array(RequirementID$outboundSchema).optional(),
   errors: z.array(RequirementError$outboundSchema).optional(),
 });
 

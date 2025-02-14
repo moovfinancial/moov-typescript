@@ -32,7 +32,7 @@ export type GetEnrichmentProfileRequest = {
 
 export type GetEnrichmentProfileResponse = {
   headers: { [k: string]: Array<string> };
-  result: components.EnrichedBusinessProfile;
+  result: components.EnrichedBusinessResponse;
 };
 
 /** @internal */
@@ -162,7 +162,7 @@ export const GetEnrichmentProfileResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: components.EnrichedBusinessProfile$inboundSchema,
+  Result: components.EnrichedBusinessResponse$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -173,7 +173,7 @@ export const GetEnrichmentProfileResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type GetEnrichmentProfileResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: components.EnrichedBusinessProfile$Outbound;
+  Result: components.EnrichedBusinessResponse$Outbound;
 };
 
 /** @internal */
@@ -183,7 +183,7 @@ export const GetEnrichmentProfileResponse$outboundSchema: z.ZodType<
   GetEnrichmentProfileResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: components.EnrichedBusinessProfile$outboundSchema,
+  result: components.EnrichedBusinessResponse$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

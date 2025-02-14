@@ -8,13 +8,13 @@ Details of a successfully uploaded evidence file.
 import { EvidenceUploadResponse } from "@moovio/sdk/models/components";
 
 let value: EvidenceUploadResponse = {
-  evidenceID: "c4139881-60a3-4b80-82ee-d95fe018b726",
-  disputeID: "c86289ab-0652-4507-b872-1cb4afd42087",
+  evidenceID: "dc413988-160a-43b8-902e-ed95fe018b72",
+  disputeID: "3c86289a-b065-4250-9787-21cb4afd4208",
   filename: "example.file",
   mimeType: "<value>",
-  size: 768354,
-  evidenceType: "receipt",
-  createdOn: new Date("2025-11-30T16:32:17.395Z"),
+  size: 751139,
+  evidenceType: "cover-letter",
+  createdOn: new Date("2023-03-18T16:43:15.845Z"),
 };
 ```
 

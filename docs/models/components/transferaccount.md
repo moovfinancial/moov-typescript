@@ -7,8 +7,8 @@ import { TransferAccount } from "@moovio/sdk/models/components";
 
 let value: TransferAccount = {
   accountID: "<id>",
-  email: "Demetris_Pollich@hotmail.com",
-  displayName: "Floyd_Gislason",
+  email: "Napoleon75@hotmail.com",
+  displayName: "Pattie.Carter39",
 };
 ```
 

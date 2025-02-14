@@ -32,13 +32,9 @@ export type GetAvatarRequest = {
   uniqueID: string;
 };
 
-export type GetAvatarResponseResult =
-  | ReadableStream<Uint8Array>
-  | ReadableStream<Uint8Array>;
-
 export type GetAvatarResponse = {
   headers: { [k: string]: Array<string> };
-  result: ReadableStream<Uint8Array> | ReadableStream<Uint8Array>;
+  result: ReadableStream<Uint8Array>;
 };
 
 /** @internal */
@@ -158,72 +154,13 @@ export function getAvatarRequestFromJSON(
 }
 
 /** @internal */
-export const GetAvatarResponseResult$inboundSchema: z.ZodType<
-  GetAvatarResponseResult,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
-
-/** @internal */
-export type GetAvatarResponseResult$Outbound =
-  | ReadableStream<Uint8Array>
-  | ReadableStream<Uint8Array>;
-
-/** @internal */
-export const GetAvatarResponseResult$outboundSchema: z.ZodType<
-  GetAvatarResponseResult$Outbound,
-  z.ZodTypeDef,
-  GetAvatarResponseResult
-> = z.union([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAvatarResponseResult$ {
-  /** @deprecated use `GetAvatarResponseResult$inboundSchema` instead. */
-  export const inboundSchema = GetAvatarResponseResult$inboundSchema;
-  /** @deprecated use `GetAvatarResponseResult$outboundSchema` instead. */
-  export const outboundSchema = GetAvatarResponseResult$outboundSchema;
-  /** @deprecated use `GetAvatarResponseResult$Outbound` instead. */
-  export type Outbound = GetAvatarResponseResult$Outbound;
-}
-
-export function getAvatarResponseResultToJSON(
-  getAvatarResponseResult: GetAvatarResponseResult,
-): string {
-  return JSON.stringify(
-    GetAvatarResponseResult$outboundSchema.parse(getAvatarResponseResult),
-  );
-}
-
-export function getAvatarResponseResultFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAvatarResponseResult, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAvatarResponseResult$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAvatarResponseResult' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetAvatarResponse$inboundSchema: z.ZodType<
   GetAvatarResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
+  Result: z.instanceof(ReadableStream<Uint8Array>),
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -234,7 +171,7 @@ export const GetAvatarResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type GetAvatarResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: ReadableStream<Uint8Array> | ReadableStream<Uint8Array>;
+  Result: ReadableStream<Uint8Array>;
 };
 
 /** @internal */
@@ -244,10 +181,7 @@ export const GetAvatarResponse$outboundSchema: z.ZodType<
   GetAvatarResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
+  result: z.instanceof(ReadableStream<Uint8Array>),
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

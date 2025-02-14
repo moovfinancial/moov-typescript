@@ -8,8 +8,8 @@ Details of a card dispute.
 import { CardAcquiringDispute } from "@moovio/sdk/models/components";
 
 let value: CardAcquiringDispute = {
-  disputeID: "90d261e0-e233-422d-8653-e953e31a4297",
-  createdOn: new Date("2024-09-21T14:30:07.308Z"),
+  disputeID: "53e31a42-9729-4ab4-a85e-798fef377bb6",
+  createdOn: new Date("2024-05-25T08:30:10.056Z"),
   amount: {
     currency: "USD",
     value: 1204,

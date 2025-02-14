@@ -7,7 +7,7 @@ Payment methods allowed for disbursing funds.
 ```typescript
 import { DisbursementPaymentMethodType } from "@moovio/sdk/models/components";
 
-let value: DisbursementPaymentMethodType = "ach-credit-same-day";
+let value: DisbursementPaymentMethodType = "push-to-card";
 ```
 
 ## Values

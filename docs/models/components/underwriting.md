@@ -8,25 +8,25 @@ Describes underwriting values (in USD) used for card payment acceptance.
 import { Underwriting } from "@moovio/sdk/models/components";
 
 let value: Underwriting = {
-  averageTransactionSize: 197723,
-  maxTransactionSize: 99220,
-  averageMonthlyTransactionVolume: 759559,
-  status: "approved",
+  averageTransactionSize: 790426,
+  maxTransactionSize: 473839,
+  averageMonthlyTransactionVolume: 65304,
+  status: "pending",
   volumeByCustomerType: {
-    businessToBusinessPercentage: 888977,
-    consumerToBusinessPercentage: 870554,
+    businessToBusinessPercentage: 239834,
+    consumerToBusinessPercentage: 380035,
   },
   cardVolumeDistribution: {
-    ecommercePercentage: 161262,
-    cardPresentPercentage: 967395,
-    mailOrPhonePercentage: 340928,
-    debtRepaymentPercentage: 888997,
+    ecommercePercentage: 192779,
+    cardPresentPercentage: 640477,
+    mailOrPhonePercentage: 818926,
+    debtRepaymentPercentage: 858543,
   },
   fulfillment: {
     hasPhysicalGoods: false,
     isShippingProduct: false,
-    shipmentDurationDays: 72274,
-    returnPolicy: "none",
+    shipmentDurationDays: 771809,
+    returnPolicy: "withinThirtyDays",
   },
 };
 ```

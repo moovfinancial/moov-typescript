@@ -7,16 +7,12 @@ Represents individual and business data necessary to facilitate the enabling of 
 ```typescript
 import { CapabilityRequirement } from "@moovio/sdk/models/components";
 
-let value: CapabilityRequirement = {
-  currentlyDue: [
-    "representative.{rep-uuid}.firstname",
-  ],
-};
+let value: CapabilityRequirement = {};
 ```
 
 ## Fields
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `currentlyDue`                                                               | [components.RequirementID](../../models/components/requirementid.md)[]       | :heavy_check_mark:                                                           | N/A                                                                          |
+| `currentlyDue`                                                               | [components.RequirementID](../../models/components/requirementid.md)[]       | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `errors`                                                                     | [components.RequirementError](../../models/components/requirementerror.md)[] | :heavy_minus_sign:                                                           | N/A                                                                          |

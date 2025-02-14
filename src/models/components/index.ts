@@ -158,6 +158,8 @@ export * from "./e2eetokenupdate.js";
 export * from "./end2endencryptionerror.js";
 export * from "./enrichedaddressresponse.js";
 export * from "./enrichedbusinessprofile.js";
+export * from "./enrichedbusinessresponse.js";
+export * from "./enrichedindustries.js";
 export * from "./enrichedindustry.js";
 export * from "./enrichedindustrycodes.js";
 export * from "./evidencetextresponse.js";
