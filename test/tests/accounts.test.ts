@@ -2,7 +2,7 @@ import { expect, test, describe, beforeAll } from "bun:test";
 import { Chance } from "chance";
 import { moov } from "../setup";
 import { createAccount } from "../utils/utils";
-import type { Account } from "../../models/components";
+import type { Account, AccountType } from "../../models/components";
 const chance = new Chance();
 
 let account: Account;
@@ -11,8 +11,7 @@ describe("Accounts", () => {
   describe("Account creation", () => {
     test("should create an account", async () => {
       const legalBusinessName = `${chance.company()} ${new Date().getTime()}`;
-      const { result } = await moov.accounts.create({
-        accountType: "business",
+      const acc = await createAccount({
         profile: {
           business: {
             legalBusinessName,
@@ -20,10 +19,30 @@ describe("Accounts", () => {
         },
       });
 
-      expect(result).toBeDefined();
-      expect(result.accountID).toBeDefined();
-      expect(result.displayName).toEqual(legalBusinessName);
-      account = result;
+      expect(acc).toBeDefined();
+      expect(acc.accountID).toBeDefined();
+      expect(acc.displayName).toEqual(legalBusinessName);
+      account = acc;
+    });
+    describe("Failure cases", () => {
+      test("should fail if the account type is not supported", async () => {
+        await expect(() =>
+          createAccount({
+            accountType: "not-a-valid-account-type" as AccountType,
+          }),
+        ).toThrowError();
+      });
+    });
+
+    test("should fail if we pass an empty business profile", async () => {
+      await expect(() =>
+        createAccount({
+          profile: {},
+        }),
+      ).toThrow();
+      // @TODO: Once error hanling is 100% consistent, we should be able to narrow this assertion
+      // Right now it's throwing a Zod validation error, but it should be a custom error instead
+      // ).toThrowError('API error occurred: {"error":{"profile":"business profile is required for business account"}}');
     });
   });
 
