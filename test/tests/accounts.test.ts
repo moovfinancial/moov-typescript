@@ -44,7 +44,7 @@ describe("Accounts", () => {
         expect(result[0].accountID).toEqual(account.accountID);
       });
 
-      test.only("Should be able to filter accounts by type and status", async () => {
+      test("Should be able to filter accounts by type and status", async () => {
         const { result } = await moov.accounts.list({
           type: "business",
           capabilityStatus: "pending",

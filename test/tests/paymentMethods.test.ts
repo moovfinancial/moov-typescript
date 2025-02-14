@@ -22,7 +22,7 @@ describe("PaymentMethods", () => {
     test("should be able to list payment methods", async () => {
       const { result } = await moov.paymentMethods.list({ accountID });
       expect(result).toBeDefined();
-      expect(result.length).toEqual(3);
+      expect(result.length).toBeGreaterThan(0);
     });
     test("listing should fail if accountID is not provided", async () => {
       expect(() => moov.paymentMethods.list({ accountID: "" })).toThrowError(

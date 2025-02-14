@@ -139,8 +139,8 @@ export const createAccountWithWallet = async (account: DeepPartial<CreateAccount
   });
   sleep(1000);
   // get the account and log it
-  const { result: accountResult } = await moov.accounts.get({ accountID: createdAccount.accountID });
-  console.log("ACCOUNT", accountResult);
+  // const { result: accountResult } = await moov.accounts.get({ accountID: createdAccount.accountID });
+  // console.log("ACCOUNT", accountResult);
   return patchResult;
 };
 
