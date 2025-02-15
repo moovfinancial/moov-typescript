@@ -6,8 +6,8 @@
 import { GetSchedulesRequest } from "@moovio/sdk/models/operations";
 
 let value: GetSchedulesRequest = {
-  accountID: "4a982386-f86f-4145-bdc4-d17a41475610",
-  scheduleID: "14ad5a70-60fc-4536-b55e-6b2879ad3609",
+  accountID: "42048a63-9cbd-4487-85a2-c0696a0d1440",
+  scheduleID: "dcbb1400-0300-43c0-afad-ac44a982386f",
 };
 ```
 

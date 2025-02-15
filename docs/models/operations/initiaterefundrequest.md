@@ -6,9 +6,9 @@
 import { InitiateRefundRequest } from "@moovio/sdk/models/operations";
 
 let value: InitiateRefundRequest = {
-  xIdempotencyKey: "efc44baa-5849-4cb6-b8c3-3770969e5134",
-  accountID: "8f414fbe-94f3-464a-96ff-1ecb5acdc528",
-  transferID: "c06c1a32-40a5-4f1e-a71d-1a379e463528",
+  xIdempotencyKey: "d7e911f6-9622-4398-b505-6cb33aa8140c",
+  accountID: "e1eefc44-baa5-4849-8cb6-8c33770969e5",
+  transferID: "34d8f414-fbe9-44f3-964a-6ff1ecb5acdc",
   createRefund: {
     amount: 1000,
   },

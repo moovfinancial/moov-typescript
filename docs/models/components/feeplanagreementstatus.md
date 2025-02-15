@@ -5,7 +5,7 @@
 ```typescript
 import { FeePlanAgreementStatus } from "@moovio/sdk/models/components";
 
-let value: FeePlanAgreementStatus = "active";
+let value: FeePlanAgreementStatus = "terminated";
 ```
 
 ## Values

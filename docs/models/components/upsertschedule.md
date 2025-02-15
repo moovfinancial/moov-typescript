@@ -36,7 +36,7 @@ let value: UpsertSchedule = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "suddenly inwardly edge arid only",
+        description: "edge arid only duh caring",
       },
     },
   ],
@@ -68,7 +68,8 @@ let value: UpsertSchedule = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "lamp physically afterwards gray against",
+      description:
+        "afterwards gray against depend although offensively alliance",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },

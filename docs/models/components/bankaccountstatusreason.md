@@ -7,7 +7,7 @@ The reason the bank account status changed to the current value.
 ```typescript
 import { BankAccountStatusReason } from "@moovio/sdk/models/components";
 
-let value: BankAccountStatusReason = "other";
+let value: BankAccountStatusReason = "bank-account-created";
 ```
 
 ## Values

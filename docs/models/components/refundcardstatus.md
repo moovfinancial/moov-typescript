@@ -5,7 +5,7 @@
 ```typescript
 import { RefundCardStatus } from "@moovio/sdk/models/components";
 
-let value: RefundCardStatus = "confirmed";
+let value: RefundCardStatus = "failed";
 ```
 
 ## Values

@@ -10,8 +10,8 @@ let value: TransferSource = {
   paymentMethodType: "<value>",
   account: {
     accountID: "<id>",
-    email: "Ivy87@hotmail.com",
-    displayName: "Lea_Beier8",
+    email: "Murphy.Windler@hotmail.com",
+    displayName: "Jordi77",
   },
   bankAccount: {
     bankAccountID: "833fa3ef-14d3-4c97-ba45-6af66f739832",
@@ -28,13 +28,13 @@ let value: TransferSource = {
     statusReason: "bank-account-created",
   },
   cardDetails: {
-    status: "confirmed",
+    status: "initiated",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
   },
   achDetails: {
-    status: "completed",
+    status: "returned",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",

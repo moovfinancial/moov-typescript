@@ -6,7 +6,7 @@
 import { GetApplePayMerchantDomainsRequest } from "@moovio/sdk/models/operations";
 
 let value: GetApplePayMerchantDomainsRequest = {
-  accountID: "cbff7142-6296-4ef8-b49e-6847638458c5",
+  accountID: "bff71426-296e-4f84-b9e6-847638458c5e",
 };
 ```
 

@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://late-scratch.org",
+    link: "https://elegant-stay.net",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "9e6ccb67-34a5-4b95-b255-a0da042995c0",
+      accountID: "6da91616-0379-421d-819c-2abb0a24e0d8",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2025-08-31T19:50:37.625Z"),
+    createdOn: new Date("2025-04-06T09:07:29.092Z"),
   },
 };
 ```

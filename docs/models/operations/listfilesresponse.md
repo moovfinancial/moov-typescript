@@ -13,17 +13,17 @@ let value: ListFilesResponse = {
   },
   result: [
     {
-      fileID: "6e42e25b-436c-4e02-8f98-d00fdb27ee0c",
+      fileID: "06e42e25-b436-4ce0-b2f9-8d00fdb27ee0",
       fileName: "logo.png",
-      accountID: "f6f545b3-d9ff-42f0-90ff-277dac7abb01",
+      accountID: "0f6f545b-3d9f-4f2f-800f-f277dac7abb0",
       filePurpose: "representative_verification",
       fileStatus: "pending",
       metadata:
         "{\"error_code\": \"document-name-mismatch\", \"requirement_id\": \"document.individual.verification\", \"representative_id\": \"c63ab175-251d-497e-a267-7346d087e180\", \"comment\": \"testing comment\"",
       decisionReason: "not correct file",
-      fileSizeBytes: 61197,
-      createdOn: new Date("2024-02-24T18:09:40.072Z"),
-      updatedOn: new Date("2024-03-02T23:09:58.976Z"),
+      fileSizeBytes: 363660,
+      createdOn: new Date("2023-03-09T01:44:15.535Z"),
+      updatedOn: new Date("2024-02-24T18:09:40.072Z"),
     },
   ],
 };

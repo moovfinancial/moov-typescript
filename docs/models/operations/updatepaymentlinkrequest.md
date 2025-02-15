@@ -6,7 +6,7 @@
 import { UpdatePaymentLinkRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdatePaymentLinkRequest = {
-  accountID: "33c7f9e0-2a6d-46b9-b1bb-185761213d06",
+  accountID: "e33c7f9e-02a6-4d6b-991b-b185761213d0",
   paymentLinkCode: "uc7ZYKrMhi",
   updatePaymentLink: {
     amount: {

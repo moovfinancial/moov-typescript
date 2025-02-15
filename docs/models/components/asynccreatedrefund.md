@@ -8,8 +8,8 @@ Asynchronous refund response
 import { AsyncCreatedRefund } from "@moovio/sdk/models/components";
 
 let value: AsyncCreatedRefund = {
-  refundID: "88939447-3942-4e6f-b603-d5d64c1e6539",
-  createdOn: new Date("2024-01-22T06:01:41.855Z"),
+  refundID: "5690472b-1bda-4eb3-ad3d-989647298aae",
+  createdOn: new Date("2023-01-14T16:10:11.927Z"),
   amount: {
     currency: "USD",
     value: 1204,

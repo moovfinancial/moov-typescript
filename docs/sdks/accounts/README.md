@@ -546,8 +546,7 @@ const moov = new Moov({
 async function run() {
   const result = await moov.accounts.update({
     accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
-    createAccountUpdate: {
-      accountType: "business",
+    patchAccount: {
       profile: {
         individual: {
           name: {
@@ -664,8 +663,7 @@ const moov = new MoovCore({
 async function run() {
   const res = await accountsUpdate(moov, {
     accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
-    createAccountUpdate: {
-      accountType: "business",
+    patchAccount: {
       profile: {
         individual: {
           name: {

@@ -6,7 +6,7 @@
 import { DisconnectAccountRequest } from "@moovio/sdk/models/operations";
 
 let value: DisconnectAccountRequest = {
-  accountID: "a235d1d1-f7f9-4b04-8141-561b94819e5a",
+  accountID: "235d1d1f-7f9b-4041-a415-61b94819e5a2",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { DisableCardRequest } from "@moovio/sdk/models/operations";
 
 let value: DisableCardRequest = {
-  accountID: "2e64ff3a-1ada-4666-b9ee-021358abefad",
+  accountID: "e2e64ff3-a1ad-4a66-b69e-e021358abefa",
   cardID: "01234567-89ab-cdef-0123-456789abcdef",
 };
 ```

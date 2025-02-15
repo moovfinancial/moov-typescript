@@ -13,10 +13,47 @@ let value: ListPaymentMethodsResponse = {
   },
   result: [
     {
-      paymentMethodID: "3b2937d4-a715-4dfd-b25d-8cc157fe6168",
-      paymentMethodType: "moov-wallet",
-      wallet: {
-        walletID: "44a8327c-cf66-40da-bc7e-0161193aed31",
+      paymentMethodID: "03b2937d-4a71-45df-ad25-d8cc157fe616",
+      paymentMethodType: "card-payment",
+      card: {
+        cardID: "01234567-89ab-cdef-0123-456789abcdef",
+        fingerprint:
+          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+        brand: "Visa",
+        cardType: "credit",
+        lastFourCardNumber: "<value>",
+        bin: "<value>",
+        expiration: {
+          month: "01",
+          year: "21",
+        },
+        billingAddress: {
+          addressLine1: "123 Main Street",
+          addressLine2: "Apt 302",
+          city: "Boulder",
+          stateOrProvince: "CO",
+          postalCode: "80301",
+          country: "US",
+        },
+        cardVerification: {
+          cvv: "match",
+          addressLine1: "match",
+          postalCode: "match",
+          accountName: {
+            firstName: "match",
+            lastName: "match",
+            middleName: "match",
+            fullName: "match",
+          },
+        },
+        issuer: "visa",
+        issuerCountry: "<value>",
+        cardAccountUpdater: {
+          updatedOn: new Date("2024-05-06T12:20:38.184Z"),
+          updateType: "number-update",
+        },
+        domesticPushToCard: "standard",
+        domesticPullFromCard: "supported",
       },
     },
   ],

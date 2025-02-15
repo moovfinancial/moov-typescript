@@ -16,7 +16,7 @@ let value: GetSchedulesResponse = {
     mode: "production",
     occurrences: {
       mode: "production",
-      runOn: new Date("2024-03-10T05:34:07.493Z"),
+      runOn: new Date("2024-04-18T03:44:37.000Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -44,7 +44,7 @@ let value: GetSchedulesResponse = {
           },
         },
         description:
-          "devoted obedient shush while gentle worth aha formal loaf gadzooks",
+          "supplier jazz gladly aha eyeliner meh than bah once creative",
       },
     },
     ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -77,14 +77,15 @@ let value: GetSchedulesResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "astride omelet um anti grandpa before",
+        description:
+          "though sleepily meh fondly suffice oof even coil armchair",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },
     scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-    createdOn: new Date("2025-02-03T20:36:51.045Z"),
-    updatedOn: new Date("2024-05-06T01:50:43.417Z"),
+    createdOn: new Date("2023-11-14T00:21:57.001Z"),
+    updatedOn: new Date("2025-03-18T08:09:22.403Z"),
   },
 };
 ```

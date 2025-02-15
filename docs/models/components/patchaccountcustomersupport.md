@@ -1,4 +1,4 @@
-# CustomerSupportUpdate
+# PatchAccountCustomerSupport
 
 User-provided information that can be displayed on credit card transactions for customers to use when
 contacting a customer support team. This data is only allowed on a business account.
@@ -6,9 +6,9 @@ contacting a customer support team. This data is only allowed on a business acco
 ## Example Usage
 
 ```typescript
-import { CustomerSupportUpdate } from "@moovio/sdk/models/components";
+import { PatchAccountCustomerSupport } from "@moovio/sdk/models/components";
 
-let value: CustomerSupportUpdate = {
+let value: PatchAccountCustomerSupport = {
   phone: {
     number: "8185551212",
     countryCode: "1",

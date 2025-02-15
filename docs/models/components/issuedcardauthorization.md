@@ -6,9 +6,9 @@
 import { IssuedCardAuthorization } from "@moovio/sdk/models/components";
 
 let value: IssuedCardAuthorization = {
-  authorizationID: "25b0a5e4-fd3e-4476-9280-f6d449c5b111",
-  issuedCardID: "84480d91-f43d-4b7e-b70b-45e9c89cfb05",
-  fundingWalletID: "0ea36018-32fa-4042-af49-8e052c6d8f75",
+  authorizationID: "bc2e1bea-9b34-4d19-8e12-11ca369b5562",
+  issuedCardID: "9747169e-7373-4ee0-9b7d-950e9418b90e",
+  fundingWalletID: "1b76853e-c54c-4c0d-b719-5ec2c44f1bb3",
   network: "discover",
   authorizedAmount: "-14.89",
   status: "cleared",
@@ -20,7 +20,7 @@ let value: IssuedCardAuthorization = {
     state: "CA",
     mcc: "7298",
   },
-  createdOn: new Date("2023-03-07T06:28:40.969Z"),
+  createdOn: new Date("2023-01-01T08:57:57.767Z"),
 };
 ```
 

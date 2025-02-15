@@ -13,11 +13,11 @@ let value: RequestCapabilitiesResponse = {
   },
   result: [
     {
-      capability: "wallet",
-      accountID: "bfbc256a-445c-4911-b5cb-bc488bf4ca9c",
-      status: "enabled",
-      createdOn: new Date("2023-06-11T13:12:44.267Z"),
-      updatedOn: new Date("2025-04-08T21:22:45.615Z"),
+      capability: "send-funds",
+      accountID: "8bfbc256-a445-4c91-b15c-bbc488bf4ca9",
+      status: "in-review",
+      createdOn: new Date("2023-02-10T05:07:51.800Z"),
+      updatedOn: new Date("2023-06-11T13:12:44.267Z"),
     },
   ],
 };

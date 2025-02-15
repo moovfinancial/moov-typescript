@@ -6,7 +6,7 @@
 import { UpdateApplePayMerchantDomainsRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateApplePayMerchantDomainsRequest = {
-  accountID: "35dffe4f-31f3-4b0b-be46-5b3274d38fad",
+  accountID: "5dffe4f3-1f3b-40be-b465-b3274d38fadf",
   updateApplePayMerchantDomains: {
     addDomains: [
       "pay.classbooker.dev",

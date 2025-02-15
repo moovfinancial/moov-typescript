@@ -8,8 +8,8 @@ import { BillableFee } from "@moovio/sdk/models/components";
 let value: BillableFee = {
   billableEvent: "ach-volume",
   feeName: "ACH Direct Debit",
-  feeModel: "fixed",
-  feeCategory: "rtp",
+  feeModel: "blended",
+  feeCategory: "card-push",
   feeProperties: {
     fixedAmount: {
       currency: "USD",
