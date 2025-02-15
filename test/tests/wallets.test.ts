@@ -10,10 +10,15 @@ describe("Wallets", () => {
   });
 
   describe("Listing", () => {
-    test.todo("should be able to list wallets", async () => {
+    test("should be able to list wallets", async () => {
       const { result } = await moov.wallets.list({ accountID });
       expect(result).toBeDefined();
-      expect(result.length).toEqual(0);
+      expect(result.length).toEqual(1);
+      expect(result[0].availableBalance).toEqual({
+        currency: "USD",
+        value: 0,
+        valueDecimal: "0",
+      });
     });
     test("listing should fail if accountID is not provided", async () => {
       expect(() => moov.wallets.list({ accountID: "" })).toThrowError(

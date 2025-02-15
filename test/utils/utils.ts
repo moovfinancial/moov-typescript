@@ -92,12 +92,14 @@ export const createRepresentative = async (
 
 export const createAccountWithWallet = async (account: DeepPartial<CreateAccount> = {}) => {
   // Create the account with the KYC fields needed for the wallet
+  const ts = new Date().getTime();
   const baseAccount = {
     ...getDefaultAccount(),
     capabilities: ["wallet"],
     profile: {
       business: {
-        legalBusinessName: "Big Kahuna Burger",
+        website: `https://bigkahunawallet.com/${ts}`,
+        legalBusinessName: `Big Kahuna Wallet ${ts}`,
         businessType: "llc",
         taxID: {
           ein: {
@@ -126,21 +128,36 @@ export const createAccountWithWallet = async (account: DeepPartial<CreateAccount
     origin: "https://moov.io",
     referer: "https://moov.io",
   });
-  // Create the representative
+  // Create the representative (which adds it to the account)
   await createRepresentative(createdAccount.accountID);
-  // Update the account with the terms of service token
+  // Update the account with the terms of service token AND ownersProvided to true
   const { result: patchResult } = await moov.accounts.update({
     accountID: createdAccount.accountID,
-    createAccountUpdate: {
+    patchAccount: {
+      profile: {
+        business: {
+          ownersProvided: true,
+        },
+      },
       termsOfService: {
         token,
       },
     },
   });
-  sleep(1000);
-  // get the account and log it
-  // const { result: accountResult } = await moov.accounts.get({ accountID: createdAccount.accountID });
-  // console.log("ACCOUNT", accountResult);
+  // get capabilities for account
+  let walletCapability;
+  do {
+    const { result } = await moov.capabilities.get({
+      accountID: createdAccount.accountID,
+      capabilityID: "wallet",
+    });
+    walletCapability = result;
+    console.log("WALLET CAPABILITY", walletCapability);
+    if (walletCapability.status !== "enabled") {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  } while (walletCapability.status !== "enabled");
+
   return patchResult;
 };
 
