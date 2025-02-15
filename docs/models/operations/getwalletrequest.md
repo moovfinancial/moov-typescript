@@ -6,8 +6,8 @@
 import { GetWalletRequest } from "@moovio/sdk/models/operations";
 
 let value: GetWalletRequest = {
-  accountID: "763f1362-ee77-40dc-a67a-7448f70f4012",
-  walletID: "5ec5fa07-e4e9-495f-96aa-a4d96519c6e2",
+  accountID: "ea236758-ea5d-4b98-9196-81c8d3f915f9",
+  walletID: "e5b2b763-f136-42ee-b770-dc67a7448f70",
 };
 ```
 

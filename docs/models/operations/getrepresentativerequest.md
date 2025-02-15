@@ -6,8 +6,8 @@
 import { GetRepresentativeRequest } from "@moovio/sdk/models/operations";
 
 let value: GetRepresentativeRequest = {
-  accountID: "81265810-8006-4063-a361-56de44925061",
-  representativeID: "af33fd9d-3dd3-48ea-8a84-f74b95431a83",
+  accountID: "58108006-0633-4615-86de-449250618af3",
+  representativeID: "fd9d3dd3-8eaa-484f-974b-95431a8300b3",
 };
 ```
 

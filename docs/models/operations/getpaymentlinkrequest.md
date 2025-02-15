@@ -6,7 +6,7 @@
 import { GetPaymentLinkRequest } from "@moovio/sdk/models/operations";
 
 let value: GetPaymentLinkRequest = {
-  accountID: "3dc60f2d-cfc5-4363-bbda-2097358a7f0a",
+  accountID: "33dc60f2-dcfc-4536-a3bd-a2097358a7f0",
   paymentLinkCode: "uc7ZYKrMhi",
 };
 ```

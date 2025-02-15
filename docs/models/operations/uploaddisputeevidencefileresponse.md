@@ -12,13 +12,13 @@ let value: UploadDisputeEvidenceFileResponse = {
     ],
   },
   result: {
-    evidenceID: "44559a42-0920-4e81-8df7-016e2d07a09f",
-    disputeID: "b92008fa-b792-4ecf-8432-fc28622f4f17",
+    evidenceID: "844559a4-2092-40e8-b1df-7016e2d07a09",
+    disputeID: "2b92008f-ab79-42ec-9f43-2fc28622f4f1",
     filename: "example.file",
     mimeType: "<value>",
-    size: 4787,
-    evidenceType: "customer-communication",
-    createdOn: new Date("2023-05-05T19:52:13.918Z"),
+    size: 129619,
+    evidenceType: "receipt",
+    createdOn: new Date("2024-08-29T22:15:46.090Z"),
   },
 };
 ```

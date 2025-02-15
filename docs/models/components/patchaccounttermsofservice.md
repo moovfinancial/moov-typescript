@@ -1,4 +1,4 @@
-# CreateAccountUpdateTermsOfService
+# PatchAccountTermsOfService
 
 
 ## Supported Types

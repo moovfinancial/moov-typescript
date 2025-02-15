@@ -13,7 +13,7 @@ let value: ListPartnerPricingResponse = {
   },
   result: [
     {
-      planID: "4e4f85db-6acd-4d2d-a039-1946518f94f6",
+      planID: "74e4f85d-b6ac-4dd2-9d03-91946518f94f",
       name: "Fixed Rate Merchant Plan",
       revenueShare: 10,
       cardAcquringModel: "flat-rate",
@@ -45,7 +45,7 @@ let value: ListPartnerPricingResponse = {
           },
         },
       ],
-      createdAt: new Date("2023-06-12T05:05:55.313Z"),
+      createdAt: new Date("2025-09-29T09:42:33.394Z"),
     },
   ],
 };

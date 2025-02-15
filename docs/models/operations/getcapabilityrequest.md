@@ -6,7 +6,7 @@
 import { GetCapabilityRequest } from "@moovio/sdk/models/operations";
 
 let value: GetCapabilityRequest = {
-  accountID: "1834b0d7-88a5-4152-885f-f99fec5537fe",
+  accountID: "c1834b0d-788a-4515-b285-ff99fec5537f",
   capabilityID: "transfers",
 };
 ```

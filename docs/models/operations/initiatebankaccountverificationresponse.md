@@ -13,7 +13,7 @@ let value: InitiateBankAccountVerificationResponse = {
   },
   result: {
     verificationMethod: "instant",
-    status: "expired",
+    status: "sent-credit",
   },
 };
 ```

@@ -1,11 +1,13 @@
-# CreateIndividualProfileUpdate
+# PatchIndividual
+
+Describes the fields available when patching an individual.
 
 ## Example Usage
 
 ```typescript
-import { CreateIndividualProfileUpdate } from "@moovio/sdk/models/components";
+import { PatchIndividual } from "@moovio/sdk/models/components";
 
-let value: CreateIndividualProfileUpdate = {
+let value: PatchIndividual = {
   name: {
     firstName: "Jordan",
     middleName: "Reese",

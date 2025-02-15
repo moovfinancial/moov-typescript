@@ -12,13 +12,13 @@ let value: GetAdjustmentResponse = {
     ],
   },
   result: {
-    adjustmentID: "70c1849f-a068-48a4-b26f-2e87e7b6ebb5",
-    walletID: "a32cf79d-7f9d-4ed2-ba61-64d0f55026e1",
+    adjustmentID: "0c1849fa-0688-4a42-a6f2-e87e7b6ebb5c",
+    walletID: "32cf79d7-f9de-4d2a-b616-4d0f55026e1f",
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
-    createdOn: new Date("2025-08-10T23:01:34.707Z"),
+    createdOn: new Date("2024-05-12T18:17:15.678Z"),
   },
 };
 ```

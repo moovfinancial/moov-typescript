@@ -12,20 +12,19 @@ let value: GetPaymentMethodResponse = {
     ],
   },
   result: {
-    paymentMethodID: "55ff3d5f-de94-438a-bb28-638483e591a4",
-    paymentMethodType: "apple-pay",
-    applePay: {
-      brand: "Visa",
-      cardType: "credit",
-      cardDisplayName: "Visa 1256",
-      fingerprint:
-        "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
-      expiration: {
-        month: "01",
-        year: "21",
-      },
-      dynamicLastFour: "<value>",
-      issuerCountry: "US",
+    paymentMethodID: "2b519202-6ba0-4c5a-b060-d2a42e9e4df6",
+    paymentMethodType: "ach-credit-standard",
+    bankAccount: {
+      bankAccountID: "55ff3d5f-de94-438a-bb28-638483e591a4",
+      fingerprint: "<value>",
+      status: "verified",
+      holderName: "<value>",
+      holderType: "business",
+      bankName: "<value>",
+      bankAccountType: "checking",
+      routingNumber: "<value>",
+      lastFourAccountNumber: "<value>",
+      updatedOn: new Date("2025-08-02T04:16:12.146Z"),
     },
   },
 };

@@ -13,12 +13,12 @@ let value: RegisterApplePayMerchantDomainsResponse = {
   },
   result: {
     accountID: "<id>",
-    displayName: "Kayla36",
+    displayName: "Edmund82",
     domains: [
       "checkout.classbooker.dev",
     ],
-    createdOn: new Date("2025-10-10T18:19:46.748Z"),
-    updatedOn: new Date("2023-02-20T10:10:34.700Z"),
+    createdOn: new Date("2023-02-20T10:10:34.700Z"),
+    updatedOn: new Date("2023-09-12T23:01:13.510Z"),
   },
 };
 ```

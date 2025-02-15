@@ -41,14 +41,8 @@ import {
   TaxIDUpdate$outboundSchema,
 } from "./taxidupdate.js";
 
-export type CreateBusinessProfileUpdate = {
-  /**
-   * The legal name under which the entity is registered.
-   */
+export type PatchBusiness = {
   legalBusinessName?: string | undefined;
-  /**
-   * A registered trade name under which the business operates, if different from its legal name.
-   */
   doingBusinessAs?: string | undefined;
   /**
    * The type of entity represented by this business.
@@ -63,6 +57,7 @@ export type CreateBusinessProfileUpdate = {
    * An EIN (employer identification number) for the business. For sole proprietors, an SSN can be used as the EIN.
    */
   taxID?: TaxIDUpdate | undefined;
+  ownersProvided?: boolean | undefined;
   industryCodes?: IndustryCodes | undefined;
   /**
    * If the business is a financial institution, this field describes its primary regulator.
@@ -71,8 +66,8 @@ export type CreateBusinessProfileUpdate = {
 };
 
 /** @internal */
-export const CreateBusinessProfileUpdate$inboundSchema: z.ZodType<
-  CreateBusinessProfileUpdate,
+export const PatchBusiness$inboundSchema: z.ZodType<
+  PatchBusiness,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -85,12 +80,13 @@ export const CreateBusinessProfileUpdate$inboundSchema: z.ZodType<
   website: z.string().optional(),
   description: z.string().optional(),
   taxID: TaxIDUpdate$inboundSchema.optional(),
+  ownersProvided: z.boolean().optional(),
   industryCodes: IndustryCodes$inboundSchema.optional(),
   primaryRegulator: PrimaryRegulator$inboundSchema.optional(),
 });
 
 /** @internal */
-export type CreateBusinessProfileUpdate$Outbound = {
+export type PatchBusiness$Outbound = {
   legalBusinessName?: string | undefined;
   doingBusinessAs?: string | undefined;
   businessType?: string | undefined;
@@ -100,15 +96,16 @@ export type CreateBusinessProfileUpdate$Outbound = {
   website?: string | undefined;
   description?: string | undefined;
   taxID?: TaxIDUpdate$Outbound | undefined;
+  ownersProvided?: boolean | undefined;
   industryCodes?: IndustryCodes$Outbound | undefined;
   primaryRegulator?: string | undefined;
 };
 
 /** @internal */
-export const CreateBusinessProfileUpdate$outboundSchema: z.ZodType<
-  CreateBusinessProfileUpdate$Outbound,
+export const PatchBusiness$outboundSchema: z.ZodType<
+  PatchBusiness$Outbound,
   z.ZodTypeDef,
-  CreateBusinessProfileUpdate
+  PatchBusiness
 > = z.object({
   legalBusinessName: z.string().optional(),
   doingBusinessAs: z.string().optional(),
@@ -119,6 +116,7 @@ export const CreateBusinessProfileUpdate$outboundSchema: z.ZodType<
   website: z.string().optional(),
   description: z.string().optional(),
   taxID: TaxIDUpdate$outboundSchema.optional(),
+  ownersProvided: z.boolean().optional(),
   industryCodes: IndustryCodes$outboundSchema.optional(),
   primaryRegulator: PrimaryRegulator$outboundSchema.optional(),
 });
@@ -127,31 +125,25 @@ export const CreateBusinessProfileUpdate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateBusinessProfileUpdate$ {
-  /** @deprecated use `CreateBusinessProfileUpdate$inboundSchema` instead. */
-  export const inboundSchema = CreateBusinessProfileUpdate$inboundSchema;
-  /** @deprecated use `CreateBusinessProfileUpdate$outboundSchema` instead. */
-  export const outboundSchema = CreateBusinessProfileUpdate$outboundSchema;
-  /** @deprecated use `CreateBusinessProfileUpdate$Outbound` instead. */
-  export type Outbound = CreateBusinessProfileUpdate$Outbound;
+export namespace PatchBusiness$ {
+  /** @deprecated use `PatchBusiness$inboundSchema` instead. */
+  export const inboundSchema = PatchBusiness$inboundSchema;
+  /** @deprecated use `PatchBusiness$outboundSchema` instead. */
+  export const outboundSchema = PatchBusiness$outboundSchema;
+  /** @deprecated use `PatchBusiness$Outbound` instead. */
+  export type Outbound = PatchBusiness$Outbound;
 }
 
-export function createBusinessProfileUpdateToJSON(
-  createBusinessProfileUpdate: CreateBusinessProfileUpdate,
-): string {
-  return JSON.stringify(
-    CreateBusinessProfileUpdate$outboundSchema.parse(
-      createBusinessProfileUpdate,
-    ),
-  );
+export function patchBusinessToJSON(patchBusiness: PatchBusiness): string {
+  return JSON.stringify(PatchBusiness$outboundSchema.parse(patchBusiness));
 }
 
-export function createBusinessProfileUpdateFromJSON(
+export function patchBusinessFromJSON(
   jsonString: string,
-): SafeParseResult<CreateBusinessProfileUpdate, SDKValidationError> {
+): SafeParseResult<PatchBusiness, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateBusinessProfileUpdate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateBusinessProfileUpdate' from JSON`,
+    (x) => PatchBusiness$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchBusiness' from JSON`,
   );
 }

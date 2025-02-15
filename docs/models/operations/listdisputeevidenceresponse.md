@@ -13,11 +13,11 @@ let value: ListDisputeEvidenceResponse = {
   },
   result: [
     {
-      evidenceID: "9371547e-269f-42e1-8773-57df8d953680",
-      disputeID: "93d511e1-2d4a-4d9f-bb18-bc0bdb878be9",
-      evidenceType: "generic-evidence",
-      createdOn: new Date("2023-03-16T21:31:12.259Z"),
-      updatedOn: new Date("2024-07-02T21:47:04.955Z"),
+      evidenceID: "79371547-e269-4f2e-8177-357df8d95368",
+      disputeID: "293d511e-12d4-4ad9-afb1-8bc0bdb878be",
+      evidenceType: "other",
+      createdOn: new Date("2025-02-07T13:51:36.415Z"),
+      updatedOn: new Date("2023-03-16T21:31:12.259Z"),
     },
   ],
 };

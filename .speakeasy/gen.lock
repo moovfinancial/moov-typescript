@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: cc2583485ef45acd0ba0422160127576
+  docChecksum: d51b87bf0322d1b06682a56ae859bba2
   docVersion: latest
-  speakeasyVersion: 1.492.0
+  speakeasyVersion: 1.493.0
   generationVersion: 2.512.4
-  releaseVersion: 0.3.4
-  configChecksum: 602e31413b63d8810109cd151d95444c
+  releaseVersion: 0.3.5
+  configChecksum: a2e865e6a903b8bbeed10cdbcafda12a
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -62,7 +62,6 @@ generatedFiles:
   - docs/models/components/achpaymentdetails.md
   - docs/models/components/achpaymentdetailserror.md
   - docs/models/components/achpaymentsettings.md
-  - docs/models/components/achpaymentsettingsupdate.md
   - docs/models/components/achreturncode.md
   - docs/models/components/achtransactiondetails.md
   - docs/models/components/achtransactionstatus.md
@@ -157,8 +156,6 @@ generatedFiles:
   - docs/models/components/createaccounterror.md
   - docs/models/components/createaccountsettings.md
   - docs/models/components/createaccounttermsofservice.md
-  - docs/models/components/createaccountupdate.md
-  - docs/models/components/createaccountupdatetermsofservice.md
   - docs/models/components/createapplepaysession.md
   - docs/models/components/createauthorizeduser.md
   - docs/models/components/createauthorizedusererror.md
@@ -168,7 +165,6 @@ generatedFiles:
   - docs/models/components/createbusinesserrorindustrycodes.md
   - docs/models/components/createbusinesserrortaxid.md
   - docs/models/components/createbusinessprofile.md
-  - docs/models/components/createbusinessprofileupdate.md
   - docs/models/components/createevidencefilemultipart.md
   - docs/models/components/createevidencetext.md
   - docs/models/components/createfeeplanagreement.md
@@ -177,11 +173,9 @@ generatedFiles:
   - docs/models/components/createindividualerroritin.md
   - docs/models/components/createindividualerrorssn.md
   - docs/models/components/createindividualprofile.md
-  - docs/models/components/createindividualprofileupdate.md
   - docs/models/components/createpaymentlink.md
   - docs/models/components/createprofile.md
   - docs/models/components/createprofileerror.md
-  - docs/models/components/createprofileupdate.md
   - docs/models/components/createrefund.md
   - docs/models/components/createrefundresponse.md
   - docs/models/components/createrepresentative.md
@@ -196,7 +190,6 @@ generatedFiles:
   - docs/models/components/createtransfersourcecard.md
   - docs/models/components/customersupport.md
   - docs/models/components/customersupporterror.md
-  - docs/models/components/customersupportupdate.md
   - docs/models/components/debitholdperiod.md
   - docs/models/components/disbursementpaymentmethodtype.md
   - docs/models/components/displayoptionserror.md
@@ -298,7 +291,13 @@ generatedFiles:
   - docs/models/components/onboardingpartneraccount.md
   - docs/models/components/partnerpricing.md
   - docs/models/components/partnerpricingagreement.md
+  - docs/models/components/patchaccount.md
+  - docs/models/components/patchaccountcustomersupport.md
   - docs/models/components/patchaccounterror.md
+  - docs/models/components/patchaccounttermsofservice.md
+  - docs/models/components/patchbusiness.md
+  - docs/models/components/patchindividual.md
+  - docs/models/components/patchprofile.md
   - docs/models/components/patchsweepconfig.md
   - docs/models/components/patchtransfer.md
   - docs/models/components/paymentdetailserror.md
@@ -364,7 +363,6 @@ generatedFiles:
   - docs/models/components/seccode.md
   - docs/models/components/security.md
   - docs/models/components/settings.md
-  - docs/models/components/settingsupdate.md
   - docs/models/components/ssn.md
   - docs/models/components/sweep.md
   - docs/models/components/sweepconfig.md
@@ -1011,7 +1009,6 @@ generatedFiles:
   - src/models/components/achpaymentdetails.ts
   - src/models/components/achpaymentdetailserror.ts
   - src/models/components/achpaymentsettings.ts
-  - src/models/components/achpaymentsettingsupdate.ts
   - src/models/components/achreturncode.ts
   - src/models/components/achtransactiondetails.ts
   - src/models/components/achtransactionstatus.ts
@@ -1101,24 +1098,20 @@ generatedFiles:
   - src/models/components/createaccount.ts
   - src/models/components/createaccounterror.ts
   - src/models/components/createaccountsettings.ts
-  - src/models/components/createaccountupdate.ts
   - src/models/components/createapplepaysession.ts
   - src/models/components/createauthorizeduser.ts
   - src/models/components/createauthorizedusererror.ts
   - src/models/components/createauthorizeduserupdate.ts
   - src/models/components/createbusinesserror.ts
   - src/models/components/createbusinessprofile.ts
-  - src/models/components/createbusinessprofileupdate.ts
   - src/models/components/createevidencefilemultipart.ts
   - src/models/components/createevidencetext.ts
   - src/models/components/createfeeplanagreement.ts
   - src/models/components/createindividualerror.ts
   - src/models/components/createindividualprofile.ts
-  - src/models/components/createindividualprofileupdate.ts
   - src/models/components/createpaymentlink.ts
   - src/models/components/createprofile.ts
   - src/models/components/createprofileerror.ts
-  - src/models/components/createprofileupdate.ts
   - src/models/components/createrefund.ts
   - src/models/components/createrefundresponse.ts
   - src/models/components/createrepresentative.ts
@@ -1133,7 +1126,6 @@ generatedFiles:
   - src/models/components/createtransfersourcecard.ts
   - src/models/components/customersupport.ts
   - src/models/components/customersupporterror.ts
-  - src/models/components/customersupportupdate.ts
   - src/models/components/debitholdperiod.ts
   - src/models/components/disbursementpaymentmethodtype.ts
   - src/models/components/displayoptionserror.ts
@@ -1222,7 +1214,11 @@ generatedFiles:
   - src/models/components/onboardingpartneraccount.ts
   - src/models/components/partnerpricing.ts
   - src/models/components/partnerpricingagreement.ts
+  - src/models/components/patchaccount.ts
   - src/models/components/patchaccounterror.ts
+  - src/models/components/patchbusiness.ts
+  - src/models/components/patchindividual.ts
+  - src/models/components/patchprofile.ts
   - src/models/components/patchsweepconfig.ts
   - src/models/components/patchtransfer.ts
   - src/models/components/paymentdetailserror.ts
@@ -1283,7 +1279,6 @@ generatedFiles:
   - src/models/components/seccode.ts
   - src/models/components/security.ts
   - src/models/components/settings.ts
-  - src/models/components/settingsupdate.ts
   - src/models/components/sweep.ts
   - src/models/components/sweepconfig.ts
   - src/models/components/sweepconfigpaymentmethod.ts
@@ -2894,7 +2889,7 @@ examples:
           accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd"
         header: {}
       requestBody:
-        application/json: {"accountType": "business", "profile": {"individual": {"name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "birthDate": {"day": 9, "month": 11, "year": 1989}}, "business": {"legalBusinessName": "Classbooker, LLC", "businessType": "llc", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "description": "Local fitness gym paying out instructors", "taxID": {"ein": {"number": "12-3456789"}}, "industryCodes": {"naics": "713940", "sic": "7991", "mcc": "7997"}}}, "metadata": {"optional": "metadata"}, "termsOfService": {"acceptedIP": "172.217.2.46", "acceptedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36"}, "customerSupport": {"phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}}, "settings": {"cardPayment": {"statementDescriptor": "Whole Body Fitness"}, "achPayment": {"companyName": "WholeBodyFitness"}}}
+        application/json: {"profile": {"individual": {"name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "birthDate": {"day": 9, "month": 11, "year": 1989}}, "business": {"legalBusinessName": "Classbooker, LLC", "businessType": "llc", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "description": "Local fitness gym paying out instructors", "taxID": {"ein": {"number": "12-3456789"}}, "industryCodes": {"naics": "713940", "sic": "7991", "mcc": "7997"}}}, "metadata": {"optional": "metadata"}, "termsOfService": {"acceptedIP": "172.217.2.46", "acceptedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36"}, "customerSupport": {"phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}}, "settings": {"cardPayment": {"statementDescriptor": "Whole Body Fitness"}, "achPayment": {"companyName": "WholeBodyFitness"}}}
       responses:
         "200":
           application/json: {"accountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "accountType": "business", "displayName": "Whole Body Fitness", "profile": {"individual": {"name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}}, "business": {"legalBusinessName": "Classbooker, LLC", "businessType": "llc", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "description": "Local fitness gym paying out instructors", "representatives": [{"representativeID": "5fa7f0e7-432c-4e47-acb6-0cc78135ddeb", "name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "responsibilities": {"ownershipPercentage": 38, "jobTitle": "CEO"}, "createdOn": "2023-12-28T08:44:16.702Z", "updatedOn": "2024-08-25T14:06:58.296Z"}, {"representativeID": "98c125a1-9071-4c55-962a-f6646dadb3a3", "name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "responsibilities": {"ownershipPercentage": 38, "jobTitle": "CEO"}, "createdOn": "2023-08-06T05:00:55.823Z", "updatedOn": "2024-01-07T04:27:44.407Z"}], "ownersProvided": false, "industryCodes": {"naics": "713940", "sic": "7991", "mcc": "7997"}}}, "metadata": {"optional": "metadata"}, "termsOfService": {"acceptedDate": "2025-01-18T22:59:01.275Z", "acceptedIP": "172.217.2.46"}, "verification": {"verificationStatus": "unverified", "status": "unverified", "documents": [{"documentID": "e07e83e8-9429-4e99-ac99-c941f719eb39", "type": "bankStatement", "contentType": "application/pdf", "uploadedAt": "2024-05-06T12:20:38.184Z"}]}, "customerSupport": {"phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}}, "settings": {"cardPayment": {"statementDescriptor": "Whole Body Fitness"}, "achPayment": {"companyName": "WholeBodyFitness"}}, "createdOn": "2024-05-06T12:20:38.184Z", "updatedOn": "2024-05-06T12:20:38.184Z", "disconnectedOn": "2024-05-06T12:20:38.184Z"}

@@ -6,7 +6,7 @@
 import { LinkApplePayTokenRequest } from "@moovio/sdk/models/operations";
 
 let value: LinkApplePayTokenRequest = {
-  accountID: "178b1369-e92f-4d8e-a8ed-fe026f42e7e2",
+  accountID: "78b1369e-92fd-48e8-9edf-e026f42e7e2a",
   linkApplePay: {
     token: {
       paymentData: {

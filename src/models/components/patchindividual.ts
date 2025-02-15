@@ -37,7 +37,10 @@ import {
   PhoneNumber$outboundSchema,
 } from "./phonenumber.js";
 
-export type CreateIndividualProfileUpdate = {
+/**
+ * Describes the fields available when patching an individual.
+ */
+export type PatchIndividual = {
   name?: IndividualNameUpdate | undefined;
   phone?: PhoneNumber | undefined;
   email?: string | undefined;
@@ -47,8 +50,8 @@ export type CreateIndividualProfileUpdate = {
 };
 
 /** @internal */
-export const CreateIndividualProfileUpdate$inboundSchema: z.ZodType<
-  CreateIndividualProfileUpdate,
+export const PatchIndividual$inboundSchema: z.ZodType<
+  PatchIndividual,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -61,7 +64,7 @@ export const CreateIndividualProfileUpdate$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type CreateIndividualProfileUpdate$Outbound = {
+export type PatchIndividual$Outbound = {
   name?: IndividualNameUpdate$Outbound | undefined;
   phone?: PhoneNumber$Outbound | undefined;
   email?: string | undefined;
@@ -71,10 +74,10 @@ export type CreateIndividualProfileUpdate$Outbound = {
 };
 
 /** @internal */
-export const CreateIndividualProfileUpdate$outboundSchema: z.ZodType<
-  CreateIndividualProfileUpdate$Outbound,
+export const PatchIndividual$outboundSchema: z.ZodType<
+  PatchIndividual$Outbound,
   z.ZodTypeDef,
-  CreateIndividualProfileUpdate
+  PatchIndividual
 > = z.object({
   name: IndividualNameUpdate$outboundSchema.optional(),
   phone: PhoneNumber$outboundSchema.optional(),
@@ -88,31 +91,27 @@ export const CreateIndividualProfileUpdate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateIndividualProfileUpdate$ {
-  /** @deprecated use `CreateIndividualProfileUpdate$inboundSchema` instead. */
-  export const inboundSchema = CreateIndividualProfileUpdate$inboundSchema;
-  /** @deprecated use `CreateIndividualProfileUpdate$outboundSchema` instead. */
-  export const outboundSchema = CreateIndividualProfileUpdate$outboundSchema;
-  /** @deprecated use `CreateIndividualProfileUpdate$Outbound` instead. */
-  export type Outbound = CreateIndividualProfileUpdate$Outbound;
+export namespace PatchIndividual$ {
+  /** @deprecated use `PatchIndividual$inboundSchema` instead. */
+  export const inboundSchema = PatchIndividual$inboundSchema;
+  /** @deprecated use `PatchIndividual$outboundSchema` instead. */
+  export const outboundSchema = PatchIndividual$outboundSchema;
+  /** @deprecated use `PatchIndividual$Outbound` instead. */
+  export type Outbound = PatchIndividual$Outbound;
 }
 
-export function createIndividualProfileUpdateToJSON(
-  createIndividualProfileUpdate: CreateIndividualProfileUpdate,
+export function patchIndividualToJSON(
+  patchIndividual: PatchIndividual,
 ): string {
-  return JSON.stringify(
-    CreateIndividualProfileUpdate$outboundSchema.parse(
-      createIndividualProfileUpdate,
-    ),
-  );
+  return JSON.stringify(PatchIndividual$outboundSchema.parse(patchIndividual));
 }
 
-export function createIndividualProfileUpdateFromJSON(
+export function patchIndividualFromJSON(
   jsonString: string,
-): SafeParseResult<CreateIndividualProfileUpdate, SDKValidationError> {
+): SafeParseResult<PatchIndividual, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateIndividualProfileUpdate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateIndividualProfileUpdate' from JSON`,
+    (x) => PatchIndividual$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchIndividual' from JSON`,
   );
 }

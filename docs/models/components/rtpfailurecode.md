@@ -7,7 +7,7 @@ Status codes for RTP failures.
 ```typescript
 import { RTPFailureCode } from "@moovio/sdk/models/components";
 
-let value: RTPFailureCode = "account-closed";
+let value: RTPFailureCode = "limit-exceeded";
 ```
 
 ## Values

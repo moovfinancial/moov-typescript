@@ -12,8 +12,8 @@ let value: GetBankAccountVerificationResponse = {
     ],
   },
   result: {
-    verificationMethod: "ach",
-    status: "new",
+    verificationMethod: "instant",
+    status: "expired",
   },
 };
 ```

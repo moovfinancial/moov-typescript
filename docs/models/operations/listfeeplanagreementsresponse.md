@@ -13,17 +13,17 @@ let value: ListFeePlanAgreementsResponse = {
   },
   result: [
     {
-      aggreementID: "12ab9f72-a998-4f21-9239-93777c7c28d2",
-      planID: "92c1f751-6a14-4da3-82e4-2f4176e211e7",
-      acceptedOn: new Date("2024-10-12T20:06:24.868Z"),
+      aggreementID: "c12ab9f7-2a99-48f2-8123-993777c7c28d",
+      planID: "792c1f75-16a1-44da-932e-42f4176e211e",
+      acceptedOn: new Date("2023-06-15T01:33:14.819Z"),
       status: "terminated",
-      cardAcquringModel: "cost-plus",
+      cardAcquringModel: "flat-rate",
       billableFees: [
         {
           billableEvent: "ach-volume",
           feeName: "ACH Direct Debit",
-          feeModel: "blended",
-          feeCategory: "card-pull",
+          feeModel: "fixed",
+          feeCategory: "rtp",
           feeProperties: {
             fixedAmount: {
               currency: "USD",

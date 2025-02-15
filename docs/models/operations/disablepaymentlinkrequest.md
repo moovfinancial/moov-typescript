@@ -6,7 +6,7 @@
 import { DisablePaymentLinkRequest } from "@moovio/sdk/models/operations";
 
 let value: DisablePaymentLinkRequest = {
-  accountID: "13ba92c2-2c55-4455-bb35-ce918a5dc92b",
+  accountID: "c13ba92c-22c5-4545-a5b3-5ce918a5dc92",
   paymentLinkCode: "uc7ZYKrMhi",
 };
 ```

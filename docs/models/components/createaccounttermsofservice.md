@@ -16,11 +16,11 @@ const value: components.TermsOfServiceToken = {
 
 ```typescript
 const value: components.ManualTermsOfService = {
-  acceptedDate: new Date("2025-02-07T18:13:29.689Z"),
+  acceptedDate: new Date("2023-05-03T20:47:05.431Z"),
   acceptedIP: "172.217.2.46",
   acceptedUserAgent:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36",
-  acceptedDomain: "https://delectable-cafe.org",
+  acceptedDomain: "https://total-order.net/",
 };
 ```
 

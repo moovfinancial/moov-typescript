@@ -6,10 +6,10 @@
 import { CardVolumeDistribution } from "@moovio/sdk/models/components";
 
 let value: CardVolumeDistribution = {
-  ecommercePercentage: 559250,
-  cardPresentPercentage: 697655,
-  mailOrPhonePercentage: 396022,
-  debtRepaymentPercentage: 642924,
+  ecommercePercentage: 873606,
+  cardPresentPercentage: 694002,
+  mailOrPhonePercentage: 417433,
+  debtRepaymentPercentage: 919514,
 };
 ```
 

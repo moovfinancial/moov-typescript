@@ -6,7 +6,7 @@
 import { ListBankAccountsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListBankAccountsRequest = {
-  accountID: "d17932d0-717f-46d1-8466-a5ba6691dab8",
+  accountID: "ad17932d-0717-4f6d-a146-6a5ba6691dab",
 };
 ```
 

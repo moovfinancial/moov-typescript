@@ -7,7 +7,7 @@ import { OccurrencesResponse } from "@moovio/sdk/models/components";
 
 let value: OccurrencesResponse = {
   mode: "production",
-  runOn: new Date("2024-06-24T23:14:48.977Z"),
+  runOn: new Date("2025-12-25T01:20:14.892Z"),
   runTransfer: {
     amount: {
       currency: "USD",
@@ -34,7 +34,7 @@ let value: OccurrencesResponse = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description: "captain though propound ick exotic frozen",
+    description: "once captain though propound ick exotic frozen phooey fidget",
   },
 };
 ```

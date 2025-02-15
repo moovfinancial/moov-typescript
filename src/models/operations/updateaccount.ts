@@ -28,7 +28,7 @@ export type UpdateAccountGlobals = {
 
 export type UpdateAccountRequest = {
   accountID: string;
-  createAccountUpdate: components.CreateAccountUpdate;
+  patchAccount: components.PatchAccount;
 };
 
 export type UpdateAccountResponse = {
@@ -105,17 +105,17 @@ export const UpdateAccountRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accountID: z.string(),
-  CreateAccountUpdate: components.CreateAccountUpdate$inboundSchema,
+  PatchAccount: components.PatchAccount$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "CreateAccountUpdate": "createAccountUpdate",
+    "PatchAccount": "patchAccount",
   });
 });
 
 /** @internal */
 export type UpdateAccountRequest$Outbound = {
   accountID: string;
-  CreateAccountUpdate: components.CreateAccountUpdate$Outbound;
+  PatchAccount: components.PatchAccount$Outbound;
 };
 
 /** @internal */
@@ -125,10 +125,10 @@ export const UpdateAccountRequest$outboundSchema: z.ZodType<
   UpdateAccountRequest
 > = z.object({
   accountID: z.string(),
-  createAccountUpdate: components.CreateAccountUpdate$outboundSchema,
+  patchAccount: components.PatchAccount$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    createAccountUpdate: "CreateAccountUpdate",
+    patchAccount: "PatchAccount",
   });
 });
 

@@ -64,9 +64,7 @@ export async function accountsUpdate(
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.CreateAccountUpdate, {
-    explode: true,
-  });
+  const body = encodeJSON("body", payload.PatchAccount, { explode: true });
 
   const pathParams = {
     accountID: encodeSimple("accountID", payload.accountID, {
