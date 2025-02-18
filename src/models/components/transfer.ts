@@ -96,7 +96,7 @@ export type Transfer = {
   /**
    * Same as `moovFee`, but a decimal-formatted numerical string that represents up to 9 decimal place precision.
    */
-  moovFeeDecimal?: number | undefined;
+  moovFeeDecimal?: string | undefined;
   /**
    * Processing and pass-through costs that add up to the moovFee.
    */
@@ -130,7 +130,7 @@ export const Transfer$inboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   facilitatorFee: FacilitatorFee$inboundSchema.optional(),
   moovFee: z.number().int().optional(),
-  moovFeeDecimal: z.number().int().optional(),
+  moovFeeDecimal: z.string().optional(),
   moovFeeDetails: MoovFeeDetails$inboundSchema.optional(),
   groupID: z.string().optional(),
   refundedAmount: Amount$inboundSchema.optional(),
@@ -156,7 +156,7 @@ export type Transfer$Outbound = {
   metadata?: { [k: string]: string } | undefined;
   facilitatorFee?: FacilitatorFee$Outbound | undefined;
   moovFee?: number | undefined;
-  moovFeeDecimal?: number | undefined;
+  moovFeeDecimal?: string | undefined;
   moovFeeDetails?: MoovFeeDetails$Outbound | undefined;
   groupID?: string | undefined;
   refundedAmount?: Amount$Outbound | undefined;
@@ -186,7 +186,7 @@ export const Transfer$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   facilitatorFee: FacilitatorFee$outboundSchema.optional(),
   moovFee: z.number().int().optional(),
-  moovFeeDecimal: z.number().int().optional(),
+  moovFeeDecimal: z.string().optional(),
   moovFeeDetails: MoovFeeDetails$outboundSchema.optional(),
   groupID: z.string().optional(),
   refundedAmount: Amount$outboundSchema.optional(),
