@@ -12,11 +12,11 @@ let value: GetSweepResponse = {
     ],
   },
   result: {
-    sweepID: "8e0969d7-3621-46a4-8eba-b0de09a3da3f",
-    status: "failed",
+    sweepID: "870218a9-dad2-42e5-93ef-a6b025d40630",
+    status: "canceled",
     accruedAmount: "<value>",
     currency: "USD",
-    accrualStartedOn: new Date("2024-06-03T09:11:48.275Z"),
+    accrualStartedOn: new Date("2025-03-15T06:55:36.691Z"),
   },
 };
 ```

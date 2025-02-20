@@ -6,19 +6,19 @@
 import { AchCreditSameDayPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: AchCreditSameDayPaymentMethod = {
-  paymentMethodID: "3ac65b4d-4074-474f-bf9e-5cc5b133a344",
+  paymentMethodID: "0b752748-4469-4d45-9af3-3dc5068caacc",
   paymentMethodType: "ach-credit-same-day",
   bankAccount: {
-    bankAccountID: "fd775724-2eb2-4650-bb75-27484469d45a",
+    bankAccountID: "1d90c658-ae04-40db-94ca-ac2985b673b0",
     fingerprint: "<value>",
-    status: "verified",
+    status: "verificationFailed",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "loan",
+    bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-05-24T16:25:23.576Z"),
+    updatedOn: new Date("2024-01-17T08:46:21.478Z"),
   },
 };
 ```

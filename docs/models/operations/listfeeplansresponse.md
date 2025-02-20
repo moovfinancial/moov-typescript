@@ -20,7 +20,7 @@ let value: ListFeePlansResponse = {
         {
           billableEvent: "ach-volume",
           feeName: "ACH Direct Debit",
-          feeModel: "fixed",
+          feeModel: "blended",
           feeCategory: "other",
           feeProperties: {
             fixedAmount: {

@@ -13,5 +13,5 @@ let value: FeeModel = "fixed";
 ## Values
 
 ```typescript
-"fixed" | "blended"
+"fixed" | "blended" | "variable"
 ```

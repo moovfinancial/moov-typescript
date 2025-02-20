@@ -5,7 +5,7 @@
 ```typescript
 import { RequirementErrorCode } from "@moovio/sdk/models/components";
 
-let value: RequirementErrorCode = "document-name-mismatch";
+let value: RequirementErrorCode = "document-id-mismatch";
 ```
 
 ## Values

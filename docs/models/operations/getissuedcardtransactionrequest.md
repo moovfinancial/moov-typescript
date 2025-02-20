@@ -6,8 +6,8 @@
 import { GetIssuedCardTransactionRequest } from "@moovio/sdk/models/operations";
 
 let value: GetIssuedCardTransactionRequest = {
-  accountID: "5ec9971a-60b2-4c49-8927-df0290c9a991",
-  cardTransactionID: "75ca4fad-e360-4298-97b4-6f9ab767d5e0",
+  accountID: "e04ee33c-5334-4d72-b551-db6b5e817505",
+  cardTransactionID: "4b22407f-4adf-40d1-85b5-0b876ae6653d",
 };
 ```
 

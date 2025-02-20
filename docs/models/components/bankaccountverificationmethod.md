@@ -5,7 +5,7 @@
 ```typescript
 import { BankAccountVerificationMethod } from "@moovio/sdk/models/components";
 
-let value: BankAccountVerificationMethod = "ach";
+let value: BankAccountVerificationMethod = "instant";
 ```
 
 ## Values

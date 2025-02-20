@@ -10,7 +10,7 @@ If set to "auto" the UI will automatically select between
 ```typescript
 import { CallToAction } from "@moovio/sdk/models/components";
 
-let value: CallToAction = "pay";
+let value: CallToAction = "confirm";
 ```
 
 ## Values

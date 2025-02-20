@@ -5,7 +5,7 @@
 ```typescript
 import { SweepStatus } from "@moovio/sdk/models/components";
 
-let value: SweepStatus = "closed";
+let value: SweepStatus = "accruing";
 ```
 
 ## Values

@@ -13,16 +13,16 @@ let value: ListPartnerPricingResponse = {
   },
   result: [
     {
-      planID: "74e4f85d-b6ac-4dd2-9d03-91946518f94f",
+      planID: "ec69b652-bd5c-49c6-8b61-874e6066dc3d",
       name: "Fixed Rate Merchant Plan",
       revenueShare: 10,
-      cardAcquringModel: "flat-rate",
+      cardAcquringModel: "cost-plus",
       billableFees: [
         {
           billableEvent: "ach-volume",
           feeName: "ACH Direct Debit",
-          feeModel: "blended",
-          feeCategory: "other",
+          feeModel: "fixed",
+          feeCategory: "card-acquiring",
           feeProperties: {
             fixedAmount: {
               currency: "USD",
@@ -45,7 +45,7 @@ let value: ListPartnerPricingResponse = {
           },
         },
       ],
-      createdAt: new Date("2025-09-29T09:42:33.394Z"),
+      createdAt: new Date("2025-01-16T05:20:40.624Z"),
     },
   ],
 };

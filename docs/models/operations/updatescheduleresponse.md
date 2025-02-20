@@ -16,7 +16,7 @@ let value: UpdateScheduleResponse = {
     mode: "production",
     occurrences: {
       mode: "production",
-      runOn: new Date("2024-06-14T14:48:41.077Z"),
+      runOn: new Date("2025-01-10T23:17:10.612Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -43,7 +43,7 @@ let value: UpdateScheduleResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "yowza how yowza even chiffonier mould atop",
+        description: "every though fatherly approximate after mmm",
       },
     },
     ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -76,14 +76,15 @@ let value: UpdateScheduleResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "behind huzzah now hourly slowly plain strident",
+        description:
+          "across substitution measly intrepid beside foolishly bidet baa",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },
     scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-    createdOn: new Date("2023-09-19T15:23:14.360Z"),
-    updatedOn: new Date("2023-02-25T23:51:55.178Z"),
+    createdOn: new Date("2024-03-23T13:34:49.566Z"),
+    updatedOn: new Date("2023-02-02T17:07:23.419Z"),
   },
 };
 ```

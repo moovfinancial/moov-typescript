@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://wasteful-reach.org/",
+    link: "https://favorable-scarification.com/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "c13d0ba7-949b-462f-bf10-5f63f3a1a246",
+      accountID: "76c73173-a38a-4eea-b30c-51d8f9f82f12",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2024-08-31T10:53:14.069Z"),
+    createdOn: new Date("2025-05-03T08:12:39.015Z"),
   },
 };
 ```

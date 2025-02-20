@@ -19,6 +19,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -27,11 +28,11 @@ import { Result } from "../types/fp.js";
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/ping.read` scope.
  */
-export async function pingPing(
+export function pingPing(
   client: MoovCore,
   _request: operations.PingRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.PingResponse | undefined,
     | APIError
@@ -42,6 +43,32 @@ export async function pingPing(
     | RequestTimeoutError
     | ConnectionError
   >
+> {
+  return new APIPromise($do(
+    client,
+    _request,
+    options,
+  ));
+}
+
+async function $do(
+  client: MoovCore,
+  _request: operations.PingRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.PingResponse | undefined,
+      | APIError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
 > {
   const path = pathToFunc("/ping")();
 
@@ -58,7 +85,7 @@ export async function pingPing(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "ping",
     oAuth2Scopes: [],
 
@@ -80,7 +107,7 @@ export async function pingPing(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -91,7 +118,7 @@ export async function pingPing(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -118,8 +145,8 @@ export async function pingPing(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

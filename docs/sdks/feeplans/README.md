@@ -1,5 +1,5 @@
-# Billing
-(*billing*)
+# FeePlans
+(*feePlans*)
 
 ## Overview
 
@@ -18,6 +18,14 @@ selecting a fee plan to apply to a connected account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+* [retrieveFees](#retrievefees) - Retrieve fees associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+* [listFeesFetch](#listfeesfetch) - List fees associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 * [listPartnerPricing](#listpartnerpricing) - List all partner pricing plans available for use by an account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -47,7 +55,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.billing.listFeePlanAgreements({
+  const result = await moov.feePlans.listFeePlanAgreements({
     accountID: "4c49ae91-2b32-4a4d-91bf-f062f3c2f38d",
   });
 
@@ -64,7 +72,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { billingListFeePlanAgreements } from "@moovio/sdk/funcs/billingListFeePlanAgreements.js";
+import { feePlansListFeePlanAgreements } from "@moovio/sdk/funcs/feePlansListFeePlanAgreements.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -76,7 +84,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await billingListFeePlanAgreements(moov, {
+  const res = await feePlansListFeePlanAgreements(moov, {
     accountID: "4c49ae91-2b32-4a4d-91bf-f062f3c2f38d",
   });
 
@@ -132,7 +140,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.billing.createFeePlanAgreements({
+  const result = await moov.feePlans.createFeePlanAgreements({
     accountID: "19962eb8-00cd-44e5-8a66-a1ebaf88c2fe",
     createFeePlanAgreement: {
       planID: "b97c2d59-80c5-49ac-b1fc-40e3a81d8daf",
@@ -152,7 +160,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { billingCreateFeePlanAgreements } from "@moovio/sdk/funcs/billingCreateFeePlanAgreements.js";
+import { feePlansCreateFeePlanAgreements } from "@moovio/sdk/funcs/feePlansCreateFeePlanAgreements.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -164,7 +172,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await billingCreateFeePlanAgreements(moov, {
+  const res = await feePlansCreateFeePlanAgreements(moov, {
     accountID: "19962eb8-00cd-44e5-8a66-a1ebaf88c2fe",
     createFeePlanAgreement: {
       planID: "b97c2d59-80c5-49ac-b1fc-40e3a81d8daf",
@@ -226,7 +234,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.billing.listFeePlans({
+  const result = await moov.feePlans.listFeePlans({
     accountID: "ac8fa716-4b75-4902-b296-d734524ca45c",
   });
 
@@ -243,7 +251,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { billingListFeePlans } from "@moovio/sdk/funcs/billingListFeePlans.js";
+import { feePlansListFeePlans } from "@moovio/sdk/funcs/feePlansListFeePlans.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -255,7 +263,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await billingListFeePlans(moov, {
+  const res = await feePlansListFeePlans(moov, {
     accountID: "ac8fa716-4b75-4902-b296-d734524ca45c",
   });
 
@@ -291,6 +299,180 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
+## retrieveFees
+
+Retrieve fees associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+
+### Example Usage
+
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.feePlans.retrieveFees({
+    accountID: "45954656-ded3-4bbc-9ef3-d42c2b99db12",
+    skip: 60,
+    count: 20,
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { feePlansRetrieveFees } from "@moovio/sdk/funcs/feePlansRetrieveFees.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await feePlansRetrieveFees(moov, {
+    accountID: "45954656-ded3-4bbc-9ef3-d42c2b99db12",
+    skip: 60,
+    count: 20,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.RetrieveFeesRequest](../../models/operations/retrievefeesrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.RetrieveFeesResponse](../../models/operations/retrievefeesresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.APIError | 4XX, 5XX        | \*/\*           |
+
+## listFeesFetch
+
+List fees associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+
+### Example Usage
+
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.feePlans.listFeesFetch({
+    accountID: "7b85e951-a6d9-4e67-a155-4d18e9d1ac58",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { feePlansListFeesFetch } from "@moovio/sdk/funcs/feePlansListFeesFetch.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await feePlansListFeesFetch(moov, {
+    accountID: "7b85e951-a6d9-4e67-a155-4d18e9d1ac58",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListFeesFetchRequest](../../models/operations/listfeesfetchrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ListFeesFetchResponse](../../models/operations/listfeesfetchresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.APIError | 4XX, 5XX        | \*/\*           |
+
 ## listPartnerPricing
 
 List all partner pricing plans available for use by an account.
@@ -311,7 +493,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.billing.listPartnerPricing({
+  const result = await moov.feePlans.listPartnerPricing({
     accountID: "85f15b07-5c44-4302-ab6f-d22f8d45b7f4",
   });
 
@@ -328,7 +510,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { billingListPartnerPricing } from "@moovio/sdk/funcs/billingListPartnerPricing.js";
+import { feePlansListPartnerPricing } from "@moovio/sdk/funcs/feePlansListPartnerPricing.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -340,7 +522,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await billingListPartnerPricing(moov, {
+  const res = await feePlansListPartnerPricing(moov, {
     accountID: "85f15b07-5c44-4302-ab6f-d22f8d45b7f4",
   });
 
@@ -396,7 +578,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.billing.listPartnerPricingAgreements({
+  const result = await moov.feePlans.listPartnerPricingAgreements({
     accountID: "9366921a-25de-4c52-8ec6-4cd4ef557223",
   });
 
@@ -413,7 +595,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { billingListPartnerPricingAgreements } from "@moovio/sdk/funcs/billingListPartnerPricingAgreements.js";
+import { feePlansListPartnerPricingAgreements } from "@moovio/sdk/funcs/feePlansListPartnerPricingAgreements.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -425,7 +607,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await billingListPartnerPricingAgreements(moov, {
+  const res = await feePlansListPartnerPricingAgreements(moov, {
     accountID: "9366921a-25de-4c52-8ec6-4cd4ef557223",
   });
 

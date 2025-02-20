@@ -13,10 +13,10 @@ let value: ListRefundsResponse = {
   },
   result: [
     {
-      refundID: "d0d1222c-c219-4b80-acbb-31f7b18815eb",
-      createdOn: new Date("2025-08-20T14:30:30.151Z"),
-      updatedOn: new Date("2023-12-07T01:45:08.619Z"),
-      status: "failed",
+      refundID: "e103320b-2715-46eb-ae72-698e94f27eb8",
+      createdOn: new Date("2024-04-24T19:43:12.777Z"),
+      updatedOn: new Date("2024-03-10T21:34:54.948Z"),
+      status: "completed",
       amount: {
         currency: "USD",
         value: 1204,
