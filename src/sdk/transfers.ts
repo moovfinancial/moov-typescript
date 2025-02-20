@@ -12,6 +12,7 @@ import { transfersList } from "../funcs/transfersList.js";
 import { transfersListRefunds } from "../funcs/transfersListRefunds.js";
 import { transfersUpdate } from "../funcs/transfersUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -181,7 +182,7 @@ export class Transfers extends ClientSDK {
    * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
    */
   async generateOptions(
-    request: operations.CreateTransferOptionsRequest,
+    request: components.CreateTransferOptions,
     options?: RequestOptions,
   ): Promise<operations.CreateTransferOptionsResponse> {
     return unwrapAsync(transfersGenerateOptions(

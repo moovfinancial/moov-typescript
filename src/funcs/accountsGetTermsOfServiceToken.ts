@@ -20,6 +20,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -29,11 +30,11 @@ import { Result } from "../types/fp.js";
  * or card issuing capabilities must accept Moov's terms of service, then have the generated terms of service
  * token patched to the account. Read more in our [documentation](https://docs.moov.io/guides/accounts/requirements/platform-agreement/).
  */
-export async function accountsGetTermsOfServiceToken(
+export function accountsGetTermsOfServiceToken(
   client: MoovCore,
   request: operations.GetTermsOfServiceTokenRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.GetTermsOfServiceTokenResponse,
     | APIError
@@ -45,6 +46,32 @@ export async function accountsGetTermsOfServiceToken(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: MoovCore,
+  request: operations.GetTermsOfServiceTokenRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.GetTermsOfServiceTokenResponse,
+      | APIError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -52,7 +79,7 @@ export async function accountsGetTermsOfServiceToken(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -80,7 +107,7 @@ export async function accountsGetTermsOfServiceToken(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "getTermsOfServiceToken",
     oAuth2Scopes: [],
 
@@ -103,7 +130,7 @@ export async function accountsGetTermsOfServiceToken(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -114,7 +141,7 @@ export async function accountsGetTermsOfServiceToken(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -142,8 +169,8 @@ export async function accountsGetTermsOfServiceToken(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

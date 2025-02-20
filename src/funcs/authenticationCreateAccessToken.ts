@@ -22,16 +22,17 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
  * Create or refresh an access token.
  */
-export async function authenticationCreateAccessToken(
+export function authenticationCreateAccessToken(
   client: MoovCore,
   request: components.AuthTokenRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.CreateAccessTokenResponse,
     | errors.GenericError
@@ -45,13 +46,41 @@ export async function authenticationCreateAccessToken(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: MoovCore,
+  request: components.AuthTokenRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.CreateAccessTokenResponse,
+      | errors.GenericError
+      | errors.AuthTokenRequestError
+      | APIError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => components.AuthTokenRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
@@ -72,7 +101,7 @@ export async function authenticationCreateAccessToken(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "createAccessToken",
     oAuth2Scopes: [],
 
@@ -95,7 +124,7 @@ export async function authenticationCreateAccessToken(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -106,7 +135,7 @@ export async function authenticationCreateAccessToken(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -138,8 +167,8 @@ export async function authenticationCreateAccessToken(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

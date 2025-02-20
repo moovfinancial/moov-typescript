@@ -6,8 +6,8 @@
 import { CancelScheduleRequest } from "@moovio/sdk/models/operations";
 
 let value: CancelScheduleRequest = {
-  accountID: "9db0975f-a481-4b52-920c-b746e103801b",
-  scheduleID: "fe46e95c-ea3d-46b7-8f12-3332b3336f54",
+  accountID: "32b3336f-5415-43c1-8244-dc9459b68ea8",
+  scheduleID: "239105bb-cb97-439a-a191-8211e94182c7",
 };
 ```
 

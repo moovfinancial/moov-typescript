@@ -10,7 +10,7 @@ let value: ScheduleResponse = {
   mode: "production",
   occurrences: {
     mode: "production",
-    runOn: new Date("2023-06-25T14:33:17.707Z"),
+    runOn: new Date("2024-06-19T18:06:49.644Z"),
     runTransfer: {
       amount: {
         currency: "USD",
@@ -37,7 +37,7 @@ let value: ScheduleResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "wobbly what boohoo till so yuck except with but probe",
+      description: "but whereas hence ack oval anenst petty which unlined",
     },
   },
   ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -70,14 +70,14 @@ let value: ScheduleResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "excepting furthermore ponder once metabolise",
+      description: "whereas wise softly how which bicycle",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },
   scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-  createdOn: new Date("2025-09-21T23:39:35.603Z"),
-  updatedOn: new Date("2025-09-08T10:30:22.665Z"),
+  createdOn: new Date("2025-05-23T10:01:33.368Z"),
+  updatedOn: new Date("2025-12-29T22:14:55.291Z"),
 };
 ```
 

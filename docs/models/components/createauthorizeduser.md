@@ -8,8 +8,8 @@ Fields for identifying an authorized individual.
 import { CreateAuthorizedUser } from "@moovio/sdk/models/components";
 
 let value: CreateAuthorizedUser = {
-  firstName: "Johann",
-  lastName: "Terry",
+  firstName: "Otis",
+  lastName: "Kilback",
   birthDate: {
     day: 9,
     month: 11,

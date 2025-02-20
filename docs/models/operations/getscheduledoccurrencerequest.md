@@ -6,8 +6,8 @@
 import { GetScheduledOccurrenceRequest } from "@moovio/sdk/models/operations";
 
 let value: GetScheduledOccurrenceRequest = {
-  accountID: "53c1244d-c945-49b6-a8ea-81239105bbcb",
-  scheduleID: "739a1918-211e-4941-982c-7b6ba8d994e8",
+  accountID: "6ba8d994-e868-4244-b8b4-28d674c12fa8",
+  scheduleID: "f3c5bbf1-0b9b-4c75-ac69-e204c9f84cad",
   occurrenceFilter: "<value>",
 };
 ```

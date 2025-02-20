@@ -12,17 +12,17 @@ let value: UploadFileResponse = {
     ],
   },
   result: {
-    fileID: "93570226-bd2c-4aef-811c-23ef5dd99949",
+    fileID: "1910539e-bcfa-499d-a6ca-403b946a2668",
     fileName: "logo.png",
-    accountID: "26b9fa22-139d-4e68-ac49-2727663243bb",
+    accountID: "5c106e42-e25b-4436-bce0-2f98d00fdb27",
     filePurpose: "representative_verification",
     fileStatus: "pending",
     metadata:
       "{\"error_code\": \"document-name-mismatch\", \"requirement_id\": \"document.individual.verification\", \"representative_id\": \"c63ab175-251d-497e-a267-7346d087e180\", \"comment\": \"testing comment\"",
     decisionReason: "not correct file",
-    fileSizeBytes: 91333,
-    createdOn: new Date("2024-09-12T14:57:06.534Z"),
-    updatedOn: new Date("2023-03-28T20:15:02.629Z"),
+    fileSizeBytes: 933600,
+    createdOn: new Date("2023-01-11T03:14:09.247Z"),
+    updatedOn: new Date("2025-04-04T17:32:02.481Z"),
   },
 };
 ```

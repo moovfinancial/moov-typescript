@@ -7,7 +7,7 @@ import { AddCapabilities } from "@moovio/sdk/models/components";
 
 let value: AddCapabilities = {
   capabilities: [
-    "production-app",
+    "transfers",
   ],
 };
 ```

@@ -546,30 +546,6 @@ The following formats are accepted:
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 
-### [billing](docs/sdks/billing/README.md)
-
-* [listFeePlanAgreements](docs/sdks/billing/README.md#listfeeplanagreements) - List all fee plan agreements associated with an account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-* [createFeePlanAgreements](docs/sdks/billing/README.md#createfeeplanagreements) - Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.write` scope.
-* [listFeePlans](docs/sdks/billing/README.md#listfeeplans) - List all fee plans available for use by an account. This is intended to be used by an account when 
-selecting a fee plan to apply to a connected account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-* [listPartnerPricing](docs/sdks/billing/README.md#listpartnerpricing) - List all partner pricing plans available for use by an account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-* [listPartnerPricingAgreements](docs/sdks/billing/README.md#listpartnerpricingagreements) - List all partner pricing agreements associated with an account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-
 ### [branding](docs/sdks/branding/README.md)
 
 * [create](docs/sdks/branding/README.md#create) - Create brand properties for the specified account.
@@ -778,6 +754,38 @@ you'll need to specify the `/profile-enrichment.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/profile-enrichment.read` scope.
+
+### [feePlans](docs/sdks/feeplans/README.md)
+
+* [listFeePlanAgreements](docs/sdks/feeplans/README.md#listfeeplanagreements) - List all fee plan agreements associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+* [createFeePlanAgreements](docs/sdks/feeplans/README.md#createfeeplanagreements) - Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.write` scope.
+* [listFeePlans](docs/sdks/feeplans/README.md#listfeeplans) - List all fee plans available for use by an account. This is intended to be used by an account when 
+selecting a fee plan to apply to a connected account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+* [retrieveFees](docs/sdks/feeplans/README.md#retrievefees) - Retrieve fees associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+* [listFeesFetch](docs/sdks/feeplans/README.md#listfeesfetch) - List fees associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+* [listPartnerPricing](docs/sdks/feeplans/README.md#listpartnerpricing) - List all partner pricing plans available for use by an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+* [listPartnerPricingAgreements](docs/sdks/feeplans/README.md#listpartnerpricingagreements) - List all partner pricing agreements associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
 ### [files](docs/sdks/files/README.md)
 
@@ -1322,27 +1330,6 @@ Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
-- [`billingCreateFeePlanAgreements`](docs/sdks/billing/README.md#createfeeplanagreements) - Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.write` scope.
-- [`billingListFeePlanAgreements`](docs/sdks/billing/README.md#listfeeplanagreements) - List all fee plan agreements associated with an account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-- [`billingListFeePlans`](docs/sdks/billing/README.md#listfeeplans) - List all fee plans available for use by an account. This is intended to be used by an account when 
-selecting a fee plan to apply to a connected account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-- [`billingListPartnerPricing`](docs/sdks/billing/README.md#listpartnerpricing) - List all partner pricing plans available for use by an account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-- [`billingListPartnerPricingAgreements`](docs/sdks/billing/README.md#listpartnerpricingagreements) - List all partner pricing agreements associated with an account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 - [`brandingCreate`](docs/sdks/branding/README.md#create) - Create brand properties for the specified account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1528,6 +1515,35 @@ you'll need to specify the `/profile-enrichment.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/profile-enrichment.read` scope.
+- [`feePlansCreateFeePlanAgreements`](docs/sdks/feeplans/README.md#createfeeplanagreements) - Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.write` scope.
+- [`feePlansListFeePlanAgreements`](docs/sdks/feeplans/README.md#listfeeplanagreements) - List all fee plan agreements associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+- [`feePlansListFeePlans`](docs/sdks/feeplans/README.md#listfeeplans) - List all fee plans available for use by an account. This is intended to be used by an account when 
+selecting a fee plan to apply to a connected account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+- [`feePlansListFeesFetch`](docs/sdks/feeplans/README.md#listfeesfetch) - List fees associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+- [`feePlansListPartnerPricing`](docs/sdks/feeplans/README.md#listpartnerpricing) - List all partner pricing plans available for use by an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+- [`feePlansListPartnerPricingAgreements`](docs/sdks/feeplans/README.md#listpartnerpricingagreements) - List all partner pricing agreements associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+- [`feePlansRetrieveFees`](docs/sdks/feeplans/README.md#retrievefees) - Retrieve fees associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 - [`filesGet`](docs/sdks/files/README.md#get) - Retrieve file details associated with a specific Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -2274,7 +2290,7 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { Moov } from "@moovio/sdk";
 

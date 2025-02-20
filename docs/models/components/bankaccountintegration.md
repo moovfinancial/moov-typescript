@@ -9,7 +9,7 @@ let value: BankAccountIntegration = {
   holderName: "<value>",
   holderType: "business",
   accountNumber: "<value>",
-  bankAccountType: "checking",
+  bankAccountType: "loan",
   routingNumber: "<value>",
 };
 ```

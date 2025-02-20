@@ -11,6 +11,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const FeeModel = {
   Fixed: "fixed",
   Blended: "blended",
+  Variable: "variable",
 } as const;
 /**
  * Specifies the pricing model used for the calculation of the final fee.

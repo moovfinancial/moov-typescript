@@ -18,26 +18,24 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
+ * List fees associated with an account.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/profile.write` scope.
+ * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
  */
-export async function billingCreateFeePlanAgreements(
+export function feePlansListFeesFetch(
   client: MoovCore,
-  request: operations.CreateFeePlanAgreementsRequest,
+  request: operations.ListFeesFetchRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
-    operations.CreateFeePlanAgreementsResponse,
-    | errors.GenericError
-    | errors.FeePlanAgreementError
+    operations.ListFeesFetchResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -47,17 +45,42 @@ export async function billingCreateFeePlanAgreements(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: MoovCore,
+  request: operations.ListFeesFetchRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.ListFeesFetchResponse,
+      | APIError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.CreateFeePlanAgreementsRequest$outboundSchema.parse(value),
+    (value) => operations.ListFeesFetchRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.CreateFeePlanAgreement, {
+  const body = encodeJSON("body", payload.ListFeesFetchRequest, {
     explode: true,
   });
 
@@ -68,9 +91,7 @@ export async function billingCreateFeePlanAgreements(
     }),
   };
 
-  const path = pathToFunc("/accounts/{accountID}/fee-plan-agreements")(
-    pathParams,
-  );
+  const path = pathToFunc("/accounts/{accountID}/fees/.fetch")(pathParams);
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -86,8 +107,8 @@ export async function billingCreateFeePlanAgreements(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
-    operationID: "createFeePlanAgreements",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    operationID: "listFeesFetch",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -109,30 +130,18 @@ export async function billingCreateFeePlanAgreements(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: [
-      "400",
-      "401",
-      "403",
-      "404",
-      "409",
-      "422",
-      "429",
-      "4XX",
-      "500",
-      "504",
-      "5XX",
-    ],
+    errorCodes: ["401", "403", "429", "4XX", "500", "504", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -141,9 +150,7 @@ export async function billingCreateFeePlanAgreements(
   };
 
   const [result] = await M.match<
-    operations.CreateFeePlanAgreementsResponse,
-    | errors.GenericError
-    | errors.FeePlanAgreementError
+    operations.ListFeesFetchResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -152,20 +159,18 @@ export async function billingCreateFeePlanAgreements(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(201, operations.CreateFeePlanAgreementsResponse$inboundSchema, {
+    M.json(200, operations.ListFeesFetchResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
-    M.jsonErr(422, errors.FeePlanAgreementError$inboundSchema, { hdrs: true }),
-    M.fail([401, 403, 404, 429]),
+    M.fail([401, 403, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

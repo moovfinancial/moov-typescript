@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://elegant-stay.net",
+    link: "https://tricky-optimal.com/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "6da91616-0379-421d-819c-2abb0a24e0d8",
+      accountID: "42995c0d-e2fb-4ec1-83d0-ba7949b62ff1",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2025-04-06T09:07:29.092Z"),
+    createdOn: new Date("2024-02-02T11:52:07.630Z"),
   },
 };
 ```

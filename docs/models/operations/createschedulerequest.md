@@ -6,7 +6,7 @@
 import { CreateScheduleRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateScheduleRequest = {
-  accountID: "1b499f34-eb7b-4662-984a-6dc29b818659",
+  accountID: "5e24794e-71df-4589-bc2d-b09079ae4d7a",
   upsertSchedule: {
     occurrences: [
       {
@@ -38,7 +38,8 @@ let value: CreateScheduleRequest = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description: "deadly fen well-worn suffice",
+          description:
+            "woefully marksman brr unabashedly heighten although joshingly preheat",
         },
       },
     ],
@@ -70,7 +71,7 @@ let value: CreateScheduleRequest = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "boo critical powerfully strident",
+        description: "scrap materialise during scope aha",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },
