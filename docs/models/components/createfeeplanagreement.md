@@ -6,7 +6,7 @@
 import { CreateFeePlanAgreement } from "@moovio/sdk/models/components";
 
 let value: CreateFeePlanAgreement = {
-  planID: "0f729709-e73a-44e7-ac0b-23d145e29347",
+  planID: "2996351b-05e3-482f-8d5c-9323afce3e1f",
 };
 ```
 

@@ -3,7 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -18,23 +18,27 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List all partner pricing agreements associated with an account.
+ * Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+ * you'll need to specify the `/accounts/{accountID}/profile.write` scope.
  */
-export async function billingListPartnerPricingAgreements(
+export function feePlansCreateFeePlanAgreements(
   client: MoovCore,
-  request: operations.ListPartnerPricingAgreementsRequest,
+  request: operations.CreateFeePlanAgreementsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
-    operations.ListPartnerPricingAgreementsResponse,
+    operations.CreateFeePlanAgreementsResponse,
+    | errors.GenericError
+    | errors.FeePlanAgreementError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -44,19 +48,47 @@ export async function billingListPartnerPricingAgreements(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: MoovCore,
+  request: operations.CreateFeePlanAgreementsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.CreateFeePlanAgreementsResponse,
+      | errors.GenericError
+      | errors.FeePlanAgreementError
+      | APIError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
-      operations.ListPartnerPricingAgreementsRequest$outboundSchema.parse(
-        value,
-      ),
+      operations.CreateFeePlanAgreementsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.CreateFeePlanAgreement, {
+    explode: true,
+  });
 
   const pathParams = {
     accountID: encodeSimple("accountID", payload.accountID, {
@@ -65,16 +97,12 @@ export async function billingListPartnerPricingAgreements(
     }),
   };
 
-  const path = pathToFunc("/accounts/{accountID}/partner-pricing-agreements")(
+  const path = pathToFunc("/accounts/{accountID}/fee-plan-agreements")(
     pathParams,
   );
 
-  const query = encodeFormQuery({
-    "agreementID": payload.agreementID,
-    "status": payload.status,
-  }, { explode: false });
-
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
     "x-moov-version": encodeSimple(
       "x-moov-version",
@@ -87,8 +115,8 @@ export async function billingListPartnerPricingAgreements(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
-    operationID: "listPartnerPricingAgreements",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    operationID: "createFeePlanAgreements",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -102,27 +130,38 @@ export async function billingListPartnerPricingAgreements(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "403", "429", "4XX", "500", "504", "5XX"],
+    errorCodes: [
+      "400",
+      "401",
+      "403",
+      "404",
+      "409",
+      "422",
+      "429",
+      "4XX",
+      "500",
+      "504",
+      "5XX",
+    ],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -131,7 +170,9 @@ export async function billingListPartnerPricingAgreements(
   };
 
   const [result] = await M.match<
-    operations.ListPartnerPricingAgreementsResponse,
+    operations.CreateFeePlanAgreementsResponse,
+    | errors.GenericError
+    | errors.FeePlanAgreementError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -140,18 +181,20 @@ export async function billingListPartnerPricingAgreements(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.ListPartnerPricingAgreementsResponse$inboundSchema, {
+    M.json(201, operations.CreateFeePlanAgreementsResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),
-    M.fail([401, 403, 429]),
+    M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr(422, errors.FeePlanAgreementError$inboundSchema, { hdrs: true }),
+    M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

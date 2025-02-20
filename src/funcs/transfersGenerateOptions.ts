@@ -3,12 +3,14 @@
  */
 
 import { MoovCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
   ConnectionError,
@@ -20,6 +22,7 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -31,11 +34,11 @@ import { Result } from "../types/fp.js";
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
  */
-export async function transfersGenerateOptions(
+export function transfersGenerateOptions(
   client: MoovCore,
-  _request: operations.CreateTransferOptionsRequest,
+  request: components.CreateTransferOptions,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.CreateTransferOptionsResponse,
     | errors.GenericError
@@ -49,9 +52,49 @@ export async function transfersGenerateOptions(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: MoovCore,
+  request: components.CreateTransferOptions,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.CreateTransferOptionsResponse,
+      | errors.GenericError
+      | errors.TransferOptionsValidationError
+      | APIError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
+  const parsed = safeParse(
+    request,
+    (value) => components.CreateTransferOptions$outboundSchema.parse(value),
+    "Input validation failed",
+  );
+  if (!parsed.ok) {
+    return [parsed, { status: "invalid" }];
+  }
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload, { explode: true });
+
   const path = pathToFunc("/transfer-options")();
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
     "x-moov-version": encodeSimple(
       "x-moov-version",
@@ -64,7 +107,7 @@ export async function transfersGenerateOptions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "createTransferOptions",
     oAuth2Scopes: [],
 
@@ -83,10 +126,11 @@ export async function transfersGenerateOptions(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -97,7 +141,7 @@ export async function transfersGenerateOptions(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -131,8 +175,8 @@ export async function transfersGenerateOptions(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

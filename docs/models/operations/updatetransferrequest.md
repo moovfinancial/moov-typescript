@@ -6,8 +6,8 @@
 import { UpdateTransferRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateTransferRequest = {
-  transferID: "bb14a6c8-d1b7-4844-8353-3f7a5979bac2",
-  accountID: "573cbeb1-a649-4489-9805-c58533bae6a7",
+  transferID: "0cce1eef-c44b-4aa5-a849-cb68c3377096",
+  accountID: "e5134d8f-414f-4be9-b4f3-64a6ff1ecb5a",
   patchTransfer: {
     metadata: {
       "optional": "metadata",

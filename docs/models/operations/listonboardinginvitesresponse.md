@@ -14,7 +14,7 @@ let value: ListOnboardingInvitesResponse = {
   result: [
     {
       code: "N1IA5eWYNh",
-      link: "https://late-scratch.org",
+      link: "https://hungry-deed.org",
       scopes: [
         "accounts.read",
       ],
@@ -33,11 +33,11 @@ let value: ListOnboardingInvitesResponse = {
         },
       },
       partner: {
-        accountID: "9e6ccb67-34a5-4b95-b255-a0da042995c0",
+        accountID: "3a1a246c-82ca-4011-b34a-addc91b4c529",
         accountMode: "production",
         displayName: "Bob's Widgets",
       },
-      createdOn: new Date("2025-08-31T19:50:37.625Z"),
+      createdOn: new Date("2023-07-12T17:46:18.920Z"),
     },
   ],
 };

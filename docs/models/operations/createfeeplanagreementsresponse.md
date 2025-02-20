@@ -21,7 +21,7 @@ let value: CreateFeePlanAgreementsResponse = {
       {
         billableEvent: "ach-volume",
         feeName: "ACH Direct Debit",
-        feeModel: "blended",
+        feeModel: "variable",
         feeCategory: "card-other",
         feeProperties: {
           fixedAmount: {

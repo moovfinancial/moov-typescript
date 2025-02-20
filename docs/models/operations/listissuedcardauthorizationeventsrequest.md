@@ -6,8 +6,8 @@
 import { ListIssuedCardAuthorizationEventsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListIssuedCardAuthorizationEventsRequest = {
-  accountID: "cf93616d-602a-4b3c-b484-b6c7ae683b3b",
-  authorizationID: "fc8d76b3-1551-4da0-9828-c6989723ebf0",
+  accountID: "f05f7992-b088-43ce-af04-e048b34378ec",
+  authorizationID: "95143336-65e3-421e-9395-8ad85292d0d3",
   skip: 60,
   count: 20,
 };

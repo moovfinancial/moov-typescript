@@ -13,7 +13,7 @@ let value: GetScheduledOccurrenceResponse = {
   },
   result: {
     mode: "production",
-    runOn: new Date("2024-08-16T15:21:31.814Z"),
+    runOn: new Date("2024-05-10T08:04:00.367Z"),
     runTransfer: {
       amount: {
         currency: "USD",
@@ -40,7 +40,7 @@ let value: GetScheduledOccurrenceResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "mid huzzah sweetly smoothly",
+      description: "furthermore optimistically unlike instead of",
     },
   },
 };

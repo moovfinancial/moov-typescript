@@ -20,22 +20,22 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List all fee plans available for use by an account. This is intended to be used by an account when
- * selecting a fee plan to apply to a connected account.
+ * List all partner pricing agreements associated with an account.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
  */
-export async function billingListFeePlans(
+export function feePlansListPartnerPricingAgreements(
   client: MoovCore,
-  request: operations.ListFeePlansRequest,
+  request: operations.ListPartnerPricingAgreementsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
-    operations.ListFeePlansResponse,
+    operations.ListPartnerPricingAgreementsResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -45,13 +45,42 @@ export async function billingListFeePlans(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: MoovCore,
+  request: operations.ListPartnerPricingAgreementsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.ListPartnerPricingAgreementsResponse,
+      | APIError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
-    (value) => operations.ListFeePlansRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.ListPartnerPricingAgreementsRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -63,10 +92,13 @@ export async function billingListFeePlans(
     }),
   };
 
-  const path = pathToFunc("/accounts/{accountID}/fee-plans")(pathParams);
+  const path = pathToFunc("/accounts/{accountID}/partner-pricing-agreements")(
+    pathParams,
+  );
 
   const query = encodeFormQuery({
-    "planIDs": payload.planIDs,
+    "agreementID": payload.agreementID,
+    "status": payload.status,
   }, { explode: false });
 
   const headers = new Headers(compactMap({
@@ -82,8 +114,8 @@ export async function billingListFeePlans(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
-    operationID: "listFeePlans",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    operationID: "listPartnerPricingAgreements",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -106,7 +138,7 @@ export async function billingListFeePlans(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -117,7 +149,7 @@ export async function billingListFeePlans(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -126,7 +158,7 @@ export async function billingListFeePlans(
   };
 
   const [result] = await M.match<
-    operations.ListFeePlansResponse,
+    operations.ListPartnerPricingAgreementsResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -135,7 +167,7 @@ export async function billingListFeePlans(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.ListFeePlansResponse$inboundSchema, {
+    M.json(200, operations.ListPartnerPricingAgreementsResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),
@@ -145,8 +177,8 @@ export async function billingListFeePlans(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

@@ -22,6 +22,7 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { isBlobLike } from "../types/blobs.js";
 import { Result } from "../types/fp.js";
 import { isReadableStream } from "../types/streams.js";
@@ -35,11 +36,11 @@ import { isReadableStream } from "../types/streams.js";
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/files.write` scope.
  */
-export async function filesUpload(
+export function filesUpload(
   client: MoovCore,
   request: operations.UploadFileRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.UploadFileResponse,
     | errors.GenericError
@@ -53,13 +54,41 @@ export async function filesUpload(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: MoovCore,
+  request: operations.UploadFileRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.UploadFileResponse,
+      | errors.GenericError
+      | errors.FileValidationError
+      | APIError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => operations.UploadFileRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = new FormData();
@@ -115,7 +144,7 @@ export async function filesUpload(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "uploadFile",
     oAuth2Scopes: [],
 
@@ -138,7 +167,7 @@ export async function filesUpload(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -161,7 +190,7 @@ export async function filesUpload(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -193,8 +222,8 @@ export async function filesUpload(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

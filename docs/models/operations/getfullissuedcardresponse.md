@@ -12,7 +12,7 @@ let value: GetFullIssuedCardResponse = {
     ],
   },
   result: {
-    issuedCardID: "cc3fc9b7-1a6f-412e-8735-1ae9a4be03ec",
+    issuedCardID: "9c2abb0a-24e0-4d80-acd7-ce9e6ccb6734",
     brand: "Visa",
     lastFourCardNumber: "<value>",
     expiration: {
@@ -20,11 +20,11 @@ let value: GetFullIssuedCardResponse = {
       year: "21",
     },
     authorizedUser: {
-      firstName: "Darlene",
-      lastName: "Hammes",
+      firstName: "Eriberto",
+      lastName: "Muller",
     },
     fundingWalletID: "<id>",
-    state: "active",
+    state: "inactive",
     formFactor: "virtual",
     controls: {
       velocityLimits: [
@@ -34,9 +34,9 @@ let value: GetFullIssuedCardResponse = {
         },
       ],
     },
-    createdOn: new Date("2023-07-07T02:31:50.544Z"),
+    createdOn: new Date("2023-07-03T17:01:53.987Z"),
     pan: "<value>",
-    cvv: "218",
+    cvv: "336",
   },
 };
 ```

@@ -9,7 +9,6 @@ import { ApplePay } from "./applepay.js";
 import { Authentication } from "./authentication.js";
 import { Avatars } from "./avatars.js";
 import { BankAccounts } from "./bankaccounts.js";
-import { Billing } from "./billing.js";
 import { Branding } from "./branding.js";
 import { Capabilities } from "./capabilities.js";
 import { CardIssuing } from "./cardissuing.js";
@@ -18,6 +17,7 @@ import { Disputes } from "./disputes.js";
 import { EndToEndEncryption } from "./endtoendencryption.js";
 import { EnrichedAddress } from "./enrichedaddress.js";
 import { EnrichedProfile } from "./enrichedprofile.js";
+import { FeePlans } from "./feeplans.js";
 import { Files } from "./files.js";
 import { Industries } from "./industries.js";
 import { Institutions } from "./institutions.js";
@@ -75,9 +75,9 @@ export class Moov extends ClientSDK {
     return (this._disputes ??= new Disputes(this._options));
   }
 
-  private _billing?: Billing;
-  get billing(): Billing {
-    return (this._billing ??= new Billing(this._options));
+  private _feePlans?: FeePlans;
+  get feePlans(): FeePlans {
+    return (this._feePlans ??= new FeePlans(this._options));
   }
 
   private _files?: Files;
