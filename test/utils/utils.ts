@@ -5,10 +5,13 @@ import type {
   BankAccountPayload,
   CreateAccount,
   CreateRepresentative,
+  CreateTransferOptions,
   LinkCard,
+  PaymentMethod,
 } from "../../models/components";
 import { merge } from "remeda";
 import { sleep } from "bun";
+import { expect } from "bun:test";
 const chance = new Chance();
 
 export type DeepPartial<T> = T extends object
@@ -16,6 +19,9 @@ export type DeepPartial<T> = T extends object
       [P in keyof T]?: DeepPartial<T[P]>;
     }
   : T;
+
+export const SOURCE_ACCOUNT_ID = "5acdc734-8c9d-448f-be13-136efa707b7b"; // Ramen Corp
+export const UUID_REGEX = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 
 const getDefaultAccount = () => {
   const truncatedLegalBusinessName = chance.company().slice(0, 50); // Because the total lenght has to be less than 64 chars
@@ -152,7 +158,6 @@ export const createAccountWithWallet = async (account: DeepPartial<CreateAccount
       capabilityID: "wallet",
     });
     walletCapability = result;
-    console.log("WALLET CAPABILITY", walletCapability);
     if (walletCapability.status !== "enabled") {
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
@@ -210,4 +215,62 @@ export const createCard = async (accountID: string, card: DeepPartial<LinkCard> 
   });
   ids.seen({ accountID, cardID: result.cardID });
   return { card: result, cardNumber: mergedCard.cardNumber };
+};
+
+export const crateAccountAndGetTransferOptions = async () => {
+  const doneCheck = (data: { result: PaymentMethod[] }) => data.result.length > 0;
+
+  // Create destination account with card and bank account
+  const destinationAccount = await createAccountWithWallet();
+  const destinationAccountID = destinationAccount.accountID;
+  await createBankAccount(destinationAccountID);
+  createCard(destinationAccountID);
+
+  // Get the payment method ID for the card
+  const { result: destinationPaymentMethods } = await waitFor(
+    () => moov.paymentMethods.list({ accountID: destinationAccountID }),
+    {
+      doneCheck,
+    },
+  );
+
+  const generateOptionsRequest: CreateTransferOptions = {
+    source: { accountID: SOURCE_ACCOUNT_ID },
+    destination: { accountID: destinationAccountID },
+    amount: { currency: "USD", value: 1 },
+  };
+  const { result: availablePaymentMethods } = await moov.transfers.generateOptions(generateOptionsRequest);
+  expect(availablePaymentMethods).toBeDefined();
+  expect(availablePaymentMethods.sourceOptions).toBeArray();
+  expect(availablePaymentMethods.sourceOptions!.length).toBeGreaterThan(0);
+  expect(availablePaymentMethods.destinationOptions).toBeArray();
+  expect(availablePaymentMethods.destinationOptions!.length).toBeGreaterThan(0);
+  return availablePaymentMethods;
+};
+
+export const waitFor = async <T>(
+  callback: () => Promise<T>,
+  options: { doneCheck?: (data: T) => boolean; interval?: number; timeout?: number } = {},
+): Promise<T> => {
+  const { interval = 250, timeout = 10000 } = options;
+  const startTime = Date.now();
+  const doneCheck = options.doneCheck || ((data) => !!data);
+  const i = 0;
+
+  while (true) {
+    try {
+      const result = await callback();
+      if (doneCheck(result)) {
+        return result;
+      }
+    } catch (error) {
+      // Ignore errors and continue polling
+    }
+
+    if (Date.now() - startTime >= timeout) {
+      throw new Error("waitFor timed out");
+    }
+
+    await sleep(interval);
+  }
 };
