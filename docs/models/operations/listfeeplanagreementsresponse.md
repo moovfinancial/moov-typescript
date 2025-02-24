@@ -15,6 +15,7 @@ let value: ListFeePlanAgreementsResponse = {
     {
       aggreementID: "c12ab9f7-2a99-48f2-8123-993777c7c28d",
       planID: "792c1f75-16a1-44da-932e-42f4176e211e",
+      name: "<value>",
       acceptedOn: new Date("2023-06-15T01:33:14.819Z"),
       status: "terminated",
       cardAcquringModel: "flat-rate",

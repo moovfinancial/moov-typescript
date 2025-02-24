@@ -33,11 +33,11 @@ export type SDKOptions = {
   /**
    * Allows overriding the default server used by the SDK
    */
-  serverIdx?: number;
+  serverIdx?: number | undefined;
   /**
    * Allows overriding the default server URL used by the SDK
    */
-  serverURL?: string;
+  serverURL?: string | undefined;
   /**
    * Allows overriding the default retry config used by the SDK
    */
@@ -66,7 +66,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "latest",
-  sdkVersion: "0.4.0",
-  genVersion: "2.517.3",
-  userAgent: "speakeasy-sdk/typescript 0.4.0 2.517.3 latest @moovio/sdk",
+  sdkVersion: "0.5.0",
+  genVersion: "2.522.1",
+  userAgent: "speakeasy-sdk/typescript 0.5.0 2.522.1 latest @moovio/sdk",
 } as const;
