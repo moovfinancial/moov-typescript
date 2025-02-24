@@ -69,7 +69,7 @@ export type BankAccount = {
   /**
    * The reason the bank account status changed to the current value.
    */
-  statusReason: BankAccountStatusReason;
+  statusReason?: BankAccountStatusReason | undefined;
   /**
    * Reason for, and details related to, an `errored` or `verificationFailed` bank account status.
    */
@@ -101,7 +101,7 @@ export const BankAccount$inboundSchema: z.ZodType<
   routingNumber: z.string(),
   lastFourAccountNumber: z.string(),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  statusReason: BankAccountStatusReason$inboundSchema,
+  statusReason: BankAccountStatusReason$inboundSchema.optional(),
   exceptionDetails: BankAccountException$inboundSchema.optional(),
   paymentMethods: z.array(BasicPaymentMethod$inboundSchema).optional(),
 });
@@ -118,7 +118,7 @@ export type BankAccount$Outbound = {
   routingNumber: string;
   lastFourAccountNumber: string;
   updatedOn: string;
-  statusReason: string;
+  statusReason?: string | undefined;
   exceptionDetails?: BankAccountException$Outbound | undefined;
   paymentMethods?: Array<BasicPaymentMethod$Outbound> | undefined;
 };
@@ -139,7 +139,7 @@ export const BankAccount$outboundSchema: z.ZodType<
   routingNumber: z.string(),
   lastFourAccountNumber: z.string(),
   updatedOn: z.date().transform(v => v.toISOString()),
-  statusReason: BankAccountStatusReason$outboundSchema,
+  statusReason: BankAccountStatusReason$outboundSchema.optional(),
   exceptionDetails: BankAccountException$outboundSchema.optional(),
   paymentMethods: z.array(BasicPaymentMethod$outboundSchema).optional(),
 });

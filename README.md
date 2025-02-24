@@ -1005,6 +1005,25 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
+### [terminalApplications](docs/sdks/terminalapplications/README.md)
+
+* [create](docs/sdks/terminalapplications/README.md#create) - Create a new terminal application.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/terminalApplications.write` scope.
+* [list](docs/sdks/terminalapplications/README.md#list) - List all the terminal applications for a Moov Account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/terminalApplications.read` scope.
+* [get](docs/sdks/terminalapplications/README.md#get) - Fetch a specific terminal application.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/terminalApplications.read` scope.
+* [delete](docs/sdks/terminalapplications/README.md#delete) - Delete a specific terminal application.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/terminalApplications.write` scope.
+
 ### [transfers](docs/sdks/transfers/README.md)
 
 * [create](docs/sdks/transfers/README.md#create) - Move money by providing the source, destination, and amount in the request body.
@@ -1728,6 +1747,22 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
+- [`terminalApplicationsCreate`](docs/sdks/terminalapplications/README.md#create) - Create a new terminal application.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/terminalApplications.write` scope.
+- [`terminalApplicationsDelete`](docs/sdks/terminalapplications/README.md#delete) - Delete a specific terminal application.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/terminalApplications.write` scope.
+- [`terminalApplicationsGet`](docs/sdks/terminalapplications/README.md#get) - Fetch a specific terminal application.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/terminalApplications.read` scope.
+- [`terminalApplicationsList`](docs/sdks/terminalapplications/README.md#list) - List all the terminal applications for a Moov Account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/terminalApplications.read` scope.
 - [`transfersCreate`](docs/sdks/transfers/README.md#create) - Move money by providing the source, destination, and amount in the request body.
 
 Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 

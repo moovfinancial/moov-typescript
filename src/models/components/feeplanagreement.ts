@@ -27,6 +27,14 @@ export type FeePlanAgreement = {
   aggreementID: string;
   planID: string;
   accountID?: string | undefined;
+  /**
+   * The name of the agreement.
+   */
+  name: string;
+  /**
+   * The description of the agreement.
+   */
+  description?: string | undefined;
   acceptedOn: Date;
   status: FeePlanAgreementStatus;
   /**
@@ -45,6 +53,8 @@ export const FeePlanAgreement$inboundSchema: z.ZodType<
   aggreementID: z.string(),
   planID: z.string(),
   accountID: z.string().optional(),
+  name: z.string(),
+  description: z.string().optional(),
   acceptedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   status: FeePlanAgreementStatus$inboundSchema,
   cardAcquringModel: CardAcquringModel$inboundSchema,
@@ -56,6 +66,8 @@ export type FeePlanAgreement$Outbound = {
   aggreementID: string;
   planID: string;
   accountID?: string | undefined;
+  name: string;
+  description?: string | undefined;
   acceptedOn: string;
   status: string;
   cardAcquringModel: string;
@@ -71,6 +83,8 @@ export const FeePlanAgreement$outboundSchema: z.ZodType<
   aggreementID: z.string(),
   planID: z.string(),
   accountID: z.string().optional(),
+  name: z.string(),
+  description: z.string().optional(),
   acceptedOn: z.date().transform(v => v.toISOString()),
   status: FeePlanAgreementStatus$outboundSchema,
   cardAcquringModel: CardAcquringModel$outboundSchema,
