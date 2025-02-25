@@ -29,6 +29,7 @@ import { Ping } from "./ping.js";
 import { Representatives } from "./representatives.js";
 import { Scheduling } from "./scheduling.js";
 import { Sweeps } from "./sweeps.js";
+import { TerminalApplications } from "./terminalapplications.js";
 import { Transfers } from "./transfers.js";
 import { Underwriting } from "./underwriting.js";
 import { Wallets } from "./wallets.js";
@@ -185,5 +186,12 @@ export class Moov extends ClientSDK {
   private _ping?: Ping;
   get ping(): Ping {
     return (this._ping ??= new Ping(this._options));
+  }
+
+  private _terminalApplications?: TerminalApplications;
+  get terminalApplications(): TerminalApplications {
+    return (this._terminalApplications ??= new TerminalApplications(
+      this._options,
+    ));
   }
 }

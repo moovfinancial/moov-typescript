@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: ad9e0c274a187107458a68e9aa753d18
+  docChecksum: f73b978daef12a9be239bec4a59b1f82
   docVersion: latest
-  speakeasyVersion: 1.497.0
-  generationVersion: 2.517.3
-  releaseVersion: 0.4.0
-  configChecksum: 5b5f1099fb1ca6abaf261c637cafb7dd
+  speakeasyVersion: 1.502.0
+  generationVersion: 2.524.1
+  releaseVersion: 0.5.0
+  configChecksum: 97c5142655aaa3b090dc2731a5a2406b
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.20.0
+    core: 3.21.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -26,6 +26,7 @@ features:
     globalServerURLs: 2.82.4
     globals: 2.82.2
     hiddenGlobals: 0.1.0
+    mcpServer: 0.3.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.2.3
@@ -181,6 +182,7 @@ generatedFiles:
   - docs/models/components/createrepresentative.md
   - docs/models/components/createreversal.md
   - docs/models/components/createsweepconfig.md
+  - docs/models/components/createterminalapplication.md
   - docs/models/components/createtransfer.md
   - docs/models/components/createtransferdestination.md
   - docs/models/components/createtransferdestinationach.md
@@ -382,6 +384,9 @@ generatedFiles:
   - docs/models/components/taxid.md
   - docs/models/components/taxidupdate.md
   - docs/models/components/taxidupdateein.md
+  - docs/models/components/terminalapplication.md
+  - docs/models/components/terminalapplicationplatform.md
+  - docs/models/components/terminalapplicationstatus.md
   - docs/models/components/termsofservice.md
   - docs/models/components/termsofserviceerror.md
   - docs/models/components/termsofservicetoken.md
@@ -457,6 +462,7 @@ generatedFiles:
   - docs/models/errors/reversalvalidationerror.md
   - docs/models/errors/revoketokenrequesterror.md
   - docs/models/errors/schedulevalidationerror.md
+  - docs/models/errors/terminalapplicationerror.md
   - docs/models/errors/transfer.md
   - docs/models/errors/transferoptionsvalidationerror.md
   - docs/models/errors/transfervalidationerror.md
@@ -511,6 +517,8 @@ generatedFiles:
   - docs/models/operations/createsweepconfigglobals.md
   - docs/models/operations/createsweepconfigrequest.md
   - docs/models/operations/createsweepconfigresponse.md
+  - docs/models/operations/createterminalapplicationglobals.md
+  - docs/models/operations/createterminalapplicationresponse.md
   - docs/models/operations/createtransferglobals.md
   - docs/models/operations/createtransferoptionsglobals.md
   - docs/models/operations/createtransferoptionsresponse.md
@@ -523,6 +531,9 @@ generatedFiles:
   - docs/models/operations/deleterepresentativeglobals.md
   - docs/models/operations/deleterepresentativerequest.md
   - docs/models/operations/deleterepresentativeresponse.md
+  - docs/models/operations/deleteterminalapplicationglobals.md
+  - docs/models/operations/deleteterminalapplicationrequest.md
+  - docs/models/operations/deleteterminalapplicationresponse.md
   - docs/models/operations/disablebankaccountglobals.md
   - docs/models/operations/disablebankaccountrequest.md
   - docs/models/operations/disablebankaccountresponse.md
@@ -636,6 +647,9 @@ generatedFiles:
   - docs/models/operations/getsweepglobals.md
   - docs/models/operations/getsweeprequest.md
   - docs/models/operations/getsweepresponse.md
+  - docs/models/operations/getterminalapplicationglobals.md
+  - docs/models/operations/getterminalapplicationrequest.md
+  - docs/models/operations/getterminalapplicationresponse.md
   - docs/models/operations/gettermsofservicetokenglobals.md
   - docs/models/operations/gettermsofservicetokenrequest.md
   - docs/models/operations/gettermsofservicetokenresponse.md
@@ -751,6 +765,9 @@ generatedFiles:
   - docs/models/operations/listsweepsglobals.md
   - docs/models/operations/listsweepsrequest.md
   - docs/models/operations/listsweepsresponse.md
+  - docs/models/operations/listterminalapplicationsglobals.md
+  - docs/models/operations/listterminalapplicationsrequest.md
+  - docs/models/operations/listterminalapplicationsresponse.md
   - docs/models/operations/listtransfersglobals.md
   - docs/models/operations/listtransfersrequest.md
   - docs/models/operations/listtransfersresponse.md
@@ -860,6 +877,7 @@ generatedFiles:
   - docs/sdks/representatives/README.md
   - docs/sdks/scheduling/README.md
   - docs/sdks/sweeps/README.md
+  - docs/sdks/terminalapplications/README.md
   - docs/sdks/transfers/README.md
   - docs/sdks/underwriting/README.md
   - docs/sdks/wallets/README.md
@@ -976,6 +994,10 @@ generatedFiles:
   - src/funcs/sweepsList.ts
   - src/funcs/sweepsListConfigs.ts
   - src/funcs/sweepsUpdateConfig.ts
+  - src/funcs/terminalApplicationsCreate.ts
+  - src/funcs/terminalApplicationsDelete.ts
+  - src/funcs/terminalApplicationsGet.ts
+  - src/funcs/terminalApplicationsList.ts
   - src/funcs/transfersCreate.ts
   - src/funcs/transfersCreateReversal.ts
   - src/funcs/transfersGenerateOptions.ts
@@ -1010,6 +1032,144 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
+  - src/mcp-server/build.mts
+  - src/mcp-server/cli.ts
+  - src/mcp-server/cli/start/command.ts
+  - src/mcp-server/cli/start/impl.ts
+  - src/mcp-server/console-logger.ts
+  - src/mcp-server/mcp-server.ts
+  - src/mcp-server/resources.ts
+  - src/mcp-server/scopes.ts
+  - src/mcp-server/server.ts
+  - src/mcp-server/shared.ts
+  - src/mcp-server/tools.ts
+  - src/mcp-server/tools/accountsAssignCountries.ts
+  - src/mcp-server/tools/accountsCreate.ts
+  - src/mcp-server/tools/accountsDisconnect.ts
+  - src/mcp-server/tools/accountsGet.ts
+  - src/mcp-server/tools/accountsGetCountries.ts
+  - src/mcp-server/tools/accountsGetMerchantProcessingAgreement.ts
+  - src/mcp-server/tools/accountsGetTermsOfServiceToken.ts
+  - src/mcp-server/tools/accountsList.ts
+  - src/mcp-server/tools/accountsUpdate.ts
+  - src/mcp-server/tools/adjustmentsGet.ts
+  - src/mcp-server/tools/adjustmentsList.ts
+  - src/mcp-server/tools/applePayCreateSession.ts
+  - src/mcp-server/tools/applePayGetMerchantDomains.ts
+  - src/mcp-server/tools/applePayLinkToken.ts
+  - src/mcp-server/tools/applePayRegisterMerchantDomains.ts
+  - src/mcp-server/tools/applePayUpdateMerchantDomains.ts
+  - src/mcp-server/tools/authenticationCreateAccessToken.ts
+  - src/mcp-server/tools/authenticationRevokeAccessToken.ts
+  - src/mcp-server/tools/avatarsGet.ts
+  - src/mcp-server/tools/bankAccountsCompleteMicroDeposits.ts
+  - src/mcp-server/tools/bankAccountsCompleteVerification.ts
+  - src/mcp-server/tools/bankAccountsDisable.ts
+  - src/mcp-server/tools/bankAccountsGet.ts
+  - src/mcp-server/tools/bankAccountsGetVerification.ts
+  - src/mcp-server/tools/bankAccountsInitiateMicroDeposits.ts
+  - src/mcp-server/tools/bankAccountsInitiateVerification.ts
+  - src/mcp-server/tools/bankAccountsLink.ts
+  - src/mcp-server/tools/bankAccountsList.ts
+  - src/mcp-server/tools/brandingCreate.ts
+  - src/mcp-server/tools/brandingGet.ts
+  - src/mcp-server/tools/brandingUpdate.ts
+  - src/mcp-server/tools/brandingUpsert.ts
+  - src/mcp-server/tools/capabilitiesDisable.ts
+  - src/mcp-server/tools/capabilitiesGet.ts
+  - src/mcp-server/tools/capabilitiesList.ts
+  - src/mcp-server/tools/capabilitiesRequest.ts
+  - src/mcp-server/tools/cardIssuingGet.ts
+  - src/mcp-server/tools/cardIssuingGetFull.ts
+  - src/mcp-server/tools/cardIssuingList.ts
+  - src/mcp-server/tools/cardIssuingRequest.ts
+  - src/mcp-server/tools/cardIssuingUpdate.ts
+  - src/mcp-server/tools/cardsDisable.ts
+  - src/mcp-server/tools/cardsGet.ts
+  - src/mcp-server/tools/cardsLink.ts
+  - src/mcp-server/tools/cardsList.ts
+  - src/mcp-server/tools/cardsUpdate.ts
+  - src/mcp-server/tools/disputesAccept.ts
+  - src/mcp-server/tools/disputesDeleteEvidence.ts
+  - src/mcp-server/tools/disputesGet.ts
+  - src/mcp-server/tools/disputesGetEvidence.ts
+  - src/mcp-server/tools/disputesGetEvidenceData.ts
+  - src/mcp-server/tools/disputesList.ts
+  - src/mcp-server/tools/disputesListEvidence.ts
+  - src/mcp-server/tools/disputesSubmitEvidence.ts
+  - src/mcp-server/tools/disputesUpdateEvidence.ts
+  - src/mcp-server/tools/disputesUploadEvidenceFile.ts
+  - src/mcp-server/tools/disputesUploadEvidenceText.ts
+  - src/mcp-server/tools/endToEndEncryptionGenerateKey.ts
+  - src/mcp-server/tools/endToEndEncryptionTestEncryptedToken.ts
+  - src/mcp-server/tools/enrichedAddressGet.ts
+  - src/mcp-server/tools/enrichedProfileGet.ts
+  - src/mcp-server/tools/feePlansCreateFeePlanAgreements.ts
+  - src/mcp-server/tools/feePlansListFeePlanAgreements.ts
+  - src/mcp-server/tools/feePlansListFeePlans.ts
+  - src/mcp-server/tools/feePlansListFeesFetch.ts
+  - src/mcp-server/tools/feePlansListPartnerPricing.ts
+  - src/mcp-server/tools/feePlansListPartnerPricingAgreements.ts
+  - src/mcp-server/tools/feePlansRetrieveFees.ts
+  - src/mcp-server/tools/filesGet.ts
+  - src/mcp-server/tools/filesList.ts
+  - src/mcp-server/tools/filesUpload.ts
+  - src/mcp-server/tools/industriesList.ts
+  - src/mcp-server/tools/institutionsSearch.ts
+  - src/mcp-server/tools/issuingTransactionsGet.ts
+  - src/mcp-server/tools/issuingTransactionsGetAuthorization.ts
+  - src/mcp-server/tools/issuingTransactionsList.ts
+  - src/mcp-server/tools/issuingTransactionsListAuthorizationEvents.ts
+  - src/mcp-server/tools/issuingTransactionsListAuthorizations.ts
+  - src/mcp-server/tools/onboardingCreateInvite.ts
+  - src/mcp-server/tools/onboardingGetInvite.ts
+  - src/mcp-server/tools/onboardingListInvites.ts
+  - src/mcp-server/tools/onboardingRevokeInvite.ts
+  - src/mcp-server/tools/paymentLinksCreate.ts
+  - src/mcp-server/tools/paymentLinksDisable.ts
+  - src/mcp-server/tools/paymentLinksGet.ts
+  - src/mcp-server/tools/paymentLinksGetQRCode.ts
+  - src/mcp-server/tools/paymentLinksList.ts
+  - src/mcp-server/tools/paymentLinksUpdate.ts
+  - src/mcp-server/tools/paymentMethodsGet.ts
+  - src/mcp-server/tools/paymentMethodsList.ts
+  - src/mcp-server/tools/pingPing.ts
+  - src/mcp-server/tools/representativesCreate.ts
+  - src/mcp-server/tools/representativesDelete.ts
+  - src/mcp-server/tools/representativesGet.ts
+  - src/mcp-server/tools/representativesList.ts
+  - src/mcp-server/tools/representativesUpdate.ts
+  - src/mcp-server/tools/schedulingCancel.ts
+  - src/mcp-server/tools/schedulingCreate.ts
+  - src/mcp-server/tools/schedulingGet.ts
+  - src/mcp-server/tools/schedulingGetOccurrance.ts
+  - src/mcp-server/tools/schedulingList.ts
+  - src/mcp-server/tools/schedulingUpdate.ts
+  - src/mcp-server/tools/sweepsCreateConfig.ts
+  - src/mcp-server/tools/sweepsGet.ts
+  - src/mcp-server/tools/sweepsGetConfig.ts
+  - src/mcp-server/tools/sweepsList.ts
+  - src/mcp-server/tools/sweepsListConfigs.ts
+  - src/mcp-server/tools/sweepsUpdateConfig.ts
+  - src/mcp-server/tools/terminalApplicationsCreate.ts
+  - src/mcp-server/tools/terminalApplicationsDelete.ts
+  - src/mcp-server/tools/terminalApplicationsGet.ts
+  - src/mcp-server/tools/terminalApplicationsList.ts
+  - src/mcp-server/tools/transfersCreate.ts
+  - src/mcp-server/tools/transfersCreateReversal.ts
+  - src/mcp-server/tools/transfersGenerateOptions.ts
+  - src/mcp-server/tools/transfersGet.ts
+  - src/mcp-server/tools/transfersGetRefund.ts
+  - src/mcp-server/tools/transfersInitiateRefund.ts
+  - src/mcp-server/tools/transfersList.ts
+  - src/mcp-server/tools/transfersListRefunds.ts
+  - src/mcp-server/tools/transfersUpdate.ts
+  - src/mcp-server/tools/underwritingGet.ts
+  - src/mcp-server/tools/underwritingUpsert.ts
+  - src/mcp-server/tools/walletTransactionsGet.ts
+  - src/mcp-server/tools/walletTransactionsList.ts
+  - src/mcp-server/tools/walletsGet.ts
+  - src/mcp-server/tools/walletsList.ts
   - src/models/components/account.ts
   - src/models/components/accountcapability.ts
   - src/models/components/accountcountries.ts
@@ -1134,6 +1294,7 @@ generatedFiles:
   - src/models/components/createrepresentative.ts
   - src/models/components/createreversal.ts
   - src/models/components/createsweepconfig.ts
+  - src/models/components/createterminalapplication.ts
   - src/models/components/createtransfer.ts
   - src/models/components/createtransferdestination.ts
   - src/models/components/createtransferdestinationach.ts
@@ -1313,6 +1474,9 @@ generatedFiles:
   - src/models/components/sweepstatus.ts
   - src/models/components/taxid.ts
   - src/models/components/taxidupdate.ts
+  - src/models/components/terminalapplication.ts
+  - src/models/components/terminalapplicationplatform.ts
+  - src/models/components/terminalapplicationstatus.ts
   - src/models/components/termsofservice.ts
   - src/models/components/termsofserviceerror.ts
   - src/models/components/termsofservicetoken.ts
@@ -1382,6 +1546,7 @@ generatedFiles:
   - src/models/errors/revoketokenrequesterror.ts
   - src/models/errors/schedulevalidationerror.ts
   - src/models/errors/sdkvalidationerror.ts
+  - src/models/errors/terminalapplicationerror.ts
   - src/models/errors/transfer.ts
   - src/models/errors/transferoptionsvalidationerror.ts
   - src/models/errors/transfervalidationerror.ts
@@ -1406,10 +1571,12 @@ generatedFiles:
   - src/models/operations/createreversal.ts
   - src/models/operations/createschedule.ts
   - src/models/operations/createsweepconfig.ts
+  - src/models/operations/createterminalapplication.ts
   - src/models/operations/createtransfer.ts
   - src/models/operations/createtransferoptions.ts
   - src/models/operations/deletedisputeevidencefile.ts
   - src/models/operations/deleterepresentative.ts
+  - src/models/operations/deleteterminalapplication.ts
   - src/models/operations/disablebankaccount.ts
   - src/models/operations/disablecapability.ts
   - src/models/operations/disablecard.ts
@@ -1447,6 +1614,7 @@ generatedFiles:
   - src/models/operations/getschedules.ts
   - src/models/operations/getsweep.ts
   - src/models/operations/getsweepconfig.ts
+  - src/models/operations/getterminalapplication.ts
   - src/models/operations/gettermsofservicetoken.ts
   - src/models/operations/gettransfer.ts
   - src/models/operations/getunderwriting.ts
@@ -1486,6 +1654,7 @@ generatedFiles:
   - src/models/operations/listschedules.ts
   - src/models/operations/listsweepconfigs.ts
   - src/models/operations/listsweeps.ts
+  - src/models/operations/listterminalapplications.ts
   - src/models/operations/listtransfers.ts
   - src/models/operations/listwallets.ts
   - src/models/operations/listwallettransactions.ts
@@ -1542,6 +1711,7 @@ generatedFiles:
   - src/sdk/scheduling.ts
   - src/sdk/sdk.ts
   - src/sdk/sweeps.ts
+  - src/sdk/terminalapplications.ts
   - src/sdk/transfers.ts
   - src/sdk/underwriting.ts
   - src/sdk/wallets.ts
@@ -2121,7 +2291,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"aggreementID": "e326d153-ca61-4e3e-a86a-3e450e955fd6", "planID": "7a6c5eb4-879b-4c21-b9fa-71eb2181b3ad", "acceptedOn": "2024-03-10T19:49:08.718Z", "status": "terminated", "cardAcquringModel": "flat-rate", "billableFees": [{"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "fixed", "feeCategory": "network-passthrough", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}]}, {"aggreementID": "0c6542c4-837f-4de6-bbbf-3a11a1ba31f2", "planID": "50844514-ef1f-40ee-adc6-d314e85a7739", "acceptedOn": "2024-02-27T23:25:25.370Z", "status": "terminated", "cardAcquringModel": "cost-plus", "billableFees": [{"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "blended", "feeCategory": "other", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}]}]
+          application/json: [{"aggreementID": "e326d153-ca61-4e3e-a86a-3e450e955fd6", "planID": "7a6c5eb4-879b-4c21-b9fa-71eb2181b3ad", "name": "<value>", "acceptedOn": "2024-03-10T19:49:08.718Z", "status": "terminated", "cardAcquringModel": "flat-rate", "billableFees": [{"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "fixed", "feeCategory": "network-passthrough", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}]}, {"aggreementID": "0c6542c4-837f-4de6-bbbf-3a11a1ba31f2", "planID": "50844514-ef1f-40ee-adc6-d314e85a7739", "name": "<value>", "acceptedOn": "2024-02-27T23:25:25.370Z", "status": "terminated", "cardAcquringModel": "cost-plus", "billableFees": [{"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "blended", "feeCategory": "other", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}]}]
   createFeePlanAgreements:
     speakeasy-default-create-fee-plan-agreements:
       parameters:
@@ -2132,7 +2302,7 @@ examples:
         application/json: {"planID": "b97c2d59-80c5-49ac-b1fc-40e3a81d8daf"}
       responses:
         "201":
-          application/json: {"aggreementID": "0e7fb8cc-5d6a-4a0e-8955-4d9f85c03fa6", "planID": "10fadd5b-11fb-4499-ae95-794da03fdea6", "acceptedOn": "2024-03-30T02:16:07.411Z", "status": "active", "cardAcquringModel": "cost-plus", "billableFees": [{"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "fixed", "feeCategory": "ach", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}]}
+          application/json: {"aggreementID": "0e7fb8cc-5d6a-4a0e-8955-4d9f85c03fa6", "planID": "10fadd5b-11fb-4499-ae95-794da03fdea6", "name": "<value>", "acceptedOn": "2024-03-30T02:16:07.411Z", "status": "active", "cardAcquringModel": "cost-plus", "billableFees": [{"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "fixed", "feeCategory": "ach", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}]}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -2166,7 +2336,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"aggreementID": "2e58b719-fcad-47dc-8484-21ac31dce8dd", "planID": "3f51f992-c3cc-4fd2-b0b7-17c682c67267", "acceptedOn": "2025-10-11T07:38:13.898Z", "status": "active", "cardAcquringModel": "flat-rate", "billableFees": [{"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "blended", "feeCategory": "card-pull", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}, {"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "blended", "feeCategory": "card-push", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}], "revenueShare": 10}]
+          application/json: [{"aggreementID": "2e58b719-fcad-47dc-8484-21ac31dce8dd", "planID": "3f51f992-c3cc-4fd2-b0b7-17c682c67267", "name": "<value>", "acceptedOn": "2025-10-11T07:38:13.898Z", "status": "active", "cardAcquringModel": "flat-rate", "billableFees": [{"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "blended", "feeCategory": "card-pull", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}, {"billableEvent": "ach-volume", "feeName": "ACH Direct Debit", "feeModel": "blended", "feeCategory": "card-push", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "variableRate": "0.05", "minPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}, "maxPerTransaction": {"currency": "USD", "valueDecimal": "12.987654321"}}, "feeConditions": {"cardBrand": ["visa"]}}], "revenueShare": 10}]
   uploadFile:
     speakeasy-default-upload-file:
       parameters:
@@ -3102,5 +3272,34 @@ examples:
       responses:
         "200":
           application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, {"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
+  createTerminalApplication:
+    speakeasy-default-create-terminal-application:
+      requestBody:
+        application/json: {"platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}
+      responses:
+        "200":
+          application/json: {"terminalApplicationID": "01234567-89ab-cdef-0123-456789abcdef", "status": "enabled", "platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}
+        "400": {}
+        "422": {}
+  listTerminalApplications:
+    speakeasy-default-list-terminal-applications:
+      responses:
+        "200":
+          application/json: [{"terminalApplicationID": "01234567-89ab-cdef-0123-456789abcdef", "status": "enabled", "platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}]
+  getTerminalApplication:
+    speakeasy-default-get-terminal-application:
+      parameters:
+        path:
+          terminalApplicationID: "01234567-89ab-cdef-0123-456789abcdef"
+        header: {}
+      responses:
+        "200":
+          application/json: {"terminalApplicationID": "01234567-89ab-cdef-0123-456789abcdef", "status": "enabled", "platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}
+  deleteTerminalApplication:
+    speakeasy-default-delete-terminal-application:
+      parameters:
+        path:
+          terminalApplicationID: "01234567-89ab-cdef-0123-456789abcdef"
+        header: {}
 examplesVersion: 1.0.0
 generatedTests: {}
