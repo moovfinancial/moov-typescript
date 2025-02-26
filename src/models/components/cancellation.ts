@@ -13,6 +13,7 @@ import {
 } from "./cancellationstatus.js";
 
 export type Cancellation = {
+  cancellationID: string;
   status: CancellationStatus;
   createdOn: Date;
 };
@@ -23,12 +24,14 @@ export const Cancellation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  cancellationID: z.string(),
   status: CancellationStatus$inboundSchema,
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
 
 /** @internal */
 export type Cancellation$Outbound = {
+  cancellationID: string;
   status: string;
   createdOn: string;
 };
@@ -39,6 +42,7 @@ export const Cancellation$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Cancellation
 > = z.object({
+  cancellationID: z.string(),
   status: CancellationStatus$outboundSchema,
   createdOn: z.date().transform(v => v.toISOString()),
 });

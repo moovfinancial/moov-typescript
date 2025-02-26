@@ -6,8 +6,9 @@
 import { Cancellation } from "@moovio/sdk/models/components";
 
 let value: Cancellation = {
-  status: "pending",
-  createdOn: new Date("2024-08-05T08:45:43.654Z"),
+  cancellationID: "<id>",
+  status: "completed",
+  createdOn: new Date("2023-05-10T16:07:10.579Z"),
 };
 ```
 
@@ -15,5 +16,6 @@ let value: Cancellation = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `cancellationID`                                                                              | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `status`                                                                                      | [components.CancellationStatus](../../models/components/cancellationstatus.md)                | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `createdOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |

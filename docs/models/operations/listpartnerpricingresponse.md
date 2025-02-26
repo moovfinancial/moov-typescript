@@ -16,7 +16,7 @@ let value: ListPartnerPricingResponse = {
       planID: "ec69b652-bd5c-49c6-8b61-874e6066dc3d",
       name: "Fixed Rate Merchant Plan",
       revenueShare: 10,
-      cardAcquringModel: "cost-plus",
+      cardAcquiringModel: "cost-plus",
       billableFees: [
         {
           billableEvent: "ach-volume",

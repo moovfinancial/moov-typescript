@@ -13,12 +13,12 @@ let value: ListPartnerPricingAgreementsResponse = {
   },
   result: [
     {
-      aggreementID: "4ec09935-7022-46bd-a2ca-ef11c23ef5dd",
+      agreementID: "4ec09935-7022-46bd-a2ca-ef11c23ef5dd",
       planID: "9949326b-9fa2-4213-89de-68c492727663",
       name: "<value>",
       acceptedOn: new Date("2023-10-30T03:06:02.828Z"),
       status: "active",
-      cardAcquringModel: "flat-rate",
+      cardAcquiringModel: "flat-rate",
       billableFees: [
         {
           billableEvent: "ach-volume",

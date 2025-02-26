@@ -87,7 +87,7 @@ export type Card = {
    * @remarks
    * Examples include, but not limited to, "REWARDS", "TRADITIONAL REWARDS", "CLASSIC", and "CORPORATE PURCHASING".
    */
-  cardCategory: string;
+  cardCategory?: string | undefined;
   /**
    * Last four digits of the card number
    */
@@ -166,7 +166,7 @@ export const Card$inboundSchema: z.ZodType<Card, z.ZodTypeDef, unknown> = z
     fingerprint: z.string(),
     brand: CardBrand$inboundSchema,
     cardType: CardType$inboundSchema,
-    cardCategory: z.string(),
+    cardCategory: z.string().optional(),
     lastFourCardNumber: z.string(),
     bin: z.string(),
     expiration: CardExpiration$inboundSchema,
@@ -193,7 +193,7 @@ export type Card$Outbound = {
   fingerprint: string;
   brand: string;
   cardType: string;
-  cardCategory: string;
+  cardCategory?: string | undefined;
   lastFourCardNumber: string;
   bin: string;
   expiration: CardExpiration$Outbound;
@@ -221,7 +221,7 @@ export const Card$outboundSchema: z.ZodType<Card$Outbound, z.ZodTypeDef, Card> =
     fingerprint: z.string(),
     brand: CardBrand$outboundSchema,
     cardType: CardType$outboundSchema,
-    cardCategory: z.string(),
+    cardCategory: z.string().optional(),
     lastFourCardNumber: z.string(),
     bin: z.string(),
     expiration: CardExpiration$outboundSchema,

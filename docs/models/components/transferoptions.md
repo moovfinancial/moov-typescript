@@ -8,65 +8,38 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "92161ac7-1936-43ad-bdc8-8308b6a556d3",
-      paymentMethodType: "ach-debit-collect",
+      paymentMethodID: "161ac719-363a-4ddc-9883-08b6a556d3f4",
+      paymentMethodType: "ach-debit-fund",
       bankAccount: {
-        bankAccountID: "47476540-c743-42f9-b44f-a2c6a921c3b0",
+        bankAccountID: "476540c7-432f-4944-9fa2-c6a921c3b0f8",
         fingerprint: "<value>",
-        status: "verificationFailed",
+        status: "pending",
         holderName: "<value>",
         holderType: "individual",
         bankName: "<value>",
-        bankAccountType: "loan",
+        bankAccountType: "general-ledger",
         routingNumber: "<value>",
         lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2024-03-25T12:45:05.316Z"),
+        updatedOn: new Date("2023-01-27T08:32:29.912Z"),
       },
     },
   ],
   destinationOptions: [
     {
-      paymentMethodID: "0e8bf610-7957-422e-9285-f134512d72eb",
-      paymentMethodType: "card-payment",
-      card: {
-        cardID: "01234567-89ab-cdef-0123-456789abcdef",
-        fingerprint:
-          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+      paymentMethodID: "8bf61079-5722-4e28-a5f1-34512d72eb4e",
+      paymentMethodType: "apple-pay",
+      applePay: {
         brand: "Visa",
         cardType: "credit",
-        lastFourCardNumber: "<value>",
-        bin: "<value>",
+        cardDisplayName: "Visa 1256",
+        fingerprint:
+          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
         expiration: {
           month: "01",
           year: "21",
         },
-        billingAddress: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        cardVerification: {
-          cvv: "match",
-          addressLine1: "match",
-          postalCode: "match",
-          accountName: {
-            firstName: "match",
-            lastName: "match",
-            middleName: "match",
-            fullName: "match",
-          },
-        },
-        issuer: "visa",
-        issuerCountry: "<value>",
-        cardAccountUpdater: {
-          updatedOn: new Date("2024-05-06T12:20:38.184Z"),
-          updateType: "number-update",
-        },
-        domesticPushToCard: "standard",
-        domesticPullFromCard: "supported",
+        dynamicLastFour: "<value>",
+        issuerCountry: "US",
       },
     },
   ],

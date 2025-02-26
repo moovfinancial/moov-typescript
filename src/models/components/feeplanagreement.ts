@@ -13,10 +13,10 @@ import {
   BillableFee$outboundSchema,
 } from "./billablefee.js";
 import {
-  CardAcquringModel,
-  CardAcquringModel$inboundSchema,
-  CardAcquringModel$outboundSchema,
-} from "./cardacquringmodel.js";
+  CardAcquiringModel,
+  CardAcquiringModel$inboundSchema,
+  CardAcquiringModel$outboundSchema,
+} from "./cardacquiringmodel.js";
 import {
   FeePlanAgreementStatus,
   FeePlanAgreementStatus$inboundSchema,
@@ -24,7 +24,7 @@ import {
 } from "./feeplanagreementstatus.js";
 
 export type FeePlanAgreement = {
-  aggreementID: string;
+  agreementID: string;
   planID: string;
   accountID?: string | undefined;
   /**
@@ -40,7 +40,7 @@ export type FeePlanAgreement = {
   /**
    * Specifies the card processing pricing model
    */
-  cardAcquringModel: CardAcquringModel;
+  cardAcquiringModel: CardAcquiringModel;
   billableFees: Array<BillableFee>;
 };
 
@@ -50,27 +50,27 @@ export const FeePlanAgreement$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  aggreementID: z.string(),
+  agreementID: z.string(),
   planID: z.string(),
   accountID: z.string().optional(),
   name: z.string(),
   description: z.string().optional(),
   acceptedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   status: FeePlanAgreementStatus$inboundSchema,
-  cardAcquringModel: CardAcquringModel$inboundSchema,
+  cardAcquiringModel: CardAcquiringModel$inboundSchema,
   billableFees: z.array(BillableFee$inboundSchema),
 });
 
 /** @internal */
 export type FeePlanAgreement$Outbound = {
-  aggreementID: string;
+  agreementID: string;
   planID: string;
   accountID?: string | undefined;
   name: string;
   description?: string | undefined;
   acceptedOn: string;
   status: string;
-  cardAcquringModel: string;
+  cardAcquiringModel: string;
   billableFees: Array<BillableFee$Outbound>;
 };
 
@@ -80,14 +80,14 @@ export const FeePlanAgreement$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FeePlanAgreement
 > = z.object({
-  aggreementID: z.string(),
+  agreementID: z.string(),
   planID: z.string(),
   accountID: z.string().optional(),
   name: z.string(),
   description: z.string().optional(),
   acceptedOn: z.date().transform(v => v.toISOString()),
   status: FeePlanAgreementStatus$outboundSchema,
-  cardAcquringModel: CardAcquringModel$outboundSchema,
+  cardAcquiringModel: CardAcquiringModel$outboundSchema,
   billableFees: z.array(BillableFee$outboundSchema),
 });
 

@@ -13,10 +13,10 @@ import {
   BillableFee$outboundSchema,
 } from "./billablefee.js";
 import {
-  CardAcquringModel,
-  CardAcquringModel$inboundSchema,
-  CardAcquringModel$outboundSchema,
-} from "./cardacquringmodel.js";
+  CardAcquiringModel,
+  CardAcquiringModel$inboundSchema,
+  CardAcquiringModel$outboundSchema,
+} from "./cardacquiringmodel.js";
 
 export type PartnerPricing = {
   planID: string;
@@ -35,7 +35,7 @@ export type PartnerPricing = {
   /**
    * Specifies the card processing pricing model
    */
-  cardAcquringModel: CardAcquringModel;
+  cardAcquiringModel: CardAcquiringModel;
   billableFees: Array<BillableFee>;
   createdAt: Date;
 };
@@ -50,7 +50,7 @@ export const PartnerPricing$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.string().optional(),
   revenueShare: z.number().int(),
-  cardAcquringModel: CardAcquringModel$inboundSchema,
+  cardAcquiringModel: CardAcquiringModel$inboundSchema,
   billableFees: z.array(BillableFee$inboundSchema),
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
@@ -61,7 +61,7 @@ export type PartnerPricing$Outbound = {
   name: string;
   description?: string | undefined;
   revenueShare: number;
-  cardAcquringModel: string;
+  cardAcquiringModel: string;
   billableFees: Array<BillableFee$Outbound>;
   createdAt: string;
 };
@@ -76,7 +76,7 @@ export const PartnerPricing$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.string().optional(),
   revenueShare: z.number().int(),
-  cardAcquringModel: CardAcquringModel$outboundSchema,
+  cardAcquiringModel: CardAcquiringModel$outboundSchema,
   billableFees: z.array(BillableFee$outboundSchema),
   createdAt: z.date().transform(v => v.toISOString()),
 });

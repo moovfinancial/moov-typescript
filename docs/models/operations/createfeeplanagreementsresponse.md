@@ -12,12 +12,12 @@ let value: CreateFeePlanAgreementsResponse = {
     ],
   },
   result: {
-    aggreementID: "6fc50a31-ef44-427d-bbd3-be4b64f5167c",
+    agreementID: "6fc50a31-ef44-427d-bbd3-be4b64f5167c",
     planID: "de7b415b-4dc3-45d3-a55c-0196a4ec1cff",
     name: "<value>",
     acceptedOn: new Date("2023-05-16T11:00:36.329Z"),
     status: "terminated",
-    cardAcquringModel: "cost-plus",
+    cardAcquiringModel: "cost-plus",
     billableFees: [
       {
         billableEvent: "ach-volume",

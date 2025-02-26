@@ -6,8 +6,8 @@
 import { AsyncTransfer } from "@moovio/sdk/models/components";
 
 let value: AsyncTransfer = {
-  transferID: "c2c8b889-3944-4739-b42e-6f603d5d64c1",
-  createdOn: new Date("2024-04-05T04:10:03.608Z"),
+  transferID: "c8b88939-4473-4942-9e6f-603d5d64c1e6",
+  createdOn: new Date("2023-08-30T00:47:32.608Z"),
 };
 ```
 

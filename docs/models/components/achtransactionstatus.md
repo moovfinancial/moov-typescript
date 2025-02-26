@@ -7,7 +7,7 @@ Status of a transaction within the ACH lifecycle.
 ```typescript
 import { ACHTransactionStatus } from "@moovio/sdk/models/components";
 
-let value: ACHTransactionStatus = "originated";
+let value: ACHTransactionStatus = "corrected";
 ```
 
 ## Values

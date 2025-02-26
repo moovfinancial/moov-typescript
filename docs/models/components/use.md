@@ -7,7 +7,7 @@ The intended use of the key. 'sig' for signature, 'enc' for encryption.
 ```typescript
 import { Use } from "@moovio/sdk/models/components";
 
-let value: Use = "enc";
+let value: Use = "sig";
 ```
 
 ## Values

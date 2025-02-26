@@ -58,6 +58,10 @@ export type WalletTransaction = {
    */
   fee: number;
   /**
+   * The IDs of the fees paid for the transaction.
+   */
+  feeIDs?: Array<string> | undefined;
+  /**
    * Total fees paid for the transaction. Same as `fee`, but a decimal-formatted numerical string that represents up to 9 decimal place precision. In USD for example, 12.987654321 is $12.987654321 and 0.9987634521 is $0.9987634521.
    */
   feeDecimal: string;
@@ -100,6 +104,7 @@ export const WalletTransaction$inboundSchema: z.ZodType<
   grossAmount: z.number().int(),
   grossAmountDecimal: z.string(),
   fee: z.number().int(),
+  feeIDs: z.array(z.string()).optional(),
   feeDecimal: z.string(),
   netAmount: z.number().int(),
   netAmountDecimal: z.string(),
@@ -123,6 +128,7 @@ export type WalletTransaction$Outbound = {
   grossAmount: number;
   grossAmountDecimal: string;
   fee: number;
+  feeIDs?: Array<string> | undefined;
   feeDecimal: string;
   netAmount: number;
   netAmountDecimal: string;
@@ -150,6 +156,7 @@ export const WalletTransaction$outboundSchema: z.ZodType<
   grossAmount: z.number().int(),
   grossAmountDecimal: z.string(),
   fee: z.number().int(),
+  feeIDs: z.array(z.string()).optional(),
   feeDecimal: z.string(),
   netAmount: z.number().int(),
   netAmountDecimal: z.string(),

@@ -1,13 +1,13 @@
-# CardAcquringModel
+# CardAcquiringModel
 
 Specifies the card processing pricing model
 
 ## Example Usage
 
 ```typescript
-import { CardAcquringModel } from "@moovio/sdk/models/components";
+import { CardAcquiringModel } from "@moovio/sdk/models/components";
 
-let value: CardAcquringModel = "cost-plus";
+let value: CardAcquiringModel = "cost-plus";
 ```
 
 ## Values
