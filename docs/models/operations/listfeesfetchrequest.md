@@ -6,7 +6,7 @@
 import { ListFeesFetchRequest } from "@moovio/sdk/models/operations";
 
 let value: ListFeesFetchRequest = {
-  accountID: "74e4f85d-b6ac-4dd2-9d03-91946518f94f",
+  accountID: "b80c8174-e4f8-45db-86ac-dd2d03919465",
 };
 ```
 

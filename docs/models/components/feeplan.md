@@ -6,38 +6,30 @@
 import { FeePlan } from "@moovio/sdk/models/components";
 
 let value: FeePlan = {
-  planID: "555bd984-e968-411e-a348-7856276f29f1",
+  planID: "544e2d74-9489-49d9-8346-ce0f729709e7",
   name: "Fixed Rate Merchant Plan",
   cardAcquiringModel: "flat-rate",
   billableFees: [
     {
-      billableEvent: "ach-volume",
-      feeName: "ACH Direct Debit",
+      billableFeeID: "9d957d33-1a9a-47aa-9460-fe1a90f003dd",
+      billableEvent: "card-auth-volume",
+      feeName: "Card decline fee",
       feeModel: "fixed",
-      feeCategory: "rtp",
+      feeCategory: "card-acquiring",
       feeProperties: {
         fixedAmount: {
           currency: "USD",
-          valueDecimal: "0.0195",
-        },
-        variableRate: "0.15",
-        minPerTransaction: {
-          currency: "USD",
-          valueDecimal: "0.0195",
-        },
-        maxPerTransaction: {
-          currency: "USD",
-          valueDecimal: "0.035",
+          valueDecimal: "0.1",
         },
       },
       feeConditions: {
-        "cardBrand": [
-          "visa",
+        "transactionType": [
+          "decline",
         ],
       },
     },
   ],
-  createdAt: new Date("2023-04-09T05:37:51.811Z"),
+  createdAt: new Date("2023-10-21T07:37:15.037Z"),
 };
 ```
 

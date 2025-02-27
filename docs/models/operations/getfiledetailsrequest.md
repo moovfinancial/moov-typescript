@@ -6,8 +6,8 @@
 import { GetFileDetailsRequest } from "@moovio/sdk/models/operations";
 
 let value: GetFileDetailsRequest = {
-  accountID: "45802e01-6b44-44d3-a8fb-5cf5b1e1584a",
-  fileID: "b58ccb8a-17d9-4f41-8a1c-48cc7f744b66",
+  accountID: "d51f6457-ff45-4802-be01-6b444d38fb5c",
+  fileID: "5b1e1584-a8b5-48cc-bb8a-17d9f41a1c48",
 };
 ```
 

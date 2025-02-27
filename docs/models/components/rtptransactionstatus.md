@@ -7,7 +7,7 @@ Status of a transaction within the RTP lifecycle.
 ```typescript
 import { RTPTransactionStatus } from "@moovio/sdk/models/components";
 
-let value: RTPTransactionStatus = "failed";
+let value: RTPTransactionStatus = "completed";
 ```
 
 ## Values

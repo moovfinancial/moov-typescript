@@ -7,7 +7,7 @@ Status of the completed occurrence.
 ```typescript
 import { OccurrenceStatus } from "@moovio/sdk/models/components";
 
-let value: OccurrenceStatus = "failed";
+let value: OccurrenceStatus = "completed";
 ```
 
 ## Values

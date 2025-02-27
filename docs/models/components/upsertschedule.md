@@ -37,7 +37,7 @@ let value: UpsertSchedule = {
           },
         },
         description:
-          "mmm whereas vanish elegantly when however whoever heavily because fencing",
+          "aboard positively whether unexpectedly longingly menacing hence worth",
       },
     },
   ],
@@ -69,7 +69,8 @@ let value: UpsertSchedule = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "whenever supposing including reluctantly",
+      description:
+        "inscribe ajar subtle zowie gallivant suddenly inwardly edge",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },

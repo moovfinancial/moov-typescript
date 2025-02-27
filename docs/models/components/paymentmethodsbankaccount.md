@@ -8,16 +8,16 @@ A bank account as contained within a payment method.
 import { PaymentMethodsBankAccount } from "@moovio/sdk/models/components";
 
 let value: PaymentMethodsBankAccount = {
-  bankAccountID: "520a4dc1-8fdd-44b5-bd1a-a4ae92454af8",
+  bankAccountID: "4cb9116e-36a7-40be-a99d-d26dbd27bb1b",
   fingerprint: "<value>",
-  status: "errored",
+  status: "verified",
   holderName: "<value>",
   holderType: "individual",
   bankName: "<value>",
   bankAccountType: "checking",
   routingNumber: "<value>",
   lastFourAccountNumber: "<value>",
-  updatedOn: new Date("2025-04-05T14:50:43.468Z"),
+  updatedOn: new Date("2024-03-05T14:54:00.303Z"),
 };
 ```
 

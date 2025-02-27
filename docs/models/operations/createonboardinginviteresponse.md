@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://tricky-optimal.com/",
+    link: "https://oily-pants.biz",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "42995c0d-e2fb-4ec1-83d0-ba7949b62ff1",
+      accountID: "be03ec13-5502-442d-a83d-c6da91616037",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2024-02-02T11:52:07.630Z"),
+    createdOn: new Date("2023-07-18T08:10:20.804Z"),
   },
 };
 ```

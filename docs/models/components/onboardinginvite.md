@@ -7,7 +7,7 @@ import { OnboardingInvite } from "@moovio/sdk/models/components";
 
 let value: OnboardingInvite = {
   code: "N1IA5eWYNh",
-  link: "https://merry-tusk.com/",
+  link: "https://icy-encouragement.com",
   scopes: [
     "accounts.read",
   ],
@@ -26,11 +26,11 @@ let value: OnboardingInvite = {
     },
   },
   partner: {
-    accountID: "fce04162-1a8e-4259-91ef-8d7168b27ba1",
+    accountID: "0d8e3209-9361-42a5-b493-04dee3a74a92",
     accountMode: "production",
     displayName: "Bob's Widgets",
   },
-  createdOn: new Date("2023-02-22T10:37:19.141Z"),
+  createdOn: new Date("2025-09-25T01:30:25.474Z"),
 };
 ```
 

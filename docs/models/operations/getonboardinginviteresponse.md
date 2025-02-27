@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://favorable-scarification.com/",
+    link: "https://hard-to-find-colon.biz",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "76c73173-a38a-4eea-b30c-51d8f9f82f12",
+      accountID: "5a0da042-995c-40de-a2fb-ec13d0ba7949",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2025-05-03T08:12:39.015Z"),
+    createdOn: new Date("2024-02-27T15:21:06.800Z"),
   },
 };
 ```

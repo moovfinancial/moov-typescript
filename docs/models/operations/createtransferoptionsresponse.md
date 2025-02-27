@@ -14,26 +14,26 @@ let value: CreateTransferOptionsResponse = {
   result: {
     sourceOptions: [
       {
-        paymentMethodID: "087e5c26-8233-4bf2-a820-066a63193603",
-        paymentMethodType: "ach-credit-same-day",
+        paymentMethodID: "33b24130-b667-4459-a379-2486b37d2e77",
+        paymentMethodType: "ach-credit-standard",
         bankAccount: {
-          bankAccountID: "1add27eb-d67e-46a6-8b97-89eabf135f39",
+          bankAccountID: "8d224f18-cdff-4838-bb74-dd898ce0f565",
           fingerprint: "<value>",
-          status: "verified",
+          status: "pending",
           holderName: "<value>",
           holderType: "individual",
           bankName: "<value>",
-          bankAccountType: "general-ledger",
+          bankAccountType: "savings",
           routingNumber: "<value>",
           lastFourAccountNumber: "<value>",
-          updatedOn: new Date("2023-04-30T06:38:24.616Z"),
+          updatedOn: new Date("2023-01-03T23:43:26.209Z"),
         },
       },
     ],
     destinationOptions: [
       {
-        paymentMethodID: "4b56218a-1202-43b1-8a62-f84059394065",
-        paymentMethodType: "push-to-card",
+        paymentMethodID: "31a382cf-1d70-487e-95c2-68233bf28200",
+        paymentMethodType: "pull-from-card",
         card: {
           cardID: "01234567-89ab-cdef-0123-456789abcdef",
           fingerprint:
@@ -65,7 +65,7 @@ let value: CreateTransferOptionsResponse = {
               fullName: "match",
             },
           },
-          issuer: "jcb",
+          issuer: "discover",
           issuerCountry: "<value>",
           cardAccountUpdater: {
             updatedOn: new Date("2024-05-06T12:20:38.184Z"),

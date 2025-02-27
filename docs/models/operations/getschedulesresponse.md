@@ -16,7 +16,7 @@ let value: GetSchedulesResponse = {
     mode: "production",
     occurrences: {
       mode: "production",
-      runOn: new Date("2024-06-09T03:16:31.410Z"),
+      runOn: new Date("2025-09-27T09:13:08.294Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -43,7 +43,7 @@ let value: GetSchedulesResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "likely rare bog versus mmm however insert rot",
+        description: "while gentle worth aha formal loaf gadzooks necklace mmm",
       },
     },
     ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
@@ -76,14 +76,14 @@ let value: GetSchedulesResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "exacerbate accessorise jealously enlightened clavicle",
+        description: "um anti grandpa before vastly tightly enormously",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },
     scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-    createdOn: new Date("2023-08-02T05:55:24.811Z"),
-    updatedOn: new Date("2023-08-31T05:11:50.378Z"),
+    createdOn: new Date("2023-08-31T05:11:50.378Z"),
+    updatedOn: new Date("2023-09-16T00:41:17.064Z"),
   },
 };
 ```

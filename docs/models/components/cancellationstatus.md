@@ -11,5 +11,5 @@ let value: CancellationStatus = "completed";
 ## Values
 
 ```typescript
-"pending" | "completed"
+"pending" | "completed" | "failed"
 ```

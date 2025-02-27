@@ -8,6 +8,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const CancellationStatus = {
   Pending: "pending",
   Completed: "completed",
+  Failed: "failed",
 } as const;
 export type CancellationStatus = ClosedEnum<typeof CancellationStatus>;
 

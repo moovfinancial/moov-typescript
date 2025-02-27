@@ -8,25 +8,53 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "161ac719-363a-4ddc-9883-08b6a556d3f4",
-      paymentMethodType: "ach-debit-fund",
-      bankAccount: {
-        bankAccountID: "476540c7-432f-4944-9fa2-c6a921c3b0f8",
-        fingerprint: "<value>",
-        status: "pending",
-        holderName: "<value>",
-        holderType: "individual",
-        bankName: "<value>",
-        bankAccountType: "general-ledger",
-        routingNumber: "<value>",
-        lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2023-01-27T08:32:29.912Z"),
+      paymentMethodID: "eb3d3d98-9647-4298-8aae-80e1b31f0079",
+      paymentMethodType: "card-payment",
+      card: {
+        cardID: "01234567-89ab-cdef-0123-456789abcdef",
+        fingerprint:
+          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+        brand: "Visa",
+        cardType: "credit",
+        lastFourCardNumber: "<value>",
+        bin: "<value>",
+        expiration: {
+          month: "01",
+          year: "21",
+        },
+        billingAddress: {
+          addressLine1: "123 Main Street",
+          addressLine2: "Apt 302",
+          city: "Boulder",
+          stateOrProvince: "CO",
+          postalCode: "80301",
+          country: "US",
+        },
+        cardVerification: {
+          cvv: "match",
+          addressLine1: "match",
+          postalCode: "match",
+          accountName: {
+            firstName: "match",
+            lastName: "match",
+            middleName: "match",
+            fullName: "match",
+          },
+        },
+        issuer: "mastercard",
+        issuerCountry: "<value>",
+        cardAccountUpdater: {
+          updatedOn: new Date("2024-05-06T12:20:38.184Z"),
+          updateType: "number-update",
+        },
+        domesticPushToCard: "standard",
+        domesticPullFromCard: "supported",
       },
     },
   ],
   destinationOptions: [
     {
-      paymentMethodID: "8bf61079-5722-4e28-a5f1-34512d72eb4e",
+      paymentMethodID: "71dfd9d6-715e-4d9e-b6ff-90eef741ebcc",
       paymentMethodType: "apple-pay",
       applePay: {
         brand: "Visa",

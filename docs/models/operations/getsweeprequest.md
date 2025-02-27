@@ -6,9 +6,9 @@
 import { GetSweepRequest } from "@moovio/sdk/models/operations";
 
 let value: GetSweepRequest = {
-  accountID: "ded8b57f-527a-4214-bea3-9a8c03f71409",
-  walletID: "99538e09-69d7-4362-b16a-4ebab0de09a3",
-  sweepID: "a3f3a7b1-f338-4570-b3ce-3c00622adc5e",
+  accountID: "d467d995-4745-47de-8d8b-57f527a214ea",
+  walletID: "9a8c03f7-1409-4f99-a538-e0969d736216",
+  sweepID: "4ebab0de-09a3-4da3-bf3a-7b1f3385703c",
 };
 ```
 

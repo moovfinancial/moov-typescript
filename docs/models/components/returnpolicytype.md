@@ -5,7 +5,7 @@
 ```typescript
 import { ReturnPolicyType } from "@moovio/sdk/models/components";
 
-let value: ReturnPolicyType = "none";
+let value: ReturnPolicyType = "exchangeOnly";
 ```
 
 ## Values

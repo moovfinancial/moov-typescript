@@ -4,30 +4,348 @@
 
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  SweepConfigStatus,
-  SweepConfigStatus$inboundSchema,
-  SweepConfigStatus$outboundSchema,
-} from "./sweepconfigstatus.js";
+
+export const Status = {
+  Enabled: "enabled",
+  Disabled: "disabled",
+} as const;
+export type Status = ClosedEnum<typeof Status>;
+
+export type PushPaymentMethodId2 = {};
+
+export type PushPaymentMethodID = PushPaymentMethodId2 | string;
+
+export type PullPaymentMethodId2 = {};
+
+export type PullPaymentMethodID = PullPaymentMethodId2 | string;
+
+export type StatementDescriptor2 = {};
+
+export type StatementDescriptor = StatementDescriptor2 | string;
 
 export type PatchSweepConfig = {
-  status?: SweepConfigStatus | undefined;
-  /**
-   * ID of the payment method.
-   */
-  pushPaymentMethodID?: string | undefined;
-  /**
-   * ID of the payment method.
-   */
-  pullPaymentMethodID?: string | undefined;
-  /**
-   * The text that appears on the banking statement. The default descriptor is a 10 character ID if an override is not set in the sweep configs statementDescriptor.
-   */
-  statementDescriptor?: string | undefined;
+  status?: Status | null | undefined;
+  pushPaymentMethodID?: PushPaymentMethodId2 | string | null | undefined;
+  pullPaymentMethodID?: PullPaymentMethodId2 | string | null | undefined;
+  statementDescriptor?: StatementDescriptor2 | string | null | undefined;
   minimumBalance?: string | undefined;
 };
+
+/** @internal */
+export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
+  .nativeEnum(Status);
+
+/** @internal */
+export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
+  Status$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Status$ {
+  /** @deprecated use `Status$inboundSchema` instead. */
+  export const inboundSchema = Status$inboundSchema;
+  /** @deprecated use `Status$outboundSchema` instead. */
+  export const outboundSchema = Status$outboundSchema;
+}
+
+/** @internal */
+export const PushPaymentMethodId2$inboundSchema: z.ZodType<
+  PushPaymentMethodId2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type PushPaymentMethodId2$Outbound = {};
+
+/** @internal */
+export const PushPaymentMethodId2$outboundSchema: z.ZodType<
+  PushPaymentMethodId2$Outbound,
+  z.ZodTypeDef,
+  PushPaymentMethodId2
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PushPaymentMethodId2$ {
+  /** @deprecated use `PushPaymentMethodId2$inboundSchema` instead. */
+  export const inboundSchema = PushPaymentMethodId2$inboundSchema;
+  /** @deprecated use `PushPaymentMethodId2$outboundSchema` instead. */
+  export const outboundSchema = PushPaymentMethodId2$outboundSchema;
+  /** @deprecated use `PushPaymentMethodId2$Outbound` instead. */
+  export type Outbound = PushPaymentMethodId2$Outbound;
+}
+
+export function pushPaymentMethodID2ToJSON(
+  pushPaymentMethodId2: PushPaymentMethodId2,
+): string {
+  return JSON.stringify(
+    PushPaymentMethodId2$outboundSchema.parse(pushPaymentMethodId2),
+  );
+}
+
+export function pushPaymentMethodID2FromJSON(
+  jsonString: string,
+): SafeParseResult<PushPaymentMethodId2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushPaymentMethodId2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushPaymentMethodId2' from JSON`,
+  );
+}
+
+/** @internal */
+export const PushPaymentMethodID$inboundSchema: z.ZodType<
+  PushPaymentMethodID,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => PushPaymentMethodId2$inboundSchema), z.string()]);
+
+/** @internal */
+export type PushPaymentMethodID$Outbound =
+  | PushPaymentMethodId2$Outbound
+  | string;
+
+/** @internal */
+export const PushPaymentMethodID$outboundSchema: z.ZodType<
+  PushPaymentMethodID$Outbound,
+  z.ZodTypeDef,
+  PushPaymentMethodID
+> = z.union([z.lazy(() => PushPaymentMethodId2$outboundSchema), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PushPaymentMethodID$ {
+  /** @deprecated use `PushPaymentMethodID$inboundSchema` instead. */
+  export const inboundSchema = PushPaymentMethodID$inboundSchema;
+  /** @deprecated use `PushPaymentMethodID$outboundSchema` instead. */
+  export const outboundSchema = PushPaymentMethodID$outboundSchema;
+  /** @deprecated use `PushPaymentMethodID$Outbound` instead. */
+  export type Outbound = PushPaymentMethodID$Outbound;
+}
+
+export function pushPaymentMethodIDToJSON(
+  pushPaymentMethodID: PushPaymentMethodID,
+): string {
+  return JSON.stringify(
+    PushPaymentMethodID$outboundSchema.parse(pushPaymentMethodID),
+  );
+}
+
+export function pushPaymentMethodIDFromJSON(
+  jsonString: string,
+): SafeParseResult<PushPaymentMethodID, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushPaymentMethodID$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushPaymentMethodID' from JSON`,
+  );
+}
+
+/** @internal */
+export const PullPaymentMethodId2$inboundSchema: z.ZodType<
+  PullPaymentMethodId2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type PullPaymentMethodId2$Outbound = {};
+
+/** @internal */
+export const PullPaymentMethodId2$outboundSchema: z.ZodType<
+  PullPaymentMethodId2$Outbound,
+  z.ZodTypeDef,
+  PullPaymentMethodId2
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PullPaymentMethodId2$ {
+  /** @deprecated use `PullPaymentMethodId2$inboundSchema` instead. */
+  export const inboundSchema = PullPaymentMethodId2$inboundSchema;
+  /** @deprecated use `PullPaymentMethodId2$outboundSchema` instead. */
+  export const outboundSchema = PullPaymentMethodId2$outboundSchema;
+  /** @deprecated use `PullPaymentMethodId2$Outbound` instead. */
+  export type Outbound = PullPaymentMethodId2$Outbound;
+}
+
+export function pullPaymentMethodID2ToJSON(
+  pullPaymentMethodId2: PullPaymentMethodId2,
+): string {
+  return JSON.stringify(
+    PullPaymentMethodId2$outboundSchema.parse(pullPaymentMethodId2),
+  );
+}
+
+export function pullPaymentMethodID2FromJSON(
+  jsonString: string,
+): SafeParseResult<PullPaymentMethodId2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PullPaymentMethodId2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PullPaymentMethodId2' from JSON`,
+  );
+}
+
+/** @internal */
+export const PullPaymentMethodID$inboundSchema: z.ZodType<
+  PullPaymentMethodID,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => PullPaymentMethodId2$inboundSchema), z.string()]);
+
+/** @internal */
+export type PullPaymentMethodID$Outbound =
+  | PullPaymentMethodId2$Outbound
+  | string;
+
+/** @internal */
+export const PullPaymentMethodID$outboundSchema: z.ZodType<
+  PullPaymentMethodID$Outbound,
+  z.ZodTypeDef,
+  PullPaymentMethodID
+> = z.union([z.lazy(() => PullPaymentMethodId2$outboundSchema), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PullPaymentMethodID$ {
+  /** @deprecated use `PullPaymentMethodID$inboundSchema` instead. */
+  export const inboundSchema = PullPaymentMethodID$inboundSchema;
+  /** @deprecated use `PullPaymentMethodID$outboundSchema` instead. */
+  export const outboundSchema = PullPaymentMethodID$outboundSchema;
+  /** @deprecated use `PullPaymentMethodID$Outbound` instead. */
+  export type Outbound = PullPaymentMethodID$Outbound;
+}
+
+export function pullPaymentMethodIDToJSON(
+  pullPaymentMethodID: PullPaymentMethodID,
+): string {
+  return JSON.stringify(
+    PullPaymentMethodID$outboundSchema.parse(pullPaymentMethodID),
+  );
+}
+
+export function pullPaymentMethodIDFromJSON(
+  jsonString: string,
+): SafeParseResult<PullPaymentMethodID, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PullPaymentMethodID$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PullPaymentMethodID' from JSON`,
+  );
+}
+
+/** @internal */
+export const StatementDescriptor2$inboundSchema: z.ZodType<
+  StatementDescriptor2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type StatementDescriptor2$Outbound = {};
+
+/** @internal */
+export const StatementDescriptor2$outboundSchema: z.ZodType<
+  StatementDescriptor2$Outbound,
+  z.ZodTypeDef,
+  StatementDescriptor2
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StatementDescriptor2$ {
+  /** @deprecated use `StatementDescriptor2$inboundSchema` instead. */
+  export const inboundSchema = StatementDescriptor2$inboundSchema;
+  /** @deprecated use `StatementDescriptor2$outboundSchema` instead. */
+  export const outboundSchema = StatementDescriptor2$outboundSchema;
+  /** @deprecated use `StatementDescriptor2$Outbound` instead. */
+  export type Outbound = StatementDescriptor2$Outbound;
+}
+
+export function statementDescriptor2ToJSON(
+  statementDescriptor2: StatementDescriptor2,
+): string {
+  return JSON.stringify(
+    StatementDescriptor2$outboundSchema.parse(statementDescriptor2),
+  );
+}
+
+export function statementDescriptor2FromJSON(
+  jsonString: string,
+): SafeParseResult<StatementDescriptor2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StatementDescriptor2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StatementDescriptor2' from JSON`,
+  );
+}
+
+/** @internal */
+export const StatementDescriptor$inboundSchema: z.ZodType<
+  StatementDescriptor,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => StatementDescriptor2$inboundSchema), z.string()]);
+
+/** @internal */
+export type StatementDescriptor$Outbound =
+  | StatementDescriptor2$Outbound
+  | string;
+
+/** @internal */
+export const StatementDescriptor$outboundSchema: z.ZodType<
+  StatementDescriptor$Outbound,
+  z.ZodTypeDef,
+  StatementDescriptor
+> = z.union([z.lazy(() => StatementDescriptor2$outboundSchema), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StatementDescriptor$ {
+  /** @deprecated use `StatementDescriptor$inboundSchema` instead. */
+  export const inboundSchema = StatementDescriptor$inboundSchema;
+  /** @deprecated use `StatementDescriptor$outboundSchema` instead. */
+  export const outboundSchema = StatementDescriptor$outboundSchema;
+  /** @deprecated use `StatementDescriptor$Outbound` instead. */
+  export type Outbound = StatementDescriptor$Outbound;
+}
+
+export function statementDescriptorToJSON(
+  statementDescriptor: StatementDescriptor,
+): string {
+  return JSON.stringify(
+    StatementDescriptor$outboundSchema.parse(statementDescriptor),
+  );
+}
+
+export function statementDescriptorFromJSON(
+  jsonString: string,
+): SafeParseResult<StatementDescriptor, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StatementDescriptor$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StatementDescriptor' from JSON`,
+  );
+}
 
 /** @internal */
 export const PatchSweepConfig$inboundSchema: z.ZodType<
@@ -35,19 +353,37 @@ export const PatchSweepConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: SweepConfigStatus$inboundSchema.optional(),
-  pushPaymentMethodID: z.string().optional(),
-  pullPaymentMethodID: z.string().optional(),
-  statementDescriptor: z.string().optional(),
+  status: z.nullable(Status$inboundSchema).optional(),
+  pushPaymentMethodID: z.nullable(
+    z.union([z.lazy(() => PushPaymentMethodId2$inboundSchema), z.string()]),
+  ).optional(),
+  pullPaymentMethodID: z.nullable(
+    z.union([z.lazy(() => PullPaymentMethodId2$inboundSchema), z.string()]),
+  ).optional(),
+  statementDescriptor: z.nullable(
+    z.union([z.lazy(() => StatementDescriptor2$inboundSchema), z.string()]),
+  ).optional(),
   minimumBalance: z.string().optional(),
 });
 
 /** @internal */
 export type PatchSweepConfig$Outbound = {
-  status?: string | undefined;
-  pushPaymentMethodID?: string | undefined;
-  pullPaymentMethodID?: string | undefined;
-  statementDescriptor?: string | undefined;
+  status?: string | null | undefined;
+  pushPaymentMethodID?:
+    | PushPaymentMethodId2$Outbound
+    | string
+    | null
+    | undefined;
+  pullPaymentMethodID?:
+    | PullPaymentMethodId2$Outbound
+    | string
+    | null
+    | undefined;
+  statementDescriptor?:
+    | StatementDescriptor2$Outbound
+    | string
+    | null
+    | undefined;
   minimumBalance?: string | undefined;
 };
 
@@ -57,10 +393,16 @@ export const PatchSweepConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchSweepConfig
 > = z.object({
-  status: SweepConfigStatus$outboundSchema.optional(),
-  pushPaymentMethodID: z.string().optional(),
-  pullPaymentMethodID: z.string().optional(),
-  statementDescriptor: z.string().optional(),
+  status: z.nullable(Status$outboundSchema).optional(),
+  pushPaymentMethodID: z.nullable(
+    z.union([z.lazy(() => PushPaymentMethodId2$outboundSchema), z.string()]),
+  ).optional(),
+  pullPaymentMethodID: z.nullable(
+    z.union([z.lazy(() => PullPaymentMethodId2$outboundSchema), z.string()]),
+  ).optional(),
+  statementDescriptor: z.nullable(
+    z.union([z.lazy(() => StatementDescriptor2$outboundSchema), z.string()]),
+  ).optional(),
   minimumBalance: z.string().optional(),
 });
 

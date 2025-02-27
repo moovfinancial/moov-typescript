@@ -13,39 +13,31 @@ let value: ListPartnerPricingResponse = {
   },
   result: [
     {
-      planID: "ec69b652-bd5c-49c6-8b61-874e6066dc3d",
+      planID: "72846bec-69b6-452b-9d5c-9c6b61874e60",
       name: "Fixed Rate Merchant Plan",
       revenueShare: 10,
       cardAcquiringModel: "cost-plus",
       billableFees: [
         {
-          billableEvent: "ach-volume",
-          feeName: "ACH Direct Debit",
+          billableFeeID: "9d957d33-1a9a-47aa-9460-fe1a90f003dd",
+          billableEvent: "card-auth-volume",
+          feeName: "Card decline fee",
           feeModel: "fixed",
           feeCategory: "card-acquiring",
           feeProperties: {
             fixedAmount: {
               currency: "USD",
-              valueDecimal: "0.0195",
-            },
-            variableRate: "0.15",
-            minPerTransaction: {
-              currency: "USD",
-              valueDecimal: "0.0195",
-            },
-            maxPerTransaction: {
-              currency: "USD",
-              valueDecimal: "0.035",
+              valueDecimal: "0.1",
             },
           },
           feeConditions: {
-            "cardBrand": [
-              "visa",
+            "transactionType": [
+              "decline",
             ],
           },
         },
       ],
-      createdAt: new Date("2025-01-16T05:20:40.624Z"),
+      createdAt: new Date("2025-08-02T08:31:07.216Z"),
     },
   ],
 };

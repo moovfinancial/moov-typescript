@@ -12,8 +12,8 @@ let value: GetPaymentMethodResponse = {
     ],
   },
   result: {
-    paymentMethodID: "5760b8a4-636a-4fa8-8617-29bf462edc08",
-    paymentMethodType: "pull-from-card",
+    paymentMethodID: "8ca23d57-60b8-4a46-836a-fa861729bf46",
+    paymentMethodType: "card-payment",
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
       fingerprint:
@@ -45,7 +45,7 @@ let value: GetPaymentMethodResponse = {
           fullName: "match",
         },
       },
-      issuer: "american_express",
+      issuer: "visa",
       issuerCountry: "<value>",
       cardAccountUpdater: {
         updatedOn: new Date("2024-05-06T12:20:38.184Z"),

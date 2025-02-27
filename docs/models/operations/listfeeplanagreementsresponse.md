@@ -21,28 +21,20 @@ let value: ListFeePlanAgreementsResponse = {
       cardAcquiringModel: "flat-rate",
       billableFees: [
         {
-          billableEvent: "ach-volume",
-          feeName: "ACH Direct Debit",
+          billableFeeID: "9d957d33-1a9a-47aa-9460-fe1a90f003dd",
+          billableEvent: "card-auth-volume",
+          feeName: "Card decline fee",
           feeModel: "fixed",
-          feeCategory: "rtp",
+          feeCategory: "card-acquiring",
           feeProperties: {
             fixedAmount: {
               currency: "USD",
-              valueDecimal: "0.0195",
-            },
-            variableRate: "0.15",
-            minPerTransaction: {
-              currency: "USD",
-              valueDecimal: "0.0195",
-            },
-            maxPerTransaction: {
-              currency: "USD",
-              valueDecimal: "0.035",
+              valueDecimal: "0.1",
             },
           },
           feeConditions: {
-            "cardBrand": [
-              "visa",
+            "transactionType": [
+              "decline",
             ],
           },
         },

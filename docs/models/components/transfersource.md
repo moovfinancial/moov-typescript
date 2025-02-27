@@ -10,8 +10,8 @@ let value: TransferSource = {
   paymentMethodType: "<value>",
   account: {
     accountID: "<id>",
-    email: "Santa33@gmail.com",
-    displayName: "Declan_Christiansen",
+    email: "Verla_DAmore99@hotmail.com",
+    displayName: "Forrest55",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -44,7 +44,7 @@ let value: TransferSource = {
         fullName: "match",
       },
     },
-    issuer: "diners_club",
+    issuer: "discover",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -67,13 +67,13 @@ let value: TransferSource = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "failed",
+    status: "confirmed",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
   },
   achDetails: {
-    status: "initiated",
+    status: "completed",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",

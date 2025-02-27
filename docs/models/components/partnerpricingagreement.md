@@ -6,36 +6,28 @@
 import { PartnerPricingAgreement } from "@moovio/sdk/models/components";
 
 let value: PartnerPricingAgreement = {
-  agreementID: "e0aae328-f4c5-44ac-b098-6c586772c484",
-  planID: "df5ed92b-fd10-47eb-afae-c812d594eefe",
+  agreementID: "d5c9323a-fce3-4e1f-b255-5bd984e96811",
+  planID: "34878562-76f2-49f1-9bd5-9153a078ee09",
   name: "<value>",
-  acceptedOn: new Date("2024-10-21T15:50:55.826Z"),
+  acceptedOn: new Date("2024-08-10T17:40:51.908Z"),
   status: "terminated",
   cardAcquiringModel: "cost-plus",
   billableFees: [
     {
-      billableEvent: "ach-volume",
-      feeName: "ACH Direct Debit",
-      feeModel: "blended",
-      feeCategory: "ach",
+      billableFeeID: "9d957d33-1a9a-47aa-9460-fe1a90f003dd",
+      billableEvent: "card-auth-volume",
+      feeName: "Card decline fee",
+      feeModel: "fixed",
+      feeCategory: "card-acquiring",
       feeProperties: {
         fixedAmount: {
           currency: "USD",
-          valueDecimal: "0.0195",
-        },
-        variableRate: "0.15",
-        minPerTransaction: {
-          currency: "USD",
-          valueDecimal: "0.0195",
-        },
-        maxPerTransaction: {
-          currency: "USD",
-          valueDecimal: "0.035",
+          valueDecimal: "0.1",
         },
       },
       feeConditions: {
-        "cardBrand": [
-          "visa",
+        "transactionType": [
+          "decline",
         ],
       },
     },

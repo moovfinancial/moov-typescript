@@ -5,7 +5,7 @@
 ```typescript
 import { CardTransactionFailureCode } from "@moovio/sdk/models/components";
 
-let value: CardTransactionFailureCode = "invalid-amount";
+let value: CardTransactionFailureCode = "card-not-activated";
 ```
 
 ## Values

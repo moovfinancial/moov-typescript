@@ -6,10 +6,10 @@
 import { RequestCard } from "@moovio/sdk/models/components";
 
 let value: RequestCard = {
-  fundingWalletID: "c5adc9e4-6cca-429f-a410-90eeea081101",
+  fundingWalletID: "dd5ffb33-71e6-457e-9e48-608ccb3120c3",
   authorizedUser: {
-    firstName: "Kenton",
-    lastName: "Sawayn",
+    firstName: "August",
+    lastName: "Jast",
     birthDate: {
       day: 9,
       month: 11,

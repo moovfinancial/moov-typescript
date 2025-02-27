@@ -13,36 +13,28 @@ let value: ListPartnerPricingAgreementsResponse = {
   },
   result: [
     {
-      agreementID: "4ec09935-7022-46bd-a2ca-ef11c23ef5dd",
-      planID: "9949326b-9fa2-4213-89de-68c492727663",
+      agreementID: "b3d5209d-4ec0-4993-b570-226bd2caef11",
+      planID: "23ef5dd9-9949-4326-ab9f-a22139de68c4",
       name: "<value>",
-      acceptedOn: new Date("2023-10-30T03:06:02.828Z"),
+      acceptedOn: new Date("2023-07-10T19:03:58.934Z"),
       status: "active",
-      cardAcquiringModel: "flat-rate",
+      cardAcquiringModel: "cost-plus",
       billableFees: [
         {
-          billableEvent: "ach-volume",
-          feeName: "ACH Direct Debit",
-          feeModel: "variable",
-          feeCategory: "rtp",
+          billableFeeID: "9d957d33-1a9a-47aa-9460-fe1a90f003dd",
+          billableEvent: "card-auth-volume",
+          feeName: "Card decline fee",
+          feeModel: "fixed",
+          feeCategory: "card-acquiring",
           feeProperties: {
             fixedAmount: {
               currency: "USD",
-              valueDecimal: "0.0195",
-            },
-            variableRate: "0.15",
-            minPerTransaction: {
-              currency: "USD",
-              valueDecimal: "0.0195",
-            },
-            maxPerTransaction: {
-              currency: "USD",
-              valueDecimal: "0.035",
+              valueDecimal: "0.1",
             },
           },
           feeConditions: {
-            "cardBrand": [
-              "visa",
+            "transactionType": [
+              "decline",
             ],
           },
         },

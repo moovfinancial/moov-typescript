@@ -35,7 +35,7 @@ let value: Recur = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description: "unnecessarily without worth furthermore and furthermore",
+    description: "ew however exotic snuggle",
   },
   start: new Date("2009-11-10T23:00:00Z"),
 };

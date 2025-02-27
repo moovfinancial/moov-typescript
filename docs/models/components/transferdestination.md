@@ -10,8 +10,8 @@ let value: TransferDestination = {
   paymentMethodType: "<value>",
   account: {
     accountID: "<id>",
-    email: "Thad92@hotmail.com",
-    displayName: "Murphy.Windler",
+    email: "Javier91@yahoo.com",
+    displayName: "Neal_Kautzer25",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -44,7 +44,7 @@ let value: TransferDestination = {
         fullName: "match",
       },
     },
-    issuer: "jcb",
+    issuer: "discover",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -54,7 +54,7 @@ let value: TransferDestination = {
     domesticPullFromCard: "supported",
   },
   achDetails: {
-    status: "originated",
+    status: "corrected",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
@@ -74,7 +74,7 @@ let value: TransferDestination = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "canceled",
+    status: "settled",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
