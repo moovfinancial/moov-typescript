@@ -6,12 +6,12 @@
 import { IssuedCardAuthorization } from "@moovio/sdk/models/components";
 
 let value: IssuedCardAuthorization = {
-  authorizationID: "4ba51197-5174-4db6-8e8d-9f1c01cb9e60",
-  issuedCardID: "b4973b0a-b14e-479c-bd18-3bf0aa6a6f7d",
-  fundingWalletID: "bab24762-5b0a-45e4-afd3-e476280f6d44",
-  network: "visa",
+  authorizationID: "11975174-db6e-48d9-9f1c-01cb9e601b49",
+  issuedCardID: "3b0ab14e-79cd-4183-8bf0-aa6a6f7debab",
+  fundingWalletID: "47625b0a-5e4f-4d3e-8476-280f6d449c5b",
+  network: "discover",
   authorizedAmount: "-14.89",
-  status: "declined",
+  status: "pending",
   merchantData: {
     name: "Whole Body Fitness",
     city: "San Francisco",
@@ -20,7 +20,7 @@ let value: IssuedCardAuthorization = {
     state: "CA",
     mcc: "7298",
   },
-  createdOn: new Date("2025-03-18T01:57:40.972Z"),
+  createdOn: new Date("2023-11-06T11:09:06.428Z"),
 };
 ```
 

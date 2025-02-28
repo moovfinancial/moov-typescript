@@ -6,11 +6,11 @@
 import { IssuedCardAuthorizationEvent } from "@moovio/sdk/models/components";
 
 let value: IssuedCardAuthorizationEvent = {
-  eventID: "1484480d-91f4-43db-87e7-0b45e9c89cfb",
-  eventType: "authorization-advice",
+  eventID: "480d91f4-3db7-4e70-bb45-e9c89cfb05c0",
+  eventType: "authorization-incremental",
   amount: "-14.89",
-  result: "processed",
-  createdOn: new Date("2023-02-06T13:50:17.641Z"),
+  result: "approved",
+  createdOn: new Date("2024-04-23T06:54:28.604Z"),
 };
 ```
 

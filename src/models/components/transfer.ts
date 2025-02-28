@@ -65,8 +65,8 @@ import {
 export type Transfer = {
   transferID: string;
   createdOn: Date;
-  source?: TransferSource | undefined;
-  destination?: TransferDestination | undefined;
+  source: TransferSource;
+  destination: TransferDestination;
   completedOn?: Date | undefined;
   /**
    * Status of a transfer.
@@ -119,8 +119,8 @@ export const Transfer$inboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  source: TransferSource$inboundSchema.optional(),
-  destination: TransferDestination$inboundSchema.optional(),
+  source: TransferSource$inboundSchema,
+  destination: TransferDestination$inboundSchema,
   completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   status: TransferStatus$inboundSchema,
@@ -146,8 +146,8 @@ export const Transfer$inboundSchema: z.ZodType<
 export type Transfer$Outbound = {
   transferID: string;
   createdOn: string;
-  source?: TransferSource$Outbound | undefined;
-  destination?: TransferDestination$Outbound | undefined;
+  source: TransferSource$Outbound;
+  destination: TransferDestination$Outbound;
   completedOn?: string | undefined;
   status: string;
   failureReason?: string | undefined;
@@ -176,8 +176,8 @@ export const Transfer$outboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string(),
   createdOn: z.date().transform(v => v.toISOString()),
-  source: TransferSource$outboundSchema.optional(),
-  destination: TransferDestination$outboundSchema.optional(),
+  source: TransferSource$outboundSchema,
+  destination: TransferDestination$outboundSchema,
   completedOn: z.date().transform(v => v.toISOString()).optional(),
   status: TransferStatus$outboundSchema,
   failureReason: TransferFailureReason$outboundSchema.optional(),

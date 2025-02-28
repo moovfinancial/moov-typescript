@@ -36,6 +36,10 @@ export type ListWalletTransactionsRequest = {
    */
   transactionType?: components.WalletTransactionType | undefined;
   /**
+   * Optional, comma-separated parameter to filter by transaction types.
+   */
+  transactionTypes?: Array<components.WalletTransactionType> | undefined;
+  /**
    * Optional parameter to filter by source type (i.e. transfer, dispute, issuing-transaction).
    */
   sourceType?: components.WalletTransactionSourceType | undefined;
@@ -149,6 +153,8 @@ export const ListWalletTransactionsRequest$inboundSchema: z.ZodType<
   count: z.number().int().optional(),
   walletID: z.string(),
   transactionType: components.WalletTransactionType$inboundSchema.optional(),
+  transactionTypes: z.array(components.WalletTransactionType$inboundSchema)
+    .optional(),
   sourceType: components.WalletTransactionSourceType$inboundSchema.optional(),
   sourceID: z.string().optional(),
   status: components.WalletTransactionStatus$inboundSchema.optional(),
@@ -174,6 +180,7 @@ export type ListWalletTransactionsRequest$Outbound = {
   count?: number | undefined;
   walletID: string;
   transactionType?: string | undefined;
+  transactionTypes?: Array<string> | undefined;
   sourceType?: string | undefined;
   sourceID?: string | undefined;
   status?: string | undefined;
@@ -195,6 +202,8 @@ export const ListWalletTransactionsRequest$outboundSchema: z.ZodType<
   count: z.number().int().optional(),
   walletID: z.string(),
   transactionType: components.WalletTransactionType$outboundSchema.optional(),
+  transactionTypes: z.array(components.WalletTransactionType$outboundSchema)
+    .optional(),
   sourceType: components.WalletTransactionSourceType$outboundSchema.optional(),
   sourceID: z.string().optional(),
   status: components.WalletTransactionStatus$outboundSchema.optional(),

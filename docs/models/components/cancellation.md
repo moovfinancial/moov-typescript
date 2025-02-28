@@ -7,8 +7,8 @@ import { Cancellation } from "@moovio/sdk/models/components";
 
 let value: Cancellation = {
   cancellationID: "<id>",
-  status: "completed",
-  createdOn: new Date("2025-02-20T22:33:52.566Z"),
+  status: "pending",
+  createdOn: new Date("2025-02-23T10:01:08.368Z"),
 };
 ```
 

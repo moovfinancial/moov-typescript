@@ -43,6 +43,11 @@ import {
   PaymentMethodsWallet$outboundSchema,
 } from "./paymentmethodswallet.js";
 import {
+  PaymentMethodType,
+  PaymentMethodType$inboundSchema,
+  PaymentMethodType$outboundSchema,
+} from "./paymentmethodtype.js";
+import {
   RTPTransactionDetails,
   RTPTransactionDetails$inboundSchema,
   RTPTransactionDetails$Outbound,
@@ -57,7 +62,10 @@ import {
 
 export type TransferDestination = {
   paymentMethodID: string;
-  paymentMethodType: string;
+  /**
+   * The payment method type that represents a payment rail and directionality
+   */
+  paymentMethodType: PaymentMethodType;
   account: TransferAccount;
   /**
    * A bank account as contained within a payment method.
@@ -93,7 +101,7 @@ export const TransferDestination$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: z.string(),
+  paymentMethodType: PaymentMethodType$inboundSchema,
   account: TransferAccount$inboundSchema,
   bankAccount: PaymentMethodsBankAccount$inboundSchema.optional(),
   wallet: PaymentMethodsWallet$inboundSchema.optional(),
@@ -125,7 +133,7 @@ export const TransferDestination$outboundSchema: z.ZodType<
   TransferDestination
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: z.string(),
+  paymentMethodType: PaymentMethodType$outboundSchema,
   account: TransferAccount$outboundSchema,
   bankAccount: PaymentMethodsBankAccount$outboundSchema.optional(),
   wallet: PaymentMethodsWallet$outboundSchema.optional(),

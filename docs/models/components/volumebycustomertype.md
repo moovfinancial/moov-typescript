@@ -6,8 +6,8 @@
 import { VolumeByCustomerType } from "@moovio/sdk/models/components";
 
 let value: VolumeByCustomerType = {
-  businessToBusinessPercentage: 728290,
-  consumerToBusinessPercentage: 411321,
+  businessToBusinessPercentage: 859650,
+  consumerToBusinessPercentage: 335847,
 };
 ```
 

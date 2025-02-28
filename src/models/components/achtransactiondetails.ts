@@ -55,6 +55,7 @@ export type ACHTransactionDetails = {
   originatedOn?: Date | undefined;
   correctedOn?: Date | undefined;
   returnedOn?: Date | undefined;
+  failedOn?: Date | undefined;
   completedOn?: Date | undefined;
   /**
    * An optional override of your default ACH hold period in banking days. The hold period must be longer than or equal to your default setting.
@@ -84,6 +85,8 @@ export const ACHTransactionDetails$inboundSchema: z.ZodType<
     .optional(),
   returnedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
   completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   debitHoldPeriod: DebitHoldPeriod$inboundSchema.optional(),
@@ -102,6 +105,7 @@ export type ACHTransactionDetails$Outbound = {
   originatedOn?: string | undefined;
   correctedOn?: string | undefined;
   returnedOn?: string | undefined;
+  failedOn?: string | undefined;
   completedOn?: string | undefined;
   debitHoldPeriod?: string | undefined;
 };
@@ -123,6 +127,7 @@ export const ACHTransactionDetails$outboundSchema: z.ZodType<
   originatedOn: z.date().transform(v => v.toISOString()).optional(),
   correctedOn: z.date().transform(v => v.toISOString()).optional(),
   returnedOn: z.date().transform(v => v.toISOString()).optional(),
+  failedOn: z.date().transform(v => v.toISOString()).optional(),
   completedOn: z.date().transform(v => v.toISOString()).optional(),
   debitHoldPeriod: DebitHoldPeriod$outboundSchema.optional(),
 });

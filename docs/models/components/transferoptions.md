@@ -8,8 +8,8 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "eb3d3d98-9647-4298-8aae-80e1b31f0079",
-      paymentMethodType: "card-payment",
+      paymentMethodID: "3d989647-298a-4ae8-80e1-b31f00792bf7",
+      paymentMethodType: "pull-from-card",
       card: {
         cardID: "01234567-89ab-cdef-0123-456789abcdef",
         fingerprint:
@@ -41,7 +41,7 @@ let value: TransferOptions = {
             fullName: "match",
           },
         },
-        issuer: "mastercard",
+        issuer: "visa",
         issuerCountry: "<value>",
         cardAccountUpdater: {
           updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -54,7 +54,7 @@ let value: TransferOptions = {
   ],
   destinationOptions: [
     {
-      paymentMethodID: "71dfd9d6-715e-4d9e-b6ff-90eef741ebcc",
+      paymentMethodID: "d9d6715e-d9e6-4ff9-a0ee-f741ebccd15d",
       paymentMethodType: "apple-pay",
       applePay: {
         brand: "Visa",

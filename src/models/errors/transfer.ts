@@ -11,8 +11,8 @@ import * as components from "../components/index.js";
 export type TransferData = {
   transferID: string;
   createdOn: Date;
-  source?: components.TransferSource | undefined;
-  destination?: components.TransferDestination | undefined;
+  source: components.TransferSource;
+  destination: components.TransferDestination;
   completedOn?: Date | undefined;
   /**
    * Status of a transfer.
@@ -63,8 +63,8 @@ export type TransferData = {
 export class Transfer extends Error {
   transferID: string;
   createdOn: Date;
-  source?: components.TransferSource | undefined;
-  destination?: components.TransferDestination | undefined;
+  source: components.TransferSource;
+  destination: components.TransferDestination;
   completedOn?: Date | undefined;
   /**
    * Status of a transfer.
@@ -120,8 +120,8 @@ export class Transfer extends Error {
 
     this.transferID = err.transferID;
     this.createdOn = err.createdOn;
-    if (err.source != null) this.source = err.source;
-    if (err.destination != null) this.destination = err.destination;
+    this.source = err.source;
+    this.destination = err.destination;
     if (err.completedOn != null) this.completedOn = err.completedOn;
     this.status = err.status;
     if (err.failureReason != null) this.failureReason = err.failureReason;
@@ -153,8 +153,8 @@ export const Transfer$inboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  source: components.TransferSource$inboundSchema.optional(),
-  destination: components.TransferDestination$inboundSchema.optional(),
+  source: components.TransferSource$inboundSchema,
+  destination: components.TransferDestination$inboundSchema,
   completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   status: components.TransferStatus$inboundSchema,
@@ -183,8 +183,8 @@ export const Transfer$inboundSchema: z.ZodType<
 export type Transfer$Outbound = {
   transferID: string;
   createdOn: string;
-  source?: components.TransferSource$Outbound | undefined;
-  destination?: components.TransferDestination$Outbound | undefined;
+  source: components.TransferSource$Outbound;
+  destination: components.TransferDestination$Outbound;
   completedOn?: string | undefined;
   status: string;
   failureReason?: string | undefined;
@@ -215,8 +215,8 @@ export const Transfer$outboundSchema: z.ZodType<
   .pipe(z.object({
     transferID: z.string(),
     createdOn: z.date().transform(v => v.toISOString()),
-    source: components.TransferSource$outboundSchema.optional(),
-    destination: components.TransferDestination$outboundSchema.optional(),
+    source: components.TransferSource$outboundSchema,
+    destination: components.TransferDestination$outboundSchema,
     completedOn: z.date().transform(v => v.toISOString()).optional(),
     status: components.TransferStatus$outboundSchema,
     failureReason: components.TransferFailureReason$outboundSchema.optional(),

@@ -112,6 +112,7 @@ async function $do(
     "status": payload.status,
     "sweepID": payload.sweepID,
     "transactionType": payload.transactionType,
+    "transactionTypes": payload.transactionTypes,
   }, { explode: false });
 
   const headers = new Headers(compactMap({

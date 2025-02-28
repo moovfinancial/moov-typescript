@@ -7,11 +7,11 @@ import { TransferDestination } from "@moovio/sdk/models/components";
 
 let value: TransferDestination = {
   paymentMethodID: "<id>",
-  paymentMethodType: "<value>",
+  paymentMethodType: "ach-credit-standard",
   account: {
     accountID: "<id>",
-    email: "Javier91@yahoo.com",
-    displayName: "Neal_Kautzer25",
+    email: "Jamil_Kertzmann-Volkman74@yahoo.com",
+    displayName: "Hermina.Gerhold",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -44,7 +44,7 @@ let value: TransferDestination = {
         fullName: "match",
       },
     },
-    issuer: "discover",
+    issuer: "jcb",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -54,7 +54,7 @@ let value: TransferDestination = {
     domesticPullFromCard: "supported",
   },
   achDetails: {
-    status: "corrected",
+    status: "returned",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
@@ -74,7 +74,7 @@ let value: TransferDestination = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "settled",
+    status: "confirmed",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
@@ -87,7 +87,7 @@ let value: TransferDestination = {
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `paymentMethodID`                                                                            | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `paymentMethodType`                                                                          | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `paymentMethodType`                                                                          | [components.PaymentMethodType](../../models/components/paymentmethodtype.md)                 | :heavy_check_mark:                                                                           | The payment method type that represents a payment rail and directionality                    |
 | `account`                                                                                    | [components.TransferAccount](../../models/components/transferaccount.md)                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `bankAccount`                                                                                | [components.PaymentMethodsBankAccount](../../models/components/paymentmethodsbankaccount.md) | :heavy_minus_sign:                                                                           | A bank account as contained within a payment method.                                         |
 | `wallet`                                                                                     | [components.PaymentMethodsWallet](../../models/components/paymentmethodswallet.md)           | :heavy_minus_sign:                                                                           | N/A                                                                                          |

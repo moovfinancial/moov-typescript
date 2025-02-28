@@ -31,7 +31,7 @@ export type PatchSweepConfig = {
   pushPaymentMethodID?: PushPaymentMethodId2 | string | null | undefined;
   pullPaymentMethodID?: PullPaymentMethodId2 | string | null | undefined;
   statementDescriptor?: StatementDescriptor2 | string | null | undefined;
-  minimumBalance?: string | undefined;
+  minimumBalance?: string | null | undefined;
 };
 
 /** @internal */
@@ -363,7 +363,7 @@ export const PatchSweepConfig$inboundSchema: z.ZodType<
   statementDescriptor: z.nullable(
     z.union([z.lazy(() => StatementDescriptor2$inboundSchema), z.string()]),
   ).optional(),
-  minimumBalance: z.string().optional(),
+  minimumBalance: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
@@ -384,7 +384,7 @@ export type PatchSweepConfig$Outbound = {
     | string
     | null
     | undefined;
-  minimumBalance?: string | undefined;
+  minimumBalance?: string | null | undefined;
 };
 
 /** @internal */
@@ -403,7 +403,7 @@ export const PatchSweepConfig$outboundSchema: z.ZodType<
   statementDescriptor: z.nullable(
     z.union([z.lazy(() => StatementDescriptor2$outboundSchema), z.string()]),
   ).optional(),
-  minimumBalance: z.string().optional(),
+  minimumBalance: z.nullable(z.string()).optional(),
 });
 
 /**

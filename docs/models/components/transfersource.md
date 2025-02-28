@@ -7,11 +7,11 @@ import { TransferSource } from "@moovio/sdk/models/components";
 
 let value: TransferSource = {
   paymentMethodID: "<id>",
-  paymentMethodType: "<value>",
+  paymentMethodType: "ach-debit-fund",
   account: {
     accountID: "<id>",
-    email: "Verla_DAmore99@hotmail.com",
-    displayName: "Forrest55",
+    email: "Zakary.Hessel46@hotmail.com",
+    displayName: "Keeley.Jacobs",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -44,7 +44,7 @@ let value: TransferSource = {
         fullName: "match",
       },
     },
-    issuer: "discover",
+    issuer: "diners_club",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -67,13 +67,13 @@ let value: TransferSource = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "confirmed",
+    status: "canceled",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
   },
   achDetails: {
-    status: "completed",
+    status: "corrected",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
@@ -86,8 +86,9 @@ let value: TransferSource = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `transferID`                                                                                 | *string*                                                                                     | :heavy_minus_sign:                                                                           | UUID present only if the transfer is part of a transfer group.                               |
 | `paymentMethodID`                                                                            | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `paymentMethodType`                                                                          | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `paymentMethodType`                                                                          | [components.PaymentMethodType](../../models/components/paymentmethodtype.md)                 | :heavy_check_mark:                                                                           | The payment method type that represents a payment rail and directionality                    |
 | `account`                                                                                    | [components.TransferAccount](../../models/components/transferaccount.md)                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `bankAccount`                                                                                | [components.PaymentMethodsBankAccount](../../models/components/paymentmethodsbankaccount.md) | :heavy_minus_sign:                                                                           | A bank account as contained within a payment method.                                         |
 | `wallet`                                                                                     | [components.PaymentMethodsWallet](../../models/components/paymentmethodswallet.md)           | :heavy_minus_sign:                                                                           | N/A                                                                                          |

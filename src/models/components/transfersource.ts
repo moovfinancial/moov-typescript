@@ -43,6 +43,11 @@ import {
   PaymentMethodsWallet$outboundSchema,
 } from "./paymentmethodswallet.js";
 import {
+  PaymentMethodType,
+  PaymentMethodType$inboundSchema,
+  PaymentMethodType$outboundSchema,
+} from "./paymentmethodtype.js";
+import {
   TransferAccount,
   TransferAccount$inboundSchema,
   TransferAccount$Outbound,
@@ -50,8 +55,15 @@ import {
 } from "./transferaccount.js";
 
 export type TransferSource = {
+  /**
+   * UUID present only if the transfer is part of a transfer group.
+   */
+  transferID?: string | undefined;
   paymentMethodID: string;
-  paymentMethodType: string;
+  /**
+   * The payment method type that represents a payment rail and directionality
+   */
+  paymentMethodType: PaymentMethodType;
   account: TransferAccount;
   /**
    * A bank account as contained within a payment method.
@@ -82,8 +94,9 @@ export const TransferSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  transferID: z.string().optional(),
   paymentMethodID: z.string(),
-  paymentMethodType: z.string(),
+  paymentMethodType: PaymentMethodType$inboundSchema,
   account: TransferAccount$inboundSchema,
   bankAccount: PaymentMethodsBankAccount$inboundSchema.optional(),
   wallet: PaymentMethodsWallet$inboundSchema.optional(),
@@ -95,6 +108,7 @@ export const TransferSource$inboundSchema: z.ZodType<
 
 /** @internal */
 export type TransferSource$Outbound = {
+  transferID?: string | undefined;
   paymentMethodID: string;
   paymentMethodType: string;
   account: TransferAccount$Outbound;
@@ -112,8 +126,9 @@ export const TransferSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TransferSource
 > = z.object({
+  transferID: z.string().optional(),
   paymentMethodID: z.string(),
-  paymentMethodType: z.string(),
+  paymentMethodType: PaymentMethodType$outboundSchema,
   account: TransferAccount$outboundSchema,
   bankAccount: PaymentMethodsBankAccount$outboundSchema.optional(),
   wallet: PaymentMethodsWallet$outboundSchema.optional(),
