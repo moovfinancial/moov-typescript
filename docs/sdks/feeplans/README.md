@@ -56,6 +56,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.feePlans.listFeePlanAgreements({
+    skip: 60,
+    count: 20,
     accountID: "4c49ae91-2b32-4a4d-91bf-f062f3c2f38d",
   });
 
@@ -85,6 +87,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await feePlansListFeePlanAgreements(moov, {
+    skip: 60,
+    count: 20,
     accountID: "4c49ae91-2b32-4a4d-91bf-f062f3c2f38d",
   });
 
@@ -579,6 +583,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.feePlans.listPartnerPricingAgreements({
+    skip: 60,
+    count: 20,
     accountID: "9366921a-25de-4c52-8ec6-4cd4ef557223",
   });
 
@@ -608,6 +614,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await feePlansListPartnerPricingAgreements(moov, {
+    skip: 60,
+    count: 20,
     accountID: "9366921a-25de-4c52-8ec6-4cd4ef557223",
   });
 

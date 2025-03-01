@@ -1,18 +1,18 @@
-speakeasyVersion: 1.507.0
+speakeasyVersion: 1.508.0
 sources:
     latest:
         sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:321c8bdb547e9b6df97901fe689268eef7d9c18976c89f5482516860aa1a6188
-        sourceBlobDigest: sha256:e384bcafbfbdb1489314ce05c3cda57aa5e554fa711189f4d85ec8c17f1a98ae
+        sourceRevisionDigest: sha256:7a55cf746031844b77c1323edcfd7d9ad861f83bddf451af0f5021c5ebe7a69f
+        sourceBlobDigest: sha256:4db6901aa49e11c323ae4f4acff1b55e38640198123603427fa2f863c9d44fd6
         tags:
             - latest
-            - speakeasy-sdk-regen-1740702430
+            - speakeasy-sdk-regen-1740788997
 targets:
     moov:
         source: latest
         sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:321c8bdb547e9b6df97901fe689268eef7d9c18976c89f5482516860aa1a6188
-        sourceBlobDigest: sha256:e384bcafbfbdb1489314ce05c3cda57aa5e554fa711189f4d85ec8c17f1a98ae
+        sourceRevisionDigest: sha256:7a55cf746031844b77c1323edcfd7d9ad861f83bddf451af0f5021c5ebe7a69f
+        sourceBlobDigest: sha256:4db6901aa49e11c323ae4f4acff1b55e38640198123603427fa2f863c9d44fd6
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

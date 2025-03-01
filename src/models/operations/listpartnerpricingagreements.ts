@@ -27,6 +27,8 @@ export type ListPartnerPricingAgreementsGlobals = {
 };
 
 export type ListPartnerPricingAgreementsRequest = {
+  skip?: number | undefined;
+  count?: number | undefined;
   accountID: string;
   /**
    * A comma-separated list of agreement IDs to filter the results by.
@@ -116,6 +118,8 @@ export const ListPartnerPricingAgreementsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  skip: z.number().int().optional(),
+  count: z.number().int().optional(),
   accountID: z.string(),
   agreementID: z.array(z.string()).optional(),
   status: z.array(components.FeePlanAgreementStatus$inboundSchema).optional(),
@@ -123,6 +127,8 @@ export const ListPartnerPricingAgreementsRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListPartnerPricingAgreementsRequest$Outbound = {
+  skip?: number | undefined;
+  count?: number | undefined;
   accountID: string;
   agreementID?: Array<string> | undefined;
   status?: Array<string> | undefined;
@@ -134,6 +140,8 @@ export const ListPartnerPricingAgreementsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListPartnerPricingAgreementsRequest
 > = z.object({
+  skip: z.number().int().optional(),
+  count: z.number().int().optional(),
   accountID: z.string(),
   agreementID: z.array(z.string()).optional(),
   status: z.array(components.FeePlanAgreementStatus$outboundSchema).optional(),

@@ -7,112 +7,130 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type Ssn = {
+export type GovernmentIDSsn = {
   full?: string | undefined;
   lastFour?: string | undefined;
 };
 
-export type Itin = {
+export type GovernmentIDItin = {
   full?: string | undefined;
   lastFour?: string | undefined;
 };
 
 export type GovernmentID = {
-  ssn?: Ssn | undefined;
-  itin?: Itin | undefined;
+  ssn?: GovernmentIDSsn | undefined;
+  itin?: GovernmentIDItin | undefined;
 };
 
 /** @internal */
-export const Ssn$inboundSchema: z.ZodType<Ssn, z.ZodTypeDef, unknown> = z
-  .object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
-  });
+export const GovernmentIDSsn$inboundSchema: z.ZodType<
+  GovernmentIDSsn,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  full: z.string().optional(),
+  lastFour: z.string().optional(),
+});
 
 /** @internal */
-export type Ssn$Outbound = {
+export type GovernmentIDSsn$Outbound = {
   full?: string | undefined;
   lastFour?: string | undefined;
 };
 
 /** @internal */
-export const Ssn$outboundSchema: z.ZodType<Ssn$Outbound, z.ZodTypeDef, Ssn> = z
-  .object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
-  });
+export const GovernmentIDSsn$outboundSchema: z.ZodType<
+  GovernmentIDSsn$Outbound,
+  z.ZodTypeDef,
+  GovernmentIDSsn
+> = z.object({
+  full: z.string().optional(),
+  lastFour: z.string().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Ssn$ {
-  /** @deprecated use `Ssn$inboundSchema` instead. */
-  export const inboundSchema = Ssn$inboundSchema;
-  /** @deprecated use `Ssn$outboundSchema` instead. */
-  export const outboundSchema = Ssn$outboundSchema;
-  /** @deprecated use `Ssn$Outbound` instead. */
-  export type Outbound = Ssn$Outbound;
+export namespace GovernmentIDSsn$ {
+  /** @deprecated use `GovernmentIDSsn$inboundSchema` instead. */
+  export const inboundSchema = GovernmentIDSsn$inboundSchema;
+  /** @deprecated use `GovernmentIDSsn$outboundSchema` instead. */
+  export const outboundSchema = GovernmentIDSsn$outboundSchema;
+  /** @deprecated use `GovernmentIDSsn$Outbound` instead. */
+  export type Outbound = GovernmentIDSsn$Outbound;
 }
 
-export function ssnToJSON(ssn: Ssn): string {
-  return JSON.stringify(Ssn$outboundSchema.parse(ssn));
+export function governmentIDSsnToJSON(
+  governmentIDSsn: GovernmentIDSsn,
+): string {
+  return JSON.stringify(GovernmentIDSsn$outboundSchema.parse(governmentIDSsn));
 }
 
-export function ssnFromJSON(
+export function governmentIDSsnFromJSON(
   jsonString: string,
-): SafeParseResult<Ssn, SDKValidationError> {
+): SafeParseResult<GovernmentIDSsn, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Ssn$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Ssn' from JSON`,
+    (x) => GovernmentIDSsn$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GovernmentIDSsn' from JSON`,
   );
 }
 
 /** @internal */
-export const Itin$inboundSchema: z.ZodType<Itin, z.ZodTypeDef, unknown> = z
-  .object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
-  });
+export const GovernmentIDItin$inboundSchema: z.ZodType<
+  GovernmentIDItin,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  full: z.string().optional(),
+  lastFour: z.string().optional(),
+});
 
 /** @internal */
-export type Itin$Outbound = {
+export type GovernmentIDItin$Outbound = {
   full?: string | undefined;
   lastFour?: string | undefined;
 };
 
 /** @internal */
-export const Itin$outboundSchema: z.ZodType<Itin$Outbound, z.ZodTypeDef, Itin> =
-  z.object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
-  });
+export const GovernmentIDItin$outboundSchema: z.ZodType<
+  GovernmentIDItin$Outbound,
+  z.ZodTypeDef,
+  GovernmentIDItin
+> = z.object({
+  full: z.string().optional(),
+  lastFour: z.string().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Itin$ {
-  /** @deprecated use `Itin$inboundSchema` instead. */
-  export const inboundSchema = Itin$inboundSchema;
-  /** @deprecated use `Itin$outboundSchema` instead. */
-  export const outboundSchema = Itin$outboundSchema;
-  /** @deprecated use `Itin$Outbound` instead. */
-  export type Outbound = Itin$Outbound;
+export namespace GovernmentIDItin$ {
+  /** @deprecated use `GovernmentIDItin$inboundSchema` instead. */
+  export const inboundSchema = GovernmentIDItin$inboundSchema;
+  /** @deprecated use `GovernmentIDItin$outboundSchema` instead. */
+  export const outboundSchema = GovernmentIDItin$outboundSchema;
+  /** @deprecated use `GovernmentIDItin$Outbound` instead. */
+  export type Outbound = GovernmentIDItin$Outbound;
 }
 
-export function itinToJSON(itin: Itin): string {
-  return JSON.stringify(Itin$outboundSchema.parse(itin));
+export function governmentIDItinToJSON(
+  governmentIDItin: GovernmentIDItin,
+): string {
+  return JSON.stringify(
+    GovernmentIDItin$outboundSchema.parse(governmentIDItin),
+  );
 }
 
-export function itinFromJSON(
+export function governmentIDItinFromJSON(
   jsonString: string,
-): SafeParseResult<Itin, SDKValidationError> {
+): SafeParseResult<GovernmentIDItin, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Itin$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Itin' from JSON`,
+    (x) => GovernmentIDItin$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GovernmentIDItin' from JSON`,
   );
 }
 
@@ -122,14 +140,14 @@ export const GovernmentID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ssn: z.lazy(() => Ssn$inboundSchema).optional(),
-  itin: z.lazy(() => Itin$inboundSchema).optional(),
+  ssn: z.lazy(() => GovernmentIDSsn$inboundSchema).optional(),
+  itin: z.lazy(() => GovernmentIDItin$inboundSchema).optional(),
 });
 
 /** @internal */
 export type GovernmentID$Outbound = {
-  ssn?: Ssn$Outbound | undefined;
-  itin?: Itin$Outbound | undefined;
+  ssn?: GovernmentIDSsn$Outbound | undefined;
+  itin?: GovernmentIDItin$Outbound | undefined;
 };
 
 /** @internal */
@@ -138,8 +156,8 @@ export const GovernmentID$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GovernmentID
 > = z.object({
-  ssn: z.lazy(() => Ssn$outboundSchema).optional(),
-  itin: z.lazy(() => Itin$outboundSchema).optional(),
+  ssn: z.lazy(() => GovernmentIDSsn$outboundSchema).optional(),
+  itin: z.lazy(() => GovernmentIDItin$outboundSchema).optional(),
 });
 
 /**

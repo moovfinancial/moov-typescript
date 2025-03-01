@@ -98,6 +98,8 @@ async function $do(
 
   const query = encodeFormQuery({
     "agreementID": payload.agreementID,
+    "count": payload.count,
+    "skip": payload.skip,
     "status": payload.status,
   }, { explode: false });
 

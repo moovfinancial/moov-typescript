@@ -5,11 +5,11 @@
 ```typescript
 import { FeeCategory } from "@moovio/sdk/models/components";
 
-let value: FeeCategory = "ach";
+let value: FeeCategory = "card-pull";
 ```
 
 ## Values
 
 ```typescript
-"card-acquiring" | "card-push" | "card-pull" | "ach" | "rtp" | "card-other" | "network-passthrough" | "other"
+"ach" | "card-acquiring" | "card-other" | "card-pull" | "card-push" | "monthly-platform" | "network-passthrough" | "other" | "rtp"
 ```

@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -65,6 +64,10 @@ export type OnboardingInvite = {
    * List of fee plan codes to assign the account created by the invitee.
    */
   feePlanCodes: Array<string>;
+  /**
+   * The account ID of the account that redeemed the invite.
+   */
+  redeemedAccountID?: string | undefined;
   prefill?: CreateAccount | undefined;
   /**
    * The account that created the onboarding invite.
@@ -84,10 +87,11 @@ export const OnboardingInvite$inboundSchema: z.ZodType<
   code: z.string(),
   link: z.string(),
   returnURL: z.string().optional(),
-  TermsOfServiceURL: z.string().optional(),
+  termsOfServiceURL: z.string().optional(),
   scopes: z.array(ApplicationScope$inboundSchema),
   capabilities: z.array(CapabilityID$inboundSchema),
   feePlanCodes: z.array(z.string()),
+  redeemedAccountID: z.string().optional(),
   prefill: CreateAccount$inboundSchema.optional(),
   partner: OnboardingPartnerAccount$inboundSchema.optional(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -95,10 +99,6 @@ export const OnboardingInvite$inboundSchema: z.ZodType<
     .optional(),
   redeemedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "TermsOfServiceURL": "termsOfServiceURL",
-  });
 });
 
 /** @internal */
@@ -106,10 +106,11 @@ export type OnboardingInvite$Outbound = {
   code: string;
   link: string;
   returnURL?: string | undefined;
-  TermsOfServiceURL?: string | undefined;
+  termsOfServiceURL?: string | undefined;
   scopes: Array<string>;
   capabilities: Array<string>;
   feePlanCodes: Array<string>;
+  redeemedAccountID?: string | undefined;
   prefill?: CreateAccount$Outbound | undefined;
   partner?: OnboardingPartnerAccount$Outbound | undefined;
   createdOn: string;
@@ -130,15 +131,12 @@ export const OnboardingInvite$outboundSchema: z.ZodType<
   scopes: z.array(ApplicationScope$outboundSchema),
   capabilities: z.array(CapabilityID$outboundSchema),
   feePlanCodes: z.array(z.string()),
+  redeemedAccountID: z.string().optional(),
   prefill: CreateAccount$outboundSchema.optional(),
   partner: OnboardingPartnerAccount$outboundSchema.optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   revokedOn: z.date().transform(v => v.toISOString()).optional(),
   redeemedOn: z.date().transform(v => v.toISOString()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    termsOfServiceURL: "TermsOfServiceURL",
-  });
 });
 
 /**
