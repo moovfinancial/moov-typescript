@@ -1,6 +1,6 @@
 # moov-sdk
 
-Developer-friendly & type-safe Typescript SDK specifically catered to leverage *moov-sdk* API.
+The official TypeScript SDK for using the Moov API.
 
 <div align="left">
     <a href="https://www.speakeasy.com/?utm_source=moov-sdk&utm_campaign=typescript"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
@@ -8,11 +8,6 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage *
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
     </a>
 </div>
-
-
-<br /><br />
-> [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/moov/moov). Delete this section before > publishing to a package manager.
 
 <!-- Start Summary [summary] -->
 ## Summary
