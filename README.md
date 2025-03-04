@@ -1,4 +1,4 @@
-# moov-sdk
+# Moov TypeScript
 
 The official TypeScript SDK for using the Moov API.
 
