@@ -138,6 +138,7 @@ import { tool$walletTransactionsList } from "./tools/walletTransactionsList.js";
 
 export function createMCPServer(deps: {
   logger: ConsoleLogger;
+  allowedTools?: string[] | undefined;
   scopes?: MCPScope[] | undefined;
   serverURL?: string | undefined;
   security?: SDKOptions["security"] | undefined;
@@ -146,7 +147,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.5.4",
+    version: "0.6.0",
   });
 
   const client = new MoovCore({
@@ -156,7 +157,14 @@ export function createMCPServer(deps: {
     serverIdx: deps.serverIdx,
   });
   const scopes = new Set(deps.scopes ?? mcpScopes);
-  const tool = createRegisterTool(deps.logger, server, client, scopes);
+  const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
+  const tool = createRegisterTool(
+    deps.logger,
+    server,
+    client,
+    scopes,
+    allowedTools,
+  );
 
   tool(tool$accountsCreate);
   tool(tool$accountsList);
