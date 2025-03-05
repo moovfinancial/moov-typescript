@@ -8,66 +8,37 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "3d989647-298a-4ae8-80e1-b31f00792bf7",
-      paymentMethodType: "pull-from-card",
-      card: {
-        cardID: "01234567-89ab-cdef-0123-456789abcdef",
-        fingerprint:
-          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
-        brand: "Visa",
-        cardType: "credit",
-        lastFourCardNumber: "<value>",
-        bin: "<value>",
-        expiration: {
-          month: "01",
-          year: "21",
-        },
-        billingAddress: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        cardVerification: {
-          cvv: "match",
-          addressLine1: "match",
-          postalCode: "match",
-          accountName: {
-            firstName: "match",
-            lastName: "match",
-            middleName: "match",
-            fullName: "match",
-          },
-        },
-        issuer: "visa",
-        issuerCountry: "<value>",
-        cardAccountUpdater: {
-          updatedOn: new Date("2024-05-06T12:20:38.184Z"),
-          updateType: "number-update",
-        },
-        domesticPushToCard: "standard",
-        domesticPullFromCard: "supported",
+      paymentMethodID: "b6a556d3-f474-4765-940c-7432f944fa2c",
+      paymentMethodType: "rtp-credit",
+      bankAccount: {
+        bankAccountID: "a921c3b0-f86c-46a0-ae8b-f610795722e2",
+        fingerprint: "<value>",
+        status: "verified",
+        holderName: "<value>",
+        holderType: "business",
+        bankName: "<value>",
+        bankAccountType: "checking",
+        routingNumber: "<value>",
+        lastFourAccountNumber: "<value>",
+        updatedOn: new Date("2023-09-10T07:38:30.814Z"),
       },
     },
   ],
   destinationOptions: [
     {
-      paymentMethodID: "d9d6715e-d9e6-4ff9-a0ee-f741ebccd15d",
-      paymentMethodType: "apple-pay",
-      applePay: {
-        brand: "Visa",
-        cardType: "credit",
-        cardDisplayName: "Visa 1256",
-        fingerprint:
-          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
-        expiration: {
-          month: "01",
-          year: "21",
-        },
-        dynamicLastFour: "<value>",
-        issuerCountry: "US",
+      paymentMethodID: "512d72eb-4ebf-4194-924b-a511975174db",
+      paymentMethodType: "ach-debit-collect",
+      bankAccount: {
+        bankAccountID: "e8d9f1c0-1cb9-4e60-b1b4-973b0ab14e79",
+        fingerprint: "<value>",
+        status: "errored",
+        holderName: "<value>",
+        holderType: "individual",
+        bankName: "<value>",
+        bankAccountType: "general-ledger",
+        routingNumber: "<value>",
+        lastFourAccountNumber: "<value>",
+        updatedOn: new Date("2023-08-15T06:07:54.440Z"),
       },
     },
   ],

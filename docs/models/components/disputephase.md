@@ -7,7 +7,7 @@ The phase of a dispute within the dispute lifecycle.
 ```typescript
 import { DisputePhase } from "@moovio/sdk/models/components";
 
-let value: DisputePhase = "pre-dispute";
+let value: DisputePhase = "inquiry";
 ```
 
 ## Values

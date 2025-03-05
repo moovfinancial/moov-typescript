@@ -13,6 +13,12 @@ import {
   Amount$outboundSchema,
 } from "./amount.js";
 import {
+  Cancellation,
+  Cancellation$inboundSchema,
+  Cancellation$Outbound,
+  Cancellation$outboundSchema,
+} from "./cancellation.js";
+import {
   CardAcquiringDispute,
   CardAcquiringDispute$inboundSchema,
   CardAcquiringDispute$Outbound,
@@ -102,6 +108,7 @@ export type Transfer = {
    */
   moovFeeDetails?: MoovFeeDetails | undefined;
   groupID?: string | undefined;
+  cancellations?: Array<Cancellation> | undefined;
   refundedAmount?: Amount | undefined;
   refunds?: Array<CardAcquiringRefund> | undefined;
   disputedAmount?: Amount | undefined;
@@ -133,6 +140,7 @@ export const Transfer$inboundSchema: z.ZodType<
   moovFeeDecimal: z.string().optional(),
   moovFeeDetails: MoovFeeDetails$inboundSchema.optional(),
   groupID: z.string().optional(),
+  cancellations: z.array(Cancellation$inboundSchema).optional(),
   refundedAmount: Amount$inboundSchema.optional(),
   refunds: z.array(CardAcquiringRefund$inboundSchema).optional(),
   disputedAmount: Amount$inboundSchema.optional(),
@@ -159,6 +167,7 @@ export type Transfer$Outbound = {
   moovFeeDecimal?: string | undefined;
   moovFeeDetails?: MoovFeeDetails$Outbound | undefined;
   groupID?: string | undefined;
+  cancellations?: Array<Cancellation$Outbound> | undefined;
   refundedAmount?: Amount$Outbound | undefined;
   refunds?: Array<CardAcquiringRefund$Outbound> | undefined;
   disputedAmount?: Amount$Outbound | undefined;
@@ -189,6 +198,7 @@ export const Transfer$outboundSchema: z.ZodType<
   moovFeeDecimal: z.string().optional(),
   moovFeeDetails: MoovFeeDetails$outboundSchema.optional(),
   groupID: z.string().optional(),
+  cancellations: z.array(Cancellation$outboundSchema).optional(),
   refundedAmount: Amount$outboundSchema.optional(),
   refunds: z.array(CardAcquiringRefund$outboundSchema).optional(),
   disputedAmount: Amount$outboundSchema.optional(),

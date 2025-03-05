@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://hard-to-find-colon.biz",
+    link: "https://total-order.net/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "5a0da042-995c-40de-a2fb-ec13d0ba7949",
+      accountID: "64e6811c-eaec-421f-92a3-87bdf366038e",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2024-02-27T15:21:06.800Z"),
+    createdOn: new Date("2025-02-07T18:13:29.689Z"),
   },
 };
 ```

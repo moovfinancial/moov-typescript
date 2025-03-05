@@ -7,7 +7,7 @@ If the business is a financial institution, this field describes its primary reg
 ```typescript
 import { PrimaryRegulator } from "@moovio/sdk/models/components";
 
-let value: PrimaryRegulator = "NCUA";
+let value: PrimaryRegulator = "FDIC";
 ```
 
 ## Values

@@ -14,7 +14,7 @@ let value: ListOnboardingInvitesResponse = {
   result: [
     {
       code: "N1IA5eWYNh",
-      link: "https://trusty-blight.name/",
+      link: "https://liquid-atrium.biz",
       scopes: [
         "accounts.read",
       ],
@@ -33,11 +33,11 @@ let value: ListOnboardingInvitesResponse = {
         },
       },
       partner: {
-        accountID: "c2abb0a2-4e0d-480c-9d7c-e9e6ccb6734a",
+        accountID: "4eef4285-6705-4b7c-8afb-82efd115bd2a",
         accountMode: "production",
         displayName: "Bob's Widgets",
       },
-      createdOn: new Date("2025-03-04T19:53:24.063Z"),
+      createdOn: new Date("2023-05-03T20:47:05.431Z"),
     },
   ],
 };

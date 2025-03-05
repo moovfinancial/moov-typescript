@@ -121,9 +121,11 @@ import { tool$terminalApplicationsDelete } from "./tools/terminalApplicationsDel
 import { tool$terminalApplicationsGet } from "./tools/terminalApplicationsGet.js";
 import { tool$terminalApplicationsList } from "./tools/terminalApplicationsList.js";
 import { tool$transfersCreate } from "./tools/transfersCreate.js";
+import { tool$transfersCreateCancellation } from "./tools/transfersCreateCancellation.js";
 import { tool$transfersCreateReversal } from "./tools/transfersCreateReversal.js";
 import { tool$transfersGenerateOptions } from "./tools/transfersGenerateOptions.js";
 import { tool$transfersGet } from "./tools/transfersGet.js";
+import { tool$transfersGetCancellation } from "./tools/transfersGetCancellation.js";
 import { tool$transfersGetRefund } from "./tools/transfersGetRefund.js";
 import { tool$transfersInitiateRefund } from "./tools/transfersInitiateRefund.js";
 import { tool$transfersList } from "./tools/transfersList.js";
@@ -147,7 +149,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.6.0",
+    version: "0.6.1",
   });
 
   const client = new MoovCore({
@@ -254,6 +256,8 @@ export function createMCPServer(deps: {
   tool(tool$transfersList);
   tool(tool$transfersGet);
   tool(tool$transfersUpdate);
+  tool(tool$transfersCreateCancellation);
+  tool(tool$transfersGetCancellation);
   tool(tool$transfersInitiateRefund);
   tool(tool$transfersListRefunds);
   tool(tool$transfersGetRefund);

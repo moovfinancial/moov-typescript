@@ -16,11 +16,11 @@ const value: components.TermsOfServiceToken = {
 
 ```typescript
 const value: components.ManualTermsOfService = {
-  acceptedDate: new Date("2025-03-25T13:28:23.484Z"),
+  acceptedDate: new Date("2024-01-27T07:29:07.482Z"),
   acceptedIP: "172.217.2.46",
   acceptedUserAgent:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36",
-  acceptedDomain: "https://sniveling-pilot.org/",
+  acceptedDomain: "https://realistic-hexagon.biz/",
 };
 ```
 

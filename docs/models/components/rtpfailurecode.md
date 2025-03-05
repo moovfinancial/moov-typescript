@@ -7,7 +7,7 @@ Status codes for RTP failures.
 ```typescript
 import { RTPFailureCode } from "@moovio/sdk/models/components";
 
-let value: RTPFailureCode = "account-blocked";
+let value: RTPFailureCode = "customer-deceased";
 ```
 
 ## Values

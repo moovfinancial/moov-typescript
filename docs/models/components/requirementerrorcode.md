@@ -5,7 +5,7 @@
 ```typescript
 import { RequirementErrorCode } from "@moovio/sdk/models/components";
 
-let value: RequirementErrorCode = "document-illegible";
+let value: RequirementErrorCode = "invalid-address";
 ```
 
 ## Values

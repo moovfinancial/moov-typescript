@@ -7,7 +7,7 @@ Status of a transaction within the RTP lifecycle.
 ```typescript
 import { RTPTransactionStatus } from "@moovio/sdk/models/components";
 
-let value: RTPTransactionStatus = "initiated";
+let value: RTPTransactionStatus = "accepted-without-posting";
 ```
 
 ## Values

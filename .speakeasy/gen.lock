@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: b858780b7a03b27e62824696681fa77d
+  docChecksum: 4c4eed7ecb23a068943b689e778dc96b
   docVersion: latest
-  speakeasyVersion: 1.509.0
-  generationVersion: 2.539.0
-  releaseVersion: 0.6.0
-  configChecksum: a6c008476adc81deea6648bf8147a49c
+  speakeasyVersion: 1.509.1
+  generationVersion: 2.539.1
+  releaseVersion: 0.6.1
+  configChecksum: 6959648ff2ece57e2f3b8955a66055ac
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -501,6 +501,9 @@ generatedFiles:
   - docs/models/operations/createbrandglobals.md
   - docs/models/operations/createbrandrequest.md
   - docs/models/operations/createbrandresponse.md
+  - docs/models/operations/createcancellationglobals.md
+  - docs/models/operations/createcancellationrequest.md
+  - docs/models/operations/createcancellationresponse.md
   - docs/models/operations/createfeeplanagreementsglobals.md
   - docs/models/operations/createfeeplanagreementsrequest.md
   - docs/models/operations/createfeeplanagreementsresponse.md
@@ -580,6 +583,9 @@ generatedFiles:
   - docs/models/operations/getbrandglobals.md
   - docs/models/operations/getbrandrequest.md
   - docs/models/operations/getbrandresponse.md
+  - docs/models/operations/getcancellationglobals.md
+  - docs/models/operations/getcancellationrequest.md
+  - docs/models/operations/getcancellationresponse.md
   - docs/models/operations/getcapabilityglobals.md
   - docs/models/operations/getcapabilityrequest.md
   - docs/models/operations/getcapabilityresponse.md
@@ -1003,9 +1009,11 @@ generatedFiles:
   - src/funcs/terminalApplicationsGet.ts
   - src/funcs/terminalApplicationsList.ts
   - src/funcs/transfersCreate.ts
+  - src/funcs/transfersCreateCancellation.ts
   - src/funcs/transfersCreateReversal.ts
   - src/funcs/transfersGenerateOptions.ts
   - src/funcs/transfersGet.ts
+  - src/funcs/transfersGetCancellation.ts
   - src/funcs/transfersGetRefund.ts
   - src/funcs/transfersInitiateRefund.ts
   - src/funcs/transfersList.ts
@@ -1160,9 +1168,11 @@ generatedFiles:
   - src/mcp-server/tools/terminalApplicationsGet.ts
   - src/mcp-server/tools/terminalApplicationsList.ts
   - src/mcp-server/tools/transfersCreate.ts
+  - src/mcp-server/tools/transfersCreateCancellation.ts
   - src/mcp-server/tools/transfersCreateReversal.ts
   - src/mcp-server/tools/transfersGenerateOptions.ts
   - src/mcp-server/tools/transfersGet.ts
+  - src/mcp-server/tools/transfersGetCancellation.ts
   - src/mcp-server/tools/transfersGetRefund.ts
   - src/mcp-server/tools/transfersInitiateRefund.ts
   - src/mcp-server/tools/transfersList.ts
@@ -1568,6 +1578,7 @@ generatedFiles:
   - src/models/operations/createaccount.ts
   - src/models/operations/createapplepaysession.ts
   - src/models/operations/createbrand.ts
+  - src/models/operations/createcancellation.ts
   - src/models/operations/createfeeplanagreements.ts
   - src/models/operations/createonboardinginvite.ts
   - src/models/operations/createpaymentlink.ts
@@ -1595,6 +1606,7 @@ generatedFiles:
   - src/models/operations/getbankaccount.ts
   - src/models/operations/getbankaccountverification.ts
   - src/models/operations/getbrand.ts
+  - src/models/operations/getcancellation.ts
   - src/models/operations/getcapability.ts
   - src/models/operations/getcard.ts
   - src/models/operations/getdispute.ts
@@ -3335,5 +3347,26 @@ examples:
       responses:
         "400":
           application/json: {"error": "<value>"}
+  createCancellation:
+    Created cancellation:
+      parameters:
+        path:
+          accountID: "12dbe811-b86d-497b-ae0f-fb7cfda35251"
+          transferID: "6bb9450c-10a9-4c8d-a8d2-d3fa18648706"
+        header: {}
+      responses:
+        "200":
+          application/json: {"cancellationID": "89ca7f54-13ba-4714-b9af-17163eae2057", "status": "completed", "createdOn": "2025-01-19T03:02:43.255309588Z"}
+  getCancellation:
+    Got cancellation:
+      parameters:
+        path:
+          accountID: "fe098575-0376-4404-9a9c-6fe55e3766af"
+          transferID: "b3b49c6a-9b74-4a85-9d49-864ada05cbf2"
+          cancellationID: "5848c1db-18ac-41eb-b107-b6499987902c"
+        header: {}
+      responses:
+        "200":
+          application/json: {"cancellationID": "89ca7f54-13ba-4714-b9af-17163eae2057", "status": "completed", "createdOn": "2025-01-19T03:02:43.255309588Z"}
 examplesVersion: 1.0.0
 generatedTests: {}

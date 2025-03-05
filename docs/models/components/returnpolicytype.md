@@ -5,7 +5,7 @@
 ```typescript
 import { ReturnPolicyType } from "@moovio/sdk/models/components";
 
-let value: ReturnPolicyType = "other";
+let value: ReturnPolicyType = "withinThirtyDays";
 ```
 
 ## Values

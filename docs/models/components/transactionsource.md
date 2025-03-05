@@ -10,7 +10,7 @@ Omit for customer-initiated e-commerce transactions.
 ```typescript
 import { TransactionSource } from "@moovio/sdk/models/components";
 
-let value: TransactionSource = "recurring";
+let value: TransactionSource = "unscheduled";
 ```
 
 ## Values

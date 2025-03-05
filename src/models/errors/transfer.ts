@@ -48,6 +48,7 @@ export type TransferData = {
    */
   moovFeeDetails?: components.MoovFeeDetails | undefined;
   groupID?: string | undefined;
+  cancellations?: Array<components.Cancellation> | undefined;
   refundedAmount?: components.Amount | undefined;
   refunds?: Array<components.CardAcquiringRefund> | undefined;
   disputedAmount?: components.Amount | undefined;
@@ -100,6 +101,7 @@ export class Transfer extends Error {
    */
   moovFeeDetails?: components.MoovFeeDetails | undefined;
   groupID?: string | undefined;
+  cancellations?: Array<components.Cancellation> | undefined;
   refundedAmount?: components.Amount | undefined;
   refunds?: Array<components.CardAcquiringRefund> | undefined;
   disputedAmount?: components.Amount | undefined;
@@ -133,6 +135,7 @@ export class Transfer extends Error {
     if (err.moovFeeDecimal != null) this.moovFeeDecimal = err.moovFeeDecimal;
     if (err.moovFeeDetails != null) this.moovFeeDetails = err.moovFeeDetails;
     if (err.groupID != null) this.groupID = err.groupID;
+    if (err.cancellations != null) this.cancellations = err.cancellations;
     if (err.refundedAmount != null) this.refundedAmount = err.refundedAmount;
     if (err.refunds != null) this.refunds = err.refunds;
     if (err.disputedAmount != null) this.disputedAmount = err.disputedAmount;
@@ -167,6 +170,7 @@ export const Transfer$inboundSchema: z.ZodType<
   moovFeeDecimal: z.string().optional(),
   moovFeeDetails: components.MoovFeeDetails$inboundSchema.optional(),
   groupID: z.string().optional(),
+  cancellations: z.array(components.Cancellation$inboundSchema).optional(),
   refundedAmount: components.Amount$inboundSchema.optional(),
   refunds: z.array(components.CardAcquiringRefund$inboundSchema).optional(),
   disputedAmount: components.Amount$inboundSchema.optional(),
@@ -196,6 +200,7 @@ export type Transfer$Outbound = {
   moovFeeDecimal?: string | undefined;
   moovFeeDetails?: components.MoovFeeDetails$Outbound | undefined;
   groupID?: string | undefined;
+  cancellations?: Array<components.Cancellation$Outbound> | undefined;
   refundedAmount?: components.Amount$Outbound | undefined;
   refunds?: Array<components.CardAcquiringRefund$Outbound> | undefined;
   disputedAmount?: components.Amount$Outbound | undefined;
@@ -228,6 +233,7 @@ export const Transfer$outboundSchema: z.ZodType<
     moovFeeDecimal: z.string().optional(),
     moovFeeDetails: components.MoovFeeDetails$outboundSchema.optional(),
     groupID: z.string().optional(),
+    cancellations: z.array(components.Cancellation$outboundSchema).optional(),
     refundedAmount: components.Amount$outboundSchema.optional(),
     refunds: z.array(components.CardAcquiringRefund$outboundSchema).optional(),
     disputedAmount: components.Amount$outboundSchema.optional(),

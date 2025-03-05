@@ -3,9 +3,11 @@
  */
 
 import { transfersCreate } from "../funcs/transfersCreate.js";
+import { transfersCreateCancellation } from "../funcs/transfersCreateCancellation.js";
 import { transfersCreateReversal } from "../funcs/transfersCreateReversal.js";
 import { transfersGenerateOptions } from "../funcs/transfersGenerateOptions.js";
 import { transfersGet } from "../funcs/transfersGet.js";
+import { transfersGetCancellation } from "../funcs/transfersGetCancellation.js";
 import { transfersGetRefund } from "../funcs/transfersGetRefund.js";
 import { transfersInitiateRefund } from "../funcs/transfersInitiateRefund.js";
 import { transfersList } from "../funcs/transfersList.js";
@@ -93,6 +95,40 @@ export class Transfers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateTransferResponse> {
     return unwrapAsync(transfersUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   *   Initiate a cancellation for a card, ACH, or queued transfer.
+   *
+   *   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
+   *   to specify the `/accounts/{accountID}/transfers.write` scope.
+   */
+  async createCancellation(
+    request: operations.CreateCancellationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateCancellationResponse> {
+    return unwrapAsync(transfersCreateCancellation(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   *   Get details of a cancellation for a transfer.
+   *
+   *   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
+   *   to specify the `/accounts/{accountID}/transfers.read` scope.
+   */
+  async getCancellation(
+    request: operations.GetCancellationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetCancellationResponse> {
+    return unwrapAsync(transfersGetCancellation(
       this,
       request,
       options,

@@ -6,19 +6,19 @@
 import { AchCreditStandardPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: AchCreditStandardPaymentMethod = {
-  paymentMethodID: "ae92454a-f8cf-450c-8b44-b2dd93f34787",
+  paymentMethodID: "e5cc5b13-3a34-44ff-9d77-57242eb2650b",
   paymentMethodType: "ach-credit-standard",
   bankAccount: {
-    bankAccountID: "d0ede520-b223-4439-b8aa-d086c394351b",
+    bankAccountID: "52748446-9d45-4af3-a3dc-5068caacc71d",
     fingerprint: "<value>",
     status: "new",
     holderName: "<value>",
     holderType: "business",
     bankName: "<value>",
-    bankAccountType: "general-ledger",
+    bankAccountType: "savings",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-09-19T07:28:52.145Z"),
+    updatedOn: new Date("2023-12-11T06:25:32.252Z"),
   },
 };
 ```

@@ -7,11 +7,11 @@ import { TransferSource } from "@moovio/sdk/models/components";
 
 let value: TransferSource = {
   paymentMethodID: "<id>",
-  paymentMethodType: "ach-debit-fund",
+  paymentMethodType: "ach-debit-collect",
   account: {
     accountID: "<id>",
-    email: "Zakary.Hessel46@hotmail.com",
-    displayName: "Keeley.Jacobs",
+    email: "Diana.Kutch61@yahoo.com",
+    displayName: "Christy_Kertzmann41",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -67,13 +67,13 @@ let value: TransferSource = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "canceled",
+    status: "completed",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
   },
   achDetails: {
-    status: "corrected",
+    status: "originated",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",

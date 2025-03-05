@@ -14,26 +14,8 @@ let value: CreateTransferOptionsResponse = {
   result: {
     sourceOptions: [
       {
-        paymentMethodID: "33b24130-b667-4459-a379-2486b37d2e77",
-        paymentMethodType: "ach-credit-standard",
-        bankAccount: {
-          bankAccountID: "8d224f18-cdff-4838-bb74-dd898ce0f565",
-          fingerprint: "<value>",
-          status: "pending",
-          holderName: "<value>",
-          holderType: "individual",
-          bankName: "<value>",
-          bankAccountType: "savings",
-          routingNumber: "<value>",
-          lastFourAccountNumber: "<value>",
-          updatedOn: new Date("2023-01-03T23:43:26.209Z"),
-        },
-      },
-    ],
-    destinationOptions: [
-      {
-        paymentMethodID: "31a382cf-1d70-487e-95c2-68233bf28200",
-        paymentMethodType: "pull-from-card",
+        paymentMethodID: "62f84059-3940-4653-886f-953aeadaf6c8",
+        paymentMethodType: "card-payment",
         card: {
           cardID: "01234567-89ab-cdef-0123-456789abcdef",
           fingerprint:
@@ -65,7 +47,7 @@ let value: CreateTransferOptionsResponse = {
               fullName: "match",
             },
           },
-          issuer: "discover",
+          issuer: "american_express",
           issuerCountry: "<value>",
           cardAccountUpdater: {
             updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -73,6 +55,24 @@ let value: CreateTransferOptionsResponse = {
           },
           domesticPushToCard: "standard",
           domesticPullFromCard: "supported",
+        },
+      },
+    ],
+    destinationOptions: [
+      {
+        paymentMethodID: "ad0feda7-c342-4f3b-b701-eb830c432c9a",
+        paymentMethodType: "ach-credit-same-day",
+        bankAccount: {
+          bankAccountID: "eaf30e4f-34ed-4192-8191-79fe98aef0fc",
+          fingerprint: "<value>",
+          status: "errored",
+          holderName: "<value>",
+          holderType: "business",
+          bankName: "<value>",
+          bankAccountType: "loan",
+          routingNumber: "<value>",
+          lastFourAccountNumber: "<value>",
+          updatedOn: new Date("2024-05-16T17:53:58.910Z"),
         },
       },
     ],

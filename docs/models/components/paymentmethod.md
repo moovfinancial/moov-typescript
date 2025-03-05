@@ -9,10 +9,10 @@ A method of moving money
 
 ```typescript
 const value: components.MoovWalletPaymentMethod = {
-  paymentMethodID: "8dfe3d50-817b-4d5d-a095-833dcd7a730e",
+  paymentMethodID: "ddb243d7-204f-40e0-9a57-354bd6d0c8d3",
   paymentMethodType: "moov-wallet",
   wallet: {
-    walletID: "c1e2dcba-3a1d-437e-ac07-8d916af6f876",
+    walletID: "bd7d8fe6-fc8f-4b31-84b8-6c0db2600f75",
   },
 };
 ```
@@ -21,19 +21,19 @@ const value: components.MoovWalletPaymentMethod = {
 
 ```typescript
 const value: components.AchDebitFundPaymentMethod = {
-  paymentMethodID: "66f7c83f-e2e3-49e9-a34a-b942a322bbe4",
+  paymentMethodID: "cb0c1f57-0d48-4e2d-b8ed-710d7ae4e04c",
   paymentMethodType: "ach-debit-fund",
   bankAccount: {
-    bankAccountID: "e37ff87f-9389-4862-9d12-20de1762ddb2",
+    bankAccountID: "f4cf840c-2646-4e6e-8c45-59afe908680f",
     fingerprint: "<value>",
-    status: "new",
+    status: "verified",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "savings",
+    bankAccountType: "general-ledger",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2023-06-14T21:20:15.821Z"),
+    updatedOn: new Date("2024-01-21T14:13:42.501Z"),
   },
 };
 ```
@@ -42,19 +42,19 @@ const value: components.AchDebitFundPaymentMethod = {
 
 ```typescript
 const value: components.AchDebitCollectPaymentMethod = {
-  paymentMethodID: "04f0e0a5-7354-4bd6-bd0c-8d36bd7d8fe6",
+  paymentMethodID: "6ce24716-4e3b-43a9-87d3-7f2841d99829",
   paymentMethodType: "ach-debit-collect",
   bankAccount: {
-    bankAccountID: "c8fb314b-86c0-4db2-8600-f753cb0c1f57",
+    bankAccountID: "a0344c41-1263-4324-b8fc-2cbe6db46dc3",
     fingerprint: "<value>",
     status: "errored",
     holderName: "<value>",
-    holderType: "individual",
+    holderType: "business",
     bankName: "<value>",
-    bankAccountType: "general-ledger",
+    bankAccountType: "savings",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-10-12T13:18:26.518Z"),
+    updatedOn: new Date("2024-08-16T02:43:11.535Z"),
   },
 };
 ```
@@ -63,52 +63,10 @@ const value: components.AchDebitCollectPaymentMethod = {
 
 ```typescript
 const value: components.AchCreditStandardPaymentMethod = {
-  paymentMethodID: "2d8ed710-d7ae-44e0-b4cd-f4cf840c2646",
+  paymentMethodID: "dbb49043-6b42-4de7-9346-c89f17782269",
   paymentMethodType: "ach-credit-standard",
   bankAccount: {
-    bankAccountID: "6ec4559a-fe90-4868-90f0-41856ce24716",
-    fingerprint: "<value>",
-    status: "errored",
-    holderName: "<value>",
-    holderType: "individual",
-    bankName: "<value>",
-    bankAccountType: "general-ledger",
-    routingNumber: "<value>",
-    lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2023-08-25T14:51:17.867Z"),
-  },
-};
-```
-
-### `components.AchCreditSameDayPaymentMethod`
-
-```typescript
-const value: components.AchCreditSameDayPaymentMethod = {
-  paymentMethodID: "a97d37f2-841d-4998-8291-a0344c411263",
-  paymentMethodType: "ach-credit-same-day",
-  bankAccount: {
-    bankAccountID: "248fc2cb-e6db-446d-9c3d-fe68dbb49043",
-    fingerprint: "<value>",
-    status: "pending",
-    holderName: "<value>",
-    holderType: "individual",
-    bankName: "<value>",
-    bankAccountType: "checking",
-    routingNumber: "<value>",
-    lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-07-11T20:54:23.054Z"),
-  },
-};
-```
-
-### `components.RtpCreditPaymentMethod`
-
-```typescript
-const value: components.RtpCreditPaymentMethod = {
-  paymentMethodID: "e7346c89-f177-4822-a694-7f077b4c61a0",
-  paymentMethodType: "rtp-credit",
-  bankAccount: {
-    bankAccountID: "09db9655-682e-4a5f-ad95-51539b48cab3",
+    bankAccountID: "7f077b4c-61a0-4b09-9db9-655682ea5fd9",
     fingerprint: "<value>",
     status: "verified",
     holderName: "<value>",
@@ -117,7 +75,49 @@ const value: components.RtpCreditPaymentMethod = {
     bankAccountType: "savings",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-02-06T17:05:13.398Z"),
+    updatedOn: new Date("2023-09-27T06:28:40.601Z"),
+  },
+};
+```
+
+### `components.AchCreditSameDayPaymentMethod`
+
+```typescript
+const value: components.AchCreditSameDayPaymentMethod = {
+  paymentMethodID: "9b48cab3-a434-4573-b5e2-30b870fddec2",
+  paymentMethodType: "ach-credit-same-day",
+  bankAccount: {
+    bankAccountID: "eb4079f2-16c5-4aec-b170-2c2892e0e1e5",
+    fingerprint: "<value>",
+    status: "verified",
+    holderName: "<value>",
+    holderType: "business",
+    bankName: "<value>",
+    bankAccountType: "loan",
+    routingNumber: "<value>",
+    lastFourAccountNumber: "<value>",
+    updatedOn: new Date("2024-07-29T21:08:39.343Z"),
+  },
+};
+```
+
+### `components.RtpCreditPaymentMethod`
+
+```typescript
+const value: components.RtpCreditPaymentMethod = {
+  paymentMethodID: "6600b62d-a755-45e6-a025-2df570336d6b",
+  paymentMethodType: "rtp-credit",
+  bankAccount: {
+    bankAccountID: "a3031b9c-64d9-47e5-b642-9eaadb6c1d88",
+    fingerprint: "<value>",
+    status: "pending",
+    holderName: "<value>",
+    holderType: "individual",
+    bankName: "<value>",
+    bankAccountType: "savings",
+    routingNumber: "<value>",
+    lastFourAccountNumber: "<value>",
+    updatedOn: new Date("2025-02-18T00:00:07.712Z"),
   },
 };
 ```
@@ -126,106 +126,8 @@ const value: components.RtpCreditPaymentMethod = {
 
 ```typescript
 const value: components.CardPaymentPaymentMethod = {
-  paymentMethodID: "735e230b-870f-4dde-ac2f-eb4079f216c5",
+  paymentMethodID: "144b0561-78fd-4e42-8a39-317a186423e0",
   paymentMethodType: "card-payment",
-  card: {
-    cardID: "01234567-89ab-cdef-0123-456789abcdef",
-    fingerprint:
-      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
-    brand: "Visa",
-    cardType: "credit",
-    lastFourCardNumber: "<value>",
-    bin: "<value>",
-    expiration: {
-      month: "01",
-      year: "21",
-    },
-    billingAddress: {
-      addressLine1: "123 Main Street",
-      addressLine2: "Apt 302",
-      city: "Boulder",
-      stateOrProvince: "CO",
-      postalCode: "80301",
-      country: "US",
-    },
-    cardVerification: {
-      cvv: "match",
-      addressLine1: "match",
-      postalCode: "match",
-      accountName: {
-        firstName: "match",
-        lastName: "match",
-        middleName: "match",
-        fullName: "match",
-      },
-    },
-    issuer: "visa",
-    issuerCountry: "<value>",
-    cardAccountUpdater: {
-      updatedOn: new Date("2024-05-06T12:20:38.184Z"),
-      updateType: "number-update",
-    },
-    domesticPushToCard: "standard",
-    domesticPullFromCard: "supported",
-  },
-};
-```
-
-### `components.PushToCardPaymentMethod`
-
-```typescript
-const value: components.PushToCardPaymentMethod = {
-  paymentMethodID: "c1702c28-92e0-4e1e-95c6-bd86600b62da",
-  paymentMethodType: "push-to-card",
-  card: {
-    cardID: "01234567-89ab-cdef-0123-456789abcdef",
-    fingerprint:
-      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
-    brand: "Visa",
-    cardType: "credit",
-    lastFourCardNumber: "<value>",
-    bin: "<value>",
-    expiration: {
-      month: "01",
-      year: "21",
-    },
-    billingAddress: {
-      addressLine1: "123 Main Street",
-      addressLine2: "Apt 302",
-      city: "Boulder",
-      stateOrProvince: "CO",
-      postalCode: "80301",
-      country: "US",
-    },
-    cardVerification: {
-      cvv: "match",
-      addressLine1: "match",
-      postalCode: "match",
-      accountName: {
-        firstName: "match",
-        lastName: "match",
-        middleName: "match",
-        fullName: "match",
-      },
-    },
-    issuer: "discover",
-    issuerCountry: "<value>",
-    cardAccountUpdater: {
-      updatedOn: new Date("2024-05-06T12:20:38.184Z"),
-      updateType: "number-update",
-    },
-    domesticPushToCard: "standard",
-    domesticPullFromCard: "supported",
-  },
-};
-```
-
-### `components.PullFromCardPaymentMethod`
-
-```typescript
-const value: components.PullFromCardPaymentMethod = {
-  paymentMethodID: "55e60252-df57-4033-b6d6-b8a3031b9c64",
-  paymentMethodType: "pull-from-card",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
     fingerprint:
@@ -269,11 +171,109 @@ const value: components.PullFromCardPaymentMethod = {
 };
 ```
 
+### `components.PushToCardPaymentMethod`
+
+```typescript
+const value: components.PushToCardPaymentMethod = {
+  paymentMethodID: "a634abfb-638b-4103-a6a0-8456761276fc",
+  paymentMethodType: "push-to-card",
+  card: {
+    cardID: "01234567-89ab-cdef-0123-456789abcdef",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    brand: "Visa",
+    cardType: "credit",
+    lastFourCardNumber: "<value>",
+    bin: "<value>",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    billingAddress: {
+      addressLine1: "123 Main Street",
+      addressLine2: "Apt 302",
+      city: "Boulder",
+      stateOrProvince: "CO",
+      postalCode: "80301",
+      country: "US",
+    },
+    cardVerification: {
+      cvv: "match",
+      addressLine1: "match",
+      postalCode: "match",
+      accountName: {
+        firstName: "match",
+        lastName: "match",
+        middleName: "match",
+        fullName: "match",
+      },
+    },
+    issuer: "jcb",
+    issuerCountry: "<value>",
+    cardAccountUpdater: {
+      updatedOn: new Date("2024-05-06T12:20:38.184Z"),
+      updateType: "number-update",
+    },
+    domesticPushToCard: "standard",
+    domesticPullFromCard: "supported",
+  },
+};
+```
+
+### `components.PullFromCardPaymentMethod`
+
+```typescript
+const value: components.PullFromCardPaymentMethod = {
+  paymentMethodID: "0a98cc32-a570-46fb-ada9-f7c31257e9a6",
+  paymentMethodType: "pull-from-card",
+  card: {
+    cardID: "01234567-89ab-cdef-0123-456789abcdef",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    brand: "Visa",
+    cardType: "credit",
+    lastFourCardNumber: "<value>",
+    bin: "<value>",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    billingAddress: {
+      addressLine1: "123 Main Street",
+      addressLine2: "Apt 302",
+      city: "Boulder",
+      stateOrProvince: "CO",
+      postalCode: "80301",
+      country: "US",
+    },
+    cardVerification: {
+      cvv: "match",
+      addressLine1: "match",
+      postalCode: "match",
+      accountName: {
+        firstName: "match",
+        lastName: "match",
+        middleName: "match",
+        fullName: "match",
+      },
+    },
+    issuer: "discover",
+    issuerCountry: "<value>",
+    cardAccountUpdater: {
+      updatedOn: new Date("2024-05-06T12:20:38.184Z"),
+      updateType: "number-update",
+    },
+    domesticPushToCard: "standard",
+    domesticPullFromCard: "supported",
+  },
+};
+```
+
 ### `components.ApplePayPaymentMethod`
 
 ```typescript
 const value: components.ApplePayPaymentMethod = {
-  paymentMethodID: "7e56429e-aadb-46c1-8d88-ea14b144b056",
+  paymentMethodID: "98411917-e9f4-4ae5-a8d5-0f61b521bf6c",
   paymentMethodType: "apple-pay",
   applePay: {
     brand: "Visa",

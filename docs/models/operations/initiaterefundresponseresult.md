@@ -7,10 +7,10 @@
 
 ```typescript
 const value: components.CreateRefundResponse = {
-  refundID: "a5f1e71d-1a37-49e4-9635-2889360047bc",
-  createdOn: new Date("2025-04-08T03:28:16.729Z"),
-  updatedOn: new Date("2025-03-08T10:53:45.227Z"),
-  status: "completed",
+  refundID: "2cc219b8-0cbb-431f-a7b1-8815ebbe4c19",
+  createdOn: new Date("2024-04-17T14:04:46.675Z"),
+  updatedOn: new Date("2023-08-18T05:59:07.671Z"),
+  status: "pending",
   amount: {
     currency: "USD",
     value: 1204,
@@ -22,10 +22,10 @@ const value: components.CreateRefundResponse = {
 
 ```typescript
 const value: components.CardAcquiringRefund = {
-  refundID: "248d6fa5-86e0-431c-83b8-df22a0d66954",
-  createdOn: new Date("2025-02-26T19:52:47.838Z"),
-  updatedOn: new Date("2025-04-22T09:35:05.281Z"),
-  status: "completed",
+  refundID: "db7fc0cb-0e73-47d4-be11-98a04b54dcba",
+  createdOn: new Date("2023-01-24T01:52:59.582Z"),
+  updatedOn: new Date("2023-06-17T07:07:26.732Z"),
+  status: "pending",
   amount: {
     currency: "USD",
     value: 1204,

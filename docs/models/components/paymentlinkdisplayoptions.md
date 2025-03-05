@@ -9,8 +9,7 @@ import { PaymentLinkDisplayOptions } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkDisplayOptions = {
   title: "<value>",
-  description:
-    "promptly perfumed official quicker pish during distant across mmm unlike",
+  description: "elliptical peaceful towards whoa",
   callToAction: "subscribe",
 };
 ```

@@ -6,8 +6,8 @@
 import { LinkedApplePayPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: LinkedApplePayPaymentMethod = {
-  paymentMethodID: "e285428d-75e2-47ce-9e18-32d5136a9e56",
-  paymentMethodType: "ach-debit-fund",
+  paymentMethodID: "e42cbce0-8c88-490e-830a-82f641822b1b",
+  paymentMethodType: "ach-credit-standard",
   applePay: {
     brand: "Visa",
     cardType: "credit",

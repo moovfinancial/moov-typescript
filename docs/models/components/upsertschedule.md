@@ -36,8 +36,7 @@ let value: UpsertSchedule = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description:
-          "aboard positively whether unexpectedly longingly menacing hence worth",
+        description: "pip deceivingly whoever tomatillo",
       },
     },
   ],
@@ -69,8 +68,7 @@ let value: UpsertSchedule = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description:
-        "inscribe ajar subtle zowie gallivant suddenly inwardly edge",
+      description: "despite bah oh",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },

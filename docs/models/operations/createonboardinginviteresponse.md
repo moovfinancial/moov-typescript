@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://oily-pants.biz",
+    link: "https://rigid-designation.name/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "be03ec13-5502-442d-a83d-c6da91616037",
+      accountID: "aeea30c5-1d8f-49f8-82f1-2fcd7640053a",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2023-07-18T08:10:20.804Z"),
+    createdOn: new Date("2025-09-23T07:40:01.857Z"),
   },
 };
 ```

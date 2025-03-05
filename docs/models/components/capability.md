@@ -6,11 +6,11 @@
 import { Capability } from "@moovio/sdk/models/components";
 
 let value: Capability = {
-  capability: "card-issuing",
-  accountID: "53c34595-5770-4573-b79d-c4206d248980",
-  status: "in-review",
-  createdOn: new Date("2023-10-05T01:05:42.886Z"),
-  updatedOn: new Date("2023-05-27T00:07:13.026Z"),
+  capability: "collect-funds",
+  accountID: "740f14f9-db02-417d-9b36-bee86aaf787b",
+  status: "enabled",
+  createdOn: new Date("2024-09-01T13:07:23.352Z"),
+  updatedOn: new Date("2023-11-05T07:00:15.686Z"),
 };
 ```
 
