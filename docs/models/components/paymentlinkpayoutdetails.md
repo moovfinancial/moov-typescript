@@ -7,7 +7,7 @@ import { PaymentLinkPayoutDetails } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkPayoutDetails = {
   allowedMethods: [
-    "push-to-card",
+    "ach-credit-same-day",
   ],
   recipient: {
     email: "jordan.lee@classbooker.dev",

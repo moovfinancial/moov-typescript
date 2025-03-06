@@ -7,7 +7,7 @@ Specifies the card processing pricing model
 ```typescript
 import { CardAcquiringModel } from "@moovio/sdk/models/components";
 
-let value: CardAcquiringModel = "flat-rate";
+let value: CardAcquiringModel = "cost-plus";
 ```
 
 ## Values

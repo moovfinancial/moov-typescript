@@ -7,7 +7,7 @@ The payment method type that represents a payment rail and directionality
 ```typescript
 import { PaymentMethodType } from "@moovio/sdk/models/components";
 
-let value: PaymentMethodType = "ach-debit-fund";
+let value: PaymentMethodType = "ach-credit-standard";
 ```
 
 ## Values

@@ -7,7 +7,7 @@ The reason the bank account status changed to the current value.
 ```typescript
 import { BankAccountStatusReason } from "@moovio/sdk/models/components";
 
-let value: BankAccountStatusReason = "verification-initiated";
+let value: BankAccountStatusReason = "ach-credit-return";
 ```
 
 ## Values

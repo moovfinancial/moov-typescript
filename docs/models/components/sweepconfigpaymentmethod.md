@@ -9,7 +9,7 @@ The push payment method can only be ach-credit-standard or ach-credit-same-day. 
 import { SweepConfigPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: SweepConfigPaymentMethod = {
-  paymentMethodID: "4b91a4b7-2284-46c8-beb2-1a8b8ff4ccd6",
+  paymentMethodID: "5748d64e-8358-410b-9b7d-9cec41060b7b",
 };
 ```
 

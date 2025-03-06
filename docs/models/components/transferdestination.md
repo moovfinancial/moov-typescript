@@ -7,11 +7,11 @@ import { TransferDestination } from "@moovio/sdk/models/components";
 
 let value: TransferDestination = {
   paymentMethodID: "<id>",
-  paymentMethodType: "ach-debit-collect",
+  paymentMethodType: "apple-pay",
   account: {
     accountID: "<id>",
-    email: "Geo_Fahey@yahoo.com",
-    displayName: "Anika94",
+    email: "Jany72@hotmail.com",
+    displayName: "Odie81",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -44,7 +44,7 @@ let value: TransferDestination = {
         fullName: "match",
       },
     },
-    issuer: "jcb",
+    issuer: "mastercard",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -54,7 +54,7 @@ let value: TransferDestination = {
     domesticPullFromCard: "supported",
   },
   achDetails: {
-    status: "completed",
+    status: "returned",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
@@ -74,7 +74,7 @@ let value: TransferDestination = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "canceled",
+    status: "initiated",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

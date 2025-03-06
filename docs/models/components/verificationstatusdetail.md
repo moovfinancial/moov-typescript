@@ -9,7 +9,7 @@ Additional detail for a verification status.
 ```typescript
 import { VerificationStatusDetail } from "@moovio/sdk/models/components";
 
-let value: VerificationStatusDetail = "docDobMismatch";
+let value: VerificationStatusDetail = "docNumberMismatch";
 ```
 
 ## Values

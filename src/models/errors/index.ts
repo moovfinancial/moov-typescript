@@ -22,6 +22,7 @@ export * from "./linkcarderror.js";
 export * from "./microdepositvalidationerror.js";
 export * from "./onboardinginviteerror.js";
 export * from "./patchsweepconfigerror.js";
+export * from "./receiptvalidationerror.js";
 export * from "./refundvalidationerror.js";
 export * from "./representativevalidationerror.js";
 export * from "./requestcarderror.js";

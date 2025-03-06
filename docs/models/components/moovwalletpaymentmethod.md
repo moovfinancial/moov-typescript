@@ -6,10 +6,10 @@
 import { MoovWalletPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: MoovWalletPaymentMethod = {
-  paymentMethodID: "6060f69f-92f3-4256-bf8c-c611fd5deee2",
+  paymentMethodID: "7757242e-b265-40b7-8527-484469d45af3",
   paymentMethodType: "moov-wallet",
   wallet: {
-    walletID: "0c9b8900-c4cb-4911-b6e3-6a70be99dd26",
+    walletID: "dc5068ca-acc7-41d9-a0c6-58ae040db4ca",
   },
 };
 ```

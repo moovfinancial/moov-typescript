@@ -8,8 +8,8 @@ import { FulfillmentDetails } from "@moovio/sdk/models/components";
 let value: FulfillmentDetails = {
   hasPhysicalGoods: false,
   isShippingProduct: false,
-  shipmentDurationDays: 741205,
-  returnPolicy: "withinThirtyDays",
+  shipmentDurationDays: 359637,
+  returnPolicy: "exchangeOnly",
 };
 ```
 

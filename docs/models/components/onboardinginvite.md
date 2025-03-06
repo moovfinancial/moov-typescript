@@ -7,7 +7,7 @@ import { OnboardingInvite } from "@moovio/sdk/models/components";
 
 let value: OnboardingInvite = {
   code: "N1IA5eWYNh",
-  link: "https://submissive-pendant.info/",
+  link: "https://majestic-cork.net/",
   scopes: [
     "accounts.read",
   ],
@@ -26,11 +26,11 @@ let value: OnboardingInvite = {
     },
   },
   partner: {
-    accountID: "fa258cd9-155e-4240-872f-6e39bcafb9db",
+    accountID: "cbb9beaf-8a78-4cf0-a86e-2d2cebf94dbd",
     accountMode: "production",
     displayName: "Bob's Widgets",
   },
-  createdOn: new Date("2025-04-22T20:02:07.778Z"),
+  createdOn: new Date("2025-07-12T03:33:17.152Z"),
 };
 ```
 

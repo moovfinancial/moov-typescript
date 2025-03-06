@@ -8,7 +8,7 @@ ACH specific details about the transaction.
 import { ACHTransactionDetails } from "@moovio/sdk/models/components";
 
 let value: ACHTransactionDetails = {
-  status: "completed",
+  status: "initiated",
   traceNumber: "124782618117",
   companyEntryDescription: "Gym dues",
   originatingCompanyName: "Whole Body Fit",

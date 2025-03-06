@@ -9,10 +9,10 @@ A method of moving money
 
 ```typescript
 const value: components.MoovWalletPaymentMethod = {
-  paymentMethodID: "ddb243d7-204f-40e0-9a57-354bd6d0c8d3",
+  paymentMethodID: "e230b870-fdde-4c2f-8eb4-079f216c5aec",
   paymentMethodType: "moov-wallet",
   wallet: {
-    walletID: "bd7d8fe6-fc8f-4b31-84b8-6c0db2600f75",
+    walletID: "702c2892-e0e1-4e5c-96bd-86600b62da75",
   },
 };
 ```
@@ -21,19 +21,19 @@ const value: components.MoovWalletPaymentMethod = {
 
 ```typescript
 const value: components.AchDebitFundPaymentMethod = {
-  paymentMethodID: "cb0c1f57-0d48-4e2d-b8ed-710d7ae4e04c",
+  paymentMethodID: "5e60252d-f570-4336-ad6b-8a3031b9c64d",
   paymentMethodType: "ach-debit-fund",
   bankAccount: {
-    bankAccountID: "f4cf840c-2646-4e6e-8c45-59afe908680f",
+    bankAccountID: "7e56429e-aadb-46c1-8d88-ea14b144b056",
     fingerprint: "<value>",
-    status: "verified",
+    status: "verificationFailed",
     holderName: "<value>",
-    holderType: "individual",
+    holderType: "business",
     bankName: "<value>",
-    bankAccountType: "general-ledger",
+    bankAccountType: "loan",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-01-21T14:13:42.501Z"),
+    updatedOn: new Date("2025-08-15T09:01:20.024Z"),
   },
 };
 ```
@@ -42,19 +42,19 @@ const value: components.AchDebitFundPaymentMethod = {
 
 ```typescript
 const value: components.AchDebitCollectPaymentMethod = {
-  paymentMethodID: "6ce24716-4e3b-43a9-87d3-7f2841d99829",
+  paymentMethodID: "e42a3931-7a18-4642-a3e0-28a634abfb63",
   paymentMethodType: "ach-debit-collect",
   bankAccount: {
-    bankAccountID: "a0344c41-1263-4324-b8fc-2cbe6db46dc3",
+    bankAccountID: "b1036a08-4567-4612-976f-c980a98cc32a",
     fingerprint: "<value>",
-    status: "errored",
+    status: "verificationFailed",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "individual",
     bankName: "<value>",
     bankAccountType: "savings",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-08-16T02:43:11.535Z"),
+    updatedOn: new Date("2025-10-29T06:23:43.138Z"),
   },
 };
 ```
@@ -63,19 +63,19 @@ const value: components.AchDebitCollectPaymentMethod = {
 
 ```typescript
 const value: components.AchCreditStandardPaymentMethod = {
-  paymentMethodID: "dbb49043-6b42-4de7-9346-c89f17782269",
+  paymentMethodID: "bda9f7c3-1257-4e9a-a6a6-98411917e9f4",
   paymentMethodType: "ach-credit-standard",
   bankAccount: {
-    bankAccountID: "7f077b4c-61a0-4b09-9db9-655682ea5fd9",
+    bankAccountID: "e58d50f6-1b52-41bf-86ca-6060f69f92f3",
     fingerprint: "<value>",
     status: "verified",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "savings",
+    bankAccountType: "loan",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2023-09-27T06:28:40.601Z"),
+    updatedOn: new Date("2024-08-30T05:51:37.577Z"),
   },
 };
 ```
@@ -84,19 +84,19 @@ const value: components.AchCreditStandardPaymentMethod = {
 
 ```typescript
 const value: components.AchCreditSameDayPaymentMethod = {
-  paymentMethodID: "9b48cab3-a434-4573-b5e2-30b870fddec2",
+  paymentMethodID: "cc611fd5-deee-42c0-bc9b-8900c4cb9116",
   paymentMethodType: "ach-credit-same-day",
   bankAccount: {
-    bankAccountID: "eb4079f2-16c5-4aec-b170-2c2892e0e1e5",
+    bankAccountID: "36a70be9-9dd2-46db-8d27-bb1ba540646b",
     fingerprint: "<value>",
-    status: "verified",
+    status: "verificationFailed",
     holderName: "<value>",
     holderType: "business",
     bankName: "<value>",
-    bankAccountType: "loan",
+    bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-07-29T21:08:39.343Z"),
+    updatedOn: new Date("2025-08-04T14:21:14.678Z"),
   },
 };
 ```
@@ -105,19 +105,19 @@ const value: components.AchCreditSameDayPaymentMethod = {
 
 ```typescript
 const value: components.RtpCreditPaymentMethod = {
-  paymentMethodID: "6600b62d-a755-45e6-a025-2df570336d6b",
+  paymentMethodID: "e11a8ec8-1174-4fa4-b513-5a2a1ea92b3c",
   paymentMethodType: "rtp-credit",
   bankAccount: {
-    bankAccountID: "a3031b9c-64d9-47e5-b642-9eaadb6c1d88",
+    bankAccountID: "fc58a4c5-20a4-4dc1-88fd-d4b5d1aa4ae9",
     fingerprint: "<value>",
-    status: "pending",
+    status: "verified",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
     bankAccountType: "savings",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-02-18T00:00:07.712Z"),
+    updatedOn: new Date("2025-01-20T02:39:15.832Z"),
   },
 };
 ```
@@ -126,7 +126,7 @@ const value: components.RtpCreditPaymentMethod = {
 
 ```typescript
 const value: components.CardPaymentPaymentMethod = {
-  paymentMethodID: "144b0561-78fd-4e42-8a39-317a186423e0",
+  paymentMethodID: "f8cf50cb-44b2-4dd9-83f3-47870d0ede52",
   paymentMethodType: "card-payment",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -159,7 +159,7 @@ const value: components.CardPaymentPaymentMethod = {
         fullName: "match",
       },
     },
-    issuer: "jcb",
+    issuer: "mastercard",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -175,7 +175,7 @@ const value: components.CardPaymentPaymentMethod = {
 
 ```typescript
 const value: components.PushToCardPaymentMethod = {
-  paymentMethodID: "a634abfb-638b-4103-a6a0-8456761276fc",
+  paymentMethodID: "2234398a-ad08-46c3-8943-51be0a9ea692",
   paymentMethodType: "push-to-card",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -208,7 +208,7 @@ const value: components.PushToCardPaymentMethod = {
         fullName: "match",
       },
     },
-    issuer: "jcb",
+    issuer: "diners_club",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -224,7 +224,7 @@ const value: components.PushToCardPaymentMethod = {
 
 ```typescript
 const value: components.PullFromCardPaymentMethod = {
-  paymentMethodID: "0a98cc32-a570-46fb-ada9-f7c31257e9a6",
+  paymentMethodID: "7418b1b0-bf71-4428-82f6-6191441d1743",
   paymentMethodType: "pull-from-card",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -257,7 +257,7 @@ const value: components.PullFromCardPaymentMethod = {
         fullName: "match",
       },
     },
-    issuer: "discover",
+    issuer: "mastercard",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -273,7 +273,7 @@ const value: components.PullFromCardPaymentMethod = {
 
 ```typescript
 const value: components.ApplePayPaymentMethod = {
-  paymentMethodID: "98411917-e9f4-4ae5-a8d5-0f61b521bf6c",
+  paymentMethodID: "c65b4d40-7474-4ff9-be5c-c5b133a344ff",
   paymentMethodType: "apple-pay",
   applePay: {
     brand: "Visa",

@@ -9,7 +9,7 @@ Possible states an account verification can be in.
 ```typescript
 import { AccountVerificationStatus } from "@moovio/sdk/models/components";
 
-let value: AccountVerificationStatus = "failed";
+let value: AccountVerificationStatus = "verified";
 ```
 
 ## Values

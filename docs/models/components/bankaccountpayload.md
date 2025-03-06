@@ -12,7 +12,7 @@ let value: BankAccountPayload = {
     holderName: "<value>",
     holderType: "business",
     accountNumber: "<value>",
-    bankAccountType: "general-ledger",
+    bankAccountType: "checking",
     routingNumber: "<value>",
   },
 };

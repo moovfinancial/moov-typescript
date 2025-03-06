@@ -38,7 +38,7 @@ let value: PaymentMethodsCard = {
       fullName: "match",
     },
   },
-  issuer: "diners_club",
+  issuer: "jcb",
   issuerCountry: "<value>",
   cardAccountUpdater: {
     updatedOn: new Date("2024-05-06T12:20:38.184Z"),

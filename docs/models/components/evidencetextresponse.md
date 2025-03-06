@@ -6,11 +6,11 @@
 import { EvidenceTextResponse } from "@moovio/sdk/models/components";
 
 let value: EvidenceTextResponse = {
-  evidenceID: "d64e544e-2d74-4948-899d-9346ce0f7297",
-  disputeID: "9e73a4e7-c0b2-43d1-845e-293478299635",
-  evidenceType: "generic-evidence",
+  evidenceID: "06e6c09f-f90d-4b0c-8b18-8e7888dfe3d5",
+  disputeID: "817bd5d0-9583-43dc-ad7a-730ebc1e2dcb",
+  evidenceType: "proof-of-delivery",
   text: "<value>",
-  createdOn: new Date("2023-01-17T00:29:36.453Z"),
+  createdOn: new Date("2024-12-21T22:31:59.147Z"),
 };
 ```
 

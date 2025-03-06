@@ -5,7 +5,7 @@
 ```typescript
 import { RequirementErrorCode } from "@moovio/sdk/models/components";
 
-let value: RequirementErrorCode = "invalid-address";
+let value: RequirementErrorCode = "tax-id-mismatch";
 ```
 
 ## Values

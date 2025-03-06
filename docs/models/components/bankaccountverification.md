@@ -6,7 +6,7 @@
 import { BankAccountVerification } from "@moovio/sdk/models/components";
 
 let value: BankAccountVerification = {
-  verificationMethod: "ach",
+  verificationMethod: "instant",
   status: "max-attempts-exceeded",
 };
 ```
