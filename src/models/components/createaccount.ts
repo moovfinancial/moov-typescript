@@ -34,6 +34,7 @@ import {
   ManualTermsOfService$Outbound,
   ManualTermsOfService$outboundSchema,
 } from "./manualtermsofservice.js";
+import { Mode, Mode$inboundSchema, Mode$outboundSchema } from "./mode.js";
 import {
   Settings,
   Settings$inboundSchema,
@@ -78,6 +79,10 @@ export type CreateAccount = {
    */
   settings?: Settings | undefined;
   capabilities?: Array<CapabilityID> | undefined;
+  /**
+   * The operating mode for an account.
+   */
+  mode?: Mode | undefined;
 };
 
 /** @internal */
@@ -155,6 +160,7 @@ export const CreateAccount$inboundSchema: z.ZodType<
   customerSupport: CustomerSupport$inboundSchema.optional(),
   settings: Settings$inboundSchema.optional(),
   capabilities: z.array(CapabilityID$inboundSchema).optional(),
+  mode: Mode$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -170,6 +176,7 @@ export type CreateAccount$Outbound = {
   customerSupport?: CustomerSupport$Outbound | undefined;
   settings?: Settings$Outbound | undefined;
   capabilities?: Array<string> | undefined;
+  mode?: string | undefined;
 };
 
 /** @internal */
@@ -189,6 +196,7 @@ export const CreateAccount$outboundSchema: z.ZodType<
   customerSupport: CustomerSupport$outboundSchema.optional(),
   settings: Settings$outboundSchema.optional(),
   capabilities: z.array(CapabilityID$outboundSchema).optional(),
+  mode: Mode$outboundSchema.optional(),
 });
 
 /**

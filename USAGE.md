@@ -98,6 +98,7 @@ async function run() {
         companyName: "WholeBodyFitness",
       },
     },
+    mode: "production",
   });
 
   // Handle the result

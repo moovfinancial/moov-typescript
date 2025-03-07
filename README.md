@@ -237,6 +237,7 @@ async function run() {
         companyName: "WholeBodyFitness",
       },
     },
+    mode: "production",
   });
 
   // Handle the result
@@ -359,6 +360,7 @@ async function run() {
         companyName: "WholeBodyFitness",
       },
     },
+    mode: "production",
   });
 
   // Handle the result
@@ -2094,6 +2096,7 @@ async function run() {
         companyName: "WholeBodyFitness",
       },
     },
+    mode: "production",
   }, {
     retries: {
       strategy: "backoff",
@@ -2225,6 +2228,7 @@ async function run() {
         companyName: "WholeBodyFitness",
       },
     },
+    mode: "production",
   });
 
   // Handle the result
@@ -2355,6 +2359,7 @@ async function run() {
           companyName: "WholeBodyFitness",
         },
       },
+      mode: "production",
     });
 
     // Handle the result
@@ -2510,6 +2515,7 @@ async function run() {
         companyName: "WholeBodyFitness",
       },
     },
+    mode: "production",
   });
 
   // Handle the result

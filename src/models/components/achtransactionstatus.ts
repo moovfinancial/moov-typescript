@@ -14,6 +14,7 @@ export const ACHTransactionStatus = {
   Corrected: "corrected",
   Returned: "returned",
   Completed: "completed",
+  Canceled: "canceled",
 } as const;
 /**
  * Status of a transaction within the ACH lifecycle.

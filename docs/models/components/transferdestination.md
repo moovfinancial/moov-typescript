@@ -54,7 +54,7 @@ let value: TransferDestination = {
     domesticPullFromCard: "supported",
   },
   achDetails: {
-    status: "returned",
+    status: "completed",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",

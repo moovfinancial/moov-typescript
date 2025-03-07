@@ -73,7 +73,7 @@ let value: TransferSource = {
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
   },
   achDetails: {
-    status: "initiated",
+    status: "originated",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",

@@ -120,6 +120,7 @@ async function run() {
         companyName: "WholeBodyFitness",
       },
     },
+    mode: "production",
   });
 
   switch (true) {

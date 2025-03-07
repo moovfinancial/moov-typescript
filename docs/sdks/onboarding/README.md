@@ -142,6 +142,7 @@ async function run() {
           companyName: "WholeBodyFitness",
         },
       },
+      mode: "production",
     },
   });
 
@@ -270,6 +271,7 @@ async function run() {
           companyName: "WholeBodyFitness",
         },
       },
+      mode: "production",
     },
   });
 

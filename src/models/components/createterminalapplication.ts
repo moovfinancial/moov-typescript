@@ -21,19 +21,19 @@ export type CreateTerminalApplication = {
    */
   platform: TerminalApplicationPlatform;
   /**
-   * The app bundle identifier of the terminal application. Required if platform is ios.
+   * The app bundle identifier of the terminal application. Required if platform is `ios`.
    */
   appBundleID?: string | undefined;
   /**
-   * The app package name of the terminal application. Required if platform is android.
+   * The app package name of the terminal application. Required if platform is `android`.
    */
   packageName?: string | undefined;
   /**
-   * The app version of the terminal application. Required if paltform is android.
+   * The app version of the terminal application. Required if paltform is `android`.
    */
   sha256Digest?: string | undefined;
   /**
-   * The app version of the terminal application. Required if platform is android.
+   * The app version of the terminal application. Required if platform is `android`.
    */
   versionCode?: string | undefined;
 };

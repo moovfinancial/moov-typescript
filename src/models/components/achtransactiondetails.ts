@@ -51,6 +51,7 @@ export type ACHTransactionDetails = {
    * Code used to identify the ACH authorization method.
    */
   secCode?: SECCode | undefined;
+  canceledOn?: Date | undefined;
   initiatedOn?: Date | undefined;
   originatedOn?: Date | undefined;
   correctedOn?: Date | undefined;
@@ -76,6 +77,8 @@ export const ACHTransactionDetails$inboundSchema: z.ZodType<
   companyEntryDescription: z.string().optional(),
   originatingCompanyName: z.string().optional(),
   secCode: SECCode$inboundSchema.optional(),
+  canceledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
   initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   originatedOn: z.string().datetime({ offset: true }).transform(v =>
@@ -101,6 +104,7 @@ export type ACHTransactionDetails$Outbound = {
   companyEntryDescription?: string | undefined;
   originatingCompanyName?: string | undefined;
   secCode?: string | undefined;
+  canceledOn?: string | undefined;
   initiatedOn?: string | undefined;
   originatedOn?: string | undefined;
   correctedOn?: string | undefined;
@@ -123,6 +127,7 @@ export const ACHTransactionDetails$outboundSchema: z.ZodType<
   companyEntryDescription: z.string().optional(),
   originatingCompanyName: z.string().optional(),
   secCode: SECCode$outboundSchema.optional(),
+  canceledOn: z.date().transform(v => v.toISOString()).optional(),
   initiatedOn: z.date().transform(v => v.toISOString()).optional(),
   originatedOn: z.date().transform(v => v.toISOString()).optional(),
   correctedOn: z.date().transform(v => v.toISOString()).optional(),
