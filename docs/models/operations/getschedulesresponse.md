@@ -14,38 +14,41 @@ let value: GetSchedulesResponse = {
   result: {
     destinationAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     mode: "production",
-    occurrences: {
-      mode: "production",
-      runOn: new Date("2025-09-27T09:13:08.294Z"),
-      runTransfer: {
-        amount: {
-          currency: "USD",
-          value: 1204,
+    occurrences: [
+      {
+        mode: "production",
+        runOn: new Date("2025-09-27T09:13:08.294Z"),
+        runTransfer: {
+          amount: {
+            currency: "USD",
+            value: 1204,
+          },
+          destination: {
+            paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+            achDetails: {
+              companyEntryDescription: "Gym dues",
+              originatingCompanyName: "Whole Body Fit",
+            },
+            cardDetails: {
+              dynamicDescriptor: "WhlBdy *Yoga 11-12",
+            },
+          },
+          partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+          source: {
+            paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+            achDetails: {
+              companyEntryDescription: "Gym dues",
+              originatingCompanyName: "Whole Body Fit",
+            },
+            cardDetails: {
+              dynamicDescriptor: "WhlBdy *Yoga 11-12",
+            },
+          },
+          description:
+            "while gentle worth aha formal loaf gadzooks necklace mmm",
         },
-        destination: {
-          paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-          achDetails: {
-            companyEntryDescription: "Gym dues",
-            originatingCompanyName: "Whole Body Fit",
-          },
-          cardDetails: {
-            dynamicDescriptor: "WhlBdy *Yoga 11-12",
-          },
-        },
-        partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-        source: {
-          paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-          achDetails: {
-            companyEntryDescription: "Gym dues",
-            originatingCompanyName: "Whole Body Fit",
-          },
-          cardDetails: {
-            dynamicDescriptor: "WhlBdy *Yoga 11-12",
-          },
-        },
-        description: "while gentle worth aha formal loaf gadzooks necklace mmm",
       },
-    },
+    ],
     ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     recur: {

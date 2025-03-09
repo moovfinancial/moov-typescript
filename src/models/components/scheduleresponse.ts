@@ -30,7 +30,7 @@ export type ScheduleResponse = {
    * The operating mode for an account.
    */
   mode: Mode;
-  occurrences?: OccurrencesResponse | undefined;
+  occurrences?: Array<OccurrencesResponse> | undefined;
   ownerAccountID: string;
   partnerAccountID: string;
   /**
@@ -53,7 +53,7 @@ export const ScheduleResponse$inboundSchema: z.ZodType<
   description: z.string().optional(),
   destinationAccountID: z.string(),
   mode: Mode$inboundSchema,
-  occurrences: OccurrencesResponse$inboundSchema.optional(),
+  occurrences: z.array(OccurrencesResponse$inboundSchema).optional(),
   ownerAccountID: z.string(),
   partnerAccountID: z.string(),
   recur: Recur$inboundSchema.optional(),
@@ -70,7 +70,7 @@ export type ScheduleResponse$Outbound = {
   description?: string | undefined;
   destinationAccountID: string;
   mode: string;
-  occurrences?: OccurrencesResponse$Outbound | undefined;
+  occurrences?: Array<OccurrencesResponse$Outbound> | undefined;
   ownerAccountID: string;
   partnerAccountID: string;
   recur?: Recur$Outbound | undefined;
@@ -90,7 +90,7 @@ export const ScheduleResponse$outboundSchema: z.ZodType<
   description: z.string().optional(),
   destinationAccountID: z.string(),
   mode: Mode$outboundSchema,
-  occurrences: OccurrencesResponse$outboundSchema.optional(),
+  occurrences: z.array(OccurrencesResponse$outboundSchema).optional(),
   ownerAccountID: z.string(),
   partnerAccountID: z.string(),
   recur: Recur$outboundSchema.optional(),

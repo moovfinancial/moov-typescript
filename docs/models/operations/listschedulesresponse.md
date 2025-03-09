@@ -15,38 +15,40 @@ let value: ListSchedulesResponse = {
     {
       destinationAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
       mode: "production",
-      occurrences: {
-        mode: "production",
-        runOn: new Date("2023-09-01T09:56:05.492Z"),
-        runTransfer: {
-          amount: {
-            currency: "USD",
-            value: 1204,
+      occurrences: [
+        {
+          mode: "production",
+          runOn: new Date("2023-09-01T09:56:05.492Z"),
+          runTransfer: {
+            amount: {
+              currency: "USD",
+              value: 1204,
+            },
+            destination: {
+              paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+              achDetails: {
+                companyEntryDescription: "Gym dues",
+                originatingCompanyName: "Whole Body Fit",
+              },
+              cardDetails: {
+                dynamicDescriptor: "WhlBdy *Yoga 11-12",
+              },
+            },
+            partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+            source: {
+              paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+              achDetails: {
+                companyEntryDescription: "Gym dues",
+                originatingCompanyName: "Whole Body Fit",
+              },
+              cardDetails: {
+                dynamicDescriptor: "WhlBdy *Yoga 11-12",
+              },
+            },
+            description: "steel woot ouch unaccountably whether repeatedly nor",
           },
-          destination: {
-            paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-            achDetails: {
-              companyEntryDescription: "Gym dues",
-              originatingCompanyName: "Whole Body Fit",
-            },
-            cardDetails: {
-              dynamicDescriptor: "WhlBdy *Yoga 11-12",
-            },
-          },
-          partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-          source: {
-            paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-            achDetails: {
-              companyEntryDescription: "Gym dues",
-              originatingCompanyName: "Whole Body Fit",
-            },
-            cardDetails: {
-              dynamicDescriptor: "WhlBdy *Yoga 11-12",
-            },
-          },
-          description: "steel woot ouch unaccountably whether repeatedly nor",
         },
-      },
+      ],
       ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
       partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
       recur: {

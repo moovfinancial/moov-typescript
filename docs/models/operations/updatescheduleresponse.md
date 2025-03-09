@@ -14,38 +14,40 @@ let value: UpdateScheduleResponse = {
   result: {
     destinationAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     mode: "production",
-    occurrences: {
-      mode: "production",
-      runOn: new Date("2023-09-19T15:23:14.360Z"),
-      runTransfer: {
-        amount: {
-          currency: "USD",
-          value: 1204,
+    occurrences: [
+      {
+        mode: "production",
+        runOn: new Date("2023-09-19T15:23:14.360Z"),
+        runTransfer: {
+          amount: {
+            currency: "USD",
+            value: 1204,
+          },
+          destination: {
+            paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+            achDetails: {
+              companyEntryDescription: "Gym dues",
+              originatingCompanyName: "Whole Body Fit",
+            },
+            cardDetails: {
+              dynamicDescriptor: "WhlBdy *Yoga 11-12",
+            },
+          },
+          partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+          source: {
+            paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+            achDetails: {
+              companyEntryDescription: "Gym dues",
+              originatingCompanyName: "Whole Body Fit",
+            },
+            cardDetails: {
+              dynamicDescriptor: "WhlBdy *Yoga 11-12",
+            },
+          },
+          description: "gift matter despite",
         },
-        destination: {
-          paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-          achDetails: {
-            companyEntryDescription: "Gym dues",
-            originatingCompanyName: "Whole Body Fit",
-          },
-          cardDetails: {
-            dynamicDescriptor: "WhlBdy *Yoga 11-12",
-          },
-        },
-        partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-        source: {
-          paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-          achDetails: {
-            companyEntryDescription: "Gym dues",
-            originatingCompanyName: "Whole Body Fit",
-          },
-          cardDetails: {
-            dynamicDescriptor: "WhlBdy *Yoga 11-12",
-          },
-        },
-        description: "gift matter despite",
       },
-    },
+    ],
     ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     recur: {

@@ -8,38 +8,40 @@ import { ScheduleResponse } from "@moovio/sdk/models/components";
 let value: ScheduleResponse = {
   destinationAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   mode: "production",
-  occurrences: {
-    mode: "production",
-    runOn: new Date("2025-12-10T12:32:37.706Z"),
-    runTransfer: {
-      amount: {
-        currency: "USD",
-        value: 1204,
+  occurrences: [
+    {
+      mode: "production",
+      runOn: new Date("2025-12-10T12:32:37.706Z"),
+      runTransfer: {
+        amount: {
+          currency: "USD",
+          value: 1204,
+        },
+        destination: {
+          paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+          achDetails: {
+            companyEntryDescription: "Gym dues",
+            originatingCompanyName: "Whole Body Fit",
+          },
+          cardDetails: {
+            dynamicDescriptor: "WhlBdy *Yoga 11-12",
+          },
+        },
+        partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+        source: {
+          paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+          achDetails: {
+            companyEntryDescription: "Gym dues",
+            originatingCompanyName: "Whole Body Fit",
+          },
+          cardDetails: {
+            dynamicDescriptor: "WhlBdy *Yoga 11-12",
+          },
+        },
+        description: "finally brightly burly wrongly hmph about",
       },
-      destination: {
-        paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-        achDetails: {
-          companyEntryDescription: "Gym dues",
-          originatingCompanyName: "Whole Body Fit",
-        },
-        cardDetails: {
-          dynamicDescriptor: "WhlBdy *Yoga 11-12",
-        },
-      },
-      partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-      source: {
-        paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-        achDetails: {
-          companyEntryDescription: "Gym dues",
-          originatingCompanyName: "Whole Body Fit",
-        },
-        cardDetails: {
-          dynamicDescriptor: "WhlBdy *Yoga 11-12",
-        },
-      },
-      description: "finally brightly burly wrongly hmph about",
     },
-  },
+  ],
   ownerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   partnerAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   recur: {
@@ -88,7 +90,7 @@ let value: ScheduleResponse = {
 | `description`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | Simple description to place on the transfer.                                                  |                                                                                               |
 | `destinationAccountID`                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                          |
 | `mode`                                                                                        | [components.Mode](../../models/components/mode.md)                                            | :heavy_check_mark:                                                                            | The operating mode for an account.                                                            | production                                                                                    |
-| `occurrences`                                                                                 | [components.OccurrencesResponse](../../models/components/occurrencesresponse.md)              | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
+| `occurrences`                                                                                 | [components.OccurrencesResponse](../../models/components/occurrencesresponse.md)[]            | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `ownerAccountID`                                                                              | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                          |
 | `partnerAccountID`                                                                            | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                          |
 | `recur`                                                                                       | [components.Recur](../../models/components/recur.md)                                          | :heavy_minus_sign:                                                                            | Defines configuration for recurring transfers.                                                |                                                                                               |
