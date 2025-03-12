@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$terminalApplicationsDelete: ToolDefinition<typeof args> = {
-  name: "terminal-applications_delete",
+  name: "terminal-applications-delete",
   description: `Delete a specific terminal application.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

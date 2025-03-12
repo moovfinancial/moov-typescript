@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersCreateCancellation: ToolDefinition<typeof args> = {
-  name: "transfers_create-cancellation",
+  name: "transfers-create-cancellation",
   description: `  Initiate a cancellation for a card, ACH, or queued transfer.
   
   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 

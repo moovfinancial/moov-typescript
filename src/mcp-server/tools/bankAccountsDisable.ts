@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$bankAccountsDisable: ToolDefinition<typeof args> = {
-  name: "bank-accounts_disable",
+  name: "bank-accounts-disable",
   description:
     `Discontinue using a specified bank account linked to a Moov account. 
 

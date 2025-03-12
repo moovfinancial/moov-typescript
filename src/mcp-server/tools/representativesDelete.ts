@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$representativesDelete: ToolDefinition<typeof args> = {
-  name: "representatives_delete",
+  name: "representatives-delete",
   description:
     `Deletes a business representative associated with a Moov account. Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
 

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$cardsList: ToolDefinition<typeof args> = {
-  name: "cards_list",
+  name: "cards-list",
   description: `List all the active cards associated with a Moov account. 
 
 Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/) to learn more.

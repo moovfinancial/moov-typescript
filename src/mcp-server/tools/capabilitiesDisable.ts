@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$capabilitiesDisable: ToolDefinition<typeof args> = {
-  name: "capabilities_disable",
+  name: "capabilities-disable",
   description:
     `Disable a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
 

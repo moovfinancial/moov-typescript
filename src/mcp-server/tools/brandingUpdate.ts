@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$brandingUpdate: ToolDefinition<typeof args> = {
-  name: "branding_update",
+  name: "branding-update",
   description: `Updates the brand properties for the specified account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$enrichedAddressGet: ToolDefinition<typeof args> = {
-  name: "enriched-address_get",
+  name: "enriched-address-get",
   description: `Fetch enriched address suggestions. Requires a partial address. 
   
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

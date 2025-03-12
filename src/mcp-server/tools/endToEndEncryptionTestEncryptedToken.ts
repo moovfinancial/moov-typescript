@@ -13,7 +13,7 @@ const args = {
 export const tool$endToEndEncryptionTestEncryptedToken: ToolDefinition<
   typeof args
 > = {
-  name: "end-to-end-encryption_test-encrypted-token",
+  name: "end-to-end-encryption-test-encrypted-token",
   description:
     `Allows for testing a JWE token to ensure it's acceptable by Moov. 
 

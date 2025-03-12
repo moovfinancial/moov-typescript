@@ -13,7 +13,7 @@ const args = {
 export const tool$issuingTransactionsGetAuthorization: ToolDefinition<
   typeof args
 > = {
-  name: "issuing-transactions_get-authorization",
+  name: "issuing-transactions-get-authorization",
   description:
     `Retrieves details of an authorization associated with a specific Moov account.
 

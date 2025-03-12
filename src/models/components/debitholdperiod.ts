@@ -10,8 +10,8 @@ import { ClosedEnum } from "../../types/enums.js";
  */
 export const DebitHoldPeriod = {
   NoHold: "no-hold",
-  OneDay: "1-day",
-  TwoDays: "2-days",
+  OneMinusDay: "1-day",
+  TwoMinusDays: "2-days",
 } as const;
 /**
  * An optional override of your default ACH hold period in banking days. The hold period must be longer than or equal to your default setting.

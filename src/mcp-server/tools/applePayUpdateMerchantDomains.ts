@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$applePayUpdateMerchantDomains: ToolDefinition<typeof args> = {
-  name: "apple-pay_update-merchant-domains",
+  name: "apple-pay-update-merchant-domains",
   description: `Add or remove domains to be registered with Apple Pay. 
 
 Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) 

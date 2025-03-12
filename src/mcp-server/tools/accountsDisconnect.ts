@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accountsDisconnect: ToolDefinition<typeof args> = {
-  name: "accounts_disconnect",
+  name: "accounts-disconnect",
   description:
     `This will sever the connection between you and the account specified and it will no longer be listed as 
 active in the list of accounts. This also means you'll only have read-only access to the account going 

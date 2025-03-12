@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$pingPing: ToolDefinition<typeof args> = {
-  name: "ping_ping",
+  name: "ping-ping",
   description: `A simple endpoint to check auth.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

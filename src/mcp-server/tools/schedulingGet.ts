@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$schedulingGet: ToolDefinition<typeof args> = {
-  name: "scheduling_get",
+  name: "scheduling-get",
   description:
     `Describes a schedule associated with an account. Requires at least 1 occurrence or recurTransfer to be specified.
 

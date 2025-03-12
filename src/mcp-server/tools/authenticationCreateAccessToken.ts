@@ -12,7 +12,7 @@ const args = {
 
 export const tool$authenticationCreateAccessToken: ToolDefinition<typeof args> =
   {
-    name: "authentication_create-access-token",
+    name: "authentication-create-access-token",
     description: `Create or refresh an access token.`,
     args,
     tool: async (client, args, ctx) => {

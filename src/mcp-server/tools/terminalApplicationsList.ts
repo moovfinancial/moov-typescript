@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$terminalApplicationsList: ToolDefinition<typeof args> = {
-  name: "terminal-applications_list",
+  name: "terminal-applications-list",
   description: `List all the terminal applications for a Moov Account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

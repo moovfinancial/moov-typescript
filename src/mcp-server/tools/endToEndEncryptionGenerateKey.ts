@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$endToEndEncryptionGenerateKey: ToolDefinition<typeof args> = {
-  name: "end-to-end-encryption_generate-key",
+  name: "end-to-end-encryption-generate-key",
   description:
     `Generates a public key used to create a JWE token for passing secure authentication data through non-PCI compliant intermediaries.`,
   args,

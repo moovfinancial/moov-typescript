@@ -13,7 +13,7 @@ const args = {
 export const tool$bankAccountsCompleteMicroDeposits: ToolDefinition<
   typeof args
 > = {
-  name: "bank-accounts_complete-micro-deposits",
+  name: "bank-accounts-complete-micro-deposits",
   description:
     `Complete the micro-deposit validation process by passing the amounts of the two transfers within three tries.
 

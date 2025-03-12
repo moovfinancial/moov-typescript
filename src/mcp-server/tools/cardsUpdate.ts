@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$cardsUpdate: ToolDefinition<typeof args> = {
-  name: "cards_update",
+  name: "cards-update",
   description: `Update a linked card and/or resubmit it for verification. 
 
 If a value is provided for CVV, a new verification ($0 authorization) will be submitted for the card. Updating the expiration 

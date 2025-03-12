@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$disputesDeleteEvidence: ToolDefinition<typeof args> = {
-  name: "disputes_delete-evidence",
+  name: "disputes-delete-evidence",
   description: `Deletes dispute evidence by ID. 
 
 Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.

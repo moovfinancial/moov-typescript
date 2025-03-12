@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$industriesList: ToolDefinition<typeof args> = {
-  name: "industries_list",
+  name: "industries-list",
   description:
     `Returns a list of all industry titles and their corresponding MCC/SIC/NAICS codes. Results are ordered by title.    
 

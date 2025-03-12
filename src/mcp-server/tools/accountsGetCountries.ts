@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accountsGetCountries: ToolDefinition<typeof args> = {
-  name: "accounts_get-countries",
+  name: "accounts-get-countries",
   description: `Retrieve the specified countries of operation for an account. 
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

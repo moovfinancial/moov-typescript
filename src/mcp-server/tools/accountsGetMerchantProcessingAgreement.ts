@@ -13,7 +13,7 @@ const args = {
 export const tool$accountsGetMerchantProcessingAgreement: ToolDefinition<
   typeof args
 > = {
-  name: "accounts_get-merchant-processing-agreement",
+  name: "accounts-get-merchant-processing-agreement",
   description: `Retrieve a merchant account's processing agreement.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$cardIssuingGetFull: ToolDefinition<typeof args> = {
-  name: "card-issuing_get-full",
+  name: "card-issuing-get-full",
   description: `Get issued card with PAN, CVV, and expiration. 
 
 Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance.

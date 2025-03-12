@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$applePayCreateSession: ToolDefinition<typeof args> = {
-  name: "apple-pay_create-session",
+  name: "apple-pay-create-session",
   description: `Create a session with Apple Pay to facilitate a payment. 
 
 Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 

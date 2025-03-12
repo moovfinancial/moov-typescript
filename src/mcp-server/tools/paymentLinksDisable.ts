@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$paymentLinksDisable: ToolDefinition<typeof args> = {
-  name: "payment-links_disable",
+  name: "payment-links-disable",
   description: `Disable a payment link.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

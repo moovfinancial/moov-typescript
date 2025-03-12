@@ -12,7 +12,7 @@ const args = {
 
 export const tool$feePlansCreateFeePlanAgreements: ToolDefinition<typeof args> =
   {
-    name: "fee-plans_create-fee-plan-agreements",
+    name: "fee-plans-create-fee-plan-agreements",
     description:
       `Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
 

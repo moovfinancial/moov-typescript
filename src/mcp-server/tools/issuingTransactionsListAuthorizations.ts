@@ -13,7 +13,7 @@ const args = {
 export const tool$issuingTransactionsListAuthorizations: ToolDefinition<
   typeof args
 > = {
-  name: "issuing-transactions_list-authorizations",
+  name: "issuing-transactions-list-authorizations",
   description: `List issued card authorizations associated with a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

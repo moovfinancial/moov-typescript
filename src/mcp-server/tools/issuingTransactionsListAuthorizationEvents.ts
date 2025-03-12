@@ -13,7 +13,7 @@ const args = {
 export const tool$issuingTransactionsListAuthorizationEvents: ToolDefinition<
   typeof args
 > = {
-  name: "issuing-transactions_list-authorization-events",
+  name: "issuing-transactions-list-authorization-events",
   description:
     `List card network and Moov platform events that affect the authorization and its hold on a wallet balance.
 

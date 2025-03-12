@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$sweepsGet: ToolDefinition<typeof args> = {
-  name: "sweeps_get",
+  name: "sweeps-get",
   description: `Get details on a specific sweep.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

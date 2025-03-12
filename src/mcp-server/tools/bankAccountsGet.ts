@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$bankAccountsGet: ToolDefinition<typeof args> = {
-  name: "bank-accounts_get",
+  name: "bank-accounts-get",
   description:
     `Retrieve bank account details (i.e. routing number or account type) associated with a specific Moov account. 
 

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$capabilitiesList: ToolDefinition<typeof args> = {
-  name: "capabilities_list",
+  name: "capabilities-list",
   description: `Retrieve all the capabilities an account has requested.
 
 Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.

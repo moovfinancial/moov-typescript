@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$bankAccountsList: ToolDefinition<typeof args> = {
-  name: "bank-accounts_list",
+  name: "bank-accounts-list",
   description:
     `List all the bank accounts associated with a particular Moov account. 
 

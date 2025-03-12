@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$terminalApplicationsGet: ToolDefinition<typeof args> = {
-  name: "terminal-applications_get",
+  name: "terminal-applications-get",
   description: `Fetch a specific terminal application.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

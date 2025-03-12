@@ -8,7 +8,7 @@ RTP specific details about the transaction.
 import { RTPTransactionDetails } from "@moovio/sdk/models/components";
 
 let value: RTPTransactionDetails = {
-  status: "accepted-without-posting",
+  status: "completed",
 };
 ```
 

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$walletsList: ToolDefinition<typeof args> = {
-  name: "wallets_list",
+  name: "wallets-list",
   description: `List the wallets associated with a Moov account. 
 
 Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.

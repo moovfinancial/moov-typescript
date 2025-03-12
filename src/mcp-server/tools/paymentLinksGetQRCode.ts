@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$paymentLinksGetQRCode: ToolDefinition<typeof args> = {
-  name: "payment-links_get-QR-code",
+  name: "payment-links-get-QR-code",
   description: `Retrieve the payment link encoded in a QR code. 
 
 Use the \`Accept\` header to specify the format of the response. Supported formats are \`application/json\` and \`image/png\`.

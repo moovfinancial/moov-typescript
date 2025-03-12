@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersCreate: ToolDefinition<typeof args> = {
-  name: "transfers_create",
+  name: "transfers-create",
   description:
     `Move money by providing the source, destination, and amount in the request body.
 

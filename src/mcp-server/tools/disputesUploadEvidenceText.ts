@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$disputesUploadEvidenceText: ToolDefinition<typeof args> = {
-  name: "disputes_upload-evidence-text",
+  name: "disputes-upload-evidence-text",
   description: `Uploads text as evidence for a dispute.
 
 Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.

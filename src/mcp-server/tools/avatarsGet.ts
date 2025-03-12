@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$avatarsGet: ToolDefinition<typeof args> = {
-  name: "avatars_get",
+  name: "avatars-get",
   description: `Get avatar image for an account using a unique ID.    
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

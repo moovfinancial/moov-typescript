@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$cardIssuingGet: ToolDefinition<typeof args> = {
-  name: "card-issuing_get",
+  name: "card-issuing-get",
   description: `Retrieve a single issued card associated with a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

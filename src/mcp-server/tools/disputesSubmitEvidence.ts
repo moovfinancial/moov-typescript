@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$disputesSubmitEvidence: ToolDefinition<typeof args> = {
-  name: "disputes_submit-evidence",
+  name: "disputes-submit-evidence",
   description: `Submit the evidence associated with a dispute.
 
 Evidence items must be uploaded using the appropriate endpoint(s) prior to calling this endpoint to submit it. **Evidence can only

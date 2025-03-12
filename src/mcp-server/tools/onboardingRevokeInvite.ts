@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$onboardingRevokeInvite: ToolDefinition<typeof args> = {
-  name: "onboarding_revoke-invite",
+  name: "onboarding-revoke-invite",
   description:
     `Revoke an onboarding invite, rendering the invitation link unusable.
 

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$underwritingGet: ToolDefinition<typeof args> = {
-  name: "underwriting_get",
+  name: "underwriting-get",
   description: `Retrieve underwriting associated with a given Moov account. 
 
 Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more. 

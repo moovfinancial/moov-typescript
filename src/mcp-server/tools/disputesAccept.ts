@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$disputesAccept: ToolDefinition<typeof args> = {
-  name: "disputes_accept",
+  name: "disputes-accept",
   description: `Accepts liability for a dispute. 
 
 Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.

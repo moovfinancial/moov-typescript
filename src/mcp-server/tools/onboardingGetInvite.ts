@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$onboardingGetInvite: ToolDefinition<typeof args> = {
-  name: "onboarding_get-invite",
+  name: "onboarding-get-invite",
   description: `Retrieve details about an onboarding invite.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

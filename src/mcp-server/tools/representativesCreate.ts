@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$representativesCreate: ToolDefinition<typeof args> = {
-  name: "representatives_create",
+  name: "representatives-create",
   description:
     `Moov accounts associated with businesses require information regarding individuals who represent the business. 
 You can provide this information by creating a representative. Each account is allowed a maximum of 7 representatives. 

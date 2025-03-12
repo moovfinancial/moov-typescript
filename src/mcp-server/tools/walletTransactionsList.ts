@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$walletTransactionsList: ToolDefinition<typeof args> = {
-  name: "wallet-transactions_list",
+  name: "wallet-transactions-list",
   description:
     `List all the transactions associated with a particular Moov wallet. 
 

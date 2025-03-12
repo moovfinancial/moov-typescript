@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accountsList: ToolDefinition<typeof args> = {
-  name: "accounts_list",
+  name: "accounts-list",
   description: `List or search accounts to which the caller is connected.
 
 All supported query parameters are optional. If none are provided the response will include all connected accounts.

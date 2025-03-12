@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$brandingCreate: ToolDefinition<typeof args> = {
-  name: "branding_create",
+  name: "branding-create",
   description: `Create brand properties for the specified account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

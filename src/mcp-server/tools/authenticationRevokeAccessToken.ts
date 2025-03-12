@@ -12,7 +12,7 @@ const args = {
 
 export const tool$authenticationRevokeAccessToken: ToolDefinition<typeof args> =
   {
-    name: "authentication_revoke-access-token",
+    name: "authentication-revoke-access-token",
     description: `Revoke an auth token.
 
 Allows clients to notify the authorization server that a previously obtained refresh or access token is no longer needed.`,

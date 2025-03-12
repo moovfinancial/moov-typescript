@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$applePayLinkToken: ToolDefinition<typeof args> = {
-  name: "apple-pay_link-token",
+  name: "apple-pay-link-token",
   description: `Connect an Apple Pay token to the specified account. 
 
 Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 

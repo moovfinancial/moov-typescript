@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersCreateReversal: ToolDefinition<typeof args> = {
-  name: "transfers_create-reversal",
+  name: "transfers-create-reversal",
   description:
     `Reverses a card transfer by initiating a cancellation or refund depending on the transaction status. 
 Read our [reversals guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) 

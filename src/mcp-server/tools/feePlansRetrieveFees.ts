@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$feePlansRetrieveFees: ToolDefinition<typeof args> = {
-  name: "fee-plans_retrieve-fees",
+  name: "fee-plans-retrieve-fees",
   description: `Retrieve fees associated with an account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

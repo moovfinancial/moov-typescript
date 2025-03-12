@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$adjustmentsGet: ToolDefinition<typeof args> = {
-  name: "adjustments_get",
+  name: "adjustments-get",
   description: `Retrieve a specific adjustment associated with a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

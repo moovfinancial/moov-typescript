@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$representativesGet: ToolDefinition<typeof args> = {
-  name: "representatives_get",
+  name: "representatives-get",
   description:
     `Retrieve a specific representative associated with a given Moov account. Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
 

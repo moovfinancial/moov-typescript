@@ -6,11 +6,11 @@
 import { Sweep } from "@moovio/sdk/models/components";
 
 let value: Sweep = {
-  sweepID: "d392e2a3-c2c8-4b88-8939-4473942e6f60",
+  sweepID: "b3d3d989-6472-498a-aae8-0e1b31f00792",
   status: "paid",
   accruedAmount: "<value>",
   currency: "USD",
-  accrualStartedOn: new Date("2024-01-30T18:20:23.958Z"),
+  accrualStartedOn: new Date("2024-06-30T08:01:42.296Z"),
 };
 ```
 

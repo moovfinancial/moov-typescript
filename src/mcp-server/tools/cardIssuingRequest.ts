@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$cardIssuingRequest: ToolDefinition<typeof args> = {
-  name: "card-issuing_request",
+  name: "card-issuing-request",
   description: `Request a virtual card be issued.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

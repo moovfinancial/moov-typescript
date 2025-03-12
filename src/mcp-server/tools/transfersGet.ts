@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersGet: ToolDefinition<typeof args> = {
-  name: "transfers_get",
+  name: "transfers-get",
   description:
     `Retrieve full transfer details for an individual transfer of a particular Moov account. 
 

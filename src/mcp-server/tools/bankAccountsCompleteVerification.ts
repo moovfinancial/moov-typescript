@@ -13,7 +13,7 @@ const args = {
 export const tool$bankAccountsCompleteVerification: ToolDefinition<
   typeof args
 > = {
-  name: "bank-accounts_complete-verification",
+  name: "bank-accounts-complete-verification",
   description:
     `Finalize the instant micro-deposit verification by submitting the verification code displayed in the user's bank account. 
 

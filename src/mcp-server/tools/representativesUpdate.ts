@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$representativesUpdate: ToolDefinition<typeof args> = {
-  name: "representatives_update",
+  name: "representatives-update",
   description:
     `If a representative's information has changed you can patch the information associated with a specific representative ID. 
 Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.

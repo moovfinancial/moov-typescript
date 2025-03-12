@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 8c6152cc1bf1ff155c810601ea38cabe
+  docChecksum: f9505e7a2416146dc504211f35de71d6
   docVersion: latest
-  speakeasyVersion: 1.513.4
-  generationVersion: 2.545.4
-  releaseVersion: 0.7.1
-  configChecksum: a9217a98278539219cbe7f8372a93b15
+  speakeasyVersion: 1.517.0
+  generationVersion: 2.548.1
+  releaseVersion: 0.8.0
+  configChecksum: 1fe30afe44bf9b55ec8c8ec84ec22952
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.21.3
+    core: 3.21.4
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -26,7 +26,7 @@ features:
     globalServerURLs: 2.82.4
     globals: 2.82.2
     hiddenGlobals: 0.1.0
-    mcpServer: 0.6.0
+    mcpServer: 0.7.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.2.3
@@ -297,6 +297,7 @@ generatedFiles:
   - docs/models/components/onboardinginvite.md
   - docs/models/components/onboardinginviterequest.md
   - docs/models/components/onboardingpartneraccount.md
+  - docs/models/components/partialscheduleaccount.md
   - docs/models/components/partnerpricing.md
   - docs/models/components/partnerpricingagreement.md
   - docs/models/components/patchaccount.md
@@ -373,6 +374,7 @@ generatedFiles:
   - docs/models/components/rtptransactiondetails.md
   - docs/models/components/rtptransactionstatus.md
   - docs/models/components/runtransfer.md
+  - docs/models/components/schedulelistresponse.md
   - docs/models/components/schedulepaymentmethod.md
   - docs/models/components/scheduleresponse.md
   - docs/models/components/seccode.md
@@ -682,6 +684,7 @@ generatedFiles:
   - docs/models/operations/getwallettransactionglobals.md
   - docs/models/operations/getwallettransactionrequest.md
   - docs/models/operations/getwallettransactionresponse.md
+  - docs/models/operations/hydrate.md
   - docs/models/operations/initiatebankaccountverificationglobals.md
   - docs/models/operations/initiatebankaccountverificationrequest.md
   - docs/models/operations/initiatebankaccountverificationresponse.md
@@ -1429,6 +1432,7 @@ generatedFiles:
   - src/models/components/onboardinginvite.ts
   - src/models/components/onboardinginviterequest.ts
   - src/models/components/onboardingpartneraccount.ts
+  - src/models/components/partialscheduleaccount.ts
   - src/models/components/partnerpricing.ts
   - src/models/components/partnerpricingagreement.ts
   - src/models/components/patchaccount.ts
@@ -1494,6 +1498,7 @@ generatedFiles:
   - src/models/components/rtptransactiondetails.ts
   - src/models/components/rtptransactionstatus.ts
   - src/models/components/runtransfer.ts
+  - src/models/components/schedulelistresponse.ts
   - src/models/components/schedulepaymentmethod.ts
   - src/models/components/scheduleresponse.ts
   - src/models/components/seccode.ts

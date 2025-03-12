@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accountsGet: ToolDefinition<typeof args> = {
-  name: "accounts_get",
+  name: "accounts-get",
   description: `Retrieves details for the account with the specified ID.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 

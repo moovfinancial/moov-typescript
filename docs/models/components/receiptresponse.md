@@ -6,15 +6,15 @@
 import { ReceiptResponse } from "@moovio/sdk/models/components";
 
 let value: ReceiptResponse = {
-  receiptID: "75524278-fc85-4268-a2ea-6c2d0682af10",
-  createdBy: "c655d0c2-d8d2-4238-a744-c1e6c2c40c9a",
+  receiptID: "7f72de50-c58c-474d-8eb0-09c2eeca51f4",
+  createdBy: "f9fd4a96-8812-480c-861d-12ce0076f7b5",
   disabledOn: new Date("2009-11-10T23:00:00Z"),
   kind: "sale.customer.v1",
   email: "jordan.lee@classbooker.dev",
   sentFor: [
     {
-      receiptID: "350e720c-5487-4905-bf35-18666b747f72",
-      idempotencyKey: "e50c58c7-4deb-4009-9c2e-eca51f42f9fd",
+      receiptID: "b79c5781-b79e-44a8-a8e5-150dfdca9962",
+      idempotencyKey: "03075691-43eb-42d7-acb5-99e1d6242147",
       sentOn: new Date("2009-11-10T23:00:00Z"),
     },
   ],

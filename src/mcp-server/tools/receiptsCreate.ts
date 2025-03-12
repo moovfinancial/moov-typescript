@@ -12,7 +12,7 @@ const args = {
 };
 
 export const tool$receiptsCreate: ToolDefinition<typeof args> = {
-  name: "receipts_create",
+  name: "receipts-create",
   description: ` Create receipts for transfers and scheduled transfers.
 
  To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

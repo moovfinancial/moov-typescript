@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accountsAssignCountries: ToolDefinition<typeof args> = {
-  name: "accounts_assign-countries",
+  name: "accounts-assign-countries",
   description: `Assign the countries of operation for an account.
 
 This endpoint will always overwrite the previously assigned values. 

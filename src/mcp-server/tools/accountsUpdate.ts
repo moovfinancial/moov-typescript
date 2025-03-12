@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accountsUpdate: ToolDefinition<typeof args> = {
-  name: "accounts_update",
+  name: "accounts-update",
   description: `When **can** profile data be updated:
   + For unverified accounts, all profile data can be edited.
   + During the verification process, missing or incomplete profile data can be edited.

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$applePayGetMerchantDomains: ToolDefinition<typeof args> = {
-  name: "apple-pay_get-merchant-domains",
+  name: "apple-pay-get-merchant-domains",
   description: `Get domains registered with Apple Pay. 
 
 Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 

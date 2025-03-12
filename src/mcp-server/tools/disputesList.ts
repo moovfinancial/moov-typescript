@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$disputesList: ToolDefinition<typeof args> = {
-  name: "disputes_list",
+  name: "disputes-list",
   description: `Returns the list of disputes. 
 
 Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$underwritingUpsert: ToolDefinition<typeof args> = {
-  name: "underwriting_upsert",
+  name: "underwriting-upsert",
   description: `Create or update the account's underwriting.
 
 Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$representativesList: ToolDefinition<typeof args> = {
-  name: "representatives_list",
+  name: "representatives-list",
   description:
     `A Moov account may have multiple representatives depending on the associated business's ownership and management structure. 
 You can use this method to list all the representatives for a given Moov account. 

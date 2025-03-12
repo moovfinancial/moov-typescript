@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersGetCancellation: ToolDefinition<typeof args> = {
-  name: "transfers_get-cancellation",
+  name: "transfers-get-cancellation",
   description: `  Get details of a cancellation for a transfer.
   
   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$capabilitiesRequest: ToolDefinition<typeof args> = {
-  name: "capabilities_request",
+  name: "capabilities-request",
   description:
     `Request capabilities for a specific account. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
 

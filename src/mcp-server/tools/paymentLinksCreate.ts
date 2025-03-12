@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$paymentLinksCreate: ToolDefinition<typeof args> = {
-  name: "payment-links_create",
+  name: "payment-links-create",
   description:
     `Create a payment link that allows an end user to make a payment on Moov's hosted payment link page.
 

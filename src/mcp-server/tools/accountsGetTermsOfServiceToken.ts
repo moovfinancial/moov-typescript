@@ -12,7 +12,7 @@ const args = {
 
 export const tool$accountsGetTermsOfServiceToken: ToolDefinition<typeof args> =
   {
-    name: "accounts_get-terms-of-service-token",
+    name: "accounts-get-terms-of-service-token",
     description:
       `Generates a non-expiring token that can then be used to accept Moov's terms of service. 
 

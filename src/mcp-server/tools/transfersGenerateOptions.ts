@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersGenerateOptions: ToolDefinition<typeof args> = {
-  name: "transfers_generate-options",
+  name: "transfers-generate-options",
   description:
     `Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
 supply in the request. 

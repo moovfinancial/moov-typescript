@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$receiptsList: ToolDefinition<typeof args> = {
-  name: "receipts_list",
+  name: "receipts-list",
   description: `List receipts by trasnferID, scheduleID, or occurrenceID.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

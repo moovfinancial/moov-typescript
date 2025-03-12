@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$walletsGet: ToolDefinition<typeof args> = {
-  name: "wallets_get",
+  name: "wallets-get",
   description:
     `Get information on a specific wallet (e.g., the available balance). 
 

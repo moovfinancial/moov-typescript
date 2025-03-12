@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$paymentLinksUpdate: ToolDefinition<typeof args> = {
-  name: "payment-links_update",
+  name: "payment-links-update",
   description: `Update a payment link.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

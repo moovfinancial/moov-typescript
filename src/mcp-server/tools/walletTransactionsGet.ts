@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$walletTransactionsGet: ToolDefinition<typeof args> = {
-  name: "wallet-transactions_get",
+  name: "wallet-transactions-get",
   description: `Get details on a specific wallet transaction. 
 
 Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.

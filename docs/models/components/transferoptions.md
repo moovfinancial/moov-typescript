@@ -8,7 +8,7 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "476280f6-d449-4c5b-b111-484480d91f43",
+      paymentMethodID: "1bea9b34-d19e-4121-91ca-369b55620974",
       paymentMethodType: "pull-from-card",
       card: {
         cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -41,7 +41,7 @@ let value: TransferOptions = {
             fullName: "match",
           },
         },
-        issuer: "mastercard",
+        issuer: "american_express",
         issuerCountry: "<value>",
         cardAccountUpdater: {
           updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -54,19 +54,19 @@ let value: TransferOptions = {
   ],
   destinationOptions: [
     {
-      paymentMethodID: "e70b45e9-c89c-4fb0-95c0-ea3601832fa0",
-      paymentMethodType: "ach-credit-same-day",
+      paymentMethodID: "9e7373ee-0b7d-4950-9e94-18b90e61b768",
+      paymentMethodType: "ach-credit-standard",
       bankAccount: {
-        bankAccountID: "2f498e05-2c6d-48f7-85b2-a0bc2e1bea9b",
+        bankAccountID: "3ec54cc0-d719-45ec-92c4-4f1bb3e1b0b9",
         fingerprint: "<value>",
-        status: "verified",
+        status: "pending",
         holderName: "<value>",
         holderType: "business",
         bankName: "<value>",
-        bankAccountType: "checking",
+        bankAccountType: "general-ledger",
         routingNumber: "<value>",
         lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2024-10-05T17:22:01.328Z"),
+        updatedOn: new Date("2023-08-09T21:56:05.990Z"),
       },
     },
   ],

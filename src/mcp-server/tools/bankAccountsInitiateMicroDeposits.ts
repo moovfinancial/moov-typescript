@@ -13,7 +13,7 @@ const args = {
 export const tool$bankAccountsInitiateMicroDeposits: ToolDefinition<
   typeof args
 > = {
-  name: "bank-accounts_initiate-micro-deposits",
+  name: "bank-accounts-initiate-micro-deposits",
   description:
     `Micro-deposits help confirm bank account ownership, helping reduce fraud and the risk of unauthorized activity. 
 Use this method to initiate the micro-deposit verification, sending two small credit transfers to the bank account 

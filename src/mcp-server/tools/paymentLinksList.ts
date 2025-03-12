@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$paymentLinksList: ToolDefinition<typeof args> = {
-  name: "payment-links_list",
+  name: "payment-links-list",
   description: `List all the payment links created under a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

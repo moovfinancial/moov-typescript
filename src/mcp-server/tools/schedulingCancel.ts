@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$schedulingCancel: ToolDefinition<typeof args> = {
-  name: "scheduling_cancel",
+  name: "scheduling-cancel",
   description: `Describes the schedule to cancel.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

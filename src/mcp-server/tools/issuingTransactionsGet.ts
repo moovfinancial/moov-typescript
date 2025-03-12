@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$issuingTransactionsGet: ToolDefinition<typeof args> = {
-  name: "issuing-transactions_get",
+  name: "issuing-transactions-get",
   description:
     `Retrieves details of an issued card transaction associated with a specific Moov account.
 

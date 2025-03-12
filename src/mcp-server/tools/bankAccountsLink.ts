@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$bankAccountsLink: ToolDefinition<typeof args> = {
-  name: "bank-accounts_link",
+  name: "bank-accounts-link",
   description:
     `Link a bank account to an existing Moov account. Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts/) to learn more.
 

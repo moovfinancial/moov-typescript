@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersInitiateRefund: ToolDefinition<typeof args> = {
-  name: "transfers_initiate-refund",
+  name: "transfers-initiate-refund",
   description: `Initiate a refund for a card transfer.
 
 **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    

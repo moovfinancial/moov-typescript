@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$onboardingCreateInvite: ToolDefinition<typeof args> = {
-  name: "onboarding_create-invite",
+  name: "onboarding-create-invite",
   description:
     `Create an invitation containing a unique link that allows the recipient to onboard their organization with Moov.
 

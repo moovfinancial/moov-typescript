@@ -6,7 +6,7 @@
 import { RefundCardDetails } from "@moovio/sdk/models/components";
 
 let value: RefundCardDetails = {
-  status: "completed",
+  status: "failed",
 };
 ```
 

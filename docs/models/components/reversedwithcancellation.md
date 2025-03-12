@@ -8,8 +8,8 @@ import { ReversedWithCancellation } from "@moovio/sdk/models/components";
 let value: ReversedWithCancellation = {
   cancellation: {
     cancellationID: "<id>",
-    status: "completed",
-    createdOn: new Date("2025-04-28T02:56:38.727Z"),
+    status: "failed",
+    createdOn: new Date("2025-01-07T03:06:28.959Z"),
   },
 };
 ```

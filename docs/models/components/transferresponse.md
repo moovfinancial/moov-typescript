@@ -80,8 +80,8 @@ const value: components.Transfer = {
 
 ```typescript
 const value: components.AsyncTransfer = {
-  transferID: "64c1e653-9f53-4313-bab6-f2b6332f696c",
-  createdOn: new Date("2023-02-21T05:24:54.252Z"),
+  transferID: "dfd9d671-5ed9-4e6f-9f90-eef741ebccd1",
+  createdOn: new Date("2025-06-11T07:56:22.222Z"),
 };
 ```
 

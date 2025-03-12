@@ -9,7 +9,7 @@
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
-* [list](#list) - Describes a list of schedules associated with an account. Requires at least 1 occurrence or recurTransfer to be specified.
+* [list](#list) - Describes a list of schedules associated with an account. Append the `hydrate=accounts` query parameter to include partial account details in the response.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
@@ -383,7 +383,7 @@ run();
 
 ## list
 
-Describes a list of schedules associated with an account. Requires at least 1 occurrence or recurTransfer to be specified.
+Describes a list of schedules associated with an account. Append the `hydrate=accounts` query parameter to include partial account details in the response.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.

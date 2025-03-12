@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersGetRefund: ToolDefinition<typeof args> = {
-  name: "transfers_get-refund",
+  name: "transfers-get-refund",
   description: `Get details of a refund for a card transfer.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

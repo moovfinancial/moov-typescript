@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersUpdate: ToolDefinition<typeof args> = {
-  name: "transfers_update",
+  name: "transfers-update",
   description: `Update the metadata contained on a transfer. 
 
 Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 

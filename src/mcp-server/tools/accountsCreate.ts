@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accountsCreate: ToolDefinition<typeof args> = {
-  name: "accounts_create",
+  name: "accounts-create",
   description:
     `You can create **business** or **individual** accounts for your users (i.e., customers, merchants) by passing the required
 information to Moov. Requirements differ per account type and requested [capabilities](https://docs.moov.io/guides/accounts/capabilities/requirements/).

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$enrichedProfileGet: ToolDefinition<typeof args> = {
-  name: "enriched-profile_get",
+  name: "enriched-profile-get",
   description:
     `Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
 

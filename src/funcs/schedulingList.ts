@@ -24,7 +24,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Describes a list of schedules associated with an account. Requires at least 1 occurrence or recurTransfer to be specified.
+ * Describes a list of schedules associated with an account. Append the `hydrate=accounts` query parameter to include partial account details in the response.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
@@ -93,6 +93,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "count": payload.count,
+    "hydrate": payload.hydrate,
     "skip": payload.skip,
   }, { explode: false });
 

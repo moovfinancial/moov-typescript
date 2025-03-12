@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$terminalApplicationsCreate: ToolDefinition<typeof args> = {
-  name: "terminal-applications_create",
+  name: "terminal-applications-create",
   description: `Create a new terminal application.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

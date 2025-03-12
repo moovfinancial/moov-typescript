@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$filesGet: ToolDefinition<typeof args> = {
-  name: "files_get",
+  name: "files-get",
   description: `Retrieve file details associated with a specific Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$cardsLink: ToolDefinition<typeof args> = {
-  name: "cards_link",
+  name: "cards-link",
   description: `Link a card to an existing Moov account. 
 
 Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/#link-a-card) to learn more.

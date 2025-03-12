@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$paymentMethodsList: ToolDefinition<typeof args> = {
-  name: "payment-methods_list",
+  name: "payment-methods-list",
   description:
     `Retrieve a list of payment methods associated with a Moov account. Read our [payment methods 
 guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.

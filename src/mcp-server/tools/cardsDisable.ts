@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$cardsDisable: ToolDefinition<typeof args> = {
-  name: "cards_disable",
+  name: "cards-disable",
   description: `Disables a card associated with a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

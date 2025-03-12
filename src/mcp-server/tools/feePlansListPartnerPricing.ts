@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$feePlansListPartnerPricing: ToolDefinition<typeof args> = {
-  name: "fee-plans_list-partner-pricing",
+  name: "fee-plans-list-partner-pricing",
   description: `List all partner pricing plans available for use by an account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$feePlansListFeePlans: ToolDefinition<typeof args> = {
-  name: "fee-plans_list-fee-plans",
+  name: "fee-plans-list-fee-plans",
   description:
     `List all fee plans available for use by an account. This is intended to be used by an account when 
 selecting a fee plan to apply to a connected account.

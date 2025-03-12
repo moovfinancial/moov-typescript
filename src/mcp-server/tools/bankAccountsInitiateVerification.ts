@@ -13,7 +13,7 @@ const args = {
 export const tool$bankAccountsInitiateVerification: ToolDefinition<
   typeof args
 > = {
-  name: "bank-accounts_initiate-verification",
+  name: "bank-accounts-initiate-verification",
   description:
     `Instant micro-deposit verification offers a quick and efficient way to verify bank account ownership. 
 

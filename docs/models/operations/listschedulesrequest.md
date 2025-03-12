@@ -14,8 +14,9 @@ let value: ListSchedulesRequest = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `skip`             | *number*           | :heavy_minus_sign: | N/A                | 60                 |
-| `count`            | *number*           | :heavy_minus_sign: | N/A                | 20                 |
-| `accountID`        | *string*           | :heavy_check_mark: | N/A                |                    |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `skip`                                                   | *number*                                                 | :heavy_minus_sign:                                       | N/A                                                      | 60                                                       |
+| `count`                                                  | *number*                                                 | :heavy_minus_sign:                                       | N/A                                                      | 20                                                       |
+| `hydrate`                                                | [operations.Hydrate](../../models/operations/hydrate.md) | :heavy_minus_sign:                                       | N/A                                                      |                                                          |
+| `accountID`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |                                                          |

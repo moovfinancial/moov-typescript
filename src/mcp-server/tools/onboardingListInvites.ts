@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$onboardingListInvites: ToolDefinition<typeof args> = {
-  name: "onboarding_list-invites",
+  name: "onboarding-list-invites",
   description: `List all the onboarding invites created by the caller's account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

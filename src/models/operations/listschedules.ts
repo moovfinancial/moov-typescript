@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,15 +27,21 @@ export type ListSchedulesGlobals = {
   xMoovVersion?: string | undefined;
 };
 
+export const Hydrate = {
+  Accounts: "accounts",
+} as const;
+export type Hydrate = ClosedEnum<typeof Hydrate>;
+
 export type ListSchedulesRequest = {
   skip?: number | undefined;
   count?: number | undefined;
+  hydrate?: Hydrate | undefined;
   accountID: string;
 };
 
 export type ListSchedulesResponse = {
   headers: { [k: string]: Array<string> };
-  result: Array<components.ScheduleResponse>;
+  result: Array<components.ScheduleListResponse>;
 };
 
 /** @internal */
@@ -100,6 +107,25 @@ export function listSchedulesGlobalsFromJSON(
 }
 
 /** @internal */
+export const Hydrate$inboundSchema: z.ZodNativeEnum<typeof Hydrate> = z
+  .nativeEnum(Hydrate);
+
+/** @internal */
+export const Hydrate$outboundSchema: z.ZodNativeEnum<typeof Hydrate> =
+  Hydrate$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Hydrate$ {
+  /** @deprecated use `Hydrate$inboundSchema` instead. */
+  export const inboundSchema = Hydrate$inboundSchema;
+  /** @deprecated use `Hydrate$outboundSchema` instead. */
+  export const outboundSchema = Hydrate$outboundSchema;
+}
+
+/** @internal */
 export const ListSchedulesRequest$inboundSchema: z.ZodType<
   ListSchedulesRequest,
   z.ZodTypeDef,
@@ -107,6 +133,7 @@ export const ListSchedulesRequest$inboundSchema: z.ZodType<
 > = z.object({
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
+  hydrate: Hydrate$inboundSchema.optional(),
   accountID: z.string(),
 });
 
@@ -114,6 +141,7 @@ export const ListSchedulesRequest$inboundSchema: z.ZodType<
 export type ListSchedulesRequest$Outbound = {
   skip?: number | undefined;
   count?: number | undefined;
+  hydrate?: string | undefined;
   accountID: string;
 };
 
@@ -125,6 +153,7 @@ export const ListSchedulesRequest$outboundSchema: z.ZodType<
 > = z.object({
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
+  hydrate: Hydrate$outboundSchema.optional(),
   accountID: z.string(),
 });
 
@@ -166,7 +195,7 @@ export const ListSchedulesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: z.array(components.ScheduleResponse$inboundSchema),
+  Result: z.array(components.ScheduleListResponse$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -177,7 +206,7 @@ export const ListSchedulesResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type ListSchedulesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: Array<components.ScheduleResponse$Outbound>;
+  Result: Array<components.ScheduleListResponse$Outbound>;
 };
 
 /** @internal */
@@ -187,7 +216,7 @@ export const ListSchedulesResponse$outboundSchema: z.ZodType<
   ListSchedulesResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.array(components.ScheduleResponse$outboundSchema),
+  result: z.array(components.ScheduleListResponse$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

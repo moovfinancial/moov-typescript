@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$cardIssuingUpdate: ToolDefinition<typeof args> = {
-  name: "card-issuing_update",
+  name: "card-issuing-update",
   description: `Update a Moov issued card.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

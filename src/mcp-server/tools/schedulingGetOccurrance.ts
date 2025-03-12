@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$schedulingGetOccurrance: ToolDefinition<typeof args> = {
-  name: "scheduling_get-occurrance",
+  name: "scheduling-get-occurrance",
   description: `Gets a specific occurrence.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

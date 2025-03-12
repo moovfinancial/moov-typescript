@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$institutionsSearch: ToolDefinition<typeof args> = {
-  name: "institutions_search",
+  name: "institutions-search",
   description: `Search for institutions by either their name or routing number.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

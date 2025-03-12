@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$transfersList: ToolDefinition<typeof args> = {
-  name: "transfers_list",
+  name: "transfers-list",
   description:
     `List all the transfers associated with a particular Moov account. 
 

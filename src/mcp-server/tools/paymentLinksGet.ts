@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$paymentLinksGet: ToolDefinition<typeof args> = {
-  name: "payment-links_get",
+  name: "payment-links-get",
   description: `Retrieve a payment link by code.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

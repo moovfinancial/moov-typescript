@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$schedulingUpdate: ToolDefinition<typeof args> = {
-  name: "scheduling_update",
+  name: "scheduling-update",
   description: `Describes the schedule to modify.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
