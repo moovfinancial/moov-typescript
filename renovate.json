@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "npm:unpublishSafe",
+    ":automergeStableNonMajor",
+    ":automergeRequireAllStatusChecks",
+    ":automergeTypes",
+    ":automergeTesters",
+    ":pinAllExceptPeerDependencies"
+  ],
+  "timezone": "America/Chicago",
+  "schedule": ["after 2pm every weekday", "before 5am every weekday", "every weekend"],
+  "automergeSchedule": ["after 6pm every weekday", "before 9am every weekday", "every weekend"],
+  "prConcurrentLimit": 12,
+  "prHourlyLimit": 0,
+  "reviewers": ["team:frontend", "atonks2", "gamell"],
+  "packageRules": [
+    {
+      "description": "Automerge devDependencies if the tests pass",
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true
+    },
+    {
+      "groupName": "Typespec Packages",
+      "matchPackagePatterns": ["^@typespec"]
+    }
+  ],
+  "commitMessagePrefix": "♻️"
+}
