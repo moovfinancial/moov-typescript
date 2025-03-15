@@ -6,17 +6,17 @@
 import { SweepConfig } from "@moovio/sdk/models/components";
 
 let value: SweepConfig = {
-  sweepConfigID: "b36a4279-a945-4633-8721-806bf74a2ec2",
-  walletID: "ef42bf45-5748-4d64-9e83-5810bb7d9cec",
+  sweepConfigID: "c1e6539f-5331-43ab-a6f2-b6332f696cc0",
+  walletID: "fd49798b-5690-4472-9b1b-daeb3d3d9896",
   status: "enabled",
   pushPaymentMethod: {
-    paymentMethodID: "060b7b70-de9b-40b1-b54d-7137f3c2a3c8",
+    paymentMethodID: "298aae80-e1b3-41f0-8079-2bf71dfd9d67",
   },
   pullPaymentMethod: {
-    paymentMethodID: "13c51b21-862a-46a6-9d9c-a56c02abdcfe",
+    paymentMethodID: "5ed9e6ff-90ee-4f74-b1eb-ccd15dbcc1d1",
   },
-  createdOn: new Date("2025-05-14T04:56:14.610Z"),
-  updatedOn: new Date("2023-11-21T10:30:33.033Z"),
+  createdOn: new Date("2023-12-14T12:41:25.029Z"),
+  updatedOn: new Date("2023-08-21T11:42:45.672Z"),
 };
 ```
 

@@ -17,6 +17,12 @@ import {
   CardAcquiringModel$inboundSchema,
   CardAcquiringModel$outboundSchema,
 } from "./cardacquiringmodel.js";
+import {
+  MinimumCommitment,
+  MinimumCommitment$inboundSchema,
+  MinimumCommitment$Outbound,
+  MinimumCommitment$outboundSchema,
+} from "./minimumcommitment.js";
 
 export type FeePlan = {
   planID: string;
@@ -36,6 +42,10 @@ export type FeePlan = {
    * Additional usage-based fees for this plan.
    */
   billableFees: Array<BillableFee>;
+  /**
+   * The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.
+   */
+  minimumCommitment: MinimumCommitment;
   createdAt: Date;
 };
 
@@ -47,6 +57,7 @@ export const FeePlan$inboundSchema: z.ZodType<FeePlan, z.ZodTypeDef, unknown> =
     description: z.string().optional(),
     cardAcquiringModel: CardAcquiringModel$inboundSchema,
     billableFees: z.array(BillableFee$inboundSchema),
+    minimumCommitment: MinimumCommitment$inboundSchema,
     createdAt: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),
@@ -59,6 +70,7 @@ export type FeePlan$Outbound = {
   description?: string | undefined;
   cardAcquiringModel: string;
   billableFees: Array<BillableFee$Outbound>;
+  minimumCommitment: MinimumCommitment$Outbound;
   createdAt: string;
 };
 
@@ -73,6 +85,7 @@ export const FeePlan$outboundSchema: z.ZodType<
   description: z.string().optional(),
   cardAcquiringModel: CardAcquiringModel$outboundSchema,
   billableFees: z.array(BillableFee$outboundSchema),
+  minimumCommitment: MinimumCommitment$outboundSchema,
   createdAt: z.date().transform(v => v.toISOString()),
 });
 

@@ -1,11 +1,11 @@
-# GovernmentIDItin
+# GovernmentIDErrorItin
 
 ## Example Usage
 
 ```typescript
-import { GovernmentIDItin } from "@moovio/sdk/models/components";
+import { GovernmentIDErrorItin } from "@moovio/sdk/models/components";
 
-let value: GovernmentIDItin = {};
+let value: GovernmentIDErrorItin = {};
 ```
 
 ## Fields

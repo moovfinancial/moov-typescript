@@ -38,6 +38,10 @@ let value: CreateFeePlanAgreementsResponse = {
         },
       },
     ],
+    minimumCommitment: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
   },
 };
 ```

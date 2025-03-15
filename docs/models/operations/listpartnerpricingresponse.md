@@ -37,6 +37,10 @@ let value: ListPartnerPricingResponse = {
           },
         },
       ],
+      minimumCommitment: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       createdAt: new Date("2025-08-02T08:31:07.216Z"),
     },
   ],

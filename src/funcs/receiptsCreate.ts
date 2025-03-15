@@ -171,7 +171,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.CreateReceiptsResponse$inboundSchema, {
+    M.json(201, operations.CreateReceiptsResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),

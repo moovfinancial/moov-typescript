@@ -7,11 +7,11 @@ import { TransferSource } from "@moovio/sdk/models/components";
 
 let value: TransferSource = {
   paymentMethodID: "<id>",
-  paymentMethodType: "rtp-credit",
+  paymentMethodType: "ach-credit-standard",
   account: {
     accountID: "<id>",
-    email: "Brad2@gmail.com",
-    displayName: "Jettie.Schinner68",
+    email: "Oswaldo_Smith@gmail.com",
+    displayName: "Federico5",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -44,7 +44,7 @@ let value: TransferSource = {
         fullName: "match",
       },
     },
-    issuer: "visa",
+    issuer: "mastercard",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -67,13 +67,13 @@ let value: TransferSource = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "settled",
+    status: "initiated",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
   },
   achDetails: {
-    status: "completed",
+    status: "canceled",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",

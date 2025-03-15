@@ -1,11 +1,11 @@
-# GovernmentIDSsn
+# GovernmentIDErrorSsn
 
 ## Example Usage
 
 ```typescript
-import { GovernmentIDSsn } from "@moovio/sdk/models/components";
+import { GovernmentIDErrorSsn } from "@moovio/sdk/models/components";
 
-let value: GovernmentIDSsn = {};
+let value: GovernmentIDErrorSsn = {};
 ```
 
 ## Fields

@@ -43,6 +43,12 @@ import {
   CardPaymentPaymentMethod$outboundSchema,
 } from "./cardpaymentpaymentmethod.js";
 import {
+  CardPresentPaymentPaymentMethod,
+  CardPresentPaymentPaymentMethod$inboundSchema,
+  CardPresentPaymentPaymentMethod$Outbound,
+  CardPresentPaymentPaymentMethod$outboundSchema,
+} from "./cardpresentpaymentpaymentmethod.js";
+import {
   MoovWalletPaymentMethod,
   MoovWalletPaymentMethod$inboundSchema,
   MoovWalletPaymentMethod$Outbound,
@@ -84,7 +90,10 @@ export type PaymentMethod =
   | (CardPaymentPaymentMethod & { paymentMethodType: "card-payment" })
   | (PushToCardPaymentMethod & { paymentMethodType: "push-to-card" })
   | (PullFromCardPaymentMethod & { paymentMethodType: "pull-from-card" })
-  | (ApplePayPaymentMethod & { paymentMethodType: "apple-pay" });
+  | (ApplePayPaymentMethod & { paymentMethodType: "apple-pay" })
+  | (CardPresentPaymentPaymentMethod & {
+    paymentMethodType: "card-present-payment";
+  });
 
 /** @internal */
 export const PaymentMethod$inboundSchema: z.ZodType<
@@ -142,6 +151,10 @@ export const PaymentMethod$inboundSchema: z.ZodType<
       paymentMethodType: v.paymentMethodType,
     })),
   ),
+  CardPresentPaymentPaymentMethod$inboundSchema.and(
+    z.object({ paymentMethodType: z.literal("card-present-payment") })
+      .transform((v) => ({ paymentMethodType: v.paymentMethodType })),
+  ),
 ]);
 
 /** @internal */
@@ -165,7 +178,10 @@ export type PaymentMethod$Outbound =
   | (PullFromCardPaymentMethod$Outbound & {
     paymentMethodType: "pull-from-card";
   })
-  | (ApplePayPaymentMethod$Outbound & { paymentMethodType: "apple-pay" });
+  | (ApplePayPaymentMethod$Outbound & { paymentMethodType: "apple-pay" })
+  | (CardPresentPaymentPaymentMethod$Outbound & {
+    paymentMethodType: "card-present-payment";
+  });
 
 /** @internal */
 export const PaymentMethod$outboundSchema: z.ZodType<
@@ -222,6 +238,10 @@ export const PaymentMethod$outboundSchema: z.ZodType<
     z.object({ paymentMethodType: z.literal("apple-pay") }).transform((v) => ({
       paymentMethodType: v.paymentMethodType,
     })),
+  ),
+  CardPresentPaymentPaymentMethod$outboundSchema.and(
+    z.object({ paymentMethodType: z.literal("card-present-payment") })
+      .transform((v) => ({ paymentMethodType: v.paymentMethodType })),
   ),
 ]);
 

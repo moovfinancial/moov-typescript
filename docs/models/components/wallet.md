@@ -8,7 +8,7 @@ A Moov wallet to store funds for transfers.
 import { Wallet } from "@moovio/sdk/models/components";
 
 let value: Wallet = {
-  walletID: "864f4afb-aca6-43fa-8060-d383aac8dc8d",
+  walletID: "b3b7f6df-0943-48f0-8fce-041621a8e259",
   availableBalance: {
     currency: "USD",
     value: 1204,

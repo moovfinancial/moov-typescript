@@ -13,5 +13,5 @@ let value: PaymentMethodType = "ach-credit-standard";
 ## Values
 
 ```typescript
-"moov-wallet" | "ach-debit-fund" | "ach-debit-collect" | "ach-credit-standard" | "ach-credit-same-day" | "rtp-credit" | "card-payment" | "push-to-card" | "pull-from-card" | "apple-pay"
+"moov-wallet" | "ach-debit-fund" | "ach-debit-collect" | "ach-credit-standard" | "ach-credit-same-day" | "rtp-credit" | "card-payment" | "push-to-card" | "pull-from-card" | "apple-pay" | "card-present-payment"
 ```

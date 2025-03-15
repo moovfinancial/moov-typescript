@@ -10,8 +10,8 @@ let value: TransferDestination = {
   paymentMethodType: "pull-from-card",
   account: {
     accountID: "<id>",
-    email: "Kasandra55@hotmail.com",
-    displayName: "Grace37",
+    email: "Shad_Balistreri26@yahoo.com",
+    displayName: "Tod59",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -44,7 +44,7 @@ let value: TransferDestination = {
         fullName: "match",
       },
     },
-    issuer: "diners_club",
+    issuer: "visa",
     issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -54,7 +54,7 @@ let value: TransferDestination = {
     domesticPullFromCard: "supported",
   },
   achDetails: {
-    status: "canceled",
+    status: "completed",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
@@ -74,7 +74,7 @@ let value: TransferDestination = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "confirmed",
+    status: "initiated",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

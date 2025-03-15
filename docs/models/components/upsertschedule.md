@@ -36,7 +36,8 @@ let value: UpsertSchedule = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "ack trivial card",
+        description:
+          "perky emboss defiantly status yippee after sundae around next",
       },
     },
   ],
@@ -68,8 +69,7 @@ let value: UpsertSchedule = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description:
-        "provided plagiarise gigantic shady that voluntarily behind machine",
+      description: "fit wretched mob hefty similar nephew",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },

@@ -22,6 +22,12 @@ import {
   FeePlanAgreementStatus$inboundSchema,
   FeePlanAgreementStatus$outboundSchema,
 } from "./feeplanagreementstatus.js";
+import {
+  MinimumCommitment,
+  MinimumCommitment$inboundSchema,
+  MinimumCommitment$Outbound,
+  MinimumCommitment$outboundSchema,
+} from "./minimumcommitment.js";
 
 export type FeePlanAgreement = {
   agreementID: string;
@@ -42,6 +48,10 @@ export type FeePlanAgreement = {
    */
   cardAcquiringModel: CardAcquiringModel;
   billableFees: Array<BillableFee>;
+  /**
+   * The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.
+   */
+  minimumCommitment: MinimumCommitment;
 };
 
 /** @internal */
@@ -59,6 +69,7 @@ export const FeePlanAgreement$inboundSchema: z.ZodType<
   status: FeePlanAgreementStatus$inboundSchema,
   cardAcquiringModel: CardAcquiringModel$inboundSchema,
   billableFees: z.array(BillableFee$inboundSchema),
+  minimumCommitment: MinimumCommitment$inboundSchema,
 });
 
 /** @internal */
@@ -72,6 +83,7 @@ export type FeePlanAgreement$Outbound = {
   status: string;
   cardAcquiringModel: string;
   billableFees: Array<BillableFee$Outbound>;
+  minimumCommitment: MinimumCommitment$Outbound;
 };
 
 /** @internal */
@@ -89,6 +101,7 @@ export const FeePlanAgreement$outboundSchema: z.ZodType<
   status: FeePlanAgreementStatus$outboundSchema,
   cardAcquiringModel: CardAcquiringModel$outboundSchema,
   billableFees: z.array(BillableFee$outboundSchema),
+  minimumCommitment: MinimumCommitment$outboundSchema,
 });
 
 /**

@@ -291,3 +291,28 @@ const value: components.ApplePayPaymentMethod = {
 };
 ```
 
+### `components.CardPresentPaymentPaymentMethod`
+
+```typescript
+const value: components.CardPresentPaymentPaymentMethod = {
+  paymentMethodID: "7757242e-b265-40b7-8527-484469d45af3",
+  paymentMethodType: "card-present-payment",
+  terminalCard: {
+    entryMode: "contactless",
+    brand: "Visa",
+    bin: "123456",
+    cardType: "credit",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    holderName: "Jules Jackson",
+    issuer: "GRINGOTTS BANK",
+    issuerCountry: "US",
+    lastFourCardNumber: "1234",
+  },
+};
+```
+

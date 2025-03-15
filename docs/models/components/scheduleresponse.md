@@ -11,7 +11,7 @@ let value: ScheduleResponse = {
   occurrences: [
     {
       mode: "production",
-      runOn: new Date("2025-12-10T12:32:37.706Z"),
+      runOn: new Date("2024-08-27T16:46:29.820Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -38,7 +38,7 @@ let value: ScheduleResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "finally brightly burly wrongly hmph about",
+        description: "dicker testimonial for aw since phew",
       },
     },
   ],
@@ -72,14 +72,14 @@ let value: ScheduleResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "solidly uh-huh soybean",
+      description: "forenenst when pish with even",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },
   scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-  createdOn: new Date("2023-11-14T23:31:26.880Z"),
-  updatedOn: new Date("2024-02-04T19:24:29.006Z"),
+  createdOn: new Date("2025-04-28T21:26:57.802Z"),
+  updatedOn: new Date("2024-01-18T10:27:53.946Z"),
 };
 ```
 

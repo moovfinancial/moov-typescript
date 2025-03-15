@@ -8,7 +8,7 @@ Card-specific details about the transaction.
 import { CardTransactionDetails } from "@moovio/sdk/models/components";
 
 let value: CardTransactionDetails = {
-  status: "canceled",
+  status: "completed",
   dynamicDescriptor: "WhlBdy *Yoga 11-12",
   feeProgram:
     "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

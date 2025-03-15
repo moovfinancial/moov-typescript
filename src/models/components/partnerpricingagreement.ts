@@ -22,6 +22,12 @@ import {
   FeePlanAgreementStatus$inboundSchema,
   FeePlanAgreementStatus$outboundSchema,
 } from "./feeplanagreementstatus.js";
+import {
+  MinimumCommitment,
+  MinimumCommitment$inboundSchema,
+  MinimumCommitment$Outbound,
+  MinimumCommitment$outboundSchema,
+} from "./minimumcommitment.js";
 
 export type PartnerPricingAgreement = {
   agreementID: string;
@@ -43,6 +49,10 @@ export type PartnerPricingAgreement = {
   cardAcquiringModel: CardAcquiringModel;
   billableFees: Array<BillableFee>;
   /**
+   * The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.
+   */
+  minimumCommitment: MinimumCommitment;
+  /**
    * The integer percentage value of the revenue split for partner.
    */
   revenueShare: number;
@@ -63,6 +73,7 @@ export const PartnerPricingAgreement$inboundSchema: z.ZodType<
   status: FeePlanAgreementStatus$inboundSchema,
   cardAcquiringModel: CardAcquiringModel$inboundSchema,
   billableFees: z.array(BillableFee$inboundSchema),
+  minimumCommitment: MinimumCommitment$inboundSchema,
   revenueShare: z.number().int(),
 });
 
@@ -77,6 +88,7 @@ export type PartnerPricingAgreement$Outbound = {
   status: string;
   cardAcquiringModel: string;
   billableFees: Array<BillableFee$Outbound>;
+  minimumCommitment: MinimumCommitment$Outbound;
   revenueShare: number;
 };
 
@@ -95,6 +107,7 @@ export const PartnerPricingAgreement$outboundSchema: z.ZodType<
   status: FeePlanAgreementStatus$outboundSchema,
   cardAcquiringModel: CardAcquiringModel$outboundSchema,
   billableFees: z.array(BillableFee$outboundSchema),
+  minimumCommitment: MinimumCommitment$outboundSchema,
   revenueShare: z.number().int(),
 });
 

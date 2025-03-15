@@ -6,7 +6,7 @@
 import { PaymentMethodsWallet } from "@moovio/sdk/models/components";
 
 let value: PaymentMethodsWallet = {
-  walletID: "c2985b67-3b07-4842-b51b-90fcfafc4c18",
+  walletID: "8f689fb9-1318-4fd7-980d-60e7a8cf9190",
 };
 ```
 

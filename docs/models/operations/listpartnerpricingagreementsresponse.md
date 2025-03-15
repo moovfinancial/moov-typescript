@@ -39,6 +39,10 @@ let value: ListPartnerPricingAgreementsResponse = {
           },
         },
       ],
+      minimumCommitment: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       revenueShare: 10,
     },
   ],

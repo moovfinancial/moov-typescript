@@ -39,6 +39,10 @@ let value: ListFeePlanAgreementsResponse = {
           },
         },
       ],
+      minimumCommitment: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
     },
   ],
 };

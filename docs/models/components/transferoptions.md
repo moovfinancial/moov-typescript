@@ -8,8 +8,17 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "1bea9b34-d19e-4121-91ca-369b55620974",
-      paymentMethodType: "pull-from-card",
+      paymentMethodID: "4dee3a74-a92c-4e41-85d7-c9f8c67448a0",
+      paymentMethodType: "moov-wallet",
+      wallet: {
+        walletID: "0898784e-d899-432e-96eb-b2ec0e8bd35c",
+      },
+    },
+  ],
+  destinationOptions: [
+    {
+      paymentMethodID: "dc9e46cc-a29f-4410-b90e-eea08110189c",
+      paymentMethodType: "push-to-card",
       card: {
         cardID: "01234567-89ab-cdef-0123-456789abcdef",
         fingerprint:
@@ -41,7 +50,7 @@ let value: TransferOptions = {
             fullName: "match",
           },
         },
-        issuer: "american_express",
+        issuer: "diners_club",
         issuerCountry: "<value>",
         cardAccountUpdater: {
           updatedOn: new Date("2024-05-06T12:20:38.184Z"),
@@ -49,24 +58,6 @@ let value: TransferOptions = {
         },
         domesticPushToCard: "standard",
         domesticPullFromCard: "supported",
-      },
-    },
-  ],
-  destinationOptions: [
-    {
-      paymentMethodID: "9e7373ee-0b7d-4950-9e94-18b90e61b768",
-      paymentMethodType: "ach-credit-standard",
-      bankAccount: {
-        bankAccountID: "3ec54cc0-d719-45ec-92c4-4f1bb3e1b0b9",
-        fingerprint: "<value>",
-        status: "pending",
-        holderName: "<value>",
-        holderType: "business",
-        bankName: "<value>",
-        bankAccountType: "general-ledger",
-        routingNumber: "<value>",
-        lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2023-08-09T21:56:05.990Z"),
       },
     },
   ],

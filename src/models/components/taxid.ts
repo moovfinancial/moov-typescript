@@ -7,7 +7,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type TaxIDEin = {
+export type Ein = {
   number: string;
 };
 
@@ -15,68 +15,62 @@ export type TaxIDEin = {
  * An EIN (employer identification number) for the business. For sole proprietors, an SSN can be used as the EIN.
  */
 export type TaxID = {
-  ein: TaxIDEin;
+  ein: Ein;
 };
 
 /** @internal */
-export const TaxIDEin$inboundSchema: z.ZodType<
-  TaxIDEin,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  number: z.string(),
-});
+export const Ein$inboundSchema: z.ZodType<Ein, z.ZodTypeDef, unknown> = z
+  .object({
+    number: z.string(),
+  });
 
 /** @internal */
-export type TaxIDEin$Outbound = {
+export type Ein$Outbound = {
   number: string;
 };
 
 /** @internal */
-export const TaxIDEin$outboundSchema: z.ZodType<
-  TaxIDEin$Outbound,
-  z.ZodTypeDef,
-  TaxIDEin
-> = z.object({
-  number: z.string(),
-});
+export const Ein$outboundSchema: z.ZodType<Ein$Outbound, z.ZodTypeDef, Ein> = z
+  .object({
+    number: z.string(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TaxIDEin$ {
-  /** @deprecated use `TaxIDEin$inboundSchema` instead. */
-  export const inboundSchema = TaxIDEin$inboundSchema;
-  /** @deprecated use `TaxIDEin$outboundSchema` instead. */
-  export const outboundSchema = TaxIDEin$outboundSchema;
-  /** @deprecated use `TaxIDEin$Outbound` instead. */
-  export type Outbound = TaxIDEin$Outbound;
+export namespace Ein$ {
+  /** @deprecated use `Ein$inboundSchema` instead. */
+  export const inboundSchema = Ein$inboundSchema;
+  /** @deprecated use `Ein$outboundSchema` instead. */
+  export const outboundSchema = Ein$outboundSchema;
+  /** @deprecated use `Ein$Outbound` instead. */
+  export type Outbound = Ein$Outbound;
 }
 
-export function taxIDEinToJSON(taxIDEin: TaxIDEin): string {
-  return JSON.stringify(TaxIDEin$outboundSchema.parse(taxIDEin));
+export function einToJSON(ein: Ein): string {
+  return JSON.stringify(Ein$outboundSchema.parse(ein));
 }
 
-export function taxIDEinFromJSON(
+export function einFromJSON(
   jsonString: string,
-): SafeParseResult<TaxIDEin, SDKValidationError> {
+): SafeParseResult<Ein, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TaxIDEin$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TaxIDEin' from JSON`,
+    (x) => Ein$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Ein' from JSON`,
   );
 }
 
 /** @internal */
 export const TaxID$inboundSchema: z.ZodType<TaxID, z.ZodTypeDef, unknown> = z
   .object({
-    ein: z.lazy(() => TaxIDEin$inboundSchema),
+    ein: z.lazy(() => Ein$inboundSchema),
   });
 
 /** @internal */
 export type TaxID$Outbound = {
-  ein: TaxIDEin$Outbound;
+  ein: Ein$Outbound;
 };
 
 /** @internal */
@@ -85,7 +79,7 @@ export const TaxID$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TaxID
 > = z.object({
-  ein: z.lazy(() => TaxIDEin$outboundSchema),
+  ein: z.lazy(() => Ein$outboundSchema),
 });
 
 /**

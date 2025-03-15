@@ -13,7 +13,7 @@ let value: LinkApplePayTokenResponse = {
   },
   result: {
     paymentMethodID: "1b3000eb-ea84-4f57-86f2-5a197438575f",
-    paymentMethodType: "moov-wallet",
+    paymentMethodType: "ach-debit-fund",
     applePay: {
       brand: "Visa",
       cardType: "credit",

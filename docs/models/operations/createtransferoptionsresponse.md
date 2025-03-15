@@ -15,7 +15,7 @@ let value: CreateTransferOptionsResponse = {
     sourceOptions: [
       {
         paymentMethodID: "62f84059-3940-4653-886f-953aeadaf6c8",
-        paymentMethodType: "card-payment",
+        paymentMethodType: "push-to-card",
         card: {
           cardID: "01234567-89ab-cdef-0123-456789abcdef",
           fingerprint:

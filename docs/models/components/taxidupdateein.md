@@ -1,11 +1,11 @@
-# TaxIDEin
+# TaxIDUpdateEin
 
 ## Example Usage
 
 ```typescript
-import { TaxIDEin } from "@moovio/sdk/models/components";
+import { TaxIDUpdateEin } from "@moovio/sdk/models/components";
 
-let value: TaxIDEin = {
+let value: TaxIDUpdateEin = {
   number: "12-3456789",
 };
 ```
@@ -14,4 +14,4 @@ let value: TaxIDEin = {
 
 | Field              | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `number`           | *string*           | :heavy_check_mark: | N/A                | 12-3456789         |
+| `number`           | *string*           | :heavy_minus_sign: | N/A                | 12-3456789         |
