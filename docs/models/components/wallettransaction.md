@@ -11,7 +11,7 @@ let value: WalletTransaction = {
   walletID: "ef8d7168-b27b-4a15-b023-68dc742e79bb",
   transactionID: "76c50da7-fa25-48cd-a915-5e24072f6e39",
   transactionType: "refund",
-  sourceType: "issuing-authorization",
+  sourceType: "sweep",
   sourceID: "fb9db2c2-24b9-45c1-84d5-58ef1ff505c1",
   status: "pending",
   memo: "<value>",

@@ -11,5 +11,5 @@ let value: WalletTransactionSourceType = "sweep";
 ## Values
 
 ```typescript
-"transfer" | "dispute" | "issuing-card-transaction" | "issuing-authorization" | "sweep" | "adjustment"
+"transfer" | "dispute" | "issuing-card-transaction" | "issuing-authorization" | "sweep" | "adjustment" | "fee"
 ```

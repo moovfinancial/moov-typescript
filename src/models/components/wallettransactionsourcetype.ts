@@ -12,6 +12,7 @@ export const WalletTransactionSourceType = {
   IssuingAuthorization: "issuing-authorization",
   Sweep: "sweep",
   Adjustment: "adjustment",
+  Fee: "fee",
 } as const;
 export type WalletTransactionSourceType = ClosedEnum<
   typeof WalletTransactionSourceType

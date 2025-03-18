@@ -31,6 +31,7 @@ export type CreateTransferSource = {
    */
   transferID?: string | undefined;
   paymentMethodID?: string | undefined;
+  paymentToken?: string | undefined;
   cardDetails?: CreateTransferSourceCard | undefined;
   achDetails?: CreateTransferSourceACH | undefined;
 };
@@ -43,6 +44,7 @@ export const CreateTransferSource$inboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string().optional(),
   paymentMethodID: z.string().optional(),
+  paymentToken: z.string().optional(),
   cardDetails: CreateTransferSourceCard$inboundSchema.optional(),
   achDetails: CreateTransferSourceACH$inboundSchema.optional(),
 });
@@ -51,6 +53,7 @@ export const CreateTransferSource$inboundSchema: z.ZodType<
 export type CreateTransferSource$Outbound = {
   transferID?: string | undefined;
   paymentMethodID?: string | undefined;
+  paymentToken?: string | undefined;
   cardDetails?: CreateTransferSourceCard$Outbound | undefined;
   achDetails?: CreateTransferSourceACH$Outbound | undefined;
 };
@@ -63,6 +66,7 @@ export const CreateTransferSource$outboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string().optional(),
   paymentMethodID: z.string().optional(),
+  paymentToken: z.string().optional(),
   cardDetails: CreateTransferSourceCard$outboundSchema.optional(),
   achDetails: CreateTransferSourceACH$outboundSchema.optional(),
 });
