@@ -23,6 +23,12 @@ import {
   MinimumCommitment$Outbound,
   MinimumCommitment$outboundSchema,
 } from "./minimumcommitment.js";
+import {
+  MonthlyPlatformFee,
+  MonthlyPlatformFee$inboundSchema,
+  MonthlyPlatformFee$Outbound,
+  MonthlyPlatformFee$outboundSchema,
+} from "./monthlyplatformfee.js";
 
 export type PartnerPricing = {
   planID: string;
@@ -47,6 +53,10 @@ export type PartnerPricing = {
    * The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.
    */
   minimumCommitment: MinimumCommitment;
+  /**
+   * Fixed recurring amount paid in the billing period regardless of usage.
+   */
+  monthlyPlatformFee: MonthlyPlatformFee;
   createdAt: Date;
 };
 
@@ -63,6 +73,7 @@ export const PartnerPricing$inboundSchema: z.ZodType<
   cardAcquiringModel: CardAcquiringModel$inboundSchema,
   billableFees: z.array(BillableFee$inboundSchema),
   minimumCommitment: MinimumCommitment$inboundSchema,
+  monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
 
@@ -75,6 +86,7 @@ export type PartnerPricing$Outbound = {
   cardAcquiringModel: string;
   billableFees: Array<BillableFee$Outbound>;
   minimumCommitment: MinimumCommitment$Outbound;
+  monthlyPlatformFee: MonthlyPlatformFee$Outbound;
   createdAt: string;
 };
 
@@ -91,6 +103,7 @@ export const PartnerPricing$outboundSchema: z.ZodType<
   cardAcquiringModel: CardAcquiringModel$outboundSchema,
   billableFees: z.array(BillableFee$outboundSchema),
   minimumCommitment: MinimumCommitment$outboundSchema,
+  monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
   createdAt: z.date().transform(v => v.toISOString()),
 });
 

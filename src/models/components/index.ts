@@ -223,6 +223,7 @@ export * from "./manualtermsofserviceupdate.js";
 export * from "./microdepositstatus.js";
 export * from "./minimumcommitment.js";
 export * from "./mode.js";
+export * from "./monthlyplatformfee.js";
 export * from "./moovfeedetails.js";
 export * from "./moovwalletpaymentmethod.js";
 export * from "./mxauthorizationcode.js";

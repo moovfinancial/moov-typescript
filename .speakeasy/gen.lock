@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: e46cbcd245172fa79a27ddf177548bfb
+  docChecksum: b0ce04f6dc2599f592af1217442aa9b9
   docVersion: latest
-  speakeasyVersion: 1.519.0
-  generationVersion: 2.552.1
-  releaseVersion: 0.9.0
-  configChecksum: a68850327abc4daa191bc5f31b9df1f5
+  speakeasyVersion: 1.521.1
+  generationVersion: 2.558.5
+  releaseVersion: 0.10.0
+  configChecksum: 49df307cb328a17b517b3bc93c51059d
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -26,7 +26,7 @@ features:
     globalServerURLs: 2.82.4
     globals: 2.82.2
     hiddenGlobals: 0.1.0
-    mcpServer: 0.8.0
+    mcpServer: 0.9.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.2.3
@@ -290,6 +290,7 @@ generatedFiles:
   - docs/models/components/microdepositstatus.md
   - docs/models/components/minimumcommitment.md
   - docs/models/components/mode.md
+  - docs/models/components/monthlyplatformfee.md
   - docs/models/components/moovfeedetails.md
   - docs/models/components/moovwalletpaymentmethod.md
   - docs/models/components/moovwalletpaymentmethodpaymentmethodtype.md
@@ -1431,6 +1432,7 @@ generatedFiles:
   - src/models/components/microdepositstatus.ts
   - src/models/components/minimumcommitment.ts
   - src/models/components/mode.ts
+  - src/models/components/monthlyplatformfee.ts
   - src/models/components/moovfeedetails.ts
   - src/models/components/moovwalletpaymentmethod.ts
   - src/models/components/mxauthorizationcode.ts
@@ -2348,7 +2350,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"agreementID": "4c49ae91-2b32-4a4d-91bf-f062f3c2f38d", "planID": "7a6c5eb4-879b-4c21-b9fa-71eb2181b3ad", "name": "<value>", "acceptedOn": "2024-03-10T19:49:08.718Z", "status": "terminated", "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}}, {"agreementID": "e326d153-ca61-4e3e-a86a-3e450e955fd6", "planID": "50844514-ef1f-40ee-adc6-d314e85a7739", "name": "<value>", "acceptedOn": "2024-02-27T23:25:25.370Z", "status": "terminated", "cardAcquiringModel": "cost-plus", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}}]
+          application/json: [{"agreementID": "4c49ae91-2b32-4a4d-91bf-f062f3c2f38d", "planID": "7a6c5eb4-879b-4c21-b9fa-71eb2181b3ad", "name": "<value>", "acceptedOn": "2024-03-10T19:49:08.718Z", "status": "terminated", "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}}, {"agreementID": "e326d153-ca61-4e3e-a86a-3e450e955fd6", "planID": "50844514-ef1f-40ee-adc6-d314e85a7739", "name": "<value>", "acceptedOn": "2024-02-27T23:25:25.370Z", "status": "terminated", "cardAcquiringModel": "cost-plus", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}}]
   createFeePlanAgreements:
     speakeasy-default-create-fee-plan-agreements:
       parameters:
@@ -2359,7 +2361,7 @@ examples:
         application/json: {"planID": "b97c2d59-80c5-49ac-b1fc-40e3a81d8daf"}
       responses:
         "201":
-          application/json: {"agreementID": "b97c2d59-80c5-49ac-b1fc-40e3a81d8daf", "planID": "10fadd5b-11fb-4499-ae95-794da03fdea6", "name": "<value>", "acceptedOn": "2024-03-30T02:16:07.411Z", "status": "active", "cardAcquiringModel": "cost-plus", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}}
+          application/json: {"agreementID": "b97c2d59-80c5-49ac-b1fc-40e3a81d8daf", "planID": "10fadd5b-11fb-4499-ae95-794da03fdea6", "name": "<value>", "acceptedOn": "2024-03-30T02:16:07.411Z", "status": "active", "cardAcquiringModel": "cost-plus", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -2373,7 +2375,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"planID": "f1a4db2c-3482-4573-9821-edd05204e301", "name": "Fixed Rate Merchant Plan", "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2023-12-22T05:57:14.362Z"}, {"planID": "a628b889-6bfb-4f2f-912a-3c4b130a524d", "name": "Fixed Rate Merchant Plan", "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2023-01-09T04:17:35.274Z"}, {"planID": "9cfe1840-53c0-4033-9160-f52358028560", "name": "Fixed Rate Merchant Plan", "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2023-09-22T11:26:32.898Z"}]
+          application/json: [{"planID": "f1a4db2c-3482-4573-9821-edd05204e301", "name": "Fixed Rate Merchant Plan", "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2023-12-22T05:57:14.362Z"}, {"planID": "a628b889-6bfb-4f2f-912a-3c4b130a524d", "name": "Fixed Rate Merchant Plan", "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2023-01-09T04:17:35.274Z"}, {"planID": "9cfe1840-53c0-4033-9160-f52358028560", "name": "Fixed Rate Merchant Plan", "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2023-09-22T11:26:32.898Z"}]
   listPartnerPricing:
     speakeasy-default-list-partner-pricing:
       parameters:
@@ -2383,7 +2385,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"planID": "22ea0420-e1a7-4f8c-a9bf-8f0da89f6cb4", "name": "Fixed Rate Merchant Plan", "revenueShare": 10, "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2025-08-17T12:11:01.383Z"}, {"planID": "324369ab-9721-41b3-a7e8-71264af093a2", "name": "Fixed Rate Merchant Plan", "revenueShare": 10, "cardAcquiringModel": "cost-plus", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2024-12-29T12:10:26.937Z"}, {"planID": "6958b000-957d-46d5-aac4-ed28a886adea", "name": "Fixed Rate Merchant Plan", "revenueShare": 10, "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2023-01-12T00:50:08.214Z"}]
+          application/json: [{"planID": "22ea0420-e1a7-4f8c-a9bf-8f0da89f6cb4", "name": "Fixed Rate Merchant Plan", "revenueShare": 10, "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2025-08-17T12:11:01.383Z"}, {"planID": "324369ab-9721-41b3-a7e8-71264af093a2", "name": "Fixed Rate Merchant Plan", "revenueShare": 10, "cardAcquiringModel": "cost-plus", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2024-12-29T12:10:26.937Z"}, {"planID": "6958b000-957d-46d5-aac4-ed28a886adea", "name": "Fixed Rate Merchant Plan", "revenueShare": 10, "cardAcquiringModel": "flat-rate", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2023-01-12T00:50:08.214Z"}]
   listPartnerPricingAgreements:
     speakeasy-default-list-partner-pricing-agreements:
       parameters:
@@ -2395,7 +2397,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"agreementID": "9366921a-25de-4c52-8ec6-4cd4ef557223", "planID": "3f51f992-c3cc-4fd2-b0b7-17c682c67267", "name": "<value>", "acceptedOn": "2025-10-11T07:38:13.898Z", "status": "active", "cardAcquiringModel": "cost-plus", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "revenueShare": 10}]
+          application/json: [{"agreementID": "9366921a-25de-4c52-8ec6-4cd4ef557223", "planID": "3f51f992-c3cc-4fd2-b0b7-17c682c67267", "name": "<value>", "acceptedOn": "2025-10-11T07:38:13.898Z", "status": "active", "cardAcquiringModel": "cost-plus", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "revenueShare": 10}]
   uploadFile:
     speakeasy-default-upload-file:
       parameters:

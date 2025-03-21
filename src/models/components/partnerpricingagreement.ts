@@ -28,6 +28,12 @@ import {
   MinimumCommitment$Outbound,
   MinimumCommitment$outboundSchema,
 } from "./minimumcommitment.js";
+import {
+  MonthlyPlatformFee,
+  MonthlyPlatformFee$inboundSchema,
+  MonthlyPlatformFee$Outbound,
+  MonthlyPlatformFee$outboundSchema,
+} from "./monthlyplatformfee.js";
 
 export type PartnerPricingAgreement = {
   agreementID: string;
@@ -53,6 +59,10 @@ export type PartnerPricingAgreement = {
    */
   minimumCommitment: MinimumCommitment;
   /**
+   * Fixed recurring amount paid in the billing period regardless of usage.
+   */
+  monthlyPlatformFee: MonthlyPlatformFee;
+  /**
    * The integer percentage value of the revenue split for partner.
    */
   revenueShare: number;
@@ -74,6 +84,7 @@ export const PartnerPricingAgreement$inboundSchema: z.ZodType<
   cardAcquiringModel: CardAcquiringModel$inboundSchema,
   billableFees: z.array(BillableFee$inboundSchema),
   minimumCommitment: MinimumCommitment$inboundSchema,
+  monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
   revenueShare: z.number().int(),
 });
 
@@ -89,6 +100,7 @@ export type PartnerPricingAgreement$Outbound = {
   cardAcquiringModel: string;
   billableFees: Array<BillableFee$Outbound>;
   minimumCommitment: MinimumCommitment$Outbound;
+  monthlyPlatformFee: MonthlyPlatformFee$Outbound;
   revenueShare: number;
 };
 
@@ -108,6 +120,7 @@ export const PartnerPricingAgreement$outboundSchema: z.ZodType<
   cardAcquiringModel: CardAcquiringModel$outboundSchema,
   billableFees: z.array(BillableFee$outboundSchema),
   minimumCommitment: MinimumCommitment$outboundSchema,
+  monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
   revenueShare: z.number().int(),
 });
 

@@ -43,6 +43,10 @@ let value: ListFeePlanAgreementsResponse = {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
+      monthlyPlatformFee: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
     },
   ],
 };
