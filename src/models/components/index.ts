@@ -319,6 +319,7 @@ export * from "./terminalapplication.js";
 export * from "./terminalapplicationplatform.js";
 export * from "./terminalapplicationstatus.js";
 export * from "./terminalcard.js";
+export * from "./terminalconfiguration.js";
 export * from "./termsofservice.js";
 export * from "./termsofserviceerror.js";
 export * from "./termsofservicetoken.js";

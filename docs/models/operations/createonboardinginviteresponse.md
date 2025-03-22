@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://rigid-designation.name/",
+    link: "https://awesome-armchair.biz/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "aeea30c5-1d8f-49f8-82f1-2fcd7640053a",
+      accountID: "3a2ef702-4eef-4428-b567-05b7cafb82ef",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2025-09-23T07:40:01.857Z"),
+    createdOn: new Date("2023-04-13T10:52:24.446Z"),
   },
 };
 ```

@@ -9,9 +9,9 @@
 const value: components.BankAccountPayload = {
   account: {
     holderName: "<value>",
-    holderType: "business",
+    holderType: "individual",
     accountNumber: "<value>",
-    bankAccountType: "checking",
+    bankAccountType: "general-ledger",
     routingNumber: "<value>",
   },
 };

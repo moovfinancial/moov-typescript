@@ -13,8 +13,8 @@ let value: CreateCancellationResponse = {
   },
   result: {
     cancellationID: "<id>",
-    status: "pending",
-    createdOn: new Date("2025-11-12T01:21:46.772Z"),
+    status: "failed",
+    createdOn: new Date("2024-11-24T04:36:02.095Z"),
   },
 };
 ```

@@ -6,8 +6,8 @@
 import { ListRefundsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListRefundsRequest = {
-  accountID: "e94f27eb-8b76-4abe-9df1-f31aafc699c9",
-  transferID: "a351d14e-83fe-413a-b382-a8f28493e76c",
+  accountID: "e7c24be1-2f10-4834-895f-3de7f41907d6",
+  transferID: "4ea2798c-0498-412c-b8ad-95824a00efe3",
 };
 ```
 

@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://total-order.net/",
+    link: "https://huge-almighty.biz/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "64e6811c-eaec-421f-92a3-87bdf366038e",
+      accountID: "8e5bf21f-04d4-42cb-918e-63b3e67b5f4f",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2025-02-07T18:13:29.689Z"),
+    createdOn: new Date("2025-05-05T05:07:58.692Z"),
   },
 };
 ```

@@ -28,7 +28,7 @@ The return code of an ACH transaction that caused the bank account status to cha
 ```typescript
 import { ACHReturnCode } from "@moovio/sdk/models/components";
 
-let value: ACHReturnCode = "R07";
+let value: ACHReturnCode = "R38";
 ```
 
 ## Values

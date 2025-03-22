@@ -13,12 +13,12 @@ let value: ListIssuedCardAuthorizationsResponse = {
   },
   result: [
     {
-      authorizationID: "d099fe84-03df-4b99-9a05-5f0b61520a00",
-      issuedCardID: "2751aaad-0087-4f56-bd91-086ba00d29ff",
-      fundingWalletID: "ee1d6081-175e-45d0-af04-0f05a503b6db",
-      network: "discover",
+      authorizationID: "a0062751-aaad-4008-87f5-6d91086ba00d",
+      issuedCardID: "9ffdee1d-6081-4175-ae5d-0f040f05a503",
+      fundingWalletID: "6db91f84-9b7a-41da-bc18-b8109cf93616",
+      network: "shazam",
       authorizedAmount: "-14.89",
-      status: "expired",
+      status: "pending",
       merchantData: {
         name: "Whole Body Fitness",
         city: "San Francisco",
@@ -27,7 +27,7 @@ let value: ListIssuedCardAuthorizationsResponse = {
         state: "CA",
         mcc: "7298",
       },
-      createdOn: new Date("2024-07-24T15:46:43.780Z"),
+      createdOn: new Date("2023-07-01T20:08:02.445Z"),
     },
   ],
 };

@@ -7,10 +7,10 @@ import { Capability } from "@moovio/sdk/models/components";
 
 let value: Capability = {
   capability: "send-funds",
-  accountID: "78299635-1b05-4e38-82fd-5c9323afce3e",
-  status: "in-review",
-  createdOn: new Date("2023-06-04T18:32:11.631Z"),
-  updatedOn: new Date("2024-02-01T05:40:56.566Z"),
+  accountID: "82fd5c93-23af-4ce3-ae1f-2555bd984e96",
+  status: "enabled",
+  createdOn: new Date("2023-05-03T03:10:03.746Z"),
+  updatedOn: new Date("2025-10-13T07:18:44.318Z"),
 };
 ```
 

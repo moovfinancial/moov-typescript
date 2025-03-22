@@ -14,7 +14,7 @@ let value: ListOnboardingInvitesResponse = {
   result: [
     {
       code: "N1IA5eWYNh",
-      link: "https://liquid-atrium.biz",
+      link: "https://hefty-possession.net/",
       scopes: [
         "accounts.read",
       ],
@@ -33,11 +33,11 @@ let value: ListOnboardingInvitesResponse = {
         },
       },
       partner: {
-        accountID: "4eef4285-6705-4b7c-8afb-82efd115bd2a",
+        accountID: "2a217daa-64e6-4811-bcea-ec21f2a387bd",
         accountMode: "production",
         displayName: "Bob's Widgets",
       },
-      createdOn: new Date("2023-05-03T20:47:05.431Z"),
+      createdOn: new Date("2023-08-17T13:06:43.730Z"),
     },
   ],
 };

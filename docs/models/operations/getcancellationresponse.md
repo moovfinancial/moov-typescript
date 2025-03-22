@@ -13,8 +13,8 @@ let value: GetCancellationResponse = {
   },
   result: {
     cancellationID: "<id>",
-    status: "pending",
-    createdOn: new Date("2023-08-13T15:30:37.197Z"),
+    status: "completed",
+    createdOn: new Date("2024-02-19T03:41:15.084Z"),
   },
 };
 ```

@@ -13,11 +13,11 @@ let value: ListIssuedCardAuthorizationEventsResponse = {
   },
   result: [
     {
-      eventID: "9446a940-37e9-4e97-b5f7-5ec9971a60b2",
+      eventID: "0b2c4992-7df0-4290-bc9a-991375ca4fad",
       eventType: "reversal",
       amount: "-14.89",
       result: "declined",
-      createdOn: new Date("2024-09-16T11:04:31.392Z"),
+      createdOn: new Date("2023-03-08T19:43:38.812Z"),
     },
   ],
 };

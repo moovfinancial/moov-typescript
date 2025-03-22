@@ -13,9 +13,9 @@ let value: CreateReversalResponse = {
   },
   result: {
     refund: {
-      refundID: "789eabf1-35f3-4914-84b1-c4b56218a120",
-      createdOn: new Date("2023-09-01T22:40:44.792Z"),
-      updatedOn: new Date("2025-01-27T00:15:15.202Z"),
+      refundID: "f6c8006a-d0fe-4da7-bc34-2f3b701eb830",
+      createdOn: new Date("2023-12-09T06:42:10.165Z"),
+      updatedOn: new Date("2023-08-23T14:07:24.267Z"),
       status: "created",
       amount: {
         currency: "USD",

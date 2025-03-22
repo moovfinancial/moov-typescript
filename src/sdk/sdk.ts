@@ -31,6 +31,7 @@ import { Representatives } from "./representatives.js";
 import { Scheduling } from "./scheduling.js";
 import { Sweeps } from "./sweeps.js";
 import { TerminalApplications } from "./terminalapplications.js";
+import { TerminalConfigurations } from "./terminalconfigurations.js";
 import { Transfers } from "./transfers.js";
 import { Underwriting } from "./underwriting.js";
 import { Wallets } from "./wallets.js";
@@ -110,6 +111,13 @@ export class Moov extends ClientSDK {
   private _sweeps?: Sweeps;
   get sweeps(): Sweeps {
     return (this._sweeps ??= new Sweeps(this._options));
+  }
+
+  private _terminalConfigurations?: TerminalConfigurations;
+  get terminalConfigurations(): TerminalConfigurations {
+    return (this._terminalConfigurations ??= new TerminalConfigurations(
+      this._options,
+    ));
   }
 
   private _transfers?: Transfers;

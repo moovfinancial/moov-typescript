@@ -127,6 +127,7 @@ import { tool$terminalApplicationsCreate } from "./tools/terminalApplicationsCre
 import { tool$terminalApplicationsDelete } from "./tools/terminalApplicationsDelete.js";
 import { tool$terminalApplicationsGet } from "./tools/terminalApplicationsGet.js";
 import { tool$terminalApplicationsList } from "./tools/terminalApplicationsList.js";
+import { tool$terminalConfigurationsGet } from "./tools/terminalConfigurationsGet.js";
 import { tool$transfersCreate } from "./tools/transfersCreate.js";
 import { tool$transfersCreateCancellation } from "./tools/transfersCreateCancellation.js";
 import { tool$transfersCreateReversal } from "./tools/transfersCreateReversal.js";
@@ -156,7 +157,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.10.0",
+    version: "0.10.1",
   });
 
   const client = new MoovCore({
@@ -271,6 +272,7 @@ export function createMCPServer(deps: {
   tool(tool$sweepsUpdateConfig);
   tool(tool$sweepsList);
   tool(tool$sweepsGet);
+  tool(tool$terminalConfigurationsGet);
   tool(tool$transfersCreate);
   tool(tool$transfersList);
   tool(tool$transfersGet);

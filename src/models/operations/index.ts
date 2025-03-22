@@ -65,6 +65,7 @@ export * from "./getschedules.js";
 export * from "./getsweep.js";
 export * from "./getsweepconfig.js";
 export * from "./getterminalapplication.js";
+export * from "./getterminalconfiguration.js";
 export * from "./gettermsofservicetoken.js";
 export * from "./gettransfer.js";
 export * from "./getunderwriting.js";

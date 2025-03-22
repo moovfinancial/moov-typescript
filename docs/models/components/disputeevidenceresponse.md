@@ -6,11 +6,11 @@
 import { DisputeEvidenceResponse } from "@moovio/sdk/models/components";
 
 let value: DisputeEvidenceResponse = {
-  evidenceID: "078ee096-8a4c-4eec-b87b-c007d32ee4dc",
-  disputeID: "2e0aae32-8f4c-454a-9c09-86c586772c48",
-  evidenceType: "cover-letter",
-  createdOn: new Date("2025-06-30T12:41:44.491Z"),
-  updatedOn: new Date("2025-11-07T21:06:10.379Z"),
+  evidenceID: "c87bc007-d32e-4e4d-9cf2-e0aae328f4c5",
+  disputeID: "ac0986c5-8677-42c4-984d-df5ed92bfd10",
+  evidenceType: "other",
+  createdOn: new Date("2025-03-02T17:01:51.399Z"),
+  updatedOn: new Date("2025-12-31T07:50:18.161Z"),
 };
 ```
 
