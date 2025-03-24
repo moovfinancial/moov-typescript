@@ -16,10 +16,10 @@ import {
  * The results of submitting cardholder name to a card network for verification.
  */
 export type AccountNameVerification = {
-  firstName: CardVerificationResult;
-  lastName: CardVerificationResult;
-  middleName: CardVerificationResult;
-  fullName: CardVerificationResult;
+  firstName?: CardVerificationResult | undefined;
+  lastName?: CardVerificationResult | undefined;
+  middleName?: CardVerificationResult | undefined;
+  fullName?: CardVerificationResult | undefined;
 };
 
 /** @internal */
@@ -28,18 +28,18 @@ export const AccountNameVerification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  firstName: CardVerificationResult$inboundSchema,
-  lastName: CardVerificationResult$inboundSchema,
-  middleName: CardVerificationResult$inboundSchema,
-  fullName: CardVerificationResult$inboundSchema,
+  firstName: CardVerificationResult$inboundSchema.optional(),
+  lastName: CardVerificationResult$inboundSchema.optional(),
+  middleName: CardVerificationResult$inboundSchema.optional(),
+  fullName: CardVerificationResult$inboundSchema.optional(),
 });
 
 /** @internal */
 export type AccountNameVerification$Outbound = {
-  firstName: string;
-  lastName: string;
-  middleName: string;
-  fullName: string;
+  firstName?: string | undefined;
+  lastName?: string | undefined;
+  middleName?: string | undefined;
+  fullName?: string | undefined;
 };
 
 /** @internal */
@@ -48,10 +48,10 @@ export const AccountNameVerification$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AccountNameVerification
 > = z.object({
-  firstName: CardVerificationResult$outboundSchema,
-  lastName: CardVerificationResult$outboundSchema,
-  middleName: CardVerificationResult$outboundSchema,
-  fullName: CardVerificationResult$outboundSchema,
+  firstName: CardVerificationResult$outboundSchema.optional(),
+  lastName: CardVerificationResult$outboundSchema.optional(),
+  middleName: CardVerificationResult$outboundSchema.optional(),
+  fullName: CardVerificationResult$outboundSchema.optional(),
 });
 
 /**

@@ -28,7 +28,7 @@ export type CardVerification = {
   /**
    * The results of submitting cardholder name to a card network for verification.
    */
-  accountName: AccountNameVerification;
+  accountName?: AccountNameVerification | undefined;
 };
 
 /** @internal */
@@ -40,7 +40,7 @@ export const CardVerification$inboundSchema: z.ZodType<
   cvv: CardVerificationResult$inboundSchema,
   addressLine1: CardVerificationResult$inboundSchema,
   postalCode: CardVerificationResult$inboundSchema,
-  accountName: AccountNameVerification$inboundSchema,
+  accountName: AccountNameVerification$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -48,7 +48,7 @@ export type CardVerification$Outbound = {
   cvv: string;
   addressLine1: string;
   postalCode: string;
-  accountName: AccountNameVerification$Outbound;
+  accountName?: AccountNameVerification$Outbound | undefined;
 };
 
 /** @internal */
@@ -60,7 +60,7 @@ export const CardVerification$outboundSchema: z.ZodType<
   cvv: CardVerificationResult$outboundSchema,
   addressLine1: CardVerificationResult$outboundSchema,
   postalCode: CardVerificationResult$outboundSchema,
-  accountName: AccountNameVerification$outboundSchema,
+  accountName: AccountNameVerification$outboundSchema.optional(),
 });
 
 /**
