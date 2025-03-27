@@ -6,9 +6,9 @@
 import { GetCancellationRequest } from "@moovio/sdk/models/operations";
 
 let value: GetCancellationRequest = {
-  accountID: "248d6fa5-86e0-431c-83b8-df22a0d66954",
-  transferID: "bc93b2e7-739f-49a4-9538-29791e638eb5",
-  cancellationID: "a157c5cc-03a7-405a-8f32-58a530213516",
+  accountID: "360047bc-6cba-4248-bd6f-a586e031c3b8",
+  transferID: "f22a0d66-9543-4bc9-83b2-e7739f9a4538",
+  cancellationID: "9791e638-eb54-4a15-97c5-cc03a705af32",
 };
 ```
 

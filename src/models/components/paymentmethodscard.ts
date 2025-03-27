@@ -99,11 +99,11 @@ export type PaymentMethodsCard = {
   /**
    * Financial institution that issued the card.
    */
-  issuer: string;
+  issuer?: string | undefined;
   /**
    * Country where the card was issued.
    */
-  issuerCountry: string;
+  issuerCountry?: string | undefined;
   /**
    * Indicates cardholder has authorized card to be stored for future payments.
    */
@@ -116,11 +116,11 @@ export type PaymentMethodsCard = {
   /**
    * Indicates which level of domestic push-to-card transfer is supported by the card, if any.
    */
-  domesticPushToCard: DomesticPushToCard;
+  domesticPushToCard?: DomesticPushToCard | undefined;
   /**
    * Indicates if the card supports domestic pull-from-card transfer.
    */
-  domesticPullFromCard: DomesticPullFromCard;
+  domesticPullFromCard?: DomesticPullFromCard | undefined;
 };
 
 /** @internal */
@@ -139,13 +139,13 @@ export const PaymentMethodsCard$inboundSchema: z.ZodType<
   holderName: z.string().optional(),
   billingAddress: CardAddress$inboundSchema,
   cardVerification: CardVerification$inboundSchema,
-  issuer: z.string(),
-  issuerCountry: z.string(),
+  issuer: z.string().optional(),
+  issuerCountry: z.string().optional(),
   cardOnFile: z.boolean().optional(),
   merchantAccountID: z.string().optional(),
   cardAccountUpdater: CardAccountUpdater$inboundSchema.optional(),
-  domesticPushToCard: DomesticPushToCard$inboundSchema,
-  domesticPullFromCard: DomesticPullFromCard$inboundSchema,
+  domesticPushToCard: DomesticPushToCard$inboundSchema.optional(),
+  domesticPullFromCard: DomesticPullFromCard$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -160,13 +160,13 @@ export type PaymentMethodsCard$Outbound = {
   holderName?: string | undefined;
   billingAddress: CardAddress$Outbound;
   cardVerification: CardVerification$Outbound;
-  issuer: string;
-  issuerCountry: string;
+  issuer?: string | undefined;
+  issuerCountry?: string | undefined;
   cardOnFile?: boolean | undefined;
   merchantAccountID?: string | undefined;
   cardAccountUpdater?: CardAccountUpdater$Outbound | undefined;
-  domesticPushToCard: string;
-  domesticPullFromCard: string;
+  domesticPushToCard?: string | undefined;
+  domesticPullFromCard?: string | undefined;
 };
 
 /** @internal */
@@ -185,13 +185,13 @@ export const PaymentMethodsCard$outboundSchema: z.ZodType<
   holderName: z.string().optional(),
   billingAddress: CardAddress$outboundSchema,
   cardVerification: CardVerification$outboundSchema,
-  issuer: z.string(),
-  issuerCountry: z.string(),
+  issuer: z.string().optional(),
+  issuerCountry: z.string().optional(),
   cardOnFile: z.boolean().optional(),
   merchantAccountID: z.string().optional(),
   cardAccountUpdater: CardAccountUpdater$outboundSchema.optional(),
-  domesticPushToCard: DomesticPushToCard$outboundSchema,
-  domesticPullFromCard: DomesticPullFromCard$outboundSchema,
+  domesticPushToCard: DomesticPushToCard$outboundSchema.optional(),
+  domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
 });
 
 /**

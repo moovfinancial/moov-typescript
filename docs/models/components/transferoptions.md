@@ -8,56 +8,37 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "4dee3a74-a92c-4e41-85d7-c9f8c67448a0",
-      paymentMethodType: "moov-wallet",
-      wallet: {
-        walletID: "0898784e-d899-432e-96eb-b2ec0e8bd35c",
+      paymentMethodID: "dee3a74a-92ce-4415-8d7c-9f8c67448a00",
+      paymentMethodType: "ach-credit-standard",
+      bankAccount: {
+        bankAccountID: "898784ed-8993-42e6-aebb-2ec0e8bd35c5",
+        fingerprint: "<value>",
+        status: "errored",
+        holderName: "<value>",
+        holderType: "business",
+        bankName: "<value>",
+        bankAccountType: "general-ledger",
+        routingNumber: "<value>",
+        lastFourAccountNumber: "<value>",
+        updatedOn: new Date("2025-10-10T02:00:55.209Z"),
       },
     },
   ],
   destinationOptions: [
     {
-      paymentMethodID: "dc9e46cc-a29f-4410-b90e-eea08110189c",
-      paymentMethodType: "push-to-card",
-      card: {
-        cardID: "01234567-89ab-cdef-0123-456789abcdef",
-        fingerprint:
-          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
-        brand: "Visa",
-        cardType: "credit",
-        lastFourCardNumber: "<value>",
-        bin: "<value>",
-        expiration: {
-          month: "01",
-          year: "21",
-        },
-        billingAddress: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        cardVerification: {
-          cvv: "match",
-          addressLine1: "match",
-          postalCode: "match",
-          accountName: {
-            firstName: "match",
-            lastName: "match",
-            middleName: "match",
-            fullName: "match",
-          },
-        },
-        issuer: "diners_club",
-        issuerCountry: "<value>",
-        cardAccountUpdater: {
-          updatedOn: new Date("2024-05-06T12:20:38.184Z"),
-          updateType: "number-update",
-        },
-        domesticPushToCard: "standard",
-        domesticPullFromCard: "supported",
+      paymentMethodID: "6cca29f4-1090-4eee-ba08-110189cc4780",
+      paymentMethodType: "ach-credit-standard",
+      bankAccount: {
+        bankAccountID: "793c5a8d-8d55-4bb1-8423-5f5715451a1b",
+        fingerprint: "<value>",
+        status: "pending",
+        holderName: "<value>",
+        holderType: "individual",
+        bankName: "<value>",
+        bankAccountType: "loan",
+        routingNumber: "<value>",
+        lastFourAccountNumber: "<value>",
+        updatedOn: new Date("2024-03-03T05:31:49.356Z"),
       },
     },
   ],

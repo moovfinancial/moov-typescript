@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://huge-almighty.biz/",
+    link: "https://celebrated-knight.org",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "8e5bf21f-04d4-42cb-918e-63b3e67b5f4f",
+      accountID: "63b3e67b-5f4f-46cc-b9c9-92e285428d75",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2025-05-05T05:07:58.692Z"),
+    createdOn: new Date("2023-05-27T16:46:38.890Z"),
   },
 };
 ```

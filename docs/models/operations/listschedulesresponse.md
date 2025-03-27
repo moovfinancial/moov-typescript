@@ -18,7 +18,7 @@ let value: ListSchedulesResponse = {
       occurrences: [
         {
           mode: "production",
-          runOn: new Date("2023-09-01T09:56:05.492Z"),
+          runOn: new Date("2024-11-07T23:11:32.353Z"),
           runTransfer: {
             amount: {
               currency: "USD",
@@ -45,7 +45,8 @@ let value: ListSchedulesResponse = {
                 dynamicDescriptor: "WhlBdy *Yoga 11-12",
               },
             },
-            description: "steel woot ouch unaccountably whether repeatedly nor",
+            description:
+              "whenever intrepid finally huzzah captain equally apud upward",
           },
         },
       ],
@@ -79,15 +80,14 @@ let value: ListSchedulesResponse = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description:
-            "throughout impressive designation admonish masterpiece yippee",
+          description: "pfft settle squid madly uh-huh scotch handle",
         },
         start: new Date("2009-11-10T23:00:00Z"),
       },
       scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
       sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-      createdOn: new Date("2025-03-08T17:42:27.657Z"),
-      updatedOn: new Date("2023-02-28T03:08:35.831Z"),
+      createdOn: new Date("2025-10-26T15:51:07.072Z"),
+      updatedOn: new Date("2023-01-03T03:35:22.413Z"),
     },
   ],
 };

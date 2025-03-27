@@ -6,19 +6,19 @@
 import { AchDebitCollectPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: AchDebitCollectPaymentMethod = {
-  paymentMethodID: "60739b42-14d6-4345-b389-cb32ed007de3",
+  paymentMethodID: "0739b421-4d63-4453-989c-b32ed007de3c",
   paymentMethodType: "ach-debit-collect",
   bankAccount: {
-    bankAccountID: "6a52b40f-61cd-44a1-a633-f08a53c2afd6",
+    bankAccountID: "a52b40f6-1cd4-4a16-a33f-08a53c2afd6a",
     fingerprint: "<value>",
-    status: "verificationFailed",
+    status: "pending",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "savings",
+    bankAccountType: "general-ledger",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-07-07T11:10:27.071Z"),
+    updatedOn: new Date("2023-03-25T18:54:20.052Z"),
   },
 };
 ```

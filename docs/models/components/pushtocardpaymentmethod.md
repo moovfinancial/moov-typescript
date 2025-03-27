@@ -6,7 +6,7 @@
 import { PushToCardPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: PushToCardPaymentMethod = {
-  paymentMethodID: "bd197fe2-1707-4bef-8ee5-6d727515fef9",
+  paymentMethodID: "7bd197fe-2170-47be-afee-56d727515fef",
   paymentMethodType: "push-to-card",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -39,8 +39,6 @@ let value: PushToCardPaymentMethod = {
         fullName: "match",
       },
     },
-    issuer: "diners_club",
-    issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
       updateType: "number-update",

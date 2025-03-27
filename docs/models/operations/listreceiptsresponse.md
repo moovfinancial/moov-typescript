@@ -13,15 +13,15 @@ let value: ListReceiptsResponse = {
   },
   result: [
     {
-      receiptID: "7c7fb3ce-8f8c-453c-b345-95577057379d",
-      createdBy: "4206d248-980c-4e42-acbc-e08c8890e30a",
+      receiptID: "95577057-379d-4c42-b06d-248980ce42cb",
+      createdBy: "e08c8890-e30a-482f-8641-822b1b161f35",
       disabledOn: new Date("2009-11-10T23:00:00Z"),
       kind: "sale.customer.v1",
       email: "jordan.lee@classbooker.dev",
       sentFor: [
         {
-          receiptID: "2f641822-b1b1-461f-9353-8e7b541f6d9a",
-          idempotencyKey: "57ce78bf-ad62-4b3e-8176-dff0fa46ee12",
+          receiptID: "8e7b541f-6d9a-4757-9ce7-8bfad62b3e17",
+          idempotencyKey: "dff0fa46-ee12-4065-ba2c-91edc793cbcf",
           sentOn: new Date("2009-11-10T23:00:00Z"),
         },
       ],

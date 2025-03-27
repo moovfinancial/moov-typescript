@@ -7,7 +7,7 @@ Status of a transaction within the card payment lifecycle.
 ```typescript
 import { CardTransactionStatus } from "@moovio/sdk/models/components";
 
-let value: CardTransactionStatus = "confirmed";
+let value: CardTransactionStatus = "initiated";
 ```
 
 ## Values

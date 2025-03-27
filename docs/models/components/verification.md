@@ -8,7 +8,7 @@ Describes identity verification status and relevant identity verification docume
 import { Verification } from "@moovio/sdk/models/components";
 
 let value: Verification = {
-  status: "pending",
+  status: "errored",
   documents: [
     {
       documentID: "e07e83e8-9429-4e99-ac99-c941f719eb39",

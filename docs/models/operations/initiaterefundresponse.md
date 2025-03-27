@@ -12,10 +12,10 @@ let value: InitiateRefundResponse = {
     ],
   },
   result: {
-    refundID: "9c96a351-d14e-483f-be13-a382a8f28493",
-    createdOn: new Date("2024-04-24T23:05:43.722Z"),
-    updatedOn: new Date("2024-04-18T05:18:51.847Z"),
-    status: "failed",
+    refundID: "1f31aafc-699c-496a-a351-d14e83fe13a3",
+    createdOn: new Date("2023-07-01T18:48:05.220Z"),
+    updatedOn: new Date("2025-01-07T06:50:44.539Z"),
+    status: "completed",
     amount: {
       currency: "USD",
       value: 1204,

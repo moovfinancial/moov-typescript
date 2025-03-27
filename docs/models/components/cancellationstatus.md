@@ -5,7 +5,7 @@
 ```typescript
 import { CancellationStatus } from "@moovio/sdk/models/components";
 
-let value: CancellationStatus = "pending";
+let value: CancellationStatus = "completed";
 ```
 
 ## Values

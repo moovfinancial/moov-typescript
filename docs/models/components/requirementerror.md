@@ -6,7 +6,7 @@
 import { RequirementError } from "@moovio/sdk/models/components";
 
 let value: RequirementError = {
-  requirement: "business.description-or-website",
+  requirement: "business.fulfillment",
 };
 ```
 

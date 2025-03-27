@@ -45,8 +45,6 @@ let value: GetPaymentMethodResponse = {
           fullName: "match",
         },
       },
-      issuer: "visa",
-      issuerCountry: "<value>",
       cardAccountUpdater: {
         updatedOn: new Date("2024-05-06T12:20:38.184Z"),
         updateType: "number-update",

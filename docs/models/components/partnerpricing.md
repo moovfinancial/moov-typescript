@@ -6,10 +6,10 @@
 import { PartnerPricing } from "@moovio/sdk/models/components";
 
 let value: PartnerPricing = {
-  planID: "0d48e2d8-ed71-40d7-bae4-e04cdf4cf840",
+  planID: "cf840c26-46e6-4ec4-8559-afe908680f04",
   name: "Fixed Rate Merchant Plan",
   revenueShare: 10,
-  cardAcquiringModel: "cost-plus",
+  cardAcquiringModel: "flat-rate",
   billableFees: [
     {
       billableFeeID: "9d957d33-1a9a-47aa-9460-fe1a90f003dd",
@@ -38,7 +38,7 @@ let value: PartnerPricing = {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
-  createdAt: new Date("2024-02-29T02:08:17.950Z"),
+  createdAt: new Date("2024-01-21T14:13:42.501Z"),
 };
 ```
 

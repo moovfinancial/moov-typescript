@@ -7,11 +7,11 @@ import { TransferDestination } from "@moovio/sdk/models/components";
 
 let value: TransferDestination = {
   paymentMethodID: "<id>",
-  paymentMethodType: "pull-from-card",
+  paymentMethodType: "moov-wallet",
   account: {
     accountID: "<id>",
-    email: "Shad_Balistreri26@yahoo.com",
-    displayName: "Tod59",
+    email: "Diana_Ward@hotmail.com",
+    displayName: "Lance_West",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -44,8 +44,6 @@ let value: TransferDestination = {
         fullName: "match",
       },
     },
-    issuer: "visa",
-    issuerCountry: "<value>",
     cardAccountUpdater: {
       updatedOn: new Date("2024-05-06T12:20:38.184Z"),
       updateType: "number-update",

@@ -5,7 +5,7 @@
 ```typescript
 import { BankAccountVerificationStatus } from "@moovio/sdk/models/components";
 
-let value: BankAccountVerificationStatus = "expired";
+let value: BankAccountVerificationStatus = "max-attempts-exceeded";
 ```
 
 ## Values

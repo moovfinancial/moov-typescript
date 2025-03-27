@@ -35,7 +35,8 @@ let value: Recur = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description: "seemingly provided plagiarise",
+    description:
+      "and or request equally dearly shiny lieu yellow coordination absent",
   },
   start: new Date("2009-11-10T23:00:00Z"),
 };

@@ -112,19 +112,19 @@ export type Card = {
   /**
    * Financial institution that issued the card.
    */
-  issuer: string;
+  issuer?: string | undefined;
   /**
    * Country where the card was issued.
    */
-  issuerCountry: string;
+  issuerCountry?: string | undefined;
   /**
    * URL of the issuer.
    */
-  issuerURL: string;
+  issuerURL?: string | undefined;
   /**
    * Phone number of the issuer.
    */
-  issuerPhone: string;
+  issuerPhone?: string | undefined;
   /**
    * If true, the card is for commercial use, or associated with a business.
    *
@@ -151,11 +151,11 @@ export type Card = {
   /**
    * Indicates which level of domestic push-to-card transfer is supported by the card, if any.
    */
-  domesticPushToCard: DomesticPushToCard;
+  domesticPushToCard?: DomesticPushToCard | undefined;
   /**
    * Indicates if the card supports domestic pull-from-card transfer.
    */
-  domesticPullFromCard: DomesticPullFromCard;
+  domesticPullFromCard?: DomesticPullFromCard | undefined;
   paymentMethods?: Array<BasicPaymentMethod> | undefined;
 };
 
@@ -173,17 +173,17 @@ export const Card$inboundSchema: z.ZodType<Card, z.ZodTypeDef, unknown> = z
     holderName: z.string().optional(),
     billingAddress: CardAddress$inboundSchema,
     cardVerification: CardVerification$inboundSchema,
-    issuer: z.string(),
-    issuerCountry: z.string(),
-    issuerURL: z.string(),
-    issuerPhone: z.string(),
+    issuer: z.string().optional(),
+    issuerCountry: z.string().optional(),
+    issuerURL: z.string().optional(),
+    issuerPhone: z.string().optional(),
     commercial: z.boolean().optional(),
     regulated: z.boolean().optional(),
     cardOnFile: z.boolean().optional(),
     merchantAccountID: z.string().optional(),
     cardAccountUpdater: CardAccountUpdater$inboundSchema.optional(),
-    domesticPushToCard: DomesticPushToCard$inboundSchema,
-    domesticPullFromCard: DomesticPullFromCard$inboundSchema,
+    domesticPushToCard: DomesticPushToCard$inboundSchema.optional(),
+    domesticPullFromCard: DomesticPullFromCard$inboundSchema.optional(),
     paymentMethods: z.array(BasicPaymentMethod$inboundSchema).optional(),
   });
 
@@ -200,17 +200,17 @@ export type Card$Outbound = {
   holderName?: string | undefined;
   billingAddress: CardAddress$Outbound;
   cardVerification: CardVerification$Outbound;
-  issuer: string;
-  issuerCountry: string;
-  issuerURL: string;
-  issuerPhone: string;
+  issuer?: string | undefined;
+  issuerCountry?: string | undefined;
+  issuerURL?: string | undefined;
+  issuerPhone?: string | undefined;
   commercial?: boolean | undefined;
   regulated?: boolean | undefined;
   cardOnFile?: boolean | undefined;
   merchantAccountID?: string | undefined;
   cardAccountUpdater?: CardAccountUpdater$Outbound | undefined;
-  domesticPushToCard: string;
-  domesticPullFromCard: string;
+  domesticPushToCard?: string | undefined;
+  domesticPullFromCard?: string | undefined;
   paymentMethods?: Array<BasicPaymentMethod$Outbound> | undefined;
 };
 
@@ -228,17 +228,17 @@ export const Card$outboundSchema: z.ZodType<Card$Outbound, z.ZodTypeDef, Card> =
     holderName: z.string().optional(),
     billingAddress: CardAddress$outboundSchema,
     cardVerification: CardVerification$outboundSchema,
-    issuer: z.string(),
-    issuerCountry: z.string(),
-    issuerURL: z.string(),
-    issuerPhone: z.string(),
+    issuer: z.string().optional(),
+    issuerCountry: z.string().optional(),
+    issuerURL: z.string().optional(),
+    issuerPhone: z.string().optional(),
     commercial: z.boolean().optional(),
     regulated: z.boolean().optional(),
     cardOnFile: z.boolean().optional(),
     merchantAccountID: z.string().optional(),
     cardAccountUpdater: CardAccountUpdater$outboundSchema.optional(),
-    domesticPushToCard: DomesticPushToCard$outboundSchema,
-    domesticPullFromCard: DomesticPullFromCard$outboundSchema,
+    domesticPushToCard: DomesticPushToCard$outboundSchema.optional(),
+    domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
     paymentMethods: z.array(BasicPaymentMethod$outboundSchema).optional(),
   });
 

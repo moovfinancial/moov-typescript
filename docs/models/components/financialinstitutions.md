@@ -26,7 +26,10 @@ let value: FinancialInstitutions = {
       statusCode: "1",
       viewCode: "1",
       cleanName: "Main Street Bank",
-      logo: null,
+      logo: {
+        name: "Main Street Bank",
+        url: "https://www.mainstreetbank.com/logo.png",
+      },
     },
   ],
 };

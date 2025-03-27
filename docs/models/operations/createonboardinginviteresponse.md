@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://awesome-armchair.biz/",
+    link: "https://grown-guacamole.info",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "3a2ef702-4eef-4428-b567-05b7cafb82ef",
+      accountID: "05b7cafb-82ef-4d11-a5bd-2a217daa64e6",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2023-04-13T10:52:24.446Z"),
+    createdOn: new Date("2023-03-21T03:43:40.209Z"),
   },
 };
 ```

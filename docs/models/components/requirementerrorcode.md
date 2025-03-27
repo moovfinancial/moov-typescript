@@ -5,7 +5,7 @@
 ```typescript
 import { RequirementErrorCode } from "@moovio/sdk/models/components";
 
-let value: RequirementErrorCode = "address-restricted";
+let value: RequirementErrorCode = "document-corrupt";
 ```
 
 ## Values

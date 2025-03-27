@@ -5,7 +5,10 @@
 ```typescript
 import { Logo } from "@moovio/sdk/models/components";
 
-let value: Logo = null;
+let value: Logo = {
+  name: "Main Street Bank",
+  url: "https://www.mainstreetbank.com/logo.png",
+};
 ```
 
 ## Fields

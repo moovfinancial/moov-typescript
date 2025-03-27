@@ -14,7 +14,7 @@ let value: ListOnboardingInvitesResponse = {
   result: [
     {
       code: "N1IA5eWYNh",
-      link: "https://hefty-possession.net/",
+      link: "https://smart-tribe.name/",
       scopes: [
         "accounts.read",
       ],
@@ -33,11 +33,11 @@ let value: ListOnboardingInvitesResponse = {
         },
       },
       partner: {
-        accountID: "2a217daa-64e6-4811-bcea-ec21f2a387bd",
+        accountID: "ec21f2a3-87bd-4f36-8603-8e5bf21f04d4",
         accountMode: "production",
         displayName: "Bob's Widgets",
       },
-      createdOn: new Date("2023-08-17T13:06:43.730Z"),
+      createdOn: new Date("2025-05-06T21:17:14.746Z"),
     },
   ],
 };
