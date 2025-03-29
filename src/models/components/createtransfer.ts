@@ -53,6 +53,10 @@ export type CreateTransfer = {
    * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
    */
   metadata?: { [k: string]: string } | undefined;
+  /**
+   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
+   */
+  salesTaxAmount?: Amount | undefined;
 };
 
 /** @internal */
@@ -67,6 +71,7 @@ export const CreateTransfer$inboundSchema: z.ZodType<
   facilitatorFee: FacilitatorFee$inboundSchema.optional(),
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
+  salesTaxAmount: Amount$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -77,6 +82,7 @@ export type CreateTransfer$Outbound = {
   facilitatorFee?: FacilitatorFee$Outbound | undefined;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
+  salesTaxAmount?: Amount$Outbound | undefined;
 };
 
 /** @internal */
@@ -91,6 +97,7 @@ export const CreateTransfer$outboundSchema: z.ZodType<
   facilitatorFee: FacilitatorFee$outboundSchema.optional(),
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
+  salesTaxAmount: Amount$outboundSchema.optional(),
 });
 
 /**

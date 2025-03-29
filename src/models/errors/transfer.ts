@@ -56,6 +56,10 @@ export type TransferData = {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
+  /**
+   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
+   */
+  salesTaxAmount?: components.Amount | undefined;
 };
 
 /**
@@ -109,6 +113,10 @@ export class Transfer extends Error {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
+  /**
+   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
+   */
+  salesTaxAmount?: components.Amount | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferData;
@@ -143,6 +151,7 @@ export class Transfer extends Error {
     if (err.sweepID != null) this.sweepID = err.sweepID;
     if (err.scheduleID != null) this.scheduleID = err.scheduleID;
     if (err.occurrenceID != null) this.occurrenceID = err.occurrenceID;
+    if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
 
     this.name = "Transfer";
   }
@@ -178,6 +187,7 @@ export const Transfer$inboundSchema: z.ZodType<
   sweepID: z.string().optional(),
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
+  salesTaxAmount: components.Amount$inboundSchema.optional(),
 })
   .transform((v) => {
     return new Transfer(v);
@@ -208,6 +218,7 @@ export type Transfer$Outbound = {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
+  salesTaxAmount?: components.Amount$Outbound | undefined;
 };
 
 /** @internal */
@@ -242,6 +253,7 @@ export const Transfer$outboundSchema: z.ZodType<
     sweepID: z.string().optional(),
     scheduleID: z.string().optional(),
     occurrenceID: z.string().optional(),
+    salesTaxAmount: components.Amount$outboundSchema.optional(),
   }));
 
 /**

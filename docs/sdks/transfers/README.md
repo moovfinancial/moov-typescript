@@ -131,6 +131,10 @@ async function run() {
       metadata: {
         "optional": "metadata",
       },
+      salesTaxAmount: {
+        currency: "USD",
+        value: 1204,
+      },
     },
   });
 
@@ -195,6 +199,10 @@ async function run() {
       description: "Pay Instructor for May 15 Class",
       metadata: {
         "optional": "metadata",
+      },
+      salesTaxAmount: {
+        currency: "USD",
+        value: 1204,
       },
     },
   });
