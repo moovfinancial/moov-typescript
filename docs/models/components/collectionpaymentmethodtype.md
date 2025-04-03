@@ -7,7 +7,7 @@ Payment methods allowed for collecting a payment.
 ```typescript
 import { CollectionPaymentMethodType } from "@moovio/sdk/models/components";
 
-let value: CollectionPaymentMethodType = "ach-debit-collect";
+let value: CollectionPaymentMethodType = "apple-pay";
 ```
 
 ## Values

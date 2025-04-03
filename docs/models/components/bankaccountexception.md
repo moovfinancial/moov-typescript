@@ -9,8 +9,8 @@ import { BankAccountException } from "@moovio/sdk/models/components";
 
 let value: BankAccountException = {
   achReturnCode: "R04",
-  rtpRejectionCode: "AC14",
-  description: "how exactly gee eek finding yum",
+  rtpRejectionCode: "AC03",
+  description: "overcooked silky dream coaxingly unlike married",
 };
 ```
 

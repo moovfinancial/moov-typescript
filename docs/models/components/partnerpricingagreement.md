@@ -6,12 +6,12 @@
 import { PartnerPricingAgreement } from "@moovio/sdk/models/components";
 
 let value: PartnerPricingAgreement = {
-  agreementID: "6ce24716-4e3b-43a9-87d3-7f2841d99829",
-  planID: "a0344c41-1263-4324-b8fc-2cbe6db46dc3",
+  agreementID: "8dfe3d50-817b-4d5d-a095-833dcd7a730e",
+  planID: "c1e2dcba-3a1d-437e-ac07-8d916af6f876",
   name: "<value>",
-  acceptedOn: new Date("2025-11-02T13:11:38.475Z"),
-  status: "terminated",
-  cardAcquiringModel: "cost-plus",
+  acceptedOn: new Date("2024-04-14T16:13:29.779Z"),
+  status: "active",
+  cardAcquiringModel: "flat-rate",
   billableFees: [
     {
       billableFeeID: "9d957d33-1a9a-47aa-9460-fe1a90f003dd",

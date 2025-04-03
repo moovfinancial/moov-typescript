@@ -7,11 +7,11 @@ import { TransferDestination } from "@moovio/sdk/models/components";
 
 let value: TransferDestination = {
   paymentMethodID: "<id>",
-  paymentMethodType: "moov-wallet",
+  paymentMethodType: "apple-pay",
   account: {
     accountID: "<id>",
-    email: "Diana_Ward@hotmail.com",
-    displayName: "Lance_West",
+    email: "Prince33@hotmail.com",
+    displayName: "Murl.Rowe82",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -72,7 +72,7 @@ let value: TransferDestination = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "initiated",
+    status: "confirmed",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

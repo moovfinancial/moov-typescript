@@ -21,7 +21,7 @@ export type FileT = {
 export type CreateEvidenceFileMultiPart = {
   evidenceType: EvidenceType;
   /**
-   * The file to upload as evidence. Valid types are [jpeg, tiff, pdf].
+   * The file to upload as evidence. Valid types are [jpeg, tiff, pdf] with a limit of 4MB per file.
    *
    * @remarks
    *

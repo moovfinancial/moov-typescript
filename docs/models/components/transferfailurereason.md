@@ -7,7 +7,7 @@ Reason for a transfer's failure.
 ```typescript
 import { TransferFailureReason } from "@moovio/sdk/models/components";
 
-let value: TransferFailureReason = "processing-error";
+let value: TransferFailureReason = "destination-payment-error";
 ```
 
 ## Values

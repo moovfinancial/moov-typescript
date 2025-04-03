@@ -46,7 +46,7 @@ export type CreateTransfer = {
    */
   facilitatorFee?: FacilitatorFee | undefined;
   /**
-   * An optional description of the transfer for your own internal use.
+   * An optional description of the transfer that is used on receipts and for your own internal use.
    */
   description?: string | undefined;
   /**

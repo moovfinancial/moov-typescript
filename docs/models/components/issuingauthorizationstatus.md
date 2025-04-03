@@ -7,7 +7,7 @@ Status of a card issuing authorization.
 ```typescript
 import { IssuingAuthorizationStatus } from "@moovio/sdk/models/components";
 
-let value: IssuingAuthorizationStatus = "canceled";
+let value: IssuingAuthorizationStatus = "expired";
 ```
 
 ## Values

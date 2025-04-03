@@ -877,7 +877,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
 * [upload](docs/sdks/files/README.md#upload) - Upload a file and link it to the specified Moov account. 
 
-The maximum file size is 10MB. Each account is allowed a maximum of 50 files. Acceptable file types include csv, jpg, pdf, 
+The maximum file size is 20MB. Each account is allowed a maximum of 50 files. Acceptable file types include csv, jpg, pdf, 
 and png. 
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1685,7 +1685,7 @@ To access this endpoint using an [access token](https://docs.moov.io/api/authent
 you'll need to specify the `/accounts/{accountID}/files.read` scope.
 - [`filesUpload`](docs/sdks/files/README.md#upload) - Upload a file and link it to the specified Moov account. 
 
-The maximum file size is 10MB. Each account is allowed a maximum of 50 files. Acceptable file types include csv, jpg, pdf, 
+The maximum file size is 20MB. Each account is allowed a maximum of 50 files. Acceptable file types include csv, jpg, pdf, 
 and png. 
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 

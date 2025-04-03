@@ -24,7 +24,7 @@ export type TransferData = {
   failureReason?: components.TransferFailureReason | undefined;
   amount: components.Amount;
   /**
-   * An optional description of the transfer for your own internal use.
+   * An optional description of the transfer that is used on receipts and for your own internal use.
    */
   description?: string | undefined;
   /**
@@ -81,7 +81,7 @@ export class Transfer extends Error {
   failureReason?: components.TransferFailureReason | undefined;
   amount: components.Amount;
   /**
-   * An optional description of the transfer for your own internal use.
+   * An optional description of the transfer that is used on receipts and for your own internal use.
    */
   description?: string | undefined;
   /**

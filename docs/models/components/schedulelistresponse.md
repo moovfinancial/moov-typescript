@@ -11,7 +11,7 @@ let value: ScheduleListResponse = {
   occurrences: [
     {
       mode: "production",
-      runOn: new Date("2023-09-23T10:49:31.106Z"),
+      runOn: new Date("2023-12-17T10:05:59.361Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -38,7 +38,7 @@ let value: ScheduleListResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "whenever boldly gadzooks powerful regarding frequent",
+        description: "dearly shiny lieu yellow",
       },
     },
   ],
@@ -72,15 +72,14 @@ let value: ScheduleListResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description:
-        "including aggressive till underpants which but solidly outsource conversation gosh",
+      description: "devise emphasize experience grok rarely sweetly perky",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },
   scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-  createdOn: new Date("2024-01-30T18:20:23.958Z"),
-  updatedOn: new Date("2025-07-16T15:05:54.840Z"),
+  createdOn: new Date("2024-02-03T21:16:09.204Z"),
+  updatedOn: new Date("2023-09-07T18:14:29.053Z"),
 };
 ```
 

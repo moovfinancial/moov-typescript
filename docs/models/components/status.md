@@ -5,7 +5,7 @@
 ```typescript
 import { Status } from "@moovio/sdk/models/components";
 
-let value: Status = "enabled";
+let value: Status = "disabled";
 ```
 
 ## Values

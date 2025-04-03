@@ -15,7 +15,7 @@ The rejection code of an RTP transaction that caused the bank account status to 
 ```typescript
 import { RTPRejectionCode } from "@moovio/sdk/models/components";
 
-let value: RTPRejectionCode = "AG03";
+let value: RTPRejectionCode = "AC14";
 ```
 
 ## Values

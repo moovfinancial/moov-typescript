@@ -36,7 +36,7 @@ let value: Recur = {
       },
     },
     description:
-      "and or request equally dearly shiny lieu yellow coordination absent",
+      "demobilise team scarcely apud veto yowza violin for deliberately crossly",
   },
   start: new Date("2009-11-10T23:00:00Z"),
 };

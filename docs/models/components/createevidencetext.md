@@ -7,7 +7,7 @@ import { CreateEvidenceText } from "@moovio/sdk/models/components";
 
 let value: CreateEvidenceText = {
   text: "<value>",
-  evidenceType: "generic-evidence",
+  evidenceType: "other",
 };
 ```
 

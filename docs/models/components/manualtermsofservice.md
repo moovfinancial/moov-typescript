@@ -8,11 +8,11 @@ Describes the acceptance of the Terms of Service. All data is required, and must
 import { ManualTermsOfService } from "@moovio/sdk/models/components";
 
 let value: ManualTermsOfService = {
-  acceptedDate: new Date("2025-11-16T19:19:36.576Z"),
+  acceptedDate: new Date("2023-08-15T03:58:24.994Z"),
   acceptedIP: "172.217.2.46",
   acceptedUserAgent:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36",
-  acceptedDomain: "https://agile-casement.name",
+  acceptedDomain: "https://unhappy-maestro.org",
 };
 ```
 

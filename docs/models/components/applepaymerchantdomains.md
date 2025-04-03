@@ -7,12 +7,12 @@ import { ApplePayMerchantDomains } from "@moovio/sdk/models/components";
 
 let value: ApplePayMerchantDomains = {
   accountID: "<id>",
-  displayName: "Elisabeth_Bartell",
+  displayName: "Brady54",
   domains: [
     "checkout.classbooker.dev",
   ],
-  createdOn: new Date("2025-07-08T05:40:38.975Z"),
-  updatedOn: new Date("2024-04-07T00:27:41.040Z"),
+  createdOn: new Date("2024-06-12T23:51:01.010Z"),
+  updatedOn: new Date("2025-03-24T09:04:15.352Z"),
 };
 ```
 

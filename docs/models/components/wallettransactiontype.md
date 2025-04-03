@@ -5,7 +5,7 @@
 ```typescript
 import { WalletTransactionType } from "@moovio/sdk/models/components";
 
-let value: WalletTransactionType = "ach-reversal";
+let value: WalletTransactionType = "card-reversal";
 ```
 
 ## Values

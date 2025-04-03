@@ -9,8 +9,8 @@ import { PaymentLinkDisplayOptions } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkDisplayOptions = {
   title: "<value>",
-  description: "before zowie oh woefully um",
-  callToAction: "pay",
+  description: "towards astride yearly rowdy ouch after yuck wherever",
+  callToAction: "book",
 };
 ```
 
