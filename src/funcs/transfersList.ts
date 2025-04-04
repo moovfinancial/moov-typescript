@@ -105,6 +105,7 @@ async function $do(
     "endDateTime": payload.endDateTime,
     "groupID": payload.groupID,
     "refunded": payload.refunded,
+    "scheduleID": payload.scheduleID,
     "skip": payload.skip,
     "startDateTime": payload.startDateTime,
     "status": payload.status,

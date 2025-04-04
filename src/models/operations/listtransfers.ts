@@ -48,6 +48,10 @@ export type ListTransfersRequest = {
    */
   groupID?: string | undefined;
   /**
+   * Optional ID to filter for transfer occurrences belonging to the same schedule.
+   */
+  scheduleID?: string | undefined;
+  /**
    * Optional parameter to only return refunded transfers.
    */
   refunded?: boolean | undefined;
@@ -141,6 +145,7 @@ export const ListTransfersRequest$inboundSchema: z.ZodType<
   endDateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   groupID: z.string().optional(),
+  scheduleID: z.string().optional(),
   refunded: z.boolean().optional(),
   disputed: z.boolean().optional(),
   skip: z.number().int().optional(),
@@ -155,6 +160,7 @@ export type ListTransfersRequest$Outbound = {
   startDateTime?: string | undefined;
   endDateTime?: string | undefined;
   groupID?: string | undefined;
+  scheduleID?: string | undefined;
   refunded?: boolean | undefined;
   disputed?: boolean | undefined;
   skip?: number | undefined;
@@ -173,6 +179,7 @@ export const ListTransfersRequest$outboundSchema: z.ZodType<
   startDateTime: z.date().transform(v => v.toISOString()).optional(),
   endDateTime: z.date().transform(v => v.toISOString()).optional(),
   groupID: z.string().optional(),
+  scheduleID: z.string().optional(),
   refunded: z.boolean().optional(),
   disputed: z.boolean().optional(),
   skip: z.number().int().optional(),
