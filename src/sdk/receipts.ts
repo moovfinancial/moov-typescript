@@ -28,7 +28,7 @@ export class Receipts extends ClientSDK {
   }
 
   /**
-   * List receipts by trasnferID, scheduleID, or occurrenceID.
+   * List receipts by transferID, scheduleID, or occurrenceID.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
    * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.

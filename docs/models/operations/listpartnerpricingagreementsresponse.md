@@ -13,12 +13,12 @@ let value: ListPartnerPricingAgreementsResponse = {
   },
   result: [
     {
-      agreementID: "b3d5209d-4ec0-4993-b570-226bd2caef11",
-      planID: "23ef5dd9-9949-4326-ab9f-a22139de68c4",
+      agreementID: "9354f5bb-2c39-463d-837e-58983a9c123c",
+      planID: "f7e4ee63-f5e2-4413-9b58-52c99bbf1e67",
       name: "<value>",
-      acceptedOn: new Date("2023-07-10T19:03:58.934Z"),
+      acceptedOn: new Date("2024-11-04T10:09:46.736Z"),
       status: "active",
-      cardAcquiringModel: "cost-plus",
+      cardAcquiringModel: "flat-rate",
       billableFees: [
         {
           billableFeeID: "9d957d33-1a9a-47aa-9460-fe1a90f003dd",

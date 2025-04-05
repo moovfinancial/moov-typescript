@@ -46,7 +46,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.files.upload({
-    accountID: "997f59d4-6b68-4f95-a825-1ae3f3faf278",
+    accountID: "6886a454-7910-4a2b-b98a-ab61ec65fc41",
     fileUploadRequestMultiPart: {
       file: await openAsBlob("example.file"),
       filePurpose: "representative_verification",
@@ -81,7 +81,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await filesUpload(moov, {
-    accountID: "997f59d4-6b68-4f95-a825-1ae3f3faf278",
+    accountID: "6886a454-7910-4a2b-b98a-ab61ec65fc41",
     fileUploadRequestMultiPart: {
       file: await openAsBlob("example.file"),
       filePurpose: "representative_verification",
@@ -144,7 +144,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.files.list({
-    accountID: "a3c35406-9eb6-4801-bbac-0649c31c058a",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
   });
 
   // Handle the result
@@ -173,7 +173,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await filesList(moov, {
-    accountID: "a3c35406-9eb6-4801-bbac-0649c31c058a",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
   });
 
   if (!res.ok) {
@@ -229,8 +229,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.files.get({
-    accountID: "346add0a-4dae-4729-8e74-1a50d00d677a",
-    fileID: "bf657841-ba2d-4060-ad21-eb2b7372cf85",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    fileID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
   });
 
   // Handle the result
@@ -259,8 +259,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await filesGet(moov, {
-    accountID: "346add0a-4dae-4729-8e74-1a50d00d677a",
-    fileID: "bf657841-ba2d-4060-ad21-eb2b7372cf85",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    fileID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
   });
 
   if (!res.ok) {

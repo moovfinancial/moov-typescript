@@ -6,8 +6,8 @@
 import { GetDisputeRequest } from "@moovio/sdk/models/operations";
 
 let value: GetDisputeRequest = {
-  accountID: "8796866b-12dc-446e-bd93-06add0353cc8",
-  disputeID: "2e12b196-becd-4048-b634-f450d234e3cc",
+  accountID: "8b6dac58-f663-4e9b-893f-4cb9dce7f591",
+  disputeID: "3ded5862-5756-4217-a52f-082a88fade03",
 };
 ```
 

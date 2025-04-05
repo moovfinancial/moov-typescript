@@ -13,7 +13,7 @@ let value: CreateOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://grown-guacamole.info",
+    link: "https://similar-pupil.name",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: CreateOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "05b7cafb-82ef-4d11-a5bd-2a217daa64e6",
+      accountID: "424cc681-2db5-4460-9ad4-b5f08944e7d4",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2023-03-21T03:43:40.209Z"),
+    createdOn: new Date("2023-10-25T07:38:09.268Z"),
   },
 };
 ```

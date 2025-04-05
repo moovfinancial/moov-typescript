@@ -14,7 +14,7 @@ let value: ListOnboardingInvitesResponse = {
   result: [
     {
       code: "N1IA5eWYNh",
-      link: "https://smart-tribe.name/",
+      link: "https://shallow-wriggler.biz/",
       scopes: [
         "accounts.read",
       ],
@@ -33,11 +33,11 @@ let value: ListOnboardingInvitesResponse = {
         },
       },
       partner: {
-        accountID: "ec21f2a3-87bd-4f36-8603-8e5bf21f04d4",
+        accountID: "3bacf10a-0c08-4a61-a72f-f3ed654ba256",
         accountMode: "production",
         displayName: "Bob's Widgets",
       },
-      createdOn: new Date("2025-05-06T21:17:14.746Z"),
+      createdOn: new Date("2024-10-29T18:23:00.475Z"),
     },
   ],
 };

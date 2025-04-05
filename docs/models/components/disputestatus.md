@@ -9,7 +9,7 @@ Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-paym
 ```typescript
 import { DisputeStatus } from "@moovio/sdk/models/components";
 
-let value: DisputeStatus = "closed";
+let value: DisputeStatus = "under-review";
 ```
 
 ## Values

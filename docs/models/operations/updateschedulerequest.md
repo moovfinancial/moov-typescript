@@ -6,8 +6,8 @@
 import { UpdateScheduleRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateScheduleRequest = {
-  accountID: "5d759654-5ef1-4baa-804b-708dee873dcd",
-  scheduleID: "1bee8a14-8e79-40f7-9258-23ed14a40b35",
+  accountID: "e4c4a29e-894c-48ef-9c1c-1be392bc182f",
+  scheduleID: "a5317d57-01a8-4394-8f58-29b18496194b",
   upsertSchedule: {
     occurrences: [
       {
@@ -39,7 +39,8 @@ let value: UpdateScheduleRequest = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description: "beyond simple into sympathetically",
+          description:
+            "up trust descriptive geez through regularly yum loftily transcend",
         },
       },
     ],
@@ -71,7 +72,7 @@ let value: UpdateScheduleRequest = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "drat tighten but frightened following",
+        description: "breakable gah near experience gently colonialism",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },

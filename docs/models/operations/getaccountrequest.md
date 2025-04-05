@@ -6,7 +6,7 @@
 import { GetAccountRequest } from "@moovio/sdk/models/operations";
 
 let value: GetAccountRequest = {
-  accountID: "8b986a7e-f6c8-49e1-910d-cdfc7c1a2f86",
+  accountID: "16aa885c-8f80-4e9b-a476-0c75cc761aee",
 };
 ```
 

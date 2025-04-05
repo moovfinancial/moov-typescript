@@ -17,7 +17,7 @@ let value: UpdateScheduleResponse = {
     occurrences: [
       {
         mode: "production",
-        runOn: new Date("2025-03-30T05:32:42.031Z"),
+        runOn: new Date("2025-06-24T17:07:39.030Z"),
         runTransfer: {
           amount: {
             currency: "USD",
@@ -44,7 +44,7 @@ let value: UpdateScheduleResponse = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description: "gray every though fatherly",
+          description: "yet sniveling yuck confide",
         },
       },
     ],
@@ -78,15 +78,14 @@ let value: UpdateScheduleResponse = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description:
-          "despite generously polyester across substitution measly intrepid",
+        description: "only vacantly restfully boastfully toward upward",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },
     scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-    createdOn: new Date("2025-11-07T20:33:08.048Z"),
-    updatedOn: new Date("2023-04-11T09:48:38.635Z"),
+    createdOn: new Date("2024-04-02T14:06:51.686Z"),
+    updatedOn: new Date("2023-05-02T09:45:15.982Z"),
   },
 };
 ```

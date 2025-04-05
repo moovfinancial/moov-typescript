@@ -7,10 +7,10 @@ import { Capability } from "@moovio/sdk/models/components";
 
 let value: Capability = {
   capability: "transfers",
-  accountID: "75b144be-78cd-4c41-b398-8160a3b802ee",
-  status: "pending",
-  createdOn: new Date("2024-01-30T18:25:09.005Z"),
-  updatedOn: new Date("2025-11-16T19:19:36.576Z"),
+  accountID: "0d3d2640-5791-433c-b037-fb724d636016",
+  status: "disabled",
+  createdOn: new Date("2024-04-21T06:40:54.967Z"),
+  updatedOn: new Date("2024-01-24T00:24:56.706Z"),
 };
 ```
 

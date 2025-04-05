@@ -6,8 +6,8 @@
 import { DisableBankAccountRequest } from "@moovio/sdk/models/operations";
 
 let value: DisableBankAccountRequest = {
-  accountID: "0f0291eb-f848-4e84-ae50-35d775eff6fc",
-  bankAccountID: "332e477c-d26d-4d12-a416-19391fe63470",
+  accountID: "dc58d878-80b6-4034-9083-01deef26e706",
+  bankAccountID: "db8ec196-6e96-46b8-829f-db3ccc5e795e",
 };
 ```
 

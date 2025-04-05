@@ -9,6 +9,7 @@ import { ClosedEnum } from "../../types/enums.js";
  * Status of a transaction within the ACH lifecycle.
  */
 export const ACHTransactionStatus = {
+  Unknown: "",
   Initiated: "initiated",
   Originated: "originated",
   Corrected: "corrected",

@@ -28,7 +28,7 @@ export type CreateReceiptsGlobals = {
 
 export type CreateReceiptsResponse = {
   headers: { [k: string]: Array<string> };
-  result: components.ReceiptResponse;
+  result: Array<components.ReceiptResponse>;
 };
 
 /** @internal */
@@ -100,7 +100,7 @@ export const CreateReceiptsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: components.ReceiptResponse$inboundSchema,
+  Result: z.array(components.ReceiptResponse$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -111,7 +111,7 @@ export const CreateReceiptsResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateReceiptsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: components.ReceiptResponse$Outbound;
+  Result: Array<components.ReceiptResponse$Outbound>;
 };
 
 /** @internal */
@@ -121,7 +121,7 @@ export const CreateReceiptsResponse$outboundSchema: z.ZodType<
   CreateReceiptsResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: components.ReceiptResponse$outboundSchema,
+  result: z.array(components.ReceiptResponse$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

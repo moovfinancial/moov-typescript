@@ -6,7 +6,7 @@
 import { UpsertBrandRequest } from "@moovio/sdk/models/operations";
 
 let value: UpsertBrandRequest = {
-  accountID: "b0a34cf5-d1ac-426e-8109-6ce4679fb64f",
+  accountID: "d915d755-15ab-41d5-8d98-dd54dda58670",
   brandProperties: {
     colors: {
       dark: {

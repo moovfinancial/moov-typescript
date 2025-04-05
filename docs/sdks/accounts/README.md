@@ -454,7 +454,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.get({
-    accountID: "45ce7519-7f28-40c8-94bf-6edae7a38315",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Handle the result
@@ -483,7 +483,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsGet(moov, {
-    accountID: "45ce7519-7f28-40c8-94bf-6edae7a38315",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   if (!res.ok) {
@@ -547,7 +547,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.update({
-    accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
+    accountID: "95fa7f0e-7432-4ce4-a7cb-60cc78135dde",
     patchAccount: {
       profile: {
         individual: {
@@ -577,7 +577,6 @@ async function run() {
           },
         },
         business: {
-          legalBusinessName: "Classbooker, LLC",
           businessType: "llc",
           address: {
             addressLine1: "123 Main Street",
@@ -592,7 +591,6 @@ async function run() {
             countryCode: "1",
           },
           email: "jordan.lee@classbooker.dev",
-          description: "Local fitness gym paying out instructors",
           taxID: {
             ein: {
               number: "12-3456789",
@@ -625,14 +623,6 @@ async function run() {
           stateOrProvince: "CO",
           postalCode: "80301",
           country: "US",
-        },
-      },
-      settings: {
-        cardPayment: {
-          statementDescriptor: "Whole Body Fitness",
-        },
-        achPayment: {
-          companyName: "WholeBodyFitness",
         },
       },
     },
@@ -664,7 +654,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsUpdate(moov, {
-    accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
+    accountID: "95fa7f0e-7432-4ce4-a7cb-60cc78135dde",
     patchAccount: {
       profile: {
         individual: {
@@ -694,7 +684,6 @@ async function run() {
           },
         },
         business: {
-          legalBusinessName: "Classbooker, LLC",
           businessType: "llc",
           address: {
             addressLine1: "123 Main Street",
@@ -709,7 +698,6 @@ async function run() {
             countryCode: "1",
           },
           email: "jordan.lee@classbooker.dev",
-          description: "Local fitness gym paying out instructors",
           taxID: {
             ein: {
               number: "12-3456789",
@@ -742,14 +730,6 @@ async function run() {
           stateOrProvince: "CO",
           postalCode: "80301",
           country: "US",
-        },
-      },
-      settings: {
-        cardPayment: {
-          statementDescriptor: "Whole Body Fitness",
-        },
-        achPayment: {
-          companyName: "WholeBodyFitness",
         },
       },
     },
@@ -812,7 +792,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.disconnect({
-    accountID: "97814a93-ba26-470e-bb15-3cb32711e8ea",
+    accountID: "ac3cbe09-fcd4-4c5e-ada2-89eaaa9c149e",
   });
 
   // Handle the result
@@ -841,7 +821,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsDisconnect(moov, {
-    accountID: "97814a93-ba26-470e-bb15-3cb32711e8ea",
+    accountID: "ac3cbe09-fcd4-4c5e-ada2-89eaaa9c149e",
   });
 
   if (!res.ok) {
@@ -898,7 +878,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.getCountries({
-    accountID: "df471fd8-7bb3-4db3-bf74-52fe588b8d2b",
+    accountID: "b49c57bf-7b36-4308-8206-c1f5ce8067ac",
   });
 
   // Handle the result
@@ -927,7 +907,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsGetCountries(moov, {
-    accountID: "df471fd8-7bb3-4db3-bf74-52fe588b8d2b",
+    accountID: "b49c57bf-7b36-4308-8206-c1f5ce8067ac",
   });
 
   if (!res.ok) {
@@ -985,7 +965,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.assignCountries({
-    accountID: "9ba3f09c-c93c-4ca1-b68f-1dbb0841a40a",
+    accountID: "aa2dc19b-77dd-481f-a0a8-c76f2cfc1372",
     accountCountries: {
       countries: [
         "United States",
@@ -1019,7 +999,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsAssignCountries(moov, {
-    accountID: "9ba3f09c-c93c-4ca1-b68f-1dbb0841a40a",
+    accountID: "aa2dc19b-77dd-481f-a0a8-c76f2cfc1372",
     accountCountries: {
       countries: [
         "United States",

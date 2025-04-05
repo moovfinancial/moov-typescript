@@ -6,7 +6,7 @@
 import { ListPartnerPricingRequest } from "@moovio/sdk/models/operations";
 
 let value: ListPartnerPricingRequest = {
-  accountID: "8f94f6ba-fe21-4ce7-9b13-29304a95d448",
+  accountID: "ce0beeac-041a-4965-9f4d-7b3c1323aca5",
 };
 ```
 

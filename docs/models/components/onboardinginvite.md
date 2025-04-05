@@ -7,7 +7,7 @@ import { OnboardingInvite } from "@moovio/sdk/models/components";
 
 let value: OnboardingInvite = {
   code: "N1IA5eWYNh",
-  link: "https://remorseful-sauerkraut.net/",
+  link: "https://unique-finger.info/",
   scopes: [
     "accounts.read",
   ],
@@ -26,11 +26,11 @@ let value: OnboardingInvite = {
     },
   },
   partner: {
-    accountID: "b9beaf8a-78cf-4086-8e2d-2cebf94dbd8d",
+    accountID: "57de0e2b-9070-4537-a75b-0758c0307e62",
     accountMode: "production",
     displayName: "Bob's Widgets",
   },
-  createdOn: new Date("2025-10-04T22:06:31.923Z"),
+  createdOn: new Date("2025-09-10T09:40:50.443Z"),
 };
 ```
 

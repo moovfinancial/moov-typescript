@@ -6,8 +6,8 @@
 import { BankAccountVerificationCreated } from "@moovio/sdk/models/components";
 
 let value: BankAccountVerificationCreated = {
-  verificationMethod: "instant",
-  status: "new",
+  verificationMethod: "ach",
+  status: "successful",
 };
 ```
 

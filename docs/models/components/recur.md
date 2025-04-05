@@ -36,7 +36,7 @@ let value: Recur = {
       },
     },
     description:
-      "demobilise team scarcely apud veto yowza violin for deliberately crossly",
+      "serpentine suspiciously super electric gee weatherize out authorized",
   },
   start: new Date("2009-11-10T23:00:00Z"),
 };

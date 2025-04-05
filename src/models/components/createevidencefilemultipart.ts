@@ -19,7 +19,6 @@ export type FileT = {
 };
 
 export type CreateEvidenceFileMultiPart = {
-  evidenceType: EvidenceType;
   /**
    * The file to upload as evidence. Valid types are [jpeg, tiff, pdf] with a limit of 4MB per file.
    *
@@ -31,6 +30,7 @@ export type CreateEvidenceFileMultiPart = {
    *   - `application/pdf`
    */
   file: FileT | Blob;
+  evidenceType: EvidenceType;
 };
 
 /** @internal */
@@ -99,14 +99,14 @@ export const CreateEvidenceFileMultiPart$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  evidenceType: EvidenceType$inboundSchema,
   file: z.lazy(() => FileT$inboundSchema),
+  evidenceType: EvidenceType$inboundSchema,
 });
 
 /** @internal */
 export type CreateEvidenceFileMultiPart$Outbound = {
-  evidenceType: string;
   file: FileT$Outbound | Blob;
+  evidenceType: string;
 };
 
 /** @internal */
@@ -115,8 +115,8 @@ export const CreateEvidenceFileMultiPart$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateEvidenceFileMultiPart
 > = z.object({
-  evidenceType: EvidenceType$outboundSchema,
   file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema),
+  evidenceType: EvidenceType$outboundSchema,
 });
 
 /**

@@ -1002,7 +1002,7 @@ you'll need to specify the `/ping.read` scope.
 
  To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
  you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
-* [list](docs/sdks/receipts/README.md#list) - List receipts by trasnferID, scheduleID, or occurrenceID.
+* [list](docs/sdks/receipts/README.md#list) - List receipts by transferID, scheduleID, or occurrenceID.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
@@ -1777,7 +1777,7 @@ you'll need to specify the `/ping.read` scope.
 
  To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
  you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
-- [`receiptsList`](docs/sdks/receipts/README.md#list) - List receipts by trasnferID, scheduleID, or occurrenceID.
+- [`receiptsList`](docs/sdks/receipts/README.md#list) - List receipts by transferID, scheduleID, or occurrenceID.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
@@ -2020,11 +2020,11 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.disputes.uploadEvidenceFile({
-    accountID: "ac81921c-4c1a-4e7a-8a8f-dfc0d0027ac5",
-    disputeID: "49c04fa3-f5c3-4ddd-aece-4b5fb6e8a071",
+    accountID: "190d267b-ea77-4231-9939-ba89cb7df82b",
+    disputeID: "94aabddc-d855-40e6-ab0a-1e547e0dcc9d",
     createEvidenceFileMultiPart: {
-      evidenceType: "customer-communication",
       file: await openAsBlob("example.file"),
+      evidenceType: "customer-communication",
     },
   });
 

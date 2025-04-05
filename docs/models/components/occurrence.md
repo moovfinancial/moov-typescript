@@ -36,7 +36,7 @@ let value: Occurrence = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description: "boo yowza mortally than abaft",
+    description: "capitalize overheard times",
   },
 };
 ```

@@ -31,7 +31,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.enrichedProfile.get({
-    email: "Sheldon.Effertz@gmail.com",
+    email: "Keeley_Lebsack@hotmail.com",
   });
 
   // Handle the result
@@ -60,7 +60,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await enrichedProfileGet(moov, {
-    email: "Sheldon.Effertz@gmail.com",
+    email: "Keeley_Lebsack@hotmail.com",
   });
 
   if (!res.ok) {

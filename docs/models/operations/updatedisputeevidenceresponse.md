@@ -12,11 +12,11 @@ let value: UpdateDisputeEvidenceResponse = {
     ],
   },
   result: {
-    evidenceID: "33354f5e-2c07-40cf-a0ec-5e461a07ad2c",
-    disputeID: "89196d59-6e41-4b69-80fe-906fa27f8094",
-    evidenceType: "terms-of-service",
-    createdOn: new Date("2024-09-04T03:23:29.598Z"),
-    updatedOn: new Date("2023-01-19T16:14:20.571Z"),
+    evidenceID: "9963b2fa-19cd-41f7-817e-5c1eafd5f792",
+    disputeID: "87b54a49-b6c1-48dc-bba4-9be37760ddba",
+    evidenceType: "proof-of-delivery",
+    createdOn: new Date("2023-01-10T20:10:24.204Z"),
+    updatedOn: new Date("2025-07-12T01:06:57.276Z"),
   },
 };
 ```

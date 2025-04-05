@@ -6,7 +6,7 @@
 import { GetMerchantProcessingAgreementRequest } from "@moovio/sdk/models/operations";
 
 let value: GetMerchantProcessingAgreementRequest = {
-  accountID: "c961b7bd-fd05-4b28-a030-c35eb02993e9",
+  accountID: "452394b3-bbca-4488-aa6a-4871830a62c3",
 };
 ```
 

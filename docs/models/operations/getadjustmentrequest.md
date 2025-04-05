@@ -6,8 +6,8 @@
 import { GetAdjustmentRequest } from "@moovio/sdk/models/operations";
 
 let value: GetAdjustmentRequest = {
-  accountID: "d9052f77-a52d-4383-81df-fec516320b0c",
-  adjustmentID: "11a368db-4204-447a-9b46-2c0bcc459453",
+  accountID: "5cddca34-45f2-466e-a268-b761bae39374",
+  adjustmentID: "f4b6190c-b412-4583-9392-0c3b545981d9",
 };
 ```
 

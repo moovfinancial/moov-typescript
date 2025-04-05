@@ -41,10 +41,10 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.walletTransactions.list({
-    accountID: "2d736837-1618-4c4a-9e51-aa9dd394b389",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
     skip: 60,
     count: 20,
-    walletID: "99432d06-8ac3-4c17-afc1-a12a328564ac",
+    walletID: "21e27667-18d6-4d46-812e-0aee1b9ddf12",
   });
 
   // Handle the result
@@ -73,10 +73,10 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await walletTransactionsList(moov, {
-    accountID: "2d736837-1618-4c4a-9e51-aa9dd394b389",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
     skip: 60,
     count: 20,
-    walletID: "99432d06-8ac3-4c17-afc1-a12a328564ac",
+    walletID: "21e27667-18d6-4d46-812e-0aee1b9ddf12",
   });
 
   if (!res.ok) {
@@ -134,9 +134,9 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.walletTransactions.get({
-    accountID: "a5040923-7566-4f60-af63-86465493f971",
-    walletID: "a49156a6-65e8-4c24-a71a-eca54c2c3855",
-    transactionID: "8b5c4f2a-2bb8-4145-b0ea-69212338b5a1",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    walletID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
+    transactionID: "ecd62b8f-7112-4aaf-90ab-4e43b4cca371",
   });
 
   // Handle the result
@@ -165,9 +165,9 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await walletTransactionsGet(moov, {
-    accountID: "a5040923-7566-4f60-af63-86465493f971",
-    walletID: "a49156a6-65e8-4c24-a71a-eca54c2c3855",
-    transactionID: "8b5c4f2a-2bb8-4145-b0ea-69212338b5a1",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    walletID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
+    transactionID: "ecd62b8f-7112-4aaf-90ab-4e43b4cca371",
   });
 
   if (!res.ok) {

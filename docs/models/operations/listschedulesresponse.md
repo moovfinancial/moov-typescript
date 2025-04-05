@@ -18,7 +18,7 @@ let value: ListSchedulesResponse = {
       occurrences: [
         {
           mode: "production",
-          runOn: new Date("2024-11-07T23:11:32.353Z"),
+          runOn: new Date("2024-01-10T20:33:28.677Z"),
           runTransfer: {
             amount: {
               currency: "USD",
@@ -45,8 +45,7 @@ let value: ListSchedulesResponse = {
                 dynamicDescriptor: "WhlBdy *Yoga 11-12",
               },
             },
-            description:
-              "whenever intrepid finally huzzah captain equally apud upward",
+            description: "commandeer grouper swathe shinny alert",
           },
         },
       ],
@@ -80,14 +79,15 @@ let value: ListSchedulesResponse = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description: "pfft settle squid madly uh-huh scotch handle",
+          description:
+            "liquid ameliorate pfft lanky merrily aha paltry cross motor despite",
         },
         start: new Date("2009-11-10T23:00:00Z"),
       },
       scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
       sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-      createdOn: new Date("2025-10-26T15:51:07.072Z"),
-      updatedOn: new Date("2023-01-03T03:35:22.413Z"),
+      createdOn: new Date("2025-03-20T23:55:18.509Z"),
+      updatedOn: new Date("2023-02-08T21:18:23.260Z"),
     },
   ],
 };

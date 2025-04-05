@@ -13,11 +13,11 @@ let value: RequestCapabilitiesResponse = {
   },
   result: [
     {
-      capability: "send-funds",
-      accountID: "8bfbc256-a445-4c91-b15c-bbc488bf4ca9",
+      capability: "production-app",
+      accountID: "defd3a6f-1689-4820-806f-369b236dea3a",
       status: "in-review",
-      createdOn: new Date("2023-02-10T05:07:51.800Z"),
-      updatedOn: new Date("2023-06-11T13:12:44.267Z"),
+      createdOn: new Date("2023-11-08T12:23:35.310Z"),
+      updatedOn: new Date("2023-10-19T22:56:22.560Z"),
     },
   ],
 };

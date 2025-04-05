@@ -5,7 +5,7 @@
 ```typescript
 import { WalletTransactionStatus } from "@moovio/sdk/models/components";
 
-let value: WalletTransactionStatus = "pending";
+let value: WalletTransactionStatus = "completed";
 ```
 
 ## Values

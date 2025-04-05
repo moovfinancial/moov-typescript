@@ -12,7 +12,7 @@ const args = {
 
 export const tool$receiptsList: ToolDefinition<typeof args> = {
   name: "receipts-list",
-  description: `List receipts by trasnferID, scheduleID, or occurrenceID.
+  description: `List receipts by transferID, scheduleID, or occurrenceID.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the \`/accounts/{accountID}/transfers.read\` scope.`,

@@ -8,38 +8,67 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "280f6d44-9c5b-4111-b484-480d91f43db7",
-      paymentMethodType: "ach-credit-same-day",
-      bankAccount: {
-        bankAccountID: "70b45e9c-89cf-4b05-8c0e-a3601832fa04",
-        fingerprint: "<value>",
-        status: "errored",
-        holderName: "<value>",
-        holderType: "individual",
-        bankName: "<value>",
-        bankAccountType: "general-ledger",
-        routingNumber: "<value>",
-        lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2024-07-23T17:16:26.152Z"),
+      paymentMethodID: "880c87e7-4097-4416-b32b-61024b85211e",
+      paymentMethodType: "card-present-payment",
+      terminalCard: {
+        entryMode: "contactless",
+        brand: "Visa",
+        bin: "123456",
+        cardType: "credit",
+        expiration: {
+          month: "01",
+          year: "21",
+        },
+        fingerprint:
+          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+        holderName: "Jules Jackson",
+        issuer: "GRINGOTTS BANK",
+        issuerCountry: "US",
+        lastFourCardNumber: "1234",
       },
     },
   ],
   destinationOptions: [
     {
-      paymentMethodID: "052c6d8f-75b2-4a0b-8c2e-1bea9b34d19e",
-      paymentMethodType: "apple-pay",
-      applePay: {
-        brand: "Visa",
-        cardType: "credit",
-        cardDisplayName: "Visa 1256",
+      paymentMethodID: "e75eaa04-98d0-4f99-856f-912ec1ae4c0b",
+      paymentMethodType: "card-payment",
+      card: {
+        cardID: "01234567-89ab-cdef-0123-456789abcdef",
         fingerprint:
           "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+        brand: "Visa",
+        cardType: "credit",
+        lastFourCardNumber: "<value>",
+        bin: "<value>",
         expiration: {
           month: "01",
           year: "21",
         },
-        dynamicLastFour: "<value>",
-        issuerCountry: "US",
+        billingAddress: {
+          addressLine1: "123 Main Street",
+          addressLine2: "Apt 302",
+          city: "Boulder",
+          stateOrProvince: "CO",
+          postalCode: "80301",
+          country: "US",
+        },
+        cardVerification: {
+          cvv: "match",
+          addressLine1: "match",
+          postalCode: "match",
+          accountName: {
+            firstName: "match",
+            lastName: "match",
+            middleName: "match",
+            fullName: "match",
+          },
+        },
+        cardAccountUpdater: {
+          updatedOn: new Date("2024-05-06T12:20:38.184Z"),
+          updateType: "number-update",
+        },
+        domesticPushToCard: "standard",
+        domesticPullFromCard: "supported",
       },
     },
   ],

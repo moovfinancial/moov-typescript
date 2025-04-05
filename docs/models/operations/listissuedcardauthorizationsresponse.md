@@ -13,10 +13,10 @@ let value: ListIssuedCardAuthorizationsResponse = {
   },
   result: [
     {
-      authorizationID: "d91086ba-00d2-49ff-8dee-1d6081175e5d",
-      issuedCardID: "f040f05a-503b-46db-a91f-849b7a1dac18",
-      fundingWalletID: "8109cf93-616d-4602-8ab3-c484b6c7ae68",
-      network: "visa",
+      authorizationID: "20241ffa-1690-4b7e-877c-c63e782bed3f",
+      issuedCardID: "5333735c-05f3-4bf2-bab2-96e32326ce28",
+      fundingWalletID: "f97954b0-3fb4-40ab-a6df-2c413790a11a",
+      network: "discover",
       authorizedAmount: "-14.89",
       status: "declined",
       merchantData: {
@@ -27,7 +27,7 @@ let value: ListIssuedCardAuthorizationsResponse = {
         state: "CA",
         mcc: "7298",
       },
-      createdOn: new Date("2025-01-26T04:39:38.483Z"),
+      createdOn: new Date("2024-09-30T16:39:01.176Z"),
     },
   ],
 };

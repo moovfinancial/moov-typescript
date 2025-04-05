@@ -8,13 +8,13 @@ An adjustment to a wallet.
 import { Adjustment } from "@moovio/sdk/models/components";
 
 let value: Adjustment = {
-  adjustmentID: "53c34595-5770-4573-b79d-c4206d248980",
-  walletID: "e42cbce0-8c88-490e-830a-82f641822b1b",
+  adjustmentID: "dad98811-e1a0-4768-9592-7a5d801794b1",
+  walletID: "a6e83125-df7e-4cf2-bac2-9e8bf17cbbf1",
   amount: {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
-  createdOn: new Date("2024-03-08T04:01:27.021Z"),
+  createdOn: new Date("2025-08-02T01:42:33.021Z"),
 };
 ```
 

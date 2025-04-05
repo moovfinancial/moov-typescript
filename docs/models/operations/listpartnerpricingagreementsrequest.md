@@ -8,7 +8,7 @@ import { ListPartnerPricingAgreementsRequest } from "@moovio/sdk/models/operatio
 let value: ListPartnerPricingAgreementsRequest = {
   skip: 60,
   count: 20,
-  accountID: "c3d3510a-e7dc-4afc-94cb-613c3fb799f2",
+  accountID: "0d731ce9-86d4-412d-954b-24cd1ea4fddc",
 };
 ```
 

@@ -9,7 +9,7 @@
 
  To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
  you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
-* [list](#list) - List receipts by trasnferID, scheduleID, or occurrenceID.
+* [list](#list) - List receipts by transferID, scheduleID, or occurrenceID.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
@@ -101,15 +101,14 @@ run();
 
 ### Errors
 
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.GenericError           | 400, 409                      | application/json              |
-| errors.ReceiptValidationError | 422                           | application/json              |
-| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.GenericError | 400, 409            | application/json    |
+| errors.APIError     | 4XX, 5XX            | \*/\*               |
 
 ## list
 
-List receipts by trasnferID, scheduleID, or occurrenceID.
+List receipts by transferID, scheduleID, or occurrenceID.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
@@ -127,7 +126,9 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.receipts.list({});
+  const result = await moov.receipts.list({
+    id: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+  });
 
   // Handle the result
   console.log(result);
@@ -154,7 +155,9 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await receiptsList(moov, {});
+  const res = await receiptsList(moov, {
+    id: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+  });
 
   if (!res.ok) {
     throw res.error;

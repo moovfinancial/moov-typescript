@@ -6,7 +6,7 @@
 import { PullFromCardPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: PullFromCardPaymentMethod = {
-  paymentMethodID: "ef7afda7-b00c-42c6-af18-4180375d45e2",
+  paymentMethodID: "dac2ddd2-22ff-405a-81fb-fda4091ca1bf",
   paymentMethodType: "pull-from-card",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",

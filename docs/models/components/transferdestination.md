@@ -7,11 +7,11 @@ import { TransferDestination } from "@moovio/sdk/models/components";
 
 let value: TransferDestination = {
   paymentMethodID: "<id>",
-  paymentMethodType: "apple-pay",
+  paymentMethodType: "ach-credit-same-day",
   account: {
     accountID: "<id>",
-    email: "Prince33@hotmail.com",
-    displayName: "Murl.Rowe82",
+    email: "Kaylee22@gmail.com",
+    displayName: "Timmy.Volkman12",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -72,7 +72,7 @@ let value: TransferDestination = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "confirmed",
+    status: "completed",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

@@ -89,7 +89,7 @@ const moov = new Moov({
 async function run() {
   const result = await moov.cards.link({
     xWaitFor: "payment-method",
-    accountID: "500c4473-7f7b-4a70-8a8c-d5cb2e08e0e4",
+    accountID: "60ffc839-a919-48ea-a18a-26cccee05743",
     linkCard: {
       e2ee: {
         token: "eyJhbGciOiJFQ0RILUVTK0EyNTZLVyIsImVuYyI6IkEyNTZHQ00iLCJlcGsiOnsia3R5IjoiRUMiLCJjcnYiOiJQLTUyMSIsIngiOiJBS0NYVDM1WVdvTm8wbzExNy1SU0dqUGg3alN1NjFmLUhnYkx1dW0xVG1ueTRlcW5yX2hyU0hpY0w1d3gwODRCWDBRZjVTdEtkRUoydzY2ZUJqWHprRV9OIiwieSI6IkFIMEJfT2RaYTQtbG43dGJ4M3VBdlc1NDNQRE9HUXBCTDloRFFNWjlTQXNfOW05UWN3dnhRd1hrb1VrM3VzT1FnVV9ySVFrNFRoZ1NTUzV4UlhKcm5ZaTkifSwia2lkIjoiYmRvV3pLekpKUGw0TVFIaENDa05WYTZlZ1dmYi02V1haSjZKTFZqQ0hWMD0ifQ.HalyoHsfufBJEODd2lD9ThQvvVWw3b2kgWDLHGxmHhMv8rODyLL_Ug.rpQP178t8Ed_pUU2.Sn9UFeVoegAxiMUv11q7l3M0y9YHSLYi2n_JB7n7Pc777_47-icfaxstJemT0IC81w.akkq1EBxzWkBr4vEomSpWA",
@@ -109,9 +109,6 @@ async function run() {
         postalCode: "80301",
         country: "US",
       },
-      cardOnFile: true,
-      merchantAccountID: "01234567-89ab-cdef-0123-456789abcdef",
-      verifyName: true,
     },
   });
 
@@ -142,7 +139,7 @@ const moov = new MoovCore({
 async function run() {
   const res = await cardsLink(moov, {
     xWaitFor: "payment-method",
-    accountID: "500c4473-7f7b-4a70-8a8c-d5cb2e08e0e4",
+    accountID: "60ffc839-a919-48ea-a18a-26cccee05743",
     linkCard: {
       e2ee: {
         token: "eyJhbGciOiJFQ0RILUVTK0EyNTZLVyIsImVuYyI6IkEyNTZHQ00iLCJlcGsiOnsia3R5IjoiRUMiLCJjcnYiOiJQLTUyMSIsIngiOiJBS0NYVDM1WVdvTm8wbzExNy1SU0dqUGg3alN1NjFmLUhnYkx1dW0xVG1ueTRlcW5yX2hyU0hpY0w1d3gwODRCWDBRZjVTdEtkRUoydzY2ZUJqWHprRV9OIiwieSI6IkFIMEJfT2RaYTQtbG43dGJ4M3VBdlc1NDNQRE9HUXBCTDloRFFNWjlTQXNfOW05UWN3dnhRd1hrb1VrM3VzT1FnVV9ySVFrNFRoZ1NTUzV4UlhKcm5ZaTkifSwia2lkIjoiYmRvV3pLekpKUGw0TVFIaENDa05WYTZlZ1dmYi02V1haSjZKTFZqQ0hWMD0ifQ.HalyoHsfufBJEODd2lD9ThQvvVWw3b2kgWDLHGxmHhMv8rODyLL_Ug.rpQP178t8Ed_pUU2.Sn9UFeVoegAxiMUv11q7l3M0y9YHSLYi2n_JB7n7Pc777_47-icfaxstJemT0IC81w.akkq1EBxzWkBr4vEomSpWA",
@@ -162,9 +159,6 @@ async function run() {
         postalCode: "80301",
         country: "US",
       },
-      cardOnFile: true,
-      merchantAccountID: "01234567-89ab-cdef-0123-456789abcdef",
-      verifyName: true,
     },
   });
 
@@ -225,7 +219,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.cards.list({
-    accountID: "5881119b-63c7-492b-8c20-09d0fca99676",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
   });
 
   // Handle the result
@@ -254,7 +248,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await cardsList(moov, {
-    accountID: "5881119b-63c7-492b-8c20-09d0fca99676",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
   });
 
   if (!res.ok) {
@@ -312,7 +306,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.cards.get({
-    accountID: "21f0d82e-dc9b-4e80-ac2a-99b6babfebd7",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
   });
 
@@ -342,7 +336,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await cardsGet(moov, {
-    accountID: "21f0d82e-dc9b-4e80-ac2a-99b6babfebd7",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
   });
 
@@ -408,7 +402,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.cards.update({
-    accountID: "a960061d-fb6d-4929-99b5-c96c672840f6",
+    accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
     updateCard: {
       e2ee: {
@@ -456,7 +450,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await cardsUpdate(moov, {
-    accountID: "a960061d-fb6d-4929-99b5-c96c672840f6",
+    accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
     updateCard: {
       e2ee: {
@@ -533,7 +527,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.cards.disable({
-    accountID: "a6b47d56-0b54-4dd8-9692-efad0ab1ebb4",
+    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
   });
 
@@ -563,7 +557,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await cardsDisable(moov, {
-    accountID: "a6b47d56-0b54-4dd8-9692-efad0ab1ebb4",
+    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
   });
 

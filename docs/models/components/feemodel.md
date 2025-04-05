@@ -7,7 +7,7 @@ Specifies the pricing model used for the calculation of the final fee.
 ```typescript
 import { FeeModel } from "@moovio/sdk/models/components";
 
-let value: FeeModel = "blended";
+let value: FeeModel = "variable";
 ```
 
 ## Values

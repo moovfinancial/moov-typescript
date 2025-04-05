@@ -12,12 +12,12 @@ let value: CreateFeePlanAgreementsResponse = {
     ],
   },
   result: {
-    agreementID: "5b6fc50a-31ef-4442-97db-d3be4b64f516",
-    planID: "cfde7b41-5b4d-4c35-bd35-5c0196a4ec1c",
+    agreementID: "68b80752-76bf-4039-bf85-442a8b070ebe",
+    planID: "b10e3900-40b6-41da-977b-10915abe9439",
     name: "<value>",
-    acceptedOn: new Date("2025-10-29T21:49:35.631Z"),
+    acceptedOn: new Date("2023-01-18T06:11:11.096Z"),
     status: "terminated",
-    cardAcquiringModel: "cost-plus",
+    cardAcquiringModel: "flat-rate",
     billableFees: [
       {
         billableFeeID: "9d957d33-1a9a-47aa-9460-fe1a90f003dd",

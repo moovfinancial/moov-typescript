@@ -6,8 +6,8 @@
 import { InitiateMicroDepositsRequest } from "@moovio/sdk/models/operations";
 
 let value: InitiateMicroDepositsRequest = {
-  accountID: "66cbf5ec-594d-4132-a6b8-70613e3dc291",
-  bankAccountID: "ac7e04b6-21d7-4eb6-958e-b0beb2725ee4",
+  accountID: "8800f8a6-85f4-4d4f-bd68-f8691b1e589c",
+  bankAccountID: "cecd33c0-780d-4642-a367-73516268364b",
 };
 ```
 

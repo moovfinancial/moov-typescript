@@ -6,8 +6,8 @@
 import { DisableCapabilityRequest } from "@moovio/sdk/models/operations";
 
 let value: DisableCapabilityRequest = {
-  accountID: "6b41eb9c-d7ee-4498-98f4-fe7dca53ad0a",
-  capabilityID: "production-app",
+  accountID: "5f23e1d4-138c-4fd5-b957-024341af8917",
+  capabilityID: "send-funds",
 };
 ```
 

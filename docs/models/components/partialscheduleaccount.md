@@ -7,7 +7,7 @@ import { PartialScheduleAccount } from "@moovio/sdk/models/components";
 
 let value: PartialScheduleAccount = {
   accountID: "<id>",
-  displayName: "Marley.Jacobi",
+  displayName: "Opal_Gutkowski24",
 };
 ```
 

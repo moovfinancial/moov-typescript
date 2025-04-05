@@ -17,7 +17,7 @@ let value: CreateScheduleResponse = {
     occurrences: [
       {
         mode: "production",
-        runOn: new Date("2023-10-21T15:19:12.004Z"),
+        runOn: new Date("2025-10-03T23:38:56.182Z"),
         runTransfer: {
           amount: {
             currency: "USD",
@@ -44,7 +44,7 @@ let value: CreateScheduleResponse = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description: "amid shady croon boohoo excepting that faint yahoo",
+          description: "whereas shoot majestic coaxingly",
         },
       },
     ],
@@ -79,14 +79,14 @@ let value: CreateScheduleResponse = {
           },
         },
         description:
-          "internalise about igloo although lively an unto electrify between",
+          "however until abaft regularly peaceful grubby unexpectedly uncover",
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },
     scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-    createdOn: new Date("2025-01-23T12:14:09.677Z"),
-    updatedOn: new Date("2025-11-19T23:25:44.878Z"),
+    createdOn: new Date("2025-08-10T12:13:58.670Z"),
+    updatedOn: new Date("2024-07-16T06:33:46.353Z"),
   },
 };
 ```

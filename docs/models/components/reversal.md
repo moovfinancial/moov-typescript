@@ -11,8 +11,8 @@ Contains either a cancellation or refund, depending on the method used to revers
 const value: components.ReversedWithCancellation = {
   cancellation: {
     cancellationID: "<id>",
-    status: "pending",
-    createdOn: new Date("2025-08-15T11:19:32.631Z"),
+    status: "completed",
+    createdOn: new Date("2024-04-10T11:10:19.891Z"),
   },
 };
 ```
@@ -22,9 +22,9 @@ const value: components.ReversedWithCancellation = {
 ```typescript
 const value: components.ReversedWithRefund = {
   refund: {
-    refundID: "b6e8d9f1-c01c-4b9e-9601-b4973b0ab14e",
-    createdOn: new Date("2024-10-01T05:59:20.109Z"),
-    updatedOn: new Date("2025-04-28T02:56:38.727Z"),
+    refundID: "d10fba4f-1e77-4eaa-9b86-94194a004e3a",
+    createdOn: new Date("2025-06-29T01:50:01.107Z"),
+    updatedOn: new Date("2025-02-23T06:08:55.885Z"),
     status: "failed",
     amount: {
       currency: "USD",

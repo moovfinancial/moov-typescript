@@ -6,7 +6,7 @@
 import { CreateBrandRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateBrandRequest = {
-  accountID: "ed8df1af-f929-403f-95a4-fb5c163a1648",
+  accountID: "d16364c1-3812-4b5c-bcc9-b377ee3370de",
   brandProperties: {
     colors: {
       dark: {

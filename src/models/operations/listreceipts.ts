@@ -28,9 +28,9 @@ export type ListReceiptsGlobals = {
 
 export type ListReceiptsRequest = {
   /**
-   * The unique identifier to filter receipts by.
+   * The transfer, schedule, or transfer occurrence ID to filter receipts by.
    */
-  id?: string | undefined;
+  id: string;
 };
 
 export type ListReceiptsResponse = {
@@ -106,12 +106,12 @@ export const ListReceiptsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
 });
 
 /** @internal */
 export type ListReceiptsRequest$Outbound = {
-  id?: string | undefined;
+  id: string;
 };
 
 /** @internal */
@@ -120,7 +120,7 @@ export const ListReceiptsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListReceiptsRequest
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
 });
 
 /**

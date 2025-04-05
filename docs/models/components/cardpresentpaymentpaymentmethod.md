@@ -8,7 +8,7 @@ A card used at point of sale terminal for a card present transaction as containe
 import { CardPresentPaymentPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: CardPresentPaymentPaymentMethod = {
-  paymentMethodID: "330c5c2a-090b-4c65-93d7-c9224d5eab40",
+  paymentMethodID: "179b2d87-9bb5-4e01-ad4a-c0251b6f1876",
   paymentMethodType: "card-present-payment",
   terminalCard: {
     entryMode: "contactless",

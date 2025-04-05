@@ -13,7 +13,7 @@ let value: GetOnboardingInviteResponse = {
   },
   result: {
     code: "N1IA5eWYNh",
-    link: "https://celebrated-knight.org",
+    link: "https://doting-commodity.com/",
     scopes: [
       "accounts.read",
     ],
@@ -32,11 +32,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "63b3e67b-5f4f-46cc-b9c9-92e285428d75",
+      accountID: "7f1796c6-f9d0-4734-a844-7c6acce2d31d",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2023-05-27T16:46:38.890Z"),
+    createdOn: new Date("2024-04-01T23:04:09.755Z"),
   },
 };
 ```

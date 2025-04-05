@@ -12,8 +12,8 @@ let value: CompleteBankAccountVerificationResponse = {
     ],
   },
   result: {
-    verificationMethod: "ach",
-    status: "new",
+    verificationMethod: "instant",
+    status: "max-attempts-exceeded",
   },
 };
 ```

@@ -47,7 +47,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.capabilities.list({
-    accountID: "c236a258-0a99-455d-9fbb-2312bc028cd2",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
   });
 
   // Handle the result
@@ -76,7 +76,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await capabilitiesList(moov, {
-    accountID: "c236a258-0a99-455d-9fbb-2312bc028cd2",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
   });
 
   if (!res.ok) {
@@ -229,8 +229,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.capabilities.get({
-    accountID: "15fbc94d-721f-44a3-b5fb-77f58657305f",
-    capabilityID: "transfers",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    capabilityID: "production-app",
   });
 
   // Handle the result
@@ -259,8 +259,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await capabilitiesGet(moov, {
-    accountID: "15fbc94d-721f-44a3-b5fb-77f58657305f",
-    capabilityID: "transfers",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    capabilityID: "production-app",
   });
 
   if (!res.ok) {
@@ -316,8 +316,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.capabilities.disable({
-    accountID: "c57b48d7-4182-4632-a345-eeed5a742b0d",
-    capabilityID: "card-issuing",
+    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
+    capabilityID: "transfers",
   });
 
   // Handle the result
@@ -346,8 +346,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await capabilitiesDisable(moov, {
-    accountID: "c57b48d7-4182-4632-a345-eeed5a742b0d",
-    capabilityID: "card-issuing",
+    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
+    capabilityID: "transfers",
   });
 
   if (!res.ok) {

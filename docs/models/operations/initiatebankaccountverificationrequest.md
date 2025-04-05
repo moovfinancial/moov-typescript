@@ -6,8 +6,8 @@
 import { InitiateBankAccountVerificationRequest } from "@moovio/sdk/models/operations";
 
 let value: InitiateBankAccountVerificationRequest = {
-  accountID: "0538b18f-3a90-47b0-8e80-3f914706739c",
-  bankAccountID: "9afcd72f-271f-4fb5-8442-825ab06ad7f4",
+  accountID: "f434c2fe-354d-496e-b744-be7fc54f7dd5",
+  bankAccountID: "bcc7c58f-8fa5-4fdc-9873-771df938eb3f",
 };
 ```
 

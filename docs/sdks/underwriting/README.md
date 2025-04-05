@@ -41,7 +41,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.underwriting.get({
-    accountID: "32ccafba-5d99-40e5-a8af-d05cc5d73a4e",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Handle the result
@@ -70,7 +70,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await underwritingGet(moov, {
-    accountID: "32ccafba-5d99-40e5-a8af-d05cc5d73a4e",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   if (!res.ok) {

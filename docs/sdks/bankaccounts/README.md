@@ -119,7 +119,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.bankAccounts.link({
-    accountID: "5049418d-b6dc-4a6f-a285-091c0e15dc6a",
+    accountID: "0ffc839a-9198-4ea1-98a2-6cccee057439",
     linkBankAccount: {
       plaid: {
         token: "<value>",
@@ -153,7 +153,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await bankAccountsLink(moov, {
-    accountID: "5049418d-b6dc-4a6f-a285-091c0e15dc6a",
+    accountID: "0ffc839a-9198-4ea1-98a2-6cccee057439",
     linkBankAccount: {
       plaid: {
         token: "<value>",
@@ -218,7 +218,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.bankAccounts.list({
-    accountID: "91095bec-ade2-4a8c-9f46-ae7f07234fee",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
   });
 
   // Handle the result
@@ -247,7 +247,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await bankAccountsList(moov, {
-    accountID: "91095bec-ade2-4a8c-9f46-ae7f07234fee",
+    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
   });
 
   if (!res.ok) {
@@ -305,8 +305,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.bankAccounts.get({
-    accountID: "30085225-d87e-47cd-8f08-001465f8cd22",
-    bankAccountID: "6c5a7be6-792b-4628-af28-a852f8c9de5b",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    bankAccountID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
   });
 
   // Handle the result
@@ -335,8 +335,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await bankAccountsGet(moov, {
-    accountID: "30085225-d87e-47cd-8f08-001465f8cd22",
-    bankAccountID: "6c5a7be6-792b-4628-af28-a852f8c9de5b",
+    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    bankAccountID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
   });
 
   if (!res.ok) {
@@ -392,8 +392,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.bankAccounts.disable({
-    accountID: "d01209e7-2701-46cc-b0ba-56eabf4e1ec7",
-    bankAccountID: "0ae3f56a-e391-4a80-962d-9fe4c7a45b97",
+    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
+    bankAccountID: "0f131553-3a08-4820-a7ac-ba935765809c",
   });
 
   // Handle the result
@@ -422,8 +422,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await bankAccountsDisable(moov, {
-    accountID: "d01209e7-2701-46cc-b0ba-56eabf4e1ec7",
-    bankAccountID: "0ae3f56a-e391-4a80-962d-9fe4c7a45b97",
+    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
+    bankAccountID: "0f131553-3a08-4820-a7ac-ba935765809c",
   });
 
   if (!res.ok) {
@@ -689,8 +689,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.bankAccounts.getVerification({
-    accountID: "0102058c-a936-482a-a3ca-2355850903d7",
-    bankAccountID: "ee6888ef-544e-4146-bab7-ea04e31b2274",
+    accountID: "eb35bc20-d74d-4acc-b152-c4db94d9355b",
+    bankAccountID: "2572c1db-032d-464b-b55d-1fd7052232be",
   });
 
   // Handle the result
@@ -719,8 +719,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await bankAccountsGetVerification(moov, {
-    accountID: "0102058c-a936-482a-a3ca-2355850903d7",
-    bankAccountID: "ee6888ef-544e-4146-bab7-ea04e31b2274",
+    accountID: "eb35bc20-d74d-4acc-b152-c4db94d9355b",
+    bankAccountID: "2572c1db-032d-464b-b55d-1fd7052232be",
   });
 
   if (!res.ok) {
@@ -791,9 +791,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.bankAccounts.initiateVerification({
-    xWaitFor: "payment-method",
-    accountID: "c2b4967e-86a5-474e-a78e-f013315f7dcc",
-    bankAccountID: "d648f8f3-7641-4e40-8a99-c08de14889c8",
+    accountID: "96925880-1f29-484d-9ce4-a55f78c3d5fc",
+    bankAccountID: "c9cadc5c-d322-467d-bc62-d133abcc5ec1",
   });
 
   // Handle the result
@@ -822,9 +821,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await bankAccountsInitiateVerification(moov, {
-    xWaitFor: "payment-method",
-    accountID: "c2b4967e-86a5-474e-a78e-f013315f7dcc",
-    bankAccountID: "d648f8f3-7641-4e40-8a99-c08de14889c8",
+    accountID: "96925880-1f29-484d-9ce4-a55f78c3d5fc",
+    bankAccountID: "c9cadc5c-d322-467d-bc62-d133abcc5ec1",
   });
 
   if (!res.ok) {
@@ -888,8 +886,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.bankAccounts.completeVerification({
-    accountID: "88cf5aa5-bf76-406e-a986-eb33cd8890e3",
-    bankAccountID: "0157260f-ae3c-496c-a9d8-24de5fbc6b31",
+    accountID: "3b83f70f-82ce-4e0f-8a75-e4717ad684e4",
+    bankAccountID: "c4c7442d-4aa1-4dfe-9ab1-5206164dce64",
     completeBankAccountVerification: {
       code: "MV1234",
     },
@@ -921,8 +919,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await bankAccountsCompleteVerification(moov, {
-    accountID: "88cf5aa5-bf76-406e-a986-eb33cd8890e3",
-    bankAccountID: "0157260f-ae3c-496c-a9d8-24de5fbc6b31",
+    accountID: "3b83f70f-82ce-4e0f-8a75-e4717ad684e4",
+    bankAccountID: "c4c7442d-4aa1-4dfe-9ab1-5206164dce64",
     completeBankAccountVerification: {
       code: "MV1234",
     },

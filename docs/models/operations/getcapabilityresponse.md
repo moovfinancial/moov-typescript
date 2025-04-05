@@ -12,11 +12,11 @@ let value: GetCapabilityResponse = {
     ],
   },
   result: {
-    capability: "transfers",
-    accountID: "e83aa140-323a-4012-b544-cf8f61647a7e",
+    capability: "collect-funds",
+    accountID: "accf9137-3b44-4509-ad60-2eb37c50431d",
     status: "pending",
-    createdOn: new Date("2024-06-20T16:40:18.965Z"),
-    updatedOn: new Date("2023-05-25T07:54:08.139Z"),
+    createdOn: new Date("2023-06-21T09:14:52.689Z"),
+    updatedOn: new Date("2025-02-19T11:44:12.719Z"),
   },
 };
 ```

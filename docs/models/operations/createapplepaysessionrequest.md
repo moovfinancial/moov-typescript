@@ -6,10 +6,10 @@
 import { CreateApplePaySessionRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateApplePaySessionRequest = {
-  accountID: "b35ae840-b058-4e16-8059-4319baf0a99f",
+  accountID: "99b20d1c-4f68-4fed-b683-f4400321c757",
   createApplePaySession: {
     domain: "checkout.classbooker.dev",
-    displayName: "Maurine.Langosh79",
+    displayName: "Sebastian.Marks86",
   },
 };
 ```
