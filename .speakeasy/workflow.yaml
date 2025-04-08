@@ -4,6 +4,10 @@ sources:
     latest:
         inputs:
             - location: registry.speakeasyapi.dev/moov/moov/api-latest
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+        registry:
+            location: registry.speakeasyapi.dev/moov/moov/latest
 targets:
     moov:
         target: typescript
@@ -11,3 +15,9 @@ targets:
         publish:
             npm:
                 token: $npm_token
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/moov/moov/latest-typescript-code-samples
+            labelOverride:
+                fixedValue: TypeScript (SDK)
+            blocking: false
