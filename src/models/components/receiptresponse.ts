@@ -73,7 +73,7 @@ export type ReceiptResponse = {
   /**
    * The list of receipts that have been sent.
    */
-  sentFor: Array<SentReceipt>;
+  sentFor?: Array<SentReceipt> | undefined;
 };
 
 /** @internal */
@@ -92,7 +92,7 @@ export const ReceiptResponse$inboundSchema: z.ZodType<
   forTransferID: z.string().optional(),
   forScheduleID: z.string().optional(),
   forOccurrenceID: z.string().optional(),
-  sentFor: z.array(SentReceipt$inboundSchema),
+  sentFor: z.array(SentReceipt$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -106,7 +106,7 @@ export type ReceiptResponse$Outbound = {
   forTransferID?: string | undefined;
   forScheduleID?: string | undefined;
   forOccurrenceID?: string | undefined;
-  sentFor: Array<SentReceipt$Outbound>;
+  sentFor?: Array<SentReceipt$Outbound> | undefined;
 };
 
 /** @internal */
@@ -124,7 +124,7 @@ export const ReceiptResponse$outboundSchema: z.ZodType<
   forTransferID: z.string().optional(),
   forScheduleID: z.string().optional(),
   forOccurrenceID: z.string().optional(),
-  sentFor: z.array(SentReceipt$outboundSchema),
+  sentFor: z.array(SentReceipt$outboundSchema).optional(),
 });
 
 /**

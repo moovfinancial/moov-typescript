@@ -37,6 +37,12 @@ import {
   FacilitatorFee$outboundSchema,
 } from "./facilitatorfee.js";
 import {
+  MoovFee,
+  MoovFee$inboundSchema,
+  MoovFee$Outbound,
+  MoovFee$outboundSchema,
+} from "./moovfee.js";
+import {
   MoovFeeDetails,
   MoovFeeDetails$inboundSchema,
   MoovFeeDetails$Outbound,
@@ -107,6 +113,10 @@ export type Transfer = {
    * Processing and pass-through costs that add up to the moovFee.
    */
   moovFeeDetails?: MoovFeeDetails | undefined;
+  /**
+   * Fees charged to accounts involved in the transfer.
+   */
+  moovFees?: Array<MoovFee> | undefined;
   groupID?: string | undefined;
   cancellations?: Array<Cancellation> | undefined;
   refundedAmount?: Amount | undefined;
@@ -143,6 +153,7 @@ export const Transfer$inboundSchema: z.ZodType<
   moovFee: z.number().int().optional(),
   moovFeeDecimal: z.string().optional(),
   moovFeeDetails: MoovFeeDetails$inboundSchema.optional(),
+  moovFees: z.array(MoovFee$inboundSchema).optional(),
   groupID: z.string().optional(),
   cancellations: z.array(Cancellation$inboundSchema).optional(),
   refundedAmount: Amount$inboundSchema.optional(),
@@ -171,6 +182,7 @@ export type Transfer$Outbound = {
   moovFee?: number | undefined;
   moovFeeDecimal?: string | undefined;
   moovFeeDetails?: MoovFeeDetails$Outbound | undefined;
+  moovFees?: Array<MoovFee$Outbound> | undefined;
   groupID?: string | undefined;
   cancellations?: Array<Cancellation$Outbound> | undefined;
   refundedAmount?: Amount$Outbound | undefined;
@@ -203,6 +215,7 @@ export const Transfer$outboundSchema: z.ZodType<
   moovFee: z.number().int().optional(),
   moovFeeDecimal: z.string().optional(),
   moovFeeDetails: MoovFeeDetails$outboundSchema.optional(),
+  moovFees: z.array(MoovFee$outboundSchema).optional(),
   groupID: z.string().optional(),
   cancellations: z.array(Cancellation$outboundSchema).optional(),
   refundedAmount: Amount$outboundSchema.optional(),
