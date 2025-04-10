@@ -50,7 +50,6 @@ export type SweepConfig = {
   lockedFields?: Array<string> | undefined;
   createdOn: Date;
   updatedOn: Date;
-  disabledOn?: Date | undefined;
 };
 
 /** @internal */
@@ -69,8 +68,6 @@ export const SweepConfig$inboundSchema: z.ZodType<
   lockedFields: z.array(z.string()).optional(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
 });
 
 /** @internal */
@@ -85,7 +82,6 @@ export type SweepConfig$Outbound = {
   lockedFields?: Array<string> | undefined;
   createdOn: string;
   updatedOn: string;
-  disabledOn?: string | undefined;
 };
 
 /** @internal */
@@ -104,7 +100,6 @@ export const SweepConfig$outboundSchema: z.ZodType<
   lockedFields: z.array(z.string()).optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
 /**
