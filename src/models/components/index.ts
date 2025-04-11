@@ -134,6 +134,7 @@ export * from "./createtransferdestination.js";
 export * from "./createtransferdestinationach.js";
 export * from "./createtransferdestinationcard.js";
 export * from "./createtransferoptions.js";
+export * from "./createtransferresponsetype.js";
 export * from "./createtransfersource.js";
 export * from "./createtransfersourceach.js";
 export * from "./createtransfersourcecard.js";

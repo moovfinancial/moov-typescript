@@ -1,4 +1,6 @@
-# CreateTransferResponseResult
+# CreateTransferResponseBody
+
+Ok
 
 
 ## Supported Types

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 
 /**
@@ -64,6 +65,7 @@ export type TransferData = {
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
   salesTaxAmount?: components.Amount | undefined;
+  type: "Transfer";
 };
 
 /**
@@ -125,6 +127,7 @@ export class Transfer extends Error {
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
   salesTaxAmount?: components.Amount | undefined;
+  type: "Transfer";
 
   /** The original data that was passed to this error instance. */
   data$: TransferData;
@@ -161,6 +164,7 @@ export class Transfer extends Error {
     if (err.scheduleID != null) this.scheduleID = err.scheduleID;
     if (err.occurrenceID != null) this.occurrenceID = err.occurrenceID;
     if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
+    this.type = err.type;
 
     this.name = "Transfer";
   }
@@ -198,9 +202,14 @@ export const Transfer$inboundSchema: z.ZodType<
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
   salesTaxAmount: components.Amount$inboundSchema.optional(),
+  _type: z.literal("Transfer"),
 })
   .transform((v) => {
-    return new Transfer(v);
+    const remapped = remap$(v, {
+      "_type": "type",
+    });
+
+    return new Transfer(remapped);
   });
 
 /** @internal */
@@ -230,6 +239,7 @@ export type Transfer$Outbound = {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   salesTaxAmount?: components.Amount$Outbound | undefined;
+  _type: "Transfer";
 };
 
 /** @internal */
@@ -239,34 +249,42 @@ export const Transfer$outboundSchema: z.ZodType<
   Transfer
 > = z.instanceof(Transfer)
   .transform(v => v.data$)
-  .pipe(z.object({
-    transferID: z.string(),
-    createdOn: z.date().transform(v => v.toISOString()),
-    source: components.TransferSource$outboundSchema,
-    destination: components.TransferDestination$outboundSchema,
-    completedOn: z.date().transform(v => v.toISOString()).optional(),
-    status: components.TransferStatus$outboundSchema,
-    failureReason: components.TransferFailureReason$outboundSchema.optional(),
-    amount: components.Amount$outboundSchema,
-    description: z.string().optional(),
-    metadata: z.record(z.string()).optional(),
-    facilitatorFee: components.FacilitatorFee$outboundSchema.optional(),
-    moovFee: z.number().int().optional(),
-    moovFeeDecimal: z.string().optional(),
-    moovFeeDetails: components.MoovFeeDetails$outboundSchema.optional(),
-    moovFees: z.array(components.MoovFee$outboundSchema).optional(),
-    groupID: z.string().optional(),
-    cancellations: z.array(components.Cancellation$outboundSchema).optional(),
-    refundedAmount: components.Amount$outboundSchema.optional(),
-    refunds: z.array(components.CardAcquiringRefund$outboundSchema).optional(),
-    disputedAmount: components.Amount$outboundSchema.optional(),
-    disputes: z.array(components.CardAcquiringDispute$outboundSchema)
-      .optional(),
-    sweepID: z.string().optional(),
-    scheduleID: z.string().optional(),
-    occurrenceID: z.string().optional(),
-    salesTaxAmount: components.Amount$outboundSchema.optional(),
-  }));
+  .pipe(
+    z.object({
+      transferID: z.string(),
+      createdOn: z.date().transform(v => v.toISOString()),
+      source: components.TransferSource$outboundSchema,
+      destination: components.TransferDestination$outboundSchema,
+      completedOn: z.date().transform(v => v.toISOString()).optional(),
+      status: components.TransferStatus$outboundSchema,
+      failureReason: components.TransferFailureReason$outboundSchema.optional(),
+      amount: components.Amount$outboundSchema,
+      description: z.string().optional(),
+      metadata: z.record(z.string()).optional(),
+      facilitatorFee: components.FacilitatorFee$outboundSchema.optional(),
+      moovFee: z.number().int().optional(),
+      moovFeeDecimal: z.string().optional(),
+      moovFeeDetails: components.MoovFeeDetails$outboundSchema.optional(),
+      moovFees: z.array(components.MoovFee$outboundSchema).optional(),
+      groupID: z.string().optional(),
+      cancellations: z.array(components.Cancellation$outboundSchema).optional(),
+      refundedAmount: components.Amount$outboundSchema.optional(),
+      refunds: z.array(components.CardAcquiringRefund$outboundSchema)
+        .optional(),
+      disputedAmount: components.Amount$outboundSchema.optional(),
+      disputes: z.array(components.CardAcquiringDispute$outboundSchema)
+        .optional(),
+      sweepID: z.string().optional(),
+      scheduleID: z.string().optional(),
+      occurrenceID: z.string().optional(),
+      salesTaxAmount: components.Amount$outboundSchema.optional(),
+      type: z.literal("Transfer").default("Transfer" as const),
+    }).transform((v) => {
+      return remap$(v, {
+        type: "_type",
+      });
+    }),
+  );
 
 /**
  * @internal

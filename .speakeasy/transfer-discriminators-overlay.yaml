@@ -1,0 +1,65 @@
+overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535
+info:
+  title: example overlay
+  version: 0.0.0
+actions:
+  - target: $
+    update:
+      openapi: 3.0.3
+
+  # First, set up a discriminator field on each model that needs it.
+  - target: $.components.schemas
+    update:
+      CreateTransferResponseType:
+        type: string
+        enum: [CreatedTransfer, AsyncTransfer, Transfer]
+        x-speakeasy-include: true
+  - target: $.components.schemas.CreatedTransfer
+    update:
+      required: ['_type']
+      properties:
+        _type:
+          const: CreatedTransfer
+  - target: $.components.schemas.AsyncTransfer
+    update:
+      required: ['_type']
+      properties:
+        _type:
+          const: AsyncTransfer
+  - target: $.components.schemas.Transfer
+    update:
+      required: ['_type']
+      properties:
+        _type:
+          const: Transfer
+  
+  # Next, we'll remove all of the 2XX responses so we can add a new catch-all success response.
+  - target: $.paths["/accounts/{accountID}/transfers"].post.responses['200']
+    remove: true
+  - target: $.paths["/accounts/{accountID}/transfers"].post.responses['201']
+    remove: true
+  - target: $.paths["/accounts/{accountID}/transfers"].post.responses['202']
+    remove: true
+
+  # Finlly, we'll add a catch-all for 2XX responses that uses our discriminators.
+  - target: $.paths["/accounts/{accountID}/transfers"].post.responses
+    update:
+      '2XX':
+        description: Ok
+        headers:
+          x-request-id:
+            required: true
+            description: A unique identifier used to trace requests.
+            schema:
+                type: string
+                format: uuid
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/CreatedTransfer'
+                - $ref: '#/components/schemas/AsyncTransfer'
+                - $ref: '#/components/schemas/Transfer'
+              discriminator:
+                propertyName: _type

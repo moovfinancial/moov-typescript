@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -130,6 +131,7 @@ export type Transfer = {
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
   salesTaxAmount?: Amount | undefined;
+  type?: "Transfer" | undefined;
 };
 
 /** @internal */
@@ -164,6 +166,11 @@ export const Transfer$inboundSchema: z.ZodType<
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
   salesTaxAmount: Amount$inboundSchema.optional(),
+  _type: z.literal("Transfer").optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "_type": "type",
+  });
 });
 
 /** @internal */
@@ -193,6 +200,7 @@ export type Transfer$Outbound = {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   salesTaxAmount?: Amount$Outbound | undefined;
+  _type: "Transfer";
 };
 
 /** @internal */
@@ -226,6 +234,11 @@ export const Transfer$outboundSchema: z.ZodType<
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
   salesTaxAmount: Amount$outboundSchema.optional(),
+  type: z.literal("Transfer").default("Transfer" as const),
+}).transform((v) => {
+  return remap$(v, {
+    type: "_type",
+  });
 });
 
 /**

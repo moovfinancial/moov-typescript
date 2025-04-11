@@ -45,17 +45,20 @@ export type CreateTransferRequest = {
   createTransfer: components.CreateTransfer;
 };
 
-export type CreateTransferResponseResult =
-  | components.AsyncTransfer
-  | components.CreatedTransfer
-  | components.Transfer;
+/**
+ * Ok
+ */
+export type CreateTransferResponseBody =
+  | (components.AsyncTransfer & { type: "AsyncTransfer" })
+  | (components.CreatedTransfer & { type: "CreatedTransfer" })
+  | (components.Transfer & { type: "Transfer" });
 
 export type CreateTransferResponse = {
   headers: { [k: string]: Array<string> };
   result:
-    | components.AsyncTransfer
-    | components.CreatedTransfer
-    | components.Transfer;
+    | (components.AsyncTransfer & { type: "AsyncTransfer" })
+    | (components.CreatedTransfer & { type: "CreatedTransfer" })
+    | (components.Transfer & { type: "Transfer" });
 };
 
 /** @internal */
@@ -196,63 +199,85 @@ export function createTransferRequestFromJSON(
 }
 
 /** @internal */
-export const CreateTransferResponseResult$inboundSchema: z.ZodType<
-  CreateTransferResponseResult,
+export const CreateTransferResponseBody$inboundSchema: z.ZodType<
+  CreateTransferResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  components.AsyncTransfer$inboundSchema,
-  components.CreatedTransfer$inboundSchema,
-  components.Transfer$inboundSchema,
+  components.AsyncTransfer$inboundSchema.and(
+    z.object({ _type: z.literal("AsyncTransfer") }).transform((v) => ({
+      type: v._type,
+    })),
+  ),
+  components.CreatedTransfer$inboundSchema.and(
+    z.object({ _type: z.literal("CreatedTransfer") }).transform((v) => ({
+      type: v._type,
+    })),
+  ),
+  components.Transfer$inboundSchema.and(
+    z.object({ _type: z.literal("Transfer") }).transform((v) => ({
+      type: v._type,
+    })),
+  ),
 ]);
 
 /** @internal */
-export type CreateTransferResponseResult$Outbound =
-  | components.AsyncTransfer$Outbound
-  | components.CreatedTransfer$Outbound
-  | components.Transfer$Outbound;
+export type CreateTransferResponseBody$Outbound =
+  | (components.AsyncTransfer$Outbound & { _type: "AsyncTransfer" })
+  | (components.CreatedTransfer$Outbound & { _type: "CreatedTransfer" })
+  | (components.Transfer$Outbound & { _type: "Transfer" });
 
 /** @internal */
-export const CreateTransferResponseResult$outboundSchema: z.ZodType<
-  CreateTransferResponseResult$Outbound,
+export const CreateTransferResponseBody$outboundSchema: z.ZodType<
+  CreateTransferResponseBody$Outbound,
   z.ZodTypeDef,
-  CreateTransferResponseResult
+  CreateTransferResponseBody
 > = z.union([
-  components.AsyncTransfer$outboundSchema,
-  components.CreatedTransfer$outboundSchema,
-  components.Transfer$outboundSchema,
+  components.AsyncTransfer$outboundSchema.and(
+    z.object({ type: z.literal("AsyncTransfer") }).transform((v) => ({
+      _type: v.type,
+    })),
+  ),
+  components.CreatedTransfer$outboundSchema.and(
+    z.object({ type: z.literal("CreatedTransfer") }).transform((v) => ({
+      _type: v.type,
+    })),
+  ),
+  components.Transfer$outboundSchema.and(
+    z.object({ type: z.literal("Transfer") }).transform((v) => ({
+      _type: v.type,
+    })),
+  ),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateTransferResponseResult$ {
-  /** @deprecated use `CreateTransferResponseResult$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferResponseResult$inboundSchema;
-  /** @deprecated use `CreateTransferResponseResult$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferResponseResult$outboundSchema;
-  /** @deprecated use `CreateTransferResponseResult$Outbound` instead. */
-  export type Outbound = CreateTransferResponseResult$Outbound;
+export namespace CreateTransferResponseBody$ {
+  /** @deprecated use `CreateTransferResponseBody$inboundSchema` instead. */
+  export const inboundSchema = CreateTransferResponseBody$inboundSchema;
+  /** @deprecated use `CreateTransferResponseBody$outboundSchema` instead. */
+  export const outboundSchema = CreateTransferResponseBody$outboundSchema;
+  /** @deprecated use `CreateTransferResponseBody$Outbound` instead. */
+  export type Outbound = CreateTransferResponseBody$Outbound;
 }
 
-export function createTransferResponseResultToJSON(
-  createTransferResponseResult: CreateTransferResponseResult,
+export function createTransferResponseBodyToJSON(
+  createTransferResponseBody: CreateTransferResponseBody,
 ): string {
   return JSON.stringify(
-    CreateTransferResponseResult$outboundSchema.parse(
-      createTransferResponseResult,
-    ),
+    CreateTransferResponseBody$outboundSchema.parse(createTransferResponseBody),
   );
 }
 
-export function createTransferResponseResultFromJSON(
+export function createTransferResponseBodyFromJSON(
   jsonString: string,
-): SafeParseResult<CreateTransferResponseResult, SDKValidationError> {
+): SafeParseResult<CreateTransferResponseBody, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateTransferResponseResult$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateTransferResponseResult' from JSON`,
+    (x) => CreateTransferResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransferResponseBody' from JSON`,
   );
 }
 
@@ -264,9 +289,21 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
 > = z.object({
   Headers: z.record(z.array(z.string())),
   Result: z.union([
-    components.AsyncTransfer$inboundSchema,
-    components.CreatedTransfer$inboundSchema,
-    components.Transfer$inboundSchema,
+    components.AsyncTransfer$inboundSchema.and(
+      z.object({ _type: z.literal("AsyncTransfer") }).transform((v) => ({
+        type: v._type,
+      })),
+    ),
+    components.CreatedTransfer$inboundSchema.and(
+      z.object({ _type: z.literal("CreatedTransfer") }).transform((v) => ({
+        type: v._type,
+      })),
+    ),
+    components.Transfer$inboundSchema.and(
+      z.object({ _type: z.literal("Transfer") }).transform((v) => ({
+        type: v._type,
+      })),
+    ),
   ]),
 }).transform((v) => {
   return remap$(v, {
@@ -279,9 +316,9 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
 export type CreateTransferResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
   Result:
-    | components.AsyncTransfer$Outbound
-    | components.CreatedTransfer$Outbound
-    | components.Transfer$Outbound;
+    | (components.AsyncTransfer$Outbound & { _type: "AsyncTransfer" })
+    | (components.CreatedTransfer$Outbound & { _type: "CreatedTransfer" })
+    | (components.Transfer$Outbound & { _type: "Transfer" });
 };
 
 /** @internal */
@@ -292,9 +329,21 @@ export const CreateTransferResponse$outboundSchema: z.ZodType<
 > = z.object({
   headers: z.record(z.array(z.string())),
   result: z.union([
-    components.AsyncTransfer$outboundSchema,
-    components.CreatedTransfer$outboundSchema,
-    components.Transfer$outboundSchema,
+    components.AsyncTransfer$outboundSchema.and(
+      z.object({ type: z.literal("AsyncTransfer") }).transform((v) => ({
+        _type: v.type,
+      })),
+    ),
+    components.CreatedTransfer$outboundSchema.and(
+      z.object({ type: z.literal("CreatedTransfer") }).transform((v) => ({
+        _type: v.type,
+      })),
+    ),
+    components.Transfer$outboundSchema.and(
+      z.object({ type: z.literal("Transfer") }).transform((v) => ({
+        _type: v.type,
+      })),
+    ),
   ]),
 }).transform((v) => {
   return remap$(v, {
