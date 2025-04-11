@@ -3,11 +3,7 @@ speakeasyVersion: latest
 sources:
     latest:
         inputs:
-            - location: registry.speakeasyapi.dev/moov/moov/api-latest
-        overlays:
-            - location: .speakeasy/speakeasy-modifications-overlay.yaml
-        registry:
-            location: registry.speakeasyapi.dev/moov/moov/latest
+            - location: registry.speakeasyapi.dev/moov/moov/api-latest          
 targets:
     moov:
         target: typescript
