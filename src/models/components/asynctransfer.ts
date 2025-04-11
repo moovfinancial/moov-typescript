@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -10,6 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AsyncTransfer = {
   transferID: string;
   createdOn: Date;
+  type?: "AsyncTransfer" | undefined;
 };
 
 /** @internal */
@@ -20,12 +22,18 @@ export const AsyncTransfer$inboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  _type: z.literal("AsyncTransfer").optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "_type": "type",
+  });
 });
 
 /** @internal */
 export type AsyncTransfer$Outbound = {
   transferID: string;
   createdOn: string;
+  _type: "AsyncTransfer";
 };
 
 /** @internal */
@@ -36,6 +44,11 @@ export const AsyncTransfer$outboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string(),
   createdOn: z.date().transform(v => v.toISOString()),
+  type: z.literal("AsyncTransfer").default("AsyncTransfer" as const),
+}).transform((v) => {
+  return remap$(v, {
+    type: "_type",
+  });
 });
 
 /**

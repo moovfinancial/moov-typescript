@@ -178,18 +178,6 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.CreateTransferResponse$inboundSchema, {
-      hdrs: true,
-      key: "Result",
-    }),
-    M.json(201, operations.CreateTransferResponse$inboundSchema, {
-      hdrs: true,
-      key: "Result",
-    }),
-    M.json(202, operations.CreateTransferResponse$inboundSchema, {
-      hdrs: true,
-      key: "Result",
-    }),
     M.jsonErr(400, errors.GenericError$inboundSchema, { hdrs: true }),
     M.jsonErr(409, errors.Transfer$inboundSchema, { hdrs: true }),
     M.jsonErr(422, errors.TransferValidationError$inboundSchema, {
@@ -197,6 +185,10 @@ async function $do(
     }),
     M.fail([404, 429]),
     M.fail([500, 504]),
+    M.json("2XX", operations.CreateTransferResponse$inboundSchema, {
+      hdrs: true,
+      key: "Result",
+    }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

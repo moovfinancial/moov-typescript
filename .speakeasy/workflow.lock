@@ -1,18 +1,18 @@
-speakeasyVersion: 1.531.1
+speakeasyVersion: 1.531.2
 sources:
     latest:
-        sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:a511bb6dca3d35a4a7f2c025b16747bbef12c5ebf640c3b9aea14aa9ce507e7b
-        sourceBlobDigest: sha256:64a229d37ea743972331672ef37334049f476f4e03fc8f174b3d5c99e21e6d85
+        sourceNamespace: latest
+        sourceRevisionDigest: sha256:24d6f18472487ce3694232c626cea2a1095ee14882bebc4cf4cf4777e1acca66
+        sourceBlobDigest: sha256:e446465ba74a0a489c140232d07b925f23f7dec5f747db71e3f0c26928c04689
         tags:
             - latest
-            - speakeasy-sdk-regen-1744244901
+            - latest
 targets:
     moov:
         source: latest
-        sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:a511bb6dca3d35a4a7f2c025b16747bbef12c5ebf640c3b9aea14aa9ce507e7b
-        sourceBlobDigest: sha256:64a229d37ea743972331672ef37334049f476f4e03fc8f174b3d5c99e21e6d85
+        sourceNamespace: latest
+        sourceRevisionDigest: sha256:24d6f18472487ce3694232c626cea2a1095ee14882bebc4cf4cf4777e1acca66
+        sourceBlobDigest: sha256:e446465ba74a0a489c140232d07b925f23f7dec5f747db71e3f0c26928c04689
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -20,6 +20,10 @@ workflow:
         latest:
             inputs:
                 - location: registry.speakeasyapi.dev/moov/moov/api-latest
+            overlays:
+                - location: ./.speakeasy/transfer-discriminators-overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/latest
     targets:
         moov:
             target: typescript
