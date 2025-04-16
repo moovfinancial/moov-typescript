@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 59840c04dec81e6b1202ef7d4a7ce473
+  docChecksum: 68a8f836eb04da91df8ac588edb5d80e
   docVersion: latest
-  speakeasyVersion: 1.531.1
-  generationVersion: 2.568.5
-  releaseVersion: 0.10.10
-  configChecksum: 81d268d607ec38bcdba58a2819c0ea76
+  speakeasyVersion: 1.533.0
+  generationVersion: 2.578.0
+  releaseVersion: 0.10.11
+  configChecksum: 779152b20a7c280809d68b6ceaf02656
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.21.5
+    core: 3.21.6
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -2186,6 +2186,17 @@ examples:
           application/json: {"error": "<value>"}
         "422":
           application/json: {}
+    "":
+      parameters:
+        path:
+          accountID: "60ffc839-a919-48ea-a18a-26cccee05743"
+        header:
+          x-wait-for: "payment-method"
+      requestBody:
+        application/json: {"cardNumber": "4111111111111111", "cardCvv": "123", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"postalCode": "80301"}}
+      responses:
+        "200":
+          application/json: {"cardID": "01234567-89ab-cdef-0123-456789abcdef", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "brand": "Visa", "cardType": "credit", "cardCategory": "CLASSIC", "lastFourCardNumber": "1111", "bin": "411111", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "cardVerification": {"cvv": "match", "addressLine1": "match", "postalCode": "match", "accountName": {"firstName": "match", "lastName": "match", "middleName": "match", "fullName": "match"}}, "issuer": "GRINGOTTS BANK", "issuerCountry": "US", "issuerURL": "HTTPS://WWW.EXAMPLE.COM/", "issuerPhone": "8185551212", "commercial": false, "regulated": false, "cardOnFile": true, "merchantAccountID": "01234567-89ab-cdef-0123-456789abcdef", "cardAccountUpdater": {"updatedOn": "2024-05-06T12:20:38.184Z", "updateType": "number-update"}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported", "paymentMethods": [{"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "card-payment"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "push-to-card"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "pull-from-card"}]}
   listCards:
     speakeasy-default-list-cards:
       parameters:
@@ -2194,7 +2205,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: [{"cardID": "01234567-89ab-cdef-0123-456789abcdef", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "brand": "Visa", "cardType": "credit", "cardCategory": "CLASSIC", "lastFourCardNumber": "1234", "bin": "123456", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "cardVerification": {"cvv": "match", "addressLine1": "match", "postalCode": "match", "accountName": {"firstName": "match", "lastName": "match", "middleName": "match", "fullName": "match"}}, "issuer": "GRINGOTTS BANK", "issuerCountry": "US", "issuerURL": "HTTPS://WWW.EXAMPLE.COM/", "issuerPhone": "8185551212", "commercial": false, "regulated": false, "cardOnFile": true, "merchantAccountID": "01234567-89ab-cdef-0123-456789abcdef", "cardAccountUpdater": {"updatedOn": "2024-05-06T12:20:38.184Z", "updateType": "number-update"}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported", "paymentMethods": [{"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "card-payment"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "push-to-card"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "pull-from-card"}]}]
+          application/json: [{"cardID": "01234567-89ab-cdef-0123-456789abcdef", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "brand": "Visa", "cardType": "credit", "cardCategory": "CLASSIC", "lastFourCardNumber": "1111", "bin": "411111", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "cardVerification": {"cvv": "match", "addressLine1": "match", "postalCode": "match", "accountName": {"firstName": "match", "lastName": "match", "middleName": "match", "fullName": "match"}}, "issuer": "GRINGOTTS BANK", "issuerCountry": "US", "issuerURL": "HTTPS://WWW.EXAMPLE.COM/", "issuerPhone": "8185551212", "commercial": false, "regulated": false, "cardOnFile": true, "merchantAccountID": "01234567-89ab-cdef-0123-456789abcdef", "cardAccountUpdater": {"updatedOn": "2024-05-06T12:20:38.184Z", "updateType": "number-update"}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported"}]
   getCard:
     speakeasy-default-get-card:
       parameters:
@@ -2204,7 +2215,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"cardID": "01234567-89ab-cdef-0123-456789abcdef", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "brand": "Visa", "cardType": "credit", "cardCategory": "CLASSIC", "lastFourCardNumber": "1234", "bin": "123456", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "cardVerification": {"cvv": "match", "addressLine1": "match", "postalCode": "match", "accountName": {"firstName": "match", "lastName": "match", "middleName": "match", "fullName": "match"}}, "issuer": "GRINGOTTS BANK", "issuerCountry": "US", "issuerURL": "HTTPS://WWW.EXAMPLE.COM/", "issuerPhone": "8185551212", "commercial": false, "regulated": false, "cardOnFile": true, "merchantAccountID": "01234567-89ab-cdef-0123-456789abcdef", "cardAccountUpdater": {"updatedOn": "2024-05-06T12:20:38.184Z", "updateType": "number-update"}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported", "paymentMethods": [{"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "card-payment"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "push-to-card"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "pull-from-card"}]}
+          application/json: {"cardID": "01234567-89ab-cdef-0123-456789abcdef", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "brand": "Visa", "cardType": "credit", "cardCategory": "CLASSIC", "lastFourCardNumber": "1111", "bin": "411111", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "cardVerification": {"cvv": "match", "addressLine1": "match", "postalCode": "match", "accountName": {"firstName": "match", "lastName": "match", "middleName": "match", "fullName": "match"}}, "issuer": "GRINGOTTS BANK", "issuerCountry": "US", "issuerURL": "HTTPS://WWW.EXAMPLE.COM/", "issuerPhone": "8185551212", "commercial": false, "regulated": false, "cardOnFile": true, "merchantAccountID": "01234567-89ab-cdef-0123-456789abcdef", "cardAccountUpdater": {"updatedOn": "2024-05-06T12:20:38.184Z", "updateType": "number-update"}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported", "paymentMethods": [{"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "card-payment"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "push-to-card"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "pull-from-card"}]}
   updateCard:
     speakeasy-default-update-card:
       parameters:
@@ -2216,7 +2227,7 @@ examples:
         application/json: {"e2ee": {"token": "eyJhbGciOiJFQ0RILUVTK0EyNTZLVyIsImVuYyI6IkEyNTZHQ00iLCJlcGsiOnsia3R5IjoiRUMiLCJjcnYiOiJQLTUyMSIsIngiOiJBS0NYVDM1WVdvTm8wbzExNy1SU0dqUGg3alN1NjFmLUhnYkx1dW0xVG1ueTRlcW5yX2hyU0hpY0w1d3gwODRCWDBRZjVTdEtkRUoydzY2ZUJqWHprRV9OIiwieSI6IkFIMEJfT2RaYTQtbG43dGJ4M3VBdlc1NDNQRE9HUXBCTDloRFFNWjlTQXNfOW05UWN3dnhRd1hrb1VrM3VzT1FnVV9ySVFrNFRoZ1NTUzV4UlhKcm5ZaTkifSwia2lkIjoiYmRvV3pLekpKUGw0TVFIaENDa05WYTZlZ1dmYi02V1haSjZKTFZqQ0hWMD0ifQ.HalyoHsfufBJEODd2lD9ThQvvVWw3b2kgWDLHGxmHhMv8rODyLL_Ug.rpQP178t8Ed_pUU2.Sn9UFeVoegAxiMUv11q7l3M0y9YHSLYi2n_JB7n7Pc777_47-icfaxstJemT0IC81w.akkq1EBxzWkBr4vEomSpWA"}, "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "expiration": {"month": "01", "year": "21"}, "cardCvv": "456"}
       responses:
         "200":
-          application/json: {"cardID": "01234567-89ab-cdef-0123-456789abcdef", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "brand": "Visa", "cardType": "credit", "cardCategory": "CLASSIC", "lastFourCardNumber": "1234", "bin": "123456", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "cardVerification": {"cvv": "match", "addressLine1": "match", "postalCode": "match", "accountName": {"firstName": "match", "lastName": "match", "middleName": "match", "fullName": "match"}}, "issuer": "GRINGOTTS BANK", "issuerCountry": "US", "issuerURL": "HTTPS://WWW.EXAMPLE.COM/", "issuerPhone": "8185551212", "commercial": false, "regulated": false, "cardOnFile": true, "merchantAccountID": "01234567-89ab-cdef-0123-456789abcdef", "cardAccountUpdater": {"updatedOn": "2024-05-06T12:20:38.184Z", "updateType": "number-update"}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported", "paymentMethods": [{"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "card-payment"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "push-to-card"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "pull-from-card"}]}
+          application/json: {"cardID": "01234567-89ab-cdef-0123-456789abcdef", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "brand": "Visa", "cardType": "credit", "cardCategory": "CLASSIC", "lastFourCardNumber": "1111", "bin": "411111", "expiration": {"month": "01", "year": "21"}, "holderName": "Jules Jackson", "billingAddress": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "cardVerification": {"cvv": "match", "addressLine1": "match", "postalCode": "match", "accountName": {"firstName": "match", "lastName": "match", "middleName": "match", "fullName": "match"}}, "issuer": "GRINGOTTS BANK", "issuerCountry": "US", "issuerURL": "HTTPS://WWW.EXAMPLE.COM/", "issuerPhone": "8185551212", "commercial": false, "regulated": false, "cardOnFile": true, "merchantAccountID": "01234567-89ab-cdef-0123-456789abcdef", "cardAccountUpdater": {"updatedOn": "2024-05-06T12:20:38.184Z", "updateType": "number-update"}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported", "paymentMethods": [{"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "card-payment"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "push-to-card"}, {"paymentMethodID": "01234567-89ab-cdef-0123-456789abcdef", "paymentMethodType": "pull-from-card"}]}
         "400":
           application/json: {"error": "<value>"}
         "422":

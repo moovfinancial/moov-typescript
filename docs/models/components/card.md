@@ -14,8 +14,8 @@ let value: Card = {
   brand: "Visa",
   cardType: "credit",
   cardCategory: "CLASSIC",
-  lastFourCardNumber: "1234",
-  bin: "123456",
+  lastFourCardNumber: "1111",
+  bin: "411111",
   expiration: {
     month: "01",
     year: "21",
@@ -54,20 +54,6 @@ let value: Card = {
   },
   domesticPushToCard: "standard",
   domesticPullFromCard: "supported",
-  paymentMethods: [
-    {
-      paymentMethodID: "01234567-89ab-cdef-0123-456789abcdef",
-      paymentMethodType: "card-payment",
-    },
-    {
-      paymentMethodID: "01234567-89ab-cdef-0123-456789abcdef",
-      paymentMethodType: "push-to-card",
-    },
-    {
-      paymentMethodID: "01234567-89ab-cdef-0123-456789abcdef",
-      paymentMethodType: "pull-from-card",
-    },
-  ],
 };
 ```
 
@@ -97,4 +83,4 @@ let value: Card = {
 | `cardAccountUpdater`                                                                                                                                                                                                                                                     | [components.CardAccountUpdater](../../models/components/cardaccountupdater.md)                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                                       | The results of the most recent card update request.                                                                                                                                                                                                                      | {<br/>"updatedOn": "2024-05-06T12:20:38.184Z",<br/>"updateType": "number-update"<br/>}                                                                                                                                                                                   |
 | `domesticPushToCard`                                                                                                                                                                                                                                                     | [components.DomesticPushToCard](../../models/components/domesticpushtocard.md)                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                                       | Indicates which level of domestic push-to-card transfer is supported by the card, if any.                                                                                                                                                                                | standard                                                                                                                                                                                                                                                                 |
 | `domesticPullFromCard`                                                                                                                                                                                                                                                   | [components.DomesticPullFromCard](../../models/components/domesticpullfromcard.md)                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                                                       | Indicates if the card supports domestic pull-from-card transfer.                                                                                                                                                                                                         | supported                                                                                                                                                                                                                                                                |
-| `paymentMethods`                                                                                                                                                                                                                                                         | [components.BasicPaymentMethod](../../models/components/basicpaymentmethod.md)[]                                                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                                                                       | N/A                                                                                                                                                                                                                                                                      |                                                                                                                                                                                                                                                                          |
+| `paymentMethods`                                                                                                                                                                                                                                                         | [components.BasicPaymentMethod](../../models/components/basicpaymentmethod.md)[]                                                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                                                                       |   Includes any payment methods created as a result of linking a card with the `x-wait-for` header set to `payment-method`.<br/><br/>  Only returned by the link card endpoint; not included when getting or listing cards.                                               |                                                                                                                                                                                                                                                                          |

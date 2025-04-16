@@ -156,6 +156,13 @@ export type Card = {
    * Indicates if the card supports domestic pull-from-card transfer.
    */
   domesticPullFromCard?: DomesticPullFromCard | undefined;
+  /**
+   *   Includes any payment methods created as a result of linking a card with the `x-wait-for` header set to `payment-method`.
+   *
+   * @remarks
+   *
+   *   Only returned by the link card endpoint; not included when getting or listing cards.
+   */
   paymentMethods?: Array<BasicPaymentMethod> | undefined;
 };
 

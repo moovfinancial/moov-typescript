@@ -19,8 +19,8 @@ let value: ListCardsResponse = {
       brand: "Visa",
       cardType: "credit",
       cardCategory: "CLASSIC",
-      lastFourCardNumber: "1234",
-      bin: "123456",
+      lastFourCardNumber: "1111",
+      bin: "411111",
       expiration: {
         month: "01",
         year: "21",
@@ -59,20 +59,6 @@ let value: ListCardsResponse = {
       },
       domesticPushToCard: "standard",
       domesticPullFromCard: "supported",
-      paymentMethods: [
-        {
-          paymentMethodID: "01234567-89ab-cdef-0123-456789abcdef",
-          paymentMethodType: "card-payment",
-        },
-        {
-          paymentMethodID: "01234567-89ab-cdef-0123-456789abcdef",
-          paymentMethodType: "push-to-card",
-        },
-        {
-          paymentMethodID: "01234567-89ab-cdef-0123-456789abcdef",
-          paymentMethodType: "pull-from-card",
-        },
-      ],
     },
   ],
 };
