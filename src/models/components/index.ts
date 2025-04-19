@@ -210,6 +210,7 @@ export * from "./issuingmerchantdata.js";
 export * from "./issuingvelocitylimit.js";
 export * from "./issuingvelocitylimiterror.js";
 export * from "./jsonwebkey.js";
+export * from "./linkaccountterminalapplication.js";
 export * from "./linkapplepay.js";
 export * from "./linkapplepaymentdata.js";
 export * from "./linkapplepaymentmethod.js";

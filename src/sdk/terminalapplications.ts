@@ -16,7 +16,7 @@ export class TerminalApplications extends ClientSDK {
    * Create a new terminal application.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/terminalApplications.write` scope.
+   * you'll need to specify the `/terminal-applications.write` scope.
    */
   async create(
     request: components.CreateTerminalApplication,
@@ -33,7 +33,7 @@ export class TerminalApplications extends ClientSDK {
    * List all the terminal applications for a Moov Account.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/terminalApplications.read` scope.
+   * you'll need to specify the `/terminal-applications.read` scope.
    */
   async list(
     request: operations.ListTerminalApplicationsRequest,
@@ -50,7 +50,7 @@ export class TerminalApplications extends ClientSDK {
    * Fetch a specific terminal application.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/terminalApplications.read` scope.
+   * you'll need to specify the `/terminal-applications.read` scope.
    */
   async get(
     request: operations.GetTerminalApplicationRequest,
@@ -67,7 +67,7 @@ export class TerminalApplications extends ClientSDK {
    * Delete a specific terminal application.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/terminalApplications.write` scope.
+   * you'll need to specify the `/terminal-applications.write` scope.
    */
   async delete(
     request: operations.DeleteTerminalApplicationRequest,

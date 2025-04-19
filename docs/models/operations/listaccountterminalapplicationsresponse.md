@@ -1,11 +1,11 @@
-# ListTerminalApplicationsResponse
+# ListAccountTerminalApplicationsResponse
 
 ## Example Usage
 
 ```typescript
-import { ListTerminalApplicationsResponse } from "@moovio/sdk/models/operations";
+import { ListAccountTerminalApplicationsResponse } from "@moovio/sdk/models/operations";
 
-let value: ListTerminalApplicationsResponse = {
+let value: ListAccountTerminalApplicationsResponse = {
   headers: {
     "key": [
       "<value>",

@@ -15,7 +15,7 @@ export const tool$terminalApplicationsList: ToolDefinition<typeof args> = {
   description: `List all the terminal applications for a Moov Account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the \`/terminalApplications.read\` scope.`,
+you'll need to specify the \`/terminal-applications.read\` scope.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await terminalApplicationsList(

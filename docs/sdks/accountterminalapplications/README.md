@@ -1,33 +1,33 @@
-# TerminalApplications
-(*terminalApplications*)
+# AccountTerminalApplications
+(*accountTerminalApplications*)
 
 ## Overview
 
 ### Available Operations
 
-* [create](#create) - Create a new terminal application.
+* [link](#link) - Link an account with a terminal application.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/terminal-applications.write` scope.
-* [list](#list) - List all the terminal applications for a Moov Account.
+you'll need to specify the `/accounts/{accountID}/terminal-applications.write` scope.
+* [list](#list) - Retrieve all terminal applications linked to a specific account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/terminal-applications.read` scope.
-* [get](#get) - Fetch a specific terminal application.
+you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
+* [get](#get) - Verifies if a specific Terminal Application is linked to an Account. This endpoint acts as a validation check for the link's existence.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/terminal-applications.read` scope.
-* [delete](#delete) - Delete a specific terminal application.
+you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
+* [getConfiguration](#getconfiguration) - Fetch the configuration for a given Terminal Application linked to a specific Account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/terminal-applications.write` scope.
+you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` scope.
 
-## create
+## link
 
-Create a new terminal application.
+Link an account with a terminal application.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/terminal-applications.write` scope.
+you'll need to specify the `/accounts/{accountID}/terminal-applications.write` scope.
 
 ### Example Usage
 
@@ -42,12 +42,11 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.terminalApplications.create({
-    platform: "ios",
-    appBundleID: "com.example.app",
-    packageName: "com.example.app",
-    sha256Digest: "1234567890",
-    versionCode: "1.0.0",
+  const result = await moov.accountTerminalApplications.link({
+    accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
+    linkAccountTerminalApplication: {
+      terminalApplicationID: "12345678-1234-1234-1234-123456789012",
+    },
   });
 
   // Handle the result
@@ -63,7 +62,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { terminalApplicationsCreate } from "@moovio/sdk/funcs/terminalApplicationsCreate.js";
+import { accountTerminalApplicationsLink } from "@moovio/sdk/funcs/accountTerminalApplicationsLink.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -75,12 +74,11 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await terminalApplicationsCreate(moov, {
-    platform: "ios",
-    appBundleID: "com.example.app",
-    packageName: "com.example.app",
-    sha256Digest: "1234567890",
-    versionCode: "1.0.0",
+  const res = await accountTerminalApplicationsLink(moov, {
+    accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
+    linkAccountTerminalApplication: {
+      terminalApplicationID: "12345678-1234-1234-1234-123456789012",
+    },
   });
 
   if (!res.ok) {
@@ -100,29 +98,29 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.CreateTerminalApplication](../../models/components/createterminalapplication.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.LinkAccountTerminalApplicationRequest](../../models/operations/linkaccountterminalapplicationrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.CreateTerminalApplicationResponse](../../models/operations/createterminalapplicationresponse.md)\>**
+**Promise\<[operations.LinkAccountTerminalApplicationResponse](../../models/operations/linkaccountterminalapplicationresponse.md)\>**
 
 ### Errors
 
-| Error Type                      | Status Code                     | Content Type                    |
-| ------------------------------- | ------------------------------- | ------------------------------- |
-| errors.GenericError             | 400, 409                        | application/json                |
-| errors.TerminalApplicationError | 422                             | application/json                |
-| errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.GenericError                    | 400, 409                               | application/json                       |
+| errors.AccountTerminalApplicationError | 422                                    | application/json                       |
+| errors.APIError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## list
 
-List all the terminal applications for a Moov Account.
+Retrieve all terminal applications linked to a specific account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/terminal-applications.read` scope.
+you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
 
 ### Example Usage
 
@@ -137,7 +135,9 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.terminalApplications.list({});
+  const result = await moov.accountTerminalApplications.list({
+    accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
+  });
 
   // Handle the result
   console.log(result);
@@ -152,7 +152,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { terminalApplicationsList } from "@moovio/sdk/funcs/terminalApplicationsList.js";
+import { accountTerminalApplicationsList } from "@moovio/sdk/funcs/accountTerminalApplicationsList.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -164,7 +164,9 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await terminalApplicationsList(moov, {});
+  const res = await accountTerminalApplicationsList(moov, {
+    accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -183,14 +185,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListTerminalApplicationsRequest](../../models/operations/listterminalapplicationsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListAccountTerminalApplicationsRequest](../../models/operations/listaccountterminalapplicationsrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ListTerminalApplicationsResponse](../../models/operations/listterminalapplicationsresponse.md)\>**
+**Promise\<[operations.ListAccountTerminalApplicationsResponse](../../models/operations/listaccountterminalapplicationsresponse.md)\>**
 
 ### Errors
 
@@ -200,10 +202,10 @@ run();
 
 ## get
 
-Fetch a specific terminal application.
+Verifies if a specific Terminal Application is linked to an Account. This endpoint acts as a validation check for the link's existence.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/terminal-applications.read` scope.
+you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
 
 ### Example Usage
 
@@ -218,7 +220,8 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.terminalApplications.get({
+  const result = await moov.accountTerminalApplications.get({
+    accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
 
@@ -235,7 +238,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { terminalApplicationsGet } from "@moovio/sdk/funcs/terminalApplicationsGet.js";
+import { accountTerminalApplicationsGet } from "@moovio/sdk/funcs/accountTerminalApplicationsGet.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -247,7 +250,8 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await terminalApplicationsGet(moov, {
+  const res = await accountTerminalApplicationsGet(moov, {
+    accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
 
@@ -268,14 +272,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetTerminalApplicationRequest](../../models/operations/getterminalapplicationrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetAccountTerminalApplicationRequest](../../models/operations/getaccountterminalapplicationrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.GetTerminalApplicationResponse](../../models/operations/getterminalapplicationresponse.md)\>**
+**Promise\<[operations.GetAccountTerminalApplicationResponse](../../models/operations/getaccountterminalapplicationresponse.md)\>**
 
 ### Errors
 
@@ -283,12 +287,12 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## delete
+## getConfiguration
 
-Delete a specific terminal application.
+Fetch the configuration for a given Terminal Application linked to a specific Account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/terminal-applications.write` scope.
+you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` scope.
 
 ### Example Usage
 
@@ -303,7 +307,8 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.terminalApplications.delete({
+  const result = await moov.accountTerminalApplications.getConfiguration({
+    accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
 
@@ -320,7 +325,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { terminalApplicationsDelete } from "@moovio/sdk/funcs/terminalApplicationsDelete.js";
+import { accountTerminalApplicationsGetConfiguration } from "@moovio/sdk/funcs/accountTerminalApplicationsGetConfiguration.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -332,7 +337,8 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await terminalApplicationsDelete(moov, {
+  const res = await accountTerminalApplicationsGetConfiguration(moov, {
+    accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
 
@@ -353,18 +359,17 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteTerminalApplicationRequest](../../models/operations/deleteterminalapplicationrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetTerminalConfigurationRequest](../../models/operations/getterminalconfigurationrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.DeleteTerminalApplicationResponse](../../models/operations/deleteterminalapplicationresponse.md)\>**
+**Promise\<[operations.GetTerminalConfigurationResponse](../../models/operations/getterminalconfigurationresponse.md)\>**
 
 ### Errors
 
-| Error Type          | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.GenericError | 400, 409            | application/json    |
-| errors.APIError     | 4XX, 5XX            | \*/\*               |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.APIError | 4XX, 5XX        | \*/\*           |

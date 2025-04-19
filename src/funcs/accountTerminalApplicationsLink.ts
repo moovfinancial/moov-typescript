@@ -3,7 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -18,24 +18,27 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Fetch a specific terminal application.
+ * Link an account with a terminal application.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/terminal-applications.read` scope.
+ * you'll need to specify the `/accounts/{accountID}/terminal-applications.write` scope.
  */
-export function terminalApplicationsGet(
+export function accountTerminalApplicationsLink(
   client: MoovCore,
-  request: operations.GetTerminalApplicationRequest,
+  request: operations.LinkAccountTerminalApplicationRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetTerminalApplicationResponse,
+    operations.LinkAccountTerminalApplicationResponse,
+    | errors.GenericError
+    | errors.AccountTerminalApplicationError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -54,12 +57,14 @@ export function terminalApplicationsGet(
 
 async function $do(
   client: MoovCore,
-  request: operations.GetTerminalApplicationRequest,
+  request: operations.LinkAccountTerminalApplicationRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetTerminalApplicationResponse,
+      operations.LinkAccountTerminalApplicationResponse,
+      | errors.GenericError
+      | errors.AccountTerminalApplicationError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -74,28 +79,32 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.GetTerminalApplicationRequest$outboundSchema.parse(value),
+      operations.LinkAccountTerminalApplicationRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.LinkAccountTerminalApplication, {
+    explode: true,
+  });
 
   const pathParams = {
-    terminalApplicationID: encodeSimple(
-      "terminalApplicationID",
-      payload.terminalApplicationID,
-      { explode: false, charEncoding: "percent" },
-    ),
+    accountID: encodeSimple("accountID", payload.accountID, {
+      explode: false,
+      charEncoding: "percent",
+    }),
   };
 
-  const path = pathToFunc("/terminal-applications/{terminalApplicationID}")(
+  const path = pathToFunc("/accounts/{accountID}/terminal-applications")(
     pathParams,
   );
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
     "x-moov-version": encodeSimple(
       "x-moov-version",
@@ -109,7 +118,7 @@ async function $do(
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "getTerminalApplication",
+    operationID: "linkAccountTerminalApplication",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -123,7 +132,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -137,7 +146,19 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "403", "404", "429", "4XX", "500", "504", "5XX"],
+    errorCodes: [
+      "400",
+      "401",
+      "403",
+      "404",
+      "409",
+      "422",
+      "429",
+      "4XX",
+      "500",
+      "504",
+      "5XX",
+    ],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -151,7 +172,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetTerminalApplicationResponse,
+    operations.LinkAccountTerminalApplicationResponse,
+    | errors.GenericError
+    | errors.AccountTerminalApplicationError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -160,9 +183,14 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetTerminalApplicationResponse$inboundSchema, {
+    M.json(
+      200,
+      operations.LinkAccountTerminalApplicationResponse$inboundSchema,
+      { hdrs: true, key: "Result" },
+    ),
+    M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr(422, errors.AccountTerminalApplicationError$inboundSchema, {
       hdrs: true,
-      key: "Result",
     }),
     M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),

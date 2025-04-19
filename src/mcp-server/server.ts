@@ -22,6 +22,10 @@ import { tool$accountsGetMerchantProcessingAgreement } from "./tools/accountsGet
 import { tool$accountsGetTermsOfServiceToken } from "./tools/accountsGetTermsOfServiceToken.js";
 import { tool$accountsList } from "./tools/accountsList.js";
 import { tool$accountsUpdate } from "./tools/accountsUpdate.js";
+import { tool$accountTerminalApplicationsGet } from "./tools/accountTerminalApplicationsGet.js";
+import { tool$accountTerminalApplicationsGetConfiguration } from "./tools/accountTerminalApplicationsGetConfiguration.js";
+import { tool$accountTerminalApplicationsLink } from "./tools/accountTerminalApplicationsLink.js";
+import { tool$accountTerminalApplicationsList } from "./tools/accountTerminalApplicationsList.js";
 import { tool$adjustmentsGet } from "./tools/adjustmentsGet.js";
 import { tool$adjustmentsList } from "./tools/adjustmentsList.js";
 import { tool$applePayCreateSession } from "./tools/applePayCreateSession.js";
@@ -127,7 +131,6 @@ import { tool$terminalApplicationsCreate } from "./tools/terminalApplicationsCre
 import { tool$terminalApplicationsDelete } from "./tools/terminalApplicationsDelete.js";
 import { tool$terminalApplicationsGet } from "./tools/terminalApplicationsGet.js";
 import { tool$terminalApplicationsList } from "./tools/terminalApplicationsList.js";
-import { tool$terminalConfigurationsGet } from "./tools/terminalConfigurationsGet.js";
 import { tool$transfersCreate } from "./tools/transfersCreate.js";
 import { tool$transfersCreateCancellation } from "./tools/transfersCreateCancellation.js";
 import { tool$transfersCreateReversal } from "./tools/transfersCreateReversal.js";
@@ -157,7 +160,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.10.12",
+    version: "0.10.13",
   });
 
   const client = new MoovCore({
@@ -272,7 +275,10 @@ export function createMCPServer(deps: {
   tool(tool$sweepsUpdateConfig);
   tool(tool$sweepsList);
   tool(tool$sweepsGet);
-  tool(tool$terminalConfigurationsGet);
+  tool(tool$accountTerminalApplicationsLink);
+  tool(tool$accountTerminalApplicationsList);
+  tool(tool$accountTerminalApplicationsGet);
+  tool(tool$accountTerminalApplicationsGetConfiguration);
   tool(tool$transfersCreate);
   tool(tool$transfersList);
   tool(tool$transfersGet);

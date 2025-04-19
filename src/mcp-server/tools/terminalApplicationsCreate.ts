@@ -15,7 +15,7 @@ export const tool$terminalApplicationsCreate: ToolDefinition<typeof args> = {
   description: `Create a new terminal application.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the \`/terminalApplications.write\` scope.`,
+you'll need to specify the \`/terminal-applications.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await terminalApplicationsCreate(

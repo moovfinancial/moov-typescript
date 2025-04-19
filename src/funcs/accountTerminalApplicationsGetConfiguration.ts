@@ -24,18 +24,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Fetch a specific terminal application.
+ * Fetch the configuration for a given Terminal Application linked to a specific Account.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/terminal-applications.read` scope.
+ * you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` scope.
  */
-export function terminalApplicationsGet(
+export function accountTerminalApplicationsGetConfiguration(
   client: MoovCore,
-  request: operations.GetTerminalApplicationRequest,
+  request: operations.GetTerminalConfigurationRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetTerminalApplicationResponse,
+    operations.GetTerminalConfigurationResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -54,12 +54,12 @@ export function terminalApplicationsGet(
 
 async function $do(
   client: MoovCore,
-  request: operations.GetTerminalApplicationRequest,
+  request: operations.GetTerminalConfigurationRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetTerminalApplicationResponse,
+      operations.GetTerminalConfigurationResponse,
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -74,7 +74,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.GetTerminalApplicationRequest$outboundSchema.parse(value),
+      operations.GetTerminalConfigurationRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -84,6 +84,10 @@ async function $do(
   const body = null;
 
   const pathParams = {
+    accountID: encodeSimple("accountID", payload.accountID, {
+      explode: false,
+      charEncoding: "percent",
+    }),
     terminalApplicationID: encodeSimple(
       "terminalApplicationID",
       payload.terminalApplicationID,
@@ -91,9 +95,9 @@ async function $do(
     ),
   };
 
-  const path = pathToFunc("/terminal-applications/{terminalApplicationID}")(
-    pathParams,
-  );
+  const path = pathToFunc(
+    "/accounts/{accountID}/terminal-applications/{terminalApplicationID}/configuration",
+  )(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -109,7 +113,7 @@ async function $do(
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "getTerminalApplication",
+    operationID: "getTerminalConfiguration",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -151,7 +155,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetTerminalApplicationResponse,
+    operations.GetTerminalConfigurationResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -160,7 +164,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetTerminalApplicationResponse$inboundSchema, {
+    M.json(200, operations.GetTerminalConfigurationResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),

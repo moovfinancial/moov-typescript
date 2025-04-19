@@ -6,8 +6,8 @@
 import { GetTerminalConfigurationRequest } from "@moovio/sdk/models/operations";
 
 let value: GetTerminalConfigurationRequest = {
-  accountID: "931b86a9-f1a1-4fa7-8117-59fd3ce35fb4",
-  terminalApplicationID: "01234567-89ab-cdef-0123-456789abcdef",
+  accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
+  terminalApplicationID: "12345678-1234-1234-1234-123456789012",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetTerminalConfigurationRequest = {
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `accountID`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |                                      |
-| `terminalApplicationID`              | *string*                             | :heavy_check_mark:                   | N/A                                  | 01234567-89ab-cdef-0123-456789abcdef |
+| `accountID`                          | *string*                             | :heavy_check_mark:                   | N/A                                  | 76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e |
+| `terminalApplicationID`              | *string*                             | :heavy_check_mark:                   | N/A                                  | 12345678-1234-1234-1234-123456789012 |

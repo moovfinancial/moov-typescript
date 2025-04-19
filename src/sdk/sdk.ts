@@ -4,6 +4,7 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Accounts } from "./accounts.js";
+import { AccountTerminalApplications } from "./accountterminalapplications.js";
 import { Adjustments } from "./adjustments.js";
 import { ApplePay } from "./applepay.js";
 import { Authentication } from "./authentication.js";
@@ -31,7 +32,6 @@ import { Representatives } from "./representatives.js";
 import { Scheduling } from "./scheduling.js";
 import { Sweeps } from "./sweeps.js";
 import { TerminalApplications } from "./terminalapplications.js";
-import { TerminalConfigurations } from "./terminalconfigurations.js";
 import { Transfers } from "./transfers.js";
 import { Underwriting } from "./underwriting.js";
 import { Wallets } from "./wallets.js";
@@ -113,11 +113,10 @@ export class Moov extends ClientSDK {
     return (this._sweeps ??= new Sweeps(this._options));
   }
 
-  private _terminalConfigurations?: TerminalConfigurations;
-  get terminalConfigurations(): TerminalConfigurations {
-    return (this._terminalConfigurations ??= new TerminalConfigurations(
-      this._options,
-    ));
+  private _accountTerminalApplications?: AccountTerminalApplications;
+  get accountTerminalApplications(): AccountTerminalApplications {
+    return (this._accountTerminalApplications ??=
+      new AccountTerminalApplications(this._options));
   }
 
   private _transfers?: Transfers;

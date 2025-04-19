@@ -1,11 +1,11 @@
-# CreateTerminalApplicationResponse
+# LinkAccountTerminalApplicationResponse
 
 ## Example Usage
 
 ```typescript
-import { CreateTerminalApplicationResponse } from "@moovio/sdk/models/operations";
+import { LinkAccountTerminalApplicationResponse } from "@moovio/sdk/models/operations";
 
-let value: CreateTerminalApplicationResponse = {
+let value: LinkAccountTerminalApplicationResponse = {
   headers: {
     "key": [
       "<value>",

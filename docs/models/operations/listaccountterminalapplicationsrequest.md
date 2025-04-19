@@ -1,12 +1,12 @@
-# DeleteTerminalApplicationRequest
+# ListAccountTerminalApplicationsRequest
 
 ## Example Usage
 
 ```typescript
-import { DeleteTerminalApplicationRequest } from "@moovio/sdk/models/operations";
+import { ListAccountTerminalApplicationsRequest } from "@moovio/sdk/models/operations";
 
-let value: DeleteTerminalApplicationRequest = {
-  terminalApplicationID: "12345678-1234-1234-1234-123456789012",
+let value: ListAccountTerminalApplicationsRequest = {
+  accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: DeleteTerminalApplicationRequest = {
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `terminalApplicationID`              | *string*                             | :heavy_check_mark:                   | N/A                                  | 12345678-1234-1234-1234-123456789012 |
+| `accountID`                          | *string*                             | :heavy_check_mark:                   | N/A                                  | 76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e |
