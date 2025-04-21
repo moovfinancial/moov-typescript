@@ -6,13 +6,15 @@ sources:
         sourceBlobDigest: sha256:4e287db9fcb7b46f86a2aa5b74d7f8fefba6829770365bbe3fcbe06a5b35fd57
         tags:
             - latest
-            - speakeasy-sdk-regen-1745022445
+            - speakeasy-sdk-regen-1745260539
 targets:
     moov:
         source: latest
         sourceNamespace: api-latest
         sourceRevisionDigest: sha256:d666c9cb0f4f4f84eda6726995ea4e2b524ed4cab4748df3e94f2f7d75f1f057
         sourceBlobDigest: sha256:4e287db9fcb7b46f86a2aa5b74d7f8fefba6829770365bbe3fcbe06a5b35fd57
+        codeSamplesNamespace: latest-ts-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:ce8578d88acae9ed8fc14a26945108f0d76303614d2a2888419ca595953747ef
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -20,6 +22,8 @@ workflow:
         latest:
             inputs:
                 - location: registry.speakeasyapi.dev/moov/moov/api-latest
+            registry:
+                location: registry.speakeasyapi.dev/moov/moov/latest
     targets:
         moov:
             target: typescript
@@ -27,3 +31,9 @@ workflow:
             publish:
                 npm:
                     token: $npm_token
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/moov/moov/latest-ts-typescript-code-samples
+                labelOverride:
+                    fixedValue: Typescript (SDK)
+                blocking: false
