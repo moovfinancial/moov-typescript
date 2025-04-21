@@ -4,6 +4,8 @@ sources:
     latest:
         inputs:
             - location: registry.speakeasyapi.dev/moov/moov/api-latest
+        registry:
+            location: registry.speakeasyapi.dev/moov/moov/latest
 targets:
     moov:
         target: typescript
