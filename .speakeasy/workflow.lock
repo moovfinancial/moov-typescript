@@ -1,13 +1,20 @@
-speakeasyVersion: 1.535.1
+speakeasyVersion: 1.537.0
 sources:
     latest:
         sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:d666c9cb0f4f4f84eda6726995ea4e2b524ed4cab4748df3e94f2f7d75f1f057
+        sourceRevisionDigest: sha256:1941d06d5c87956551bffb0ae7d4236f4e642176ea124d6c625db35610f0cf87
         sourceBlobDigest: sha256:4e287db9fcb7b46f86a2aa5b74d7f8fefba6829770365bbe3fcbe06a5b35fd57
         tags:
             - latest
-            - speakeasy-sdk-regen-1745260539
+            - speakeasy-sdk-regen-1745335002
 targets:
+    latest:
+        source: latest
+        sourceNamespace: api-latest
+        sourceRevisionDigest: sha256:1941d06d5c87956551bffb0ae7d4236f4e642176ea124d6c625db35610f0cf87
+        sourceBlobDigest: sha256:4e287db9fcb7b46f86a2aa5b74d7f8fefba6829770365bbe3fcbe06a5b35fd57
+        codeSamplesNamespace: latest-ts-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:2c8df6c47a2690ebff81322188cdfdf1f1635143e23c0c3b14036897c8544d72
     moov:
         source: latest
         sourceNamespace: api-latest
@@ -25,7 +32,7 @@ workflow:
             registry:
                 location: registry.speakeasyapi.dev/moov/moov/latest
     targets:
-        moov:
+        latest:
             target: typescript
             source: latest
             publish:
