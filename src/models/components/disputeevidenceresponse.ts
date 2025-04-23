@@ -34,6 +34,10 @@ export type DisputeEvidenceResponse = {
   size?: number | undefined;
   createdOn: Date;
   updatedOn: Date;
+  /**
+   * When the evidence was submitted for review.
+   */
+  submittedOn?: Date | undefined;
 };
 
 /** @internal */
@@ -51,6 +55,8 @@ export const DisputeEvidenceResponse$inboundSchema: z.ZodType<
   size: z.number().int().optional(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  submittedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
 });
 
 /** @internal */
@@ -64,6 +70,7 @@ export type DisputeEvidenceResponse$Outbound = {
   size?: number | undefined;
   createdOn: string;
   updatedOn: string;
+  submittedOn?: string | undefined;
 };
 
 /** @internal */
@@ -81,6 +88,7 @@ export const DisputeEvidenceResponse$outboundSchema: z.ZodType<
   size: z.number().int().optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
+  submittedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
 /**
