@@ -63,6 +63,7 @@ export type Dispute = {
    */
   phase: DisputePhase;
   createdOn: Date;
+  submittedOn?: Date | undefined;
 };
 
 /** @internal */
@@ -82,6 +83,9 @@ export const Dispute$inboundSchema: z.ZodType<Dispute, z.ZodTypeDef, unknown> =
     createdOn: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),
+    submittedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
   });
 
 /** @internal */
@@ -96,6 +100,7 @@ export type Dispute$Outbound = {
   status: string;
   phase: string;
   createdOn: string;
+  submittedOn?: string | undefined;
 };
 
 /** @internal */
@@ -114,6 +119,7 @@ export const Dispute$outboundSchema: z.ZodType<
   status: DisputeStatus$outboundSchema,
   phase: DisputePhase$outboundSchema,
   createdOn: z.date().transform(v => v.toISOString()),
+  submittedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
 /**
