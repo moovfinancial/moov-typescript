@@ -139,7 +139,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["4XX", "5XX"],
+    errorCodes: ["401", "403", "404", "429", "4XX", "500", "504", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -165,6 +165,8 @@ async function $do(
     M.nil(204, operations.DisablePaymentLinkResponse$inboundSchema.optional(), {
       hdrs: true,
     }),
+    M.fail([401, 403, 404, 429]),
+    M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
