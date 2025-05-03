@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: fb4d14060428a3071041bd3e6b477e96
+  docChecksum: 3f040d10b760fcb879b6cda2705ddefe
   docVersion: latest
-  speakeasyVersion: 1.541.2
-  generationVersion: 2.595.4
-  releaseVersion: 0.11.1
-  configChecksum: 4ba11920a69f9d1dd9e0082c1e67f14e
+  speakeasyVersion: 1.542.0
+  generationVersion: 2.596.2
+  releaseVersion: 0.11.2
+  configChecksum: 3efb05d60f4dbba0268be7b42c1eb8c5
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
