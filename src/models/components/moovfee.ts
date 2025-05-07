@@ -27,7 +27,7 @@ export type MoovFee = {
    */
   accountID: string;
   /**
-   * Indicates whether the account charged is the source, destination, or partner account.
+   * Indicates whether the account charged was the partner, source, or destination of the transfer.
    */
   transferParty: TransferParty;
   /**

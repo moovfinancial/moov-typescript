@@ -5,17 +5,11 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
-/**
- * Indicates whether an account was the source or destination of a transfer.
- */
 export const TransferParty = {
   Source: "source",
   Destination: "destination",
   Partner: "partner",
 } as const;
-/**
- * Indicates whether an account was the source or destination of a transfer.
- */
 export type TransferParty = ClosedEnum<typeof TransferParty>;
 
 /** @internal */
