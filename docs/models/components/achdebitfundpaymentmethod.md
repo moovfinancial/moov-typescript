@@ -13,7 +13,7 @@ let value: AchDebitFundPaymentMethod = {
     fingerprint: "<value>",
     status: "errored",
     holderName: "<value>",
-    holderType: "individual",
+    holderType: "business",
     bankName: "<value>",
     bankAccountType: "savings",
     routingNumber: "<value>",

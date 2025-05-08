@@ -13,7 +13,7 @@ let value: RtpCreditPaymentMethod = {
     fingerprint: "<value>",
     status: "verificationFailed",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "guest",
     bankName: "<value>",
     bankAccountType: "general-ledger",
     routingNumber: "<value>",

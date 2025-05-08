@@ -59,6 +59,14 @@ export type ListAccountsRequest = {
    */
   type?: components.AccountType | undefined;
   /**
+   *   Filter accounts with AccountType guest.
+   *
+   * @remarks
+   *
+   *   If true, the response will include guest accounts.
+   */
+  includeGuest?: boolean | undefined;
+  /**
    *   Serves as an optional alias from a foreign/external system which can be used to reference this resource.
    */
   foreignID?: string | undefined;
@@ -158,6 +166,7 @@ export const ListAccountsRequest$inboundSchema: z.ZodType<
   name: z.string().optional(),
   email: z.string().optional(),
   type: components.AccountType$inboundSchema.optional(),
+  includeGuest: z.boolean().optional(),
   foreignID: z.string().optional(),
   includeDisconnected: z.boolean().optional(),
   capability: components.CapabilityID$inboundSchema.optional(),
@@ -171,6 +180,7 @@ export type ListAccountsRequest$Outbound = {
   name?: string | undefined;
   email?: string | undefined;
   type?: string | undefined;
+  includeGuest?: boolean | undefined;
   foreignID?: string | undefined;
   includeDisconnected?: boolean | undefined;
   capability?: string | undefined;
@@ -188,6 +198,7 @@ export const ListAccountsRequest$outboundSchema: z.ZodType<
   name: z.string().optional(),
   email: z.string().optional(),
   type: components.AccountType$outboundSchema.optional(),
+  includeGuest: z.boolean().optional(),
   foreignID: z.string().optional(),
   includeDisconnected: z.boolean().optional(),
   capability: components.CapabilityID$outboundSchema.optional(),

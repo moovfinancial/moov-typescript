@@ -13,7 +13,7 @@ let value: AchCreditSameDayPaymentMethod = {
     fingerprint: "<value>",
     status: "verified",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "guest",
     bankName: "<value>",
     bankAccountType: "savings",
     routingNumber: "<value>",

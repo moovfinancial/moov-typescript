@@ -13,5 +13,5 @@ let value: AccountType = "business";
 ## Values
 
 ```typescript
-"individual" | "business"
+"individual" | "business" | "guest"
 ```

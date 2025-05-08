@@ -19,7 +19,7 @@ let value: GetPaymentMethodResponse = {
       fingerprint: "<value>",
       status: "verified",
       holderName: "<value>",
-      holderType: "individual",
+      holderType: "business",
       bankName: "<value>",
       bankAccountType: "checking",
       routingNumber: "<value>",
