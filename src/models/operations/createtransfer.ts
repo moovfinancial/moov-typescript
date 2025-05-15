@@ -39,7 +39,7 @@ export type CreateTransferRequest = {
    */
   xWaitFor?: components.TransferWaitFor | undefined;
   /**
-   * The merchant's Moov account ID.
+   * Your Moov account ID.
    */
   accountID: string;
   createTransfer: components.CreateTransfer;
