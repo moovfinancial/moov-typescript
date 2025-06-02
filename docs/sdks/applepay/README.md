@@ -64,7 +64,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.applePay.registerMerchantDomains({
-    accountID: "c62b8770-bdbc-406f-8160-fddb553f5b33",
+    accountID: "60825531-8c7e-421c-8014-019c6603250c",
     registerApplePayMerchantDomains: {
       domains: [
         "checkout.classbooker.dev",
@@ -98,7 +98,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await applePayRegisterMerchantDomains(moov, {
-    accountID: "c62b8770-bdbc-406f-8160-fddb553f5b33",
+    accountID: "60825531-8c7e-421c-8014-019c6603250c",
     registerApplePayMerchantDomains: {
       domains: [
         "checkout.classbooker.dev",
@@ -163,7 +163,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.applePay.updateMerchantDomains({
-    accountID: "4dfea880-7ff8-42f8-bc8d-392cba179113",
+    accountID: "34b1c132-91d4-4676-9864-87e1d961d56d",
     updateApplePayMerchantDomains: {
       addDomains: [
         "pay.classbooker.dev",
@@ -200,7 +200,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await applePayUpdateMerchantDomains(moov, {
-    accountID: "4dfea880-7ff8-42f8-bc8d-392cba179113",
+    accountID: "34b1c132-91d4-4676-9864-87e1d961d56d",
     updateApplePayMerchantDomains: {
       addDomains: [
         "pay.classbooker.dev",
@@ -267,7 +267,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.applePay.getMerchantDomains({
-    accountID: "5f873241-11ec-45e4-929d-00a704a9b582",
+    accountID: "28704d00-d07b-47db-9e54-016a9713d697",
   });
 
   // Handle the result
@@ -296,7 +296,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await applePayGetMerchantDomains(moov, {
-    accountID: "5f873241-11ec-45e4-929d-00a704a9b582",
+    accountID: "28704d00-d07b-47db-9e54-016a9713d697",
   });
 
   if (!res.ok) {
@@ -355,10 +355,10 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.applePay.createSession({
-    accountID: "7f4bef45-927c-48cf-9312-d337467ac9fb",
+    accountID: "32ab62ca-7afd-4f49-89cb-0bb237258f23",
     createApplePaySession: {
       domain: "checkout.classbooker.dev",
-      displayName: "Kaylee40",
+      displayName: "Fay11",
     },
   });
 
@@ -388,10 +388,10 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await applePayCreateSession(moov, {
-    accountID: "7f4bef45-927c-48cf-9312-d337467ac9fb",
+    accountID: "32ab62ca-7afd-4f49-89cb-0bb237258f23",
     createApplePaySession: {
       domain: "checkout.classbooker.dev",
-      displayName: "Kaylee40",
+      displayName: "Fay11",
     },
   });
 
@@ -452,7 +452,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.applePay.linkToken({
-    accountID: "3f415d64-c57f-409e-80d0-cb8bd8246ace",
+    accountID: "bf498c07-3852-4060-b561-bf992e26a851",
     linkApplePay: {
       token: {
         paymentData: {
@@ -510,7 +510,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await applePayLinkToken(moov, {
-    accountID: "3f415d64-c57f-409e-80d0-cb8bd8246ace",
+    accountID: "bf498c07-3852-4060-b561-bf992e26a851",
     linkApplePay: {
       token: {
         paymentData: {

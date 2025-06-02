@@ -34,12 +34,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.receipts.create([
-    {
-      kind: "sale.customer.v1",
-      email: "jordan.lee@classbooker.dev",
-    },
-  ]);
+  const result = await moov.receipts.create([]);
 
   // Handle the result
   console.log(result);
@@ -66,12 +61,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await receiptsCreate(moov, [
-    {
-      kind: "sale.customer.v1",
-      email: "jordan.lee@classbooker.dev",
-    },
-  ]);
+  const res = await receiptsCreate(moov, []);
 
   if (!res.ok) {
     throw res.error;
@@ -127,7 +117,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.receipts.list({
-    id: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+    id: "8508cf6c-9ce4-4e35-84c1-4b77320a620b",
   });
 
   // Handle the result
@@ -156,7 +146,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await receiptsList(moov, {
-    id: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+    id: "8508cf6c-9ce4-4e35-84c1-4b77320a620b",
   });
 
   if (!res.ok) {

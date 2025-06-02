@@ -187,92 +187,10 @@ async function run() {
   const result = await moov.accounts.create({
     accountType: "business",
     profile: {
-      individual: {
-        name: {
-          firstName: "Jordan",
-          middleName: "Reese",
-          lastName: "Lee",
-          suffix: "Jr",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
-      },
       business: {
-        legalBusinessName: "Classbooker, LLC",
-        businessType: "llc",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        description: "Local fitness gym paying out instructors",
-        taxID: {
-          ein: {
-            number: "12-3456789",
-          },
-        },
-        industryCodes: {
-          naics: "713940",
-          sic: "7991",
-          mcc: "7997",
-        },
+        legalBusinessName: "Whole Body Fitness LLC",
       },
     },
-    metadata: {
-      "optional": "metadata",
-    },
-    termsOfService: {
-      token:
-        "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
-    },
-    customerSupport: {
-      phone: {
-        number: "8185551212",
-        countryCode: "1",
-      },
-      email: "jordan.lee@classbooker.dev",
-      address: {
-        addressLine1: "123 Main Street",
-        addressLine2: "Apt 302",
-        city: "Boulder",
-        stateOrProvince: "CO",
-        postalCode: "80301",
-        country: "US",
-      },
-    },
-    settings: {
-      cardPayment: {
-        statementDescriptor: "Whole Body Fitness",
-      },
-      achPayment: {
-        companyName: "WholeBodyFitness",
-      },
-    },
-    mode: "production",
   });
 
   // Handle the result
@@ -310,92 +228,10 @@ async function run() {
   const result = await moov.accounts.create({
     accountType: "business",
     profile: {
-      individual: {
-        name: {
-          firstName: "Jordan",
-          middleName: "Reese",
-          lastName: "Lee",
-          suffix: "Jr",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
-      },
       business: {
-        legalBusinessName: "Classbooker, LLC",
-        businessType: "llc",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        description: "Local fitness gym paying out instructors",
-        taxID: {
-          ein: {
-            number: "12-3456789",
-          },
-        },
-        industryCodes: {
-          naics: "713940",
-          sic: "7991",
-          mcc: "7997",
-        },
+        legalBusinessName: "Whole Body Fitness LLC",
       },
     },
-    metadata: {
-      "optional": "metadata",
-    },
-    termsOfService: {
-      token:
-        "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
-    },
-    customerSupport: {
-      phone: {
-        number: "8185551212",
-        countryCode: "1",
-      },
-      email: "jordan.lee@classbooker.dev",
-      address: {
-        addressLine1: "123 Main Street",
-        addressLine2: "Apt 302",
-        city: "Boulder",
-        stateOrProvince: "CO",
-        postalCode: "80301",
-        country: "US",
-      },
-    },
-    settings: {
-      cardPayment: {
-        statementDescriptor: "Whole Body Fitness",
-      },
-      achPayment: {
-        companyName: "WholeBodyFitness",
-      },
-    },
-    mode: "production",
   });
 
   // Handle the result
@@ -912,9 +748,9 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
 ### [industries](docs/sdks/industries/README.md)
 
-* [list](docs/sdks/industries/README.md#list) - Returns a list of all industry titles and their corresponding MCC/SIC/NAICS codes. Results are ordered by title.    
+* [list](docs/sdks/industries/README.md#list) - Returns a list of industries relevant to merchant profile enrichment.  Results are ordered by industry name.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
 you'll need to specify the `/profile-enrichment.read` scope.
 
 ### [institutions](docs/sdks/institutions/README.md)
@@ -1718,9 +1554,9 @@ and png.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/files.write` scope.
-- [`industriesList`](docs/sdks/industries/README.md#list) - Returns a list of all industry titles and their corresponding MCC/SIC/NAICS codes. Results are ordered by title.    
+- [`industriesList`](docs/sdks/industries/README.md#list) - Returns a list of industries relevant to merchant profile enrichment.  Results are ordered by industry name.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
 you'll need to specify the `/profile-enrichment.read` scope.
 - [`institutionsSearch`](docs/sdks/institutions/README.md#search) - Search for institutions by either their name or routing number.
 
@@ -2044,11 +1880,11 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.disputes.uploadEvidenceFile({
-    accountID: "190d267b-ea77-4231-9939-ba89cb7df82b",
-    disputeID: "94aabddc-d855-40e6-ab0a-1e547e0dcc9d",
+    accountID: "c09fd2f8-75fb-4ed9-be03-f8565d3ddc67",
+    disputeID: "ad27f84d-00b1-4db0-8cf5-be001d71251d",
     createEvidenceFileMultiPart: {
       file: await openAsBlob("example.file"),
-      evidenceType: "customer-communication",
+      evidenceType: "cancelation-policy",
     },
   });
 
@@ -2081,92 +1917,10 @@ async function run() {
   const result = await moov.accounts.create({
     accountType: "business",
     profile: {
-      individual: {
-        name: {
-          firstName: "Jordan",
-          middleName: "Reese",
-          lastName: "Lee",
-          suffix: "Jr",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
-      },
       business: {
-        legalBusinessName: "Classbooker, LLC",
-        businessType: "llc",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        description: "Local fitness gym paying out instructors",
-        taxID: {
-          ein: {
-            number: "12-3456789",
-          },
-        },
-        industryCodes: {
-          naics: "713940",
-          sic: "7991",
-          mcc: "7997",
-        },
+        legalBusinessName: "Whole Body Fitness LLC",
       },
     },
-    metadata: {
-      "optional": "metadata",
-    },
-    termsOfService: {
-      token:
-        "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
-    },
-    customerSupport: {
-      phone: {
-        number: "8185551212",
-        countryCode: "1",
-      },
-      email: "jordan.lee@classbooker.dev",
-      address: {
-        addressLine1: "123 Main Street",
-        addressLine2: "Apt 302",
-        city: "Boulder",
-        stateOrProvince: "CO",
-        postalCode: "80301",
-        country: "US",
-      },
-    },
-    settings: {
-      cardPayment: {
-        statementDescriptor: "Whole Body Fitness",
-      },
-      achPayment: {
-        companyName: "WholeBodyFitness",
-      },
-    },
-    mode: "production",
   }, {
     retries: {
       strategy: "backoff",
@@ -2213,92 +1967,10 @@ async function run() {
   const result = await moov.accounts.create({
     accountType: "business",
     profile: {
-      individual: {
-        name: {
-          firstName: "Jordan",
-          middleName: "Reese",
-          lastName: "Lee",
-          suffix: "Jr",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
-      },
       business: {
-        legalBusinessName: "Classbooker, LLC",
-        businessType: "llc",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        description: "Local fitness gym paying out instructors",
-        taxID: {
-          ein: {
-            number: "12-3456789",
-          },
-        },
-        industryCodes: {
-          naics: "713940",
-          sic: "7991",
-          mcc: "7997",
-        },
+        legalBusinessName: "Whole Body Fitness LLC",
       },
     },
-    metadata: {
-      "optional": "metadata",
-    },
-    termsOfService: {
-      token:
-        "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
-    },
-    customerSupport: {
-      phone: {
-        number: "8185551212",
-        countryCode: "1",
-      },
-      email: "jordan.lee@classbooker.dev",
-      address: {
-        addressLine1: "123 Main Street",
-        addressLine2: "Apt 302",
-        city: "Boulder",
-        stateOrProvince: "CO",
-        postalCode: "80301",
-        country: "US",
-      },
-    },
-    settings: {
-      cardPayment: {
-        statementDescriptor: "Whole Body Fitness",
-      },
-      achPayment: {
-        companyName: "WholeBodyFitness",
-      },
-    },
-    mode: "production",
   });
 
   // Handle the result
@@ -2344,92 +2016,10 @@ async function run() {
     result = await moov.accounts.create({
       accountType: "business",
       profile: {
-        individual: {
-          name: {
-            firstName: "Jordan",
-            middleName: "Reese",
-            lastName: "Lee",
-            suffix: "Jr",
-          },
-          phone: {
-            number: "8185551212",
-            countryCode: "1",
-          },
-          email: "jordan.lee@classbooker.dev",
-          address: {
-            addressLine1: "123 Main Street",
-            addressLine2: "Apt 302",
-            city: "Boulder",
-            stateOrProvince: "CO",
-            postalCode: "80301",
-            country: "US",
-          },
-          birthDate: {
-            day: 9,
-            month: 11,
-            year: 1989,
-          },
-        },
         business: {
-          legalBusinessName: "Classbooker, LLC",
-          businessType: "llc",
-          address: {
-            addressLine1: "123 Main Street",
-            addressLine2: "Apt 302",
-            city: "Boulder",
-            stateOrProvince: "CO",
-            postalCode: "80301",
-            country: "US",
-          },
-          phone: {
-            number: "8185551212",
-            countryCode: "1",
-          },
-          email: "jordan.lee@classbooker.dev",
-          description: "Local fitness gym paying out instructors",
-          taxID: {
-            ein: {
-              number: "12-3456789",
-            },
-          },
-          industryCodes: {
-            naics: "713940",
-            sic: "7991",
-            mcc: "7997",
-          },
+          legalBusinessName: "Whole Body Fitness LLC",
         },
       },
-      metadata: {
-        "optional": "metadata",
-      },
-      termsOfService: {
-        token:
-          "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
-      },
-      customerSupport: {
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-      },
-      settings: {
-        cardPayment: {
-          statementDescriptor: "Whole Body Fitness",
-        },
-        achPayment: {
-          companyName: "WholeBodyFitness",
-        },
-      },
-      mode: "production",
     });
 
     // Handle the result
@@ -2500,92 +2090,10 @@ async function run() {
   const result = await moov.accounts.create({
     accountType: "business",
     profile: {
-      individual: {
-        name: {
-          firstName: "Jordan",
-          middleName: "Reese",
-          lastName: "Lee",
-          suffix: "Jr",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
-      },
       business: {
-        legalBusinessName: "Classbooker, LLC",
-        businessType: "llc",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        description: "Local fitness gym paying out instructors",
-        taxID: {
-          ein: {
-            number: "12-3456789",
-          },
-        },
-        industryCodes: {
-          naics: "713940",
-          sic: "7991",
-          mcc: "7997",
-        },
+        legalBusinessName: "Whole Body Fitness LLC",
       },
     },
-    metadata: {
-      "optional": "metadata",
-    },
-    termsOfService: {
-      token:
-        "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
-    },
-    customerSupport: {
-      phone: {
-        number: "8185551212",
-        countryCode: "1",
-      },
-      email: "jordan.lee@classbooker.dev",
-      address: {
-        addressLine1: "123 Main Street",
-        addressLine2: "Apt 302",
-        city: "Boulder",
-        stateOrProvince: "CO",
-        postalCode: "80301",
-        country: "US",
-      },
-    },
-    settings: {
-      cardPayment: {
-        statementDescriptor: "Whole Body Fitness",
-      },
-      achPayment: {
-        companyName: "WholeBodyFitness",
-      },
-    },
-    mode: "production",
   });
 
   // Handle the result

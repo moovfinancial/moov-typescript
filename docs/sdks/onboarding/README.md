@@ -55,94 +55,10 @@ async function run() {
     prefill: {
       accountType: "business",
       profile: {
-        individual: {
-          name: {
-            firstName: "Jordan",
-            middleName: "Reese",
-            lastName: "Lee",
-            suffix: "Jr",
-          },
-          phone: {
-            number: "8185551212",
-            countryCode: "1",
-          },
-          email: "jordan.lee@classbooker.dev",
-          address: {
-            addressLine1: "123 Main Street",
-            addressLine2: "Apt 302",
-            city: "Boulder",
-            stateOrProvince: "CO",
-            postalCode: "80301",
-            country: "US",
-          },
-          birthDate: {
-            day: 9,
-            month: 11,
-            year: 1989,
-          },
-        },
         business: {
-          legalBusinessName: "Classbooker, LLC",
-          businessType: "llc",
-          address: {
-            addressLine1: "123 Main Street",
-            addressLine2: "Apt 302",
-            city: "Boulder",
-            stateOrProvince: "CO",
-            postalCode: "80301",
-            country: "US",
-          },
-          phone: {
-            number: "8185551212",
-            countryCode: "1",
-          },
-          email: "jordan.lee@classbooker.dev",
-          description: "Local fitness gym paying out instructors",
-          taxID: {
-            ein: {
-              number: "12-3456789",
-            },
-          },
-          industryCodes: {
-            naics: "713940",
-            sic: "7991",
-            mcc: "7997",
-          },
+          legalBusinessName: "Whole Body Fitness LLC",
         },
       },
-      metadata: {
-        "optional": "metadata",
-      },
-      termsOfService: {
-        acceptedDate: new Date("2024-12-17T23:29:29.246Z"),
-        acceptedIP: "172.217.2.46",
-        acceptedUserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36",
-        acceptedDomain: "https://odd-brace.biz/",
-      },
-      customerSupport: {
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-      },
-      settings: {
-        cardPayment: {
-          statementDescriptor: "Whole Body Fitness",
-        },
-        achPayment: {
-          companyName: "WholeBodyFitness",
-        },
-      },
-      mode: "production",
     },
   });
 
@@ -184,94 +100,10 @@ async function run() {
     prefill: {
       accountType: "business",
       profile: {
-        individual: {
-          name: {
-            firstName: "Jordan",
-            middleName: "Reese",
-            lastName: "Lee",
-            suffix: "Jr",
-          },
-          phone: {
-            number: "8185551212",
-            countryCode: "1",
-          },
-          email: "jordan.lee@classbooker.dev",
-          address: {
-            addressLine1: "123 Main Street",
-            addressLine2: "Apt 302",
-            city: "Boulder",
-            stateOrProvince: "CO",
-            postalCode: "80301",
-            country: "US",
-          },
-          birthDate: {
-            day: 9,
-            month: 11,
-            year: 1989,
-          },
-        },
         business: {
-          legalBusinessName: "Classbooker, LLC",
-          businessType: "llc",
-          address: {
-            addressLine1: "123 Main Street",
-            addressLine2: "Apt 302",
-            city: "Boulder",
-            stateOrProvince: "CO",
-            postalCode: "80301",
-            country: "US",
-          },
-          phone: {
-            number: "8185551212",
-            countryCode: "1",
-          },
-          email: "jordan.lee@classbooker.dev",
-          description: "Local fitness gym paying out instructors",
-          taxID: {
-            ein: {
-              number: "12-3456789",
-            },
-          },
-          industryCodes: {
-            naics: "713940",
-            sic: "7991",
-            mcc: "7997",
-          },
+          legalBusinessName: "Whole Body Fitness LLC",
         },
       },
-      metadata: {
-        "optional": "metadata",
-      },
-      termsOfService: {
-        acceptedDate: new Date("2024-12-17T23:29:29.246Z"),
-        acceptedIP: "172.217.2.46",
-        acceptedUserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36",
-        acceptedDomain: "https://odd-brace.biz/",
-      },
-      customerSupport: {
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-      },
-      settings: {
-        cardPayment: {
-          statementDescriptor: "Whole Body Fitness",
-        },
-        achPayment: {
-          companyName: "WholeBodyFitness",
-        },
-      },
-      mode: "production",
     },
   });
 

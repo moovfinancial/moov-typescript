@@ -37,7 +37,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.paymentMethods.list({
-    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+    accountID: "f5503781-dfe4-4bcd-9487-5b5fe2b4d53b",
   });
 
   // Handle the result
@@ -66,7 +66,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await paymentMethodsList(moov, {
-    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+    accountID: "f5503781-dfe4-4bcd-9487-5b5fe2b4d53b",
   });
 
   if (!res.ok) {
@@ -122,8 +122,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.paymentMethods.get({
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
-    paymentMethodID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
+    accountID: "56878537-30b0-48ee-9c54-07ab3a8b243d",
+    paymentMethodID: "aa740bf3-4c5f-459b-9370-4f7d4bea382b",
   });
 
   // Handle the result
@@ -152,8 +152,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await paymentMethodsGet(moov, {
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
-    paymentMethodID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
+    accountID: "56878537-30b0-48ee-9c54-07ab3a8b243d",
+    paymentMethodID: "aa740bf3-4c5f-459b-9370-4f7d4bea382b",
   });
 
   if (!res.ok) {

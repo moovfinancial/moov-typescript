@@ -17,6 +17,16 @@ let value: GetSweepResponse = {
     accruedAmount: "<value>",
     currency: "USD",
     accrualStartedOn: new Date("2025-03-04T14:31:52.903Z"),
+    subtotals: [
+      {
+        type: "refund",
+        count: 292510,
+        amount: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
+    ],
   },
 };
 ```

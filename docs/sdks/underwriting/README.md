@@ -41,7 +41,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.underwriting.get({
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    accountID: "efe07546-f697-4da5-bf73-d9987efd4cdd",
   });
 
   // Handle the result
@@ -70,7 +70,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await underwritingGet(moov, {
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    accountID: "efe07546-f697-4da5-bf73-d9987efd4cdd",
   });
 
   if (!res.ok) {
@@ -128,26 +128,26 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.underwriting.upsert({
-    accountID: "695bbe92-af8d-4cce-802f-ca871830906f",
+    accountID: "371bf394-45df-4ba8-a615-ad5483b1f963",
     updateUnderwriting: {
-      averageTransactionSize: 543422,
-      maxTransactionSize: 470183,
-      averageMonthlyTransactionVolume: 390496,
+      averageTransactionSize: 622191,
+      maxTransactionSize: 123692,
+      averageMonthlyTransactionVolume: 438164,
       volumeByCustomerType: {
-        businessToBusinessPercentage: 478438,
-        consumerToBusinessPercentage: 232067,
+        businessToBusinessPercentage: 671399,
+        consumerToBusinessPercentage: 482010,
       },
       cardVolumeDistribution: {
-        ecommercePercentage: 766938,
-        cardPresentPercentage: 138671,
-        mailOrPhonePercentage: 146928,
-        debtRepaymentPercentage: 114639,
+        ecommercePercentage: 47450,
+        cardPresentPercentage: 146275,
+        mailOrPhonePercentage: 309315,
+        debtRepaymentPercentage: 990303,
       },
       fulfillment: {
-        hasPhysicalGoods: false,
-        isShippingProduct: false,
-        shipmentDurationDays: 5009,
-        returnPolicy: "withinThirtyDays",
+        hasPhysicalGoods: true,
+        isShippingProduct: true,
+        shipmentDurationDays: 388451,
+        returnPolicy: "other",
       },
     },
   });
@@ -178,26 +178,26 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await underwritingUpsert(moov, {
-    accountID: "695bbe92-af8d-4cce-802f-ca871830906f",
+    accountID: "371bf394-45df-4ba8-a615-ad5483b1f963",
     updateUnderwriting: {
-      averageTransactionSize: 543422,
-      maxTransactionSize: 470183,
-      averageMonthlyTransactionVolume: 390496,
+      averageTransactionSize: 622191,
+      maxTransactionSize: 123692,
+      averageMonthlyTransactionVolume: 438164,
       volumeByCustomerType: {
-        businessToBusinessPercentage: 478438,
-        consumerToBusinessPercentage: 232067,
+        businessToBusinessPercentage: 671399,
+        consumerToBusinessPercentage: 482010,
       },
       cardVolumeDistribution: {
-        ecommercePercentage: 766938,
-        cardPresentPercentage: 138671,
-        mailOrPhonePercentage: 146928,
-        debtRepaymentPercentage: 114639,
+        ecommercePercentage: 47450,
+        cardPresentPercentage: 146275,
+        mailOrPhonePercentage: 309315,
+        debtRepaymentPercentage: 990303,
       },
       fulfillment: {
-        hasPhysicalGoods: false,
-        isShippingProduct: false,
-        shipmentDurationDays: 5009,
-        returnPolicy: "withinThirtyDays",
+        hasPhysicalGoods: true,
+        isShippingProduct: true,
+        shipmentDurationDays: 388451,
+        returnPolicy: "other",
       },
     },
   });

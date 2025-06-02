@@ -11,6 +11,12 @@ import {
   SweepStatus$inboundSchema,
   SweepStatus$outboundSchema,
 } from "./sweepstatus.js";
+import {
+  SweepSubtotal,
+  SweepSubtotal$inboundSchema,
+  SweepSubtotal$Outbound,
+  SweepSubtotal$outboundSchema,
+} from "./sweepsubtotal.js";
 
 export type Sweep = {
   sweepID: string;
@@ -52,6 +58,10 @@ export type Sweep = {
    * The text that appears on the banking statement. The default descriptor is a 10 character ID if an override is not set in the sweep configs statementDescriptor.
    */
   statementDescriptor?: string | undefined;
+  /**
+   * The subtotal of each transaction type contributing to the sweep's accrued amount.
+   */
+  subtotals?: Array<SweepSubtotal> | undefined;
 };
 
 /** @internal */
@@ -73,6 +83,7 @@ export const Sweep$inboundSchema: z.ZodType<Sweep, z.ZodTypeDef, unknown> = z
     transferID: z.string().optional(),
     transferAmount: z.string().optional(),
     statementDescriptor: z.string().optional(),
+    subtotals: z.array(SweepSubtotal$inboundSchema).optional(),
   });
 
 /** @internal */
@@ -89,6 +100,7 @@ export type Sweep$Outbound = {
   transferID?: string | undefined;
   transferAmount?: string | undefined;
   statementDescriptor?: string | undefined;
+  subtotals?: Array<SweepSubtotal$Outbound> | undefined;
 };
 
 /** @internal */
@@ -109,6 +121,7 @@ export const Sweep$outboundSchema: z.ZodType<
   transferID: z.string().optional(),
   transferAmount: z.string().optional(),
   statementDescriptor: z.string().optional(),
+  subtotals: z.array(SweepSubtotal$outboundSchema).optional(),
 });
 
 /**

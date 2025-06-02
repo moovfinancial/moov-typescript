@@ -18,6 +18,16 @@ let value: ListSweepsResponse = {
       accruedAmount: "<value>",
       currency: "USD",
       accrualStartedOn: new Date("2024-08-07T16:54:45.201Z"),
+      subtotals: [
+        {
+          type: "issuing-auth-hold",
+          count: 905683,
+          amount: {
+            currency: "USD",
+            valueDecimal: "12.987654321",
+          },
+        },
+      ],
     },
   ],
 };

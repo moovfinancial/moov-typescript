@@ -23,9 +23,9 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Returns a list of all industry titles and their corresponding MCC/SIC/NAICS codes. Results are ordered by title.
+ * Returns a list of industries relevant to merchant profile enrichment.  Results are ordered by industry name.
  *
- * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+ * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
  * you'll need to specify the `/profile-enrichment.read` scope.
  */
 export function industriesList(
@@ -85,6 +85,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "listIndustries",
     oAuth2Scopes: [],
@@ -104,6 +105,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {

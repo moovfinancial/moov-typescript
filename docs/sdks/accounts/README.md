@@ -104,91 +104,10 @@ async function run() {
   const result = await moov.accounts.create({
     accountType: "business",
     profile: {
-      individual: {
-        name: {
-          firstName: "Jordan",
-          middleName: "Reese",
-          lastName: "Lee",
-          suffix: "Jr",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
-      },
       business: {
-        legalBusinessName: "Classbooker, LLC",
-        businessType: "llc",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        description: "Local fitness gym paying out instructors",
-        taxID: {
-          ein: {
-            number: "12-3456789",
-          },
-        },
-        industryCodes: {
-          naics: "713940",
-          sic: "7991",
-          mcc: "7997",
-        },
+        legalBusinessName: "Whole Body Fitness LLC",
       },
     },
-    metadata: {
-      "optional": "metadata",
-    },
-    termsOfService: {
-      token: "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
-    },
-    customerSupport: {
-      phone: {
-        number: "8185551212",
-        countryCode: "1",
-      },
-      email: "jordan.lee@classbooker.dev",
-      address: {
-        addressLine1: "123 Main Street",
-        addressLine2: "Apt 302",
-        city: "Boulder",
-        stateOrProvince: "CO",
-        postalCode: "80301",
-        country: "US",
-      },
-    },
-    settings: {
-      cardPayment: {
-        statementDescriptor: "Whole Body Fitness",
-      },
-      achPayment: {
-        companyName: "WholeBodyFitness",
-      },
-    },
-    mode: "production",
   });
 
   // Handle the result
@@ -219,91 +138,10 @@ async function run() {
   const res = await accountsCreate(moov, {
     accountType: "business",
     profile: {
-      individual: {
-        name: {
-          firstName: "Jordan",
-          middleName: "Reese",
-          lastName: "Lee",
-          suffix: "Jr",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
-      },
       business: {
-        legalBusinessName: "Classbooker, LLC",
-        businessType: "llc",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-        email: "jordan.lee@classbooker.dev",
-        description: "Local fitness gym paying out instructors",
-        taxID: {
-          ein: {
-            number: "12-3456789",
-          },
-        },
-        industryCodes: {
-          naics: "713940",
-          sic: "7991",
-          mcc: "7997",
-        },
+        legalBusinessName: "Whole Body Fitness LLC",
       },
     },
-    metadata: {
-      "optional": "metadata",
-    },
-    termsOfService: {
-      token: "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
-    },
-    customerSupport: {
-      phone: {
-        number: "8185551212",
-        countryCode: "1",
-      },
-      email: "jordan.lee@classbooker.dev",
-      address: {
-        addressLine1: "123 Main Street",
-        addressLine2: "Apt 302",
-        city: "Boulder",
-        stateOrProvince: "CO",
-        postalCode: "80301",
-        country: "US",
-      },
-    },
-    settings: {
-      cardPayment: {
-        statementDescriptor: "Whole Body Fitness",
-      },
-      achPayment: {
-        companyName: "WholeBodyFitness",
-      },
-    },
-    mode: "production",
   });
 
   if (!res.ok) {
@@ -454,7 +292,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.get({
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    accountID: "2f93a6cf-3b3b-4c17-8d3b-110dfadccea4",
   });
 
   // Handle the result
@@ -483,7 +321,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsGet(moov, {
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    accountID: "2f93a6cf-3b3b-4c17-8d3b-110dfadccea4",
   });
 
   if (!res.ok) {
@@ -547,7 +385,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.update({
-    accountID: "95fa7f0e-7432-4ce4-a7cb-60cc78135dde",
+    accountID: "433cb9d1-5943-4fd5-91b4-2aef5b30e2e7",
     patchAccount: {
       profile: {
         individual: {
@@ -607,8 +445,7 @@ async function run() {
         "optional": "metadata",
       },
       termsOfService: {
-        acceptedIP: "172.217.2.46",
-        acceptedUserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36",
+        token: "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
       },
       customerSupport: {
         phone: {
@@ -654,7 +491,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsUpdate(moov, {
-    accountID: "95fa7f0e-7432-4ce4-a7cb-60cc78135dde",
+    accountID: "433cb9d1-5943-4fd5-91b4-2aef5b30e2e7",
     patchAccount: {
       profile: {
         individual: {
@@ -714,8 +551,7 @@ async function run() {
         "optional": "metadata",
       },
       termsOfService: {
-        acceptedIP: "172.217.2.46",
-        acceptedUserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36",
+        token: "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
       },
       customerSupport: {
         phone: {
@@ -792,7 +628,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.disconnect({
-    accountID: "ac3cbe09-fcd4-4c5e-ada2-89eaaa9c149e",
+    accountID: "cfdfea7d-f185-4de5-ba90-b09f14fe6683",
   });
 
   // Handle the result
@@ -821,7 +657,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsDisconnect(moov, {
-    accountID: "ac3cbe09-fcd4-4c5e-ada2-89eaaa9c149e",
+    accountID: "cfdfea7d-f185-4de5-ba90-b09f14fe6683",
   });
 
   if (!res.ok) {
@@ -878,7 +714,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.getCountries({
-    accountID: "b49c57bf-7b36-4308-8206-c1f5ce8067ac",
+    accountID: "a2026036-cc26-42c1-beef-950662d13b5d",
   });
 
   // Handle the result
@@ -907,7 +743,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsGetCountries(moov, {
-    accountID: "b49c57bf-7b36-4308-8206-c1f5ce8067ac",
+    accountID: "a2026036-cc26-42c1-beef-950662d13b5d",
   });
 
   if (!res.ok) {
@@ -965,7 +801,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.assignCountries({
-    accountID: "aa2dc19b-77dd-481f-a0a8-c76f2cfc1372",
+    accountID: "46736fa8-4bf7-4144-8e0e-dbea1eb0805b",
     accountCountries: {
       countries: [
         "United States",
@@ -999,7 +835,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsAssignCountries(moov, {
-    accountID: "aa2dc19b-77dd-481f-a0a8-c76f2cfc1372",
+    accountID: "46736fa8-4bf7-4144-8e0e-dbea1eb0805b",
     accountCountries: {
       countries: [
         "United States",
@@ -1062,7 +898,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.accounts.getMerchantProcessingAgreement({
-    accountID: "d2cfd0d3-6efb-4bc4-a193-53f35dd0d912",
+    accountID: "6180d9b9-2377-4190-8530-70a99d31a578",
   });
 
   // Handle the result
@@ -1091,7 +927,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsGetMerchantProcessingAgreement(moov, {
-    accountID: "d2cfd0d3-6efb-4bc4-a193-53f35dd0d912",
+    accountID: "6180d9b9-2377-4190-8530-70a99d31a578",
   });
 
   if (!res.ok) {

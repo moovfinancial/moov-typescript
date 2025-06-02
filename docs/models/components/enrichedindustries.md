@@ -8,10 +8,11 @@ import { EnrichedIndustries } from "@moovio/sdk/models/components";
 let value: EnrichedIndustries = {
   industries: [
     {
-      title: "AC, Refrigeration Repair",
-      naics: "811412",
-      sic: "7623",
-      mcc: "7623",
+      industry: "clothing-accessories",
+      displayName: "Clothing & Accessories",
+      category: "retail",
+      categoryDisplayName: "Retail",
+      defaultMcc: "5651",
     },
   ],
 };
@@ -21,4 +22,4 @@ let value: EnrichedIndustries = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `industries`                                                                 | [components.EnrichedIndustry](../../models/components/enrichedindustry.md)[] | :heavy_check_mark:                                                           | N/A                                                                          |
+| `industries`                                                                 | [components.IndustryTaxonomy](../../models/components/industrytaxonomy.md)[] | :heavy_check_mark:                                                           | N/A                                                                          |

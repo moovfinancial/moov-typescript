@@ -47,7 +47,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.capabilities.list({
-    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+    accountID: "1a50ab1c-1714-49e7-a016-cea17b33511a",
   });
 
   // Handle the result
@@ -76,7 +76,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await capabilitiesList(moov, {
-    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+    accountID: "1a50ab1c-1714-49e7-a016-cea17b33511a",
   });
 
   if (!res.ok) {
@@ -132,7 +132,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.capabilities.request({
-    accountID: "32613610-de25-446e-8662-ec2709ffea9d",
+    accountID: "0de140d5-cc78-4eeb-ab00-1f51aaf6c814",
     addCapabilities: {
       capabilities: [
         "collect-funds",
@@ -166,7 +166,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await capabilitiesRequest(moov, {
-    accountID: "32613610-de25-446e-8662-ec2709ffea9d",
+    accountID: "0de140d5-cc78-4eeb-ab00-1f51aaf6c814",
     addCapabilities: {
       capabilities: [
         "collect-funds",
@@ -229,8 +229,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.capabilities.get({
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
-    capabilityID: "production-app",
+    accountID: "c1697ea6-c984-4ba1-9b81-93e5e18660af",
+    capabilityID: "send-funds",
   });
 
   // Handle the result
@@ -259,8 +259,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await capabilitiesGet(moov, {
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
-    capabilityID: "production-app",
+    accountID: "c1697ea6-c984-4ba1-9b81-93e5e18660af",
+    capabilityID: "send-funds",
   });
 
   if (!res.ok) {
@@ -316,7 +316,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.capabilities.disable({
-    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
+    accountID: "2be80c4e-d409-49ea-8a8a-76dfa4006d69",
     capabilityID: "transfers",
   });
 
@@ -346,7 +346,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await capabilitiesDisable(moov, {
-    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
+    accountID: "2be80c4e-d409-49ea-8a8a-76dfa4006d69",
     capabilityID: "transfers",
   });
 

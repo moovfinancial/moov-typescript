@@ -51,7 +51,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.sweeps.createConfig({
-    accountID: "2c0dfb65-d7ef-4c8e-8c74-e6c7773550bc",
+    accountID: "cd0ec32e-bd84-418c-90d3-fffbc5465f8b",
     createSweepConfig: {
       walletID: "01234567-89ab-cdef-0123-456789abcdef",
       status: "enabled",
@@ -86,7 +86,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await sweepsCreateConfig(moov, {
-    accountID: "2c0dfb65-d7ef-4c8e-8c74-e6c7773550bc",
+    accountID: "cd0ec32e-bd84-418c-90d3-fffbc5465f8b",
     createSweepConfig: {
       walletID: "01234567-89ab-cdef-0123-456789abcdef",
       status: "enabled",
@@ -150,7 +150,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.sweeps.listConfigs({
-    accountID: "5d9d568d-fb5d-478b-a301-d495422f1c35",
+    accountID: "ed67e4c8-03d3-4d88-ba38-fcd87de45a92",
   });
 
   // Handle the result
@@ -179,7 +179,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await sweepsListConfigs(moov, {
-    accountID: "5d9d568d-fb5d-478b-a301-d495422f1c35",
+    accountID: "ed67e4c8-03d3-4d88-ba38-fcd87de45a92",
   });
 
   if (!res.ok) {
@@ -235,8 +235,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.sweeps.getConfig({
-    accountID: "12f68c4e-1e8d-483b-9f62-b5d6458d538c",
-    sweepConfigID: "ce92235d-dd84-4e14-9895-3b98a0003522",
+    accountID: "ae1c2e76-3195-4fc8-b922-b7af6dcf1aad",
+    sweepConfigID: "bfddff28-5291-4d9b-a0f8-22a0895e8486",
   });
 
   // Handle the result
@@ -265,8 +265,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await sweepsGetConfig(moov, {
-    accountID: "12f68c4e-1e8d-483b-9f62-b5d6458d538c",
-    sweepConfigID: "ce92235d-dd84-4e14-9895-3b98a0003522",
+    accountID: "ae1c2e76-3195-4fc8-b922-b7af6dcf1aad",
+    sweepConfigID: "bfddff28-5291-4d9b-a0f8-22a0895e8486",
   });
 
   if (!res.ok) {
@@ -322,8 +322,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.sweeps.updateConfig({
-    accountID: "7573cb48-6325-4d3d-841d-81108fcfe6f2",
-    sweepConfigID: "49e8f3b1-259f-458e-9367-adb3b938f8c8",
+    accountID: "c16d0264-3e93-4d13-b8d8-6e8e98122631",
+    sweepConfigID: "f7943244-882b-4a3a-837a-a58418358399",
     patchSweepConfig: {
       status: "disabled",
     },
@@ -355,8 +355,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await sweepsUpdateConfig(moov, {
-    accountID: "7573cb48-6325-4d3d-841d-81108fcfe6f2",
-    sweepConfigID: "49e8f3b1-259f-458e-9367-adb3b938f8c8",
+    accountID: "c16d0264-3e93-4d13-b8d8-6e8e98122631",
+    sweepConfigID: "f7943244-882b-4a3a-837a-a58418358399",
     patchSweepConfig: {
       status: "disabled",
     },
@@ -417,8 +417,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.sweeps.list({
-    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
-    walletID: "21e27667-18d6-4d46-812e-0aee1b9ddf12",
+    accountID: "a227b50c-035d-4b7f-932c-a4b7e02aaf5c",
+    walletID: "d01e5b34-b207-4a5c-b249-6e049be6a841",
     skip: 60,
     count: 20,
   });
@@ -449,8 +449,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await sweepsList(moov, {
-    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
-    walletID: "21e27667-18d6-4d46-812e-0aee1b9ddf12",
+    accountID: "a227b50c-035d-4b7f-932c-a4b7e02aaf5c",
+    walletID: "d01e5b34-b207-4a5c-b249-6e049be6a841",
     skip: 60,
     count: 20,
   });
@@ -508,9 +508,9 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.sweeps.get({
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
-    walletID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
-    sweepID: "ecd62b8f-7112-4aaf-90ab-4e43b4cca371",
+    accountID: "481bc941-34a2-4c2a-a4f8-feaa9a25d630",
+    walletID: "e63a4638-ad67-44fb-9b59-ed7311023602",
+    sweepID: "c88c9731-06c2-4b4a-a7d2-34c8b936d9ae",
   });
 
   // Handle the result
@@ -539,9 +539,9 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await sweepsGet(moov, {
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
-    walletID: "e50f7622-81da-484b-9c66-1c8a99c6b71b",
-    sweepID: "ecd62b8f-7112-4aaf-90ab-4e43b4cca371",
+    accountID: "481bc941-34a2-4c2a-a4f8-feaa9a25d630",
+    walletID: "e63a4638-ad67-44fb-9b59-ed7311023602",
+    sweepID: "c88c9731-06c2-4b4a-a7d2-34c8b936d9ae",
   });
 
   if (!res.ok) {

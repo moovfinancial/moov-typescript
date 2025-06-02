@@ -54,8 +54,8 @@ async function startStdio(flags: StartCommandFlags) {
     allowedTools: flags.tool,
     scopes: flags.scope,
     security: allRequired({
-      username: flags.username,
-      password: flags.password,
+      username: flags.username ?? "",
+      password: flags.password ?? "",
     }),
     xMoovVersion: flags["x-moov-version"],
     serverURL: flags["server-url"],
@@ -79,8 +79,8 @@ async function startSSE(flags: StartCommandFlags) {
     allowedTools: flags.tool,
     scopes: flags.scope,
     security: allRequired({
-      username: flags.username,
-      password: flags.password,
+      username: flags.username ?? "",
+      password: flags.password ?? "",
     }),
     xMoovVersion: flags["x-moov-version"],
     serverURL: flags["server-url"],

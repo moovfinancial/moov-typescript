@@ -53,13 +53,13 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.paymentLinks.create({
-    accountID: "621cf021-cd9c-4f54-a033-15211a509a30",
+    accountID: "cc1d04a8-03b1-4600-b675-e6180d574074",
     createPaymentLink: {
       partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
       merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
       amount: {
         currency: "USD",
-        value: 1204,
+        value: 10000,
       },
       display: {
         title: "Example Payment Link",
@@ -74,21 +74,6 @@ async function run() {
           "card-payment",
           "ach-debit-collect",
         ],
-        cardDetails: {
-          dynamicDescriptor: "WhlBdy *Yoga 11-12",
-        },
-        achDetails: {
-          companyEntryDescription: "Gym dues",
-          originatingCompanyName: "Whole Body Fit",
-        },
-      },
-      payout: {
-        allowedMethods: [
-          "ach-credit-same-day",
-        ],
-        recipient: {
-          email: "jordan.lee@classbooker.dev",
-        },
       },
     },
   });
@@ -119,13 +104,13 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await paymentLinksCreate(moov, {
-    accountID: "621cf021-cd9c-4f54-a033-15211a509a30",
+    accountID: "cc1d04a8-03b1-4600-b675-e6180d574074",
     createPaymentLink: {
       partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
       merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
       amount: {
         currency: "USD",
-        value: 1204,
+        value: 10000,
       },
       display: {
         title: "Example Payment Link",
@@ -140,21 +125,6 @@ async function run() {
           "card-payment",
           "ach-debit-collect",
         ],
-        cardDetails: {
-          dynamicDescriptor: "WhlBdy *Yoga 11-12",
-        },
-        achDetails: {
-          companyEntryDescription: "Gym dues",
-          originatingCompanyName: "Whole Body Fit",
-        },
-      },
-      payout: {
-        allowedMethods: [
-          "ach-credit-same-day",
-        ],
-        recipient: {
-          email: "jordan.lee@classbooker.dev",
-        },
       },
     },
   });
@@ -214,7 +184,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.paymentLinks.list({
-    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+    accountID: "d1039e6d-21ee-4a29-8adf-1dd2a6625a0d",
   });
 
   // Handle the result
@@ -243,7 +213,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await paymentLinksList(moov, {
-    accountID: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+    accountID: "d1039e6d-21ee-4a29-8adf-1dd2a6625a0d",
   });
 
   if (!res.ok) {
@@ -299,7 +269,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.paymentLinks.get({
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    accountID: "323f95b1-3798-4203-8a73-5c8668a9226e",
     paymentLinkCode: "uc7ZYKrMhi",
   });
 
@@ -329,7 +299,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await paymentLinksGet(moov, {
-    accountID: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    accountID: "323f95b1-3798-4203-8a73-5c8668a9226e",
     paymentLinkCode: "uc7ZYKrMhi",
   });
 
@@ -386,30 +356,16 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.paymentLinks.update({
-    accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
+    accountID: "ddad6613-2350-446a-883b-f76abb2cd4ea",
     paymentLinkCode: "uc7ZYKrMhi",
     updatePaymentLink: {
       amount: {
         currency: "USD",
-        value: 1204,
+        value: 12099,
       },
       customer: {
         requireAddress: true,
         requirePhone: true,
-      },
-      payment: {
-        cardDetails: {
-          dynamicDescriptor: "WhlBdy *Yoga 11-12",
-        },
-        achDetails: {
-          companyEntryDescription: "Gym dues",
-          originatingCompanyName: "Whole Body Fit",
-        },
-      },
-      payout: {
-        recipient: {
-          email: "jordan.lee@classbooker.dev",
-        },
       },
     },
   });
@@ -440,30 +396,16 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await paymentLinksUpdate(moov, {
-    accountID: "d95fa7f0-e743-42ce-b47c-b60cc78135dd",
+    accountID: "ddad6613-2350-446a-883b-f76abb2cd4ea",
     paymentLinkCode: "uc7ZYKrMhi",
     updatePaymentLink: {
       amount: {
         currency: "USD",
-        value: 1204,
+        value: 12099,
       },
       customer: {
         requireAddress: true,
         requirePhone: true,
-      },
-      payment: {
-        cardDetails: {
-          dynamicDescriptor: "WhlBdy *Yoga 11-12",
-        },
-        achDetails: {
-          companyEntryDescription: "Gym dues",
-          originatingCompanyName: "Whole Body Fit",
-        },
-      },
-      payout: {
-        recipient: {
-          email: "jordan.lee@classbooker.dev",
-        },
       },
     },
   });
@@ -523,7 +465,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.paymentLinks.disable({
-    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
+    accountID: "c1cf000d-0dd9-4dec-bd5e-a88e135adf82",
     paymentLinkCode: "uc7ZYKrMhi",
   });
 
@@ -553,7 +495,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await paymentLinksDisable(moov, {
-    accountID: "cd7cd1ce-90cc-444b-ac3e-badb79be277f",
+    accountID: "c1cf000d-0dd9-4dec-bd5e-a88e135adf82",
     paymentLinkCode: "uc7ZYKrMhi",
   });
 
@@ -612,7 +554,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.paymentLinks.getQRCode({
-    accountID: "2014a1ff-9924-40b3-ac01-f4ed64dac1b8",
+    accountID: "2f01a42a-aa5a-424f-9f47-6f8999ed05dc",
     paymentLinkCode: "uc7ZYKrMhi",
   });
 
@@ -642,7 +584,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await paymentLinksGetQRCode(moov, {
-    accountID: "2014a1ff-9924-40b3-ac01-f4ed64dac1b8",
+    accountID: "2f01a42a-aa5a-424f-9f47-6f8999ed05dc",
     paymentLinkCode: "uc7ZYKrMhi",
   });
 

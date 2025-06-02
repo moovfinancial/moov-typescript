@@ -11,6 +11,16 @@ let value: Sweep = {
   accruedAmount: "<value>",
   currency: "USD",
   accrualStartedOn: new Date("2023-07-27T01:48:08.217Z"),
+  subtotals: [
+    {
+      type: "ach-reversal",
+      count: 636470,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+  ],
 };
 ```
 
@@ -30,3 +40,4 @@ let value: Sweep = {
 | `transferID`                                                                                                                                                    | *string*                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                              | N/A                                                                                                                                                             |                                                                                                                                                                 |
 | `transferAmount`                                                                                                                                                | *string*                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                              | Amount that is transferred.                                                                                                                                     |                                                                                                                                                                 |
 | `statementDescriptor`                                                                                                                                           | *string*                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                              | The text that appears on the banking statement. The default descriptor is a 10 character ID if an override is not set in the sweep configs statementDescriptor. |                                                                                                                                                                 |
+| `subtotals`                                                                                                                                                     | [components.SweepSubtotal](../../models/components/sweepsubtotal.md)[]                                                                                          | :heavy_minus_sign:                                                                                                                                              | The subtotal of each transaction type contributing to the sweep's accrued amount.                                                                               |                                                                                                                                                                 |
