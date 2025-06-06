@@ -36,7 +36,7 @@ let value: Recur = {
       },
     },
     description:
-      "serpentine suspiciously super electric gee weatherize out authorized",
+      "among supposing futon contrast or absolve geez haul unit deceivingly",
   },
   start: new Date("2009-11-10T23:00:00Z"),
 };

@@ -22,9 +22,9 @@ const value: components.ReversedWithCancellation = {
 ```typescript
 const value: components.ReversedWithRefund = {
   refund: {
-    refundID: "d10fba4f-1e77-4eaa-9b86-94194a004e3a",
-    createdOn: new Date("2025-06-29T01:50:01.107Z"),
-    updatedOn: new Date("2025-02-23T06:08:55.885Z"),
+    refundID: "160cfb90-ecd0-4422-8825-9ff21c8fc73b",
+    createdOn: new Date("2024-07-14T07:59:29.449Z"),
+    updatedOn: new Date("2024-12-10T23:22:58.110Z"),
     status: "failed",
     amount: {
       currency: "USD",

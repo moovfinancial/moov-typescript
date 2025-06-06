@@ -14,11 +14,11 @@ let value: IssuedCard = {
     year: "21",
   },
   authorizedUser: {
-    firstName: "Malinda",
-    lastName: "Raynor",
+    firstName: "Vincenzo",
+    lastName: "Lesch",
   },
   fundingWalletID: "<id>",
-  state: "closed",
+  state: "pending-verification",
   formFactor: "virtual",
   controls: {
     velocityLimits: [
@@ -28,7 +28,7 @@ let value: IssuedCard = {
       },
     ],
   },
-  createdOn: new Date("2025-03-17T02:16:41.662Z"),
+  createdOn: new Date("2023-11-18T08:29:35.036Z"),
 };
 ```
 

@@ -5,18 +5,7 @@
 ```typescript
 import { AssignAccountCountriesResponse } from "@moovio/sdk/models/operations";
 
-let value: AssignAccountCountriesResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    countries: [
-      "United States",
-    ],
-  },
-};
+let value: AssignAccountCountriesResponse = {};
 ```
 
 ## Fields

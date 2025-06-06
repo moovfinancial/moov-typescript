@@ -5,13 +5,7 @@
 ```typescript
 import { DisablePaymentLinkResponse } from "@moovio/sdk/models/operations";
 
-let value: DisablePaymentLinkResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: DisablePaymentLinkResponse = {};
 ```
 
 ## Fields

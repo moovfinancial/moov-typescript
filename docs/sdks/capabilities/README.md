@@ -39,6 +39,7 @@ you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -50,7 +51,6 @@ async function run() {
     accountID: "1a50ab1c-1714-49e7-a016-cea17b33511a",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -68,6 +68,7 @@ import { capabilitiesList } from "@moovio/sdk/funcs/capabilitiesList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -78,15 +79,12 @@ async function run() {
   const res = await capabilitiesList(moov, {
     accountID: "1a50ab1c-1714-49e7-a016-cea17b33511a",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("capabilitiesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -124,6 +122,7 @@ you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -140,7 +139,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -158,6 +156,7 @@ import { capabilitiesRequest } from "@moovio/sdk/funcs/capabilitiesRequest.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -173,15 +172,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("capabilitiesRequest failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -221,6 +217,7 @@ you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -233,7 +230,6 @@ async function run() {
     capabilityID: "send-funds",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -251,6 +247,7 @@ import { capabilitiesGet } from "@moovio/sdk/funcs/capabilitiesGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -262,15 +259,12 @@ async function run() {
     accountID: "c1697ea6-c984-4ba1-9b81-93e5e18660af",
     capabilityID: "send-funds",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("capabilitiesGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -308,6 +302,7 @@ you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -320,7 +315,6 @@ async function run() {
     capabilityID: "transfers",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -338,6 +332,7 @@ import { capabilitiesDisable } from "@moovio/sdk/funcs/capabilitiesDisable.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -349,15 +344,12 @@ async function run() {
     accountID: "2be80c4e-d409-49ea-8a8a-76dfa4006d69",
     capabilityID: "transfers",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("capabilitiesDisable failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

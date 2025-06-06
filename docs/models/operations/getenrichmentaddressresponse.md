@@ -5,18 +5,7 @@
 ```typescript
 import { GetEnrichmentAddressResponse } from "@moovio/sdk/models/operations";
 
-let value: GetEnrichmentAddressResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    suggestions: [
-      {},
-    ],
-  },
-};
+let value: GetEnrichmentAddressResponse = {};
 ```
 
 ## Fields

@@ -10,8 +10,8 @@ let value: TransferSource = {
   paymentMethodType: "moov-wallet",
   account: {
     accountID: "<id>",
-    email: "Leopoldo_OReilly@gmail.com",
-    displayName: "Jamey_Quitzon92",
+    email: "Mason_Koepp@hotmail.com",
+    displayName: "Concepcion46",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -81,13 +81,13 @@ let value: TransferSource = {
     lastFourCardNumber: "1234",
   },
   cardDetails: {
-    status: "completed",
+    status: "canceled",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
   },
   achDetails: {
-    status: "corrected",
+    status: "originated",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",

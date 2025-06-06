@@ -6,8 +6,8 @@
 import { WebhookDataCardAutoUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataCardAutoUpdated = {
-  cardID: "456e6756-7a0f-4174-9bb0-f41b46e79a40",
-  accountID: "822de661-8f8e-4ba0-86bb-8f83b0e9c7b5",
+  cardID: "03680e4b-d47d-4bb3-8672-cd6e0ddee54e",
+  accountID: "b041ae28-df08-45e0-9761-8f5081f73a33",
   updateType: "number-update",
 };
 ```

@@ -23,6 +23,7 @@ you'll need to specify the `/profile-enrichment.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -32,7 +33,6 @@ const moov = new Moov({
 async function run() {
   const result = await moov.industries.list({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -50,6 +50,7 @@ import { industriesList } from "@moovio/sdk/funcs/industriesList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -58,15 +59,12 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await industriesList(moov, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("industriesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

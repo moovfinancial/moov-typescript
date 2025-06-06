@@ -35,6 +35,7 @@ you'll need to specify the `/accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -62,7 +63,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -80,6 +80,7 @@ import { onboardingCreateInvite } from "@moovio/sdk/funcs/onboardingCreateInvite
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -106,15 +107,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("onboardingCreateInvite failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -154,6 +152,7 @@ you'll need to specify the `/accounts.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -163,7 +162,6 @@ const moov = new Moov({
 async function run() {
   const result = await moov.onboarding.listInvites({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -181,6 +179,7 @@ import { onboardingListInvites } from "@moovio/sdk/funcs/onboardingListInvites.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -189,15 +188,12 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await onboardingListInvites(moov, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("onboardingListInvites failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -235,6 +231,7 @@ you'll need to specify the `/accounts.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -246,7 +243,6 @@ async function run() {
     code: "N1IA5eWYNh",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -264,6 +260,7 @@ import { onboardingGetInvite } from "@moovio/sdk/funcs/onboardingGetInvite.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -274,15 +271,12 @@ async function run() {
   const res = await onboardingGetInvite(moov, {
     code: "N1IA5eWYNh",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("onboardingGetInvite failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -320,6 +314,7 @@ you'll need to specify the `/accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -331,7 +326,6 @@ async function run() {
     code: "N1IA5eWYNh",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -349,6 +343,7 @@ import { onboardingRevokeInvite } from "@moovio/sdk/funcs/onboardingRevokeInvite
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -359,15 +354,12 @@ async function run() {
   const res = await onboardingRevokeInvite(moov, {
     code: "N1IA5eWYNh",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("onboardingRevokeInvite failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

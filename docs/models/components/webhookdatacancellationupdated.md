@@ -6,9 +6,9 @@
 import { WebhookDataCancellationUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataCancellationUpdated = {
-  cancellationID: "ed3bd952-df3c-4997-8b2c-921ee08fb61b",
-  transferID: "0a83b121-751d-45ba-89b0-55c37b5f5ecc",
-  status: "completed",
+  cancellationID: "1470a08c-29d1-4cbb-b41c-ab38e894aa78",
+  transferID: "5fc783ac-53b7-4aec-8274-bc1e510cfbfc",
+  status: "failed",
 };
 ```
 

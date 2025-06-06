@@ -3,6 +3,7 @@
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -19,7 +20,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 

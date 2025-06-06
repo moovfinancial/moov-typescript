@@ -6,15 +6,15 @@
 import { CreatedTransfer } from "@moovio/sdk/models/components";
 
 let value: CreatedTransfer = {
-  transferID: "7c382d12-3b84-4b94-a4e9-6668ae0da9f2",
-  createdOn: new Date("2024-04-13T18:57:31.472Z"),
+  transferID: "7787207e-ac7e-48b1-b866-201c0ad8281d",
+  createdOn: new Date("2025-03-10T06:52:08.646Z"),
   source: {
     paymentMethodID: "<id>",
-    paymentMethodType: "ach-credit-standard",
+    paymentMethodType: "pull-from-card",
     account: {
       accountID: "<id>",
-      email: "Lydia_Orn@hotmail.com",
-      displayName: "Eldora_Dooley",
+      email: "Mason_Koepp@hotmail.com",
+      displayName: "Concepcion46",
     },
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -84,13 +84,13 @@ let value: CreatedTransfer = {
       lastFourCardNumber: "1234",
     },
     cardDetails: {
-      status: "failed",
+      status: "canceled",
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
       feeProgram:
         "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
     },
     achDetails: {
-      status: "corrected",
+      status: "originated",
       traceNumber: "124782618117",
       companyEntryDescription: "Gym dues",
       originatingCompanyName: "Whole Body Fit",
@@ -99,11 +99,11 @@ let value: CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "card-payment",
+    paymentMethodType: "rtp-credit",
     account: {
       accountID: "<id>",
-      email: "Pat40@gmail.com",
-      displayName: "Delpha_Schaefer",
+      email: "Mason_Koepp@hotmail.com",
+      displayName: "Concepcion46",
     },
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -164,7 +164,7 @@ let value: CreatedTransfer = {
       issuerCountry: "US",
     },
     cardDetails: {
-      status: "settled",
+      status: "canceled",
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
       feeProgram:
         "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
@@ -188,10 +188,10 @@ let value: CreatedTransfer = {
   },
   refunds: [
     {
-      refundID: "54981cd8-3530-4310-b2d5-309a78d4ca37",
-      createdOn: new Date("2023-10-03T12:30:16.740Z"),
-      updatedOn: new Date("2023-04-15T23:07:56.211Z"),
-      status: "completed",
+      refundID: "58b6438e-8b2b-4576-a3cc-91a9e82c2065",
+      createdOn: new Date("2023-04-01T04:47:38.422Z"),
+      updatedOn: new Date("2023-07-02T05:13:02.406Z"),
+      status: "failed",
       amount: {
         currency: "USD",
         value: 1204,
@@ -204,8 +204,8 @@ let value: CreatedTransfer = {
   },
   disputes: [
     {
-      disputeID: "dd1fb457-6a39-4894-bcc7-4a08da3f7e62",
-      createdOn: new Date("2025-07-17T02:26:59.832Z"),
+      disputeID: "8302f6cd-706f-4a3a-8f2f-3448109dee51",
+      createdOn: new Date("2024-08-21T22:07:52.236Z"),
       amount: {
         currency: "USD",
         value: 1204,

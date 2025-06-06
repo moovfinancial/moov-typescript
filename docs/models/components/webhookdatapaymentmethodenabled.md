@@ -6,9 +6,9 @@
 import { WebhookDataPaymentMethodEnabled } from "@moovio/sdk/models/components";
 
 let value: WebhookDataPaymentMethodEnabled = {
-  accountID: "5cdc3e80-68e6-4a9d-ae8b-341dfb164f37",
-  paymentMethodID: "a74fb5b3-b503-410d-b1ca-eb59ab452c51",
-  sourceID: "812c7859-e94f-45ff-8c38-0bfde08ad35c",
+  accountID: "e1be65d6-b3c2-472a-b4b0-77ee1b8dbeda",
+  paymentMethodID: "43bcc7ed-48f2-44d4-8af1-54f6f15e4578",
+  sourceID: "214e3a23-b8ff-4d48-8f25-72c6906ca30c",
 };
 ```
 

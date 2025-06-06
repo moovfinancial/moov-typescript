@@ -33,6 +33,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -44,7 +45,6 @@ async function run() {
     accountID: "25221c3c-8e3f-40db-8570-66d17b51014d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -62,6 +62,7 @@ import { walletsList } from "@moovio/sdk/funcs/walletsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -72,15 +73,12 @@ async function run() {
   const res = await walletsList(moov, {
     accountID: "25221c3c-8e3f-40db-8570-66d17b51014d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("walletsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -120,6 +118,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -132,7 +131,6 @@ async function run() {
     walletID: "10a6bc37-8eeb-41c8-bf5f-77b40955542a",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -150,6 +148,7 @@ import { walletsGet } from "@moovio/sdk/funcs/walletsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -161,15 +160,12 @@ async function run() {
     accountID: "d04dfd44-8194-422f-a666-08d30c183f9a",
     walletID: "10a6bc37-8eeb-41c8-bf5f-77b40955542a",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("walletsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

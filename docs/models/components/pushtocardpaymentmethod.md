@@ -6,7 +6,7 @@
 import { PushToCardPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: PushToCardPaymentMethod = {
-  paymentMethodID: "861bfb9c-e12f-4fe8-9454-e487c4917745",
+  paymentMethodID: "2b5fb00d-a820-4b04-a7e1-242bd9443f75",
   paymentMethodType: "push-to-card",
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",

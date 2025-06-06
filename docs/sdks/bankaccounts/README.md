@@ -111,6 +111,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -127,7 +128,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -145,6 +145,7 @@ import { bankAccountsLink } from "@moovio/sdk/funcs/bankAccountsLink.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -160,15 +161,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankAccountsLink failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -210,6 +208,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -221,7 +220,6 @@ async function run() {
     accountID: "85539920-22dd-4900-a07e-7a88268456d9",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -239,6 +237,7 @@ import { bankAccountsList } from "@moovio/sdk/funcs/bankAccountsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -249,15 +248,12 @@ async function run() {
   const res = await bankAccountsList(moov, {
     accountID: "85539920-22dd-4900-a07e-7a88268456d9",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankAccountsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -297,6 +293,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -309,7 +306,6 @@ async function run() {
     bankAccountID: "dd241177-be83-4aad-80f8-31aded5f3616",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -327,6 +323,7 @@ import { bankAccountsGet } from "@moovio/sdk/funcs/bankAccountsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -338,15 +335,12 @@ async function run() {
     accountID: "32ac681d-3244-4673-8541-362e40b7677a",
     bankAccountID: "dd241177-be83-4aad-80f8-31aded5f3616",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankAccountsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -384,6 +378,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -396,7 +391,6 @@ async function run() {
     bankAccountID: "b9295fc2-f5fd-4767-894f-5ca45abfd3fc",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -414,6 +408,7 @@ import { bankAccountsDisable } from "@moovio/sdk/funcs/bankAccountsDisable.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -425,15 +420,12 @@ async function run() {
     accountID: "6b6ade5f-0b20-493c-b483-cf1f670a1055",
     bankAccountID: "b9295fc2-f5fd-4767-894f-5ca45abfd3fc",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankAccountsDisable failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -483,6 +475,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -495,7 +488,6 @@ async function run() {
     bankAccountID: "f2b630cc-a8ae-44be-970b-7bed47b2d952",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -513,6 +505,7 @@ import { bankAccountsInitiateMicroDeposits } from "@moovio/sdk/funcs/bankAccount
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -524,15 +517,12 @@ async function run() {
     accountID: "ced90412-ebb4-43d4-a171-0a929ed5fb37",
     bankAccountID: "f2b630cc-a8ae-44be-970b-7bed47b2d952",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankAccountsInitiateMicroDeposits failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -571,6 +561,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -589,7 +580,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -607,6 +597,7 @@ import { bankAccountsCompleteMicroDeposits } from "@moovio/sdk/funcs/bankAccount
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -624,15 +615,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankAccountsCompleteMicroDeposits failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -681,6 +669,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -693,7 +682,6 @@ async function run() {
     bankAccountID: "aaceed83-ef83-4d48-8136-096f834280cc",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -711,6 +699,7 @@ import { bankAccountsGetVerification } from "@moovio/sdk/funcs/bankAccountsGetVe
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -722,15 +711,12 @@ async function run() {
     accountID: "c87bc077-580a-4c2a-b312-2afbd21fc1cd",
     bankAccountID: "aaceed83-ef83-4d48-8136-096f834280cc",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankAccountsGetVerification failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -783,6 +769,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -795,7 +782,6 @@ async function run() {
     bankAccountID: "bd092468-393d-4ee0-85a8-48238fee70d2",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -813,6 +799,7 @@ import { bankAccountsInitiateVerification } from "@moovio/sdk/funcs/bankAccounts
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -824,15 +811,12 @@ async function run() {
     accountID: "9d6d433b-c13a-48d7-849a-1897fa71375b",
     bankAccountID: "bd092468-393d-4ee0-85a8-48238fee70d2",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankAccountsInitiateVerification failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -878,6 +862,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -893,7 +878,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -911,6 +895,7 @@ import { bankAccountsCompleteVerification } from "@moovio/sdk/funcs/bankAccounts
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -925,15 +910,12 @@ async function run() {
       code: "MV1234",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankAccountsCompleteVerification failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

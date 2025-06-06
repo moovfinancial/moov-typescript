@@ -6,15 +6,7 @@
 import { EnrichedIndustries } from "@moovio/sdk/models/components";
 
 let value: EnrichedIndustries = {
-  industries: [
-    {
-      industry: "clothing-accessories",
-      displayName: "Clothing & Accessories",
-      category: "retail",
-      categoryDisplayName: "Retail",
-      defaultMcc: "5651",
-    },
-  ],
+  industries: [],
 };
 ```
 

@@ -5,20 +5,7 @@
 ```typescript
 import { CreateReversalResponse } from "@moovio/sdk/models/operations";
 
-let value: CreateReversalResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    cancellation: {
-      cancellationID: "<id>",
-      status: "pending",
-      createdOn: new Date("2025-04-30T10:22:46.232Z"),
-    },
-  },
-};
+let value: CreateReversalResponse = {};
 ```
 
 ## Fields

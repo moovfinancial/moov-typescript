@@ -8,22 +8,6 @@ import { CreateTransferRequest } from "@moovio/sdk/models/operations";
 let value: CreateTransferRequest = {
   xIdempotencyKey: "452bfada-ad7f-4795-8c64-2fdbe87fed90",
   accountID: "00044efe-446b-4a6c-b666-77172fdb0530",
-  createTransfer: {
-    source: {
-      paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
-    },
-    destination: {
-      paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
-    },
-    amount: {
-      currency: "USD",
-      value: 32945,
-    },
-    description: "Transfer from card to wallet",
-    metadata: {
-      "optional": "metadata",
-    },
-  },
 };
 ```
 

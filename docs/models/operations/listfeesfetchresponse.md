@@ -5,21 +5,7 @@
 ```typescript
 import { ListFeesFetchResponse } from "@moovio/sdk/models/operations";
 
-let value: ListFeesFetchResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: [
-    {
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-    },
-  ],
-};
+let value: ListFeesFetchResponse = {};
 ```
 
 ## Fields

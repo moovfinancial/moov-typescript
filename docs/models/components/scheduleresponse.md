@@ -11,7 +11,7 @@ let value: ScheduleResponse = {
   occurrences: [
     {
       mode: "production",
-      runOn: new Date("2024-12-06T18:10:16.110Z"),
+      runOn: new Date("2023-12-07T16:58:18.357Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -39,7 +39,7 @@ let value: ScheduleResponse = {
           },
         },
         description:
-          "rekindle whereas reapply honestly inveigle uh-huh sometimes thongs",
+          "among supposing futon contrast or absolve geez haul unit deceivingly",
       },
     },
   ],
@@ -74,14 +74,14 @@ let value: ScheduleResponse = {
         },
       },
       description:
-        "optimistic dilate although jubilantly comfortable kielbasa healthily ultimately elastic internalize",
+        "among supposing futon contrast or absolve geez haul unit deceivingly",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },
   scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-  createdOn: new Date("2025-06-16T17:15:06.619Z"),
-  updatedOn: new Date("2024-03-07T23:40:05.677Z"),
+  createdOn: new Date("2024-12-06T18:10:16.110Z"),
+  updatedOn: new Date("2025-03-25T02:08:06.106Z"),
 };
 ```
 

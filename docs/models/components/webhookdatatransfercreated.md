@@ -6,9 +6,9 @@
 import { WebhookDataTransferCreated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataTransferCreated = {
-  accountID: "e41173ed-027a-4f96-8e93-049d2ffdc370",
-  transferID: "0c2e358e-038b-45fa-8104-931f3d2f49d5",
-  status: "queued",
+  accountID: "58def9c9-c9f3-482a-9046-fd2d2e0ce3aa",
+  transferID: "498acea5-c87f-4b41-9aea-b131afe24ddf",
+  status: "pending",
 };
 ```
 

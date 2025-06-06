@@ -5,22 +5,7 @@
 ```typescript
 import { GenerateEndToEndKeyResponse } from "@moovio/sdk/models/operations";
 
-let value: GenerateEndToEndKeyResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    kty: "EC",
-    use: "enc",
-    alg: "ECDH-ES+A256KW",
-    kid: "bOaoOIgm-7dI_gBIvsr0jQrPyYp6H_od0Ok-hSYZQ-g=",
-    crv: "P-521",
-    x: "ABcm3wzKpPzYYwjDC0HSrxxVM3ULbuMDUuzkR5wNciaMHkZvQ02gLFdqTL65evV7EWaQyC7zRc28eW20p5MVDdQr",
-    y: "AVa-eQsoiltOcQYy1QEcrQ9NbWktl_D4ewfg8diOZ2_svLEgEu4T1PqNcLbBGozP_VqPkXOMwNCUNI7pxajVGiIP",
-  },
-};
+let value: GenerateEndToEndKeyResponse = {};
 ```
 
 ## Fields

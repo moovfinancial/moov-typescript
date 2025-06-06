@@ -11,7 +11,7 @@ let value: ScheduleListResponse = {
   occurrences: [
     {
       mode: "production",
-      runOn: new Date("2024-11-23T03:17:08.711Z"),
+      runOn: new Date("2023-12-07T16:58:18.357Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -39,7 +39,7 @@ let value: ScheduleListResponse = {
           },
         },
         description:
-          "for smog because or dense thorough putrid whack exalt partially",
+          "among supposing futon contrast or absolve geez haul unit deceivingly",
       },
     },
   ],
@@ -73,14 +73,15 @@ let value: ScheduleListResponse = {
           dynamicDescriptor: "WhlBdy *Yoga 11-12",
         },
       },
-      description: "since federate facilitate",
+      description:
+        "among supposing futon contrast or absolve geez haul unit deceivingly",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },
   scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-  createdOn: new Date("2024-09-25T03:17:33.623Z"),
-  updatedOn: new Date("2025-05-05T18:52:57.183Z"),
+  createdOn: new Date("2024-11-23T03:17:08.711Z"),
+  updatedOn: new Date("2025-12-17T01:57:11.800Z"),
 };
 ```
 

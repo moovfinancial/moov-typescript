@@ -24,11 +24,7 @@ let value: UpdateRepresentative = {
     postalCode: "80301",
     country: "US",
   },
-  birthDate: {
-    day: 9,
-    month: 11,
-    year: 1989,
-  },
+  birthDate: null,
   responsibilities: {
     ownershipPercentage: 38,
     jobTitle: "CEO",

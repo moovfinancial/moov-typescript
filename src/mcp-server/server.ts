@@ -90,6 +90,7 @@ import { tool$filesList } from "./tools/filesList.js";
 import { tool$filesUpload } from "./tools/filesUpload.js";
 import { tool$industriesList } from "./tools/industriesList.js";
 import { tool$institutionsSearch } from "./tools/institutionsSearch.js";
+import { tool$institutionsSearchInstitutions } from "./tools/institutionsSearchInstitutions.js";
 import { tool$issuingTransactionsGet } from "./tools/issuingTransactionsGet.js";
 import { tool$issuingTransactionsGetAuthorization } from "./tools/issuingTransactionsGetAuthorization.js";
 import { tool$issuingTransactionsList } from "./tools/issuingTransactionsList.js";
@@ -160,7 +161,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.12.0",
+    version: "0.12.1",
   });
 
   const client = new MoovCore({
@@ -302,6 +303,7 @@ export function createMCPServer(deps: {
   tool(tool$enrichedAddressGet);
   tool(tool$enrichedProfileGet);
   tool(tool$industriesList);
+  tool(tool$institutionsSearchInstitutions);
   tool(tool$institutionsSearch);
   tool(tool$issuingTransactionsListAuthorizations);
   tool(tool$issuingTransactionsGetAuthorization);

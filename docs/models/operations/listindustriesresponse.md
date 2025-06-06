@@ -5,24 +5,7 @@
 ```typescript
 import { ListIndustriesResponse } from "@moovio/sdk/models/operations";
 
-let value: ListIndustriesResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    industries: [
-      {
-        industry: "clothing-accessories",
-        displayName: "Clothing & Accessories",
-        category: "retail",
-        categoryDisplayName: "Retail",
-        defaultMcc: "5651",
-      },
-    ],
-  },
-};
+let value: ListIndustriesResponse = {};
 ```
 
 ## Fields

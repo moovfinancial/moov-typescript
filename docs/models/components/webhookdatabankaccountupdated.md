@@ -6,10 +6,10 @@
 import { WebhookDataBankAccountUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataBankAccountUpdated = {
-  bankAccountID: "5e26a831-217a-43db-86c3-b1e00d4ceb53",
-  accountID: "8c0d1949-13ae-47b7-8a75-5e83286e7374",
-  status: "pending",
-  statusReason: "verification-successful",
+  bankAccountID: "154d7945-277b-486f-be90-2100ae7163b4",
+  accountID: "4193e837-47d4-46ca-9db9-df2801a04f4d",
+  status: "new",
+  statusReason: "verification-initiated",
 };
 ```
 

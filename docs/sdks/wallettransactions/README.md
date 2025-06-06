@@ -33,6 +33,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -47,7 +48,6 @@ async function run() {
     walletID: "4f971587-62fe-42c9-bc61-7409d9c8660c",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -65,6 +65,7 @@ import { walletTransactionsList } from "@moovio/sdk/funcs/walletTransactionsList
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -78,15 +79,12 @@ async function run() {
     count: 20,
     walletID: "4f971587-62fe-42c9-bc61-7409d9c8660c",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("walletTransactionsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -126,6 +124,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -139,7 +138,6 @@ async function run() {
     transactionID: "e0a32cf5-5758-49ba-83da-75bf02c9c6d7",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -157,6 +155,7 @@ import { walletTransactionsGet } from "@moovio/sdk/funcs/walletTransactionsGet.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -169,15 +168,12 @@ async function run() {
     walletID: "03db97f6-c308-4595-8f43-fd247f1bd3f2",
     transactionID: "e0a32cf5-5758-49ba-83da-75bf02c9c6d7",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("walletTransactionsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

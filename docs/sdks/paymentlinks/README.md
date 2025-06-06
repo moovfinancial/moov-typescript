@@ -45,6 +45,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -78,7 +79,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -96,6 +96,7 @@ import { paymentLinksCreate } from "@moovio/sdk/funcs/paymentLinksCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -128,15 +129,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("paymentLinksCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -176,6 +174,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -187,7 +186,6 @@ async function run() {
     accountID: "d1039e6d-21ee-4a29-8adf-1dd2a6625a0d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -205,6 +203,7 @@ import { paymentLinksList } from "@moovio/sdk/funcs/paymentLinksList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -215,15 +214,12 @@ async function run() {
   const res = await paymentLinksList(moov, {
     accountID: "d1039e6d-21ee-4a29-8adf-1dd2a6625a0d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("paymentLinksList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -261,6 +257,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -273,7 +270,6 @@ async function run() {
     paymentLinkCode: "uc7ZYKrMhi",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -291,6 +287,7 @@ import { paymentLinksGet } from "@moovio/sdk/funcs/paymentLinksGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -302,15 +299,12 @@ async function run() {
     accountID: "323f95b1-3798-4203-8a73-5c8668a9226e",
     paymentLinkCode: "uc7ZYKrMhi",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("paymentLinksGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -348,6 +342,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -370,7 +365,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -388,6 +382,7 @@ import { paymentLinksUpdate } from "@moovio/sdk/funcs/paymentLinksUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -409,15 +404,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("paymentLinksUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -457,6 +449,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -469,7 +462,6 @@ async function run() {
     paymentLinkCode: "uc7ZYKrMhi",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -487,6 +479,7 @@ import { paymentLinksDisable } from "@moovio/sdk/funcs/paymentLinksDisable.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -498,15 +491,12 @@ async function run() {
     accountID: "c1cf000d-0dd9-4dec-bd5e-a88e135adf82",
     paymentLinkCode: "uc7ZYKrMhi",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("paymentLinksDisable failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -546,6 +536,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -558,7 +549,6 @@ async function run() {
     paymentLinkCode: "uc7ZYKrMhi",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -576,6 +566,7 @@ import { paymentLinksGetQRCode } from "@moovio/sdk/funcs/paymentLinksGetQRCode.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -587,15 +578,12 @@ async function run() {
     accountID: "2f01a42a-aa5a-424f-9f47-6f8999ed05dc",
     paymentLinkCode: "uc7ZYKrMhi",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("paymentLinksGetQRCode failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

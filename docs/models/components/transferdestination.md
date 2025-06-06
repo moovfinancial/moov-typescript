@@ -10,8 +10,8 @@ let value: TransferDestination = {
   paymentMethodType: "ach-credit-same-day",
   account: {
     accountID: "<id>",
-    email: "Kaylee22@gmail.com",
-    displayName: "Timmy.Volkman12",
+    email: "Mason_Koepp@hotmail.com",
+    displayName: "Concepcion46",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -52,7 +52,7 @@ let value: TransferDestination = {
     domesticPullFromCard: "supported",
   },
   achDetails: {
-    status: "completed",
+    status: "originated",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
@@ -72,7 +72,7 @@ let value: TransferDestination = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "completed",
+    status: "canceled",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

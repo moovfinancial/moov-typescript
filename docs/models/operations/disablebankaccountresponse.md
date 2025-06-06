@@ -5,13 +5,7 @@
 ```typescript
 import { DisableBankAccountResponse } from "@moovio/sdk/models/operations";
 
-let value: DisableBankAccountResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: DisableBankAccountResponse = {};
 ```
 
 ## Fields

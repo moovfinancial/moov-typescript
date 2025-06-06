@@ -59,6 +59,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -100,7 +101,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -118,6 +118,7 @@ import { representativesCreate } from "@moovio/sdk/funcs/representativesCreate.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -158,15 +159,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("representativesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -209,6 +207,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -220,7 +219,6 @@ async function run() {
     accountID: "aa071158-7ed6-4c18-af34-4fa37b755e53",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -238,6 +236,7 @@ import { representativesList } from "@moovio/sdk/funcs/representativesList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -248,15 +247,12 @@ async function run() {
   const res = await representativesList(moov, {
     accountID: "aa071158-7ed6-4c18-af34-4fa37b755e53",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("representativesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -294,6 +290,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -306,7 +303,6 @@ async function run() {
     representativeID: "74d0f56b-b81b-467a-bc86-47a55fe5e503",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -324,6 +320,7 @@ import { representativesDelete } from "@moovio/sdk/funcs/representativesDelete.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -335,15 +332,12 @@ async function run() {
     accountID: "23b950c7-3ccf-4edc-9566-07f765d57c73",
     representativeID: "74d0f56b-b81b-467a-bc86-47a55fe5e503",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("representativesDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -382,6 +376,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -394,7 +389,6 @@ async function run() {
     representativeID: "00d87070-b167-48e6-be2f-198b5e1556c4",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -412,6 +406,7 @@ import { representativesGet } from "@moovio/sdk/funcs/representativesGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -423,15 +418,12 @@ async function run() {
     accountID: "071b8a57-e691-4e4b-9143-75f1a828ce9b",
     representativeID: "00d87070-b167-48e6-be2f-198b5e1556c4",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("representativesGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -482,6 +474,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -519,7 +512,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -537,6 +529,7 @@ import { representativesUpdate } from "@moovio/sdk/funcs/representativesUpdate.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -573,15 +566,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("representativesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

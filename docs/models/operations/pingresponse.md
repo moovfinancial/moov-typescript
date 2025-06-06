@@ -5,13 +5,7 @@
 ```typescript
 import { PingResponse } from "@moovio/sdk/models/operations";
 
-let value: PingResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: PingResponse = {};
 ```
 
 ## Fields

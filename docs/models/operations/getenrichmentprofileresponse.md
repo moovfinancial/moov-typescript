@@ -5,34 +5,7 @@
 ```typescript
 import { GetEnrichmentProfileResponse } from "@moovio/sdk/models/operations";
 
-let value: GetEnrichmentProfileResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    business: {
-      address: {
-        addressLine1: "123 Main Street",
-        addressLine2: "Apt 302",
-        city: "Boulder",
-        stateOrProvince: "CO",
-        postalCode: "80301",
-        country: "US",
-      },
-      email: "jordan.lee@classbooker.dev",
-      industryCodes: {
-        naics: "713940",
-        sic: "7991",
-      },
-      phone: {
-        number: "8185551212",
-        countryCode: "1",
-      },
-    },
-  },
-};
+let value: GetEnrichmentProfileResponse = {};
 ```
 
 ## Fields

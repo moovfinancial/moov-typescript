@@ -39,6 +39,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -52,7 +53,6 @@ async function run() {
     count: 20,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -70,6 +70,7 @@ import { issuingTransactionsListAuthorizations } from "@moovio/sdk/funcs/issuing
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -82,15 +83,12 @@ async function run() {
     skip: 60,
     count: 20,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("issuingTransactionsListAuthorizations failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -128,6 +126,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -140,7 +139,6 @@ async function run() {
     authorizationID: "d9ee8dde-b1eb-492f-bea1-d8e09bccbc52",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -158,6 +156,7 @@ import { issuingTransactionsGetAuthorization } from "@moovio/sdk/funcs/issuingTr
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -169,15 +168,12 @@ async function run() {
     accountID: "0ccac2cc-6692-44a9-b0d1-35a1892c2db2",
     authorizationID: "d9ee8dde-b1eb-492f-bea1-d8e09bccbc52",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("issuingTransactionsGetAuthorization failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -215,6 +211,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -229,7 +226,6 @@ async function run() {
     count: 20,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -247,6 +243,7 @@ import { issuingTransactionsListAuthorizationEvents } from "@moovio/sdk/funcs/is
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -260,15 +257,12 @@ async function run() {
     skip: 60,
     count: 20,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("issuingTransactionsListAuthorizationEvents failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -306,6 +300,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -319,7 +314,6 @@ async function run() {
     count: 20,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -337,6 +331,7 @@ import { issuingTransactionsList } from "@moovio/sdk/funcs/issuingTransactionsLi
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -349,15 +344,12 @@ async function run() {
     skip: 60,
     count: 20,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("issuingTransactionsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -395,6 +387,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -407,7 +400,6 @@ async function run() {
     cardTransactionID: "d5a1aab9-eb96-409a-ab95-88ac99cf00a5",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -425,6 +417,7 @@ import { issuingTransactionsGet } from "@moovio/sdk/funcs/issuingTransactionsGet
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -436,15 +429,12 @@ async function run() {
     accountID: "b2b6e23c-a5aa-46a9-adb7-d12876e47288",
     cardTransactionID: "d5a1aab9-eb96-409a-ab95-88ac99cf00a5",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("issuingTransactionsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -5,13 +5,7 @@
 ```typescript
 import { UpdateApplePayMerchantDomainsResponse } from "@moovio/sdk/models/operations";
 
-let value: UpdateApplePayMerchantDomainsResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: UpdateApplePayMerchantDomainsResponse = {};
 ```
 
 ## Fields

@@ -26,11 +26,11 @@ let value: OnboardingInvite = {
     },
   },
   partner: {
-    accountID: "57de0e2b-9070-4537-a75b-0758c0307e62",
+    accountID: "c6812db5-460a-4d4b-b5f0-8944e7d44461",
     accountMode: "production",
     displayName: "Bob's Widgets",
   },
-  createdOn: new Date("2025-09-10T09:40:50.443Z"),
+  createdOn: new Date("2024-02-04T03:31:02.111Z"),
 };
 ```
 

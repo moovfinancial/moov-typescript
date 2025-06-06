@@ -119,6 +119,7 @@ export * from "./requestcard.js";
 export * from "./retrievefees.js";
 export * from "./revokeaccesstoken.js";
 export * from "./revokeonboardinginvite.js";
+export * from "./searchinstitutions.js";
 export * from "./submitdisputeevidence.js";
 export * from "./testendtoendtoken.js";
 export * from "./updateaccount.js";

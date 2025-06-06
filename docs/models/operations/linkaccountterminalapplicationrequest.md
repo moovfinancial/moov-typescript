@@ -7,9 +7,6 @@ import { LinkAccountTerminalApplicationRequest } from "@moovio/sdk/models/operat
 
 let value: LinkAccountTerminalApplicationRequest = {
   accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
-  linkAccountTerminalApplication: {
-    terminalApplicationID: "12345678-1234-1234-1234-123456789012",
-  },
 };
 ```
 

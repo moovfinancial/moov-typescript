@@ -5,13 +5,7 @@
 ```typescript
 import { DisableCapabilityResponse } from "@moovio/sdk/models/operations";
 
-let value: DisableCapabilityResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: DisableCapabilityResponse = {};
 ```
 
 ## Fields

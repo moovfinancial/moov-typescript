@@ -35,6 +35,7 @@ you'll need to specify the `/terminal-applications.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -50,7 +51,6 @@ async function run() {
     versionCode: "1.0.0",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -68,6 +68,7 @@ import { terminalApplicationsCreate } from "@moovio/sdk/funcs/terminalApplicatio
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -82,15 +83,12 @@ async function run() {
     sha256Digest: "1234567890",
     versionCode: "1.0.0",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("terminalApplicationsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -130,6 +128,7 @@ you'll need to specify the `/terminal-applications.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -139,7 +138,6 @@ const moov = new Moov({
 async function run() {
   const result = await moov.terminalApplications.list({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -157,6 +155,7 @@ import { terminalApplicationsList } from "@moovio/sdk/funcs/terminalApplications
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -165,15 +164,12 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await terminalApplicationsList(moov, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("terminalApplicationsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -211,6 +207,7 @@ you'll need to specify the `/terminal-applications.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -222,7 +219,6 @@ async function run() {
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -240,6 +236,7 @@ import { terminalApplicationsGet } from "@moovio/sdk/funcs/terminalApplicationsG
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -250,15 +247,12 @@ async function run() {
   const res = await terminalApplicationsGet(moov, {
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("terminalApplicationsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -296,6 +290,7 @@ you'll need to specify the `/terminal-applications.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -307,7 +302,6 @@ async function run() {
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -325,6 +319,7 @@ import { terminalApplicationsDelete } from "@moovio/sdk/funcs/terminalApplicatio
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -335,15 +330,12 @@ async function run() {
   const res = await terminalApplicationsDelete(moov, {
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("terminalApplicationsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

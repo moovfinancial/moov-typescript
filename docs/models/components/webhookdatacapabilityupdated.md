@@ -6,7 +6,7 @@
 import { WebhookDataCapabilityUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataCapabilityUpdated = {
-  accountID: "5f5b26c6-da84-41d9-96e2-2e72fdb34499",
+  accountID: "1477b656-5ec7-4d15-bdd8-4e69e651119b",
   capabilityID: "card-issuing",
   status: "in-review",
 };

@@ -43,6 +43,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -154,7 +155,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -172,6 +172,7 @@ import { schedulingCreate } from "@moovio/sdk/funcs/schedulingCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -282,15 +283,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("schedulingCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -330,6 +328,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -343,7 +342,6 @@ async function run() {
     accountID: "b69f6366-984e-40f9-82a0-65335a43431d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -361,6 +359,7 @@ import { schedulingList } from "@moovio/sdk/funcs/schedulingList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -373,15 +372,12 @@ async function run() {
     count: 20,
     accountID: "b69f6366-984e-40f9-82a0-65335a43431d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("schedulingList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -419,6 +415,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -563,7 +560,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -581,6 +577,7 @@ import { schedulingUpdate } from "@moovio/sdk/funcs/schedulingUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -724,15 +721,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("schedulingUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -772,6 +766,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -784,7 +779,6 @@ async function run() {
     scheduleID: "55487e07-f3b7-44e8-b6f3-64fc85701c34",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -802,6 +796,7 @@ import { schedulingGet } from "@moovio/sdk/funcs/schedulingGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -813,15 +808,12 @@ async function run() {
     accountID: "31afd98b-eb55-41b3-8a4f-0ee8ea69e4e0",
     scheduleID: "55487e07-f3b7-44e8-b6f3-64fc85701c34",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("schedulingGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -859,6 +851,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -871,7 +864,6 @@ async function run() {
     scheduleID: "5ca67de0-63f6-4cb7-b94a-6c84616ffe03",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -889,6 +881,7 @@ import { schedulingCancel } from "@moovio/sdk/funcs/schedulingCancel.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -900,15 +893,12 @@ async function run() {
     accountID: "e89edcfc-19ca-40eb-802b-a35100dea24d",
     scheduleID: "5ca67de0-63f6-4cb7-b94a-6c84616ffe03",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("schedulingCancel failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -947,6 +937,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -960,7 +951,6 @@ async function run() {
     occurrenceFilter: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -978,6 +968,7 @@ import { schedulingGetOccurrance } from "@moovio/sdk/funcs/schedulingGetOccurran
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -990,15 +981,12 @@ async function run() {
     scheduleID: "289e94cd-66f1-4df5-999f-46d0f40b4ce9",
     occurrenceFilter: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("schedulingGetOccurrance failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

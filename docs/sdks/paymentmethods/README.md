@@ -29,6 +29,7 @@ you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -40,7 +41,6 @@ async function run() {
     accountID: "f5503781-dfe4-4bcd-9487-5b5fe2b4d53b",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -58,6 +58,7 @@ import { paymentMethodsList } from "@moovio/sdk/funcs/paymentMethodsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -68,15 +69,12 @@ async function run() {
   const res = await paymentMethodsList(moov, {
     accountID: "f5503781-dfe4-4bcd-9487-5b5fe2b4d53b",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("paymentMethodsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -114,6 +112,7 @@ you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -126,7 +125,6 @@ async function run() {
     paymentMethodID: "aa740bf3-4c5f-459b-9370-4f7d4bea382b",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -144,6 +142,7 @@ import { paymentMethodsGet } from "@moovio/sdk/funcs/paymentMethodsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -155,15 +154,12 @@ async function run() {
     accountID: "56878537-30b0-48ee-9c54-07ab3a8b243d",
     paymentMethodID: "aa740bf3-4c5f-459b-9370-4f7d4bea382b",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("paymentMethodsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

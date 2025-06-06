@@ -5,13 +5,7 @@
 ```typescript
 import { CancelScheduleResponse } from "@moovio/sdk/models/operations";
 
-let value: CancelScheduleResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: CancelScheduleResponse = {};
 ```
 
 ## Fields

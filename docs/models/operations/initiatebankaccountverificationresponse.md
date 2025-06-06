@@ -5,17 +5,7 @@
 ```typescript
 import { InitiateBankAccountVerificationResponse } from "@moovio/sdk/models/operations";
 
-let value: InitiateBankAccountVerificationResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    verificationMethod: "instant",
-    status: "successful",
-  },
-};
+let value: InitiateBankAccountVerificationResponse = {};
 ```
 
 ## Fields

@@ -5,13 +5,7 @@
 ```typescript
 import { TestEndToEndTokenResponse } from "@moovio/sdk/models/operations";
 
-let value: TestEndToEndTokenResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: TestEndToEndTokenResponse = {};
 ```
 
 ## Fields

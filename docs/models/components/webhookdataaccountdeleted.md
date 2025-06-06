@@ -6,7 +6,7 @@
 import { WebhookDataAccountDeleted } from "@moovio/sdk/models/components";
 
 let value: WebhookDataAccountDeleted = {
-  accountID: "5e47c162-bed7-4829-95d5-d8e55b0152ee",
+  accountID: "e1c5b258-f179-497e-9641-e86abcaf4fab",
 };
 ```
 

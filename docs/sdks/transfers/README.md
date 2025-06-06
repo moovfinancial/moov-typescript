@@ -87,6 +87,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -115,7 +116,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -133,6 +133,7 @@ import { transfersCreate } from "@moovio/sdk/funcs/transfersCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -160,15 +161,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -216,6 +214,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -229,7 +228,6 @@ async function run() {
     accountID: "0579c895-4d2b-4024-8092-f71b80ab5d00",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -247,6 +245,7 @@ import { transfersList } from "@moovio/sdk/funcs/transfersList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -259,15 +258,12 @@ async function run() {
     count: 20,
     accountID: "0579c895-4d2b-4024-8092-f71b80ab5d00",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -308,6 +304,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -320,7 +317,6 @@ async function run() {
     accountID: "31113f7b-9f68-44e9-9338-6d8e655c7c96",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -338,6 +334,7 @@ import { transfersGet } from "@moovio/sdk/funcs/transfersGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -349,15 +346,12 @@ async function run() {
     transferID: "960cf5a2-50a3-4914-ad86-d54c022bf5df",
     accountID: "31113f7b-9f68-44e9-9338-6d8e655c7c96",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -397,6 +391,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -414,7 +409,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -432,6 +426,7 @@ import { transfersUpdate } from "@moovio/sdk/funcs/transfersUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -448,15 +443,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -494,6 +486,7 @@ run();
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -506,7 +499,6 @@ async function run() {
     transferID: "36c80a6c-ceb2-4e5d-a437-8a39afdfdc58",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -524,6 +516,7 @@ import { transfersCreateCancellation } from "@moovio/sdk/funcs/transfersCreateCa
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -535,15 +528,12 @@ async function run() {
     accountID: "10ae862c-6658-4f87-967d-46e995737204",
     transferID: "36c80a6c-ceb2-4e5d-a437-8a39afdfdc58",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersCreateCancellation failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -582,6 +572,7 @@ run();
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -595,7 +586,6 @@ async function run() {
     cancellationID: "770cb4b5-d5b0-4e8b-995b-86b790296ba5",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -613,6 +603,7 @@ import { transfersGetCancellation } from "@moovio/sdk/funcs/transfersGetCancella
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -625,15 +616,12 @@ async function run() {
     transferID: "bc13b680-bac3-432e-bf44-e9aa6426cbb2",
     cancellationID: "770cb4b5-d5b0-4e8b-995b-86b790296ba5",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersGetCancellation failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -674,6 +662,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -690,7 +679,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -708,6 +696,7 @@ import { transfersInitiateRefund } from "@moovio/sdk/funcs/transfersInitiateRefu
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -723,15 +712,12 @@ async function run() {
       amount: 1000,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersInitiateRefund failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -772,6 +758,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -784,7 +771,6 @@ async function run() {
     transferID: "6b1aa1a1-bff1-43b9-9126-2806fdc9c732",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -802,6 +788,7 @@ import { transfersListRefunds } from "@moovio/sdk/funcs/transfersListRefunds.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -813,15 +800,12 @@ async function run() {
     accountID: "03f5baaa-f5d8-44bd-90db-868745fe66e8",
     transferID: "6b1aa1a1-bff1-43b9-9126-2806fdc9c732",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersListRefunds failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -859,6 +843,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -872,7 +857,6 @@ async function run() {
     refundID: "8e12687e-a4e8-46c9-9e11-a57bbd781e44",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -890,6 +874,7 @@ import { transfersGetRefund } from "@moovio/sdk/funcs/transfersGetRefund.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -902,15 +887,12 @@ async function run() {
     accountID: "bbb69538-edaa-4a0b-b107-f46f2da89864",
     refundID: "8e12687e-a4e8-46c9-9e11-a57bbd781e44",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersGetRefund failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -950,6 +932,7 @@ to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -966,7 +949,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -984,6 +966,7 @@ import { transfersCreateReversal } from "@moovio/sdk/funcs/transfersCreateRevers
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -999,15 +982,12 @@ async function run() {
       amount: 1000,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersCreateReversal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1050,6 +1030,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1066,7 +1047,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1084,6 +1064,7 @@ import { transfersGenerateOptions } from "@moovio/sdk/funcs/transfersGenerateOpt
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1099,15 +1080,12 @@ async function run() {
       value: 1204,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersGenerateOptions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

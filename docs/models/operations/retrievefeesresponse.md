@@ -5,21 +5,7 @@
 ```typescript
 import { RetrieveFeesResponse } from "@moovio/sdk/models/operations";
 
-let value: RetrieveFeesResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: [
-    {
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-    },
-  ],
-};
+let value: RetrieveFeesResponse = {};
 ```
 
 ## Fields

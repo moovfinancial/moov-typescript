@@ -6,9 +6,7 @@
 import { CountriesErrors } from "@moovio/sdk/models/components";
 
 let value: CountriesErrors = {
-  countries: {
-    "key": "<value>",
-  },
+  countries: {},
 };
 ```
 

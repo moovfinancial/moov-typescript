@@ -10,13 +10,13 @@ let value: SweepConfig = {
   walletID: "8a61a3b7-b2ad-46f9-83e5-ac2f0d53a383",
   status: "disabled",
   pushPaymentMethod: {
-    paymentMethodID: "88f19013-30b1-40cc-b712-f351f14660bc",
+    paymentMethodID: "cb74fdaf-14de-43d7-95e6-270c9422550b",
   },
   pullPaymentMethod: {
-    paymentMethodID: "c808e9e2-469a-4bfb-b632-ad5802901593",
+    paymentMethodID: "6e6facf0-2f8e-47c2-b493-c9e1a43668ba",
   },
-  createdOn: new Date("2025-12-03T20:56:51.494Z"),
-  updatedOn: new Date("2024-12-04T19:30:05.940Z"),
+  createdOn: new Date("2024-07-26T23:09:55.034Z"),
+  updatedOn: new Date("2024-09-07T04:39:29.290Z"),
 };
 ```
 

@@ -16,11 +16,11 @@ let value: FullIssuedCard = {
     year: "21",
   },
   authorizedUser: {
-    firstName: "Ernestine",
-    lastName: "Rath",
+    firstName: "Vincenzo",
+    lastName: "Lesch",
   },
   fundingWalletID: "<id>",
-  state: "closed",
+  state: "inactive",
   formFactor: "virtual",
   controls: {
     velocityLimits: [
@@ -30,9 +30,9 @@ let value: FullIssuedCard = {
       },
     ],
   },
-  createdOn: new Date("2024-04-18T23:32:34.262Z"),
+  createdOn: new Date("2023-02-11T06:19:48.895Z"),
   pan: "<value>",
-  cvv: "291",
+  cvv: "774",
 };
 ```
 

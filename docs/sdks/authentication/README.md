@@ -22,6 +22,7 @@ Allows clients to notify the authorization server that a previously obtained ref
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -35,7 +36,6 @@ async function run() {
     clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -53,6 +53,7 @@ import { authenticationRevokeAccessToken } from "@moovio/sdk/funcs/authenticatio
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -65,15 +66,12 @@ async function run() {
     clientId: "5clTR_MdVrrkgxw2",
     clientSecret: "dNC-hg7sVm22jc3g_Eogtyu0_1Mqh_4-",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("authenticationRevokeAccessToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -110,6 +108,7 @@ Create or refresh an access token.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -125,7 +124,6 @@ async function run() {
     refreshToken: "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a...",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -143,6 +141,7 @@ import { authenticationCreateAccessToken } from "@moovio/sdk/funcs/authenticatio
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -157,15 +156,12 @@ async function run() {
     scope: "/accounts.read /accounts.write",
     refreshToken: "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a...",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("authenticationCreateAccessToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

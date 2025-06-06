@@ -35,6 +35,7 @@ you'll need to specify the `/accounts/{accountID}/terminal-applications.write` s
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -49,7 +50,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -67,6 +67,7 @@ import { accountTerminalApplicationsLink } from "@moovio/sdk/funcs/accountTermin
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -80,15 +81,12 @@ async function run() {
       terminalApplicationID: "12345678-1234-1234-1234-123456789012",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTerminalApplicationsLink failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -128,6 +126,7 @@ you'll need to specify the `/accounts/{accountID}/terminal-applications.read` sc
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -139,7 +138,6 @@ async function run() {
     accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -157,6 +155,7 @@ import { accountTerminalApplicationsList } from "@moovio/sdk/funcs/accountTermin
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -167,15 +166,12 @@ async function run() {
   const res = await accountTerminalApplicationsList(moov, {
     accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTerminalApplicationsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -213,6 +209,7 @@ you'll need to specify the `/accounts/{accountID}/terminal-applications.read` sc
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -225,7 +222,6 @@ async function run() {
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -243,6 +239,7 @@ import { accountTerminalApplicationsGet } from "@moovio/sdk/funcs/accountTermina
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -254,15 +251,12 @@ async function run() {
     accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTerminalApplicationsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -300,6 +294,7 @@ you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` s
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -312,7 +307,6 @@ async function run() {
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -330,6 +324,7 @@ import { accountTerminalApplicationsGetConfiguration } from "@moovio/sdk/funcs/a
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -341,15 +336,12 @@ async function run() {
     accountID: "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e",
     terminalApplicationID: "12345678-1234-1234-1234-123456789012",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTerminalApplicationsGetConfiguration failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

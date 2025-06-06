@@ -48,6 +48,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -61,7 +62,6 @@ async function run() {
     accountID: "93c43634-5477-42a7-972d-01fa76a09e17",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -79,6 +79,7 @@ import { feePlansListFeePlanAgreements } from "@moovio/sdk/funcs/feePlansListFee
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -91,15 +92,12 @@ async function run() {
     count: 20,
     accountID: "93c43634-5477-42a7-972d-01fa76a09e17",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feePlansListFeePlanAgreements failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -137,6 +135,7 @@ you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -151,7 +150,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -169,6 +167,7 @@ import { feePlansCreateFeePlanAgreements } from "@moovio/sdk/funcs/feePlansCreat
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -182,15 +181,12 @@ async function run() {
       planID: "19801f96-ea27-4610-b4d1-8c6b46f37928",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feePlansCreateFeePlanAgreements failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -231,6 +227,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -242,7 +239,6 @@ async function run() {
     accountID: "b3d59179-f74e-4ee8-b123-33220b3c7d4b",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -260,6 +256,7 @@ import { feePlansListFeePlans } from "@moovio/sdk/funcs/feePlansListFeePlans.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -270,15 +267,12 @@ async function run() {
   const res = await feePlansListFeePlans(moov, {
     accountID: "b3d59179-f74e-4ee8-b123-33220b3c7d4b",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feePlansListFeePlans failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -316,6 +310,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -329,7 +324,6 @@ async function run() {
     count: 20,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -347,6 +341,7 @@ import { feePlansRetrieveFees } from "@moovio/sdk/funcs/feePlansRetrieveFees.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -359,15 +354,12 @@ async function run() {
     skip: 60,
     count: 20,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feePlansRetrieveFees failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -405,6 +397,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -416,7 +409,6 @@ async function run() {
     accountID: "55c34e26-269d-4872-8e42-0fa83e3f4b10",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -434,6 +426,7 @@ import { feePlansListFeesFetch } from "@moovio/sdk/funcs/feePlansListFeesFetch.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -444,15 +437,12 @@ async function run() {
   const res = await feePlansListFeesFetch(moov, {
     accountID: "55c34e26-269d-4872-8e42-0fa83e3f4b10",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feePlansListFeesFetch failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -490,6 +480,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -501,7 +492,6 @@ async function run() {
     accountID: "600637f9-c38a-473f-b909-0d5ac537b8a5",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -519,6 +509,7 @@ import { feePlansListPartnerPricing } from "@moovio/sdk/funcs/feePlansListPartne
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -529,15 +520,12 @@ async function run() {
   const res = await feePlansListPartnerPricing(moov, {
     accountID: "600637f9-c38a-473f-b909-0d5ac537b8a5",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feePlansListPartnerPricing failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -575,6 +563,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -588,7 +577,6 @@ async function run() {
     accountID: "123bfe5e-2288-4146-9d8a-4c07264c3758",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -606,6 +594,7 @@ import { feePlansListPartnerPricingAgreements } from "@moovio/sdk/funcs/feePlans
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -618,15 +607,12 @@ async function run() {
     count: 20,
     accountID: "123bfe5e-2288-4146-9d8a-4c07264c3758",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feePlansListPartnerPricingAgreements failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

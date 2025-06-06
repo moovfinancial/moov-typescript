@@ -13,20 +13,20 @@ let value: Underwriting = {
   averageMonthlyTransactionVolume: 147884,
   status: "notRequested",
   volumeByCustomerType: {
-    businessToBusinessPercentage: 996662,
-    consumerToBusinessPercentage: 661368,
+    businessToBusinessPercentage: 787377,
+    consumerToBusinessPercentage: 665130,
   },
   cardVolumeDistribution: {
-    ecommercePercentage: 743743,
-    cardPresentPercentage: 766106,
-    mailOrPhonePercentage: 707418,
-    debtRepaymentPercentage: 990093,
+    ecommercePercentage: 616555,
+    cardPresentPercentage: 770976,
+    mailOrPhonePercentage: 643918,
+    debtRepaymentPercentage: 613082,
   },
   fulfillment: {
     hasPhysicalGoods: false,
-    isShippingProduct: false,
-    shipmentDurationDays: 961772,
-    returnPolicy: "other",
+    isShippingProduct: true,
+    shipmentDurationDays: 253308,
+    returnPolicy: "exchangeOnly",
   },
 };
 ```

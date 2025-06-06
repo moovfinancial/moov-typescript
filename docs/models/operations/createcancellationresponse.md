@@ -5,18 +5,7 @@
 ```typescript
 import { CreateCancellationResponse } from "@moovio/sdk/models/operations";
 
-let value: CreateCancellationResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    cancellationID: "<id>",
-    status: "completed",
-    createdOn: new Date("2024-08-05T22:31:36.476Z"),
-  },
-};
+let value: CreateCancellationResponse = {};
 ```
 
 ## Fields

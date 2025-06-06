@@ -6,8 +6,8 @@
 import { WebhookDataBankAccountDeleted } from "@moovio/sdk/models/components";
 
 let value: WebhookDataBankAccountDeleted = {
-  bankAccountID: "ac8ceaff-2a5a-4e2c-af6d-a29cb8e6d393",
-  accountID: "12e08b24-ba91-487a-bdd4-fc5a97af2636",
+  bankAccountID: "f140c69c-0058-4a66-a287-c4921d7cdf91",
+  accountID: "4893e0d7-6ca3-4767-a23d-2c2ab02442a2",
 };
 ```
 

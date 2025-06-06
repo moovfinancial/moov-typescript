@@ -33,6 +33,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -44,7 +45,6 @@ async function run() {
     accountID: "efe07546-f697-4da5-bf73-d9987efd4cdd",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -62,6 +62,7 @@ import { underwritingGet } from "@moovio/sdk/funcs/underwritingGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -72,15 +73,12 @@ async function run() {
   const res = await underwritingGet(moov, {
     accountID: "efe07546-f697-4da5-bf73-d9987efd4cdd",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("underwritingGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -120,6 +118,7 @@ you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -152,7 +151,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -170,6 +168,7 @@ import { underwritingUpsert } from "@moovio/sdk/funcs/underwritingUpsert.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -201,15 +200,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("underwritingUpsert failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

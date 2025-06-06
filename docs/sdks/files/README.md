@@ -38,6 +38,7 @@ import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -54,7 +55,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -73,6 +73,7 @@ import { openAsBlob } from "node:fs";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -88,15 +89,12 @@ async function run() {
       metadata: "{\"requirement_id\": \"document.individual.verification\"}",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("filesUpload failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -136,6 +134,7 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -147,7 +146,6 @@ async function run() {
     accountID: "d1133bf2-4853-4436-9a03-23739895ab98",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -165,6 +163,7 @@ import { filesList } from "@moovio/sdk/funcs/filesList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -175,15 +174,12 @@ async function run() {
   const res = await filesList(moov, {
     accountID: "d1133bf2-4853-4436-9a03-23739895ab98",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("filesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -221,6 +217,7 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -233,7 +230,6 @@ async function run() {
     fileID: "af170db9-0d17-4a9f-ade6-5dd2f1b3412d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -251,6 +247,7 @@ import { filesGet } from "@moovio/sdk/funcs/filesGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -262,15 +259,12 @@ async function run() {
     accountID: "7f888113-d35a-4536-b9bc-c55076736ab6",
     fileID: "af170db9-0d17-4a9f-ade6-5dd2f1b3412d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("filesGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

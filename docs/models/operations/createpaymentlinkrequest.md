@@ -7,28 +7,6 @@ import { CreatePaymentLinkRequest } from "@moovio/sdk/models/operations";
 
 let value: CreatePaymentLinkRequest = {
   accountID: "74d5e2ce-ef98-4a43-86e5-68a594978645",
-  createPaymentLink: {
-    partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-    merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
-    amount: {
-      currency: "USD",
-      value: 10000,
-    },
-    display: {
-      title: "Example Payment Link",
-      description: "This is an example payment link.",
-      callToAction: "pay",
-    },
-    customer: {
-      requirePhone: true,
-    },
-    payment: {
-      allowedMethods: [
-        "card-payment",
-        "ach-debit-collect",
-      ],
-    },
-  },
 };
 ```
 

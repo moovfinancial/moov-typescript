@@ -5,23 +5,7 @@
 ```typescript
 import { UpsertBrandResponse } from "@moovio/sdk/models/operations";
 
-let value: UpsertBrandResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    colors: {
-      dark: {
-        accent: "#111111",
-      },
-      light: {
-        accent: "#111111",
-      },
-    },
-  },
-};
+let value: UpsertBrandResponse = {};
 ```
 
 ## Fields

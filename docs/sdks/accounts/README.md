@@ -94,6 +94,7 @@ to specify the `/accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -110,7 +111,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -128,6 +128,7 @@ import { accountsCreate } from "@moovio/sdk/funcs/accountsCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -143,15 +144,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -195,6 +193,7 @@ to specify the `/accounts.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -208,7 +207,6 @@ async function run() {
     count: 20,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -226,6 +224,7 @@ import { accountsList } from "@moovio/sdk/funcs/accountsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -238,15 +237,12 @@ async function run() {
     skip: 60,
     count: 20,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -284,6 +280,7 @@ to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -295,7 +292,6 @@ async function run() {
     accountID: "2f93a6cf-3b3b-4c17-8d3b-110dfadccea4",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -313,6 +309,7 @@ import { accountsGet } from "@moovio/sdk/funcs/accountsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -323,15 +320,12 @@ async function run() {
   const res = await accountsGet(moov, {
     accountID: "2f93a6cf-3b3b-4c17-8d3b-110dfadccea4",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -377,6 +371,7 @@ to specify the `/accounts/{accountID}/profile.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -465,7 +460,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -483,6 +477,7 @@ import { accountsUpdate } from "@moovio/sdk/funcs/accountsUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -570,15 +565,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -620,6 +612,7 @@ you'll need to specify the `/accounts/{accountID}/profile.disconnect` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -631,7 +624,6 @@ async function run() {
     accountID: "cfdfea7d-f185-4de5-ba90-b09f14fe6683",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -649,6 +641,7 @@ import { accountsDisconnect } from "@moovio/sdk/funcs/accountsDisconnect.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -659,15 +652,12 @@ async function run() {
   const res = await accountsDisconnect(moov, {
     accountID: "cfdfea7d-f185-4de5-ba90-b09f14fe6683",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsDisconnect failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -706,6 +696,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -717,7 +708,6 @@ async function run() {
     accountID: "a2026036-cc26-42c1-beef-950662d13b5d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -735,6 +725,7 @@ import { accountsGetCountries } from "@moovio/sdk/funcs/accountsGetCountries.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -745,15 +736,12 @@ async function run() {
   const res = await accountsGetCountries(moov, {
     accountID: "a2026036-cc26-42c1-beef-950662d13b5d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsGetCountries failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -793,6 +781,7 @@ you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -809,7 +798,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -827,6 +815,7 @@ import { accountsAssignCountries } from "@moovio/sdk/funcs/accountsAssignCountri
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -842,15 +831,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsAssignCountries failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -890,6 +876,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -901,7 +888,6 @@ async function run() {
     accountID: "6180d9b9-2377-4190-8530-70a99d31a578",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -919,6 +905,7 @@ import { accountsGetMerchantProcessingAgreement } from "@moovio/sdk/funcs/accoun
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -929,15 +916,12 @@ async function run() {
   const res = await accountsGetMerchantProcessingAgreement(moov, {
     accountID: "6180d9b9-2377-4190-8530-70a99d31a578",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsGetMerchantProcessingAgreement failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -976,6 +960,7 @@ token patched to the account. Read more in our [documentation](https://docs.moov
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -985,7 +970,6 @@ const moov = new Moov({
 async function run() {
   const result = await moov.accounts.getTermsOfServiceToken({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1003,6 +987,7 @@ import { accountsGetTermsOfServiceToken } from "@moovio/sdk/funcs/accountsGetTer
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1011,15 +996,12 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await accountsGetTermsOfServiceToken(moov, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsGetTermsOfServiceToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

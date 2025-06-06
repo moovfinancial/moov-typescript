@@ -6,8 +6,8 @@
 import { WebhookDataBankAccountCreated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataBankAccountCreated = {
-  bankAccountID: "3e7e01c9-ba8a-44d9-871b-e2457fe366fa",
-  accountID: "1a0a22b6-6a3b-41da-98be-d9219567e927",
+  bankAccountID: "84ab4e3e-00b0-49a3-bfad-e691d2f347cb",
+  accountID: "122db109-18cc-459b-9369-561d1497c4d2",
 };
 ```
 

@@ -7,11 +7,6 @@ import { RegisterApplePayMerchantDomainsRequest } from "@moovio/sdk/models/opera
 
 let value: RegisterApplePayMerchantDomainsRequest = {
   accountID: "00daf085-80c4-408e-86d5-18ff87c3b37a",
-  registerApplePayMerchantDomains: {
-    domains: [
-      "checkout.classbooker.dev",
-    ],
-  },
 };
 ```
 

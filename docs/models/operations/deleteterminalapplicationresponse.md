@@ -5,13 +5,7 @@
 ```typescript
 import { DeleteTerminalApplicationResponse } from "@moovio/sdk/models/operations";
 
-let value: DeleteTerminalApplicationResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: DeleteTerminalApplicationResponse = {};
 ```
 
 ## Fields

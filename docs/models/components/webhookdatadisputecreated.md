@@ -6,12 +6,12 @@
 import { WebhookDataDisputeCreated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataDisputeCreated = {
-  accountID: "1759353c-a47d-4260-b48f-21c905130b1a",
-  transferID: "613e9e04-017f-4552-96d1-97c1d6fc95eb",
-  transactionID: "3fd5b991-bec8-43a4-b464-7ba55d9d0b4b",
-  disputeID: "aacadc13-0988-4be3-ad60-bb21be6e1069",
-  status: "expired",
-  phase: "pre-dispute",
+  accountID: "80a50721-b4bc-40fe-8014-27bf95843fb5",
+  transferID: "b1084ed6-048b-4936-a80f-d1387056cf16",
+  transactionID: "aa861184-d369-4d18-8f48-45aa143f88b8",
+  disputeID: "414675d3-5cb0-4104-b64c-f825e7d59d90",
+  status: "lost",
+  phase: "unknown",
 };
 ```
 

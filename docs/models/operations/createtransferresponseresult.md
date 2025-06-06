@@ -103,8 +103,8 @@ const value: components.CreatedTransfer = {
     paymentMethodType: "rtp-credit",
     account: {
       accountID: "<id>",
-      email: "Katlyn.Howell@yahoo.com",
-      displayName: "Sibyl.Purdy73",
+      email: "Mason_Koepp@hotmail.com",
+      displayName: "Concepcion46",
     },
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -145,7 +145,7 @@ const value: components.CreatedTransfer = {
       domesticPullFromCard: "supported",
     },
     achDetails: {
-      status: "corrected",
+      status: "originated",
       traceNumber: "124782618117",
       companyEntryDescription: "Gym dues",
       originatingCompanyName: "Whole Body Fit",
@@ -189,10 +189,10 @@ const value: components.CreatedTransfer = {
   },
   refunds: [
     {
-      refundID: "3cc91a9e-82c2-4065-bb12-e8302f6cd706",
-      createdOn: new Date("2024-12-01T23:45:47.839Z"),
-      updatedOn: new Date("2023-08-11T07:50:52.513Z"),
-      status: "completed",
+      refundID: "58b6438e-8b2b-4576-a3cc-91a9e82c2065",
+      createdOn: new Date("2023-04-01T04:47:38.422Z"),
+      updatedOn: new Date("2023-07-02T05:13:02.406Z"),
+      status: "failed",
       amount: {
         currency: "USD",
         value: 1204,
@@ -205,8 +205,8 @@ const value: components.CreatedTransfer = {
   },
   disputes: [
     {
-      disputeID: "f2f34481-09de-4e51-8186-edf22a3a5c02",
-      createdOn: new Date("2024-05-23T11:25:55.483Z"),
+      disputeID: "8302f6cd-706f-4a3a-8f2f-3448109dee51",
+      createdOn: new Date("2024-08-21T22:07:52.236Z"),
       amount: {
         currency: "USD",
         value: 1204,

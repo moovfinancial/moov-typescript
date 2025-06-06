@@ -177,6 +177,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -193,7 +194,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -222,6 +222,7 @@ const moov = new Moov({
     username: "",
     password: "",
   },
+  xMoovVersion: "v2024.01.00",
 });
 
 async function run() {
@@ -234,7 +235,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -755,6 +755,14 @@ you'll need to specify the `/profile-enrichment.read` scope.
 
 ### [institutions](docs/sdks/institutions/README.md)
 
+* [searchInstitutions](docs/sdks/institutions/README.md#searchinstitutions) - Search for financial institutions by name or routing number.
+
+This endpoint returns metadata about each matched institution, including basic identifying details (such as name, routing number, and address) and information about which payment services they support (e.g., ACH, RTP, and Wire).
+
+This can be used to validate a financial institution before initiating payment activity, or to check which payment rails are available for a given routing number.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/institutions.read` scope.
 * [search](docs/sdks/institutions/README.md#search) - Search for institutions by either their name or routing number.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1562,6 +1570,14 @@ you'll need to specify the `/profile-enrichment.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/fed.read` scope.
+- [`institutionsSearchInstitutions`](docs/sdks/institutions/README.md#searchinstitutions) - Search for financial institutions by name or routing number.
+
+This endpoint returns metadata about each matched institution, including basic identifying details (such as name, routing number, and address) and information about which payment services they support (e.g., ACH, RTP, and Wire).
+
+This can be used to validate a financial institution before initiating payment activity, or to check which payment rails are available for a given routing number.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/institutions.read` scope.
 - [`issuingTransactionsGet`](docs/sdks/issuingtransactions/README.md#get) - Retrieves details of an issued card transaction associated with a specific Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1872,6 +1888,7 @@ import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1888,7 +1905,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1907,6 +1923,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1934,7 +1951,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1957,6 +1973,7 @@ const moov = new Moov({
     },
     retryConnectionErrors: false,
   },
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1973,7 +1990,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1985,25 +2001,25 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `create` method may throw the following errors:
+This table shows properties which are common on error classes. For full details see [error classes](#error-classes).
 
-| Error Type                       | Status Code | Content Type     |
-| -------------------------------- | ----------- | ---------------- |
-| errors.GenericError              | 400, 409    | application/json |
-| errors.CreateAccountResponseBody | 422         | application/json |
-| errors.APIError                  | 4XX, 5XX    | \*/\*            |
+| Property            | Type       | Description                                                                             |
+| ------------------- | ---------- | --------------------------------------------------------------------------------------- |
+| `error.name`        | `string`   | Error class name eg `APIError`                                                          |
+| `error.message`     | `string`   | Error message                                                                           |
+| `error.statusCode`  | `number`   | HTTP status code eg `404`                                                               |
+| `error.contentType` | `string`   | HTTP content type eg `application/json`                                                 |
+| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned.                                  |
+| `error.rawResponse` | `Response` | Raw HTTP response. Access to headers and more.                                          |
+| `error.data$`       |            | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
-If the method throws an error and it is not captured by the known errors, it will default to throwing a `APIError`.
-
+### Example
 ```typescript
 import { Moov } from "@moovio/sdk";
-import {
-  CreateAccountResponseBody,
-  GenericError,
-  SDKValidationError,
-} from "@moovio/sdk/models/errors";
+import * as errors from "@moovio/sdk/models/errors";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -2011,9 +2027,8 @@ const moov = new Moov({
 });
 
 async function run() {
-  let result;
   try {
-    result = await moov.accounts.create({
+    const result = await moov.accounts.create({
       accountType: "business",
       profile: {
         business: {
@@ -2022,32 +2037,20 @@ async function run() {
       },
     });
 
-    // Handle the result
     console.log(result);
-  } catch (err) {
-    switch (true) {
-      // The server response does not match the expected SDK schema
-      case (err instanceof SDKValidationError): {
-        // Pretty-print will provide a human-readable multi-line error message
-        console.error(err.pretty());
-        // Raw value may also be inspected
-        console.error(err.rawValue);
-        return;
-      }
-      case (err instanceof GenericError): {
-        // Handle err.data$: GenericErrorData
-        console.error(err);
-        return;
-      }
-      case (err instanceof CreateAccountResponseBody): {
-        // Handle err.data$: CreateAccountResponseBodyData
-        console.error(err);
-        return;
-      }
-      default: {
-        // Other errors such as network errors, see HTTPClientErrors for more details
-        throw err;
-      }
+  } catch (error) {
+    // Depending on the method different errors may be thrown
+    if (error instanceof errors.GenericError) {
+      console.log(error.message);
+      console.log(error.data$.error); // string
+    }
+
+    // Fallback error class, if no other more specific error class is matched
+    if (error instanceof errors.APIError) {
+      console.log(error.message);
+      console.log(error.statusCode);
+      console.log(error.body);
+      console.log(error.rawResponse.headers);
     }
   }
 }
@@ -2056,17 +2059,56 @@ run();
 
 ```
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted multi-line string since validation errors can list many issues and the plain error string may be difficult read when debugging.
+### Error Classes
+* `APIError`: The fallback error class, if no other more specific error class is matched.
+* `SDKValidationError`: Type mismatch between the data returned from the server and the structure expected by the SDK. This can also be thrown for invalid method arguments. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+* Network errors:
+    * `ConnectionError`: HTTP client was unable to make a request to a server.
+    * `RequestTimeoutError`: HTTP request timed out due to an AbortSignal signal.
+    * `RequestAbortedError`: HTTP request was aborted by the client.
+    * `InvalidRequestError`: Any input used to create a request is invalid.
+    * `UnexpectedClientError`: Unrecognised or unexpected error.
 
-In some rare cases, the SDK can fail to get a response from the server or even make the request due to unexpected circumstances such as network conditions. These types of errors are captured in the `models/errors/httpclienterrors.ts` module:
+<details><summary>Less common errors, applicable to a subset of methods (34)</summary>
 
-| HTTP Client Error                                    | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| RequestAbortedError                                  | HTTP request was aborted by the client               |
-| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
-| ConnectionError                                      | HTTP client was unable to make a request to a server |
-| InvalidRequestError                                  | Any input used to create a request is invalid        |
-| UnexpectedClientError                                | Unrecognised or unexpected error                     |
+* [`GenericError`](docs/models/errors/genericerror.md): Applicable to 58 of 136 methods.*
+* [`BrandValidationError`](docs/models/errors/brandvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 3 of 136 methods.*
+* [`ScheduleValidationError`](docs/models/errors/schedulevalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 136 methods.*
+* [`Transfer`](docs/models/errors/transfer.md): Details of a Transfer. Status code `409`. Applicable to 1 of 136 methods.*
+* [`CardAcquiringRefund`](docs/models/errors/cardacquiringrefund.md): Details of a card refund. Status code `409`. Applicable to 1 of 136 methods.*
+* [`CreateAccountResponseBody`](docs/models/errors/createaccountresponsebody.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`UpdateAccountResponseBody`](docs/models/errors/updateaccountresponsebody.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`AssignCountriesError`](docs/models/errors/assigncountrieserror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`LinkApplePayError`](docs/models/errors/linkapplepayerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`BankAccountValidationError`](docs/models/errors/bankaccountvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`MicroDepositValidationError`](docs/models/errors/microdepositvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`AddCapabilitiesError`](docs/models/errors/addcapabilitieserror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`LinkCardError`](docs/models/errors/linkcarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`UpdateCardError`](docs/models/errors/updatecarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`FileUploadValidationError`](docs/models/errors/fileuploadvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`FeePlanAgreementError`](docs/models/errors/feeplanagreementerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`FileValidationError`](docs/models/errors/filevalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`CreatePaymentLinkError`](docs/models/errors/createpaymentlinkerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`UpdatePaymentLinkError`](docs/models/errors/updatepaymentlinkerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`RepresentativeValidationError`](docs/models/errors/representativevalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`CreateSweepConfigError`](docs/models/errors/createsweepconfigerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`PatchSweepConfigError`](docs/models/errors/patchsweepconfigerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`AccountTerminalApplicationError`](docs/models/errors/accountterminalapplicationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`TransferValidationError`](docs/models/errors/transfervalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`RefundValidationError`](docs/models/errors/refundvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`ReversalValidationError`](docs/models/errors/reversalvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`TransferOptionsValidationError`](docs/models/errors/transferoptionsvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`UpdateUnderwritingError`](docs/models/errors/updateunderwritingerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`RequestCardError`](docs/models/errors/requestcarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`UpdateIssuedCardError`](docs/models/errors/updateissuedcarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`RevokeTokenRequestError`](docs/models/errors/revoketokenrequesterror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`AuthTokenRequestError`](docs/models/errors/authtokenrequesterror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`OnboardingInviteError`](docs/models/errors/onboardinginviteerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`TerminalApplicationError`](docs/models/errors/terminalapplicationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+</details>
+
+
+\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -2080,6 +2122,7 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   serverURL: "https://api.moov.io",
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -2096,7 +2139,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 

@@ -27,6 +27,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -36,7 +37,6 @@ const moov = new Moov({
 async function run() {
   const result = await moov.receipts.create([]);
 
-  // Handle the result
   console.log(result);
 }
 
@@ -54,6 +54,7 @@ import { receiptsCreate } from "@moovio/sdk/funcs/receiptsCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -62,15 +63,12 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await receiptsCreate(moov, []);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("receiptsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -109,6 +107,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -120,7 +119,6 @@ async function run() {
     id: "8508cf6c-9ce4-4e35-84c1-4b77320a620b",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -138,6 +136,7 @@ import { receiptsList } from "@moovio/sdk/funcs/receiptsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -148,15 +147,12 @@ async function run() {
   const res = await receiptsList(moov, {
     id: "8508cf6c-9ce4-4e35-84c1-4b77320a620b",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("receiptsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

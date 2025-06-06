@@ -34,7 +34,8 @@ let value: OccurrencesResponse = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description: "gratefully knowledgeably adumbrate rough bustling inject",
+    description:
+      "among supposing futon contrast or absolve geez haul unit deceivingly",
   },
 };
 ```

@@ -36,7 +36,8 @@ let value: UpsertSchedule = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description: "haze aboard lovingly hypothesise",
+        description:
+          "among supposing futon contrast or absolve geez haul unit deceivingly",
       },
     },
   ],
@@ -69,7 +70,7 @@ let value: UpsertSchedule = {
         },
       },
       description:
-        "gee westernise verbally circumnavigate why by quit pfft finished",
+        "among supposing futon contrast or absolve geez haul unit deceivingly",
     },
     start: new Date("2009-11-10T23:00:00Z"),
   },

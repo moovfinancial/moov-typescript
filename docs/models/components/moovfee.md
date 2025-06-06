@@ -15,7 +15,8 @@ let value: MoovFee = {
     valueDecimal: "12.987654321",
   },
   feeIDs: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```

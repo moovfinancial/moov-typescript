@@ -5,13 +5,7 @@
 ```typescript
 import { DisableCardResponse } from "@moovio/sdk/models/operations";
 
-let value: DisableCardResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: DisableCardResponse = {};
 ```
 
 ## Fields

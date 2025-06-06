@@ -7,15 +7,6 @@ import { LinkBankAccountRequest } from "@moovio/sdk/models/operations";
 
 let value: LinkBankAccountRequest = {
   accountID: "6d62ea53-8e17-4469-ac8b-130260be5825",
-  linkBankAccount: {
-    account: {
-      holderName: "<value>",
-      holderType: "business",
-      accountNumber: "<value>",
-      bankAccountType: "loan",
-      routingNumber: "<value>",
-    },
-  },
 };
 ```
 

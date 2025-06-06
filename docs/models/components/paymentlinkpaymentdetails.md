@@ -8,9 +8,7 @@ Options for payment links used to collect payment.
 import { PaymentLinkPaymentDetails } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkPaymentDetails = {
-  allowedMethods: [
-    "card-payment",
-  ],
+  allowedMethods: [],
   cardDetails: {
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
   },

@@ -5,13 +5,7 @@
 ```typescript
 import { RevokeOnboardingInviteResponse } from "@moovio/sdk/models/operations";
 
-let value: RevokeOnboardingInviteResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: RevokeOnboardingInviteResponse = {};
 ```
 
 ## Fields

@@ -5,13 +5,7 @@
 ```typescript
 import { UpdateIssuedCardResponse } from "@moovio/sdk/models/operations";
 
-let value: UpdateIssuedCardResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: UpdateIssuedCardResponse = {};
 ```
 
 ## Fields

@@ -90,6 +90,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -103,7 +104,6 @@ async function run() {
     count: 20,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -121,6 +121,7 @@ import { disputesList } from "@moovio/sdk/funcs/disputesList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -133,15 +134,12 @@ async function run() {
     skip: 60,
     count: 20,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -182,6 +180,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -194,7 +193,6 @@ async function run() {
     disputeID: "4be10af9-ddeb-428b-8333-7430afce142f",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -212,6 +210,7 @@ import { disputesGet } from "@moovio/sdk/funcs/disputesGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -223,15 +222,12 @@ async function run() {
     accountID: "44d3e9dd-7128-4b00-8cd9-09d3242e5bcf",
     disputeID: "4be10af9-ddeb-428b-8333-7430afce142f",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -271,6 +267,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -283,7 +280,6 @@ async function run() {
     disputeID: "b7cf0931-5fbb-4e79-94cb-96291b634f63",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -301,6 +297,7 @@ import { disputesAccept } from "@moovio/sdk/funcs/disputesAccept.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -312,15 +309,12 @@ async function run() {
     accountID: "ef028cdd-49e0-4cd8-9c89-6673e28e226e",
     disputeID: "b7cf0931-5fbb-4e79-94cb-96291b634f63",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesAccept failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -361,6 +355,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -373,7 +368,6 @@ async function run() {
     disputeID: "f1c23432-4110-4981-9b72-b98df94bb61c",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -391,6 +385,7 @@ import { disputesListEvidence } from "@moovio/sdk/funcs/disputesListEvidence.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -402,15 +397,12 @@ async function run() {
     accountID: "efc12040-97af-4720-91c5-14cd1a83877b",
     disputeID: "f1c23432-4110-4981-9b72-b98df94bb61c",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesListEvidence failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -451,6 +443,7 @@ import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -467,7 +460,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -486,6 +478,7 @@ import { openAsBlob } from "node:fs";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -501,15 +494,12 @@ async function run() {
       evidenceType: "cancelation-policy",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesUploadEvidenceFile failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -551,6 +541,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -567,7 +558,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -585,6 +575,7 @@ import { disputesUploadEvidenceText } from "@moovio/sdk/funcs/disputesUploadEvid
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -600,15 +591,12 @@ async function run() {
       evidenceType: "generic-evidence",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesUploadEvidenceText failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -652,6 +640,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -664,7 +653,6 @@ async function run() {
     disputeID: "8c5d6d6e-420a-49c8-b7c3-d4b5d1bbd415",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -682,6 +670,7 @@ import { disputesSubmitEvidence } from "@moovio/sdk/funcs/disputesSubmitEvidence
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -693,15 +682,12 @@ async function run() {
     accountID: "01f79d04-f2de-42de-9e37-23c751edecb4",
     disputeID: "8c5d6d6e-420a-49c8-b7c3-d4b5d1bbd415",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesSubmitEvidence failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -742,6 +728,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -755,7 +742,6 @@ async function run() {
     evidenceID: "08c4d04c-1296-4bfd-bafb-bee195f85785",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -773,6 +759,7 @@ import { disputesGetEvidence } from "@moovio/sdk/funcs/disputesGetEvidence.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -785,15 +772,12 @@ async function run() {
     disputeID: "4fc54609-7e6b-4a75-b8b3-7ffbeb138e22",
     evidenceID: "08c4d04c-1296-4bfd-bafb-bee195f85785",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesGetEvidence failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -833,6 +817,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -847,7 +832,6 @@ async function run() {
     updateEvidence: {},
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -865,6 +849,7 @@ import { disputesUpdateEvidence } from "@moovio/sdk/funcs/disputesUpdateEvidence
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -878,15 +863,12 @@ async function run() {
     evidenceID: "fd46ede8-5d47-4e5e-91a7-9af8162f76b2",
     updateEvidence: {},
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesUpdateEvidence failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -927,6 +909,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -940,7 +923,6 @@ async function run() {
     evidenceID: "ea10cba6-166f-464d-b57b-30d995d44b98",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -958,6 +940,7 @@ import { disputesDeleteEvidence } from "@moovio/sdk/funcs/disputesDeleteEvidence
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -970,15 +953,12 @@ async function run() {
     disputeID: "1759456d-80e3-4428-a08d-302c8877b418",
     evidenceID: "ea10cba6-166f-464d-b57b-30d995d44b98",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesDeleteEvidence failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1019,6 +999,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1032,7 +1013,6 @@ async function run() {
     evidenceID: "3d195b92-798e-4ea4-9347-1c86efacbf38",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1050,6 +1030,7 @@ import { disputesGetEvidenceData } from "@moovio/sdk/funcs/disputesGetEvidenceDa
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1062,15 +1043,12 @@ async function run() {
     disputeID: "b7e45862-1e55-4ba0-842f-9fce30c0228b",
     evidenceID: "3d195b92-798e-4ea4-9347-1c86efacbf38",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("disputesGetEvidenceData failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

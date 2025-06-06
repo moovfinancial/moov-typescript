@@ -5,20 +5,7 @@
 ```typescript
 import { CreateAccessTokenResponse } from "@moovio/sdk/models/operations";
 
-let value: CreateAccessTokenResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    tokenType: "Bearer",
-    accessToken: "eyJhbGciOiJFZERTQSIsImN0eSI6IkpXVCIsImtpZCI6IkR...",
-    refreshToken: "eyJhbGc0eSI6TQSIsImN0kpXVCIsImtp6IkpXVsImtpZC0a...",
-    expiresIn: 1736964352,
-    scope: "/accounts.read /accounts.write",
-  },
-};
+let value: CreateAccessTokenResponse = {};
 ```
 
 ## Fields

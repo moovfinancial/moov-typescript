@@ -43,6 +43,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -60,7 +61,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -78,6 +78,7 @@ import { sweepsCreateConfig } from "@moovio/sdk/funcs/sweepsCreateConfig.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -94,15 +95,12 @@ async function run() {
       pullPaymentMethodID: "01234567-89ab-cdef-0123-456789abcdef",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sweepsCreateConfig failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -142,6 +140,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -153,7 +152,6 @@ async function run() {
     accountID: "ed67e4c8-03d3-4d88-ba38-fcd87de45a92",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -171,6 +169,7 @@ import { sweepsListConfigs } from "@moovio/sdk/funcs/sweepsListConfigs.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -181,15 +180,12 @@ async function run() {
   const res = await sweepsListConfigs(moov, {
     accountID: "ed67e4c8-03d3-4d88-ba38-fcd87de45a92",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sweepsListConfigs failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -227,6 +223,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -239,7 +236,6 @@ async function run() {
     sweepConfigID: "bfddff28-5291-4d9b-a0f8-22a0895e8486",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -257,6 +253,7 @@ import { sweepsGetConfig } from "@moovio/sdk/funcs/sweepsGetConfig.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -268,15 +265,12 @@ async function run() {
     accountID: "ae1c2e76-3195-4fc8-b922-b7af6dcf1aad",
     sweepConfigID: "bfddff28-5291-4d9b-a0f8-22a0895e8486",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sweepsGetConfig failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -314,6 +308,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -329,7 +324,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -347,6 +341,7 @@ import { sweepsUpdateConfig } from "@moovio/sdk/funcs/sweepsUpdateConfig.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -361,15 +356,12 @@ async function run() {
       status: "disabled",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sweepsUpdateConfig failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -409,6 +401,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -423,7 +416,6 @@ async function run() {
     count: 20,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -441,6 +433,7 @@ import { sweepsList } from "@moovio/sdk/funcs/sweepsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -454,15 +447,12 @@ async function run() {
     skip: 60,
     count: 20,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sweepsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -500,6 +490,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -513,7 +504,6 @@ async function run() {
     sweepID: "c88c9731-06c2-4b4a-a7d2-34c8b936d9ae",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -531,6 +521,7 @@ import { sweepsGet } from "@moovio/sdk/funcs/sweepsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -543,15 +534,12 @@ async function run() {
     walletID: "e63a4638-ad67-44fb-9b59-ed7311023602",
     sweepID: "c88c9731-06c2-4b4a-a7d2-34c8b936d9ae",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sweepsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

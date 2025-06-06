@@ -23,6 +23,7 @@ you'll need to specify the `/profile-enrichment.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -34,7 +35,6 @@ async function run() {
     uniqueID: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -52,6 +52,7 @@ import { avatarsGet } from "@moovio/sdk/funcs/avatarsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -62,15 +63,12 @@ async function run() {
   const res = await avatarsGet(moov, {
     uniqueID: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("avatarsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

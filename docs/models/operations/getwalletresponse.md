@@ -5,21 +5,7 @@
 ```typescript
 import { GetWalletResponse } from "@moovio/sdk/models/operations";
 
-let value: GetWalletResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  result: {
-    walletID: "eef0ebc4-caaa-4d11-bc42-c11045a66a52",
-    availableBalance: {
-      currency: "USD",
-      value: 1204,
-      valueDecimal: "<value>",
-    },
-  },
-};
+let value: GetWalletResponse = {};
 ```
 
 ## Fields

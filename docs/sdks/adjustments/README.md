@@ -27,6 +27,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -38,7 +39,6 @@ async function run() {
     accountID: "c054f3a6-d542-4310-a955-830739f800f0",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -56,6 +56,7 @@ import { adjustmentsList } from "@moovio/sdk/funcs/adjustmentsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -66,15 +67,12 @@ async function run() {
   const res = await adjustmentsList(moov, {
     accountID: "c054f3a6-d542-4310-a955-830739f800f0",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("adjustmentsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +110,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -124,7 +123,6 @@ async function run() {
     adjustmentID: "cbe4a8e7-605f-4667-a308-1afde85cd7a5",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -142,6 +140,7 @@ import { adjustmentsGet } from "@moovio/sdk/funcs/adjustmentsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -153,15 +152,12 @@ async function run() {
     accountID: "3ef4e658-8aaa-449f-a7a4-95a6839172a1",
     adjustmentID: "cbe4a8e7-605f-4667-a308-1afde85cd7a5",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("adjustmentsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -5,13 +5,7 @@
 ```typescript
 import { DisconnectAccountResponse } from "@moovio/sdk/models/operations";
 
-let value: DisconnectAccountResponse = {
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-};
+let value: DisconnectAccountResponse = {};
 ```
 
 ## Fields

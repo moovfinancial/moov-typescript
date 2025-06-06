@@ -35,6 +35,7 @@ you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -56,7 +57,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -74,6 +74,7 @@ import { brandingCreate } from "@moovio/sdk/funcs/brandingCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -94,15 +95,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("brandingCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -142,6 +140,7 @@ you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -163,7 +162,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -181,6 +179,7 @@ import { brandingUpsert } from "@moovio/sdk/funcs/brandingUpsert.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -201,15 +200,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("brandingUpsert failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -249,6 +245,7 @@ you'll need to specify the `/accounts/{accountID}/branding.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -260,7 +257,6 @@ async function run() {
     accountID: "8a4ec43e-d45f-481d-a291-683cb221e3cc",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -278,6 +274,7 @@ import { brandingGet } from "@moovio/sdk/funcs/brandingGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -288,15 +285,12 @@ async function run() {
   const res = await brandingGet(moov, {
     accountID: "8a4ec43e-d45f-481d-a291-683cb221e3cc",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("brandingGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -334,6 +328,7 @@ you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -346,7 +341,6 @@ async function run() {
     updateBrand: {},
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -364,6 +358,7 @@ import { brandingUpdate } from "@moovio/sdk/funcs/brandingUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -375,15 +370,12 @@ async function run() {
     accountID: "0c0dc4a5-ecd9-4223-810a-a71632980156",
     updateBrand: {},
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("brandingUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

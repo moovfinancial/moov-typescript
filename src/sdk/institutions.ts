@@ -3,11 +3,33 @@
  */
 
 import { institutionsSearch } from "../funcs/institutionsSearch.js";
+import { institutionsSearchInstitutions } from "../funcs/institutionsSearchInstitutions.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Institutions extends ClientSDK {
+  /**
+   * Search for financial institutions by name or routing number.
+   *
+   * This endpoint returns metadata about each matched institution, including basic identifying details (such as name, routing number, and address) and information about which payment services they support (e.g., ACH, RTP, and Wire).
+   *
+   * This can be used to validate a financial institution before initiating payment activity, or to check which payment rails are available for a given routing number.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/institutions.read` scope.
+   */
+  async searchInstitutions(
+    request: operations.SearchInstitutionsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.SearchInstitutionsResponse> {
+    return unwrapAsync(institutionsSearchInstitutions(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Search for institutions by either their name or routing number.
    *

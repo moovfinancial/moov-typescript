@@ -6,10 +6,10 @@
 import { WebhookDataRefundUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataRefundUpdated = {
-  accountID: "48966f9b-0e4b-4ee2-8e6e-5a27e8b04369",
-  transferID: "3684169c-3f3a-4483-b88e-585235ce6f51",
-  refundID: "73d2df31-5751-49bf-b76e-7884538111b6",
-  status: "completed",
+  accountID: "b6bd22cd-db57-43fb-b13d-7e2fa2f7bfc0",
+  transferID: "83bde1cf-5cc8-4a0d-bdcd-749074d7e768",
+  refundID: "1b303b50-49f0-483f-8708-254bbf41629f",
+  status: "pending",
 };
 ```
 

@@ -6,8 +6,8 @@
 import { WebhookDataBalanceUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataBalanceUpdated = {
-  accountID: "1c564218-963d-4c55-9eaa-d6a6b0d4d0e6",
-  walletID: "8e4cea7a-25b2-45f7-a06c-a9a1c326c6fc",
+  accountID: "f7b90dae-65f2-4d8a-af1d-f0153c468b99",
+  walletID: "f8329684-faae-464b-bb62-5e530d0bec8a",
 };
 ```
 
