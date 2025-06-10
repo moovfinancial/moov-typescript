@@ -47,7 +47,7 @@ export type BankAccountException = {
    * - R38: Stop Payment on Source Document (Adjustment Entry)
    * - R39: Improper Source Document
    */
-  achReturnCode: ACHReturnCode;
+  achReturnCode?: ACHReturnCode | undefined;
   /**
    * The rejection code of an RTP transaction that caused the bank account status to change.
    *
@@ -61,7 +61,7 @@ export type BankAccountException = {
    * - AG03: Transaction Type Not Supported
    * - MD07: Customer Deceased
    */
-  rtpRejectionCode: RTPRejectionCode;
+  rtpRejectionCode?: RTPRejectionCode | undefined;
   /**
    * Details related to an `errored` or `verificationFailed` bank account status.
    */
@@ -74,15 +74,15 @@ export const BankAccountException$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  achReturnCode: ACHReturnCode$inboundSchema,
-  rtpRejectionCode: RTPRejectionCode$inboundSchema,
+  achReturnCode: ACHReturnCode$inboundSchema.optional(),
+  rtpRejectionCode: RTPRejectionCode$inboundSchema.optional(),
   description: z.string(),
 });
 
 /** @internal */
 export type BankAccountException$Outbound = {
-  achReturnCode: string;
-  rtpRejectionCode: string;
+  achReturnCode?: string | undefined;
+  rtpRejectionCode?: string | undefined;
   description: string;
 };
 
@@ -92,8 +92,8 @@ export const BankAccountException$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BankAccountException
 > = z.object({
-  achReturnCode: ACHReturnCode$outboundSchema,
-  rtpRejectionCode: RTPRejectionCode$outboundSchema,
+  achReturnCode: ACHReturnCode$outboundSchema.optional(),
+  rtpRejectionCode: RTPRejectionCode$outboundSchema.optional(),
   description: z.string(),
 });
 
