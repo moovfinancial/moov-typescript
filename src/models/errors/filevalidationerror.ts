@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type FileValidationErrorData = {
   error?: string | undefined;
@@ -11,7 +12,7 @@ export type FileValidationErrorData = {
   metadata?: string | undefined;
 };
 
-export class FileValidationError extends Error {
+export class FileValidationError extends MoovError {
   error?: string | undefined;
   file?: string | undefined;
   filePurpose?: string | undefined;
@@ -20,13 +21,15 @@ export class FileValidationError extends Error {
   /** The original data that was passed to this error instance. */
   data$: FileValidationErrorData;
 
-  constructor(err: FileValidationErrorData) {
+  constructor(
+    err: FileValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.error != null) this.error = err.error;
     if (err.file != null) this.file = err.file;
     if (err.filePurpose != null) this.filePurpose = err.filePurpose;
@@ -46,9 +49,16 @@ export const FileValidationError$inboundSchema: z.ZodType<
   file: z.string().optional(),
   filePurpose: z.string().optional(),
   metadata: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new FileValidationError(v);
+    return new FileValidationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { MoovError } from "./mooverror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type FileT = {
@@ -17,20 +18,22 @@ export type FileUploadValidationErrorData = {
   file?: FileT | undefined;
 };
 
-export class FileUploadValidationError extends Error {
+export class FileUploadValidationError extends MoovError {
   evidenceType?: string | undefined;
   file?: FileT | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: FileUploadValidationErrorData;
 
-  constructor(err: FileUploadValidationErrorData) {
+  constructor(
+    err: FileUploadValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.evidenceType != null) this.evidenceType = err.evidenceType;
     if (err.file != null) this.file = err.file;
 
@@ -96,9 +99,16 @@ export const FileUploadValidationError$inboundSchema: z.ZodType<
 > = z.object({
   evidenceType: z.string().optional(),
   file: z.lazy(() => FileT$inboundSchema).optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new FileUploadValidationError(v);
+    return new FileUploadValidationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

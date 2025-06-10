@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 export type RequestCardErrorData = {
   fundingWalletID?: string | undefined;
@@ -14,7 +15,7 @@ export type RequestCardErrorData = {
   controls?: components.IssuingControlsError | undefined;
 };
 
-export class RequestCardError extends Error {
+export class RequestCardError extends MoovError {
   fundingWalletID?: string | undefined;
   formFactor?: string | undefined;
   authorizedUser?: components.CreateAuthorizedUserError | undefined;
@@ -25,13 +26,15 @@ export class RequestCardError extends Error {
   /** The original data that was passed to this error instance. */
   data$: RequestCardErrorData;
 
-  constructor(err: RequestCardErrorData) {
+  constructor(
+    err: RequestCardErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.fundingWalletID != null) this.fundingWalletID = err.fundingWalletID;
     if (err.formFactor != null) this.formFactor = err.formFactor;
     if (err.authorizedUser != null) this.authorizedUser = err.authorizedUser;
@@ -55,9 +58,16 @@ export const RequestCardError$inboundSchema: z.ZodType<
   memo: z.string().optional(),
   expiration: components.CardExpirationError$inboundSchema.optional(),
   controls: components.IssuingControlsError$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new RequestCardError(v);
+    return new RequestCardError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

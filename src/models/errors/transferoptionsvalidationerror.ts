@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type TransferOptionsValidationErrorData = {
   amount?: string | undefined;
@@ -10,7 +11,7 @@ export type TransferOptionsValidationErrorData = {
   destination?: string | undefined;
 };
 
-export class TransferOptionsValidationError extends Error {
+export class TransferOptionsValidationError extends MoovError {
   amount?: string | undefined;
   source?: string | undefined;
   destination?: string | undefined;
@@ -18,13 +19,15 @@ export class TransferOptionsValidationError extends Error {
   /** The original data that was passed to this error instance. */
   data$: TransferOptionsValidationErrorData;
 
-  constructor(err: TransferOptionsValidationErrorData) {
+  constructor(
+    err: TransferOptionsValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.amount != null) this.amount = err.amount;
     if (err.source != null) this.source = err.source;
     if (err.destination != null) this.destination = err.destination;
@@ -42,9 +45,16 @@ export const TransferOptionsValidationError$inboundSchema: z.ZodType<
   amount: z.string().optional(),
   source: z.string().optional(),
   destination: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new TransferOptionsValidationError(v);
+    return new TransferOptionsValidationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

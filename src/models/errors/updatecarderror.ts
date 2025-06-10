@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 export type UpdateCardErrorData = {
   e2ee?: components.End2EndEncryptionError | undefined;
@@ -16,7 +17,7 @@ export type UpdateCardErrorData = {
   holderName?: string | undefined;
 };
 
-export class UpdateCardError extends Error {
+export class UpdateCardError extends MoovError {
   e2ee?: components.End2EndEncryptionError | undefined;
   billingAddress?: string | undefined;
   expiration?: string | undefined;
@@ -29,13 +30,15 @@ export class UpdateCardError extends Error {
   /** The original data that was passed to this error instance. */
   data$: UpdateCardErrorData;
 
-  constructor(err: UpdateCardErrorData) {
+  constructor(
+    err: UpdateCardErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.e2ee != null) this.e2ee = err.e2ee;
     if (err.billingAddress != null) this.billingAddress = err.billingAddress;
     if (err.expiration != null) this.expiration = err.expiration;
@@ -65,9 +68,16 @@ export const UpdateCardError$inboundSchema: z.ZodType<
   merchantAccountID: z.string().optional(),
   verifyName: z.string().optional(),
   holderName: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new UpdateCardError(v);
+    return new UpdateCardError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

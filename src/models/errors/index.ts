@@ -26,6 +26,7 @@ export * from "./patchsweepconfigerror.js";
 export * from "./refundvalidationerror.js";
 export * from "./representativevalidationerror.js";
 export * from "./requestcarderror.js";
+export * from "./responsevalidationerror.js";
 export * from "./reversalvalidationerror.js";
 export * from "./revoketokenrequesterror.js";
 export * from "./schedulevalidationerror.js";

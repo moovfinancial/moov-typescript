@@ -6,6 +6,7 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateUnderwritingErrorError = {
@@ -21,19 +22,21 @@ export type UpdateUnderwritingErrorData = {
   error: UpdateUnderwritingErrorError;
 };
 
-export class UpdateUnderwritingError extends Error {
+export class UpdateUnderwritingError extends MoovError {
   error: UpdateUnderwritingErrorError;
 
   /** The original data that was passed to this error instance. */
   data$: UpdateUnderwritingErrorData;
 
-  constructor(err: UpdateUnderwritingErrorData) {
+  constructor(
+    err: UpdateUnderwritingErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "UpdateUnderwritingError";
@@ -126,9 +129,16 @@ export const UpdateUnderwritingError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => UpdateUnderwritingErrorError$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new UpdateUnderwritingError(v);
+    return new UpdateUnderwritingError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

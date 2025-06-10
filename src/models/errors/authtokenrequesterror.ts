@@ -4,26 +4,29 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { MoovError } from "./mooverror.js";
 
 export type AuthTokenRequestErrorData = {
   scope?: string | undefined;
   refreshToken?: string | undefined;
 };
 
-export class AuthTokenRequestError extends Error {
+export class AuthTokenRequestError extends MoovError {
   scope?: string | undefined;
   refreshToken?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: AuthTokenRequestErrorData;
 
-  constructor(err: AuthTokenRequestErrorData) {
+  constructor(
+    err: AuthTokenRequestErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.scope != null) this.scope = err.scope;
     if (err.refreshToken != null) this.refreshToken = err.refreshToken;
 
@@ -39,13 +42,20 @@ export const AuthTokenRequestError$inboundSchema: z.ZodType<
 > = z.object({
   scope: z.string().optional(),
   refresh_token: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "refresh_token": "refreshToken",
     });
 
-    return new AuthTokenRequestError(remapped);
+    return new AuthTokenRequestError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

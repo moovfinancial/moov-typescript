@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type ScheduleValidationErrorData = {
   occurrences?: { [k: string]: string } | undefined;
@@ -10,7 +11,7 @@ export type ScheduleValidationErrorData = {
   description?: string | undefined;
 };
 
-export class ScheduleValidationError extends Error {
+export class ScheduleValidationError extends MoovError {
   occurrences?: { [k: string]: string } | undefined;
   recur?: string | undefined;
   description?: string | undefined;
@@ -18,13 +19,15 @@ export class ScheduleValidationError extends Error {
   /** The original data that was passed to this error instance. */
   data$: ScheduleValidationErrorData;
 
-  constructor(err: ScheduleValidationErrorData) {
+  constructor(
+    err: ScheduleValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.occurrences != null) this.occurrences = err.occurrences;
     if (err.recur != null) this.recur = err.recur;
     if (err.description != null) this.description = err.description;
@@ -42,9 +45,16 @@ export const ScheduleValidationError$inboundSchema: z.ZodType<
   occurrences: z.record(z.string()).optional(),
   recur: z.string().optional(),
   description: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new ScheduleValidationError(v);
+    return new ScheduleValidationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

@@ -4,24 +4,27 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 export type AddCapabilitiesErrorData = {
   error?: components.CapabilitiesError | undefined;
 };
 
-export class AddCapabilitiesError extends Error {
+export class AddCapabilitiesError extends MoovError {
   error?: components.CapabilitiesError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: AddCapabilitiesErrorData;
 
-  constructor(err: AddCapabilitiesErrorData) {
+  constructor(
+    err: AddCapabilitiesErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.error != null) this.error = err.error;
 
     this.name = "AddCapabilitiesError";
@@ -35,9 +38,16 @@ export const AddCapabilitiesError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: components.CapabilitiesError$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new AddCapabilitiesError(v);
+    return new AddCapabilitiesError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

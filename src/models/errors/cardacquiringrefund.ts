@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 /**
  * Details of a card refund.
@@ -23,7 +24,7 @@ export type CardAcquiringRefundData = {
 /**
  * Details of a card refund.
  */
-export class CardAcquiringRefund extends Error {
+export class CardAcquiringRefund extends MoovError {
   /**
    * Identifier for the refund.
    */
@@ -37,13 +38,15 @@ export class CardAcquiringRefund extends Error {
   /** The original data that was passed to this error instance. */
   data$: CardAcquiringRefundData;
 
-  constructor(err: CardAcquiringRefundData) {
+  constructor(
+    err: CardAcquiringRefundData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.refundID = err.refundID;
     this.createdOn = err.createdOn;
     this.updatedOn = err.updatedOn;
@@ -67,9 +70,16 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   status: components.RefundStatus$inboundSchema,
   amount: components.Amount$inboundSchema,
   cardDetails: components.RefundCardDetails$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new CardAcquiringRefund(v);
+    return new CardAcquiringRefund(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

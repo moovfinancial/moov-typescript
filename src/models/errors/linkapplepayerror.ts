@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type LinkApplePayErrorData = {
   /**
@@ -23,7 +24,7 @@ export type LinkApplePayErrorData = {
   transactionIdentifier?: string | undefined;
 };
 
-export class LinkApplePayError extends Error {
+export class LinkApplePayError extends MoovError {
   /**
    * Describes an error that wasn't attributable to a single request field.
    */
@@ -44,13 +45,15 @@ export class LinkApplePayError extends Error {
   /** The original data that was passed to this error instance. */
   data$: LinkApplePayErrorData;
 
-  constructor(err: LinkApplePayErrorData) {
+  constructor(
+    err: LinkApplePayErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.error != null) this.error = err.error;
     if (err.paymentData != null) this.paymentData = err.paymentData;
     if (err.paymentMethod != null) this.paymentMethod = err.paymentMethod;
@@ -72,9 +75,16 @@ export const LinkApplePayError$inboundSchema: z.ZodType<
   paymentData: z.string().optional(),
   paymentMethod: z.string().optional(),
   transactionIdentifier: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new LinkApplePayError(v);
+    return new LinkApplePayError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

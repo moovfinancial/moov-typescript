@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { MoovError } from "./mooverror.js";
 
 export type TransferValidationErrorData = {
   transfer?: string | undefined;
@@ -21,7 +22,7 @@ export type TransferValidationErrorData = {
   error?: string | undefined;
 };
 
-export class TransferValidationError extends Error {
+export class TransferValidationError extends MoovError {
   transfer?: string | undefined;
   amount?: string | undefined;
   source?: string | undefined;
@@ -39,13 +40,15 @@ export class TransferValidationError extends Error {
   /** The original data that was passed to this error instance. */
   data$: TransferValidationErrorData;
 
-  constructor(err: TransferValidationErrorData) {
+  constructor(
+    err: TransferValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.transfer != null) this.transfer = err.transfer;
     if (err.amount != null) this.amount = err.amount;
     if (err.source != null) this.source = err.source;
@@ -85,6 +88,9 @@ export const TransferValidationError$inboundSchema: z.ZodType<
   "FacilitatorFee.MarkupDecimal": z.string().optional(),
   metadata: z.string().optional(),
   error: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
@@ -93,7 +99,11 @@ export const TransferValidationError$inboundSchema: z.ZodType<
       "FacilitatorFee.MarkupDecimal": "facilitatorFeeMarkupDecimal",
     });
 
-    return new TransferValidationError(remapped);
+    return new TransferValidationError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

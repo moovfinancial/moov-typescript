@@ -4,24 +4,27 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 export type BrandValidationErrorData = {
   colors?: components.ColorsValidationError | undefined;
 };
 
-export class BrandValidationError extends Error {
+export class BrandValidationError extends MoovError {
   colors?: components.ColorsValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: BrandValidationErrorData;
 
-  constructor(err: BrandValidationErrorData) {
+  constructor(
+    err: BrandValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.colors != null) this.colors = err.colors;
 
     this.name = "BrandValidationError";
@@ -35,9 +38,16 @@ export const BrandValidationError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   colors: components.ColorsValidationError$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new BrandValidationError(v);
+    return new BrandValidationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

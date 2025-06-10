@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type CreateSweepConfigErrorData = {
   walletID?: string | undefined;
@@ -13,7 +14,7 @@ export type CreateSweepConfigErrorData = {
   minimumBalance?: string | undefined;
 };
 
-export class CreateSweepConfigError extends Error {
+export class CreateSweepConfigError extends MoovError {
   walletID?: string | undefined;
   status?: string | undefined;
   pushPaymentMethodID?: string | undefined;
@@ -24,13 +25,15 @@ export class CreateSweepConfigError extends Error {
   /** The original data that was passed to this error instance. */
   data$: CreateSweepConfigErrorData;
 
-  constructor(err: CreateSweepConfigErrorData) {
+  constructor(
+    err: CreateSweepConfigErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.walletID != null) this.walletID = err.walletID;
     if (err.status != null) this.status = err.status;
     if (err.pushPaymentMethodID != null) {
@@ -60,9 +63,16 @@ export const CreateSweepConfigError$inboundSchema: z.ZodType<
   pullPaymentMethodID: z.string().optional(),
   statementDescriptor: z.string().optional(),
   minimumBalance: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new CreateSweepConfigError(v);
+    return new CreateSweepConfigError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

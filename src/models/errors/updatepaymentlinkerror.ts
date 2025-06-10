@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 export type UpdatePaymentLinkErrorData = {
   amount?: components.AmountValidationError | undefined;
@@ -13,7 +14,7 @@ export type UpdatePaymentLinkErrorData = {
   payout?: components.PayoutDetailsError | undefined;
 };
 
-export class UpdatePaymentLinkError extends Error {
+export class UpdatePaymentLinkError extends MoovError {
   amount?: components.AmountValidationError | undefined;
   expiresOn?: string | undefined;
   display?: components.DisplayOptionsError | undefined;
@@ -23,13 +24,15 @@ export class UpdatePaymentLinkError extends Error {
   /** The original data that was passed to this error instance. */
   data$: UpdatePaymentLinkErrorData;
 
-  constructor(err: UpdatePaymentLinkErrorData) {
+  constructor(
+    err: UpdatePaymentLinkErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.amount != null) this.amount = err.amount;
     if (err.expiresOn != null) this.expiresOn = err.expiresOn;
     if (err.display != null) this.display = err.display;
@@ -51,9 +54,16 @@ export const UpdatePaymentLinkError$inboundSchema: z.ZodType<
   display: components.DisplayOptionsError$inboundSchema.optional(),
   payment: components.PaymentDetailsError$inboundSchema.optional(),
   payout: components.PayoutDetailsError$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new UpdatePaymentLinkError(v);
+    return new UpdatePaymentLinkError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

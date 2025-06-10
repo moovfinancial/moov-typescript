@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 /**
  * Details of a Transfer.
@@ -60,6 +61,7 @@ export type TransferData = {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
+  paymentLinkID?: string | undefined;
   /**
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
@@ -69,7 +71,7 @@ export type TransferData = {
 /**
  * Details of a Transfer.
  */
-export class Transfer extends Error {
+export class Transfer extends MoovError {
   transferID: string;
   createdOn: Date;
   source: components.TransferSource;
@@ -121,6 +123,7 @@ export class Transfer extends Error {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
+  paymentLinkID?: string | undefined;
   /**
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
@@ -129,13 +132,15 @@ export class Transfer extends Error {
   /** The original data that was passed to this error instance. */
   data$: TransferData;
 
-  constructor(err: TransferData) {
+  constructor(
+    err: TransferData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.transferID = err.transferID;
     this.createdOn = err.createdOn;
     this.source = err.source;
@@ -160,6 +165,7 @@ export class Transfer extends Error {
     if (err.sweepID != null) this.sweepID = err.sweepID;
     if (err.scheduleID != null) this.scheduleID = err.scheduleID;
     if (err.occurrenceID != null) this.occurrenceID = err.occurrenceID;
+    if (err.paymentLinkID != null) this.paymentLinkID = err.paymentLinkID;
     if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
 
     this.name = "Transfer";
@@ -197,10 +203,18 @@ export const Transfer$inboundSchema: z.ZodType<
   sweepID: z.string().optional(),
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
+  paymentLinkID: z.string().optional(),
   salesTaxAmount: components.Amount$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new Transfer(v);
+    return new Transfer(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -229,6 +243,7 @@ export type Transfer$Outbound = {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
+  paymentLinkID?: string | undefined;
   salesTaxAmount?: components.Amount$Outbound | undefined;
 };
 
@@ -265,6 +280,7 @@ export const Transfer$outboundSchema: z.ZodType<
     sweepID: z.string().optional(),
     scheduleID: z.string().optional(),
     occurrenceID: z.string().optional(),
+    paymentLinkID: z.string().optional(),
     salesTaxAmount: components.Amount$outboundSchema.optional(),
   }));
 

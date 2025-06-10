@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type RefundValidationErrorData = {
   amount?: string | undefined;
@@ -12,7 +13,7 @@ export type RefundValidationErrorData = {
   error?: string | undefined;
 };
 
-export class RefundValidationError extends Error {
+export class RefundValidationError extends MoovError {
   amount?: string | undefined;
   /**
    * Used for generic errors when invalid request data isn't attributed to a single request field.
@@ -22,13 +23,15 @@ export class RefundValidationError extends Error {
   /** The original data that was passed to this error instance. */
   data$: RefundValidationErrorData;
 
-  constructor(err: RefundValidationErrorData) {
+  constructor(
+    err: RefundValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.amount != null) this.amount = err.amount;
     if (err.error != null) this.error = err.error;
 
@@ -44,9 +47,16 @@ export const RefundValidationError$inboundSchema: z.ZodType<
 > = z.object({
   amount: z.string().optional(),
   error: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new RefundValidationError(v);
+    return new RefundValidationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

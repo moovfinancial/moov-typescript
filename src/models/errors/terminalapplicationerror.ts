@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type TerminalApplicationErrorData = {
   platform?: string | undefined;
@@ -12,7 +13,7 @@ export type TerminalApplicationErrorData = {
   versionCode?: string | undefined;
 };
 
-export class TerminalApplicationError extends Error {
+export class TerminalApplicationError extends MoovError {
   platform?: string | undefined;
   appBundleID?: string | undefined;
   packageName?: string | undefined;
@@ -22,13 +23,15 @@ export class TerminalApplicationError extends Error {
   /** The original data that was passed to this error instance. */
   data$: TerminalApplicationErrorData;
 
-  constructor(err: TerminalApplicationErrorData) {
+  constructor(
+    err: TerminalApplicationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.platform != null) this.platform = err.platform;
     if (err.appBundleID != null) this.appBundleID = err.appBundleID;
     if (err.packageName != null) this.packageName = err.packageName;
@@ -50,9 +53,16 @@ export const TerminalApplicationError$inboundSchema: z.ZodType<
   packageName: z.string().optional(),
   sha256Digest: z.string().optional(),
   versionCode: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new TerminalApplicationError(v);
+    return new TerminalApplicationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

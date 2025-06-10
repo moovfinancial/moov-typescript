@@ -3,24 +3,27 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type MicroDepositValidationErrorData = {
   amounts?: string | undefined;
 };
 
-export class MicroDepositValidationError extends Error {
+export class MicroDepositValidationError extends MoovError {
   amounts?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: MicroDepositValidationErrorData;
 
-  constructor(err: MicroDepositValidationErrorData) {
+  constructor(
+    err: MicroDepositValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.amounts != null) this.amounts = err.amounts;
 
     this.name = "MicroDepositValidationError";
@@ -34,9 +37,16 @@ export const MicroDepositValidationError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amounts: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new MicroDepositValidationError(v);
+    return new MicroDepositValidationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

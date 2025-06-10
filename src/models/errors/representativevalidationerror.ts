@@ -6,6 +6,7 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ErrorT = {
@@ -22,19 +23,21 @@ export type RepresentativeValidationErrorData = {
   error: ErrorT;
 };
 
-export class RepresentativeValidationError extends Error {
+export class RepresentativeValidationError extends MoovError {
   error: ErrorT;
 
   /** The original data that was passed to this error instance. */
   data$: RepresentativeValidationErrorData;
 
-  constructor(err: RepresentativeValidationErrorData) {
+  constructor(
+    err: RepresentativeValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "RepresentativeValidationError";
@@ -117,9 +120,16 @@ export const RepresentativeValidationError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => ErrorT$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new RepresentativeValidationError(v);
+    return new RepresentativeValidationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

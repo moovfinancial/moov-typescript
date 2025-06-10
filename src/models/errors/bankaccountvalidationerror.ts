@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type BankAccountValidationErrorData = {
   account?: string | undefined;
@@ -12,7 +13,7 @@ export type BankAccountValidationErrorData = {
   error?: string | undefined;
 };
 
-export class BankAccountValidationError extends Error {
+export class BankAccountValidationError extends MoovError {
   account?: string | undefined;
   plaid?: string | undefined;
   plaidLink?: string | undefined;
@@ -22,13 +23,15 @@ export class BankAccountValidationError extends Error {
   /** The original data that was passed to this error instance. */
   data$: BankAccountValidationErrorData;
 
-  constructor(err: BankAccountValidationErrorData) {
+  constructor(
+    err: BankAccountValidationErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.account != null) this.account = err.account;
     if (err.plaid != null) this.plaid = err.plaid;
     if (err.plaidLink != null) this.plaidLink = err.plaidLink;
@@ -50,9 +53,16 @@ export const BankAccountValidationError$inboundSchema: z.ZodType<
   plaidLink: z.string().optional(),
   mx: z.string().optional(),
   error: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new BankAccountValidationError(v);
+    return new BankAccountValidationError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

@@ -4,26 +4,29 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { MoovError } from "./mooverror.js";
 
 export type RevokeTokenRequestErrorData = {
   token?: string | undefined;
   tokenTypeHint?: string | undefined;
 };
 
-export class RevokeTokenRequestError extends Error {
+export class RevokeTokenRequestError extends MoovError {
   token?: string | undefined;
   tokenTypeHint?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: RevokeTokenRequestErrorData;
 
-  constructor(err: RevokeTokenRequestErrorData) {
+  constructor(
+    err: RevokeTokenRequestErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.token != null) this.token = err.token;
     if (err.tokenTypeHint != null) this.tokenTypeHint = err.tokenTypeHint;
 
@@ -39,13 +42,20 @@ export const RevokeTokenRequestError$inboundSchema: z.ZodType<
 > = z.object({
   token: z.string().optional(),
   token_type_hint: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "token_type_hint": "tokenTypeHint",
     });
 
-    return new RevokeTokenRequestError(remapped);
+    return new RevokeTokenRequestError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

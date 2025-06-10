@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: c9d1d9f3b6c97c76419b7b0f354796d9
+  docChecksum: 91d8e74309c0f4481831f1402e482c97
   docVersion: latest
-  speakeasyVersion: 1.556.2
-  generationVersion: 2.621.3
-  releaseVersion: 0.12.1
-  configChecksum: e8fc4c5561afdf728bd999ca3d1f0b11
+  speakeasyVersion: 1.558.1
+  generationVersion: 2.623.4
+  releaseVersion: 0.12.2
+  configChecksum: 9891b2b256bbb04b0ffa568c56bc1232
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -33,7 +33,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.8
+    unions: 2.85.9
     uploadStreams: 0.1.0
 generatedFiles:
   - .gitattributes
@@ -1712,11 +1712,13 @@ generatedFiles:
   - src/models/errors/linkapplepayerror.ts
   - src/models/errors/linkcarderror.ts
   - src/models/errors/microdepositvalidationerror.ts
+  - src/models/errors/mooverror.ts
   - src/models/errors/onboardinginviteerror.ts
   - src/models/errors/patchsweepconfigerror.ts
   - src/models/errors/refundvalidationerror.ts
   - src/models/errors/representativevalidationerror.ts
   - src/models/errors/requestcarderror.ts
+  - src/models/errors/responsevalidationerror.ts
   - src/models/errors/reversalvalidationerror.ts
   - src/models/errors/revoketokenrequesterror.ts
   - src/models/errors/schedulevalidationerror.ts

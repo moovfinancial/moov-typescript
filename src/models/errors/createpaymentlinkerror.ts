@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 export type CreatePaymentLinkErrorData = {
   partnerAccountID?: string | undefined;
@@ -16,7 +17,7 @@ export type CreatePaymentLinkErrorData = {
   payout?: components.PayoutDetailsError | undefined;
 };
 
-export class CreatePaymentLinkError extends Error {
+export class CreatePaymentLinkError extends MoovError {
   partnerAccountID?: string | undefined;
   merchantPaymentMethodID?: string | undefined;
   amount?: components.AmountValidationError | undefined;
@@ -29,13 +30,15 @@ export class CreatePaymentLinkError extends Error {
   /** The original data that was passed to this error instance. */
   data$: CreatePaymentLinkErrorData;
 
-  constructor(err: CreatePaymentLinkErrorData) {
+  constructor(
+    err: CreatePaymentLinkErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.partnerAccountID != null) {
       this.partnerAccountID = err.partnerAccountID;
     }
@@ -67,9 +70,16 @@ export const CreatePaymentLinkError$inboundSchema: z.ZodType<
   display: components.DisplayOptionsError$inboundSchema.optional(),
   payment: components.PaymentDetailsError$inboundSchema.optional(),
   payout: components.PayoutDetailsError$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new CreatePaymentLinkError(v);
+    return new CreatePaymentLinkError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

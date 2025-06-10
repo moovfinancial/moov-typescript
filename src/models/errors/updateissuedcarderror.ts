@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 export type UpdateIssuedCardErrorData = {
   state?: string | undefined;
@@ -11,7 +12,7 @@ export type UpdateIssuedCardErrorData = {
   authorizedUser?: components.CreateAuthorizedUserError | undefined;
 };
 
-export class UpdateIssuedCardError extends Error {
+export class UpdateIssuedCardError extends MoovError {
   state?: string | undefined;
   memo?: string | undefined;
   authorizedUser?: components.CreateAuthorizedUserError | undefined;
@@ -19,13 +20,15 @@ export class UpdateIssuedCardError extends Error {
   /** The original data that was passed to this error instance. */
   data$: UpdateIssuedCardErrorData;
 
-  constructor(err: UpdateIssuedCardErrorData) {
+  constructor(
+    err: UpdateIssuedCardErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.state != null) this.state = err.state;
     if (err.memo != null) this.memo = err.memo;
     if (err.authorizedUser != null) this.authorizedUser = err.authorizedUser;
@@ -43,9 +46,16 @@ export const UpdateIssuedCardError$inboundSchema: z.ZodType<
   state: z.string().optional(),
   memo: z.string().optional(),
   authorizedUser: components.CreateAuthorizedUserError$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new UpdateIssuedCardError(v);
+    return new UpdateIssuedCardError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

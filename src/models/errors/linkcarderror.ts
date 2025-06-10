@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 export type LinkCardErrorData = {
   error?: string | undefined;
@@ -18,7 +19,7 @@ export type LinkCardErrorData = {
   verifyName?: string | undefined;
 };
 
-export class LinkCardError extends Error {
+export class LinkCardError extends MoovError {
   error?: string | undefined;
   e2ee?: components.End2EndEncryptionError | undefined;
   cardNumber?: string | undefined;
@@ -33,13 +34,15 @@ export class LinkCardError extends Error {
   /** The original data that was passed to this error instance. */
   data$: LinkCardErrorData;
 
-  constructor(err: LinkCardErrorData) {
+  constructor(
+    err: LinkCardErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.error != null) this.error = err.error;
     if (err.e2ee != null) this.e2ee = err.e2ee;
     if (err.cardNumber != null) this.cardNumber = err.cardNumber;
@@ -73,9 +76,16 @@ export const LinkCardError$inboundSchema: z.ZodType<
   cardOnFile: z.string().optional(),
   merchantAccountID: z.string().optional(),
   verifyName: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new LinkCardError(v);
+    return new LinkCardError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

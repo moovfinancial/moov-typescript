@@ -3,24 +3,27 @@
  */
 
 import * as z from "zod";
+import { MoovError } from "./mooverror.js";
 
 export type FeePlanAgreementErrorData = {
   planID?: string | undefined;
 };
 
-export class FeePlanAgreementError extends Error {
+export class FeePlanAgreementError extends MoovError {
   planID?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: FeePlanAgreementErrorData;
 
-  constructor(err: FeePlanAgreementErrorData) {
+  constructor(
+    err: FeePlanAgreementErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.planID != null) this.planID = err.planID;
 
     this.name = "FeePlanAgreementError";
@@ -34,9 +37,16 @@ export const FeePlanAgreementError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   planID: z.string().optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new FeePlanAgreementError(v);
+    return new FeePlanAgreementError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

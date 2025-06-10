@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { MoovError } from "./mooverror.js";
 
 /**
  * The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields.
@@ -15,19 +16,21 @@ export type CreateAccountResponseBodyData = {
 /**
  * The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields.
  */
-export class CreateAccountResponseBody extends Error {
+export class CreateAccountResponseBody extends MoovError {
   error: components.CreateAccountError;
 
   /** The original data that was passed to this error instance. */
   data$: CreateAccountResponseBodyData;
 
-  constructor(err: CreateAccountResponseBodyData) {
+  constructor(
+    err: CreateAccountResponseBodyData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "CreateAccountResponseBody";
@@ -41,9 +44,16 @@ export const CreateAccountResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: components.CreateAccountError$inboundSchema,
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new CreateAccountResponseBody(v);
+    return new CreateAccountResponseBody(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
