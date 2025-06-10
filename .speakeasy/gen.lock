@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: e7c92d9211199a892f2b8af1d3978b57
+  docChecksum: 7ff28a795edc333e9c49366f5590d78c
   docVersion: latest
   speakeasyVersion: 1.559.0
   generationVersion: 2.624.0
-  releaseVersion: 0.12.3
-  configChecksum: 64955d5ccceea68ffc99a39e18b910f6
+  releaseVersion: 0.12.4
+  configChecksum: 920f263a9a3cc1a9eefafa6beb7df8b3
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -493,12 +493,12 @@ generatedFiles:
   - docs/models/components/webhookdataterminalapplicationcreated.md
   - docs/models/components/webhookdataterminalapplicationupdated.md
   - docs/models/components/webhookdatatransfercreated.md
+  - docs/models/components/webhookdatatransferstatus.md
   - docs/models/components/webhookdatatransferupdated.md
   - docs/models/components/webhookdatawallettransactionupdated.md
   - docs/models/components/webhookevent.md
   - docs/models/components/webhookeventtype.md
   - docs/models/components/webhooktransferpaymentmethoddetails.md
-  - docs/models/components/webhookwalletavailablebalance.md
   - docs/models/components/wireinstitution.md
   - docs/models/components/wireservices.md
   - docs/models/errors/accountterminalapplicationerror.md
@@ -1684,12 +1684,12 @@ generatedFiles:
   - src/models/components/webhookdataterminalapplicationcreated.ts
   - src/models/components/webhookdataterminalapplicationupdated.ts
   - src/models/components/webhookdatatransfercreated.ts
+  - src/models/components/webhookdatatransferstatus.ts
   - src/models/components/webhookdatatransferupdated.ts
   - src/models/components/webhookdatawallettransactionupdated.ts
   - src/models/components/webhookevent.ts
   - src/models/components/webhookeventtype.ts
   - src/models/components/webhooktransferpaymentmethoddetails.ts
-  - src/models/components/webhookwalletavailablebalance.ts
   - src/models/components/wireinstitution.ts
   - src/models/components/wireservices.ts
   - src/models/errors/accountterminalapplicationerror.ts

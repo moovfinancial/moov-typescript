@@ -261,7 +261,7 @@ const value: components.WebhookDataTerminalApplicationUpdated = {
 const value: components.WebhookDataTransferCreated = {
   accountID: "58def9c9-c9f3-482a-9046-fd2d2e0ce3aa",
   transferID: "498acea5-c87f-4b41-9aea-b131afe24ddf",
-  status: "pending",
+  status: "queued",
 };
 ```
 
@@ -271,7 +271,7 @@ const value: components.WebhookDataTransferCreated = {
 const value: components.WebhookDataTransferUpdated = {
   accountID: "7b54a415-9f1d-4c27-bfa5-d474acf1a242",
   transferID: "1c7cd638-93c3-4d3e-9965-9a70f1a42bd8",
-  status: "pending",
+  status: "reversed",
   source: {
     accountID: "2e8260fd-b5a3-4f8d-aacf-2f7a69cb00db",
     paymentMethodID: "bf898ff1-fe1c-48e0-a991-fa5ac8dcfb69",
@@ -291,6 +291,11 @@ const value: components.WebhookDataWalletTransactionUpdated = {
   walletID: "33116a57-862b-43c9-aa42-3ee3b87d442d",
   transactionID: "378090e8-e3a0-4a6e-a96e-d2e5ca55e064",
   status: "canceled",
+  availableBalance: {
+    currency: "USD",
+    value: 1204,
+    valueDecimal: "<value>",
+  },
 };
 ```
 

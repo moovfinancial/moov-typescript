@@ -52,9 +52,9 @@ export type ListTransfersRequest = {
    */
   scheduleID?: string | undefined;
   /**
-   * Optional ID to filter for transfers associated with the payment link.
+   * Optional code to filter for transfers associated with the payment link.
    */
-  paymentLinkID?: string | undefined;
+  paymentLinkCode?: string | undefined;
   /**
    * Optional parameter to only return refunded transfers.
    */
@@ -150,7 +150,7 @@ export const ListTransfersRequest$inboundSchema: z.ZodType<
     .optional(),
   groupID: z.string().optional(),
   scheduleID: z.string().optional(),
-  paymentLinkID: z.string().optional(),
+  paymentLinkCode: z.string().optional(),
   refunded: z.boolean().optional(),
   disputed: z.boolean().optional(),
   skip: z.number().int().optional(),
@@ -166,7 +166,7 @@ export type ListTransfersRequest$Outbound = {
   endDateTime?: string | undefined;
   groupID?: string | undefined;
   scheduleID?: string | undefined;
-  paymentLinkID?: string | undefined;
+  paymentLinkCode?: string | undefined;
   refunded?: boolean | undefined;
   disputed?: boolean | undefined;
   skip?: number | undefined;
@@ -186,7 +186,7 @@ export const ListTransfersRequest$outboundSchema: z.ZodType<
   endDateTime: z.date().transform(v => v.toISOString()).optional(),
   groupID: z.string().optional(),
   scheduleID: z.string().optional(),
-  paymentLinkID: z.string().optional(),
+  paymentLinkCode: z.string().optional(),
   refunded: z.boolean().optional(),
   disputed: z.boolean().optional(),
   skip: z.number().int().optional(),

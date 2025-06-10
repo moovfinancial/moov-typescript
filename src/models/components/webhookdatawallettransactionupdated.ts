@@ -7,26 +7,23 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  WalletAvailableBalance,
+  WalletAvailableBalance$inboundSchema,
+  WalletAvailableBalance$Outbound,
+  WalletAvailableBalance$outboundSchema,
+} from "./walletavailablebalance.js";
+import {
   WalletTransactionStatus,
   WalletTransactionStatus$inboundSchema,
   WalletTransactionStatus$outboundSchema,
 } from "./wallettransactionstatus.js";
-import {
-  WebhookWalletAvailableBalance,
-  WebhookWalletAvailableBalance$inboundSchema,
-  WebhookWalletAvailableBalance$Outbound,
-  WebhookWalletAvailableBalance$outboundSchema,
-} from "./webhookwalletavailablebalance.js";
 
 export type WebhookDataWalletTransactionUpdated = {
   accountID: string;
   walletID: string;
   transactionID: string;
   status: WalletTransactionStatus;
-  /**
-   * The available balance of a wallet.
-   */
-  availableBalance?: WebhookWalletAvailableBalance | undefined;
+  availableBalance?: WalletAvailableBalance | undefined;
 };
 
 /** @internal */
@@ -39,7 +36,7 @@ export const WebhookDataWalletTransactionUpdated$inboundSchema: z.ZodType<
   walletID: z.string(),
   transactionID: z.string(),
   status: WalletTransactionStatus$inboundSchema,
-  availableBalance: WebhookWalletAvailableBalance$inboundSchema.optional(),
+  availableBalance: WalletAvailableBalance$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -48,7 +45,7 @@ export type WebhookDataWalletTransactionUpdated$Outbound = {
   walletID: string;
   transactionID: string;
   status: string;
-  availableBalance?: WebhookWalletAvailableBalance$Outbound | undefined;
+  availableBalance?: WalletAvailableBalance$Outbound | undefined;
 };
 
 /** @internal */
@@ -61,7 +58,7 @@ export const WebhookDataWalletTransactionUpdated$outboundSchema: z.ZodType<
   walletID: z.string(),
   transactionID: z.string(),
   status: WalletTransactionStatus$outboundSchema,
-  availableBalance: WebhookWalletAvailableBalance$outboundSchema.optional(),
+  availableBalance: WalletAvailableBalance$outboundSchema.optional(),
 });
 
 /**

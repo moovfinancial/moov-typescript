@@ -107,7 +107,7 @@ async function $do(
     "disputed": payload.disputed,
     "endDateTime": payload.endDateTime,
     "groupID": payload.groupID,
-    "paymentLinkID": payload.paymentLinkID,
+    "paymentLinkCode": payload.paymentLinkCode,
     "refunded": payload.refunded,
     "scheduleID": payload.scheduleID,
     "skip": payload.skip,

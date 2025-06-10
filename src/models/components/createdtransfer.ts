@@ -113,6 +113,7 @@ export type CreatedTransfer = {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
+  paymentLinkCode?: string | undefined;
   /**
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
@@ -149,6 +150,7 @@ export const CreatedTransfer$inboundSchema: z.ZodType<
   sweepID: z.string().optional(),
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
+  paymentLinkCode: z.string().optional(),
   salesTaxAmount: Amount$inboundSchema.optional(),
 });
 
@@ -177,6 +179,7 @@ export type CreatedTransfer$Outbound = {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
+  paymentLinkCode?: string | undefined;
   salesTaxAmount?: Amount$Outbound | undefined;
 };
 
@@ -209,6 +212,7 @@ export const CreatedTransfer$outboundSchema: z.ZodType<
   sweepID: z.string().optional(),
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
+  paymentLinkCode: z.string().optional(),
   salesTaxAmount: Amount$outboundSchema.optional(),
 });
 

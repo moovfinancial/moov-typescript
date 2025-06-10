@@ -9,6 +9,7 @@ import { ClosedEnum } from "../../types/enums.js";
  * The type of event that occurred.
  */
 export const WebhookEventType = {
+  Wildcard: "*",
   AccountCreated: "account.created",
   AccountUpdated: "account.updated",
   AccountDeleted: "account.deleted",

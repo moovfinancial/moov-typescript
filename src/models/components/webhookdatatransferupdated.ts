@@ -7,10 +7,10 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TransferStatus,
-  TransferStatus$inboundSchema,
-  TransferStatus$outboundSchema,
-} from "./transferstatus.js";
+  WebhookDataTransferStatus,
+  WebhookDataTransferStatus$inboundSchema,
+  WebhookDataTransferStatus$outboundSchema,
+} from "./webhookdatatransferstatus.js";
 import {
   WebhookTransferPaymentMethodDetails,
   WebhookTransferPaymentMethodDetails$inboundSchema,
@@ -24,10 +24,7 @@ export type WebhookDataTransferUpdated = {
    */
   accountID: string;
   transferID: string;
-  /**
-   * Status of a transfer.
-   */
-  status: TransferStatus;
+  status: WebhookDataTransferStatus;
   /**
    * Payment method details for the source or destination of a transfer.
    */
@@ -46,7 +43,7 @@ export const WebhookDataTransferUpdated$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   transferID: z.string(),
-  status: TransferStatus$inboundSchema,
+  status: WebhookDataTransferStatus$inboundSchema,
   source: WebhookTransferPaymentMethodDetails$inboundSchema,
   destination: WebhookTransferPaymentMethodDetails$inboundSchema,
 });
@@ -68,7 +65,7 @@ export const WebhookDataTransferUpdated$outboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   transferID: z.string(),
-  status: TransferStatus$outboundSchema,
+  status: WebhookDataTransferStatus$outboundSchema,
   source: WebhookTransferPaymentMethodDetails$outboundSchema,
   destination: WebhookTransferPaymentMethodDetails$outboundSchema,
 });

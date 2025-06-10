@@ -61,7 +61,7 @@ export type TransferData = {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
-  paymentLinkID?: string | undefined;
+  paymentLinkCode?: string | undefined;
   /**
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
@@ -123,7 +123,7 @@ export class Transfer extends MoovError {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
-  paymentLinkID?: string | undefined;
+  paymentLinkCode?: string | undefined;
   /**
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
@@ -165,7 +165,7 @@ export class Transfer extends MoovError {
     if (err.sweepID != null) this.sweepID = err.sweepID;
     if (err.scheduleID != null) this.scheduleID = err.scheduleID;
     if (err.occurrenceID != null) this.occurrenceID = err.occurrenceID;
-    if (err.paymentLinkID != null) this.paymentLinkID = err.paymentLinkID;
+    if (err.paymentLinkCode != null) this.paymentLinkCode = err.paymentLinkCode;
     if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
 
     this.name = "Transfer";
@@ -203,7 +203,7 @@ export const Transfer$inboundSchema: z.ZodType<
   sweepID: z.string().optional(),
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
-  paymentLinkID: z.string().optional(),
+  paymentLinkCode: z.string().optional(),
   salesTaxAmount: components.Amount$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -243,7 +243,7 @@ export type Transfer$Outbound = {
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
-  paymentLinkID?: string | undefined;
+  paymentLinkCode?: string | undefined;
   salesTaxAmount?: components.Amount$Outbound | undefined;
 };
 
@@ -280,7 +280,7 @@ export const Transfer$outboundSchema: z.ZodType<
     sweepID: z.string().optional(),
     scheduleID: z.string().optional(),
     occurrenceID: z.string().optional(),
-    paymentLinkID: z.string().optional(),
+    paymentLinkCode: z.string().optional(),
     salesTaxAmount: components.Amount$outboundSchema.optional(),
   }));
 
