@@ -3,11 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { appendForm, encodeSimple } from "../lib/encodings.js";
-import {
-  getContentTypeFromFileName,
-  readableStreamToArrayBuffer,
-} from "../lib/files.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -27,27 +23,28 @@ import { ResponseValidationError } from "../models/errors/responsevalidationerro
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
-import { isBlobLike } from "../types/blobs.js";
 import { Result } from "../types/fp.js";
-import { isReadableStream } from "../types/streams.js";
 
 /**
- * Uploads a file as evidence for a dispute.
+ * Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you
+ * supply in the request body.
  *
- * Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
+ * The accountID in the route should the partner's accountID.
+ *
+ * Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
  */
-export function disputesUploadEvidenceFile(
+export function transfersGenerateOptionsForAccount(
   client: MoovCore,
-  request: operations.UploadDisputeEvidenceFileRequest,
+  request: operations.CreateTransferOptionsForAccountRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.UploadDisputeEvidenceFileResponse,
+    operations.CreateTransferOptionsForAccountResponse,
     | errors.GenericError
-    | errors.FileUploadValidationError
+    | errors.TransferOptionsValidationError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -67,14 +64,14 @@ export function disputesUploadEvidenceFile(
 
 async function $do(
   client: MoovCore,
-  request: operations.UploadDisputeEvidenceFileRequest,
+  request: operations.CreateTransferOptionsForAccountRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.UploadDisputeEvidenceFileResponse,
+      operations.CreateTransferOptionsForAccountResponse,
       | errors.GenericError
-      | errors.FileUploadValidationError
+      | errors.TransferOptionsValidationError
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -90,70 +87,30 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.UploadDisputeEvidenceFileRequest$outboundSchema.parse(value),
+      operations.CreateTransferOptionsForAccountRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = new FormData();
-
-  appendForm(
-    body,
-    "evidenceType",
-    payload.CreateEvidenceFileMultiPart.evidenceType,
-  );
-  if (isBlobLike(payload.CreateEvidenceFileMultiPart.file)) {
-    appendForm(body, "file", payload.CreateEvidenceFileMultiPart.file);
-  } else if (
-    isReadableStream(payload.CreateEvidenceFileMultiPart.file.content)
-  ) {
-    const buffer = await readableStreamToArrayBuffer(
-      payload.CreateEvidenceFileMultiPart.file.content,
-    );
-    const contentType =
-      getContentTypeFromFileName(
-        payload.CreateEvidenceFileMultiPart.file.fileName,
-      ) || "application/octet-stream";
-    const blob = new Blob([buffer], { type: contentType });
-    appendForm(
-      body,
-      "file",
-      blob,
-      payload.CreateEvidenceFileMultiPart.file.fileName,
-    );
-  } else {
-    const contentType =
-      getContentTypeFromFileName(
-        payload.CreateEvidenceFileMultiPart.file.fileName,
-      ) || "application/octet-stream";
-    appendForm(
-      body,
-      "file",
-      new Blob([payload.CreateEvidenceFileMultiPart.file.content], {
-        type: contentType,
-      }),
-      payload.CreateEvidenceFileMultiPart.file.fileName,
-    );
-  }
+  const body = encodeJSON("body", payload.CreateTransferOptions, {
+    explode: true,
+  });
 
   const pathParams = {
     accountID: encodeSimple("accountID", payload.accountID, {
       explode: false,
       charEncoding: "percent",
     }),
-    disputeID: encodeSimple("disputeID", payload.disputeID, {
-      explode: false,
-      charEncoding: "percent",
-    }),
   };
 
-  const path = pathToFunc(
-    "/accounts/{accountID}/disputes/{disputeID}/evidence-file",
-  )(pathParams);
+  const path = pathToFunc("/accounts/{accountID}/transfer-options")(pathParams);
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
     "x-moov-version": encodeSimple(
       "x-moov-version",
@@ -168,7 +125,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "uploadDisputeEvidenceFile",
+    operationID: "createTransferOptionsForAccount",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -197,19 +154,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: [
-      "400",
-      "401",
-      "403",
-      "404",
-      "409",
-      "422",
-      "429",
-      "4XX",
-      "500",
-      "504",
-      "5XX",
-    ],
+    errorCodes: ["400", "401", "403", "422", "429", "4XX", "500", "504", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -223,9 +168,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.UploadDisputeEvidenceFileResponse,
+    operations.CreateTransferOptionsForAccountResponse,
     | errors.GenericError
-    | errors.FileUploadValidationError
+    | errors.TransferOptionsValidationError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -235,15 +180,16 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, operations.UploadDisputeEvidenceFileResponse$inboundSchema, {
+    M.json(
+      200,
+      operations.CreateTransferOptionsForAccountResponse$inboundSchema,
+      { hdrs: true, key: "Result" },
+    ),
+    M.jsonErr(400, errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr(422, errors.TransferOptionsValidationError$inboundSchema, {
       hdrs: true,
-      key: "Result",
     }),
-    M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
-    M.jsonErr(422, errors.FileUploadValidationError$inboundSchema, {
-      hdrs: true,
-    }),
-    M.fail([401, 403, 404, 429]),
+    M.fail([401, 403, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),

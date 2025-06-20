@@ -185,34 +185,34 @@ import {
  * The data for the webhook event. The contents are based on the event type.
  */
 export type WebhookData =
-  | WebhookDataAccountCreated
-  | WebhookDataAccountUpdated
-  | WebhookDataAccountDeleted
+  | WebhookDataDisputeCreated
+  | WebhookDataDisputeUpdated
+  | WebhookDataTransferUpdated
+  | WebhookDataBankAccountUpdated
+  | WebhookDataRefundUpdated
+  | WebhookDataWalletTransactionUpdated
+  | WebhookDataCancellationCreated
+  | WebhookDataCancellationUpdated
+  | WebhookDataCardAutoUpdated
+  | WebhookDataCapabilityUpdated
+  | WebhookDataPaymentMethodEnabled
+  | WebhookDataPaymentMethodDisabled
+  | WebhookDataRefundCreated
+  | WebhookDataSweepUpdated
+  | WebhookDataTransferCreated
   | WebhookDataBalanceUpdated
   | WebhookDataBankAccountCreated
   | WebhookDataBankAccountDeleted
+  | WebhookDataCapabilityRequested
   | WebhookDataRepresentativeCreated
   | WebhookDataRepresentativeUpdated
   | WebhookDataRepresentativeDisabled
   | WebhookDataSweepCreated
   | WebhookDataTerminalApplicationCreated
   | WebhookDataTerminalApplicationUpdated
-  | WebhookDataCancellationCreated
-  | WebhookDataCancellationUpdated
-  | WebhookDataCardAutoUpdated
-  | WebhookDataCapabilityRequested
-  | WebhookDataPaymentMethodEnabled
-  | WebhookDataPaymentMethodDisabled
-  | WebhookDataRefundCreated
-  | WebhookDataTransferCreated
-  | WebhookDataCapabilityUpdated
-  | WebhookDataRefundUpdated
-  | WebhookDataSweepUpdated
-  | WebhookDataBankAccountUpdated
-  | WebhookDataTransferUpdated
-  | WebhookDataWalletTransactionUpdated
-  | WebhookDataDisputeCreated
-  | WebhookDataDisputeUpdated
+  | WebhookDataAccountCreated
+  | WebhookDataAccountUpdated
+  | WebhookDataAccountDeleted
   | WebhookDataNetworkIDUpdated;
 
 /** @internal */
@@ -221,67 +221,67 @@ export const WebhookData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  WebhookDataAccountCreated$inboundSchema,
-  WebhookDataAccountUpdated$inboundSchema,
-  WebhookDataAccountDeleted$inboundSchema,
+  WebhookDataDisputeCreated$inboundSchema,
+  WebhookDataDisputeUpdated$inboundSchema,
+  WebhookDataTransferUpdated$inboundSchema,
+  WebhookDataBankAccountUpdated$inboundSchema,
+  WebhookDataRefundUpdated$inboundSchema,
+  WebhookDataWalletTransactionUpdated$inboundSchema,
+  WebhookDataCancellationCreated$inboundSchema,
+  WebhookDataCancellationUpdated$inboundSchema,
+  WebhookDataCardAutoUpdated$inboundSchema,
+  WebhookDataCapabilityUpdated$inboundSchema,
+  WebhookDataPaymentMethodEnabled$inboundSchema,
+  WebhookDataPaymentMethodDisabled$inboundSchema,
+  WebhookDataRefundCreated$inboundSchema,
+  WebhookDataSweepUpdated$inboundSchema,
+  WebhookDataTransferCreated$inboundSchema,
   WebhookDataBalanceUpdated$inboundSchema,
   WebhookDataBankAccountCreated$inboundSchema,
   WebhookDataBankAccountDeleted$inboundSchema,
+  WebhookDataCapabilityRequested$inboundSchema,
   WebhookDataRepresentativeCreated$inboundSchema,
   WebhookDataRepresentativeUpdated$inboundSchema,
   WebhookDataRepresentativeDisabled$inboundSchema,
   WebhookDataSweepCreated$inboundSchema,
   WebhookDataTerminalApplicationCreated$inboundSchema,
   WebhookDataTerminalApplicationUpdated$inboundSchema,
-  WebhookDataCancellationCreated$inboundSchema,
-  WebhookDataCancellationUpdated$inboundSchema,
-  WebhookDataCardAutoUpdated$inboundSchema,
-  WebhookDataCapabilityRequested$inboundSchema,
-  WebhookDataPaymentMethodEnabled$inboundSchema,
-  WebhookDataPaymentMethodDisabled$inboundSchema,
-  WebhookDataRefundCreated$inboundSchema,
-  WebhookDataTransferCreated$inboundSchema,
-  WebhookDataCapabilityUpdated$inboundSchema,
-  WebhookDataRefundUpdated$inboundSchema,
-  WebhookDataSweepUpdated$inboundSchema,
-  WebhookDataBankAccountUpdated$inboundSchema,
-  WebhookDataTransferUpdated$inboundSchema,
-  WebhookDataWalletTransactionUpdated$inboundSchema,
-  WebhookDataDisputeCreated$inboundSchema,
-  WebhookDataDisputeUpdated$inboundSchema,
+  WebhookDataAccountCreated$inboundSchema,
+  WebhookDataAccountUpdated$inboundSchema,
+  WebhookDataAccountDeleted$inboundSchema,
   WebhookDataNetworkIDUpdated$inboundSchema,
 ]);
 
 /** @internal */
 export type WebhookData$Outbound =
-  | WebhookDataAccountCreated$Outbound
-  | WebhookDataAccountUpdated$Outbound
-  | WebhookDataAccountDeleted$Outbound
+  | WebhookDataDisputeCreated$Outbound
+  | WebhookDataDisputeUpdated$Outbound
+  | WebhookDataTransferUpdated$Outbound
+  | WebhookDataBankAccountUpdated$Outbound
+  | WebhookDataRefundUpdated$Outbound
+  | WebhookDataWalletTransactionUpdated$Outbound
+  | WebhookDataCancellationCreated$Outbound
+  | WebhookDataCancellationUpdated$Outbound
+  | WebhookDataCardAutoUpdated$Outbound
+  | WebhookDataCapabilityUpdated$Outbound
+  | WebhookDataPaymentMethodEnabled$Outbound
+  | WebhookDataPaymentMethodDisabled$Outbound
+  | WebhookDataRefundCreated$Outbound
+  | WebhookDataSweepUpdated$Outbound
+  | WebhookDataTransferCreated$Outbound
   | WebhookDataBalanceUpdated$Outbound
   | WebhookDataBankAccountCreated$Outbound
   | WebhookDataBankAccountDeleted$Outbound
+  | WebhookDataCapabilityRequested$Outbound
   | WebhookDataRepresentativeCreated$Outbound
   | WebhookDataRepresentativeUpdated$Outbound
   | WebhookDataRepresentativeDisabled$Outbound
   | WebhookDataSweepCreated$Outbound
   | WebhookDataTerminalApplicationCreated$Outbound
   | WebhookDataTerminalApplicationUpdated$Outbound
-  | WebhookDataCancellationCreated$Outbound
-  | WebhookDataCancellationUpdated$Outbound
-  | WebhookDataCardAutoUpdated$Outbound
-  | WebhookDataCapabilityRequested$Outbound
-  | WebhookDataPaymentMethodEnabled$Outbound
-  | WebhookDataPaymentMethodDisabled$Outbound
-  | WebhookDataRefundCreated$Outbound
-  | WebhookDataTransferCreated$Outbound
-  | WebhookDataCapabilityUpdated$Outbound
-  | WebhookDataRefundUpdated$Outbound
-  | WebhookDataSweepUpdated$Outbound
-  | WebhookDataBankAccountUpdated$Outbound
-  | WebhookDataTransferUpdated$Outbound
-  | WebhookDataWalletTransactionUpdated$Outbound
-  | WebhookDataDisputeCreated$Outbound
-  | WebhookDataDisputeUpdated$Outbound
+  | WebhookDataAccountCreated$Outbound
+  | WebhookDataAccountUpdated$Outbound
+  | WebhookDataAccountDeleted$Outbound
   | WebhookDataNetworkIDUpdated$Outbound;
 
 /** @internal */
@@ -290,34 +290,34 @@ export const WebhookData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WebhookData
 > = z.union([
-  WebhookDataAccountCreated$outboundSchema,
-  WebhookDataAccountUpdated$outboundSchema,
-  WebhookDataAccountDeleted$outboundSchema,
+  WebhookDataDisputeCreated$outboundSchema,
+  WebhookDataDisputeUpdated$outboundSchema,
+  WebhookDataTransferUpdated$outboundSchema,
+  WebhookDataBankAccountUpdated$outboundSchema,
+  WebhookDataRefundUpdated$outboundSchema,
+  WebhookDataWalletTransactionUpdated$outboundSchema,
+  WebhookDataCancellationCreated$outboundSchema,
+  WebhookDataCancellationUpdated$outboundSchema,
+  WebhookDataCardAutoUpdated$outboundSchema,
+  WebhookDataCapabilityUpdated$outboundSchema,
+  WebhookDataPaymentMethodEnabled$outboundSchema,
+  WebhookDataPaymentMethodDisabled$outboundSchema,
+  WebhookDataRefundCreated$outboundSchema,
+  WebhookDataSweepUpdated$outboundSchema,
+  WebhookDataTransferCreated$outboundSchema,
   WebhookDataBalanceUpdated$outboundSchema,
   WebhookDataBankAccountCreated$outboundSchema,
   WebhookDataBankAccountDeleted$outboundSchema,
+  WebhookDataCapabilityRequested$outboundSchema,
   WebhookDataRepresentativeCreated$outboundSchema,
   WebhookDataRepresentativeUpdated$outboundSchema,
   WebhookDataRepresentativeDisabled$outboundSchema,
   WebhookDataSweepCreated$outboundSchema,
   WebhookDataTerminalApplicationCreated$outboundSchema,
   WebhookDataTerminalApplicationUpdated$outboundSchema,
-  WebhookDataCancellationCreated$outboundSchema,
-  WebhookDataCancellationUpdated$outboundSchema,
-  WebhookDataCardAutoUpdated$outboundSchema,
-  WebhookDataCapabilityRequested$outboundSchema,
-  WebhookDataPaymentMethodEnabled$outboundSchema,
-  WebhookDataPaymentMethodDisabled$outboundSchema,
-  WebhookDataRefundCreated$outboundSchema,
-  WebhookDataTransferCreated$outboundSchema,
-  WebhookDataCapabilityUpdated$outboundSchema,
-  WebhookDataRefundUpdated$outboundSchema,
-  WebhookDataSweepUpdated$outboundSchema,
-  WebhookDataBankAccountUpdated$outboundSchema,
-  WebhookDataTransferUpdated$outboundSchema,
-  WebhookDataWalletTransactionUpdated$outboundSchema,
-  WebhookDataDisputeCreated$outboundSchema,
-  WebhookDataDisputeUpdated$outboundSchema,
+  WebhookDataAccountCreated$outboundSchema,
+  WebhookDataAccountUpdated$outboundSchema,
+  WebhookDataAccountDeleted$outboundSchema,
   WebhookDataNetworkIDUpdated$outboundSchema,
 ]);
 

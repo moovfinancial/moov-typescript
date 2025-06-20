@@ -6,6 +6,7 @@ import { transfersCreate } from "../funcs/transfersCreate.js";
 import { transfersCreateCancellation } from "../funcs/transfersCreateCancellation.js";
 import { transfersCreateReversal } from "../funcs/transfersCreateReversal.js";
 import { transfersGenerateOptions } from "../funcs/transfersGenerateOptions.js";
+import { transfersGenerateOptionsForAccount } from "../funcs/transfersGenerateOptionsForAccount.js";
 import { transfersGet } from "../funcs/transfersGet.js";
 import { transfersGetCancellation } from "../funcs/transfersGetCancellation.js";
 import { transfersGetRefund } from "../funcs/transfersGetRefund.js";
@@ -19,6 +20,28 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Transfers extends ClientSDK {
+  /**
+   * Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you
+   * supply in the request body.
+   *
+   * The accountID in the route should the partner's accountID.
+   *
+   * Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
+   */
+  async generateOptionsForAccount(
+    request: operations.CreateTransferOptionsForAccountRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateTransferOptionsForAccountResponse> {
+    return unwrapAsync(transfersGenerateOptionsForAccount(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Move money by providing the source, destination, and amount in the request body.
    *
@@ -215,7 +238,7 @@ export class Transfers extends ClientSDK {
    * Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+   * you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
    */
   async generateOptions(
     request: components.CreateTransferOptions,

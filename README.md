@@ -986,6 +986,15 @@ you'll need to specify the `/terminal-applications.write` scope.
 
 ### [transfers](docs/sdks/transfers/README.md)
 
+* [generateOptionsForAccount](docs/sdks/transfers/README.md#generateoptionsforaccount) - Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
+supply in the request body.
+
+The accountID in the route should the partner's accountID.
+
+Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 * [create](docs/sdks/transfers/README.md#create) - Move money by providing the source, destination, and amount in the request body.
 
 Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 
@@ -1051,7 +1060,7 @@ supply in the request.
 Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### [underwriting](docs/sdks/underwriting/README.md)
 
@@ -1785,7 +1794,16 @@ supply in the request.
 Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
+- [`transfersGenerateOptionsForAccount`](docs/sdks/transfers/README.md#generateoptionsforaccount) - Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
+supply in the request body.
+
+The accountID in the route should the partner's accountID.
+
+Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 - [`transfersGet`](docs/sdks/transfers/README.md#get) - Retrieve full transfer details for an individual transfer of a particular Moov account. 
 
 Payment rail-specific details are included in the source and destination. Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) 
@@ -2074,40 +2092,40 @@ run();
 
 
 **Inherit from [`MoovError`](./src/models/errors/mooverror.ts)**:
-* [`GenericError`](docs/models/errors/genericerror.md): Applicable to 58 of 136 methods.*
-* [`BrandValidationError`](docs/models/errors/brandvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 3 of 136 methods.*
-* [`ScheduleValidationError`](docs/models/errors/schedulevalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 136 methods.*
-* [`Transfer`](docs/models/errors/transfer.md): Details of a Transfer. Status code `409`. Applicable to 1 of 136 methods.*
-* [`CardAcquiringRefund`](docs/models/errors/cardacquiringrefund.md): Details of a card refund. Status code `409`. Applicable to 1 of 136 methods.*
-* [`CreateAccountResponseBody`](docs/models/errors/createaccountresponsebody.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`UpdateAccountResponseBody`](docs/models/errors/updateaccountresponsebody.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`AssignCountriesError`](docs/models/errors/assigncountrieserror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`LinkApplePayError`](docs/models/errors/linkapplepayerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`BankAccountValidationError`](docs/models/errors/bankaccountvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`MicroDepositValidationError`](docs/models/errors/microdepositvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`AddCapabilitiesError`](docs/models/errors/addcapabilitieserror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`LinkCardError`](docs/models/errors/linkcarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`UpdateCardError`](docs/models/errors/updatecarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`FileUploadValidationError`](docs/models/errors/fileuploadvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`FeePlanAgreementError`](docs/models/errors/feeplanagreementerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`FileValidationError`](docs/models/errors/filevalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`CreatePaymentLinkError`](docs/models/errors/createpaymentlinkerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`UpdatePaymentLinkError`](docs/models/errors/updatepaymentlinkerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`RepresentativeValidationError`](docs/models/errors/representativevalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`CreateSweepConfigError`](docs/models/errors/createsweepconfigerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`PatchSweepConfigError`](docs/models/errors/patchsweepconfigerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`AccountTerminalApplicationError`](docs/models/errors/accountterminalapplicationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`TransferValidationError`](docs/models/errors/transfervalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`RefundValidationError`](docs/models/errors/refundvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`ReversalValidationError`](docs/models/errors/reversalvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`TransferOptionsValidationError`](docs/models/errors/transferoptionsvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`UpdateUnderwritingError`](docs/models/errors/updateunderwritingerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`RequestCardError`](docs/models/errors/requestcarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`UpdateIssuedCardError`](docs/models/errors/updateissuedcarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`RevokeTokenRequestError`](docs/models/errors/revoketokenrequesterror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`AuthTokenRequestError`](docs/models/errors/authtokenrequesterror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`OnboardingInviteError`](docs/models/errors/onboardinginviteerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
-* [`TerminalApplicationError`](docs/models/errors/terminalapplicationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 136 methods.*
+* [`GenericError`](docs/models/errors/genericerror.md): Applicable to 59 of 137 methods.*
+* [`BrandValidationError`](docs/models/errors/brandvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 3 of 137 methods.*
+* [`ScheduleValidationError`](docs/models/errors/schedulevalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 137 methods.*
+* [`TransferOptionsValidationError`](docs/models/errors/transferoptionsvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 137 methods.*
+* [`Transfer`](docs/models/errors/transfer.md): Details of a Transfer. Status code `409`. Applicable to 1 of 137 methods.*
+* [`CardAcquiringRefund`](docs/models/errors/cardacquiringrefund.md): Details of a card refund. Status code `409`. Applicable to 1 of 137 methods.*
+* [`CreateAccountResponseBody`](docs/models/errors/createaccountresponsebody.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`UpdateAccountResponseBody`](docs/models/errors/updateaccountresponsebody.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`AssignCountriesError`](docs/models/errors/assigncountrieserror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`LinkApplePayError`](docs/models/errors/linkapplepayerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`BankAccountValidationError`](docs/models/errors/bankaccountvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`MicroDepositValidationError`](docs/models/errors/microdepositvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`AddCapabilitiesError`](docs/models/errors/addcapabilitieserror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`LinkCardError`](docs/models/errors/linkcarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`UpdateCardError`](docs/models/errors/updatecarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`FileUploadValidationError`](docs/models/errors/fileuploadvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`FeePlanAgreementError`](docs/models/errors/feeplanagreementerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`FileValidationError`](docs/models/errors/filevalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`CreatePaymentLinkError`](docs/models/errors/createpaymentlinkerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`UpdatePaymentLinkError`](docs/models/errors/updatepaymentlinkerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`RepresentativeValidationError`](docs/models/errors/representativevalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`CreateSweepConfigError`](docs/models/errors/createsweepconfigerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`PatchSweepConfigError`](docs/models/errors/patchsweepconfigerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`AccountTerminalApplicationError`](docs/models/errors/accountterminalapplicationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`TransferValidationError`](docs/models/errors/transfervalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`RefundValidationError`](docs/models/errors/refundvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`ReversalValidationError`](docs/models/errors/reversalvalidationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`UpdateUnderwritingError`](docs/models/errors/updateunderwritingerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`RequestCardError`](docs/models/errors/requestcarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`UpdateIssuedCardError`](docs/models/errors/updateissuedcarderror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`RevokeTokenRequestError`](docs/models/errors/revoketokenrequesterror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`AuthTokenRequestError`](docs/models/errors/authtokenrequesterror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`OnboardingInviteError`](docs/models/errors/onboardinginviteerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
+* [`TerminalApplicationError`](docs/models/errors/terminalapplicationerror.md): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 137 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

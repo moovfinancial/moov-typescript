@@ -19,7 +19,7 @@ import {
   CardAcquiringRefund$outboundSchema,
 } from "./cardacquiringrefund.js";
 
-export type CreateRefundResponse = AsyncCreatedRefund | CardAcquiringRefund;
+export type CreateRefundResponse = CardAcquiringRefund | AsyncCreatedRefund;
 
 /** @internal */
 export const CreateRefundResponse$inboundSchema: z.ZodType<
@@ -27,14 +27,14 @@ export const CreateRefundResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  AsyncCreatedRefund$inboundSchema,
   CardAcquiringRefund$inboundSchema,
+  AsyncCreatedRefund$inboundSchema,
 ]);
 
 /** @internal */
 export type CreateRefundResponse$Outbound =
-  | AsyncCreatedRefund$Outbound
-  | CardAcquiringRefund$Outbound;
+  | CardAcquiringRefund$Outbound
+  | AsyncCreatedRefund$Outbound;
 
 /** @internal */
 export const CreateRefundResponse$outboundSchema: z.ZodType<
@@ -42,8 +42,8 @@ export const CreateRefundResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateRefundResponse
 > = z.union([
-  AsyncCreatedRefund$outboundSchema,
   CardAcquiringRefund$outboundSchema,
+  AsyncCreatedRefund$outboundSchema,
 ]);
 
 /**

@@ -46,16 +46,16 @@ export type CreateTransferRequest = {
 };
 
 export type CreateTransferResponseResult =
-  | components.AsyncTransfer
+  | components.Transfer
   | components.CreatedTransfer
-  | components.Transfer;
+  | components.AsyncTransfer;
 
 export type CreateTransferResponse = {
   headers: { [k: string]: Array<string> };
   result:
-    | components.AsyncTransfer
+    | components.Transfer
     | components.CreatedTransfer
-    | components.Transfer;
+    | components.AsyncTransfer;
 };
 
 /** @internal */
@@ -201,16 +201,16 @@ export const CreateTransferResponseResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  components.AsyncTransfer$inboundSchema,
-  components.CreatedTransfer$inboundSchema,
   components.Transfer$inboundSchema,
+  components.CreatedTransfer$inboundSchema,
+  components.AsyncTransfer$inboundSchema,
 ]);
 
 /** @internal */
 export type CreateTransferResponseResult$Outbound =
-  | components.AsyncTransfer$Outbound
+  | components.Transfer$Outbound
   | components.CreatedTransfer$Outbound
-  | components.Transfer$Outbound;
+  | components.AsyncTransfer$Outbound;
 
 /** @internal */
 export const CreateTransferResponseResult$outboundSchema: z.ZodType<
@@ -218,9 +218,9 @@ export const CreateTransferResponseResult$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateTransferResponseResult
 > = z.union([
-  components.AsyncTransfer$outboundSchema,
-  components.CreatedTransfer$outboundSchema,
   components.Transfer$outboundSchema,
+  components.CreatedTransfer$outboundSchema,
+  components.AsyncTransfer$outboundSchema,
 ]);
 
 /**
@@ -264,9 +264,9 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
 > = z.object({
   Headers: z.record(z.array(z.string())),
   Result: z.union([
-    components.AsyncTransfer$inboundSchema,
-    components.CreatedTransfer$inboundSchema,
     components.Transfer$inboundSchema,
+    components.CreatedTransfer$inboundSchema,
+    components.AsyncTransfer$inboundSchema,
   ]),
 }).transform((v) => {
   return remap$(v, {
@@ -279,9 +279,9 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
 export type CreateTransferResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
   Result:
-    | components.AsyncTransfer$Outbound
+    | components.Transfer$Outbound
     | components.CreatedTransfer$Outbound
-    | components.Transfer$Outbound;
+    | components.AsyncTransfer$Outbound;
 };
 
 /** @internal */
@@ -292,9 +292,9 @@ export const CreateTransferResponse$outboundSchema: z.ZodType<
 > = z.object({
   headers: z.record(z.array(z.string())),
   result: z.union([
-    components.AsyncTransfer$outboundSchema,
-    components.CreatedTransfer$outboundSchema,
     components.Transfer$outboundSchema,
+    components.CreatedTransfer$outboundSchema,
+    components.AsyncTransfer$outboundSchema,
   ]),
 }).transform((v) => {
   return remap$(v, {

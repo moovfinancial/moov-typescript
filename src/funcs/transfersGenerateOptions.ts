@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+ * you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
  */
 export function transfersGenerateOptions(
   client: MoovCore,

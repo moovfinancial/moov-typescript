@@ -17,7 +17,7 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
 typescript:
-  version: 0.12.4
+  version: 0.12.5
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -26,6 +26,7 @@ typescript:
   author: Moov
   baseErrorName: MoovError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
   defaultErrorName: APIError
   enableCustomCodeRegions: false
   enableMCPServer: true

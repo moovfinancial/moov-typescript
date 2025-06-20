@@ -9,16 +9,16 @@ let value: AchCreditSameDayPaymentMethod = {
   paymentMethodID: "80bca603-5db2-41f1-989e-6f05d94de12a",
   paymentMethodType: "ach-credit-same-day",
   bankAccount: {
-    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+    bankAccountID: "ff5fe8cb-b736-4d3b-827e-cd3aabf157fe",
     fingerprint: "<value>",
-    status: "pending",
+    status: "new",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "checking",
+    bankAccountType: "loan",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-03-02T11:13:45.697Z"),
   },
 };
 ```
