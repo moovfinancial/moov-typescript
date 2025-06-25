@@ -529,3 +529,13 @@ Based on:
 - [typescript v0.12.5] .
 ### Releases
 - [NPM v0.12.5] https://www.npmjs.com/package/@moovio/sdk/v/0.12.5 - .
+
+## 2025-06-25 17:41:34
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.570.0 (2.638.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.12.6] .
+### Releases
+- [NPM v0.12.6] https://www.npmjs.com/package/@moovio/sdk/v/0.12.6 - .
