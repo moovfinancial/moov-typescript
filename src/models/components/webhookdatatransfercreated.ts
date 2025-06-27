@@ -19,6 +19,7 @@ export type WebhookDataTransferCreated = {
   accountID: string;
   transferID: string;
   status: WebhookDataTransferStatus;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -30,6 +31,7 @@ export const WebhookDataTransferCreated$inboundSchema: z.ZodType<
   accountID: z.string(),
   transferID: z.string(),
   status: WebhookDataTransferStatus$inboundSchema,
+  foreignID: z.string().optional(),
 });
 
 /** @internal */
@@ -37,6 +39,7 @@ export type WebhookDataTransferCreated$Outbound = {
   accountID: string;
   transferID: string;
   status: string;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -48,6 +51,7 @@ export const WebhookDataTransferCreated$outboundSchema: z.ZodType<
   accountID: z.string(),
   transferID: z.string(),
   status: WebhookDataTransferStatus$outboundSchema,
+  foreignID: z.string().optional(),
 });
 
 /**

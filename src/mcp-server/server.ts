@@ -145,6 +145,7 @@ import { tool$transfersList } from "./tools/transfersList.js";
 import { tool$transfersListRefunds } from "./tools/transfersListRefunds.js";
 import { tool$transfersUpdate } from "./tools/transfersUpdate.js";
 import { tool$underwritingGet } from "./tools/underwritingGet.js";
+import { tool$underwritingSave } from "./tools/underwritingSave.js";
 import { tool$underwritingUpsert } from "./tools/underwritingUpsert.js";
 import { tool$walletsGet } from "./tools/walletsGet.js";
 import { tool$walletsList } from "./tools/walletsList.js";
@@ -162,7 +163,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.12.6",
+    version: "0.13.0",
   });
 
   const client = new MoovCore({
@@ -294,6 +295,7 @@ export function createMCPServer(deps: {
   tool(tool$transfersCreateReversal);
   tool(tool$transfersGenerateOptions);
   tool(tool$underwritingGet);
+  tool(tool$underwritingSave);
   tool(tool$underwritingUpsert);
   tool(tool$walletsList);
   tool(tool$walletsGet);

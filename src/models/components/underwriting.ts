@@ -7,17 +7,50 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  BusinessPresence,
+  BusinessPresence$inboundSchema,
+  BusinessPresence$outboundSchema,
+} from "./businesspresence.js";
+import {
   CardVolumeDistribution,
   CardVolumeDistribution$inboundSchema,
   CardVolumeDistribution$Outbound,
   CardVolumeDistribution$outboundSchema,
 } from "./cardvolumedistribution.js";
 import {
+  CollectFunds,
+  CollectFunds$inboundSchema,
+  CollectFunds$Outbound,
+  CollectFunds$outboundSchema,
+} from "./collectfunds.js";
+import {
   FulfillmentDetails,
   FulfillmentDetails$inboundSchema,
   FulfillmentDetails$Outbound,
   FulfillmentDetails$outboundSchema,
 } from "./fulfillmentdetails.js";
+import {
+  GeographicReach,
+  GeographicReach$inboundSchema,
+  GeographicReach$outboundSchema,
+} from "./geographicreach.js";
+import {
+  MoneyTransfer,
+  MoneyTransfer$inboundSchema,
+  MoneyTransfer$Outbound,
+  MoneyTransfer$outboundSchema,
+} from "./moneytransfer.js";
+import {
+  PendingLitigation,
+  PendingLitigation$inboundSchema,
+  PendingLitigation$outboundSchema,
+} from "./pendinglitigation.js";
+import {
+  SendFunds,
+  SendFunds$inboundSchema,
+  SendFunds$Outbound,
+  SendFunds$outboundSchema,
+} from "./sendfunds.js";
 import {
   UnderwritingStatus,
   UnderwritingStatus$inboundSchema,
@@ -29,21 +62,34 @@ import {
   VolumeByCustomerType$Outbound,
   VolumeByCustomerType$outboundSchema,
 } from "./volumebycustomertype.js";
+import {
+  VolumeShareByCustomerType,
+  VolumeShareByCustomerType$inboundSchema,
+  VolumeShareByCustomerType$Outbound,
+  VolumeShareByCustomerType$outboundSchema,
+} from "./volumesharebycustomertype.js";
 
 /**
  * Describes underwriting values (in USD) used for card payment acceptance.
  */
 export type Underwriting = {
-  averageTransactionSize: number;
-  maxTransactionSize: number;
-  averageMonthlyTransactionVolume: number;
+  averageTransactionSize?: number | undefined;
+  maxTransactionSize?: number | undefined;
+  averageMonthlyTransactionVolume?: number | undefined;
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  status: UnderwritingStatus;
-  volumeByCustomerType: VolumeByCustomerType;
-  cardVolumeDistribution: CardVolumeDistribution;
-  fulfillment: FulfillmentDetails;
+  status?: UnderwritingStatus | undefined;
+  volumeByCustomerType?: VolumeByCustomerType | undefined;
+  cardVolumeDistribution?: CardVolumeDistribution | undefined;
+  fulfillment?: FulfillmentDetails | undefined;
+  geographicReach?: GeographicReach | undefined;
+  businessPresence?: BusinessPresence | undefined;
+  pendingLitigation?: PendingLitigation | undefined;
+  volumeShareByCustomerType?: VolumeShareByCustomerType | undefined;
+  collectFunds?: CollectFunds | undefined;
+  moneyTransfer?: MoneyTransfer | undefined;
+  sendFunds?: SendFunds | undefined;
 };
 
 /** @internal */
@@ -52,24 +98,38 @@ export const Underwriting$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  averageTransactionSize: z.number().int(),
-  maxTransactionSize: z.number().int(),
-  averageMonthlyTransactionVolume: z.number().int(),
-  status: UnderwritingStatus$inboundSchema,
-  volumeByCustomerType: VolumeByCustomerType$inboundSchema,
-  cardVolumeDistribution: CardVolumeDistribution$inboundSchema,
-  fulfillment: FulfillmentDetails$inboundSchema,
+  averageTransactionSize: z.number().int().optional(),
+  maxTransactionSize: z.number().int().optional(),
+  averageMonthlyTransactionVolume: z.number().int().optional(),
+  status: UnderwritingStatus$inboundSchema.optional(),
+  volumeByCustomerType: VolumeByCustomerType$inboundSchema.optional(),
+  cardVolumeDistribution: CardVolumeDistribution$inboundSchema.optional(),
+  fulfillment: FulfillmentDetails$inboundSchema.optional(),
+  geographicReach: GeographicReach$inboundSchema.optional(),
+  businessPresence: BusinessPresence$inboundSchema.optional(),
+  pendingLitigation: PendingLitigation$inboundSchema.optional(),
+  volumeShareByCustomerType: VolumeShareByCustomerType$inboundSchema.optional(),
+  collectFunds: CollectFunds$inboundSchema.optional(),
+  moneyTransfer: MoneyTransfer$inboundSchema.optional(),
+  sendFunds: SendFunds$inboundSchema.optional(),
 });
 
 /** @internal */
 export type Underwriting$Outbound = {
-  averageTransactionSize: number;
-  maxTransactionSize: number;
-  averageMonthlyTransactionVolume: number;
-  status: string;
-  volumeByCustomerType: VolumeByCustomerType$Outbound;
-  cardVolumeDistribution: CardVolumeDistribution$Outbound;
-  fulfillment: FulfillmentDetails$Outbound;
+  averageTransactionSize?: number | undefined;
+  maxTransactionSize?: number | undefined;
+  averageMonthlyTransactionVolume?: number | undefined;
+  status?: string | undefined;
+  volumeByCustomerType?: VolumeByCustomerType$Outbound | undefined;
+  cardVolumeDistribution?: CardVolumeDistribution$Outbound | undefined;
+  fulfillment?: FulfillmentDetails$Outbound | undefined;
+  geographicReach?: string | undefined;
+  businessPresence?: string | undefined;
+  pendingLitigation?: string | undefined;
+  volumeShareByCustomerType?: VolumeShareByCustomerType$Outbound | undefined;
+  collectFunds?: CollectFunds$Outbound | undefined;
+  moneyTransfer?: MoneyTransfer$Outbound | undefined;
+  sendFunds?: SendFunds$Outbound | undefined;
 };
 
 /** @internal */
@@ -78,13 +138,21 @@ export const Underwriting$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Underwriting
 > = z.object({
-  averageTransactionSize: z.number().int(),
-  maxTransactionSize: z.number().int(),
-  averageMonthlyTransactionVolume: z.number().int(),
-  status: UnderwritingStatus$outboundSchema,
-  volumeByCustomerType: VolumeByCustomerType$outboundSchema,
-  cardVolumeDistribution: CardVolumeDistribution$outboundSchema,
-  fulfillment: FulfillmentDetails$outboundSchema,
+  averageTransactionSize: z.number().int().optional(),
+  maxTransactionSize: z.number().int().optional(),
+  averageMonthlyTransactionVolume: z.number().int().optional(),
+  status: UnderwritingStatus$outboundSchema.optional(),
+  volumeByCustomerType: VolumeByCustomerType$outboundSchema.optional(),
+  cardVolumeDistribution: CardVolumeDistribution$outboundSchema.optional(),
+  fulfillment: FulfillmentDetails$outboundSchema.optional(),
+  geographicReach: GeographicReach$outboundSchema.optional(),
+  businessPresence: BusinessPresence$outboundSchema.optional(),
+  pendingLitigation: PendingLitigation$outboundSchema.optional(),
+  volumeShareByCustomerType: VolumeShareByCustomerType$outboundSchema
+    .optional(),
+  collectFunds: CollectFunds$outboundSchema.optional(),
+  moneyTransfer: MoneyTransfer$outboundSchema.optional(),
+  sendFunds: SendFunds$outboundSchema.optional(),
 });
 
 /**

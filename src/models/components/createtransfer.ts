@@ -57,6 +57,10 @@ export type CreateTransfer = {
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
   salesTaxAmount?: Amount | undefined;
+  /**
+   * Optional alias from a foreign/external system which can be used to reference this resource.
+   */
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -72,6 +76,7 @@ export const CreateTransfer$inboundSchema: z.ZodType<
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   salesTaxAmount: Amount$inboundSchema.optional(),
+  foreignID: z.string().optional(),
 });
 
 /** @internal */
@@ -83,6 +88,7 @@ export type CreateTransfer$Outbound = {
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   salesTaxAmount?: Amount$Outbound | undefined;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -98,6 +104,7 @@ export const CreateTransfer$outboundSchema: z.ZodType<
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   salesTaxAmount: Amount$outboundSchema.optional(),
+  foreignID: z.string().optional(),
 });
 
 /**

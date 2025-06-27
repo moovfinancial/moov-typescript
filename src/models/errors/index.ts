@@ -40,3 +40,4 @@ export * from "./updatecarderror.js";
 export * from "./updateissuedcarderror.js";
 export * from "./updatepaymentlinkerror.js";
 export * from "./updateunderwritingerror.js";
+export * from "./upsertunderwritingerror.js";

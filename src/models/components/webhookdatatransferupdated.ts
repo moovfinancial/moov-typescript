@@ -33,6 +33,7 @@ export type WebhookDataTransferUpdated = {
    * Payment method details for the source or destination of a transfer.
    */
   destination: WebhookTransferPaymentMethodDetails;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -46,6 +47,7 @@ export const WebhookDataTransferUpdated$inboundSchema: z.ZodType<
   status: WebhookDataTransferStatus$inboundSchema,
   source: WebhookTransferPaymentMethodDetails$inboundSchema,
   destination: WebhookTransferPaymentMethodDetails$inboundSchema,
+  foreignID: z.string().optional(),
 });
 
 /** @internal */
@@ -55,6 +57,7 @@ export type WebhookDataTransferUpdated$Outbound = {
   status: string;
   source: WebhookTransferPaymentMethodDetails$Outbound;
   destination: WebhookTransferPaymentMethodDetails$Outbound;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -68,6 +71,7 @@ export const WebhookDataTransferUpdated$outboundSchema: z.ZodType<
   status: WebhookDataTransferStatus$outboundSchema,
   source: WebhookTransferPaymentMethodDetails$outboundSchema,
   destination: WebhookTransferPaymentMethodDetails$outboundSchema,
+  foreignID: z.string().optional(),
 });
 
 /**

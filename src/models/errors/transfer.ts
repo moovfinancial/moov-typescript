@@ -66,6 +66,10 @@ export type TransferData = {
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
   salesTaxAmount?: components.Amount | undefined;
+  /**
+   * Optional alias from a foreign/external system which can be used to reference this resource.
+   */
+  foreignID?: string | undefined;
 };
 
 /**
@@ -128,6 +132,10 @@ export class Transfer extends MoovError {
    * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
    */
   salesTaxAmount?: components.Amount | undefined;
+  /**
+   * Optional alias from a foreign/external system which can be used to reference this resource.
+   */
+  foreignID?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferData;
@@ -167,6 +175,7 @@ export class Transfer extends MoovError {
     if (err.occurrenceID != null) this.occurrenceID = err.occurrenceID;
     if (err.paymentLinkCode != null) this.paymentLinkCode = err.paymentLinkCode;
     if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
+    if (err.foreignID != null) this.foreignID = err.foreignID;
 
     this.name = "Transfer";
   }
@@ -205,6 +214,7 @@ export const Transfer$inboundSchema: z.ZodType<
   occurrenceID: z.string().optional(),
   paymentLinkCode: z.string().optional(),
   salesTaxAmount: components.Amount$inboundSchema.optional(),
+  foreignID: z.string().optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -245,6 +255,7 @@ export type Transfer$Outbound = {
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
   salesTaxAmount?: components.Amount$Outbound | undefined;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -282,6 +293,7 @@ export const Transfer$outboundSchema: z.ZodType<
     occurrenceID: z.string().optional(),
     paymentLinkCode: z.string().optional(),
     salesTaxAmount: components.Amount$outboundSchema.optional(),
+    foreignID: z.string().optional(),
   }));
 
 /**
