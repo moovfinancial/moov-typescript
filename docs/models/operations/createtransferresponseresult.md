@@ -299,6 +299,19 @@ const value: components.Transfer = {
     value: 32945,
   },
   description: "Transfer from card to wallet",
+  moovFees: [
+    {
+      accountID: "7e4b26c2-b399-49ef-8390-50e1ea44d550",
+      transferParty: "source",
+      totalAmount: {
+        currency: "USD",
+        valueDecimal: "0.1",
+      },
+      feeIDs: [
+        "9d957d33-1a9a-47aa-9460-fe1a90f003dd",
+      ],
+    },
+  ],
 };
 ```
 
