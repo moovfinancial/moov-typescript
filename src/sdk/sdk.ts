@@ -30,6 +30,7 @@ import { Ping } from "./ping.js";
 import { Receipts } from "./receipts.js";
 import { Representatives } from "./representatives.js";
 import { Scheduling } from "./scheduling.js";
+import { Support } from "./support.js";
 import { Sweeps } from "./sweeps.js";
 import { TerminalApplications } from "./terminalapplications.js";
 import { Transfers } from "./transfers.js";
@@ -117,6 +118,11 @@ export class Moov extends ClientSDK {
   get accountTerminalApplications(): AccountTerminalApplications {
     return (this._accountTerminalApplications ??=
       new AccountTerminalApplications(this._options));
+  }
+
+  private _support?: Support;
+  get support(): Support {
+    return (this._support ??= new Support(this._options));
   }
 
   private _transfers?: Transfers;

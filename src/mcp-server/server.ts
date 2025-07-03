@@ -122,6 +122,11 @@ import { tool$schedulingGet } from "./tools/schedulingGet.js";
 import { tool$schedulingGetOccurrance } from "./tools/schedulingGetOccurrance.js";
 import { tool$schedulingList } from "./tools/schedulingList.js";
 import { tool$schedulingUpdate } from "./tools/schedulingUpdate.js";
+import { tool$supportCreateTicket } from "./tools/supportCreateTicket.js";
+import { tool$supportGetTicket } from "./tools/supportGetTicket.js";
+import { tool$supportListTicketMessages } from "./tools/supportListTicketMessages.js";
+import { tool$supportListTickets } from "./tools/supportListTickets.js";
+import { tool$supportUpdateTicket } from "./tools/supportUpdateTicket.js";
 import { tool$sweepsCreateConfig } from "./tools/sweepsCreateConfig.js";
 import { tool$sweepsGet } from "./tools/sweepsGet.js";
 import { tool$sweepsGetConfig } from "./tools/sweepsGetConfig.js";
@@ -163,7 +168,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.14.0",
+    version: "0.14.1",
   });
 
   const client = new MoovCore({
@@ -282,6 +287,11 @@ export function createMCPServer(deps: {
   tool(tool$accountTerminalApplicationsList);
   tool(tool$accountTerminalApplicationsGet);
   tool(tool$accountTerminalApplicationsGetConfiguration);
+  tool(tool$supportCreateTicket);
+  tool(tool$supportListTickets);
+  tool(tool$supportGetTicket);
+  tool(tool$supportUpdateTicket);
+  tool(tool$supportListTicketMessages);
   tool(tool$transfersGenerateOptionsForAccount);
   tool(tool$transfersCreate);
   tool(tool$transfersList);

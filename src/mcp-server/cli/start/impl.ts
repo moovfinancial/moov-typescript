@@ -12,14 +12,12 @@ import {
   ConsoleLoggerLevel,
   createConsoleLogger,
 } from "../../console-logger.js";
-import { MCPScope } from "../../scopes.js";
 import { createMCPServer } from "../../server.js";
 
 interface StartCommandFlags {
   readonly transport: "stdio" | "sse";
   readonly port: number;
   readonly tool?: string[];
-  readonly scope?: MCPScope[];
   readonly username?: string | undefined;
   readonly password?: string | undefined;
   readonly "x-moov-version"?: SDKOptions["xMoovVersion"] | undefined;
@@ -52,7 +50,6 @@ async function startStdio(flags: StartCommandFlags) {
   const server = createMCPServer({
     logger,
     allowedTools: flags.tool,
-    scopes: flags.scope,
     security: allRequired({
       username: flags.username ?? "",
       password: flags.password ?? "",
@@ -77,7 +74,6 @@ async function startSSE(flags: StartCommandFlags) {
   const mcpServer = createMCPServer({
     logger,
     allowedTools: flags.tool,
-    scopes: flags.scope,
     security: allRequired({
       username: flags.username ?? "",
       password: flags.password ?? "",

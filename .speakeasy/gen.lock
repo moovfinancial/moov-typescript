@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 0e712d2aa7732fe657e95ee2ff87d85f
+  docChecksum: ccd477bb764cb2ce8b991f7c66a65f28
   docVersion: latest
-  speakeasyVersion: 1.571.1
-  generationVersion: 2.640.2
-  releaseVersion: 0.14.0
-  configChecksum: 56d434d700bc7d2e8c39c78c7a25046f
+  speakeasyVersion: 1.575.1
+  generationVersion: 2.648.1
+  releaseVersion: 0.14.1
+  configChecksum: dc9b280cae88bfc685fda72824f06276
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -27,7 +27,7 @@ features:
     globals: 2.82.2
     hiddenGlobals: 0.1.0
     includes: 2.81.1
-    mcpServer: 0.9.2
+    mcpServer: 0.9.3
     nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.2.3
@@ -199,6 +199,8 @@ generatedFiles:
   - docs/models/components/createreversal.md
   - docs/models/components/createsweepconfig.md
   - docs/models/components/createterminalapplication.md
+  - docs/models/components/createticket.md
+  - docs/models/components/createticketcontacterror.md
   - docs/models/components/createtransfer.md
   - docs/models/components/createtransferdestination.md
   - docs/models/components/createtransferdestinationach.md
@@ -453,6 +455,10 @@ generatedFiles:
   - docs/models/components/termsofserviceerror.md
   - docs/models/components/termsofservicetoken.md
   - docs/models/components/termsofservicetokenupdate.md
+  - docs/models/components/ticket.md
+  - docs/models/components/ticketcontact.md
+  - docs/models/components/ticketmessage.md
+  - docs/models/components/ticketstatus.md
   - docs/models/components/tokentype.md
   - docs/models/components/tokentypehint.md
   - docs/models/components/transactionsource.md
@@ -484,6 +490,8 @@ generatedFiles:
   - docs/models/components/updaterepresentativegovernmentid.md
   - docs/models/components/updaterepresentativeitin.md
   - docs/models/components/updaterepresentativessn.md
+  - docs/models/components/updateticket.md
+  - docs/models/components/updateticketstatus.md
   - docs/models/components/updateunderwriting.md
   - docs/models/components/upsertschedule.md
   - docs/models/components/upsertunderwriting.md
@@ -547,6 +555,7 @@ generatedFiles:
   - docs/models/errors/createaccountresponsebody.md
   - docs/models/errors/createpaymentlinkerror.md
   - docs/models/errors/createsweepconfigerror.md
+  - docs/models/errors/createticketerror.md
   - docs/models/errors/errort.md
   - docs/models/errors/feeplanagreementerror.md
   - docs/models/errors/filet.md
@@ -572,6 +581,7 @@ generatedFiles:
   - docs/models/errors/updatecarderror.md
   - docs/models/errors/updateissuedcarderror.md
   - docs/models/errors/updatepaymentlinkerror.md
+  - docs/models/errors/updateticketerror.md
   - docs/models/errors/updateunderwritingerror.md
   - docs/models/errors/updateunderwritingerrorerror.md
   - docs/models/errors/upsertunderwritingerror.md
@@ -627,6 +637,9 @@ generatedFiles:
   - docs/models/operations/createsweepconfigresponse.md
   - docs/models/operations/createterminalapplicationglobals.md
   - docs/models/operations/createterminalapplicationresponse.md
+  - docs/models/operations/createticketglobals.md
+  - docs/models/operations/createticketrequest.md
+  - docs/models/operations/createticketresponse.md
   - docs/models/operations/createtransferglobals.md
   - docs/models/operations/createtransferoptionsforaccountglobals.md
   - docs/models/operations/createtransferoptionsforaccountrequest.md
@@ -773,6 +786,9 @@ generatedFiles:
   - docs/models/operations/gettermsofservicetokenglobals.md
   - docs/models/operations/gettermsofservicetokenrequest.md
   - docs/models/operations/gettermsofservicetokenresponse.md
+  - docs/models/operations/getticketglobals.md
+  - docs/models/operations/getticketrequest.md
+  - docs/models/operations/getticketresponse.md
   - docs/models/operations/gettransferglobals.md
   - docs/models/operations/gettransferrequest.md
   - docs/models/operations/gettransferresponse.md
@@ -898,6 +914,12 @@ generatedFiles:
   - docs/models/operations/listterminalapplicationsglobals.md
   - docs/models/operations/listterminalapplicationsrequest.md
   - docs/models/operations/listterminalapplicationsresponse.md
+  - docs/models/operations/listticketmessagesglobals.md
+  - docs/models/operations/listticketmessagesrequest.md
+  - docs/models/operations/listticketmessagesresponse.md
+  - docs/models/operations/listticketsglobals.md
+  - docs/models/operations/listticketsrequest.md
+  - docs/models/operations/listticketsresponse.md
   - docs/models/operations/listtransfersglobals.md
   - docs/models/operations/listtransfersrequest.md
   - docs/models/operations/listtransfersresponse.md
@@ -968,6 +990,9 @@ generatedFiles:
   - docs/models/operations/updatesweepconfigglobals.md
   - docs/models/operations/updatesweepconfigrequest.md
   - docs/models/operations/updatesweepconfigresponse.md
+  - docs/models/operations/updateticketglobals.md
+  - docs/models/operations/updateticketrequest.md
+  - docs/models/operations/updateticketresponse.md
   - docs/models/operations/updatetransferglobals.md
   - docs/models/operations/updatetransferrequest.md
   - docs/models/operations/updatetransferresponse.md
@@ -1014,6 +1039,7 @@ generatedFiles:
   - docs/sdks/receipts/README.md
   - docs/sdks/representatives/README.md
   - docs/sdks/scheduling/README.md
+  - docs/sdks/support/README.md
   - docs/sdks/sweeps/README.md
   - docs/sdks/terminalapplications/README.md
   - docs/sdks/transfers/README.md
@@ -1133,6 +1159,11 @@ generatedFiles:
   - src/funcs/schedulingGetOccurrance.ts
   - src/funcs/schedulingList.ts
   - src/funcs/schedulingUpdate.ts
+  - src/funcs/supportCreateTicket.ts
+  - src/funcs/supportGetTicket.ts
+  - src/funcs/supportListTicketMessages.ts
+  - src/funcs/supportListTickets.ts
+  - src/funcs/supportUpdateTicket.ts
   - src/funcs/sweepsCreateConfig.ts
   - src/funcs/sweepsGet.ts
   - src/funcs/sweepsGetConfig.ts
@@ -1303,6 +1334,11 @@ generatedFiles:
   - src/mcp-server/tools/schedulingGetOccurrance.ts
   - src/mcp-server/tools/schedulingList.ts
   - src/mcp-server/tools/schedulingUpdate.ts
+  - src/mcp-server/tools/supportCreateTicket.ts
+  - src/mcp-server/tools/supportGetTicket.ts
+  - src/mcp-server/tools/supportListTicketMessages.ts
+  - src/mcp-server/tools/supportListTickets.ts
+  - src/mcp-server/tools/supportUpdateTicket.ts
   - src/mcp-server/tools/sweepsCreateConfig.ts
   - src/mcp-server/tools/sweepsGet.ts
   - src/mcp-server/tools/sweepsGetConfig.ts
@@ -1471,6 +1507,8 @@ generatedFiles:
   - src/models/components/createreversal.ts
   - src/models/components/createsweepconfig.ts
   - src/models/components/createterminalapplication.ts
+  - src/models/components/createticket.ts
+  - src/models/components/createticketcontacterror.ts
   - src/models/components/createtransfer.ts
   - src/models/components/createtransferdestination.ts
   - src/models/components/createtransferdestinationach.ts
@@ -1699,6 +1737,10 @@ generatedFiles:
   - src/models/components/termsofserviceerror.ts
   - src/models/components/termsofservicetoken.ts
   - src/models/components/termsofservicetokenupdate.ts
+  - src/models/components/ticket.ts
+  - src/models/components/ticketcontact.ts
+  - src/models/components/ticketmessage.ts
+  - src/models/components/ticketstatus.ts
   - src/models/components/tokentype.ts
   - src/models/components/transactionsource.ts
   - src/models/components/transfer.ts
@@ -1723,6 +1765,8 @@ generatedFiles:
   - src/models/components/updateissuedcard.ts
   - src/models/components/updatepaymentlink.ts
   - src/models/components/updaterepresentative.ts
+  - src/models/components/updateticket.ts
+  - src/models/components/updateticketstatus.ts
   - src/models/components/updateunderwriting.ts
   - src/models/components/upsertschedule.ts
   - src/models/components/upsertunderwriting.ts
@@ -1786,6 +1830,7 @@ generatedFiles:
   - src/models/errors/createaccount.ts
   - src/models/errors/createpaymentlinkerror.ts
   - src/models/errors/createsweepconfigerror.ts
+  - src/models/errors/createticketerror.ts
   - src/models/errors/feeplanagreementerror.ts
   - src/models/errors/fileuploadvalidationerror.ts
   - src/models/errors/filevalidationerror.ts
@@ -1814,6 +1859,7 @@ generatedFiles:
   - src/models/errors/updatecarderror.ts
   - src/models/errors/updateissuedcarderror.ts
   - src/models/errors/updatepaymentlinkerror.ts
+  - src/models/errors/updateticketerror.ts
   - src/models/errors/updateunderwritingerror.ts
   - src/models/errors/upsertunderwritingerror.ts
   - src/models/operations/acceptdispute.ts
@@ -1835,6 +1881,7 @@ generatedFiles:
   - src/models/operations/createschedule.ts
   - src/models/operations/createsweepconfig.ts
   - src/models/operations/createterminalapplication.ts
+  - src/models/operations/createticket.ts
   - src/models/operations/createtransfer.ts
   - src/models/operations/createtransferoptions.ts
   - src/models/operations/createtransferoptionsforaccount.ts
@@ -1883,6 +1930,7 @@ generatedFiles:
   - src/models/operations/getterminalapplication.ts
   - src/models/operations/getterminalconfiguration.ts
   - src/models/operations/gettermsofservicetoken.ts
+  - src/models/operations/getticket.ts
   - src/models/operations/gettransfer.ts
   - src/models/operations/getunderwriting.ts
   - src/models/operations/getwallet.ts
@@ -1925,6 +1973,8 @@ generatedFiles:
   - src/models/operations/listsweepconfigs.ts
   - src/models/operations/listsweeps.ts
   - src/models/operations/listterminalapplications.ts
+  - src/models/operations/listticketmessages.ts
+  - src/models/operations/listtickets.ts
   - src/models/operations/listtransfers.ts
   - src/models/operations/listwallets.ts
   - src/models/operations/listwallettransactions.ts
@@ -1949,6 +1999,7 @@ generatedFiles:
   - src/models/operations/updaterepresentative.ts
   - src/models/operations/updateschedule.ts
   - src/models/operations/updatesweepconfig.ts
+  - src/models/operations/updateticket.ts
   - src/models/operations/updatetransfer.ts
   - src/models/operations/uploaddisputeevidencefile.ts
   - src/models/operations/uploaddisputeevidencetext.ts
@@ -1984,6 +2035,7 @@ generatedFiles:
   - src/sdk/representatives.ts
   - src/sdk/scheduling.ts
   - src/sdk/sdk.ts
+  - src/sdk/support.ts
   - src/sdk/sweeps.ts
   - src/sdk/terminalapplications.ts
   - src/sdk/transfers.ts
@@ -3960,5 +4012,76 @@ examples:
           application/json: {"error": "<value>"}
         "422":
           application/json: {}
+  createTicket:
+    speakeasy-default-create-ticket:
+      parameters:
+        path:
+          accountID: "4af4784a-c777-48f6-8211-063d5341f84b"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        application/json: {"title": "<value>", "body": "<value>", "contact": {"email": "Melany.Roberts@yahoo.com"}}
+      responses:
+        "200":
+          application/json: {"ticketID": "<id>", "number": 494500, "title": "<value>", "contact": {"email": "Melany.Roberts@yahoo.com"}, "status": "on-hold", "createdOn": "2024-03-04T08:59:45.001Z", "updatedOn": "2025-03-28T11:01:45.719Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  listTickets:
+    speakeasy-default-list-tickets:
+      parameters:
+        path:
+          accountID: "8ef75c13-2a50-4438-b294-2a850eb4986d"
+        query:
+          skip: 60
+          count: 20
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: [{"ticketID": "<id>", "number": 994820, "title": "<value>", "contact": {"email": "Shanel71@hotmail.com"}, "status": "in-progress", "createdOn": "2025-12-23T04:28:29.580Z", "updatedOn": "2024-03-28T03:42:32.571Z"}]
+  getTicket:
+    speakeasy-default-get-ticket:
+      parameters:
+        path:
+          accountID: "873ccb78-88b3-4520-85f2-7cc2aef5704b"
+          ticketID: "91fea9bf-b373-40f7-86e0-2c80690126e4"
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: {"ticketID": "<id>", "number": 55177, "title": "<value>", "contact": {"email": "Florencio.Fahey19@yahoo.com"}, "status": "on-hold", "createdOn": "2025-09-29T16:08:46.272Z", "updatedOn": "2024-10-10T04:04:41.316Z"}
+  updateTicket:
+    speakeasy-default-update-ticket:
+      parameters:
+        path:
+          accountID: "7cce2b85-37c2-4c76-954c-03dcec2b12f0"
+          ticketID: "1d621d17-8e7d-4ac0-9f7d-6e9fcebe8eef"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"ticketID": "<id>", "number": 696443, "title": "<value>", "contact": {"email": "Daryl.Lehner@yahoo.com"}, "status": "new", "createdOn": "2024-04-10T00:52:48.089Z", "updatedOn": "2024-03-13T16:45:35.474Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  listTicketMessages:
+    speakeasy-default-list-ticket-messages:
+      parameters:
+        path:
+          accountID: "72444918-8529-4986-b10c-41817e45d09e"
+          ticketID: "edeaab65-c54c-45b8-881b-19138f125fb1"
+        query:
+          skip: 60
+          count: 20
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: [{"author": "<value>", "body": "<value>", "sentOn": "2024-03-23T02:27:06.138Z"}]
 examplesVersion: 1.0.2
 generatedTests: {}
