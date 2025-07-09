@@ -5,7 +5,10 @@
 ```typescript
 import { ListIssuedCardAuthorizationsResponse } from "@moovio/sdk/models/operations";
 
-let value: ListIssuedCardAuthorizationsResponse = {};
+let value: ListIssuedCardAuthorizationsResponse = {
+  headers: {},
+  result: [],
+};
 ```
 
 ## Fields

@@ -5,7 +5,20 @@
 ```typescript
 import { ListDisputeEvidenceResponse } from "@moovio/sdk/models/operations";
 
-let value: ListDisputeEvidenceResponse = {};
+let value: ListDisputeEvidenceResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  result: [],
+};
 ```
 
 ## Fields

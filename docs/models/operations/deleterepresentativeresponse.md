@@ -5,7 +5,19 @@
 ```typescript
 import { DeleteRepresentativeResponse } from "@moovio/sdk/models/operations";
 
-let value: DeleteRepresentativeResponse = {};
+let value: DeleteRepresentativeResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [],
+    "key2": [
+      "<value 1>",
+    ],
+  },
+};
 ```
 
 ## Fields

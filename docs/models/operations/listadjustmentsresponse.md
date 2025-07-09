@@ -5,7 +5,10 @@
 ```typescript
 import { ListAdjustmentsResponse } from "@moovio/sdk/models/operations";
 
-let value: ListAdjustmentsResponse = {};
+let value: ListAdjustmentsResponse = {
+  headers: {},
+  result: [],
+};
 ```
 
 ## Fields

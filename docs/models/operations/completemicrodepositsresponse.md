@@ -5,7 +5,18 @@
 ```typescript
 import { CompleteMicroDepositsResponse } from "@moovio/sdk/models/operations";
 
-let value: CompleteMicroDepositsResponse = {};
+let value: CompleteMicroDepositsResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [],
+    "key2": [],
+  },
+  result: {
+    status: "verified",
+  },
+};
 ```
 
 ## Fields

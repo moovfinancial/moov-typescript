@@ -13,8 +13,8 @@ let value: Sweep = {
   accrualStartedOn: new Date("2023-07-27T01:48:08.217Z"),
   subtotals: [
     {
-      type: "payment",
-      count: 338261,
+      type: "ach-reversal",
+      count: 901665,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",

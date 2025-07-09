@@ -7,6 +7,14 @@ import { UpdateApplePayMerchantDomainsRequest } from "@moovio/sdk/models/operati
 
 let value: UpdateApplePayMerchantDomainsRequest = {
   accountID: "24dbdd54-8112-4365-8d8f-d4c8bb7c8e77",
+  updateApplePayMerchantDomains: {
+    addDomains: [
+      "pay.classbooker.dev",
+    ],
+    removeDomains: [
+      "checkout.classbooker.dev",
+    ],
+  },
 };
 ```
 

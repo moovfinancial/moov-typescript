@@ -5,7 +5,19 @@
 ```typescript
 import { CreateApplePaySessionResponse } from "@moovio/sdk/models/operations";
 
-let value: CreateApplePaySessionResponse = {};
+let value: CreateApplePaySessionResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [],
+    "key2": [
+      "<value 1>",
+    ],
+  },
+  result: "{\"epochTimestamp\":1733783167685,\"expiresAt\":1733786767685...}",
+};
 ```
 
 ## Fields

@@ -5,7 +5,10 @@
 ```typescript
 import { GetUnderwritingResponse } from "@moovio/sdk/models/operations";
 
-let value: GetUnderwritingResponse = {};
+let value: GetUnderwritingResponse = {
+  headers: {},
+  result: {},
+};
 ```
 
 ## Fields

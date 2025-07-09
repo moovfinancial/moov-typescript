@@ -5,7 +5,34 @@
 ```typescript
 import { RequestCardResponse } from "@moovio/sdk/models/operations";
 
-let value: RequestCardResponse = {};
+let value: RequestCardResponse = {
+  headers: {},
+  result: {
+    issuedCardID: "cc6efc33-f787-4d9c-bebd-2d8d7b936ce1",
+    brand: "Visa",
+    lastFourCardNumber: "<value>",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    authorizedUser: {
+      firstName: "Vincenzo",
+      lastName: "Lesch",
+    },
+    fundingWalletID: "<id>",
+    state: "closed",
+    formFactor: "virtual",
+    controls: {
+      velocityLimits: [
+        {
+          amount: 10000,
+          interval: "per-transaction",
+        },
+      ],
+    },
+    createdOn: new Date("2023-04-03T15:42:33.406Z"),
+  },
+};
 ```
 
 ## Fields

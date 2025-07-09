@@ -5,7 +5,12 @@
 ```typescript
 import { SaveUnderwritingResponse } from "@moovio/sdk/models/operations";
 
-let value: SaveUnderwritingResponse = {};
+let value: SaveUnderwritingResponse = {
+  headers: {
+    "key": [],
+  },
+  result: {},
+};
 ```
 
 ## Fields

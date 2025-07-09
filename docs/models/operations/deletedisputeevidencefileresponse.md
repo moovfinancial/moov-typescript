@@ -5,7 +5,9 @@
 ```typescript
 import { DeleteDisputeEvidenceFileResponse } from "@moovio/sdk/models/operations";
 
-let value: DeleteDisputeEvidenceFileResponse = {};
+let value: DeleteDisputeEvidenceFileResponse = {
+  headers: {},
+};
 ```
 
 ## Fields

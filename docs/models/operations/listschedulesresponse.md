@@ -5,7 +5,17 @@
 ```typescript
 import { ListSchedulesResponse } from "@moovio/sdk/models/operations";
 
-let value: ListSchedulesResponse = {};
+let value: ListSchedulesResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [],
+  },
+  result: [],
+};
 ```
 
 ## Fields

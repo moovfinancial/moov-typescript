@@ -5,7 +5,17 @@
 ```typescript
 import { GetTerminalConfigurationResponse } from "@moovio/sdk/models/operations";
 
-let value: GetTerminalConfigurationResponse = {};
+let value: GetTerminalConfigurationResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [],
+  },
+  result: {
+    configuration: "Zm9vYmFyCg==",
+  },
+};
 ```
 
 ## Fields

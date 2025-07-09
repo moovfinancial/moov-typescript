@@ -7,6 +7,14 @@ import { CreateTransferOptionsForAccountRequest } from "@moovio/sdk/models/opera
 
 let value: CreateTransferOptionsForAccountRequest = {
   accountID: "26b947bb-66ec-4110-844e-433f432e2a72",
+  createTransferOptions: {
+    source: {},
+    destination: {},
+    amount: {
+      currency: "USD",
+      value: 1204,
+    },
+  },
 };
 ```
 

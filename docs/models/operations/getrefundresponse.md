@@ -5,7 +5,19 @@
 ```typescript
 import { GetRefundResponse } from "@moovio/sdk/models/operations";
 
-let value: GetRefundResponse = {};
+let value: GetRefundResponse = {
+  headers: {},
+  result: {
+    refundID: "c5d8f694-dcb3-49fa-86a4-d52cdf4592d7",
+    createdOn: new Date("2023-04-30T04:25:03.302Z"),
+    updatedOn: new Date("2024-03-21T13:50:26.204Z"),
+    status: "created",
+    amount: {
+      currency: "USD",
+      value: 1204,
+    },
+  },
+};
 ```
 
 ## Fields

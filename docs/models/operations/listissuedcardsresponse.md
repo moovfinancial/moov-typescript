@@ -5,7 +5,14 @@
 ```typescript
 import { ListIssuedCardsResponse } from "@moovio/sdk/models/operations";
 
-let value: ListIssuedCardsResponse = {};
+let value: ListIssuedCardsResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+  },
+  result: [],
+};
 ```
 
 ## Fields

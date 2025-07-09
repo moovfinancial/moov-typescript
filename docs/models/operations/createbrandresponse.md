@@ -5,7 +5,29 @@
 ```typescript
 import { CreateBrandResponse } from "@moovio/sdk/models/operations";
 
-let value: CreateBrandResponse = {};
+let value: CreateBrandResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  result: {
+    colors: {
+      dark: {
+        accent: "#111111",
+      },
+      light: {
+        accent: "#111111",
+      },
+    },
+  },
+};
 ```
 
 ## Fields

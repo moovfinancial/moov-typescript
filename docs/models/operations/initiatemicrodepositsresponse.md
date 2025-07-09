@@ -5,7 +5,9 @@
 ```typescript
 import { InitiateMicroDepositsResponse } from "@moovio/sdk/models/operations";
 
-let value: InitiateMicroDepositsResponse = {};
+let value: InitiateMicroDepositsResponse = {
+  headers: {},
+};
 ```
 
 ## Fields

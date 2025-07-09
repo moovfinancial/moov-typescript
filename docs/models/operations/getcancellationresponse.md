@@ -5,7 +5,16 @@
 ```typescript
 import { GetCancellationResponse } from "@moovio/sdk/models/operations";
 
-let value: GetCancellationResponse = {};
+let value: GetCancellationResponse = {
+  headers: {
+    "key": [],
+  },
+  result: {
+    cancellationID: "<id>",
+    status: "failed",
+    createdOn: new Date("2023-04-15T07:51:43.353Z"),
+  },
+};
 ```
 
 ## Fields

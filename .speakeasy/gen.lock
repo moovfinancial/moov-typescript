@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 1684a0f11f7760bfb4620038a1f6cdf8
+  docChecksum: 525918b1c136191399263f262a27e53d
   docVersion: latest
-  speakeasyVersion: 1.575.4
-  generationVersion: 2.648.7
-  releaseVersion: 0.14.2
-  configChecksum: 3e2e42544511030380c8c6bd34caed2c
+  speakeasyVersion: 1.580.0
+  generationVersion: 2.654.2
+  releaseVersion: 0.14.3
+  configChecksum: b6851f81d48a1bd73bb12a76da238fba
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -1047,6 +1047,10 @@ generatedFiles:
   - docs/sdks/wallets/README.md
   - docs/sdks/wallettransactions/README.md
   - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/accountsCreate.example.ts
+  - examples/package.json
   - jsr.json
   - package.json
   - src/core.ts

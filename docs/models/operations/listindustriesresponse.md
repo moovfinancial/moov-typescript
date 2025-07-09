@@ -5,7 +5,28 @@
 ```typescript
 import { ListIndustriesResponse } from "@moovio/sdk/models/operations";
 
-let value: ListIndustriesResponse = {};
+let value: ListIndustriesResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+    ],
+  },
+  result: {
+    industries: [
+      {
+        industry: "clothing-accessories",
+        displayName: "Clothing & Accessories",
+        category: "retail",
+        categoryDisplayName: "Retail",
+        defaultMcc: "5651",
+      },
+    ],
+  },
+};
 ```
 
 ## Fields

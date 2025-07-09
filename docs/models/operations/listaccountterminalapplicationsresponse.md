@@ -5,7 +5,24 @@
 ```typescript
 import { ListAccountTerminalApplicationsResponse } from "@moovio/sdk/models/operations";
 
-let value: ListAccountTerminalApplicationsResponse = {};
+let value: ListAccountTerminalApplicationsResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+  },
+  result: [
+    {
+      terminalApplicationID: "12345678-1234-1234-1234-123456789012",
+      status: "enabled",
+      platform: "ios",
+      appBundleID: "com.example.app",
+      packageName: "com.example.app",
+      sha256Digest: "1234567890",
+      versionCode: "1.0.0",
+    },
+  ],
+};
 ```
 
 ## Fields

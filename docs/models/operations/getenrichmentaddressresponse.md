@@ -5,7 +5,14 @@
 ```typescript
 import { GetEnrichmentAddressResponse } from "@moovio/sdk/models/operations";
 
-let value: GetEnrichmentAddressResponse = {};
+let value: GetEnrichmentAddressResponse = {
+  headers: {},
+  result: {
+    suggestions: [
+      {},
+    ],
+  },
+};
 ```
 
 ## Fields

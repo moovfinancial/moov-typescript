@@ -5,7 +5,21 @@
 ```typescript
 import { GetAccountCountriesResponse } from "@moovio/sdk/models/operations";
 
-let value: GetAccountCountriesResponse = {};
+let value: GetAccountCountriesResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [
+      "<value 1>",
+    ],
+  },
+  result: {
+    countries: [
+      "United States",
+    ],
+  },
+};
 ```
 
 ## Fields

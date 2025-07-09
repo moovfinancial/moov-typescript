@@ -9,6 +9,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PatchTransfer = {
   metadata?: { [k: string]: string } | null | undefined;
+  /**
+   * Optional alias from a foreign/external system which can be used to reference this resource.
+   */
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -18,11 +22,13 @@ export const PatchTransfer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   metadata: z.nullable(z.record(z.string())).optional(),
+  foreignID: z.string().optional(),
 });
 
 /** @internal */
 export type PatchTransfer$Outbound = {
   metadata?: { [k: string]: string } | null | undefined;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -32,6 +38,7 @@ export const PatchTransfer$outboundSchema: z.ZodType<
   PatchTransfer
 > = z.object({
   metadata: z.nullable(z.record(z.string())).optional(),
+  foreignID: z.string().optional(),
 });
 
 /**

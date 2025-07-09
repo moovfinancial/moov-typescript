@@ -5,7 +5,14 @@
 ```typescript
 import { RevokeAccessTokenResponse } from "@moovio/sdk/models/operations";
 
-let value: RevokeAccessTokenResponse = {};
+let value: RevokeAccessTokenResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+};
 ```
 
 ## Fields
