@@ -15,7 +15,7 @@ export const tool$supportCreateTicket: ToolDefinition<typeof args> = {
   description: `Create a support ticket for a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the \`/accounts/{accountID}/support.write\` scope.`,
+you'll need to specify the \`/accounts/{accountID}/tickets.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await supportCreateTicket(

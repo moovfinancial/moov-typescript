@@ -3,7 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * List all the messages for a support ticket.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/support.read` scope.
+ * you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
  */
 export function supportListTicketMessages(
   client: MoovCore,
@@ -100,11 +100,6 @@ async function $do(
     pathParams,
   );
 
-  const query = encodeFormQuery({
-    "count": payload.count,
-    "skip": payload.skip,
-  }, { explode: false });
-
   const headers = new Headers(compactMap({
     Accept: "application/json",
     "x-moov-version": encodeSimple(
@@ -138,7 +133,6 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,

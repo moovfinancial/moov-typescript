@@ -16,7 +16,7 @@ export class Support extends ClientSDK {
    * Create a support ticket for a Moov account.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/support.write` scope.
+   * you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
    */
   async createTicket(
     request: operations.CreateTicketRequest,
@@ -33,7 +33,7 @@ export class Support extends ClientSDK {
    * List all the support tickets created under a Moov account.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/support.read` scope.
+   * you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
    */
   async listTickets(
     request: operations.ListTicketsRequest,
@@ -50,7 +50,7 @@ export class Support extends ClientSDK {
    * Retrieve a support ticket by ID.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/support.read` scope.
+   * you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
    */
   async getTicket(
     request: operations.GetTicketRequest,
@@ -67,7 +67,7 @@ export class Support extends ClientSDK {
    * Updates a support ticket.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/support.write` scope.
+   * you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
    */
   async updateTicket(
     request: operations.UpdateTicketRequest,
@@ -84,7 +84,7 @@ export class Support extends ClientSDK {
    * List all the messages for a support ticket.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/support.read` scope.
+   * you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
    */
   async listTicketMessages(
     request: operations.ListTicketMessagesRequest,

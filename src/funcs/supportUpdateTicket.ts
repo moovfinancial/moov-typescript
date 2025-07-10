@@ -29,7 +29,7 @@ import { Result } from "../types/fp.js";
  * Updates a support ticket.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/support.write` scope.
+ * you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
  */
 export function supportUpdateTicket(
   client: MoovCore,

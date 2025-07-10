@@ -8,30 +8,30 @@
 * [createTicket](#createticket) - Create a support ticket for a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.write` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
 * [listTickets](#listtickets) - List all the support tickets created under a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.read` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
 * [getTicket](#getticket) - Retrieve a support ticket by ID.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.read` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
 * [updateTicket](#updateticket) - Updates a support ticket.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.write` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
 * [listTicketMessages](#listticketmessages) - List all the messages for a support ticket.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.read` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
 
 ## createTicket
 
 Create a support ticket for a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.write` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
 
 ### Example Usage
 
@@ -130,7 +130,7 @@ run();
 List all the support tickets created under a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.read` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
 
 ### Example Usage
 
@@ -147,7 +147,6 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.support.listTickets({
-    skip: 60,
     count: 20,
     accountID: "8ef75c13-2a50-4438-b294-2a850eb4986d",
   });
@@ -178,7 +177,6 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await supportListTickets(moov, {
-    skip: 60,
     count: 20,
     accountID: "8ef75c13-2a50-4438-b294-2a850eb4986d",
   });
@@ -217,7 +215,7 @@ run();
 Retrieve a support ticket by ID.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.read` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
 
 ### Example Usage
 
@@ -302,7 +300,7 @@ run();
 Updates a support ticket.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.write` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
 
 ### Example Usage
 
@@ -391,7 +389,7 @@ run();
 List all the messages for a support ticket.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/support.read` scope.
+you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
 
 ### Example Usage
 
@@ -408,8 +406,6 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.support.listTicketMessages({
-    skip: 60,
-    count: 20,
     accountID: "72444918-8529-4986-b10c-41817e45d09e",
     ticketID: "edeaab65-c54c-45b8-881b-19138f125fb1",
   });
@@ -440,8 +436,6 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await supportListTicketMessages(moov, {
-    skip: 60,
-    count: 20,
     accountID: "72444918-8529-4986-b10c-41817e45d09e",
     ticketID: "edeaab65-c54c-45b8-881b-19138f125fb1",
   });

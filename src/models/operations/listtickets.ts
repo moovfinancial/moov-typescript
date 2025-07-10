@@ -27,7 +27,7 @@ export type ListTicketsGlobals = {
 };
 
 export type ListTicketsRequest = {
-  skip?: number | undefined;
+  cursor?: string | undefined;
   count?: number | undefined;
   accountID: string;
 };
@@ -105,14 +105,14 @@ export const ListTicketsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  skip: z.number().int().optional(),
+  cursor: z.string().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
 });
 
 /** @internal */
 export type ListTicketsRequest$Outbound = {
-  skip?: number | undefined;
+  cursor?: string | undefined;
   count?: number | undefined;
   accountID: string;
 };
@@ -123,7 +123,7 @@ export const ListTicketsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListTicketsRequest
 > = z.object({
-  skip: z.number().int().optional(),
+  cursor: z.string().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
 });

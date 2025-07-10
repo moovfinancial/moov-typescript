@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * List all the support tickets created under a Moov account.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/support.read` scope.
+ * you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
  */
 export function supportListTickets(
   client: MoovCore,
@@ -96,7 +96,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "count": payload.count,
-    "skip": payload.skip,
+    "cursor": payload.cursor,
   }, { explode: false });
 
   const headers = new Headers(compactMap({

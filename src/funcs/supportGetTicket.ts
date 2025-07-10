@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Retrieve a support ticket by ID.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/support.read` scope.
+ * you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
  */
 export function supportGetTicket(
   client: MoovCore,
