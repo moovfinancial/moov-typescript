@@ -5,6 +5,8 @@
   "scripts": {
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
+    "setup": "cd .. && bun i && bun link && bun run build && cd test && bun link @moovio/sdk && bun i",
+    "pretest": "cd .. && bun run build",
     "test": "bun test --timeout 20000",
     "test:verbose": "VERBOSE=1 bun test --timeout 20000"
   },
