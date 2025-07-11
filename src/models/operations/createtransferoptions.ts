@@ -26,6 +26,14 @@ export type CreateTransferOptionsGlobals = {
   xMoovVersion?: string | undefined;
 };
 
+export type CreateTransferOptionsRequest = {
+  /**
+   * The partner's Moov account ID.
+   */
+  accountID: string;
+  createTransferOptions: components.CreateTransferOptions;
+};
+
 export type CreateTransferOptionsResponse = {
   headers: { [k: string]: Array<string> };
   result: components.TransferOptions;
@@ -92,6 +100,73 @@ export function createTransferOptionsGlobalsFromJSON(
     jsonString,
     (x) => CreateTransferOptionsGlobals$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateTransferOptionsGlobals' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateTransferOptionsRequest$inboundSchema: z.ZodType<
+  CreateTransferOptionsRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  accountID: z.string(),
+  CreateTransferOptions: components.CreateTransferOptions$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "CreateTransferOptions": "createTransferOptions",
+  });
+});
+
+/** @internal */
+export type CreateTransferOptionsRequest$Outbound = {
+  accountID: string;
+  CreateTransferOptions: components.CreateTransferOptions$Outbound;
+};
+
+/** @internal */
+export const CreateTransferOptionsRequest$outboundSchema: z.ZodType<
+  CreateTransferOptionsRequest$Outbound,
+  z.ZodTypeDef,
+  CreateTransferOptionsRequest
+> = z.object({
+  accountID: z.string(),
+  createTransferOptions: components.CreateTransferOptions$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    createTransferOptions: "CreateTransferOptions",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateTransferOptionsRequest$ {
+  /** @deprecated use `CreateTransferOptionsRequest$inboundSchema` instead. */
+  export const inboundSchema = CreateTransferOptionsRequest$inboundSchema;
+  /** @deprecated use `CreateTransferOptionsRequest$outboundSchema` instead. */
+  export const outboundSchema = CreateTransferOptionsRequest$outboundSchema;
+  /** @deprecated use `CreateTransferOptionsRequest$Outbound` instead. */
+  export type Outbound = CreateTransferOptionsRequest$Outbound;
+}
+
+export function createTransferOptionsRequestToJSON(
+  createTransferOptionsRequest: CreateTransferOptionsRequest,
+): string {
+  return JSON.stringify(
+    CreateTransferOptionsRequest$outboundSchema.parse(
+      createTransferOptionsRequest,
+    ),
+  );
+}
+
+export function createTransferOptionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTransferOptionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateTransferOptionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransferOptionsRequest' from JSON`,
   );
 }
 

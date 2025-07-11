@@ -1,12 +1,12 @@
-# CreateTransferOptionsForAccountRequest
+# CreateTransferOptionsRequest
 
 ## Example Usage
 
 ```typescript
-import { CreateTransferOptionsForAccountRequest } from "@moovio/sdk/models/operations";
+import { CreateTransferOptionsRequest } from "@moovio/sdk/models/operations";
 
-let value: CreateTransferOptionsForAccountRequest = {
-  accountID: "26b947bb-66ec-4110-844e-433f432e2a72",
+let value: CreateTransferOptionsRequest = {
+  accountID: "138bdb49-c1c7-4c8b-ad38-ed8df9a7452a",
   createTransferOptions: {
     source: {},
     destination: {},

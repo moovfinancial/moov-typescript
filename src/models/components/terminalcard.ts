@@ -73,6 +73,14 @@ export type TerminalCard = {
    * Last four digits of the card number
    */
   lastFourCardNumber?: string | undefined;
+  /**
+   * Identifier for the point of sale terminal application.
+   */
+  applicationID?: string | undefined;
+  /**
+   * Name label for the point of sale terminal application.
+   */
+  applicationName?: string | undefined;
 };
 
 /** @internal */
@@ -91,6 +99,8 @@ export const TerminalCard$inboundSchema: z.ZodType<
   issuer: z.string().optional(),
   issuerCountry: z.string().optional(),
   lastFourCardNumber: z.string().optional(),
+  applicationID: z.string().optional(),
+  applicationName: z.string().optional(),
 });
 
 /** @internal */
@@ -105,6 +115,8 @@ export type TerminalCard$Outbound = {
   issuer?: string | undefined;
   issuerCountry?: string | undefined;
   lastFourCardNumber?: string | undefined;
+  applicationID?: string | undefined;
+  applicationName?: string | undefined;
 };
 
 /** @internal */
@@ -123,6 +135,8 @@ export const TerminalCard$outboundSchema: z.ZodType<
   issuer: z.string().optional(),
   issuerCountry: z.string().optional(),
   lastFourCardNumber: z.string().optional(),
+  applicationID: z.string().optional(),
+  applicationName: z.string().optional(),
 });
 
 /**

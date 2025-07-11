@@ -3,18 +3,20 @@
  */
 
 import { transfersGenerateOptions } from "../../funcs/transfersGenerateOptions.js";
-import * as components from "../../models/components/index.js";
+import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: components.CreateTransferOptions$inboundSchema,
+  request: operations.CreateTransferOptionsRequest$inboundSchema,
 };
 
 export const tool$transfersGenerateOptions: ToolDefinition<typeof args> = {
   name: "transfers-generate-options",
   description:
     `Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
-supply in the request. 
+supply in the request body.
+
+The accountID in the route should the partner's accountID.
 
 Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
 

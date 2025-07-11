@@ -24,7 +24,6 @@ export * from "./createterminalapplication.js";
 export * from "./createticket.js";
 export * from "./createtransfer.js";
 export * from "./createtransferoptions.js";
-export * from "./createtransferoptionsforaccount.js";
 export * from "./deletedisputeevidencefile.js";
 export * from "./deleterepresentative.js";
 export * from "./deleteterminalapplication.js";

@@ -10,7 +10,6 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -28,7 +27,9 @@ import { Result } from "../types/fp.js";
 
 /**
  * Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you
- * supply in the request.
+ * supply in the request body.
+ *
+ * The accountID in the route should the partner's accountID.
  *
  * Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
  *
@@ -37,7 +38,7 @@ import { Result } from "../types/fp.js";
  */
 export function transfersGenerateOptions(
   client: MoovCore,
-  request: components.CreateTransferOptions,
+  request: operations.CreateTransferOptionsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -63,7 +64,7 @@ export function transfersGenerateOptions(
 
 async function $do(
   client: MoovCore,
-  request: components.CreateTransferOptions,
+  request: operations.CreateTransferOptionsRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -85,16 +86,26 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.CreateTransferOptions$outboundSchema.parse(value),
+    (value) =>
+      operations.CreateTransferOptionsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.CreateTransferOptions, {
+    explode: true,
+  });
 
-  const path = pathToFunc("/transfer-options")();
+  const pathParams = {
+    accountID: encodeSimple("accountID", payload.accountID, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/accounts/{accountID}/transfer-options")(pathParams);
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",

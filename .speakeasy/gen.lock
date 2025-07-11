@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 81650e785eaee7a6cfc41b36de435f19
+  docChecksum: 07a9b652dcde386714743ccb19537611
   docVersion: latest
-  speakeasyVersion: 1.580.1
-  generationVersion: 2.656.3
-  releaseVersion: 0.14.4
-  configChecksum: 8aa0a761ce91cfaa731a60e40d102f82
+  speakeasyVersion: 1.580.2
+  generationVersion: 2.656.5
+  releaseVersion: 0.14.5
+  configChecksum: 4212c39d861fe4587804fa00a01231d1
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -641,10 +641,8 @@ generatedFiles:
   - docs/models/operations/createticketrequest.md
   - docs/models/operations/createticketresponse.md
   - docs/models/operations/createtransferglobals.md
-  - docs/models/operations/createtransferoptionsforaccountglobals.md
-  - docs/models/operations/createtransferoptionsforaccountrequest.md
-  - docs/models/operations/createtransferoptionsforaccountresponse.md
   - docs/models/operations/createtransferoptionsglobals.md
+  - docs/models/operations/createtransferoptionsrequest.md
   - docs/models/operations/createtransferoptionsresponse.md
   - docs/models/operations/createtransferrequest.md
   - docs/models/operations/createtransferresponse.md
@@ -1182,7 +1180,6 @@ generatedFiles:
   - src/funcs/transfersCreateCancellation.ts
   - src/funcs/transfersCreateReversal.ts
   - src/funcs/transfersGenerateOptions.ts
-  - src/funcs/transfersGenerateOptionsForAccount.ts
   - src/funcs/transfersGet.ts
   - src/funcs/transfersGetCancellation.ts
   - src/funcs/transfersGetRefund.ts
@@ -1357,7 +1354,6 @@ generatedFiles:
   - src/mcp-server/tools/transfersCreateCancellation.ts
   - src/mcp-server/tools/transfersCreateReversal.ts
   - src/mcp-server/tools/transfersGenerateOptions.ts
-  - src/mcp-server/tools/transfersGenerateOptionsForAccount.ts
   - src/mcp-server/tools/transfersGet.ts
   - src/mcp-server/tools/transfersGetCancellation.ts
   - src/mcp-server/tools/transfersGetRefund.ts
@@ -1888,7 +1884,6 @@ generatedFiles:
   - src/models/operations/createticket.ts
   - src/models/operations/createtransfer.ts
   - src/models/operations/createtransferoptions.ts
-  - src/models/operations/createtransferoptionsforaccount.ts
   - src/models/operations/deletedisputeevidencefile.ts
   - src/models/operations/deleterepresentative.ts
   - src/models/operations/deleteterminalapplication.ts
@@ -3530,6 +3525,8 @@ examples:
   createTransferOptions:
     speakeasy-default-create-transfer-options:
       parameters:
+        path:
+          accountID: "deafe3cf-31d4-4dcc-8176-3d6bf8bb4f04"
         header:
           x-moov-version: "v2024.01.00"
       requestBody:

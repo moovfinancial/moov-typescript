@@ -5,7 +5,7 @@
 
 ### Available Operations
 
-* [generateOptionsForAccount](#generateoptionsforaccount) - Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
+* [generateOptions](#generateoptions) - Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
 supply in the request body.
 
 The accountID in the route should the partner's accountID.
@@ -73,15 +73,8 @@ to learn more.
 
 To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
 to specify the `/accounts/{accountID}/transfers.write` scope.
-* [generateOptions](#generateoptions) - Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
-supply in the request. 
 
-Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
-
-## generateOptionsForAccount
+## generateOptions
 
 Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
 supply in the request body.
@@ -107,8 +100,8 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.transfers.generateOptionsForAccount({
-    accountID: "d00e90ff-48ce-48a8-b5e0-b7fd222c1b3a",
+  const result = await moov.transfers.generateOptions({
+    accountID: "deafe3cf-31d4-4dcc-8176-3d6bf8bb4f04",
     createTransferOptions: {
       source: {},
       destination: {},
@@ -131,7 +124,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
-import { transfersGenerateOptionsForAccount } from "@moovio/sdk/funcs/transfersGenerateOptionsForAccount.js";
+import { transfersGenerateOptions } from "@moovio/sdk/funcs/transfersGenerateOptions.js";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -144,8 +137,8 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await transfersGenerateOptionsForAccount(moov, {
-    accountID: "d00e90ff-48ce-48a8-b5e0-b7fd222c1b3a",
+  const res = await transfersGenerateOptions(moov, {
+    accountID: "deafe3cf-31d4-4dcc-8176-3d6bf8bb4f04",
     createTransferOptions: {
       source: {},
       destination: {},
@@ -159,7 +152,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("transfersGenerateOptionsForAccount failed:", res.error);
+    console.log("transfersGenerateOptions failed:", res.error);
   }
 }
 
@@ -170,14 +163,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.CreateTransferOptionsForAccountRequest](../../models/operations/createtransferoptionsforaccountrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateTransferOptionsRequest](../../models/operations/createtransferoptionsrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.CreateTransferOptionsForAccountResponse](../../models/operations/createtransferoptionsforaccountresponse.md)\>**
+**Promise\<[operations.CreateTransferOptionsResponse](../../models/operations/createtransferoptionsresponse.md)\>**
 
 ### Errors
 
@@ -1128,101 +1121,3 @@ run();
 | errors.GenericError            | 400, 409                       | application/json               |
 | errors.ReversalValidationError | 422                            | application/json               |
 | errors.APIError                | 4XX, 5XX                       | \*/\*                          |
-
-## generateOptions
-
-Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
-supply in the request. 
-
-Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
-
-### Example Usage
-
-```typescript
-import { Moov } from "@moovio/sdk";
-
-const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
-  security: {
-    username: "",
-    password: "",
-  },
-});
-
-async function run() {
-  const result = await moov.transfers.generateOptions({
-    source: {},
-    destination: {},
-    amount: {
-      currency: "USD",
-      value: 1204,
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { MoovCore } from "@moovio/sdk/core.js";
-import { transfersGenerateOptions } from "@moovio/sdk/funcs/transfersGenerateOptions.js";
-
-// Use `MoovCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
-  security: {
-    username: "",
-    password: "",
-  },
-});
-
-async function run() {
-  const res = await transfersGenerateOptions(moov, {
-    source: {},
-    destination: {},
-    amount: {
-      currency: "USD",
-      value: 1204,
-    },
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("transfersGenerateOptions failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.CreateTransferOptions](../../models/components/createtransferoptions.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.CreateTransferOptionsResponse](../../models/operations/createtransferoptionsresponse.md)\>**
-
-### Errors
-
-| Error Type                            | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.GenericError                   | 400                                   | application/json                      |
-| errors.TransferOptionsValidationError | 422                                   | application/json                      |
-| errors.APIError                       | 4XX, 5XX                              | \*/\*                                 |
