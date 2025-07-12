@@ -232,6 +232,7 @@ export * from "./issuingintervallimit.js";
 export * from "./issuingmerchantdata.js";
 export * from "./issuingvelocitylimit.js";
 export * from "./issuingvelocitylimiterror.js";
+export * from "./itemlistnextpage.js";
 export * from "./jsonwebkey.js";
 export * from "./linkaccountterminalapplication.js";
 export * from "./linkapplepay.js";

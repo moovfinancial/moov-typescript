@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 07a9b652dcde386714743ccb19537611
+  docChecksum: e432308cb8c95a9dc6934803ab05697c
   docVersion: latest
-  speakeasyVersion: 1.580.2
+  speakeasyVersion: 1.581.0
   generationVersion: 2.656.5
-  releaseVersion: 0.14.5
-  configChecksum: 4212c39d861fe4587804fa00a01231d1
+  releaseVersion: 0.14.6
+  configChecksum: 0964ad53a47a57ea2d16376eaf70f724
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -297,6 +297,7 @@ generatedFiles:
   - docs/models/components/issuingmerchantdata.md
   - docs/models/components/issuingvelocitylimit.md
   - docs/models/components/issuingvelocitylimiterror.md
+  - docs/models/components/itemlistnextpage.md
   - docs/models/components/itin.md
   - docs/models/components/jsonwebkey.md
   - docs/models/components/linkaccountterminalapplication.md
@@ -918,6 +919,7 @@ generatedFiles:
   - docs/models/operations/listticketsglobals.md
   - docs/models/operations/listticketsrequest.md
   - docs/models/operations/listticketsresponse.md
+  - docs/models/operations/listticketsresponsebody.md
   - docs/models/operations/listtransfersglobals.md
   - docs/models/operations/listtransfersrequest.md
   - docs/models/operations/listtransfersresponse.md
@@ -1599,6 +1601,7 @@ generatedFiles:
   - src/models/components/issuingmerchantdata.ts
   - src/models/components/issuingvelocitylimit.ts
   - src/models/components/issuingvelocitylimiterror.ts
+  - src/models/components/itemlistnextpage.ts
   - src/models/components/jsonwebkey.ts
   - src/models/components/linkaccountterminalapplication.ts
   - src/models/components/linkapplepay.ts
@@ -4052,7 +4055,7 @@ examples:
           x-moov-version: "v2024.01.00"
       responses:
         "200":
-          application/json: [{"ticketID": "<id>", "number": 994820, "title": "<value>", "contact": {"email": "Shanel71@hotmail.com"}, "status": "in-progress", "createdOn": "2025-12-23T04:28:29.580Z", "updatedOn": "2024-03-28T03:42:32.571Z"}]
+          application/json: {"items": [{"ticketID": "<id>", "number": 877499, "title": "<value>", "contact": {"email": "Jadon.Schinner20@hotmail.com"}, "status": "on-hold", "createdOn": "2023-12-26T08:25:53.230Z", "updatedOn": "2023-01-10T16:33:45.538Z"}]}
   getTicket:
     speakeasy-default-get-ticket:
       parameters:

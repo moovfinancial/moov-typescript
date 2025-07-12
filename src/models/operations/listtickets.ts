@@ -29,12 +29,21 @@ export type ListTicketsGlobals = {
 export type ListTicketsRequest = {
   cursor?: string | undefined;
   count?: number | undefined;
+  status?: components.TicketStatus | undefined;
   accountID: string;
+};
+
+/**
+ * A paginated list of items. The `nextPage` field is omitted if there are no more pages available.
+ */
+export type ListTicketsResponseBody = {
+  items: Array<components.Ticket>;
+  nextPage?: components.ItemListNextPage | undefined;
 };
 
 export type ListTicketsResponse = {
   headers: { [k: string]: Array<string> };
-  result: Array<components.Ticket>;
+  result: ListTicketsResponseBody;
 };
 
 /** @internal */
@@ -107,6 +116,7 @@ export const ListTicketsRequest$inboundSchema: z.ZodType<
 > = z.object({
   cursor: z.string().optional(),
   count: z.number().int().optional(),
+  status: components.TicketStatus$inboundSchema.optional(),
   accountID: z.string(),
 });
 
@@ -114,6 +124,7 @@ export const ListTicketsRequest$inboundSchema: z.ZodType<
 export type ListTicketsRequest$Outbound = {
   cursor?: string | undefined;
   count?: number | undefined;
+  status?: string | undefined;
   accountID: string;
 };
 
@@ -125,6 +136,7 @@ export const ListTicketsRequest$outboundSchema: z.ZodType<
 > = z.object({
   cursor: z.string().optional(),
   count: z.number().int().optional(),
+  status: components.TicketStatus$outboundSchema.optional(),
   accountID: z.string(),
 });
 
@@ -160,13 +172,70 @@ export function listTicketsRequestFromJSON(
 }
 
 /** @internal */
+export const ListTicketsResponseBody$inboundSchema: z.ZodType<
+  ListTicketsResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  items: z.array(components.Ticket$inboundSchema),
+  nextPage: components.ItemListNextPage$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListTicketsResponseBody$Outbound = {
+  items: Array<components.Ticket$Outbound>;
+  nextPage?: components.ItemListNextPage$Outbound | undefined;
+};
+
+/** @internal */
+export const ListTicketsResponseBody$outboundSchema: z.ZodType<
+  ListTicketsResponseBody$Outbound,
+  z.ZodTypeDef,
+  ListTicketsResponseBody
+> = z.object({
+  items: z.array(components.Ticket$outboundSchema),
+  nextPage: components.ItemListNextPage$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTicketsResponseBody$ {
+  /** @deprecated use `ListTicketsResponseBody$inboundSchema` instead. */
+  export const inboundSchema = ListTicketsResponseBody$inboundSchema;
+  /** @deprecated use `ListTicketsResponseBody$outboundSchema` instead. */
+  export const outboundSchema = ListTicketsResponseBody$outboundSchema;
+  /** @deprecated use `ListTicketsResponseBody$Outbound` instead. */
+  export type Outbound = ListTicketsResponseBody$Outbound;
+}
+
+export function listTicketsResponseBodyToJSON(
+  listTicketsResponseBody: ListTicketsResponseBody,
+): string {
+  return JSON.stringify(
+    ListTicketsResponseBody$outboundSchema.parse(listTicketsResponseBody),
+  );
+}
+
+export function listTicketsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTicketsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTicketsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTicketsResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListTicketsResponse$inboundSchema: z.ZodType<
   ListTicketsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: z.array(components.Ticket$inboundSchema),
+  Result: z.lazy(() => ListTicketsResponseBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -177,7 +246,7 @@ export const ListTicketsResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type ListTicketsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: Array<components.Ticket$Outbound>;
+  Result: ListTicketsResponseBody$Outbound;
 };
 
 /** @internal */
@@ -187,7 +256,7 @@ export const ListTicketsResponse$outboundSchema: z.ZodType<
   ListTicketsResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.array(components.Ticket$outboundSchema),
+  result: z.lazy(() => ListTicketsResponseBody$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

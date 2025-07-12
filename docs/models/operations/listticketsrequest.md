@@ -13,8 +13,9 @@ let value: ListTicketsRequest = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `cursor`           | *string*           | :heavy_minus_sign: | N/A                |                    |
-| `count`            | *number*           | :heavy_minus_sign: | N/A                | 20                 |
-| `accountID`        | *string*           | :heavy_check_mark: | N/A                |                    |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `cursor`                                                           | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |
+| `count`                                                            | *number*                                                           | :heavy_minus_sign:                                                 | N/A                                                                | 20                                                                 |
+| `status`                                                           | [components.TicketStatus](../../models/components/ticketstatus.md) | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |
+| `accountID`                                                        | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
