@@ -6,29 +6,17 @@
 import { SearchInstitutionsResponse } from "@moovio/sdk/models/operations";
 
 let value: SearchInstitutionsResponse = {
-  headers: {},
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
   result: {
     ach: [],
     rtp: [],
-    wire: [
-      {
-        name: "First Citizens",
-        routingNumber: "123456789",
-        address: {
-          addressLine1: "123 Main Street",
-          addressLine2: "Apt 302",
-          city: "Boulder",
-          stateOrProvince: "CO",
-          postalCode: "80301",
-          country: "US",
-        },
-        services: {
-          fundsTransferStatus: true,
-          fundsSettlementOnlyStatus: false,
-          bookEntrySecuritiesTransferStatus: false,
-        },
-      },
-    ],
+    wire: null,
   },
 };
 ```

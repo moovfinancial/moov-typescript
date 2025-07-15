@@ -6,26 +6,7 @@
 import { InstitutionsSearchResponse } from "@moovio/sdk/models/components";
 
 let value: InstitutionsSearchResponse = {
-  ach: [
-    {
-      name: "First Citizens",
-      routingNumber: "123456789",
-      address: {
-        addressLine1: "123 Main Street",
-        addressLine2: "Apt 302",
-        city: "Boulder",
-        stateOrProvince: "CO",
-        postalCode: "80301",
-        country: "US",
-      },
-      contact: {
-        phone: {
-          number: "8185551212",
-          countryCode: "1",
-        },
-      },
-    },
-  ],
+  ach: [],
   rtp: [],
   wire: [],
 };

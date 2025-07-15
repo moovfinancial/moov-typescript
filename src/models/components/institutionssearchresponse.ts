@@ -26,9 +26,9 @@ import {
 } from "./wireinstitution.js";
 
 export type InstitutionsSearchResponse = {
-  ach: Array<ACHInstitution>;
-  rtp: Array<RTPInstitution>;
-  wire: Array<WireInstitution>;
+  ach: Array<ACHInstitution> | null;
+  rtp: Array<RTPInstitution> | null;
+  wire: Array<WireInstitution> | null;
 };
 
 /** @internal */
@@ -37,16 +37,16 @@ export const InstitutionsSearchResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ach: z.array(ACHInstitution$inboundSchema),
-  rtp: z.array(RTPInstitution$inboundSchema),
-  wire: z.array(WireInstitution$inboundSchema),
+  ach: z.nullable(z.array(ACHInstitution$inboundSchema)),
+  rtp: z.nullable(z.array(RTPInstitution$inboundSchema)),
+  wire: z.nullable(z.array(WireInstitution$inboundSchema)),
 });
 
 /** @internal */
 export type InstitutionsSearchResponse$Outbound = {
-  ach: Array<ACHInstitution$Outbound>;
-  rtp: Array<RTPInstitution$Outbound>;
-  wire: Array<WireInstitution$Outbound>;
+  ach: Array<ACHInstitution$Outbound> | null;
+  rtp: Array<RTPInstitution$Outbound> | null;
+  wire: Array<WireInstitution$Outbound> | null;
 };
 
 /** @internal */
@@ -55,9 +55,9 @@ export const InstitutionsSearchResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InstitutionsSearchResponse
 > = z.object({
-  ach: z.array(ACHInstitution$outboundSchema),
-  rtp: z.array(RTPInstitution$outboundSchema),
-  wire: z.array(WireInstitution$outboundSchema),
+  ach: z.nullable(z.array(ACHInstitution$outboundSchema)),
+  rtp: z.nullable(z.array(RTPInstitution$outboundSchema)),
+  wire: z.nullable(z.array(WireInstitution$outboundSchema)),
 });
 
 /**
