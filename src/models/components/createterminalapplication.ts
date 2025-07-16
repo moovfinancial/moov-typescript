@@ -29,11 +29,11 @@ export type CreateTerminalApplication = {
    */
   packageName?: string | undefined;
   /**
-   * The app version of the terminal application. Required if paltform is `android`.
+   * The SHA-256 digest of the signing key for the application. Required if platform is `android`.
    */
   sha256Digest?: string | undefined;
   /**
-   * The app version of the terminal application. Required if platform is `android`.
+   * The version code of the Android application. Required if platform is `android`.
    */
   versionCode?: string | undefined;
 };

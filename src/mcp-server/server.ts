@@ -134,6 +134,7 @@ import { tool$sweepsList } from "./tools/sweepsList.js";
 import { tool$sweepsListConfigs } from "./tools/sweepsListConfigs.js";
 import { tool$sweepsUpdateConfig } from "./tools/sweepsUpdateConfig.js";
 import { tool$terminalApplicationsCreate } from "./tools/terminalApplicationsCreate.js";
+import { tool$terminalApplicationsCreateVersion } from "./tools/terminalApplicationsCreateVersion.js";
 import { tool$terminalApplicationsDelete } from "./tools/terminalApplicationsDelete.js";
 import { tool$terminalApplicationsGet } from "./tools/terminalApplicationsGet.js";
 import { tool$terminalApplicationsList } from "./tools/terminalApplicationsList.js";
@@ -167,7 +168,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.14.8",
+    version: "0.14.9",
   });
 
   const client = new MoovCore({
@@ -340,6 +341,7 @@ export function createMCPServer(deps: {
   tool(tool$terminalApplicationsList);
   tool(tool$terminalApplicationsGet);
   tool(tool$terminalApplicationsDelete);
+  tool(tool$terminalApplicationsCreateVersion);
 
   return server;
 }

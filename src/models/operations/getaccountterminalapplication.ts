@@ -33,7 +33,7 @@ export type GetAccountTerminalApplicationRequest = {
 
 export type GetAccountTerminalApplicationResponse = {
   headers: { [k: string]: Array<string> };
-  result: components.TerminalApplication;
+  result: components.AccountTerminalApplication;
 };
 
 /** @internal */
@@ -172,7 +172,7 @@ export const GetAccountTerminalApplicationResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())),
-  Result: components.TerminalApplication$inboundSchema,
+  Result: components.AccountTerminalApplication$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -183,7 +183,7 @@ export const GetAccountTerminalApplicationResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type GetAccountTerminalApplicationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: components.TerminalApplication$Outbound;
+  Result: components.AccountTerminalApplication$Outbound;
 };
 
 /** @internal */
@@ -193,7 +193,7 @@ export const GetAccountTerminalApplicationResponse$outboundSchema: z.ZodType<
   GetAccountTerminalApplicationResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: components.TerminalApplication$outboundSchema,
+  result: components.AccountTerminalApplication$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

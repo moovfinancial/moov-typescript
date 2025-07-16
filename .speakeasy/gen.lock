@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 40ec771fce3d8a6d55b77d052fa97a41
+  docChecksum: 422c0b88e1dfc0c7b3fec79520c3d1ea
   docVersion: latest
-  speakeasyVersion: 1.581.2
-  generationVersion: 2.656.9
-  releaseVersion: 0.14.8
-  configChecksum: ab5ae56fb9b5333fa2febbbb1315aace
+  speakeasyVersion: 1.582.0
+  generationVersion: 2.657.1
+  releaseVersion: 0.14.9
+  configChecksum: f9f756d38b8959be4473560d2896257f
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -46,6 +46,7 @@ generatedFiles:
   - docs/models/components/accountcapability.md
   - docs/models/components/accountcountries.md
   - docs/models/components/accountnameverification.md
+  - docs/models/components/accountterminalapplication.md
   - docs/models/components/accounttype.md
   - docs/models/components/accountverificationstatus.md
   - docs/models/components/achcreditsamedaypaymentmethod.md
@@ -450,6 +451,7 @@ generatedFiles:
   - docs/models/components/terminalapplication.md
   - docs/models/components/terminalapplicationplatform.md
   - docs/models/components/terminalapplicationstatus.md
+  - docs/models/components/terminalapplicationversion.md
   - docs/models/components/terminalcard.md
   - docs/models/components/terminalconfiguration.md
   - docs/models/components/termsofservice.md
@@ -638,6 +640,9 @@ generatedFiles:
   - docs/models/operations/createsweepconfigresponse.md
   - docs/models/operations/createterminalapplicationglobals.md
   - docs/models/operations/createterminalapplicationresponse.md
+  - docs/models/operations/createterminalapplicationversionglobals.md
+  - docs/models/operations/createterminalapplicationversionrequest.md
+  - docs/models/operations/createterminalapplicationversionresponse.md
   - docs/models/operations/createticketglobals.md
   - docs/models/operations/createticketrequest.md
   - docs/models/operations/createticketresponse.md
@@ -1175,6 +1180,7 @@ generatedFiles:
   - src/funcs/sweepsListConfigs.ts
   - src/funcs/sweepsUpdateConfig.ts
   - src/funcs/terminalApplicationsCreate.ts
+  - src/funcs/terminalApplicationsCreateVersion.ts
   - src/funcs/terminalApplicationsDelete.ts
   - src/funcs/terminalApplicationsGet.ts
   - src/funcs/terminalApplicationsList.ts
@@ -1349,6 +1355,7 @@ generatedFiles:
   - src/mcp-server/tools/sweepsListConfigs.ts
   - src/mcp-server/tools/sweepsUpdateConfig.ts
   - src/mcp-server/tools/terminalApplicationsCreate.ts
+  - src/mcp-server/tools/terminalApplicationsCreateVersion.ts
   - src/mcp-server/tools/terminalApplicationsDelete.ts
   - src/mcp-server/tools/terminalApplicationsGet.ts
   - src/mcp-server/tools/terminalApplicationsList.ts
@@ -1374,6 +1381,7 @@ generatedFiles:
   - src/models/components/accountcapability.ts
   - src/models/components/accountcountries.ts
   - src/models/components/accountnameverification.ts
+  - src/models/components/accountterminalapplication.ts
   - src/models/components/accounttype.ts
   - src/models/components/accountverificationstatus.ts
   - src/models/components/achcreditsamedaypaymentmethod.ts
@@ -1734,6 +1742,7 @@ generatedFiles:
   - src/models/components/terminalapplication.ts
   - src/models/components/terminalapplicationplatform.ts
   - src/models/components/terminalapplicationstatus.ts
+  - src/models/components/terminalapplicationversion.ts
   - src/models/components/terminalcard.ts
   - src/models/components/terminalconfiguration.ts
   - src/models/components/termsofservice.ts
@@ -1884,6 +1893,7 @@ generatedFiles:
   - src/models/operations/createschedule.ts
   - src/models/operations/createsweepconfig.ts
   - src/models/operations/createterminalapplication.ts
+  - src/models/operations/createterminalapplicationversion.ts
   - src/models/operations/createticket.ts
   - src/models/operations/createtransfer.ts
   - src/models/operations/createtransferoptions.ts
@@ -3294,7 +3304,7 @@ examples:
         application/json: {"terminalApplicationID": "12345678-1234-1234-1234-123456789012"}
       responses:
         "200":
-          application/json: {"terminalApplicationID": "12345678-1234-1234-1234-123456789012", "status": "enabled", "platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}
+          application/json: {"accountID": "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e", "terminalApplicationID": "12345678-1234-1234-1234-123456789012"}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -3308,7 +3318,7 @@ examples:
           x-moov-version: "v2024.01.00"
       responses:
         "200":
-          application/json: [{"terminalApplicationID": "12345678-1234-1234-1234-123456789012", "status": "enabled", "platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}]
+          application/json: [{"accountID": "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e", "terminalApplicationID": "12345678-1234-1234-1234-123456789012"}]
   getAccountTerminalApplication:
     speakeasy-default-get-account-terminal-application:
       parameters:
@@ -3319,7 +3329,7 @@ examples:
           x-moov-version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"terminalApplicationID": "12345678-1234-1234-1234-123456789012", "status": "enabled", "platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}
+          application/json: {"accountID": "76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e", "terminalApplicationID": "12345678-1234-1234-1234-123456789012"}
   getTerminalConfiguration:
     speakeasy-default-get-terminal-configuration:
       parameters:
@@ -3951,10 +3961,10 @@ examples:
         header:
           x-moov-version: "v2024.01.00"
       requestBody:
-        application/json: {"platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}
+        application/json: {"platform": "android", "packageName": "com.example.app", "sha256Digest": "AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD", "versionCode": "20332277"}
       responses:
         "200":
-          application/json: {"terminalApplicationID": "12345678-1234-1234-1234-123456789012", "status": "enabled", "platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}
+          application/json: {"terminalApplicationID": "12345678-1234-1234-1234-123456789012", "status": "pending", "platform": "android", "packageName": "com.example.app", "sha256Digest": "AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD", "versionCode": "20332277"}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -3976,7 +3986,7 @@ examples:
           x-moov-version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"terminalApplicationID": "12345678-1234-1234-1234-123456789012", "status": "enabled", "platform": "ios", "appBundleID": "com.example.app", "packageName": "com.example.app", "sha256Digest": "1234567890", "versionCode": "1.0.0"}
+          application/json: {"terminalApplicationID": "12345678-1234-1234-1234-123456789012", "status": "pending", "platform": "android", "packageName": "com.example.app", "sha256Digest": "AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD", "versionCode": "20332277"}
   deleteTerminalApplication:
     speakeasy-default-delete-terminal-application:
       parameters:
@@ -4098,5 +4108,21 @@ examples:
       responses:
         "200":
           application/json: [{"author": "<value>", "body": "<value>", "sentOn": "2024-03-23T02:27:06.138Z"}]
+  createTerminalApplicationVersion:
+    speakeasy-default-create-terminal-application-version:
+      parameters:
+        path:
+          terminalApplicationID: "12345678-1234-1234-1234-123456789012"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        application/json: {"version": "20440059"}
+      responses:
+        "200":
+          application/json: {"version": "20440059"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}

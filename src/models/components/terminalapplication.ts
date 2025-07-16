@@ -42,11 +42,11 @@ export type TerminalApplication = {
    */
   packageName?: string | undefined;
   /**
-   * The app version of the terminal application Will be returned if platform is `android`.
+   * A cryptographic hash of the signing key for the application. Will be returned if platform is `android`.
    */
   sha256Digest?: string | undefined;
   /**
-   * The app version of the terminal application Will be returned if platform is `android`.
+   * The app version code of the terminal application. Will be returned if platform is `android`.
    */
   versionCode?: string | undefined;
 };

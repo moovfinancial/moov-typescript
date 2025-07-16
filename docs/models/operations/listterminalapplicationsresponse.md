@@ -25,12 +25,12 @@ let value: ListTerminalApplicationsResponse = {
   result: [
     {
       terminalApplicationID: "12345678-1234-1234-1234-123456789012",
-      status: "enabled",
-      platform: "ios",
-      appBundleID: "com.example.app",
+      status: "pending",
+      platform: "android",
       packageName: "com.example.app",
-      sha256Digest: "1234567890",
-      versionCode: "1.0.0",
+      sha256Digest:
+        "AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD:EE:FF:AA:BB:CC:DD",
+      versionCode: "20332277",
     },
   ],
 };

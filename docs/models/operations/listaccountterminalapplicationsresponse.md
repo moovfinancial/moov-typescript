@@ -11,23 +11,13 @@ let value: ListAccountTerminalApplicationsResponse = {
       "<value 1>",
     ],
   },
-  result: [
-    {
-      terminalApplicationID: "12345678-1234-1234-1234-123456789012",
-      status: "enabled",
-      platform: "ios",
-      appBundleID: "com.example.app",
-      packageName: "com.example.app",
-      sha256Digest: "1234567890",
-      versionCode: "1.0.0",
-    },
-  ],
+  result: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `headers`                                                                          | Record<string, *string*[]>                                                         | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `result`                                                                           | [components.TerminalApplication](../../models/components/terminalapplication.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `headers`                                                                                        | Record<string, *string*[]>                                                                       | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `result`                                                                                         | [components.AccountTerminalApplication](../../models/components/accountterminalapplication.md)[] | :heavy_check_mark:                                                                               | N/A                                                                                              |

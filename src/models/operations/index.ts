@@ -21,6 +21,7 @@ export * from "./createreversal.js";
 export * from "./createschedule.js";
 export * from "./createsweepconfig.js";
 export * from "./createterminalapplication.js";
+export * from "./createterminalapplicationversion.js";
 export * from "./createticket.js";
 export * from "./createtransfer.js";
 export * from "./createtransferoptions.js";

@@ -3,6 +3,7 @@
  */
 
 import { terminalApplicationsCreate } from "../funcs/terminalApplicationsCreate.js";
+import { terminalApplicationsCreateVersion } from "../funcs/terminalApplicationsCreateVersion.js";
 import { terminalApplicationsDelete } from "../funcs/terminalApplicationsDelete.js";
 import { terminalApplicationsGet } from "../funcs/terminalApplicationsGet.js";
 import { terminalApplicationsList } from "../funcs/terminalApplicationsList.js";
@@ -74,6 +75,23 @@ export class TerminalApplications extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.DeleteTerminalApplicationResponse | undefined> {
     return unwrapAsync(terminalApplicationsDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Register a new version of a terminal application. For Android applications, this is used to register a new version code of the application.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/terminal-applications.write` scope.
+   */
+  async createVersion(
+    request: operations.CreateTerminalApplicationVersionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateTerminalApplicationVersionResponse> {
+    return unwrapAsync(terminalApplicationsCreateVersion(
       this,
       request,
       options,
