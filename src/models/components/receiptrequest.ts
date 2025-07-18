@@ -4,22 +4,26 @@
 
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ReceiptKind,
-  ReceiptKind$inboundSchema,
-  ReceiptKind$outboundSchema,
-} from "./receiptkind.js";
+
+/**
+ * The type of receipt being requested.
+ */
+export const Kind = {
+  SaleCustomerV1: "sale.customer.v1",
+} as const;
+/**
+ * The type of receipt being requested.
+ */
+export type Kind = ClosedEnum<typeof Kind>;
 
 /**
  * A receipt request for a specific transfer, schedule, or schedule occurrence.
  */
 export type ReceiptRequest = {
-  /**
-   * The type of receipt being requested.
-   */
-  kind: ReceiptKind;
+  kind: Kind;
   /**
    * The email address to send the receipt to.
    *
@@ -58,12 +62,32 @@ export type ReceiptRequest = {
 };
 
 /** @internal */
+export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
+  Kind,
+);
+
+/** @internal */
+export const Kind$outboundSchema: z.ZodNativeEnum<typeof Kind> =
+  Kind$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Kind$ {
+  /** @deprecated use `Kind$inboundSchema` instead. */
+  export const inboundSchema = Kind$inboundSchema;
+  /** @deprecated use `Kind$outboundSchema` instead. */
+  export const outboundSchema = Kind$outboundSchema;
+}
+
+/** @internal */
 export const ReceiptRequest$inboundSchema: z.ZodType<
   ReceiptRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: ReceiptKind$inboundSchema,
+  kind: Kind$inboundSchema,
   email: z.string().optional(),
   emailAccountID: z.string().optional(),
   forTransferID: z.string().optional(),
@@ -87,7 +111,7 @@ export const ReceiptRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ReceiptRequest
 > = z.object({
-  kind: ReceiptKind$outboundSchema,
+  kind: Kind$outboundSchema,
   email: z.string().optional(),
   emailAccountID: z.string().optional(),
   forTransferID: z.string().optional(),
