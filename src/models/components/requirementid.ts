@@ -67,6 +67,25 @@ export const RequirementID = {
   RepresentativeRepUuidIsOwner: "representative.{rep-uuid}.is-owner",
   RepresentativeRepUuidOwnership: "representative.{rep-uuid}.ownership",
   DocumentDocUuid: "document.{doc-uuid}",
+  UnderwritingBusinessPresence: "underwriting.businessPresence",
+  UnderwritingCapabilityCardAcceptanceMethods:
+    "underwriting.{capability}.cardAcceptanceMethods",
+  UnderwritingCapabilityCurrentlyAcceptsCards:
+    "underwriting.{capability}.currentlyAcceptsCards",
+  UnderwritingCapabilityEstimatedActivityAverageTransactionAmount:
+    "underwriting.{capability}.estimatedActivity.averageTransactionAmount",
+  UnderwritingCapabilityEstimatedActivityMaximumTransactionAmount:
+    "underwriting.{capability}.estimatedActivity.maximumTransactionAmount",
+  UnderwritingCapabilityEstimatedActivityMonthlyVolumeRange:
+    "underwriting.{capability}.estimatedActivity.monthlyVolumeRange",
+  UnderwritingCapabilityFulfillment: "underwriting.{capability}.fulfillment",
+  UnderwritingGeographicReach: "underwriting.geographicReach",
+  UnderwritingPendingLitigation: "underwriting.pendingLitigation",
+  UnderwritingDocumentsProcessingStatementsPast3Months:
+    "underwriting.documents.processingStatementsPast3Months",
+  UnderwritingCapabilityRefundPolicy: "underwriting.{capability}.refundPolicy",
+  UnderwritingVolumeShareByCustomerType:
+    "underwriting.volumeShareByCustomerType",
 } as const;
 /**
  * The unique ID of what the requirement is asking to be filled out.
