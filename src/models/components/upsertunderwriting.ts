@@ -40,6 +40,11 @@ import {
   SendFunds$outboundSchema,
 } from "./sendfunds.js";
 import {
+  SubmissionIntent,
+  SubmissionIntent$inboundSchema,
+  SubmissionIntent$outboundSchema,
+} from "./submissionintent.js";
+import {
   VolumeShareByCustomerType,
   VolumeShareByCustomerType$inboundSchema,
   VolumeShareByCustomerType$Outbound,
@@ -54,6 +59,7 @@ export type UpsertUnderwriting = {
   collectFunds?: CollectFunds | undefined;
   moneyTransfer?: MoneyTransfer | undefined;
   sendFunds?: SendFunds | undefined;
+  submissionIntent?: SubmissionIntent | undefined;
 };
 
 /** @internal */
@@ -69,6 +75,7 @@ export const UpsertUnderwriting$inboundSchema: z.ZodType<
   collectFunds: CollectFunds$inboundSchema.optional(),
   moneyTransfer: MoneyTransfer$inboundSchema.optional(),
   sendFunds: SendFunds$inboundSchema.optional(),
+  submissionIntent: SubmissionIntent$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -80,6 +87,7 @@ export type UpsertUnderwriting$Outbound = {
   collectFunds?: CollectFunds$Outbound | undefined;
   moneyTransfer?: MoneyTransfer$Outbound | undefined;
   sendFunds?: SendFunds$Outbound | undefined;
+  submissionIntent?: string | undefined;
 };
 
 /** @internal */
@@ -96,6 +104,7 @@ export const UpsertUnderwriting$outboundSchema: z.ZodType<
   collectFunds: CollectFunds$outboundSchema.optional(),
   moneyTransfer: MoneyTransfer$outboundSchema.optional(),
   sendFunds: SendFunds$outboundSchema.optional(),
+  submissionIntent: SubmissionIntent$outboundSchema.optional(),
 });
 
 /**

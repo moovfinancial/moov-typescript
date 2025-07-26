@@ -355,6 +355,7 @@ export * from "./sendfundsrtperror.js";
 export * from "./sentreceipt.js";
 export * from "./settings.js";
 export * from "./sourcedestinationoptions.js";
+export * from "./submissionintent.js";
 export * from "./sweep.js";
 export * from "./sweepconfig.js";
 export * from "./sweepconfigpaymentmethod.js";

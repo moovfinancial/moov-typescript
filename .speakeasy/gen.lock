@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: ced45a131ff4c689017449c01c63b164
+  docChecksum: 9558e259c4d5fc8a2c42c71f8d1fb375
   docVersion: latest
-  speakeasyVersion: 1.587.1
-  generationVersion: 2.662.0
-  releaseVersion: 0.14.14
-  configChecksum: f53a8032a94d385a26c00014d73511e9
+  speakeasyVersion: 1.590.0
+  generationVersion: 2.666.0
+  releaseVersion: 0.14.15
+  configChecksum: 89e3fd104708898ca176935d3c0af87a
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -440,6 +440,7 @@ generatedFiles:
   - docs/models/components/statementdescriptor.md
   - docs/models/components/statementdescriptor2.md
   - docs/models/components/status.md
+  - docs/models/components/submissionintent.md
   - docs/models/components/sweep.md
   - docs/models/components/sweepconfig.md
   - docs/models/components/sweepconfigpaymentmethod.md
@@ -1732,6 +1733,7 @@ generatedFiles:
   - src/models/components/sentreceipt.ts
   - src/models/components/settings.ts
   - src/models/components/sourcedestinationoptions.ts
+  - src/models/components/submissionintent.ts
   - src/models/components/sweep.ts
   - src/models/components/sweepconfig.ts
   - src/models/components/sweepconfigpaymentmethod.ts
