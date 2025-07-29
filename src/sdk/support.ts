@@ -17,6 +17,9 @@ export class Support extends ClientSDK {
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
    * you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
+   *
+   * If you're creating the ticket on behalf of another account, then you'll need to
+   * specify the `/accounts/{partnerAccountID}/tickets.write` and `/accounts/{accountID}/profile.read` scopes.
    */
   async createTicket(
     request: operations.CreateTicketRequest,
@@ -34,6 +37,9 @@ export class Support extends ClientSDK {
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
    * you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
+   *
+   * If you're listing another account's tickets, then you'll need to
+   * specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
    */
   async listTickets(
     request: operations.ListTicketsRequest,
@@ -51,6 +57,9 @@ export class Support extends ClientSDK {
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
    * you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
+   *
+   * If you're retrieving another account's ticket, then you'll need to
+   * specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
    */
   async getTicket(
     request: operations.GetTicketRequest,
@@ -68,6 +77,9 @@ export class Support extends ClientSDK {
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
    * you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
+   *
+   * If you're updating the ticket on behalf of another account, then you'll need to
+   * specify the `/accounts/{partnerAccountID}/tickets.write` and `/accounts/{accountID}/profile.read` scopes.
    */
   async updateTicket(
     request: operations.UpdateTicketRequest,
@@ -85,6 +97,9 @@ export class Support extends ClientSDK {
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
    * you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
+   *
+   * If you're listing another account's messages, then you'll need to
+   * specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
    */
   async listTicketMessages(
     request: operations.ListTicketMessagesRequest,

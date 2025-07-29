@@ -39,6 +39,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createSweepConfig" method="post" path="/accounts/{accountID}/sweep-configs" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -136,6 +137,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listSweepConfigs" method="get" path="/accounts/{accountID}/sweep-configs" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -219,6 +221,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getSweepConfig" method="get" path="/accounts/{accountID}/sweep-configs/{sweepConfigID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -304,6 +307,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateSweepConfig" method="patch" path="/accounts/{accountID}/sweep-configs/{sweepConfigID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -397,6 +401,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listSweeps" method="get" path="/accounts/{accountID}/wallets/{walletID}/sweeps" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -486,6 +491,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getSweep" method="get" path="/accounts/{accountID}/wallets/{walletID}/sweeps/{sweepID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

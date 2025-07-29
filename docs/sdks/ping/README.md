@@ -19,6 +19,7 @@ you'll need to specify the `/ping.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ping" method="get" path="/ping" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

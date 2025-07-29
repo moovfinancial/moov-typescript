@@ -18,6 +18,7 @@ Allows clients to notify the authorization server that a previously obtained ref
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="revokeAccessToken" method="post" path="/oauth2/revoke" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -104,6 +105,7 @@ Create or refresh an access token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createAccessToken" method="post" path="/oauth2/token" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

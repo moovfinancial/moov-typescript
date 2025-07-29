@@ -23,6 +23,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listAdjustments" method="get" path="/accounts/{accountID}/adjustments" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -106,6 +107,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAdjustment" method="get" path="/accounts/{accountID}/adjustments/{adjustmentID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

@@ -35,6 +35,7 @@ you'll need to specify the `/terminal-applications.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createTerminalApplication" method="post" path="/terminal-applications" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -126,6 +127,7 @@ you'll need to specify the `/terminal-applications.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listTerminalApplications" method="get" path="/terminal-applications" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -205,6 +207,7 @@ you'll need to specify the `/terminal-applications.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getTerminalApplication" method="get" path="/terminal-applications/{terminalApplicationID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -288,6 +291,7 @@ you'll need to specify the `/terminal-applications.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteTerminalApplication" method="delete" path="/terminal-applications/{terminalApplicationID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -372,6 +376,7 @@ you'll need to specify the `/terminal-applications.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createTerminalApplicationVersion" method="post" path="/terminal-applications/{terminalApplicationID}/versions" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

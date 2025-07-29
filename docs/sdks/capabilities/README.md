@@ -35,6 +35,7 @@ you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listCapabilities" method="get" path="/accounts/{accountID}/capabilities" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -118,6 +119,7 @@ you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="requestCapabilities" method="post" path="/accounts/{accountID}/capabilities" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -213,6 +215,7 @@ you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCapability" method="get" path="/accounts/{accountID}/capabilities/{capabilityID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -298,6 +301,7 @@ you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="disableCapability" method="delete" path="/accounts/{accountID}/capabilities/{capabilityID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

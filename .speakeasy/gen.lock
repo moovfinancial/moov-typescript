@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 9558e259c4d5fc8a2c42c71f8d1fb375
+  docChecksum: 733f1675a08b48527ea82b9089916438
   docVersion: latest
-  speakeasyVersion: 1.590.0
-  generationVersion: 2.666.0
-  releaseVersion: 0.14.15
-  configChecksum: 89e3fd104708898ca176935d3c0af87a
+  speakeasyVersion: 1.592.1
+  generationVersion: 2.667.0
+  releaseVersion: 0.14.16
+  configChecksum: 19909d11a9480a73fdb44cb0632ea036
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.15
+    core: 3.21.16
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -169,7 +169,6 @@ generatedFiles:
   - docs/models/components/contact.md
   - docs/models/components/countrieserrors.md
   - docs/models/components/createaccount.md
-  - docs/models/components/createaccounterror.md
   - docs/models/components/createaccountsettings.md
   - docs/models/components/createaccounttermsofservice.md
   - docs/models/components/createaccounttype.md
@@ -344,7 +343,6 @@ generatedFiles:
   - docs/models/components/partnerpricingagreement.md
   - docs/models/components/patchaccount.md
   - docs/models/components/patchaccountcustomersupport.md
-  - docs/models/components/patchaccounterror.md
   - docs/models/components/patchaccounttermsofservice.md
   - docs/models/components/patchbusiness.md
   - docs/models/components/patchindividual.md
@@ -557,7 +555,7 @@ generatedFiles:
   - docs/models/errors/bankaccountvalidationerror.md
   - docs/models/errors/brandvalidationerror.md
   - docs/models/errors/cardacquiringrefund.md
-  - docs/models/errors/createaccountresponsebody.md
+  - docs/models/errors/createaccounterror.md
   - docs/models/errors/createpaymentlinkerror.md
   - docs/models/errors/createsweepconfigerror.md
   - docs/models/errors/createticketerror.md
@@ -571,6 +569,7 @@ generatedFiles:
   - docs/models/errors/linkcarderror.md
   - docs/models/errors/microdepositvalidationerror.md
   - docs/models/errors/onboardinginviteerror.md
+  - docs/models/errors/patchaccounterror.md
   - docs/models/errors/patchsweepconfigerror.md
   - docs/models/errors/refundvalidationerror.md
   - docs/models/errors/representativevalidationerror.md
@@ -582,7 +581,6 @@ generatedFiles:
   - docs/models/errors/transfer.md
   - docs/models/errors/transferoptionsvalidationerror.md
   - docs/models/errors/transfervalidationerror.md
-  - docs/models/errors/updateaccountresponsebody.md
   - docs/models/errors/updatecarderror.md
   - docs/models/errors/updateissuedcarderror.md
   - docs/models/errors/updatepaymentlinkerror.md
@@ -1495,7 +1493,6 @@ generatedFiles:
   - src/models/components/contact.ts
   - src/models/components/countrieserrors.ts
   - src/models/components/createaccount.ts
-  - src/models/components/createaccounterror.ts
   - src/models/components/createaccountsettings.ts
   - src/models/components/createaccounttype.ts
   - src/models/components/createapplepaysession.ts
@@ -1651,7 +1648,6 @@ generatedFiles:
   - src/models/components/partnerpricing.ts
   - src/models/components/partnerpricingagreement.ts
   - src/models/components/patchaccount.ts
-  - src/models/components/patchaccounterror.ts
   - src/models/components/patchbusiness.ts
   - src/models/components/patchindividual.ts
   - src/models/components/patchprofile.ts
@@ -1842,7 +1838,7 @@ generatedFiles:
   - src/models/errors/bankaccountvalidationerror.ts
   - src/models/errors/brandvalidationerror.ts
   - src/models/errors/cardacquiringrefund.ts
-  - src/models/errors/createaccount.ts
+  - src/models/errors/createaccounterror.ts
   - src/models/errors/createpaymentlinkerror.ts
   - src/models/errors/createsweepconfigerror.ts
   - src/models/errors/createticketerror.ts
@@ -1857,6 +1853,7 @@ generatedFiles:
   - src/models/errors/microdepositvalidationerror.ts
   - src/models/errors/mooverror.ts
   - src/models/errors/onboardinginviteerror.ts
+  - src/models/errors/patchaccounterror.ts
   - src/models/errors/patchsweepconfigerror.ts
   - src/models/errors/refundvalidationerror.ts
   - src/models/errors/representativevalidationerror.ts
@@ -1870,7 +1867,6 @@ generatedFiles:
   - src/models/errors/transfer.ts
   - src/models/errors/transferoptionsvalidationerror.ts
   - src/models/errors/transfervalidationerror.ts
-  - src/models/errors/updateaccount.ts
   - src/models/errors/updatecarderror.ts
   - src/models/errors/updateissuedcarderror.ts
   - src/models/errors/updatepaymentlinkerror.ts
@@ -2081,7 +2077,7 @@ examples:
         "400":
           application/json: {"error": "<value>"}
         "422":
-          application/json: {"error": {"capabilities": {"0": "first element failed validation..."}}}
+          application/json: {"capabilities": {"0": "first element failed validation..."}}
   listAccounts:
     speakeasy-default-list-accounts:
       parameters:
@@ -2119,7 +2115,7 @@ examples:
         "400":
           application/json: {"error": "<value>"}
         "422":
-          application/json: {"error": {}}
+          application/json: {}
   disconnectAccount:
     speakeasy-default-disconnect-account:
       parameters:

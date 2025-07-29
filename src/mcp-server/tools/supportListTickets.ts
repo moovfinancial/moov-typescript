@@ -15,7 +15,10 @@ export const tool$supportListTickets: ToolDefinition<typeof args> = {
   description: `List all the support tickets created under a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the \`/accounts/{accountID}/tickets.read\` scope.`,
+you'll need to specify the \`/accounts/{accountID}/tickets.read\` scope.
+
+If you're listing another account's tickets, then you'll need to
+specify the \`/accounts/{partnerAccountID}/tickets.read\` and \`/accounts/{accountID}/profile.read\` scopes.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await supportListTickets(

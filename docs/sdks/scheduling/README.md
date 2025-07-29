@@ -39,6 +39,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createSchedule" method="post" path="/accounts/{accountID}/schedules" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -324,6 +325,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listSchedules" method="get" path="/accounts/{accountID}/schedules" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -411,6 +413,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateSchedule" method="put" path="/accounts/{accountID}/schedules/{scheduleID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -762,6 +765,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getSchedules" method="get" path="/accounts/{accountID}/schedules/{scheduleID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -847,6 +851,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="cancelSchedule" method="delete" path="/accounts/{accountID}/schedules/{scheduleID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -933,6 +938,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getScheduledOccurrence" method="get" path="/accounts/{accountID}/schedules/{scheduleID}/occurrences/{occurrenceFilter}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

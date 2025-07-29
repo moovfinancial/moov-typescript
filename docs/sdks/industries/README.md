@@ -19,6 +19,7 @@ you'll need to specify the `/profile-enrichment.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listIndustries" method="get" path="/industries" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

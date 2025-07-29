@@ -3,9 +3,9 @@
 ## Example Usage
 
 ```typescript
-import { PatchAccountError } from "@moovio/sdk/models/components";
+import { PatchAccountError } from "@moovio/sdk/models/errors";
 
-let value: PatchAccountError = {};
+// No examples available for this model
 ```
 
 ## Fields

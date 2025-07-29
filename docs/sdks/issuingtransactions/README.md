@@ -35,6 +35,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listIssuedCardAuthorizations" method="get" path="/issuing/{accountID}/authorizations" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -122,6 +123,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getIssuedCardAuthorization" method="get" path="/issuing/{accountID}/authorizations/{authorizationID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -207,6 +209,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listIssuedCardAuthorizationEvents" method="get" path="/issuing/{accountID}/authorizations/{authorizationID}/events" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -296,6 +299,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listIssuedCardTransactions" method="get" path="/issuing/{accountID}/card-transactions" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -383,6 +387,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getIssuedCardTransaction" method="get" path="/issuing/{accountID}/card-transactions/{cardTransactionID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

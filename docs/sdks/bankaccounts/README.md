@@ -107,6 +107,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="linkBankAccount" method="post" path="/accounts/{accountID}/bank-accounts" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -204,6 +205,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listBankAccounts" method="get" path="/accounts/{accountID}/bank-accounts" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -289,6 +291,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getBankAccount" method="get" path="/accounts/{accountID}/bank-accounts/{bankAccountID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -374,6 +377,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="disableBankAccount" method="delete" path="/accounts/{accountID}/bank-accounts/{bankAccountID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -471,6 +475,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="initiateMicroDeposits" method="post" path="/accounts/{accountID}/bank-accounts/{bankAccountID}/micro-deposits" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -557,6 +562,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="completeMicroDeposits" method="put" path="/accounts/{accountID}/bank-accounts/{bankAccountID}/micro-deposits" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -665,6 +671,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getBankAccountVerification" method="get" path="/accounts/{accountID}/bank-accounts/{bankAccountID}/verify" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -765,6 +772,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="initiateBankAccountVerification" method="post" path="/accounts/{accountID}/bank-accounts/{bankAccountID}/verify" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -858,6 +866,7 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="completeBankAccountVerification" method="put" path="/accounts/{accountID}/bank-accounts/{bankAccountID}/verify" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

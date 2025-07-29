@@ -31,6 +31,7 @@ you'll need to specify the `/institutions.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="searchInstitutions" method="get" path="/institutions" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -110,6 +111,7 @@ you'll need to specify the `/fed.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listInstitutions" method="get" path="/institutions/ach/search" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

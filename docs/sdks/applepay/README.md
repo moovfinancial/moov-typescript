@@ -52,6 +52,7 @@ you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="registerApplePayMerchantDomains" method="post" path="/accounts/{accountID}/apple-pay/domains" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -149,6 +150,7 @@ you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateApplePayMerchantDomains" method="patch" path="/accounts/{accountID}/apple-pay/domains" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -251,6 +253,7 @@ you'll need to specify the `/accounts/{accountID}/apple-pay.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getApplePayMerchantDomains" method="get" path="/accounts/{accountID}/apple-pay/domains" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -337,6 +340,7 @@ you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createApplePaySession" method="post" path="/accounts/{accountID}/apple-pay/sessions" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -432,6 +436,7 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="linkApplePayToken" method="post" path="/accounts/{accountID}/apple-pay/tokens" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

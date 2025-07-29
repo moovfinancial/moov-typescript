@@ -3,13 +3,9 @@
 ## Example Usage
 
 ```typescript
-import { CreateAccountError } from "@moovio/sdk/models/components";
+import { CreateAccountError } from "@moovio/sdk/models/errors";
 
-let value: CreateAccountError = {
-  capabilities: {
-    "0": "first element failed validation...",
-  },
-};
+// No examples available for this model
 ```
 
 ## Fields

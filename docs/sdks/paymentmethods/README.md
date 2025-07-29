@@ -25,6 +25,7 @@ you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listPaymentMethods" method="get" path="/accounts/{accountID}/payment-methods" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -108,6 +109,7 @@ you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getPaymentMethod" method="get" path="/accounts/{accountID}/payment-methods/{paymentMethodID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

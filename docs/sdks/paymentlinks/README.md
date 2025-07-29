@@ -41,6 +41,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createPaymentLink" method="post" path="/accounts/{accountID}/payment-links" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -170,6 +171,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listPaymentLinks" method="get" path="/accounts/{accountID}/payment-links" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -253,6 +255,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getPaymentLink" method="get" path="/accounts/{accountID}/payment-links/{paymentLinkCode}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -338,6 +341,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updatePaymentLink" method="patch" path="/accounts/{accountID}/payment-links/{paymentLinkCode}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -445,6 +449,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="disablePaymentLink" method="delete" path="/accounts/{accountID}/payment-links/{paymentLinkCode}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -532,6 +537,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getPaymentLinkQRCode" method="get" path="/accounts/{accountID}/payment-links/{paymentLinkCode}/qrcode" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

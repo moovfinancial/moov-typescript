@@ -88,6 +88,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createTransferOptions" method="post" path="/accounts/{accountID}/transfer-options" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -191,6 +192,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createTransfer" method="post" path="/accounts/{accountID}/transfers" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -318,6 +320,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listTransfers" method="get" path="/accounts/{accountID}/transfers" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -408,6 +411,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getTransfer" method="get" path="/accounts/{accountID}/transfers/{transferID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -495,6 +499,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateTransfer" method="patch" path="/accounts/{accountID}/transfers/{transferID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -590,6 +595,7 @@ run();
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createCancellation" method="post" path="/accounts/{accountID}/transfers/{transferID}/cancellations" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -676,6 +682,7 @@ run();
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCancellation" method="get" path="/accounts/{accountID}/transfers/{transferID}/cancellations/{cancellationID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -766,6 +773,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="initiateRefund" method="post" path="/accounts/{accountID}/transfers/{transferID}/refunds" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -862,6 +870,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listRefunds" method="get" path="/accounts/{accountID}/transfers/{transferID}/refunds" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -947,6 +956,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getRefund" method="get" path="/accounts/{accountID}/transfers/{transferID}/refunds/{refundID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -1036,6 +1046,7 @@ to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createReversal" method="post" path="/accounts/{accountID}/transfers/{transferID}/reversals" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

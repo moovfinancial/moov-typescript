@@ -31,6 +31,7 @@ you'll need to specify the `/accounts.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createOnboardingInvite" method="post" path="/onboarding-invites" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -148,6 +149,7 @@ you'll need to specify the `/accounts.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listOnboardingInvites" method="get" path="/onboarding-invites" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -227,6 +229,7 @@ you'll need to specify the `/accounts.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getOnboardingInvite" method="get" path="/onboarding-invites/{code}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -310,6 +313,7 @@ you'll need to specify the `/accounts.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="revokeOnboardingInvite" method="delete" path="/onboarding-invites/{code}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

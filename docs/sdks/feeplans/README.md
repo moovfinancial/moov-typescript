@@ -44,6 +44,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listFeePlanAgreements" method="get" path="/accounts/{accountID}/fee-plan-agreements" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -131,6 +132,7 @@ you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createFeePlanAgreements" method="post" path="/accounts/{accountID}/fee-plan-agreements" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -223,6 +225,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listFeePlans" method="get" path="/accounts/{accountID}/fee-plans" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -306,6 +309,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="retrieveFees" method="get" path="/accounts/{accountID}/fees" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -393,6 +397,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listFeesFetch" method="post" path="/accounts/{accountID}/fees/.fetch" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -476,6 +481,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listPartnerPricing" method="get" path="/accounts/{accountID}/partner-pricing" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -559,6 +565,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listPartnerPricingAgreements" method="get" path="/accounts/{accountID}/partner-pricing-agreements" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

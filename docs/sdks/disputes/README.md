@@ -86,6 +86,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listDisputes" method="get" path="/accounts/{accountID}/disputes" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -176,6 +177,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDispute" method="get" path="/accounts/{accountID}/disputes/{disputeID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -263,6 +265,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="acceptDispute" method="post" path="/accounts/{accountID}/disputes/{disputeID}/accept" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -351,6 +354,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listDisputeEvidence" method="get" path="/accounts/{accountID}/disputes/{disputeID}/evidence" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -438,6 +442,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadDisputeEvidenceFile" method="post" path="/accounts/{accountID}/disputes/{disputeID}/evidence-file" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
@@ -537,6 +542,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadDisputeEvidenceText" method="post" path="/accounts/{accountID}/disputes/{disputeID}/evidence-text" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -636,6 +642,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="submitDisputeEvidence" method="post" path="/accounts/{accountID}/disputes/{disputeID}/evidence/submit" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -724,6 +731,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDisputeEvidence" method="get" path="/accounts/{accountID}/disputes/{disputeID}/evidence/{evidenceID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -813,6 +821,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateDisputeEvidence" method="patch" path="/accounts/{accountID}/disputes/{disputeID}/evidence/{evidenceID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -905,6 +914,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteDisputeEvidenceFile" method="delete" path="/accounts/{accountID}/disputes/{disputeID}/evidence/{evidenceID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -995,6 +1005,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDisputeEvidenceData" method="get" path="/accounts/{accountID}/disputes/{disputeID}/evidence/{evidenceID}/data" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

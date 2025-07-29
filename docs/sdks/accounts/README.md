@@ -90,6 +90,7 @@ to specify the `/accounts.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createAccount" method="post" path="/accounts" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -170,11 +171,11 @@ run();
 
 ### Errors
 
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| errors.GenericError              | 400, 409                         | application/json                 |
-| errors.CreateAccountResponseBody | 422                              | application/json                 |
-| errors.APIError                  | 4XX, 5XX                         | \*/\*                            |
+| Error Type                | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| errors.GenericError       | 400, 409                  | application/json          |
+| errors.CreateAccountError | 422                       | application/json          |
+| errors.APIError           | 4XX, 5XX                  | \*/\*                     |
 
 ## list
 
@@ -189,6 +190,7 @@ to specify the `/accounts.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listAccounts" method="get" path="/accounts" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -276,6 +278,7 @@ to specify the `/accounts/{accountID}/profile.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAccount" method="get" path="/accounts/{accountID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -367,6 +370,7 @@ to specify the `/accounts/{accountID}/profile.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateAccount" method="patch" path="/accounts/{accountID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -591,11 +595,11 @@ run();
 
 ### Errors
 
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| errors.GenericError              | 400, 409                         | application/json                 |
-| errors.UpdateAccountResponseBody | 422                              | application/json                 |
-| errors.APIError                  | 4XX, 5XX                         | \*/\*                            |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.GenericError      | 400, 409                 | application/json         |
+| errors.PatchAccountError | 422                      | application/json         |
+| errors.APIError          | 4XX, 5XX                 | \*/\*                    |
 
 ## disconnect
 
@@ -608,6 +612,7 @@ you'll need to specify the `/accounts/{accountID}/profile.disconnect` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="disconnectAccount" method="delete" path="/accounts/{accountID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -692,6 +697,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAccountCountries" method="get" path="/accounts/{accountID}/countries" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -777,6 +783,7 @@ you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="assignAccountCountries" method="put" path="/accounts/{accountID}/countries" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -872,6 +879,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getMerchantProcessingAgreement" method="get" path="/accounts/{accountID}/merchant-agreement" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -956,6 +964,7 @@ token patched to the account. Read more in our [documentation](https://docs.moov
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getTermsOfServiceToken" method="get" path="/tos-token" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

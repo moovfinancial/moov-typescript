@@ -31,6 +31,7 @@ you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createBrand" method="post" path="/accounts/{accountID}/branding" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -136,6 +137,7 @@ you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="upsertBrand" method="put" path="/accounts/{accountID}/branding" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -241,6 +243,7 @@ you'll need to specify the `/accounts/{accountID}/branding.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getBrand" method="get" path="/accounts/{accountID}/branding" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -324,6 +327,7 @@ you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateBrand" method="patch" path="/accounts/{accountID}/branding" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

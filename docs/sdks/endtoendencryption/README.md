@@ -20,6 +20,7 @@ you'll need to specify the `/ping.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="testEndToEndToken" method="post" path="/debug/end-to-end-token" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -101,6 +102,7 @@ Generates a public key used to create a JWE token for passing secure authenticat
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="generateEndToEndKey" method="post" path="/end-to-end-keys" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

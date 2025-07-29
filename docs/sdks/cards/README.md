@@ -76,6 +76,7 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="linkCard" method="post" path="/accounts/{accountID}/cards" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -189,6 +190,7 @@ you'll need to specify the `/accounts/{accountID}/cards.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listCards" method="get" path="/accounts/{accountID}/cards" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -274,6 +276,7 @@ you'll need to specify the `/accounts/{accountID}/cards.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCard" method="get" path="/accounts/{accountID}/cards/{cardID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -368,6 +371,7 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateCard" method="patch" path="/accounts/{accountID}/cards/{cardID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -461,6 +465,7 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="disableCard" method="delete" path="/accounts/{accountID}/cards/{cardID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

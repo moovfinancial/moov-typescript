@@ -47,7 +47,7 @@ export function accountsUpdate(
   Result<
     operations.UpdateAccountResponse,
     | errors.GenericError
-    | errors.UpdateAccountResponseBody
+    | errors.PatchAccountError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -74,7 +74,7 @@ async function $do(
     Result<
       operations.UpdateAccountResponse,
       | errors.GenericError
-      | errors.UpdateAccountResponseBody
+      | errors.PatchAccountError
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -180,7 +180,7 @@ async function $do(
   const [result] = await M.match<
     operations.UpdateAccountResponse,
     | errors.GenericError
-    | errors.UpdateAccountResponseBody
+    | errors.PatchAccountError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -195,9 +195,7 @@ async function $do(
       key: "Result",
     }),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
-    M.jsonErr(422, errors.UpdateAccountResponseBody$inboundSchema, {
-      hdrs: true,
-    }),
+    M.jsonErr(422, errors.PatchAccountError$inboundSchema, { hdrs: true }),
     M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),

@@ -31,6 +31,7 @@ you'll need to specify the `/accounts/{accountID}/terminal-applications.write` s
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="linkAccountTerminalApplication" method="post" path="/accounts/{accountID}/terminal-applications" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -122,6 +123,7 @@ you'll need to specify the `/accounts/{accountID}/terminal-applications.read` sc
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listAccountTerminalApplications" method="get" path="/accounts/{accountID}/terminal-applications" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -205,6 +207,7 @@ you'll need to specify the `/accounts/{accountID}/terminal-applications.read` sc
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAccountTerminalApplication" method="get" path="/accounts/{accountID}/terminal-applications/{terminalApplicationID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -290,6 +293,7 @@ you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` s
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getTerminalConfiguration" method="get" path="/accounts/{accountID}/terminal-applications/{terminalApplicationID}/configuration" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

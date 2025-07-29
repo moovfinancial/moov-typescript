@@ -33,6 +33,7 @@ you'll need to specify the `/accounts/{accountID}/files.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadFile" method="post" path="/accounts/{accountID}/files" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
@@ -130,6 +131,7 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listFiles" method="get" path="/accounts/{accountID}/files" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -213,6 +215,7 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getFileDetails" method="get" path="/accounts/{accountID}/files/{fileID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

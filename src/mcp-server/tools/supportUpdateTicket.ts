@@ -15,7 +15,10 @@ export const tool$supportUpdateTicket: ToolDefinition<typeof args> = {
   description: `Updates a support ticket.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the \`/accounts/{accountID}/tickets.write\` scope.`,
+you'll need to specify the \`/accounts/{accountID}/tickets.write\` scope.
+
+If you're updating the ticket on behalf of another account, then you'll need to
+specify the \`/accounts/{partnerAccountID}/tickets.write\` and \`/accounts/{accountID}/profile.read\` scopes.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await supportUpdateTicket(

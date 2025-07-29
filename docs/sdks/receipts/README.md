@@ -23,6 +23,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createReceipts" method="post" path="/receipts" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -103,6 +104,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listReceipts" method="get" path="/receipts" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

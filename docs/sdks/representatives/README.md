@@ -55,6 +55,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createRepresentative" method="post" path="/accounts/{accountID}/representatives" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -203,6 +204,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listRepresentatives" method="get" path="/accounts/{accountID}/representatives" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -286,6 +288,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteRepresentative" method="delete" path="/accounts/{accountID}/representatives/{representativeID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -372,6 +375,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getRepresentative" method="get" path="/accounts/{accountID}/representatives/{representativeID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -470,6 +474,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateRepresentative" method="patch" path="/accounts/{accountID}/representatives/{representativeID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
