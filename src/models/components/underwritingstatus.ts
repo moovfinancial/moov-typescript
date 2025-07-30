@@ -11,9 +11,9 @@ import { ClosedEnum } from "../../types/enums.js";
 export const UnderwritingStatus = {
   Approved: "approved",
   Rejected: "rejected",
-  PendingReview: "pendingReview",
+  PendingReview: "pending_review",
   Pending: "pending",
-  NotRequested: "notRequested",
+  NotRequested: "not_requested",
 } as const;
 /**
  * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
