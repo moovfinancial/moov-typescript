@@ -3,10 +3,10 @@ id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
   docChecksum: de859895a9dade4eed2d78c14a7bebef
   docVersion: latest
-  speakeasyVersion: 1.592.1
-  generationVersion: 2.667.0
-  releaseVersion: 0.14.17
-  configChecksum: b273e8cf66e1ceb57005e8af72eb93b5
+  speakeasyVersion: 1.595.2
+  generationVersion: 2.670.5
+  releaseVersion: 0.14.18
+  configChecksum: 78f4d7d5b7892530c6f0164e61fb2dcd
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.16
+    core: 3.21.19
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
