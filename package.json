@@ -1,6 +1,6 @@
 {
   "name": "@moovio/sdk",
-  "version": "0.14.19",
+  "version": "0.14.20",
   "author": "Moov",
   "bin": {
     "mcp": "bin/mcp-server.js"
@@ -34,7 +34,7 @@
     "express": "^4.21.2",
     "globals": "^15.14.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.22.0"
+    "typescript-eslint": "^8.26.0"
   },
   "dependencies": {
     "zod": "^3.20.0"
