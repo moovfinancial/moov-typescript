@@ -420,7 +420,7 @@ export * from "./wallettransactionstatus.js";
 export * from "./wallettransactiontype.js";
 export * from "./webhookdata.js";
 export * from "./webhookdataaccountcreated.js";
-export * from "./webhookdataaccountdeleted.js";
+export * from "./webhookdataaccountdisconnected.js";
 export * from "./webhookdataaccountupdated.js";
 export * from "./webhookdatabalanceupdated.js";
 export * from "./webhookdatabankaccountcreated.js";

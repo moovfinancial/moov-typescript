@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: de859895a9dade4eed2d78c14a7bebef
+  docChecksum: ff02dd66e55d4317f6fc5e5eb81d45f0
   docVersion: latest
-  speakeasyVersion: 1.598.3
-  generationVersion: 2.674.3
-  releaseVersion: 0.14.20
-  configChecksum: b1371dd5362823f2fe40bfc3da14a3e9
+  speakeasyVersion: 1.599.0
+  generationVersion: 2.675.0
+  releaseVersion: 0.14.21
+  configChecksum: 72f46014098698ba6e15b404a78e5cf3
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -514,7 +514,7 @@ generatedFiles:
   - docs/models/components/wallettransactiontype.md
   - docs/models/components/webhookdata.md
   - docs/models/components/webhookdataaccountcreated.md
-  - docs/models/components/webhookdataaccountdeleted.md
+  - docs/models/components/webhookdataaccountdisconnected.md
   - docs/models/components/webhookdataaccountupdated.md
   - docs/models/components/webhookdatabalanceupdated.md
   - docs/models/components/webhookdatabankaccountcreated.md
@@ -1796,7 +1796,7 @@ generatedFiles:
   - src/models/components/wallettransactiontype.ts
   - src/models/components/webhookdata.ts
   - src/models/components/webhookdataaccountcreated.ts
-  - src/models/components/webhookdataaccountdeleted.ts
+  - src/models/components/webhookdataaccountdisconnected.ts
   - src/models/components/webhookdataaccountupdated.ts
   - src/models/components/webhookdatabalanceupdated.ts
   - src/models/components/webhookdatabankaccountcreated.ts

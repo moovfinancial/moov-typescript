@@ -12,7 +12,7 @@ export const WebhookEventType = {
   Wildcard: "*",
   AccountCreated: "account.created",
   AccountUpdated: "account.updated",
-  AccountDeleted: "account.deleted",
+  AccountDisconnected: "account.disconnected",
   BalanceUpdated: "balance.updated",
   BankAccountCreated: "bankAccount.created",
   BankAccountUpdated: "bankAccount.updated",

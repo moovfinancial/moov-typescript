@@ -1,12 +1,12 @@
-# WebhookDataAccountDeleted
+# WebhookDataAccountDisconnected
 
 ## Example Usage
 
 ```typescript
-import { WebhookDataAccountDeleted } from "@moovio/sdk/models/components";
+import { WebhookDataAccountDisconnected } from "@moovio/sdk/models/components";
 
-let value: WebhookDataAccountDeleted = {
-  accountID: "e1c5b258-f179-497e-9641-e86abcaf4fab",
+let value: WebhookDataAccountDisconnected = {
+  accountID: "a8d8f566-2ddb-4667-b0ac-afab2cd67de8",
 };
 ```
 

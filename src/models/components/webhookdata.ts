@@ -13,11 +13,11 @@ import {
   WebhookDataAccountCreated$outboundSchema,
 } from "./webhookdataaccountcreated.js";
 import {
-  WebhookDataAccountDeleted,
-  WebhookDataAccountDeleted$inboundSchema,
-  WebhookDataAccountDeleted$Outbound,
-  WebhookDataAccountDeleted$outboundSchema,
-} from "./webhookdataaccountdeleted.js";
+  WebhookDataAccountDisconnected,
+  WebhookDataAccountDisconnected$inboundSchema,
+  WebhookDataAccountDisconnected$Outbound,
+  WebhookDataAccountDisconnected$outboundSchema,
+} from "./webhookdataaccountdisconnected.js";
 import {
   WebhookDataAccountUpdated,
   WebhookDataAccountUpdated$inboundSchema,
@@ -212,7 +212,7 @@ export type WebhookData =
   | WebhookDataTerminalApplicationUpdated
   | WebhookDataAccountCreated
   | WebhookDataAccountUpdated
-  | WebhookDataAccountDeleted
+  | WebhookDataAccountDisconnected
   | WebhookDataNetworkIDUpdated;
 
 /** @internal */
@@ -248,7 +248,7 @@ export const WebhookData$inboundSchema: z.ZodType<
   WebhookDataTerminalApplicationUpdated$inboundSchema,
   WebhookDataAccountCreated$inboundSchema,
   WebhookDataAccountUpdated$inboundSchema,
-  WebhookDataAccountDeleted$inboundSchema,
+  WebhookDataAccountDisconnected$inboundSchema,
   WebhookDataNetworkIDUpdated$inboundSchema,
 ]);
 
@@ -281,7 +281,7 @@ export type WebhookData$Outbound =
   | WebhookDataTerminalApplicationUpdated$Outbound
   | WebhookDataAccountCreated$Outbound
   | WebhookDataAccountUpdated$Outbound
-  | WebhookDataAccountDeleted$Outbound
+  | WebhookDataAccountDisconnected$Outbound
   | WebhookDataNetworkIDUpdated$Outbound;
 
 /** @internal */
@@ -317,7 +317,7 @@ export const WebhookData$outboundSchema: z.ZodType<
   WebhookDataTerminalApplicationUpdated$outboundSchema,
   WebhookDataAccountCreated$outboundSchema,
   WebhookDataAccountUpdated$outboundSchema,
-  WebhookDataAccountDeleted$outboundSchema,
+  WebhookDataAccountDisconnected$outboundSchema,
   WebhookDataNetworkIDUpdated$outboundSchema,
 ]);
 

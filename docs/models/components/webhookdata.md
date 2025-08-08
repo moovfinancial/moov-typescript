@@ -21,11 +21,11 @@ const value: components.WebhookDataAccountUpdated = {
 };
 ```
 
-### `components.WebhookDataAccountDeleted`
+### `components.WebhookDataAccountDisconnected`
 
 ```typescript
-const value: components.WebhookDataAccountDeleted = {
-  accountID: "e1c5b258-f179-497e-9641-e86abcaf4fab",
+const value: components.WebhookDataAccountDisconnected = {
+  accountID: "a8d8f566-2ddb-4667-b0ac-afab2cd67de8",
 };
 ```
 
