@@ -6,7 +6,7 @@ sources:
         sourceBlobDigest: sha256:859fdb38ef927378f3ac30da93b52b713558689d588234cb9d22c5c99f12d2a0
         tags:
             - latest
-            - speakeasy-sdk-regen-1754613201
+            - speakeasy-sdk-regen-1754616192
 targets:
     latest:
         source: latest
@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:baf93326ff251948fa92cb73b328810ab116360cbf9b6cf4d886b51dce6c17d8
         sourceBlobDigest: sha256:859fdb38ef927378f3ac30da93b52b713558689d588234cb9d22c5c99f12d2a0
         codeSamplesNamespace: latest-ts-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:37eec82b55f8daee90422bc611dfef4f1eeaf421b87624325fd1348089557475
+        codeSamplesRevisionDigest: sha256:82c84bdb80c766b5cca4ef88731b3d89e1181971f41c15ee485e45b3b62d81cd
     moov:
         source: latest
         sourceNamespace: api-latest
