@@ -13,6 +13,7 @@ export const PrimaryRegulator = {
   Fdic: "FDIC",
   Ncua: "NCUA",
   Frb: "FRB",
+  StateCuRegulator: "state-cu-regulator",
 } as const;
 /**
  * If the business is a financial institution, this field describes its primary regulator.

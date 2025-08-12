@@ -13,5 +13,5 @@ let value: PrimaryRegulator = "OCC";
 ## Values
 
 ```typescript
-"OCC" | "FDIC" | "NCUA" | "FRB"
+"OCC" | "FDIC" | "NCUA" | "FRB" | "state-cu-regulator"
 ```
