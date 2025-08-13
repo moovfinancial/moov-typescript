@@ -21,7 +21,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.14.23
+  version: 0.14.24
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -56,4 +56,5 @@ typescript:
   packageName: '@moovio/sdk'
   responseFormat: flat
   templateVersion: v2
+  usageSDKInitImports: []
   useIndexModules: true

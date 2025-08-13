@@ -8,7 +8,7 @@ dotenv.config();
  * Example usage of the @moovio/sdk SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx accountsCreate.ts
+ * npm run build && npx tsx accountsCreate.example.ts
  */
 
 import { Moov } from "@moovio/sdk";
