@@ -17,6 +17,7 @@ export type UpsertUnderwritingErrorData = {
   moneyTransfer?: components.MoneyTransferError | undefined;
   sendFunds?: components.SendFundsError | undefined;
   averageMonthlyTransactionVolume?: string | undefined;
+  error?: string | undefined;
   averageTransactionSize?: string | undefined;
   maxTransactionSize?: string | undefined;
   volumeByCustomerType?: components.VolumeByCustomerTypeError | undefined;
@@ -35,6 +36,7 @@ export class UpsertUnderwritingError extends MoovError {
   moneyTransfer?: components.MoneyTransferError | undefined;
   sendFunds?: components.SendFundsError | undefined;
   averageMonthlyTransactionVolume?: string | undefined;
+  error?: string | undefined;
   averageTransactionSize?: string | undefined;
   maxTransactionSize?: string | undefined;
   volumeByCustomerType?: components.VolumeByCustomerTypeError | undefined;
@@ -70,6 +72,7 @@ export class UpsertUnderwritingError extends MoovError {
       this.averageMonthlyTransactionVolume =
         err.averageMonthlyTransactionVolume;
     }
+    if (err.error != null) this.error = err.error;
     if (err.averageTransactionSize != null) {
       this.averageTransactionSize = err.averageTransactionSize;
     }
@@ -103,6 +106,7 @@ export const UpsertUnderwritingError$inboundSchema: z.ZodType<
   moneyTransfer: components.MoneyTransferError$inboundSchema.optional(),
   sendFunds: components.SendFundsError$inboundSchema.optional(),
   averageMonthlyTransactionVolume: z.string().optional(),
+  error: z.string().optional(),
   averageTransactionSize: z.string().optional(),
   maxTransactionSize: z.string().optional(),
   volumeByCustomerType: components.VolumeByCustomerTypeError$inboundSchema
@@ -134,6 +138,7 @@ export type UpsertUnderwritingError$Outbound = {
   moneyTransfer?: components.MoneyTransferError$Outbound | undefined;
   sendFunds?: components.SendFundsError$Outbound | undefined;
   averageMonthlyTransactionVolume?: string | undefined;
+  error?: string | undefined;
   averageTransactionSize?: string | undefined;
   maxTransactionSize?: string | undefined;
   volumeByCustomerType?:
@@ -162,6 +167,7 @@ export const UpsertUnderwritingError$outboundSchema: z.ZodType<
     moneyTransfer: components.MoneyTransferError$outboundSchema.optional(),
     sendFunds: components.SendFundsError$outboundSchema.optional(),
     averageMonthlyTransactionVolume: z.string().optional(),
+    error: z.string().optional(),
     averageTransactionSize: z.string().optional(),
     maxTransactionSize: z.string().optional(),
     volumeByCustomerType: components.VolumeByCustomerTypeError$outboundSchema

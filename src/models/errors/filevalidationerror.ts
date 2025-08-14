@@ -3,11 +3,13 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type FileValidationErrorData = {
   error?: string | undefined;
   file?: string | undefined;
+  fileName?: string | undefined;
   filePurpose?: string | undefined;
   metadata?: string | undefined;
 };
@@ -15,6 +17,7 @@ export type FileValidationErrorData = {
 export class FileValidationError extends MoovError {
   error?: string | undefined;
   file?: string | undefined;
+  fileName?: string | undefined;
   filePurpose?: string | undefined;
   metadata?: string | undefined;
 
@@ -32,6 +35,7 @@ export class FileValidationError extends MoovError {
     this.data$ = err;
     if (err.error != null) this.error = err.error;
     if (err.file != null) this.file = err.file;
+    if (err.fileName != null) this.fileName = err.fileName;
     if (err.filePurpose != null) this.filePurpose = err.filePurpose;
     if (err.metadata != null) this.metadata = err.metadata;
 
@@ -47,6 +51,7 @@ export const FileValidationError$inboundSchema: z.ZodType<
 > = z.object({
   error: z.string().optional(),
   file: z.string().optional(),
+  FileName: z.string().optional(),
   filePurpose: z.string().optional(),
   metadata: z.string().optional(),
   request$: z.instanceof(Request),
@@ -54,7 +59,11 @@ export const FileValidationError$inboundSchema: z.ZodType<
   body$: z.string(),
 })
   .transform((v) => {
-    return new FileValidationError(v, {
+    const remapped = remap$(v, {
+      "FileName": "fileName",
+    });
+
+    return new FileValidationError(remapped, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -65,6 +74,7 @@ export const FileValidationError$inboundSchema: z.ZodType<
 export type FileValidationError$Outbound = {
   error?: string | undefined;
   file?: string | undefined;
+  FileName?: string | undefined;
   filePurpose?: string | undefined;
   metadata?: string | undefined;
 };
@@ -76,12 +86,19 @@ export const FileValidationError$outboundSchema: z.ZodType<
   FileValidationError
 > = z.instanceof(FileValidationError)
   .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.string().optional(),
-    file: z.string().optional(),
-    filePurpose: z.string().optional(),
-    metadata: z.string().optional(),
-  }));
+  .pipe(
+    z.object({
+      error: z.string().optional(),
+      file: z.string().optional(),
+      fileName: z.string().optional(),
+      filePurpose: z.string().optional(),
+      metadata: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        fileName: "FileName",
+      });
+    }),
+  );
 
 /**
  * @internal

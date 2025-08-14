@@ -3,15 +3,14 @@
  */
 
 import * as z from "zod";
-import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
 export type AssignCountriesErrorData = {
-  error: components.CountriesErrors;
+  countries: { [k: string]: string };
 };
 
 export class AssignCountriesError extends MoovError {
-  error: components.CountriesErrors;
+  countries: { [k: string]: string };
 
   /** The original data that was passed to this error instance. */
   data$: AssignCountriesErrorData;
@@ -25,7 +24,7 @@ export class AssignCountriesError extends MoovError {
       : `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
-    this.error = err.error;
+    this.countries = err.countries;
 
     this.name = "AssignCountriesError";
   }
@@ -37,7 +36,7 @@ export const AssignCountriesError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  error: components.CountriesErrors$inboundSchema,
+  countries: z.record(z.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -52,7 +51,7 @@ export const AssignCountriesError$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AssignCountriesError$Outbound = {
-  error: components.CountriesErrors$Outbound;
+  countries: { [k: string]: string };
 };
 
 /** @internal */
@@ -63,7 +62,7 @@ export const AssignCountriesError$outboundSchema: z.ZodType<
 > = z.instanceof(AssignCountriesError)
   .transform(v => v.data$)
   .pipe(z.object({
-    error: components.CountriesErrors$outboundSchema,
+    countries: z.record(z.string()),
   }));
 
 /**

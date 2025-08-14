@@ -10,6 +10,7 @@ import { AddCapabilitiesError } from "@moovio/sdk/models/errors";
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `error`                                                                      | [components.CapabilitiesError](../../models/components/capabilitieserror.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `error`                  | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `capabilities`           | Record<string, *string*> | :heavy_minus_sign:       | N/A                      |

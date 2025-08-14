@@ -13,6 +13,7 @@ export type PatchAccountErrorData = {
   foreignID?: string | undefined;
   customerSupport?: components.CustomerSupportError | undefined;
   settings?: components.CreateAccountSettings | undefined;
+  error?: string | undefined;
 };
 
 export class PatchAccountError extends MoovError {
@@ -22,6 +23,7 @@ export class PatchAccountError extends MoovError {
   foreignID?: string | undefined;
   customerSupport?: components.CustomerSupportError | undefined;
   settings?: components.CreateAccountSettings | undefined;
+  error?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: PatchAccountErrorData;
@@ -41,6 +43,7 @@ export class PatchAccountError extends MoovError {
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.customerSupport != null) this.customerSupport = err.customerSupport;
     if (err.settings != null) this.settings = err.settings;
+    if (err.error != null) this.error = err.error;
 
     this.name = "PatchAccountError";
   }
@@ -58,6 +61,7 @@ export const PatchAccountError$inboundSchema: z.ZodType<
   foreignID: z.string().optional(),
   customerSupport: components.CustomerSupportError$inboundSchema.optional(),
   settings: components.CreateAccountSettings$inboundSchema.optional(),
+  error: z.string().optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -78,6 +82,7 @@ export type PatchAccountError$Outbound = {
   foreignID?: string | undefined;
   customerSupport?: components.CustomerSupportError$Outbound | undefined;
   settings?: components.CreateAccountSettings$Outbound | undefined;
+  error?: string | undefined;
 };
 
 /** @internal */
@@ -94,6 +99,7 @@ export const PatchAccountError$outboundSchema: z.ZodType<
     foreignID: z.string().optional(),
     customerSupport: components.CustomerSupportError$outboundSchema.optional(),
     settings: components.CreateAccountSettings$outboundSchema.optional(),
+    error: z.string().optional(),
   }));
 
 /**

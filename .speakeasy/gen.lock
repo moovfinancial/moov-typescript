@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 1e8d979e777b083c248ff9a2dbf03e28
+  docChecksum: ea05a43791ad4269509c8393b48539e9
   docVersion: latest
-  speakeasyVersion: 1.603.0
-  generationVersion: 2.681.1
-  releaseVersion: 0.14.24
-  configChecksum: bba5a778031c3c621cbda90ad59c2791
+  speakeasyVersion: 1.603.2
+  generationVersion: 2.681.8
+  releaseVersion: 0.14.25
+  configChecksum: 101d7002407904d0543442cd52121cbd
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -120,7 +120,6 @@ generatedFiles:
   - docs/models/components/calltoaction.md
   - docs/models/components/cancellation.md
   - docs/models/components/cancellationstatus.md
-  - docs/models/components/capabilitieserror.md
   - docs/models/components/capability.md
   - docs/models/components/capabilityid.md
   - docs/models/components/capabilityrequirement.md
@@ -167,7 +166,6 @@ generatedFiles:
   - docs/models/components/completedmicrodeposits.md
   - docs/models/components/completemicrodeposits.md
   - docs/models/components/contact.md
-  - docs/models/components/countrieserrors.md
   - docs/models/components/createaccount.md
   - docs/models/components/createaccountsettings.md
   - docs/models/components/createaccounttermsofservice.md
@@ -1448,7 +1446,6 @@ generatedFiles:
   - src/models/components/calltoaction.ts
   - src/models/components/cancellation.ts
   - src/models/components/cancellationstatus.ts
-  - src/models/components/capabilitieserror.ts
   - src/models/components/capability.ts
   - src/models/components/capabilityid.ts
   - src/models/components/capabilityrequirement.ts
@@ -1491,7 +1488,6 @@ generatedFiles:
   - src/models/components/completedmicrodeposits.ts
   - src/models/components/completemicrodeposits.ts
   - src/models/components/contact.ts
-  - src/models/components/countrieserrors.ts
   - src/models/components/createaccount.ts
   - src/models/components/createaccountsettings.ts
   - src/models/components/createaccounttype.ts
@@ -2151,7 +2147,7 @@ examples:
         "400":
           application/json: {"error": "<value>"}
         "422":
-          application/json: {"error": {"countries": {"key": "<value>", "key1": "<value>"}}}
+          application/json: {"countries": {"key": "<value>"}}
   getMerchantProcessingAgreement:
     speakeasy-default-get-merchant-processing-agreement:
       parameters:

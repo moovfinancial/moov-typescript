@@ -3,15 +3,16 @@
  */
 
 import * as z from "zod";
-import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
 export type AddCapabilitiesErrorData = {
-  error?: components.CapabilitiesError | undefined;
+  error?: string | undefined;
+  capabilities?: { [k: string]: string } | undefined;
 };
 
 export class AddCapabilitiesError extends MoovError {
-  error?: components.CapabilitiesError | undefined;
+  error?: string | undefined;
+  capabilities?: { [k: string]: string } | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: AddCapabilitiesErrorData;
@@ -26,6 +27,7 @@ export class AddCapabilitiesError extends MoovError {
     super(message, httpMeta);
     this.data$ = err;
     if (err.error != null) this.error = err.error;
+    if (err.capabilities != null) this.capabilities = err.capabilities;
 
     this.name = "AddCapabilitiesError";
   }
@@ -37,7 +39,8 @@ export const AddCapabilitiesError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  error: components.CapabilitiesError$inboundSchema.optional(),
+  error: z.string().optional(),
+  capabilities: z.record(z.string()).optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -52,7 +55,8 @@ export const AddCapabilitiesError$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AddCapabilitiesError$Outbound = {
-  error?: components.CapabilitiesError$Outbound | undefined;
+  error?: string | undefined;
+  capabilities?: { [k: string]: string } | undefined;
 };
 
 /** @internal */
@@ -63,7 +67,8 @@ export const AddCapabilitiesError$outboundSchema: z.ZodType<
 > = z.instanceof(AddCapabilitiesError)
   .transform(v => v.data$)
   .pipe(z.object({
-    error: components.CapabilitiesError$outboundSchema.optional(),
+    error: z.string().optional(),
+    capabilities: z.record(z.string()).optional(),
   }));
 
 /**

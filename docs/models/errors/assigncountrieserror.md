@@ -10,6 +10,6 @@ import { AssignCountriesError } from "@moovio/sdk/models/errors";
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `error`                                                                  | [components.CountriesErrors](../../models/components/countrieserrors.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `countries`              | Record<string, *string*> | :heavy_check_mark:       | N/A                      |
