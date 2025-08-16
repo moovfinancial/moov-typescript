@@ -255,6 +255,34 @@ const value: components.WebhookDataTerminalApplicationUpdated = {
 };
 ```
 
+### `components.WebhookDataTicketCreated`
+
+```typescript
+const value: components.WebhookDataTicketCreated = {
+  accountID: "6e9bf5fe-f449-4f5d-a931-8afffc6d7b12",
+  ticketID: "67803c7f-2d0e-462d-8b97-6baed63eb2f0",
+};
+```
+
+### `components.WebhookDataTicketUpdated`
+
+```typescript
+const value: components.WebhookDataTicketUpdated = {
+  accountID: "c30b987c-829b-4930-9b67-eddbaaa04887",
+  ticketID: "506be12f-3fb7-497a-8491-ea865795164d",
+  status: "on-hold",
+};
+```
+
+### `components.WebhookDataTicketMessageAdded`
+
+```typescript
+const value: components.WebhookDataTicketMessageAdded = {
+  accountID: "e57874d3-857b-498b-af6e-9cdae5762062",
+  ticketID: "252fba76-d1e6-49ac-9356-a0ad85952e47",
+};
+```
+
 ### `components.WebhookDataTransferCreated`
 
 ```typescript
