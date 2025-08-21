@@ -27,6 +27,9 @@ export type UpdateScheduleGlobals = {
 };
 
 export type UpdateScheduleRequest = {
+  /**
+   * Account ID of the account that will run the transfer.
+   */
   accountID: string;
   scheduleID: string;
   upsertSchedule: components.UpsertSchedule;

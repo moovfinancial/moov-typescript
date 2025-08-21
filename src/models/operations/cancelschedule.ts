@@ -26,6 +26,9 @@ export type CancelScheduleGlobals = {
 };
 
 export type CancelScheduleRequest = {
+  /**
+   * Your Moov account ID as the partner running the transfers.
+   */
   accountID: string;
   scheduleID: string;
 };
