@@ -6,7 +6,7 @@
 import { SweepSubtotal } from "@moovio/sdk/models/components";
 
 let value: SweepSubtotal = {
-  type: "refund-failure",
+  type: "rtp-failure",
   count: 486428,
   amount: {
     currency: "USD",

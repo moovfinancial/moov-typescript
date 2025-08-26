@@ -31,6 +31,7 @@ export const WalletTransactionType = {
   TopUp: "top-up",
   WalletTransfer: "wallet-transfer",
   Adjustment: "adjustment",
+  FeeRevenue: "fee-revenue",
 } as const;
 export type WalletTransactionType = ClosedEnum<typeof WalletTransactionType>;
 
