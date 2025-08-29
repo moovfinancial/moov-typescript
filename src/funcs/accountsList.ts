@@ -98,7 +98,6 @@ async function $do(
     "email": payload.email,
     "foreignID": payload.foreignID,
     "includeDisconnected": payload.includeDisconnected,
-    "includeGuest": payload.includeGuest,
     "name": payload.name,
     "skip": payload.skip,
     "type": payload.type,

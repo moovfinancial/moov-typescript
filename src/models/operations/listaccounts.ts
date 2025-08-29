@@ -56,16 +56,10 @@ export type ListAccountsRequest = {
    *   If the `type` parameter is used in combination with `name`, only the corresponding type's name fields will
    *   be searched. For example, if `type=business` and `name=moov`, the search will attempt to find matches against
    *   the display name and Business Profile name fields (`legalBusinessName`, and `doingBusinessAs`).
-   */
-  type?: components.AccountType | undefined;
-  /**
-   *   Filter accounts with AccountType guest.
    *
-   * @remarks
-   *
-   *   If true, the response will include guest accounts.
+   *   Filtering by `type=guest` is not currently supported.
    */
-  includeGuest?: boolean | undefined;
+  type?: components.CreateAccountType | undefined;
   /**
    *   Serves as an optional alias from a foreign/external system which can be used to reference this resource.
    */
@@ -165,8 +159,7 @@ export const ListAccountsRequest$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   email: z.string().optional(),
-  type: components.AccountType$inboundSchema.optional(),
-  includeGuest: z.boolean().optional(),
+  type: components.CreateAccountType$inboundSchema.optional(),
   foreignID: z.string().optional(),
   includeDisconnected: z.boolean().optional(),
   capability: components.CapabilityID$inboundSchema.optional(),
@@ -180,7 +173,6 @@ export type ListAccountsRequest$Outbound = {
   name?: string | undefined;
   email?: string | undefined;
   type?: string | undefined;
-  includeGuest?: boolean | undefined;
   foreignID?: string | undefined;
   includeDisconnected?: boolean | undefined;
   capability?: string | undefined;
@@ -197,8 +189,7 @@ export const ListAccountsRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   email: z.string().optional(),
-  type: components.AccountType$outboundSchema.optional(),
-  includeGuest: z.boolean().optional(),
+  type: components.CreateAccountType$outboundSchema.optional(),
   foreignID: z.string().optional(),
   includeDisconnected: z.boolean().optional(),
   capability: components.CapabilityID$outboundSchema.optional(),
