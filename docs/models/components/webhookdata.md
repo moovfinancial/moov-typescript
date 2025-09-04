@@ -311,6 +311,25 @@ const value: components.WebhookDataTransferUpdated = {
 };
 ```
 
+### `components.WebhookDataWalletCreated`
+
+```typescript
+const value: components.WebhookDataWalletCreated = {
+  accountID: "8a3b6e93-ae65-41e1-81fc-1a7c57e46bca",
+  walletID: "5540482b-a921-4087-b0d4-d84729a6f14d",
+};
+```
+
+### `components.WebhookDataWalletUpdated`
+
+```typescript
+const value: components.WebhookDataWalletUpdated = {
+  accountID: "d4437a46-774f-4468-8638-2fd123f24dae",
+  walletID: "54a35c4a-a274-4349-aa10-681182653123",
+  status: "closed",
+};
+```
+
 ### `components.WebhookDataWalletTransactionUpdated`
 
 ```typescript

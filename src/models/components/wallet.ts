@@ -12,6 +12,16 @@ import {
   WalletAvailableBalance$Outbound,
   WalletAvailableBalance$outboundSchema,
 } from "./walletavailablebalance.js";
+import {
+  WalletStatus,
+  WalletStatus$inboundSchema,
+  WalletStatus$outboundSchema,
+} from "./walletstatus.js";
+import {
+  WalletType,
+  WalletType$inboundSchema,
+  WalletType$outboundSchema,
+} from "./wallettype.js";
 
 /**
  * A Moov wallet to store funds for transfers.
@@ -19,6 +29,37 @@ import {
 export type Wallet = {
   walletID: string;
   availableBalance: WalletAvailableBalance;
+  partnerAccountID: string;
+  /**
+   * Name of the wallet
+   */
+  name: string;
+  /**
+   * Status of a wallet.
+   *
+   * @remarks
+   *   - `active`: The wallet is available for use and has an enabled payment method.
+   *   - `closed`: The wallet is no longer active and the corresponding payment method has been disabled.
+   */
+  status: WalletStatus;
+  /**
+   * Type of a wallet.
+   *
+   * @remarks
+   *   - `default`: The primary system-generated wallet automatically created by Moov when an account is granted the wallet capability. This generates a moov-wallet payment method that is available for use immediately. Only one default wallet exists per account.
+   *   - `general`: A user-defined wallet created via the API to segment funds for specific use cases. Users can create multiple general wallets per account to support internal business models or financial reporting needs.
+   */
+  walletType: WalletType;
+  /**
+   * Description of the wallet
+   */
+  description: string;
+  /**
+   * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
+   */
+  metadata?: { [k: string]: string } | undefined;
+  createdOn: Date;
+  closedOn?: Date | undefined;
 };
 
 /** @internal */
@@ -26,12 +67,31 @@ export const Wallet$inboundSchema: z.ZodType<Wallet, z.ZodTypeDef, unknown> = z
   .object({
     walletID: z.string(),
     availableBalance: WalletAvailableBalance$inboundSchema,
+    partnerAccountID: z.string(),
+    name: z.string(),
+    status: WalletStatus$inboundSchema,
+    walletType: WalletType$inboundSchema,
+    description: z.string(),
+    metadata: z.record(z.string()).optional(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    closedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
   });
 
 /** @internal */
 export type Wallet$Outbound = {
   walletID: string;
   availableBalance: WalletAvailableBalance$Outbound;
+  partnerAccountID: string;
+  name: string;
+  status: string;
+  walletType: string;
+  description: string;
+  metadata?: { [k: string]: string } | undefined;
+  createdOn: string;
+  closedOn?: string | undefined;
 };
 
 /** @internal */
@@ -42,6 +102,14 @@ export const Wallet$outboundSchema: z.ZodType<
 > = z.object({
   walletID: z.string(),
   availableBalance: WalletAvailableBalance$outboundSchema,
+  partnerAccountID: z.string(),
+  name: z.string(),
+  status: WalletStatus$outboundSchema,
+  walletType: WalletType$outboundSchema,
+  description: z.string(),
+  metadata: z.record(z.string()).optional(),
+  createdOn: z.date().transform(v => v.toISOString()),
+  closedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
 /**

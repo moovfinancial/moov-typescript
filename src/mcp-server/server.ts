@@ -152,8 +152,10 @@ import { tool$transfersUpdate } from "./tools/transfersUpdate.js";
 import { tool$underwritingGet } from "./tools/underwritingGet.js";
 import { tool$underwritingSave } from "./tools/underwritingSave.js";
 import { tool$underwritingUpsert } from "./tools/underwritingUpsert.js";
+import { tool$walletsCreate } from "./tools/walletsCreate.js";
 import { tool$walletsGet } from "./tools/walletsGet.js";
 import { tool$walletsList } from "./tools/walletsList.js";
+import { tool$walletsUpdate } from "./tools/walletsUpdate.js";
 import { tool$walletTransactionsGet } from "./tools/walletTransactionsGet.js";
 import { tool$walletTransactionsList } from "./tools/walletTransactionsList.js";
 
@@ -168,7 +170,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.14.30",
+    version: "0.14.31",
   });
 
   const client = new MoovCore({
@@ -306,8 +308,10 @@ export function createMCPServer(deps: {
   tool(tool$underwritingGet);
   tool(tool$underwritingSave);
   tool(tool$underwritingUpsert);
+  tool(tool$walletsCreate);
   tool(tool$walletsList);
   tool(tool$walletsGet);
+  tool(tool$walletsUpdate);
   tool(tool$walletTransactionsList);
   tool(tool$walletTransactionsGet);
   tool(tool$avatarsGet);

@@ -3,7 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -17,6 +17,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { MoovError } from "../models/errors/mooverror.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
@@ -25,20 +26,22 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List the wallets associated with a Moov account.
+ * Create a new wallet for an account. You can specify optional attributes such as a display name and description to specify the intended use of the wallet. This will generate a new moov-wallet payment method.
  *
  * Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
+ * you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
  */
-export function walletsList(
+export function walletsCreate(
   client: MoovCore,
-  request: operations.ListWalletsRequest,
+  request: operations.CreateWalletRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.ListWalletsResponse,
+    operations.CreateWalletResponse,
+    | errors.GenericError
+    | errors.CreateWalletError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -58,12 +61,14 @@ export function walletsList(
 
 async function $do(
   client: MoovCore,
-  request: operations.ListWalletsRequest,
+  request: operations.CreateWalletRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.ListWalletsResponse,
+      operations.CreateWalletResponse,
+      | errors.GenericError
+      | errors.CreateWalletError
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -78,14 +83,14 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.ListWalletsRequest$outboundSchema.parse(value),
+    (value) => operations.CreateWalletRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.CreateWallet, { explode: true });
 
   const pathParams = {
     accountID: encodeSimple("accountID", payload.accountID, {
@@ -96,14 +101,8 @@ async function $do(
 
   const path = pathToFunc("/accounts/{accountID}/wallets")(pathParams);
 
-  const query = encodeFormQuery({
-    "count": payload.count,
-    "skip": payload.skip,
-    "status": payload.status,
-    "walletType": payload.walletType,
-  }, { explode: false });
-
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
     "x-moov-version": encodeSimple(
       "x-moov-version",
@@ -118,7 +117,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "listWallets",
+    operationID: "createWallet",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -132,11 +131,10 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -148,7 +146,19 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "403", "429", "4XX", "500", "504", "5XX"],
+    errorCodes: [
+      "400",
+      "401",
+      "403",
+      "404",
+      "409",
+      "422",
+      "429",
+      "4XX",
+      "500",
+      "504",
+      "5XX",
+    ],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -162,7 +172,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.ListWalletsResponse,
+    operations.CreateWalletResponse,
+    | errors.GenericError
+    | errors.CreateWalletError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -172,11 +184,13 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.ListWalletsResponse$inboundSchema, {
+    M.json(200, operations.CreateWalletResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),
-    M.fail([401, 403, 429]),
+    M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr(422, errors.CreateWalletError$inboundSchema, { hdrs: true }),
+    M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),

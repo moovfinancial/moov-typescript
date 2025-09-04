@@ -27,6 +27,16 @@ export type ListWalletsGlobals = {
 };
 
 export type ListWalletsRequest = {
+  /**
+   * Optional parameter for filtering wallets by status.
+   */
+  status?: components.WalletStatus | undefined;
+  /**
+   * Optional parameter for filtering wallets by type.
+   */
+  walletType?: components.WalletType | undefined;
+  skip?: number | undefined;
+  count?: number | undefined;
   accountID: string;
 };
 
@@ -103,11 +113,19 @@ export const ListWalletsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  status: components.WalletStatus$inboundSchema.optional(),
+  walletType: components.WalletType$inboundSchema.optional(),
+  skip: z.number().int().optional(),
+  count: z.number().int().optional(),
   accountID: z.string(),
 });
 
 /** @internal */
 export type ListWalletsRequest$Outbound = {
+  status?: string | undefined;
+  walletType?: string | undefined;
+  skip?: number | undefined;
+  count?: number | undefined;
   accountID: string;
 };
 
@@ -117,6 +135,10 @@ export const ListWalletsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListWalletsRequest
 > = z.object({
+  status: components.WalletStatus$outboundSchema.optional(),
+  walletType: components.WalletType$outboundSchema.optional(),
+  skip: z.number().int().optional(),
+  count: z.number().int().optional(),
   accountID: z.string(),
 });
 

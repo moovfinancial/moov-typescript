@@ -1,23 +1,20 @@
-# GetWalletResponse
+# UpdateWalletResponse
 
 ## Example Usage
 
 ```typescript
-import { GetWalletResponse } from "@moovio/sdk/models/operations";
+import { UpdateWalletResponse } from "@moovio/sdk/models/operations";
 
-let value: GetWalletResponse = {
+let value: UpdateWalletResponse = {
   headers: {
     "key": [
       "<value 1>",
       "<value 2>",
     ],
-    "key1": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
+    "key1": [],
     "key2": [
       "<value 1>",
+      "<value 2>",
     ],
   },
   result: {

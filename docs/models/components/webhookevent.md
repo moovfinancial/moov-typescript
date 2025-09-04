@@ -12,11 +12,9 @@ let value: WebhookEvent = {
   type: "walletTransaction.updated",
   data: {
     accountID: "95328e1d-0160-4129-a329-5aedc05109bd",
-    transferID: "cce0d79c-bead-4938-9576-b578321dde44",
-    refundID: "6109f427-03c4-49cc-8449-bfcefade02f4",
-    status: "pending",
+    representativeID: "cce0d79c-bead-4938-9576-b578321dde44",
   },
-  createdOn: new Date("2025-03-01T18:11:11.403Z"),
+  createdOn: new Date("2024-02-21T04:33:12.220Z"),
 };
 ```
 
