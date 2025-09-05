@@ -295,7 +295,6 @@ export * from "./paymentmethodtype.js";
 export * from "./payoutdetailserror.js";
 export * from "./payoutrecipient.js";
 export * from "./payoutrecipienterror.js";
-export * from "./payoutrecipientupdate.js";
 export * from "./pendinglitigation.js";
 export * from "./phonenumber.js";
 export * from "./phonenumbererror.js";

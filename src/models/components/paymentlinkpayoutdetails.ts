@@ -27,6 +27,7 @@ export type PaymentLinkPayoutDetails = {
    * Specify the intended recipient of the payout.
    *
    * @remarks
+   * Either `email` or `phone` must be specified, but not both.
    *
    * This information will be used to authenticate the end user when they follow the payment link.
    */

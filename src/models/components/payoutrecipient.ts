@@ -6,16 +6,24 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  PhoneNumber,
+  PhoneNumber$inboundSchema,
+  PhoneNumber$Outbound,
+  PhoneNumber$outboundSchema,
+} from "./phonenumber.js";
 
 /**
  * Specify the intended recipient of the payout.
  *
  * @remarks
+ * Either `email` or `phone` must be specified, but not both.
  *
  * This information will be used to authenticate the end user when they follow the payment link.
  */
 export type PayoutRecipient = {
-  email: string;
+  email?: string | undefined;
+  phone?: PhoneNumber | undefined;
 };
 
 /** @internal */
@@ -24,12 +32,14 @@ export const PayoutRecipient$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
+  email: z.string().optional(),
+  phone: PhoneNumber$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PayoutRecipient$Outbound = {
-  email: string;
+  email?: string | undefined;
+  phone?: PhoneNumber$Outbound | undefined;
 };
 
 /** @internal */
@@ -38,7 +48,8 @@ export const PayoutRecipient$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PayoutRecipient
 > = z.object({
-  email: z.string(),
+  email: z.string().optional(),
+  phone: PhoneNumber$outboundSchema.optional(),
 });
 
 /**

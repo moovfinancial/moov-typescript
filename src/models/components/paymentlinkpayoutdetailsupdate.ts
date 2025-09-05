@@ -12,11 +12,11 @@ import {
   DisbursementPaymentMethodType$outboundSchema,
 } from "./disbursementpaymentmethodtype.js";
 import {
-  PayoutRecipientUpdate,
-  PayoutRecipientUpdate$inboundSchema,
-  PayoutRecipientUpdate$Outbound,
-  PayoutRecipientUpdate$outboundSchema,
-} from "./payoutrecipientupdate.js";
+  PayoutRecipient,
+  PayoutRecipient$inboundSchema,
+  PayoutRecipient$Outbound,
+  PayoutRecipient$outboundSchema,
+} from "./payoutrecipient.js";
 
 export type PaymentLinkPayoutDetailsUpdate = {
   /**
@@ -27,10 +27,11 @@ export type PaymentLinkPayoutDetailsUpdate = {
    * Specify the intended recipient of the payout.
    *
    * @remarks
+   * Either `email` or `phone` must be specified, but not both.
    *
    * This information will be used to authenticate the end user when they follow the payment link.
    */
-  recipient?: PayoutRecipientUpdate | undefined;
+  recipient?: PayoutRecipient | undefined;
 };
 
 /** @internal */
@@ -41,13 +42,13 @@ export const PaymentLinkPayoutDetailsUpdate$inboundSchema: z.ZodType<
 > = z.object({
   allowedMethods: z.array(DisbursementPaymentMethodType$inboundSchema)
     .optional(),
-  recipient: PayoutRecipientUpdate$inboundSchema.optional(),
+  recipient: PayoutRecipient$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PaymentLinkPayoutDetailsUpdate$Outbound = {
   allowedMethods?: Array<string> | undefined;
-  recipient?: PayoutRecipientUpdate$Outbound | undefined;
+  recipient?: PayoutRecipient$Outbound | undefined;
 };
 
 /** @internal */
@@ -58,7 +59,7 @@ export const PaymentLinkPayoutDetailsUpdate$outboundSchema: z.ZodType<
 > = z.object({
   allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema)
     .optional(),
-  recipient: PayoutRecipientUpdate$outboundSchema.optional(),
+  recipient: PayoutRecipient$outboundSchema.optional(),
 });
 
 /**

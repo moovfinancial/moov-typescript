@@ -6,9 +6,16 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  PhoneNumberError,
+  PhoneNumberError$inboundSchema,
+  PhoneNumberError$Outbound,
+  PhoneNumberError$outboundSchema,
+} from "./phonenumbererror.js";
 
 export type PayoutRecipientError = {
   email?: string | undefined;
+  phone?: PhoneNumberError | undefined;
 };
 
 /** @internal */
@@ -18,11 +25,13 @@ export const PayoutRecipientError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   email: z.string().optional(),
+  phone: PhoneNumberError$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PayoutRecipientError$Outbound = {
   email?: string | undefined;
+  phone?: PhoneNumberError$Outbound | undefined;
 };
 
 /** @internal */
@@ -32,6 +41,7 @@ export const PayoutRecipientError$outboundSchema: z.ZodType<
   PayoutRecipientError
 > = z.object({
   email: z.string().optional(),
+  phone: PhoneNumberError$outboundSchema.optional(),
 });
 
 /**
