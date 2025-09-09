@@ -20,7 +20,7 @@ let value: GetWalletTransactionResponse = {
     walletID: "ab57d4bc-5e7d-44af-9ca3-99382c296afe",
     transactionID: "bb0ed1a8-70aa-41d0-807b-e3a02ccd65b9",
     transactionType: "wallet-transfer",
-    sourceType: "sweep",
+    sourceType: "adjustment",
     sourceID: "0696c3fe-3140-40c8-8cc6-daa4fa67472b",
     status: "canceled",
     memo: "<value>",

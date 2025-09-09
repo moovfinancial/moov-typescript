@@ -13,6 +13,7 @@ export const WalletTransactionSourceType = {
   Sweep: "sweep",
   Adjustment: "adjustment",
   Fee: "fee",
+  Residual: "residual",
 } as const;
 export type WalletTransactionSourceType = ClosedEnum<
   typeof WalletTransactionSourceType

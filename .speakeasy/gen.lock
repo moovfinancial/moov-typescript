@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 3a6d10543306fd1e4273cd818e371997
+  docChecksum: 3ccc3cdd02f56987d2561611c54e6308
   docVersion: latest
-  speakeasyVersion: 1.609.0
-  generationVersion: 2.692.0
-  releaseVersion: 0.14.32
-  configChecksum: d97a3655664b658f5de41f303d99ba18
+  speakeasyVersion: 1.613.0
+  generationVersion: 2.696.0
+  releaseVersion: 0.14.33
+  configChecksum: b72265115986aade180391cd73c5a54b
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -4189,4 +4189,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.paymentLinks.create()`: \n  *  `request.createPaymentLink.payout.recipient` **Changed**\n  *  `response.payout.recipient` **Changed**\n  *  `error.payout.recipient.phone` **Added**\n* `moov.paymentLinks.list()`:  `response.[].payout.recipient` **Changed**\n* `moov.paymentLinks.get()`:  `response.payout.recipient` **Changed**\n* `moov.paymentLinks.update()`: \n  *  `request.updatePaymentLink.payout.recipient.phone` **Added**\n  *  `response.payout.recipient` **Changed**\n  *  `error.payout.recipient.phone` **Added**\n"
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `moov.walletTransactions.list()`:  `request` **Changed**

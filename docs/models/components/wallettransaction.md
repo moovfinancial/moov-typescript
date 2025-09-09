@@ -10,7 +10,7 @@ import { WalletTransaction } from "@moovio/sdk/models/components";
 let value: WalletTransaction = {
   walletID: "82e99292-48ed-4392-afe7-d0b00bacec50",
   transactionID: "8b2a5791-5ab4-4cc2-8393-d986c0508646",
-  transactionType: "account-funding",
+  transactionType: "ach-reversal",
   sourceType: "adjustment",
   sourceID: "ebce848b-ba25-4b10-9678-031064dbb59b",
   status: "failed",

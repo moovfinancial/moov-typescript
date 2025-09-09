@@ -22,7 +22,7 @@ const moov = new Moov({
 });
 
 async function main() {
-  const result = await moov.create({
+  const result = await moov.accounts.create({
     accountType: "business",
     profile: {
       business: {
