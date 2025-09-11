@@ -16,12 +16,13 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
+    hoistGlobalSecurity: true
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.14.33
+  version: 0.14.34
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -55,6 +56,7 @@ typescript:
   outputModelSuffix: output
   packageName: '@moovio/sdk'
   responseFormat: flat
+  sseFlatResponse: false
   templateVersion: v2
   usageSDKInitImports: []
   useIndexModules: true
