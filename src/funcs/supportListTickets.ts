@@ -100,6 +100,7 @@ async function $do(
   const query = encodeFormQuery({
     "count": payload.count,
     "cursor": payload.cursor,
+    "foreignID": payload.foreignID,
     "status": payload.status,
   }, { explode: false });
 

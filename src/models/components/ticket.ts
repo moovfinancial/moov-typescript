@@ -28,6 +28,7 @@ export type Ticket = {
   updatedOn: Date;
   latestMessageOn?: Date | undefined;
   closedOn?: Date | undefined;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -49,6 +50,7 @@ export const Ticket$inboundSchema: z.ZodType<Ticket, z.ZodTypeDef, unknown> = z
     ).optional(),
     closedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
       .optional(),
+    foreignID: z.string().optional(),
   });
 
 /** @internal */
@@ -62,6 +64,7 @@ export type Ticket$Outbound = {
   updatedOn: string;
   latestMessageOn?: string | undefined;
   closedOn?: string | undefined;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -79,6 +82,7 @@ export const Ticket$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()),
   latestMessageOn: z.date().transform(v => v.toISOString()).optional(),
   closedOn: z.date().transform(v => v.toISOString()).optional(),
+  foreignID: z.string().optional(),
 });
 
 /**

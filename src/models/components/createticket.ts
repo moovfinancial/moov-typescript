@@ -19,7 +19,9 @@ import {
 export type CreateTicket = {
   title: string;
   body: string;
+  author?: string | undefined;
   contact: TicketContact;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -30,14 +32,18 @@ export const CreateTicket$inboundSchema: z.ZodType<
 > = z.object({
   title: z.string(),
   body: z.string(),
+  author: z.string().optional(),
   contact: TicketContact$inboundSchema,
+  foreignID: z.string().optional(),
 });
 
 /** @internal */
 export type CreateTicket$Outbound = {
   title: string;
   body: string;
+  author?: string | undefined;
   contact: TicketContact$Outbound;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -48,7 +54,9 @@ export const CreateTicket$outboundSchema: z.ZodType<
 > = z.object({
   title: z.string(),
   body: z.string(),
+  author: z.string().optional(),
   contact: TicketContact$outboundSchema,
+  foreignID: z.string().optional(),
 });
 
 /**

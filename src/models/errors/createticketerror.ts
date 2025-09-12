@@ -9,12 +9,16 @@ import { MoovError } from "./mooverror.js";
 export type CreateTicketErrorData = {
   title?: string | undefined;
   body?: string | undefined;
+  author?: string | undefined;
   contact?: components.CreateTicketContactError | undefined;
+  foreignID?: string | undefined;
 };
 
 export class CreateTicketError extends MoovError {
   title?: string | undefined;
+  author?: string | undefined;
   contact?: components.CreateTicketContactError | undefined;
+  foreignID?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: CreateTicketErrorData;
@@ -29,7 +33,9 @@ export class CreateTicketError extends MoovError {
     super(message, httpMeta);
     this.data$ = err;
     if (err.title != null) this.title = err.title;
+    if (err.author != null) this.author = err.author;
     if (err.contact != null) this.contact = err.contact;
+    if (err.foreignID != null) this.foreignID = err.foreignID;
 
     this.name = "CreateTicketError";
   }
@@ -43,7 +49,9 @@ export const CreateTicketError$inboundSchema: z.ZodType<
 > = z.object({
   title: z.string().optional(),
   body: z.string().optional(),
+  author: z.string().optional(),
   contact: components.CreateTicketContactError$inboundSchema.optional(),
+  foreignID: z.string().optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -60,7 +68,9 @@ export const CreateTicketError$inboundSchema: z.ZodType<
 export type CreateTicketError$Outbound = {
   title?: string | undefined;
   body?: string | undefined;
+  author?: string | undefined;
   contact?: components.CreateTicketContactError$Outbound | undefined;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -73,7 +83,9 @@ export const CreateTicketError$outboundSchema: z.ZodType<
   .pipe(z.object({
     title: z.string().optional(),
     body: z.string().optional(),
+    author: z.string().optional(),
     contact: components.CreateTicketContactError$outboundSchema.optional(),
+    foreignID: z.string().optional(),
   }));
 
 /**

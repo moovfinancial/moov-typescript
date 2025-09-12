@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type WebhookDataTicketMessageAdded = {
   accountID: string;
   ticketID: string;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -20,12 +21,14 @@ export const WebhookDataTicketMessageAdded$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   ticketID: z.string(),
+  foreignID: z.string().optional(),
 });
 
 /** @internal */
 export type WebhookDataTicketMessageAdded$Outbound = {
   accountID: string;
   ticketID: string;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -36,6 +39,7 @@ export const WebhookDataTicketMessageAdded$outboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   ticketID: z.string(),
+  foreignID: z.string().optional(),
 });
 
 /**

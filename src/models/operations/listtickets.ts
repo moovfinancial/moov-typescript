@@ -30,6 +30,7 @@ export type ListTicketsRequest = {
   cursor?: string | undefined;
   count?: number | undefined;
   status?: components.TicketStatus | undefined;
+  foreignID?: string | undefined;
   accountID: string;
 };
 
@@ -117,6 +118,7 @@ export const ListTicketsRequest$inboundSchema: z.ZodType<
   cursor: z.string().optional(),
   count: z.number().int().optional(),
   status: components.TicketStatus$inboundSchema.optional(),
+  foreignID: z.string().optional(),
   accountID: z.string(),
 });
 
@@ -125,6 +127,7 @@ export type ListTicketsRequest$Outbound = {
   cursor?: string | undefined;
   count?: number | undefined;
   status?: string | undefined;
+  foreignID?: string | undefined;
   accountID: string;
 };
 
@@ -137,6 +140,7 @@ export const ListTicketsRequest$outboundSchema: z.ZodType<
   cursor: z.string().optional(),
   count: z.number().int().optional(),
   status: components.TicketStatus$outboundSchema.optional(),
+  foreignID: z.string().optional(),
   accountID: z.string(),
 });
 

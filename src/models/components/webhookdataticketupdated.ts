@@ -15,6 +15,7 @@ import {
 export type WebhookDataTicketUpdated = {
   accountID: string;
   ticketID: string;
+  foreignID?: string | undefined;
   status: TicketStatus;
 };
 
@@ -26,6 +27,7 @@ export const WebhookDataTicketUpdated$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   ticketID: z.string(),
+  foreignID: z.string().optional(),
   status: TicketStatus$inboundSchema,
 });
 
@@ -33,6 +35,7 @@ export const WebhookDataTicketUpdated$inboundSchema: z.ZodType<
 export type WebhookDataTicketUpdated$Outbound = {
   accountID: string;
   ticketID: string;
+  foreignID?: string | undefined;
   status: string;
 };
 
@@ -44,6 +47,7 @@ export const WebhookDataTicketUpdated$outboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   ticketID: z.string(),
+  foreignID: z.string().optional(),
   status: TicketStatus$outboundSchema,
 });
 
