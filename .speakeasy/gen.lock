@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 9c8f4048149f57afc572f0a9eea04fe5
+  docChecksum: b38c95dc3134c77696632858228f53b6
   docVersion: latest
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 0.14.35
-  configChecksum: 7b94f668140a28ec06252ef41866288a
+  releaseVersion: 0.14.36
+  configChecksum: b1a410b6898e831e449e5f2ac0dd7c60
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -4189,4 +4189,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.support.createTicket()`: \n  *  `request.createTicket` **Changed**\n  *  `response.foreignid` **Added**\n  *  `error` **Changed**\n* `moov.support.listTickets()`: \n  *  `request.foreignId` **Added**\n  *  `response.items.[].foreignId` **Added**\n* `moov.support.getTicket()`:  `response.foreignid` **Added**\n* `moov.support.updateTicket()`:  `response.foreignid` **Added**\n"
