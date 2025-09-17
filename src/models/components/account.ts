@@ -64,7 +64,7 @@ export type Account = {
   accountType: AccountType;
   displayName: string;
   /**
-   * Describes a Moov account profile. A profile will have a business or an individual, depending on the account's type.
+   * Describes a Moov account profile. A profile will have a business, individual, or guest depending on the account's type.
    */
   profile: Profile;
   /**

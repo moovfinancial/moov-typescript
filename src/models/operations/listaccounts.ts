@@ -38,6 +38,8 @@ export type ListAccountsRequest = {
    *   <li>Individual Profile `firstName`, `middleName`, and `lastName`</li>
    *   <li>Business Profile `legalBusinessName`</li>
    * </ul>
+   *
+   * Filtering by Guest Profile `name` is not currently supported.
    */
   name?: string | undefined;
   /**
