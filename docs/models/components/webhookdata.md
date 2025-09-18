@@ -346,3 +346,11 @@ const value: components.WebhookDataWalletTransactionUpdated = {
 };
 ```
 
+### `components.WebhookBillingStatementCreated`
+
+```typescript
+const value: components.WebhookBillingStatementCreated = {
+  statementID: "c2b75ea6-d299-427e-a676-8bdbbfe9ce29",
+};
+```
+

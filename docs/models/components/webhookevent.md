@@ -9,7 +9,7 @@ import { WebhookEvent } from "@moovio/sdk/models/components";
 
 let value: WebhookEvent = {
   eventID: "f08758f0-91c3-4b27-a7f8-0512cef9f555",
-  type: "walletTransaction.updated",
+  type: "billingStatement.created",
   data: {
     accountID: "95328e1d-0160-4129-a329-5aedc05109bd",
     representativeID: "cce0d79c-bead-4938-9576-b578321dde44",

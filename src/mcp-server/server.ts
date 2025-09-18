@@ -122,6 +122,8 @@ import { tool$schedulingGet } from "./tools/schedulingGet.js";
 import { tool$schedulingGetOccurrance } from "./tools/schedulingGetOccurrance.js";
 import { tool$schedulingList } from "./tools/schedulingList.js";
 import { tool$schedulingUpdate } from "./tools/schedulingUpdate.js";
+import { tool$statementsGet } from "./tools/statementsGet.js";
+import { tool$statementsList } from "./tools/statementsList.js";
 import { tool$supportCreateTicket } from "./tools/supportCreateTicket.js";
 import { tool$supportGetTicket } from "./tools/supportGetTicket.js";
 import { tool$supportListTicketMessages } from "./tools/supportListTicketMessages.js";
@@ -170,7 +172,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.14.39",
+    version: "0.15.0",
   });
 
   const client = new MoovCore({
@@ -279,6 +281,8 @@ export function createMCPServer(deps: {
   tool(tool$schedulingGet);
   tool(tool$schedulingCancel);
   tool(tool$schedulingGetOccurrance);
+  tool(tool$statementsList);
+  tool(tool$statementsGet);
   tool(tool$sweepsCreateConfig);
   tool(tool$sweepsListConfigs);
   tool(tool$sweepsGetConfig);

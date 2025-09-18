@@ -30,6 +30,7 @@ import { Ping } from "./ping.js";
 import { Receipts } from "./receipts.js";
 import { Representatives } from "./representatives.js";
 import { Scheduling } from "./scheduling.js";
+import { Statements } from "./statements.js";
 import { Support } from "./support.js";
 import { Sweeps } from "./sweeps.js";
 import { TerminalApplications } from "./terminalapplications.js";
@@ -107,6 +108,11 @@ export class Moov extends ClientSDK {
   private _scheduling?: Scheduling;
   get scheduling(): Scheduling {
     return (this._scheduling ??= new Scheduling(this._options));
+  }
+
+  private _statements?: Statements;
+  get statements(): Statements {
+    return (this._statements ??= new Statements(this._options));
   }
 
   private _sweeps?: Sweeps;

@@ -44,6 +44,7 @@ export const WebhookEventType = {
   WalletCreated: "wallet.created",
   WalletUpdated: "wallet.updated",
   WalletTransactionUpdated: "walletTransaction.updated",
+  BillingStatementCreated: "billingStatement.created",
 } as const;
 /**
  * The type of event that occurred.

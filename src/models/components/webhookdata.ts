@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  WebhookBillingStatementCreated,
+  WebhookBillingStatementCreated$inboundSchema,
+  WebhookBillingStatementCreated$Outbound,
+  WebhookBillingStatementCreated$outboundSchema,
+} from "./webhookbillingstatementcreated.js";
+import {
   WebhookDataAccountCreated,
   WebhookDataAccountCreated$inboundSchema,
   WebhookDataAccountCreated$Outbound,
@@ -248,7 +254,8 @@ export type WebhookData =
   | WebhookDataAccountCreated
   | WebhookDataAccountUpdated
   | WebhookDataAccountDisconnected
-  | WebhookDataNetworkIDUpdated;
+  | WebhookDataNetworkIDUpdated
+  | WebhookBillingStatementCreated;
 
 /** @internal */
 export const WebhookData$inboundSchema: z.ZodType<
@@ -290,6 +297,7 @@ export const WebhookData$inboundSchema: z.ZodType<
   WebhookDataAccountUpdated$inboundSchema,
   WebhookDataAccountDisconnected$inboundSchema,
   WebhookDataNetworkIDUpdated$inboundSchema,
+  WebhookBillingStatementCreated$inboundSchema,
 ]);
 
 /** @internal */
@@ -327,7 +335,8 @@ export type WebhookData$Outbound =
   | WebhookDataAccountCreated$Outbound
   | WebhookDataAccountUpdated$Outbound
   | WebhookDataAccountDisconnected$Outbound
-  | WebhookDataNetworkIDUpdated$Outbound;
+  | WebhookDataNetworkIDUpdated$Outbound
+  | WebhookBillingStatementCreated$Outbound;
 
 /** @internal */
 export const WebhookData$outboundSchema: z.ZodType<
@@ -369,6 +378,7 @@ export const WebhookData$outboundSchema: z.ZodType<
   WebhookDataAccountUpdated$outboundSchema,
   WebhookDataAccountDisconnected$outboundSchema,
   WebhookDataNetworkIDUpdated$outboundSchema,
+  WebhookBillingStatementCreated$outboundSchema,
 ]);
 
 /**
