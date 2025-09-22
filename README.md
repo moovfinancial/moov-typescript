@@ -2345,7 +2345,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Moov({ httpClient });
+const sdk = new Moov({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 

@@ -23,6 +23,7 @@ export * from "./httpclienterrors.js";
 export * from "./linkapplepayerror.js";
 export * from "./linkcarderror.js";
 export * from "./microdepositvalidationerror.js";
+export * from "./mooverror.js";
 export * from "./onboardinginviteerror.js";
 export * from "./patchaccounterror.js";
 export * from "./patchsweepconfigerror.js";
