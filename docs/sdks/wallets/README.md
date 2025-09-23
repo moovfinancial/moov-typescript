@@ -126,11 +126,11 @@ run();
 
 ### Errors
 
-| Error Type               | Status Code              | Content Type             |
-| ------------------------ | ------------------------ | ------------------------ |
-| errors.GenericError      | 400, 409                 | application/json         |
-| errors.CreateWalletError | 422                      | application/json         |
-| errors.APIError          | 4XX, 5XX                 | \*/\*                    |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.GenericError                | 400, 409                           | application/json                   |
+| errors.CreateWalletValidationError | 422                                | application/json                   |
+| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
 
 ## list
 
@@ -218,9 +218,10 @@ run();
 
 ### Errors
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.APIError | 4XX, 5XX        | \*/\*           |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ListWalletsValidationError | 422                               | application/json                  |
+| errors.APIError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get
 
@@ -408,8 +409,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.GenericError     | 400, 409                | application/json        |
-| errors.PatchWalletError | 422                     | application/json        |
-| errors.APIError         | 4XX, 5XX                | \*/\*                   |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.GenericError               | 400, 409                          | application/json                  |
+| errors.PatchWalletValidationError | 422                               | application/json                  |
+| errors.APIError                   | 4XX, 5XX                          | \*/\*                             |

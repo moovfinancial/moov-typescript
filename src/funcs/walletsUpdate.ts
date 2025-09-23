@@ -41,7 +41,7 @@ export function walletsUpdate(
   Result<
     operations.UpdateWalletResponse,
     | errors.GenericError
-    | errors.PatchWalletError
+    | errors.PatchWalletValidationError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -68,7 +68,7 @@ async function $do(
     Result<
       operations.UpdateWalletResponse,
       | errors.GenericError
-      | errors.PatchWalletError
+      | errors.PatchWalletValidationError
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -180,7 +180,7 @@ async function $do(
   const [result] = await M.match<
     operations.UpdateWalletResponse,
     | errors.GenericError
-    | errors.PatchWalletError
+    | errors.PatchWalletValidationError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -195,7 +195,9 @@ async function $do(
       key: "Result",
     }),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
-    M.jsonErr(422, errors.PatchWalletError$inboundSchema, { hdrs: true }),
+    M.jsonErr(422, errors.PatchWalletValidationError$inboundSchema, {
+      hdrs: true,
+    }),
     M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),

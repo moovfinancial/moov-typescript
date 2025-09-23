@@ -7,7 +7,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type TransferValidationErrorData = {
-  transfer?: string | undefined;
   amount?: string | undefined;
   source?: string | undefined;
   sourcePaymentMethodID?: string | undefined;
@@ -16,14 +15,11 @@ export type TransferValidationErrorData = {
   facilitatorFeeTotalDecimal?: string | undefined;
   facilitatorFeeMarkupDecimal?: string | undefined;
   metadata?: string | undefined;
-  /**
-   * Used for generic errors when invalid request data isn't attributed to a single request field.
-   */
-  error?: string | undefined;
+  salesTaxAmount?: string | undefined;
+  foreignID?: string | undefined;
 };
 
 export class TransferValidationError extends MoovError {
-  transfer?: string | undefined;
   amount?: string | undefined;
   source?: string | undefined;
   sourcePaymentMethodID?: string | undefined;
@@ -32,10 +28,8 @@ export class TransferValidationError extends MoovError {
   facilitatorFeeTotalDecimal?: string | undefined;
   facilitatorFeeMarkupDecimal?: string | undefined;
   metadata?: string | undefined;
-  /**
-   * Used for generic errors when invalid request data isn't attributed to a single request field.
-   */
-  error?: string | undefined;
+  salesTaxAmount?: string | undefined;
+  foreignID?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferValidationErrorData;
@@ -49,7 +43,6 @@ export class TransferValidationError extends MoovError {
       : `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
-    if (err.transfer != null) this.transfer = err.transfer;
     if (err.amount != null) this.amount = err.amount;
     if (err.source != null) this.source = err.source;
     if (err.sourcePaymentMethodID != null) {
@@ -66,7 +59,8 @@ export class TransferValidationError extends MoovError {
       this.facilitatorFeeMarkupDecimal = err.facilitatorFeeMarkupDecimal;
     }
     if (err.metadata != null) this.metadata = err.metadata;
-    if (err.error != null) this.error = err.error;
+    if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
+    if (err.foreignID != null) this.foreignID = err.foreignID;
 
     this.name = "TransferValidationError";
   }
@@ -78,7 +72,6 @@ export const TransferValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Transfer: z.string().optional(),
   amount: z.string().optional(),
   source: z.string().optional(),
   sourcePaymentMethodID: z.string().optional(),
@@ -87,14 +80,14 @@ export const TransferValidationError$inboundSchema: z.ZodType<
   "FacilitatorFee.TotalDecimal": z.string().optional(),
   "FacilitatorFee.MarkupDecimal": z.string().optional(),
   metadata: z.string().optional(),
-  error: z.string().optional(),
+  salesTaxAmount: z.string().optional(),
+  foreignID: z.string().optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
-      "Transfer": "transfer",
       "FacilitatorFee.TotalDecimal": "facilitatorFeeTotalDecimal",
       "FacilitatorFee.MarkupDecimal": "facilitatorFeeMarkupDecimal",
     });
@@ -108,7 +101,6 @@ export const TransferValidationError$inboundSchema: z.ZodType<
 
 /** @internal */
 export type TransferValidationError$Outbound = {
-  Transfer?: string | undefined;
   amount?: string | undefined;
   source?: string | undefined;
   sourcePaymentMethodID?: string | undefined;
@@ -117,7 +109,8 @@ export type TransferValidationError$Outbound = {
   "FacilitatorFee.TotalDecimal"?: string | undefined;
   "FacilitatorFee.MarkupDecimal"?: string | undefined;
   metadata?: string | undefined;
-  error?: string | undefined;
+  salesTaxAmount?: string | undefined;
+  foreignID?: string | undefined;
 };
 
 /** @internal */
@@ -129,7 +122,6 @@ export const TransferValidationError$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(
     z.object({
-      transfer: z.string().optional(),
       amount: z.string().optional(),
       source: z.string().optional(),
       sourcePaymentMethodID: z.string().optional(),
@@ -138,10 +130,10 @@ export const TransferValidationError$outboundSchema: z.ZodType<
       facilitatorFeeTotalDecimal: z.string().optional(),
       facilitatorFeeMarkupDecimal: z.string().optional(),
       metadata: z.string().optional(),
-      error: z.string().optional(),
+      salesTaxAmount: z.string().optional(),
+      foreignID: z.string().optional(),
     }).transform((v) => {
       return remap$(v, {
-        transfer: "Transfer",
         facilitatorFeeTotalDecimal: "FacilitatorFee.TotalDecimal",
         facilitatorFeeMarkupDecimal: "FacilitatorFee.MarkupDecimal",
       });

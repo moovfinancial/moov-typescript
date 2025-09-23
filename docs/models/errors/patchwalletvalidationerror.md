@@ -1,9 +1,9 @@
-# CreateWalletError
+# PatchWalletValidationError
 
 ## Example Usage
 
 ```typescript
-import { CreateWalletError } from "@moovio/sdk/models/errors";
+import { PatchWalletValidationError } from "@moovio/sdk/models/errors";
 
 // No examples available for this model
 ```
@@ -13,5 +13,6 @@ import { CreateWalletError } from "@moovio/sdk/models/errors";
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| `status`           | *string*           | :heavy_minus_sign: | N/A                |
 | `description`      | *string*           | :heavy_minus_sign: | N/A                |
 | `metadata`         | *string*           | :heavy_minus_sign: | N/A                |

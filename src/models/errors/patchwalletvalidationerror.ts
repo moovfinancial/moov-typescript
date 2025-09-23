@@ -5,21 +5,23 @@
 import * as z from "zod";
 import { MoovError } from "./mooverror.js";
 
-export type CreateWalletErrorData = {
+export type PatchWalletValidationErrorData = {
   name?: string | undefined;
+  status?: string | undefined;
   description?: string | undefined;
   metadata?: string | undefined;
 };
 
-export class CreateWalletError extends MoovError {
+export class PatchWalletValidationError extends MoovError {
+  status?: string | undefined;
   description?: string | undefined;
   metadata?: string | undefined;
 
   /** The original data that was passed to this error instance. */
-  data$: CreateWalletErrorData;
+  data$: PatchWalletValidationErrorData;
 
   constructor(
-    err: CreateWalletErrorData,
+    err: PatchWalletValidationErrorData,
     httpMeta: { response: Response; request: Request; body: string },
   ) {
     const message = "message" in err && typeof err.message === "string"
@@ -27,20 +29,22 @@ export class CreateWalletError extends MoovError {
       : `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
+    if (err.status != null) this.status = err.status;
     if (err.description != null) this.description = err.description;
     if (err.metadata != null) this.metadata = err.metadata;
 
-    this.name = "CreateWalletError";
+    this.name = "PatchWalletValidationError";
   }
 }
 
 /** @internal */
-export const CreateWalletError$inboundSchema: z.ZodType<
-  CreateWalletError,
+export const PatchWalletValidationError$inboundSchema: z.ZodType<
+  PatchWalletValidationError,
   z.ZodTypeDef,
   unknown
 > = z.object({
   name: z.string().optional(),
+  status: z.string().optional(),
   description: z.string().optional(),
   metadata: z.string().optional(),
   request$: z.instanceof(Request),
@@ -48,7 +52,7 @@ export const CreateWalletError$inboundSchema: z.ZodType<
   body$: z.string(),
 })
   .transform((v) => {
-    return new CreateWalletError(v, {
+    return new PatchWalletValidationError(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -56,21 +60,23 @@ export const CreateWalletError$inboundSchema: z.ZodType<
   });
 
 /** @internal */
-export type CreateWalletError$Outbound = {
+export type PatchWalletValidationError$Outbound = {
   name?: string | undefined;
+  status?: string | undefined;
   description?: string | undefined;
   metadata?: string | undefined;
 };
 
 /** @internal */
-export const CreateWalletError$outboundSchema: z.ZodType<
-  CreateWalletError$Outbound,
+export const PatchWalletValidationError$outboundSchema: z.ZodType<
+  PatchWalletValidationError$Outbound,
   z.ZodTypeDef,
-  CreateWalletError
-> = z.instanceof(CreateWalletError)
+  PatchWalletValidationError
+> = z.instanceof(PatchWalletValidationError)
   .transform(v => v.data$)
   .pipe(z.object({
     name: z.string().optional(),
+    status: z.string().optional(),
     description: z.string().optional(),
     metadata: z.string().optional(),
   }));
@@ -79,11 +85,11 @@ export const CreateWalletError$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateWalletError$ {
-  /** @deprecated use `CreateWalletError$inboundSchema` instead. */
-  export const inboundSchema = CreateWalletError$inboundSchema;
-  /** @deprecated use `CreateWalletError$outboundSchema` instead. */
-  export const outboundSchema = CreateWalletError$outboundSchema;
-  /** @deprecated use `CreateWalletError$Outbound` instead. */
-  export type Outbound = CreateWalletError$Outbound;
+export namespace PatchWalletValidationError$ {
+  /** @deprecated use `PatchWalletValidationError$inboundSchema` instead. */
+  export const inboundSchema = PatchWalletValidationError$inboundSchema;
+  /** @deprecated use `PatchWalletValidationError$outboundSchema` instead. */
+  export const outboundSchema = PatchWalletValidationError$outboundSchema;
+  /** @deprecated use `PatchWalletValidationError$Outbound` instead. */
+  export type Outbound = PatchWalletValidationError$Outbound;
 }

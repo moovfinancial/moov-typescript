@@ -17,6 +17,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { MoovError } from "../models/errors/mooverror.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
@@ -44,6 +45,7 @@ export function transfersList(
 ): APIPromise<
   Result<
     operations.ListTransfersResponse,
+    | errors.ListTransfersValidationError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -69,6 +71,7 @@ async function $do(
   [
     Result<
       operations.ListTransfersResponse,
+      | errors.ListTransfersValidationError
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -161,7 +164,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "403", "429", "4XX", "500", "504", "5XX"],
+    errorCodes: ["401", "403", "422", "429", "4XX", "500", "504", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -176,6 +179,7 @@ async function $do(
 
   const [result] = await M.match<
     operations.ListTransfersResponse,
+    | errors.ListTransfersValidationError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -188,6 +192,9 @@ async function $do(
     M.json(200, operations.ListTransfersResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
+    }),
+    M.jsonErr(422, errors.ListTransfersValidationError$inboundSchema, {
+      hdrs: true,
     }),
     M.fail([401, 403, 429]),
     M.fail([500, 504]),
