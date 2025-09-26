@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 85feb4e8f3a7f1bfc249837668d45129
+  docChecksum: 7dc79326b3050538f6425d6826bc535d
   docVersion: latest
-  speakeasyVersion: 1.628.4
-  generationVersion: 2.716.5
-  releaseVersion: 0.15.3
-  configChecksum: 158e43861a33d634481f9eb1fbc4dd69
+  speakeasyVersion: 1.629.0
+  generationVersion: 2.716.9
+  releaseVersion: 0.15.4
+  configChecksum: 63a82139a91e0bc52816771ba7644807
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -250,6 +250,8 @@ generatedFiles:
   - docs/models/components/evidencetype.md
   - docs/models/components/evidenceuploadresponse.md
   - docs/models/components/facilitatorfee.md
+  - docs/models/components/fednowinstitution.md
+  - docs/models/components/fednowservices.md
   - docs/models/components/feecategory.md
   - docs/models/components/feemodel.md
   - docs/models/components/feeplan.md
@@ -1611,6 +1613,8 @@ generatedFiles:
   - src/models/components/evidencetype.ts
   - src/models/components/evidenceuploadresponse.ts
   - src/models/components/facilitatorfee.ts
+  - src/models/components/fednowinstitution.ts
+  - src/models/components/fednowservices.ts
   - src/models/components/feecategory.ts
   - src/models/components/feemodel.ts
   - src/models/components/feeplan.ts
@@ -4094,7 +4098,7 @@ examples:
           x-moov-version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"ach": [{"name": "First Citizens", "routingNumber": "123456789", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "contact": {"phone": {"number": "8185551212", "countryCode": "1"}}}], "rtp": [], "wire": [{"name": "First Citizens", "routingNumber": "123456789", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "services": {"fundsTransferStatus": true, "fundsSettlementOnlyStatus": false, "bookEntrySecuritiesTransferStatus": false}}]}
+          application/json: {"ach": [{"name": "First Citizens", "routingNumber": "123456789", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "contact": {"phone": {"number": "8185551212", "countryCode": "1"}}}], "rtp": [], "wire": [{"name": "First Citizens", "routingNumber": "123456789", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "services": {"fundsTransferStatus": true, "fundsSettlementOnlyStatus": false, "bookEntrySecuritiesTransferStatus": false}}], "fednow": []}
   createTransferOptionsForAccount:
     speakeasy-default-create-transfer-options-for-account:
       parameters:
@@ -4276,3 +4280,6 @@ examples:
           application/pdf: "x-file: example.file"
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `moov.institutions.searchInstitutions()`:  `response.fednow` **Added**

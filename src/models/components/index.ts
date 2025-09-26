@@ -187,6 +187,8 @@ export * from "./evidencetextresponse.js";
 export * from "./evidencetype.js";
 export * from "./evidenceuploadresponse.js";
 export * from "./facilitatorfee.js";
+export * from "./fednowinstitution.js";
+export * from "./fednowservices.js";
 export * from "./feecategory.js";
 export * from "./feemodel.js";
 export * from "./feeplan.js";

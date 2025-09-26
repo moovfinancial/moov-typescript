@@ -13,6 +13,12 @@ import {
   ACHInstitution$outboundSchema,
 } from "./achinstitution.js";
 import {
+  FedNowInstitution,
+  FedNowInstitution$inboundSchema,
+  FedNowInstitution$Outbound,
+  FedNowInstitution$outboundSchema,
+} from "./fednowinstitution.js";
+import {
   RTPInstitution,
   RTPInstitution$inboundSchema,
   RTPInstitution$Outbound,
@@ -29,6 +35,7 @@ export type InstitutionsSearchResponse = {
   ach: Array<ACHInstitution> | null;
   rtp: Array<RTPInstitution> | null;
   wire: Array<WireInstitution> | null;
+  fednow: Array<FedNowInstitution> | null;
 };
 
 /** @internal */
@@ -40,6 +47,7 @@ export const InstitutionsSearchResponse$inboundSchema: z.ZodType<
   ach: z.nullable(z.array(ACHInstitution$inboundSchema)),
   rtp: z.nullable(z.array(RTPInstitution$inboundSchema)),
   wire: z.nullable(z.array(WireInstitution$inboundSchema)),
+  fednow: z.nullable(z.array(FedNowInstitution$inboundSchema)),
 });
 
 /** @internal */
@@ -47,6 +55,7 @@ export type InstitutionsSearchResponse$Outbound = {
   ach: Array<ACHInstitution$Outbound> | null;
   rtp: Array<RTPInstitution$Outbound> | null;
   wire: Array<WireInstitution$Outbound> | null;
+  fednow: Array<FedNowInstitution$Outbound> | null;
 };
 
 /** @internal */
@@ -58,6 +67,7 @@ export const InstitutionsSearchResponse$outboundSchema: z.ZodType<
   ach: z.nullable(z.array(ACHInstitution$outboundSchema)),
   rtp: z.nullable(z.array(RTPInstitution$outboundSchema)),
   wire: z.nullable(z.array(WireInstitution$outboundSchema)),
+  fednow: z.nullable(z.array(FedNowInstitution$outboundSchema)),
 });
 
 /**

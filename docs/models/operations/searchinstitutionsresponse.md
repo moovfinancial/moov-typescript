@@ -6,17 +6,22 @@
 import { SearchInstitutionsResponse } from "@moovio/sdk/models/operations";
 
 let value: SearchInstitutionsResponse = {
-  headers: {
-    "key": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-  },
+  headers: {},
   result: {
     ach: [],
     rtp: [],
     wire: null,
+    fednow: [
+      {
+        name: "First Citizens",
+        routingNumber: "123456789",
+        services: {
+          receivePayments: true,
+          sendPayments: true,
+          requestForPayment: true,
+        },
+      },
+    ],
   },
 };
 ```
