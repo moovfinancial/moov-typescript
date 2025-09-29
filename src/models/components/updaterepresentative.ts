@@ -20,7 +20,7 @@ export type Phone = {
 
 export type Two = {};
 
-export type Email = Two | string;
+export type Email = string | Two;
 
 export type UpdateRepresentativeAddress = {
   addressLine1?: string | undefined;
@@ -77,7 +77,7 @@ export type Responsibilities = {
 export type UpdateRepresentative = {
   name?: IndividualNameUpdate | undefined;
   phone?: Phone | null | undefined;
-  email?: Two | string | null | undefined;
+  email?: string | Two | null | undefined;
   address?: UpdateRepresentativeAddress | null | undefined;
   birthDate?: UpdateRepresentativeBirthDate | null | undefined;
   governmentID?: UpdateRepresentativeGovernmentID | null | undefined;
@@ -174,17 +174,17 @@ export function twoFromJSON(
 
 /** @internal */
 export const Email$inboundSchema: z.ZodType<Email, z.ZodTypeDef, unknown> = z
-  .union([z.lazy(() => Two$inboundSchema), z.string()]);
+  .union([z.string(), z.lazy(() => Two$inboundSchema)]);
 
 /** @internal */
-export type Email$Outbound = Two$Outbound | string;
+export type Email$Outbound = string | Two$Outbound;
 
 /** @internal */
 export const Email$outboundSchema: z.ZodType<
   Email$Outbound,
   z.ZodTypeDef,
   Email
-> = z.union([z.lazy(() => Two$outboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => Two$outboundSchema)]);
 
 /**
  * @internal
@@ -590,7 +590,7 @@ export const UpdateRepresentative$inboundSchema: z.ZodType<
 > = z.object({
   name: IndividualNameUpdate$inboundSchema.optional(),
   phone: z.nullable(z.lazy(() => Phone$inboundSchema)).optional(),
-  email: z.nullable(z.union([z.lazy(() => Two$inboundSchema), z.string()]))
+  email: z.nullable(z.union([z.string(), z.lazy(() => Two$inboundSchema)]))
     .optional(),
   address: z.nullable(z.lazy(() => UpdateRepresentativeAddress$inboundSchema))
     .optional(),
@@ -608,7 +608,7 @@ export const UpdateRepresentative$inboundSchema: z.ZodType<
 export type UpdateRepresentative$Outbound = {
   name?: IndividualNameUpdate$Outbound | undefined;
   phone?: Phone$Outbound | null | undefined;
-  email?: Two$Outbound | string | null | undefined;
+  email?: string | Two$Outbound | null | undefined;
   address?: UpdateRepresentativeAddress$Outbound | null | undefined;
   birthDate?: UpdateRepresentativeBirthDate$Outbound | null | undefined;
   governmentID?: UpdateRepresentativeGovernmentID$Outbound | null | undefined;
@@ -623,7 +623,7 @@ export const UpdateRepresentative$outboundSchema: z.ZodType<
 > = z.object({
   name: IndividualNameUpdate$outboundSchema.optional(),
   phone: z.nullable(z.lazy(() => Phone$outboundSchema)).optional(),
-  email: z.nullable(z.union([z.lazy(() => Two$outboundSchema), z.string()]))
+  email: z.nullable(z.union([z.string(), z.lazy(() => Two$outboundSchema)]))
     .optional(),
   address: z.nullable(z.lazy(() => UpdateRepresentativeAddress$outboundSchema))
     .optional(),

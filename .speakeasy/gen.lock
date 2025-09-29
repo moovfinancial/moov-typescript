@@ -3,10 +3,10 @@ id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
   docChecksum: 7dc79326b3050538f6425d6826bc535d
   docVersion: latest
-  speakeasyVersion: 1.629.0
-  generationVersion: 2.716.9
-  releaseVersion: 0.15.4
-  configChecksum: 63a82139a91e0bc52816771ba7644807
+  speakeasyVersion: 1.631.4
+  generationVersion: 2.716.16
+  releaseVersion: 0.15.5
+  configChecksum: 9c78b97b8ec043ec3b10654f1bdea953
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -4280,6 +4280,3 @@ examples:
           application/pdf: "x-file: example.file"
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `moov.institutions.searchInstitutions()`:  `response.fednow` **Added**

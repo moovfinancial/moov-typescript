@@ -16,21 +16,21 @@ export type Status = ClosedEnum<typeof Status>;
 
 export type PushPaymentMethodId2 = {};
 
-export type PushPaymentMethodID = PushPaymentMethodId2 | string;
+export type PushPaymentMethodID = string | PushPaymentMethodId2;
 
 export type PullPaymentMethodId2 = {};
 
-export type PullPaymentMethodID = PullPaymentMethodId2 | string;
+export type PullPaymentMethodID = string | PullPaymentMethodId2;
 
 export type StatementDescriptor2 = {};
 
-export type StatementDescriptor = StatementDescriptor2 | string;
+export type StatementDescriptor = string | StatementDescriptor2;
 
 export type PatchSweepConfig = {
   status?: Status | null | undefined;
-  pushPaymentMethodID?: PushPaymentMethodId2 | string | null | undefined;
-  pullPaymentMethodID?: PullPaymentMethodId2 | string | null | undefined;
-  statementDescriptor?: StatementDescriptor2 | string | null | undefined;
+  pushPaymentMethodID?: string | PushPaymentMethodId2 | null | undefined;
+  pullPaymentMethodID?: string | PullPaymentMethodId2 | null | undefined;
+  statementDescriptor?: string | StatementDescriptor2 | null | undefined;
   minimumBalance?: string | null | undefined;
 };
 
@@ -106,19 +106,19 @@ export const PushPaymentMethodID$inboundSchema: z.ZodType<
   PushPaymentMethodID,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => PushPaymentMethodId2$inboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => PushPaymentMethodId2$inboundSchema)]);
 
 /** @internal */
 export type PushPaymentMethodID$Outbound =
-  | PushPaymentMethodId2$Outbound
-  | string;
+  | string
+  | PushPaymentMethodId2$Outbound;
 
 /** @internal */
 export const PushPaymentMethodID$outboundSchema: z.ZodType<
   PushPaymentMethodID$Outbound,
   z.ZodTypeDef,
   PushPaymentMethodID
-> = z.union([z.lazy(() => PushPaymentMethodId2$outboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => PushPaymentMethodId2$outboundSchema)]);
 
 /**
  * @internal
@@ -204,19 +204,19 @@ export const PullPaymentMethodID$inboundSchema: z.ZodType<
   PullPaymentMethodID,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => PullPaymentMethodId2$inboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => PullPaymentMethodId2$inboundSchema)]);
 
 /** @internal */
 export type PullPaymentMethodID$Outbound =
-  | PullPaymentMethodId2$Outbound
-  | string;
+  | string
+  | PullPaymentMethodId2$Outbound;
 
 /** @internal */
 export const PullPaymentMethodID$outboundSchema: z.ZodType<
   PullPaymentMethodID$Outbound,
   z.ZodTypeDef,
   PullPaymentMethodID
-> = z.union([z.lazy(() => PullPaymentMethodId2$outboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => PullPaymentMethodId2$outboundSchema)]);
 
 /**
  * @internal
@@ -302,19 +302,19 @@ export const StatementDescriptor$inboundSchema: z.ZodType<
   StatementDescriptor,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => StatementDescriptor2$inboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => StatementDescriptor2$inboundSchema)]);
 
 /** @internal */
 export type StatementDescriptor$Outbound =
-  | StatementDescriptor2$Outbound
-  | string;
+  | string
+  | StatementDescriptor2$Outbound;
 
 /** @internal */
 export const StatementDescriptor$outboundSchema: z.ZodType<
   StatementDescriptor$Outbound,
   z.ZodTypeDef,
   StatementDescriptor
-> = z.union([z.lazy(() => StatementDescriptor2$outboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => StatementDescriptor2$outboundSchema)]);
 
 /**
  * @internal
@@ -355,13 +355,13 @@ export const PatchSweepConfig$inboundSchema: z.ZodType<
 > = z.object({
   status: z.nullable(Status$inboundSchema).optional(),
   pushPaymentMethodID: z.nullable(
-    z.union([z.lazy(() => PushPaymentMethodId2$inboundSchema), z.string()]),
+    z.union([z.string(), z.lazy(() => PushPaymentMethodId2$inboundSchema)]),
   ).optional(),
   pullPaymentMethodID: z.nullable(
-    z.union([z.lazy(() => PullPaymentMethodId2$inboundSchema), z.string()]),
+    z.union([z.string(), z.lazy(() => PullPaymentMethodId2$inboundSchema)]),
   ).optional(),
   statementDescriptor: z.nullable(
-    z.union([z.lazy(() => StatementDescriptor2$inboundSchema), z.string()]),
+    z.union([z.string(), z.lazy(() => StatementDescriptor2$inboundSchema)]),
   ).optional(),
   minimumBalance: z.nullable(z.string()).optional(),
 });
@@ -370,18 +370,18 @@ export const PatchSweepConfig$inboundSchema: z.ZodType<
 export type PatchSweepConfig$Outbound = {
   status?: string | null | undefined;
   pushPaymentMethodID?:
-    | PushPaymentMethodId2$Outbound
     | string
+    | PushPaymentMethodId2$Outbound
     | null
     | undefined;
   pullPaymentMethodID?:
-    | PullPaymentMethodId2$Outbound
     | string
+    | PullPaymentMethodId2$Outbound
     | null
     | undefined;
   statementDescriptor?:
-    | StatementDescriptor2$Outbound
     | string
+    | StatementDescriptor2$Outbound
     | null
     | undefined;
   minimumBalance?: string | null | undefined;
@@ -395,13 +395,13 @@ export const PatchSweepConfig$outboundSchema: z.ZodType<
 > = z.object({
   status: z.nullable(Status$outboundSchema).optional(),
   pushPaymentMethodID: z.nullable(
-    z.union([z.lazy(() => PushPaymentMethodId2$outboundSchema), z.string()]),
+    z.union([z.string(), z.lazy(() => PushPaymentMethodId2$outboundSchema)]),
   ).optional(),
   pullPaymentMethodID: z.nullable(
-    z.union([z.lazy(() => PullPaymentMethodId2$outboundSchema), z.string()]),
+    z.union([z.string(), z.lazy(() => PullPaymentMethodId2$outboundSchema)]),
   ).optional(),
   statementDescriptor: z.nullable(
-    z.union([z.lazy(() => StatementDescriptor2$outboundSchema), z.string()]),
+    z.union([z.string(), z.lazy(() => StatementDescriptor2$outboundSchema)]),
   ).optional(),
   minimumBalance: z.nullable(z.string()).optional(),
 });
