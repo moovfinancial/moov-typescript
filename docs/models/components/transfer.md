@@ -66,6 +66,8 @@ let value: Transfer = {
     },
     wallet: {
       walletID: "744b2e78-8cc8-4a6a-af42-611e3b844503",
+      partnerAccountID: "65b57f28-49e9-4afb-9bf6-7e4fb6444917",
+      walletType: "general",
     },
   },
   status: "pending",

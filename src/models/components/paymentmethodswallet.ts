@@ -6,9 +6,23 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  WalletType,
+  WalletType$inboundSchema,
+  WalletType$outboundSchema,
+} from "./wallettype.js";
 
 export type PaymentMethodsWallet = {
   walletID: string;
+  partnerAccountID: string;
+  /**
+   * Type of a wallet.
+   *
+   * @remarks
+   *   - `default`: The primary system-generated wallet automatically created by Moov when an account is granted the wallet capability. This generates a moov-wallet payment method that is available for use immediately. Only one default wallet exists per account.
+   *   - `general`: A user-defined wallet created via the API to segment funds for specific use cases. Users can create multiple general wallets per account to support internal business models or financial reporting needs.
+   */
+  walletType: WalletType;
 };
 
 /** @internal */
@@ -18,11 +32,15 @@ export const PaymentMethodsWallet$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   walletID: z.string(),
+  partnerAccountID: z.string(),
+  walletType: WalletType$inboundSchema,
 });
 
 /** @internal */
 export type PaymentMethodsWallet$Outbound = {
   walletID: string;
+  partnerAccountID: string;
+  walletType: string;
 };
 
 /** @internal */
@@ -32,6 +50,8 @@ export const PaymentMethodsWallet$outboundSchema: z.ZodType<
   PaymentMethodsWallet
 > = z.object({
   walletID: z.string(),
+  partnerAccountID: z.string(),
+  walletType: WalletType$outboundSchema,
 });
 
 /**

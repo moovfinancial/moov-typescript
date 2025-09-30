@@ -13,6 +13,8 @@ const value: components.MoovWalletPaymentMethod = {
   paymentMethodType: "moov-wallet",
   wallet: {
     walletID: "5b8fabc3-cfb4-4c3b-a98d-557a1ffd26cc",
+    partnerAccountID: "e4f5a400-b4d3-491b-a89a-484206ac0d0a",
+    walletType: "default",
   },
 };
 ```
