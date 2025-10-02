@@ -20,6 +20,7 @@ import { EnrichedAddress } from "./enrichedaddress.js";
 import { EnrichedProfile } from "./enrichedprofile.js";
 import { FeePlans } from "./feeplans.js";
 import { Files } from "./files.js";
+import { Images } from "./images.js";
 import { Industries } from "./industries.js";
 import { Institutions } from "./institutions.js";
 import { IssuingTransactions } from "./issuingtransactions.js";
@@ -88,6 +89,11 @@ export class Moov extends ClientSDK {
   private _files?: Files;
   get files(): Files {
     return (this._files ??= new Files(this._options));
+  }
+
+  private _images?: Images;
+  get images(): Images {
+    return (this._images ??= new Images(this._options));
   }
 
   private _paymentLinks?: PaymentLinks;

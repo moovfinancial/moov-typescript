@@ -8,8 +8,8 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Security = {
-  username: string;
-  password: string;
+  username?: string | undefined;
+  password?: string | undefined;
 };
 
 /** @internal */
@@ -18,14 +18,14 @@ export const Security$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: z.string(),
-  password: z.string(),
+  username: z.string().optional(),
+  password: z.string().optional(),
 });
 
 /** @internal */
 export type Security$Outbound = {
-  username: string;
-  password: string;
+  username?: string | undefined;
+  password?: string | undefined;
 };
 
 /** @internal */
@@ -34,8 +34,8 @@ export const Security$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Security
 > = z.object({
-  username: z.string(),
-  password: z.string(),
+  username: z.string().optional(),
+  password: z.string().optional(),
 });
 
 /**

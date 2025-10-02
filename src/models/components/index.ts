@@ -218,6 +218,7 @@ export * from "./governmentid.js";
 export * from "./governmentiderror.js";
 export * from "./granttype.js";
 export * from "./guestprofile.js";
+export * from "./imagemetadata.js";
 export * from "./incurredfee.js";
 export * from "./individualname.js";
 export * from "./individualnameerror.js";
