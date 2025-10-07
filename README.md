@@ -795,7 +795,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
-
 ### [onboarding](docs/sdks/onboarding/README.md)
 
 * [createInvite](docs/sdks/onboarding/README.md#createinvite) - Create an invitation containing a unique link that allows the recipient to onboard their organization with Moov.
