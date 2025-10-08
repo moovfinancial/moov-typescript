@@ -7,7 +7,7 @@ import { WebhookDataCapabilityUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataCapabilityUpdated = {
   accountID: "1477b656-5ec7-4d15-bdd8-4e69e651119b",
-  capabilityID: "wallet.balance",
+  capabilityID: "wallet",
   status: "in-review",
 };
 ```

@@ -13,6 +13,12 @@ import {
   SendFundsAchError$outboundSchema,
 } from "./sendfundsacherror.js";
 import {
+  SendFundsInstantBankError,
+  SendFundsInstantBankError$inboundSchema,
+  SendFundsInstantBankError$Outbound,
+  SendFundsInstantBankError$outboundSchema,
+} from "./sendfundsinstantbankerror.js";
+import {
   SendFundsPushToCardError,
   SendFundsPushToCardError$inboundSchema,
   SendFundsPushToCardError$Outbound,
@@ -29,6 +35,7 @@ export type SendFundsError = {
   ach?: SendFundsAchError | undefined;
   pushToCard?: SendFundsPushToCardError | undefined;
   rtp?: SendFundsRtpError | undefined;
+  instantBank?: SendFundsInstantBankError | undefined;
 };
 
 /** @internal */
@@ -40,6 +47,7 @@ export const SendFundsError$inboundSchema: z.ZodType<
   ach: SendFundsAchError$inboundSchema.optional(),
   pushToCard: SendFundsPushToCardError$inboundSchema.optional(),
   rtp: SendFundsRtpError$inboundSchema.optional(),
+  instantBank: SendFundsInstantBankError$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -47,6 +55,7 @@ export type SendFundsError$Outbound = {
   ach?: SendFundsAchError$Outbound | undefined;
   pushToCard?: SendFundsPushToCardError$Outbound | undefined;
   rtp?: SendFundsRtpError$Outbound | undefined;
+  instantBank?: SendFundsInstantBankError$Outbound | undefined;
 };
 
 /** @internal */
@@ -58,6 +67,7 @@ export const SendFundsError$outboundSchema: z.ZodType<
   ach: SendFundsAchError$outboundSchema.optional(),
   pushToCard: SendFundsPushToCardError$outboundSchema.optional(),
   rtp: SendFundsRtpError$outboundSchema.optional(),
+  instantBank: SendFundsInstantBankError$outboundSchema.optional(),
 });
 
 /**

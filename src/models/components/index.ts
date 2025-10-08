@@ -359,6 +359,8 @@ export * from "./sendfunds.js";
 export * from "./sendfundsach.js";
 export * from "./sendfundsacherror.js";
 export * from "./sendfundserror.js";
+export * from "./sendfundsinstantbank.js";
+export * from "./sendfundsinstantbankerror.js";
 export * from "./sendfundspushtocard.js";
 export * from "./sendfundspushtocarderror.js";
 export * from "./sendfundsrtp.js";

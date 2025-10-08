@@ -13,6 +13,12 @@ import {
   SendFundsAch$outboundSchema,
 } from "./sendfundsach.js";
 import {
+  SendFundsInstantBank,
+  SendFundsInstantBank$inboundSchema,
+  SendFundsInstantBank$Outbound,
+  SendFundsInstantBank$outboundSchema,
+} from "./sendfundsinstantbank.js";
+import {
   SendFundsPushToCard,
   SendFundsPushToCard$inboundSchema,
   SendFundsPushToCard$Outbound,
@@ -29,6 +35,7 @@ export type SendFunds = {
   ach?: SendFundsAch | undefined;
   pushToCard?: SendFundsPushToCard | undefined;
   rtp?: SendFundsRtp | undefined;
+  instantBank?: SendFundsInstantBank | undefined;
 };
 
 /** @internal */
@@ -40,6 +47,7 @@ export const SendFunds$inboundSchema: z.ZodType<
   ach: SendFundsAch$inboundSchema.optional(),
   pushToCard: SendFundsPushToCard$inboundSchema.optional(),
   rtp: SendFundsRtp$inboundSchema.optional(),
+  instantBank: SendFundsInstantBank$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -47,6 +55,7 @@ export type SendFunds$Outbound = {
   ach?: SendFundsAch$Outbound | undefined;
   pushToCard?: SendFundsPushToCard$Outbound | undefined;
   rtp?: SendFundsRtp$Outbound | undefined;
+  instantBank?: SendFundsInstantBank$Outbound | undefined;
 };
 
 /** @internal */
@@ -58,6 +67,7 @@ export const SendFunds$outboundSchema: z.ZodType<
   ach: SendFundsAch$outboundSchema.optional(),
   pushToCard: SendFundsPushToCard$outboundSchema.optional(),
   rtp: SendFundsRtp$outboundSchema.optional(),
+  instantBank: SendFundsInstantBank$outboundSchema.optional(),
 });
 
 /**

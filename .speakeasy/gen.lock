@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: e8d4c50c0b49dd161728d4f2e40c9892
+  docChecksum: e12b3c5ec4648286eacc58b1fd45f8d7
   docVersion: latest
-  speakeasyVersion: 1.635.2
-  generationVersion: 2.722.5
-  releaseVersion: 0.16.1
-  configChecksum: cf9018e65840bd302fc31c2c2e04a33f
+  speakeasyVersion: 1.636.0
+  generationVersion: 2.723.2
+  releaseVersion: 0.16.2
+  configChecksum: 2e34204d398066eb07a4bf08d55a8ccf
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -442,6 +442,8 @@ generatedFiles:
   - docs/models/components/sendfundsach.md
   - docs/models/components/sendfundsacherror.md
   - docs/models/components/sendfundserror.md
+  - docs/models/components/sendfundsinstantbank.md
+  - docs/models/components/sendfundsinstantbankerror.md
   - docs/models/components/sendfundspushtocard.md
   - docs/models/components/sendfundspushtocarderror.md
   - docs/models/components/sendfundsrtp.md
@@ -1807,6 +1809,8 @@ generatedFiles:
   - src/models/components/sendfundsach.ts
   - src/models/components/sendfundsacherror.ts
   - src/models/components/sendfundserror.ts
+  - src/models/components/sendfundsinstantbank.ts
+  - src/models/components/sendfundsinstantbankerror.ts
   - src/models/components/sendfundspushtocard.ts
   - src/models/components/sendfundspushtocarderror.ts
   - src/models/components/sendfundsrtp.ts
@@ -4351,3 +4355,4 @@ examples:
           image/jpeg: "x-file: example.file"
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.accounts.list()`: \n  *  `request.capability` **Changed**\n* `moov.capabilities.get()`: \n  *  `request.capabilityId` **Changed**\n* `moov.capabilities.disable()`: \n  *  `request.capabilityId` **Changed**\n* `moov.underwriting.get()`:  `response.sendfunds.instantBank` **Added**\n* `moov.underwriting.save()`: \n  *  `request.upsertUnderwriting.sendFunds.instantBank` **Added**\n  *  `response.sendfunds.instantBank` **Added**\n  *  `error.sendfunds.instantBank` **Added**\n* `moov.underwriting.upsert()`:  `response.sendfunds.instantBank` **Added**\n"
