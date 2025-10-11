@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: e12b3c5ec4648286eacc58b1fd45f8d7
+  docChecksum: e45218d1b27d88ac724dc53d0b68c87e
   docVersion: latest
-  speakeasyVersion: 1.636.0
-  generationVersion: 2.723.2
-  releaseVersion: 0.16.2
-  configChecksum: 2e34204d398066eb07a4bf08d55a8ccf
+  speakeasyVersion: 1.636.3
+  generationVersion: 2.723.11
+  releaseVersion: 0.16.3
+  configChecksum: db76763034c80b01da6366196eceb8da
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -4355,4 +4355,3 @@ examples:
           image/jpeg: "x-file: example.file"
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.accounts.list()`: \n  *  `request.capability` **Changed**\n* `moov.capabilities.get()`: \n  *  `request.capabilityId` **Changed**\n* `moov.capabilities.disable()`: \n  *  `request.capabilityId` **Changed**\n* `moov.underwriting.get()`:  `response.sendfunds.instantBank` **Added**\n* `moov.underwriting.save()`: \n  *  `request.upsertUnderwriting.sendFunds.instantBank` **Added**\n  *  `response.sendfunds.instantBank` **Added**\n  *  `error.sendfunds.instantBank` **Added**\n* `moov.underwriting.upsert()`:  `response.sendfunds.instantBank` **Added**\n"
