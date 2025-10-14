@@ -19,8 +19,8 @@ let value: ListPartnerPricingResponse = {
   result: [
     {
       planID: "fb4fef87-1b25-44f0-bafc-c4c8d1c7f0a3",
-      name: "Fixed Rate Merchant Plan",
-      revenueShare: 10,
+      name: "Fixed Rate Partner Plan",
+      revenueShare: "2.25",
       cardAcquiringModel: "flat-rate",
       billableFees: [
         {
@@ -32,8 +32,31 @@ let value: ListPartnerPricingResponse = {
           feeProperties: {
             fixedAmount: {
               currency: "USD",
-              valueDecimal: "0.1",
+              valueDecimal: "0.0195",
             },
+            variableRate: "0.15",
+            minPerTransaction: {
+              currency: "USD",
+              valueDecimal: "0.0195",
+            },
+            maxPerTransaction: {
+              currency: "USD",
+              valueDecimal: "0.035",
+            },
+            volumeRanges: [
+              {
+                fromValue: 1,
+                toValue: 2,
+                flatAmount: {
+                  currency: "USD",
+                  valueDecimal: "1.23",
+                },
+                perUnitAmount: {
+                  currency: "USD",
+                  valueDecimal: "1.23",
+                },
+              },
+            ],
           },
           feeConditions: {
             "transactionType": [

@@ -33,7 +33,7 @@ import {
 export type PartnerPricing = {
   planID: string;
   /**
-   * The name of the fee plan.
+   * The name of the partner pricing plan.
    */
   name: string;
   /**
@@ -41,9 +41,13 @@ export type PartnerPricing = {
    */
   description?: string | undefined;
   /**
-   * The integer percentage value of the revenue split for partner.
+   *   The decimal-formatted numerical string of the revenue split for partner.
+   *
+   * @remarks
+   *
+   *   For example, 2.25% is '2.25'.
    */
-  revenueShare: number;
+  revenueShare: string;
   /**
    * Specifies the card processing pricing model
    */
@@ -69,7 +73,7 @@ export const PartnerPricing$inboundSchema: z.ZodType<
   planID: z.string(),
   name: z.string(),
   description: z.string().optional(),
-  revenueShare: z.number().int(),
+  revenueShare: z.string(),
   cardAcquiringModel: CardAcquiringModel$inboundSchema,
   billableFees: z.array(BillableFee$inboundSchema),
   minimumCommitment: MinimumCommitment$inboundSchema,
@@ -82,7 +86,7 @@ export type PartnerPricing$Outbound = {
   planID: string;
   name: string;
   description?: string | undefined;
-  revenueShare: number;
+  revenueShare: string;
   cardAcquiringModel: string;
   billableFees: Array<BillableFee$Outbound>;
   minimumCommitment: MinimumCommitment$Outbound;
@@ -99,7 +103,7 @@ export const PartnerPricing$outboundSchema: z.ZodType<
   planID: z.string(),
   name: z.string(),
   description: z.string().optional(),
-  revenueShare: z.number().int(),
+  revenueShare: z.string(),
   cardAcquiringModel: CardAcquiringModel$outboundSchema,
   billableFees: z.array(BillableFee$outboundSchema),
   minimumCommitment: MinimumCommitment$outboundSchema,

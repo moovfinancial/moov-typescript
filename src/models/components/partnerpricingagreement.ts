@@ -63,9 +63,13 @@ export type PartnerPricingAgreement = {
    */
   monthlyPlatformFee: MonthlyPlatformFee;
   /**
-   * The integer percentage value of the revenue split for partner.
+   *   The decimal-formatted numerical string of the revenue split for partner.
+   *
+   * @remarks
+   *
+   *   For example, 2.25% is '2.25'.
    */
-  revenueShare: number;
+  revenueShare: string;
 };
 
 /** @internal */
@@ -85,7 +89,7 @@ export const PartnerPricingAgreement$inboundSchema: z.ZodType<
   billableFees: z.array(BillableFee$inboundSchema),
   minimumCommitment: MinimumCommitment$inboundSchema,
   monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
-  revenueShare: z.number().int(),
+  revenueShare: z.string(),
 });
 
 /** @internal */
@@ -101,7 +105,7 @@ export type PartnerPricingAgreement$Outbound = {
   billableFees: Array<BillableFee$Outbound>;
   minimumCommitment: MinimumCommitment$Outbound;
   monthlyPlatformFee: MonthlyPlatformFee$Outbound;
-  revenueShare: number;
+  revenueShare: string;
 };
 
 /** @internal */
@@ -121,7 +125,7 @@ export const PartnerPricingAgreement$outboundSchema: z.ZodType<
   billableFees: z.array(BillableFee$outboundSchema),
   minimumCommitment: MinimumCommitment$outboundSchema,
   monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
-  revenueShare: z.number().int(),
+  revenueShare: z.string(),
 });
 
 /**

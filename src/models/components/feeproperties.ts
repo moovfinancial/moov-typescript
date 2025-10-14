@@ -12,6 +12,12 @@ import {
   AmountDecimal$Outbound,
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
+import {
+  VolumeRange,
+  VolumeRange$inboundSchema,
+  VolumeRange$Outbound,
+  VolumeRange$outboundSchema,
+} from "./volumerange.js";
 
 /**
  * Defines the specific parameters used for fee calculation.
@@ -37,6 +43,10 @@ export type FeeProperties = {
    * Specifies the maximum allowable spending for a single transaction, working as a transaction ceiling.
    */
   maxPerTransaction?: AmountDecimal | undefined;
+  /**
+   * Defines the volume ranges for tiered pricing models.
+   */
+  volumeRanges: Array<VolumeRange>;
 };
 
 /** @internal */
@@ -49,6 +59,7 @@ export const FeeProperties$inboundSchema: z.ZodType<
   variableRate: z.string().optional(),
   minPerTransaction: AmountDecimal$inboundSchema.optional(),
   maxPerTransaction: AmountDecimal$inboundSchema.optional(),
+  volumeRanges: z.array(VolumeRange$inboundSchema),
 });
 
 /** @internal */
@@ -57,6 +68,7 @@ export type FeeProperties$Outbound = {
   variableRate?: string | undefined;
   minPerTransaction?: AmountDecimal$Outbound | undefined;
   maxPerTransaction?: AmountDecimal$Outbound | undefined;
+  volumeRanges: Array<VolumeRange$Outbound>;
 };
 
 /** @internal */
@@ -69,6 +81,7 @@ export const FeeProperties$outboundSchema: z.ZodType<
   variableRate: z.string().optional(),
   minPerTransaction: AmountDecimal$outboundSchema.optional(),
   maxPerTransaction: AmountDecimal$outboundSchema.optional(),
+  volumeRanges: z.array(VolumeRange$outboundSchema),
 });
 
 /**

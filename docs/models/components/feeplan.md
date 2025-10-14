@@ -19,8 +19,31 @@ let value: FeePlan = {
       feeProperties: {
         fixedAmount: {
           currency: "USD",
-          valueDecimal: "0.1",
+          valueDecimal: "0.0195",
         },
+        variableRate: "0.15",
+        minPerTransaction: {
+          currency: "USD",
+          valueDecimal: "0.0195",
+        },
+        maxPerTransaction: {
+          currency: "USD",
+          valueDecimal: "0.035",
+        },
+        volumeRanges: [
+          {
+            fromValue: 1,
+            toValue: 2,
+            flatAmount: {
+              currency: "USD",
+              valueDecimal: "1.23",
+            },
+            perUnitAmount: {
+              currency: "USD",
+              valueDecimal: "1.23",
+            },
+          },
+        ],
       },
       feeConditions: {
         "transactionType": [

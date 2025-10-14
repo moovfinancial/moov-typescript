@@ -426,6 +426,7 @@ export * from "./verificationstatus.js";
 export * from "./verificationstatusdetail.js";
 export * from "./volumebycustomertype.js";
 export * from "./volumebycustomertypeerror.js";
+export * from "./volumerange.js";
 export * from "./volumesharebycustomertype.js";
 export * from "./volumesharebycustomertypeerror.js";
 export * from "./wallet.js";
