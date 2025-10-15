@@ -28,6 +28,7 @@ import { Onboarding } from "./onboarding.js";
 import { PaymentLinks } from "./paymentlinks.js";
 import { PaymentMethods } from "./paymentmethods.js";
 import { Ping } from "./ping.js";
+import { Products } from "./products.js";
 import { Receipts } from "./receipts.js";
 import { Representatives } from "./representatives.js";
 import { Scheduling } from "./scheduling.js";
@@ -104,6 +105,11 @@ export class Moov extends ClientSDK {
   private _paymentMethods?: PaymentMethods;
   get paymentMethods(): PaymentMethods {
     return (this._paymentMethods ??= new PaymentMethods(this._options));
+  }
+
+  private _products?: Products;
+  get products(): Products {
+    return (this._products ??= new Products(this._options));
   }
 
   private _representatives?: Representatives;

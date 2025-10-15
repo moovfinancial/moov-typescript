@@ -113,6 +113,11 @@ import { tool$paymentLinksUpdate } from "./tools/paymentLinksUpdate.js";
 import { tool$paymentMethodsGet } from "./tools/paymentMethodsGet.js";
 import { tool$paymentMethodsList } from "./tools/paymentMethodsList.js";
 import { tool$pingPing } from "./tools/pingPing.js";
+import { tool$productsCreate } from "./tools/productsCreate.js";
+import { tool$productsDisable } from "./tools/productsDisable.js";
+import { tool$productsGet } from "./tools/productsGet.js";
+import { tool$productsList } from "./tools/productsList.js";
+import { tool$productsUpdate } from "./tools/productsUpdate.js";
 import { tool$receiptsCreate } from "./tools/receiptsCreate.js";
 import { tool$receiptsList } from "./tools/receiptsList.js";
 import { tool$representativesCreate } from "./tools/representativesCreate.js";
@@ -176,7 +181,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.16.4",
+    version: "0.16.5",
   });
 
   const client = new MoovCore({
@@ -278,6 +283,11 @@ export function createMCPServer(deps: {
   tool(tool$paymentLinksGetQRCode);
   tool(tool$paymentMethodsList);
   tool(tool$paymentMethodsGet);
+  tool(tool$productsList);
+  tool(tool$productsCreate);
+  tool(tool$productsGet);
+  tool(tool$productsUpdate);
+  tool(tool$productsDisable);
   tool(tool$representativesCreate);
   tool(tool$representativesList);
   tool(tool$representativesDelete);

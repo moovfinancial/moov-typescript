@@ -32,6 +32,7 @@ export * from "./patchaccounterror.js";
 export * from "./patchsweepconfigerror.js";
 export * from "./patchtransfervalidationerror.js";
 export * from "./patchwalletvalidationerror.js";
+export * from "./productrequestvalidationerror.js";
 export * from "./refundvalidationerror.js";
 export * from "./representativevalidationerror.js";
 export * from "./requestcarderror.js";

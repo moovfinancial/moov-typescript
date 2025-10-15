@@ -1,0 +1,19 @@
+# ProductRequestValidationError
+
+## Example Usage
+
+```typescript
+import { ProductRequestValidationError } from "@moovio/sdk/models/errors";
+
+// No examples available for this model
+```
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `title`                                                                                                                      | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `description`                                                                                                                | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `basePrice`                                                                                                                  | [components.AmountDecimalValidationError](../../models/components/amountdecimalvalidationerror.md)                           | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `images`                                                                                                                     | Record<string, [components.AssignProductImageValidationError](../../models/components/assignproductimagevalidationerror.md)> | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `optionGroups`                                                                                                               | Record<string, [components.ProductOptionGroupValidationError](../../models/components/productoptiongroupvalidationerror.md)> | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
