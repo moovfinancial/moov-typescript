@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
+import {
   AssignProductImage,
   AssignProductImage$inboundSchema,
   AssignProductImage$Outbound,
@@ -31,7 +37,7 @@ export type CreateProductOption = {
   /**
    * The adjustment applied to a product's base price by this option. Can be negative, positive, or zero.
    */
-  priceModifier?: string | undefined;
+  priceModifier?: AmountDecimal | undefined;
   /**
    * Assign previously uploaded images to a product or option.
    */
@@ -46,7 +52,7 @@ export const CreateProductOption$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.string().optional(),
-  priceModifier: z.string().optional(),
+  priceModifier: AmountDecimal$inboundSchema.optional(),
   images: z.array(AssignProductImage$inboundSchema).optional(),
 });
 
@@ -54,7 +60,7 @@ export const CreateProductOption$inboundSchema: z.ZodType<
 export type CreateProductOption$Outbound = {
   name: string;
   description?: string | undefined;
-  priceModifier?: string | undefined;
+  priceModifier?: AmountDecimal$Outbound | undefined;
   images?: Array<AssignProductImage$Outbound> | undefined;
 };
 
@@ -66,7 +72,7 @@ export const CreateProductOption$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.string().optional(),
-  priceModifier: z.string().optional(),
+  priceModifier: AmountDecimal$outboundSchema.optional(),
   images: z.array(AssignProductImage$outboundSchema).optional(),
 });
 

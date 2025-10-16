@@ -14,7 +14,10 @@ let value: ProductOptionGroup = {
   options: [
     {
       name: "<value>",
-      priceModifier: "-14.89",
+      priceModifier: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       images: [
         {
           imageID: "f7be8907-e233-4bcb-8b74-4d8d7ceefe37",

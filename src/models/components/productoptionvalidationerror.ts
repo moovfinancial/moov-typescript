@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AmountDecimalValidationError,
+  AmountDecimalValidationError$inboundSchema,
+  AmountDecimalValidationError$Outbound,
+  AmountDecimalValidationError$outboundSchema,
+} from "./amountdecimalvalidationerror.js";
+import {
   AssignProductImageValidationError,
   AssignProductImageValidationError$inboundSchema,
   AssignProductImageValidationError$Outbound,
@@ -16,7 +22,7 @@ import {
 export type ProductOptionValidationError = {
   name?: string | undefined;
   description?: string | undefined;
-  priceModifier?: string | undefined;
+  priceModifier?: AmountDecimalValidationError | undefined;
   images?: { [k: string]: AssignProductImageValidationError } | undefined;
 };
 
@@ -28,7 +34,7 @@ export const ProductOptionValidationError$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
-  priceModifier: z.string().optional(),
+  priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
   images: z.record(AssignProductImageValidationError$inboundSchema).optional(),
 });
 
@@ -36,7 +42,7 @@ export const ProductOptionValidationError$inboundSchema: z.ZodType<
 export type ProductOptionValidationError$Outbound = {
   name?: string | undefined;
   description?: string | undefined;
-  priceModifier?: string | undefined;
+  priceModifier?: AmountDecimalValidationError$Outbound | undefined;
   images?:
     | { [k: string]: AssignProductImageValidationError$Outbound }
     | undefined;
@@ -50,7 +56,7 @@ export const ProductOptionValidationError$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
-  priceModifier: z.string().optional(),
+  priceModifier: AmountDecimalValidationError$outboundSchema.optional(),
   images: z.record(AssignProductImageValidationError$outboundSchema).optional(),
 });
 

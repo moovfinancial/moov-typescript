@@ -144,7 +144,10 @@ async function run() {
             {
               name: "Strawberry puree",
               description: "Fresh and fruity.",
-              priceModifier: "0.99",
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "0.99",
+              },
               images: [
                 {
                   imageID: "d359808d-9896-4414-8d17-dac43f35842d",
@@ -153,11 +156,17 @@ async function run() {
             },
             {
               name: "Passionfruit syrup",
-              priceModifier: "0.49",
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "0.49",
+              },
             },
             {
               name: "Cherry syrup",
-              priceModifier: "0.49",
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "0.49",
+              },
             },
           ],
         },
@@ -172,7 +181,10 @@ async function run() {
             },
             {
               name: "Honey",
-              priceModifier: "0.99",
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "0.99",
+              },
             },
             {
               name: "Stevia",
@@ -236,7 +248,10 @@ async function run() {
             {
               name: "Strawberry puree",
               description: "Fresh and fruity.",
-              priceModifier: "0.99",
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "0.99",
+              },
               images: [
                 {
                   imageID: "d359808d-9896-4414-8d17-dac43f35842d",
@@ -245,11 +260,17 @@ async function run() {
             },
             {
               name: "Passionfruit syrup",
-              priceModifier: "0.49",
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "0.49",
+              },
             },
             {
               name: "Cherry syrup",
-              priceModifier: "0.49",
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "0.49",
+              },
             },
           ],
         },
@@ -264,7 +285,10 @@ async function run() {
             },
             {
               name: "Honey",
-              priceModifier: "0.99",
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "0.99",
+              },
             },
             {
               name: "Stevia",

@@ -22,7 +22,10 @@ let value: UpdateProductRequest = {
         options: [
           {
             name: "<value>",
-            priceModifier: "-14.89",
+            priceModifier: {
+              currency: "USD",
+              valueDecimal: "12.987654321",
+            },
           },
         ],
       },

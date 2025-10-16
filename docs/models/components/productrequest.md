@@ -21,7 +21,10 @@ let value: ProductRequest = {
       options: [
         {
           name: "<value>",
-          priceModifier: "-14.89",
+          priceModifier: {
+            currency: "USD",
+            valueDecimal: "12.987654321",
+          },
         },
       ],
     },
