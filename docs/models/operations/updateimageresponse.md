@@ -1,18 +1,12 @@
-# GetImageMetadataResponse
+# UpdateImageResponse
 
 ## Example Usage
 
 ```typescript
-import { GetImageMetadataResponse } from "@moovio/sdk/models/operations";
+import { UpdateImageResponse } from "@moovio/sdk/models/operations";
 
-let value: GetImageMetadataResponse = {
-  headers: {
-    "key": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-  },
+let value: UpdateImageResponse = {
+  headers: {},
   result: {
     imageID: "0db47ebc-da83-4b98-8003-f792a94dbfcb",
     link: "https://api.moov.io/images/qJRAaAwwF5hmfeAFdHjIb",

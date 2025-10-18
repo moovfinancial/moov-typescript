@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: e6cd524e55b1972bf8717ee2de4f9b92
+  docChecksum: 518adb2711be85935478344536fce985
   docVersion: latest
-  speakeasyVersion: 1.636.3
-  generationVersion: 2.723.11
-  releaseVersion: 0.16.6
-  configChecksum: d04f4931299840e17dae35e3a8611731
+  speakeasyVersion: 1.637.0
+  generationVersion: 2.727.4
+  releaseVersion: 0.17.0
+  configChecksum: e61960ecff11cb1c9a4cb9d55d72cc1d
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.26
+    core: 3.22.0
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -290,7 +290,13 @@ generatedFiles:
   - docs/models/components/governmentiderrorssn.md
   - docs/models/components/granttype.md
   - docs/models/components/guestprofile.md
+  - docs/models/components/image.md
   - docs/models/components/imagemetadata.md
+  - docs/models/components/imagemetadatarequest.md
+  - docs/models/components/imagemetadatavalidationerror.md
+  - docs/models/components/imageupdaterequestmultipart.md
+  - docs/models/components/imageupdaterequestmultipartimage.md
+  - docs/models/components/imageuploadrequestmultipart.md
   - docs/models/components/incurredfee.md
   - docs/models/components/individualname.md
   - docs/models/components/individualnameerror.md
@@ -333,6 +339,7 @@ generatedFiles:
   - docs/models/components/manual.md
   - docs/models/components/manualtermsofservice.md
   - docs/models/components/manualtermsofserviceupdate.md
+  - docs/models/components/metadata.md
   - docs/models/components/microdepositstatus.md
   - docs/models/components/minimumcommitment.md
   - docs/models/components/mode.md
@@ -605,6 +612,7 @@ generatedFiles:
   - docs/models/errors/fileuploadvalidationerror.md
   - docs/models/errors/filevalidationerror.md
   - docs/models/errors/genericerror.md
+  - docs/models/errors/imagerequestvalidationerror.md
   - docs/models/errors/linkapplepayerror.md
   - docs/models/errors/linkcarderror.md
   - docs/models/errors/listtransfersvalidationerror.md
@@ -1060,6 +1068,9 @@ generatedFiles:
   - docs/models/operations/updatedisputeevidenceglobals.md
   - docs/models/operations/updatedisputeevidencerequest.md
   - docs/models/operations/updatedisputeevidenceresponse.md
+  - docs/models/operations/updateimageglobals.md
+  - docs/models/operations/updateimagerequest.md
+  - docs/models/operations/updateimageresponse.md
   - docs/models/operations/updateissuedcardglobals.md
   - docs/models/operations/updateissuedcardrequest.md
   - docs/models/operations/updateissuedcardresponse.md
@@ -1096,6 +1107,9 @@ generatedFiles:
   - docs/models/operations/uploadfileglobals.md
   - docs/models/operations/uploadfilerequest.md
   - docs/models/operations/uploadfileresponse.md
+  - docs/models/operations/uploadimageglobals.md
+  - docs/models/operations/uploadimagerequest.md
+  - docs/models/operations/uploadimageresponse.md
   - docs/models/operations/upsertbrandglobals.md
   - docs/models/operations/upsertbrandrequest.md
   - docs/models/operations/upsertbrandresponse.md
@@ -1226,6 +1240,8 @@ generatedFiles:
   - src/funcs/imagesGetMetadata.ts
   - src/funcs/imagesGetPublic.ts
   - src/funcs/imagesList.ts
+  - src/funcs/imagesUpdate.ts
+  - src/funcs/imagesUpload.ts
   - src/funcs/industriesList.ts
   - src/funcs/institutionsSearch.ts
   - src/funcs/institutionsSearchInstitutions.ts
@@ -1414,6 +1430,8 @@ generatedFiles:
   - src/mcp-server/tools/imagesGetMetadata.ts
   - src/mcp-server/tools/imagesGetPublic.ts
   - src/mcp-server/tools/imagesList.ts
+  - src/mcp-server/tools/imagesUpdate.ts
+  - src/mcp-server/tools/imagesUpload.ts
   - src/mcp-server/tools/industriesList.ts
   - src/mcp-server/tools/institutionsSearch.ts
   - src/mcp-server/tools/institutionsSearchInstitutions.ts
@@ -1713,6 +1731,10 @@ generatedFiles:
   - src/models/components/granttype.ts
   - src/models/components/guestprofile.ts
   - src/models/components/imagemetadata.ts
+  - src/models/components/imagemetadatarequest.ts
+  - src/models/components/imagemetadatavalidationerror.ts
+  - src/models/components/imageupdaterequestmultipart.ts
+  - src/models/components/imageuploadrequestmultipart.ts
   - src/models/components/incurredfee.ts
   - src/models/components/index.ts
   - src/models/components/individualname.ts
@@ -1999,6 +2021,7 @@ generatedFiles:
   - src/models/errors/filevalidationerror.ts
   - src/models/errors/genericerror.ts
   - src/models/errors/httpclienterrors.ts
+  - src/models/errors/imagerequestvalidationerror.ts
   - src/models/errors/index.ts
   - src/models/errors/linkapplepayerror.ts
   - src/models/errors/linkcarderror.ts
@@ -2174,6 +2197,7 @@ generatedFiles:
   - src/models/operations/updatebrand.ts
   - src/models/operations/updatecard.ts
   - src/models/operations/updatedisputeevidence.ts
+  - src/models/operations/updateimage.ts
   - src/models/operations/updateissuedcard.ts
   - src/models/operations/updatepaymentlink.ts
   - src/models/operations/updateproduct.ts
@@ -2186,6 +2210,7 @@ generatedFiles:
   - src/models/operations/uploaddisputeevidencefile.ts
   - src/models/operations/uploaddisputeevidencetext.ts
   - src/models/operations/uploadfile.ts
+  - src/models/operations/uploadimage.ts
   - src/models/operations/upsertbrand.ts
   - src/models/operations/upsertunderwriting.ts
   - src/sdk/accounts.ts
@@ -4481,6 +4506,42 @@ examples:
       responses:
         "400":
           application/json: {"error": "<value>"}
+  uploadImage:
+    speakeasy-default-upload-image:
+      parameters:
+        path:
+          accountID: "c0971a52-1f1c-4511-876a-f45c4cfd6154"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        multipart/form-data: {"image": "x-file: example.file"}
+      responses:
+        "201":
+          application/json: {"imageID": "533aadc1-0389-4da9-9c87-92bd49469db5", "link": "https://api.moov.io/images/qJRAaAwwF5hmfeAFdHjIb", "createdOn": "2023-03-14T15:49:36.140Z", "updatedOn": "2024-08-18T16:45:51.667Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  updateImage:
+    speakeasy-default-update-image:
+      parameters:
+        path:
+          accountID: "310f4f19-45cf-4429-9aae-8e93827ecb0d"
+          imageID: "8ef109f8-5a61-4355-b2e4-b8ac2f6f6f47"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        multipart/form-data: {}
+      responses:
+        "200":
+          application/json: {"imageID": "37d44505-cb7b-46de-8995-9c6633aaa305", "link": "https://api.moov.io/images/qJRAaAwwF5hmfeAFdHjIb", "createdOn": "2023-07-27T04:09:13.260Z", "updatedOn": "2025-11-20T16:38:12.638Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.products.list()`:  `response.[].optionGroups.[].options.[].priceModifier` **Changed** **Breaking** :warning:\n* `moov.products.create()`: \n  *  `request.productRequest.optionGroups.[].options.[].priceModifier` **Changed** **Breaking** :warning:\n  *  `response.optiongroups.[].options.[].priceModifier` **Changed** **Breaking** :warning:\n  *  `error.optiongroups.{}.options.{}.priceModifier` **Changed** **Breaking** :warning:\n* `moov.products.get()`:  `response.optiongroups.[].options.[].priceModifier` **Changed** **Breaking** :warning:\n* `moov.products.update()`: \n  *  `request.productRequest.optionGroups.[].options.[].priceModifier` **Changed** **Breaking** :warning:\n  *  `response.optiongroups.[].options.[].priceModifier` **Changed** **Breaking** :warning:\n  *  `error.optiongroups.{}.options.{}.priceModifier` **Changed** **Breaking** :warning:\n"
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `moov.images.upload()`: **Added**
+  * `moov.images.update()`: **Added**

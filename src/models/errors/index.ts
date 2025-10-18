@@ -20,6 +20,7 @@ export * from "./fileuploadvalidationerror.js";
 export * from "./filevalidationerror.js";
 export * from "./genericerror.js";
 export * from "./httpclienterrors.js";
+export * from "./imagerequestvalidationerror.js";
 export * from "./linkapplepayerror.js";
 export * from "./linkcarderror.js";
 export * from "./listtransfersvalidationerror.js";

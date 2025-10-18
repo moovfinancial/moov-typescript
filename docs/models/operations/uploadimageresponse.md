@@ -1,16 +1,18 @@
-# GetImageMetadataResponse
+# UploadImageResponse
 
 ## Example Usage
 
 ```typescript
-import { GetImageMetadataResponse } from "@moovio/sdk/models/operations";
+import { UploadImageResponse } from "@moovio/sdk/models/operations";
 
-let value: GetImageMetadataResponse = {
+let value: UploadImageResponse = {
   headers: {
     "key": [
       "<value 1>",
       "<value 2>",
-      "<value 3>",
+    ],
+    "key1": [
+      "<value 1>",
     ],
   },
   result: {

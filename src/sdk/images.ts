@@ -9,6 +9,8 @@ import {
   imagesGetPublic,
 } from "../funcs/imagesGetPublic.js";
 import { imagesList } from "../funcs/imagesList.js";
+import { imagesUpdate } from "../funcs/imagesUpdate.js";
+import { imagesUpload } from "../funcs/imagesUpload.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -31,6 +33,21 @@ export class Images extends ClientSDK {
   }
 
   /**
+   *   Upload a new PNG, JPEG, or WebP image with optional metadata.
+   *   Duplicate images, and requests larger than 16MB will be rejected.
+   */
+  async upload(
+    request: operations.UploadImageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UploadImageResponse> {
+    return unwrapAsync(imagesUpload(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Retrieve metadata for a specific image by its ID.
    */
   async getMetadata(
@@ -38,6 +55,24 @@ export class Images extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetImageMetadataResponse> {
     return unwrapAsync(imagesGetMetadata(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update an existing image and/or its metadata.
+   *
+   * Duplicate images, and requests larger than 16MB will be rejected. Omit any
+   * form parts you do not wish to update. Existing metadata can be cleared by
+   * sending `null` for the `metadata` form part.
+   */
+  async update(
+    request: operations.UpdateImageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateImageResponse> {
+    return unwrapAsync(imagesUpdate(
       this,
       request,
       options,
