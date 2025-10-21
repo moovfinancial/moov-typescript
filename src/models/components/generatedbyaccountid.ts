@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,16 +17,12 @@ export const GeneratedByAccountID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  AccountID: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "AccountID": "accountID",
-  });
+  accountID: z.string().optional(),
 });
 
 /** @internal */
 export type GeneratedByAccountID$Outbound = {
-  AccountID?: string | undefined;
+  accountID?: string | undefined;
 };
 
 /** @internal */
@@ -37,10 +32,6 @@ export const GeneratedByAccountID$outboundSchema: z.ZodType<
   GeneratedByAccountID
 > = z.object({
   accountID: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    accountID: "AccountID",
-  });
 });
 
 /**

@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,16 +17,12 @@ export const GeneratedByDisputeID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  DisputeID: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "DisputeID": "disputeID",
-  });
+  disputeID: z.string().optional(),
 });
 
 /** @internal */
 export type GeneratedByDisputeID$Outbound = {
-  DisputeID?: string | undefined;
+  disputeID?: string | undefined;
 };
 
 /** @internal */
@@ -37,10 +32,6 @@ export const GeneratedByDisputeID$outboundSchema: z.ZodType<
   GeneratedByDisputeID
 > = z.object({
   disputeID: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    disputeID: "DisputeID",
-  });
 });
 
 /**

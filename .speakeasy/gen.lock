@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 518adb2711be85935478344536fce985
+  docChecksum: 1cd81fb54a409cc009e4e584e28384bb
   docVersion: latest
-  speakeasyVersion: 1.637.0
-  generationVersion: 2.727.4
-  releaseVersion: 0.17.0
-  configChecksum: e61960ecff11cb1c9a4cb9d55d72cc1d
+  speakeasyVersion: 1.637.3
+  generationVersion: 2.727.9
+  releaseVersion: 0.17.1
+  configChecksum: fde27dd3f7eab1ed9987b7fafe316c9d
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -4543,5 +4543,5 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `moov.images.upload()`: **Added**
-  * `moov.images.update()`: **Added**
+  * `moov.feePlans.retrieveFees()`:  `response.[].generatedBy` **Changed** **Breaking** :warning:
+  * `moov.feePlans.listFeesFetch()`:  `response.[].generatedBy` **Changed** **Breaking** :warning:

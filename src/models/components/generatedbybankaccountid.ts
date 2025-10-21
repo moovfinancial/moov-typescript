@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,16 +17,12 @@ export const GeneratedByBankAccountID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BankAccountID: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "BankAccountID": "bankAccountID",
-  });
+  bankAccountID: z.string().optional(),
 });
 
 /** @internal */
 export type GeneratedByBankAccountID$Outbound = {
-  BankAccountID?: string | undefined;
+  bankAccountID?: string | undefined;
 };
 
 /** @internal */
@@ -37,10 +32,6 @@ export const GeneratedByBankAccountID$outboundSchema: z.ZodType<
   GeneratedByBankAccountID
 > = z.object({
   bankAccountID: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    bankAccountID: "BankAccountID",
-  });
 });
 
 /**
