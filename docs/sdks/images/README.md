@@ -38,6 +38,8 @@ const moov = new Moov({
 async function run() {
   const result = await moov.images.list({
     accountID: "3a4ed2d9-03e1-4b0e-b45f-2a9ca72f8adb",
+    skip: 60,
+    count: 20,
   });
 
   console.log(result);
@@ -67,6 +69,8 @@ const moov = new MoovCore({
 async function run() {
   const res = await imagesList(moov, {
     accountID: "3a4ed2d9-03e1-4b0e-b45f-2a9ca72f8adb",
+    skip: 60,
+    count: 20,
   });
   if (res.ok) {
     const { value: result } = res;
