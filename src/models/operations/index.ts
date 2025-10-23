@@ -145,6 +145,7 @@ export * from "./updatebrand.js";
 export * from "./updatecard.js";
 export * from "./updatedisputeevidence.js";
 export * from "./updateimage.js";
+export * from "./updateimagemetadata.js";
 export * from "./updateissuedcard.js";
 export * from "./updatepaymentlink.js";
 export * from "./updateproduct.js";

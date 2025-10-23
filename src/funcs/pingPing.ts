@@ -77,8 +77,8 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "*/*",
-    "x-moov-version": encodeSimple(
-      "x-moov-version",
+    "X-Moov-Version": encodeSimple(
+      "X-Moov-Version",
       client._options.xMoovVersion,
       { explode: false, charEncoding: "none" },
     ),

@@ -43,16 +43,16 @@ export const UpdateImageGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-moov-version": z.string().default("v2024.01.00"),
+  "X-Moov-Version": z.string().default("v2024.01.00"),
 }).transform((v) => {
   return remap$(v, {
-    "x-moov-version": "xMoovVersion",
+    "X-Moov-Version": "xMoovVersion",
   });
 });
 
 /** @internal */
 export type UpdateImageGlobals$Outbound = {
-  "x-moov-version": string;
+  "X-Moov-Version": string;
 };
 
 /** @internal */
@@ -64,7 +64,7 @@ export const UpdateImageGlobals$outboundSchema: z.ZodType<
   xMoovVersion: z.string().default("v2024.01.00"),
 }).transform((v) => {
   return remap$(v, {
-    xMoovVersion: "x-moov-version",
+    xMoovVersion: "X-Moov-Version",
   });
 });
 

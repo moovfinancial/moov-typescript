@@ -120,8 +120,8 @@ async function $do(
   const headers = new Headers(compactMap({
     Accept: options?.acceptHeaderOverride
       || "application/pdf;q=1, image/jpeg;q=0.7, image/tiff;q=0",
-    "x-moov-version": encodeSimple(
-      "x-moov-version",
+    "X-Moov-Version": encodeSimple(
+      "X-Moov-Version",
       client._options.xMoovVersion,
       { explode: false, charEncoding: "none" },
     ),

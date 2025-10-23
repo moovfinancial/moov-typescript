@@ -9,12 +9,13 @@
 * [upload](#upload) -   Upload a new PNG, JPEG, or WebP image with optional metadata. 
   Duplicate images, and requests larger than 16MB will be rejected.
 * [getMetadata](#getmetadata) - Retrieve metadata for a specific image by its ID.
-* [update](#update) - Update an existing image and/or its metadata.
+* [update](#update) - Replace an existing image and, optionally, its metadata.
 
-Duplicate images, and requests larger than 16MB will be rejected. Omit any
-form parts you do not wish to update. Existing metadata can be cleared by
-sending `null` for the `metadata` form part.
+This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
+the metadata form section to keep existing metadata, or send `null` to clear it. 
+Duplicate images, and requests larger than 16MB will be rejected.
 * [delete](#delete) - Permanently delete an image by its ID.
+* [updateMetadata](#updatemetadata) - Replace the metadata for an existing image.
 * [getPublic](#getpublic) - Get an image by its public ID.
 
 ## list
@@ -279,17 +280,18 @@ run();
 
 ## update
 
-Update an existing image and/or its metadata.
+Replace an existing image and, optionally, its metadata.
 
-Duplicate images, and requests larger than 16MB will be rejected. Omit any
-form parts you do not wish to update. Existing metadata can be cleared by
-sending `null` for the `metadata` form part.
+This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
+the metadata form section to keep existing metadata, or send `null` to clear it. 
+Duplicate images, and requests larger than 16MB will be rejected.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="updateImage" method="patch" path="/accounts/{accountID}/images/{imageID}" -->
+<!-- UsageSnippet language="typescript" operationID="updateImage" method="put" path="/accounts/{accountID}/images/{imageID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
+import { openAsBlob } from "node:fs";
 
 const moov = new Moov({
   xMoovVersion: "v2024.01.00",
@@ -303,7 +305,9 @@ async function run() {
   const result = await moov.images.update({
     accountID: "310f4f19-45cf-4429-9aae-8e93827ecb0d",
     imageID: "8ef109f8-5a61-4355-b2e4-b8ac2f6f6f47",
-    imageUpdateRequestMultiPart: {},
+    imageUpdateRequestMultiPart: {
+      image: await openAsBlob("example.file"),
+    },
   });
 
   console.log(result);
@@ -319,6 +323,7 @@ The standalone function version of this method:
 ```typescript
 import { MoovCore } from "@moovio/sdk/core.js";
 import { imagesUpdate } from "@moovio/sdk/funcs/imagesUpdate.js";
+import { openAsBlob } from "node:fs";
 
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -334,7 +339,9 @@ async function run() {
   const res = await imagesUpdate(moov, {
     accountID: "310f4f19-45cf-4429-9aae-8e93827ecb0d",
     imageID: "8ef109f8-5a61-4355-b2e4-b8ac2f6f6f47",
-    imageUpdateRequestMultiPart: {},
+    imageUpdateRequestMultiPart: {
+      image: await openAsBlob("example.file"),
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -451,6 +458,93 @@ run();
 | ------------------- | ------------------- | ------------------- |
 | errors.GenericError | 400, 409            | application/json    |
 | errors.APIError     | 4XX, 5XX            | \*/\*               |
+
+## updateMetadata
+
+Replace the metadata for an existing image.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updateImageMetadata" method="put" path="/accounts/{accountID}/images/{imageID}/metadata" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.images.updateMetadata({
+    accountID: "58c3c937-e648-49c5-88be-6225cca35af1",
+    imageID: "d957e703-ecd4-48ac-9c14-c0ecf1b496f0",
+    imageMetadataRequest: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { imagesUpdateMetadata } from "@moovio/sdk/funcs/imagesUpdateMetadata.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await imagesUpdateMetadata(moov, {
+    accountID: "58c3c937-e648-49c5-88be-6225cca35af1",
+    imageID: "d957e703-ecd4-48ac-9c14-c0ecf1b496f0",
+    imageMetadataRequest: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("imagesUpdateMetadata failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateImageMetadataRequest](../../models/operations/updateimagemetadatarequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.UpdateImageMetadataResponse](../../models/operations/updateimagemetadataresponse.md)\>**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.GenericError                 | 400, 409                            | application/json                    |
+| errors.ImageMetadataValidationError | 422                                 | application/json                    |
+| errors.APIError                     | 4XX, 5XX                            | \*/\*                               |
 
 ## getPublic
 

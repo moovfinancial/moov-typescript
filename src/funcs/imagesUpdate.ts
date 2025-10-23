@@ -32,11 +32,11 @@ import { Result } from "../types/fp.js";
 import { isReadableStream } from "../types/streams.js";
 
 /**
- * Update an existing image and/or its metadata.
+ * Replace an existing image and, optionally, its metadata.
  *
- * Duplicate images, and requests larger than 16MB will be rejected. Omit any
- * form parts you do not wish to update. Existing metadata can be cleared by
- * sending `null` for the `metadata` form part.
+ * This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
+ * the metadata form section to keep existing metadata, or send `null` to clear it.
+ * Duplicate images, and requests larger than 16MB will be rejected.
  */
 export function imagesUpdate(
   client: MoovCore,
@@ -97,40 +97,38 @@ async function $do(
   const payload = parsed.value;
   const body = new FormData();
 
-  if (payload.ImageUpdateRequestMultiPart.image !== undefined) {
-    if (isBlobLike(payload.ImageUpdateRequestMultiPart.image)) {
-      appendForm(body, "image", payload.ImageUpdateRequestMultiPart.image);
-    } else if (
-      isReadableStream(payload.ImageUpdateRequestMultiPart.image.content)
-    ) {
-      const buffer = await readableStreamToArrayBuffer(
-        payload.ImageUpdateRequestMultiPart.image.content,
-      );
-      const contentType =
-        getContentTypeFromFileName(
-          payload.ImageUpdateRequestMultiPart.image.fileName,
-        ) || "application/octet-stream";
-      const blob = new Blob([buffer], { type: contentType });
-      appendForm(
-        body,
-        "image",
-        blob,
+  if (isBlobLike(payload.ImageUpdateRequestMultiPart.image)) {
+    appendForm(body, "image", payload.ImageUpdateRequestMultiPart.image);
+  } else if (
+    isReadableStream(payload.ImageUpdateRequestMultiPart.image.content)
+  ) {
+    const buffer = await readableStreamToArrayBuffer(
+      payload.ImageUpdateRequestMultiPart.image.content,
+    );
+    const contentType =
+      getContentTypeFromFileName(
         payload.ImageUpdateRequestMultiPart.image.fileName,
-      );
-    } else {
-      const contentType =
-        getContentTypeFromFileName(
-          payload.ImageUpdateRequestMultiPart.image.fileName,
-        ) || "application/octet-stream";
-      appendForm(
-        body,
-        "image",
-        new Blob([payload.ImageUpdateRequestMultiPart.image.content], {
-          type: contentType,
-        }),
+      ) || "application/octet-stream";
+    const blob = new Blob([buffer], { type: contentType });
+    appendForm(
+      body,
+      "image",
+      blob,
+      payload.ImageUpdateRequestMultiPart.image.fileName,
+    );
+  } else {
+    const contentType =
+      getContentTypeFromFileName(
         payload.ImageUpdateRequestMultiPart.image.fileName,
-      );
-    }
+      ) || "application/octet-stream";
+    appendForm(
+      body,
+      "image",
+      new Blob([payload.ImageUpdateRequestMultiPart.image.content], {
+        type: contentType,
+      }),
+      payload.ImageUpdateRequestMultiPart.image.fileName,
+    );
   }
   if (payload.ImageUpdateRequestMultiPart.metadata !== undefined) {
     appendForm(
@@ -157,8 +155,8 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
-    "x-moov-version": encodeSimple(
-      "x-moov-version",
+    "X-Moov-Version": encodeSimple(
+      "X-Moov-Version",
       client._options.xMoovVersion,
       { explode: false, charEncoding: "none" },
     ),
@@ -184,7 +182,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "PATCH",
+    method: "PUT",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,

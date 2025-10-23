@@ -91,6 +91,11 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
+    "X-Moov-Version": encodeSimple(
+      "X-Moov-Version",
+      client._options.xMoovVersion,
+      { explode: false, charEncoding: "none" },
+    ),
     "origin": encodeSimple("origin", payload.origin, {
       explode: false,
       charEncoding: "none",
@@ -99,11 +104,6 @@ async function $do(
       explode: false,
       charEncoding: "none",
     }),
-    "x-moov-version": encodeSimple(
-      "x-moov-version",
-      client._options.xMoovVersion,
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);

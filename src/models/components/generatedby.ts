@@ -6,80 +6,52 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  GeneratedByAccountID,
-  GeneratedByAccountID$inboundSchema,
-  GeneratedByAccountID$Outbound,
-  GeneratedByAccountID$outboundSchema,
-} from "./generatedbyaccountid.js";
-import {
-  GeneratedByBankAccountID,
-  GeneratedByBankAccountID$inboundSchema,
-  GeneratedByBankAccountID$Outbound,
-  GeneratedByBankAccountID$outboundSchema,
-} from "./generatedbybankaccountid.js";
-import {
-  GeneratedByCardID,
-  GeneratedByCardID$inboundSchema,
-  GeneratedByCardID$Outbound,
-  GeneratedByCardID$outboundSchema,
-} from "./generatedbycardid.js";
-import {
-  GeneratedByDisputeID,
-  GeneratedByDisputeID$inboundSchema,
-  GeneratedByDisputeID$Outbound,
-  GeneratedByDisputeID$outboundSchema,
-} from "./generatedbydisputeid.js";
-import {
-  GeneratedByTransferID,
-  GeneratedByTransferID$inboundSchema,
-  GeneratedByTransferID$Outbound,
-  GeneratedByTransferID$outboundSchema,
-} from "./generatedbytransferid.js";
 
 /**
  * The entity that generated the fee.
  */
-export type GeneratedBy =
-  | GeneratedByTransferID
-  | GeneratedByCardID
-  | GeneratedByDisputeID
-  | GeneratedByAccountID
-  | GeneratedByBankAccountID;
+export type GeneratedBy = {
+  transferID?: string | undefined;
+  cardID?: string | undefined;
+  disputeID?: string | undefined;
+  accountID?: string | undefined;
+  bankAccountID?: string | undefined;
+};
 
 /** @internal */
 export const GeneratedBy$inboundSchema: z.ZodType<
   GeneratedBy,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  GeneratedByTransferID$inboundSchema,
-  GeneratedByCardID$inboundSchema,
-  GeneratedByDisputeID$inboundSchema,
-  GeneratedByAccountID$inboundSchema,
-  GeneratedByBankAccountID$inboundSchema,
-]);
+> = z.object({
+  transferID: z.string().optional(),
+  cardID: z.string().optional(),
+  disputeID: z.string().optional(),
+  accountID: z.string().optional(),
+  bankAccountID: z.string().optional(),
+});
 
 /** @internal */
-export type GeneratedBy$Outbound =
-  | GeneratedByTransferID$Outbound
-  | GeneratedByCardID$Outbound
-  | GeneratedByDisputeID$Outbound
-  | GeneratedByAccountID$Outbound
-  | GeneratedByBankAccountID$Outbound;
+export type GeneratedBy$Outbound = {
+  transferID?: string | undefined;
+  cardID?: string | undefined;
+  disputeID?: string | undefined;
+  accountID?: string | undefined;
+  bankAccountID?: string | undefined;
+};
 
 /** @internal */
 export const GeneratedBy$outboundSchema: z.ZodType<
   GeneratedBy$Outbound,
   z.ZodTypeDef,
   GeneratedBy
-> = z.union([
-  GeneratedByTransferID$outboundSchema,
-  GeneratedByCardID$outboundSchema,
-  GeneratedByDisputeID$outboundSchema,
-  GeneratedByAccountID$outboundSchema,
-  GeneratedByBankAccountID$outboundSchema,
-]);
+> = z.object({
+  transferID: z.string().optional(),
+  cardID: z.string().optional(),
+  disputeID: z.string().optional(),
+  accountID: z.string().optional(),
+  bankAccountID: z.string().optional(),
+});
 
 /**
  * @internal

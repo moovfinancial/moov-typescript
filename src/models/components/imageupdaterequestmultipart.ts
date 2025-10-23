@@ -31,7 +31,7 @@ export type Metadata = {
  * Multipart request body for updating an image and/or its metadata.
  */
 export type ImageUpdateRequestMultiPart = {
-  image?: ImageUpdateRequestMultiPartImage | Blob | undefined;
+  image: ImageUpdateRequestMultiPartImage | Blob;
   /**
    * JSON-encoded metadata to update for the image.
    *
@@ -167,14 +167,13 @@ export const ImageUpdateRequestMultiPart$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  image: z.lazy(() => ImageUpdateRequestMultiPartImage$inboundSchema)
-    .optional(),
+  image: z.lazy(() => ImageUpdateRequestMultiPartImage$inboundSchema),
   metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type ImageUpdateRequestMultiPart$Outbound = {
-  image?: ImageUpdateRequestMultiPartImage$Outbound | Blob | undefined;
+  image: ImageUpdateRequestMultiPartImage$Outbound | Blob;
   metadata?: Metadata$Outbound | null | undefined;
 };
 
@@ -186,7 +185,7 @@ export const ImageUpdateRequestMultiPart$outboundSchema: z.ZodType<
 > = z.object({
   image: z.lazy(() => ImageUpdateRequestMultiPartImage$outboundSchema).or(
     blobLikeSchema,
-  ).optional(),
+  ),
   metadata: z.nullable(z.lazy(() => Metadata$outboundSchema)).optional(),
 });
 

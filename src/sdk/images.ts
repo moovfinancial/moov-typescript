@@ -10,6 +10,7 @@ import {
 } from "../funcs/imagesGetPublic.js";
 import { imagesList } from "../funcs/imagesList.js";
 import { imagesUpdate } from "../funcs/imagesUpdate.js";
+import { imagesUpdateMetadata } from "../funcs/imagesUpdateMetadata.js";
 import { imagesUpload } from "../funcs/imagesUpload.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
@@ -62,11 +63,11 @@ export class Images extends ClientSDK {
   }
 
   /**
-   * Update an existing image and/or its metadata.
+   * Replace an existing image and, optionally, its metadata.
    *
-   * Duplicate images, and requests larger than 16MB will be rejected. Omit any
-   * form parts you do not wish to update. Existing metadata can be cleared by
-   * sending `null` for the `metadata` form part.
+   * This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
+   * the metadata form section to keep existing metadata, or send `null` to clear it.
+   * Duplicate images, and requests larger than 16MB will be rejected.
    */
   async update(
     request: operations.UpdateImageRequest,
@@ -87,6 +88,20 @@ export class Images extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.DeleteImageResponse | undefined> {
     return unwrapAsync(imagesDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Replace the metadata for an existing image.
+   */
+  async updateMetadata(
+    request: operations.UpdateImageMetadataRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateImageMetadataResponse> {
+    return unwrapAsync(imagesUpdateMetadata(
       this,
       request,
       options,

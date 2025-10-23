@@ -2,36 +2,20 @@
 
 The entity that generated the fee.
 
-
-## Supported Types
-
-### `components.GeneratedByTransferID`
+## Example Usage
 
 ```typescript
-const value: components.GeneratedByTransferID = {};
+import { GeneratedBy } from "@moovio/sdk/models/components";
+
+let value: GeneratedBy = {};
 ```
 
-### `components.GeneratedByCardID`
+## Fields
 
-```typescript
-const value: components.GeneratedByCardID = {};
-```
-
-### `components.GeneratedByDisputeID`
-
-```typescript
-const value: components.GeneratedByDisputeID = {};
-```
-
-### `components.GeneratedByAccountID`
-
-```typescript
-const value: components.GeneratedByAccountID = {};
-```
-
-### `components.GeneratedByBankAccountID`
-
-```typescript
-const value: components.GeneratedByBankAccountID = {};
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `transferID`       | *string*           | :heavy_minus_sign: | N/A                |
+| `cardID`           | *string*           | :heavy_minus_sign: | N/A                |
+| `disputeID`        | *string*           | :heavy_minus_sign: | N/A                |
+| `accountID`        | *string*           | :heavy_minus_sign: | N/A                |
+| `bankAccountID`    | *string*           | :heavy_minus_sign: | N/A                |

@@ -12,11 +12,11 @@ const args = {
 
 export const tool$imagesUpdate: ToolDefinition<typeof args> = {
   name: "images-update",
-  description: `Update an existing image and/or its metadata.
+  description: `Replace an existing image and, optionally, its metadata.
 
-Duplicate images, and requests larger than 16MB will be rejected. Omit any
-form parts you do not wish to update. Existing metadata can be cleared by
-sending \`null\` for the \`metadata\` form part.`,
+This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
+the metadata form section to keep existing metadata, or send \`null\` to clear it. 
+Duplicate images, and requests larger than 16MB will be rejected.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await imagesUpdate(

@@ -93,6 +93,7 @@ import { tool$imagesGetMetadata } from "./tools/imagesGetMetadata.js";
 import { tool$imagesGetPublic } from "./tools/imagesGetPublic.js";
 import { tool$imagesList } from "./tools/imagesList.js";
 import { tool$imagesUpdate } from "./tools/imagesUpdate.js";
+import { tool$imagesUpdateMetadata } from "./tools/imagesUpdateMetadata.js";
 import { tool$imagesUpload } from "./tools/imagesUpload.js";
 import { tool$industriesList } from "./tools/industriesList.js";
 import { tool$institutionsSearch } from "./tools/institutionsSearch.js";
@@ -183,7 +184,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.18.0",
+    version: "0.18.1",
   });
 
   const client = new MoovCore({
@@ -278,6 +279,7 @@ export function createMCPServer(deps: {
   tool(tool$imagesGetMetadata);
   tool(tool$imagesUpdate);
   tool(tool$imagesDelete);
+  tool(tool$imagesUpdateMetadata);
   tool(tool$imagesGetPublic);
   tool(tool$paymentLinksCreate);
   tool(tool$paymentLinksList);
