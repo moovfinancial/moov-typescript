@@ -179,7 +179,7 @@ export const UploadDisputeEvidenceFileResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.EvidenceUploadResponse$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

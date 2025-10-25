@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type IndustryTaxonomy = {
   /**
-   * URL-safe identifier for the industry
+   * Classification identifier for the industry.
    */
   industry: string;
   /**

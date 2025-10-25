@@ -164,7 +164,7 @@ export const GetTransferResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.Transfer$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

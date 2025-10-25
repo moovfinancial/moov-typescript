@@ -161,7 +161,7 @@ export const GetSchedulesResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.ScheduleResponse$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

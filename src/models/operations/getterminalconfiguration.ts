@@ -165,7 +165,7 @@ export const GetTerminalConfigurationResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.TerminalConfiguration$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

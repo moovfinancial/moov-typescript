@@ -173,7 +173,7 @@ export const UpdateCardResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.Card$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

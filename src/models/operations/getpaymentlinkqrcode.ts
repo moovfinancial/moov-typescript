@@ -229,7 +229,7 @@ export const GetPaymentLinkQRCodeResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: z.union([
     components.QRCode$inboundSchema,
     z.instanceof(ReadableStream<Uint8Array>),

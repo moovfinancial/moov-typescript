@@ -32,6 +32,7 @@ export const RequirementID = {
   BusinessOwners: "business.owners",
   BusinessClassification: "business.classification",
   BusinessIndustryCodeMcc: "business.industry-code-mcc",
+  BusinessIndustry: "business.industry",
   BusinessIndicateOwnersProvided: "business.indicate-owners-provided",
   BusinessAverageTransactionSize: "business.average-transaction-size",
   BusinessMaxTransactionSize: "business.max-transaction-size",

@@ -44,6 +44,10 @@ export type CreateBusinessError = {
   description?: string | undefined;
   taxID?: CreateBusinessErrorTaxID | undefined;
   industryCodes?: CreateBusinessErrorIndustryCodes | undefined;
+  /**
+   * Classification identifier for the industry. Use the [GET industries](https://docs.moov.io/api/enrichment/form-shortening/industries/get/) endpoint to retrieve an array of valid industry details for a merchant, inducing all industry field values.
+   */
+  industry?: string | undefined;
   primaryRegulator?: string | undefined;
 };
 
@@ -234,6 +238,7 @@ export const CreateBusinessError$inboundSchema: z.ZodType<
   taxID: z.lazy(() => CreateBusinessErrorTaxID$inboundSchema).optional(),
   industryCodes: z.lazy(() => CreateBusinessErrorIndustryCodes$inboundSchema)
     .optional(),
+  industry: z.string().optional(),
   primaryRegulator: z.string().optional(),
 });
 
@@ -249,6 +254,7 @@ export type CreateBusinessError$Outbound = {
   description?: string | undefined;
   taxID?: CreateBusinessErrorTaxID$Outbound | undefined;
   industryCodes?: CreateBusinessErrorIndustryCodes$Outbound | undefined;
+  industry?: string | undefined;
   primaryRegulator?: string | undefined;
 };
 
@@ -269,6 +275,7 @@ export const CreateBusinessError$outboundSchema: z.ZodType<
   taxID: z.lazy(() => CreateBusinessErrorTaxID$outboundSchema).optional(),
   industryCodes: z.lazy(() => CreateBusinessErrorIndustryCodes$outboundSchema)
     .optional(),
+  industry: z.string().optional(),
   primaryRegulator: z.string().optional(),
 });
 

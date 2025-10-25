@@ -5,7 +5,11 @@
 ```typescript
 import { CreateProfileError } from "@moovio/sdk/models/components";
 
-let value: CreateProfileError = {};
+let value: CreateProfileError = {
+  business: {
+    industry: "electronics-appliances",
+  },
+};
 ```
 
 ## Fields

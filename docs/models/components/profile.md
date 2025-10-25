@@ -82,6 +82,7 @@ let value: Profile = {
       sic: "7991",
       mcc: "7997",
     },
+    industry: "electronics-appliances",
   },
   guest: {
     name: "Guest 75e5fbb8",

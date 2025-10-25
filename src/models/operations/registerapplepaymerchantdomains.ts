@@ -187,7 +187,7 @@ export const RegisterApplePayMerchantDomainsResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.ApplePayMerchantDomains$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

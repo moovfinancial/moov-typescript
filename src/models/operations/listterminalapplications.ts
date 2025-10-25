@@ -153,7 +153,7 @@ export const ListTerminalApplicationsResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: z.array(components.TerminalApplication$inboundSchema),
 }).transform((v) => {
   return remap$(v, {

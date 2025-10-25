@@ -168,7 +168,7 @@ export const GetCapabilityResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.Capability$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

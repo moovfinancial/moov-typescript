@@ -170,7 +170,7 @@ export const GetIssuedCardAuthorizationResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.IssuedCardAuthorization$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

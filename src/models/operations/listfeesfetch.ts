@@ -171,7 +171,7 @@ export const ListFeesFetchResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: z.array(components.IncurredFee$inboundSchema),
 }).transform((v) => {
   return remap$(v, {

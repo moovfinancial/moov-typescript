@@ -65,6 +65,10 @@ export type CreateBusinessProfile = {
   taxID?: TaxID | undefined;
   industryCodes?: IndustryCodes | undefined;
   /**
+   * Classification identifier for the industry. Use the [GET industries](https://docs.moov.io/api/enrichment/form-shortening/industries/get/) endpoint to retrieve an array of valid industry details for a merchant, inducing all industry field values.
+   */
+  industry?: string | undefined;
+  /**
    * If the business is a financial institution, this field describes its primary regulator.
    */
   primaryRegulator?: PrimaryRegulator | undefined;
@@ -86,6 +90,7 @@ export const CreateBusinessProfile$inboundSchema: z.ZodType<
   description: z.string().optional(),
   taxID: TaxID$inboundSchema.optional(),
   industryCodes: IndustryCodes$inboundSchema.optional(),
+  industry: z.string().optional(),
   primaryRegulator: PrimaryRegulator$inboundSchema.optional(),
 });
 
@@ -101,6 +106,7 @@ export type CreateBusinessProfile$Outbound = {
   description?: string | undefined;
   taxID?: TaxID$Outbound | undefined;
   industryCodes?: IndustryCodes$Outbound | undefined;
+  industry?: string | undefined;
   primaryRegulator?: string | undefined;
 };
 
@@ -120,6 +126,7 @@ export const CreateBusinessProfile$outboundSchema: z.ZodType<
   description: z.string().optional(),
   taxID: TaxID$outboundSchema.optional(),
   industryCodes: IndustryCodes$outboundSchema.optional(),
+  industry: z.string().optional(),
   primaryRegulator: PrimaryRegulator$outboundSchema.optional(),
 });
 

@@ -168,7 +168,7 @@ export const GetIssuedCardTransactionResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.IssuedCardTransaction$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

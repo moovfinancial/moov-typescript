@@ -164,7 +164,7 @@ export const ListRefundsResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: z.array(components.CardAcquiringRefund$inboundSchema),
 }).transform((v) => {
   return remap$(v, {

@@ -171,7 +171,7 @@ export const GetPublicImageResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: z.union([
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),

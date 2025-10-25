@@ -161,7 +161,7 @@ export const GetDisputeResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.Dispute$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

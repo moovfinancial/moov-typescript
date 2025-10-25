@@ -161,7 +161,7 @@ export const GetImageMetadataResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Headers: z.record(z.array(z.string())),
+  Headers: z.record(z.array(z.string())).default({}),
   Result: components.ImageMetadata$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
