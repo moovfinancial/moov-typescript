@@ -1,7 +1,7 @@
 import { beforeAll, beforeEach, describe, expect, test } from "bun:test";
 import { ids, moov } from "../setup";
 import {
-  crateAccountAndGetTransferOptions,
+  createAccountAndGetTransferOptions,
   createAccount,
   createAccountWithWallet,
   createBankAccount,
@@ -10,20 +10,20 @@ import {
   UUID_REGEX,
   waitFor,
 } from "../utils/utils";
-import type { CreateTransferOptions, PaymentMethod, TransferResponse } from "../../models/components";
+import type { CreateTransferOptions, PaymentMethod, Transfer, CreatedTransfer, AsyncTransfer } from "../../models/components";
 import { sleep } from "bun";
 import type { CreateTransferRequest } from "../../models/operations";
 
 let destinationAccountID: string;
 let sourcePaymentMethodID: string;
 let destinationPaymentMethodID: string;
-let transfer: TransferResponse;
+let transfer: Transfer | CreatedTransfer | AsyncTransfer;
 describe("Transfers", () => {
   // Setup accounts and payment methods
 
   describe("Transfer Creation", () => {
     beforeAll(async () => {
-      const availablePaymentMethods = await crateAccountAndGetTransferOptions();
+      const availablePaymentMethods = await createAccountAndGetTransferOptions();
       sourcePaymentMethodID = availablePaymentMethods.sourceOptions![0].paymentMethodID!;
       destinationPaymentMethodID = availablePaymentMethods.destinationOptions![0].paymentMethodID!;
     });
@@ -99,7 +99,7 @@ describe("Transfers", () => {
       };
 
       await expect(() => moov.transfers.create(transferRequest)).toThrowError(
-        'API error occurred: {"amount":"amount value must be greater than or equal to 0.01"}',
+        /API error occurred: {"amount":"amount value must be greater than or equal to 0.01"}/i,
       );
     });
   });

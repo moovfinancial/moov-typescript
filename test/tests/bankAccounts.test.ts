@@ -102,9 +102,7 @@ describe("Bank Accounts", () => {
                 accountID,
                 bankAccountID: bankAccount.bankAccountID!,
               }),
-          ).toThrowError(
-            expect.objectContaining({ error: "unacceptable bank account status verified for verification" }),
-          );
+          ).toThrowError(/unacceptable bank account status verified for verification/i);
         });
         test("should be able to get the bank account verification status", async () => {
           const { result } = await moov.bankAccounts.initiateVerification({

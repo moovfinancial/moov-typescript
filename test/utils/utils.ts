@@ -217,7 +217,7 @@ export const createCard = async (accountID: string, card: DeepPartial<LinkCard> 
   return { card: result, cardNumber: mergedCard.cardNumber };
 };
 
-export const crateAccountAndGetTransferOptions = async () => {
+export const createAccountAndGetTransferOptions = async () => {
   const doneCheck = (data: { result: PaymentMethod[] }) => data.result.length > 0;
 
   // Create destination account with card and bank account
@@ -239,7 +239,10 @@ export const crateAccountAndGetTransferOptions = async () => {
     destination: { accountID: destinationAccountID },
     amount: { currency: "USD", value: 1 },
   };
-  const { result: availablePaymentMethods } = await moov.transfers.generateOptions(generateOptionsRequest);
+  const { result: availablePaymentMethods } = await moov.transfers.generateOptions({
+    accountID: SOURCE_ACCOUNT_ID,
+    createTransferOptions: generateOptionsRequest,
+  });
   expect(availablePaymentMethods).toBeDefined();
   expect(availablePaymentMethods.sourceOptions).toBeArray();
   expect(availablePaymentMethods.sourceOptions!.length).toBeGreaterThan(0);
