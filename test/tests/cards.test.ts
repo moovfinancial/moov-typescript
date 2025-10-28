@@ -145,7 +145,7 @@ describe("Cards", () => {
                 },
               },
             }),
-        ).toThrowError(/API error occurred: {"expiration":"year: the length must be exactly 2."}/i);
+        ).toThrowError(/API error occurred:.*\"expiration\":\"year: the length must be exactly 2.\"/i);
       });
     });
 

@@ -19,10 +19,10 @@ let sourcePaymentMethodID: string;
 let destinationPaymentMethodID: string;
 let transfer: Transfer | CreatedTransfer | AsyncTransfer;
 describe("Transfers", () => {
-  // Setup accounts and payment methods
 
   describe("Transfer Creation", () => {
     beforeAll(async () => {
+      // Setup accounts and payment methods
       const availablePaymentMethods = await createAccountAndGetTransferOptions();
       sourcePaymentMethodID = availablePaymentMethods.sourceOptions![0].paymentMethodID!;
       destinationPaymentMethodID = availablePaymentMethods.destinationOptions![0].paymentMethodID!;
