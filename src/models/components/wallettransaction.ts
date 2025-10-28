@@ -81,6 +81,9 @@ export type WalletTransaction = {
    * The wallet's total available balance after recording a completed transaction. Same as `availableBalance`, but a decimal-formatted numerical string that represents up to 9 decimal place precision. In USD for example, 12.987654321 is $12.987654321 and 0.9987634521 is $0.9987634521.
    */
   availableBalanceDecimal?: string | undefined;
+  /**
+   * ID of the sweep this transaction accrued in.
+   */
   sweepID?: string | undefined;
 };
 

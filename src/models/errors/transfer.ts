@@ -58,6 +58,9 @@ export type TransferData = {
   refunds?: Array<components.CardAcquiringRefund> | undefined;
   disputedAmount?: components.Amount | undefined;
   disputes?: Array<components.CardAcquiringDispute> | undefined;
+  /**
+   * ID of the sweep that created this transfer.
+   */
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
@@ -124,6 +127,9 @@ export class Transfer extends MoovError {
   refunds?: Array<components.CardAcquiringRefund> | undefined;
   disputedAmount?: components.Amount | undefined;
   disputes?: Array<components.CardAcquiringDispute> | undefined;
+  /**
+   * ID of the sweep that created this transfer.
+   */
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;

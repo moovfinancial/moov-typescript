@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: c744ed8ad01a50c30ae656f1467f0d16
+  docChecksum: 16e74a23655421653a8a77a79bf725e5
   docVersion: latest
-  speakeasyVersion: 1.639.3
+  speakeasyVersion: 1.640.0
   generationVersion: 2.730.5
-  releaseVersion: 0.19.0
-  configChecksum: eab12d1b6f0c962b075728419adcd4b5
+  releaseVersion: 0.19.1
+  configChecksum: 39866e4ecb6e122a563595069d0378c8
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -4720,4 +4720,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.accounts.create()`: \n  *  `request.profile.business.industry` **Added**\n  *  `response.profile.business.industry` **Added**\n  *  `error.profile.business.industry` **Added**\n* `moov.accounts.list()`:  `response.[].profile.business.industry` **Added**\n* `moov.accounts.get()`:  `response.profile.business.industry` **Added**\n* `moov.accounts.update()`: \n  *  `request.patchAccount.profile.business.industry` **Added**\n  *  `response.profile.business.industry` **Added**\n  *  `error.profile.business.industry` **Added**\n* `moov.onboarding.createInvite()`: \n  *  `request.prefill.profile.business.industry` **Added**\n  *  `response.prefill.profile.business.industry` **Added**\n* `moov.onboarding.listInvites()`:  `response.[].prefill.profile.business.industry` **Added**\n* `moov.onboarding.getInvite()`:  `response.prefill.profile.business.industry` **Added**\n"
