@@ -123,6 +123,9 @@ export type Transfer = {
   refunds?: Array<CardAcquiringRefund> | undefined;
   disputedAmount?: Amount | undefined;
   disputes?: Array<CardAcquiringDispute> | undefined;
+  /**
+   * ID of the sweep that created this transfer.
+   */
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
