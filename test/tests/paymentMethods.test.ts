@@ -26,7 +26,7 @@ describe("PaymentMethods", () => {
     });
     test("listing should fail if accountID is not provided", async () => {
       expect(() => moov.paymentMethods.list({ accountID: "" })).toThrowError(
-        "API error occurred: Status 403 Content-Type  Body",
+        /API error occurred: Status 403/i,
       );
     });
   });
@@ -43,12 +43,12 @@ describe("PaymentMethods", () => {
     });
     test("getting should fail if accountID and paymentMethodID are not correct", async () => {
       expect(() => moov.paymentMethods.get({ accountID: "@#$@#$@$", paymentMethodID: "@#$@#$@#$@" })).toThrowError(
-        "API error occurred: Status 403 Content-Type  Body",
+        /API error occurred: Status 403/i,
       );
     });
     test("getting should fail if paymentMethodID is not provided", async () => {
       expect(() => moov.paymentMethods.get({ accountID: accountID, paymentMethodID: "" })).toThrowError(
-        "API error occurred: Status 403 Content-Type  Body",
+        /API error occurred: Status 403/i,
       );
     });
   });

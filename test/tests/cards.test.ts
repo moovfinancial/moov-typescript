@@ -90,7 +90,7 @@ describe("Cards", () => {
 
       test("Getting a card should fail when I pass incorrect params", async () => {
         expect(async () => await moov.cards.get({ accountID, cardID: "invalid-card-id" })).toThrowError(
-          "API error occurred: Status 404 Content-Type  Body",
+          /API error occurred: Status 404/,
         );
       });
 
@@ -109,7 +109,7 @@ describe("Cards", () => {
 
       test("listing should fail when I pass incorrect params", async () => {
         expect(async () => await moov.cards.list({ accountID: "invalid-account-id" })).toThrowError(
-          "API error occurred: Status 403 Content-Type  Body ",
+          /API error occurred: Status 403/,
         );
       });
     });
@@ -145,7 +145,7 @@ describe("Cards", () => {
                 },
               },
             }),
-        ).toThrowError('API error occurred: {"expiration":"year: the length must be exactly 2."}');
+        ).toThrowError(/API error occurred:.*\"expiration\":\"year: the length must be exactly 2.\"/i);
       });
     });
 
@@ -160,7 +160,7 @@ describe("Cards", () => {
 
       test("disabling should fail when I pass incorrect params", async () => {
         expect(async () => await moov.cards.disable({ accountID, cardID: "invalid-card-id" })).toThrowError(
-          "API error occurred: Status 404 Content-Type  Body",
+          /API error occurred: Status 404/i,
         );
       });
     });

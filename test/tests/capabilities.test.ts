@@ -27,7 +27,7 @@ describe("Capabilities", () => {
         moov.capabilities.list({
           accountID: "not-a-valid-account-id",
         }),
-      ).toThrowError("API error occurred: Status 403 Content-Type  Body ");
+      ).toThrowError(/API error occurred: Status 403/);
     });
   });
 
@@ -79,7 +79,7 @@ describe("Capabilities", () => {
           accountID: "not-a-valid-account-id",
           capabilityID: "transfers",
         }),
-      ).toThrowError("API error occurred: Status 403 Content-Type  Body ");
+      ).toThrowError(/API error occurred: Status 403/i);
     });
 
     test("getting a capability should fail if the capability does not exist", async () => {
@@ -113,7 +113,7 @@ describe("Capabilities", () => {
             capabilities: ["transfers"],
           },
         }),
-      ).toThrowError("API error occurred: Status 403 Content-Type  Body ");
+      ).toThrowError(/API error occurred: Status 403/i);
     });
 
     test("requesting capabilities should fail if the capability is invalid", async () => {

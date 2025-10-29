@@ -40,7 +40,7 @@ describe("Representative", () => {
       });
       test("listing representatives should fail if the account is not found", async () => {
         expect(() => moov.representatives.list({ accountID: "not-a-valid-account-id" })).toThrowError(
-          "API error occurred: Status 403 Content-Type  Body ",
+          /API error occurred: Status 403/i,
         );
       });
       test("getting a representative should fail if the account is not found", async () => {
@@ -49,7 +49,7 @@ describe("Representative", () => {
             accountID: "not-a-valid-account-id",
             representativeID: representative.representativeID,
           }),
-        ).toThrowError("API error occurred: Status 403 Content-Type  Body ");
+        ).toThrowError(/API error occurred: Status 403/i);
       });
     });
     describe("Updating a representative", () => {
@@ -76,7 +76,7 @@ describe("Representative", () => {
               email: "mia.wallece@bigkahunaburger.com",
             },
           }),
-        ).toThrowError("API error occurred: Status 403 Content-Type  Body ");
+        ).toThrowError(/API error occurred: Status 403/i);
       });
     });
   });

@@ -28,7 +28,7 @@ describe("Accounts", () => {
       test("should fail if the account type is not supported", async () => {
         await expect(() =>
           createAccount({
-            accountType: "not-a-valid-account-type" as AccountType,
+            accountType: "not-a-valid-account-type" as "business" | "individual",
           }),
         ).toThrowError();
       });
@@ -102,7 +102,7 @@ describe("Accounts", () => {
       const legalBusinessName = chance.company();
       const { result } = await moov.accounts.update({
         accountID: account.accountID,
-        createAccountUpdate: { profile: { business: { legalBusinessName } } },
+        patchAccount: { profile: { business: { legalBusinessName } } },
       });
       expect(result).toBeDefined();
       expect(result.accountID).toEqual(account.accountID);

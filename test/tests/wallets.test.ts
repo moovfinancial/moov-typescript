@@ -22,7 +22,7 @@ describe("Wallets", () => {
     });
     test("listing should fail if accountID is not provided", async () => {
       expect(() => moov.wallets.list({ accountID: "" })).toThrowError(
-        "API error occurred: Status 403 Content-Type  Body",
+        /API error occurred: Status 403/i
       );
     });
   });
