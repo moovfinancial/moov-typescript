@@ -33,6 +33,7 @@ export type IncurredFee = {
    * The entity that generated the fee.
    */
   generatedBy?: GeneratedBy | undefined;
+  feeGroup?: string | undefined;
 };
 
 /** @internal */
@@ -49,6 +50,7 @@ export const IncurredFee$inboundSchema: z.ZodType<
   feeName: z.string().optional(),
   amount: AmountDecimal$inboundSchema.optional(),
   generatedBy: GeneratedBy$inboundSchema.optional(),
+  feeGroup: z.string().optional(),
 });
 
 /** @internal */
@@ -60,6 +62,7 @@ export type IncurredFee$Outbound = {
   feeName?: string | undefined;
   amount?: AmountDecimal$Outbound | undefined;
   generatedBy?: GeneratedBy$Outbound | undefined;
+  feeGroup?: string | undefined;
 };
 
 /** @internal */
@@ -75,6 +78,7 @@ export const IncurredFee$outboundSchema: z.ZodType<
   feeName: z.string().optional(),
   amount: AmountDecimal$outboundSchema.optional(),
   generatedBy: GeneratedBy$outboundSchema.optional(),
+  feeGroup: z.string().optional(),
 });
 
 /**

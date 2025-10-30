@@ -13,6 +13,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type ImageMetadata = {
   imageID: string;
   /**
+   * The ID used to get an image with the public endpoint.
+   */
+  publicID: string;
+  /**
    * Alternative text for the image.
    */
   altText?: string | undefined;
@@ -34,6 +38,7 @@ export const ImageMetadata$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   imageID: z.string(),
+  publicID: z.string(),
   altText: z.string().optional(),
   link: z.string(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -43,6 +48,7 @@ export const ImageMetadata$inboundSchema: z.ZodType<
 /** @internal */
 export type ImageMetadata$Outbound = {
   imageID: string;
+  publicID: string;
   altText?: string | undefined;
   link: string;
   createdOn: string;
@@ -56,6 +62,7 @@ export const ImageMetadata$outboundSchema: z.ZodType<
   ImageMetadata
 > = z.object({
   imageID: z.string(),
+  publicID: z.string(),
   altText: z.string().optional(),
   link: z.string(),
   createdOn: z.date().transform(v => v.toISOString()),
