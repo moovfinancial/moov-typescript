@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 49b684e5b846a25668721accff7f1f24
+  docChecksum: 945e15373063a10a87573932ee10e0c4
   docVersion: latest
-  speakeasyVersion: 1.642.2
-  generationVersion: 2.731.6
-  releaseVersion: 0.19.2
-  configChecksum: 88948369a3f304a9926a632140859ea3
+  speakeasyVersion: 1.645.1
+  generationVersion: 2.735.1
+  releaseVersion: 0.20.0
+  configChecksum: 331652544d142d9b671340598b62ad30
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.24.1
+    core: 3.24.2
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -24,7 +24,7 @@ features:
     envVarSecurityUsage: 0.1.2
     globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
-    globalServerURLs: 2.82.5
+    globalServerURLs: 2.83.0
     globals: 2.82.2
     hiddenGlobals: 0.1.0
     includes: 2.81.1
@@ -432,6 +432,7 @@ generatedFiles:
   - docs/models/components/requirementerror.md
   - docs/models/components/requirementerrorcode.md
   - docs/models/components/requirementid.md
+  - docs/models/components/residual.md
   - docs/models/components/responsibilities.md
   - docs/models/components/returnpolicytype.md
   - docs/models/components/reversal.md
@@ -840,6 +841,9 @@ generatedFiles:
   - docs/models/operations/getrepresentativeglobals.md
   - docs/models/operations/getrepresentativerequest.md
   - docs/models/operations/getrepresentativeresponse.md
+  - docs/models/operations/getresidualglobals.md
+  - docs/models/operations/getresidualrequest.md
+  - docs/models/operations/getresidualresponse.md
   - docs/models/operations/getscheduledoccurrenceglobals.md
   - docs/models/operations/getscheduledoccurrencerequest.md
   - docs/models/operations/getscheduledoccurrenceresponse.md
@@ -987,6 +991,12 @@ generatedFiles:
   - docs/models/operations/listrepresentativesglobals.md
   - docs/models/operations/listrepresentativesrequest.md
   - docs/models/operations/listrepresentativesresponse.md
+  - docs/models/operations/listresidualfeesglobals.md
+  - docs/models/operations/listresidualfeesrequest.md
+  - docs/models/operations/listresidualfeesresponse.md
+  - docs/models/operations/listresidualsglobals.md
+  - docs/models/operations/listresidualsrequest.md
+  - docs/models/operations/listresidualsresponse.md
   - docs/models/operations/listschedulesglobals.md
   - docs/models/operations/listschedulesrequest.md
   - docs/models/operations/listschedulesresponse.md
@@ -1226,11 +1236,14 @@ generatedFiles:
   - src/funcs/enrichedAddressGet.ts
   - src/funcs/enrichedProfileGet.ts
   - src/funcs/feePlansCreateFeePlanAgreements.ts
+  - src/funcs/feePlansGetResidual.ts
   - src/funcs/feePlansListFeePlanAgreements.ts
   - src/funcs/feePlansListFeePlans.ts
   - src/funcs/feePlansListFeesFetch.ts
   - src/funcs/feePlansListPartnerPricing.ts
   - src/funcs/feePlansListPartnerPricingAgreements.ts
+  - src/funcs/feePlansListResidualFees.ts
+  - src/funcs/feePlansListResiduals.ts
   - src/funcs/feePlansRetrieveFees.ts
   - src/funcs/filesGet.ts
   - src/funcs/filesList.ts
@@ -1417,11 +1430,14 @@ generatedFiles:
   - src/mcp-server/tools/enrichedAddressGet.ts
   - src/mcp-server/tools/enrichedProfileGet.ts
   - src/mcp-server/tools/feePlansCreateFeePlanAgreements.ts
+  - src/mcp-server/tools/feePlansGetResidual.ts
   - src/mcp-server/tools/feePlansListFeePlanAgreements.ts
   - src/mcp-server/tools/feePlansListFeePlans.ts
   - src/mcp-server/tools/feePlansListFeesFetch.ts
   - src/mcp-server/tools/feePlansListPartnerPricing.ts
   - src/mcp-server/tools/feePlansListPartnerPricingAgreements.ts
+  - src/mcp-server/tools/feePlansListResidualFees.ts
+  - src/mcp-server/tools/feePlansListResiduals.ts
   - src/mcp-server/tools/feePlansRetrieveFees.ts
   - src/mcp-server/tools/filesGet.ts
   - src/mcp-server/tools/filesList.ts
@@ -1857,6 +1873,7 @@ generatedFiles:
   - src/models/components/requirementerror.ts
   - src/models/components/requirementerrorcode.ts
   - src/models/components/requirementid.ts
+  - src/models/components/residual.ts
   - src/models/components/returnpolicytype.ts
   - src/models/components/reversal.ts
   - src/models/components/reversedwithcancellation.ts
@@ -2119,6 +2136,7 @@ generatedFiles:
   - src/models/operations/getpublicimage.ts
   - src/models/operations/getrefund.ts
   - src/models/operations/getrepresentative.ts
+  - src/models/operations/getresidual.ts
   - src/models/operations/getscheduledoccurrence.ts
   - src/models/operations/getschedules.ts
   - src/models/operations/getstatement.ts
@@ -2168,6 +2186,8 @@ generatedFiles:
   - src/models/operations/listreceipts.ts
   - src/models/operations/listrefunds.ts
   - src/models/operations/listrepresentatives.ts
+  - src/models/operations/listresidualfees.ts
+  - src/models/operations/listresiduals.ts
   - src/models/operations/listschedules.ts
   - src/models/operations/liststatements.ts
   - src/models/operations/listsweepconfigs.ts
@@ -4718,14 +4738,48 @@ examples:
           application/json: {"error": "<value>"}
         "422":
           application/json: {}
+  listResiduals:
+    speakeasy-default-list-residuals:
+      parameters:
+        path:
+          accountID: "8b40b967-ae12-4851-8be2-7b0c39978ce7"
+        query:
+          skip: 60
+          count: 20
+        header:
+          X-Moov-Version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: [{"residualID": "e0bcab02-96d4-4555-9535-fff6f9fac05c", "partnerAccountID": "59fad78d-485c-4aa0-95e0-b6723b4489a3", "periodStart": "2025-08-23T18:39:55.611Z", "periodEnd": "2024-06-17T17:54:17.689Z", "merchantFees": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerCost": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}, "revenueShare": "2.25", "residualAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "moovShare": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdOn": "2023-11-11T13:56:49.759Z", "updatedOn": "2024-07-25T04:59:02.000Z"}]
+  getResidual:
+    speakeasy-default-get-residual:
+      parameters:
+        path:
+          accountID: "4c308842-45d1-49c1-98be-7299848b1e20"
+          residualID: "5f30e43d-1fa8-4834-8788-05a3c27a40d4"
+        header:
+          X-Moov-Version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: {"residualID": "6969e439-dfcd-42de-bfb2-5c66b1163e3a", "partnerAccountID": "35af6ebf-647d-4b63-b996-dc1bfb4ac6d2", "periodStart": "2025-10-12T20:03:24.360Z", "periodEnd": "2024-10-08T00:08:30.005Z", "merchantFees": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerCost": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}, "revenueShare": "2.25", "residualAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "moovShare": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdOn": "2025-05-15T10:09:57.129Z", "updatedOn": "2023-05-10T01:27:08.185Z"}
+  listResidualFees:
+    speakeasy-default-list-residual-fees:
+      parameters:
+        path:
+          accountID: "6b95293f-c3e7-42b5-98b7-fd9cc8d49685"
+          residualID: "8ecb1a63-25e0-41e7-a9c7-bb8a1cf63d1c"
+        query:
+          skip: 60
+          count: 20
+        header:
+          X-Moov-Version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
 examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `moov.feePlans.retrieveFees()`:  `response.[].feeGroup` **Added**
-  * `moov.feePlans.listFeesFetch()`:  `response.[].feeGroup` **Added**
-  * `moov.images.list()`:  `response.[].publicId` **Added**
-  * `moov.images.upload()`:  `response.publicid` **Added**
-  * `moov.images.getMetadata()`:  `response.publicid` **Added**
-  * `moov.images.update()`:  `response.publicid` **Added**
-  * `moov.images.updateMetadata()`:  `response.publicid` **Added**
+  * `moov.feePlans.listResiduals()`: **Added**
+  * `moov.feePlans.getResidual()`: **Added**
+  * `moov.feePlans.listResidualFees()`: **Added**

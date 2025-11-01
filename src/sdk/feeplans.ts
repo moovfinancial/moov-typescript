@@ -3,11 +3,14 @@
  */
 
 import { feePlansCreateFeePlanAgreements } from "../funcs/feePlansCreateFeePlanAgreements.js";
+import { feePlansGetResidual } from "../funcs/feePlansGetResidual.js";
 import { feePlansListFeePlanAgreements } from "../funcs/feePlansListFeePlanAgreements.js";
 import { feePlansListFeePlans } from "../funcs/feePlansListFeePlans.js";
 import { feePlansListFeesFetch } from "../funcs/feePlansListFeesFetch.js";
 import { feePlansListPartnerPricing } from "../funcs/feePlansListPartnerPricing.js";
 import { feePlansListPartnerPricingAgreements } from "../funcs/feePlansListPartnerPricingAgreements.js";
+import { feePlansListResidualFees } from "../funcs/feePlansListResidualFees.js";
+import { feePlansListResiduals } from "../funcs/feePlansListResiduals.js";
 import { feePlansRetrieveFees } from "../funcs/feePlansRetrieveFees.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
@@ -128,6 +131,57 @@ export class FeePlans extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.ListPartnerPricingAgreementsResponse> {
     return unwrapAsync(feePlansListPartnerPricingAgreements(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List all residuals associated with an account.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+   */
+  async listResiduals(
+    request: operations.ListResidualsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ListResidualsResponse> {
+    return unwrapAsync(feePlansListResiduals(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get a residual associated with an account.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+   */
+  async getResidual(
+    request: operations.GetResidualRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetResidualResponse> {
+    return unwrapAsync(feePlansGetResidual(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List all fees associated with a residual.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+   */
+  async listResidualFees(
+    request: operations.ListResidualFeesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ListResidualFeesResponse> {
+    return unwrapAsync(feePlansListResidualFees(
       this,
       request,
       options,

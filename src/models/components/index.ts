@@ -348,6 +348,7 @@ export * from "./requestcard.js";
 export * from "./requirementerror.js";
 export * from "./requirementerrorcode.js";
 export * from "./requirementid.js";
+export * from "./residual.js";
 export * from "./returnpolicytype.js";
 export * from "./reversal.js";
 export * from "./reversedwithcancellation.js";

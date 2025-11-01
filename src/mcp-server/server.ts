@@ -79,11 +79,14 @@ import { tool$endToEndEncryptionTestEncryptedToken } from "./tools/endToEndEncry
 import { tool$enrichedAddressGet } from "./tools/enrichedAddressGet.js";
 import { tool$enrichedProfileGet } from "./tools/enrichedProfileGet.js";
 import { tool$feePlansCreateFeePlanAgreements } from "./tools/feePlansCreateFeePlanAgreements.js";
+import { tool$feePlansGetResidual } from "./tools/feePlansGetResidual.js";
 import { tool$feePlansListFeePlanAgreements } from "./tools/feePlansListFeePlanAgreements.js";
 import { tool$feePlansListFeePlans } from "./tools/feePlansListFeePlans.js";
 import { tool$feePlansListFeesFetch } from "./tools/feePlansListFeesFetch.js";
 import { tool$feePlansListPartnerPricing } from "./tools/feePlansListPartnerPricing.js";
 import { tool$feePlansListPartnerPricingAgreements } from "./tools/feePlansListPartnerPricingAgreements.js";
+import { tool$feePlansListResidualFees } from "./tools/feePlansListResidualFees.js";
+import { tool$feePlansListResiduals } from "./tools/feePlansListResiduals.js";
 import { tool$feePlansRetrieveFees } from "./tools/feePlansRetrieveFees.js";
 import { tool$filesGet } from "./tools/filesGet.js";
 import { tool$filesList } from "./tools/filesList.js";
@@ -184,7 +187,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.19.2",
+    version: "0.20.0",
   });
 
   const client = new MoovCore({
@@ -271,6 +274,9 @@ export function createMCPServer(deps: {
   tool(tool$feePlansListFeesFetch);
   tool(tool$feePlansListPartnerPricing);
   tool(tool$feePlansListPartnerPricingAgreements);
+  tool(tool$feePlansListResiduals);
+  tool(tool$feePlansGetResidual);
+  tool(tool$feePlansListResidualFees);
   tool(tool$filesUpload);
   tool(tool$filesList);
   tool(tool$filesGet);
