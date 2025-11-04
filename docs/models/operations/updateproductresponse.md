@@ -26,6 +26,7 @@ let value: UpdateProductResponse = {
       {
         imageID: "f7be8907-e233-4bcb-8b74-4d8d7ceefe37",
         link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+        publicID: "q7lKWleAy9fUNhEGezQ1g",
       },
     ],
     createdOn: new Date("2024-02-17T23:26:04.032Z"),

@@ -20,6 +20,10 @@ export type ProductImageMetadata = {
    * The image's public URL.
    */
   link: string;
+  /**
+   * The public ID used to access the image.
+   */
+  publicID: string;
 };
 
 /** @internal */
@@ -31,6 +35,7 @@ export const ProductImageMetadata$inboundSchema: z.ZodType<
   imageID: z.string(),
   altText: z.string().optional(),
   link: z.string(),
+  publicID: z.string(),
 });
 
 /** @internal */
@@ -38,6 +43,7 @@ export type ProductImageMetadata$Outbound = {
   imageID: string;
   altText?: string | undefined;
   link: string;
+  publicID: string;
 };
 
 /** @internal */
@@ -49,6 +55,7 @@ export const ProductImageMetadata$outboundSchema: z.ZodType<
   imageID: z.string(),
   altText: z.string().optional(),
   link: z.string(),
+  publicID: z.string(),
 });
 
 /**

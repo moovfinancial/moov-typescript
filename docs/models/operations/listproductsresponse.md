@@ -36,6 +36,7 @@ let value: ListProductsResponse = {
         {
           imageID: "f7be8907-e233-4bcb-8b74-4d8d7ceefe37",
           link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+          publicID: "q7lKWleAy9fUNhEGezQ1g",
         },
       ],
       createdOn: new Date("2024-04-02T23:47:44.686Z"),
