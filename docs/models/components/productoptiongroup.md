@@ -22,6 +22,7 @@ let value: ProductOptionGroup = {
         {
           imageID: "f7be8907-e233-4bcb-8b74-4d8d7ceefe37",
           link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+          publicID: "q7lKWleAy9fUNhEGezQ1g",
         },
       ],
     },

@@ -24,13 +24,14 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.20.0
+  version: 0.21.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
+  additionalScripts: {}
   author: Moov
   baseErrorName: MoovError
   clientServerStatusCodesAsErrors: true

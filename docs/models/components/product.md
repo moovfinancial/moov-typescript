@@ -26,6 +26,7 @@ let value: Product = {
     {
       imageID: "f7be8907-e233-4bcb-8b74-4d8d7ceefe37",
       link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+      publicID: "q7lKWleAy9fUNhEGezQ1g",
     },
   ],
   createdOn: new Date("2023-05-19T14:18:53.943Z"),
