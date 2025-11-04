@@ -12,7 +12,7 @@ let value: PaymentLink = {
   partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
   merchantAccountID: "34233b72-780c-4e0e-8b08-cbbe1bc878f8",
   merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
-  link: "https://moov.money/3QLHtONjd5",
+  link: "https://moov.link/p/3QLHtONjd5",
   amount: {
     currency: "USD",
     value: 10000,
