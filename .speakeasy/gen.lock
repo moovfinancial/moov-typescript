@@ -5,8 +5,8 @@ management:
   docVersion: latest
   speakeasyVersion: 1.649.0
   generationVersion: 2.739.1
-  releaseVersion: 0.21.3
-  configChecksum: dc42746135f7d831eefdf302f2bb9d45
+  releaseVersion: 0.21.4
+  configChecksum: 909f3f34928afcc31462bfbdd63cac3d
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
