@@ -46,7 +46,6 @@ export const BillingSummaryInterchange$inboundSchema: z.ZodType<
   discover: AmountDecimal$inboundSchema,
   americanExpress: AmountDecimal$inboundSchema,
 });
-
 /** @internal */
 export type BillingSummaryInterchange$Outbound = {
   visa: AmountDecimal$Outbound;
@@ -67,19 +66,6 @@ export const BillingSummaryInterchange$outboundSchema: z.ZodType<
   americanExpress: AmountDecimal$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BillingSummaryInterchange$ {
-  /** @deprecated use `BillingSummaryInterchange$inboundSchema` instead. */
-  export const inboundSchema = BillingSummaryInterchange$inboundSchema;
-  /** @deprecated use `BillingSummaryInterchange$outboundSchema` instead. */
-  export const outboundSchema = BillingSummaryInterchange$outboundSchema;
-  /** @deprecated use `BillingSummaryInterchange$Outbound` instead. */
-  export type Outbound = BillingSummaryInterchange$Outbound;
-}
-
 export function billingSummaryInterchangeToJSON(
   billingSummaryInterchange: BillingSummaryInterchange,
 ): string {
@@ -87,7 +73,6 @@ export function billingSummaryInterchangeToJSON(
     BillingSummaryInterchange$outboundSchema.parse(billingSummaryInterchange),
   );
 }
-
 export function billingSummaryInterchangeFromJSON(
   jsonString: string,
 ): SafeParseResult<BillingSummaryInterchange, SDKValidationError> {

@@ -25,7 +25,6 @@ export const EnrichedAddressResponse$inboundSchema: z.ZodType<
 > = z.object({
   suggestions: z.array(AddressSuggestion$inboundSchema),
 });
-
 /** @internal */
 export type EnrichedAddressResponse$Outbound = {
   suggestions: Array<AddressSuggestion$Outbound>;
@@ -40,19 +39,6 @@ export const EnrichedAddressResponse$outboundSchema: z.ZodType<
   suggestions: z.array(AddressSuggestion$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EnrichedAddressResponse$ {
-  /** @deprecated use `EnrichedAddressResponse$inboundSchema` instead. */
-  export const inboundSchema = EnrichedAddressResponse$inboundSchema;
-  /** @deprecated use `EnrichedAddressResponse$outboundSchema` instead. */
-  export const outboundSchema = EnrichedAddressResponse$outboundSchema;
-  /** @deprecated use `EnrichedAddressResponse$Outbound` instead. */
-  export type Outbound = EnrichedAddressResponse$Outbound;
-}
-
 export function enrichedAddressResponseToJSON(
   enrichedAddressResponse: EnrichedAddressResponse,
 ): string {
@@ -60,7 +46,6 @@ export function enrichedAddressResponseToJSON(
     EnrichedAddressResponse$outboundSchema.parse(enrichedAddressResponse),
   );
 }
-
 export function enrichedAddressResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<EnrichedAddressResponse, SDKValidationError> {

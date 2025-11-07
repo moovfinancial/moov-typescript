@@ -147,7 +147,6 @@ export const PaymentMethodsCard$inboundSchema: z.ZodType<
   domesticPushToCard: DomesticPushToCard$inboundSchema.optional(),
   domesticPullFromCard: DomesticPullFromCard$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PaymentMethodsCard$Outbound = {
   cardID: string;
@@ -194,19 +193,6 @@ export const PaymentMethodsCard$outboundSchema: z.ZodType<
   domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentMethodsCard$ {
-  /** @deprecated use `PaymentMethodsCard$inboundSchema` instead. */
-  export const inboundSchema = PaymentMethodsCard$inboundSchema;
-  /** @deprecated use `PaymentMethodsCard$outboundSchema` instead. */
-  export const outboundSchema = PaymentMethodsCard$outboundSchema;
-  /** @deprecated use `PaymentMethodsCard$Outbound` instead. */
-  export type Outbound = PaymentMethodsCard$Outbound;
-}
-
 export function paymentMethodsCardToJSON(
   paymentMethodsCard: PaymentMethodsCard,
 ): string {
@@ -214,7 +200,6 @@ export function paymentMethodsCardToJSON(
     PaymentMethodsCard$outboundSchema.parse(paymentMethodsCard),
   );
 }
-
 export function paymentMethodsCardFromJSON(
   jsonString: string,
 ): SafeParseResult<PaymentMethodsCard, SDKValidationError> {

@@ -19,7 +19,6 @@ export const WebhookBillingStatementCreated$inboundSchema: z.ZodType<
 > = z.object({
   statementID: z.string(),
 });
-
 /** @internal */
 export type WebhookBillingStatementCreated$Outbound = {
   statementID: string;
@@ -34,19 +33,6 @@ export const WebhookBillingStatementCreated$outboundSchema: z.ZodType<
   statementID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookBillingStatementCreated$ {
-  /** @deprecated use `WebhookBillingStatementCreated$inboundSchema` instead. */
-  export const inboundSchema = WebhookBillingStatementCreated$inboundSchema;
-  /** @deprecated use `WebhookBillingStatementCreated$outboundSchema` instead. */
-  export const outboundSchema = WebhookBillingStatementCreated$outboundSchema;
-  /** @deprecated use `WebhookBillingStatementCreated$Outbound` instead. */
-  export type Outbound = WebhookBillingStatementCreated$Outbound;
-}
-
 export function webhookBillingStatementCreatedToJSON(
   webhookBillingStatementCreated: WebhookBillingStatementCreated,
 ): string {
@@ -56,7 +42,6 @@ export function webhookBillingStatementCreatedToJSON(
     ),
   );
 }
-
 export function webhookBillingStatementCreatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookBillingStatementCreated, SDKValidationError> {

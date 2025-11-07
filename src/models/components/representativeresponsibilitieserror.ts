@@ -25,7 +25,6 @@ export const RepresentativeResponsibilitiesError$inboundSchema: z.ZodType<
   ownershipPercentage: z.string().optional(),
   jobTitle: z.string().optional(),
 });
-
 /** @internal */
 export type RepresentativeResponsibilitiesError$Outbound = {
   isController?: string | undefined;
@@ -46,21 +45,6 @@ export const RepresentativeResponsibilitiesError$outboundSchema: z.ZodType<
   jobTitle: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RepresentativeResponsibilitiesError$ {
-  /** @deprecated use `RepresentativeResponsibilitiesError$inboundSchema` instead. */
-  export const inboundSchema =
-    RepresentativeResponsibilitiesError$inboundSchema;
-  /** @deprecated use `RepresentativeResponsibilitiesError$outboundSchema` instead. */
-  export const outboundSchema =
-    RepresentativeResponsibilitiesError$outboundSchema;
-  /** @deprecated use `RepresentativeResponsibilitiesError$Outbound` instead. */
-  export type Outbound = RepresentativeResponsibilitiesError$Outbound;
-}
-
 export function representativeResponsibilitiesErrorToJSON(
   representativeResponsibilitiesError: RepresentativeResponsibilitiesError,
 ): string {
@@ -70,7 +54,6 @@ export function representativeResponsibilitiesErrorToJSON(
     ),
   );
 }
-
 export function representativeResponsibilitiesErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<RepresentativeResponsibilitiesError, SDKValidationError> {

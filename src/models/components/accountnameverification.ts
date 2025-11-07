@@ -33,7 +33,6 @@ export const AccountNameVerification$inboundSchema: z.ZodType<
   middleName: CardVerificationResult$inboundSchema.optional(),
   fullName: CardVerificationResult$inboundSchema.optional(),
 });
-
 /** @internal */
 export type AccountNameVerification$Outbound = {
   firstName?: string | undefined;
@@ -54,19 +53,6 @@ export const AccountNameVerification$outboundSchema: z.ZodType<
   fullName: CardVerificationResult$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountNameVerification$ {
-  /** @deprecated use `AccountNameVerification$inboundSchema` instead. */
-  export const inboundSchema = AccountNameVerification$inboundSchema;
-  /** @deprecated use `AccountNameVerification$outboundSchema` instead. */
-  export const outboundSchema = AccountNameVerification$outboundSchema;
-  /** @deprecated use `AccountNameVerification$Outbound` instead. */
-  export type Outbound = AccountNameVerification$Outbound;
-}
-
 export function accountNameVerificationToJSON(
   accountNameVerification: AccountNameVerification,
 ): string {
@@ -74,7 +60,6 @@ export function accountNameVerificationToJSON(
     AccountNameVerification$outboundSchema.parse(accountNameVerification),
   );
 }
-
 export function accountNameVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<AccountNameVerification, SDKValidationError> {

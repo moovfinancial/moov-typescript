@@ -20,19 +20,7 @@ export type IssuingIntervalLimit = ClosedEnum<typeof IssuingIntervalLimit>;
 export const IssuingIntervalLimit$inboundSchema: z.ZodNativeEnum<
   typeof IssuingIntervalLimit
 > = z.nativeEnum(IssuingIntervalLimit);
-
 /** @internal */
 export const IssuingIntervalLimit$outboundSchema: z.ZodNativeEnum<
   typeof IssuingIntervalLimit
 > = IssuingIntervalLimit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuingIntervalLimit$ {
-  /** @deprecated use `IssuingIntervalLimit$inboundSchema` instead. */
-  export const inboundSchema = IssuingIntervalLimit$inboundSchema;
-  /** @deprecated use `IssuingIntervalLimit$outboundSchema` instead. */
-  export const outboundSchema = IssuingIntervalLimit$outboundSchema;
-}

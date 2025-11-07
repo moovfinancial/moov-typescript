@@ -79,7 +79,6 @@ export const Representative$inboundSchema: z.ZodType<
   disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type Representative$Outbound = {
   representativeID: string;
@@ -114,23 +113,9 @@ export const Representative$outboundSchema: z.ZodType<
   disabledOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Representative$ {
-  /** @deprecated use `Representative$inboundSchema` instead. */
-  export const inboundSchema = Representative$inboundSchema;
-  /** @deprecated use `Representative$outboundSchema` instead. */
-  export const outboundSchema = Representative$outboundSchema;
-  /** @deprecated use `Representative$Outbound` instead. */
-  export type Outbound = Representative$Outbound;
-}
-
 export function representativeToJSON(representative: Representative): string {
   return JSON.stringify(Representative$outboundSchema.parse(representative));
 }
-
 export function representativeFromJSON(
   jsonString: string,
 ): SafeParseResult<Representative, SDKValidationError> {

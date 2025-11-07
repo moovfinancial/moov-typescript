@@ -33,7 +33,6 @@ export const MoneyTransferError$inboundSchema: z.ZodType<
   pullFromCard: MoneyTransferPullFromCardError$inboundSchema.optional(),
   pushToCard: MoneyTransferPushToCardError$inboundSchema.optional(),
 });
-
 /** @internal */
 export type MoneyTransferError$Outbound = {
   pullFromCard?: MoneyTransferPullFromCardError$Outbound | undefined;
@@ -50,19 +49,6 @@ export const MoneyTransferError$outboundSchema: z.ZodType<
   pushToCard: MoneyTransferPushToCardError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoneyTransferError$ {
-  /** @deprecated use `MoneyTransferError$inboundSchema` instead. */
-  export const inboundSchema = MoneyTransferError$inboundSchema;
-  /** @deprecated use `MoneyTransferError$outboundSchema` instead. */
-  export const outboundSchema = MoneyTransferError$outboundSchema;
-  /** @deprecated use `MoneyTransferError$Outbound` instead. */
-  export type Outbound = MoneyTransferError$Outbound;
-}
-
 export function moneyTransferErrorToJSON(
   moneyTransferError: MoneyTransferError,
 ): string {
@@ -70,7 +56,6 @@ export function moneyTransferErrorToJSON(
     MoneyTransferError$outboundSchema.parse(moneyTransferError),
   );
 }
-
 export function moneyTransferErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<MoneyTransferError, SDKValidationError> {

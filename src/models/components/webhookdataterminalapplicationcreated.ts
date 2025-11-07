@@ -29,7 +29,6 @@ export const WebhookDataTerminalApplicationCreated$inboundSchema: z.ZodType<
   terminalApplicationID: z.string(),
   status: TerminalApplicationStatus$inboundSchema,
 });
-
 /** @internal */
 export type WebhookDataTerminalApplicationCreated$Outbound = {
   terminalApplicationID: string;
@@ -46,21 +45,6 @@ export const WebhookDataTerminalApplicationCreated$outboundSchema: z.ZodType<
   status: TerminalApplicationStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataTerminalApplicationCreated$ {
-  /** @deprecated use `WebhookDataTerminalApplicationCreated$inboundSchema` instead. */
-  export const inboundSchema =
-    WebhookDataTerminalApplicationCreated$inboundSchema;
-  /** @deprecated use `WebhookDataTerminalApplicationCreated$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookDataTerminalApplicationCreated$outboundSchema;
-  /** @deprecated use `WebhookDataTerminalApplicationCreated$Outbound` instead. */
-  export type Outbound = WebhookDataTerminalApplicationCreated$Outbound;
-}
-
 export function webhookDataTerminalApplicationCreatedToJSON(
   webhookDataTerminalApplicationCreated: WebhookDataTerminalApplicationCreated,
 ): string {
@@ -70,7 +54,6 @@ export function webhookDataTerminalApplicationCreatedToJSON(
     ),
   );
 }
-
 export function webhookDataTerminalApplicationCreatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataTerminalApplicationCreated, SDKValidationError> {

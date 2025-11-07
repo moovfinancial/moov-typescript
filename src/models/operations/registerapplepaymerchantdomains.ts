@@ -51,7 +51,6 @@ export const RegisterApplePayMerchantDomainsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type RegisterApplePayMerchantDomainsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,21 +69,6 @@ export const RegisterApplePayMerchantDomainsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RegisterApplePayMerchantDomainsGlobals$ {
-  /** @deprecated use `RegisterApplePayMerchantDomainsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    RegisterApplePayMerchantDomainsGlobals$inboundSchema;
-  /** @deprecated use `RegisterApplePayMerchantDomainsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    RegisterApplePayMerchantDomainsGlobals$outboundSchema;
-  /** @deprecated use `RegisterApplePayMerchantDomainsGlobals$Outbound` instead. */
-  export type Outbound = RegisterApplePayMerchantDomainsGlobals$Outbound;
-}
-
 export function registerApplePayMerchantDomainsGlobalsToJSON(
   registerApplePayMerchantDomainsGlobals:
     RegisterApplePayMerchantDomainsGlobals,
@@ -95,7 +79,6 @@ export function registerApplePayMerchantDomainsGlobalsToJSON(
     ),
   );
 }
-
 export function registerApplePayMerchantDomainsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<RegisterApplePayMerchantDomainsGlobals, SDKValidationError> {
@@ -121,7 +104,6 @@ export const RegisterApplePayMerchantDomainsRequest$inboundSchema: z.ZodType<
     "RegisterApplePayMerchantDomains": "registerApplePayMerchantDomains",
   });
 });
-
 /** @internal */
 export type RegisterApplePayMerchantDomainsRequest$Outbound = {
   accountID: string;
@@ -144,21 +126,6 @@ export const RegisterApplePayMerchantDomainsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RegisterApplePayMerchantDomainsRequest$ {
-  /** @deprecated use `RegisterApplePayMerchantDomainsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    RegisterApplePayMerchantDomainsRequest$inboundSchema;
-  /** @deprecated use `RegisterApplePayMerchantDomainsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    RegisterApplePayMerchantDomainsRequest$outboundSchema;
-  /** @deprecated use `RegisterApplePayMerchantDomainsRequest$Outbound` instead. */
-  export type Outbound = RegisterApplePayMerchantDomainsRequest$Outbound;
-}
-
 export function registerApplePayMerchantDomainsRequestToJSON(
   registerApplePayMerchantDomainsRequest:
     RegisterApplePayMerchantDomainsRequest,
@@ -169,7 +136,6 @@ export function registerApplePayMerchantDomainsRequestToJSON(
     ),
   );
 }
-
 export function registerApplePayMerchantDomainsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RegisterApplePayMerchantDomainsRequest, SDKValidationError> {
@@ -195,7 +161,6 @@ export const RegisterApplePayMerchantDomainsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type RegisterApplePayMerchantDomainsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -217,21 +182,6 @@ export const RegisterApplePayMerchantDomainsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RegisterApplePayMerchantDomainsResponse$ {
-  /** @deprecated use `RegisterApplePayMerchantDomainsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    RegisterApplePayMerchantDomainsResponse$inboundSchema;
-  /** @deprecated use `RegisterApplePayMerchantDomainsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    RegisterApplePayMerchantDomainsResponse$outboundSchema;
-  /** @deprecated use `RegisterApplePayMerchantDomainsResponse$Outbound` instead. */
-  export type Outbound = RegisterApplePayMerchantDomainsResponse$Outbound;
-}
-
 export function registerApplePayMerchantDomainsResponseToJSON(
   registerApplePayMerchantDomainsResponse:
     RegisterApplePayMerchantDomainsResponse,
@@ -242,7 +192,6 @@ export function registerApplePayMerchantDomainsResponseToJSON(
     ),
   );
 }
-
 export function registerApplePayMerchantDomainsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<

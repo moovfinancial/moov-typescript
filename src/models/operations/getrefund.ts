@@ -55,7 +55,6 @@ export const GetRefundGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetRefundGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -74,19 +73,6 @@ export const GetRefundGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRefundGlobals$ {
-  /** @deprecated use `GetRefundGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetRefundGlobals$inboundSchema;
-  /** @deprecated use `GetRefundGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetRefundGlobals$outboundSchema;
-  /** @deprecated use `GetRefundGlobals$Outbound` instead. */
-  export type Outbound = GetRefundGlobals$Outbound;
-}
-
 export function getRefundGlobalsToJSON(
   getRefundGlobals: GetRefundGlobals,
 ): string {
@@ -94,7 +80,6 @@ export function getRefundGlobalsToJSON(
     GetRefundGlobals$outboundSchema.parse(getRefundGlobals),
   );
 }
-
 export function getRefundGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRefundGlobals, SDKValidationError> {
@@ -115,7 +100,6 @@ export const GetRefundRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   refundID: z.string(),
 });
-
 /** @internal */
 export type GetRefundRequest$Outbound = {
   transferID: string;
@@ -134,19 +118,6 @@ export const GetRefundRequest$outboundSchema: z.ZodType<
   refundID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRefundRequest$ {
-  /** @deprecated use `GetRefundRequest$inboundSchema` instead. */
-  export const inboundSchema = GetRefundRequest$inboundSchema;
-  /** @deprecated use `GetRefundRequest$outboundSchema` instead. */
-  export const outboundSchema = GetRefundRequest$outboundSchema;
-  /** @deprecated use `GetRefundRequest$Outbound` instead. */
-  export type Outbound = GetRefundRequest$Outbound;
-}
-
 export function getRefundRequestToJSON(
   getRefundRequest: GetRefundRequest,
 ): string {
@@ -154,7 +125,6 @@ export function getRefundRequestToJSON(
     GetRefundRequest$outboundSchema.parse(getRefundRequest),
   );
 }
-
 export function getRefundRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRefundRequest, SDKValidationError> {
@@ -179,7 +149,6 @@ export const GetRefundResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetRefundResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -201,19 +170,6 @@ export const GetRefundResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRefundResponse$ {
-  /** @deprecated use `GetRefundResponse$inboundSchema` instead. */
-  export const inboundSchema = GetRefundResponse$inboundSchema;
-  /** @deprecated use `GetRefundResponse$outboundSchema` instead. */
-  export const outboundSchema = GetRefundResponse$outboundSchema;
-  /** @deprecated use `GetRefundResponse$Outbound` instead. */
-  export type Outbound = GetRefundResponse$Outbound;
-}
-
 export function getRefundResponseToJSON(
   getRefundResponse: GetRefundResponse,
 ): string {
@@ -221,7 +177,6 @@ export function getRefundResponseToJSON(
     GetRefundResponse$outboundSchema.parse(getRefundResponse),
   );
 }
-
 export function getRefundResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRefundResponse, SDKValidationError> {

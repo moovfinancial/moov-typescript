@@ -34,18 +34,6 @@ export type CallToAction = ClosedEnum<typeof CallToAction>;
 /** @internal */
 export const CallToAction$inboundSchema: z.ZodNativeEnum<typeof CallToAction> =
   z.nativeEnum(CallToAction);
-
 /** @internal */
 export const CallToAction$outboundSchema: z.ZodNativeEnum<typeof CallToAction> =
   CallToAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CallToAction$ {
-  /** @deprecated use `CallToAction$inboundSchema` instead. */
-  export const inboundSchema = CallToAction$inboundSchema;
-  /** @deprecated use `CallToAction$outboundSchema` instead. */
-  export const outboundSchema = CallToAction$outboundSchema;
-}

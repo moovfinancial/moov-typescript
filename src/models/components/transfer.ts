@@ -60,6 +60,12 @@ import {
   TransferFailureReason$outboundSchema,
 } from "./transferfailurereason.js";
 import {
+  TransferLineItems,
+  TransferLineItems$inboundSchema,
+  TransferLineItems$Outbound,
+  TransferLineItems$outboundSchema,
+} from "./transferlineitems.js";
+import {
   TransferSource,
   TransferSource$inboundSchema,
   TransferSource$Outbound,
@@ -138,6 +144,13 @@ export type Transfer = {
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
   foreignID?: string | undefined;
+  /**
+   * An optional collection of line items for a transfer.
+   *
+   * @remarks
+   * When line items are provided, their total plus sales tax must equal the transfer amount.
+   */
+  lineItems?: TransferLineItems | undefined;
 };
 
 /** @internal */
@@ -174,8 +187,8 @@ export const Transfer$inboundSchema: z.ZodType<
   paymentLinkCode: z.string().optional(),
   salesTaxAmount: Amount$inboundSchema.optional(),
   foreignID: z.string().optional(),
+  lineItems: TransferLineItems$inboundSchema.optional(),
 });
-
 /** @internal */
 export type Transfer$Outbound = {
   transferID: string;
@@ -205,6 +218,7 @@ export type Transfer$Outbound = {
   paymentLinkCode?: string | undefined;
   salesTaxAmount?: Amount$Outbound | undefined;
   foreignID?: string | undefined;
+  lineItems?: TransferLineItems$Outbound | undefined;
 };
 
 /** @internal */
@@ -240,25 +254,12 @@ export const Transfer$outboundSchema: z.ZodType<
   paymentLinkCode: z.string().optional(),
   salesTaxAmount: Amount$outboundSchema.optional(),
   foreignID: z.string().optional(),
+  lineItems: TransferLineItems$outboundSchema.optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Transfer$ {
-  /** @deprecated use `Transfer$inboundSchema` instead. */
-  export const inboundSchema = Transfer$inboundSchema;
-  /** @deprecated use `Transfer$outboundSchema` instead. */
-  export const outboundSchema = Transfer$outboundSchema;
-  /** @deprecated use `Transfer$Outbound` instead. */
-  export type Outbound = Transfer$Outbound;
-}
 
 export function transferToJSON(transfer: Transfer): string {
   return JSON.stringify(Transfer$outboundSchema.parse(transfer));
 }
-
 export function transferFromJSON(
   jsonString: string,
 ): SafeParseResult<Transfer, SDKValidationError> {

@@ -47,7 +47,6 @@ export const DeleteDisputeEvidenceFileGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type DeleteDisputeEvidenceFileGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const DeleteDisputeEvidenceFileGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDisputeEvidenceFileGlobals$ {
-  /** @deprecated use `DeleteDisputeEvidenceFileGlobals$inboundSchema` instead. */
-  export const inboundSchema = DeleteDisputeEvidenceFileGlobals$inboundSchema;
-  /** @deprecated use `DeleteDisputeEvidenceFileGlobals$outboundSchema` instead. */
-  export const outboundSchema = DeleteDisputeEvidenceFileGlobals$outboundSchema;
-  /** @deprecated use `DeleteDisputeEvidenceFileGlobals$Outbound` instead. */
-  export type Outbound = DeleteDisputeEvidenceFileGlobals$Outbound;
-}
-
 export function deleteDisputeEvidenceFileGlobalsToJSON(
   deleteDisputeEvidenceFileGlobals: DeleteDisputeEvidenceFileGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function deleteDisputeEvidenceFileGlobalsToJSON(
     ),
   );
 }
-
 export function deleteDisputeEvidenceFileGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDisputeEvidenceFileGlobals, SDKValidationError> {
@@ -109,7 +94,6 @@ export const DeleteDisputeEvidenceFileRequest$inboundSchema: z.ZodType<
   disputeID: z.string(),
   evidenceID: z.string(),
 });
-
 /** @internal */
 export type DeleteDisputeEvidenceFileRequest$Outbound = {
   accountID: string;
@@ -128,19 +112,6 @@ export const DeleteDisputeEvidenceFileRequest$outboundSchema: z.ZodType<
   evidenceID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDisputeEvidenceFileRequest$ {
-  /** @deprecated use `DeleteDisputeEvidenceFileRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteDisputeEvidenceFileRequest$inboundSchema;
-  /** @deprecated use `DeleteDisputeEvidenceFileRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteDisputeEvidenceFileRequest$outboundSchema;
-  /** @deprecated use `DeleteDisputeEvidenceFileRequest$Outbound` instead. */
-  export type Outbound = DeleteDisputeEvidenceFileRequest$Outbound;
-}
-
 export function deleteDisputeEvidenceFileRequestToJSON(
   deleteDisputeEvidenceFileRequest: DeleteDisputeEvidenceFileRequest,
 ): string {
@@ -150,7 +121,6 @@ export function deleteDisputeEvidenceFileRequestToJSON(
     ),
   );
 }
-
 export function deleteDisputeEvidenceFileRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDisputeEvidenceFileRequest, SDKValidationError> {
@@ -173,7 +143,6 @@ export const DeleteDisputeEvidenceFileResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type DeleteDisputeEvidenceFileResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -192,20 +161,6 @@ export const DeleteDisputeEvidenceFileResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDisputeEvidenceFileResponse$ {
-  /** @deprecated use `DeleteDisputeEvidenceFileResponse$inboundSchema` instead. */
-  export const inboundSchema = DeleteDisputeEvidenceFileResponse$inboundSchema;
-  /** @deprecated use `DeleteDisputeEvidenceFileResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteDisputeEvidenceFileResponse$outboundSchema;
-  /** @deprecated use `DeleteDisputeEvidenceFileResponse$Outbound` instead. */
-  export type Outbound = DeleteDisputeEvidenceFileResponse$Outbound;
-}
-
 export function deleteDisputeEvidenceFileResponseToJSON(
   deleteDisputeEvidenceFileResponse: DeleteDisputeEvidenceFileResponse,
 ): string {
@@ -215,7 +170,6 @@ export function deleteDisputeEvidenceFileResponseToJSON(
     ),
   );
 }
-
 export function deleteDisputeEvidenceFileResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDisputeEvidenceFileResponse, SDKValidationError> {

@@ -43,18 +43,6 @@ export type CapabilityID = ClosedEnum<typeof CapabilityID>;
 /** @internal */
 export const CapabilityID$inboundSchema: z.ZodNativeEnum<typeof CapabilityID> =
   z.nativeEnum(CapabilityID);
-
 /** @internal */
 export const CapabilityID$outboundSchema: z.ZodNativeEnum<typeof CapabilityID> =
   CapabilityID$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CapabilityID$ {
-  /** @deprecated use `CapabilityID$inboundSchema` instead. */
-  export const inboundSchema = CapabilityID$inboundSchema;
-  /** @deprecated use `CapabilityID$outboundSchema` instead. */
-  export const outboundSchema = CapabilityID$outboundSchema;
-}

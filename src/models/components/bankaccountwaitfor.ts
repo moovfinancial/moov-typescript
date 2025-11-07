@@ -15,19 +15,7 @@ export type BankAccountWaitFor = ClosedEnum<typeof BankAccountWaitFor>;
 export const BankAccountWaitFor$inboundSchema: z.ZodNativeEnum<
   typeof BankAccountWaitFor
 > = z.nativeEnum(BankAccountWaitFor);
-
 /** @internal */
 export const BankAccountWaitFor$outboundSchema: z.ZodNativeEnum<
   typeof BankAccountWaitFor
 > = BankAccountWaitFor$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccountWaitFor$ {
-  /** @deprecated use `BankAccountWaitFor$inboundSchema` instead. */
-  export const inboundSchema = BankAccountWaitFor$inboundSchema;
-  /** @deprecated use `BankAccountWaitFor$outboundSchema` instead. */
-  export const outboundSchema = BankAccountWaitFor$outboundSchema;
-}

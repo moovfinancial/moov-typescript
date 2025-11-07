@@ -92,7 +92,6 @@ export const CardTransactionDetails$inboundSchema: z.ZodType<
   feeProgram: z.string().optional(),
   authorizationCode: z.string().optional(),
 });
-
 /** @internal */
 export type CardTransactionDetails$Outbound = {
   status: string;
@@ -131,19 +130,6 @@ export const CardTransactionDetails$outboundSchema: z.ZodType<
   authorizationCode: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardTransactionDetails$ {
-  /** @deprecated use `CardTransactionDetails$inboundSchema` instead. */
-  export const inboundSchema = CardTransactionDetails$inboundSchema;
-  /** @deprecated use `CardTransactionDetails$outboundSchema` instead. */
-  export const outboundSchema = CardTransactionDetails$outboundSchema;
-  /** @deprecated use `CardTransactionDetails$Outbound` instead. */
-  export type Outbound = CardTransactionDetails$Outbound;
-}
-
 export function cardTransactionDetailsToJSON(
   cardTransactionDetails: CardTransactionDetails,
 ): string {
@@ -151,7 +137,6 @@ export function cardTransactionDetailsToJSON(
     CardTransactionDetails$outboundSchema.parse(cardTransactionDetails),
   );
 }
-
 export function cardTransactionDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<CardTransactionDetails, SDKValidationError> {

@@ -25,6 +25,12 @@ import {
   PaymentLinkDisplayOptionsUpdate$outboundSchema,
 } from "./paymentlinkdisplayoptionsupdate.js";
 import {
+  PaymentLinkLineItemsUpdate,
+  PaymentLinkLineItemsUpdate$inboundSchema,
+  PaymentLinkLineItemsUpdate$Outbound,
+  PaymentLinkLineItemsUpdate$outboundSchema,
+} from "./paymentlinklineitemsupdate.js";
+import {
   PaymentLinkPaymentDetailsUpdate,
   PaymentLinkPaymentDetailsUpdate$inboundSchema,
   PaymentLinkPaymentDetailsUpdate$Outbound,
@@ -50,6 +56,13 @@ export type UpdatePaymentLink = {
    */
   payment?: PaymentLinkPaymentDetailsUpdate | undefined;
   payout?: PaymentLinkPayoutDetailsUpdate | undefined;
+  /**
+   * An optional collection of line items for a payment link.
+   *
+   * @remarks
+   * When line items are provided, their total plus sales tax must equal the payment link amount.
+   */
+  lineItems?: PaymentLinkLineItemsUpdate | undefined;
 };
 
 /** @internal */
@@ -66,8 +79,8 @@ export const UpdatePaymentLink$inboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$inboundSchema.optional(),
   payment: PaymentLinkPaymentDetailsUpdate$inboundSchema.optional(),
   payout: PaymentLinkPayoutDetailsUpdate$inboundSchema.optional(),
+  lineItems: PaymentLinkLineItemsUpdate$inboundSchema.optional(),
 });
-
 /** @internal */
 export type UpdatePaymentLink$Outbound = {
   amount?: AmountUpdate$Outbound | undefined;
@@ -76,6 +89,7 @@ export type UpdatePaymentLink$Outbound = {
   customer?: PaymentLinkCustomerOptions$Outbound | undefined;
   payment?: PaymentLinkPaymentDetailsUpdate$Outbound | undefined;
   payout?: PaymentLinkPayoutDetailsUpdate$Outbound | undefined;
+  lineItems?: PaymentLinkLineItemsUpdate$Outbound | undefined;
 };
 
 /** @internal */
@@ -90,20 +104,8 @@ export const UpdatePaymentLink$outboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$outboundSchema.optional(),
   payment: PaymentLinkPaymentDetailsUpdate$outboundSchema.optional(),
   payout: PaymentLinkPayoutDetailsUpdate$outboundSchema.optional(),
+  lineItems: PaymentLinkLineItemsUpdate$outboundSchema.optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdatePaymentLink$ {
-  /** @deprecated use `UpdatePaymentLink$inboundSchema` instead. */
-  export const inboundSchema = UpdatePaymentLink$inboundSchema;
-  /** @deprecated use `UpdatePaymentLink$outboundSchema` instead. */
-  export const outboundSchema = UpdatePaymentLink$outboundSchema;
-  /** @deprecated use `UpdatePaymentLink$Outbound` instead. */
-  export type Outbound = UpdatePaymentLink$Outbound;
-}
 
 export function updatePaymentLinkToJSON(
   updatePaymentLink: UpdatePaymentLink,
@@ -112,7 +114,6 @@ export function updatePaymentLinkToJSON(
     UpdatePaymentLink$outboundSchema.parse(updatePaymentLink),
   );
 }
-
 export function updatePaymentLinkFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdatePaymentLink, SDKValidationError> {

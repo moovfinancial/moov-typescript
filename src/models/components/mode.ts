@@ -21,18 +21,6 @@ export type Mode = ClosedEnum<typeof Mode>;
 export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
   Mode,
 );
-
 /** @internal */
 export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> =
   Mode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Mode$ {
-  /** @deprecated use `Mode$inboundSchema` instead. */
-  export const inboundSchema = Mode$inboundSchema;
-  /** @deprecated use `Mode$outboundSchema` instead. */
-  export const outboundSchema = Mode$outboundSchema;
-}

@@ -27,7 +27,6 @@ export const TransferOptions$inboundSchema: z.ZodType<
   sourceOptions: z.array(PaymentMethod$inboundSchema).optional(),
   destinationOptions: z.array(PaymentMethod$inboundSchema).optional(),
 });
-
 /** @internal */
 export type TransferOptions$Outbound = {
   sourceOptions?: Array<PaymentMethod$Outbound> | undefined;
@@ -44,25 +43,11 @@ export const TransferOptions$outboundSchema: z.ZodType<
   destinationOptions: z.array(PaymentMethod$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferOptions$ {
-  /** @deprecated use `TransferOptions$inboundSchema` instead. */
-  export const inboundSchema = TransferOptions$inboundSchema;
-  /** @deprecated use `TransferOptions$outboundSchema` instead. */
-  export const outboundSchema = TransferOptions$outboundSchema;
-  /** @deprecated use `TransferOptions$Outbound` instead. */
-  export type Outbound = TransferOptions$Outbound;
-}
-
 export function transferOptionsToJSON(
   transferOptions: TransferOptions,
 ): string {
   return JSON.stringify(TransferOptions$outboundSchema.parse(transferOptions));
 }
-
 export function transferOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferOptions, SDKValidationError> {

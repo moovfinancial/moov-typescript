@@ -30,7 +30,6 @@ export const BrandColors$inboundSchema: z.ZodType<
   dark: BrandColor$inboundSchema,
   light: BrandColor$inboundSchema,
 });
-
 /** @internal */
 export type BrandColors$Outbound = {
   dark: BrandColor$Outbound;
@@ -47,23 +46,9 @@ export const BrandColors$outboundSchema: z.ZodType<
   light: BrandColor$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BrandColors$ {
-  /** @deprecated use `BrandColors$inboundSchema` instead. */
-  export const inboundSchema = BrandColors$inboundSchema;
-  /** @deprecated use `BrandColors$outboundSchema` instead. */
-  export const outboundSchema = BrandColors$outboundSchema;
-  /** @deprecated use `BrandColors$Outbound` instead. */
-  export type Outbound = BrandColors$Outbound;
-}
-
 export function brandColorsToJSON(brandColors: BrandColors): string {
   return JSON.stringify(BrandColors$outboundSchema.parse(brandColors));
 }
-
 export function brandColorsFromJSON(
   jsonString: string,
 ): SafeParseResult<BrandColors, SDKValidationError> {

@@ -25,7 +25,6 @@ export const SendFundsAchError$inboundSchema: z.ZodType<
 > = z.object({
   estimatedActivity: EstimatedActivityError$inboundSchema.optional(),
 });
-
 /** @internal */
 export type SendFundsAchError$Outbound = {
   estimatedActivity?: EstimatedActivityError$Outbound | undefined;
@@ -40,19 +39,6 @@ export const SendFundsAchError$outboundSchema: z.ZodType<
   estimatedActivity: EstimatedActivityError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SendFundsAchError$ {
-  /** @deprecated use `SendFundsAchError$inboundSchema` instead. */
-  export const inboundSchema = SendFundsAchError$inboundSchema;
-  /** @deprecated use `SendFundsAchError$outboundSchema` instead. */
-  export const outboundSchema = SendFundsAchError$outboundSchema;
-  /** @deprecated use `SendFundsAchError$Outbound` instead. */
-  export type Outbound = SendFundsAchError$Outbound;
-}
-
 export function sendFundsAchErrorToJSON(
   sendFundsAchError: SendFundsAchError,
 ): string {
@@ -60,7 +46,6 @@ export function sendFundsAchErrorToJSON(
     SendFundsAchError$outboundSchema.parse(sendFundsAchError),
   );
 }
-
 export function sendFundsAchErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<SendFundsAchError, SDKValidationError> {

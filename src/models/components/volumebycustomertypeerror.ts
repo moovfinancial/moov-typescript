@@ -21,7 +21,6 @@ export const VolumeByCustomerTypeError$inboundSchema: z.ZodType<
   businessToBusinessPercentage: z.string().optional(),
   consumerToBusinessPercentage: z.string().optional(),
 });
-
 /** @internal */
 export type VolumeByCustomerTypeError$Outbound = {
   businessToBusinessPercentage?: string | undefined;
@@ -38,19 +37,6 @@ export const VolumeByCustomerTypeError$outboundSchema: z.ZodType<
   consumerToBusinessPercentage: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VolumeByCustomerTypeError$ {
-  /** @deprecated use `VolumeByCustomerTypeError$inboundSchema` instead. */
-  export const inboundSchema = VolumeByCustomerTypeError$inboundSchema;
-  /** @deprecated use `VolumeByCustomerTypeError$outboundSchema` instead. */
-  export const outboundSchema = VolumeByCustomerTypeError$outboundSchema;
-  /** @deprecated use `VolumeByCustomerTypeError$Outbound` instead. */
-  export type Outbound = VolumeByCustomerTypeError$Outbound;
-}
-
 export function volumeByCustomerTypeErrorToJSON(
   volumeByCustomerTypeError: VolumeByCustomerTypeError,
 ): string {
@@ -58,7 +44,6 @@ export function volumeByCustomerTypeErrorToJSON(
     VolumeByCustomerTypeError$outboundSchema.parse(volumeByCustomerTypeError),
   );
 }
-
 export function volumeByCustomerTypeErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<VolumeByCustomerTypeError, SDKValidationError> {

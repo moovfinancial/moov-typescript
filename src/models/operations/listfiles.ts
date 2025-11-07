@@ -47,7 +47,6 @@ export const ListFilesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListFilesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const ListFilesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFilesGlobals$ {
-  /** @deprecated use `ListFilesGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListFilesGlobals$inboundSchema;
-  /** @deprecated use `ListFilesGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListFilesGlobals$outboundSchema;
-  /** @deprecated use `ListFilesGlobals$Outbound` instead. */
-  export type Outbound = ListFilesGlobals$Outbound;
-}
-
 export function listFilesGlobalsToJSON(
   listFilesGlobals: ListFilesGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function listFilesGlobalsToJSON(
     ListFilesGlobals$outboundSchema.parse(listFilesGlobals),
   );
 }
-
 export function listFilesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFilesGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const ListFilesRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type ListFilesRequest$Outbound = {
   accountID: string;
@@ -120,19 +104,6 @@ export const ListFilesRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFilesRequest$ {
-  /** @deprecated use `ListFilesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListFilesRequest$inboundSchema;
-  /** @deprecated use `ListFilesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListFilesRequest$outboundSchema;
-  /** @deprecated use `ListFilesRequest$Outbound` instead. */
-  export type Outbound = ListFilesRequest$Outbound;
-}
-
 export function listFilesRequestToJSON(
   listFilesRequest: ListFilesRequest,
 ): string {
@@ -140,7 +111,6 @@ export function listFilesRequestToJSON(
     ListFilesRequest$outboundSchema.parse(listFilesRequest),
   );
 }
-
 export function listFilesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFilesRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const ListFilesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListFilesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -187,19 +156,6 @@ export const ListFilesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFilesResponse$ {
-  /** @deprecated use `ListFilesResponse$inboundSchema` instead. */
-  export const inboundSchema = ListFilesResponse$inboundSchema;
-  /** @deprecated use `ListFilesResponse$outboundSchema` instead. */
-  export const outboundSchema = ListFilesResponse$outboundSchema;
-  /** @deprecated use `ListFilesResponse$Outbound` instead. */
-  export type Outbound = ListFilesResponse$Outbound;
-}
-
 export function listFilesResponseToJSON(
   listFilesResponse: ListFilesResponse,
 ): string {
@@ -207,7 +163,6 @@ export function listFilesResponseToJSON(
     ListFilesResponse$outboundSchema.parse(listFilesResponse),
   );
 }
-
 export function listFilesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFilesResponse, SDKValidationError> {

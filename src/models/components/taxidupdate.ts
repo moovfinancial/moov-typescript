@@ -26,7 +26,6 @@ export const TaxIDUpdateEin$inboundSchema: z.ZodType<
 > = z.object({
   number: z.string().optional(),
 });
-
 /** @internal */
 export type TaxIDUpdateEin$Outbound = {
   number?: string | undefined;
@@ -41,23 +40,9 @@ export const TaxIDUpdateEin$outboundSchema: z.ZodType<
   number: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaxIDUpdateEin$ {
-  /** @deprecated use `TaxIDUpdateEin$inboundSchema` instead. */
-  export const inboundSchema = TaxIDUpdateEin$inboundSchema;
-  /** @deprecated use `TaxIDUpdateEin$outboundSchema` instead. */
-  export const outboundSchema = TaxIDUpdateEin$outboundSchema;
-  /** @deprecated use `TaxIDUpdateEin$Outbound` instead. */
-  export type Outbound = TaxIDUpdateEin$Outbound;
-}
-
 export function taxIDUpdateEinToJSON(taxIDUpdateEin: TaxIDUpdateEin): string {
   return JSON.stringify(TaxIDUpdateEin$outboundSchema.parse(taxIDUpdateEin));
 }
-
 export function taxIDUpdateEinFromJSON(
   jsonString: string,
 ): SafeParseResult<TaxIDUpdateEin, SDKValidationError> {
@@ -76,7 +61,6 @@ export const TaxIDUpdate$inboundSchema: z.ZodType<
 > = z.object({
   ein: z.lazy(() => TaxIDUpdateEin$inboundSchema).optional(),
 });
-
 /** @internal */
 export type TaxIDUpdate$Outbound = {
   ein?: TaxIDUpdateEin$Outbound | undefined;
@@ -91,23 +75,9 @@ export const TaxIDUpdate$outboundSchema: z.ZodType<
   ein: z.lazy(() => TaxIDUpdateEin$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaxIDUpdate$ {
-  /** @deprecated use `TaxIDUpdate$inboundSchema` instead. */
-  export const inboundSchema = TaxIDUpdate$inboundSchema;
-  /** @deprecated use `TaxIDUpdate$outboundSchema` instead. */
-  export const outboundSchema = TaxIDUpdate$outboundSchema;
-  /** @deprecated use `TaxIDUpdate$Outbound` instead. */
-  export type Outbound = TaxIDUpdate$Outbound;
-}
-
 export function taxIDUpdateToJSON(taxIDUpdate: TaxIDUpdate): string {
   return JSON.stringify(TaxIDUpdate$outboundSchema.parse(taxIDUpdate));
 }
-
 export function taxIDUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<TaxIDUpdate, SDKValidationError> {

@@ -63,7 +63,6 @@ export const LinkCard$inboundSchema: z.ZodType<
   merchantAccountID: z.string().optional(),
   verifyName: z.boolean().optional(),
 });
-
 /** @internal */
 export type LinkCard$Outbound = {
   e2ee?: E2EEToken$Outbound | undefined;
@@ -94,23 +93,9 @@ export const LinkCard$outboundSchema: z.ZodType<
   verifyName: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkCard$ {
-  /** @deprecated use `LinkCard$inboundSchema` instead. */
-  export const inboundSchema = LinkCard$inboundSchema;
-  /** @deprecated use `LinkCard$outboundSchema` instead. */
-  export const outboundSchema = LinkCard$outboundSchema;
-  /** @deprecated use `LinkCard$Outbound` instead. */
-  export type Outbound = LinkCard$Outbound;
-}
-
 export function linkCardToJSON(linkCard: LinkCard): string {
   return JSON.stringify(LinkCard$outboundSchema.parse(linkCard));
 }
-
 export function linkCardFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkCard, SDKValidationError> {

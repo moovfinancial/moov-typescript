@@ -39,7 +39,6 @@ export const Settings$inboundSchema: z.ZodType<
   cardPayment: CardPaymentSettings$inboundSchema.optional(),
   achPayment: ACHPaymentSettings$inboundSchema.optional(),
 });
-
 /** @internal */
 export type Settings$Outbound = {
   cardPayment?: CardPaymentSettings$Outbound | undefined;
@@ -56,23 +55,9 @@ export const Settings$outboundSchema: z.ZodType<
   achPayment: ACHPaymentSettings$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Settings$ {
-  /** @deprecated use `Settings$inboundSchema` instead. */
-  export const inboundSchema = Settings$inboundSchema;
-  /** @deprecated use `Settings$outboundSchema` instead. */
-  export const outboundSchema = Settings$outboundSchema;
-  /** @deprecated use `Settings$Outbound` instead. */
-  export type Outbound = Settings$Outbound;
-}
-
 export function settingsToJSON(settings: Settings): string {
   return JSON.stringify(Settings$outboundSchema.parse(settings));
 }
-
 export function settingsFromJSON(
   jsonString: string,
 ): SafeParseResult<Settings, SDKValidationError> {

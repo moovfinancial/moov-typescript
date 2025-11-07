@@ -47,7 +47,6 @@ export const GetTerminalApplicationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetTerminalApplicationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const GetTerminalApplicationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTerminalApplicationGlobals$ {
-  /** @deprecated use `GetTerminalApplicationGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetTerminalApplicationGlobals$inboundSchema;
-  /** @deprecated use `GetTerminalApplicationGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetTerminalApplicationGlobals$outboundSchema;
-  /** @deprecated use `GetTerminalApplicationGlobals$Outbound` instead. */
-  export type Outbound = GetTerminalApplicationGlobals$Outbound;
-}
-
 export function getTerminalApplicationGlobalsToJSON(
   getTerminalApplicationGlobals: GetTerminalApplicationGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function getTerminalApplicationGlobalsToJSON(
     ),
   );
 }
-
 export function getTerminalApplicationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTerminalApplicationGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetTerminalApplicationRequest$inboundSchema: z.ZodType<
 > = z.object({
   terminalApplicationID: z.string(),
 });
-
 /** @internal */
 export type GetTerminalApplicationRequest$Outbound = {
   terminalApplicationID: string;
@@ -122,19 +106,6 @@ export const GetTerminalApplicationRequest$outboundSchema: z.ZodType<
   terminalApplicationID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTerminalApplicationRequest$ {
-  /** @deprecated use `GetTerminalApplicationRequest$inboundSchema` instead. */
-  export const inboundSchema = GetTerminalApplicationRequest$inboundSchema;
-  /** @deprecated use `GetTerminalApplicationRequest$outboundSchema` instead. */
-  export const outboundSchema = GetTerminalApplicationRequest$outboundSchema;
-  /** @deprecated use `GetTerminalApplicationRequest$Outbound` instead. */
-  export type Outbound = GetTerminalApplicationRequest$Outbound;
-}
-
 export function getTerminalApplicationRequestToJSON(
   getTerminalApplicationRequest: GetTerminalApplicationRequest,
 ): string {
@@ -144,7 +115,6 @@ export function getTerminalApplicationRequestToJSON(
     ),
   );
 }
-
 export function getTerminalApplicationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTerminalApplicationRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const GetTerminalApplicationResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetTerminalApplicationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const GetTerminalApplicationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTerminalApplicationResponse$ {
-  /** @deprecated use `GetTerminalApplicationResponse$inboundSchema` instead. */
-  export const inboundSchema = GetTerminalApplicationResponse$inboundSchema;
-  /** @deprecated use `GetTerminalApplicationResponse$outboundSchema` instead. */
-  export const outboundSchema = GetTerminalApplicationResponse$outboundSchema;
-  /** @deprecated use `GetTerminalApplicationResponse$Outbound` instead. */
-  export type Outbound = GetTerminalApplicationResponse$Outbound;
-}
-
 export function getTerminalApplicationResponseToJSON(
   getTerminalApplicationResponse: GetTerminalApplicationResponse,
 ): string {
@@ -213,7 +169,6 @@ export function getTerminalApplicationResponseToJSON(
     ),
   );
 }
-
 export function getTerminalApplicationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTerminalApplicationResponse, SDKValidationError> {

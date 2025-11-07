@@ -21,18 +21,6 @@ export type FeeModel = ClosedEnum<typeof FeeModel>;
 /** @internal */
 export const FeeModel$inboundSchema: z.ZodNativeEnum<typeof FeeModel> = z
   .nativeEnum(FeeModel);
-
 /** @internal */
 export const FeeModel$outboundSchema: z.ZodNativeEnum<typeof FeeModel> =
   FeeModel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeeModel$ {
-  /** @deprecated use `FeeModel$inboundSchema` instead. */
-  export const inboundSchema = FeeModel$inboundSchema;
-  /** @deprecated use `FeeModel$outboundSchema` instead. */
-  export const outboundSchema = FeeModel$outboundSchema;
-}

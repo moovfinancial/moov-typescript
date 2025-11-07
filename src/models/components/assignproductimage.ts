@@ -22,7 +22,6 @@ export const AssignProductImage$inboundSchema: z.ZodType<
 > = z.object({
   imageID: z.string(),
 });
-
 /** @internal */
 export type AssignProductImage$Outbound = {
   imageID: string;
@@ -37,19 +36,6 @@ export const AssignProductImage$outboundSchema: z.ZodType<
   imageID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignProductImage$ {
-  /** @deprecated use `AssignProductImage$inboundSchema` instead. */
-  export const inboundSchema = AssignProductImage$inboundSchema;
-  /** @deprecated use `AssignProductImage$outboundSchema` instead. */
-  export const outboundSchema = AssignProductImage$outboundSchema;
-  /** @deprecated use `AssignProductImage$Outbound` instead. */
-  export type Outbound = AssignProductImage$Outbound;
-}
-
 export function assignProductImageToJSON(
   assignProductImage: AssignProductImage,
 ): string {
@@ -57,7 +43,6 @@ export function assignProductImageToJSON(
     AssignProductImage$outboundSchema.parse(assignProductImage),
   );
 }
-
 export function assignProductImageFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignProductImage, SDKValidationError> {

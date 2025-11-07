@@ -41,7 +41,6 @@ export const PlatformFees$inboundSchema: z.ZodType<
   merchantPCIFee: AmountDecimal$inboundSchema,
   total: AmountDecimal$inboundSchema,
 });
-
 /** @internal */
 export type PlatformFees$Outbound = {
   walletFee: AmountDecimal$Outbound;
@@ -60,23 +59,9 @@ export const PlatformFees$outboundSchema: z.ZodType<
   total: AmountDecimal$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PlatformFees$ {
-  /** @deprecated use `PlatformFees$inboundSchema` instead. */
-  export const inboundSchema = PlatformFees$inboundSchema;
-  /** @deprecated use `PlatformFees$outboundSchema` instead. */
-  export const outboundSchema = PlatformFees$outboundSchema;
-  /** @deprecated use `PlatformFees$Outbound` instead. */
-  export type Outbound = PlatformFees$Outbound;
-}
-
 export function platformFeesToJSON(platformFees: PlatformFees): string {
   return JSON.stringify(PlatformFees$outboundSchema.parse(platformFees));
 }
-
 export function platformFeesFromJSON(
   jsonString: string,
 ): SafeParseResult<PlatformFees, SDKValidationError> {

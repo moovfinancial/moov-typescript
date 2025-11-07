@@ -76,16 +76,3 @@ export const ScheduleValidationError$outboundSchema: z.ZodType<
     recur: z.string().optional(),
     description: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduleValidationError$ {
-  /** @deprecated use `ScheduleValidationError$inboundSchema` instead. */
-  export const inboundSchema = ScheduleValidationError$inboundSchema;
-  /** @deprecated use `ScheduleValidationError$outboundSchema` instead. */
-  export const outboundSchema = ScheduleValidationError$outboundSchema;
-  /** @deprecated use `ScheduleValidationError$Outbound` instead. */
-  export type Outbound = ScheduleValidationError$Outbound;
-}

@@ -42,7 +42,6 @@ export const PatchProfile$inboundSchema: z.ZodType<
   individual: PatchIndividual$inboundSchema.optional(),
   business: PatchBusiness$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PatchProfile$Outbound = {
   individual?: PatchIndividual$Outbound | undefined;
@@ -59,23 +58,9 @@ export const PatchProfile$outboundSchema: z.ZodType<
   business: PatchBusiness$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchProfile$ {
-  /** @deprecated use `PatchProfile$inboundSchema` instead. */
-  export const inboundSchema = PatchProfile$inboundSchema;
-  /** @deprecated use `PatchProfile$outboundSchema` instead. */
-  export const outboundSchema = PatchProfile$outboundSchema;
-  /** @deprecated use `PatchProfile$Outbound` instead. */
-  export type Outbound = PatchProfile$Outbound;
-}
-
 export function patchProfileToJSON(patchProfile: PatchProfile): string {
   return JSON.stringify(PatchProfile$outboundSchema.parse(patchProfile));
 }
-
 export function patchProfileFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchProfile, SDKValidationError> {

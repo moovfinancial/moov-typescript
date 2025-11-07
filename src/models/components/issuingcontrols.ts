@@ -33,7 +33,6 @@ export const IssuingControls$inboundSchema: z.ZodType<
   singleUse: z.boolean().optional(),
   velocityLimits: z.array(IssuingVelocityLimit$inboundSchema).optional(),
 });
-
 /** @internal */
 export type IssuingControls$Outbound = {
   singleUse?: boolean | undefined;
@@ -50,25 +49,11 @@ export const IssuingControls$outboundSchema: z.ZodType<
   velocityLimits: z.array(IssuingVelocityLimit$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuingControls$ {
-  /** @deprecated use `IssuingControls$inboundSchema` instead. */
-  export const inboundSchema = IssuingControls$inboundSchema;
-  /** @deprecated use `IssuingControls$outboundSchema` instead. */
-  export const outboundSchema = IssuingControls$outboundSchema;
-  /** @deprecated use `IssuingControls$Outbound` instead. */
-  export type Outbound = IssuingControls$Outbound;
-}
-
 export function issuingControlsToJSON(
   issuingControls: IssuingControls,
 ): string {
   return JSON.stringify(IssuingControls$outboundSchema.parse(issuingControls));
 }
-
 export function issuingControlsFromJSON(
   jsonString: string,
 ): SafeParseResult<IssuingControls, SDKValidationError> {

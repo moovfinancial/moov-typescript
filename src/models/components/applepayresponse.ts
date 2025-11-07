@@ -80,7 +80,6 @@ export const ApplePayResponse$inboundSchema: z.ZodType<
   dynamicLastFour: z.string(),
   issuerCountry: z.string().optional(),
 });
-
 /** @internal */
 export type ApplePayResponse$Outbound = {
   brand: string;
@@ -107,19 +106,6 @@ export const ApplePayResponse$outboundSchema: z.ZodType<
   issuerCountry: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplePayResponse$ {
-  /** @deprecated use `ApplePayResponse$inboundSchema` instead. */
-  export const inboundSchema = ApplePayResponse$inboundSchema;
-  /** @deprecated use `ApplePayResponse$outboundSchema` instead. */
-  export const outboundSchema = ApplePayResponse$outboundSchema;
-  /** @deprecated use `ApplePayResponse$Outbound` instead. */
-  export type Outbound = ApplePayResponse$Outbound;
-}
-
 export function applePayResponseToJSON(
   applePayResponse: ApplePayResponse,
 ): string {
@@ -127,7 +113,6 @@ export function applePayResponseToJSON(
     ApplePayResponse$outboundSchema.parse(applePayResponse),
   );
 }
-
 export function applePayResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplePayResponse, SDKValidationError> {

@@ -62,7 +62,6 @@ export const BillableFee$inboundSchema: z.ZodType<
   feeProperties: FeeProperties$inboundSchema.optional(),
   feeConditions: z.record(z.any()).optional(),
 });
-
 /** @internal */
 export type BillableFee$Outbound = {
   billableFeeID?: string | undefined;
@@ -89,23 +88,9 @@ export const BillableFee$outboundSchema: z.ZodType<
   feeConditions: z.record(z.any()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BillableFee$ {
-  /** @deprecated use `BillableFee$inboundSchema` instead. */
-  export const inboundSchema = BillableFee$inboundSchema;
-  /** @deprecated use `BillableFee$outboundSchema` instead. */
-  export const outboundSchema = BillableFee$outboundSchema;
-  /** @deprecated use `BillableFee$Outbound` instead. */
-  export type Outbound = BillableFee$Outbound;
-}
-
 export function billableFeeToJSON(billableFee: BillableFee): string {
   return JSON.stringify(BillableFee$outboundSchema.parse(billableFee));
 }
-
 export function billableFeeFromJSON(
   jsonString: string,
 ): SafeParseResult<BillableFee, SDKValidationError> {

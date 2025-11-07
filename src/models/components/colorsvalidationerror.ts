@@ -27,7 +27,6 @@ export const ColorsValidationError$inboundSchema: z.ZodType<
   light: BrandColorValidationError$inboundSchema.optional(),
   dark: BrandColorValidationError$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ColorsValidationError$Outbound = {
   light?: BrandColorValidationError$Outbound | undefined;
@@ -44,19 +43,6 @@ export const ColorsValidationError$outboundSchema: z.ZodType<
   dark: BrandColorValidationError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ColorsValidationError$ {
-  /** @deprecated use `ColorsValidationError$inboundSchema` instead. */
-  export const inboundSchema = ColorsValidationError$inboundSchema;
-  /** @deprecated use `ColorsValidationError$outboundSchema` instead. */
-  export const outboundSchema = ColorsValidationError$outboundSchema;
-  /** @deprecated use `ColorsValidationError$Outbound` instead. */
-  export type Outbound = ColorsValidationError$Outbound;
-}
-
 export function colorsValidationErrorToJSON(
   colorsValidationError: ColorsValidationError,
 ): string {
@@ -64,7 +50,6 @@ export function colorsValidationErrorToJSON(
     ColorsValidationError$outboundSchema.parse(colorsValidationError),
   );
 }
-
 export function colorsValidationErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<ColorsValidationError, SDKValidationError> {

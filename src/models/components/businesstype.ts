@@ -28,18 +28,6 @@ export type BusinessType = ClosedEnum<typeof BusinessType>;
 /** @internal */
 export const BusinessType$inboundSchema: z.ZodNativeEnum<typeof BusinessType> =
   z.nativeEnum(BusinessType);
-
 /** @internal */
 export const BusinessType$outboundSchema: z.ZodNativeEnum<typeof BusinessType> =
   BusinessType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BusinessType$ {
-  /** @deprecated use `BusinessType$inboundSchema` instead. */
-  export const inboundSchema = BusinessType$inboundSchema;
-  /** @deprecated use `BusinessType$outboundSchema` instead. */
-  export const outboundSchema = BusinessType$outboundSchema;
-}

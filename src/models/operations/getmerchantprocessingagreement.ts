@@ -46,7 +46,6 @@ export const GetMerchantProcessingAgreementGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetMerchantProcessingAgreementGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -65,21 +64,6 @@ export const GetMerchantProcessingAgreementGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetMerchantProcessingAgreementGlobals$ {
-  /** @deprecated use `GetMerchantProcessingAgreementGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    GetMerchantProcessingAgreementGlobals$inboundSchema;
-  /** @deprecated use `GetMerchantProcessingAgreementGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetMerchantProcessingAgreementGlobals$outboundSchema;
-  /** @deprecated use `GetMerchantProcessingAgreementGlobals$Outbound` instead. */
-  export type Outbound = GetMerchantProcessingAgreementGlobals$Outbound;
-}
-
 export function getMerchantProcessingAgreementGlobalsToJSON(
   getMerchantProcessingAgreementGlobals: GetMerchantProcessingAgreementGlobals,
 ): string {
@@ -89,7 +73,6 @@ export function getMerchantProcessingAgreementGlobalsToJSON(
     ),
   );
 }
-
 export function getMerchantProcessingAgreementGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetMerchantProcessingAgreementGlobals, SDKValidationError> {
@@ -109,7 +92,6 @@ export const GetMerchantProcessingAgreementRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type GetMerchantProcessingAgreementRequest$Outbound = {
   accountID: string;
@@ -124,21 +106,6 @@ export const GetMerchantProcessingAgreementRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetMerchantProcessingAgreementRequest$ {
-  /** @deprecated use `GetMerchantProcessingAgreementRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetMerchantProcessingAgreementRequest$inboundSchema;
-  /** @deprecated use `GetMerchantProcessingAgreementRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetMerchantProcessingAgreementRequest$outboundSchema;
-  /** @deprecated use `GetMerchantProcessingAgreementRequest$Outbound` instead. */
-  export type Outbound = GetMerchantProcessingAgreementRequest$Outbound;
-}
-
 export function getMerchantProcessingAgreementRequestToJSON(
   getMerchantProcessingAgreementRequest: GetMerchantProcessingAgreementRequest,
 ): string {
@@ -148,7 +115,6 @@ export function getMerchantProcessingAgreementRequestToJSON(
     ),
   );
 }
-
 export function getMerchantProcessingAgreementRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetMerchantProcessingAgreementRequest, SDKValidationError> {
@@ -174,7 +140,6 @@ export const GetMerchantProcessingAgreementResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetMerchantProcessingAgreementResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -196,21 +161,6 @@ export const GetMerchantProcessingAgreementResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetMerchantProcessingAgreementResponse$ {
-  /** @deprecated use `GetMerchantProcessingAgreementResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetMerchantProcessingAgreementResponse$inboundSchema;
-  /** @deprecated use `GetMerchantProcessingAgreementResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetMerchantProcessingAgreementResponse$outboundSchema;
-  /** @deprecated use `GetMerchantProcessingAgreementResponse$Outbound` instead. */
-  export type Outbound = GetMerchantProcessingAgreementResponse$Outbound;
-}
-
 export function getMerchantProcessingAgreementResponseToJSON(
   getMerchantProcessingAgreementResponse:
     GetMerchantProcessingAgreementResponse,
@@ -221,7 +171,6 @@ export function getMerchantProcessingAgreementResponseToJSON(
     ),
   );
 }
-
 export function getMerchantProcessingAgreementResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetMerchantProcessingAgreementResponse, SDKValidationError> {

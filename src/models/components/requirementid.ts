@@ -181,19 +181,7 @@ export type RequirementID = ClosedEnum<typeof RequirementID>;
 export const RequirementID$inboundSchema: z.ZodNativeEnum<
   typeof RequirementID
 > = z.nativeEnum(RequirementID);
-
 /** @internal */
 export const RequirementID$outboundSchema: z.ZodNativeEnum<
   typeof RequirementID
 > = RequirementID$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequirementID$ {
-  /** @deprecated use `RequirementID$inboundSchema` instead. */
-  export const inboundSchema = RequirementID$inboundSchema;
-  /** @deprecated use `RequirementID$outboundSchema` instead. */
-  export const outboundSchema = RequirementID$outboundSchema;
-}

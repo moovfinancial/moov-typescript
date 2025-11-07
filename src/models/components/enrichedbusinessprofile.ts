@@ -47,7 +47,6 @@ export const EnrichedBusinessProfile$inboundSchema: z.ZodType<
   phone: PhoneNumber$inboundSchema.optional(),
   website: z.string().optional(),
 });
-
 /** @internal */
 export type EnrichedBusinessProfile$Outbound = {
   address?: Address$Outbound | undefined;
@@ -72,19 +71,6 @@ export const EnrichedBusinessProfile$outboundSchema: z.ZodType<
   website: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EnrichedBusinessProfile$ {
-  /** @deprecated use `EnrichedBusinessProfile$inboundSchema` instead. */
-  export const inboundSchema = EnrichedBusinessProfile$inboundSchema;
-  /** @deprecated use `EnrichedBusinessProfile$outboundSchema` instead. */
-  export const outboundSchema = EnrichedBusinessProfile$outboundSchema;
-  /** @deprecated use `EnrichedBusinessProfile$Outbound` instead. */
-  export type Outbound = EnrichedBusinessProfile$Outbound;
-}
-
 export function enrichedBusinessProfileToJSON(
   enrichedBusinessProfile: EnrichedBusinessProfile,
 ): string {
@@ -92,7 +78,6 @@ export function enrichedBusinessProfileToJSON(
     EnrichedBusinessProfile$outboundSchema.parse(enrichedBusinessProfile),
   );
 }
-
 export function enrichedBusinessProfileFromJSON(
   jsonString: string,
 ): SafeParseResult<EnrichedBusinessProfile, SDKValidationError> {

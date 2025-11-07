@@ -25,7 +25,6 @@ export const CollectFundsAch$inboundSchema: z.ZodType<
 > = z.object({
   estimatedActivity: EstimatedActivity$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CollectFundsAch$Outbound = {
   estimatedActivity?: EstimatedActivity$Outbound | undefined;
@@ -40,25 +39,11 @@ export const CollectFundsAch$outboundSchema: z.ZodType<
   estimatedActivity: EstimatedActivity$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectFundsAch$ {
-  /** @deprecated use `CollectFundsAch$inboundSchema` instead. */
-  export const inboundSchema = CollectFundsAch$inboundSchema;
-  /** @deprecated use `CollectFundsAch$outboundSchema` instead. */
-  export const outboundSchema = CollectFundsAch$outboundSchema;
-  /** @deprecated use `CollectFundsAch$Outbound` instead. */
-  export type Outbound = CollectFundsAch$Outbound;
-}
-
 export function collectFundsAchToJSON(
   collectFundsAch: CollectFundsAch,
 ): string {
   return JSON.stringify(CollectFundsAch$outboundSchema.parse(collectFundsAch));
 }
-
 export function collectFundsAchFromJSON(
   jsonString: string,
 ): SafeParseResult<CollectFundsAch, SDKValidationError> {

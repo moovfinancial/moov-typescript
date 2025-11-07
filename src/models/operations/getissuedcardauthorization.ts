@@ -51,7 +51,6 @@ export const GetIssuedCardAuthorizationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetIssuedCardAuthorizationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,20 +69,6 @@ export const GetIssuedCardAuthorizationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIssuedCardAuthorizationGlobals$ {
-  /** @deprecated use `GetIssuedCardAuthorizationGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetIssuedCardAuthorizationGlobals$inboundSchema;
-  /** @deprecated use `GetIssuedCardAuthorizationGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIssuedCardAuthorizationGlobals$outboundSchema;
-  /** @deprecated use `GetIssuedCardAuthorizationGlobals$Outbound` instead. */
-  export type Outbound = GetIssuedCardAuthorizationGlobals$Outbound;
-}
-
 export function getIssuedCardAuthorizationGlobalsToJSON(
   getIssuedCardAuthorizationGlobals: GetIssuedCardAuthorizationGlobals,
 ): string {
@@ -93,7 +78,6 @@ export function getIssuedCardAuthorizationGlobalsToJSON(
     ),
   );
 }
-
 export function getIssuedCardAuthorizationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIssuedCardAuthorizationGlobals, SDKValidationError> {
@@ -113,7 +97,6 @@ export const GetIssuedCardAuthorizationRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   authorizationID: z.string(),
 });
-
 /** @internal */
 export type GetIssuedCardAuthorizationRequest$Outbound = {
   accountID: string;
@@ -130,20 +113,6 @@ export const GetIssuedCardAuthorizationRequest$outboundSchema: z.ZodType<
   authorizationID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIssuedCardAuthorizationRequest$ {
-  /** @deprecated use `GetIssuedCardAuthorizationRequest$inboundSchema` instead. */
-  export const inboundSchema = GetIssuedCardAuthorizationRequest$inboundSchema;
-  /** @deprecated use `GetIssuedCardAuthorizationRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIssuedCardAuthorizationRequest$outboundSchema;
-  /** @deprecated use `GetIssuedCardAuthorizationRequest$Outbound` instead. */
-  export type Outbound = GetIssuedCardAuthorizationRequest$Outbound;
-}
-
 export function getIssuedCardAuthorizationRequestToJSON(
   getIssuedCardAuthorizationRequest: GetIssuedCardAuthorizationRequest,
 ): string {
@@ -153,7 +122,6 @@ export function getIssuedCardAuthorizationRequestToJSON(
     ),
   );
 }
-
 export function getIssuedCardAuthorizationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIssuedCardAuthorizationRequest, SDKValidationError> {
@@ -178,7 +146,6 @@ export const GetIssuedCardAuthorizationResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetIssuedCardAuthorizationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -200,20 +167,6 @@ export const GetIssuedCardAuthorizationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIssuedCardAuthorizationResponse$ {
-  /** @deprecated use `GetIssuedCardAuthorizationResponse$inboundSchema` instead. */
-  export const inboundSchema = GetIssuedCardAuthorizationResponse$inboundSchema;
-  /** @deprecated use `GetIssuedCardAuthorizationResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIssuedCardAuthorizationResponse$outboundSchema;
-  /** @deprecated use `GetIssuedCardAuthorizationResponse$Outbound` instead. */
-  export type Outbound = GetIssuedCardAuthorizationResponse$Outbound;
-}
-
 export function getIssuedCardAuthorizationResponseToJSON(
   getIssuedCardAuthorizationResponse: GetIssuedCardAuthorizationResponse,
 ): string {
@@ -223,7 +176,6 @@ export function getIssuedCardAuthorizationResponseToJSON(
     ),
   );
 }
-
 export function getIssuedCardAuthorizationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIssuedCardAuthorizationResponse, SDKValidationError> {

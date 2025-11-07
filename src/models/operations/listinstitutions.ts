@@ -62,7 +62,6 @@ export const ListInstitutionsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListInstitutionsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -81,19 +80,6 @@ export const ListInstitutionsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListInstitutionsGlobals$ {
-  /** @deprecated use `ListInstitutionsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListInstitutionsGlobals$inboundSchema;
-  /** @deprecated use `ListInstitutionsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListInstitutionsGlobals$outboundSchema;
-  /** @deprecated use `ListInstitutionsGlobals$Outbound` instead. */
-  export type Outbound = ListInstitutionsGlobals$Outbound;
-}
-
 export function listInstitutionsGlobalsToJSON(
   listInstitutionsGlobals: ListInstitutionsGlobals,
 ): string {
@@ -101,7 +87,6 @@ export function listInstitutionsGlobalsToJSON(
     ListInstitutionsGlobals$outboundSchema.parse(listInstitutionsGlobals),
   );
 }
-
 export function listInstitutionsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListInstitutionsGlobals, SDKValidationError> {
@@ -123,7 +108,6 @@ export const ListInstitutionsRequest$inboundSchema: z.ZodType<
   state: z.string().optional(),
   limit: z.number().int().optional(),
 });
-
 /** @internal */
 export type ListInstitutionsRequest$Outbound = {
   name?: string | undefined;
@@ -144,19 +128,6 @@ export const ListInstitutionsRequest$outboundSchema: z.ZodType<
   limit: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListInstitutionsRequest$ {
-  /** @deprecated use `ListInstitutionsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListInstitutionsRequest$inboundSchema;
-  /** @deprecated use `ListInstitutionsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListInstitutionsRequest$outboundSchema;
-  /** @deprecated use `ListInstitutionsRequest$Outbound` instead. */
-  export type Outbound = ListInstitutionsRequest$Outbound;
-}
-
 export function listInstitutionsRequestToJSON(
   listInstitutionsRequest: ListInstitutionsRequest,
 ): string {
@@ -164,7 +135,6 @@ export function listInstitutionsRequestToJSON(
     ListInstitutionsRequest$outboundSchema.parse(listInstitutionsRequest),
   );
 }
-
 export function listInstitutionsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListInstitutionsRequest, SDKValidationError> {
@@ -189,7 +159,6 @@ export const ListInstitutionsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListInstitutionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -211,19 +180,6 @@ export const ListInstitutionsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListInstitutionsResponse$ {
-  /** @deprecated use `ListInstitutionsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListInstitutionsResponse$inboundSchema;
-  /** @deprecated use `ListInstitutionsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListInstitutionsResponse$outboundSchema;
-  /** @deprecated use `ListInstitutionsResponse$Outbound` instead. */
-  export type Outbound = ListInstitutionsResponse$Outbound;
-}
-
 export function listInstitutionsResponseToJSON(
   listInstitutionsResponse: ListInstitutionsResponse,
 ): string {
@@ -231,7 +187,6 @@ export function listInstitutionsResponseToJSON(
     ListInstitutionsResponse$outboundSchema.parse(listInstitutionsResponse),
   );
 }
-
 export function listInstitutionsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListInstitutionsResponse, SDKValidationError> {

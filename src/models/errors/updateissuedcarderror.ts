@@ -78,16 +78,3 @@ export const UpdateIssuedCardError$outboundSchema: z.ZodType<
     authorizedUser: components.CreateAuthorizedUserError$outboundSchema
       .optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateIssuedCardError$ {
-  /** @deprecated use `UpdateIssuedCardError$inboundSchema` instead. */
-  export const inboundSchema = UpdateIssuedCardError$inboundSchema;
-  /** @deprecated use `UpdateIssuedCardError$outboundSchema` instead. */
-  export const outboundSchema = UpdateIssuedCardError$outboundSchema;
-  /** @deprecated use `UpdateIssuedCardError$Outbound` instead. */
-  export type Outbound = UpdateIssuedCardError$Outbound;
-}

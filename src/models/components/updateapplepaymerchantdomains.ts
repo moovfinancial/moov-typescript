@@ -27,7 +27,6 @@ export const UpdateApplePayMerchantDomains$inboundSchema: z.ZodType<
   addDomains: z.array(z.string()).optional(),
   removeDomains: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type UpdateApplePayMerchantDomains$Outbound = {
   addDomains?: Array<string> | undefined;
@@ -44,19 +43,6 @@ export const UpdateApplePayMerchantDomains$outboundSchema: z.ZodType<
   removeDomains: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateApplePayMerchantDomains$ {
-  /** @deprecated use `UpdateApplePayMerchantDomains$inboundSchema` instead. */
-  export const inboundSchema = UpdateApplePayMerchantDomains$inboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomains$outboundSchema` instead. */
-  export const outboundSchema = UpdateApplePayMerchantDomains$outboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomains$Outbound` instead. */
-  export type Outbound = UpdateApplePayMerchantDomains$Outbound;
-}
-
 export function updateApplePayMerchantDomainsToJSON(
   updateApplePayMerchantDomains: UpdateApplePayMerchantDomains,
 ): string {
@@ -66,7 +52,6 @@ export function updateApplePayMerchantDomainsToJSON(
     ),
   );
 }
-
 export function updateApplePayMerchantDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateApplePayMerchantDomains, SDKValidationError> {

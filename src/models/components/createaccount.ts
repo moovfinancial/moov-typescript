@@ -91,7 +91,6 @@ export const CreateAccountTermsOfService$inboundSchema: z.ZodType<
   ManualTermsOfService$inboundSchema,
   TermsOfServiceToken$inboundSchema,
 ]);
-
 /** @internal */
 export type CreateAccountTermsOfService$Outbound =
   | ManualTermsOfService$Outbound
@@ -107,19 +106,6 @@ export const CreateAccountTermsOfService$outboundSchema: z.ZodType<
   TermsOfServiceToken$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountTermsOfService$ {
-  /** @deprecated use `CreateAccountTermsOfService$inboundSchema` instead. */
-  export const inboundSchema = CreateAccountTermsOfService$inboundSchema;
-  /** @deprecated use `CreateAccountTermsOfService$outboundSchema` instead. */
-  export const outboundSchema = CreateAccountTermsOfService$outboundSchema;
-  /** @deprecated use `CreateAccountTermsOfService$Outbound` instead. */
-  export type Outbound = CreateAccountTermsOfService$Outbound;
-}
-
 export function createAccountTermsOfServiceToJSON(
   createAccountTermsOfService: CreateAccountTermsOfService,
 ): string {
@@ -129,7 +115,6 @@ export function createAccountTermsOfServiceToJSON(
     ),
   );
 }
-
 export function createAccountTermsOfServiceFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccountTermsOfService, SDKValidationError> {
@@ -159,7 +144,6 @@ export const CreateAccount$inboundSchema: z.ZodType<
   capabilities: z.array(CapabilityID$inboundSchema).optional(),
   mode: Mode$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreateAccount$Outbound = {
   accountType: string;
@@ -196,23 +180,9 @@ export const CreateAccount$outboundSchema: z.ZodType<
   mode: Mode$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccount$ {
-  /** @deprecated use `CreateAccount$inboundSchema` instead. */
-  export const inboundSchema = CreateAccount$inboundSchema;
-  /** @deprecated use `CreateAccount$outboundSchema` instead. */
-  export const outboundSchema = CreateAccount$outboundSchema;
-  /** @deprecated use `CreateAccount$Outbound` instead. */
-  export type Outbound = CreateAccount$Outbound;
-}
-
 export function createAccountToJSON(createAccount: CreateAccount): string {
   return JSON.stringify(CreateAccount$outboundSchema.parse(createAccount));
 }
-
 export function createAccountFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccount, SDKValidationError> {

@@ -64,7 +64,6 @@ export const RequestCard$inboundSchema: z.ZodType<
   expiration: CardExpiration$inboundSchema.optional(),
   controls: IssuingControls$inboundSchema.optional(),
 });
-
 /** @internal */
 export type RequestCard$Outbound = {
   fundingWalletID: string;
@@ -89,23 +88,9 @@ export const RequestCard$outboundSchema: z.ZodType<
   controls: IssuingControls$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestCard$ {
-  /** @deprecated use `RequestCard$inboundSchema` instead. */
-  export const inboundSchema = RequestCard$inboundSchema;
-  /** @deprecated use `RequestCard$outboundSchema` instead. */
-  export const outboundSchema = RequestCard$outboundSchema;
-  /** @deprecated use `RequestCard$Outbound` instead. */
-  export type Outbound = RequestCard$Outbound;
-}
-
 export function requestCardToJSON(requestCard: RequestCard): string {
   return JSON.stringify(RequestCard$outboundSchema.parse(requestCard));
 }
-
 export function requestCardFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestCard, SDKValidationError> {

@@ -23,19 +23,7 @@ export type RTPTransactionStatus = ClosedEnum<typeof RTPTransactionStatus>;
 export const RTPTransactionStatus$inboundSchema: z.ZodNativeEnum<
   typeof RTPTransactionStatus
 > = z.nativeEnum(RTPTransactionStatus);
-
 /** @internal */
 export const RTPTransactionStatus$outboundSchema: z.ZodNativeEnum<
   typeof RTPTransactionStatus
 > = RTPTransactionStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RTPTransactionStatus$ {
-  /** @deprecated use `RTPTransactionStatus$inboundSchema` instead. */
-  export const inboundSchema = RTPTransactionStatus$inboundSchema;
-  /** @deprecated use `RTPTransactionStatus$outboundSchema` instead. */
-  export const outboundSchema = RTPTransactionStatus$outboundSchema;
-}

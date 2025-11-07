@@ -40,7 +40,6 @@ export const MoovFeeDetails$inboundSchema: z.ZodType<
   discount: z.string().optional(),
   moovProcessing: z.string(),
 });
-
 /** @internal */
 export type MoovFeeDetails$Outbound = {
   cardScheme?: string | undefined;
@@ -61,23 +60,9 @@ export const MoovFeeDetails$outboundSchema: z.ZodType<
   moovProcessing: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoovFeeDetails$ {
-  /** @deprecated use `MoovFeeDetails$inboundSchema` instead. */
-  export const inboundSchema = MoovFeeDetails$inboundSchema;
-  /** @deprecated use `MoovFeeDetails$outboundSchema` instead. */
-  export const outboundSchema = MoovFeeDetails$outboundSchema;
-  /** @deprecated use `MoovFeeDetails$Outbound` instead. */
-  export type Outbound = MoovFeeDetails$Outbound;
-}
-
 export function moovFeeDetailsToJSON(moovFeeDetails: MoovFeeDetails): string {
   return JSON.stringify(MoovFeeDetails$outboundSchema.parse(moovFeeDetails));
 }
-
 export function moovFeeDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<MoovFeeDetails, SDKValidationError> {

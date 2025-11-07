@@ -52,7 +52,6 @@ export const GetPaymentLinkQRCodeGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetPaymentLinkQRCodeGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -71,19 +70,6 @@ export const GetPaymentLinkQRCodeGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPaymentLinkQRCodeGlobals$ {
-  /** @deprecated use `GetPaymentLinkQRCodeGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetPaymentLinkQRCodeGlobals$inboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetPaymentLinkQRCodeGlobals$outboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeGlobals$Outbound` instead. */
-  export type Outbound = GetPaymentLinkQRCodeGlobals$Outbound;
-}
-
 export function getPaymentLinkQRCodeGlobalsToJSON(
   getPaymentLinkQRCodeGlobals: GetPaymentLinkQRCodeGlobals,
 ): string {
@@ -93,7 +79,6 @@ export function getPaymentLinkQRCodeGlobalsToJSON(
     ),
   );
 }
-
 export function getPaymentLinkQRCodeGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPaymentLinkQRCodeGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const GetPaymentLinkQRCodeRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   paymentLinkCode: z.string(),
 });
-
 /** @internal */
 export type GetPaymentLinkQRCodeRequest$Outbound = {
   accountID: string;
@@ -130,19 +114,6 @@ export const GetPaymentLinkQRCodeRequest$outboundSchema: z.ZodType<
   paymentLinkCode: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPaymentLinkQRCodeRequest$ {
-  /** @deprecated use `GetPaymentLinkQRCodeRequest$inboundSchema` instead. */
-  export const inboundSchema = GetPaymentLinkQRCodeRequest$inboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeRequest$outboundSchema` instead. */
-  export const outboundSchema = GetPaymentLinkQRCodeRequest$outboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeRequest$Outbound` instead. */
-  export type Outbound = GetPaymentLinkQRCodeRequest$Outbound;
-}
-
 export function getPaymentLinkQRCodeRequestToJSON(
   getPaymentLinkQRCodeRequest: GetPaymentLinkQRCodeRequest,
 ): string {
@@ -152,7 +123,6 @@ export function getPaymentLinkQRCodeRequestToJSON(
     ),
   );
 }
-
 export function getPaymentLinkQRCodeRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPaymentLinkQRCodeRequest, SDKValidationError> {
@@ -172,7 +142,6 @@ export const GetPaymentLinkQRCodeResponseResult$inboundSchema: z.ZodType<
   components.QRCode$inboundSchema,
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
-
 /** @internal */
 export type GetPaymentLinkQRCodeResponseResult$Outbound =
   | components.QRCode$Outbound
@@ -188,20 +157,6 @@ export const GetPaymentLinkQRCodeResponseResult$outboundSchema: z.ZodType<
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPaymentLinkQRCodeResponseResult$ {
-  /** @deprecated use `GetPaymentLinkQRCodeResponseResult$inboundSchema` instead. */
-  export const inboundSchema = GetPaymentLinkQRCodeResponseResult$inboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetPaymentLinkQRCodeResponseResult$outboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeResponseResult$Outbound` instead. */
-  export type Outbound = GetPaymentLinkQRCodeResponseResult$Outbound;
-}
-
 export function getPaymentLinkQRCodeResponseResultToJSON(
   getPaymentLinkQRCodeResponseResult: GetPaymentLinkQRCodeResponseResult,
 ): string {
@@ -211,7 +166,6 @@ export function getPaymentLinkQRCodeResponseResultToJSON(
     ),
   );
 }
-
 export function getPaymentLinkQRCodeResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPaymentLinkQRCodeResponseResult, SDKValidationError> {
@@ -240,7 +194,6 @@ export const GetPaymentLinkQRCodeResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetPaymentLinkQRCodeResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -265,19 +218,6 @@ export const GetPaymentLinkQRCodeResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPaymentLinkQRCodeResponse$ {
-  /** @deprecated use `GetPaymentLinkQRCodeResponse$inboundSchema` instead. */
-  export const inboundSchema = GetPaymentLinkQRCodeResponse$inboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeResponse$outboundSchema` instead. */
-  export const outboundSchema = GetPaymentLinkQRCodeResponse$outboundSchema;
-  /** @deprecated use `GetPaymentLinkQRCodeResponse$Outbound` instead. */
-  export type Outbound = GetPaymentLinkQRCodeResponse$Outbound;
-}
-
 export function getPaymentLinkQRCodeResponseToJSON(
   getPaymentLinkQRCodeResponse: GetPaymentLinkQRCodeResponse,
 ): string {
@@ -287,7 +227,6 @@ export function getPaymentLinkQRCodeResponseToJSON(
     ),
   );
 }
-
 export function getPaymentLinkQRCodeResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPaymentLinkQRCodeResponse, SDKValidationError> {

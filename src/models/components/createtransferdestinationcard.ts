@@ -22,7 +22,6 @@ export const CreateTransferDestinationCard$inboundSchema: z.ZodType<
 > = z.object({
   dynamicDescriptor: z.string().optional(),
 });
-
 /** @internal */
 export type CreateTransferDestinationCard$Outbound = {
   dynamicDescriptor?: string | undefined;
@@ -37,19 +36,6 @@ export const CreateTransferDestinationCard$outboundSchema: z.ZodType<
   dynamicDescriptor: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferDestinationCard$ {
-  /** @deprecated use `CreateTransferDestinationCard$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferDestinationCard$inboundSchema;
-  /** @deprecated use `CreateTransferDestinationCard$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferDestinationCard$outboundSchema;
-  /** @deprecated use `CreateTransferDestinationCard$Outbound` instead. */
-  export type Outbound = CreateTransferDestinationCard$Outbound;
-}
-
 export function createTransferDestinationCardToJSON(
   createTransferDestinationCard: CreateTransferDestinationCard,
 ): string {
@@ -59,7 +45,6 @@ export function createTransferDestinationCardToJSON(
     ),
   );
 }
-
 export function createTransferDestinationCardFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferDestinationCard, SDKValidationError> {

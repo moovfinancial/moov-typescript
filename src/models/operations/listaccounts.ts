@@ -103,7 +103,6 @@ export const ListAccountsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListAccountsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -122,19 +121,6 @@ export const ListAccountsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountsGlobals$ {
-  /** @deprecated use `ListAccountsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListAccountsGlobals$inboundSchema;
-  /** @deprecated use `ListAccountsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListAccountsGlobals$outboundSchema;
-  /** @deprecated use `ListAccountsGlobals$Outbound` instead. */
-  export type Outbound = ListAccountsGlobals$Outbound;
-}
-
 export function listAccountsGlobalsToJSON(
   listAccountsGlobals: ListAccountsGlobals,
 ): string {
@@ -142,7 +128,6 @@ export function listAccountsGlobalsToJSON(
     ListAccountsGlobals$outboundSchema.parse(listAccountsGlobals),
   );
 }
-
 export function listAccountsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccountsGlobals, SDKValidationError> {
@@ -169,7 +154,6 @@ export const ListAccountsRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
 });
-
 /** @internal */
 export type ListAccountsRequest$Outbound = {
   name?: string | undefined;
@@ -200,19 +184,6 @@ export const ListAccountsRequest$outboundSchema: z.ZodType<
   count: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountsRequest$ {
-  /** @deprecated use `ListAccountsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListAccountsRequest$inboundSchema;
-  /** @deprecated use `ListAccountsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListAccountsRequest$outboundSchema;
-  /** @deprecated use `ListAccountsRequest$Outbound` instead. */
-  export type Outbound = ListAccountsRequest$Outbound;
-}
-
 export function listAccountsRequestToJSON(
   listAccountsRequest: ListAccountsRequest,
 ): string {
@@ -220,7 +191,6 @@ export function listAccountsRequestToJSON(
     ListAccountsRequest$outboundSchema.parse(listAccountsRequest),
   );
 }
-
 export function listAccountsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccountsRequest, SDKValidationError> {
@@ -245,7 +215,6 @@ export const ListAccountsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListAccountsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -267,19 +236,6 @@ export const ListAccountsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountsResponse$ {
-  /** @deprecated use `ListAccountsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListAccountsResponse$inboundSchema;
-  /** @deprecated use `ListAccountsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListAccountsResponse$outboundSchema;
-  /** @deprecated use `ListAccountsResponse$Outbound` instead. */
-  export type Outbound = ListAccountsResponse$Outbound;
-}
-
 export function listAccountsResponseToJSON(
   listAccountsResponse: ListAccountsResponse,
 ): string {
@@ -287,7 +243,6 @@ export function listAccountsResponseToJSON(
     ListAccountsResponse$outboundSchema.parse(listAccountsResponse),
   );
 }
-
 export function listAccountsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccountsResponse, SDKValidationError> {

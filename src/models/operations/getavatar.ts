@@ -49,7 +49,6 @@ export const GetAvatarGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetAvatarGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const GetAvatarGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAvatarGlobals$ {
-  /** @deprecated use `GetAvatarGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAvatarGlobals$inboundSchema;
-  /** @deprecated use `GetAvatarGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAvatarGlobals$outboundSchema;
-  /** @deprecated use `GetAvatarGlobals$Outbound` instead. */
-  export type Outbound = GetAvatarGlobals$Outbound;
-}
-
 export function getAvatarGlobalsToJSON(
   getAvatarGlobals: GetAvatarGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function getAvatarGlobalsToJSON(
     GetAvatarGlobals$outboundSchema.parse(getAvatarGlobals),
   );
 }
-
 export function getAvatarGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAvatarGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetAvatarRequest$inboundSchema: z.ZodType<
 > = z.object({
   uniqueID: z.string(),
 });
-
 /** @internal */
 export type GetAvatarRequest$Outbound = {
   uniqueID: string;
@@ -122,19 +106,6 @@ export const GetAvatarRequest$outboundSchema: z.ZodType<
   uniqueID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAvatarRequest$ {
-  /** @deprecated use `GetAvatarRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAvatarRequest$inboundSchema;
-  /** @deprecated use `GetAvatarRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAvatarRequest$outboundSchema;
-  /** @deprecated use `GetAvatarRequest$Outbound` instead. */
-  export type Outbound = GetAvatarRequest$Outbound;
-}
-
 export function getAvatarRequestToJSON(
   getAvatarRequest: GetAvatarRequest,
 ): string {
@@ -142,7 +113,6 @@ export function getAvatarRequestToJSON(
     GetAvatarRequest$outboundSchema.parse(getAvatarRequest),
   );
 }
-
 export function getAvatarRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAvatarRequest, SDKValidationError> {
@@ -167,7 +137,6 @@ export const GetAvatarResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetAvatarResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -189,19 +158,6 @@ export const GetAvatarResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAvatarResponse$ {
-  /** @deprecated use `GetAvatarResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAvatarResponse$inboundSchema;
-  /** @deprecated use `GetAvatarResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAvatarResponse$outboundSchema;
-  /** @deprecated use `GetAvatarResponse$Outbound` instead. */
-  export type Outbound = GetAvatarResponse$Outbound;
-}
-
 export function getAvatarResponseToJSON(
   getAvatarResponse: GetAvatarResponse,
 ): string {
@@ -209,7 +165,6 @@ export function getAvatarResponseToJSON(
     GetAvatarResponse$outboundSchema.parse(getAvatarResponse),
   );
 }
-
 export function getAvatarResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAvatarResponse, SDKValidationError> {

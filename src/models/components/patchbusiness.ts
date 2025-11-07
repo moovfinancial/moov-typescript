@@ -89,7 +89,6 @@ export const PatchBusiness$inboundSchema: z.ZodType<
   industry: z.string().optional(),
   primaryRegulator: PrimaryRegulator$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PatchBusiness$Outbound = {
   legalBusinessName?: string | undefined;
@@ -128,23 +127,9 @@ export const PatchBusiness$outboundSchema: z.ZodType<
   primaryRegulator: PrimaryRegulator$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchBusiness$ {
-  /** @deprecated use `PatchBusiness$inboundSchema` instead. */
-  export const inboundSchema = PatchBusiness$inboundSchema;
-  /** @deprecated use `PatchBusiness$outboundSchema` instead. */
-  export const outboundSchema = PatchBusiness$outboundSchema;
-  /** @deprecated use `PatchBusiness$Outbound` instead. */
-  export type Outbound = PatchBusiness$Outbound;
-}
-
 export function patchBusinessToJSON(patchBusiness: PatchBusiness): string {
   return JSON.stringify(PatchBusiness$outboundSchema.parse(patchBusiness));
 }
-
 export function patchBusinessFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchBusiness, SDKValidationError> {

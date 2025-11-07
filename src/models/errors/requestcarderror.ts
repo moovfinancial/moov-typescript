@@ -96,16 +96,3 @@ export const RequestCardError$outboundSchema: z.ZodType<
     expiration: components.CardExpirationError$outboundSchema.optional(),
     controls: components.IssuingControlsError$outboundSchema.optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestCardError$ {
-  /** @deprecated use `RequestCardError$inboundSchema` instead. */
-  export const inboundSchema = RequestCardError$inboundSchema;
-  /** @deprecated use `RequestCardError$outboundSchema` instead. */
-  export const outboundSchema = RequestCardError$outboundSchema;
-  /** @deprecated use `RequestCardError$Outbound` instead. */
-  export type Outbound = RequestCardError$Outbound;
-}

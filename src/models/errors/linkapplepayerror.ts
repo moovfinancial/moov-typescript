@@ -108,16 +108,3 @@ export const LinkApplePayError$outboundSchema: z.ZodType<
     paymentMethod: z.string().optional(),
     transactionIdentifier: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkApplePayError$ {
-  /** @deprecated use `LinkApplePayError$inboundSchema` instead. */
-  export const inboundSchema = LinkApplePayError$inboundSchema;
-  /** @deprecated use `LinkApplePayError$outboundSchema` instead. */
-  export const outboundSchema = LinkApplePayError$outboundSchema;
-  /** @deprecated use `LinkApplePayError$Outbound` instead. */
-  export type Outbound = LinkApplePayError$Outbound;
-}

@@ -24,7 +24,6 @@ export const AddCapabilities$inboundSchema: z.ZodType<
 > = z.object({
   capabilities: z.array(CapabilityID$inboundSchema),
 });
-
 /** @internal */
 export type AddCapabilities$Outbound = {
   capabilities: Array<string>;
@@ -39,25 +38,11 @@ export const AddCapabilities$outboundSchema: z.ZodType<
   capabilities: z.array(CapabilityID$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddCapabilities$ {
-  /** @deprecated use `AddCapabilities$inboundSchema` instead. */
-  export const inboundSchema = AddCapabilities$inboundSchema;
-  /** @deprecated use `AddCapabilities$outboundSchema` instead. */
-  export const outboundSchema = AddCapabilities$outboundSchema;
-  /** @deprecated use `AddCapabilities$Outbound` instead. */
-  export type Outbound = AddCapabilities$Outbound;
-}
-
 export function addCapabilitiesToJSON(
   addCapabilities: AddCapabilities,
 ): string {
   return JSON.stringify(AddCapabilities$outboundSchema.parse(addCapabilities));
 }
-
 export function addCapabilitiesFromJSON(
   jsonString: string,
 ): SafeParseResult<AddCapabilities, SDKValidationError> {

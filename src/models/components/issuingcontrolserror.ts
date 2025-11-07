@@ -25,7 +25,6 @@ export const IssuingControlsError$inboundSchema: z.ZodType<
 > = z.object({
   velocityLimits: z.record(IssuingVelocityLimitError$inboundSchema).optional(),
 });
-
 /** @internal */
 export type IssuingControlsError$Outbound = {
   velocityLimits?:
@@ -42,19 +41,6 @@ export const IssuingControlsError$outboundSchema: z.ZodType<
   velocityLimits: z.record(IssuingVelocityLimitError$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuingControlsError$ {
-  /** @deprecated use `IssuingControlsError$inboundSchema` instead. */
-  export const inboundSchema = IssuingControlsError$inboundSchema;
-  /** @deprecated use `IssuingControlsError$outboundSchema` instead. */
-  export const outboundSchema = IssuingControlsError$outboundSchema;
-  /** @deprecated use `IssuingControlsError$Outbound` instead. */
-  export type Outbound = IssuingControlsError$Outbound;
-}
-
 export function issuingControlsErrorToJSON(
   issuingControlsError: IssuingControlsError,
 ): string {
@@ -62,7 +48,6 @@ export function issuingControlsErrorToJSON(
     IssuingControlsError$outboundSchema.parse(issuingControlsError),
   );
 }
-
 export function issuingControlsErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<IssuingControlsError, SDKValidationError> {

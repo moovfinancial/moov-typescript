@@ -46,7 +46,6 @@ export const InitiateMicroDepositsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type InitiateMicroDepositsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -65,19 +64,6 @@ export const InitiateMicroDepositsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InitiateMicroDepositsGlobals$ {
-  /** @deprecated use `InitiateMicroDepositsGlobals$inboundSchema` instead. */
-  export const inboundSchema = InitiateMicroDepositsGlobals$inboundSchema;
-  /** @deprecated use `InitiateMicroDepositsGlobals$outboundSchema` instead. */
-  export const outboundSchema = InitiateMicroDepositsGlobals$outboundSchema;
-  /** @deprecated use `InitiateMicroDepositsGlobals$Outbound` instead. */
-  export type Outbound = InitiateMicroDepositsGlobals$Outbound;
-}
-
 export function initiateMicroDepositsGlobalsToJSON(
   initiateMicroDepositsGlobals: InitiateMicroDepositsGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function initiateMicroDepositsGlobalsToJSON(
     ),
   );
 }
-
 export function initiateMicroDepositsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<InitiateMicroDepositsGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const InitiateMicroDepositsRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   bankAccountID: z.string(),
 });
-
 /** @internal */
 export type InitiateMicroDepositsRequest$Outbound = {
   accountID: string;
@@ -124,19 +108,6 @@ export const InitiateMicroDepositsRequest$outboundSchema: z.ZodType<
   bankAccountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InitiateMicroDepositsRequest$ {
-  /** @deprecated use `InitiateMicroDepositsRequest$inboundSchema` instead. */
-  export const inboundSchema = InitiateMicroDepositsRequest$inboundSchema;
-  /** @deprecated use `InitiateMicroDepositsRequest$outboundSchema` instead. */
-  export const outboundSchema = InitiateMicroDepositsRequest$outboundSchema;
-  /** @deprecated use `InitiateMicroDepositsRequest$Outbound` instead. */
-  export type Outbound = InitiateMicroDepositsRequest$Outbound;
-}
-
 export function initiateMicroDepositsRequestToJSON(
   initiateMicroDepositsRequest: InitiateMicroDepositsRequest,
 ): string {
@@ -146,7 +117,6 @@ export function initiateMicroDepositsRequestToJSON(
     ),
   );
 }
-
 export function initiateMicroDepositsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InitiateMicroDepositsRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const InitiateMicroDepositsResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type InitiateMicroDepositsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -188,19 +157,6 @@ export const InitiateMicroDepositsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InitiateMicroDepositsResponse$ {
-  /** @deprecated use `InitiateMicroDepositsResponse$inboundSchema` instead. */
-  export const inboundSchema = InitiateMicroDepositsResponse$inboundSchema;
-  /** @deprecated use `InitiateMicroDepositsResponse$outboundSchema` instead. */
-  export const outboundSchema = InitiateMicroDepositsResponse$outboundSchema;
-  /** @deprecated use `InitiateMicroDepositsResponse$Outbound` instead. */
-  export type Outbound = InitiateMicroDepositsResponse$Outbound;
-}
-
 export function initiateMicroDepositsResponseToJSON(
   initiateMicroDepositsResponse: InitiateMicroDepositsResponse,
 ): string {
@@ -210,7 +166,6 @@ export function initiateMicroDepositsResponseToJSON(
     ),
   );
 }
-
 export function initiateMicroDepositsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<InitiateMicroDepositsResponse, SDKValidationError> {

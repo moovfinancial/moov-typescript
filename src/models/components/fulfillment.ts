@@ -31,7 +31,6 @@ export const Fulfillment$inboundSchema: z.ZodType<
   method: FulfillmentMethod$inboundSchema.optional(),
   timeframe: FulfillmentTimeframe$inboundSchema.optional(),
 });
-
 /** @internal */
 export type Fulfillment$Outbound = {
   method?: string | undefined;
@@ -48,23 +47,9 @@ export const Fulfillment$outboundSchema: z.ZodType<
   timeframe: FulfillmentTimeframe$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Fulfillment$ {
-  /** @deprecated use `Fulfillment$inboundSchema` instead. */
-  export const inboundSchema = Fulfillment$inboundSchema;
-  /** @deprecated use `Fulfillment$outboundSchema` instead. */
-  export const outboundSchema = Fulfillment$outboundSchema;
-  /** @deprecated use `Fulfillment$Outbound` instead. */
-  export type Outbound = Fulfillment$Outbound;
-}
-
 export function fulfillmentToJSON(fulfillment: Fulfillment): string {
   return JSON.stringify(Fulfillment$outboundSchema.parse(fulfillment));
 }
-
 export function fulfillmentFromJSON(
   jsonString: string,
 ): SafeParseResult<Fulfillment, SDKValidationError> {

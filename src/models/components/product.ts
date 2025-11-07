@@ -89,7 +89,6 @@ export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
       new Date(v)
     ).optional(),
   });
-
 /** @internal */
 export type Product$Outbound = {
   productID: string;
@@ -120,23 +119,9 @@ export const Product$outboundSchema: z.ZodType<
   disabledOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Product$ {
-  /** @deprecated use `Product$inboundSchema` instead. */
-  export const inboundSchema = Product$inboundSchema;
-  /** @deprecated use `Product$outboundSchema` instead. */
-  export const outboundSchema = Product$outboundSchema;
-  /** @deprecated use `Product$Outbound` instead. */
-  export type Outbound = Product$Outbound;
-}
-
 export function productToJSON(product: Product): string {
   return JSON.stringify(Product$outboundSchema.parse(product));
 }
-
 export function productFromJSON(
   jsonString: string,
 ): SafeParseResult<Product, SDKValidationError> {

@@ -46,7 +46,6 @@ export const VolumeRange$inboundSchema: z.ZodType<
   flatAmount: AmountDecimal$inboundSchema,
   perUnitAmount: AmountDecimal$inboundSchema,
 });
-
 /** @internal */
 export type VolumeRange$Outbound = {
   fromValue: number;
@@ -67,23 +66,9 @@ export const VolumeRange$outboundSchema: z.ZodType<
   perUnitAmount: AmountDecimal$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VolumeRange$ {
-  /** @deprecated use `VolumeRange$inboundSchema` instead. */
-  export const inboundSchema = VolumeRange$inboundSchema;
-  /** @deprecated use `VolumeRange$outboundSchema` instead. */
-  export const outboundSchema = VolumeRange$outboundSchema;
-  /** @deprecated use `VolumeRange$Outbound` instead. */
-  export type Outbound = VolumeRange$Outbound;
-}
-
 export function volumeRangeToJSON(volumeRange: VolumeRange): string {
   return JSON.stringify(VolumeRange$outboundSchema.parse(volumeRange));
 }
-
 export function volumeRangeFromJSON(
   jsonString: string,
 ): SafeParseResult<VolumeRange, SDKValidationError> {

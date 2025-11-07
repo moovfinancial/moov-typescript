@@ -55,7 +55,6 @@ export const UpdateRepresentativeGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateRepresentativeGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -74,19 +73,6 @@ export const UpdateRepresentativeGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRepresentativeGlobals$ {
-  /** @deprecated use `UpdateRepresentativeGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentativeGlobals$inboundSchema;
-  /** @deprecated use `UpdateRepresentativeGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentativeGlobals$outboundSchema;
-  /** @deprecated use `UpdateRepresentativeGlobals$Outbound` instead. */
-  export type Outbound = UpdateRepresentativeGlobals$Outbound;
-}
-
 export function updateRepresentativeGlobalsToJSON(
   updateRepresentativeGlobals: UpdateRepresentativeGlobals,
 ): string {
@@ -96,7 +82,6 @@ export function updateRepresentativeGlobalsToJSON(
     ),
   );
 }
-
 export function updateRepresentativeGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRepresentativeGlobals, SDKValidationError> {
@@ -121,7 +106,6 @@ export const UpdateRepresentativeRequest$inboundSchema: z.ZodType<
     "UpdateRepresentative": "updateRepresentative",
   });
 });
-
 /** @internal */
 export type UpdateRepresentativeRequest$Outbound = {
   accountID: string;
@@ -144,19 +128,6 @@ export const UpdateRepresentativeRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRepresentativeRequest$ {
-  /** @deprecated use `UpdateRepresentativeRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentativeRequest$inboundSchema;
-  /** @deprecated use `UpdateRepresentativeRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentativeRequest$outboundSchema;
-  /** @deprecated use `UpdateRepresentativeRequest$Outbound` instead. */
-  export type Outbound = UpdateRepresentativeRequest$Outbound;
-}
-
 export function updateRepresentativeRequestToJSON(
   updateRepresentativeRequest: UpdateRepresentativeRequest,
 ): string {
@@ -166,7 +137,6 @@ export function updateRepresentativeRequestToJSON(
     ),
   );
 }
-
 export function updateRepresentativeRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRepresentativeRequest, SDKValidationError> {
@@ -191,7 +161,6 @@ export const UpdateRepresentativeResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpdateRepresentativeResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -213,19 +182,6 @@ export const UpdateRepresentativeResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRepresentativeResponse$ {
-  /** @deprecated use `UpdateRepresentativeResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentativeResponse$inboundSchema;
-  /** @deprecated use `UpdateRepresentativeResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentativeResponse$outboundSchema;
-  /** @deprecated use `UpdateRepresentativeResponse$Outbound` instead. */
-  export type Outbound = UpdateRepresentativeResponse$Outbound;
-}
-
 export function updateRepresentativeResponseToJSON(
   updateRepresentativeResponse: UpdateRepresentativeResponse,
 ): string {
@@ -235,7 +191,6 @@ export function updateRepresentativeResponseToJSON(
     ),
   );
 }
-
 export function updateRepresentativeResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRepresentativeResponse, SDKValidationError> {

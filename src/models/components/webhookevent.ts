@@ -48,7 +48,6 @@ export const WebhookEvent$inboundSchema: z.ZodType<
   data: WebhookData$inboundSchema,
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type WebhookEvent$Outbound = {
   eventID: string;
@@ -69,23 +68,9 @@ export const WebhookEvent$outboundSchema: z.ZodType<
   createdOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookEvent$ {
-  /** @deprecated use `WebhookEvent$inboundSchema` instead. */
-  export const inboundSchema = WebhookEvent$inboundSchema;
-  /** @deprecated use `WebhookEvent$outboundSchema` instead. */
-  export const outboundSchema = WebhookEvent$outboundSchema;
-  /** @deprecated use `WebhookEvent$Outbound` instead. */
-  export type Outbound = WebhookEvent$Outbound;
-}
-
 export function webhookEventToJSON(webhookEvent: WebhookEvent): string {
   return JSON.stringify(WebhookEvent$outboundSchema.parse(webhookEvent));
 }
-
 export function webhookEventFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookEvent, SDKValidationError> {

@@ -65,7 +65,6 @@ export const RetrieveFeesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type RetrieveFeesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -84,19 +83,6 @@ export const RetrieveFeesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveFeesGlobals$ {
-  /** @deprecated use `RetrieveFeesGlobals$inboundSchema` instead. */
-  export const inboundSchema = RetrieveFeesGlobals$inboundSchema;
-  /** @deprecated use `RetrieveFeesGlobals$outboundSchema` instead. */
-  export const outboundSchema = RetrieveFeesGlobals$outboundSchema;
-  /** @deprecated use `RetrieveFeesGlobals$Outbound` instead. */
-  export type Outbound = RetrieveFeesGlobals$Outbound;
-}
-
 export function retrieveFeesGlobalsToJSON(
   retrieveFeesGlobals: RetrieveFeesGlobals,
 ): string {
@@ -104,7 +90,6 @@ export function retrieveFeesGlobalsToJSON(
     RetrieveFeesGlobals$outboundSchema.parse(retrieveFeesGlobals),
   );
 }
-
 export function retrieveFeesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<RetrieveFeesGlobals, SDKValidationError> {
@@ -129,7 +114,6 @@ export const RetrieveFeesRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
 });
-
 /** @internal */
 export type RetrieveFeesRequest$Outbound = {
   accountID: string;
@@ -156,19 +140,6 @@ export const RetrieveFeesRequest$outboundSchema: z.ZodType<
   count: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveFeesRequest$ {
-  /** @deprecated use `RetrieveFeesRequest$inboundSchema` instead. */
-  export const inboundSchema = RetrieveFeesRequest$inboundSchema;
-  /** @deprecated use `RetrieveFeesRequest$outboundSchema` instead. */
-  export const outboundSchema = RetrieveFeesRequest$outboundSchema;
-  /** @deprecated use `RetrieveFeesRequest$Outbound` instead. */
-  export type Outbound = RetrieveFeesRequest$Outbound;
-}
-
 export function retrieveFeesRequestToJSON(
   retrieveFeesRequest: RetrieveFeesRequest,
 ): string {
@@ -176,7 +147,6 @@ export function retrieveFeesRequestToJSON(
     RetrieveFeesRequest$outboundSchema.parse(retrieveFeesRequest),
   );
 }
-
 export function retrieveFeesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RetrieveFeesRequest, SDKValidationError> {
@@ -201,7 +171,6 @@ export const RetrieveFeesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type RetrieveFeesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -223,19 +192,6 @@ export const RetrieveFeesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveFeesResponse$ {
-  /** @deprecated use `RetrieveFeesResponse$inboundSchema` instead. */
-  export const inboundSchema = RetrieveFeesResponse$inboundSchema;
-  /** @deprecated use `RetrieveFeesResponse$outboundSchema` instead. */
-  export const outboundSchema = RetrieveFeesResponse$outboundSchema;
-  /** @deprecated use `RetrieveFeesResponse$Outbound` instead. */
-  export type Outbound = RetrieveFeesResponse$Outbound;
-}
-
 export function retrieveFeesResponseToJSON(
   retrieveFeesResponse: RetrieveFeesResponse,
 ): string {
@@ -243,7 +199,6 @@ export function retrieveFeesResponseToJSON(
     RetrieveFeesResponse$outboundSchema.parse(retrieveFeesResponse),
   );
 }
-
 export function retrieveFeesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<RetrieveFeesResponse, SDKValidationError> {

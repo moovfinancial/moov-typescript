@@ -25,19 +25,7 @@ export type DisbursementPaymentMethodType = ClosedEnum<
 export const DisbursementPaymentMethodType$inboundSchema: z.ZodNativeEnum<
   typeof DisbursementPaymentMethodType
 > = z.nativeEnum(DisbursementPaymentMethodType);
-
 /** @internal */
 export const DisbursementPaymentMethodType$outboundSchema: z.ZodNativeEnum<
   typeof DisbursementPaymentMethodType
 > = DisbursementPaymentMethodType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisbursementPaymentMethodType$ {
-  /** @deprecated use `DisbursementPaymentMethodType$inboundSchema` instead. */
-  export const inboundSchema = DisbursementPaymentMethodType$inboundSchema;
-  /** @deprecated use `DisbursementPaymentMethodType$outboundSchema` instead. */
-  export const outboundSchema = DisbursementPaymentMethodType$outboundSchema;
-}

@@ -27,7 +27,6 @@ export const UpdateTicket$inboundSchema: z.ZodType<
 > = z.object({
   status: UpdateTicketStatus$inboundSchema.optional(),
 });
-
 /** @internal */
 export type UpdateTicket$Outbound = {
   status?: string | undefined;
@@ -42,23 +41,9 @@ export const UpdateTicket$outboundSchema: z.ZodType<
   status: UpdateTicketStatus$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTicket$ {
-  /** @deprecated use `UpdateTicket$inboundSchema` instead. */
-  export const inboundSchema = UpdateTicket$inboundSchema;
-  /** @deprecated use `UpdateTicket$outboundSchema` instead. */
-  export const outboundSchema = UpdateTicket$outboundSchema;
-  /** @deprecated use `UpdateTicket$Outbound` instead. */
-  export type Outbound = UpdateTicket$Outbound;
-}
-
 export function updateTicketToJSON(updateTicket: UpdateTicket): string {
   return JSON.stringify(UpdateTicket$outboundSchema.parse(updateTicket));
 }
-
 export function updateTicketFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateTicket, SDKValidationError> {

@@ -48,7 +48,6 @@ export const CreateProductGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateProductGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const CreateProductGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateProductGlobals$ {
-  /** @deprecated use `CreateProductGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateProductGlobals$inboundSchema;
-  /** @deprecated use `CreateProductGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateProductGlobals$outboundSchema;
-  /** @deprecated use `CreateProductGlobals$Outbound` instead. */
-  export type Outbound = CreateProductGlobals$Outbound;
-}
-
 export function createProductGlobalsToJSON(
   createProductGlobals: CreateProductGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function createProductGlobalsToJSON(
     CreateProductGlobals$outboundSchema.parse(createProductGlobals),
   );
 }
-
 export function createProductGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateProductGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const CreateProductRequest$inboundSchema: z.ZodType<
     "ProductRequest": "productRequest",
   });
 });
-
 /** @internal */
 export type CreateProductRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const CreateProductRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateProductRequest$ {
-  /** @deprecated use `CreateProductRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateProductRequest$inboundSchema;
-  /** @deprecated use `CreateProductRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateProductRequest$outboundSchema;
-  /** @deprecated use `CreateProductRequest$Outbound` instead. */
-  export type Outbound = CreateProductRequest$Outbound;
-}
-
 export function createProductRequestToJSON(
   createProductRequest: CreateProductRequest,
 ): string {
@@ -152,7 +123,6 @@ export function createProductRequestToJSON(
     CreateProductRequest$outboundSchema.parse(createProductRequest),
   );
 }
-
 export function createProductRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateProductRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const CreateProductResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateProductResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const CreateProductResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateProductResponse$ {
-  /** @deprecated use `CreateProductResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateProductResponse$inboundSchema;
-  /** @deprecated use `CreateProductResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateProductResponse$outboundSchema;
-  /** @deprecated use `CreateProductResponse$Outbound` instead. */
-  export type Outbound = CreateProductResponse$Outbound;
-}
-
 export function createProductResponseToJSON(
   createProductResponse: CreateProductResponse,
 ): string {
@@ -219,7 +175,6 @@ export function createProductResponseToJSON(
     CreateProductResponse$outboundSchema.parse(createProductResponse),
   );
 }
-
 export function createProductResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateProductResponse, SDKValidationError> {

@@ -23,7 +23,6 @@ export const TicketMessage$inboundSchema: z.ZodType<
   body: z.string(),
   sentOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type TicketMessage$Outbound = {
   author: string;
@@ -42,23 +41,9 @@ export const TicketMessage$outboundSchema: z.ZodType<
   sentOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketMessage$ {
-  /** @deprecated use `TicketMessage$inboundSchema` instead. */
-  export const inboundSchema = TicketMessage$inboundSchema;
-  /** @deprecated use `TicketMessage$outboundSchema` instead. */
-  export const outboundSchema = TicketMessage$outboundSchema;
-  /** @deprecated use `TicketMessage$Outbound` instead. */
-  export type Outbound = TicketMessage$Outbound;
-}
-
 export function ticketMessageToJSON(ticketMessage: TicketMessage): string {
   return JSON.stringify(TicketMessage$outboundSchema.parse(ticketMessage));
 }
-
 export function ticketMessageFromJSON(
   jsonString: string,
 ): SafeParseResult<TicketMessage, SDKValidationError> {

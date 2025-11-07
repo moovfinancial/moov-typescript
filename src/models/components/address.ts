@@ -26,7 +26,6 @@ export const Address$inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> =
     postalCode: z.string(),
     country: z.string(),
   });
-
 /** @internal */
 export type Address$Outbound = {
   addressLine1: string;
@@ -51,23 +50,9 @@ export const Address$outboundSchema: z.ZodType<
   country: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Address$ {
-  /** @deprecated use `Address$inboundSchema` instead. */
-  export const inboundSchema = Address$inboundSchema;
-  /** @deprecated use `Address$outboundSchema` instead. */
-  export const outboundSchema = Address$outboundSchema;
-  /** @deprecated use `Address$Outbound` instead. */
-  export type Outbound = Address$Outbound;
-}
-
 export function addressToJSON(address: Address): string {
   return JSON.stringify(Address$outboundSchema.parse(address));
 }
-
 export function addressFromJSON(
   jsonString: string,
 ): SafeParseResult<Address, SDKValidationError> {

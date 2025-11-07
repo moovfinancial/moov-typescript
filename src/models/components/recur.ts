@@ -44,7 +44,6 @@ export const Recur$inboundSchema: z.ZodType<Recur, z.ZodTypeDef, unknown> = z
     start: z.string().datetime({ offset: true }).transform(v => new Date(v))
       .optional(),
   });
-
 /** @internal */
 export type Recur$Outbound = {
   recurrenceRule: string;
@@ -65,23 +64,9 @@ export const Recur$outboundSchema: z.ZodType<
   start: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Recur$ {
-  /** @deprecated use `Recur$inboundSchema` instead. */
-  export const inboundSchema = Recur$inboundSchema;
-  /** @deprecated use `Recur$outboundSchema` instead. */
-  export const outboundSchema = Recur$outboundSchema;
-  /** @deprecated use `Recur$Outbound` instead. */
-  export type Outbound = Recur$Outbound;
-}
-
 export function recurToJSON(recur: Recur): string {
   return JSON.stringify(Recur$outboundSchema.parse(recur));
 }
-
 export function recurFromJSON(
   jsonString: string,
 ): SafeParseResult<Recur, SDKValidationError> {

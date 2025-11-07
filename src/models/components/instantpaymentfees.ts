@@ -66,7 +66,6 @@ export const InstantPaymentFees$inboundSchema: z.ZodType<
   pullFromCardRefund: BillingCountAndAmount$inboundSchema.optional(),
   total: BillingCountAndAmount$inboundSchema,
 });
-
 /** @internal */
 export type InstantPaymentFees$Outbound = {
   rtpCreditTransaction: BillingCountAndAmount$Outbound;
@@ -95,19 +94,6 @@ export const InstantPaymentFees$outboundSchema: z.ZodType<
   total: BillingCountAndAmount$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InstantPaymentFees$ {
-  /** @deprecated use `InstantPaymentFees$inboundSchema` instead. */
-  export const inboundSchema = InstantPaymentFees$inboundSchema;
-  /** @deprecated use `InstantPaymentFees$outboundSchema` instead. */
-  export const outboundSchema = InstantPaymentFees$outboundSchema;
-  /** @deprecated use `InstantPaymentFees$Outbound` instead. */
-  export type Outbound = InstantPaymentFees$Outbound;
-}
-
 export function instantPaymentFeesToJSON(
   instantPaymentFees: InstantPaymentFees,
 ): string {
@@ -115,7 +101,6 @@ export function instantPaymentFeesToJSON(
     InstantPaymentFees$outboundSchema.parse(instantPaymentFees),
   );
 }
-
 export function instantPaymentFeesFromJSON(
   jsonString: string,
 ): SafeParseResult<InstantPaymentFees, SDKValidationError> {

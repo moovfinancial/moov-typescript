@@ -57,7 +57,6 @@ export const ListFeePlanAgreementsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListFeePlanAgreementsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -76,19 +75,6 @@ export const ListFeePlanAgreementsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeePlanAgreementsGlobals$ {
-  /** @deprecated use `ListFeePlanAgreementsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListFeePlanAgreementsGlobals$inboundSchema;
-  /** @deprecated use `ListFeePlanAgreementsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListFeePlanAgreementsGlobals$outboundSchema;
-  /** @deprecated use `ListFeePlanAgreementsGlobals$Outbound` instead. */
-  export type Outbound = ListFeePlanAgreementsGlobals$Outbound;
-}
-
 export function listFeePlanAgreementsGlobalsToJSON(
   listFeePlanAgreementsGlobals: ListFeePlanAgreementsGlobals,
 ): string {
@@ -98,7 +84,6 @@ export function listFeePlanAgreementsGlobalsToJSON(
     ),
   );
 }
-
 export function listFeePlanAgreementsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeePlanAgreementsGlobals, SDKValidationError> {
@@ -121,7 +106,6 @@ export const ListFeePlanAgreementsRequest$inboundSchema: z.ZodType<
   agreementID: z.array(z.string()).optional(),
   status: z.array(components.FeePlanAgreementStatus$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ListFeePlanAgreementsRequest$Outbound = {
   skip?: number | undefined;
@@ -144,19 +128,6 @@ export const ListFeePlanAgreementsRequest$outboundSchema: z.ZodType<
   status: z.array(components.FeePlanAgreementStatus$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeePlanAgreementsRequest$ {
-  /** @deprecated use `ListFeePlanAgreementsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListFeePlanAgreementsRequest$inboundSchema;
-  /** @deprecated use `ListFeePlanAgreementsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListFeePlanAgreementsRequest$outboundSchema;
-  /** @deprecated use `ListFeePlanAgreementsRequest$Outbound` instead. */
-  export type Outbound = ListFeePlanAgreementsRequest$Outbound;
-}
-
 export function listFeePlanAgreementsRequestToJSON(
   listFeePlanAgreementsRequest: ListFeePlanAgreementsRequest,
 ): string {
@@ -166,7 +137,6 @@ export function listFeePlanAgreementsRequestToJSON(
     ),
   );
 }
-
 export function listFeePlanAgreementsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeePlanAgreementsRequest, SDKValidationError> {
@@ -191,7 +161,6 @@ export const ListFeePlanAgreementsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListFeePlanAgreementsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -213,19 +182,6 @@ export const ListFeePlanAgreementsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeePlanAgreementsResponse$ {
-  /** @deprecated use `ListFeePlanAgreementsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListFeePlanAgreementsResponse$inboundSchema;
-  /** @deprecated use `ListFeePlanAgreementsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListFeePlanAgreementsResponse$outboundSchema;
-  /** @deprecated use `ListFeePlanAgreementsResponse$Outbound` instead. */
-  export type Outbound = ListFeePlanAgreementsResponse$Outbound;
-}
-
 export function listFeePlanAgreementsResponseToJSON(
   listFeePlanAgreementsResponse: ListFeePlanAgreementsResponse,
 ): string {
@@ -235,7 +191,6 @@ export function listFeePlanAgreementsResponseToJSON(
     ),
   );
 }
-
 export function listFeePlanAgreementsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeePlanAgreementsResponse, SDKValidationError> {

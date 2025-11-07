@@ -27,7 +27,6 @@ export const CreateApplePaySession$inboundSchema: z.ZodType<
   domain: z.string(),
   displayName: z.string(),
 });
-
 /** @internal */
 export type CreateApplePaySession$Outbound = {
   domain: string;
@@ -44,19 +43,6 @@ export const CreateApplePaySession$outboundSchema: z.ZodType<
   displayName: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateApplePaySession$ {
-  /** @deprecated use `CreateApplePaySession$inboundSchema` instead. */
-  export const inboundSchema = CreateApplePaySession$inboundSchema;
-  /** @deprecated use `CreateApplePaySession$outboundSchema` instead. */
-  export const outboundSchema = CreateApplePaySession$outboundSchema;
-  /** @deprecated use `CreateApplePaySession$Outbound` instead. */
-  export type Outbound = CreateApplePaySession$Outbound;
-}
-
 export function createApplePaySessionToJSON(
   createApplePaySession: CreateApplePaySession,
 ): string {
@@ -64,7 +50,6 @@ export function createApplePaySessionToJSON(
     CreateApplePaySession$outboundSchema.parse(createApplePaySession),
   );
 }
-
 export function createApplePaySessionFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateApplePaySession, SDKValidationError> {

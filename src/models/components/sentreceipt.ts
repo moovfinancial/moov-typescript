@@ -32,7 +32,6 @@ export const SentReceipt$inboundSchema: z.ZodType<
   idempotencyKey: z.string(),
   sentOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type SentReceipt$Outbound = {
   receiptID: string;
@@ -51,23 +50,9 @@ export const SentReceipt$outboundSchema: z.ZodType<
   sentOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SentReceipt$ {
-  /** @deprecated use `SentReceipt$inboundSchema` instead. */
-  export const inboundSchema = SentReceipt$inboundSchema;
-  /** @deprecated use `SentReceipt$outboundSchema` instead. */
-  export const outboundSchema = SentReceipt$outboundSchema;
-  /** @deprecated use `SentReceipt$Outbound` instead. */
-  export type Outbound = SentReceipt$Outbound;
-}
-
 export function sentReceiptToJSON(sentReceipt: SentReceipt): string {
   return JSON.stringify(SentReceipt$outboundSchema.parse(sentReceipt));
 }
-
 export function sentReceiptFromJSON(
   jsonString: string,
 ): SafeParseResult<SentReceipt, SDKValidationError> {

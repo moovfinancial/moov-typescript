@@ -31,7 +31,6 @@ export const AmountDecimal$inboundSchema: z.ZodType<
   currency: z.string(),
   valueDecimal: z.string(),
 });
-
 /** @internal */
 export type AmountDecimal$Outbound = {
   currency: string;
@@ -48,23 +47,9 @@ export const AmountDecimal$outboundSchema: z.ZodType<
   valueDecimal: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AmountDecimal$ {
-  /** @deprecated use `AmountDecimal$inboundSchema` instead. */
-  export const inboundSchema = AmountDecimal$inboundSchema;
-  /** @deprecated use `AmountDecimal$outboundSchema` instead. */
-  export const outboundSchema = AmountDecimal$outboundSchema;
-  /** @deprecated use `AmountDecimal$Outbound` instead. */
-  export type Outbound = AmountDecimal$Outbound;
-}
-
 export function amountDecimalToJSON(amountDecimal: AmountDecimal): string {
   return JSON.stringify(AmountDecimal$outboundSchema.parse(amountDecimal));
 }
-
 export function amountDecimalFromJSON(
   jsonString: string,
 ): SafeParseResult<AmountDecimal, SDKValidationError> {

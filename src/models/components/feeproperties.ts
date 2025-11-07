@@ -61,7 +61,6 @@ export const FeeProperties$inboundSchema: z.ZodType<
   maxPerTransaction: AmountDecimal$inboundSchema.optional(),
   volumeRanges: z.array(VolumeRange$inboundSchema),
 });
-
 /** @internal */
 export type FeeProperties$Outbound = {
   fixedAmount?: AmountDecimal$Outbound | undefined;
@@ -84,23 +83,9 @@ export const FeeProperties$outboundSchema: z.ZodType<
   volumeRanges: z.array(VolumeRange$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeeProperties$ {
-  /** @deprecated use `FeeProperties$inboundSchema` instead. */
-  export const inboundSchema = FeeProperties$inboundSchema;
-  /** @deprecated use `FeeProperties$outboundSchema` instead. */
-  export const outboundSchema = FeeProperties$outboundSchema;
-  /** @deprecated use `FeeProperties$Outbound` instead. */
-  export type Outbound = FeeProperties$Outbound;
-}
-
 export function feePropertiesToJSON(feeProperties: FeeProperties): string {
   return JSON.stringify(FeeProperties$outboundSchema.parse(feeProperties));
 }
-
 export function feePropertiesFromJSON(
   jsonString: string,
 ): SafeParseResult<FeeProperties, SDKValidationError> {

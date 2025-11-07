@@ -43,7 +43,6 @@ export const BankAccountIntegration$inboundSchema: z.ZodType<
   bankAccountType: BankAccountType$inboundSchema,
   routingNumber: z.string(),
 });
-
 /** @internal */
 export type BankAccountIntegration$Outbound = {
   holderName: string;
@@ -66,19 +65,6 @@ export const BankAccountIntegration$outboundSchema: z.ZodType<
   routingNumber: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccountIntegration$ {
-  /** @deprecated use `BankAccountIntegration$inboundSchema` instead. */
-  export const inboundSchema = BankAccountIntegration$inboundSchema;
-  /** @deprecated use `BankAccountIntegration$outboundSchema` instead. */
-  export const outboundSchema = BankAccountIntegration$outboundSchema;
-  /** @deprecated use `BankAccountIntegration$Outbound` instead. */
-  export type Outbound = BankAccountIntegration$Outbound;
-}
-
 export function bankAccountIntegrationToJSON(
   bankAccountIntegration: BankAccountIntegration,
 ): string {
@@ -86,7 +72,6 @@ export function bankAccountIntegrationToJSON(
     BankAccountIntegration$outboundSchema.parse(bankAccountIntegration),
   );
 }
-
 export function bankAccountIntegrationFromJSON(
   jsonString: string,
 ): SafeParseResult<BankAccountIntegration, SDKValidationError> {

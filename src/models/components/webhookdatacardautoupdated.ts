@@ -31,7 +31,6 @@ export const WebhookDataCardAutoUpdated$inboundSchema: z.ZodType<
   accountID: z.string(),
   updateType: CardUpdateReason$inboundSchema,
 });
-
 /** @internal */
 export type WebhookDataCardAutoUpdated$Outbound = {
   cardID: string;
@@ -50,19 +49,6 @@ export const WebhookDataCardAutoUpdated$outboundSchema: z.ZodType<
   updateType: CardUpdateReason$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataCardAutoUpdated$ {
-  /** @deprecated use `WebhookDataCardAutoUpdated$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataCardAutoUpdated$inboundSchema;
-  /** @deprecated use `WebhookDataCardAutoUpdated$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataCardAutoUpdated$outboundSchema;
-  /** @deprecated use `WebhookDataCardAutoUpdated$Outbound` instead. */
-  export type Outbound = WebhookDataCardAutoUpdated$Outbound;
-}
-
 export function webhookDataCardAutoUpdatedToJSON(
   webhookDataCardAutoUpdated: WebhookDataCardAutoUpdated,
 ): string {
@@ -70,7 +56,6 @@ export function webhookDataCardAutoUpdatedToJSON(
     WebhookDataCardAutoUpdated$outboundSchema.parse(webhookDataCardAutoUpdated),
   );
 }
-
 export function webhookDataCardAutoUpdatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataCardAutoUpdated, SDKValidationError> {

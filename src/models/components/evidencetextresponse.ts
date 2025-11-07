@@ -32,7 +32,6 @@ export const EvidenceTextResponse$inboundSchema: z.ZodType<
   text: z.string(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type EvidenceTextResponse$Outbound = {
   evidenceID: string;
@@ -55,19 +54,6 @@ export const EvidenceTextResponse$outboundSchema: z.ZodType<
   createdOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EvidenceTextResponse$ {
-  /** @deprecated use `EvidenceTextResponse$inboundSchema` instead. */
-  export const inboundSchema = EvidenceTextResponse$inboundSchema;
-  /** @deprecated use `EvidenceTextResponse$outboundSchema` instead. */
-  export const outboundSchema = EvidenceTextResponse$outboundSchema;
-  /** @deprecated use `EvidenceTextResponse$Outbound` instead. */
-  export type Outbound = EvidenceTextResponse$Outbound;
-}
-
 export function evidenceTextResponseToJSON(
   evidenceTextResponse: EvidenceTextResponse,
 ): string {
@@ -75,7 +61,6 @@ export function evidenceTextResponseToJSON(
     EvidenceTextResponse$outboundSchema.parse(evidenceTextResponse),
   );
 }
-
 export function evidenceTextResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<EvidenceTextResponse, SDKValidationError> {

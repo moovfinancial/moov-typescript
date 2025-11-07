@@ -41,7 +41,6 @@ export const RevokeAccessTokenGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type RevokeAccessTokenGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -60,19 +59,6 @@ export const RevokeAccessTokenGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RevokeAccessTokenGlobals$ {
-  /** @deprecated use `RevokeAccessTokenGlobals$inboundSchema` instead. */
-  export const inboundSchema = RevokeAccessTokenGlobals$inboundSchema;
-  /** @deprecated use `RevokeAccessTokenGlobals$outboundSchema` instead. */
-  export const outboundSchema = RevokeAccessTokenGlobals$outboundSchema;
-  /** @deprecated use `RevokeAccessTokenGlobals$Outbound` instead. */
-  export type Outbound = RevokeAccessTokenGlobals$Outbound;
-}
-
 export function revokeAccessTokenGlobalsToJSON(
   revokeAccessTokenGlobals: RevokeAccessTokenGlobals,
 ): string {
@@ -80,7 +66,6 @@ export function revokeAccessTokenGlobalsToJSON(
     RevokeAccessTokenGlobals$outboundSchema.parse(revokeAccessTokenGlobals),
   );
 }
-
 export function revokeAccessTokenGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<RevokeAccessTokenGlobals, SDKValidationError> {
@@ -103,7 +88,6 @@ export const RevokeAccessTokenResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type RevokeAccessTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -122,19 +106,6 @@ export const RevokeAccessTokenResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RevokeAccessTokenResponse$ {
-  /** @deprecated use `RevokeAccessTokenResponse$inboundSchema` instead. */
-  export const inboundSchema = RevokeAccessTokenResponse$inboundSchema;
-  /** @deprecated use `RevokeAccessTokenResponse$outboundSchema` instead. */
-  export const outboundSchema = RevokeAccessTokenResponse$outboundSchema;
-  /** @deprecated use `RevokeAccessTokenResponse$Outbound` instead. */
-  export type Outbound = RevokeAccessTokenResponse$Outbound;
-}
-
 export function revokeAccessTokenResponseToJSON(
   revokeAccessTokenResponse: RevokeAccessTokenResponse,
 ): string {
@@ -142,7 +113,6 @@ export function revokeAccessTokenResponseToJSON(
     RevokeAccessTokenResponse$outboundSchema.parse(revokeAccessTokenResponse),
   );
 }
-
 export function revokeAccessTokenResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<RevokeAccessTokenResponse, SDKValidationError> {

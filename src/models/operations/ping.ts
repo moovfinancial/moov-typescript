@@ -43,7 +43,6 @@ export const PingGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type PingGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -62,23 +61,9 @@ export const PingGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PingGlobals$ {
-  /** @deprecated use `PingGlobals$inboundSchema` instead. */
-  export const inboundSchema = PingGlobals$inboundSchema;
-  /** @deprecated use `PingGlobals$outboundSchema` instead. */
-  export const outboundSchema = PingGlobals$outboundSchema;
-  /** @deprecated use `PingGlobals$Outbound` instead. */
-  export type Outbound = PingGlobals$Outbound;
-}
-
 export function pingGlobalsToJSON(pingGlobals: PingGlobals): string {
   return JSON.stringify(PingGlobals$outboundSchema.parse(pingGlobals));
 }
-
 export function pingGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<PingGlobals, SDKValidationError> {
@@ -95,7 +80,6 @@ export const PingRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type PingRequest$Outbound = {};
 
@@ -106,23 +90,9 @@ export const PingRequest$outboundSchema: z.ZodType<
   PingRequest
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PingRequest$ {
-  /** @deprecated use `PingRequest$inboundSchema` instead. */
-  export const inboundSchema = PingRequest$inboundSchema;
-  /** @deprecated use `PingRequest$outboundSchema` instead. */
-  export const outboundSchema = PingRequest$outboundSchema;
-  /** @deprecated use `PingRequest$Outbound` instead. */
-  export type Outbound = PingRequest$Outbound;
-}
-
 export function pingRequestToJSON(pingRequest: PingRequest): string {
   return JSON.stringify(PingRequest$outboundSchema.parse(pingRequest));
 }
-
 export function pingRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PingRequest, SDKValidationError> {
@@ -145,7 +115,6 @@ export const PingResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type PingResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -164,23 +133,9 @@ export const PingResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PingResponse$ {
-  /** @deprecated use `PingResponse$inboundSchema` instead. */
-  export const inboundSchema = PingResponse$inboundSchema;
-  /** @deprecated use `PingResponse$outboundSchema` instead. */
-  export const outboundSchema = PingResponse$outboundSchema;
-  /** @deprecated use `PingResponse$Outbound` instead. */
-  export type Outbound = PingResponse$Outbound;
-}
-
 export function pingResponseToJSON(pingResponse: PingResponse): string {
   return JSON.stringify(PingResponse$outboundSchema.parse(pingResponse));
 }
-
 export function pingResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<PingResponse, SDKValidationError> {

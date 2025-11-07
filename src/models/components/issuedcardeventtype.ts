@@ -25,19 +25,7 @@ export type IssuedCardEventType = ClosedEnum<typeof IssuedCardEventType>;
 export const IssuedCardEventType$inboundSchema: z.ZodNativeEnum<
   typeof IssuedCardEventType
 > = z.nativeEnum(IssuedCardEventType);
-
 /** @internal */
 export const IssuedCardEventType$outboundSchema: z.ZodNativeEnum<
   typeof IssuedCardEventType
 > = IssuedCardEventType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuedCardEventType$ {
-  /** @deprecated use `IssuedCardEventType$inboundSchema` instead. */
-  export const inboundSchema = IssuedCardEventType$inboundSchema;
-  /** @deprecated use `IssuedCardEventType$outboundSchema` instead. */
-  export const outboundSchema = IssuedCardEventType$outboundSchema;
-}

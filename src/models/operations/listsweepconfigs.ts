@@ -47,7 +47,6 @@ export const ListSweepConfigsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListSweepConfigsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const ListSweepConfigsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSweepConfigsGlobals$ {
-  /** @deprecated use `ListSweepConfigsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListSweepConfigsGlobals$inboundSchema;
-  /** @deprecated use `ListSweepConfigsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListSweepConfigsGlobals$outboundSchema;
-  /** @deprecated use `ListSweepConfigsGlobals$Outbound` instead. */
-  export type Outbound = ListSweepConfigsGlobals$Outbound;
-}
-
 export function listSweepConfigsGlobalsToJSON(
   listSweepConfigsGlobals: ListSweepConfigsGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function listSweepConfigsGlobalsToJSON(
     ListSweepConfigsGlobals$outboundSchema.parse(listSweepConfigsGlobals),
   );
 }
-
 export function listSweepConfigsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSweepConfigsGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const ListSweepConfigsRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type ListSweepConfigsRequest$Outbound = {
   accountID: string;
@@ -120,19 +104,6 @@ export const ListSweepConfigsRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSweepConfigsRequest$ {
-  /** @deprecated use `ListSweepConfigsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListSweepConfigsRequest$inboundSchema;
-  /** @deprecated use `ListSweepConfigsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListSweepConfigsRequest$outboundSchema;
-  /** @deprecated use `ListSweepConfigsRequest$Outbound` instead. */
-  export type Outbound = ListSweepConfigsRequest$Outbound;
-}
-
 export function listSweepConfigsRequestToJSON(
   listSweepConfigsRequest: ListSweepConfigsRequest,
 ): string {
@@ -140,7 +111,6 @@ export function listSweepConfigsRequestToJSON(
     ListSweepConfigsRequest$outboundSchema.parse(listSweepConfigsRequest),
   );
 }
-
 export function listSweepConfigsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSweepConfigsRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const ListSweepConfigsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListSweepConfigsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -187,19 +156,6 @@ export const ListSweepConfigsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSweepConfigsResponse$ {
-  /** @deprecated use `ListSweepConfigsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListSweepConfigsResponse$inboundSchema;
-  /** @deprecated use `ListSweepConfigsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListSweepConfigsResponse$outboundSchema;
-  /** @deprecated use `ListSweepConfigsResponse$Outbound` instead. */
-  export type Outbound = ListSweepConfigsResponse$Outbound;
-}
-
 export function listSweepConfigsResponseToJSON(
   listSweepConfigsResponse: ListSweepConfigsResponse,
 ): string {
@@ -207,7 +163,6 @@ export function listSweepConfigsResponseToJSON(
     ListSweepConfigsResponse$outboundSchema.parse(listSweepConfigsResponse),
   );
 }
-
 export function listSweepConfigsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSweepConfigsResponse, SDKValidationError> {

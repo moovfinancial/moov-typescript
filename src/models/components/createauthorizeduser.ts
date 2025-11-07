@@ -32,7 +32,6 @@ export const CreateAuthorizedUser$inboundSchema: z.ZodType<
   lastName: z.string(),
   birthDate: BirthDate$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreateAuthorizedUser$Outbound = {
   firstName: string;
@@ -51,19 +50,6 @@ export const CreateAuthorizedUser$outboundSchema: z.ZodType<
   birthDate: BirthDate$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAuthorizedUser$ {
-  /** @deprecated use `CreateAuthorizedUser$inboundSchema` instead. */
-  export const inboundSchema = CreateAuthorizedUser$inboundSchema;
-  /** @deprecated use `CreateAuthorizedUser$outboundSchema` instead. */
-  export const outboundSchema = CreateAuthorizedUser$outboundSchema;
-  /** @deprecated use `CreateAuthorizedUser$Outbound` instead. */
-  export type Outbound = CreateAuthorizedUser$Outbound;
-}
-
 export function createAuthorizedUserToJSON(
   createAuthorizedUser: CreateAuthorizedUser,
 ): string {
@@ -71,7 +57,6 @@ export function createAuthorizedUserToJSON(
     CreateAuthorizedUser$outboundSchema.parse(createAuthorizedUser),
   );
 }
-
 export function createAuthorizedUserFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAuthorizedUser, SDKValidationError> {

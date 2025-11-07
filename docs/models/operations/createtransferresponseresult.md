@@ -217,6 +217,9 @@ const value: components.CreatedTransfer = {
     currency: "USD",
     value: 1204,
   },
+  lineItems: {
+    items: [],
+  },
 };
 ```
 

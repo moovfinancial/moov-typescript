@@ -56,7 +56,6 @@ export const ListIssuedCardsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListIssuedCardsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -75,19 +74,6 @@ export const ListIssuedCardsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIssuedCardsGlobals$ {
-  /** @deprecated use `ListIssuedCardsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListIssuedCardsGlobals$inboundSchema;
-  /** @deprecated use `ListIssuedCardsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListIssuedCardsGlobals$outboundSchema;
-  /** @deprecated use `ListIssuedCardsGlobals$Outbound` instead. */
-  export type Outbound = ListIssuedCardsGlobals$Outbound;
-}
-
 export function listIssuedCardsGlobalsToJSON(
   listIssuedCardsGlobals: ListIssuedCardsGlobals,
 ): string {
@@ -95,7 +81,6 @@ export function listIssuedCardsGlobalsToJSON(
     ListIssuedCardsGlobals$outboundSchema.parse(listIssuedCardsGlobals),
   );
 }
-
 export function listIssuedCardsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListIssuedCardsGlobals, SDKValidationError> {
@@ -117,7 +102,6 @@ export const ListIssuedCardsRequest$inboundSchema: z.ZodType<
   count: z.number().int().optional(),
   states: z.array(components.IssuedCardState$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ListIssuedCardsRequest$Outbound = {
   accountID: string;
@@ -138,19 +122,6 @@ export const ListIssuedCardsRequest$outboundSchema: z.ZodType<
   states: z.array(components.IssuedCardState$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIssuedCardsRequest$ {
-  /** @deprecated use `ListIssuedCardsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListIssuedCardsRequest$inboundSchema;
-  /** @deprecated use `ListIssuedCardsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListIssuedCardsRequest$outboundSchema;
-  /** @deprecated use `ListIssuedCardsRequest$Outbound` instead. */
-  export type Outbound = ListIssuedCardsRequest$Outbound;
-}
-
 export function listIssuedCardsRequestToJSON(
   listIssuedCardsRequest: ListIssuedCardsRequest,
 ): string {
@@ -158,7 +129,6 @@ export function listIssuedCardsRequestToJSON(
     ListIssuedCardsRequest$outboundSchema.parse(listIssuedCardsRequest),
   );
 }
-
 export function listIssuedCardsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListIssuedCardsRequest, SDKValidationError> {
@@ -183,7 +153,6 @@ export const ListIssuedCardsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListIssuedCardsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -205,19 +174,6 @@ export const ListIssuedCardsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIssuedCardsResponse$ {
-  /** @deprecated use `ListIssuedCardsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListIssuedCardsResponse$inboundSchema;
-  /** @deprecated use `ListIssuedCardsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListIssuedCardsResponse$outboundSchema;
-  /** @deprecated use `ListIssuedCardsResponse$Outbound` instead. */
-  export type Outbound = ListIssuedCardsResponse$Outbound;
-}
-
 export function listIssuedCardsResponseToJSON(
   listIssuedCardsResponse: ListIssuedCardsResponse,
 ): string {
@@ -225,7 +181,6 @@ export function listIssuedCardsResponseToJSON(
     ListIssuedCardsResponse$outboundSchema.parse(listIssuedCardsResponse),
   );
 }
-
 export function listIssuedCardsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListIssuedCardsResponse, SDKValidationError> {

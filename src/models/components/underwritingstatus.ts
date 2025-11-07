@@ -24,19 +24,7 @@ export type UnderwritingStatus = ClosedEnum<typeof UnderwritingStatus>;
 export const UnderwritingStatus$inboundSchema: z.ZodNativeEnum<
   typeof UnderwritingStatus
 > = z.nativeEnum(UnderwritingStatus);
-
 /** @internal */
 export const UnderwritingStatus$outboundSchema: z.ZodNativeEnum<
   typeof UnderwritingStatus
 > = UnderwritingStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnderwritingStatus$ {
-  /** @deprecated use `UnderwritingStatus$inboundSchema` instead. */
-  export const inboundSchema = UnderwritingStatus$inboundSchema;
-  /** @deprecated use `UnderwritingStatus$outboundSchema` instead. */
-  export const outboundSchema = UnderwritingStatus$outboundSchema;
-}

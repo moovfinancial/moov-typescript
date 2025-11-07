@@ -63,7 +63,6 @@ export const IssuedCardAuthorization$inboundSchema: z.ZodType<
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   cardTransactions: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type IssuedCardAuthorization$Outbound = {
   authorizationID: string;
@@ -94,19 +93,6 @@ export const IssuedCardAuthorization$outboundSchema: z.ZodType<
   cardTransactions: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuedCardAuthorization$ {
-  /** @deprecated use `IssuedCardAuthorization$inboundSchema` instead. */
-  export const inboundSchema = IssuedCardAuthorization$inboundSchema;
-  /** @deprecated use `IssuedCardAuthorization$outboundSchema` instead. */
-  export const outboundSchema = IssuedCardAuthorization$outboundSchema;
-  /** @deprecated use `IssuedCardAuthorization$Outbound` instead. */
-  export type Outbound = IssuedCardAuthorization$Outbound;
-}
-
 export function issuedCardAuthorizationToJSON(
   issuedCardAuthorization: IssuedCardAuthorization,
 ): string {
@@ -114,7 +100,6 @@ export function issuedCardAuthorizationToJSON(
     IssuedCardAuthorization$outboundSchema.parse(issuedCardAuthorization),
   );
 }
-
 export function issuedCardAuthorizationFromJSON(
   jsonString: string,
 ): SafeParseResult<IssuedCardAuthorization, SDKValidationError> {

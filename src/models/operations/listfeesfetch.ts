@@ -48,7 +48,6 @@ export const ListFeesFetchGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListFeesFetchGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const ListFeesFetchGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeesFetchGlobals$ {
-  /** @deprecated use `ListFeesFetchGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListFeesFetchGlobals$inboundSchema;
-  /** @deprecated use `ListFeesFetchGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListFeesFetchGlobals$outboundSchema;
-  /** @deprecated use `ListFeesFetchGlobals$Outbound` instead. */
-  export type Outbound = ListFeesFetchGlobals$Outbound;
-}
-
 export function listFeesFetchGlobalsToJSON(
   listFeesFetchGlobals: ListFeesFetchGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function listFeesFetchGlobalsToJSON(
     ListFeesFetchGlobals$outboundSchema.parse(listFeesFetchGlobals),
   );
 }
-
 export function listFeesFetchGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeesFetchGlobals, SDKValidationError> {
@@ -112,7 +97,6 @@ export const ListFeesFetchRequest$inboundSchema: z.ZodType<
     "ListFeesFetchRequest": "listFeesFetchRequest",
   });
 });
-
 /** @internal */
 export type ListFeesFetchRequest$Outbound = {
   accountID: string;
@@ -134,19 +118,6 @@ export const ListFeesFetchRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeesFetchRequest$ {
-  /** @deprecated use `ListFeesFetchRequest$inboundSchema` instead. */
-  export const inboundSchema = ListFeesFetchRequest$inboundSchema;
-  /** @deprecated use `ListFeesFetchRequest$outboundSchema` instead. */
-  export const outboundSchema = ListFeesFetchRequest$outboundSchema;
-  /** @deprecated use `ListFeesFetchRequest$Outbound` instead. */
-  export type Outbound = ListFeesFetchRequest$Outbound;
-}
-
 export function listFeesFetchRequestToJSON(
   listFeesFetchRequest: ListFeesFetchRequest,
 ): string {
@@ -154,7 +125,6 @@ export function listFeesFetchRequestToJSON(
     ListFeesFetchRequest$outboundSchema.parse(listFeesFetchRequest),
   );
 }
-
 export function listFeesFetchRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeesFetchRequest, SDKValidationError> {
@@ -179,7 +149,6 @@ export const ListFeesFetchResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListFeesFetchResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -201,19 +170,6 @@ export const ListFeesFetchResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeesFetchResponse$ {
-  /** @deprecated use `ListFeesFetchResponse$inboundSchema` instead. */
-  export const inboundSchema = ListFeesFetchResponse$inboundSchema;
-  /** @deprecated use `ListFeesFetchResponse$outboundSchema` instead. */
-  export const outboundSchema = ListFeesFetchResponse$outboundSchema;
-  /** @deprecated use `ListFeesFetchResponse$Outbound` instead. */
-  export type Outbound = ListFeesFetchResponse$Outbound;
-}
-
 export function listFeesFetchResponseToJSON(
   listFeesFetchResponse: ListFeesFetchResponse,
 ): string {
@@ -221,7 +177,6 @@ export function listFeesFetchResponseToJSON(
     ListFeesFetchResponse$outboundSchema.parse(listFeesFetchResponse),
   );
 }
-
 export function listFeesFetchResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeesFetchResponse, SDKValidationError> {

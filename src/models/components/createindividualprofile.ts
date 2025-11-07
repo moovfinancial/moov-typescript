@@ -59,7 +59,6 @@ export const CreateIndividualProfile$inboundSchema: z.ZodType<
   birthDate: BirthDate$inboundSchema.optional(),
   governmentID: GovernmentID$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreateIndividualProfile$Outbound = {
   name: IndividualName$Outbound;
@@ -84,19 +83,6 @@ export const CreateIndividualProfile$outboundSchema: z.ZodType<
   governmentID: GovernmentID$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateIndividualProfile$ {
-  /** @deprecated use `CreateIndividualProfile$inboundSchema` instead. */
-  export const inboundSchema = CreateIndividualProfile$inboundSchema;
-  /** @deprecated use `CreateIndividualProfile$outboundSchema` instead. */
-  export const outboundSchema = CreateIndividualProfile$outboundSchema;
-  /** @deprecated use `CreateIndividualProfile$Outbound` instead. */
-  export type Outbound = CreateIndividualProfile$Outbound;
-}
-
 export function createIndividualProfileToJSON(
   createIndividualProfile: CreateIndividualProfile,
 ): string {
@@ -104,7 +90,6 @@ export function createIndividualProfileToJSON(
     CreateIndividualProfile$outboundSchema.parse(createIndividualProfile),
   );
 }
-
 export function createIndividualProfileFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateIndividualProfile, SDKValidationError> {

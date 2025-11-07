@@ -21,7 +21,6 @@ export const WebhookDataAccountDisconnected$inboundSchema: z.ZodType<
   accountID: z.string(),
   foreignID: z.string().optional(),
 });
-
 /** @internal */
 export type WebhookDataAccountDisconnected$Outbound = {
   accountID: string;
@@ -38,19 +37,6 @@ export const WebhookDataAccountDisconnected$outboundSchema: z.ZodType<
   foreignID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataAccountDisconnected$ {
-  /** @deprecated use `WebhookDataAccountDisconnected$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataAccountDisconnected$inboundSchema;
-  /** @deprecated use `WebhookDataAccountDisconnected$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataAccountDisconnected$outboundSchema;
-  /** @deprecated use `WebhookDataAccountDisconnected$Outbound` instead. */
-  export type Outbound = WebhookDataAccountDisconnected$Outbound;
-}
-
 export function webhookDataAccountDisconnectedToJSON(
   webhookDataAccountDisconnected: WebhookDataAccountDisconnected,
 ): string {
@@ -60,7 +46,6 @@ export function webhookDataAccountDisconnectedToJSON(
     ),
   );
 }
-
 export function webhookDataAccountDisconnectedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataAccountDisconnected, SDKValidationError> {

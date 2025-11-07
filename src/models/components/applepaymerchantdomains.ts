@@ -33,7 +33,6 @@ export const ApplePayMerchantDomains$inboundSchema: z.ZodType<
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type ApplePayMerchantDomains$Outbound = {
   accountID: string;
@@ -56,19 +55,6 @@ export const ApplePayMerchantDomains$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplePayMerchantDomains$ {
-  /** @deprecated use `ApplePayMerchantDomains$inboundSchema` instead. */
-  export const inboundSchema = ApplePayMerchantDomains$inboundSchema;
-  /** @deprecated use `ApplePayMerchantDomains$outboundSchema` instead. */
-  export const outboundSchema = ApplePayMerchantDomains$outboundSchema;
-  /** @deprecated use `ApplePayMerchantDomains$Outbound` instead. */
-  export type Outbound = ApplePayMerchantDomains$Outbound;
-}
-
 export function applePayMerchantDomainsToJSON(
   applePayMerchantDomains: ApplePayMerchantDomains,
 ): string {
@@ -76,7 +62,6 @@ export function applePayMerchantDomainsToJSON(
     ApplePayMerchantDomains$outboundSchema.parse(applePayMerchantDomains),
   );
 }
-
 export function applePayMerchantDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplePayMerchantDomains, SDKValidationError> {

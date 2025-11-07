@@ -37,24 +37,10 @@ export type PushToCardPaymentMethod = {
 export const PushToCardPaymentMethodPaymentMethodType$inboundSchema:
   z.ZodNativeEnum<typeof PushToCardPaymentMethodPaymentMethodType> = z
     .nativeEnum(PushToCardPaymentMethodPaymentMethodType);
-
 /** @internal */
 export const PushToCardPaymentMethodPaymentMethodType$outboundSchema:
   z.ZodNativeEnum<typeof PushToCardPaymentMethodPaymentMethodType> =
     PushToCardPaymentMethodPaymentMethodType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushToCardPaymentMethodPaymentMethodType$ {
-  /** @deprecated use `PushToCardPaymentMethodPaymentMethodType$inboundSchema` instead. */
-  export const inboundSchema =
-    PushToCardPaymentMethodPaymentMethodType$inboundSchema;
-  /** @deprecated use `PushToCardPaymentMethodPaymentMethodType$outboundSchema` instead. */
-  export const outboundSchema =
-    PushToCardPaymentMethodPaymentMethodType$outboundSchema;
-}
 
 /** @internal */
 export const PushToCardPaymentMethod$inboundSchema: z.ZodType<
@@ -66,7 +52,6 @@ export const PushToCardPaymentMethod$inboundSchema: z.ZodType<
   paymentMethodType: PushToCardPaymentMethodPaymentMethodType$inboundSchema,
   card: PaymentMethodsCard$inboundSchema,
 });
-
 /** @internal */
 export type PushToCardPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -85,19 +70,6 @@ export const PushToCardPaymentMethod$outboundSchema: z.ZodType<
   card: PaymentMethodsCard$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushToCardPaymentMethod$ {
-  /** @deprecated use `PushToCardPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = PushToCardPaymentMethod$inboundSchema;
-  /** @deprecated use `PushToCardPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = PushToCardPaymentMethod$outboundSchema;
-  /** @deprecated use `PushToCardPaymentMethod$Outbound` instead. */
-  export type Outbound = PushToCardPaymentMethod$Outbound;
-}
-
 export function pushToCardPaymentMethodToJSON(
   pushToCardPaymentMethod: PushToCardPaymentMethod,
 ): string {
@@ -105,7 +77,6 @@ export function pushToCardPaymentMethodToJSON(
     PushToCardPaymentMethod$outboundSchema.parse(pushToCardPaymentMethod),
   );
 }
-
 export function pushToCardPaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<PushToCardPaymentMethod, SDKValidationError> {

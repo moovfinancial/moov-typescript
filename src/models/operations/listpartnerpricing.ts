@@ -51,7 +51,6 @@ export const ListPartnerPricingGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListPartnerPricingGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const ListPartnerPricingGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPartnerPricingGlobals$ {
-  /** @deprecated use `ListPartnerPricingGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListPartnerPricingGlobals$inboundSchema;
-  /** @deprecated use `ListPartnerPricingGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListPartnerPricingGlobals$outboundSchema;
-  /** @deprecated use `ListPartnerPricingGlobals$Outbound` instead. */
-  export type Outbound = ListPartnerPricingGlobals$Outbound;
-}
-
 export function listPartnerPricingGlobalsToJSON(
   listPartnerPricingGlobals: ListPartnerPricingGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function listPartnerPricingGlobalsToJSON(
     ListPartnerPricingGlobals$outboundSchema.parse(listPartnerPricingGlobals),
   );
 }
-
 export function listPartnerPricingGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPartnerPricingGlobals, SDKValidationError> {
@@ -110,7 +95,6 @@ export const ListPartnerPricingRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   planIDs: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type ListPartnerPricingRequest$Outbound = {
   accountID: string;
@@ -127,19 +111,6 @@ export const ListPartnerPricingRequest$outboundSchema: z.ZodType<
   planIDs: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPartnerPricingRequest$ {
-  /** @deprecated use `ListPartnerPricingRequest$inboundSchema` instead. */
-  export const inboundSchema = ListPartnerPricingRequest$inboundSchema;
-  /** @deprecated use `ListPartnerPricingRequest$outboundSchema` instead. */
-  export const outboundSchema = ListPartnerPricingRequest$outboundSchema;
-  /** @deprecated use `ListPartnerPricingRequest$Outbound` instead. */
-  export type Outbound = ListPartnerPricingRequest$Outbound;
-}
-
 export function listPartnerPricingRequestToJSON(
   listPartnerPricingRequest: ListPartnerPricingRequest,
 ): string {
@@ -147,7 +118,6 @@ export function listPartnerPricingRequestToJSON(
     ListPartnerPricingRequest$outboundSchema.parse(listPartnerPricingRequest),
   );
 }
-
 export function listPartnerPricingRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPartnerPricingRequest, SDKValidationError> {
@@ -172,7 +142,6 @@ export const ListPartnerPricingResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListPartnerPricingResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -194,19 +163,6 @@ export const ListPartnerPricingResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPartnerPricingResponse$ {
-  /** @deprecated use `ListPartnerPricingResponse$inboundSchema` instead. */
-  export const inboundSchema = ListPartnerPricingResponse$inboundSchema;
-  /** @deprecated use `ListPartnerPricingResponse$outboundSchema` instead. */
-  export const outboundSchema = ListPartnerPricingResponse$outboundSchema;
-  /** @deprecated use `ListPartnerPricingResponse$Outbound` instead. */
-  export type Outbound = ListPartnerPricingResponse$Outbound;
-}
-
 export function listPartnerPricingResponseToJSON(
   listPartnerPricingResponse: ListPartnerPricingResponse,
 ): string {
@@ -214,7 +170,6 @@ export function listPartnerPricingResponseToJSON(
     ListPartnerPricingResponse$outboundSchema.parse(listPartnerPricingResponse),
   );
 }
-
 export function listPartnerPricingResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPartnerPricingResponse, SDKValidationError> {

@@ -45,7 +45,6 @@ export const CollectFundsCardPaymentsError$inboundSchema: z.ZodType<
   fulfillment: FulfillmentError$inboundSchema.optional(),
   refundPolicy: z.string().optional(),
 });
-
 /** @internal */
 export type CollectFundsCardPaymentsError$Outbound = {
   cardAcceptanceMethods?: CardAcceptanceMethodsError$Outbound | undefined;
@@ -68,19 +67,6 @@ export const CollectFundsCardPaymentsError$outboundSchema: z.ZodType<
   refundPolicy: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectFundsCardPaymentsError$ {
-  /** @deprecated use `CollectFundsCardPaymentsError$inboundSchema` instead. */
-  export const inboundSchema = CollectFundsCardPaymentsError$inboundSchema;
-  /** @deprecated use `CollectFundsCardPaymentsError$outboundSchema` instead. */
-  export const outboundSchema = CollectFundsCardPaymentsError$outboundSchema;
-  /** @deprecated use `CollectFundsCardPaymentsError$Outbound` instead. */
-  export type Outbound = CollectFundsCardPaymentsError$Outbound;
-}
-
 export function collectFundsCardPaymentsErrorToJSON(
   collectFundsCardPaymentsError: CollectFundsCardPaymentsError,
 ): string {
@@ -90,7 +76,6 @@ export function collectFundsCardPaymentsErrorToJSON(
     ),
   );
 }
-
 export function collectFundsCardPaymentsErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CollectFundsCardPaymentsError, SDKValidationError> {

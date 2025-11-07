@@ -51,7 +51,6 @@ export const CreateScheduleGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateScheduleGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const CreateScheduleGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateScheduleGlobals$ {
-  /** @deprecated use `CreateScheduleGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateScheduleGlobals$inboundSchema;
-  /** @deprecated use `CreateScheduleGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateScheduleGlobals$outboundSchema;
-  /** @deprecated use `CreateScheduleGlobals$Outbound` instead. */
-  export type Outbound = CreateScheduleGlobals$Outbound;
-}
-
 export function createScheduleGlobalsToJSON(
   createScheduleGlobals: CreateScheduleGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function createScheduleGlobalsToJSON(
     CreateScheduleGlobals$outboundSchema.parse(createScheduleGlobals),
   );
 }
-
 export function createScheduleGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateScheduleGlobals, SDKValidationError> {
@@ -114,7 +99,6 @@ export const CreateScheduleRequest$inboundSchema: z.ZodType<
     "UpsertSchedule": "upsertSchedule",
   });
 });
-
 /** @internal */
 export type CreateScheduleRequest$Outbound = {
   accountID: string;
@@ -135,19 +119,6 @@ export const CreateScheduleRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateScheduleRequest$ {
-  /** @deprecated use `CreateScheduleRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateScheduleRequest$inboundSchema;
-  /** @deprecated use `CreateScheduleRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateScheduleRequest$outboundSchema;
-  /** @deprecated use `CreateScheduleRequest$Outbound` instead. */
-  export type Outbound = CreateScheduleRequest$Outbound;
-}
-
 export function createScheduleRequestToJSON(
   createScheduleRequest: CreateScheduleRequest,
 ): string {
@@ -155,7 +126,6 @@ export function createScheduleRequestToJSON(
     CreateScheduleRequest$outboundSchema.parse(createScheduleRequest),
   );
 }
-
 export function createScheduleRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateScheduleRequest, SDKValidationError> {
@@ -180,7 +150,6 @@ export const CreateScheduleResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateScheduleResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -202,19 +171,6 @@ export const CreateScheduleResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateScheduleResponse$ {
-  /** @deprecated use `CreateScheduleResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateScheduleResponse$inboundSchema;
-  /** @deprecated use `CreateScheduleResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateScheduleResponse$outboundSchema;
-  /** @deprecated use `CreateScheduleResponse$Outbound` instead. */
-  export type Outbound = CreateScheduleResponse$Outbound;
-}
-
 export function createScheduleResponseToJSON(
   createScheduleResponse: CreateScheduleResponse,
 ): string {
@@ -222,7 +178,6 @@ export function createScheduleResponseToJSON(
     CreateScheduleResponse$outboundSchema.parse(createScheduleResponse),
   );
 }
-
 export function createScheduleResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateScheduleResponse, SDKValidationError> {

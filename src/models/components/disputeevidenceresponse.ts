@@ -58,7 +58,6 @@ export const DisputeEvidenceResponse$inboundSchema: z.ZodType<
   submittedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type DisputeEvidenceResponse$Outbound = {
   evidenceID: string;
@@ -91,19 +90,6 @@ export const DisputeEvidenceResponse$outboundSchema: z.ZodType<
   submittedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisputeEvidenceResponse$ {
-  /** @deprecated use `DisputeEvidenceResponse$inboundSchema` instead. */
-  export const inboundSchema = DisputeEvidenceResponse$inboundSchema;
-  /** @deprecated use `DisputeEvidenceResponse$outboundSchema` instead. */
-  export const outboundSchema = DisputeEvidenceResponse$outboundSchema;
-  /** @deprecated use `DisputeEvidenceResponse$Outbound` instead. */
-  export type Outbound = DisputeEvidenceResponse$Outbound;
-}
-
 export function disputeEvidenceResponseToJSON(
   disputeEvidenceResponse: DisputeEvidenceResponse,
 ): string {
@@ -111,7 +97,6 @@ export function disputeEvidenceResponseToJSON(
     DisputeEvidenceResponse$outboundSchema.parse(disputeEvidenceResponse),
   );
 }
-
 export function disputeEvidenceResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DisputeEvidenceResponse, SDKValidationError> {

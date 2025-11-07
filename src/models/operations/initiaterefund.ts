@@ -70,7 +70,6 @@ export const InitiateRefundGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type InitiateRefundGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -89,19 +88,6 @@ export const InitiateRefundGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InitiateRefundGlobals$ {
-  /** @deprecated use `InitiateRefundGlobals$inboundSchema` instead. */
-  export const inboundSchema = InitiateRefundGlobals$inboundSchema;
-  /** @deprecated use `InitiateRefundGlobals$outboundSchema` instead. */
-  export const outboundSchema = InitiateRefundGlobals$outboundSchema;
-  /** @deprecated use `InitiateRefundGlobals$Outbound` instead. */
-  export type Outbound = InitiateRefundGlobals$Outbound;
-}
-
 export function initiateRefundGlobalsToJSON(
   initiateRefundGlobals: InitiateRefundGlobals,
 ): string {
@@ -109,7 +95,6 @@ export function initiateRefundGlobalsToJSON(
     InitiateRefundGlobals$outboundSchema.parse(initiateRefundGlobals),
   );
 }
-
 export function initiateRefundGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<InitiateRefundGlobals, SDKValidationError> {
@@ -138,7 +123,6 @@ export const InitiateRefundRequest$inboundSchema: z.ZodType<
     "CreateRefund": "createRefund",
   });
 });
-
 /** @internal */
 export type InitiateRefundRequest$Outbound = {
   "x-idempotency-key": string;
@@ -167,19 +151,6 @@ export const InitiateRefundRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InitiateRefundRequest$ {
-  /** @deprecated use `InitiateRefundRequest$inboundSchema` instead. */
-  export const inboundSchema = InitiateRefundRequest$inboundSchema;
-  /** @deprecated use `InitiateRefundRequest$outboundSchema` instead. */
-  export const outboundSchema = InitiateRefundRequest$outboundSchema;
-  /** @deprecated use `InitiateRefundRequest$Outbound` instead. */
-  export type Outbound = InitiateRefundRequest$Outbound;
-}
-
 export function initiateRefundRequestToJSON(
   initiateRefundRequest: InitiateRefundRequest,
 ): string {
@@ -187,7 +158,6 @@ export function initiateRefundRequestToJSON(
     InitiateRefundRequest$outboundSchema.parse(initiateRefundRequest),
   );
 }
-
 export function initiateRefundRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InitiateRefundRequest, SDKValidationError> {
@@ -207,7 +177,6 @@ export const InitiateRefundResponseResult$inboundSchema: z.ZodType<
   components.CardAcquiringRefund$inboundSchema,
   components.CreateRefundResponse$inboundSchema,
 ]);
-
 /** @internal */
 export type InitiateRefundResponseResult$Outbound =
   | components.CardAcquiringRefund$Outbound
@@ -223,19 +192,6 @@ export const InitiateRefundResponseResult$outboundSchema: z.ZodType<
   components.CreateRefundResponse$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InitiateRefundResponseResult$ {
-  /** @deprecated use `InitiateRefundResponseResult$inboundSchema` instead. */
-  export const inboundSchema = InitiateRefundResponseResult$inboundSchema;
-  /** @deprecated use `InitiateRefundResponseResult$outboundSchema` instead. */
-  export const outboundSchema = InitiateRefundResponseResult$outboundSchema;
-  /** @deprecated use `InitiateRefundResponseResult$Outbound` instead. */
-  export type Outbound = InitiateRefundResponseResult$Outbound;
-}
-
 export function initiateRefundResponseResultToJSON(
   initiateRefundResponseResult: InitiateRefundResponseResult,
 ): string {
@@ -245,7 +201,6 @@ export function initiateRefundResponseResultToJSON(
     ),
   );
 }
-
 export function initiateRefundResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<InitiateRefundResponseResult, SDKValidationError> {
@@ -273,7 +228,6 @@ export const InitiateRefundResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type InitiateRefundResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -300,19 +254,6 @@ export const InitiateRefundResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InitiateRefundResponse$ {
-  /** @deprecated use `InitiateRefundResponse$inboundSchema` instead. */
-  export const inboundSchema = InitiateRefundResponse$inboundSchema;
-  /** @deprecated use `InitiateRefundResponse$outboundSchema` instead. */
-  export const outboundSchema = InitiateRefundResponse$outboundSchema;
-  /** @deprecated use `InitiateRefundResponse$Outbound` instead. */
-  export type Outbound = InitiateRefundResponse$Outbound;
-}
-
 export function initiateRefundResponseToJSON(
   initiateRefundResponse: InitiateRefundResponse,
 ): string {
@@ -320,7 +261,6 @@ export function initiateRefundResponseToJSON(
     InitiateRefundResponse$outboundSchema.parse(initiateRefundResponse),
   );
 }
-
 export function initiateRefundResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<InitiateRefundResponse, SDKValidationError> {

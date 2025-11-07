@@ -23,7 +23,6 @@ export const IndustryCodes$inboundSchema: z.ZodType<
   sic: z.string().optional(),
   mcc: z.string().optional(),
 });
-
 /** @internal */
 export type IndustryCodes$Outbound = {
   naics?: string | undefined;
@@ -42,23 +41,9 @@ export const IndustryCodes$outboundSchema: z.ZodType<
   mcc: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndustryCodes$ {
-  /** @deprecated use `IndustryCodes$inboundSchema` instead. */
-  export const inboundSchema = IndustryCodes$inboundSchema;
-  /** @deprecated use `IndustryCodes$outboundSchema` instead. */
-  export const outboundSchema = IndustryCodes$outboundSchema;
-  /** @deprecated use `IndustryCodes$Outbound` instead. */
-  export type Outbound = IndustryCodes$Outbound;
-}
-
 export function industryCodesToJSON(industryCodes: IndustryCodes): string {
   return JSON.stringify(IndustryCodes$outboundSchema.parse(industryCodes));
 }
-
 export function industryCodesFromJSON(
   jsonString: string,
 ): SafeParseResult<IndustryCodes, SDKValidationError> {

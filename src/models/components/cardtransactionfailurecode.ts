@@ -40,19 +40,7 @@ export type CardTransactionFailureCode = ClosedEnum<
 export const CardTransactionFailureCode$inboundSchema: z.ZodNativeEnum<
   typeof CardTransactionFailureCode
 > = z.nativeEnum(CardTransactionFailureCode);
-
 /** @internal */
 export const CardTransactionFailureCode$outboundSchema: z.ZodNativeEnum<
   typeof CardTransactionFailureCode
 > = CardTransactionFailureCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardTransactionFailureCode$ {
-  /** @deprecated use `CardTransactionFailureCode$inboundSchema` instead. */
-  export const inboundSchema = CardTransactionFailureCode$inboundSchema;
-  /** @deprecated use `CardTransactionFailureCode$outboundSchema` instead. */
-  export const outboundSchema = CardTransactionFailureCode$outboundSchema;
-}

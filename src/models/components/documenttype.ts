@@ -22,18 +22,6 @@ export type DocumentType = ClosedEnum<typeof DocumentType>;
 /** @internal */
 export const DocumentType$inboundSchema: z.ZodNativeEnum<typeof DocumentType> =
   z.nativeEnum(DocumentType);
-
 /** @internal */
 export const DocumentType$outboundSchema: z.ZodNativeEnum<typeof DocumentType> =
   DocumentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentType$ {
-  /** @deprecated use `DocumentType$inboundSchema` instead. */
-  export const inboundSchema = DocumentType$inboundSchema;
-  /** @deprecated use `DocumentType$outboundSchema` instead. */
-  export const outboundSchema = DocumentType$outboundSchema;
-}

@@ -56,7 +56,6 @@ export const Residual$inboundSchema: z.ZodType<
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type Residual$Outbound = {
   residualID: string;
@@ -93,23 +92,9 @@ export const Residual$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Residual$ {
-  /** @deprecated use `Residual$inboundSchema` instead. */
-  export const inboundSchema = Residual$inboundSchema;
-  /** @deprecated use `Residual$outboundSchema` instead. */
-  export const outboundSchema = Residual$outboundSchema;
-  /** @deprecated use `Residual$Outbound` instead. */
-  export type Outbound = Residual$Outbound;
-}
-
 export function residualToJSON(residual: Residual): string {
   return JSON.stringify(Residual$outboundSchema.parse(residual));
 }
-
 export function residualFromJSON(
   jsonString: string,
 ): SafeParseResult<Residual, SDKValidationError> {

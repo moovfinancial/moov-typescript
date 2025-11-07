@@ -64,7 +64,6 @@ export const ListIssuedCardTransactionsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListIssuedCardTransactionsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -83,20 +82,6 @@ export const ListIssuedCardTransactionsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIssuedCardTransactionsGlobals$ {
-  /** @deprecated use `ListIssuedCardTransactionsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListIssuedCardTransactionsGlobals$inboundSchema;
-  /** @deprecated use `ListIssuedCardTransactionsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    ListIssuedCardTransactionsGlobals$outboundSchema;
-  /** @deprecated use `ListIssuedCardTransactionsGlobals$Outbound` instead. */
-  export type Outbound = ListIssuedCardTransactionsGlobals$Outbound;
-}
-
 export function listIssuedCardTransactionsGlobalsToJSON(
   listIssuedCardTransactionsGlobals: ListIssuedCardTransactionsGlobals,
 ): string {
@@ -106,7 +91,6 @@ export function listIssuedCardTransactionsGlobalsToJSON(
     ),
   );
 }
-
 export function listIssuedCardTransactionsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListIssuedCardTransactionsGlobals, SDKValidationError> {
@@ -133,7 +117,6 @@ export const ListIssuedCardTransactionsRequest$inboundSchema: z.ZodType<
   endDateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type ListIssuedCardTransactionsRequest$Outbound = {
   accountID: string;
@@ -158,20 +141,6 @@ export const ListIssuedCardTransactionsRequest$outboundSchema: z.ZodType<
   endDateTime: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIssuedCardTransactionsRequest$ {
-  /** @deprecated use `ListIssuedCardTransactionsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListIssuedCardTransactionsRequest$inboundSchema;
-  /** @deprecated use `ListIssuedCardTransactionsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ListIssuedCardTransactionsRequest$outboundSchema;
-  /** @deprecated use `ListIssuedCardTransactionsRequest$Outbound` instead. */
-  export type Outbound = ListIssuedCardTransactionsRequest$Outbound;
-}
-
 export function listIssuedCardTransactionsRequestToJSON(
   listIssuedCardTransactionsRequest: ListIssuedCardTransactionsRequest,
 ): string {
@@ -181,7 +150,6 @@ export function listIssuedCardTransactionsRequestToJSON(
     ),
   );
 }
-
 export function listIssuedCardTransactionsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListIssuedCardTransactionsRequest, SDKValidationError> {
@@ -206,7 +174,6 @@ export const ListIssuedCardTransactionsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListIssuedCardTransactionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -228,20 +195,6 @@ export const ListIssuedCardTransactionsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIssuedCardTransactionsResponse$ {
-  /** @deprecated use `ListIssuedCardTransactionsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListIssuedCardTransactionsResponse$inboundSchema;
-  /** @deprecated use `ListIssuedCardTransactionsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    ListIssuedCardTransactionsResponse$outboundSchema;
-  /** @deprecated use `ListIssuedCardTransactionsResponse$Outbound` instead. */
-  export type Outbound = ListIssuedCardTransactionsResponse$Outbound;
-}
-
 export function listIssuedCardTransactionsResponseToJSON(
   listIssuedCardTransactionsResponse: ListIssuedCardTransactionsResponse,
 ): string {
@@ -251,7 +204,6 @@ export function listIssuedCardTransactionsResponseToJSON(
     ),
   );
 }
-
 export function listIssuedCardTransactionsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListIssuedCardTransactionsResponse, SDKValidationError> {

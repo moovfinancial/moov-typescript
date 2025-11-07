@@ -57,7 +57,6 @@ export const BillingInterchangeProgramFee$inboundSchema: z.ZodType<
   total: AmountDecimal$inboundSchema,
   transferVolume: AmountDecimal$inboundSchema,
 });
-
 /** @internal */
 export type BillingInterchangeProgramFee$Outbound = {
   programName: string;
@@ -84,19 +83,6 @@ export const BillingInterchangeProgramFee$outboundSchema: z.ZodType<
   transferVolume: AmountDecimal$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BillingInterchangeProgramFee$ {
-  /** @deprecated use `BillingInterchangeProgramFee$inboundSchema` instead. */
-  export const inboundSchema = BillingInterchangeProgramFee$inboundSchema;
-  /** @deprecated use `BillingInterchangeProgramFee$outboundSchema` instead. */
-  export const outboundSchema = BillingInterchangeProgramFee$outboundSchema;
-  /** @deprecated use `BillingInterchangeProgramFee$Outbound` instead. */
-  export type Outbound = BillingInterchangeProgramFee$Outbound;
-}
-
 export function billingInterchangeProgramFeeToJSON(
   billingInterchangeProgramFee: BillingInterchangeProgramFee,
 ): string {
@@ -106,7 +92,6 @@ export function billingInterchangeProgramFeeToJSON(
     ),
   );
 }
-
 export function billingInterchangeProgramFeeFromJSON(
   jsonString: string,
 ): SafeParseResult<BillingInterchangeProgramFee, SDKValidationError> {

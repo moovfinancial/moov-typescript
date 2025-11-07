@@ -28,18 +28,6 @@ export type WalletType = ClosedEnum<typeof WalletType>;
 /** @internal */
 export const WalletType$inboundSchema: z.ZodNativeEnum<typeof WalletType> = z
   .nativeEnum(WalletType);
-
 /** @internal */
 export const WalletType$outboundSchema: z.ZodNativeEnum<typeof WalletType> =
   WalletType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WalletType$ {
-  /** @deprecated use `WalletType$inboundSchema` instead. */
-  export const inboundSchema = WalletType$inboundSchema;
-  /** @deprecated use `WalletType$outboundSchema` instead. */
-  export const outboundSchema = WalletType$outboundSchema;
-}

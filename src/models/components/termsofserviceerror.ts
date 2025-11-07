@@ -27,7 +27,6 @@ export const Manual$inboundSchema: z.ZodType<Manual, z.ZodTypeDef, unknown> = z
     acceptedIP: z.string().optional(),
     acceptedUserAgent: z.string().optional(),
   });
-
 /** @internal */
 export type Manual$Outbound = {
   acceptedDate?: string | undefined;
@@ -48,23 +47,9 @@ export const Manual$outboundSchema: z.ZodType<
   acceptedUserAgent: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Manual$ {
-  /** @deprecated use `Manual$inboundSchema` instead. */
-  export const inboundSchema = Manual$inboundSchema;
-  /** @deprecated use `Manual$outboundSchema` instead. */
-  export const outboundSchema = Manual$outboundSchema;
-  /** @deprecated use `Manual$Outbound` instead. */
-  export type Outbound = Manual$Outbound;
-}
-
 export function manualToJSON(manual: Manual): string {
   return JSON.stringify(Manual$outboundSchema.parse(manual));
 }
-
 export function manualFromJSON(
   jsonString: string,
 ): SafeParseResult<Manual, SDKValidationError> {
@@ -84,7 +69,6 @@ export const TermsOfServiceError$inboundSchema: z.ZodType<
   token: z.string().optional(),
   manual: z.lazy(() => Manual$inboundSchema).optional(),
 });
-
 /** @internal */
 export type TermsOfServiceError$Outbound = {
   token?: string | undefined;
@@ -101,19 +85,6 @@ export const TermsOfServiceError$outboundSchema: z.ZodType<
   manual: z.lazy(() => Manual$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TermsOfServiceError$ {
-  /** @deprecated use `TermsOfServiceError$inboundSchema` instead. */
-  export const inboundSchema = TermsOfServiceError$inboundSchema;
-  /** @deprecated use `TermsOfServiceError$outboundSchema` instead. */
-  export const outboundSchema = TermsOfServiceError$outboundSchema;
-  /** @deprecated use `TermsOfServiceError$Outbound` instead. */
-  export type Outbound = TermsOfServiceError$Outbound;
-}
-
 export function termsOfServiceErrorToJSON(
   termsOfServiceError: TermsOfServiceError,
 ): string {
@@ -121,7 +92,6 @@ export function termsOfServiceErrorToJSON(
     TermsOfServiceError$outboundSchema.parse(termsOfServiceError),
   );
 }
-
 export function termsOfServiceErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<TermsOfServiceError, SDKValidationError> {

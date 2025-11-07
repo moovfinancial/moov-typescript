@@ -25,7 +25,6 @@ export const SendFundsInstantBank$inboundSchema: z.ZodType<
 > = z.object({
   estimatedActivity: EstimatedActivity$inboundSchema.optional(),
 });
-
 /** @internal */
 export type SendFundsInstantBank$Outbound = {
   estimatedActivity?: EstimatedActivity$Outbound | undefined;
@@ -40,19 +39,6 @@ export const SendFundsInstantBank$outboundSchema: z.ZodType<
   estimatedActivity: EstimatedActivity$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SendFundsInstantBank$ {
-  /** @deprecated use `SendFundsInstantBank$inboundSchema` instead. */
-  export const inboundSchema = SendFundsInstantBank$inboundSchema;
-  /** @deprecated use `SendFundsInstantBank$outboundSchema` instead. */
-  export const outboundSchema = SendFundsInstantBank$outboundSchema;
-  /** @deprecated use `SendFundsInstantBank$Outbound` instead. */
-  export type Outbound = SendFundsInstantBank$Outbound;
-}
-
 export function sendFundsInstantBankToJSON(
   sendFundsInstantBank: SendFundsInstantBank,
 ): string {
@@ -60,7 +46,6 @@ export function sendFundsInstantBankToJSON(
     SendFundsInstantBank$outboundSchema.parse(sendFundsInstantBank),
   );
 }
-
 export function sendFundsInstantBankFromJSON(
   jsonString: string,
 ): SafeParseResult<SendFundsInstantBank, SDKValidationError> {

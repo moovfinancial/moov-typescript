@@ -31,7 +31,6 @@ export const GovernmentIDErrorSsn$inboundSchema: z.ZodType<
   full: z.string().optional(),
   lastFour: z.string().optional(),
 });
-
 /** @internal */
 export type GovernmentIDErrorSsn$Outbound = {
   full?: string | undefined;
@@ -48,19 +47,6 @@ export const GovernmentIDErrorSsn$outboundSchema: z.ZodType<
   lastFour: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GovernmentIDErrorSsn$ {
-  /** @deprecated use `GovernmentIDErrorSsn$inboundSchema` instead. */
-  export const inboundSchema = GovernmentIDErrorSsn$inboundSchema;
-  /** @deprecated use `GovernmentIDErrorSsn$outboundSchema` instead. */
-  export const outboundSchema = GovernmentIDErrorSsn$outboundSchema;
-  /** @deprecated use `GovernmentIDErrorSsn$Outbound` instead. */
-  export type Outbound = GovernmentIDErrorSsn$Outbound;
-}
-
 export function governmentIDErrorSsnToJSON(
   governmentIDErrorSsn: GovernmentIDErrorSsn,
 ): string {
@@ -68,7 +54,6 @@ export function governmentIDErrorSsnToJSON(
     GovernmentIDErrorSsn$outboundSchema.parse(governmentIDErrorSsn),
   );
 }
-
 export function governmentIDErrorSsnFromJSON(
   jsonString: string,
 ): SafeParseResult<GovernmentIDErrorSsn, SDKValidationError> {
@@ -88,7 +73,6 @@ export const GovernmentIDErrorItin$inboundSchema: z.ZodType<
   full: z.string().optional(),
   lastFour: z.string().optional(),
 });
-
 /** @internal */
 export type GovernmentIDErrorItin$Outbound = {
   full?: string | undefined;
@@ -105,19 +89,6 @@ export const GovernmentIDErrorItin$outboundSchema: z.ZodType<
   lastFour: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GovernmentIDErrorItin$ {
-  /** @deprecated use `GovernmentIDErrorItin$inboundSchema` instead. */
-  export const inboundSchema = GovernmentIDErrorItin$inboundSchema;
-  /** @deprecated use `GovernmentIDErrorItin$outboundSchema` instead. */
-  export const outboundSchema = GovernmentIDErrorItin$outboundSchema;
-  /** @deprecated use `GovernmentIDErrorItin$Outbound` instead. */
-  export type Outbound = GovernmentIDErrorItin$Outbound;
-}
-
 export function governmentIDErrorItinToJSON(
   governmentIDErrorItin: GovernmentIDErrorItin,
 ): string {
@@ -125,7 +96,6 @@ export function governmentIDErrorItinToJSON(
     GovernmentIDErrorItin$outboundSchema.parse(governmentIDErrorItin),
   );
 }
-
 export function governmentIDErrorItinFromJSON(
   jsonString: string,
 ): SafeParseResult<GovernmentIDErrorItin, SDKValidationError> {
@@ -145,7 +115,6 @@ export const GovernmentIDError$inboundSchema: z.ZodType<
   ssn: z.lazy(() => GovernmentIDErrorSsn$inboundSchema).optional(),
   itin: z.lazy(() => GovernmentIDErrorItin$inboundSchema).optional(),
 });
-
 /** @internal */
 export type GovernmentIDError$Outbound = {
   ssn?: GovernmentIDErrorSsn$Outbound | undefined;
@@ -162,19 +131,6 @@ export const GovernmentIDError$outboundSchema: z.ZodType<
   itin: z.lazy(() => GovernmentIDErrorItin$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GovernmentIDError$ {
-  /** @deprecated use `GovernmentIDError$inboundSchema` instead. */
-  export const inboundSchema = GovernmentIDError$inboundSchema;
-  /** @deprecated use `GovernmentIDError$outboundSchema` instead. */
-  export const outboundSchema = GovernmentIDError$outboundSchema;
-  /** @deprecated use `GovernmentIDError$Outbound` instead. */
-  export type Outbound = GovernmentIDError$Outbound;
-}
-
 export function governmentIDErrorToJSON(
   governmentIDError: GovernmentIDError,
 ): string {
@@ -182,7 +138,6 @@ export function governmentIDErrorToJSON(
     GovernmentIDError$outboundSchema.parse(governmentIDError),
   );
 }
-
 export function governmentIDErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<GovernmentIDError, SDKValidationError> {

@@ -47,7 +47,6 @@ export const GetAccountCountriesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetAccountCountriesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const GetAccountCountriesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAccountCountriesGlobals$ {
-  /** @deprecated use `GetAccountCountriesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAccountCountriesGlobals$inboundSchema;
-  /** @deprecated use `GetAccountCountriesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAccountCountriesGlobals$outboundSchema;
-  /** @deprecated use `GetAccountCountriesGlobals$Outbound` instead. */
-  export type Outbound = GetAccountCountriesGlobals$Outbound;
-}
-
 export function getAccountCountriesGlobalsToJSON(
   getAccountCountriesGlobals: GetAccountCountriesGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function getAccountCountriesGlobalsToJSON(
     GetAccountCountriesGlobals$outboundSchema.parse(getAccountCountriesGlobals),
   );
 }
-
 export function getAccountCountriesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAccountCountriesGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const GetAccountCountriesRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type GetAccountCountriesRequest$Outbound = {
   accountID: string;
@@ -120,19 +104,6 @@ export const GetAccountCountriesRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAccountCountriesRequest$ {
-  /** @deprecated use `GetAccountCountriesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAccountCountriesRequest$inboundSchema;
-  /** @deprecated use `GetAccountCountriesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAccountCountriesRequest$outboundSchema;
-  /** @deprecated use `GetAccountCountriesRequest$Outbound` instead. */
-  export type Outbound = GetAccountCountriesRequest$Outbound;
-}
-
 export function getAccountCountriesRequestToJSON(
   getAccountCountriesRequest: GetAccountCountriesRequest,
 ): string {
@@ -140,7 +111,6 @@ export function getAccountCountriesRequestToJSON(
     GetAccountCountriesRequest$outboundSchema.parse(getAccountCountriesRequest),
   );
 }
-
 export function getAccountCountriesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAccountCountriesRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const GetAccountCountriesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetAccountCountriesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -187,19 +156,6 @@ export const GetAccountCountriesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAccountCountriesResponse$ {
-  /** @deprecated use `GetAccountCountriesResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAccountCountriesResponse$inboundSchema;
-  /** @deprecated use `GetAccountCountriesResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAccountCountriesResponse$outboundSchema;
-  /** @deprecated use `GetAccountCountriesResponse$Outbound` instead. */
-  export type Outbound = GetAccountCountriesResponse$Outbound;
-}
-
 export function getAccountCountriesResponseToJSON(
   getAccountCountriesResponse: GetAccountCountriesResponse,
 ): string {
@@ -209,7 +165,6 @@ export function getAccountCountriesResponseToJSON(
     ),
   );
 }
-
 export function getAccountCountriesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAccountCountriesResponse, SDKValidationError> {

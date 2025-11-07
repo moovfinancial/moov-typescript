@@ -24,7 +24,6 @@ export const AuthorizedUser$inboundSchema: z.ZodType<
   firstName: z.string(),
   lastName: z.string(),
 });
-
 /** @internal */
 export type AuthorizedUser$Outbound = {
   firstName: string;
@@ -41,23 +40,9 @@ export const AuthorizedUser$outboundSchema: z.ZodType<
   lastName: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthorizedUser$ {
-  /** @deprecated use `AuthorizedUser$inboundSchema` instead. */
-  export const inboundSchema = AuthorizedUser$inboundSchema;
-  /** @deprecated use `AuthorizedUser$outboundSchema` instead. */
-  export const outboundSchema = AuthorizedUser$outboundSchema;
-  /** @deprecated use `AuthorizedUser$Outbound` instead. */
-  export type Outbound = AuthorizedUser$Outbound;
-}
-
 export function authorizedUserToJSON(authorizedUser: AuthorizedUser): string {
   return JSON.stringify(AuthorizedUser$outboundSchema.parse(authorizedUser));
 }
-
 export function authorizedUserFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthorizedUser, SDKValidationError> {

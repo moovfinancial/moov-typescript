@@ -48,7 +48,6 @@ export const GetAccountTerminalApplicationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetAccountTerminalApplicationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,21 +66,6 @@ export const GetAccountTerminalApplicationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAccountTerminalApplicationGlobals$ {
-  /** @deprecated use `GetAccountTerminalApplicationGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAccountTerminalApplicationGlobals$inboundSchema;
-  /** @deprecated use `GetAccountTerminalApplicationGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAccountTerminalApplicationGlobals$outboundSchema;
-  /** @deprecated use `GetAccountTerminalApplicationGlobals$Outbound` instead. */
-  export type Outbound = GetAccountTerminalApplicationGlobals$Outbound;
-}
-
 export function getAccountTerminalApplicationGlobalsToJSON(
   getAccountTerminalApplicationGlobals: GetAccountTerminalApplicationGlobals,
 ): string {
@@ -91,7 +75,6 @@ export function getAccountTerminalApplicationGlobalsToJSON(
     ),
   );
 }
-
 export function getAccountTerminalApplicationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAccountTerminalApplicationGlobals, SDKValidationError> {
@@ -112,7 +95,6 @@ export const GetAccountTerminalApplicationRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   terminalApplicationID: z.string(),
 });
-
 /** @internal */
 export type GetAccountTerminalApplicationRequest$Outbound = {
   accountID: string;
@@ -129,21 +111,6 @@ export const GetAccountTerminalApplicationRequest$outboundSchema: z.ZodType<
   terminalApplicationID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAccountTerminalApplicationRequest$ {
-  /** @deprecated use `GetAccountTerminalApplicationRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAccountTerminalApplicationRequest$inboundSchema;
-  /** @deprecated use `GetAccountTerminalApplicationRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAccountTerminalApplicationRequest$outboundSchema;
-  /** @deprecated use `GetAccountTerminalApplicationRequest$Outbound` instead. */
-  export type Outbound = GetAccountTerminalApplicationRequest$Outbound;
-}
-
 export function getAccountTerminalApplicationRequestToJSON(
   getAccountTerminalApplicationRequest: GetAccountTerminalApplicationRequest,
 ): string {
@@ -153,7 +120,6 @@ export function getAccountTerminalApplicationRequestToJSON(
     ),
   );
 }
-
 export function getAccountTerminalApplicationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAccountTerminalApplicationRequest, SDKValidationError> {
@@ -179,7 +145,6 @@ export const GetAccountTerminalApplicationResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetAccountTerminalApplicationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -201,21 +166,6 @@ export const GetAccountTerminalApplicationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAccountTerminalApplicationResponse$ {
-  /** @deprecated use `GetAccountTerminalApplicationResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAccountTerminalApplicationResponse$inboundSchema;
-  /** @deprecated use `GetAccountTerminalApplicationResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAccountTerminalApplicationResponse$outboundSchema;
-  /** @deprecated use `GetAccountTerminalApplicationResponse$Outbound` instead. */
-  export type Outbound = GetAccountTerminalApplicationResponse$Outbound;
-}
-
 export function getAccountTerminalApplicationResponseToJSON(
   getAccountTerminalApplicationResponse: GetAccountTerminalApplicationResponse,
 ): string {
@@ -225,7 +175,6 @@ export function getAccountTerminalApplicationResponseToJSON(
     ),
   );
 }
-
 export function getAccountTerminalApplicationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAccountTerminalApplicationResponse, SDKValidationError> {

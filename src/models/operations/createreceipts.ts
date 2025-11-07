@@ -43,7 +43,6 @@ export const CreateReceiptsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateReceiptsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -62,19 +61,6 @@ export const CreateReceiptsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReceiptsGlobals$ {
-  /** @deprecated use `CreateReceiptsGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateReceiptsGlobals$inboundSchema;
-  /** @deprecated use `CreateReceiptsGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateReceiptsGlobals$outboundSchema;
-  /** @deprecated use `CreateReceiptsGlobals$Outbound` instead. */
-  export type Outbound = CreateReceiptsGlobals$Outbound;
-}
-
 export function createReceiptsGlobalsToJSON(
   createReceiptsGlobals: CreateReceiptsGlobals,
 ): string {
@@ -82,7 +68,6 @@ export function createReceiptsGlobalsToJSON(
     CreateReceiptsGlobals$outboundSchema.parse(createReceiptsGlobals),
   );
 }
-
 export function createReceiptsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateReceiptsGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const CreateReceiptsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateReceiptsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -129,19 +113,6 @@ export const CreateReceiptsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReceiptsResponse$ {
-  /** @deprecated use `CreateReceiptsResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateReceiptsResponse$inboundSchema;
-  /** @deprecated use `CreateReceiptsResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateReceiptsResponse$outboundSchema;
-  /** @deprecated use `CreateReceiptsResponse$Outbound` instead. */
-  export type Outbound = CreateReceiptsResponse$Outbound;
-}
-
 export function createReceiptsResponseToJSON(
   createReceiptsResponse: CreateReceiptsResponse,
 ): string {
@@ -149,7 +120,6 @@ export function createReceiptsResponseToJSON(
     CreateReceiptsResponse$outboundSchema.parse(createReceiptsResponse),
   );
 }
-
 export function createReceiptsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateReceiptsResponse, SDKValidationError> {

@@ -33,7 +33,6 @@ export const CreateProfile$inboundSchema: z.ZodType<
   individual: CreateIndividualProfile$inboundSchema.optional(),
   business: CreateBusinessProfile$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreateProfile$Outbound = {
   individual?: CreateIndividualProfile$Outbound | undefined;
@@ -50,23 +49,9 @@ export const CreateProfile$outboundSchema: z.ZodType<
   business: CreateBusinessProfile$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateProfile$ {
-  /** @deprecated use `CreateProfile$inboundSchema` instead. */
-  export const inboundSchema = CreateProfile$inboundSchema;
-  /** @deprecated use `CreateProfile$outboundSchema` instead. */
-  export const outboundSchema = CreateProfile$outboundSchema;
-  /** @deprecated use `CreateProfile$Outbound` instead. */
-  export type Outbound = CreateProfile$Outbound;
-}
-
 export function createProfileToJSON(createProfile: CreateProfile): string {
   return JSON.stringify(CreateProfile$outboundSchema.parse(createProfile));
 }
-
 export function createProfileFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateProfile, SDKValidationError> {

@@ -69,7 +69,6 @@ export const SweepConfig$inboundSchema: z.ZodType<
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type SweepConfig$Outbound = {
   sweepConfigID: string;
@@ -102,23 +101,9 @@ export const SweepConfig$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SweepConfig$ {
-  /** @deprecated use `SweepConfig$inboundSchema` instead. */
-  export const inboundSchema = SweepConfig$inboundSchema;
-  /** @deprecated use `SweepConfig$outboundSchema` instead. */
-  export const outboundSchema = SweepConfig$outboundSchema;
-  /** @deprecated use `SweepConfig$Outbound` instead. */
-  export type Outbound = SweepConfig$Outbound;
-}
-
 export function sweepConfigToJSON(sweepConfig: SweepConfig): string {
   return JSON.stringify(SweepConfig$outboundSchema.parse(sweepConfig));
 }
-
 export function sweepConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<SweepConfig, SDKValidationError> {

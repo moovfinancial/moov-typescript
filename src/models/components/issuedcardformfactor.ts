@@ -20,19 +20,7 @@ export type IssuedCardFormFactor = ClosedEnum<typeof IssuedCardFormFactor>;
 export const IssuedCardFormFactor$inboundSchema: z.ZodNativeEnum<
   typeof IssuedCardFormFactor
 > = z.nativeEnum(IssuedCardFormFactor);
-
 /** @internal */
 export const IssuedCardFormFactor$outboundSchema: z.ZodNativeEnum<
   typeof IssuedCardFormFactor
 > = IssuedCardFormFactor$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuedCardFormFactor$ {
-  /** @deprecated use `IssuedCardFormFactor$inboundSchema` instead. */
-  export const inboundSchema = IssuedCardFormFactor$inboundSchema;
-  /** @deprecated use `IssuedCardFormFactor$outboundSchema` instead. */
-  export const outboundSchema = IssuedCardFormFactor$outboundSchema;
-}

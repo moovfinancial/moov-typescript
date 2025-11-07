@@ -30,7 +30,6 @@ export const FulfillmentDetails$inboundSchema: z.ZodType<
   shipmentDurationDays: z.number().int(),
   returnPolicy: ReturnPolicyType$inboundSchema,
 });
-
 /** @internal */
 export type FulfillmentDetails$Outbound = {
   hasPhysicalGoods: boolean;
@@ -51,19 +50,6 @@ export const FulfillmentDetails$outboundSchema: z.ZodType<
   returnPolicy: ReturnPolicyType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FulfillmentDetails$ {
-  /** @deprecated use `FulfillmentDetails$inboundSchema` instead. */
-  export const inboundSchema = FulfillmentDetails$inboundSchema;
-  /** @deprecated use `FulfillmentDetails$outboundSchema` instead. */
-  export const outboundSchema = FulfillmentDetails$outboundSchema;
-  /** @deprecated use `FulfillmentDetails$Outbound` instead. */
-  export type Outbound = FulfillmentDetails$Outbound;
-}
-
 export function fulfillmentDetailsToJSON(
   fulfillmentDetails: FulfillmentDetails,
 ): string {
@@ -71,7 +57,6 @@ export function fulfillmentDetailsToJSON(
     FulfillmentDetails$outboundSchema.parse(fulfillmentDetails),
   );
 }
-
 export function fulfillmentDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<FulfillmentDetails, SDKValidationError> {

@@ -17,19 +17,7 @@ export type BankAccountVerificationMethod = ClosedEnum<
 export const BankAccountVerificationMethod$inboundSchema: z.ZodNativeEnum<
   typeof BankAccountVerificationMethod
 > = z.nativeEnum(BankAccountVerificationMethod);
-
 /** @internal */
 export const BankAccountVerificationMethod$outboundSchema: z.ZodNativeEnum<
   typeof BankAccountVerificationMethod
 > = BankAccountVerificationMethod$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccountVerificationMethod$ {
-  /** @deprecated use `BankAccountVerificationMethod$inboundSchema` instead. */
-  export const inboundSchema = BankAccountVerificationMethod$inboundSchema;
-  /** @deprecated use `BankAccountVerificationMethod$outboundSchema` instead. */
-  export const outboundSchema = BankAccountVerificationMethod$outboundSchema;
-}

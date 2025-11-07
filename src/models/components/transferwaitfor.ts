@@ -14,19 +14,7 @@ export type TransferWaitFor = ClosedEnum<typeof TransferWaitFor>;
 export const TransferWaitFor$inboundSchema: z.ZodNativeEnum<
   typeof TransferWaitFor
 > = z.nativeEnum(TransferWaitFor);
-
 /** @internal */
 export const TransferWaitFor$outboundSchema: z.ZodNativeEnum<
   typeof TransferWaitFor
 > = TransferWaitFor$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferWaitFor$ {
-  /** @deprecated use `TransferWaitFor$inboundSchema` instead. */
-  export const inboundSchema = TransferWaitFor$inboundSchema;
-  /** @deprecated use `TransferWaitFor$outboundSchema` instead. */
-  export const outboundSchema = TransferWaitFor$outboundSchema;
-}

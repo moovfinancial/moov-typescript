@@ -29,7 +29,6 @@ export const CardAddress$inboundSchema: z.ZodType<
   postalCode: z.string(),
   country: z.string().optional(),
 });
-
 /** @internal */
 export type CardAddress$Outbound = {
   addressLine1?: string | undefined;
@@ -54,23 +53,9 @@ export const CardAddress$outboundSchema: z.ZodType<
   country: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardAddress$ {
-  /** @deprecated use `CardAddress$inboundSchema` instead. */
-  export const inboundSchema = CardAddress$inboundSchema;
-  /** @deprecated use `CardAddress$outboundSchema` instead. */
-  export const outboundSchema = CardAddress$outboundSchema;
-  /** @deprecated use `CardAddress$Outbound` instead. */
-  export type Outbound = CardAddress$Outbound;
-}
-
 export function cardAddressToJSON(cardAddress: CardAddress): string {
   return JSON.stringify(CardAddress$outboundSchema.parse(cardAddress));
 }
-
 export function cardAddressFromJSON(
   jsonString: string,
 ): SafeParseResult<CardAddress, SDKValidationError> {

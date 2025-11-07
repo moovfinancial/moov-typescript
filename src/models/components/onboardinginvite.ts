@@ -100,7 +100,6 @@ export const OnboardingInvite$inboundSchema: z.ZodType<
   redeemedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type OnboardingInvite$Outbound = {
   code: string;
@@ -139,19 +138,6 @@ export const OnboardingInvite$outboundSchema: z.ZodType<
   redeemedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OnboardingInvite$ {
-  /** @deprecated use `OnboardingInvite$inboundSchema` instead. */
-  export const inboundSchema = OnboardingInvite$inboundSchema;
-  /** @deprecated use `OnboardingInvite$outboundSchema` instead. */
-  export const outboundSchema = OnboardingInvite$outboundSchema;
-  /** @deprecated use `OnboardingInvite$Outbound` instead. */
-  export type Outbound = OnboardingInvite$Outbound;
-}
-
 export function onboardingInviteToJSON(
   onboardingInvite: OnboardingInvite,
 ): string {
@@ -159,7 +145,6 @@ export function onboardingInviteToJSON(
     OnboardingInvite$outboundSchema.parse(onboardingInvite),
   );
 }
-
 export function onboardingInviteFromJSON(
   jsonString: string,
 ): SafeParseResult<OnboardingInvite, SDKValidationError> {

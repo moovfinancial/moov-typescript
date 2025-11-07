@@ -25,7 +25,6 @@ export const ReversedWithCancellation$inboundSchema: z.ZodType<
 > = z.object({
   cancellation: Cancellation$inboundSchema,
 });
-
 /** @internal */
 export type ReversedWithCancellation$Outbound = {
   cancellation: Cancellation$Outbound;
@@ -40,19 +39,6 @@ export const ReversedWithCancellation$outboundSchema: z.ZodType<
   cancellation: Cancellation$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReversedWithCancellation$ {
-  /** @deprecated use `ReversedWithCancellation$inboundSchema` instead. */
-  export const inboundSchema = ReversedWithCancellation$inboundSchema;
-  /** @deprecated use `ReversedWithCancellation$outboundSchema` instead. */
-  export const outboundSchema = ReversedWithCancellation$outboundSchema;
-  /** @deprecated use `ReversedWithCancellation$Outbound` instead. */
-  export type Outbound = ReversedWithCancellation$Outbound;
-}
-
 export function reversedWithCancellationToJSON(
   reversedWithCancellation: ReversedWithCancellation,
 ): string {
@@ -60,7 +46,6 @@ export function reversedWithCancellationToJSON(
     ReversedWithCancellation$outboundSchema.parse(reversedWithCancellation),
   );
 }
-
 export function reversedWithCancellationFromJSON(
   jsonString: string,
 ): SafeParseResult<ReversedWithCancellation, SDKValidationError> {

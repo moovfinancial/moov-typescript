@@ -25,7 +25,6 @@ export const ImageMetadataRequest$inboundSchema: z.ZodType<
 > = z.object({
   altText: z.string().optional(),
 });
-
 /** @internal */
 export type ImageMetadataRequest$Outbound = {
   altText?: string | undefined;
@@ -40,19 +39,6 @@ export const ImageMetadataRequest$outboundSchema: z.ZodType<
   altText: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImageMetadataRequest$ {
-  /** @deprecated use `ImageMetadataRequest$inboundSchema` instead. */
-  export const inboundSchema = ImageMetadataRequest$inboundSchema;
-  /** @deprecated use `ImageMetadataRequest$outboundSchema` instead. */
-  export const outboundSchema = ImageMetadataRequest$outboundSchema;
-  /** @deprecated use `ImageMetadataRequest$Outbound` instead. */
-  export type Outbound = ImageMetadataRequest$Outbound;
-}
-
 export function imageMetadataRequestToJSON(
   imageMetadataRequest: ImageMetadataRequest,
 ): string {
@@ -60,7 +46,6 @@ export function imageMetadataRequestToJSON(
     ImageMetadataRequest$outboundSchema.parse(imageMetadataRequest),
   );
 }
-
 export function imageMetadataRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ImageMetadataRequest, SDKValidationError> {

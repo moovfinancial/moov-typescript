@@ -73,7 +73,6 @@ export const FeePlan$inboundSchema: z.ZodType<FeePlan, z.ZodTypeDef, unknown> =
       new Date(v)
     ),
   });
-
 /** @internal */
 export type FeePlan$Outbound = {
   planID: string;
@@ -102,23 +101,9 @@ export const FeePlan$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeePlan$ {
-  /** @deprecated use `FeePlan$inboundSchema` instead. */
-  export const inboundSchema = FeePlan$inboundSchema;
-  /** @deprecated use `FeePlan$outboundSchema` instead. */
-  export const outboundSchema = FeePlan$outboundSchema;
-  /** @deprecated use `FeePlan$Outbound` instead. */
-  export type Outbound = FeePlan$Outbound;
-}
-
 export function feePlanToJSON(feePlan: FeePlan): string {
   return JSON.stringify(FeePlan$outboundSchema.parse(feePlan));
 }
-
 export function feePlanFromJSON(
   jsonString: string,
 ): SafeParseResult<FeePlan, SDKValidationError> {

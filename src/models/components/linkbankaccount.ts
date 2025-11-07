@@ -48,7 +48,6 @@ export const LinkBankAccount$inboundSchema: z.ZodType<
   PlaidLinkPayload$inboundSchema,
   MxPayload$inboundSchema,
 ]);
-
 /** @internal */
 export type LinkBankAccount$Outbound =
   | BankAccountPayload$Outbound
@@ -68,25 +67,11 @@ export const LinkBankAccount$outboundSchema: z.ZodType<
   MxPayload$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkBankAccount$ {
-  /** @deprecated use `LinkBankAccount$inboundSchema` instead. */
-  export const inboundSchema = LinkBankAccount$inboundSchema;
-  /** @deprecated use `LinkBankAccount$outboundSchema` instead. */
-  export const outboundSchema = LinkBankAccount$outboundSchema;
-  /** @deprecated use `LinkBankAccount$Outbound` instead. */
-  export type Outbound = LinkBankAccount$Outbound;
-}
-
 export function linkBankAccountToJSON(
   linkBankAccount: LinkBankAccount,
 ): string {
   return JSON.stringify(LinkBankAccount$outboundSchema.parse(linkBankAccount));
 }
-
 export function linkBankAccountFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkBankAccount, SDKValidationError> {

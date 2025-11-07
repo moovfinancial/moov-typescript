@@ -17,19 +17,7 @@ export type ReturnPolicyType = ClosedEnum<typeof ReturnPolicyType>;
 export const ReturnPolicyType$inboundSchema: z.ZodNativeEnum<
   typeof ReturnPolicyType
 > = z.nativeEnum(ReturnPolicyType);
-
 /** @internal */
 export const ReturnPolicyType$outboundSchema: z.ZodNativeEnum<
   typeof ReturnPolicyType
 > = ReturnPolicyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReturnPolicyType$ {
-  /** @deprecated use `ReturnPolicyType$inboundSchema` instead. */
-  export const inboundSchema = ReturnPolicyType$inboundSchema;
-  /** @deprecated use `ReturnPolicyType$outboundSchema` instead. */
-  export const outboundSchema = ReturnPolicyType$outboundSchema;
-}

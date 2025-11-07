@@ -58,7 +58,6 @@ export const UpdateCard$inboundSchema: z.ZodType<
   verifyName: z.boolean().optional(),
   holderName: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateCard$Outbound = {
   e2ee?: E2EETokenUpdate$Outbound | undefined;
@@ -87,23 +86,9 @@ export const UpdateCard$outboundSchema: z.ZodType<
   holderName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCard$ {
-  /** @deprecated use `UpdateCard$inboundSchema` instead. */
-  export const inboundSchema = UpdateCard$inboundSchema;
-  /** @deprecated use `UpdateCard$outboundSchema` instead. */
-  export const outboundSchema = UpdateCard$outboundSchema;
-  /** @deprecated use `UpdateCard$Outbound` instead. */
-  export type Outbound = UpdateCard$Outbound;
-}
-
 export function updateCardToJSON(updateCard: UpdateCard): string {
   return JSON.stringify(UpdateCard$outboundSchema.parse(updateCard));
 }
-
 export function updateCardFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateCard, SDKValidationError> {

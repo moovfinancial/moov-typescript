@@ -30,7 +30,6 @@ export const AccountTerminalApplication$inboundSchema: z.ZodType<
   accountID: z.string(),
   terminalApplicationID: z.string(),
 });
-
 /** @internal */
 export type AccountTerminalApplication$Outbound = {
   accountID: string;
@@ -47,19 +46,6 @@ export const AccountTerminalApplication$outboundSchema: z.ZodType<
   terminalApplicationID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountTerminalApplication$ {
-  /** @deprecated use `AccountTerminalApplication$inboundSchema` instead. */
-  export const inboundSchema = AccountTerminalApplication$inboundSchema;
-  /** @deprecated use `AccountTerminalApplication$outboundSchema` instead. */
-  export const outboundSchema = AccountTerminalApplication$outboundSchema;
-  /** @deprecated use `AccountTerminalApplication$Outbound` instead. */
-  export type Outbound = AccountTerminalApplication$Outbound;
-}
-
 export function accountTerminalApplicationToJSON(
   accountTerminalApplication: AccountTerminalApplication,
 ): string {
@@ -67,7 +53,6 @@ export function accountTerminalApplicationToJSON(
     AccountTerminalApplication$outboundSchema.parse(accountTerminalApplication),
   );
 }
-
 export function accountTerminalApplicationFromJSON(
   jsonString: string,
 ): SafeParseResult<AccountTerminalApplication, SDKValidationError> {

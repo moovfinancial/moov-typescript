@@ -43,7 +43,6 @@ export const CreateSweepConfig$inboundSchema: z.ZodType<
   statementDescriptor: z.string().optional(),
   minimumBalance: z.string().optional(),
 });
-
 /** @internal */
 export type CreateSweepConfig$Outbound = {
   walletID: string;
@@ -68,19 +67,6 @@ export const CreateSweepConfig$outboundSchema: z.ZodType<
   minimumBalance: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSweepConfig$ {
-  /** @deprecated use `CreateSweepConfig$inboundSchema` instead. */
-  export const inboundSchema = CreateSweepConfig$inboundSchema;
-  /** @deprecated use `CreateSweepConfig$outboundSchema` instead. */
-  export const outboundSchema = CreateSweepConfig$outboundSchema;
-  /** @deprecated use `CreateSweepConfig$Outbound` instead. */
-  export type Outbound = CreateSweepConfig$Outbound;
-}
-
 export function createSweepConfigToJSON(
   createSweepConfig: CreateSweepConfig,
 ): string {
@@ -88,7 +74,6 @@ export function createSweepConfigToJSON(
     CreateSweepConfig$outboundSchema.parse(createSweepConfig),
   );
 }
-
 export function createSweepConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSweepConfig, SDKValidationError> {

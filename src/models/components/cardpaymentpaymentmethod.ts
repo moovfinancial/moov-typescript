@@ -37,24 +37,10 @@ export type CardPaymentPaymentMethod = {
 export const CardPaymentPaymentMethodPaymentMethodType$inboundSchema:
   z.ZodNativeEnum<typeof CardPaymentPaymentMethodPaymentMethodType> = z
     .nativeEnum(CardPaymentPaymentMethodPaymentMethodType);
-
 /** @internal */
 export const CardPaymentPaymentMethodPaymentMethodType$outboundSchema:
   z.ZodNativeEnum<typeof CardPaymentPaymentMethodPaymentMethodType> =
     CardPaymentPaymentMethodPaymentMethodType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardPaymentPaymentMethodPaymentMethodType$ {
-  /** @deprecated use `CardPaymentPaymentMethodPaymentMethodType$inboundSchema` instead. */
-  export const inboundSchema =
-    CardPaymentPaymentMethodPaymentMethodType$inboundSchema;
-  /** @deprecated use `CardPaymentPaymentMethodPaymentMethodType$outboundSchema` instead. */
-  export const outboundSchema =
-    CardPaymentPaymentMethodPaymentMethodType$outboundSchema;
-}
 
 /** @internal */
 export const CardPaymentPaymentMethod$inboundSchema: z.ZodType<
@@ -66,7 +52,6 @@ export const CardPaymentPaymentMethod$inboundSchema: z.ZodType<
   paymentMethodType: CardPaymentPaymentMethodPaymentMethodType$inboundSchema,
   card: PaymentMethodsCard$inboundSchema,
 });
-
 /** @internal */
 export type CardPaymentPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -85,19 +70,6 @@ export const CardPaymentPaymentMethod$outboundSchema: z.ZodType<
   card: PaymentMethodsCard$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardPaymentPaymentMethod$ {
-  /** @deprecated use `CardPaymentPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = CardPaymentPaymentMethod$inboundSchema;
-  /** @deprecated use `CardPaymentPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = CardPaymentPaymentMethod$outboundSchema;
-  /** @deprecated use `CardPaymentPaymentMethod$Outbound` instead. */
-  export type Outbound = CardPaymentPaymentMethod$Outbound;
-}
-
 export function cardPaymentPaymentMethodToJSON(
   cardPaymentPaymentMethod: CardPaymentPaymentMethod,
 ): string {
@@ -105,7 +77,6 @@ export function cardPaymentPaymentMethodToJSON(
     CardPaymentPaymentMethod$outboundSchema.parse(cardPaymentPaymentMethod),
   );
 }
-
 export function cardPaymentPaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<CardPaymentPaymentMethod, SDKValidationError> {

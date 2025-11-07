@@ -30,7 +30,6 @@ export const WebhookDataNetworkIDUpdated$inboundSchema: z.ZodType<
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type WebhookDataNetworkIDUpdated$Outbound = {
   accountID: string;
@@ -55,19 +54,6 @@ export const WebhookDataNetworkIDUpdated$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataNetworkIDUpdated$ {
-  /** @deprecated use `WebhookDataNetworkIDUpdated$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataNetworkIDUpdated$inboundSchema;
-  /** @deprecated use `WebhookDataNetworkIDUpdated$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataNetworkIDUpdated$outboundSchema;
-  /** @deprecated use `WebhookDataNetworkIDUpdated$Outbound` instead. */
-  export type Outbound = WebhookDataNetworkIDUpdated$Outbound;
-}
-
 export function webhookDataNetworkIDUpdatedToJSON(
   webhookDataNetworkIDUpdated: WebhookDataNetworkIDUpdated,
 ): string {
@@ -77,7 +63,6 @@ export function webhookDataNetworkIDUpdatedToJSON(
     ),
   );
 }
-
 export function webhookDataNetworkIDUpdatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataNetworkIDUpdated, SDKValidationError> {

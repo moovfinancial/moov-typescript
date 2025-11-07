@@ -27,7 +27,6 @@ export const AchLocation$inboundSchema: z.ZodType<
   postalCodeExtension: z.string(),
   state: z.string(),
 });
-
 /** @internal */
 export type AchLocation$Outbound = {
   address: string;
@@ -50,23 +49,9 @@ export const AchLocation$outboundSchema: z.ZodType<
   state: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AchLocation$ {
-  /** @deprecated use `AchLocation$inboundSchema` instead. */
-  export const inboundSchema = AchLocation$inboundSchema;
-  /** @deprecated use `AchLocation$outboundSchema` instead. */
-  export const outboundSchema = AchLocation$outboundSchema;
-  /** @deprecated use `AchLocation$Outbound` instead. */
-  export type Outbound = AchLocation$Outbound;
-}
-
 export function achLocationToJSON(achLocation: AchLocation): string {
   return JSON.stringify(AchLocation$outboundSchema.parse(achLocation));
 }
-
 export function achLocationFromJSON(
   jsonString: string,
 ): SafeParseResult<AchLocation, SDKValidationError> {

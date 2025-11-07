@@ -19,7 +19,6 @@ export const AssignProductImageValidationError$inboundSchema: z.ZodType<
 > = z.object({
   imageID: z.string().optional(),
 });
-
 /** @internal */
 export type AssignProductImageValidationError$Outbound = {
   imageID?: string | undefined;
@@ -34,20 +33,6 @@ export const AssignProductImageValidationError$outboundSchema: z.ZodType<
   imageID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignProductImageValidationError$ {
-  /** @deprecated use `AssignProductImageValidationError$inboundSchema` instead. */
-  export const inboundSchema = AssignProductImageValidationError$inboundSchema;
-  /** @deprecated use `AssignProductImageValidationError$outboundSchema` instead. */
-  export const outboundSchema =
-    AssignProductImageValidationError$outboundSchema;
-  /** @deprecated use `AssignProductImageValidationError$Outbound` instead. */
-  export type Outbound = AssignProductImageValidationError$Outbound;
-}
-
 export function assignProductImageValidationErrorToJSON(
   assignProductImageValidationError: AssignProductImageValidationError,
 ): string {
@@ -57,7 +42,6 @@ export function assignProductImageValidationErrorToJSON(
     ),
   );
 }
-
 export function assignProductImageValidationErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignProductImageValidationError, SDKValidationError> {

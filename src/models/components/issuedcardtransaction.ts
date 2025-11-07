@@ -44,7 +44,6 @@ export const IssuedCardTransaction$inboundSchema: z.ZodType<
   merchantData: IssuingMerchantData$inboundSchema,
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type IssuedCardTransaction$Outbound = {
   cardTransactionID: string;
@@ -73,19 +72,6 @@ export const IssuedCardTransaction$outboundSchema: z.ZodType<
   createdOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuedCardTransaction$ {
-  /** @deprecated use `IssuedCardTransaction$inboundSchema` instead. */
-  export const inboundSchema = IssuedCardTransaction$inboundSchema;
-  /** @deprecated use `IssuedCardTransaction$outboundSchema` instead. */
-  export const outboundSchema = IssuedCardTransaction$outboundSchema;
-  /** @deprecated use `IssuedCardTransaction$Outbound` instead. */
-  export type Outbound = IssuedCardTransaction$Outbound;
-}
-
 export function issuedCardTransactionToJSON(
   issuedCardTransaction: IssuedCardTransaction,
 ): string {
@@ -93,7 +79,6 @@ export function issuedCardTransactionToJSON(
     IssuedCardTransaction$outboundSchema.parse(issuedCardTransaction),
   );
 }
-
 export function issuedCardTransactionFromJSON(
   jsonString: string,
 ): SafeParseResult<IssuedCardTransaction, SDKValidationError> {

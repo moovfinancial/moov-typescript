@@ -32,7 +32,6 @@ export const CardAcquiringDispute$inboundSchema: z.ZodType<
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   amount: Amount$inboundSchema,
 });
-
 /** @internal */
 export type CardAcquiringDispute$Outbound = {
   disputeID: string;
@@ -51,19 +50,6 @@ export const CardAcquiringDispute$outboundSchema: z.ZodType<
   amount: Amount$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardAcquiringDispute$ {
-  /** @deprecated use `CardAcquiringDispute$inboundSchema` instead. */
-  export const inboundSchema = CardAcquiringDispute$inboundSchema;
-  /** @deprecated use `CardAcquiringDispute$outboundSchema` instead. */
-  export const outboundSchema = CardAcquiringDispute$outboundSchema;
-  /** @deprecated use `CardAcquiringDispute$Outbound` instead. */
-  export type Outbound = CardAcquiringDispute$Outbound;
-}
-
 export function cardAcquiringDisputeToJSON(
   cardAcquiringDispute: CardAcquiringDispute,
 ): string {
@@ -71,7 +57,6 @@ export function cardAcquiringDisputeToJSON(
     CardAcquiringDispute$outboundSchema.parse(cardAcquiringDispute),
   );
 }
-
 export function cardAcquiringDisputeFromJSON(
   jsonString: string,
 ): SafeParseResult<CardAcquiringDispute, SDKValidationError> {

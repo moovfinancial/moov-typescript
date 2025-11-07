@@ -27,7 +27,6 @@ export const MXAuthorizationCode$inboundSchema: z.ZodType<
 > = z.object({
   authorizationCode: z.string(),
 });
-
 /** @internal */
 export type MXAuthorizationCode$Outbound = {
   authorizationCode: string;
@@ -42,19 +41,6 @@ export const MXAuthorizationCode$outboundSchema: z.ZodType<
   authorizationCode: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MXAuthorizationCode$ {
-  /** @deprecated use `MXAuthorizationCode$inboundSchema` instead. */
-  export const inboundSchema = MXAuthorizationCode$inboundSchema;
-  /** @deprecated use `MXAuthorizationCode$outboundSchema` instead. */
-  export const outboundSchema = MXAuthorizationCode$outboundSchema;
-  /** @deprecated use `MXAuthorizationCode$Outbound` instead. */
-  export type Outbound = MXAuthorizationCode$Outbound;
-}
-
 export function mxAuthorizationCodeToJSON(
   mxAuthorizationCode: MXAuthorizationCode,
 ): string {
@@ -62,7 +48,6 @@ export function mxAuthorizationCodeToJSON(
     MXAuthorizationCode$outboundSchema.parse(mxAuthorizationCode),
   );
 }
-
 export function mxAuthorizationCodeFromJSON(
   jsonString: string,
 ): SafeParseResult<MXAuthorizationCode, SDKValidationError> {

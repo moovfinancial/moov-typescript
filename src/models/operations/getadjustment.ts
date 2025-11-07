@@ -48,7 +48,6 @@ export const GetAdjustmentGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetAdjustmentGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const GetAdjustmentGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAdjustmentGlobals$ {
-  /** @deprecated use `GetAdjustmentGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAdjustmentGlobals$inboundSchema;
-  /** @deprecated use `GetAdjustmentGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAdjustmentGlobals$outboundSchema;
-  /** @deprecated use `GetAdjustmentGlobals$Outbound` instead. */
-  export type Outbound = GetAdjustmentGlobals$Outbound;
-}
-
 export function getAdjustmentGlobalsToJSON(
   getAdjustmentGlobals: GetAdjustmentGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function getAdjustmentGlobalsToJSON(
     GetAdjustmentGlobals$outboundSchema.parse(getAdjustmentGlobals),
   );
 }
-
 export function getAdjustmentGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAdjustmentGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetAdjustmentRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   adjustmentID: z.string(),
 });
-
 /** @internal */
 export type GetAdjustmentRequest$Outbound = {
   accountID: string;
@@ -124,19 +108,6 @@ export const GetAdjustmentRequest$outboundSchema: z.ZodType<
   adjustmentID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAdjustmentRequest$ {
-  /** @deprecated use `GetAdjustmentRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAdjustmentRequest$inboundSchema;
-  /** @deprecated use `GetAdjustmentRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAdjustmentRequest$outboundSchema;
-  /** @deprecated use `GetAdjustmentRequest$Outbound` instead. */
-  export type Outbound = GetAdjustmentRequest$Outbound;
-}
-
 export function getAdjustmentRequestToJSON(
   getAdjustmentRequest: GetAdjustmentRequest,
 ): string {
@@ -144,7 +115,6 @@ export function getAdjustmentRequestToJSON(
     GetAdjustmentRequest$outboundSchema.parse(getAdjustmentRequest),
   );
 }
-
 export function getAdjustmentRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAdjustmentRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const GetAdjustmentResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetAdjustmentResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const GetAdjustmentResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAdjustmentResponse$ {
-  /** @deprecated use `GetAdjustmentResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAdjustmentResponse$inboundSchema;
-  /** @deprecated use `GetAdjustmentResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAdjustmentResponse$outboundSchema;
-  /** @deprecated use `GetAdjustmentResponse$Outbound` instead. */
-  export type Outbound = GetAdjustmentResponse$Outbound;
-}
-
 export function getAdjustmentResponseToJSON(
   getAdjustmentResponse: GetAdjustmentResponse,
 ): string {
@@ -211,7 +167,6 @@ export function getAdjustmentResponseToJSON(
     GetAdjustmentResponse$outboundSchema.parse(getAdjustmentResponse),
   );
 }
-
 export function getAdjustmentResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAdjustmentResponse, SDKValidationError> {

@@ -48,7 +48,6 @@ export const GetPaymentMethodGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetPaymentMethodGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const GetPaymentMethodGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPaymentMethodGlobals$ {
-  /** @deprecated use `GetPaymentMethodGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetPaymentMethodGlobals$inboundSchema;
-  /** @deprecated use `GetPaymentMethodGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetPaymentMethodGlobals$outboundSchema;
-  /** @deprecated use `GetPaymentMethodGlobals$Outbound` instead. */
-  export type Outbound = GetPaymentMethodGlobals$Outbound;
-}
-
 export function getPaymentMethodGlobalsToJSON(
   getPaymentMethodGlobals: GetPaymentMethodGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function getPaymentMethodGlobalsToJSON(
     GetPaymentMethodGlobals$outboundSchema.parse(getPaymentMethodGlobals),
   );
 }
-
 export function getPaymentMethodGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPaymentMethodGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetPaymentMethodRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   paymentMethodID: z.string(),
 });
-
 /** @internal */
 export type GetPaymentMethodRequest$Outbound = {
   accountID: string;
@@ -124,19 +108,6 @@ export const GetPaymentMethodRequest$outboundSchema: z.ZodType<
   paymentMethodID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPaymentMethodRequest$ {
-  /** @deprecated use `GetPaymentMethodRequest$inboundSchema` instead. */
-  export const inboundSchema = GetPaymentMethodRequest$inboundSchema;
-  /** @deprecated use `GetPaymentMethodRequest$outboundSchema` instead. */
-  export const outboundSchema = GetPaymentMethodRequest$outboundSchema;
-  /** @deprecated use `GetPaymentMethodRequest$Outbound` instead. */
-  export type Outbound = GetPaymentMethodRequest$Outbound;
-}
-
 export function getPaymentMethodRequestToJSON(
   getPaymentMethodRequest: GetPaymentMethodRequest,
 ): string {
@@ -144,7 +115,6 @@ export function getPaymentMethodRequestToJSON(
     GetPaymentMethodRequest$outboundSchema.parse(getPaymentMethodRequest),
   );
 }
-
 export function getPaymentMethodRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPaymentMethodRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const GetPaymentMethodResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetPaymentMethodResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const GetPaymentMethodResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPaymentMethodResponse$ {
-  /** @deprecated use `GetPaymentMethodResponse$inboundSchema` instead. */
-  export const inboundSchema = GetPaymentMethodResponse$inboundSchema;
-  /** @deprecated use `GetPaymentMethodResponse$outboundSchema` instead. */
-  export const outboundSchema = GetPaymentMethodResponse$outboundSchema;
-  /** @deprecated use `GetPaymentMethodResponse$Outbound` instead. */
-  export type Outbound = GetPaymentMethodResponse$Outbound;
-}
-
 export function getPaymentMethodResponseToJSON(
   getPaymentMethodResponse: GetPaymentMethodResponse,
 ): string {
@@ -211,7 +167,6 @@ export function getPaymentMethodResponseToJSON(
     GetPaymentMethodResponse$outboundSchema.parse(getPaymentMethodResponse),
   );
 }
-
 export function getPaymentMethodResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPaymentMethodResponse, SDKValidationError> {

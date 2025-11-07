@@ -43,7 +43,6 @@ export const CreateAccountGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateAccountGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -62,19 +61,6 @@ export const CreateAccountGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountGlobals$ {
-  /** @deprecated use `CreateAccountGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateAccountGlobals$inboundSchema;
-  /** @deprecated use `CreateAccountGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateAccountGlobals$outboundSchema;
-  /** @deprecated use `CreateAccountGlobals$Outbound` instead. */
-  export type Outbound = CreateAccountGlobals$Outbound;
-}
-
 export function createAccountGlobalsToJSON(
   createAccountGlobals: CreateAccountGlobals,
 ): string {
@@ -82,7 +68,6 @@ export function createAccountGlobalsToJSON(
     CreateAccountGlobals$outboundSchema.parse(createAccountGlobals),
   );
 }
-
 export function createAccountGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccountGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const CreateAccountResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -129,19 +113,6 @@ export const CreateAccountResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountResponse$ {
-  /** @deprecated use `CreateAccountResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateAccountResponse$inboundSchema;
-  /** @deprecated use `CreateAccountResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateAccountResponse$outboundSchema;
-  /** @deprecated use `CreateAccountResponse$Outbound` instead. */
-  export type Outbound = CreateAccountResponse$Outbound;
-}
-
 export function createAccountResponseToJSON(
   createAccountResponse: CreateAccountResponse,
 ): string {
@@ -149,7 +120,6 @@ export function createAccountResponseToJSON(
     CreateAccountResponse$outboundSchema.parse(createAccountResponse),
   );
 }
-
 export function createAccountResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccountResponse, SDKValidationError> {

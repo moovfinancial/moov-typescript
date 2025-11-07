@@ -100,7 +100,6 @@ export const BusinessProfile$inboundSchema: z.ZodType<
   industry: z.string().optional(),
   primaryRegulator: PrimaryRegulator$inboundSchema.optional(),
 });
-
 /** @internal */
 export type BusinessProfile$Outbound = {
   legalBusinessName: string;
@@ -141,25 +140,11 @@ export const BusinessProfile$outboundSchema: z.ZodType<
   primaryRegulator: PrimaryRegulator$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BusinessProfile$ {
-  /** @deprecated use `BusinessProfile$inboundSchema` instead. */
-  export const inboundSchema = BusinessProfile$inboundSchema;
-  /** @deprecated use `BusinessProfile$outboundSchema` instead. */
-  export const outboundSchema = BusinessProfile$outboundSchema;
-  /** @deprecated use `BusinessProfile$Outbound` instead. */
-  export type Outbound = BusinessProfile$Outbound;
-}
-
 export function businessProfileToJSON(
   businessProfile: BusinessProfile,
 ): string {
   return JSON.stringify(BusinessProfile$outboundSchema.parse(businessProfile));
 }
-
 export function businessProfileFromJSON(
   jsonString: string,
 ): SafeParseResult<BusinessProfile, SDKValidationError> {

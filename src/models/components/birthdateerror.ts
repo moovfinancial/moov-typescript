@@ -23,7 +23,6 @@ export const BirthDateError$inboundSchema: z.ZodType<
   month: z.string().optional(),
   year: z.string().optional(),
 });
-
 /** @internal */
 export type BirthDateError$Outbound = {
   day?: string | undefined;
@@ -42,23 +41,9 @@ export const BirthDateError$outboundSchema: z.ZodType<
   year: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BirthDateError$ {
-  /** @deprecated use `BirthDateError$inboundSchema` instead. */
-  export const inboundSchema = BirthDateError$inboundSchema;
-  /** @deprecated use `BirthDateError$outboundSchema` instead. */
-  export const outboundSchema = BirthDateError$outboundSchema;
-  /** @deprecated use `BirthDateError$Outbound` instead. */
-  export type Outbound = BirthDateError$Outbound;
-}
-
 export function birthDateErrorToJSON(birthDateError: BirthDateError): string {
   return JSON.stringify(BirthDateError$outboundSchema.parse(birthDateError));
 }
-
 export function birthDateErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<BirthDateError, SDKValidationError> {

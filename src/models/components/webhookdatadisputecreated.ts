@@ -49,7 +49,6 @@ export const WebhookDataDisputeCreated$inboundSchema: z.ZodType<
   status: DisputeStatus$inboundSchema,
   phase: DisputePhase$inboundSchema,
 });
-
 /** @internal */
 export type WebhookDataDisputeCreated$Outbound = {
   accountID: string;
@@ -74,19 +73,6 @@ export const WebhookDataDisputeCreated$outboundSchema: z.ZodType<
   phase: DisputePhase$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataDisputeCreated$ {
-  /** @deprecated use `WebhookDataDisputeCreated$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataDisputeCreated$inboundSchema;
-  /** @deprecated use `WebhookDataDisputeCreated$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataDisputeCreated$outboundSchema;
-  /** @deprecated use `WebhookDataDisputeCreated$Outbound` instead. */
-  export type Outbound = WebhookDataDisputeCreated$Outbound;
-}
-
 export function webhookDataDisputeCreatedToJSON(
   webhookDataDisputeCreated: WebhookDataDisputeCreated,
 ): string {
@@ -94,7 +80,6 @@ export function webhookDataDisputeCreatedToJSON(
     WebhookDataDisputeCreated$outboundSchema.parse(webhookDataDisputeCreated),
   );
 }
-
 export function webhookDataDisputeCreatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataDisputeCreated, SDKValidationError> {

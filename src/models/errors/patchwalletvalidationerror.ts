@@ -80,16 +80,3 @@ export const PatchWalletValidationError$outboundSchema: z.ZodType<
     description: z.string().optional(),
     metadata: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchWalletValidationError$ {
-  /** @deprecated use `PatchWalletValidationError$inboundSchema` instead. */
-  export const inboundSchema = PatchWalletValidationError$inboundSchema;
-  /** @deprecated use `PatchWalletValidationError$outboundSchema` instead. */
-  export const outboundSchema = PatchWalletValidationError$outboundSchema;
-  /** @deprecated use `PatchWalletValidationError$Outbound` instead. */
-  export type Outbound = PatchWalletValidationError$Outbound;
-}

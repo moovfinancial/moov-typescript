@@ -25,7 +25,6 @@ export const CardVolumeDistribution$inboundSchema: z.ZodType<
   mailOrPhonePercentage: z.number().int(),
   debtRepaymentPercentage: z.number().int(),
 });
-
 /** @internal */
 export type CardVolumeDistribution$Outbound = {
   ecommercePercentage: number;
@@ -46,19 +45,6 @@ export const CardVolumeDistribution$outboundSchema: z.ZodType<
   debtRepaymentPercentage: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardVolumeDistribution$ {
-  /** @deprecated use `CardVolumeDistribution$inboundSchema` instead. */
-  export const inboundSchema = CardVolumeDistribution$inboundSchema;
-  /** @deprecated use `CardVolumeDistribution$outboundSchema` instead. */
-  export const outboundSchema = CardVolumeDistribution$outboundSchema;
-  /** @deprecated use `CardVolumeDistribution$Outbound` instead. */
-  export type Outbound = CardVolumeDistribution$Outbound;
-}
-
 export function cardVolumeDistributionToJSON(
   cardVolumeDistribution: CardVolumeDistribution,
 ): string {
@@ -66,7 +52,6 @@ export function cardVolumeDistributionToJSON(
     CardVolumeDistribution$outboundSchema.parse(cardVolumeDistribution),
   );
 }
-
 export function cardVolumeDistributionFromJSON(
   jsonString: string,
 ): SafeParseResult<CardVolumeDistribution, SDKValidationError> {

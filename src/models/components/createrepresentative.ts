@@ -73,7 +73,6 @@ export const CreateRepresentative$inboundSchema: z.ZodType<
   governmentID: GovernmentID$inboundSchema.optional(),
   responsibilities: RepresentativeResponsibilities$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreateRepresentative$Outbound = {
   name: IndividualName$Outbound;
@@ -100,19 +99,6 @@ export const CreateRepresentative$outboundSchema: z.ZodType<
   responsibilities: RepresentativeResponsibilities$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRepresentative$ {
-  /** @deprecated use `CreateRepresentative$inboundSchema` instead. */
-  export const inboundSchema = CreateRepresentative$inboundSchema;
-  /** @deprecated use `CreateRepresentative$outboundSchema` instead. */
-  export const outboundSchema = CreateRepresentative$outboundSchema;
-  /** @deprecated use `CreateRepresentative$Outbound` instead. */
-  export type Outbound = CreateRepresentative$Outbound;
-}
-
 export function createRepresentativeToJSON(
   createRepresentative: CreateRepresentative,
 ): string {
@@ -120,7 +106,6 @@ export function createRepresentativeToJSON(
     CreateRepresentative$outboundSchema.parse(createRepresentative),
   );
 }
-
 export function createRepresentativeFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRepresentative, SDKValidationError> {

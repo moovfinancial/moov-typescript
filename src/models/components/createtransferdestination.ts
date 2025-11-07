@@ -38,7 +38,6 @@ export const CreateTransferDestination$inboundSchema: z.ZodType<
   cardDetails: CreateTransferDestinationCard$inboundSchema.optional(),
   achDetails: CreateTransferDestinationACH$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreateTransferDestination$Outbound = {
   paymentMethodID: string;
@@ -57,19 +56,6 @@ export const CreateTransferDestination$outboundSchema: z.ZodType<
   achDetails: CreateTransferDestinationACH$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferDestination$ {
-  /** @deprecated use `CreateTransferDestination$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferDestination$inboundSchema;
-  /** @deprecated use `CreateTransferDestination$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferDestination$outboundSchema;
-  /** @deprecated use `CreateTransferDestination$Outbound` instead. */
-  export type Outbound = CreateTransferDestination$Outbound;
-}
-
 export function createTransferDestinationToJSON(
   createTransferDestination: CreateTransferDestination,
 ): string {
@@ -77,7 +63,6 @@ export function createTransferDestinationToJSON(
     CreateTransferDestination$outboundSchema.parse(createTransferDestination),
   );
 }
-
 export function createTransferDestinationFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferDestination, SDKValidationError> {

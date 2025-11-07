@@ -42,7 +42,6 @@ export const BankAccountVerification$inboundSchema: z.ZodType<
   status: BankAccountVerificationStatus$inboundSchema,
   exceptionDetails: BankAccountException$inboundSchema.optional(),
 });
-
 /** @internal */
 export type BankAccountVerification$Outbound = {
   verificationMethod: string;
@@ -61,19 +60,6 @@ export const BankAccountVerification$outboundSchema: z.ZodType<
   exceptionDetails: BankAccountException$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccountVerification$ {
-  /** @deprecated use `BankAccountVerification$inboundSchema` instead. */
-  export const inboundSchema = BankAccountVerification$inboundSchema;
-  /** @deprecated use `BankAccountVerification$outboundSchema` instead. */
-  export const outboundSchema = BankAccountVerification$outboundSchema;
-  /** @deprecated use `BankAccountVerification$Outbound` instead. */
-  export type Outbound = BankAccountVerification$Outbound;
-}
-
 export function bankAccountVerificationToJSON(
   bankAccountVerification: BankAccountVerification,
 ): string {
@@ -81,7 +67,6 @@ export function bankAccountVerificationToJSON(
     BankAccountVerification$outboundSchema.parse(bankAccountVerification),
   );
 }
-
 export function bankAccountVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<BankAccountVerification, SDKValidationError> {

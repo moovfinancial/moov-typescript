@@ -85,7 +85,6 @@ export const Sweep$inboundSchema: z.ZodType<Sweep, z.ZodTypeDef, unknown> = z
     statementDescriptor: z.string().optional(),
     subtotals: z.array(SweepSubtotal$inboundSchema).optional(),
   });
-
 /** @internal */
 export type Sweep$Outbound = {
   sweepID: string;
@@ -124,23 +123,9 @@ export const Sweep$outboundSchema: z.ZodType<
   subtotals: z.array(SweepSubtotal$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Sweep$ {
-  /** @deprecated use `Sweep$inboundSchema` instead. */
-  export const inboundSchema = Sweep$inboundSchema;
-  /** @deprecated use `Sweep$outboundSchema` instead. */
-  export const outboundSchema = Sweep$outboundSchema;
-  /** @deprecated use `Sweep$Outbound` instead. */
-  export type Outbound = Sweep$Outbound;
-}
-
 export function sweepToJSON(sweep: Sweep): string {
   return JSON.stringify(Sweep$outboundSchema.parse(sweep));
 }
-
 export function sweepFromJSON(
   jsonString: string,
 ): SafeParseResult<Sweep, SDKValidationError> {

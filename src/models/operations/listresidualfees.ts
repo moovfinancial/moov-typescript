@@ -58,7 +58,6 @@ export const ListResidualFeesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListResidualFeesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -77,19 +76,6 @@ export const ListResidualFeesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResidualFeesGlobals$ {
-  /** @deprecated use `ListResidualFeesGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListResidualFeesGlobals$inboundSchema;
-  /** @deprecated use `ListResidualFeesGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListResidualFeesGlobals$outboundSchema;
-  /** @deprecated use `ListResidualFeesGlobals$Outbound` instead. */
-  export type Outbound = ListResidualFeesGlobals$Outbound;
-}
-
 export function listResidualFeesGlobalsToJSON(
   listResidualFeesGlobals: ListResidualFeesGlobals,
 ): string {
@@ -97,7 +83,6 @@ export function listResidualFeesGlobalsToJSON(
     ListResidualFeesGlobals$outboundSchema.parse(listResidualFeesGlobals),
   );
 }
-
 export function listResidualFeesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResidualFeesGlobals, SDKValidationError> {
@@ -121,7 +106,6 @@ export const ListResidualFeesRequest$inboundSchema: z.ZodType<
   startDateTime: z.string().optional(),
   endDateTime: z.string().optional(),
 });
-
 /** @internal */
 export type ListResidualFeesRequest$Outbound = {
   skip?: number | undefined;
@@ -146,19 +130,6 @@ export const ListResidualFeesRequest$outboundSchema: z.ZodType<
   endDateTime: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResidualFeesRequest$ {
-  /** @deprecated use `ListResidualFeesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListResidualFeesRequest$inboundSchema;
-  /** @deprecated use `ListResidualFeesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListResidualFeesRequest$outboundSchema;
-  /** @deprecated use `ListResidualFeesRequest$Outbound` instead. */
-  export type Outbound = ListResidualFeesRequest$Outbound;
-}
-
 export function listResidualFeesRequestToJSON(
   listResidualFeesRequest: ListResidualFeesRequest,
 ): string {
@@ -166,7 +137,6 @@ export function listResidualFeesRequestToJSON(
     ListResidualFeesRequest$outboundSchema.parse(listResidualFeesRequest),
   );
 }
-
 export function listResidualFeesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResidualFeesRequest, SDKValidationError> {
@@ -191,7 +161,6 @@ export const ListResidualFeesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListResidualFeesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -213,19 +182,6 @@ export const ListResidualFeesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResidualFeesResponse$ {
-  /** @deprecated use `ListResidualFeesResponse$inboundSchema` instead. */
-  export const inboundSchema = ListResidualFeesResponse$inboundSchema;
-  /** @deprecated use `ListResidualFeesResponse$outboundSchema` instead. */
-  export const outboundSchema = ListResidualFeesResponse$outboundSchema;
-  /** @deprecated use `ListResidualFeesResponse$Outbound` instead. */
-  export type Outbound = ListResidualFeesResponse$Outbound;
-}
-
 export function listResidualFeesResponseToJSON(
   listResidualFeesResponse: ListResidualFeesResponse,
 ): string {
@@ -233,7 +189,6 @@ export function listResidualFeesResponseToJSON(
     ListResidualFeesResponse$outboundSchema.parse(listResidualFeesResponse),
   );
 }
-
 export function listResidualFeesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResidualFeesResponse, SDKValidationError> {

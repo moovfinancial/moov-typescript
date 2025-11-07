@@ -111,7 +111,6 @@ export const TransferDestination$inboundSchema: z.ZodType<
   cardDetails: CardTransactionDetails$inboundSchema.optional(),
   rtpDetails: RTPTransactionDetails$inboundSchema.optional(),
 });
-
 /** @internal */
 export type TransferDestination$Outbound = {
   paymentMethodID: string;
@@ -144,19 +143,6 @@ export const TransferDestination$outboundSchema: z.ZodType<
   rtpDetails: RTPTransactionDetails$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferDestination$ {
-  /** @deprecated use `TransferDestination$inboundSchema` instead. */
-  export const inboundSchema = TransferDestination$inboundSchema;
-  /** @deprecated use `TransferDestination$outboundSchema` instead. */
-  export const outboundSchema = TransferDestination$outboundSchema;
-  /** @deprecated use `TransferDestination$Outbound` instead. */
-  export type Outbound = TransferDestination$Outbound;
-}
-
 export function transferDestinationToJSON(
   transferDestination: TransferDestination,
 ): string {
@@ -164,7 +150,6 @@ export function transferDestinationToJSON(
     TransferDestination$outboundSchema.parse(transferDestination),
   );
 }
-
 export function transferDestinationFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferDestination, SDKValidationError> {

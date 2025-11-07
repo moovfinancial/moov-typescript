@@ -24,7 +24,6 @@ export const CardExpiration$inboundSchema: z.ZodType<
   month: z.string(),
   year: z.string(),
 });
-
 /** @internal */
 export type CardExpiration$Outbound = {
   month: string;
@@ -41,23 +40,9 @@ export const CardExpiration$outboundSchema: z.ZodType<
   year: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardExpiration$ {
-  /** @deprecated use `CardExpiration$inboundSchema` instead. */
-  export const inboundSchema = CardExpiration$inboundSchema;
-  /** @deprecated use `CardExpiration$outboundSchema` instead. */
-  export const outboundSchema = CardExpiration$outboundSchema;
-  /** @deprecated use `CardExpiration$Outbound` instead. */
-  export type Outbound = CardExpiration$Outbound;
-}
-
 export function cardExpirationToJSON(cardExpiration: CardExpiration): string {
   return JSON.stringify(CardExpiration$outboundSchema.parse(cardExpiration));
 }
-
 export function cardExpirationFromJSON(
   jsonString: string,
 ): SafeParseResult<CardExpiration, SDKValidationError> {

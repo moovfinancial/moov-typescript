@@ -37,7 +37,6 @@ export const ProductOptionValidationError$inboundSchema: z.ZodType<
   priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
   images: z.record(AssignProductImageValidationError$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ProductOptionValidationError$Outbound = {
   name?: string | undefined;
@@ -60,19 +59,6 @@ export const ProductOptionValidationError$outboundSchema: z.ZodType<
   images: z.record(AssignProductImageValidationError$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProductOptionValidationError$ {
-  /** @deprecated use `ProductOptionValidationError$inboundSchema` instead. */
-  export const inboundSchema = ProductOptionValidationError$inboundSchema;
-  /** @deprecated use `ProductOptionValidationError$outboundSchema` instead. */
-  export const outboundSchema = ProductOptionValidationError$outboundSchema;
-  /** @deprecated use `ProductOptionValidationError$Outbound` instead. */
-  export type Outbound = ProductOptionValidationError$Outbound;
-}
-
 export function productOptionValidationErrorToJSON(
   productOptionValidationError: ProductOptionValidationError,
 ): string {
@@ -82,7 +68,6 @@ export function productOptionValidationErrorToJSON(
     ),
   );
 }
-
 export function productOptionValidationErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<ProductOptionValidationError, SDKValidationError> {

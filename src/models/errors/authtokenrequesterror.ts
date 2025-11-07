@@ -81,16 +81,3 @@ export const AuthTokenRequestError$outboundSchema: z.ZodType<
       });
     }),
   );
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthTokenRequestError$ {
-  /** @deprecated use `AuthTokenRequestError$inboundSchema` instead. */
-  export const inboundSchema = AuthTokenRequestError$inboundSchema;
-  /** @deprecated use `AuthTokenRequestError$outboundSchema` instead. */
-  export const outboundSchema = AuthTokenRequestError$outboundSchema;
-  /** @deprecated use `AuthTokenRequestError$Outbound` instead. */
-  export type Outbound = AuthTokenRequestError$Outbound;
-}

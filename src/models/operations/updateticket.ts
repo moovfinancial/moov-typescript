@@ -49,7 +49,6 @@ export const UpdateTicketGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateTicketGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const UpdateTicketGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTicketGlobals$ {
-  /** @deprecated use `UpdateTicketGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateTicketGlobals$inboundSchema;
-  /** @deprecated use `UpdateTicketGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateTicketGlobals$outboundSchema;
-  /** @deprecated use `UpdateTicketGlobals$Outbound` instead. */
-  export type Outbound = UpdateTicketGlobals$Outbound;
-}
-
 export function updateTicketGlobalsToJSON(
   updateTicketGlobals: UpdateTicketGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function updateTicketGlobalsToJSON(
     UpdateTicketGlobals$outboundSchema.parse(updateTicketGlobals),
   );
 }
-
 export function updateTicketGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateTicketGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const UpdateTicketRequest$inboundSchema: z.ZodType<
     "UpdateTicket": "updateTicket",
   });
 });
-
 /** @internal */
 export type UpdateTicketRequest$Outbound = {
   accountID: string;
@@ -136,19 +120,6 @@ export const UpdateTicketRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTicketRequest$ {
-  /** @deprecated use `UpdateTicketRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateTicketRequest$inboundSchema;
-  /** @deprecated use `UpdateTicketRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateTicketRequest$outboundSchema;
-  /** @deprecated use `UpdateTicketRequest$Outbound` instead. */
-  export type Outbound = UpdateTicketRequest$Outbound;
-}
-
 export function updateTicketRequestToJSON(
   updateTicketRequest: UpdateTicketRequest,
 ): string {
@@ -156,7 +127,6 @@ export function updateTicketRequestToJSON(
     UpdateTicketRequest$outboundSchema.parse(updateTicketRequest),
   );
 }
-
 export function updateTicketRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateTicketRequest, SDKValidationError> {
@@ -181,7 +151,6 @@ export const UpdateTicketResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpdateTicketResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -203,19 +172,6 @@ export const UpdateTicketResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTicketResponse$ {
-  /** @deprecated use `UpdateTicketResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateTicketResponse$inboundSchema;
-  /** @deprecated use `UpdateTicketResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateTicketResponse$outboundSchema;
-  /** @deprecated use `UpdateTicketResponse$Outbound` instead. */
-  export type Outbound = UpdateTicketResponse$Outbound;
-}
-
 export function updateTicketResponseToJSON(
   updateTicketResponse: UpdateTicketResponse,
 ): string {
@@ -223,7 +179,6 @@ export function updateTicketResponseToJSON(
     UpdateTicketResponse$outboundSchema.parse(updateTicketResponse),
   );
 }
-
 export function updateTicketResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateTicketResponse, SDKValidationError> {

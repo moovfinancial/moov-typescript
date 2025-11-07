@@ -27,7 +27,6 @@ export const UpdateColors$inboundSchema: z.ZodType<
   dark: UpdateColor$inboundSchema.optional(),
   light: UpdateColor$inboundSchema.optional(),
 });
-
 /** @internal */
 export type UpdateColors$Outbound = {
   dark?: UpdateColor$Outbound | undefined;
@@ -44,23 +43,9 @@ export const UpdateColors$outboundSchema: z.ZodType<
   light: UpdateColor$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateColors$ {
-  /** @deprecated use `UpdateColors$inboundSchema` instead. */
-  export const inboundSchema = UpdateColors$inboundSchema;
-  /** @deprecated use `UpdateColors$outboundSchema` instead. */
-  export const outboundSchema = UpdateColors$outboundSchema;
-  /** @deprecated use `UpdateColors$Outbound` instead. */
-  export type Outbound = UpdateColors$Outbound;
-}
-
 export function updateColorsToJSON(updateColors: UpdateColors): string {
   return JSON.stringify(UpdateColors$outboundSchema.parse(updateColors));
 }
-
 export function updateColorsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateColors, SDKValidationError> {

@@ -19,7 +19,6 @@ export const QRCode$inboundSchema: z.ZodType<QRCode, z.ZodTypeDef, unknown> = z
   .object({
     qrCode: z.string(),
   });
-
 /** @internal */
 export type QRCode$Outbound = {
   qrCode: string;
@@ -34,23 +33,9 @@ export const QRCode$outboundSchema: z.ZodType<
   qrCode: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QRCode$ {
-  /** @deprecated use `QRCode$inboundSchema` instead. */
-  export const inboundSchema = QRCode$inboundSchema;
-  /** @deprecated use `QRCode$outboundSchema` instead. */
-  export const outboundSchema = QRCode$outboundSchema;
-  /** @deprecated use `QRCode$Outbound` instead. */
-  export type Outbound = QRCode$Outbound;
-}
-
 export function qrCodeToJSON(qrCode: QRCode): string {
   return JSON.stringify(QRCode$outboundSchema.parse(qrCode));
 }
-
 export function qrCodeFromJSON(
   jsonString: string,
 ): SafeParseResult<QRCode, SDKValidationError> {

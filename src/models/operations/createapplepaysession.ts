@@ -51,7 +51,6 @@ export const CreateApplePaySessionGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateApplePaySessionGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const CreateApplePaySessionGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateApplePaySessionGlobals$ {
-  /** @deprecated use `CreateApplePaySessionGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateApplePaySessionGlobals$inboundSchema;
-  /** @deprecated use `CreateApplePaySessionGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateApplePaySessionGlobals$outboundSchema;
-  /** @deprecated use `CreateApplePaySessionGlobals$Outbound` instead. */
-  export type Outbound = CreateApplePaySessionGlobals$Outbound;
-}
-
 export function createApplePaySessionGlobalsToJSON(
   createApplePaySessionGlobals: CreateApplePaySessionGlobals,
 ): string {
@@ -92,7 +78,6 @@ export function createApplePaySessionGlobalsToJSON(
     ),
   );
 }
-
 export function createApplePaySessionGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateApplePaySessionGlobals, SDKValidationError> {
@@ -116,7 +101,6 @@ export const CreateApplePaySessionRequest$inboundSchema: z.ZodType<
     "CreateApplePaySession": "createApplePaySession",
   });
 });
-
 /** @internal */
 export type CreateApplePaySessionRequest$Outbound = {
   accountID: string;
@@ -137,19 +121,6 @@ export const CreateApplePaySessionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateApplePaySessionRequest$ {
-  /** @deprecated use `CreateApplePaySessionRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateApplePaySessionRequest$inboundSchema;
-  /** @deprecated use `CreateApplePaySessionRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateApplePaySessionRequest$outboundSchema;
-  /** @deprecated use `CreateApplePaySessionRequest$Outbound` instead. */
-  export type Outbound = CreateApplePaySessionRequest$Outbound;
-}
-
 export function createApplePaySessionRequestToJSON(
   createApplePaySessionRequest: CreateApplePaySessionRequest,
 ): string {
@@ -159,7 +130,6 @@ export function createApplePaySessionRequestToJSON(
     ),
   );
 }
-
 export function createApplePaySessionRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateApplePaySessionRequest, SDKValidationError> {
@@ -184,7 +154,6 @@ export const CreateApplePaySessionResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateApplePaySessionResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -206,19 +175,6 @@ export const CreateApplePaySessionResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateApplePaySessionResponse$ {
-  /** @deprecated use `CreateApplePaySessionResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateApplePaySessionResponse$inboundSchema;
-  /** @deprecated use `CreateApplePaySessionResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateApplePaySessionResponse$outboundSchema;
-  /** @deprecated use `CreateApplePaySessionResponse$Outbound` instead. */
-  export type Outbound = CreateApplePaySessionResponse$Outbound;
-}
-
 export function createApplePaySessionResponseToJSON(
   createApplePaySessionResponse: CreateApplePaySessionResponse,
 ): string {
@@ -228,7 +184,6 @@ export function createApplePaySessionResponseToJSON(
     ),
   );
 }
-
 export function createApplePaySessionResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateApplePaySessionResponse, SDKValidationError> {

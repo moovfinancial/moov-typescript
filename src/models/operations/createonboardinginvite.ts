@@ -43,7 +43,6 @@ export const CreateOnboardingInviteGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateOnboardingInviteGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -62,19 +61,6 @@ export const CreateOnboardingInviteGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOnboardingInviteGlobals$ {
-  /** @deprecated use `CreateOnboardingInviteGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateOnboardingInviteGlobals$inboundSchema;
-  /** @deprecated use `CreateOnboardingInviteGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateOnboardingInviteGlobals$outboundSchema;
-  /** @deprecated use `CreateOnboardingInviteGlobals$Outbound` instead. */
-  export type Outbound = CreateOnboardingInviteGlobals$Outbound;
-}
-
 export function createOnboardingInviteGlobalsToJSON(
   createOnboardingInviteGlobals: CreateOnboardingInviteGlobals,
 ): string {
@@ -84,7 +70,6 @@ export function createOnboardingInviteGlobalsToJSON(
     ),
   );
 }
-
 export function createOnboardingInviteGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOnboardingInviteGlobals, SDKValidationError> {
@@ -109,7 +94,6 @@ export const CreateOnboardingInviteResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateOnboardingInviteResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -131,19 +115,6 @@ export const CreateOnboardingInviteResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOnboardingInviteResponse$ {
-  /** @deprecated use `CreateOnboardingInviteResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateOnboardingInviteResponse$inboundSchema;
-  /** @deprecated use `CreateOnboardingInviteResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateOnboardingInviteResponse$outboundSchema;
-  /** @deprecated use `CreateOnboardingInviteResponse$Outbound` instead. */
-  export type Outbound = CreateOnboardingInviteResponse$Outbound;
-}
-
 export function createOnboardingInviteResponseToJSON(
   createOnboardingInviteResponse: CreateOnboardingInviteResponse,
 ): string {
@@ -153,7 +124,6 @@ export function createOnboardingInviteResponseToJSON(
     ),
   );
 }
-
 export function createOnboardingInviteResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOnboardingInviteResponse, SDKValidationError> {

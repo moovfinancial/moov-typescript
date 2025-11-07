@@ -58,7 +58,6 @@ export const UpdateUnderwritingErrorError$inboundSchema: z.ZodType<
     .optional(),
   fulfillment: components.FulfillmentDetailsError$inboundSchema.optional(),
 });
-
 /** @internal */
 export type UpdateUnderwritingErrorError$Outbound = {
   averageMonthlyTransactionVolume?: string | undefined;
@@ -89,19 +88,6 @@ export const UpdateUnderwritingErrorError$outboundSchema: z.ZodType<
   fulfillment: components.FulfillmentDetailsError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateUnderwritingErrorError$ {
-  /** @deprecated use `UpdateUnderwritingErrorError$inboundSchema` instead. */
-  export const inboundSchema = UpdateUnderwritingErrorError$inboundSchema;
-  /** @deprecated use `UpdateUnderwritingErrorError$outboundSchema` instead. */
-  export const outboundSchema = UpdateUnderwritingErrorError$outboundSchema;
-  /** @deprecated use `UpdateUnderwritingErrorError$Outbound` instead. */
-  export type Outbound = UpdateUnderwritingErrorError$Outbound;
-}
-
 export function updateUnderwritingErrorErrorToJSON(
   updateUnderwritingErrorError: UpdateUnderwritingErrorError,
 ): string {
@@ -111,7 +97,6 @@ export function updateUnderwritingErrorErrorToJSON(
     ),
   );
 }
-
 export function updateUnderwritingErrorErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateUnderwritingErrorError, SDKValidationError> {
@@ -156,16 +141,3 @@ export const UpdateUnderwritingError$outboundSchema: z.ZodType<
   .pipe(z.object({
     error: z.lazy(() => UpdateUnderwritingErrorError$outboundSchema),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateUnderwritingError$ {
-  /** @deprecated use `UpdateUnderwritingError$inboundSchema` instead. */
-  export const inboundSchema = UpdateUnderwritingError$inboundSchema;
-  /** @deprecated use `UpdateUnderwritingError$outboundSchema` instead. */
-  export const outboundSchema = UpdateUnderwritingError$outboundSchema;
-  /** @deprecated use `UpdateUnderwritingError$Outbound` instead. */
-  export type Outbound = UpdateUnderwritingError$Outbound;
-}

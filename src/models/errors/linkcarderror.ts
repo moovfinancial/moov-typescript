@@ -121,16 +121,3 @@ export const LinkCardError$outboundSchema: z.ZodType<
     merchantAccountID: z.string().optional(),
     verifyName: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkCardError$ {
-  /** @deprecated use `LinkCardError$inboundSchema` instead. */
-  export const inboundSchema = LinkCardError$inboundSchema;
-  /** @deprecated use `LinkCardError$outboundSchema` instead. */
-  export const outboundSchema = LinkCardError$outboundSchema;
-  /** @deprecated use `LinkCardError$Outbound` instead. */
-  export type Outbound = LinkCardError$Outbound;
-}

@@ -19,7 +19,6 @@ export const ImageMetadataValidationError$inboundSchema: z.ZodType<
 > = z.object({
   altText: z.string().optional(),
 });
-
 /** @internal */
 export type ImageMetadataValidationError$Outbound = {
   altText?: string | undefined;
@@ -34,19 +33,6 @@ export const ImageMetadataValidationError$outboundSchema: z.ZodType<
   altText: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImageMetadataValidationError$ {
-  /** @deprecated use `ImageMetadataValidationError$inboundSchema` instead. */
-  export const inboundSchema = ImageMetadataValidationError$inboundSchema;
-  /** @deprecated use `ImageMetadataValidationError$outboundSchema` instead. */
-  export const outboundSchema = ImageMetadataValidationError$outboundSchema;
-  /** @deprecated use `ImageMetadataValidationError$Outbound` instead. */
-  export type Outbound = ImageMetadataValidationError$Outbound;
-}
-
 export function imageMetadataValidationErrorToJSON(
   imageMetadataValidationError: ImageMetadataValidationError,
 ): string {
@@ -56,7 +42,6 @@ export function imageMetadataValidationErrorToJSON(
     ),
   );
 }
-
 export function imageMetadataValidationErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<ImageMetadataValidationError, SDKValidationError> {

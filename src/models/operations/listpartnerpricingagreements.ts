@@ -57,7 +57,6 @@ export const ListPartnerPricingAgreementsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListPartnerPricingAgreementsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -76,21 +75,6 @@ export const ListPartnerPricingAgreementsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPartnerPricingAgreementsGlobals$ {
-  /** @deprecated use `ListPartnerPricingAgreementsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    ListPartnerPricingAgreementsGlobals$inboundSchema;
-  /** @deprecated use `ListPartnerPricingAgreementsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    ListPartnerPricingAgreementsGlobals$outboundSchema;
-  /** @deprecated use `ListPartnerPricingAgreementsGlobals$Outbound` instead. */
-  export type Outbound = ListPartnerPricingAgreementsGlobals$Outbound;
-}
-
 export function listPartnerPricingAgreementsGlobalsToJSON(
   listPartnerPricingAgreementsGlobals: ListPartnerPricingAgreementsGlobals,
 ): string {
@@ -100,7 +84,6 @@ export function listPartnerPricingAgreementsGlobalsToJSON(
     ),
   );
 }
-
 export function listPartnerPricingAgreementsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPartnerPricingAgreementsGlobals, SDKValidationError> {
@@ -124,7 +107,6 @@ export const ListPartnerPricingAgreementsRequest$inboundSchema: z.ZodType<
   agreementID: z.array(z.string()).optional(),
   status: z.array(components.FeePlanAgreementStatus$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ListPartnerPricingAgreementsRequest$Outbound = {
   skip?: number | undefined;
@@ -147,21 +129,6 @@ export const ListPartnerPricingAgreementsRequest$outboundSchema: z.ZodType<
   status: z.array(components.FeePlanAgreementStatus$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPartnerPricingAgreementsRequest$ {
-  /** @deprecated use `ListPartnerPricingAgreementsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    ListPartnerPricingAgreementsRequest$inboundSchema;
-  /** @deprecated use `ListPartnerPricingAgreementsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ListPartnerPricingAgreementsRequest$outboundSchema;
-  /** @deprecated use `ListPartnerPricingAgreementsRequest$Outbound` instead. */
-  export type Outbound = ListPartnerPricingAgreementsRequest$Outbound;
-}
-
 export function listPartnerPricingAgreementsRequestToJSON(
   listPartnerPricingAgreementsRequest: ListPartnerPricingAgreementsRequest,
 ): string {
@@ -171,7 +138,6 @@ export function listPartnerPricingAgreementsRequestToJSON(
     ),
   );
 }
-
 export function listPartnerPricingAgreementsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPartnerPricingAgreementsRequest, SDKValidationError> {
@@ -197,7 +163,6 @@ export const ListPartnerPricingAgreementsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListPartnerPricingAgreementsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -219,21 +184,6 @@ export const ListPartnerPricingAgreementsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPartnerPricingAgreementsResponse$ {
-  /** @deprecated use `ListPartnerPricingAgreementsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    ListPartnerPricingAgreementsResponse$inboundSchema;
-  /** @deprecated use `ListPartnerPricingAgreementsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    ListPartnerPricingAgreementsResponse$outboundSchema;
-  /** @deprecated use `ListPartnerPricingAgreementsResponse$Outbound` instead. */
-  export type Outbound = ListPartnerPricingAgreementsResponse$Outbound;
-}
-
 export function listPartnerPricingAgreementsResponseToJSON(
   listPartnerPricingAgreementsResponse: ListPartnerPricingAgreementsResponse,
 ): string {
@@ -243,7 +193,6 @@ export function listPartnerPricingAgreementsResponseToJSON(
     ),
   );
 }
-
 export function listPartnerPricingAgreementsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPartnerPricingAgreementsResponse, SDKValidationError> {

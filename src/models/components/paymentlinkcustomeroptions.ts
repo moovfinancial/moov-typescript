@@ -32,7 +32,6 @@ export const PaymentLinkCustomerOptions$inboundSchema: z.ZodType<
   requirePhone: z.boolean().optional(),
   metadata: z.record(z.string()).optional(),
 });
-
 /** @internal */
 export type PaymentLinkCustomerOptions$Outbound = {
   requireAddress?: boolean | undefined;
@@ -51,19 +50,6 @@ export const PaymentLinkCustomerOptions$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentLinkCustomerOptions$ {
-  /** @deprecated use `PaymentLinkCustomerOptions$inboundSchema` instead. */
-  export const inboundSchema = PaymentLinkCustomerOptions$inboundSchema;
-  /** @deprecated use `PaymentLinkCustomerOptions$outboundSchema` instead. */
-  export const outboundSchema = PaymentLinkCustomerOptions$outboundSchema;
-  /** @deprecated use `PaymentLinkCustomerOptions$Outbound` instead. */
-  export type Outbound = PaymentLinkCustomerOptions$Outbound;
-}
-
 export function paymentLinkCustomerOptionsToJSON(
   paymentLinkCustomerOptions: PaymentLinkCustomerOptions,
 ): string {
@@ -71,7 +57,6 @@ export function paymentLinkCustomerOptionsToJSON(
     PaymentLinkCustomerOptions$outboundSchema.parse(paymentLinkCustomerOptions),
   );
 }
-
 export function paymentLinkCustomerOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<PaymentLinkCustomerOptions, SDKValidationError> {

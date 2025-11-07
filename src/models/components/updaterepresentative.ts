@@ -90,7 +90,6 @@ export const Phone$inboundSchema: z.ZodType<Phone, z.ZodTypeDef, unknown> = z
     number: z.string().optional(),
     countryCode: z.string().optional(),
   });
-
 /** @internal */
 export type Phone$Outbound = {
   number?: string | undefined;
@@ -107,23 +106,9 @@ export const Phone$outboundSchema: z.ZodType<
   countryCode: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Phone$ {
-  /** @deprecated use `Phone$inboundSchema` instead. */
-  export const inboundSchema = Phone$inboundSchema;
-  /** @deprecated use `Phone$outboundSchema` instead. */
-  export const outboundSchema = Phone$outboundSchema;
-  /** @deprecated use `Phone$Outbound` instead. */
-  export type Outbound = Phone$Outbound;
-}
-
 export function phoneToJSON(phone: Phone): string {
   return JSON.stringify(Phone$outboundSchema.parse(phone));
 }
-
 export function phoneFromJSON(
   jsonString: string,
 ): SafeParseResult<Phone, SDKValidationError> {
@@ -137,7 +122,6 @@ export function phoneFromJSON(
 /** @internal */
 export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
   .object({});
-
 /** @internal */
 export type Two$Outbound = {};
 
@@ -145,23 +129,9 @@ export type Two$Outbound = {};
 export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
   .object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Two$ {
-  /** @deprecated use `Two$inboundSchema` instead. */
-  export const inboundSchema = Two$inboundSchema;
-  /** @deprecated use `Two$outboundSchema` instead. */
-  export const outboundSchema = Two$outboundSchema;
-  /** @deprecated use `Two$Outbound` instead. */
-  export type Outbound = Two$Outbound;
-}
-
 export function twoToJSON(two: Two): string {
   return JSON.stringify(Two$outboundSchema.parse(two));
 }
-
 export function twoFromJSON(
   jsonString: string,
 ): SafeParseResult<Two, SDKValidationError> {
@@ -175,7 +145,6 @@ export function twoFromJSON(
 /** @internal */
 export const Email$inboundSchema: z.ZodType<Email, z.ZodTypeDef, unknown> = z
   .union([z.string(), z.lazy(() => Two$inboundSchema)]);
-
 /** @internal */
 export type Email$Outbound = string | Two$Outbound;
 
@@ -186,23 +155,9 @@ export const Email$outboundSchema: z.ZodType<
   Email
 > = z.union([z.string(), z.lazy(() => Two$outboundSchema)]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Email$ {
-  /** @deprecated use `Email$inboundSchema` instead. */
-  export const inboundSchema = Email$inboundSchema;
-  /** @deprecated use `Email$outboundSchema` instead. */
-  export const outboundSchema = Email$outboundSchema;
-  /** @deprecated use `Email$Outbound` instead. */
-  export type Outbound = Email$Outbound;
-}
-
 export function emailToJSON(email: Email): string {
   return JSON.stringify(Email$outboundSchema.parse(email));
 }
-
 export function emailFromJSON(
   jsonString: string,
 ): SafeParseResult<Email, SDKValidationError> {
@@ -226,7 +181,6 @@ export const UpdateRepresentativeAddress$inboundSchema: z.ZodType<
   postalCode: z.string().optional(),
   country: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateRepresentativeAddress$Outbound = {
   addressLine1?: string | undefined;
@@ -251,19 +205,6 @@ export const UpdateRepresentativeAddress$outboundSchema: z.ZodType<
   country: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRepresentativeAddress$ {
-  /** @deprecated use `UpdateRepresentativeAddress$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentativeAddress$inboundSchema;
-  /** @deprecated use `UpdateRepresentativeAddress$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentativeAddress$outboundSchema;
-  /** @deprecated use `UpdateRepresentativeAddress$Outbound` instead. */
-  export type Outbound = UpdateRepresentativeAddress$Outbound;
-}
-
 export function updateRepresentativeAddressToJSON(
   updateRepresentativeAddress: UpdateRepresentativeAddress,
 ): string {
@@ -273,7 +214,6 @@ export function updateRepresentativeAddressToJSON(
     ),
   );
 }
-
 export function updateRepresentativeAddressFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRepresentativeAddress, SDKValidationError> {
@@ -294,7 +234,6 @@ export const UpdateRepresentativeBirthDate$inboundSchema: z.ZodType<
   month: z.number().int().optional(),
   year: z.number().int().optional(),
 });
-
 /** @internal */
 export type UpdateRepresentativeBirthDate$Outbound = {
   day?: number | undefined;
@@ -313,19 +252,6 @@ export const UpdateRepresentativeBirthDate$outboundSchema: z.ZodType<
   year: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRepresentativeBirthDate$ {
-  /** @deprecated use `UpdateRepresentativeBirthDate$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentativeBirthDate$inboundSchema;
-  /** @deprecated use `UpdateRepresentativeBirthDate$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentativeBirthDate$outboundSchema;
-  /** @deprecated use `UpdateRepresentativeBirthDate$Outbound` instead. */
-  export type Outbound = UpdateRepresentativeBirthDate$Outbound;
-}
-
 export function updateRepresentativeBirthDateToJSON(
   updateRepresentativeBirthDate: UpdateRepresentativeBirthDate,
 ): string {
@@ -335,7 +261,6 @@ export function updateRepresentativeBirthDateToJSON(
     ),
   );
 }
-
 export function updateRepresentativeBirthDateFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRepresentativeBirthDate, SDKValidationError> {
@@ -355,7 +280,6 @@ export const UpdateRepresentativeSsn$inboundSchema: z.ZodType<
   full: z.string().optional(),
   lastFour: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateRepresentativeSsn$Outbound = {
   full?: string | undefined;
@@ -372,19 +296,6 @@ export const UpdateRepresentativeSsn$outboundSchema: z.ZodType<
   lastFour: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRepresentativeSsn$ {
-  /** @deprecated use `UpdateRepresentativeSsn$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentativeSsn$inboundSchema;
-  /** @deprecated use `UpdateRepresentativeSsn$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentativeSsn$outboundSchema;
-  /** @deprecated use `UpdateRepresentativeSsn$Outbound` instead. */
-  export type Outbound = UpdateRepresentativeSsn$Outbound;
-}
-
 export function updateRepresentativeSsnToJSON(
   updateRepresentativeSsn: UpdateRepresentativeSsn,
 ): string {
@@ -392,7 +303,6 @@ export function updateRepresentativeSsnToJSON(
     UpdateRepresentativeSsn$outboundSchema.parse(updateRepresentativeSsn),
   );
 }
-
 export function updateRepresentativeSsnFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRepresentativeSsn, SDKValidationError> {
@@ -412,7 +322,6 @@ export const UpdateRepresentativeItin$inboundSchema: z.ZodType<
   full: z.string().optional(),
   lastFour: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateRepresentativeItin$Outbound = {
   full?: string | undefined;
@@ -429,19 +338,6 @@ export const UpdateRepresentativeItin$outboundSchema: z.ZodType<
   lastFour: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRepresentativeItin$ {
-  /** @deprecated use `UpdateRepresentativeItin$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentativeItin$inboundSchema;
-  /** @deprecated use `UpdateRepresentativeItin$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentativeItin$outboundSchema;
-  /** @deprecated use `UpdateRepresentativeItin$Outbound` instead. */
-  export type Outbound = UpdateRepresentativeItin$Outbound;
-}
-
 export function updateRepresentativeItinToJSON(
   updateRepresentativeItin: UpdateRepresentativeItin,
 ): string {
@@ -449,7 +345,6 @@ export function updateRepresentativeItinToJSON(
     UpdateRepresentativeItin$outboundSchema.parse(updateRepresentativeItin),
   );
 }
-
 export function updateRepresentativeItinFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRepresentativeItin, SDKValidationError> {
@@ -469,7 +364,6 @@ export const UpdateRepresentativeGovernmentID$inboundSchema: z.ZodType<
   ssn: z.lazy(() => UpdateRepresentativeSsn$inboundSchema).optional(),
   itin: z.lazy(() => UpdateRepresentativeItin$inboundSchema).optional(),
 });
-
 /** @internal */
 export type UpdateRepresentativeGovernmentID$Outbound = {
   ssn?: UpdateRepresentativeSsn$Outbound | undefined;
@@ -486,19 +380,6 @@ export const UpdateRepresentativeGovernmentID$outboundSchema: z.ZodType<
   itin: z.lazy(() => UpdateRepresentativeItin$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRepresentativeGovernmentID$ {
-  /** @deprecated use `UpdateRepresentativeGovernmentID$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentativeGovernmentID$inboundSchema;
-  /** @deprecated use `UpdateRepresentativeGovernmentID$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentativeGovernmentID$outboundSchema;
-  /** @deprecated use `UpdateRepresentativeGovernmentID$Outbound` instead. */
-  export type Outbound = UpdateRepresentativeGovernmentID$Outbound;
-}
-
 export function updateRepresentativeGovernmentIDToJSON(
   updateRepresentativeGovernmentID: UpdateRepresentativeGovernmentID,
 ): string {
@@ -508,7 +389,6 @@ export function updateRepresentativeGovernmentIDToJSON(
     ),
   );
 }
-
 export function updateRepresentativeGovernmentIDFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRepresentativeGovernmentID, SDKValidationError> {
@@ -530,7 +410,6 @@ export const Responsibilities$inboundSchema: z.ZodType<
   ownershipPercentage: z.number().int().optional(),
   jobTitle: z.string().optional(),
 });
-
 /** @internal */
 export type Responsibilities$Outbound = {
   isController?: boolean | undefined;
@@ -551,19 +430,6 @@ export const Responsibilities$outboundSchema: z.ZodType<
   jobTitle: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Responsibilities$ {
-  /** @deprecated use `Responsibilities$inboundSchema` instead. */
-  export const inboundSchema = Responsibilities$inboundSchema;
-  /** @deprecated use `Responsibilities$outboundSchema` instead. */
-  export const outboundSchema = Responsibilities$outboundSchema;
-  /** @deprecated use `Responsibilities$Outbound` instead. */
-  export type Outbound = Responsibilities$Outbound;
-}
-
 export function responsibilitiesToJSON(
   responsibilities: Responsibilities,
 ): string {
@@ -571,7 +437,6 @@ export function responsibilitiesToJSON(
     Responsibilities$outboundSchema.parse(responsibilities),
   );
 }
-
 export function responsibilitiesFromJSON(
   jsonString: string,
 ): SafeParseResult<Responsibilities, SDKValidationError> {
@@ -603,7 +468,6 @@ export const UpdateRepresentative$inboundSchema: z.ZodType<
   responsibilities: z.nullable(z.lazy(() => Responsibilities$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type UpdateRepresentative$Outbound = {
   name?: IndividualNameUpdate$Outbound | undefined;
@@ -637,19 +501,6 @@ export const UpdateRepresentative$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRepresentative$ {
-  /** @deprecated use `UpdateRepresentative$inboundSchema` instead. */
-  export const inboundSchema = UpdateRepresentative$inboundSchema;
-  /** @deprecated use `UpdateRepresentative$outboundSchema` instead. */
-  export const outboundSchema = UpdateRepresentative$outboundSchema;
-  /** @deprecated use `UpdateRepresentative$Outbound` instead. */
-  export type Outbound = UpdateRepresentative$Outbound;
-}
-
 export function updateRepresentativeToJSON(
   updateRepresentative: UpdateRepresentative,
 ): string {
@@ -657,7 +508,6 @@ export function updateRepresentativeToJSON(
     UpdateRepresentative$outboundSchema.parse(updateRepresentative),
   );
 }
-
 export function updateRepresentativeFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRepresentative, SDKValidationError> {

@@ -34,7 +34,6 @@ export const MinimumCommitment$inboundSchema: z.ZodType<
   currency: z.string(),
   valueDecimal: z.string(),
 });
-
 /** @internal */
 export type MinimumCommitment$Outbound = {
   currency: string;
@@ -51,19 +50,6 @@ export const MinimumCommitment$outboundSchema: z.ZodType<
   valueDecimal: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MinimumCommitment$ {
-  /** @deprecated use `MinimumCommitment$inboundSchema` instead. */
-  export const inboundSchema = MinimumCommitment$inboundSchema;
-  /** @deprecated use `MinimumCommitment$outboundSchema` instead. */
-  export const outboundSchema = MinimumCommitment$outboundSchema;
-  /** @deprecated use `MinimumCommitment$Outbound` instead. */
-  export type Outbound = MinimumCommitment$Outbound;
-}
-
 export function minimumCommitmentToJSON(
   minimumCommitment: MinimumCommitment,
 ): string {
@@ -71,7 +57,6 @@ export function minimumCommitmentToJSON(
     MinimumCommitment$outboundSchema.parse(minimumCommitment),
   );
 }
-
 export function minimumCommitmentFromJSON(
   jsonString: string,
 ): SafeParseResult<MinimumCommitment, SDKValidationError> {

@@ -32,7 +32,6 @@ export const IssuingVelocityLimit$inboundSchema: z.ZodType<
   amount: z.number().int(),
   interval: IssuingIntervalLimit$inboundSchema,
 });
-
 /** @internal */
 export type IssuingVelocityLimit$Outbound = {
   amount: number;
@@ -49,19 +48,6 @@ export const IssuingVelocityLimit$outboundSchema: z.ZodType<
   interval: IssuingIntervalLimit$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuingVelocityLimit$ {
-  /** @deprecated use `IssuingVelocityLimit$inboundSchema` instead. */
-  export const inboundSchema = IssuingVelocityLimit$inboundSchema;
-  /** @deprecated use `IssuingVelocityLimit$outboundSchema` instead. */
-  export const outboundSchema = IssuingVelocityLimit$outboundSchema;
-  /** @deprecated use `IssuingVelocityLimit$Outbound` instead. */
-  export type Outbound = IssuingVelocityLimit$Outbound;
-}
-
 export function issuingVelocityLimitToJSON(
   issuingVelocityLimit: IssuingVelocityLimit,
 ): string {
@@ -69,7 +55,6 @@ export function issuingVelocityLimitToJSON(
     IssuingVelocityLimit$outboundSchema.parse(issuingVelocityLimit),
   );
 }
-
 export function issuingVelocityLimitFromJSON(
   jsonString: string,
 ): SafeParseResult<IssuingVelocityLimit, SDKValidationError> {

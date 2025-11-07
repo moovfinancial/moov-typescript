@@ -55,7 +55,6 @@ export const GetCapabilityGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetCapabilityGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -74,19 +73,6 @@ export const GetCapabilityGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCapabilityGlobals$ {
-  /** @deprecated use `GetCapabilityGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetCapabilityGlobals$inboundSchema;
-  /** @deprecated use `GetCapabilityGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetCapabilityGlobals$outboundSchema;
-  /** @deprecated use `GetCapabilityGlobals$Outbound` instead. */
-  export type Outbound = GetCapabilityGlobals$Outbound;
-}
-
 export function getCapabilityGlobalsToJSON(
   getCapabilityGlobals: GetCapabilityGlobals,
 ): string {
@@ -94,7 +80,6 @@ export function getCapabilityGlobalsToJSON(
     GetCapabilityGlobals$outboundSchema.parse(getCapabilityGlobals),
   );
 }
-
 export function getCapabilityGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCapabilityGlobals, SDKValidationError> {
@@ -114,7 +99,6 @@ export const GetCapabilityRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   capabilityID: components.CapabilityID$inboundSchema,
 });
-
 /** @internal */
 export type GetCapabilityRequest$Outbound = {
   accountID: string;
@@ -131,19 +115,6 @@ export const GetCapabilityRequest$outboundSchema: z.ZodType<
   capabilityID: components.CapabilityID$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCapabilityRequest$ {
-  /** @deprecated use `GetCapabilityRequest$inboundSchema` instead. */
-  export const inboundSchema = GetCapabilityRequest$inboundSchema;
-  /** @deprecated use `GetCapabilityRequest$outboundSchema` instead. */
-  export const outboundSchema = GetCapabilityRequest$outboundSchema;
-  /** @deprecated use `GetCapabilityRequest$Outbound` instead. */
-  export type Outbound = GetCapabilityRequest$Outbound;
-}
-
 export function getCapabilityRequestToJSON(
   getCapabilityRequest: GetCapabilityRequest,
 ): string {
@@ -151,7 +122,6 @@ export function getCapabilityRequestToJSON(
     GetCapabilityRequest$outboundSchema.parse(getCapabilityRequest),
   );
 }
-
 export function getCapabilityRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCapabilityRequest, SDKValidationError> {
@@ -176,7 +146,6 @@ export const GetCapabilityResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetCapabilityResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -198,19 +167,6 @@ export const GetCapabilityResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCapabilityResponse$ {
-  /** @deprecated use `GetCapabilityResponse$inboundSchema` instead. */
-  export const inboundSchema = GetCapabilityResponse$inboundSchema;
-  /** @deprecated use `GetCapabilityResponse$outboundSchema` instead. */
-  export const outboundSchema = GetCapabilityResponse$outboundSchema;
-  /** @deprecated use `GetCapabilityResponse$Outbound` instead. */
-  export type Outbound = GetCapabilityResponse$Outbound;
-}
-
 export function getCapabilityResponseToJSON(
   getCapabilityResponse: GetCapabilityResponse,
 ): string {
@@ -218,7 +174,6 @@ export function getCapabilityResponseToJSON(
     GetCapabilityResponse$outboundSchema.parse(getCapabilityResponse),
   );
 }
-
 export function getCapabilityResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCapabilityResponse, SDKValidationError> {

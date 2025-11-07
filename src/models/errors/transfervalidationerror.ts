@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
 export type TransferValidationErrorData = {
@@ -17,6 +18,7 @@ export type TransferValidationErrorData = {
   metadata?: string | undefined;
   salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
+  lineItems?: components.TransferLineItemsValidationError | undefined;
 };
 
 export class TransferValidationError extends MoovError {
@@ -30,6 +32,7 @@ export class TransferValidationError extends MoovError {
   metadata?: string | undefined;
   salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
+  lineItems?: components.TransferLineItemsValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferValidationErrorData;
@@ -61,6 +64,7 @@ export class TransferValidationError extends MoovError {
     if (err.metadata != null) this.metadata = err.metadata;
     if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
     if (err.foreignID != null) this.foreignID = err.foreignID;
+    if (err.lineItems != null) this.lineItems = err.lineItems;
 
     this.name = "TransferValidationError";
   }
@@ -82,6 +86,8 @@ export const TransferValidationError$inboundSchema: z.ZodType<
   metadata: z.string().optional(),
   salesTaxAmount: z.string().optional(),
   foreignID: z.string().optional(),
+  lineItems: components.TransferLineItemsValidationError$inboundSchema
+    .optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -111,6 +117,7 @@ export type TransferValidationError$Outbound = {
   metadata?: string | undefined;
   salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
+  lineItems?: components.TransferLineItemsValidationError$Outbound | undefined;
 };
 
 /** @internal */
@@ -132,6 +139,8 @@ export const TransferValidationError$outboundSchema: z.ZodType<
       metadata: z.string().optional(),
       salesTaxAmount: z.string().optional(),
       foreignID: z.string().optional(),
+      lineItems: components.TransferLineItemsValidationError$outboundSchema
+        .optional(),
     }).transform((v) => {
       return remap$(v, {
         facilitatorFeeTotalDecimal: "FacilitatorFee.TotalDecimal",
@@ -139,16 +148,3 @@ export const TransferValidationError$outboundSchema: z.ZodType<
       });
     }),
   );
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferValidationError$ {
-  /** @deprecated use `TransferValidationError$inboundSchema` instead. */
-  export const inboundSchema = TransferValidationError$inboundSchema;
-  /** @deprecated use `TransferValidationError$outboundSchema` instead. */
-  export const outboundSchema = TransferValidationError$outboundSchema;
-  /** @deprecated use `TransferValidationError$Outbound` instead. */
-  export type Outbound = TransferValidationError$Outbound;
-}

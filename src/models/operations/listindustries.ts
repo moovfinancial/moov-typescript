@@ -45,7 +45,6 @@ export const ListIndustriesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListIndustriesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -64,19 +63,6 @@ export const ListIndustriesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIndustriesGlobals$ {
-  /** @deprecated use `ListIndustriesGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListIndustriesGlobals$inboundSchema;
-  /** @deprecated use `ListIndustriesGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListIndustriesGlobals$outboundSchema;
-  /** @deprecated use `ListIndustriesGlobals$Outbound` instead. */
-  export type Outbound = ListIndustriesGlobals$Outbound;
-}
-
 export function listIndustriesGlobalsToJSON(
   listIndustriesGlobals: ListIndustriesGlobals,
 ): string {
@@ -84,7 +70,6 @@ export function listIndustriesGlobalsToJSON(
     ListIndustriesGlobals$outboundSchema.parse(listIndustriesGlobals),
   );
 }
-
 export function listIndustriesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListIndustriesGlobals, SDKValidationError> {
@@ -101,7 +86,6 @@ export const ListIndustriesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type ListIndustriesRequest$Outbound = {};
 
@@ -112,19 +96,6 @@ export const ListIndustriesRequest$outboundSchema: z.ZodType<
   ListIndustriesRequest
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIndustriesRequest$ {
-  /** @deprecated use `ListIndustriesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListIndustriesRequest$inboundSchema;
-  /** @deprecated use `ListIndustriesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListIndustriesRequest$outboundSchema;
-  /** @deprecated use `ListIndustriesRequest$Outbound` instead. */
-  export type Outbound = ListIndustriesRequest$Outbound;
-}
-
 export function listIndustriesRequestToJSON(
   listIndustriesRequest: ListIndustriesRequest,
 ): string {
@@ -132,7 +103,6 @@ export function listIndustriesRequestToJSON(
     ListIndustriesRequest$outboundSchema.parse(listIndustriesRequest),
   );
 }
-
 export function listIndustriesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListIndustriesRequest, SDKValidationError> {
@@ -157,7 +127,6 @@ export const ListIndustriesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListIndustriesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -179,19 +148,6 @@ export const ListIndustriesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIndustriesResponse$ {
-  /** @deprecated use `ListIndustriesResponse$inboundSchema` instead. */
-  export const inboundSchema = ListIndustriesResponse$inboundSchema;
-  /** @deprecated use `ListIndustriesResponse$outboundSchema` instead. */
-  export const outboundSchema = ListIndustriesResponse$outboundSchema;
-  /** @deprecated use `ListIndustriesResponse$Outbound` instead. */
-  export type Outbound = ListIndustriesResponse$Outbound;
-}
-
 export function listIndustriesResponseToJSON(
   listIndustriesResponse: ListIndustriesResponse,
 ): string {
@@ -199,7 +155,6 @@ export function listIndustriesResponseToJSON(
     ListIndustriesResponse$outboundSchema.parse(listIndustriesResponse),
   );
 }
-
 export function listIndustriesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListIndustriesResponse, SDKValidationError> {

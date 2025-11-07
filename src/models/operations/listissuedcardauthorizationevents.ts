@@ -53,7 +53,6 @@ export const ListIssuedCardAuthorizationEventsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListIssuedCardAuthorizationEventsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -72,21 +71,6 @@ export const ListIssuedCardAuthorizationEventsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIssuedCardAuthorizationEventsGlobals$ {
-  /** @deprecated use `ListIssuedCardAuthorizationEventsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    ListIssuedCardAuthorizationEventsGlobals$inboundSchema;
-  /** @deprecated use `ListIssuedCardAuthorizationEventsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    ListIssuedCardAuthorizationEventsGlobals$outboundSchema;
-  /** @deprecated use `ListIssuedCardAuthorizationEventsGlobals$Outbound` instead. */
-  export type Outbound = ListIssuedCardAuthorizationEventsGlobals$Outbound;
-}
-
 export function listIssuedCardAuthorizationEventsGlobalsToJSON(
   listIssuedCardAuthorizationEventsGlobals:
     ListIssuedCardAuthorizationEventsGlobals,
@@ -97,7 +81,6 @@ export function listIssuedCardAuthorizationEventsGlobalsToJSON(
     ),
   );
 }
-
 export function listIssuedCardAuthorizationEventsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -125,7 +108,6 @@ export const ListIssuedCardAuthorizationEventsRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
 });
-
 /** @internal */
 export type ListIssuedCardAuthorizationEventsRequest$Outbound = {
   accountID: string;
@@ -146,21 +128,6 @@ export const ListIssuedCardAuthorizationEventsRequest$outboundSchema: z.ZodType<
   count: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIssuedCardAuthorizationEventsRequest$ {
-  /** @deprecated use `ListIssuedCardAuthorizationEventsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    ListIssuedCardAuthorizationEventsRequest$inboundSchema;
-  /** @deprecated use `ListIssuedCardAuthorizationEventsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ListIssuedCardAuthorizationEventsRequest$outboundSchema;
-  /** @deprecated use `ListIssuedCardAuthorizationEventsRequest$Outbound` instead. */
-  export type Outbound = ListIssuedCardAuthorizationEventsRequest$Outbound;
-}
-
 export function listIssuedCardAuthorizationEventsRequestToJSON(
   listIssuedCardAuthorizationEventsRequest:
     ListIssuedCardAuthorizationEventsRequest,
@@ -171,7 +138,6 @@ export function listIssuedCardAuthorizationEventsRequestToJSON(
     ),
   );
 }
-
 export function listIssuedCardAuthorizationEventsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -202,7 +168,6 @@ export const ListIssuedCardAuthorizationEventsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListIssuedCardAuthorizationEventsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -225,21 +190,6 @@ export const ListIssuedCardAuthorizationEventsResponse$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListIssuedCardAuthorizationEventsResponse$ {
-  /** @deprecated use `ListIssuedCardAuthorizationEventsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    ListIssuedCardAuthorizationEventsResponse$inboundSchema;
-  /** @deprecated use `ListIssuedCardAuthorizationEventsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    ListIssuedCardAuthorizationEventsResponse$outboundSchema;
-  /** @deprecated use `ListIssuedCardAuthorizationEventsResponse$Outbound` instead. */
-  export type Outbound = ListIssuedCardAuthorizationEventsResponse$Outbound;
-}
-
 export function listIssuedCardAuthorizationEventsResponseToJSON(
   listIssuedCardAuthorizationEventsResponse:
     ListIssuedCardAuthorizationEventsResponse,
@@ -250,7 +200,6 @@ export function listIssuedCardAuthorizationEventsResponseToJSON(
     ),
   );
 }
-
 export function listIssuedCardAuthorizationEventsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<

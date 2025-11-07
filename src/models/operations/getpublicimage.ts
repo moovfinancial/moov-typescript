@@ -50,7 +50,6 @@ export const GetPublicImageRequest$inboundSchema: z.ZodType<
     "if-none-match": "ifNoneMatch",
   });
 });
-
 /** @internal */
 export type GetPublicImageRequest$Outbound = {
   "if-none-match"?: string | undefined;
@@ -73,19 +72,6 @@ export const GetPublicImageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPublicImageRequest$ {
-  /** @deprecated use `GetPublicImageRequest$inboundSchema` instead. */
-  export const inboundSchema = GetPublicImageRequest$inboundSchema;
-  /** @deprecated use `GetPublicImageRequest$outboundSchema` instead. */
-  export const outboundSchema = GetPublicImageRequest$outboundSchema;
-  /** @deprecated use `GetPublicImageRequest$Outbound` instead. */
-  export type Outbound = GetPublicImageRequest$Outbound;
-}
-
 export function getPublicImageRequestToJSON(
   getPublicImageRequest: GetPublicImageRequest,
 ): string {
@@ -93,7 +79,6 @@ export function getPublicImageRequestToJSON(
     GetPublicImageRequest$outboundSchema.parse(getPublicImageRequest),
   );
 }
-
 export function getPublicImageRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPublicImageRequest, SDKValidationError> {
@@ -114,7 +99,6 @@ export const GetPublicImageResponseResult$inboundSchema: z.ZodType<
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
-
 /** @internal */
 export type GetPublicImageResponseResult$Outbound =
   | ReadableStream<Uint8Array>
@@ -132,19 +116,6 @@ export const GetPublicImageResponseResult$outboundSchema: z.ZodType<
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPublicImageResponseResult$ {
-  /** @deprecated use `GetPublicImageResponseResult$inboundSchema` instead. */
-  export const inboundSchema = GetPublicImageResponseResult$inboundSchema;
-  /** @deprecated use `GetPublicImageResponseResult$outboundSchema` instead. */
-  export const outboundSchema = GetPublicImageResponseResult$outboundSchema;
-  /** @deprecated use `GetPublicImageResponseResult$Outbound` instead. */
-  export type Outbound = GetPublicImageResponseResult$Outbound;
-}
-
 export function getPublicImageResponseResultToJSON(
   getPublicImageResponseResult: GetPublicImageResponseResult,
 ): string {
@@ -154,7 +125,6 @@ export function getPublicImageResponseResultToJSON(
     ),
   );
 }
-
 export function getPublicImageResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPublicImageResponseResult, SDKValidationError> {
@@ -183,7 +153,6 @@ export const GetPublicImageResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetPublicImageResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -212,19 +181,6 @@ export const GetPublicImageResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPublicImageResponse$ {
-  /** @deprecated use `GetPublicImageResponse$inboundSchema` instead. */
-  export const inboundSchema = GetPublicImageResponse$inboundSchema;
-  /** @deprecated use `GetPublicImageResponse$outboundSchema` instead. */
-  export const outboundSchema = GetPublicImageResponse$outboundSchema;
-  /** @deprecated use `GetPublicImageResponse$Outbound` instead. */
-  export type Outbound = GetPublicImageResponse$Outbound;
-}
-
 export function getPublicImageResponseToJSON(
   getPublicImageResponse: GetPublicImageResponse,
 ): string {
@@ -232,7 +188,6 @@ export function getPublicImageResponseToJSON(
     GetPublicImageResponse$outboundSchema.parse(getPublicImageResponse),
   );
 }
-
 export function getPublicImageResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetPublicImageResponse, SDKValidationError> {

@@ -40,7 +40,6 @@ export const LinkApplePaymentMethod$inboundSchema: z.ZodType<
   network: z.string(),
   type: z.string(),
 });
-
 /** @internal */
 export type LinkApplePaymentMethod$Outbound = {
   displayName: string;
@@ -59,19 +58,6 @@ export const LinkApplePaymentMethod$outboundSchema: z.ZodType<
   type: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkApplePaymentMethod$ {
-  /** @deprecated use `LinkApplePaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = LinkApplePaymentMethod$inboundSchema;
-  /** @deprecated use `LinkApplePaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = LinkApplePaymentMethod$outboundSchema;
-  /** @deprecated use `LinkApplePaymentMethod$Outbound` instead. */
-  export type Outbound = LinkApplePaymentMethod$Outbound;
-}
-
 export function linkApplePaymentMethodToJSON(
   linkApplePaymentMethod: LinkApplePaymentMethod,
 ): string {
@@ -79,7 +65,6 @@ export function linkApplePaymentMethodToJSON(
     LinkApplePaymentMethod$outboundSchema.parse(linkApplePaymentMethod),
   );
 }
-
 export function linkApplePaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkApplePaymentMethod, SDKValidationError> {

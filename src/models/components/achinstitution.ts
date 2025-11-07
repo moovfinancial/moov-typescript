@@ -40,7 +40,6 @@ export const ACHInstitution$inboundSchema: z.ZodType<
   address: Address$inboundSchema.optional(),
   contact: Contact$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ACHInstitution$Outbound = {
   name: string;
@@ -61,23 +60,9 @@ export const ACHInstitution$outboundSchema: z.ZodType<
   contact: Contact$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ACHInstitution$ {
-  /** @deprecated use `ACHInstitution$inboundSchema` instead. */
-  export const inboundSchema = ACHInstitution$inboundSchema;
-  /** @deprecated use `ACHInstitution$outboundSchema` instead. */
-  export const outboundSchema = ACHInstitution$outboundSchema;
-  /** @deprecated use `ACHInstitution$Outbound` instead. */
-  export type Outbound = ACHInstitution$Outbound;
-}
-
 export function achInstitutionToJSON(achInstitution: ACHInstitution): string {
   return JSON.stringify(ACHInstitution$outboundSchema.parse(achInstitution));
 }
-
 export function achInstitutionFromJSON(
   jsonString: string,
 ): SafeParseResult<ACHInstitution, SDKValidationError> {

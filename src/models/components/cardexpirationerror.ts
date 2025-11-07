@@ -21,7 +21,6 @@ export const CardExpirationError$inboundSchema: z.ZodType<
   month: z.string().optional(),
   year: z.string().optional(),
 });
-
 /** @internal */
 export type CardExpirationError$Outbound = {
   month?: string | undefined;
@@ -38,19 +37,6 @@ export const CardExpirationError$outboundSchema: z.ZodType<
   year: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardExpirationError$ {
-  /** @deprecated use `CardExpirationError$inboundSchema` instead. */
-  export const inboundSchema = CardExpirationError$inboundSchema;
-  /** @deprecated use `CardExpirationError$outboundSchema` instead. */
-  export const outboundSchema = CardExpirationError$outboundSchema;
-  /** @deprecated use `CardExpirationError$Outbound` instead. */
-  export type Outbound = CardExpirationError$Outbound;
-}
-
 export function cardExpirationErrorToJSON(
   cardExpirationError: CardExpirationError,
 ): string {
@@ -58,7 +44,6 @@ export function cardExpirationErrorToJSON(
     CardExpirationError$outboundSchema.parse(cardExpirationError),
   );
 }
-
 export function cardExpirationErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CardExpirationError, SDKValidationError> {

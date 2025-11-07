@@ -22,19 +22,7 @@ export type BankAccountHolderType = ClosedEnum<typeof BankAccountHolderType>;
 export const BankAccountHolderType$inboundSchema: z.ZodNativeEnum<
   typeof BankAccountHolderType
 > = z.nativeEnum(BankAccountHolderType);
-
 /** @internal */
 export const BankAccountHolderType$outboundSchema: z.ZodNativeEnum<
   typeof BankAccountHolderType
 > = BankAccountHolderType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccountHolderType$ {
-  /** @deprecated use `BankAccountHolderType$inboundSchema` instead. */
-  export const inboundSchema = BankAccountHolderType$inboundSchema;
-  /** @deprecated use `BankAccountHolderType$outboundSchema` instead. */
-  export const outboundSchema = BankAccountHolderType$outboundSchema;
-}

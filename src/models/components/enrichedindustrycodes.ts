@@ -21,7 +21,6 @@ export const EnrichedIndustryCodes$inboundSchema: z.ZodType<
   naics: z.string().optional(),
   sic: z.string().optional(),
 });
-
 /** @internal */
 export type EnrichedIndustryCodes$Outbound = {
   naics?: string | undefined;
@@ -38,19 +37,6 @@ export const EnrichedIndustryCodes$outboundSchema: z.ZodType<
   sic: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EnrichedIndustryCodes$ {
-  /** @deprecated use `EnrichedIndustryCodes$inboundSchema` instead. */
-  export const inboundSchema = EnrichedIndustryCodes$inboundSchema;
-  /** @deprecated use `EnrichedIndustryCodes$outboundSchema` instead. */
-  export const outboundSchema = EnrichedIndustryCodes$outboundSchema;
-  /** @deprecated use `EnrichedIndustryCodes$Outbound` instead. */
-  export type Outbound = EnrichedIndustryCodes$Outbound;
-}
-
 export function enrichedIndustryCodesToJSON(
   enrichedIndustryCodes: EnrichedIndustryCodes,
 ): string {
@@ -58,7 +44,6 @@ export function enrichedIndustryCodesToJSON(
     EnrichedIndustryCodes$outboundSchema.parse(enrichedIndustryCodes),
   );
 }
-
 export function enrichedIndustryCodesFromJSON(
   jsonString: string,
 ): SafeParseResult<EnrichedIndustryCodes, SDKValidationError> {

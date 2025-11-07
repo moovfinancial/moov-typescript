@@ -22,7 +22,6 @@ export const CompleteBankAccountVerification$inboundSchema: z.ZodType<
 > = z.object({
   code: z.string(),
 });
-
 /** @internal */
 export type CompleteBankAccountVerification$Outbound = {
   code: string;
@@ -37,19 +36,6 @@ export const CompleteBankAccountVerification$outboundSchema: z.ZodType<
   code: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteBankAccountVerification$ {
-  /** @deprecated use `CompleteBankAccountVerification$inboundSchema` instead. */
-  export const inboundSchema = CompleteBankAccountVerification$inboundSchema;
-  /** @deprecated use `CompleteBankAccountVerification$outboundSchema` instead. */
-  export const outboundSchema = CompleteBankAccountVerification$outboundSchema;
-  /** @deprecated use `CompleteBankAccountVerification$Outbound` instead. */
-  export type Outbound = CompleteBankAccountVerification$Outbound;
-}
-
 export function completeBankAccountVerificationToJSON(
   completeBankAccountVerification: CompleteBankAccountVerification,
 ): string {
@@ -59,7 +45,6 @@ export function completeBankAccountVerificationToJSON(
     ),
   );
 }
-
 export function completeBankAccountVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteBankAccountVerification, SDKValidationError> {

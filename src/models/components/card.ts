@@ -193,7 +193,6 @@ export const Card$inboundSchema: z.ZodType<Card, z.ZodTypeDef, unknown> = z
     domesticPullFromCard: DomesticPullFromCard$inboundSchema.optional(),
     paymentMethods: z.array(BasicPaymentMethod$inboundSchema).optional(),
   });
-
 /** @internal */
 export type Card$Outbound = {
   cardID: string;
@@ -249,23 +248,9 @@ export const Card$outboundSchema: z.ZodType<Card$Outbound, z.ZodTypeDef, Card> =
     paymentMethods: z.array(BasicPaymentMethod$outboundSchema).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Card$ {
-  /** @deprecated use `Card$inboundSchema` instead. */
-  export const inboundSchema = Card$inboundSchema;
-  /** @deprecated use `Card$outboundSchema` instead. */
-  export const outboundSchema = Card$outboundSchema;
-  /** @deprecated use `Card$Outbound` instead. */
-  export type Outbound = Card$Outbound;
-}
-
 export function cardToJSON(card: Card): string {
   return JSON.stringify(Card$outboundSchema.parse(card));
 }
-
 export function cardFromJSON(
   jsonString: string,
 ): SafeParseResult<Card, SDKValidationError> {

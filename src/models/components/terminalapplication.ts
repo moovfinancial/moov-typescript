@@ -65,7 +65,6 @@ export const TerminalApplication$inboundSchema: z.ZodType<
   sha256Digest: z.string().optional(),
   versionCode: z.string().optional(),
 });
-
 /** @internal */
 export type TerminalApplication$Outbound = {
   terminalApplicationID: string;
@@ -92,19 +91,6 @@ export const TerminalApplication$outboundSchema: z.ZodType<
   versionCode: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TerminalApplication$ {
-  /** @deprecated use `TerminalApplication$inboundSchema` instead. */
-  export const inboundSchema = TerminalApplication$inboundSchema;
-  /** @deprecated use `TerminalApplication$outboundSchema` instead. */
-  export const outboundSchema = TerminalApplication$outboundSchema;
-  /** @deprecated use `TerminalApplication$Outbound` instead. */
-  export type Outbound = TerminalApplication$Outbound;
-}
-
 export function terminalApplicationToJSON(
   terminalApplication: TerminalApplication,
 ): string {
@@ -112,7 +98,6 @@ export function terminalApplicationToJSON(
     TerminalApplication$outboundSchema.parse(terminalApplication),
   );
 }
-
 export function terminalApplicationFromJSON(
   jsonString: string,
 ): SafeParseResult<TerminalApplication, SDKValidationError> {

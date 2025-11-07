@@ -17,19 +17,7 @@ export type PaymentLinkStatus = ClosedEnum<typeof PaymentLinkStatus>;
 export const PaymentLinkStatus$inboundSchema: z.ZodNativeEnum<
   typeof PaymentLinkStatus
 > = z.nativeEnum(PaymentLinkStatus);
-
 /** @internal */
 export const PaymentLinkStatus$outboundSchema: z.ZodNativeEnum<
   typeof PaymentLinkStatus
 > = PaymentLinkStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentLinkStatus$ {
-  /** @deprecated use `PaymentLinkStatus$inboundSchema` instead. */
-  export const inboundSchema = PaymentLinkStatus$inboundSchema;
-  /** @deprecated use `PaymentLinkStatus$outboundSchema` instead. */
-  export const outboundSchema = PaymentLinkStatus$outboundSchema;
-}

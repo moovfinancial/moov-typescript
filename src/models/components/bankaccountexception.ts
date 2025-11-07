@@ -78,7 +78,6 @@ export const BankAccountException$inboundSchema: z.ZodType<
   rtpRejectionCode: RTPRejectionCode$inboundSchema.optional(),
   description: z.string(),
 });
-
 /** @internal */
 export type BankAccountException$Outbound = {
   achReturnCode?: string | undefined;
@@ -97,19 +96,6 @@ export const BankAccountException$outboundSchema: z.ZodType<
   description: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccountException$ {
-  /** @deprecated use `BankAccountException$inboundSchema` instead. */
-  export const inboundSchema = BankAccountException$inboundSchema;
-  /** @deprecated use `BankAccountException$outboundSchema` instead. */
-  export const outboundSchema = BankAccountException$outboundSchema;
-  /** @deprecated use `BankAccountException$Outbound` instead. */
-  export type Outbound = BankAccountException$Outbound;
-}
-
 export function bankAccountExceptionToJSON(
   bankAccountException: BankAccountException,
 ): string {
@@ -117,7 +103,6 @@ export function bankAccountExceptionToJSON(
     BankAccountException$outboundSchema.parse(bankAccountException),
   );
 }
-
 export function bankAccountExceptionFromJSON(
   jsonString: string,
 ): SafeParseResult<BankAccountException, SDKValidationError> {

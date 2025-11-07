@@ -51,7 +51,6 @@ export const ListAdjustmentsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListAdjustmentsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const ListAdjustmentsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAdjustmentsGlobals$ {
-  /** @deprecated use `ListAdjustmentsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListAdjustmentsGlobals$inboundSchema;
-  /** @deprecated use `ListAdjustmentsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListAdjustmentsGlobals$outboundSchema;
-  /** @deprecated use `ListAdjustmentsGlobals$Outbound` instead. */
-  export type Outbound = ListAdjustmentsGlobals$Outbound;
-}
-
 export function listAdjustmentsGlobalsToJSON(
   listAdjustmentsGlobals: ListAdjustmentsGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function listAdjustmentsGlobalsToJSON(
     ListAdjustmentsGlobals$outboundSchema.parse(listAdjustmentsGlobals),
   );
 }
-
 export function listAdjustmentsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAdjustmentsGlobals, SDKValidationError> {
@@ -110,7 +95,6 @@ export const ListAdjustmentsRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   walletID: z.string().optional(),
 });
-
 /** @internal */
 export type ListAdjustmentsRequest$Outbound = {
   accountID: string;
@@ -127,19 +111,6 @@ export const ListAdjustmentsRequest$outboundSchema: z.ZodType<
   walletID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAdjustmentsRequest$ {
-  /** @deprecated use `ListAdjustmentsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListAdjustmentsRequest$inboundSchema;
-  /** @deprecated use `ListAdjustmentsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListAdjustmentsRequest$outboundSchema;
-  /** @deprecated use `ListAdjustmentsRequest$Outbound` instead. */
-  export type Outbound = ListAdjustmentsRequest$Outbound;
-}
-
 export function listAdjustmentsRequestToJSON(
   listAdjustmentsRequest: ListAdjustmentsRequest,
 ): string {
@@ -147,7 +118,6 @@ export function listAdjustmentsRequestToJSON(
     ListAdjustmentsRequest$outboundSchema.parse(listAdjustmentsRequest),
   );
 }
-
 export function listAdjustmentsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAdjustmentsRequest, SDKValidationError> {
@@ -172,7 +142,6 @@ export const ListAdjustmentsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListAdjustmentsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -194,19 +163,6 @@ export const ListAdjustmentsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAdjustmentsResponse$ {
-  /** @deprecated use `ListAdjustmentsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListAdjustmentsResponse$inboundSchema;
-  /** @deprecated use `ListAdjustmentsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListAdjustmentsResponse$outboundSchema;
-  /** @deprecated use `ListAdjustmentsResponse$Outbound` instead. */
-  export type Outbound = ListAdjustmentsResponse$Outbound;
-}
-
 export function listAdjustmentsResponseToJSON(
   listAdjustmentsResponse: ListAdjustmentsResponse,
 ): string {
@@ -214,7 +170,6 @@ export function listAdjustmentsResponseToJSON(
     ListAdjustmentsResponse$outboundSchema.parse(listAdjustmentsResponse),
   );
 }
-
 export function listAdjustmentsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAdjustmentsResponse, SDKValidationError> {

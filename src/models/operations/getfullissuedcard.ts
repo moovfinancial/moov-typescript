@@ -51,7 +51,6 @@ export const GetFullIssuedCardGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetFullIssuedCardGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const GetFullIssuedCardGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFullIssuedCardGlobals$ {
-  /** @deprecated use `GetFullIssuedCardGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetFullIssuedCardGlobals$inboundSchema;
-  /** @deprecated use `GetFullIssuedCardGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetFullIssuedCardGlobals$outboundSchema;
-  /** @deprecated use `GetFullIssuedCardGlobals$Outbound` instead. */
-  export type Outbound = GetFullIssuedCardGlobals$Outbound;
-}
-
 export function getFullIssuedCardGlobalsToJSON(
   getFullIssuedCardGlobals: GetFullIssuedCardGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function getFullIssuedCardGlobalsToJSON(
     GetFullIssuedCardGlobals$outboundSchema.parse(getFullIssuedCardGlobals),
   );
 }
-
 export function getFullIssuedCardGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFullIssuedCardGlobals, SDKValidationError> {
@@ -110,7 +95,6 @@ export const GetFullIssuedCardRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   issuedCardID: z.string(),
 });
-
 /** @internal */
 export type GetFullIssuedCardRequest$Outbound = {
   accountID: string;
@@ -127,19 +111,6 @@ export const GetFullIssuedCardRequest$outboundSchema: z.ZodType<
   issuedCardID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFullIssuedCardRequest$ {
-  /** @deprecated use `GetFullIssuedCardRequest$inboundSchema` instead. */
-  export const inboundSchema = GetFullIssuedCardRequest$inboundSchema;
-  /** @deprecated use `GetFullIssuedCardRequest$outboundSchema` instead. */
-  export const outboundSchema = GetFullIssuedCardRequest$outboundSchema;
-  /** @deprecated use `GetFullIssuedCardRequest$Outbound` instead. */
-  export type Outbound = GetFullIssuedCardRequest$Outbound;
-}
-
 export function getFullIssuedCardRequestToJSON(
   getFullIssuedCardRequest: GetFullIssuedCardRequest,
 ): string {
@@ -147,7 +118,6 @@ export function getFullIssuedCardRequestToJSON(
     GetFullIssuedCardRequest$outboundSchema.parse(getFullIssuedCardRequest),
   );
 }
-
 export function getFullIssuedCardRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFullIssuedCardRequest, SDKValidationError> {
@@ -172,7 +142,6 @@ export const GetFullIssuedCardResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetFullIssuedCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -194,19 +163,6 @@ export const GetFullIssuedCardResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFullIssuedCardResponse$ {
-  /** @deprecated use `GetFullIssuedCardResponse$inboundSchema` instead. */
-  export const inboundSchema = GetFullIssuedCardResponse$inboundSchema;
-  /** @deprecated use `GetFullIssuedCardResponse$outboundSchema` instead. */
-  export const outboundSchema = GetFullIssuedCardResponse$outboundSchema;
-  /** @deprecated use `GetFullIssuedCardResponse$Outbound` instead. */
-  export type Outbound = GetFullIssuedCardResponse$Outbound;
-}
-
 export function getFullIssuedCardResponseToJSON(
   getFullIssuedCardResponse: GetFullIssuedCardResponse,
 ): string {
@@ -214,7 +170,6 @@ export function getFullIssuedCardResponseToJSON(
     GetFullIssuedCardResponse$outboundSchema.parse(getFullIssuedCardResponse),
   );
 }
-
 export function getFullIssuedCardResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFullIssuedCardResponse, SDKValidationError> {

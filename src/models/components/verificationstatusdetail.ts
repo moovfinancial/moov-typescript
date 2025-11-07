@@ -36,19 +36,7 @@ export type VerificationStatusDetail = ClosedEnum<
 export const VerificationStatusDetail$inboundSchema: z.ZodNativeEnum<
   typeof VerificationStatusDetail
 > = z.nativeEnum(VerificationStatusDetail);
-
 /** @internal */
 export const VerificationStatusDetail$outboundSchema: z.ZodNativeEnum<
   typeof VerificationStatusDetail
 > = VerificationStatusDetail$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerificationStatusDetail$ {
-  /** @deprecated use `VerificationStatusDetail$inboundSchema` instead. */
-  export const inboundSchema = VerificationStatusDetail$inboundSchema;
-  /** @deprecated use `VerificationStatusDetail$outboundSchema` instead. */
-  export const outboundSchema = VerificationStatusDetail$outboundSchema;
-}

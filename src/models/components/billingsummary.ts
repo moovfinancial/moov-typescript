@@ -92,7 +92,6 @@ export const CardAcquiring$inboundSchema: z.ZodType<
   feeAmount: AmountDecimal$inboundSchema.optional(),
   interchangeFees: BillingSummaryInterchange$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CardAcquiring$Outbound = {
   volumeAmount?: AmountDecimal$Outbound | undefined;
@@ -113,23 +112,9 @@ export const CardAcquiring$outboundSchema: z.ZodType<
   interchangeFees: BillingSummaryInterchange$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardAcquiring$ {
-  /** @deprecated use `CardAcquiring$inboundSchema` instead. */
-  export const inboundSchema = CardAcquiring$inboundSchema;
-  /** @deprecated use `CardAcquiring$outboundSchema` instead. */
-  export const outboundSchema = CardAcquiring$outboundSchema;
-  /** @deprecated use `CardAcquiring$Outbound` instead. */
-  export type Outbound = CardAcquiring$Outbound;
-}
-
 export function cardAcquiringToJSON(cardAcquiring: CardAcquiring): string {
   return JSON.stringify(CardAcquiring$outboundSchema.parse(cardAcquiring));
 }
-
 export function cardAcquiringFromJSON(
   jsonString: string,
 ): SafeParseResult<CardAcquiring, SDKValidationError> {
@@ -154,7 +139,6 @@ export const BillingSummary$inboundSchema: z.ZodType<
   otherFees: AmountDecimal$inboundSchema.optional(),
   total: AmountDecimal$inboundSchema.optional(),
 });
-
 /** @internal */
 export type BillingSummary$Outbound = {
   cardAcquiring?: CardAcquiring$Outbound | undefined;
@@ -181,23 +165,9 @@ export const BillingSummary$outboundSchema: z.ZodType<
   total: AmountDecimal$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BillingSummary$ {
-  /** @deprecated use `BillingSummary$inboundSchema` instead. */
-  export const inboundSchema = BillingSummary$inboundSchema;
-  /** @deprecated use `BillingSummary$outboundSchema` instead. */
-  export const outboundSchema = BillingSummary$outboundSchema;
-  /** @deprecated use `BillingSummary$Outbound` instead. */
-  export type Outbound = BillingSummary$Outbound;
-}
-
 export function billingSummaryToJSON(billingSummary: BillingSummary): string {
   return JSON.stringify(BillingSummary$outboundSchema.parse(billingSummary));
 }
-
 export function billingSummaryFromJSON(
   jsonString: string,
 ): SafeParseResult<BillingSummary, SDKValidationError> {

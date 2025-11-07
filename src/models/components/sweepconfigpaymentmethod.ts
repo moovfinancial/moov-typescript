@@ -31,7 +31,6 @@ export const SweepConfigPaymentMethod$inboundSchema: z.ZodType<
   disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type SweepConfigPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -48,19 +47,6 @@ export const SweepConfigPaymentMethod$outboundSchema: z.ZodType<
   disabledOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SweepConfigPaymentMethod$ {
-  /** @deprecated use `SweepConfigPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = SweepConfigPaymentMethod$inboundSchema;
-  /** @deprecated use `SweepConfigPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = SweepConfigPaymentMethod$outboundSchema;
-  /** @deprecated use `SweepConfigPaymentMethod$Outbound` instead. */
-  export type Outbound = SweepConfigPaymentMethod$Outbound;
-}
-
 export function sweepConfigPaymentMethodToJSON(
   sweepConfigPaymentMethod: SweepConfigPaymentMethod,
 ): string {
@@ -68,7 +54,6 @@ export function sweepConfigPaymentMethodToJSON(
     SweepConfigPaymentMethod$outboundSchema.parse(sweepConfigPaymentMethod),
   );
 }
-
 export function sweepConfigPaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<SweepConfigPaymentMethod, SDKValidationError> {

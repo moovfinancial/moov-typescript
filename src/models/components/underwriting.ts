@@ -113,7 +113,6 @@ export const Underwriting$inboundSchema: z.ZodType<
   moneyTransfer: MoneyTransfer$inboundSchema.optional(),
   sendFunds: SendFunds$inboundSchema.optional(),
 });
-
 /** @internal */
 export type Underwriting$Outbound = {
   averageTransactionSize?: number | undefined;
@@ -155,23 +154,9 @@ export const Underwriting$outboundSchema: z.ZodType<
   sendFunds: SendFunds$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Underwriting$ {
-  /** @deprecated use `Underwriting$inboundSchema` instead. */
-  export const inboundSchema = Underwriting$inboundSchema;
-  /** @deprecated use `Underwriting$outboundSchema` instead. */
-  export const outboundSchema = Underwriting$outboundSchema;
-  /** @deprecated use `Underwriting$Outbound` instead. */
-  export type Outbound = Underwriting$Outbound;
-}
-
 export function underwritingToJSON(underwriting: Underwriting): string {
   return JSON.stringify(Underwriting$outboundSchema.parse(underwriting));
 }
-
 export function underwritingFromJSON(
   jsonString: string,
 ): SafeParseResult<Underwriting, SDKValidationError> {

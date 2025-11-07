@@ -41,7 +41,6 @@ export const UpsertSchedule$inboundSchema: z.ZodType<
   occurrences: z.array(Occurrence$inboundSchema).optional(),
   recur: Recur$inboundSchema.optional(),
 });
-
 /** @internal */
 export type UpsertSchedule$Outbound = {
   description?: string | undefined;
@@ -60,23 +59,9 @@ export const UpsertSchedule$outboundSchema: z.ZodType<
   recur: Recur$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertSchedule$ {
-  /** @deprecated use `UpsertSchedule$inboundSchema` instead. */
-  export const inboundSchema = UpsertSchedule$inboundSchema;
-  /** @deprecated use `UpsertSchedule$outboundSchema` instead. */
-  export const outboundSchema = UpsertSchedule$outboundSchema;
-  /** @deprecated use `UpsertSchedule$Outbound` instead. */
-  export type Outbound = UpsertSchedule$Outbound;
-}
-
 export function upsertScheduleToJSON(upsertSchedule: UpsertSchedule): string {
   return JSON.stringify(UpsertSchedule$outboundSchema.parse(upsertSchedule));
 }
-
 export function upsertScheduleFromJSON(
   jsonString: string,
 ): SafeParseResult<UpsertSchedule, SDKValidationError> {

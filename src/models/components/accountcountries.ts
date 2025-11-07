@@ -22,7 +22,6 @@ export const AccountCountries$inboundSchema: z.ZodType<
 > = z.object({
   countries: z.array(z.string()),
 });
-
 /** @internal */
 export type AccountCountries$Outbound = {
   countries: Array<string>;
@@ -37,19 +36,6 @@ export const AccountCountries$outboundSchema: z.ZodType<
   countries: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountCountries$ {
-  /** @deprecated use `AccountCountries$inboundSchema` instead. */
-  export const inboundSchema = AccountCountries$inboundSchema;
-  /** @deprecated use `AccountCountries$outboundSchema` instead. */
-  export const outboundSchema = AccountCountries$outboundSchema;
-  /** @deprecated use `AccountCountries$Outbound` instead. */
-  export type Outbound = AccountCountries$Outbound;
-}
-
 export function accountCountriesToJSON(
   accountCountries: AccountCountries,
 ): string {
@@ -57,7 +43,6 @@ export function accountCountriesToJSON(
     AccountCountries$outboundSchema.parse(accountCountries),
   );
 }
-
 export function accountCountriesFromJSON(
   jsonString: string,
 ): SafeParseResult<AccountCountries, SDKValidationError> {

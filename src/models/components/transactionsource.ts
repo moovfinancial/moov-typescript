@@ -32,19 +32,7 @@ export type TransactionSource = ClosedEnum<typeof TransactionSource>;
 export const TransactionSource$inboundSchema: z.ZodNativeEnum<
   typeof TransactionSource
 > = z.nativeEnum(TransactionSource);
-
 /** @internal */
 export const TransactionSource$outboundSchema: z.ZodNativeEnum<
   typeof TransactionSource
 > = TransactionSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransactionSource$ {
-  /** @deprecated use `TransactionSource$inboundSchema` instead. */
-  export const inboundSchema = TransactionSource$inboundSchema;
-  /** @deprecated use `TransactionSource$outboundSchema` instead. */
-  export const outboundSchema = TransactionSource$outboundSchema;
-}

@@ -48,7 +48,6 @@ export const CreatePaymentLinkGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreatePaymentLinkGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const CreatePaymentLinkGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePaymentLinkGlobals$ {
-  /** @deprecated use `CreatePaymentLinkGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreatePaymentLinkGlobals$inboundSchema;
-  /** @deprecated use `CreatePaymentLinkGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreatePaymentLinkGlobals$outboundSchema;
-  /** @deprecated use `CreatePaymentLinkGlobals$Outbound` instead. */
-  export type Outbound = CreatePaymentLinkGlobals$Outbound;
-}
-
 export function createPaymentLinkGlobalsToJSON(
   createPaymentLinkGlobals: CreatePaymentLinkGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function createPaymentLinkGlobalsToJSON(
     CreatePaymentLinkGlobals$outboundSchema.parse(createPaymentLinkGlobals),
   );
 }
-
 export function createPaymentLinkGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreatePaymentLinkGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const CreatePaymentLinkRequest$inboundSchema: z.ZodType<
     "CreatePaymentLink": "createPaymentLink",
   });
 });
-
 /** @internal */
 export type CreatePaymentLinkRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const CreatePaymentLinkRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePaymentLinkRequest$ {
-  /** @deprecated use `CreatePaymentLinkRequest$inboundSchema` instead. */
-  export const inboundSchema = CreatePaymentLinkRequest$inboundSchema;
-  /** @deprecated use `CreatePaymentLinkRequest$outboundSchema` instead. */
-  export const outboundSchema = CreatePaymentLinkRequest$outboundSchema;
-  /** @deprecated use `CreatePaymentLinkRequest$Outbound` instead. */
-  export type Outbound = CreatePaymentLinkRequest$Outbound;
-}
-
 export function createPaymentLinkRequestToJSON(
   createPaymentLinkRequest: CreatePaymentLinkRequest,
 ): string {
@@ -152,7 +123,6 @@ export function createPaymentLinkRequestToJSON(
     CreatePaymentLinkRequest$outboundSchema.parse(createPaymentLinkRequest),
   );
 }
-
 export function createPaymentLinkRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreatePaymentLinkRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const CreatePaymentLinkResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreatePaymentLinkResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const CreatePaymentLinkResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePaymentLinkResponse$ {
-  /** @deprecated use `CreatePaymentLinkResponse$inboundSchema` instead. */
-  export const inboundSchema = CreatePaymentLinkResponse$inboundSchema;
-  /** @deprecated use `CreatePaymentLinkResponse$outboundSchema` instead. */
-  export const outboundSchema = CreatePaymentLinkResponse$outboundSchema;
-  /** @deprecated use `CreatePaymentLinkResponse$Outbound` instead. */
-  export type Outbound = CreatePaymentLinkResponse$Outbound;
-}
-
 export function createPaymentLinkResponseToJSON(
   createPaymentLinkResponse: CreatePaymentLinkResponse,
 ): string {
@@ -219,7 +175,6 @@ export function createPaymentLinkResponseToJSON(
     CreatePaymentLinkResponse$outboundSchema.parse(createPaymentLinkResponse),
   );
 }
-
 export function createPaymentLinkResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreatePaymentLinkResponse, SDKValidationError> {

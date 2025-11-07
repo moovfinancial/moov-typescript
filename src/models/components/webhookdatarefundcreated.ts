@@ -23,7 +23,6 @@ export const WebhookDataRefundCreated$inboundSchema: z.ZodType<
   transferID: z.string(),
   refundID: z.string(),
 });
-
 /** @internal */
 export type WebhookDataRefundCreated$Outbound = {
   accountID: string;
@@ -42,19 +41,6 @@ export const WebhookDataRefundCreated$outboundSchema: z.ZodType<
   refundID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataRefundCreated$ {
-  /** @deprecated use `WebhookDataRefundCreated$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataRefundCreated$inboundSchema;
-  /** @deprecated use `WebhookDataRefundCreated$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataRefundCreated$outboundSchema;
-  /** @deprecated use `WebhookDataRefundCreated$Outbound` instead. */
-  export type Outbound = WebhookDataRefundCreated$Outbound;
-}
-
 export function webhookDataRefundCreatedToJSON(
   webhookDataRefundCreated: WebhookDataRefundCreated,
 ): string {
@@ -62,7 +48,6 @@ export function webhookDataRefundCreatedToJSON(
     WebhookDataRefundCreated$outboundSchema.parse(webhookDataRefundCreated),
   );
 }
-
 export function webhookDataRefundCreatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataRefundCreated, SDKValidationError> {

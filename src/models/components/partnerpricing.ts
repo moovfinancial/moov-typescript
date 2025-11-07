@@ -80,7 +80,6 @@ export const PartnerPricing$inboundSchema: z.ZodType<
   monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
   createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type PartnerPricing$Outbound = {
   planID: string;
@@ -111,23 +110,9 @@ export const PartnerPricing$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PartnerPricing$ {
-  /** @deprecated use `PartnerPricing$inboundSchema` instead. */
-  export const inboundSchema = PartnerPricing$inboundSchema;
-  /** @deprecated use `PartnerPricing$outboundSchema` instead. */
-  export const outboundSchema = PartnerPricing$outboundSchema;
-  /** @deprecated use `PartnerPricing$Outbound` instead. */
-  export type Outbound = PartnerPricing$Outbound;
-}
-
 export function partnerPricingToJSON(partnerPricing: PartnerPricing): string {
   return JSON.stringify(PartnerPricing$outboundSchema.parse(partnerPricing));
 }
-
 export function partnerPricingFromJSON(
   jsonString: string,
 ): SafeParseResult<PartnerPricing, SDKValidationError> {

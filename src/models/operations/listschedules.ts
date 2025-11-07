@@ -56,7 +56,6 @@ export const ListSchedulesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListSchedulesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -75,19 +74,6 @@ export const ListSchedulesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSchedulesGlobals$ {
-  /** @deprecated use `ListSchedulesGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListSchedulesGlobals$inboundSchema;
-  /** @deprecated use `ListSchedulesGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListSchedulesGlobals$outboundSchema;
-  /** @deprecated use `ListSchedulesGlobals$Outbound` instead. */
-  export type Outbound = ListSchedulesGlobals$Outbound;
-}
-
 export function listSchedulesGlobalsToJSON(
   listSchedulesGlobals: ListSchedulesGlobals,
 ): string {
@@ -95,7 +81,6 @@ export function listSchedulesGlobalsToJSON(
     ListSchedulesGlobals$outboundSchema.parse(listSchedulesGlobals),
   );
 }
-
 export function listSchedulesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSchedulesGlobals, SDKValidationError> {
@@ -109,21 +94,9 @@ export function listSchedulesGlobalsFromJSON(
 /** @internal */
 export const Hydrate$inboundSchema: z.ZodNativeEnum<typeof Hydrate> = z
   .nativeEnum(Hydrate);
-
 /** @internal */
 export const Hydrate$outboundSchema: z.ZodNativeEnum<typeof Hydrate> =
   Hydrate$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Hydrate$ {
-  /** @deprecated use `Hydrate$inboundSchema` instead. */
-  export const inboundSchema = Hydrate$inboundSchema;
-  /** @deprecated use `Hydrate$outboundSchema` instead. */
-  export const outboundSchema = Hydrate$outboundSchema;
-}
 
 /** @internal */
 export const ListSchedulesRequest$inboundSchema: z.ZodType<
@@ -136,7 +109,6 @@ export const ListSchedulesRequest$inboundSchema: z.ZodType<
   hydrate: Hydrate$inboundSchema.optional(),
   accountID: z.string(),
 });
-
 /** @internal */
 export type ListSchedulesRequest$Outbound = {
   skip?: number | undefined;
@@ -157,19 +129,6 @@ export const ListSchedulesRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSchedulesRequest$ {
-  /** @deprecated use `ListSchedulesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListSchedulesRequest$inboundSchema;
-  /** @deprecated use `ListSchedulesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListSchedulesRequest$outboundSchema;
-  /** @deprecated use `ListSchedulesRequest$Outbound` instead. */
-  export type Outbound = ListSchedulesRequest$Outbound;
-}
-
 export function listSchedulesRequestToJSON(
   listSchedulesRequest: ListSchedulesRequest,
 ): string {
@@ -177,7 +136,6 @@ export function listSchedulesRequestToJSON(
     ListSchedulesRequest$outboundSchema.parse(listSchedulesRequest),
   );
 }
-
 export function listSchedulesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSchedulesRequest, SDKValidationError> {
@@ -202,7 +160,6 @@ export const ListSchedulesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListSchedulesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -224,19 +181,6 @@ export const ListSchedulesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSchedulesResponse$ {
-  /** @deprecated use `ListSchedulesResponse$inboundSchema` instead. */
-  export const inboundSchema = ListSchedulesResponse$inboundSchema;
-  /** @deprecated use `ListSchedulesResponse$outboundSchema` instead. */
-  export const outboundSchema = ListSchedulesResponse$outboundSchema;
-  /** @deprecated use `ListSchedulesResponse$Outbound` instead. */
-  export type Outbound = ListSchedulesResponse$Outbound;
-}
-
 export function listSchedulesResponseToJSON(
   listSchedulesResponse: ListSchedulesResponse,
 ): string {
@@ -244,7 +188,6 @@ export function listSchedulesResponseToJSON(
     ListSchedulesResponse$outboundSchema.parse(listSchedulesResponse),
   );
 }
-
 export function listSchedulesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSchedulesResponse, SDKValidationError> {

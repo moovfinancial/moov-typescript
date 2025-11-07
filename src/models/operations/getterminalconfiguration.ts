@@ -48,7 +48,6 @@ export const GetTerminalConfigurationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetTerminalConfigurationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const GetTerminalConfigurationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTerminalConfigurationGlobals$ {
-  /** @deprecated use `GetTerminalConfigurationGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetTerminalConfigurationGlobals$inboundSchema;
-  /** @deprecated use `GetTerminalConfigurationGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetTerminalConfigurationGlobals$outboundSchema;
-  /** @deprecated use `GetTerminalConfigurationGlobals$Outbound` instead. */
-  export type Outbound = GetTerminalConfigurationGlobals$Outbound;
-}
-
 export function getTerminalConfigurationGlobalsToJSON(
   getTerminalConfigurationGlobals: GetTerminalConfigurationGlobals,
 ): string {
@@ -89,7 +75,6 @@ export function getTerminalConfigurationGlobalsToJSON(
     ),
   );
 }
-
 export function getTerminalConfigurationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTerminalConfigurationGlobals, SDKValidationError> {
@@ -109,7 +94,6 @@ export const GetTerminalConfigurationRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   terminalApplicationID: z.string(),
 });
-
 /** @internal */
 export type GetTerminalConfigurationRequest$Outbound = {
   accountID: string;
@@ -126,19 +110,6 @@ export const GetTerminalConfigurationRequest$outboundSchema: z.ZodType<
   terminalApplicationID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTerminalConfigurationRequest$ {
-  /** @deprecated use `GetTerminalConfigurationRequest$inboundSchema` instead. */
-  export const inboundSchema = GetTerminalConfigurationRequest$inboundSchema;
-  /** @deprecated use `GetTerminalConfigurationRequest$outboundSchema` instead. */
-  export const outboundSchema = GetTerminalConfigurationRequest$outboundSchema;
-  /** @deprecated use `GetTerminalConfigurationRequest$Outbound` instead. */
-  export type Outbound = GetTerminalConfigurationRequest$Outbound;
-}
-
 export function getTerminalConfigurationRequestToJSON(
   getTerminalConfigurationRequest: GetTerminalConfigurationRequest,
 ): string {
@@ -148,7 +119,6 @@ export function getTerminalConfigurationRequestToJSON(
     ),
   );
 }
-
 export function getTerminalConfigurationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTerminalConfigurationRequest, SDKValidationError> {
@@ -173,7 +143,6 @@ export const GetTerminalConfigurationResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetTerminalConfigurationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -195,19 +164,6 @@ export const GetTerminalConfigurationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTerminalConfigurationResponse$ {
-  /** @deprecated use `GetTerminalConfigurationResponse$inboundSchema` instead. */
-  export const inboundSchema = GetTerminalConfigurationResponse$inboundSchema;
-  /** @deprecated use `GetTerminalConfigurationResponse$outboundSchema` instead. */
-  export const outboundSchema = GetTerminalConfigurationResponse$outboundSchema;
-  /** @deprecated use `GetTerminalConfigurationResponse$Outbound` instead. */
-  export type Outbound = GetTerminalConfigurationResponse$Outbound;
-}
-
 export function getTerminalConfigurationResponseToJSON(
   getTerminalConfigurationResponse: GetTerminalConfigurationResponse,
 ): string {
@@ -217,7 +173,6 @@ export function getTerminalConfigurationResponseToJSON(
     ),
   );
 }
-
 export function getTerminalConfigurationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTerminalConfigurationResponse, SDKValidationError> {

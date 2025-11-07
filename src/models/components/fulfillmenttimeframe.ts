@@ -21,19 +21,7 @@ export type FulfillmentTimeframe = ClosedEnum<typeof FulfillmentTimeframe>;
 export const FulfillmentTimeframe$inboundSchema: z.ZodNativeEnum<
   typeof FulfillmentTimeframe
 > = z.nativeEnum(FulfillmentTimeframe);
-
 /** @internal */
 export const FulfillmentTimeframe$outboundSchema: z.ZodNativeEnum<
   typeof FulfillmentTimeframe
 > = FulfillmentTimeframe$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FulfillmentTimeframe$ {
-  /** @deprecated use `FulfillmentTimeframe$inboundSchema` instead. */
-  export const inboundSchema = FulfillmentTimeframe$inboundSchema;
-  /** @deprecated use `FulfillmentTimeframe$outboundSchema` instead. */
-  export const outboundSchema = FulfillmentTimeframe$outboundSchema;
-}

@@ -23,7 +23,6 @@ export const TransferAccount$inboundSchema: z.ZodType<
   email: z.string(),
   displayName: z.string(),
 });
-
 /** @internal */
 export type TransferAccount$Outbound = {
   accountID: string;
@@ -42,25 +41,11 @@ export const TransferAccount$outboundSchema: z.ZodType<
   displayName: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferAccount$ {
-  /** @deprecated use `TransferAccount$inboundSchema` instead. */
-  export const inboundSchema = TransferAccount$inboundSchema;
-  /** @deprecated use `TransferAccount$outboundSchema` instead. */
-  export const outboundSchema = TransferAccount$outboundSchema;
-  /** @deprecated use `TransferAccount$Outbound` instead. */
-  export type Outbound = TransferAccount$Outbound;
-}
-
 export function transferAccountToJSON(
   transferAccount: TransferAccount,
 ): string {
   return JSON.stringify(TransferAccount$outboundSchema.parse(transferAccount));
 }
-
 export function transferAccountFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferAccount, SDKValidationError> {

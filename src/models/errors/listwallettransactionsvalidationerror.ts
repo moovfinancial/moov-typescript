@@ -148,18 +148,3 @@ export const ListWalletTransactionsValidationError$outboundSchema: z.ZodType<
     skip: z.string().optional(),
     count: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListWalletTransactionsValidationError$ {
-  /** @deprecated use `ListWalletTransactionsValidationError$inboundSchema` instead. */
-  export const inboundSchema =
-    ListWalletTransactionsValidationError$inboundSchema;
-  /** @deprecated use `ListWalletTransactionsValidationError$outboundSchema` instead. */
-  export const outboundSchema =
-    ListWalletTransactionsValidationError$outboundSchema;
-  /** @deprecated use `ListWalletTransactionsValidationError$Outbound` instead. */
-  export type Outbound = ListWalletTransactionsValidationError$Outbound;
-}

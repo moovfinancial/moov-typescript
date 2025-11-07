@@ -21,7 +21,6 @@ export const WebhookDataRepresentativeDisabled$inboundSchema: z.ZodType<
   accountID: z.string(),
   representativeID: z.string(),
 });
-
 /** @internal */
 export type WebhookDataRepresentativeDisabled$Outbound = {
   accountID: string;
@@ -38,20 +37,6 @@ export const WebhookDataRepresentativeDisabled$outboundSchema: z.ZodType<
   representativeID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataRepresentativeDisabled$ {
-  /** @deprecated use `WebhookDataRepresentativeDisabled$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataRepresentativeDisabled$inboundSchema;
-  /** @deprecated use `WebhookDataRepresentativeDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookDataRepresentativeDisabled$outboundSchema;
-  /** @deprecated use `WebhookDataRepresentativeDisabled$Outbound` instead. */
-  export type Outbound = WebhookDataRepresentativeDisabled$Outbound;
-}
-
 export function webhookDataRepresentativeDisabledToJSON(
   webhookDataRepresentativeDisabled: WebhookDataRepresentativeDisabled,
 ): string {
@@ -61,7 +46,6 @@ export function webhookDataRepresentativeDisabledToJSON(
     ),
   );
 }
-
 export function webhookDataRepresentativeDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataRepresentativeDisabled, SDKValidationError> {

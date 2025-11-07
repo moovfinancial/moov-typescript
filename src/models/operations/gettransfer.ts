@@ -51,7 +51,6 @@ export const GetTransferGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetTransferGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const GetTransferGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTransferGlobals$ {
-  /** @deprecated use `GetTransferGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetTransferGlobals$inboundSchema;
-  /** @deprecated use `GetTransferGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetTransferGlobals$outboundSchema;
-  /** @deprecated use `GetTransferGlobals$Outbound` instead. */
-  export type Outbound = GetTransferGlobals$Outbound;
-}
-
 export function getTransferGlobalsToJSON(
   getTransferGlobals: GetTransferGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function getTransferGlobalsToJSON(
     GetTransferGlobals$outboundSchema.parse(getTransferGlobals),
   );
 }
-
 export function getTransferGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTransferGlobals, SDKValidationError> {
@@ -110,7 +95,6 @@ export const GetTransferRequest$inboundSchema: z.ZodType<
   transferID: z.string(),
   accountID: z.string(),
 });
-
 /** @internal */
 export type GetTransferRequest$Outbound = {
   transferID: string;
@@ -127,19 +111,6 @@ export const GetTransferRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTransferRequest$ {
-  /** @deprecated use `GetTransferRequest$inboundSchema` instead. */
-  export const inboundSchema = GetTransferRequest$inboundSchema;
-  /** @deprecated use `GetTransferRequest$outboundSchema` instead. */
-  export const outboundSchema = GetTransferRequest$outboundSchema;
-  /** @deprecated use `GetTransferRequest$Outbound` instead. */
-  export type Outbound = GetTransferRequest$Outbound;
-}
-
 export function getTransferRequestToJSON(
   getTransferRequest: GetTransferRequest,
 ): string {
@@ -147,7 +118,6 @@ export function getTransferRequestToJSON(
     GetTransferRequest$outboundSchema.parse(getTransferRequest),
   );
 }
-
 export function getTransferRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTransferRequest, SDKValidationError> {
@@ -172,7 +142,6 @@ export const GetTransferResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetTransferResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -194,19 +163,6 @@ export const GetTransferResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTransferResponse$ {
-  /** @deprecated use `GetTransferResponse$inboundSchema` instead. */
-  export const inboundSchema = GetTransferResponse$inboundSchema;
-  /** @deprecated use `GetTransferResponse$outboundSchema` instead. */
-  export const outboundSchema = GetTransferResponse$outboundSchema;
-  /** @deprecated use `GetTransferResponse$Outbound` instead. */
-  export type Outbound = GetTransferResponse$Outbound;
-}
-
 export function getTransferResponseToJSON(
   getTransferResponse: GetTransferResponse,
 ): string {
@@ -214,7 +170,6 @@ export function getTransferResponseToJSON(
     GetTransferResponse$outboundSchema.parse(getTransferResponse),
   );
 }
-
 export function getTransferResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTransferResponse, SDKValidationError> {

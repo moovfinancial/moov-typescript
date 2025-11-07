@@ -52,7 +52,6 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   amount: Amount$inboundSchema,
   cardDetails: RefundCardDetails$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CardAcquiringRefund$Outbound = {
   refundID: string;
@@ -77,19 +76,6 @@ export const CardAcquiringRefund$outboundSchema: z.ZodType<
   cardDetails: RefundCardDetails$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardAcquiringRefund$ {
-  /** @deprecated use `CardAcquiringRefund$inboundSchema` instead. */
-  export const inboundSchema = CardAcquiringRefund$inboundSchema;
-  /** @deprecated use `CardAcquiringRefund$outboundSchema` instead. */
-  export const outboundSchema = CardAcquiringRefund$outboundSchema;
-  /** @deprecated use `CardAcquiringRefund$Outbound` instead. */
-  export type Outbound = CardAcquiringRefund$Outbound;
-}
-
 export function cardAcquiringRefundToJSON(
   cardAcquiringRefund: CardAcquiringRefund,
 ): string {
@@ -97,7 +83,6 @@ export function cardAcquiringRefundToJSON(
     CardAcquiringRefund$outboundSchema.parse(cardAcquiringRefund),
   );
 }
-
 export function cardAcquiringRefundFromJSON(
   jsonString: string,
 ): SafeParseResult<CardAcquiringRefund, SDKValidationError> {

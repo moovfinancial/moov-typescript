@@ -62,7 +62,6 @@ export const PatchIndividual$inboundSchema: z.ZodType<
   birthDate: BirthDateUpdate$inboundSchema.optional(),
   governmentID: GovernmentID$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PatchIndividual$Outbound = {
   name?: IndividualNameUpdate$Outbound | undefined;
@@ -87,25 +86,11 @@ export const PatchIndividual$outboundSchema: z.ZodType<
   governmentID: GovernmentID$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchIndividual$ {
-  /** @deprecated use `PatchIndividual$inboundSchema` instead. */
-  export const inboundSchema = PatchIndividual$inboundSchema;
-  /** @deprecated use `PatchIndividual$outboundSchema` instead. */
-  export const outboundSchema = PatchIndividual$outboundSchema;
-  /** @deprecated use `PatchIndividual$Outbound` instead. */
-  export type Outbound = PatchIndividual$Outbound;
-}
-
 export function patchIndividualToJSON(
   patchIndividual: PatchIndividual,
 ): string {
   return JSON.stringify(PatchIndividual$outboundSchema.parse(patchIndividual));
 }
-
 export function patchIndividualFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchIndividual, SDKValidationError> {

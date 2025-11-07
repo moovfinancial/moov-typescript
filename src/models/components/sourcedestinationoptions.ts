@@ -21,7 +21,6 @@ export const SourceDestinationOptions$inboundSchema: z.ZodType<
   accountID: z.string().optional(),
   paymentMethodID: z.string().optional(),
 });
-
 /** @internal */
 export type SourceDestinationOptions$Outbound = {
   accountID?: string | undefined;
@@ -38,19 +37,6 @@ export const SourceDestinationOptions$outboundSchema: z.ZodType<
   paymentMethodID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SourceDestinationOptions$ {
-  /** @deprecated use `SourceDestinationOptions$inboundSchema` instead. */
-  export const inboundSchema = SourceDestinationOptions$inboundSchema;
-  /** @deprecated use `SourceDestinationOptions$outboundSchema` instead. */
-  export const outboundSchema = SourceDestinationOptions$outboundSchema;
-  /** @deprecated use `SourceDestinationOptions$Outbound` instead. */
-  export type Outbound = SourceDestinationOptions$Outbound;
-}
-
 export function sourceDestinationOptionsToJSON(
   sourceDestinationOptions: SourceDestinationOptions,
 ): string {
@@ -58,7 +44,6 @@ export function sourceDestinationOptionsToJSON(
     SourceDestinationOptions$outboundSchema.parse(sourceDestinationOptions),
   );
 }
-
 export function sourceDestinationOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<SourceDestinationOptions, SDKValidationError> {

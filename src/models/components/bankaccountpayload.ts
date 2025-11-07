@@ -28,7 +28,6 @@ export const BankAccountPayload$inboundSchema: z.ZodType<
 > = z.object({
   account: BankAccountIntegration$inboundSchema,
 });
-
 /** @internal */
 export type BankAccountPayload$Outbound = {
   account: BankAccountIntegration$Outbound;
@@ -43,19 +42,6 @@ export const BankAccountPayload$outboundSchema: z.ZodType<
   account: BankAccountIntegration$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccountPayload$ {
-  /** @deprecated use `BankAccountPayload$inboundSchema` instead. */
-  export const inboundSchema = BankAccountPayload$inboundSchema;
-  /** @deprecated use `BankAccountPayload$outboundSchema` instead. */
-  export const outboundSchema = BankAccountPayload$outboundSchema;
-  /** @deprecated use `BankAccountPayload$Outbound` instead. */
-  export type Outbound = BankAccountPayload$Outbound;
-}
-
 export function bankAccountPayloadToJSON(
   bankAccountPayload: BankAccountPayload,
 ): string {
@@ -63,7 +49,6 @@ export function bankAccountPayloadToJSON(
     BankAccountPayload$outboundSchema.parse(bankAccountPayload),
   );
 }
-
 export function bankAccountPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<BankAccountPayload, SDKValidationError> {

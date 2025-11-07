@@ -90,16 +90,3 @@ export const OnboardingInviteError$outboundSchema: z.ZodType<
     capabilities: z.record(z.string()).optional(),
     feePlanCodes: z.record(z.string()).optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OnboardingInviteError$ {
-  /** @deprecated use `OnboardingInviteError$inboundSchema` instead. */
-  export const inboundSchema = OnboardingInviteError$inboundSchema;
-  /** @deprecated use `OnboardingInviteError$outboundSchema` instead. */
-  export const outboundSchema = OnboardingInviteError$outboundSchema;
-  /** @deprecated use `OnboardingInviteError$Outbound` instead. */
-  export type Outbound = OnboardingInviteError$Outbound;
-}

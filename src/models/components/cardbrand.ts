@@ -23,18 +23,6 @@ export type CardBrand = ClosedEnum<typeof CardBrand>;
 /** @internal */
 export const CardBrand$inboundSchema: z.ZodNativeEnum<typeof CardBrand> = z
   .nativeEnum(CardBrand);
-
 /** @internal */
 export const CardBrand$outboundSchema: z.ZodNativeEnum<typeof CardBrand> =
   CardBrand$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardBrand$ {
-  /** @deprecated use `CardBrand$inboundSchema` instead. */
-  export const inboundSchema = CardBrand$inboundSchema;
-  /** @deprecated use `CardBrand$outboundSchema` instead. */
-  export const outboundSchema = CardBrand$outboundSchema;
-}

@@ -60,7 +60,6 @@ export const AuthTokenRequest$inboundSchema: z.ZodType<
     "refresh_token": "refreshToken",
   });
 });
-
 /** @internal */
 export type AuthTokenRequest$Outbound = {
   grant_type: string;
@@ -90,19 +89,6 @@ export const AuthTokenRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthTokenRequest$ {
-  /** @deprecated use `AuthTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = AuthTokenRequest$inboundSchema;
-  /** @deprecated use `AuthTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = AuthTokenRequest$outboundSchema;
-  /** @deprecated use `AuthTokenRequest$Outbound` instead. */
-  export type Outbound = AuthTokenRequest$Outbound;
-}
-
 export function authTokenRequestToJSON(
   authTokenRequest: AuthTokenRequest,
 ): string {
@@ -110,7 +96,6 @@ export function authTokenRequestToJSON(
     AuthTokenRequest$outboundSchema.parse(authTokenRequest),
   );
 }
-
 export function authTokenRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthTokenRequest, SDKValidationError> {

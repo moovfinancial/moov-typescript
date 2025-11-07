@@ -25,7 +25,6 @@ export const FinancialInstitutions$inboundSchema: z.ZodType<
 > = z.object({
   achParticipants: z.array(AchParticipant$inboundSchema),
 });
-
 /** @internal */
 export type FinancialInstitutions$Outbound = {
   achParticipants: Array<AchParticipant$Outbound>;
@@ -40,19 +39,6 @@ export const FinancialInstitutions$outboundSchema: z.ZodType<
   achParticipants: z.array(AchParticipant$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FinancialInstitutions$ {
-  /** @deprecated use `FinancialInstitutions$inboundSchema` instead. */
-  export const inboundSchema = FinancialInstitutions$inboundSchema;
-  /** @deprecated use `FinancialInstitutions$outboundSchema` instead. */
-  export const outboundSchema = FinancialInstitutions$outboundSchema;
-  /** @deprecated use `FinancialInstitutions$Outbound` instead. */
-  export type Outbound = FinancialInstitutions$Outbound;
-}
-
 export function financialInstitutionsToJSON(
   financialInstitutions: FinancialInstitutions,
 ): string {
@@ -60,7 +46,6 @@ export function financialInstitutionsToJSON(
     FinancialInstitutions$outboundSchema.parse(financialInstitutions),
   );
 }
-
 export function financialInstitutionsFromJSON(
   jsonString: string,
 ): SafeParseResult<FinancialInstitutions, SDKValidationError> {

@@ -21,7 +21,6 @@ export const WebhookDataAccountUpdated$inboundSchema: z.ZodType<
   accountID: z.string(),
   foreignID: z.string().optional(),
 });
-
 /** @internal */
 export type WebhookDataAccountUpdated$Outbound = {
   accountID: string;
@@ -38,19 +37,6 @@ export const WebhookDataAccountUpdated$outboundSchema: z.ZodType<
   foreignID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataAccountUpdated$ {
-  /** @deprecated use `WebhookDataAccountUpdated$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataAccountUpdated$inboundSchema;
-  /** @deprecated use `WebhookDataAccountUpdated$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataAccountUpdated$outboundSchema;
-  /** @deprecated use `WebhookDataAccountUpdated$Outbound` instead. */
-  export type Outbound = WebhookDataAccountUpdated$Outbound;
-}
-
 export function webhookDataAccountUpdatedToJSON(
   webhookDataAccountUpdated: WebhookDataAccountUpdated,
 ): string {
@@ -58,7 +44,6 @@ export function webhookDataAccountUpdatedToJSON(
     WebhookDataAccountUpdated$outboundSchema.parse(webhookDataAccountUpdated),
   );
 }
-
 export function webhookDataAccountUpdatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataAccountUpdated, SDKValidationError> {

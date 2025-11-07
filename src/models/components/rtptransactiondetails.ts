@@ -58,7 +58,6 @@ export const RTPTransactionDetails$inboundSchema: z.ZodType<
     new Date(v)
   ).optional(),
 });
-
 /** @internal */
 export type RTPTransactionDetails$Outbound = {
   status: string;
@@ -85,19 +84,6 @@ export const RTPTransactionDetails$outboundSchema: z.ZodType<
   acceptedWithoutPostingOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RTPTransactionDetails$ {
-  /** @deprecated use `RTPTransactionDetails$inboundSchema` instead. */
-  export const inboundSchema = RTPTransactionDetails$inboundSchema;
-  /** @deprecated use `RTPTransactionDetails$outboundSchema` instead. */
-  export const outboundSchema = RTPTransactionDetails$outboundSchema;
-  /** @deprecated use `RTPTransactionDetails$Outbound` instead. */
-  export type Outbound = RTPTransactionDetails$Outbound;
-}
-
 export function rtpTransactionDetailsToJSON(
   rtpTransactionDetails: RTPTransactionDetails,
 ): string {
@@ -105,7 +91,6 @@ export function rtpTransactionDetailsToJSON(
     RTPTransactionDetails$outboundSchema.parse(rtpTransactionDetails),
   );
 }
-
 export function rtpTransactionDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<RTPTransactionDetails, SDKValidationError> {

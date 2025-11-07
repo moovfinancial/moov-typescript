@@ -57,7 +57,6 @@ export const LinkCardGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type LinkCardGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -76,25 +75,11 @@ export const LinkCardGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkCardGlobals$ {
-  /** @deprecated use `LinkCardGlobals$inboundSchema` instead. */
-  export const inboundSchema = LinkCardGlobals$inboundSchema;
-  /** @deprecated use `LinkCardGlobals$outboundSchema` instead. */
-  export const outboundSchema = LinkCardGlobals$outboundSchema;
-  /** @deprecated use `LinkCardGlobals$Outbound` instead. */
-  export type Outbound = LinkCardGlobals$Outbound;
-}
-
 export function linkCardGlobalsToJSON(
   linkCardGlobals: LinkCardGlobals,
 ): string {
   return JSON.stringify(LinkCardGlobals$outboundSchema.parse(linkCardGlobals));
 }
-
 export function linkCardGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkCardGlobals, SDKValidationError> {
@@ -120,7 +105,6 @@ export const LinkCardRequest$inboundSchema: z.ZodType<
     "LinkCard": "linkCard",
   });
 });
-
 /** @internal */
 export type LinkCardRequest$Outbound = {
   "x-wait-for"?: string | undefined;
@@ -144,25 +128,11 @@ export const LinkCardRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkCardRequest$ {
-  /** @deprecated use `LinkCardRequest$inboundSchema` instead. */
-  export const inboundSchema = LinkCardRequest$inboundSchema;
-  /** @deprecated use `LinkCardRequest$outboundSchema` instead. */
-  export const outboundSchema = LinkCardRequest$outboundSchema;
-  /** @deprecated use `LinkCardRequest$Outbound` instead. */
-  export type Outbound = LinkCardRequest$Outbound;
-}
-
 export function linkCardRequestToJSON(
   linkCardRequest: LinkCardRequest,
 ): string {
   return JSON.stringify(LinkCardRequest$outboundSchema.parse(linkCardRequest));
 }
-
 export function linkCardRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkCardRequest, SDKValidationError> {
@@ -187,7 +157,6 @@ export const LinkCardResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type LinkCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -209,19 +178,6 @@ export const LinkCardResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkCardResponse$ {
-  /** @deprecated use `LinkCardResponse$inboundSchema` instead. */
-  export const inboundSchema = LinkCardResponse$inboundSchema;
-  /** @deprecated use `LinkCardResponse$outboundSchema` instead. */
-  export const outboundSchema = LinkCardResponse$outboundSchema;
-  /** @deprecated use `LinkCardResponse$Outbound` instead. */
-  export type Outbound = LinkCardResponse$Outbound;
-}
-
 export function linkCardResponseToJSON(
   linkCardResponse: LinkCardResponse,
 ): string {
@@ -229,7 +185,6 @@ export function linkCardResponseToJSON(
     LinkCardResponse$outboundSchema.parse(linkCardResponse),
   );
 }
-
 export function linkCardResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkCardResponse, SDKValidationError> {

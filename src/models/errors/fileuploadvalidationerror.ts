@@ -47,7 +47,6 @@ export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
     filename: z.string().optional(),
     mimeType: z.string().optional(),
   });
-
 /** @internal */
 export type FileT$Outbound = {
   filename?: string | undefined;
@@ -64,23 +63,9 @@ export const FileT$outboundSchema: z.ZodType<
   mimeType: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileT$ {
-  /** @deprecated use `FileT$inboundSchema` instead. */
-  export const inboundSchema = FileT$inboundSchema;
-  /** @deprecated use `FileT$outboundSchema` instead. */
-  export const outboundSchema = FileT$outboundSchema;
-  /** @deprecated use `FileT$Outbound` instead. */
-  export type Outbound = FileT$Outbound;
-}
-
 export function fileToJSON(fileT: FileT): string {
   return JSON.stringify(FileT$outboundSchema.parse(fileT));
 }
-
 export function fileFromJSON(
   jsonString: string,
 ): SafeParseResult<FileT, SDKValidationError> {
@@ -128,16 +113,3 @@ export const FileUploadValidationError$outboundSchema: z.ZodType<
     evidenceType: z.string().optional(),
     file: z.lazy(() => FileT$outboundSchema).optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileUploadValidationError$ {
-  /** @deprecated use `FileUploadValidationError$inboundSchema` instead. */
-  export const inboundSchema = FileUploadValidationError$inboundSchema;
-  /** @deprecated use `FileUploadValidationError$outboundSchema` instead. */
-  export const outboundSchema = FileUploadValidationError$outboundSchema;
-  /** @deprecated use `FileUploadValidationError$Outbound` instead. */
-  export type Outbound = FileUploadValidationError$Outbound;
-}

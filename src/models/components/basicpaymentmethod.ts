@@ -32,7 +32,6 @@ export const BasicPaymentMethod$inboundSchema: z.ZodType<
   paymentMethodID: z.string(),
   paymentMethodType: PaymentMethodType$inboundSchema,
 });
-
 /** @internal */
 export type BasicPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -49,19 +48,6 @@ export const BasicPaymentMethod$outboundSchema: z.ZodType<
   paymentMethodType: PaymentMethodType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BasicPaymentMethod$ {
-  /** @deprecated use `BasicPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = BasicPaymentMethod$inboundSchema;
-  /** @deprecated use `BasicPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = BasicPaymentMethod$outboundSchema;
-  /** @deprecated use `BasicPaymentMethod$Outbound` instead. */
-  export type Outbound = BasicPaymentMethod$Outbound;
-}
-
 export function basicPaymentMethodToJSON(
   basicPaymentMethod: BasicPaymentMethod,
 ): string {
@@ -69,7 +55,6 @@ export function basicPaymentMethodToJSON(
     BasicPaymentMethod$outboundSchema.parse(basicPaymentMethod),
   );
 }
-
 export function basicPaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<BasicPaymentMethod, SDKValidationError> {

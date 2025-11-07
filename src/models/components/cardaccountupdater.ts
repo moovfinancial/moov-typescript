@@ -33,7 +33,6 @@ export const CardAccountUpdater$inboundSchema: z.ZodType<
     .optional(),
   updateType: CardUpdateReason$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CardAccountUpdater$Outbound = {
   updatedOn?: string | undefined;
@@ -50,19 +49,6 @@ export const CardAccountUpdater$outboundSchema: z.ZodType<
   updateType: CardUpdateReason$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardAccountUpdater$ {
-  /** @deprecated use `CardAccountUpdater$inboundSchema` instead. */
-  export const inboundSchema = CardAccountUpdater$inboundSchema;
-  /** @deprecated use `CardAccountUpdater$outboundSchema` instead. */
-  export const outboundSchema = CardAccountUpdater$outboundSchema;
-  /** @deprecated use `CardAccountUpdater$Outbound` instead. */
-  export type Outbound = CardAccountUpdater$Outbound;
-}
-
 export function cardAccountUpdaterToJSON(
   cardAccountUpdater: CardAccountUpdater,
 ): string {
@@ -70,7 +56,6 @@ export function cardAccountUpdaterToJSON(
     CardAccountUpdater$outboundSchema.parse(cardAccountUpdater),
   );
 }
-
 export function cardAccountUpdaterFromJSON(
   jsonString: string,
 ): SafeParseResult<CardAccountUpdater, SDKValidationError> {

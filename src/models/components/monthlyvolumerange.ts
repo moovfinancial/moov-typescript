@@ -27,19 +27,7 @@ export type MonthlyVolumeRange = ClosedEnum<typeof MonthlyVolumeRange>;
 export const MonthlyVolumeRange$inboundSchema: z.ZodNativeEnum<
   typeof MonthlyVolumeRange
 > = z.nativeEnum(MonthlyVolumeRange);
-
 /** @internal */
 export const MonthlyVolumeRange$outboundSchema: z.ZodNativeEnum<
   typeof MonthlyVolumeRange
 > = MonthlyVolumeRange$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MonthlyVolumeRange$ {
-  /** @deprecated use `MonthlyVolumeRange$inboundSchema` instead. */
-  export const inboundSchema = MonthlyVolumeRange$inboundSchema;
-  /** @deprecated use `MonthlyVolumeRange$outboundSchema` instead. */
-  export const outboundSchema = MonthlyVolumeRange$outboundSchema;
-}

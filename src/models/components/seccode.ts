@@ -22,18 +22,6 @@ export type SECCode = ClosedEnum<typeof SECCode>;
 /** @internal */
 export const SECCode$inboundSchema: z.ZodNativeEnum<typeof SECCode> = z
   .nativeEnum(SECCode);
-
 /** @internal */
 export const SECCode$outboundSchema: z.ZodNativeEnum<typeof SECCode> =
   SECCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SECCode$ {
-  /** @deprecated use `SECCode$inboundSchema` instead. */
-  export const inboundSchema = SECCode$inboundSchema;
-  /** @deprecated use `SECCode$outboundSchema` instead. */
-  export const outboundSchema = SECCode$outboundSchema;
-}

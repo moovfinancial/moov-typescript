@@ -21,7 +21,6 @@ export const TicketContact$inboundSchema: z.ZodType<
   email: z.string(),
   name: z.string().optional(),
 });
-
 /** @internal */
 export type TicketContact$Outbound = {
   email: string;
@@ -38,23 +37,9 @@ export const TicketContact$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketContact$ {
-  /** @deprecated use `TicketContact$inboundSchema` instead. */
-  export const inboundSchema = TicketContact$inboundSchema;
-  /** @deprecated use `TicketContact$outboundSchema` instead. */
-  export const outboundSchema = TicketContact$outboundSchema;
-  /** @deprecated use `TicketContact$Outbound` instead. */
-  export type Outbound = TicketContact$Outbound;
-}
-
 export function ticketContactToJSON(ticketContact: TicketContact): string {
   return JSON.stringify(TicketContact$outboundSchema.parse(ticketContact));
 }
-
 export function ticketContactFromJSON(
   jsonString: string,
 ): SafeParseResult<TicketContact, SDKValidationError> {

@@ -24,7 +24,6 @@ export const WebhookTransferPaymentMethodDetails$inboundSchema: z.ZodType<
   accountID: z.string(),
   paymentMethodID: z.string(),
 });
-
 /** @internal */
 export type WebhookTransferPaymentMethodDetails$Outbound = {
   accountID: string;
@@ -41,21 +40,6 @@ export const WebhookTransferPaymentMethodDetails$outboundSchema: z.ZodType<
   paymentMethodID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookTransferPaymentMethodDetails$ {
-  /** @deprecated use `WebhookTransferPaymentMethodDetails$inboundSchema` instead. */
-  export const inboundSchema =
-    WebhookTransferPaymentMethodDetails$inboundSchema;
-  /** @deprecated use `WebhookTransferPaymentMethodDetails$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookTransferPaymentMethodDetails$outboundSchema;
-  /** @deprecated use `WebhookTransferPaymentMethodDetails$Outbound` instead. */
-  export type Outbound = WebhookTransferPaymentMethodDetails$Outbound;
-}
-
 export function webhookTransferPaymentMethodDetailsToJSON(
   webhookTransferPaymentMethodDetails: WebhookTransferPaymentMethodDetails,
 ): string {
@@ -65,7 +49,6 @@ export function webhookTransferPaymentMethodDetailsToJSON(
     ),
   );
 }
-
 export function webhookTransferPaymentMethodDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookTransferPaymentMethodDetails, SDKValidationError> {

@@ -51,7 +51,6 @@ export const LinkApplePayTokenGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type LinkApplePayTokenGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const LinkApplePayTokenGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkApplePayTokenGlobals$ {
-  /** @deprecated use `LinkApplePayTokenGlobals$inboundSchema` instead. */
-  export const inboundSchema = LinkApplePayTokenGlobals$inboundSchema;
-  /** @deprecated use `LinkApplePayTokenGlobals$outboundSchema` instead. */
-  export const outboundSchema = LinkApplePayTokenGlobals$outboundSchema;
-  /** @deprecated use `LinkApplePayTokenGlobals$Outbound` instead. */
-  export type Outbound = LinkApplePayTokenGlobals$Outbound;
-}
-
 export function linkApplePayTokenGlobalsToJSON(
   linkApplePayTokenGlobals: LinkApplePayTokenGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function linkApplePayTokenGlobalsToJSON(
     LinkApplePayTokenGlobals$outboundSchema.parse(linkApplePayTokenGlobals),
   );
 }
-
 export function linkApplePayTokenGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkApplePayTokenGlobals, SDKValidationError> {
@@ -114,7 +99,6 @@ export const LinkApplePayTokenRequest$inboundSchema: z.ZodType<
     "LinkApplePay": "linkApplePay",
   });
 });
-
 /** @internal */
 export type LinkApplePayTokenRequest$Outbound = {
   accountID: string;
@@ -135,19 +119,6 @@ export const LinkApplePayTokenRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkApplePayTokenRequest$ {
-  /** @deprecated use `LinkApplePayTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = LinkApplePayTokenRequest$inboundSchema;
-  /** @deprecated use `LinkApplePayTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = LinkApplePayTokenRequest$outboundSchema;
-  /** @deprecated use `LinkApplePayTokenRequest$Outbound` instead. */
-  export type Outbound = LinkApplePayTokenRequest$Outbound;
-}
-
 export function linkApplePayTokenRequestToJSON(
   linkApplePayTokenRequest: LinkApplePayTokenRequest,
 ): string {
@@ -155,7 +126,6 @@ export function linkApplePayTokenRequestToJSON(
     LinkApplePayTokenRequest$outboundSchema.parse(linkApplePayTokenRequest),
   );
 }
-
 export function linkApplePayTokenRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkApplePayTokenRequest, SDKValidationError> {
@@ -180,7 +150,6 @@ export const LinkApplePayTokenResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type LinkApplePayTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -202,19 +171,6 @@ export const LinkApplePayTokenResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkApplePayTokenResponse$ {
-  /** @deprecated use `LinkApplePayTokenResponse$inboundSchema` instead. */
-  export const inboundSchema = LinkApplePayTokenResponse$inboundSchema;
-  /** @deprecated use `LinkApplePayTokenResponse$outboundSchema` instead. */
-  export const outboundSchema = LinkApplePayTokenResponse$outboundSchema;
-  /** @deprecated use `LinkApplePayTokenResponse$Outbound` instead. */
-  export type Outbound = LinkApplePayTokenResponse$Outbound;
-}
-
 export function linkApplePayTokenResponseToJSON(
   linkApplePayTokenResponse: LinkApplePayTokenResponse,
 ): string {
@@ -222,7 +178,6 @@ export function linkApplePayTokenResponseToJSON(
     LinkApplePayTokenResponse$outboundSchema.parse(linkApplePayTokenResponse),
   );
 }
-
 export function linkApplePayTokenResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkApplePayTokenResponse, SDKValidationError> {

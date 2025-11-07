@@ -48,7 +48,6 @@ export const SubmitDisputeEvidenceGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type SubmitDisputeEvidenceGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const SubmitDisputeEvidenceGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitDisputeEvidenceGlobals$ {
-  /** @deprecated use `SubmitDisputeEvidenceGlobals$inboundSchema` instead. */
-  export const inboundSchema = SubmitDisputeEvidenceGlobals$inboundSchema;
-  /** @deprecated use `SubmitDisputeEvidenceGlobals$outboundSchema` instead. */
-  export const outboundSchema = SubmitDisputeEvidenceGlobals$outboundSchema;
-  /** @deprecated use `SubmitDisputeEvidenceGlobals$Outbound` instead. */
-  export type Outbound = SubmitDisputeEvidenceGlobals$Outbound;
-}
-
 export function submitDisputeEvidenceGlobalsToJSON(
   submitDisputeEvidenceGlobals: SubmitDisputeEvidenceGlobals,
 ): string {
@@ -89,7 +75,6 @@ export function submitDisputeEvidenceGlobalsToJSON(
     ),
   );
 }
-
 export function submitDisputeEvidenceGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitDisputeEvidenceGlobals, SDKValidationError> {
@@ -109,7 +94,6 @@ export const SubmitDisputeEvidenceRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   disputeID: z.string(),
 });
-
 /** @internal */
 export type SubmitDisputeEvidenceRequest$Outbound = {
   accountID: string;
@@ -126,19 +110,6 @@ export const SubmitDisputeEvidenceRequest$outboundSchema: z.ZodType<
   disputeID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitDisputeEvidenceRequest$ {
-  /** @deprecated use `SubmitDisputeEvidenceRequest$inboundSchema` instead. */
-  export const inboundSchema = SubmitDisputeEvidenceRequest$inboundSchema;
-  /** @deprecated use `SubmitDisputeEvidenceRequest$outboundSchema` instead. */
-  export const outboundSchema = SubmitDisputeEvidenceRequest$outboundSchema;
-  /** @deprecated use `SubmitDisputeEvidenceRequest$Outbound` instead. */
-  export type Outbound = SubmitDisputeEvidenceRequest$Outbound;
-}
-
 export function submitDisputeEvidenceRequestToJSON(
   submitDisputeEvidenceRequest: SubmitDisputeEvidenceRequest,
 ): string {
@@ -148,7 +119,6 @@ export function submitDisputeEvidenceRequestToJSON(
     ),
   );
 }
-
 export function submitDisputeEvidenceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitDisputeEvidenceRequest, SDKValidationError> {
@@ -173,7 +143,6 @@ export const SubmitDisputeEvidenceResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type SubmitDisputeEvidenceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -195,19 +164,6 @@ export const SubmitDisputeEvidenceResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitDisputeEvidenceResponse$ {
-  /** @deprecated use `SubmitDisputeEvidenceResponse$inboundSchema` instead. */
-  export const inboundSchema = SubmitDisputeEvidenceResponse$inboundSchema;
-  /** @deprecated use `SubmitDisputeEvidenceResponse$outboundSchema` instead. */
-  export const outboundSchema = SubmitDisputeEvidenceResponse$outboundSchema;
-  /** @deprecated use `SubmitDisputeEvidenceResponse$Outbound` instead. */
-  export type Outbound = SubmitDisputeEvidenceResponse$Outbound;
-}
-
 export function submitDisputeEvidenceResponseToJSON(
   submitDisputeEvidenceResponse: SubmitDisputeEvidenceResponse,
 ): string {
@@ -217,7 +173,6 @@ export function submitDisputeEvidenceResponseToJSON(
     ),
   );
 }
-
 export function submitDisputeEvidenceResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitDisputeEvidenceResponse, SDKValidationError> {

@@ -116,7 +116,6 @@ export const TransferSource$inboundSchema: z.ZodType<
   cardDetails: CardTransactionDetails$inboundSchema.optional(),
   achDetails: ACHTransactionDetails$inboundSchema.optional(),
 });
-
 /** @internal */
 export type TransferSource$Outbound = {
   transferID?: string | undefined;
@@ -151,23 +150,9 @@ export const TransferSource$outboundSchema: z.ZodType<
   achDetails: ACHTransactionDetails$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferSource$ {
-  /** @deprecated use `TransferSource$inboundSchema` instead. */
-  export const inboundSchema = TransferSource$inboundSchema;
-  /** @deprecated use `TransferSource$outboundSchema` instead. */
-  export const outboundSchema = TransferSource$outboundSchema;
-  /** @deprecated use `TransferSource$Outbound` instead. */
-  export type Outbound = TransferSource$Outbound;
-}
-
 export function transferSourceToJSON(transferSource: TransferSource): string {
   return JSON.stringify(TransferSource$outboundSchema.parse(transferSource));
 }
-
 export function transferSourceFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferSource, SDKValidationError> {

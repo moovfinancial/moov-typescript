@@ -47,7 +47,6 @@ export const ListCapabilitiesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListCapabilitiesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const ListCapabilitiesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCapabilitiesGlobals$ {
-  /** @deprecated use `ListCapabilitiesGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListCapabilitiesGlobals$inboundSchema;
-  /** @deprecated use `ListCapabilitiesGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListCapabilitiesGlobals$outboundSchema;
-  /** @deprecated use `ListCapabilitiesGlobals$Outbound` instead. */
-  export type Outbound = ListCapabilitiesGlobals$Outbound;
-}
-
 export function listCapabilitiesGlobalsToJSON(
   listCapabilitiesGlobals: ListCapabilitiesGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function listCapabilitiesGlobalsToJSON(
     ListCapabilitiesGlobals$outboundSchema.parse(listCapabilitiesGlobals),
   );
 }
-
 export function listCapabilitiesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListCapabilitiesGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const ListCapabilitiesRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type ListCapabilitiesRequest$Outbound = {
   accountID: string;
@@ -120,19 +104,6 @@ export const ListCapabilitiesRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCapabilitiesRequest$ {
-  /** @deprecated use `ListCapabilitiesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListCapabilitiesRequest$inboundSchema;
-  /** @deprecated use `ListCapabilitiesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListCapabilitiesRequest$outboundSchema;
-  /** @deprecated use `ListCapabilitiesRequest$Outbound` instead. */
-  export type Outbound = ListCapabilitiesRequest$Outbound;
-}
-
 export function listCapabilitiesRequestToJSON(
   listCapabilitiesRequest: ListCapabilitiesRequest,
 ): string {
@@ -140,7 +111,6 @@ export function listCapabilitiesRequestToJSON(
     ListCapabilitiesRequest$outboundSchema.parse(listCapabilitiesRequest),
   );
 }
-
 export function listCapabilitiesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListCapabilitiesRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const ListCapabilitiesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListCapabilitiesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -187,19 +156,6 @@ export const ListCapabilitiesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCapabilitiesResponse$ {
-  /** @deprecated use `ListCapabilitiesResponse$inboundSchema` instead. */
-  export const inboundSchema = ListCapabilitiesResponse$inboundSchema;
-  /** @deprecated use `ListCapabilitiesResponse$outboundSchema` instead. */
-  export const outboundSchema = ListCapabilitiesResponse$outboundSchema;
-  /** @deprecated use `ListCapabilitiesResponse$Outbound` instead. */
-  export type Outbound = ListCapabilitiesResponse$Outbound;
-}
-
 export function listCapabilitiesResponseToJSON(
   listCapabilitiesResponse: ListCapabilitiesResponse,
 ): string {
@@ -207,7 +163,6 @@ export function listCapabilitiesResponseToJSON(
     ListCapabilitiesResponse$outboundSchema.parse(listCapabilitiesResponse),
   );
 }
-
 export function listCapabilitiesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListCapabilitiesResponse, SDKValidationError> {

@@ -70,16 +70,3 @@ export const AddCapabilitiesError$outboundSchema: z.ZodType<
     error: z.string().optional(),
     capabilities: z.record(z.string()).optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddCapabilitiesError$ {
-  /** @deprecated use `AddCapabilitiesError$inboundSchema` instead. */
-  export const inboundSchema = AddCapabilitiesError$inboundSchema;
-  /** @deprecated use `AddCapabilitiesError$outboundSchema` instead. */
-  export const outboundSchema = AddCapabilitiesError$outboundSchema;
-  /** @deprecated use `AddCapabilitiesError$Outbound` instead. */
-  export type Outbound = AddCapabilitiesError$Outbound;
-}

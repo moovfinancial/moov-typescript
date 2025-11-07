@@ -100,7 +100,6 @@ export const IssuedCard$inboundSchema: z.ZodType<
   controls: IssuingControls$inboundSchema.optional(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type IssuedCard$Outbound = {
   issuedCardID: string;
@@ -135,23 +134,9 @@ export const IssuedCard$outboundSchema: z.ZodType<
   createdOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuedCard$ {
-  /** @deprecated use `IssuedCard$inboundSchema` instead. */
-  export const inboundSchema = IssuedCard$inboundSchema;
-  /** @deprecated use `IssuedCard$outboundSchema` instead. */
-  export const outboundSchema = IssuedCard$outboundSchema;
-  /** @deprecated use `IssuedCard$Outbound` instead. */
-  export type Outbound = IssuedCard$Outbound;
-}
-
 export function issuedCardToJSON(issuedCard: IssuedCard): string {
   return JSON.stringify(IssuedCard$outboundSchema.parse(issuedCard));
 }
-
 export function issuedCardFromJSON(
   jsonString: string,
 ): SafeParseResult<IssuedCard, SDKValidationError> {

@@ -46,19 +46,7 @@ export type RTPRejectionCode = ClosedEnum<typeof RTPRejectionCode>;
 export const RTPRejectionCode$inboundSchema: z.ZodNativeEnum<
   typeof RTPRejectionCode
 > = z.nativeEnum(RTPRejectionCode);
-
 /** @internal */
 export const RTPRejectionCode$outboundSchema: z.ZodNativeEnum<
   typeof RTPRejectionCode
 > = RTPRejectionCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RTPRejectionCode$ {
-  /** @deprecated use `RTPRejectionCode$inboundSchema` instead. */
-  export const inboundSchema = RTPRejectionCode$inboundSchema;
-  /** @deprecated use `RTPRejectionCode$outboundSchema` instead. */
-  export const outboundSchema = RTPRejectionCode$outboundSchema;
-}

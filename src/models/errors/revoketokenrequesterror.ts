@@ -81,16 +81,3 @@ export const RevokeTokenRequestError$outboundSchema: z.ZodType<
       });
     }),
   );
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RevokeTokenRequestError$ {
-  /** @deprecated use `RevokeTokenRequestError$inboundSchema` instead. */
-  export const inboundSchema = RevokeTokenRequestError$inboundSchema;
-  /** @deprecated use `RevokeTokenRequestError$outboundSchema` instead. */
-  export const outboundSchema = RevokeTokenRequestError$outboundSchema;
-  /** @deprecated use `RevokeTokenRequestError$Outbound` instead. */
-  export type Outbound = RevokeTokenRequestError$Outbound;
-}

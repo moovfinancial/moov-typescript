@@ -27,7 +27,6 @@ export const RTPServices$inboundSchema: z.ZodType<
   receivePayments: z.boolean(),
   receiveRequestForPayment: z.boolean(),
 });
-
 /** @internal */
 export type RTPServices$Outbound = {
   receivePayments: boolean;
@@ -44,23 +43,9 @@ export const RTPServices$outboundSchema: z.ZodType<
   receiveRequestForPayment: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RTPServices$ {
-  /** @deprecated use `RTPServices$inboundSchema` instead. */
-  export const inboundSchema = RTPServices$inboundSchema;
-  /** @deprecated use `RTPServices$outboundSchema` instead. */
-  export const outboundSchema = RTPServices$outboundSchema;
-  /** @deprecated use `RTPServices$Outbound` instead. */
-  export type Outbound = RTPServices$Outbound;
-}
-
 export function rtpServicesToJSON(rtpServices: RTPServices): string {
   return JSON.stringify(RTPServices$outboundSchema.parse(rtpServices));
 }
-
 export function rtpServicesFromJSON(
   jsonString: string,
 ): SafeParseResult<RTPServices, SDKValidationError> {

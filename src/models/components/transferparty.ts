@@ -16,19 +16,7 @@ export type TransferParty = ClosedEnum<typeof TransferParty>;
 export const TransferParty$inboundSchema: z.ZodNativeEnum<
   typeof TransferParty
 > = z.nativeEnum(TransferParty);
-
 /** @internal */
 export const TransferParty$outboundSchema: z.ZodNativeEnum<
   typeof TransferParty
 > = TransferParty$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferParty$ {
-  /** @deprecated use `TransferParty$inboundSchema` instead. */
-  export const inboundSchema = TransferParty$inboundSchema;
-  /** @deprecated use `TransferParty$outboundSchema` instead. */
-  export const outboundSchema = TransferParty$outboundSchema;
-}

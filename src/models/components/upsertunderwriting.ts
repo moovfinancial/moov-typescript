@@ -77,7 +77,6 @@ export const UpsertUnderwriting$inboundSchema: z.ZodType<
   sendFunds: SendFunds$inboundSchema.optional(),
   submissionIntent: SubmissionIntent$inboundSchema.optional(),
 });
-
 /** @internal */
 export type UpsertUnderwriting$Outbound = {
   geographicReach?: string | undefined;
@@ -107,19 +106,6 @@ export const UpsertUnderwriting$outboundSchema: z.ZodType<
   submissionIntent: SubmissionIntent$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertUnderwriting$ {
-  /** @deprecated use `UpsertUnderwriting$inboundSchema` instead. */
-  export const inboundSchema = UpsertUnderwriting$inboundSchema;
-  /** @deprecated use `UpsertUnderwriting$outboundSchema` instead. */
-  export const outboundSchema = UpsertUnderwriting$outboundSchema;
-  /** @deprecated use `UpsertUnderwriting$Outbound` instead. */
-  export type Outbound = UpsertUnderwriting$Outbound;
-}
-
 export function upsertUnderwritingToJSON(
   upsertUnderwriting: UpsertUnderwriting,
 ): string {
@@ -127,7 +113,6 @@ export function upsertUnderwritingToJSON(
     UpsertUnderwriting$outboundSchema.parse(upsertUnderwriting),
   );
 }
-
 export function upsertUnderwritingFromJSON(
   jsonString: string,
 ): SafeParseResult<UpsertUnderwriting, SDKValidationError> {

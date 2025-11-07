@@ -23,7 +23,6 @@ export const Ein$inboundSchema: z.ZodType<Ein, z.ZodTypeDef, unknown> = z
   .object({
     number: z.string(),
   });
-
 /** @internal */
 export type Ein$Outbound = {
   number: string;
@@ -35,23 +34,9 @@ export const Ein$outboundSchema: z.ZodType<Ein$Outbound, z.ZodTypeDef, Ein> = z
     number: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Ein$ {
-  /** @deprecated use `Ein$inboundSchema` instead. */
-  export const inboundSchema = Ein$inboundSchema;
-  /** @deprecated use `Ein$outboundSchema` instead. */
-  export const outboundSchema = Ein$outboundSchema;
-  /** @deprecated use `Ein$Outbound` instead. */
-  export type Outbound = Ein$Outbound;
-}
-
 export function einToJSON(ein: Ein): string {
   return JSON.stringify(Ein$outboundSchema.parse(ein));
 }
-
 export function einFromJSON(
   jsonString: string,
 ): SafeParseResult<Ein, SDKValidationError> {
@@ -67,7 +52,6 @@ export const TaxID$inboundSchema: z.ZodType<TaxID, z.ZodTypeDef, unknown> = z
   .object({
     ein: z.lazy(() => Ein$inboundSchema),
   });
-
 /** @internal */
 export type TaxID$Outbound = {
   ein: Ein$Outbound;
@@ -82,23 +66,9 @@ export const TaxID$outboundSchema: z.ZodType<
   ein: z.lazy(() => Ein$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaxID$ {
-  /** @deprecated use `TaxID$inboundSchema` instead. */
-  export const inboundSchema = TaxID$inboundSchema;
-  /** @deprecated use `TaxID$outboundSchema` instead. */
-  export const outboundSchema = TaxID$outboundSchema;
-  /** @deprecated use `TaxID$Outbound` instead. */
-  export type Outbound = TaxID$Outbound;
-}
-
 export function taxIDToJSON(taxID: TaxID): string {
   return JSON.stringify(TaxID$outboundSchema.parse(taxID));
 }
-
 export function taxIDFromJSON(
   jsonString: string,
 ): SafeParseResult<TaxID, SDKValidationError> {

@@ -102,7 +102,6 @@ export const TerminalCard$inboundSchema: z.ZodType<
   applicationID: z.string().optional(),
   applicationName: z.string().optional(),
 });
-
 /** @internal */
 export type TerminalCard$Outbound = {
   entryMode?: string | undefined;
@@ -139,23 +138,9 @@ export const TerminalCard$outboundSchema: z.ZodType<
   applicationName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TerminalCard$ {
-  /** @deprecated use `TerminalCard$inboundSchema` instead. */
-  export const inboundSchema = TerminalCard$inboundSchema;
-  /** @deprecated use `TerminalCard$outboundSchema` instead. */
-  export const outboundSchema = TerminalCard$outboundSchema;
-  /** @deprecated use `TerminalCard$Outbound` instead. */
-  export type Outbound = TerminalCard$Outbound;
-}
-
 export function terminalCardToJSON(terminalCard: TerminalCard): string {
   return JSON.stringify(TerminalCard$outboundSchema.parse(terminalCard));
 }
-
 export function terminalCardFromJSON(
   jsonString: string,
 ): SafeParseResult<TerminalCard, SDKValidationError> {

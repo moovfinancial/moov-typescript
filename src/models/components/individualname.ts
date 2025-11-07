@@ -37,7 +37,6 @@ export const IndividualName$inboundSchema: z.ZodType<
   lastName: z.string(),
   suffix: z.string().optional(),
 });
-
 /** @internal */
 export type IndividualName$Outbound = {
   firstName: string;
@@ -58,23 +57,9 @@ export const IndividualName$outboundSchema: z.ZodType<
   suffix: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndividualName$ {
-  /** @deprecated use `IndividualName$inboundSchema` instead. */
-  export const inboundSchema = IndividualName$inboundSchema;
-  /** @deprecated use `IndividualName$outboundSchema` instead. */
-  export const outboundSchema = IndividualName$outboundSchema;
-  /** @deprecated use `IndividualName$Outbound` instead. */
-  export type Outbound = IndividualName$Outbound;
-}
-
 export function individualNameToJSON(individualName: IndividualName): string {
   return JSON.stringify(IndividualName$outboundSchema.parse(individualName));
 }
-
 export function individualNameFromJSON(
   jsonString: string,
 ): SafeParseResult<IndividualName, SDKValidationError> {

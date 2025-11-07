@@ -41,7 +41,6 @@ export const Image$inboundSchema: z.ZodType<Image, z.ZodTypeDef, unknown> = z
       z.instanceof(Uint8Array),
     ]),
   });
-
 /** @internal */
 export type Image$Outbound = {
   fileName: string;
@@ -63,23 +62,9 @@ export const Image$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Image$ {
-  /** @deprecated use `Image$inboundSchema` instead. */
-  export const inboundSchema = Image$inboundSchema;
-  /** @deprecated use `Image$outboundSchema` instead. */
-  export const outboundSchema = Image$outboundSchema;
-  /** @deprecated use `Image$Outbound` instead. */
-  export type Outbound = Image$Outbound;
-}
-
 export function imageToJSON(image: Image): string {
   return JSON.stringify(Image$outboundSchema.parse(image));
 }
-
 export function imageFromJSON(
   jsonString: string,
 ): SafeParseResult<Image, SDKValidationError> {
@@ -99,7 +84,6 @@ export const ImageUploadRequestMultiPart$inboundSchema: z.ZodType<
   image: z.lazy(() => Image$inboundSchema),
   metadata: ImageMetadataRequest$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ImageUploadRequestMultiPart$Outbound = {
   image: Image$Outbound | Blob;
@@ -116,19 +100,6 @@ export const ImageUploadRequestMultiPart$outboundSchema: z.ZodType<
   metadata: ImageMetadataRequest$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImageUploadRequestMultiPart$ {
-  /** @deprecated use `ImageUploadRequestMultiPart$inboundSchema` instead. */
-  export const inboundSchema = ImageUploadRequestMultiPart$inboundSchema;
-  /** @deprecated use `ImageUploadRequestMultiPart$outboundSchema` instead. */
-  export const outboundSchema = ImageUploadRequestMultiPart$outboundSchema;
-  /** @deprecated use `ImageUploadRequestMultiPart$Outbound` instead. */
-  export type Outbound = ImageUploadRequestMultiPart$Outbound;
-}
-
 export function imageUploadRequestMultiPartToJSON(
   imageUploadRequestMultiPart: ImageUploadRequestMultiPart,
 ): string {
@@ -138,7 +109,6 @@ export function imageUploadRequestMultiPartToJSON(
     ),
   );
 }
-
 export function imageUploadRequestMultiPartFromJSON(
   jsonString: string,
 ): SafeParseResult<ImageUploadRequestMultiPart, SDKValidationError> {

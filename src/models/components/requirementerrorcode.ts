@@ -31,19 +31,7 @@ export type RequirementErrorCode = ClosedEnum<typeof RequirementErrorCode>;
 export const RequirementErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof RequirementErrorCode
 > = z.nativeEnum(RequirementErrorCode);
-
 /** @internal */
 export const RequirementErrorCode$outboundSchema: z.ZodNativeEnum<
   typeof RequirementErrorCode
 > = RequirementErrorCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequirementErrorCode$ {
-  /** @deprecated use `RequirementErrorCode$inboundSchema` instead. */
-  export const inboundSchema = RequirementErrorCode$inboundSchema;
-  /** @deprecated use `RequirementErrorCode$outboundSchema` instead. */
-  export const outboundSchema = RequirementErrorCode$outboundSchema;
-}

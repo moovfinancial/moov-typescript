@@ -29,7 +29,6 @@ export const E2EETokenUpdate$inboundSchema: z.ZodType<
 > = z.object({
   token: z.string().optional(),
 });
-
 /** @internal */
 export type E2EETokenUpdate$Outbound = {
   token?: string | undefined;
@@ -44,25 +43,11 @@ export const E2EETokenUpdate$outboundSchema: z.ZodType<
   token: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace E2EETokenUpdate$ {
-  /** @deprecated use `E2EETokenUpdate$inboundSchema` instead. */
-  export const inboundSchema = E2EETokenUpdate$inboundSchema;
-  /** @deprecated use `E2EETokenUpdate$outboundSchema` instead. */
-  export const outboundSchema = E2EETokenUpdate$outboundSchema;
-  /** @deprecated use `E2EETokenUpdate$Outbound` instead. */
-  export type Outbound = E2EETokenUpdate$Outbound;
-}
-
 export function e2EETokenUpdateToJSON(
   e2EETokenUpdate: E2EETokenUpdate,
 ): string {
   return JSON.stringify(E2EETokenUpdate$outboundSchema.parse(e2EETokenUpdate));
 }
-
 export function e2EETokenUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<E2EETokenUpdate, SDKValidationError> {

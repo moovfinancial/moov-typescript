@@ -56,7 +56,6 @@ export const ImageUpdateRequestMultiPartImage$inboundSchema: z.ZodType<
     z.instanceof(Uint8Array),
   ]),
 });
-
 /** @internal */
 export type ImageUpdateRequestMultiPartImage$Outbound = {
   fileName: string;
@@ -78,19 +77,6 @@ export const ImageUpdateRequestMultiPartImage$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImageUpdateRequestMultiPartImage$ {
-  /** @deprecated use `ImageUpdateRequestMultiPartImage$inboundSchema` instead. */
-  export const inboundSchema = ImageUpdateRequestMultiPartImage$inboundSchema;
-  /** @deprecated use `ImageUpdateRequestMultiPartImage$outboundSchema` instead. */
-  export const outboundSchema = ImageUpdateRequestMultiPartImage$outboundSchema;
-  /** @deprecated use `ImageUpdateRequestMultiPartImage$Outbound` instead. */
-  export type Outbound = ImageUpdateRequestMultiPartImage$Outbound;
-}
-
 export function imageUpdateRequestMultiPartImageToJSON(
   imageUpdateRequestMultiPartImage: ImageUpdateRequestMultiPartImage,
 ): string {
@@ -100,7 +86,6 @@ export function imageUpdateRequestMultiPartImageToJSON(
     ),
   );
 }
-
 export function imageUpdateRequestMultiPartImageFromJSON(
   jsonString: string,
 ): SafeParseResult<ImageUpdateRequestMultiPartImage, SDKValidationError> {
@@ -119,7 +104,6 @@ export const Metadata$inboundSchema: z.ZodType<
 > = z.object({
   altText: z.string().optional(),
 });
-
 /** @internal */
 export type Metadata$Outbound = {
   altText?: string | undefined;
@@ -134,23 +118,9 @@ export const Metadata$outboundSchema: z.ZodType<
   altText: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Metadata$ {
-  /** @deprecated use `Metadata$inboundSchema` instead. */
-  export const inboundSchema = Metadata$inboundSchema;
-  /** @deprecated use `Metadata$outboundSchema` instead. */
-  export const outboundSchema = Metadata$outboundSchema;
-  /** @deprecated use `Metadata$Outbound` instead. */
-  export type Outbound = Metadata$Outbound;
-}
-
 export function metadataToJSON(metadata: Metadata): string {
   return JSON.stringify(Metadata$outboundSchema.parse(metadata));
 }
-
 export function metadataFromJSON(
   jsonString: string,
 ): SafeParseResult<Metadata, SDKValidationError> {
@@ -170,7 +140,6 @@ export const ImageUpdateRequestMultiPart$inboundSchema: z.ZodType<
   image: z.lazy(() => ImageUpdateRequestMultiPartImage$inboundSchema),
   metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type ImageUpdateRequestMultiPart$Outbound = {
   image: ImageUpdateRequestMultiPartImage$Outbound | Blob;
@@ -189,19 +158,6 @@ export const ImageUpdateRequestMultiPart$outboundSchema: z.ZodType<
   metadata: z.nullable(z.lazy(() => Metadata$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImageUpdateRequestMultiPart$ {
-  /** @deprecated use `ImageUpdateRequestMultiPart$inboundSchema` instead. */
-  export const inboundSchema = ImageUpdateRequestMultiPart$inboundSchema;
-  /** @deprecated use `ImageUpdateRequestMultiPart$outboundSchema` instead. */
-  export const outboundSchema = ImageUpdateRequestMultiPart$outboundSchema;
-  /** @deprecated use `ImageUpdateRequestMultiPart$Outbound` instead. */
-  export type Outbound = ImageUpdateRequestMultiPart$Outbound;
-}
-
 export function imageUpdateRequestMultiPartToJSON(
   imageUpdateRequestMultiPart: ImageUpdateRequestMultiPart,
 ): string {
@@ -211,7 +167,6 @@ export function imageUpdateRequestMultiPartToJSON(
     ),
   );
 }
-
 export function imageUpdateRequestMultiPartFromJSON(
   jsonString: string,
 ): SafeParseResult<ImageUpdateRequestMultiPart, SDKValidationError> {

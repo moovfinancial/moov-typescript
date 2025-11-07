@@ -39,7 +39,6 @@ export const ManualTermsOfServiceUpdate$inboundSchema: z.ZodType<
   acceptedUserAgent: z.string().optional(),
   acceptedDomain: z.string().optional(),
 });
-
 /** @internal */
 export type ManualTermsOfServiceUpdate$Outbound = {
   acceptedDate?: string | undefined;
@@ -60,19 +59,6 @@ export const ManualTermsOfServiceUpdate$outboundSchema: z.ZodType<
   acceptedDomain: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManualTermsOfServiceUpdate$ {
-  /** @deprecated use `ManualTermsOfServiceUpdate$inboundSchema` instead. */
-  export const inboundSchema = ManualTermsOfServiceUpdate$inboundSchema;
-  /** @deprecated use `ManualTermsOfServiceUpdate$outboundSchema` instead. */
-  export const outboundSchema = ManualTermsOfServiceUpdate$outboundSchema;
-  /** @deprecated use `ManualTermsOfServiceUpdate$Outbound` instead. */
-  export type Outbound = ManualTermsOfServiceUpdate$Outbound;
-}
-
 export function manualTermsOfServiceUpdateToJSON(
   manualTermsOfServiceUpdate: ManualTermsOfServiceUpdate,
 ): string {
@@ -80,7 +66,6 @@ export function manualTermsOfServiceUpdateToJSON(
     ManualTermsOfServiceUpdate$outboundSchema.parse(manualTermsOfServiceUpdate),
   );
 }
-
 export function manualTermsOfServiceUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<ManualTermsOfServiceUpdate, SDKValidationError> {

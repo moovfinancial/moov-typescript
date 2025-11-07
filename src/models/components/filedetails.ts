@@ -56,7 +56,6 @@ export const FileDetails$inboundSchema: z.ZodType<
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type FileDetails$Outbound = {
   fileID: string;
@@ -89,23 +88,9 @@ export const FileDetails$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileDetails$ {
-  /** @deprecated use `FileDetails$inboundSchema` instead. */
-  export const inboundSchema = FileDetails$inboundSchema;
-  /** @deprecated use `FileDetails$outboundSchema` instead. */
-  export const outboundSchema = FileDetails$outboundSchema;
-  /** @deprecated use `FileDetails$Outbound` instead. */
-  export type Outbound = FileDetails$Outbound;
-}
-
 export function fileDetailsToJSON(fileDetails: FileDetails): string {
   return JSON.stringify(FileDetails$outboundSchema.parse(fileDetails));
 }
-
 export function fileDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<FileDetails, SDKValidationError> {

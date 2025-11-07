@@ -85,19 +85,7 @@ export type ACHReturnCode = ClosedEnum<typeof ACHReturnCode>;
 export const ACHReturnCode$inboundSchema: z.ZodNativeEnum<
   typeof ACHReturnCode
 > = z.nativeEnum(ACHReturnCode);
-
 /** @internal */
 export const ACHReturnCode$outboundSchema: z.ZodNativeEnum<
   typeof ACHReturnCode
 > = ACHReturnCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ACHReturnCode$ {
-  /** @deprecated use `ACHReturnCode$inboundSchema` instead. */
-  export const inboundSchema = ACHReturnCode$inboundSchema;
-  /** @deprecated use `ACHReturnCode$outboundSchema` instead. */
-  export const outboundSchema = ACHReturnCode$outboundSchema;
-}

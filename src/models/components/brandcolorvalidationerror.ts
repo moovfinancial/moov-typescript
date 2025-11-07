@@ -19,7 +19,6 @@ export const BrandColorValidationError$inboundSchema: z.ZodType<
 > = z.object({
   accent: z.string().optional(),
 });
-
 /** @internal */
 export type BrandColorValidationError$Outbound = {
   accent?: string | undefined;
@@ -34,19 +33,6 @@ export const BrandColorValidationError$outboundSchema: z.ZodType<
   accent: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BrandColorValidationError$ {
-  /** @deprecated use `BrandColorValidationError$inboundSchema` instead. */
-  export const inboundSchema = BrandColorValidationError$inboundSchema;
-  /** @deprecated use `BrandColorValidationError$outboundSchema` instead. */
-  export const outboundSchema = BrandColorValidationError$outboundSchema;
-  /** @deprecated use `BrandColorValidationError$Outbound` instead. */
-  export type Outbound = BrandColorValidationError$Outbound;
-}
-
 export function brandColorValidationErrorToJSON(
   brandColorValidationError: BrandColorValidationError,
 ): string {
@@ -54,7 +40,6 @@ export function brandColorValidationErrorToJSON(
     BrandColorValidationError$outboundSchema.parse(brandColorValidationError),
   );
 }
-
 export function brandColorValidationErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<BrandColorValidationError, SDKValidationError> {

@@ -26,19 +26,7 @@ export type CardUpdateReason = ClosedEnum<typeof CardUpdateReason>;
 export const CardUpdateReason$inboundSchema: z.ZodNativeEnum<
   typeof CardUpdateReason
 > = z.nativeEnum(CardUpdateReason);
-
 /** @internal */
 export const CardUpdateReason$outboundSchema: z.ZodNativeEnum<
   typeof CardUpdateReason
 > = CardUpdateReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardUpdateReason$ {
-  /** @deprecated use `CardUpdateReason$inboundSchema` instead. */
-  export const inboundSchema = CardUpdateReason$inboundSchema;
-  /** @deprecated use `CardUpdateReason$outboundSchema` instead. */
-  export const outboundSchema = CardUpdateReason$outboundSchema;
-}

@@ -29,7 +29,6 @@ export const CreateRefund$inboundSchema: z.ZodType<
 > = z.object({
   amount: z.number().int().optional(),
 });
-
 /** @internal */
 export type CreateRefund$Outbound = {
   amount?: number | undefined;
@@ -44,23 +43,9 @@ export const CreateRefund$outboundSchema: z.ZodType<
   amount: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRefund$ {
-  /** @deprecated use `CreateRefund$inboundSchema` instead. */
-  export const inboundSchema = CreateRefund$inboundSchema;
-  /** @deprecated use `CreateRefund$outboundSchema` instead. */
-  export const outboundSchema = CreateRefund$outboundSchema;
-  /** @deprecated use `CreateRefund$Outbound` instead. */
-  export type Outbound = CreateRefund$Outbound;
-}
-
 export function createRefundToJSON(createRefund: CreateRefund): string {
   return JSON.stringify(CreateRefund$outboundSchema.parse(createRefund));
 }
-
 export function createRefundFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRefund, SDKValidationError> {

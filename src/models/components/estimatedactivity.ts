@@ -31,7 +31,6 @@ export const EstimatedActivity$inboundSchema: z.ZodType<
   maximumTransactionAmount: z.number().int().optional(),
   monthlyVolumeRange: MonthlyVolumeRange$inboundSchema.optional(),
 });
-
 /** @internal */
 export type EstimatedActivity$Outbound = {
   averageTransactionAmount?: number | undefined;
@@ -50,19 +49,6 @@ export const EstimatedActivity$outboundSchema: z.ZodType<
   monthlyVolumeRange: MonthlyVolumeRange$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EstimatedActivity$ {
-  /** @deprecated use `EstimatedActivity$inboundSchema` instead. */
-  export const inboundSchema = EstimatedActivity$inboundSchema;
-  /** @deprecated use `EstimatedActivity$outboundSchema` instead. */
-  export const outboundSchema = EstimatedActivity$outboundSchema;
-  /** @deprecated use `EstimatedActivity$Outbound` instead. */
-  export type Outbound = EstimatedActivity$Outbound;
-}
-
 export function estimatedActivityToJSON(
   estimatedActivity: EstimatedActivity,
 ): string {
@@ -70,7 +56,6 @@ export function estimatedActivityToJSON(
     EstimatedActivity$outboundSchema.parse(estimatedActivity),
   );
 }
-
 export function estimatedActivityFromJSON(
   jsonString: string,
 ): SafeParseResult<EstimatedActivity, SDKValidationError> {

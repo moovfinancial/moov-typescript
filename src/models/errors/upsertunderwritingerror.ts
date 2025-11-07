@@ -176,16 +176,3 @@ export const UpsertUnderwritingError$outboundSchema: z.ZodType<
       .CardVolumeDistributionError$outboundSchema.optional(),
     fulfillment: components.FulfillmentDetailsError$outboundSchema.optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertUnderwritingError$ {
-  /** @deprecated use `UpsertUnderwritingError$inboundSchema` instead. */
-  export const inboundSchema = UpsertUnderwritingError$inboundSchema;
-  /** @deprecated use `UpsertUnderwritingError$outboundSchema` instead. */
-  export const outboundSchema = UpsertUnderwritingError$outboundSchema;
-  /** @deprecated use `UpsertUnderwritingError$Outbound` instead. */
-  export type Outbound = UpsertUnderwritingError$Outbound;
-}

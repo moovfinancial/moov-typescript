@@ -37,21 +37,9 @@ export type PatchSweepConfig = {
 /** @internal */
 export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
   .nativeEnum(Status);
-
 /** @internal */
 export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
   Status$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Status$ {
-  /** @deprecated use `Status$inboundSchema` instead. */
-  export const inboundSchema = Status$inboundSchema;
-  /** @deprecated use `Status$outboundSchema` instead. */
-  export const outboundSchema = Status$outboundSchema;
-}
 
 /** @internal */
 export const PushPaymentMethodId2$inboundSchema: z.ZodType<
@@ -59,7 +47,6 @@ export const PushPaymentMethodId2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type PushPaymentMethodId2$Outbound = {};
 
@@ -70,19 +57,6 @@ export const PushPaymentMethodId2$outboundSchema: z.ZodType<
   PushPaymentMethodId2
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushPaymentMethodId2$ {
-  /** @deprecated use `PushPaymentMethodId2$inboundSchema` instead. */
-  export const inboundSchema = PushPaymentMethodId2$inboundSchema;
-  /** @deprecated use `PushPaymentMethodId2$outboundSchema` instead. */
-  export const outboundSchema = PushPaymentMethodId2$outboundSchema;
-  /** @deprecated use `PushPaymentMethodId2$Outbound` instead. */
-  export type Outbound = PushPaymentMethodId2$Outbound;
-}
-
 export function pushPaymentMethodID2ToJSON(
   pushPaymentMethodId2: PushPaymentMethodId2,
 ): string {
@@ -90,7 +64,6 @@ export function pushPaymentMethodID2ToJSON(
     PushPaymentMethodId2$outboundSchema.parse(pushPaymentMethodId2),
   );
 }
-
 export function pushPaymentMethodID2FromJSON(
   jsonString: string,
 ): SafeParseResult<PushPaymentMethodId2, SDKValidationError> {
@@ -107,7 +80,6 @@ export const PushPaymentMethodID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.lazy(() => PushPaymentMethodId2$inboundSchema)]);
-
 /** @internal */
 export type PushPaymentMethodID$Outbound =
   | string
@@ -120,19 +92,6 @@ export const PushPaymentMethodID$outboundSchema: z.ZodType<
   PushPaymentMethodID
 > = z.union([z.string(), z.lazy(() => PushPaymentMethodId2$outboundSchema)]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushPaymentMethodID$ {
-  /** @deprecated use `PushPaymentMethodID$inboundSchema` instead. */
-  export const inboundSchema = PushPaymentMethodID$inboundSchema;
-  /** @deprecated use `PushPaymentMethodID$outboundSchema` instead. */
-  export const outboundSchema = PushPaymentMethodID$outboundSchema;
-  /** @deprecated use `PushPaymentMethodID$Outbound` instead. */
-  export type Outbound = PushPaymentMethodID$Outbound;
-}
-
 export function pushPaymentMethodIDToJSON(
   pushPaymentMethodID: PushPaymentMethodID,
 ): string {
@@ -140,7 +99,6 @@ export function pushPaymentMethodIDToJSON(
     PushPaymentMethodID$outboundSchema.parse(pushPaymentMethodID),
   );
 }
-
 export function pushPaymentMethodIDFromJSON(
   jsonString: string,
 ): SafeParseResult<PushPaymentMethodID, SDKValidationError> {
@@ -157,7 +115,6 @@ export const PullPaymentMethodId2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type PullPaymentMethodId2$Outbound = {};
 
@@ -168,19 +125,6 @@ export const PullPaymentMethodId2$outboundSchema: z.ZodType<
   PullPaymentMethodId2
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PullPaymentMethodId2$ {
-  /** @deprecated use `PullPaymentMethodId2$inboundSchema` instead. */
-  export const inboundSchema = PullPaymentMethodId2$inboundSchema;
-  /** @deprecated use `PullPaymentMethodId2$outboundSchema` instead. */
-  export const outboundSchema = PullPaymentMethodId2$outboundSchema;
-  /** @deprecated use `PullPaymentMethodId2$Outbound` instead. */
-  export type Outbound = PullPaymentMethodId2$Outbound;
-}
-
 export function pullPaymentMethodID2ToJSON(
   pullPaymentMethodId2: PullPaymentMethodId2,
 ): string {
@@ -188,7 +132,6 @@ export function pullPaymentMethodID2ToJSON(
     PullPaymentMethodId2$outboundSchema.parse(pullPaymentMethodId2),
   );
 }
-
 export function pullPaymentMethodID2FromJSON(
   jsonString: string,
 ): SafeParseResult<PullPaymentMethodId2, SDKValidationError> {
@@ -205,7 +148,6 @@ export const PullPaymentMethodID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.lazy(() => PullPaymentMethodId2$inboundSchema)]);
-
 /** @internal */
 export type PullPaymentMethodID$Outbound =
   | string
@@ -218,19 +160,6 @@ export const PullPaymentMethodID$outboundSchema: z.ZodType<
   PullPaymentMethodID
 > = z.union([z.string(), z.lazy(() => PullPaymentMethodId2$outboundSchema)]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PullPaymentMethodID$ {
-  /** @deprecated use `PullPaymentMethodID$inboundSchema` instead. */
-  export const inboundSchema = PullPaymentMethodID$inboundSchema;
-  /** @deprecated use `PullPaymentMethodID$outboundSchema` instead. */
-  export const outboundSchema = PullPaymentMethodID$outboundSchema;
-  /** @deprecated use `PullPaymentMethodID$Outbound` instead. */
-  export type Outbound = PullPaymentMethodID$Outbound;
-}
-
 export function pullPaymentMethodIDToJSON(
   pullPaymentMethodID: PullPaymentMethodID,
 ): string {
@@ -238,7 +167,6 @@ export function pullPaymentMethodIDToJSON(
     PullPaymentMethodID$outboundSchema.parse(pullPaymentMethodID),
   );
 }
-
 export function pullPaymentMethodIDFromJSON(
   jsonString: string,
 ): SafeParseResult<PullPaymentMethodID, SDKValidationError> {
@@ -255,7 +183,6 @@ export const StatementDescriptor2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type StatementDescriptor2$Outbound = {};
 
@@ -266,19 +193,6 @@ export const StatementDescriptor2$outboundSchema: z.ZodType<
   StatementDescriptor2
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StatementDescriptor2$ {
-  /** @deprecated use `StatementDescriptor2$inboundSchema` instead. */
-  export const inboundSchema = StatementDescriptor2$inboundSchema;
-  /** @deprecated use `StatementDescriptor2$outboundSchema` instead. */
-  export const outboundSchema = StatementDescriptor2$outboundSchema;
-  /** @deprecated use `StatementDescriptor2$Outbound` instead. */
-  export type Outbound = StatementDescriptor2$Outbound;
-}
-
 export function statementDescriptor2ToJSON(
   statementDescriptor2: StatementDescriptor2,
 ): string {
@@ -286,7 +200,6 @@ export function statementDescriptor2ToJSON(
     StatementDescriptor2$outboundSchema.parse(statementDescriptor2),
   );
 }
-
 export function statementDescriptor2FromJSON(
   jsonString: string,
 ): SafeParseResult<StatementDescriptor2, SDKValidationError> {
@@ -303,7 +216,6 @@ export const StatementDescriptor$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.lazy(() => StatementDescriptor2$inboundSchema)]);
-
 /** @internal */
 export type StatementDescriptor$Outbound =
   | string
@@ -316,19 +228,6 @@ export const StatementDescriptor$outboundSchema: z.ZodType<
   StatementDescriptor
 > = z.union([z.string(), z.lazy(() => StatementDescriptor2$outboundSchema)]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StatementDescriptor$ {
-  /** @deprecated use `StatementDescriptor$inboundSchema` instead. */
-  export const inboundSchema = StatementDescriptor$inboundSchema;
-  /** @deprecated use `StatementDescriptor$outboundSchema` instead. */
-  export const outboundSchema = StatementDescriptor$outboundSchema;
-  /** @deprecated use `StatementDescriptor$Outbound` instead. */
-  export type Outbound = StatementDescriptor$Outbound;
-}
-
 export function statementDescriptorToJSON(
   statementDescriptor: StatementDescriptor,
 ): string {
@@ -336,7 +235,6 @@ export function statementDescriptorToJSON(
     StatementDescriptor$outboundSchema.parse(statementDescriptor),
   );
 }
-
 export function statementDescriptorFromJSON(
   jsonString: string,
 ): SafeParseResult<StatementDescriptor, SDKValidationError> {
@@ -365,7 +263,6 @@ export const PatchSweepConfig$inboundSchema: z.ZodType<
   ).optional(),
   minimumBalance: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type PatchSweepConfig$Outbound = {
   status?: string | null | undefined;
@@ -406,19 +303,6 @@ export const PatchSweepConfig$outboundSchema: z.ZodType<
   minimumBalance: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchSweepConfig$ {
-  /** @deprecated use `PatchSweepConfig$inboundSchema` instead. */
-  export const inboundSchema = PatchSweepConfig$inboundSchema;
-  /** @deprecated use `PatchSweepConfig$outboundSchema` instead. */
-  export const outboundSchema = PatchSweepConfig$outboundSchema;
-  /** @deprecated use `PatchSweepConfig$Outbound` instead. */
-  export type Outbound = PatchSweepConfig$Outbound;
-}
-
 export function patchSweepConfigToJSON(
   patchSweepConfig: PatchSweepConfig,
 ): string {
@@ -426,7 +310,6 @@ export function patchSweepConfigToJSON(
     PatchSweepConfig$outboundSchema.parse(patchSweepConfig),
   );
 }
-
 export function patchSweepConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchSweepConfig, SDKValidationError> {

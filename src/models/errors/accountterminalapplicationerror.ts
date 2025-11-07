@@ -66,16 +66,3 @@ export const AccountTerminalApplicationError$outboundSchema: z.ZodType<
   .pipe(z.object({
     terminalApplicationID: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountTerminalApplicationError$ {
-  /** @deprecated use `AccountTerminalApplicationError$inboundSchema` instead. */
-  export const inboundSchema = AccountTerminalApplicationError$inboundSchema;
-  /** @deprecated use `AccountTerminalApplicationError$outboundSchema` instead. */
-  export const outboundSchema = AccountTerminalApplicationError$outboundSchema;
-  /** @deprecated use `AccountTerminalApplicationError$Outbound` instead. */
-  export type Outbound = AccountTerminalApplicationError$Outbound;
-}

@@ -48,7 +48,6 @@ export const CreateSweepConfigGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateSweepConfigGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const CreateSweepConfigGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSweepConfigGlobals$ {
-  /** @deprecated use `CreateSweepConfigGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateSweepConfigGlobals$inboundSchema;
-  /** @deprecated use `CreateSweepConfigGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateSweepConfigGlobals$outboundSchema;
-  /** @deprecated use `CreateSweepConfigGlobals$Outbound` instead. */
-  export type Outbound = CreateSweepConfigGlobals$Outbound;
-}
-
 export function createSweepConfigGlobalsToJSON(
   createSweepConfigGlobals: CreateSweepConfigGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function createSweepConfigGlobalsToJSON(
     CreateSweepConfigGlobals$outboundSchema.parse(createSweepConfigGlobals),
   );
 }
-
 export function createSweepConfigGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSweepConfigGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const CreateSweepConfigRequest$inboundSchema: z.ZodType<
     "CreateSweepConfig": "createSweepConfig",
   });
 });
-
 /** @internal */
 export type CreateSweepConfigRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const CreateSweepConfigRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSweepConfigRequest$ {
-  /** @deprecated use `CreateSweepConfigRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateSweepConfigRequest$inboundSchema;
-  /** @deprecated use `CreateSweepConfigRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateSweepConfigRequest$outboundSchema;
-  /** @deprecated use `CreateSweepConfigRequest$Outbound` instead. */
-  export type Outbound = CreateSweepConfigRequest$Outbound;
-}
-
 export function createSweepConfigRequestToJSON(
   createSweepConfigRequest: CreateSweepConfigRequest,
 ): string {
@@ -152,7 +123,6 @@ export function createSweepConfigRequestToJSON(
     CreateSweepConfigRequest$outboundSchema.parse(createSweepConfigRequest),
   );
 }
-
 export function createSweepConfigRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSweepConfigRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const CreateSweepConfigResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateSweepConfigResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const CreateSweepConfigResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSweepConfigResponse$ {
-  /** @deprecated use `CreateSweepConfigResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateSweepConfigResponse$inboundSchema;
-  /** @deprecated use `CreateSweepConfigResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateSweepConfigResponse$outboundSchema;
-  /** @deprecated use `CreateSweepConfigResponse$Outbound` instead. */
-  export type Outbound = CreateSweepConfigResponse$Outbound;
-}
-
 export function createSweepConfigResponseToJSON(
   createSweepConfigResponse: CreateSweepConfigResponse,
 ): string {
@@ -219,7 +175,6 @@ export function createSweepConfigResponseToJSON(
     CreateSweepConfigResponse$outboundSchema.parse(createSweepConfigResponse),
   );
 }
-
 export function createSweepConfigResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSweepConfigResponse, SDKValidationError> {

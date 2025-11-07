@@ -62,7 +62,6 @@ export const LinkApplePayToken$inboundSchema: z.ZodType<
   paymentMethod: LinkApplePaymentMethod$inboundSchema,
   transactionIdentifier: z.string(),
 });
-
 /** @internal */
 export type LinkApplePayToken$Outbound = {
   paymentData: LinkApplePaymentData$Outbound;
@@ -81,19 +80,6 @@ export const LinkApplePayToken$outboundSchema: z.ZodType<
   transactionIdentifier: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkApplePayToken$ {
-  /** @deprecated use `LinkApplePayToken$inboundSchema` instead. */
-  export const inboundSchema = LinkApplePayToken$inboundSchema;
-  /** @deprecated use `LinkApplePayToken$outboundSchema` instead. */
-  export const outboundSchema = LinkApplePayToken$outboundSchema;
-  /** @deprecated use `LinkApplePayToken$Outbound` instead. */
-  export type Outbound = LinkApplePayToken$Outbound;
-}
-
 export function linkApplePayTokenToJSON(
   linkApplePayToken: LinkApplePayToken,
 ): string {
@@ -101,7 +87,6 @@ export function linkApplePayTokenToJSON(
     LinkApplePayToken$outboundSchema.parse(linkApplePayToken),
   );
 }
-
 export function linkApplePayTokenFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkApplePayToken, SDKValidationError> {

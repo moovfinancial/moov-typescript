@@ -21,7 +21,6 @@ export const CreateTicketContactError$inboundSchema: z.ZodType<
   email: z.string().optional(),
   name: z.string().optional(),
 });
-
 /** @internal */
 export type CreateTicketContactError$Outbound = {
   email?: string | undefined;
@@ -38,19 +37,6 @@ export const CreateTicketContactError$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTicketContactError$ {
-  /** @deprecated use `CreateTicketContactError$inboundSchema` instead. */
-  export const inboundSchema = CreateTicketContactError$inboundSchema;
-  /** @deprecated use `CreateTicketContactError$outboundSchema` instead. */
-  export const outboundSchema = CreateTicketContactError$outboundSchema;
-  /** @deprecated use `CreateTicketContactError$Outbound` instead. */
-  export type Outbound = CreateTicketContactError$Outbound;
-}
-
 export function createTicketContactErrorToJSON(
   createTicketContactError: CreateTicketContactError,
 ): string {
@@ -58,7 +44,6 @@ export function createTicketContactErrorToJSON(
     CreateTicketContactError$outboundSchema.parse(createTicketContactError),
   );
 }
-
 export function createTicketContactErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTicketContactError, SDKValidationError> {

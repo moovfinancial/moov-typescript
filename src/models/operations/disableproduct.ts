@@ -46,7 +46,6 @@ export const DisableProductGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type DisableProductGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -65,19 +64,6 @@ export const DisableProductGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableProductGlobals$ {
-  /** @deprecated use `DisableProductGlobals$inboundSchema` instead. */
-  export const inboundSchema = DisableProductGlobals$inboundSchema;
-  /** @deprecated use `DisableProductGlobals$outboundSchema` instead. */
-  export const outboundSchema = DisableProductGlobals$outboundSchema;
-  /** @deprecated use `DisableProductGlobals$Outbound` instead. */
-  export type Outbound = DisableProductGlobals$Outbound;
-}
-
 export function disableProductGlobalsToJSON(
   disableProductGlobals: DisableProductGlobals,
 ): string {
@@ -85,7 +71,6 @@ export function disableProductGlobalsToJSON(
     DisableProductGlobals$outboundSchema.parse(disableProductGlobals),
   );
 }
-
 export function disableProductGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableProductGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const DisableProductRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   productID: z.string(),
 });
-
 /** @internal */
 export type DisableProductRequest$Outbound = {
   accountID: string;
@@ -122,19 +106,6 @@ export const DisableProductRequest$outboundSchema: z.ZodType<
   productID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableProductRequest$ {
-  /** @deprecated use `DisableProductRequest$inboundSchema` instead. */
-  export const inboundSchema = DisableProductRequest$inboundSchema;
-  /** @deprecated use `DisableProductRequest$outboundSchema` instead. */
-  export const outboundSchema = DisableProductRequest$outboundSchema;
-  /** @deprecated use `DisableProductRequest$Outbound` instead. */
-  export type Outbound = DisableProductRequest$Outbound;
-}
-
 export function disableProductRequestToJSON(
   disableProductRequest: DisableProductRequest,
 ): string {
@@ -142,7 +113,6 @@ export function disableProductRequestToJSON(
     DisableProductRequest$outboundSchema.parse(disableProductRequest),
   );
 }
-
 export function disableProductRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableProductRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const DisableProductResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type DisableProductResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -184,19 +153,6 @@ export const DisableProductResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableProductResponse$ {
-  /** @deprecated use `DisableProductResponse$inboundSchema` instead. */
-  export const inboundSchema = DisableProductResponse$inboundSchema;
-  /** @deprecated use `DisableProductResponse$outboundSchema` instead. */
-  export const outboundSchema = DisableProductResponse$outboundSchema;
-  /** @deprecated use `DisableProductResponse$Outbound` instead. */
-  export type Outbound = DisableProductResponse$Outbound;
-}
-
 export function disableProductResponseToJSON(
   disableProductResponse: DisableProductResponse,
 ): string {
@@ -204,7 +160,6 @@ export function disableProductResponseToJSON(
     DisableProductResponse$outboundSchema.parse(disableProductResponse),
   );
 }
-
 export function disableProductResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableProductResponse, SDKValidationError> {

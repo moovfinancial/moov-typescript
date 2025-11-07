@@ -86,7 +86,6 @@ export const ListDisputesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListDisputesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -105,19 +104,6 @@ export const ListDisputesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDisputesGlobals$ {
-  /** @deprecated use `ListDisputesGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListDisputesGlobals$inboundSchema;
-  /** @deprecated use `ListDisputesGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListDisputesGlobals$outboundSchema;
-  /** @deprecated use `ListDisputesGlobals$Outbound` instead. */
-  export type Outbound = ListDisputesGlobals$Outbound;
-}
-
 export function listDisputesGlobalsToJSON(
   listDisputesGlobals: ListDisputesGlobals,
 ): string {
@@ -125,7 +111,6 @@ export function listDisputesGlobalsToJSON(
     ListDisputesGlobals$outboundSchema.parse(listDisputesGlobals),
   );
 }
-
 export function listDisputesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDisputesGlobals, SDKValidationError> {
@@ -163,7 +148,6 @@ export const ListDisputesRequest$inboundSchema: z.ZodType<
   transferIDs: z.array(z.string()).optional(),
   orderBy: z.string().optional(),
 });
-
 /** @internal */
 export type ListDisputesRequest$Outbound = {
   accountID: string;
@@ -202,19 +186,6 @@ export const ListDisputesRequest$outboundSchema: z.ZodType<
   orderBy: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDisputesRequest$ {
-  /** @deprecated use `ListDisputesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListDisputesRequest$inboundSchema;
-  /** @deprecated use `ListDisputesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListDisputesRequest$outboundSchema;
-  /** @deprecated use `ListDisputesRequest$Outbound` instead. */
-  export type Outbound = ListDisputesRequest$Outbound;
-}
-
 export function listDisputesRequestToJSON(
   listDisputesRequest: ListDisputesRequest,
 ): string {
@@ -222,7 +193,6 @@ export function listDisputesRequestToJSON(
     ListDisputesRequest$outboundSchema.parse(listDisputesRequest),
   );
 }
-
 export function listDisputesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDisputesRequest, SDKValidationError> {
@@ -247,7 +217,6 @@ export const ListDisputesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListDisputesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -269,19 +238,6 @@ export const ListDisputesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDisputesResponse$ {
-  /** @deprecated use `ListDisputesResponse$inboundSchema` instead. */
-  export const inboundSchema = ListDisputesResponse$inboundSchema;
-  /** @deprecated use `ListDisputesResponse$outboundSchema` instead. */
-  export const outboundSchema = ListDisputesResponse$outboundSchema;
-  /** @deprecated use `ListDisputesResponse$Outbound` instead. */
-  export type Outbound = ListDisputesResponse$Outbound;
-}
-
 export function listDisputesResponseToJSON(
   listDisputesResponse: ListDisputesResponse,
 ): string {
@@ -289,7 +245,6 @@ export function listDisputesResponseToJSON(
     ListDisputesResponse$outboundSchema.parse(listDisputesResponse),
   );
 }
-
 export function listDisputesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDisputesResponse, SDKValidationError> {

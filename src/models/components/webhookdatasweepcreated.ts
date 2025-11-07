@@ -21,7 +21,6 @@ export const WebhookDataSweepCreated$inboundSchema: z.ZodType<
   walletID: z.string(),
   sweepID: z.string(),
 });
-
 /** @internal */
 export type WebhookDataSweepCreated$Outbound = {
   walletID: string;
@@ -38,19 +37,6 @@ export const WebhookDataSweepCreated$outboundSchema: z.ZodType<
   sweepID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataSweepCreated$ {
-  /** @deprecated use `WebhookDataSweepCreated$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataSweepCreated$inboundSchema;
-  /** @deprecated use `WebhookDataSweepCreated$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataSweepCreated$outboundSchema;
-  /** @deprecated use `WebhookDataSweepCreated$Outbound` instead. */
-  export type Outbound = WebhookDataSweepCreated$Outbound;
-}
-
 export function webhookDataSweepCreatedToJSON(
   webhookDataSweepCreated: WebhookDataSweepCreated,
 ): string {
@@ -58,7 +44,6 @@ export function webhookDataSweepCreatedToJSON(
     WebhookDataSweepCreated$outboundSchema.parse(webhookDataSweepCreated),
   );
 }
-
 export function webhookDataSweepCreatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataSweepCreated, SDKValidationError> {

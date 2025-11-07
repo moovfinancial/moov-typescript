@@ -19,19 +19,7 @@ export type WalletTransactionStatus = ClosedEnum<
 export const WalletTransactionStatus$inboundSchema: z.ZodNativeEnum<
   typeof WalletTransactionStatus
 > = z.nativeEnum(WalletTransactionStatus);
-
 /** @internal */
 export const WalletTransactionStatus$outboundSchema: z.ZodNativeEnum<
   typeof WalletTransactionStatus
 > = WalletTransactionStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WalletTransactionStatus$ {
-  /** @deprecated use `WalletTransactionStatus$inboundSchema` instead. */
-  export const inboundSchema = WalletTransactionStatus$inboundSchema;
-  /** @deprecated use `WalletTransactionStatus$outboundSchema` instead. */
-  export const outboundSchema = WalletTransactionStatus$outboundSchema;
-}

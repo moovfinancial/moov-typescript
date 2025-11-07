@@ -28,7 +28,6 @@ export const WebhookDataCancellationUpdated$inboundSchema: z.ZodType<
   transferID: z.string(),
   status: CancellationStatus$inboundSchema,
 });
-
 /** @internal */
 export type WebhookDataCancellationUpdated$Outbound = {
   cancellationID: string;
@@ -47,19 +46,6 @@ export const WebhookDataCancellationUpdated$outboundSchema: z.ZodType<
   status: CancellationStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataCancellationUpdated$ {
-  /** @deprecated use `WebhookDataCancellationUpdated$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataCancellationUpdated$inboundSchema;
-  /** @deprecated use `WebhookDataCancellationUpdated$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataCancellationUpdated$outboundSchema;
-  /** @deprecated use `WebhookDataCancellationUpdated$Outbound` instead. */
-  export type Outbound = WebhookDataCancellationUpdated$Outbound;
-}
-
 export function webhookDataCancellationUpdatedToJSON(
   webhookDataCancellationUpdated: WebhookDataCancellationUpdated,
 ): string {
@@ -69,7 +55,6 @@ export function webhookDataCancellationUpdatedToJSON(
     ),
   );
 }
-
 export function webhookDataCancellationUpdatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataCancellationUpdated, SDKValidationError> {

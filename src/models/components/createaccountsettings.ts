@@ -28,7 +28,6 @@ export const CardPayment$inboundSchema: z.ZodType<
 > = z.object({
   statementDescriptor: z.string().optional(),
 });
-
 /** @internal */
 export type CardPayment$Outbound = {
   statementDescriptor?: string | undefined;
@@ -43,23 +42,9 @@ export const CardPayment$outboundSchema: z.ZodType<
   statementDescriptor: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardPayment$ {
-  /** @deprecated use `CardPayment$inboundSchema` instead. */
-  export const inboundSchema = CardPayment$inboundSchema;
-  /** @deprecated use `CardPayment$outboundSchema` instead. */
-  export const outboundSchema = CardPayment$outboundSchema;
-  /** @deprecated use `CardPayment$Outbound` instead. */
-  export type Outbound = CardPayment$Outbound;
-}
-
 export function cardPaymentToJSON(cardPayment: CardPayment): string {
   return JSON.stringify(CardPayment$outboundSchema.parse(cardPayment));
 }
-
 export function cardPaymentFromJSON(
   jsonString: string,
 ): SafeParseResult<CardPayment, SDKValidationError> {
@@ -78,7 +63,6 @@ export const AchPayment$inboundSchema: z.ZodType<
 > = z.object({
   companyName: z.string().optional(),
 });
-
 /** @internal */
 export type AchPayment$Outbound = {
   companyName?: string | undefined;
@@ -93,23 +77,9 @@ export const AchPayment$outboundSchema: z.ZodType<
   companyName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AchPayment$ {
-  /** @deprecated use `AchPayment$inboundSchema` instead. */
-  export const inboundSchema = AchPayment$inboundSchema;
-  /** @deprecated use `AchPayment$outboundSchema` instead. */
-  export const outboundSchema = AchPayment$outboundSchema;
-  /** @deprecated use `AchPayment$Outbound` instead. */
-  export type Outbound = AchPayment$Outbound;
-}
-
 export function achPaymentToJSON(achPayment: AchPayment): string {
   return JSON.stringify(AchPayment$outboundSchema.parse(achPayment));
 }
-
 export function achPaymentFromJSON(
   jsonString: string,
 ): SafeParseResult<AchPayment, SDKValidationError> {
@@ -129,7 +99,6 @@ export const CreateAccountSettings$inboundSchema: z.ZodType<
   cardPayment: z.lazy(() => CardPayment$inboundSchema).optional(),
   achPayment: z.lazy(() => AchPayment$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CreateAccountSettings$Outbound = {
   cardPayment?: CardPayment$Outbound | undefined;
@@ -146,19 +115,6 @@ export const CreateAccountSettings$outboundSchema: z.ZodType<
   achPayment: z.lazy(() => AchPayment$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountSettings$ {
-  /** @deprecated use `CreateAccountSettings$inboundSchema` instead. */
-  export const inboundSchema = CreateAccountSettings$inboundSchema;
-  /** @deprecated use `CreateAccountSettings$outboundSchema` instead. */
-  export const outboundSchema = CreateAccountSettings$outboundSchema;
-  /** @deprecated use `CreateAccountSettings$Outbound` instead. */
-  export type Outbound = CreateAccountSettings$Outbound;
-}
-
 export function createAccountSettingsToJSON(
   createAccountSettings: CreateAccountSettings,
 ): string {
@@ -166,7 +122,6 @@ export function createAccountSettingsToJSON(
     CreateAccountSettings$outboundSchema.parse(createAccountSettings),
   );
 }
-
 export function createAccountSettingsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccountSettings, SDKValidationError> {

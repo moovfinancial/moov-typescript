@@ -51,19 +51,7 @@ export type ApplicationScope = ClosedEnum<typeof ApplicationScope>;
 export const ApplicationScope$inboundSchema: z.ZodNativeEnum<
   typeof ApplicationScope
 > = z.nativeEnum(ApplicationScope);
-
 /** @internal */
 export const ApplicationScope$outboundSchema: z.ZodNativeEnum<
   typeof ApplicationScope
 > = ApplicationScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationScope$ {
-  /** @deprecated use `ApplicationScope$inboundSchema` instead. */
-  export const inboundSchema = ApplicationScope$inboundSchema;
-  /** @deprecated use `ApplicationScope$outboundSchema` instead. */
-  export const outboundSchema = ApplicationScope$outboundSchema;
-}

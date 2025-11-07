@@ -30,6 +30,12 @@ import {
   FacilitatorFee$Outbound,
   FacilitatorFee$outboundSchema,
 } from "./facilitatorfee.js";
+import {
+  TransferLineItems,
+  TransferLineItems$inboundSchema,
+  TransferLineItems$Outbound,
+  TransferLineItems$outboundSchema,
+} from "./transferlineitems.js";
 
 export type CreateTransfer = {
   /**
@@ -61,6 +67,13 @@ export type CreateTransfer = {
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
   foreignID?: string | undefined;
+  /**
+   * An optional collection of line items for a transfer.
+   *
+   * @remarks
+   * When line items are provided, their total plus sales tax must equal the transfer amount.
+   */
+  lineItems?: TransferLineItems | undefined;
 };
 
 /** @internal */
@@ -77,8 +90,8 @@ export const CreateTransfer$inboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   salesTaxAmount: Amount$inboundSchema.optional(),
   foreignID: z.string().optional(),
+  lineItems: TransferLineItems$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreateTransfer$Outbound = {
   source: CreateTransferSource$Outbound;
@@ -89,6 +102,7 @@ export type CreateTransfer$Outbound = {
   metadata?: { [k: string]: string } | undefined;
   salesTaxAmount?: Amount$Outbound | undefined;
   foreignID?: string | undefined;
+  lineItems?: TransferLineItems$Outbound | undefined;
 };
 
 /** @internal */
@@ -105,25 +119,12 @@ export const CreateTransfer$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   salesTaxAmount: Amount$outboundSchema.optional(),
   foreignID: z.string().optional(),
+  lineItems: TransferLineItems$outboundSchema.optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransfer$ {
-  /** @deprecated use `CreateTransfer$inboundSchema` instead. */
-  export const inboundSchema = CreateTransfer$inboundSchema;
-  /** @deprecated use `CreateTransfer$outboundSchema` instead. */
-  export const outboundSchema = CreateTransfer$outboundSchema;
-  /** @deprecated use `CreateTransfer$Outbound` instead. */
-  export type Outbound = CreateTransfer$Outbound;
-}
 
 export function createTransferToJSON(createTransfer: CreateTransfer): string {
   return JSON.stringify(CreateTransfer$outboundSchema.parse(createTransfer));
 }
-
 export function createTransferFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransfer, SDKValidationError> {

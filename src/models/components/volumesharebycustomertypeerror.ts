@@ -23,7 +23,6 @@ export const VolumeShareByCustomerTypeError$inboundSchema: z.ZodType<
   consumer: z.string().optional(),
   p2p: z.string().optional(),
 });
-
 /** @internal */
 export type VolumeShareByCustomerTypeError$Outbound = {
   business?: string | undefined;
@@ -42,19 +41,6 @@ export const VolumeShareByCustomerTypeError$outboundSchema: z.ZodType<
   p2p: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VolumeShareByCustomerTypeError$ {
-  /** @deprecated use `VolumeShareByCustomerTypeError$inboundSchema` instead. */
-  export const inboundSchema = VolumeShareByCustomerTypeError$inboundSchema;
-  /** @deprecated use `VolumeShareByCustomerTypeError$outboundSchema` instead. */
-  export const outboundSchema = VolumeShareByCustomerTypeError$outboundSchema;
-  /** @deprecated use `VolumeShareByCustomerTypeError$Outbound` instead. */
-  export type Outbound = VolumeShareByCustomerTypeError$Outbound;
-}
-
 export function volumeShareByCustomerTypeErrorToJSON(
   volumeShareByCustomerTypeError: VolumeShareByCustomerTypeError,
 ): string {
@@ -64,7 +50,6 @@ export function volumeShareByCustomerTypeErrorToJSON(
     ),
   );
 }
-
 export function volumeShareByCustomerTypeErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<VolumeShareByCustomerTypeError, SDKValidationError> {

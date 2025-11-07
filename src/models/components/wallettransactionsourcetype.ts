@@ -23,19 +23,7 @@ export type WalletTransactionSourceType = ClosedEnum<
 export const WalletTransactionSourceType$inboundSchema: z.ZodNativeEnum<
   typeof WalletTransactionSourceType
 > = z.nativeEnum(WalletTransactionSourceType);
-
 /** @internal */
 export const WalletTransactionSourceType$outboundSchema: z.ZodNativeEnum<
   typeof WalletTransactionSourceType
 > = WalletTransactionSourceType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WalletTransactionSourceType$ {
-  /** @deprecated use `WalletTransactionSourceType$inboundSchema` instead. */
-  export const inboundSchema = WalletTransactionSourceType$inboundSchema;
-  /** @deprecated use `WalletTransactionSourceType$outboundSchema` instead. */
-  export const outboundSchema = WalletTransactionSourceType$outboundSchema;
-}

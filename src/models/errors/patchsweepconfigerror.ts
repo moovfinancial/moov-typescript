@@ -94,16 +94,3 @@ export const PatchSweepConfigError$outboundSchema: z.ZodType<
     statementDescriptor: z.string().optional(),
     minimumBalance: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchSweepConfigError$ {
-  /** @deprecated use `PatchSweepConfigError$inboundSchema` instead. */
-  export const inboundSchema = PatchSweepConfigError$inboundSchema;
-  /** @deprecated use `PatchSweepConfigError$outboundSchema` instead. */
-  export const outboundSchema = PatchSweepConfigError$outboundSchema;
-  /** @deprecated use `PatchSweepConfigError$Outbound` instead. */
-  export type Outbound = PatchSweepConfigError$Outbound;
-}

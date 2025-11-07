@@ -45,7 +45,6 @@ export const ListOnboardingInvitesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListOnboardingInvitesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -64,19 +63,6 @@ export const ListOnboardingInvitesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListOnboardingInvitesGlobals$ {
-  /** @deprecated use `ListOnboardingInvitesGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListOnboardingInvitesGlobals$inboundSchema;
-  /** @deprecated use `ListOnboardingInvitesGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListOnboardingInvitesGlobals$outboundSchema;
-  /** @deprecated use `ListOnboardingInvitesGlobals$Outbound` instead. */
-  export type Outbound = ListOnboardingInvitesGlobals$Outbound;
-}
-
 export function listOnboardingInvitesGlobalsToJSON(
   listOnboardingInvitesGlobals: ListOnboardingInvitesGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function listOnboardingInvitesGlobalsToJSON(
     ),
   );
 }
-
 export function listOnboardingInvitesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListOnboardingInvitesGlobals, SDKValidationError> {
@@ -103,7 +88,6 @@ export const ListOnboardingInvitesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type ListOnboardingInvitesRequest$Outbound = {};
 
@@ -114,19 +98,6 @@ export const ListOnboardingInvitesRequest$outboundSchema: z.ZodType<
   ListOnboardingInvitesRequest
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListOnboardingInvitesRequest$ {
-  /** @deprecated use `ListOnboardingInvitesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListOnboardingInvitesRequest$inboundSchema;
-  /** @deprecated use `ListOnboardingInvitesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListOnboardingInvitesRequest$outboundSchema;
-  /** @deprecated use `ListOnboardingInvitesRequest$Outbound` instead. */
-  export type Outbound = ListOnboardingInvitesRequest$Outbound;
-}
-
 export function listOnboardingInvitesRequestToJSON(
   listOnboardingInvitesRequest: ListOnboardingInvitesRequest,
 ): string {
@@ -136,7 +107,6 @@ export function listOnboardingInvitesRequestToJSON(
     ),
   );
 }
-
 export function listOnboardingInvitesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListOnboardingInvitesRequest, SDKValidationError> {
@@ -161,7 +131,6 @@ export const ListOnboardingInvitesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListOnboardingInvitesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -183,19 +152,6 @@ export const ListOnboardingInvitesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListOnboardingInvitesResponse$ {
-  /** @deprecated use `ListOnboardingInvitesResponse$inboundSchema` instead. */
-  export const inboundSchema = ListOnboardingInvitesResponse$inboundSchema;
-  /** @deprecated use `ListOnboardingInvitesResponse$outboundSchema` instead. */
-  export const outboundSchema = ListOnboardingInvitesResponse$outboundSchema;
-  /** @deprecated use `ListOnboardingInvitesResponse$Outbound` instead. */
-  export type Outbound = ListOnboardingInvitesResponse$Outbound;
-}
-
 export function listOnboardingInvitesResponseToJSON(
   listOnboardingInvitesResponse: ListOnboardingInvitesResponse,
 ): string {
@@ -205,7 +161,6 @@ export function listOnboardingInvitesResponseToJSON(
     ),
   );
 }
-
 export function listOnboardingInvitesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListOnboardingInvitesResponse, SDKValidationError> {

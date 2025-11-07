@@ -49,7 +49,6 @@ export const UpdateImageMetadataGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateImageMetadataGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const UpdateImageMetadataGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateImageMetadataGlobals$ {
-  /** @deprecated use `UpdateImageMetadataGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateImageMetadataGlobals$inboundSchema;
-  /** @deprecated use `UpdateImageMetadataGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateImageMetadataGlobals$outboundSchema;
-  /** @deprecated use `UpdateImageMetadataGlobals$Outbound` instead. */
-  export type Outbound = UpdateImageMetadataGlobals$Outbound;
-}
-
 export function updateImageMetadataGlobalsToJSON(
   updateImageMetadataGlobals: UpdateImageMetadataGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function updateImageMetadataGlobalsToJSON(
     UpdateImageMetadataGlobals$outboundSchema.parse(updateImageMetadataGlobals),
   );
 }
-
 export function updateImageMetadataGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateImageMetadataGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const UpdateImageMetadataRequest$inboundSchema: z.ZodType<
     "ImageMetadataRequest": "imageMetadataRequest",
   });
 });
-
 /** @internal */
 export type UpdateImageMetadataRequest$Outbound = {
   accountID: string;
@@ -136,19 +120,6 @@ export const UpdateImageMetadataRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateImageMetadataRequest$ {
-  /** @deprecated use `UpdateImageMetadataRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateImageMetadataRequest$inboundSchema;
-  /** @deprecated use `UpdateImageMetadataRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateImageMetadataRequest$outboundSchema;
-  /** @deprecated use `UpdateImageMetadataRequest$Outbound` instead. */
-  export type Outbound = UpdateImageMetadataRequest$Outbound;
-}
-
 export function updateImageMetadataRequestToJSON(
   updateImageMetadataRequest: UpdateImageMetadataRequest,
 ): string {
@@ -156,7 +127,6 @@ export function updateImageMetadataRequestToJSON(
     UpdateImageMetadataRequest$outboundSchema.parse(updateImageMetadataRequest),
   );
 }
-
 export function updateImageMetadataRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateImageMetadataRequest, SDKValidationError> {
@@ -181,7 +151,6 @@ export const UpdateImageMetadataResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpdateImageMetadataResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -203,19 +172,6 @@ export const UpdateImageMetadataResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateImageMetadataResponse$ {
-  /** @deprecated use `UpdateImageMetadataResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateImageMetadataResponse$inboundSchema;
-  /** @deprecated use `UpdateImageMetadataResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateImageMetadataResponse$outboundSchema;
-  /** @deprecated use `UpdateImageMetadataResponse$Outbound` instead. */
-  export type Outbound = UpdateImageMetadataResponse$Outbound;
-}
-
 export function updateImageMetadataResponseToJSON(
   updateImageMetadataResponse: UpdateImageMetadataResponse,
 ): string {
@@ -225,7 +181,6 @@ export function updateImageMetadataResponseToJSON(
     ),
   );
 }
-
 export function updateImageMetadataResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateImageMetadataResponse, SDKValidationError> {

@@ -19,18 +19,6 @@ export type EntryMode = ClosedEnum<typeof EntryMode>;
 /** @internal */
 export const EntryMode$inboundSchema: z.ZodNativeEnum<typeof EntryMode> = z
   .nativeEnum(EntryMode);
-
 /** @internal */
 export const EntryMode$outboundSchema: z.ZodNativeEnum<typeof EntryMode> =
   EntryMode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntryMode$ {
-  /** @deprecated use `EntryMode$inboundSchema` instead. */
-  export const inboundSchema = EntryMode$inboundSchema;
-  /** @deprecated use `EntryMode$outboundSchema` instead. */
-  export const outboundSchema = EntryMode$outboundSchema;
-}

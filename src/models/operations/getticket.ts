@@ -48,7 +48,6 @@ export const GetTicketGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetTicketGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const GetTicketGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTicketGlobals$ {
-  /** @deprecated use `GetTicketGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetTicketGlobals$inboundSchema;
-  /** @deprecated use `GetTicketGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetTicketGlobals$outboundSchema;
-  /** @deprecated use `GetTicketGlobals$Outbound` instead. */
-  export type Outbound = GetTicketGlobals$Outbound;
-}
-
 export function getTicketGlobalsToJSON(
   getTicketGlobals: GetTicketGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function getTicketGlobalsToJSON(
     GetTicketGlobals$outboundSchema.parse(getTicketGlobals),
   );
 }
-
 export function getTicketGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTicketGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetTicketRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   ticketID: z.string(),
 });
-
 /** @internal */
 export type GetTicketRequest$Outbound = {
   accountID: string;
@@ -124,19 +108,6 @@ export const GetTicketRequest$outboundSchema: z.ZodType<
   ticketID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTicketRequest$ {
-  /** @deprecated use `GetTicketRequest$inboundSchema` instead. */
-  export const inboundSchema = GetTicketRequest$inboundSchema;
-  /** @deprecated use `GetTicketRequest$outboundSchema` instead. */
-  export const outboundSchema = GetTicketRequest$outboundSchema;
-  /** @deprecated use `GetTicketRequest$Outbound` instead. */
-  export type Outbound = GetTicketRequest$Outbound;
-}
-
 export function getTicketRequestToJSON(
   getTicketRequest: GetTicketRequest,
 ): string {
@@ -144,7 +115,6 @@ export function getTicketRequestToJSON(
     GetTicketRequest$outboundSchema.parse(getTicketRequest),
   );
 }
-
 export function getTicketRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTicketRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const GetTicketResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetTicketResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const GetTicketResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTicketResponse$ {
-  /** @deprecated use `GetTicketResponse$inboundSchema` instead. */
-  export const inboundSchema = GetTicketResponse$inboundSchema;
-  /** @deprecated use `GetTicketResponse$outboundSchema` instead. */
-  export const outboundSchema = GetTicketResponse$outboundSchema;
-  /** @deprecated use `GetTicketResponse$Outbound` instead. */
-  export type Outbound = GetTicketResponse$Outbound;
-}
-
 export function getTicketResponseToJSON(
   getTicketResponse: GetTicketResponse,
 ): string {
@@ -211,7 +167,6 @@ export function getTicketResponseToJSON(
     GetTicketResponse$outboundSchema.parse(getTicketResponse),
   );
 }
-
 export function getTicketResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTicketResponse, SDKValidationError> {

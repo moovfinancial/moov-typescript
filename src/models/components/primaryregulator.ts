@@ -24,19 +24,7 @@ export type PrimaryRegulator = ClosedEnum<typeof PrimaryRegulator>;
 export const PrimaryRegulator$inboundSchema: z.ZodNativeEnum<
   typeof PrimaryRegulator
 > = z.nativeEnum(PrimaryRegulator);
-
 /** @internal */
 export const PrimaryRegulator$outboundSchema: z.ZodNativeEnum<
   typeof PrimaryRegulator
 > = PrimaryRegulator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PrimaryRegulator$ {
-  /** @deprecated use `PrimaryRegulator$inboundSchema` instead. */
-  export const inboundSchema = PrimaryRegulator$inboundSchema;
-  /** @deprecated use `PrimaryRegulator$outboundSchema` instead. */
-  export const outboundSchema = PrimaryRegulator$outboundSchema;
-}

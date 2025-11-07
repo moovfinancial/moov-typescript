@@ -28,7 +28,6 @@ export const ReversedWithRefund$inboundSchema: z.ZodType<
 > = z.object({
   refund: CardAcquiringRefund$inboundSchema,
 });
-
 /** @internal */
 export type ReversedWithRefund$Outbound = {
   refund: CardAcquiringRefund$Outbound;
@@ -43,19 +42,6 @@ export const ReversedWithRefund$outboundSchema: z.ZodType<
   refund: CardAcquiringRefund$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReversedWithRefund$ {
-  /** @deprecated use `ReversedWithRefund$inboundSchema` instead. */
-  export const inboundSchema = ReversedWithRefund$inboundSchema;
-  /** @deprecated use `ReversedWithRefund$outboundSchema` instead. */
-  export const outboundSchema = ReversedWithRefund$outboundSchema;
-  /** @deprecated use `ReversedWithRefund$Outbound` instead. */
-  export type Outbound = ReversedWithRefund$Outbound;
-}
-
 export function reversedWithRefundToJSON(
   reversedWithRefund: ReversedWithRefund,
 ): string {
@@ -63,7 +49,6 @@ export function reversedWithRefundToJSON(
     ReversedWithRefund$outboundSchema.parse(reversedWithRefund),
   );
 }
-
 export function reversedWithRefundFromJSON(
   jsonString: string,
 ): SafeParseResult<ReversedWithRefund, SDKValidationError> {

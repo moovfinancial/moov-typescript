@@ -49,7 +49,6 @@ export const WebhookDataBankAccountUpdated$inboundSchema: z.ZodType<
   statusReason: BankAccountStatusReason$inboundSchema,
   exceptionDetails: BankAccountException$inboundSchema.optional(),
 });
-
 /** @internal */
 export type WebhookDataBankAccountUpdated$Outbound = {
   bankAccountID: string;
@@ -72,19 +71,6 @@ export const WebhookDataBankAccountUpdated$outboundSchema: z.ZodType<
   exceptionDetails: BankAccountException$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataBankAccountUpdated$ {
-  /** @deprecated use `WebhookDataBankAccountUpdated$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataBankAccountUpdated$inboundSchema;
-  /** @deprecated use `WebhookDataBankAccountUpdated$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataBankAccountUpdated$outboundSchema;
-  /** @deprecated use `WebhookDataBankAccountUpdated$Outbound` instead. */
-  export type Outbound = WebhookDataBankAccountUpdated$Outbound;
-}
-
 export function webhookDataBankAccountUpdatedToJSON(
   webhookDataBankAccountUpdated: WebhookDataBankAccountUpdated,
 ): string {
@@ -94,7 +80,6 @@ export function webhookDataBankAccountUpdatedToJSON(
     ),
   );
 }
-
 export function webhookDataBankAccountUpdatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataBankAccountUpdated, SDKValidationError> {

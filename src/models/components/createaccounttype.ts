@@ -15,19 +15,7 @@ export type CreateAccountType = ClosedEnum<typeof CreateAccountType>;
 export const CreateAccountType$inboundSchema: z.ZodNativeEnum<
   typeof CreateAccountType
 > = z.nativeEnum(CreateAccountType);
-
 /** @internal */
 export const CreateAccountType$outboundSchema: z.ZodNativeEnum<
   typeof CreateAccountType
 > = CreateAccountType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountType$ {
-  /** @deprecated use `CreateAccountType$inboundSchema` instead. */
-  export const inboundSchema = CreateAccountType$inboundSchema;
-  /** @deprecated use `CreateAccountType$outboundSchema` instead. */
-  export const outboundSchema = CreateAccountType$outboundSchema;
-}

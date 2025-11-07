@@ -107,16 +107,3 @@ export const CardAcquiringRefund$outboundSchema: z.ZodType<
     amount: components.Amount$outboundSchema,
     cardDetails: components.RefundCardDetails$outboundSchema.optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardAcquiringRefund$ {
-  /** @deprecated use `CardAcquiringRefund$inboundSchema` instead. */
-  export const inboundSchema = CardAcquiringRefund$inboundSchema;
-  /** @deprecated use `CardAcquiringRefund$outboundSchema` instead. */
-  export const outboundSchema = CardAcquiringRefund$outboundSchema;
-  /** @deprecated use `CardAcquiringRefund$Outbound` instead. */
-  export type Outbound = CardAcquiringRefund$Outbound;
-}

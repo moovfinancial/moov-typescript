@@ -76,16 +76,3 @@ export const TransferOptionsValidationError$outboundSchema: z.ZodType<
     source: z.string().optional(),
     destination: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferOptionsValidationError$ {
-  /** @deprecated use `TransferOptionsValidationError$inboundSchema` instead. */
-  export const inboundSchema = TransferOptionsValidationError$inboundSchema;
-  /** @deprecated use `TransferOptionsValidationError$outboundSchema` instead. */
-  export const outboundSchema = TransferOptionsValidationError$outboundSchema;
-  /** @deprecated use `TransferOptionsValidationError$Outbound` instead. */
-  export type Outbound = TransferOptionsValidationError$Outbound;
-}

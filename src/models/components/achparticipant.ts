@@ -40,7 +40,6 @@ export const Logo$inboundSchema: z.ZodType<Logo, z.ZodTypeDef, unknown> = z
     name: z.string(),
     url: z.string(),
   });
-
 /** @internal */
 export type Logo$Outbound = {
   name: string;
@@ -54,23 +53,9 @@ export const Logo$outboundSchema: z.ZodType<Logo$Outbound, z.ZodTypeDef, Logo> =
     url: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Logo$ {
-  /** @deprecated use `Logo$inboundSchema` instead. */
-  export const inboundSchema = Logo$inboundSchema;
-  /** @deprecated use `Logo$outboundSchema` instead. */
-  export const outboundSchema = Logo$outboundSchema;
-  /** @deprecated use `Logo$Outbound` instead. */
-  export type Outbound = Logo$Outbound;
-}
-
 export function logoToJSON(logo: Logo): string {
   return JSON.stringify(Logo$outboundSchema.parse(logo));
 }
-
 export function logoFromJSON(
   jsonString: string,
 ): SafeParseResult<Logo, SDKValidationError> {
@@ -101,7 +86,6 @@ export const AchParticipant$inboundSchema: z.ZodType<
   cleanName: z.string(),
   logo: z.nullable(z.lazy(() => Logo$inboundSchema)),
 });
-
 /** @internal */
 export type AchParticipant$Outbound = {
   achLocation: AchLocation$Outbound;
@@ -140,23 +124,9 @@ export const AchParticipant$outboundSchema: z.ZodType<
   logo: z.nullable(z.lazy(() => Logo$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AchParticipant$ {
-  /** @deprecated use `AchParticipant$inboundSchema` instead. */
-  export const inboundSchema = AchParticipant$inboundSchema;
-  /** @deprecated use `AchParticipant$outboundSchema` instead. */
-  export const outboundSchema = AchParticipant$outboundSchema;
-  /** @deprecated use `AchParticipant$Outbound` instead. */
-  export type Outbound = AchParticipant$Outbound;
-}
-
 export function achParticipantToJSON(achParticipant: AchParticipant): string {
   return JSON.stringify(AchParticipant$outboundSchema.parse(achParticipant));
 }
-
 export function achParticipantFromJSON(
   jsonString: string,
 ): SafeParseResult<AchParticipant, SDKValidationError> {

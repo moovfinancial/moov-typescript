@@ -25,7 +25,6 @@ export const TerminalApplicationVersion$inboundSchema: z.ZodType<
 > = z.object({
   version: z.string(),
 });
-
 /** @internal */
 export type TerminalApplicationVersion$Outbound = {
   version: string;
@@ -40,19 +39,6 @@ export const TerminalApplicationVersion$outboundSchema: z.ZodType<
   version: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TerminalApplicationVersion$ {
-  /** @deprecated use `TerminalApplicationVersion$inboundSchema` instead. */
-  export const inboundSchema = TerminalApplicationVersion$inboundSchema;
-  /** @deprecated use `TerminalApplicationVersion$outboundSchema` instead. */
-  export const outboundSchema = TerminalApplicationVersion$outboundSchema;
-  /** @deprecated use `TerminalApplicationVersion$Outbound` instead. */
-  export type Outbound = TerminalApplicationVersion$Outbound;
-}
-
 export function terminalApplicationVersionToJSON(
   terminalApplicationVersion: TerminalApplicationVersion,
 ): string {
@@ -60,7 +46,6 @@ export function terminalApplicationVersionToJSON(
     TerminalApplicationVersion$outboundSchema.parse(terminalApplicationVersion),
   );
 }
-
 export function terminalApplicationVersionFromJSON(
   jsonString: string,
 ): SafeParseResult<TerminalApplicationVersion, SDKValidationError> {

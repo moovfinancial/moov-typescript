@@ -35,7 +35,6 @@ export const CardAcceptanceMethods$inboundSchema: z.ZodType<
   mailOrPhonePercentage: z.number().int().optional(),
   onlinePercentage: z.number().int().optional(),
 });
-
 /** @internal */
 export type CardAcceptanceMethods$Outbound = {
   inPersonPercentage?: number | undefined;
@@ -54,19 +53,6 @@ export const CardAcceptanceMethods$outboundSchema: z.ZodType<
   onlinePercentage: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardAcceptanceMethods$ {
-  /** @deprecated use `CardAcceptanceMethods$inboundSchema` instead. */
-  export const inboundSchema = CardAcceptanceMethods$inboundSchema;
-  /** @deprecated use `CardAcceptanceMethods$outboundSchema` instead. */
-  export const outboundSchema = CardAcceptanceMethods$outboundSchema;
-  /** @deprecated use `CardAcceptanceMethods$Outbound` instead. */
-  export type Outbound = CardAcceptanceMethods$Outbound;
-}
-
 export function cardAcceptanceMethodsToJSON(
   cardAcceptanceMethods: CardAcceptanceMethods,
 ): string {
@@ -74,7 +60,6 @@ export function cardAcceptanceMethodsToJSON(
     CardAcceptanceMethods$outboundSchema.parse(cardAcceptanceMethods),
   );
 }
-
 export function cardAcceptanceMethodsFromJSON(
   jsonString: string,
 ): SafeParseResult<CardAcceptanceMethods, SDKValidationError> {

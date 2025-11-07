@@ -66,7 +66,6 @@ export const ProductRequest$inboundSchema: z.ZodType<
   images: z.array(AssignProductImage$inboundSchema).optional(),
   optionGroups: z.array(CreateProductOptionGroup$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ProductRequest$Outbound = {
   title: string;
@@ -89,23 +88,9 @@ export const ProductRequest$outboundSchema: z.ZodType<
   optionGroups: z.array(CreateProductOptionGroup$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProductRequest$ {
-  /** @deprecated use `ProductRequest$inboundSchema` instead. */
-  export const inboundSchema = ProductRequest$inboundSchema;
-  /** @deprecated use `ProductRequest$outboundSchema` instead. */
-  export const outboundSchema = ProductRequest$outboundSchema;
-  /** @deprecated use `ProductRequest$Outbound` instead. */
-  export type Outbound = ProductRequest$Outbound;
-}
-
 export function productRequestToJSON(productRequest: ProductRequest): string {
   return JSON.stringify(ProductRequest$outboundSchema.parse(productRequest));
 }
-
 export function productRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ProductRequest, SDKValidationError> {

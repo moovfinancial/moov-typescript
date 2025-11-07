@@ -58,7 +58,6 @@ export const ProductOption$inboundSchema: z.ZodType<
   priceModifier: AmountDecimal$inboundSchema.optional(),
   images: z.array(ProductImageMetadata$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ProductOption$Outbound = {
   name: string;
@@ -79,23 +78,9 @@ export const ProductOption$outboundSchema: z.ZodType<
   images: z.array(ProductImageMetadata$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProductOption$ {
-  /** @deprecated use `ProductOption$inboundSchema` instead. */
-  export const inboundSchema = ProductOption$inboundSchema;
-  /** @deprecated use `ProductOption$outboundSchema` instead. */
-  export const outboundSchema = ProductOption$outboundSchema;
-  /** @deprecated use `ProductOption$Outbound` instead. */
-  export type Outbound = ProductOption$Outbound;
-}
-
 export function productOptionToJSON(productOption: ProductOption): string {
   return JSON.stringify(ProductOption$outboundSchema.parse(productOption));
 }
-
 export function productOptionFromJSON(
   jsonString: string,
 ): SafeParseResult<ProductOption, SDKValidationError> {

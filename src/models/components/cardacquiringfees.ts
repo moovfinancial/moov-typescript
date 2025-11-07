@@ -46,7 +46,6 @@ export const CardAcquiringFees$inboundSchema: z.ZodType<
   discover: CardBrandFees$inboundSchema,
   americanExpress: CardBrandFees$inboundSchema,
 });
-
 /** @internal */
 export type CardAcquiringFees$Outbound = {
   visa: CardBrandFees$Outbound;
@@ -67,19 +66,6 @@ export const CardAcquiringFees$outboundSchema: z.ZodType<
   americanExpress: CardBrandFees$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardAcquiringFees$ {
-  /** @deprecated use `CardAcquiringFees$inboundSchema` instead. */
-  export const inboundSchema = CardAcquiringFees$inboundSchema;
-  /** @deprecated use `CardAcquiringFees$outboundSchema` instead. */
-  export const outboundSchema = CardAcquiringFees$outboundSchema;
-  /** @deprecated use `CardAcquiringFees$Outbound` instead. */
-  export type Outbound = CardAcquiringFees$Outbound;
-}
-
 export function cardAcquiringFeesToJSON(
   cardAcquiringFees: CardAcquiringFees,
 ): string {
@@ -87,7 +73,6 @@ export function cardAcquiringFeesToJSON(
     CardAcquiringFees$outboundSchema.parse(cardAcquiringFees),
   );
 }
-
 export function cardAcquiringFeesFromJSON(
   jsonString: string,
 ): SafeParseResult<CardAcquiringFees, SDKValidationError> {

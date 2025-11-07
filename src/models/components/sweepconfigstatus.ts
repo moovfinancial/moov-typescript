@@ -15,19 +15,7 @@ export type SweepConfigStatus = ClosedEnum<typeof SweepConfigStatus>;
 export const SweepConfigStatus$inboundSchema: z.ZodNativeEnum<
   typeof SweepConfigStatus
 > = z.nativeEnum(SweepConfigStatus);
-
 /** @internal */
 export const SweepConfigStatus$outboundSchema: z.ZodNativeEnum<
   typeof SweepConfigStatus
 > = SweepConfigStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SweepConfigStatus$ {
-  /** @deprecated use `SweepConfigStatus$inboundSchema` instead. */
-  export const inboundSchema = SweepConfigStatus$inboundSchema;
-  /** @deprecated use `SweepConfigStatus$outboundSchema` instead. */
-  export const outboundSchema = SweepConfigStatus$outboundSchema;
-}

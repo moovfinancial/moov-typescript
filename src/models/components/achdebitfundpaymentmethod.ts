@@ -37,24 +37,10 @@ export type AchDebitFundPaymentMethod = {
 export const AchDebitFundPaymentMethodPaymentMethodType$inboundSchema:
   z.ZodNativeEnum<typeof AchDebitFundPaymentMethodPaymentMethodType> = z
     .nativeEnum(AchDebitFundPaymentMethodPaymentMethodType);
-
 /** @internal */
 export const AchDebitFundPaymentMethodPaymentMethodType$outboundSchema:
   z.ZodNativeEnum<typeof AchDebitFundPaymentMethodPaymentMethodType> =
     AchDebitFundPaymentMethodPaymentMethodType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AchDebitFundPaymentMethodPaymentMethodType$ {
-  /** @deprecated use `AchDebitFundPaymentMethodPaymentMethodType$inboundSchema` instead. */
-  export const inboundSchema =
-    AchDebitFundPaymentMethodPaymentMethodType$inboundSchema;
-  /** @deprecated use `AchDebitFundPaymentMethodPaymentMethodType$outboundSchema` instead. */
-  export const outboundSchema =
-    AchDebitFundPaymentMethodPaymentMethodType$outboundSchema;
-}
 
 /** @internal */
 export const AchDebitFundPaymentMethod$inboundSchema: z.ZodType<
@@ -66,7 +52,6 @@ export const AchDebitFundPaymentMethod$inboundSchema: z.ZodType<
   paymentMethodType: AchDebitFundPaymentMethodPaymentMethodType$inboundSchema,
   bankAccount: PaymentMethodsBankAccount$inboundSchema,
 });
-
 /** @internal */
 export type AchDebitFundPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -85,19 +70,6 @@ export const AchDebitFundPaymentMethod$outboundSchema: z.ZodType<
   bankAccount: PaymentMethodsBankAccount$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AchDebitFundPaymentMethod$ {
-  /** @deprecated use `AchDebitFundPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = AchDebitFundPaymentMethod$inboundSchema;
-  /** @deprecated use `AchDebitFundPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = AchDebitFundPaymentMethod$outboundSchema;
-  /** @deprecated use `AchDebitFundPaymentMethod$Outbound` instead. */
-  export type Outbound = AchDebitFundPaymentMethod$Outbound;
-}
-
 export function achDebitFundPaymentMethodToJSON(
   achDebitFundPaymentMethod: AchDebitFundPaymentMethod,
 ): string {
@@ -105,7 +77,6 @@ export function achDebitFundPaymentMethodToJSON(
     AchDebitFundPaymentMethod$outboundSchema.parse(achDebitFundPaymentMethod),
   );
 }
-
 export function achDebitFundPaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<AchDebitFundPaymentMethod, SDKValidationError> {

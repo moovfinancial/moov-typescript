@@ -125,7 +125,6 @@ export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
       new Date(v)
     ).optional(),
   });
-
 /** @internal */
 export type Account$Outbound = {
   accountID: string;
@@ -168,23 +167,9 @@ export const Account$outboundSchema: z.ZodType<
   disconnectedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Account$ {
-  /** @deprecated use `Account$inboundSchema` instead. */
-  export const inboundSchema = Account$inboundSchema;
-  /** @deprecated use `Account$outboundSchema` instead. */
-  export const outboundSchema = Account$outboundSchema;
-  /** @deprecated use `Account$Outbound` instead. */
-  export type Outbound = Account$Outbound;
-}
-
 export function accountToJSON(account: Account): string {
   return JSON.stringify(Account$outboundSchema.parse(account));
 }
-
 export function accountFromJSON(
   jsonString: string,
 ): SafeParseResult<Account, SDKValidationError> {

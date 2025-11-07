@@ -70,16 +70,3 @@ export const PatchTransferValidationError$outboundSchema: z.ZodType<
     metadata: z.string().optional(),
     foreignID: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTransferValidationError$ {
-  /** @deprecated use `PatchTransferValidationError$inboundSchema` instead. */
-  export const inboundSchema = PatchTransferValidationError$inboundSchema;
-  /** @deprecated use `PatchTransferValidationError$outboundSchema` instead. */
-  export const outboundSchema = PatchTransferValidationError$outboundSchema;
-  /** @deprecated use `PatchTransferValidationError$Outbound` instead. */
-  export type Outbound = PatchTransferValidationError$Outbound;
-}

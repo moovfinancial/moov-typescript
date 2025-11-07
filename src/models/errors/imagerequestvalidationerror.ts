@@ -71,16 +71,3 @@ export const ImageRequestValidationError$outboundSchema: z.ZodType<
     image: z.string().optional(),
     metadata: components.ImageMetadataValidationError$outboundSchema.optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImageRequestValidationError$ {
-  /** @deprecated use `ImageRequestValidationError$inboundSchema` instead. */
-  export const inboundSchema = ImageRequestValidationError$inboundSchema;
-  /** @deprecated use `ImageRequestValidationError$outboundSchema` instead. */
-  export const outboundSchema = ImageRequestValidationError$outboundSchema;
-  /** @deprecated use `ImageRequestValidationError$Outbound` instead. */
-  export type Outbound = ImageRequestValidationError$Outbound;
-}

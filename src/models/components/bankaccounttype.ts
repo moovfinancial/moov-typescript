@@ -23,19 +23,7 @@ export type BankAccountType = ClosedEnum<typeof BankAccountType>;
 export const BankAccountType$inboundSchema: z.ZodNativeEnum<
   typeof BankAccountType
 > = z.nativeEnum(BankAccountType);
-
 /** @internal */
 export const BankAccountType$outboundSchema: z.ZodNativeEnum<
   typeof BankAccountType
 > = BankAccountType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccountType$ {
-  /** @deprecated use `BankAccountType$inboundSchema` instead. */
-  export const inboundSchema = BankAccountType$inboundSchema;
-  /** @deprecated use `BankAccountType$outboundSchema` instead. */
-  export const outboundSchema = BankAccountType$outboundSchema;
-}

@@ -21,7 +21,6 @@ export const FulfillmentDetailsError$inboundSchema: z.ZodType<
   shipmentDurationDays: z.string().optional(),
   returnPolicy: z.string().optional(),
 });
-
 /** @internal */
 export type FulfillmentDetailsError$Outbound = {
   shipmentDurationDays?: string | undefined;
@@ -38,19 +37,6 @@ export const FulfillmentDetailsError$outboundSchema: z.ZodType<
   returnPolicy: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FulfillmentDetailsError$ {
-  /** @deprecated use `FulfillmentDetailsError$inboundSchema` instead. */
-  export const inboundSchema = FulfillmentDetailsError$inboundSchema;
-  /** @deprecated use `FulfillmentDetailsError$outboundSchema` instead. */
-  export const outboundSchema = FulfillmentDetailsError$outboundSchema;
-  /** @deprecated use `FulfillmentDetailsError$Outbound` instead. */
-  export type Outbound = FulfillmentDetailsError$Outbound;
-}
-
 export function fulfillmentDetailsErrorToJSON(
   fulfillmentDetailsError: FulfillmentDetailsError,
 ): string {
@@ -58,7 +44,6 @@ export function fulfillmentDetailsErrorToJSON(
     FulfillmentDetailsError$outboundSchema.parse(fulfillmentDetailsError),
   );
 }
-
 export function fulfillmentDetailsErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<FulfillmentDetailsError, SDKValidationError> {

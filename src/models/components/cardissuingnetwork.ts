@@ -22,19 +22,7 @@ export type CardIssuingNetwork = ClosedEnum<typeof CardIssuingNetwork>;
 export const CardIssuingNetwork$inboundSchema: z.ZodNativeEnum<
   typeof CardIssuingNetwork
 > = z.nativeEnum(CardIssuingNetwork);
-
 /** @internal */
 export const CardIssuingNetwork$outboundSchema: z.ZodNativeEnum<
   typeof CardIssuingNetwork
 > = CardIssuingNetwork$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardIssuingNetwork$ {
-  /** @deprecated use `CardIssuingNetwork$inboundSchema` instead. */
-  export const inboundSchema = CardIssuingNetwork$inboundSchema;
-  /** @deprecated use `CardIssuingNetwork$outboundSchema` instead. */
-  export const outboundSchema = CardIssuingNetwork$outboundSchema;
-}

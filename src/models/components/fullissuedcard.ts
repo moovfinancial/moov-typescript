@@ -113,7 +113,6 @@ export const FullIssuedCard$inboundSchema: z.ZodType<
   pan: z.string(),
   cvv: z.string(),
 });
-
 /** @internal */
 export type FullIssuedCard$Outbound = {
   issuedCardID: string;
@@ -152,23 +151,9 @@ export const FullIssuedCard$outboundSchema: z.ZodType<
   cvv: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FullIssuedCard$ {
-  /** @deprecated use `FullIssuedCard$inboundSchema` instead. */
-  export const inboundSchema = FullIssuedCard$inboundSchema;
-  /** @deprecated use `FullIssuedCard$outboundSchema` instead. */
-  export const outboundSchema = FullIssuedCard$outboundSchema;
-  /** @deprecated use `FullIssuedCard$Outbound` instead. */
-  export type Outbound = FullIssuedCard$Outbound;
-}
-
 export function fullIssuedCardToJSON(fullIssuedCard: FullIssuedCard): string {
   return JSON.stringify(FullIssuedCard$outboundSchema.parse(fullIssuedCard));
 }
-
 export function fullIssuedCardFromJSON(
   jsonString: string,
 ): SafeParseResult<FullIssuedCard, SDKValidationError> {

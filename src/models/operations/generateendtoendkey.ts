@@ -45,7 +45,6 @@ export const GenerateEndToEndKeyGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GenerateEndToEndKeyGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -64,19 +63,6 @@ export const GenerateEndToEndKeyGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GenerateEndToEndKeyGlobals$ {
-  /** @deprecated use `GenerateEndToEndKeyGlobals$inboundSchema` instead. */
-  export const inboundSchema = GenerateEndToEndKeyGlobals$inboundSchema;
-  /** @deprecated use `GenerateEndToEndKeyGlobals$outboundSchema` instead. */
-  export const outboundSchema = GenerateEndToEndKeyGlobals$outboundSchema;
-  /** @deprecated use `GenerateEndToEndKeyGlobals$Outbound` instead. */
-  export type Outbound = GenerateEndToEndKeyGlobals$Outbound;
-}
-
 export function generateEndToEndKeyGlobalsToJSON(
   generateEndToEndKeyGlobals: GenerateEndToEndKeyGlobals,
 ): string {
@@ -84,7 +70,6 @@ export function generateEndToEndKeyGlobalsToJSON(
     GenerateEndToEndKeyGlobals$outboundSchema.parse(generateEndToEndKeyGlobals),
   );
 }
-
 export function generateEndToEndKeyGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateEndToEndKeyGlobals, SDKValidationError> {
@@ -101,7 +86,6 @@ export const GenerateEndToEndKeyRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type GenerateEndToEndKeyRequest$Outbound = {};
 
@@ -112,19 +96,6 @@ export const GenerateEndToEndKeyRequest$outboundSchema: z.ZodType<
   GenerateEndToEndKeyRequest
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GenerateEndToEndKeyRequest$ {
-  /** @deprecated use `GenerateEndToEndKeyRequest$inboundSchema` instead. */
-  export const inboundSchema = GenerateEndToEndKeyRequest$inboundSchema;
-  /** @deprecated use `GenerateEndToEndKeyRequest$outboundSchema` instead. */
-  export const outboundSchema = GenerateEndToEndKeyRequest$outboundSchema;
-  /** @deprecated use `GenerateEndToEndKeyRequest$Outbound` instead. */
-  export type Outbound = GenerateEndToEndKeyRequest$Outbound;
-}
-
 export function generateEndToEndKeyRequestToJSON(
   generateEndToEndKeyRequest: GenerateEndToEndKeyRequest,
 ): string {
@@ -132,7 +103,6 @@ export function generateEndToEndKeyRequestToJSON(
     GenerateEndToEndKeyRequest$outboundSchema.parse(generateEndToEndKeyRequest),
   );
 }
-
 export function generateEndToEndKeyRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateEndToEndKeyRequest, SDKValidationError> {
@@ -157,7 +127,6 @@ export const GenerateEndToEndKeyResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GenerateEndToEndKeyResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -179,19 +148,6 @@ export const GenerateEndToEndKeyResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GenerateEndToEndKeyResponse$ {
-  /** @deprecated use `GenerateEndToEndKeyResponse$inboundSchema` instead. */
-  export const inboundSchema = GenerateEndToEndKeyResponse$inboundSchema;
-  /** @deprecated use `GenerateEndToEndKeyResponse$outboundSchema` instead. */
-  export const outboundSchema = GenerateEndToEndKeyResponse$outboundSchema;
-  /** @deprecated use `GenerateEndToEndKeyResponse$Outbound` instead. */
-  export type Outbound = GenerateEndToEndKeyResponse$Outbound;
-}
-
 export function generateEndToEndKeyResponseToJSON(
   generateEndToEndKeyResponse: GenerateEndToEndKeyResponse,
 ): string {
@@ -201,7 +157,6 @@ export function generateEndToEndKeyResponseToJSON(
     ),
   );
 }
-
 export function generateEndToEndKeyResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateEndToEndKeyResponse, SDKValidationError> {

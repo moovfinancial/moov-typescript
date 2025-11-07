@@ -48,7 +48,6 @@ export const UpdateAccountGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateAccountGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const UpdateAccountGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAccountGlobals$ {
-  /** @deprecated use `UpdateAccountGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateAccountGlobals$inboundSchema;
-  /** @deprecated use `UpdateAccountGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateAccountGlobals$outboundSchema;
-  /** @deprecated use `UpdateAccountGlobals$Outbound` instead. */
-  export type Outbound = UpdateAccountGlobals$Outbound;
-}
-
 export function updateAccountGlobalsToJSON(
   updateAccountGlobals: UpdateAccountGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function updateAccountGlobalsToJSON(
     UpdateAccountGlobals$outboundSchema.parse(updateAccountGlobals),
   );
 }
-
 export function updateAccountGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAccountGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const UpdateAccountRequest$inboundSchema: z.ZodType<
     "PatchAccount": "patchAccount",
   });
 });
-
 /** @internal */
 export type UpdateAccountRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const UpdateAccountRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAccountRequest$ {
-  /** @deprecated use `UpdateAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateAccountRequest$inboundSchema;
-  /** @deprecated use `UpdateAccountRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateAccountRequest$outboundSchema;
-  /** @deprecated use `UpdateAccountRequest$Outbound` instead. */
-  export type Outbound = UpdateAccountRequest$Outbound;
-}
-
 export function updateAccountRequestToJSON(
   updateAccountRequest: UpdateAccountRequest,
 ): string {
@@ -152,7 +123,6 @@ export function updateAccountRequestToJSON(
     UpdateAccountRequest$outboundSchema.parse(updateAccountRequest),
   );
 }
-
 export function updateAccountRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAccountRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const UpdateAccountResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpdateAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const UpdateAccountResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAccountResponse$ {
-  /** @deprecated use `UpdateAccountResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateAccountResponse$inboundSchema;
-  /** @deprecated use `UpdateAccountResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateAccountResponse$outboundSchema;
-  /** @deprecated use `UpdateAccountResponse$Outbound` instead. */
-  export type Outbound = UpdateAccountResponse$Outbound;
-}
-
 export function updateAccountResponseToJSON(
   updateAccountResponse: UpdateAccountResponse,
 ): string {
@@ -219,7 +175,6 @@ export function updateAccountResponseToJSON(
     UpdateAccountResponse$outboundSchema.parse(updateAccountResponse),
   );
 }
-
 export function updateAccountResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAccountResponse, SDKValidationError> {

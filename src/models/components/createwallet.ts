@@ -32,7 +32,6 @@ export const CreateWallet$inboundSchema: z.ZodType<
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
 });
-
 /** @internal */
 export type CreateWallet$Outbound = {
   name: string;
@@ -51,23 +50,9 @@ export const CreateWallet$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateWallet$ {
-  /** @deprecated use `CreateWallet$inboundSchema` instead. */
-  export const inboundSchema = CreateWallet$inboundSchema;
-  /** @deprecated use `CreateWallet$outboundSchema` instead. */
-  export const outboundSchema = CreateWallet$outboundSchema;
-  /** @deprecated use `CreateWallet$Outbound` instead. */
-  export type Outbound = CreateWallet$Outbound;
-}
-
 export function createWalletToJSON(createWallet: CreateWallet): string {
   return JSON.stringify(CreateWallet$outboundSchema.parse(createWallet));
 }
-
 export function createWalletFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateWallet, SDKValidationError> {

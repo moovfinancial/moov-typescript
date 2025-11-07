@@ -49,7 +49,6 @@ export const UpdateSweepConfigGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateSweepConfigGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const UpdateSweepConfigGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSweepConfigGlobals$ {
-  /** @deprecated use `UpdateSweepConfigGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateSweepConfigGlobals$inboundSchema;
-  /** @deprecated use `UpdateSweepConfigGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateSweepConfigGlobals$outboundSchema;
-  /** @deprecated use `UpdateSweepConfigGlobals$Outbound` instead. */
-  export type Outbound = UpdateSweepConfigGlobals$Outbound;
-}
-
 export function updateSweepConfigGlobalsToJSON(
   updateSweepConfigGlobals: UpdateSweepConfigGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function updateSweepConfigGlobalsToJSON(
     UpdateSweepConfigGlobals$outboundSchema.parse(updateSweepConfigGlobals),
   );
 }
-
 export function updateSweepConfigGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSweepConfigGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const UpdateSweepConfigRequest$inboundSchema: z.ZodType<
     "PatchSweepConfig": "patchSweepConfig",
   });
 });
-
 /** @internal */
 export type UpdateSweepConfigRequest$Outbound = {
   accountID: string;
@@ -136,19 +120,6 @@ export const UpdateSweepConfigRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSweepConfigRequest$ {
-  /** @deprecated use `UpdateSweepConfigRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateSweepConfigRequest$inboundSchema;
-  /** @deprecated use `UpdateSweepConfigRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateSweepConfigRequest$outboundSchema;
-  /** @deprecated use `UpdateSweepConfigRequest$Outbound` instead. */
-  export type Outbound = UpdateSweepConfigRequest$Outbound;
-}
-
 export function updateSweepConfigRequestToJSON(
   updateSweepConfigRequest: UpdateSweepConfigRequest,
 ): string {
@@ -156,7 +127,6 @@ export function updateSweepConfigRequestToJSON(
     UpdateSweepConfigRequest$outboundSchema.parse(updateSweepConfigRequest),
   );
 }
-
 export function updateSweepConfigRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSweepConfigRequest, SDKValidationError> {
@@ -181,7 +151,6 @@ export const UpdateSweepConfigResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpdateSweepConfigResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -203,19 +172,6 @@ export const UpdateSweepConfigResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSweepConfigResponse$ {
-  /** @deprecated use `UpdateSweepConfigResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateSweepConfigResponse$inboundSchema;
-  /** @deprecated use `UpdateSweepConfigResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateSweepConfigResponse$outboundSchema;
-  /** @deprecated use `UpdateSweepConfigResponse$Outbound` instead. */
-  export type Outbound = UpdateSweepConfigResponse$Outbound;
-}
-
 export function updateSweepConfigResponseToJSON(
   updateSweepConfigResponse: UpdateSweepConfigResponse,
 ): string {
@@ -223,7 +179,6 @@ export function updateSweepConfigResponseToJSON(
     UpdateSweepConfigResponse$outboundSchema.parse(updateSweepConfigResponse),
   );
 }
-
 export function updateSweepConfigResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSweepConfigResponse, SDKValidationError> {

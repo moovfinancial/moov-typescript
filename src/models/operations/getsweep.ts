@@ -49,7 +49,6 @@ export const GetSweepGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetSweepGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,25 +67,11 @@ export const GetSweepGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSweepGlobals$ {
-  /** @deprecated use `GetSweepGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetSweepGlobals$inboundSchema;
-  /** @deprecated use `GetSweepGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetSweepGlobals$outboundSchema;
-  /** @deprecated use `GetSweepGlobals$Outbound` instead. */
-  export type Outbound = GetSweepGlobals$Outbound;
-}
-
 export function getSweepGlobalsToJSON(
   getSweepGlobals: GetSweepGlobals,
 ): string {
   return JSON.stringify(GetSweepGlobals$outboundSchema.parse(getSweepGlobals));
 }
-
 export function getSweepGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSweepGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetSweepRequest$inboundSchema: z.ZodType<
   walletID: z.string(),
   sweepID: z.string(),
 });
-
 /** @internal */
 export type GetSweepRequest$Outbound = {
   accountID: string;
@@ -126,25 +110,11 @@ export const GetSweepRequest$outboundSchema: z.ZodType<
   sweepID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSweepRequest$ {
-  /** @deprecated use `GetSweepRequest$inboundSchema` instead. */
-  export const inboundSchema = GetSweepRequest$inboundSchema;
-  /** @deprecated use `GetSweepRequest$outboundSchema` instead. */
-  export const outboundSchema = GetSweepRequest$outboundSchema;
-  /** @deprecated use `GetSweepRequest$Outbound` instead. */
-  export type Outbound = GetSweepRequest$Outbound;
-}
-
 export function getSweepRequestToJSON(
   getSweepRequest: GetSweepRequest,
 ): string {
   return JSON.stringify(GetSweepRequest$outboundSchema.parse(getSweepRequest));
 }
-
 export function getSweepRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSweepRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const GetSweepResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetSweepResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const GetSweepResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSweepResponse$ {
-  /** @deprecated use `GetSweepResponse$inboundSchema` instead. */
-  export const inboundSchema = GetSweepResponse$inboundSchema;
-  /** @deprecated use `GetSweepResponse$outboundSchema` instead. */
-  export const outboundSchema = GetSweepResponse$outboundSchema;
-  /** @deprecated use `GetSweepResponse$Outbound` instead. */
-  export type Outbound = GetSweepResponse$Outbound;
-}
-
 export function getSweepResponseToJSON(
   getSweepResponse: GetSweepResponse,
 ): string {
@@ -211,7 +167,6 @@ export function getSweepResponseToJSON(
     GetSweepResponse$outboundSchema.parse(getSweepResponse),
   );
 }
-
 export function getSweepResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSweepResponse, SDKValidationError> {

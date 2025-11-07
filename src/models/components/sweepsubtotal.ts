@@ -43,7 +43,6 @@ export const SweepSubtotal$inboundSchema: z.ZodType<
   count: z.number().int(),
   amount: AmountDecimal$inboundSchema,
 });
-
 /** @internal */
 export type SweepSubtotal$Outbound = {
   type: string;
@@ -62,23 +61,9 @@ export const SweepSubtotal$outboundSchema: z.ZodType<
   amount: AmountDecimal$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SweepSubtotal$ {
-  /** @deprecated use `SweepSubtotal$inboundSchema` instead. */
-  export const inboundSchema = SweepSubtotal$inboundSchema;
-  /** @deprecated use `SweepSubtotal$outboundSchema` instead. */
-  export const outboundSchema = SweepSubtotal$outboundSchema;
-  /** @deprecated use `SweepSubtotal$Outbound` instead. */
-  export type Outbound = SweepSubtotal$Outbound;
-}
-
 export function sweepSubtotalToJSON(sweepSubtotal: SweepSubtotal): string {
   return JSON.stringify(SweepSubtotal$outboundSchema.parse(sweepSubtotal));
 }
-
 export function sweepSubtotalFromJSON(
   jsonString: string,
 ): SafeParseResult<SweepSubtotal, SDKValidationError> {

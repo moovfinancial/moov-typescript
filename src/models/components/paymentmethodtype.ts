@@ -30,19 +30,7 @@ export type PaymentMethodType = ClosedEnum<typeof PaymentMethodType>;
 export const PaymentMethodType$inboundSchema: z.ZodNativeEnum<
   typeof PaymentMethodType
 > = z.nativeEnum(PaymentMethodType);
-
 /** @internal */
 export const PaymentMethodType$outboundSchema: z.ZodNativeEnum<
   typeof PaymentMethodType
 > = PaymentMethodType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentMethodType$ {
-  /** @deprecated use `PaymentMethodType$inboundSchema` instead. */
-  export const inboundSchema = PaymentMethodType$inboundSchema;
-  /** @deprecated use `PaymentMethodType$outboundSchema` instead. */
-  export const outboundSchema = PaymentMethodType$outboundSchema;
-}

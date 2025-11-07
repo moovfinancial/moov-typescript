@@ -45,7 +45,6 @@ export const RevokeOnboardingInviteGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type RevokeOnboardingInviteGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -64,19 +63,6 @@ export const RevokeOnboardingInviteGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RevokeOnboardingInviteGlobals$ {
-  /** @deprecated use `RevokeOnboardingInviteGlobals$inboundSchema` instead. */
-  export const inboundSchema = RevokeOnboardingInviteGlobals$inboundSchema;
-  /** @deprecated use `RevokeOnboardingInviteGlobals$outboundSchema` instead. */
-  export const outboundSchema = RevokeOnboardingInviteGlobals$outboundSchema;
-  /** @deprecated use `RevokeOnboardingInviteGlobals$Outbound` instead. */
-  export type Outbound = RevokeOnboardingInviteGlobals$Outbound;
-}
-
 export function revokeOnboardingInviteGlobalsToJSON(
   revokeOnboardingInviteGlobals: RevokeOnboardingInviteGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function revokeOnboardingInviteGlobalsToJSON(
     ),
   );
 }
-
 export function revokeOnboardingInviteGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<RevokeOnboardingInviteGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const RevokeOnboardingInviteRequest$inboundSchema: z.ZodType<
 > = z.object({
   code: z.string(),
 });
-
 /** @internal */
 export type RevokeOnboardingInviteRequest$Outbound = {
   code: string;
@@ -120,19 +104,6 @@ export const RevokeOnboardingInviteRequest$outboundSchema: z.ZodType<
   code: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RevokeOnboardingInviteRequest$ {
-  /** @deprecated use `RevokeOnboardingInviteRequest$inboundSchema` instead. */
-  export const inboundSchema = RevokeOnboardingInviteRequest$inboundSchema;
-  /** @deprecated use `RevokeOnboardingInviteRequest$outboundSchema` instead. */
-  export const outboundSchema = RevokeOnboardingInviteRequest$outboundSchema;
-  /** @deprecated use `RevokeOnboardingInviteRequest$Outbound` instead. */
-  export type Outbound = RevokeOnboardingInviteRequest$Outbound;
-}
-
 export function revokeOnboardingInviteRequestToJSON(
   revokeOnboardingInviteRequest: RevokeOnboardingInviteRequest,
 ): string {
@@ -142,7 +113,6 @@ export function revokeOnboardingInviteRequestToJSON(
     ),
   );
 }
-
 export function revokeOnboardingInviteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RevokeOnboardingInviteRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const RevokeOnboardingInviteResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type RevokeOnboardingInviteResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -184,19 +153,6 @@ export const RevokeOnboardingInviteResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RevokeOnboardingInviteResponse$ {
-  /** @deprecated use `RevokeOnboardingInviteResponse$inboundSchema` instead. */
-  export const inboundSchema = RevokeOnboardingInviteResponse$inboundSchema;
-  /** @deprecated use `RevokeOnboardingInviteResponse$outboundSchema` instead. */
-  export const outboundSchema = RevokeOnboardingInviteResponse$outboundSchema;
-  /** @deprecated use `RevokeOnboardingInviteResponse$Outbound` instead. */
-  export type Outbound = RevokeOnboardingInviteResponse$Outbound;
-}
-
 export function revokeOnboardingInviteResponseToJSON(
   revokeOnboardingInviteResponse: RevokeOnboardingInviteResponse,
 ): string {
@@ -206,7 +162,6 @@ export function revokeOnboardingInviteResponseToJSON(
     ),
   );
 }
-
 export function revokeOnboardingInviteResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<RevokeOnboardingInviteResponse, SDKValidationError> {

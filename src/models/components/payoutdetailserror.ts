@@ -27,7 +27,6 @@ export const PayoutDetailsError$inboundSchema: z.ZodType<
   allowedMethods: z.string().optional(),
   recipient: PayoutRecipientError$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PayoutDetailsError$Outbound = {
   allowedMethods?: string | undefined;
@@ -44,19 +43,6 @@ export const PayoutDetailsError$outboundSchema: z.ZodType<
   recipient: PayoutRecipientError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PayoutDetailsError$ {
-  /** @deprecated use `PayoutDetailsError$inboundSchema` instead. */
-  export const inboundSchema = PayoutDetailsError$inboundSchema;
-  /** @deprecated use `PayoutDetailsError$outboundSchema` instead. */
-  export const outboundSchema = PayoutDetailsError$outboundSchema;
-  /** @deprecated use `PayoutDetailsError$Outbound` instead. */
-  export type Outbound = PayoutDetailsError$Outbound;
-}
-
 export function payoutDetailsErrorToJSON(
   payoutDetailsError: PayoutDetailsError,
 ): string {
@@ -64,7 +50,6 @@ export function payoutDetailsErrorToJSON(
     PayoutDetailsError$outboundSchema.parse(payoutDetailsError),
   );
 }
-
 export function payoutDetailsErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<PayoutDetailsError, SDKValidationError> {

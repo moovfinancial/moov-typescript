@@ -50,7 +50,6 @@ export const UpdateDisputeEvidenceGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateDisputeEvidenceGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -69,19 +68,6 @@ export const UpdateDisputeEvidenceGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDisputeEvidenceGlobals$ {
-  /** @deprecated use `UpdateDisputeEvidenceGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateDisputeEvidenceGlobals$inboundSchema;
-  /** @deprecated use `UpdateDisputeEvidenceGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateDisputeEvidenceGlobals$outboundSchema;
-  /** @deprecated use `UpdateDisputeEvidenceGlobals$Outbound` instead. */
-  export type Outbound = UpdateDisputeEvidenceGlobals$Outbound;
-}
-
 export function updateDisputeEvidenceGlobalsToJSON(
   updateDisputeEvidenceGlobals: UpdateDisputeEvidenceGlobals,
 ): string {
@@ -91,7 +77,6 @@ export function updateDisputeEvidenceGlobalsToJSON(
     ),
   );
 }
-
 export function updateDisputeEvidenceGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDisputeEvidenceGlobals, SDKValidationError> {
@@ -117,7 +102,6 @@ export const UpdateDisputeEvidenceRequest$inboundSchema: z.ZodType<
     "UpdateEvidence": "updateEvidence",
   });
 });
-
 /** @internal */
 export type UpdateDisputeEvidenceRequest$Outbound = {
   accountID: string;
@@ -142,19 +126,6 @@ export const UpdateDisputeEvidenceRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDisputeEvidenceRequest$ {
-  /** @deprecated use `UpdateDisputeEvidenceRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateDisputeEvidenceRequest$inboundSchema;
-  /** @deprecated use `UpdateDisputeEvidenceRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateDisputeEvidenceRequest$outboundSchema;
-  /** @deprecated use `UpdateDisputeEvidenceRequest$Outbound` instead. */
-  export type Outbound = UpdateDisputeEvidenceRequest$Outbound;
-}
-
 export function updateDisputeEvidenceRequestToJSON(
   updateDisputeEvidenceRequest: UpdateDisputeEvidenceRequest,
 ): string {
@@ -164,7 +135,6 @@ export function updateDisputeEvidenceRequestToJSON(
     ),
   );
 }
-
 export function updateDisputeEvidenceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDisputeEvidenceRequest, SDKValidationError> {
@@ -189,7 +159,6 @@ export const UpdateDisputeEvidenceResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpdateDisputeEvidenceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -211,19 +180,6 @@ export const UpdateDisputeEvidenceResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDisputeEvidenceResponse$ {
-  /** @deprecated use `UpdateDisputeEvidenceResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateDisputeEvidenceResponse$inboundSchema;
-  /** @deprecated use `UpdateDisputeEvidenceResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateDisputeEvidenceResponse$outboundSchema;
-  /** @deprecated use `UpdateDisputeEvidenceResponse$Outbound` instead. */
-  export type Outbound = UpdateDisputeEvidenceResponse$Outbound;
-}
-
 export function updateDisputeEvidenceResponseToJSON(
   updateDisputeEvidenceResponse: UpdateDisputeEvidenceResponse,
 ): string {
@@ -233,7 +189,6 @@ export function updateDisputeEvidenceResponseToJSON(
     ),
   );
 }
-
 export function updateDisputeEvidenceResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDisputeEvidenceResponse, SDKValidationError> {

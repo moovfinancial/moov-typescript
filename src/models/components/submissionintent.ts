@@ -15,19 +15,7 @@ export type SubmissionIntent = ClosedEnum<typeof SubmissionIntent>;
 export const SubmissionIntent$inboundSchema: z.ZodNativeEnum<
   typeof SubmissionIntent
 > = z.nativeEnum(SubmissionIntent);
-
 /** @internal */
 export const SubmissionIntent$outboundSchema: z.ZodNativeEnum<
   typeof SubmissionIntent
 > = SubmissionIntent$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmissionIntent$ {
-  /** @deprecated use `SubmissionIntent$inboundSchema` instead. */
-  export const inboundSchema = SubmissionIntent$inboundSchema;
-  /** @deprecated use `SubmissionIntent$outboundSchema` instead. */
-  export const outboundSchema = SubmissionIntent$outboundSchema;
-}

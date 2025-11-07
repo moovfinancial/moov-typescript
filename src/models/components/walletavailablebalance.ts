@@ -33,7 +33,6 @@ export const WalletAvailableBalance$inboundSchema: z.ZodType<
   value: z.number().int(),
   valueDecimal: z.string(),
 });
-
 /** @internal */
 export type WalletAvailableBalance$Outbound = {
   currency: string;
@@ -52,19 +51,6 @@ export const WalletAvailableBalance$outboundSchema: z.ZodType<
   valueDecimal: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WalletAvailableBalance$ {
-  /** @deprecated use `WalletAvailableBalance$inboundSchema` instead. */
-  export const inboundSchema = WalletAvailableBalance$inboundSchema;
-  /** @deprecated use `WalletAvailableBalance$outboundSchema` instead. */
-  export const outboundSchema = WalletAvailableBalance$outboundSchema;
-  /** @deprecated use `WalletAvailableBalance$Outbound` instead. */
-  export type Outbound = WalletAvailableBalance$Outbound;
-}
-
 export function walletAvailableBalanceToJSON(
   walletAvailableBalance: WalletAvailableBalance,
 ): string {
@@ -72,7 +58,6 @@ export function walletAvailableBalanceToJSON(
     WalletAvailableBalance$outboundSchema.parse(walletAvailableBalance),
   );
 }
-
 export function walletAvailableBalanceFromJSON(
   jsonString: string,
 ): SafeParseResult<WalletAvailableBalance, SDKValidationError> {

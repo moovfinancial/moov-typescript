@@ -48,7 +48,6 @@ export const GetBankAccountVerificationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetBankAccountVerificationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,20 +66,6 @@ export const GetBankAccountVerificationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBankAccountVerificationGlobals$ {
-  /** @deprecated use `GetBankAccountVerificationGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetBankAccountVerificationGlobals$inboundSchema;
-  /** @deprecated use `GetBankAccountVerificationGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetBankAccountVerificationGlobals$outboundSchema;
-  /** @deprecated use `GetBankAccountVerificationGlobals$Outbound` instead. */
-  export type Outbound = GetBankAccountVerificationGlobals$Outbound;
-}
-
 export function getBankAccountVerificationGlobalsToJSON(
   getBankAccountVerificationGlobals: GetBankAccountVerificationGlobals,
 ): string {
@@ -90,7 +75,6 @@ export function getBankAccountVerificationGlobalsToJSON(
     ),
   );
 }
-
 export function getBankAccountVerificationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBankAccountVerificationGlobals, SDKValidationError> {
@@ -110,7 +94,6 @@ export const GetBankAccountVerificationRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   bankAccountID: z.string(),
 });
-
 /** @internal */
 export type GetBankAccountVerificationRequest$Outbound = {
   accountID: string;
@@ -127,20 +110,6 @@ export const GetBankAccountVerificationRequest$outboundSchema: z.ZodType<
   bankAccountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBankAccountVerificationRequest$ {
-  /** @deprecated use `GetBankAccountVerificationRequest$inboundSchema` instead. */
-  export const inboundSchema = GetBankAccountVerificationRequest$inboundSchema;
-  /** @deprecated use `GetBankAccountVerificationRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetBankAccountVerificationRequest$outboundSchema;
-  /** @deprecated use `GetBankAccountVerificationRequest$Outbound` instead. */
-  export type Outbound = GetBankAccountVerificationRequest$Outbound;
-}
-
 export function getBankAccountVerificationRequestToJSON(
   getBankAccountVerificationRequest: GetBankAccountVerificationRequest,
 ): string {
@@ -150,7 +119,6 @@ export function getBankAccountVerificationRequestToJSON(
     ),
   );
 }
-
 export function getBankAccountVerificationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBankAccountVerificationRequest, SDKValidationError> {
@@ -175,7 +143,6 @@ export const GetBankAccountVerificationResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetBankAccountVerificationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -197,20 +164,6 @@ export const GetBankAccountVerificationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBankAccountVerificationResponse$ {
-  /** @deprecated use `GetBankAccountVerificationResponse$inboundSchema` instead. */
-  export const inboundSchema = GetBankAccountVerificationResponse$inboundSchema;
-  /** @deprecated use `GetBankAccountVerificationResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetBankAccountVerificationResponse$outboundSchema;
-  /** @deprecated use `GetBankAccountVerificationResponse$Outbound` instead. */
-  export type Outbound = GetBankAccountVerificationResponse$Outbound;
-}
-
 export function getBankAccountVerificationResponseToJSON(
   getBankAccountVerificationResponse: GetBankAccountVerificationResponse,
 ): string {
@@ -220,7 +173,6 @@ export function getBankAccountVerificationResponseToJSON(
     ),
   );
 }
-
 export function getBankAccountVerificationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBankAccountVerificationResponse, SDKValidationError> {

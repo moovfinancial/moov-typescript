@@ -48,7 +48,6 @@ export const MoovFee$inboundSchema: z.ZodType<MoovFee, z.ZodTypeDef, unknown> =
     totalAmount: AmountDecimal$inboundSchema,
     feeIDs: z.array(z.string()),
   });
-
 /** @internal */
 export type MoovFee$Outbound = {
   accountID: string;
@@ -69,23 +68,9 @@ export const MoovFee$outboundSchema: z.ZodType<
   feeIDs: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoovFee$ {
-  /** @deprecated use `MoovFee$inboundSchema` instead. */
-  export const inboundSchema = MoovFee$inboundSchema;
-  /** @deprecated use `MoovFee$outboundSchema` instead. */
-  export const outboundSchema = MoovFee$outboundSchema;
-  /** @deprecated use `MoovFee$Outbound` instead. */
-  export type Outbound = MoovFee$Outbound;
-}
-
 export function moovFeeToJSON(moovFee: MoovFee): string {
   return JSON.stringify(MoovFee$outboundSchema.parse(moovFee));
 }
-
 export function moovFeeFromJSON(
   jsonString: string,
 ): SafeParseResult<MoovFee, SDKValidationError> {

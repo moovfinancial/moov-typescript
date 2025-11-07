@@ -35,7 +35,6 @@ export const PaymentDetailsError$inboundSchema: z.ZodType<
   cardDetails: CardPaymentDetailsError$inboundSchema.optional(),
   achDetails: ACHPaymentDetailsError$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PaymentDetailsError$Outbound = {
   allowedMethods?: string | undefined;
@@ -54,19 +53,6 @@ export const PaymentDetailsError$outboundSchema: z.ZodType<
   achDetails: ACHPaymentDetailsError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentDetailsError$ {
-  /** @deprecated use `PaymentDetailsError$inboundSchema` instead. */
-  export const inboundSchema = PaymentDetailsError$inboundSchema;
-  /** @deprecated use `PaymentDetailsError$outboundSchema` instead. */
-  export const outboundSchema = PaymentDetailsError$outboundSchema;
-  /** @deprecated use `PaymentDetailsError$Outbound` instead. */
-  export type Outbound = PaymentDetailsError$Outbound;
-}
-
 export function paymentDetailsErrorToJSON(
   paymentDetailsError: PaymentDetailsError,
 ): string {
@@ -74,7 +60,6 @@ export function paymentDetailsErrorToJSON(
     PaymentDetailsError$outboundSchema.parse(paymentDetailsError),
   );
 }
-
 export function paymentDetailsErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<PaymentDetailsError, SDKValidationError> {

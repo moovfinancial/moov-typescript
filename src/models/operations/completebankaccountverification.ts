@@ -49,7 +49,6 @@ export const CompleteBankAccountVerificationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CompleteBankAccountVerificationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,21 +67,6 @@ export const CompleteBankAccountVerificationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteBankAccountVerificationGlobals$ {
-  /** @deprecated use `CompleteBankAccountVerificationGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    CompleteBankAccountVerificationGlobals$inboundSchema;
-  /** @deprecated use `CompleteBankAccountVerificationGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    CompleteBankAccountVerificationGlobals$outboundSchema;
-  /** @deprecated use `CompleteBankAccountVerificationGlobals$Outbound` instead. */
-  export type Outbound = CompleteBankAccountVerificationGlobals$Outbound;
-}
-
 export function completeBankAccountVerificationGlobalsToJSON(
   completeBankAccountVerificationGlobals:
     CompleteBankAccountVerificationGlobals,
@@ -93,7 +77,6 @@ export function completeBankAccountVerificationGlobalsToJSON(
     ),
   );
 }
-
 export function completeBankAccountVerificationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteBankAccountVerificationGlobals, SDKValidationError> {
@@ -120,7 +103,6 @@ export const CompleteBankAccountVerificationRequest$inboundSchema: z.ZodType<
     "CompleteBankAccountVerification": "completeBankAccountVerification",
   });
 });
-
 /** @internal */
 export type CompleteBankAccountVerificationRequest$Outbound = {
   accountID: string;
@@ -145,21 +127,6 @@ export const CompleteBankAccountVerificationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteBankAccountVerificationRequest$ {
-  /** @deprecated use `CompleteBankAccountVerificationRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    CompleteBankAccountVerificationRequest$inboundSchema;
-  /** @deprecated use `CompleteBankAccountVerificationRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CompleteBankAccountVerificationRequest$outboundSchema;
-  /** @deprecated use `CompleteBankAccountVerificationRequest$Outbound` instead. */
-  export type Outbound = CompleteBankAccountVerificationRequest$Outbound;
-}
-
 export function completeBankAccountVerificationRequestToJSON(
   completeBankAccountVerificationRequest:
     CompleteBankAccountVerificationRequest,
@@ -170,7 +137,6 @@ export function completeBankAccountVerificationRequestToJSON(
     ),
   );
 }
-
 export function completeBankAccountVerificationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteBankAccountVerificationRequest, SDKValidationError> {
@@ -196,7 +162,6 @@ export const CompleteBankAccountVerificationResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CompleteBankAccountVerificationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -218,21 +183,6 @@ export const CompleteBankAccountVerificationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteBankAccountVerificationResponse$ {
-  /** @deprecated use `CompleteBankAccountVerificationResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    CompleteBankAccountVerificationResponse$inboundSchema;
-  /** @deprecated use `CompleteBankAccountVerificationResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    CompleteBankAccountVerificationResponse$outboundSchema;
-  /** @deprecated use `CompleteBankAccountVerificationResponse$Outbound` instead. */
-  export type Outbound = CompleteBankAccountVerificationResponse$Outbound;
-}
-
 export function completeBankAccountVerificationResponseToJSON(
   completeBankAccountVerificationResponse:
     CompleteBankAccountVerificationResponse,
@@ -243,7 +193,6 @@ export function completeBankAccountVerificationResponseToJSON(
     ),
   );
 }
-
 export function completeBankAccountVerificationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<

@@ -51,7 +51,6 @@ export const GetIssuedCardGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetIssuedCardGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const GetIssuedCardGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIssuedCardGlobals$ {
-  /** @deprecated use `GetIssuedCardGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetIssuedCardGlobals$inboundSchema;
-  /** @deprecated use `GetIssuedCardGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetIssuedCardGlobals$outboundSchema;
-  /** @deprecated use `GetIssuedCardGlobals$Outbound` instead. */
-  export type Outbound = GetIssuedCardGlobals$Outbound;
-}
-
 export function getIssuedCardGlobalsToJSON(
   getIssuedCardGlobals: GetIssuedCardGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function getIssuedCardGlobalsToJSON(
     GetIssuedCardGlobals$outboundSchema.parse(getIssuedCardGlobals),
   );
 }
-
 export function getIssuedCardGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIssuedCardGlobals, SDKValidationError> {
@@ -110,7 +95,6 @@ export const GetIssuedCardRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   issuedCardID: z.string(),
 });
-
 /** @internal */
 export type GetIssuedCardRequest$Outbound = {
   accountID: string;
@@ -127,19 +111,6 @@ export const GetIssuedCardRequest$outboundSchema: z.ZodType<
   issuedCardID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIssuedCardRequest$ {
-  /** @deprecated use `GetIssuedCardRequest$inboundSchema` instead. */
-  export const inboundSchema = GetIssuedCardRequest$inboundSchema;
-  /** @deprecated use `GetIssuedCardRequest$outboundSchema` instead. */
-  export const outboundSchema = GetIssuedCardRequest$outboundSchema;
-  /** @deprecated use `GetIssuedCardRequest$Outbound` instead. */
-  export type Outbound = GetIssuedCardRequest$Outbound;
-}
-
 export function getIssuedCardRequestToJSON(
   getIssuedCardRequest: GetIssuedCardRequest,
 ): string {
@@ -147,7 +118,6 @@ export function getIssuedCardRequestToJSON(
     GetIssuedCardRequest$outboundSchema.parse(getIssuedCardRequest),
   );
 }
-
 export function getIssuedCardRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIssuedCardRequest, SDKValidationError> {
@@ -172,7 +142,6 @@ export const GetIssuedCardResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetIssuedCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -194,19 +163,6 @@ export const GetIssuedCardResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIssuedCardResponse$ {
-  /** @deprecated use `GetIssuedCardResponse$inboundSchema` instead. */
-  export const inboundSchema = GetIssuedCardResponse$inboundSchema;
-  /** @deprecated use `GetIssuedCardResponse$outboundSchema` instead. */
-  export const outboundSchema = GetIssuedCardResponse$outboundSchema;
-  /** @deprecated use `GetIssuedCardResponse$Outbound` instead. */
-  export type Outbound = GetIssuedCardResponse$Outbound;
-}
-
 export function getIssuedCardResponseToJSON(
   getIssuedCardResponse: GetIssuedCardResponse,
 ): string {
@@ -214,7 +170,6 @@ export function getIssuedCardResponseToJSON(
     GetIssuedCardResponse$outboundSchema.parse(getIssuedCardResponse),
   );
 }
-
 export function getIssuedCardResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIssuedCardResponse, SDKValidationError> {

@@ -29,7 +29,6 @@ export const AddressUpdate$inboundSchema: z.ZodType<
   postalCode: z.string().optional(),
   country: z.string().optional(),
 });
-
 /** @internal */
 export type AddressUpdate$Outbound = {
   addressLine1?: string | undefined;
@@ -54,23 +53,9 @@ export const AddressUpdate$outboundSchema: z.ZodType<
   country: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddressUpdate$ {
-  /** @deprecated use `AddressUpdate$inboundSchema` instead. */
-  export const inboundSchema = AddressUpdate$inboundSchema;
-  /** @deprecated use `AddressUpdate$outboundSchema` instead. */
-  export const outboundSchema = AddressUpdate$outboundSchema;
-  /** @deprecated use `AddressUpdate$Outbound` instead. */
-  export type Outbound = AddressUpdate$Outbound;
-}
-
 export function addressUpdateToJSON(addressUpdate: AddressUpdate): string {
   return JSON.stringify(AddressUpdate$outboundSchema.parse(addressUpdate));
 }
-
 export function addressUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<AddressUpdate, SDKValidationError> {

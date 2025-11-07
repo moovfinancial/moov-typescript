@@ -25,7 +25,6 @@ export const CardPaymentSettings$inboundSchema: z.ZodType<
 > = z.object({
   statementDescriptor: z.string().optional(),
 });
-
 /** @internal */
 export type CardPaymentSettings$Outbound = {
   statementDescriptor?: string | undefined;
@@ -40,19 +39,6 @@ export const CardPaymentSettings$outboundSchema: z.ZodType<
   statementDescriptor: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardPaymentSettings$ {
-  /** @deprecated use `CardPaymentSettings$inboundSchema` instead. */
-  export const inboundSchema = CardPaymentSettings$inboundSchema;
-  /** @deprecated use `CardPaymentSettings$outboundSchema` instead. */
-  export const outboundSchema = CardPaymentSettings$outboundSchema;
-  /** @deprecated use `CardPaymentSettings$Outbound` instead. */
-  export type Outbound = CardPaymentSettings$Outbound;
-}
-
 export function cardPaymentSettingsToJSON(
   cardPaymentSettings: CardPaymentSettings,
 ): string {
@@ -60,7 +46,6 @@ export function cardPaymentSettingsToJSON(
     CardPaymentSettings$outboundSchema.parse(cardPaymentSettings),
   );
 }
-
 export function cardPaymentSettingsFromJSON(
   jsonString: string,
 ): SafeParseResult<CardPaymentSettings, SDKValidationError> {

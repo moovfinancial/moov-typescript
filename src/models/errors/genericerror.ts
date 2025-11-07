@@ -64,16 +64,3 @@ export const GenericError$outboundSchema: z.ZodType<
   .pipe(z.object({
     error: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GenericError$ {
-  /** @deprecated use `GenericError$inboundSchema` instead. */
-  export const inboundSchema = GenericError$inboundSchema;
-  /** @deprecated use `GenericError$outboundSchema` instead. */
-  export const outboundSchema = GenericError$outboundSchema;
-  /** @deprecated use `GenericError$Outbound` instead. */
-  export type Outbound = GenericError$Outbound;
-}

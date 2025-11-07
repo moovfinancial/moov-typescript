@@ -21,7 +21,6 @@ export const VolumeByCustomerType$inboundSchema: z.ZodType<
   businessToBusinessPercentage: z.number().int(),
   consumerToBusinessPercentage: z.number().int(),
 });
-
 /** @internal */
 export type VolumeByCustomerType$Outbound = {
   businessToBusinessPercentage: number;
@@ -38,19 +37,6 @@ export const VolumeByCustomerType$outboundSchema: z.ZodType<
   consumerToBusinessPercentage: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VolumeByCustomerType$ {
-  /** @deprecated use `VolumeByCustomerType$inboundSchema` instead. */
-  export const inboundSchema = VolumeByCustomerType$inboundSchema;
-  /** @deprecated use `VolumeByCustomerType$outboundSchema` instead. */
-  export const outboundSchema = VolumeByCustomerType$outboundSchema;
-  /** @deprecated use `VolumeByCustomerType$Outbound` instead. */
-  export type Outbound = VolumeByCustomerType$Outbound;
-}
-
 export function volumeByCustomerTypeToJSON(
   volumeByCustomerType: VolumeByCustomerType,
 ): string {
@@ -58,7 +44,6 @@ export function volumeByCustomerTypeToJSON(
     VolumeByCustomerType$outboundSchema.parse(volumeByCustomerType),
   );
 }
-
 export function volumeByCustomerTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<VolumeByCustomerType, SDKValidationError> {

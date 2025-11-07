@@ -99,16 +99,3 @@ export const FileValidationError$outboundSchema: z.ZodType<
       });
     }),
   );
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileValidationError$ {
-  /** @deprecated use `FileValidationError$inboundSchema` instead. */
-  export const inboundSchema = FileValidationError$inboundSchema;
-  /** @deprecated use `FileValidationError$outboundSchema` instead. */
-  export const outboundSchema = FileValidationError$outboundSchema;
-  /** @deprecated use `FileValidationError$Outbound` instead. */
-  export type Outbound = FileValidationError$Outbound;
-}

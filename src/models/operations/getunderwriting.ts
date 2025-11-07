@@ -47,7 +47,6 @@ export const GetUnderwritingGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetUnderwritingGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const GetUnderwritingGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUnderwritingGlobals$ {
-  /** @deprecated use `GetUnderwritingGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetUnderwritingGlobals$inboundSchema;
-  /** @deprecated use `GetUnderwritingGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetUnderwritingGlobals$outboundSchema;
-  /** @deprecated use `GetUnderwritingGlobals$Outbound` instead. */
-  export type Outbound = GetUnderwritingGlobals$Outbound;
-}
-
 export function getUnderwritingGlobalsToJSON(
   getUnderwritingGlobals: GetUnderwritingGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function getUnderwritingGlobalsToJSON(
     GetUnderwritingGlobals$outboundSchema.parse(getUnderwritingGlobals),
   );
 }
-
 export function getUnderwritingGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetUnderwritingGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const GetUnderwritingRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type GetUnderwritingRequest$Outbound = {
   accountID: string;
@@ -120,19 +104,6 @@ export const GetUnderwritingRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUnderwritingRequest$ {
-  /** @deprecated use `GetUnderwritingRequest$inboundSchema` instead. */
-  export const inboundSchema = GetUnderwritingRequest$inboundSchema;
-  /** @deprecated use `GetUnderwritingRequest$outboundSchema` instead. */
-  export const outboundSchema = GetUnderwritingRequest$outboundSchema;
-  /** @deprecated use `GetUnderwritingRequest$Outbound` instead. */
-  export type Outbound = GetUnderwritingRequest$Outbound;
-}
-
 export function getUnderwritingRequestToJSON(
   getUnderwritingRequest: GetUnderwritingRequest,
 ): string {
@@ -140,7 +111,6 @@ export function getUnderwritingRequestToJSON(
     GetUnderwritingRequest$outboundSchema.parse(getUnderwritingRequest),
   );
 }
-
 export function getUnderwritingRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetUnderwritingRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const GetUnderwritingResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetUnderwritingResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -187,19 +156,6 @@ export const GetUnderwritingResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUnderwritingResponse$ {
-  /** @deprecated use `GetUnderwritingResponse$inboundSchema` instead. */
-  export const inboundSchema = GetUnderwritingResponse$inboundSchema;
-  /** @deprecated use `GetUnderwritingResponse$outboundSchema` instead. */
-  export const outboundSchema = GetUnderwritingResponse$outboundSchema;
-  /** @deprecated use `GetUnderwritingResponse$Outbound` instead. */
-  export type Outbound = GetUnderwritingResponse$Outbound;
-}
-
 export function getUnderwritingResponseToJSON(
   getUnderwritingResponse: GetUnderwritingResponse,
 ): string {
@@ -207,7 +163,6 @@ export function getUnderwritingResponseToJSON(
     GetUnderwritingResponse$outboundSchema.parse(getUnderwritingResponse),
   );
 }
-
 export function getUnderwritingResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetUnderwritingResponse, SDKValidationError> {

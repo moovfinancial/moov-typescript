@@ -14,19 +14,7 @@ export type LinkCardWaitFor = ClosedEnum<typeof LinkCardWaitFor>;
 export const LinkCardWaitFor$inboundSchema: z.ZodNativeEnum<
   typeof LinkCardWaitFor
 > = z.nativeEnum(LinkCardWaitFor);
-
 /** @internal */
 export const LinkCardWaitFor$outboundSchema: z.ZodNativeEnum<
   typeof LinkCardWaitFor
 > = LinkCardWaitFor$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkCardWaitFor$ {
-  /** @deprecated use `LinkCardWaitFor$inboundSchema` instead. */
-  export const inboundSchema = LinkCardWaitFor$inboundSchema;
-  /** @deprecated use `LinkCardWaitFor$outboundSchema` instead. */
-  export const outboundSchema = LinkCardWaitFor$outboundSchema;
-}

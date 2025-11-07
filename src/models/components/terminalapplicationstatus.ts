@@ -25,19 +25,7 @@ export type TerminalApplicationStatus = ClosedEnum<
 export const TerminalApplicationStatus$inboundSchema: z.ZodNativeEnum<
   typeof TerminalApplicationStatus
 > = z.nativeEnum(TerminalApplicationStatus);
-
 /** @internal */
 export const TerminalApplicationStatus$outboundSchema: z.ZodNativeEnum<
   typeof TerminalApplicationStatus
 > = TerminalApplicationStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TerminalApplicationStatus$ {
-  /** @deprecated use `TerminalApplicationStatus$inboundSchema` instead. */
-  export const inboundSchema = TerminalApplicationStatus$inboundSchema;
-  /** @deprecated use `TerminalApplicationStatus$outboundSchema` instead. */
-  export const outboundSchema = TerminalApplicationStatus$outboundSchema;
-}

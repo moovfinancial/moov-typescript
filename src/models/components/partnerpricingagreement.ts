@@ -91,7 +91,6 @@ export const PartnerPricingAgreement$inboundSchema: z.ZodType<
   monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
   revenueShare: z.string(),
 });
-
 /** @internal */
 export type PartnerPricingAgreement$Outbound = {
   agreementID: string;
@@ -128,19 +127,6 @@ export const PartnerPricingAgreement$outboundSchema: z.ZodType<
   revenueShare: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PartnerPricingAgreement$ {
-  /** @deprecated use `PartnerPricingAgreement$inboundSchema` instead. */
-  export const inboundSchema = PartnerPricingAgreement$inboundSchema;
-  /** @deprecated use `PartnerPricingAgreement$outboundSchema` instead. */
-  export const outboundSchema = PartnerPricingAgreement$outboundSchema;
-  /** @deprecated use `PartnerPricingAgreement$Outbound` instead. */
-  export type Outbound = PartnerPricingAgreement$Outbound;
-}
-
 export function partnerPricingAgreementToJSON(
   partnerPricingAgreement: PartnerPricingAgreement,
 ): string {
@@ -148,7 +134,6 @@ export function partnerPricingAgreementToJSON(
     PartnerPricingAgreement$outboundSchema.parse(partnerPricingAgreement),
   );
 }
-
 export function partnerPricingAgreementFromJSON(
   jsonString: string,
 ): SafeParseResult<PartnerPricingAgreement, SDKValidationError> {

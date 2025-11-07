@@ -43,7 +43,6 @@ export const CreateAccessTokenGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateAccessTokenGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -62,19 +61,6 @@ export const CreateAccessTokenGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccessTokenGlobals$ {
-  /** @deprecated use `CreateAccessTokenGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateAccessTokenGlobals$inboundSchema;
-  /** @deprecated use `CreateAccessTokenGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateAccessTokenGlobals$outboundSchema;
-  /** @deprecated use `CreateAccessTokenGlobals$Outbound` instead. */
-  export type Outbound = CreateAccessTokenGlobals$Outbound;
-}
-
 export function createAccessTokenGlobalsToJSON(
   createAccessTokenGlobals: CreateAccessTokenGlobals,
 ): string {
@@ -82,7 +68,6 @@ export function createAccessTokenGlobalsToJSON(
     CreateAccessTokenGlobals$outboundSchema.parse(createAccessTokenGlobals),
   );
 }
-
 export function createAccessTokenGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccessTokenGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const CreateAccessTokenResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateAccessTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -129,19 +113,6 @@ export const CreateAccessTokenResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccessTokenResponse$ {
-  /** @deprecated use `CreateAccessTokenResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateAccessTokenResponse$inboundSchema;
-  /** @deprecated use `CreateAccessTokenResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateAccessTokenResponse$outboundSchema;
-  /** @deprecated use `CreateAccessTokenResponse$Outbound` instead. */
-  export type Outbound = CreateAccessTokenResponse$Outbound;
-}
-
 export function createAccessTokenResponseToJSON(
   createAccessTokenResponse: CreateAccessTokenResponse,
 ): string {
@@ -149,7 +120,6 @@ export function createAccessTokenResponseToJSON(
     CreateAccessTokenResponse$outboundSchema.parse(createAccessTokenResponse),
   );
 }
-
 export function createAccessTokenResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccessTokenResponse, SDKValidationError> {

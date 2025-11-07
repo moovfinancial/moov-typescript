@@ -49,7 +49,6 @@ export const UpdateCardGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateCardGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const UpdateCardGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCardGlobals$ {
-  /** @deprecated use `UpdateCardGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateCardGlobals$inboundSchema;
-  /** @deprecated use `UpdateCardGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateCardGlobals$outboundSchema;
-  /** @deprecated use `UpdateCardGlobals$Outbound` instead. */
-  export type Outbound = UpdateCardGlobals$Outbound;
-}
-
 export function updateCardGlobalsToJSON(
   updateCardGlobals: UpdateCardGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function updateCardGlobalsToJSON(
     UpdateCardGlobals$outboundSchema.parse(updateCardGlobals),
   );
 }
-
 export function updateCardGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateCardGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const UpdateCardRequest$inboundSchema: z.ZodType<
     "UpdateCard": "updateCard",
   });
 });
-
 /** @internal */
 export type UpdateCardRequest$Outbound = {
   accountID: string;
@@ -136,19 +120,6 @@ export const UpdateCardRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCardRequest$ {
-  /** @deprecated use `UpdateCardRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateCardRequest$inboundSchema;
-  /** @deprecated use `UpdateCardRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateCardRequest$outboundSchema;
-  /** @deprecated use `UpdateCardRequest$Outbound` instead. */
-  export type Outbound = UpdateCardRequest$Outbound;
-}
-
 export function updateCardRequestToJSON(
   updateCardRequest: UpdateCardRequest,
 ): string {
@@ -156,7 +127,6 @@ export function updateCardRequestToJSON(
     UpdateCardRequest$outboundSchema.parse(updateCardRequest),
   );
 }
-
 export function updateCardRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateCardRequest, SDKValidationError> {
@@ -181,7 +151,6 @@ export const UpdateCardResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpdateCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -203,19 +172,6 @@ export const UpdateCardResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCardResponse$ {
-  /** @deprecated use `UpdateCardResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateCardResponse$inboundSchema;
-  /** @deprecated use `UpdateCardResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateCardResponse$outboundSchema;
-  /** @deprecated use `UpdateCardResponse$Outbound` instead. */
-  export type Outbound = UpdateCardResponse$Outbound;
-}
-
 export function updateCardResponseToJSON(
   updateCardResponse: UpdateCardResponse,
 ): string {
@@ -223,7 +179,6 @@ export function updateCardResponseToJSON(
     UpdateCardResponse$outboundSchema.parse(updateCardResponse),
   );
 }
-
 export function updateCardResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateCardResponse, SDKValidationError> {

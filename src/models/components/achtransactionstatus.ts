@@ -26,19 +26,7 @@ export type ACHTransactionStatus = ClosedEnum<typeof ACHTransactionStatus>;
 export const ACHTransactionStatus$inboundSchema: z.ZodNativeEnum<
   typeof ACHTransactionStatus
 > = z.nativeEnum(ACHTransactionStatus);
-
 /** @internal */
 export const ACHTransactionStatus$outboundSchema: z.ZodNativeEnum<
   typeof ACHTransactionStatus
 > = ACHTransactionStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ACHTransactionStatus$ {
-  /** @deprecated use `ACHTransactionStatus$inboundSchema` instead. */
-  export const inboundSchema = ACHTransactionStatus$inboundSchema;
-  /** @deprecated use `ACHTransactionStatus$outboundSchema` instead. */
-  export const outboundSchema = ACHTransactionStatus$outboundSchema;
-}

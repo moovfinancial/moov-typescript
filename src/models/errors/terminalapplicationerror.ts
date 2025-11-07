@@ -88,16 +88,3 @@ export const TerminalApplicationError$outboundSchema: z.ZodType<
     sha256Digest: z.string().optional(),
     versionCode: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TerminalApplicationError$ {
-  /** @deprecated use `TerminalApplicationError$inboundSchema` instead. */
-  export const inboundSchema = TerminalApplicationError$inboundSchema;
-  /** @deprecated use `TerminalApplicationError$outboundSchema` instead. */
-  export const outboundSchema = TerminalApplicationError$outboundSchema;
-  /** @deprecated use `TerminalApplicationError$Outbound` instead. */
-  export type Outbound = TerminalApplicationError$Outbound;
-}

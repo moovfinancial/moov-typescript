@@ -54,7 +54,6 @@ export const GetTermsOfServiceTokenGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetTermsOfServiceTokenGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -73,19 +72,6 @@ export const GetTermsOfServiceTokenGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTermsOfServiceTokenGlobals$ {
-  /** @deprecated use `GetTermsOfServiceTokenGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetTermsOfServiceTokenGlobals$inboundSchema;
-  /** @deprecated use `GetTermsOfServiceTokenGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetTermsOfServiceTokenGlobals$outboundSchema;
-  /** @deprecated use `GetTermsOfServiceTokenGlobals$Outbound` instead. */
-  export type Outbound = GetTermsOfServiceTokenGlobals$Outbound;
-}
-
 export function getTermsOfServiceTokenGlobalsToJSON(
   getTermsOfServiceTokenGlobals: GetTermsOfServiceTokenGlobals,
 ): string {
@@ -95,7 +81,6 @@ export function getTermsOfServiceTokenGlobalsToJSON(
     ),
   );
 }
-
 export function getTermsOfServiceTokenGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTermsOfServiceTokenGlobals, SDKValidationError> {
@@ -115,7 +100,6 @@ export const GetTermsOfServiceTokenRequest$inboundSchema: z.ZodType<
   origin: z.string().optional(),
   referer: z.string().optional(),
 });
-
 /** @internal */
 export type GetTermsOfServiceTokenRequest$Outbound = {
   origin?: string | undefined;
@@ -132,19 +116,6 @@ export const GetTermsOfServiceTokenRequest$outboundSchema: z.ZodType<
   referer: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTermsOfServiceTokenRequest$ {
-  /** @deprecated use `GetTermsOfServiceTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = GetTermsOfServiceTokenRequest$inboundSchema;
-  /** @deprecated use `GetTermsOfServiceTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = GetTermsOfServiceTokenRequest$outboundSchema;
-  /** @deprecated use `GetTermsOfServiceTokenRequest$Outbound` instead. */
-  export type Outbound = GetTermsOfServiceTokenRequest$Outbound;
-}
-
 export function getTermsOfServiceTokenRequestToJSON(
   getTermsOfServiceTokenRequest: GetTermsOfServiceTokenRequest,
 ): string {
@@ -154,7 +125,6 @@ export function getTermsOfServiceTokenRequestToJSON(
     ),
   );
 }
-
 export function getTermsOfServiceTokenRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTermsOfServiceTokenRequest, SDKValidationError> {
@@ -179,7 +149,6 @@ export const GetTermsOfServiceTokenResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetTermsOfServiceTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -201,19 +170,6 @@ export const GetTermsOfServiceTokenResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTermsOfServiceTokenResponse$ {
-  /** @deprecated use `GetTermsOfServiceTokenResponse$inboundSchema` instead. */
-  export const inboundSchema = GetTermsOfServiceTokenResponse$inboundSchema;
-  /** @deprecated use `GetTermsOfServiceTokenResponse$outboundSchema` instead. */
-  export const outboundSchema = GetTermsOfServiceTokenResponse$outboundSchema;
-  /** @deprecated use `GetTermsOfServiceTokenResponse$Outbound` instead. */
-  export type Outbound = GetTermsOfServiceTokenResponse$Outbound;
-}
-
 export function getTermsOfServiceTokenResponseToJSON(
   getTermsOfServiceTokenResponse: GetTermsOfServiceTokenResponse,
 ): string {
@@ -223,7 +179,6 @@ export function getTermsOfServiceTokenResponseToJSON(
     ),
   );
 }
-
 export function getTermsOfServiceTokenResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTermsOfServiceTokenResponse, SDKValidationError> {

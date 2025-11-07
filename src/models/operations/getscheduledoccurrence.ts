@@ -58,7 +58,6 @@ export const GetScheduledOccurrenceGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetScheduledOccurrenceGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -77,19 +76,6 @@ export const GetScheduledOccurrenceGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetScheduledOccurrenceGlobals$ {
-  /** @deprecated use `GetScheduledOccurrenceGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetScheduledOccurrenceGlobals$inboundSchema;
-  /** @deprecated use `GetScheduledOccurrenceGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetScheduledOccurrenceGlobals$outboundSchema;
-  /** @deprecated use `GetScheduledOccurrenceGlobals$Outbound` instead. */
-  export type Outbound = GetScheduledOccurrenceGlobals$Outbound;
-}
-
 export function getScheduledOccurrenceGlobalsToJSON(
   getScheduledOccurrenceGlobals: GetScheduledOccurrenceGlobals,
 ): string {
@@ -99,7 +85,6 @@ export function getScheduledOccurrenceGlobalsToJSON(
     ),
   );
 }
-
 export function getScheduledOccurrenceGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetScheduledOccurrenceGlobals, SDKValidationError> {
@@ -120,7 +105,6 @@ export const GetScheduledOccurrenceRequest$inboundSchema: z.ZodType<
   scheduleID: z.string(),
   occurrenceFilter: z.string(),
 });
-
 /** @internal */
 export type GetScheduledOccurrenceRequest$Outbound = {
   accountID: string;
@@ -139,19 +123,6 @@ export const GetScheduledOccurrenceRequest$outboundSchema: z.ZodType<
   occurrenceFilter: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetScheduledOccurrenceRequest$ {
-  /** @deprecated use `GetScheduledOccurrenceRequest$inboundSchema` instead. */
-  export const inboundSchema = GetScheduledOccurrenceRequest$inboundSchema;
-  /** @deprecated use `GetScheduledOccurrenceRequest$outboundSchema` instead. */
-  export const outboundSchema = GetScheduledOccurrenceRequest$outboundSchema;
-  /** @deprecated use `GetScheduledOccurrenceRequest$Outbound` instead. */
-  export type Outbound = GetScheduledOccurrenceRequest$Outbound;
-}
-
 export function getScheduledOccurrenceRequestToJSON(
   getScheduledOccurrenceRequest: GetScheduledOccurrenceRequest,
 ): string {
@@ -161,7 +132,6 @@ export function getScheduledOccurrenceRequestToJSON(
     ),
   );
 }
-
 export function getScheduledOccurrenceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetScheduledOccurrenceRequest, SDKValidationError> {
@@ -186,7 +156,6 @@ export const GetScheduledOccurrenceResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetScheduledOccurrenceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -208,19 +177,6 @@ export const GetScheduledOccurrenceResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetScheduledOccurrenceResponse$ {
-  /** @deprecated use `GetScheduledOccurrenceResponse$inboundSchema` instead. */
-  export const inboundSchema = GetScheduledOccurrenceResponse$inboundSchema;
-  /** @deprecated use `GetScheduledOccurrenceResponse$outboundSchema` instead. */
-  export const outboundSchema = GetScheduledOccurrenceResponse$outboundSchema;
-  /** @deprecated use `GetScheduledOccurrenceResponse$Outbound` instead. */
-  export type Outbound = GetScheduledOccurrenceResponse$Outbound;
-}
-
 export function getScheduledOccurrenceResponseToJSON(
   getScheduledOccurrenceResponse: GetScheduledOccurrenceResponse,
 ): string {
@@ -230,7 +186,6 @@ export function getScheduledOccurrenceResponseToJSON(
     ),
   );
 }
-
 export function getScheduledOccurrenceResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetScheduledOccurrenceResponse, SDKValidationError> {

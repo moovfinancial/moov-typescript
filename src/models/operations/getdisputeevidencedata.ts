@@ -56,7 +56,6 @@ export const GetDisputeEvidenceDataGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetDisputeEvidenceDataGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -75,19 +74,6 @@ export const GetDisputeEvidenceDataGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDisputeEvidenceDataGlobals$ {
-  /** @deprecated use `GetDisputeEvidenceDataGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetDisputeEvidenceDataGlobals$inboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetDisputeEvidenceDataGlobals$outboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataGlobals$Outbound` instead. */
-  export type Outbound = GetDisputeEvidenceDataGlobals$Outbound;
-}
-
 export function getDisputeEvidenceDataGlobalsToJSON(
   getDisputeEvidenceDataGlobals: GetDisputeEvidenceDataGlobals,
 ): string {
@@ -97,7 +83,6 @@ export function getDisputeEvidenceDataGlobalsToJSON(
     ),
   );
 }
-
 export function getDisputeEvidenceDataGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDisputeEvidenceDataGlobals, SDKValidationError> {
@@ -118,7 +103,6 @@ export const GetDisputeEvidenceDataRequest$inboundSchema: z.ZodType<
   disputeID: z.string(),
   evidenceID: z.string(),
 });
-
 /** @internal */
 export type GetDisputeEvidenceDataRequest$Outbound = {
   accountID: string;
@@ -137,19 +121,6 @@ export const GetDisputeEvidenceDataRequest$outboundSchema: z.ZodType<
   evidenceID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDisputeEvidenceDataRequest$ {
-  /** @deprecated use `GetDisputeEvidenceDataRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDisputeEvidenceDataRequest$inboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDisputeEvidenceDataRequest$outboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataRequest$Outbound` instead. */
-  export type Outbound = GetDisputeEvidenceDataRequest$Outbound;
-}
-
 export function getDisputeEvidenceDataRequestToJSON(
   getDisputeEvidenceDataRequest: GetDisputeEvidenceDataRequest,
 ): string {
@@ -159,7 +130,6 @@ export function getDisputeEvidenceDataRequestToJSON(
     ),
   );
 }
-
 export function getDisputeEvidenceDataRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDisputeEvidenceDataRequest, SDKValidationError> {
@@ -180,7 +150,6 @@ export const GetDisputeEvidenceDataResponseResult$inboundSchema: z.ZodType<
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
-
 /** @internal */
 export type GetDisputeEvidenceDataResponseResult$Outbound =
   | ReadableStream<Uint8Array>
@@ -198,21 +167,6 @@ export const GetDisputeEvidenceDataResponseResult$outboundSchema: z.ZodType<
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDisputeEvidenceDataResponseResult$ {
-  /** @deprecated use `GetDisputeEvidenceDataResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDisputeEvidenceDataResponseResult$inboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDisputeEvidenceDataResponseResult$outboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataResponseResult$Outbound` instead. */
-  export type Outbound = GetDisputeEvidenceDataResponseResult$Outbound;
-}
-
 export function getDisputeEvidenceDataResponseResultToJSON(
   getDisputeEvidenceDataResponseResult: GetDisputeEvidenceDataResponseResult,
 ): string {
@@ -222,7 +176,6 @@ export function getDisputeEvidenceDataResponseResultToJSON(
     ),
   );
 }
-
 export function getDisputeEvidenceDataResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDisputeEvidenceDataResponseResult, SDKValidationError> {
@@ -252,7 +205,6 @@ export const GetDisputeEvidenceDataResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetDisputeEvidenceDataResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -281,19 +233,6 @@ export const GetDisputeEvidenceDataResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDisputeEvidenceDataResponse$ {
-  /** @deprecated use `GetDisputeEvidenceDataResponse$inboundSchema` instead. */
-  export const inboundSchema = GetDisputeEvidenceDataResponse$inboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataResponse$outboundSchema` instead. */
-  export const outboundSchema = GetDisputeEvidenceDataResponse$outboundSchema;
-  /** @deprecated use `GetDisputeEvidenceDataResponse$Outbound` instead. */
-  export type Outbound = GetDisputeEvidenceDataResponse$Outbound;
-}
-
 export function getDisputeEvidenceDataResponseToJSON(
   getDisputeEvidenceDataResponse: GetDisputeEvidenceDataResponse,
 ): string {
@@ -303,7 +242,6 @@ export function getDisputeEvidenceDataResponseToJSON(
     ),
   );
 }
-
 export function getDisputeEvidenceDataResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDisputeEvidenceDataResponse, SDKValidationError> {

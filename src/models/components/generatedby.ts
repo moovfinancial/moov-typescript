@@ -30,7 +30,6 @@ export const GeneratedBy$inboundSchema: z.ZodType<
   accountID: z.string().optional(),
   bankAccountID: z.string().optional(),
 });
-
 /** @internal */
 export type GeneratedBy$Outbound = {
   transferID?: string | undefined;
@@ -53,23 +52,9 @@ export const GeneratedBy$outboundSchema: z.ZodType<
   bankAccountID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GeneratedBy$ {
-  /** @deprecated use `GeneratedBy$inboundSchema` instead. */
-  export const inboundSchema = GeneratedBy$inboundSchema;
-  /** @deprecated use `GeneratedBy$outboundSchema` instead. */
-  export const outboundSchema = GeneratedBy$outboundSchema;
-  /** @deprecated use `GeneratedBy$Outbound` instead. */
-  export type Outbound = GeneratedBy$Outbound;
-}
-
 export function generatedByToJSON(generatedBy: GeneratedBy): string {
   return JSON.stringify(GeneratedBy$outboundSchema.parse(generatedBy));
 }
-
 export function generatedByFromJSON(
   jsonString: string,
 ): SafeParseResult<GeneratedBy, SDKValidationError> {

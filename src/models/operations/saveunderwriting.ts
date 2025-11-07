@@ -48,7 +48,6 @@ export const SaveUnderwritingGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type SaveUnderwritingGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const SaveUnderwritingGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaveUnderwritingGlobals$ {
-  /** @deprecated use `SaveUnderwritingGlobals$inboundSchema` instead. */
-  export const inboundSchema = SaveUnderwritingGlobals$inboundSchema;
-  /** @deprecated use `SaveUnderwritingGlobals$outboundSchema` instead. */
-  export const outboundSchema = SaveUnderwritingGlobals$outboundSchema;
-  /** @deprecated use `SaveUnderwritingGlobals$Outbound` instead. */
-  export type Outbound = SaveUnderwritingGlobals$Outbound;
-}
-
 export function saveUnderwritingGlobalsToJSON(
   saveUnderwritingGlobals: SaveUnderwritingGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function saveUnderwritingGlobalsToJSON(
     SaveUnderwritingGlobals$outboundSchema.parse(saveUnderwritingGlobals),
   );
 }
-
 export function saveUnderwritingGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<SaveUnderwritingGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const SaveUnderwritingRequest$inboundSchema: z.ZodType<
     "UpsertUnderwriting": "upsertUnderwriting",
   });
 });
-
 /** @internal */
 export type SaveUnderwritingRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const SaveUnderwritingRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaveUnderwritingRequest$ {
-  /** @deprecated use `SaveUnderwritingRequest$inboundSchema` instead. */
-  export const inboundSchema = SaveUnderwritingRequest$inboundSchema;
-  /** @deprecated use `SaveUnderwritingRequest$outboundSchema` instead. */
-  export const outboundSchema = SaveUnderwritingRequest$outboundSchema;
-  /** @deprecated use `SaveUnderwritingRequest$Outbound` instead. */
-  export type Outbound = SaveUnderwritingRequest$Outbound;
-}
-
 export function saveUnderwritingRequestToJSON(
   saveUnderwritingRequest: SaveUnderwritingRequest,
 ): string {
@@ -152,7 +123,6 @@ export function saveUnderwritingRequestToJSON(
     SaveUnderwritingRequest$outboundSchema.parse(saveUnderwritingRequest),
   );
 }
-
 export function saveUnderwritingRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SaveUnderwritingRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const SaveUnderwritingResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type SaveUnderwritingResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const SaveUnderwritingResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SaveUnderwritingResponse$ {
-  /** @deprecated use `SaveUnderwritingResponse$inboundSchema` instead. */
-  export const inboundSchema = SaveUnderwritingResponse$inboundSchema;
-  /** @deprecated use `SaveUnderwritingResponse$outboundSchema` instead. */
-  export const outboundSchema = SaveUnderwritingResponse$outboundSchema;
-  /** @deprecated use `SaveUnderwritingResponse$Outbound` instead. */
-  export type Outbound = SaveUnderwritingResponse$Outbound;
-}
-
 export function saveUnderwritingResponseToJSON(
   saveUnderwritingResponse: SaveUnderwritingResponse,
 ): string {
@@ -219,7 +175,6 @@ export function saveUnderwritingResponseToJSON(
     SaveUnderwritingResponse$outboundSchema.parse(saveUnderwritingResponse),
   );
 }
-
 export function saveUnderwritingResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<SaveUnderwritingResponse, SDKValidationError> {

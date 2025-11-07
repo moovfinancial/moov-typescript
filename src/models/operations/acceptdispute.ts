@@ -48,7 +48,6 @@ export const AcceptDisputeGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type AcceptDisputeGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const AcceptDisputeGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptDisputeGlobals$ {
-  /** @deprecated use `AcceptDisputeGlobals$inboundSchema` instead. */
-  export const inboundSchema = AcceptDisputeGlobals$inboundSchema;
-  /** @deprecated use `AcceptDisputeGlobals$outboundSchema` instead. */
-  export const outboundSchema = AcceptDisputeGlobals$outboundSchema;
-  /** @deprecated use `AcceptDisputeGlobals$Outbound` instead. */
-  export type Outbound = AcceptDisputeGlobals$Outbound;
-}
-
 export function acceptDisputeGlobalsToJSON(
   acceptDisputeGlobals: AcceptDisputeGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function acceptDisputeGlobalsToJSON(
     AcceptDisputeGlobals$outboundSchema.parse(acceptDisputeGlobals),
   );
 }
-
 export function acceptDisputeGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<AcceptDisputeGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const AcceptDisputeRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   disputeID: z.string(),
 });
-
 /** @internal */
 export type AcceptDisputeRequest$Outbound = {
   accountID: string;
@@ -124,19 +108,6 @@ export const AcceptDisputeRequest$outboundSchema: z.ZodType<
   disputeID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptDisputeRequest$ {
-  /** @deprecated use `AcceptDisputeRequest$inboundSchema` instead. */
-  export const inboundSchema = AcceptDisputeRequest$inboundSchema;
-  /** @deprecated use `AcceptDisputeRequest$outboundSchema` instead. */
-  export const outboundSchema = AcceptDisputeRequest$outboundSchema;
-  /** @deprecated use `AcceptDisputeRequest$Outbound` instead. */
-  export type Outbound = AcceptDisputeRequest$Outbound;
-}
-
 export function acceptDisputeRequestToJSON(
   acceptDisputeRequest: AcceptDisputeRequest,
 ): string {
@@ -144,7 +115,6 @@ export function acceptDisputeRequestToJSON(
     AcceptDisputeRequest$outboundSchema.parse(acceptDisputeRequest),
   );
 }
-
 export function acceptDisputeRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AcceptDisputeRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const AcceptDisputeResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type AcceptDisputeResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const AcceptDisputeResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptDisputeResponse$ {
-  /** @deprecated use `AcceptDisputeResponse$inboundSchema` instead. */
-  export const inboundSchema = AcceptDisputeResponse$inboundSchema;
-  /** @deprecated use `AcceptDisputeResponse$outboundSchema` instead. */
-  export const outboundSchema = AcceptDisputeResponse$outboundSchema;
-  /** @deprecated use `AcceptDisputeResponse$Outbound` instead. */
-  export type Outbound = AcceptDisputeResponse$Outbound;
-}
-
 export function acceptDisputeResponseToJSON(
   acceptDisputeResponse: AcceptDisputeResponse,
 ): string {
@@ -211,7 +167,6 @@ export function acceptDisputeResponseToJSON(
     AcceptDisputeResponse$outboundSchema.parse(acceptDisputeResponse),
   );
 }
-
 export function acceptDisputeResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<AcceptDisputeResponse, SDKValidationError> {

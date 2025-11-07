@@ -45,7 +45,6 @@ export const PaymentLinkDisplayOptionsUpdate$inboundSchema: z.ZodType<
   description: z.string().optional(),
   callToAction: CallToAction$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PaymentLinkDisplayOptionsUpdate$Outbound = {
   title?: string | undefined;
@@ -64,19 +63,6 @@ export const PaymentLinkDisplayOptionsUpdate$outboundSchema: z.ZodType<
   callToAction: CallToAction$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentLinkDisplayOptionsUpdate$ {
-  /** @deprecated use `PaymentLinkDisplayOptionsUpdate$inboundSchema` instead. */
-  export const inboundSchema = PaymentLinkDisplayOptionsUpdate$inboundSchema;
-  /** @deprecated use `PaymentLinkDisplayOptionsUpdate$outboundSchema` instead. */
-  export const outboundSchema = PaymentLinkDisplayOptionsUpdate$outboundSchema;
-  /** @deprecated use `PaymentLinkDisplayOptionsUpdate$Outbound` instead. */
-  export type Outbound = PaymentLinkDisplayOptionsUpdate$Outbound;
-}
-
 export function paymentLinkDisplayOptionsUpdateToJSON(
   paymentLinkDisplayOptionsUpdate: PaymentLinkDisplayOptionsUpdate,
 ): string {
@@ -86,7 +72,6 @@ export function paymentLinkDisplayOptionsUpdateToJSON(
     ),
   );
 }
-
 export function paymentLinkDisplayOptionsUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<PaymentLinkDisplayOptionsUpdate, SDKValidationError> {

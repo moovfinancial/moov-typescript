@@ -24,7 +24,6 @@ export const AccountCapability$inboundSchema: z.ZodType<
   capability: z.string(),
   status: z.string(),
 });
-
 /** @internal */
 export type AccountCapability$Outbound = {
   capability: string;
@@ -41,19 +40,6 @@ export const AccountCapability$outboundSchema: z.ZodType<
   status: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountCapability$ {
-  /** @deprecated use `AccountCapability$inboundSchema` instead. */
-  export const inboundSchema = AccountCapability$inboundSchema;
-  /** @deprecated use `AccountCapability$outboundSchema` instead. */
-  export const outboundSchema = AccountCapability$outboundSchema;
-  /** @deprecated use `AccountCapability$Outbound` instead. */
-  export type Outbound = AccountCapability$Outbound;
-}
-
 export function accountCapabilityToJSON(
   accountCapability: AccountCapability,
 ): string {
@@ -61,7 +47,6 @@ export function accountCapabilityToJSON(
     AccountCapability$outboundSchema.parse(accountCapability),
   );
 }
-
 export function accountCapabilityFromJSON(
   jsonString: string,
 ): SafeParseResult<AccountCapability, SDKValidationError> {

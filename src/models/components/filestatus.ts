@@ -21,18 +21,6 @@ export type FileStatus = ClosedEnum<typeof FileStatus>;
 /** @internal */
 export const FileStatus$inboundSchema: z.ZodNativeEnum<typeof FileStatus> = z
   .nativeEnum(FileStatus);
-
 /** @internal */
 export const FileStatus$outboundSchema: z.ZodNativeEnum<typeof FileStatus> =
   FileStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileStatus$ {
-  /** @deprecated use `FileStatus$inboundSchema` instead. */
-  export const inboundSchema = FileStatus$inboundSchema;
-  /** @deprecated use `FileStatus$outboundSchema` instead. */
-  export const outboundSchema = FileStatus$outboundSchema;
-}

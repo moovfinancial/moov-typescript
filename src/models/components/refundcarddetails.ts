@@ -46,7 +46,6 @@ export const RefundCardDetails$inboundSchema: z.ZodType<
   completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type RefundCardDetails$Outbound = {
   status: string;
@@ -73,19 +72,6 @@ export const RefundCardDetails$outboundSchema: z.ZodType<
   completedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RefundCardDetails$ {
-  /** @deprecated use `RefundCardDetails$inboundSchema` instead. */
-  export const inboundSchema = RefundCardDetails$inboundSchema;
-  /** @deprecated use `RefundCardDetails$outboundSchema` instead. */
-  export const outboundSchema = RefundCardDetails$outboundSchema;
-  /** @deprecated use `RefundCardDetails$Outbound` instead. */
-  export type Outbound = RefundCardDetails$Outbound;
-}
-
 export function refundCardDetailsToJSON(
   refundCardDetails: RefundCardDetails,
 ): string {
@@ -93,7 +79,6 @@ export function refundCardDetailsToJSON(
     RefundCardDetails$outboundSchema.parse(refundCardDetails),
   );
 }
-
 export function refundCardDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<RefundCardDetails, SDKValidationError> {

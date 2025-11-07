@@ -25,6 +25,12 @@ import {
   PaymentLinkDisplayOptions$outboundSchema,
 } from "./paymentlinkdisplayoptions.js";
 import {
+  PaymentLinkLineItems,
+  PaymentLinkLineItems$inboundSchema,
+  PaymentLinkLineItems$Outbound,
+  PaymentLinkLineItems$outboundSchema,
+} from "./paymentlinklineitems.js";
+import {
   PaymentLinkPaymentDetails,
   PaymentLinkPaymentDetails$inboundSchema,
   PaymentLinkPaymentDetails$Outbound,
@@ -80,6 +86,13 @@ export type CreatePaymentLink = {
    */
   payment?: PaymentLinkPaymentDetails | undefined;
   payout?: PaymentLinkPayoutDetails | undefined;
+  /**
+   * An optional collection of line items for a payment link.
+   *
+   * @remarks
+   * When line items are provided, their total plus sales tax must equal the payment link amount.
+   */
+  lineItems?: PaymentLinkLineItems | undefined;
 };
 
 /** @internal */
@@ -98,8 +111,8 @@ export const CreatePaymentLink$inboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$inboundSchema.optional(),
   payment: PaymentLinkPaymentDetails$inboundSchema.optional(),
   payout: PaymentLinkPayoutDetails$inboundSchema.optional(),
+  lineItems: PaymentLinkLineItems$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreatePaymentLink$Outbound = {
   partnerAccountID: string;
@@ -111,6 +124,7 @@ export type CreatePaymentLink$Outbound = {
   customer?: PaymentLinkCustomerOptions$Outbound | undefined;
   payment?: PaymentLinkPaymentDetails$Outbound | undefined;
   payout?: PaymentLinkPayoutDetails$Outbound | undefined;
+  lineItems?: PaymentLinkLineItems$Outbound | undefined;
 };
 
 /** @internal */
@@ -128,20 +142,8 @@ export const CreatePaymentLink$outboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$outboundSchema.optional(),
   payment: PaymentLinkPaymentDetails$outboundSchema.optional(),
   payout: PaymentLinkPayoutDetails$outboundSchema.optional(),
+  lineItems: PaymentLinkLineItems$outboundSchema.optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePaymentLink$ {
-  /** @deprecated use `CreatePaymentLink$inboundSchema` instead. */
-  export const inboundSchema = CreatePaymentLink$inboundSchema;
-  /** @deprecated use `CreatePaymentLink$outboundSchema` instead. */
-  export const outboundSchema = CreatePaymentLink$outboundSchema;
-  /** @deprecated use `CreatePaymentLink$Outbound` instead. */
-  export type Outbound = CreatePaymentLink$Outbound;
-}
 
 export function createPaymentLinkToJSON(
   createPaymentLink: CreatePaymentLink,
@@ -150,7 +152,6 @@ export function createPaymentLinkToJSON(
     CreatePaymentLink$outboundSchema.parse(createPaymentLink),
   );
 }
-
 export function createPaymentLinkFromJSON(
   jsonString: string,
 ): SafeParseResult<CreatePaymentLink, SDKValidationError> {

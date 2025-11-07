@@ -49,7 +49,6 @@ export const CompleteMicroDepositsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CompleteMicroDepositsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const CompleteMicroDepositsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteMicroDepositsGlobals$ {
-  /** @deprecated use `CompleteMicroDepositsGlobals$inboundSchema` instead. */
-  export const inboundSchema = CompleteMicroDepositsGlobals$inboundSchema;
-  /** @deprecated use `CompleteMicroDepositsGlobals$outboundSchema` instead. */
-  export const outboundSchema = CompleteMicroDepositsGlobals$outboundSchema;
-  /** @deprecated use `CompleteMicroDepositsGlobals$Outbound` instead. */
-  export type Outbound = CompleteMicroDepositsGlobals$Outbound;
-}
-
 export function completeMicroDepositsGlobalsToJSON(
   completeMicroDepositsGlobals: CompleteMicroDepositsGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function completeMicroDepositsGlobalsToJSON(
     ),
   );
 }
-
 export function completeMicroDepositsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteMicroDepositsGlobals, SDKValidationError> {
@@ -115,7 +100,6 @@ export const CompleteMicroDepositsRequest$inboundSchema: z.ZodType<
     "CompleteMicroDeposits": "completeMicroDeposits",
   });
 });
-
 /** @internal */
 export type CompleteMicroDepositsRequest$Outbound = {
   accountID: string;
@@ -138,19 +122,6 @@ export const CompleteMicroDepositsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteMicroDepositsRequest$ {
-  /** @deprecated use `CompleteMicroDepositsRequest$inboundSchema` instead. */
-  export const inboundSchema = CompleteMicroDepositsRequest$inboundSchema;
-  /** @deprecated use `CompleteMicroDepositsRequest$outboundSchema` instead. */
-  export const outboundSchema = CompleteMicroDepositsRequest$outboundSchema;
-  /** @deprecated use `CompleteMicroDepositsRequest$Outbound` instead. */
-  export type Outbound = CompleteMicroDepositsRequest$Outbound;
-}
-
 export function completeMicroDepositsRequestToJSON(
   completeMicroDepositsRequest: CompleteMicroDepositsRequest,
 ): string {
@@ -160,7 +131,6 @@ export function completeMicroDepositsRequestToJSON(
     ),
   );
 }
-
 export function completeMicroDepositsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteMicroDepositsRequest, SDKValidationError> {
@@ -185,7 +155,6 @@ export const CompleteMicroDepositsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CompleteMicroDepositsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -207,19 +176,6 @@ export const CompleteMicroDepositsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteMicroDepositsResponse$ {
-  /** @deprecated use `CompleteMicroDepositsResponse$inboundSchema` instead. */
-  export const inboundSchema = CompleteMicroDepositsResponse$inboundSchema;
-  /** @deprecated use `CompleteMicroDepositsResponse$outboundSchema` instead. */
-  export const outboundSchema = CompleteMicroDepositsResponse$outboundSchema;
-  /** @deprecated use `CompleteMicroDepositsResponse$Outbound` instead. */
-  export type Outbound = CompleteMicroDepositsResponse$Outbound;
-}
-
 export function completeMicroDepositsResponseToJSON(
   completeMicroDepositsResponse: CompleteMicroDepositsResponse,
 ): string {
@@ -229,7 +185,6 @@ export function completeMicroDepositsResponseToJSON(
     ),
   );
 }
-
 export function completeMicroDepositsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CompleteMicroDepositsResponse, SDKValidationError> {

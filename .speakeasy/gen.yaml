@@ -20,12 +20,13 @@ generation:
   sdkHooksConfigAccess: true
   schemas:
     allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.21.4
+  version: 0.21.5
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -33,6 +34,7 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON: {}
   additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: Moov
   baseErrorName: MoovError
   clientServerStatusCodesAsErrors: true
@@ -42,6 +44,7 @@ typescript:
   enableMCPServer: true
   enableReactQuery: false
   enumFormat: union
+  exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
   generateExamples: true

@@ -38,7 +38,6 @@ export const WebhookDataWalletTransactionUpdated$inboundSchema: z.ZodType<
   status: WalletTransactionStatus$inboundSchema,
   availableBalance: WalletAvailableBalance$inboundSchema.optional(),
 });
-
 /** @internal */
 export type WebhookDataWalletTransactionUpdated$Outbound = {
   accountID: string;
@@ -61,21 +60,6 @@ export const WebhookDataWalletTransactionUpdated$outboundSchema: z.ZodType<
   availableBalance: WalletAvailableBalance$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataWalletTransactionUpdated$ {
-  /** @deprecated use `WebhookDataWalletTransactionUpdated$inboundSchema` instead. */
-  export const inboundSchema =
-    WebhookDataWalletTransactionUpdated$inboundSchema;
-  /** @deprecated use `WebhookDataWalletTransactionUpdated$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookDataWalletTransactionUpdated$outboundSchema;
-  /** @deprecated use `WebhookDataWalletTransactionUpdated$Outbound` instead. */
-  export type Outbound = WebhookDataWalletTransactionUpdated$Outbound;
-}
-
 export function webhookDataWalletTransactionUpdatedToJSON(
   webhookDataWalletTransactionUpdated: WebhookDataWalletTransactionUpdated,
 ): string {
@@ -85,7 +69,6 @@ export function webhookDataWalletTransactionUpdatedToJSON(
     ),
   );
 }
-
 export function webhookDataWalletTransactionUpdatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataWalletTransactionUpdated, SDKValidationError> {

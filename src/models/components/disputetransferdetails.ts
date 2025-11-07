@@ -22,7 +22,6 @@ export const DisputeTransferDetails$inboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string(),
 });
-
 /** @internal */
 export type DisputeTransferDetails$Outbound = {
   transferID: string;
@@ -37,19 +36,6 @@ export const DisputeTransferDetails$outboundSchema: z.ZodType<
   transferID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisputeTransferDetails$ {
-  /** @deprecated use `DisputeTransferDetails$inboundSchema` instead. */
-  export const inboundSchema = DisputeTransferDetails$inboundSchema;
-  /** @deprecated use `DisputeTransferDetails$outboundSchema` instead. */
-  export const outboundSchema = DisputeTransferDetails$outboundSchema;
-  /** @deprecated use `DisputeTransferDetails$Outbound` instead. */
-  export type Outbound = DisputeTransferDetails$Outbound;
-}
-
 export function disputeTransferDetailsToJSON(
   disputeTransferDetails: DisputeTransferDetails,
 ): string {
@@ -57,7 +43,6 @@ export function disputeTransferDetailsToJSON(
     DisputeTransferDetails$outboundSchema.parse(disputeTransferDetails),
   );
 }
-
 export function disputeTransferDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<DisputeTransferDetails, SDKValidationError> {

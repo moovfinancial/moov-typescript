@@ -29,7 +29,6 @@ export const E2EEToken$inboundSchema: z.ZodType<
 > = z.object({
   token: z.string(),
 });
-
 /** @internal */
 export type E2EEToken$Outbound = {
   token: string;
@@ -44,23 +43,9 @@ export const E2EEToken$outboundSchema: z.ZodType<
   token: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace E2EEToken$ {
-  /** @deprecated use `E2EEToken$inboundSchema` instead. */
-  export const inboundSchema = E2EEToken$inboundSchema;
-  /** @deprecated use `E2EEToken$outboundSchema` instead. */
-  export const outboundSchema = E2EEToken$outboundSchema;
-  /** @deprecated use `E2EEToken$Outbound` instead. */
-  export type Outbound = E2EEToken$Outbound;
-}
-
 export function e2EETokenToJSON(e2EEToken: E2EEToken): string {
   return JSON.stringify(E2EEToken$outboundSchema.parse(e2EEToken));
 }
-
 export function e2EETokenFromJSON(
   jsonString: string,
 ): SafeParseResult<E2EEToken, SDKValidationError> {

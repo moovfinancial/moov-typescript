@@ -47,7 +47,6 @@ export const UpdateUnderwriting$inboundSchema: z.ZodType<
   cardVolumeDistribution: CardVolumeDistribution$inboundSchema,
   fulfillment: FulfillmentDetails$inboundSchema,
 });
-
 /** @internal */
 export type UpdateUnderwriting$Outbound = {
   averageTransactionSize: number;
@@ -72,19 +71,6 @@ export const UpdateUnderwriting$outboundSchema: z.ZodType<
   fulfillment: FulfillmentDetails$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateUnderwriting$ {
-  /** @deprecated use `UpdateUnderwriting$inboundSchema` instead. */
-  export const inboundSchema = UpdateUnderwriting$inboundSchema;
-  /** @deprecated use `UpdateUnderwriting$outboundSchema` instead. */
-  export const outboundSchema = UpdateUnderwriting$outboundSchema;
-  /** @deprecated use `UpdateUnderwriting$Outbound` instead. */
-  export type Outbound = UpdateUnderwriting$Outbound;
-}
-
 export function updateUnderwritingToJSON(
   updateUnderwriting: UpdateUnderwriting,
 ): string {
@@ -92,7 +78,6 @@ export function updateUnderwritingToJSON(
     UpdateUnderwriting$outboundSchema.parse(updateUnderwriting),
   );
 }
-
 export function updateUnderwritingFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateUnderwriting, SDKValidationError> {

@@ -130,16 +130,3 @@ export const ListTransfersValidationError$outboundSchema: z.ZodType<
     refunded: z.string().optional(),
     disputed: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTransfersValidationError$ {
-  /** @deprecated use `ListTransfersValidationError$inboundSchema` instead. */
-  export const inboundSchema = ListTransfersValidationError$inboundSchema;
-  /** @deprecated use `ListTransfersValidationError$outboundSchema` instead. */
-  export const outboundSchema = ListTransfersValidationError$outboundSchema;
-  /** @deprecated use `ListTransfersValidationError$Outbound` instead. */
-  export type Outbound = ListTransfersValidationError$Outbound;
-}

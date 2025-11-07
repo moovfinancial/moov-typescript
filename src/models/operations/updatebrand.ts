@@ -48,7 +48,6 @@ export const UpdateBrandGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateBrandGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const UpdateBrandGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateBrandGlobals$ {
-  /** @deprecated use `UpdateBrandGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateBrandGlobals$inboundSchema;
-  /** @deprecated use `UpdateBrandGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateBrandGlobals$outboundSchema;
-  /** @deprecated use `UpdateBrandGlobals$Outbound` instead. */
-  export type Outbound = UpdateBrandGlobals$Outbound;
-}
-
 export function updateBrandGlobalsToJSON(
   updateBrandGlobals: UpdateBrandGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function updateBrandGlobalsToJSON(
     UpdateBrandGlobals$outboundSchema.parse(updateBrandGlobals),
   );
 }
-
 export function updateBrandGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateBrandGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const UpdateBrandRequest$inboundSchema: z.ZodType<
     "UpdateBrand": "updateBrand",
   });
 });
-
 /** @internal */
 export type UpdateBrandRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const UpdateBrandRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateBrandRequest$ {
-  /** @deprecated use `UpdateBrandRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateBrandRequest$inboundSchema;
-  /** @deprecated use `UpdateBrandRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateBrandRequest$outboundSchema;
-  /** @deprecated use `UpdateBrandRequest$Outbound` instead. */
-  export type Outbound = UpdateBrandRequest$Outbound;
-}
-
 export function updateBrandRequestToJSON(
   updateBrandRequest: UpdateBrandRequest,
 ): string {
@@ -152,7 +123,6 @@ export function updateBrandRequestToJSON(
     UpdateBrandRequest$outboundSchema.parse(updateBrandRequest),
   );
 }
-
 export function updateBrandRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateBrandRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const UpdateBrandResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpdateBrandResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const UpdateBrandResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateBrandResponse$ {
-  /** @deprecated use `UpdateBrandResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateBrandResponse$inboundSchema;
-  /** @deprecated use `UpdateBrandResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateBrandResponse$outboundSchema;
-  /** @deprecated use `UpdateBrandResponse$Outbound` instead. */
-  export type Outbound = UpdateBrandResponse$Outbound;
-}
-
 export function updateBrandResponseToJSON(
   updateBrandResponse: UpdateBrandResponse,
 ): string {
@@ -219,7 +175,6 @@ export function updateBrandResponseToJSON(
     UpdateBrandResponse$outboundSchema.parse(updateBrandResponse),
   );
 }
-
 export function updateBrandResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateBrandResponse, SDKValidationError> {

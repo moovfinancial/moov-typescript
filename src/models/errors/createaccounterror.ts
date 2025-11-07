@@ -107,16 +107,3 @@ export const CreateAccountError$outboundSchema: z.ZodType<
     settings: components.CreateAccountSettings$outboundSchema.optional(),
     capabilities: z.record(z.string()).optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountError$ {
-  /** @deprecated use `CreateAccountError$inboundSchema` instead. */
-  export const inboundSchema = CreateAccountError$inboundSchema;
-  /** @deprecated use `CreateAccountError$outboundSchema` instead. */
-  export const outboundSchema = CreateAccountError$outboundSchema;
-  /** @deprecated use `CreateAccountError$Outbound` instead. */
-  export type Outbound = CreateAccountError$Outbound;
-}

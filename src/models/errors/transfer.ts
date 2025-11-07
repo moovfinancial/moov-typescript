@@ -73,6 +73,13 @@ export type TransferData = {
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
   foreignID?: string | undefined;
+  /**
+   * An optional collection of line items for a transfer.
+   *
+   * @remarks
+   * When line items are provided, their total plus sales tax must equal the transfer amount.
+   */
+  lineItems?: components.TransferLineItems | undefined;
 };
 
 /**
@@ -142,6 +149,13 @@ export class Transfer extends MoovError {
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
   foreignID?: string | undefined;
+  /**
+   * An optional collection of line items for a transfer.
+   *
+   * @remarks
+   * When line items are provided, their total plus sales tax must equal the transfer amount.
+   */
+  lineItems?: components.TransferLineItems | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferData;
@@ -182,6 +196,7 @@ export class Transfer extends MoovError {
     if (err.paymentLinkCode != null) this.paymentLinkCode = err.paymentLinkCode;
     if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
     if (err.foreignID != null) this.foreignID = err.foreignID;
+    if (err.lineItems != null) this.lineItems = err.lineItems;
 
     this.name = "Transfer";
   }
@@ -221,6 +236,7 @@ export const Transfer$inboundSchema: z.ZodType<
   paymentLinkCode: z.string().optional(),
   salesTaxAmount: components.Amount$inboundSchema.optional(),
   foreignID: z.string().optional(),
+  lineItems: components.TransferLineItems$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -262,6 +278,7 @@ export type Transfer$Outbound = {
   paymentLinkCode?: string | undefined;
   salesTaxAmount?: components.Amount$Outbound | undefined;
   foreignID?: string | undefined;
+  lineItems?: components.TransferLineItems$Outbound | undefined;
 };
 
 /** @internal */
@@ -300,17 +317,5 @@ export const Transfer$outboundSchema: z.ZodType<
     paymentLinkCode: z.string().optional(),
     salesTaxAmount: components.Amount$outboundSchema.optional(),
     foreignID: z.string().optional(),
+    lineItems: components.TransferLineItems$outboundSchema.optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Transfer$ {
-  /** @deprecated use `Transfer$inboundSchema` instead. */
-  export const inboundSchema = Transfer$inboundSchema;
-  /** @deprecated use `Transfer$outboundSchema` instead. */
-  export const outboundSchema = Transfer$outboundSchema;
-  /** @deprecated use `Transfer$Outbound` instead. */
-  export type Outbound = Transfer$Outbound;
-}

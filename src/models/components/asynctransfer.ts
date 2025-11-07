@@ -21,7 +21,6 @@ export const AsyncTransfer$inboundSchema: z.ZodType<
   transferID: z.string(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type AsyncTransfer$Outbound = {
   transferID: string;
@@ -38,23 +37,9 @@ export const AsyncTransfer$outboundSchema: z.ZodType<
   createdOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AsyncTransfer$ {
-  /** @deprecated use `AsyncTransfer$inboundSchema` instead. */
-  export const inboundSchema = AsyncTransfer$inboundSchema;
-  /** @deprecated use `AsyncTransfer$outboundSchema` instead. */
-  export const outboundSchema = AsyncTransfer$outboundSchema;
-  /** @deprecated use `AsyncTransfer$Outbound` instead. */
-  export type Outbound = AsyncTransfer$Outbound;
-}
-
 export function asyncTransferToJSON(asyncTransfer: AsyncTransfer): string {
   return JSON.stringify(AsyncTransfer$outboundSchema.parse(asyncTransfer));
 }
-
 export function asyncTransferFromJSON(
   jsonString: string,
 ): SafeParseResult<AsyncTransfer, SDKValidationError> {

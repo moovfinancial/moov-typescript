@@ -64,7 +64,6 @@ export const CreateIndividualErrorSsn$inboundSchema: z.ZodType<
   full: z.string().optional(),
   lastFour: z.string().optional(),
 });
-
 /** @internal */
 export type CreateIndividualErrorSsn$Outbound = {
   full?: string | undefined;
@@ -81,19 +80,6 @@ export const CreateIndividualErrorSsn$outboundSchema: z.ZodType<
   lastFour: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateIndividualErrorSsn$ {
-  /** @deprecated use `CreateIndividualErrorSsn$inboundSchema` instead. */
-  export const inboundSchema = CreateIndividualErrorSsn$inboundSchema;
-  /** @deprecated use `CreateIndividualErrorSsn$outboundSchema` instead. */
-  export const outboundSchema = CreateIndividualErrorSsn$outboundSchema;
-  /** @deprecated use `CreateIndividualErrorSsn$Outbound` instead. */
-  export type Outbound = CreateIndividualErrorSsn$Outbound;
-}
-
 export function createIndividualErrorSsnToJSON(
   createIndividualErrorSsn: CreateIndividualErrorSsn,
 ): string {
@@ -101,7 +87,6 @@ export function createIndividualErrorSsnToJSON(
     CreateIndividualErrorSsn$outboundSchema.parse(createIndividualErrorSsn),
   );
 }
-
 export function createIndividualErrorSsnFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateIndividualErrorSsn, SDKValidationError> {
@@ -121,7 +106,6 @@ export const CreateIndividualErrorItin$inboundSchema: z.ZodType<
   full: z.string().optional(),
   lastFour: z.string().optional(),
 });
-
 /** @internal */
 export type CreateIndividualErrorItin$Outbound = {
   full?: string | undefined;
@@ -138,19 +122,6 @@ export const CreateIndividualErrorItin$outboundSchema: z.ZodType<
   lastFour: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateIndividualErrorItin$ {
-  /** @deprecated use `CreateIndividualErrorItin$inboundSchema` instead. */
-  export const inboundSchema = CreateIndividualErrorItin$inboundSchema;
-  /** @deprecated use `CreateIndividualErrorItin$outboundSchema` instead. */
-  export const outboundSchema = CreateIndividualErrorItin$outboundSchema;
-  /** @deprecated use `CreateIndividualErrorItin$Outbound` instead. */
-  export type Outbound = CreateIndividualErrorItin$Outbound;
-}
-
 export function createIndividualErrorItinToJSON(
   createIndividualErrorItin: CreateIndividualErrorItin,
 ): string {
@@ -158,7 +129,6 @@ export function createIndividualErrorItinToJSON(
     CreateIndividualErrorItin$outboundSchema.parse(createIndividualErrorItin),
   );
 }
-
 export function createIndividualErrorItinFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateIndividualErrorItin, SDKValidationError> {
@@ -178,7 +148,6 @@ export const CreateIndividualErrorGovernmentID$inboundSchema: z.ZodType<
   ssn: z.lazy(() => CreateIndividualErrorSsn$inboundSchema).optional(),
   itin: z.lazy(() => CreateIndividualErrorItin$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CreateIndividualErrorGovernmentID$Outbound = {
   ssn?: CreateIndividualErrorSsn$Outbound | undefined;
@@ -195,20 +164,6 @@ export const CreateIndividualErrorGovernmentID$outboundSchema: z.ZodType<
   itin: z.lazy(() => CreateIndividualErrorItin$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateIndividualErrorGovernmentID$ {
-  /** @deprecated use `CreateIndividualErrorGovernmentID$inboundSchema` instead. */
-  export const inboundSchema = CreateIndividualErrorGovernmentID$inboundSchema;
-  /** @deprecated use `CreateIndividualErrorGovernmentID$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateIndividualErrorGovernmentID$outboundSchema;
-  /** @deprecated use `CreateIndividualErrorGovernmentID$Outbound` instead. */
-  export type Outbound = CreateIndividualErrorGovernmentID$Outbound;
-}
-
 export function createIndividualErrorGovernmentIDToJSON(
   createIndividualErrorGovernmentID: CreateIndividualErrorGovernmentID,
 ): string {
@@ -218,7 +173,6 @@ export function createIndividualErrorGovernmentIDToJSON(
     ),
   );
 }
-
 export function createIndividualErrorGovernmentIDFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateIndividualErrorGovernmentID, SDKValidationError> {
@@ -243,7 +197,6 @@ export const CreateIndividualError$inboundSchema: z.ZodType<
   governmentID: z.lazy(() => CreateIndividualErrorGovernmentID$inboundSchema)
     .optional(),
 });
-
 /** @internal */
 export type CreateIndividualError$Outbound = {
   name?: IndividualNameError$Outbound | undefined;
@@ -269,19 +222,6 @@ export const CreateIndividualError$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateIndividualError$ {
-  /** @deprecated use `CreateIndividualError$inboundSchema` instead. */
-  export const inboundSchema = CreateIndividualError$inboundSchema;
-  /** @deprecated use `CreateIndividualError$outboundSchema` instead. */
-  export const outboundSchema = CreateIndividualError$outboundSchema;
-  /** @deprecated use `CreateIndividualError$Outbound` instead. */
-  export type Outbound = CreateIndividualError$Outbound;
-}
-
 export function createIndividualErrorToJSON(
   createIndividualError: CreateIndividualError,
 ): string {
@@ -289,7 +229,6 @@ export function createIndividualErrorToJSON(
     CreateIndividualError$outboundSchema.parse(createIndividualError),
   );
 }
-
 export function createIndividualErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateIndividualError, SDKValidationError> {

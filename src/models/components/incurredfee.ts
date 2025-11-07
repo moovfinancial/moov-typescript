@@ -52,7 +52,6 @@ export const IncurredFee$inboundSchema: z.ZodType<
   generatedBy: GeneratedBy$inboundSchema.optional(),
   feeGroup: z.string().optional(),
 });
-
 /** @internal */
 export type IncurredFee$Outbound = {
   feeID?: string | undefined;
@@ -81,23 +80,9 @@ export const IncurredFee$outboundSchema: z.ZodType<
   feeGroup: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IncurredFee$ {
-  /** @deprecated use `IncurredFee$inboundSchema` instead. */
-  export const inboundSchema = IncurredFee$inboundSchema;
-  /** @deprecated use `IncurredFee$outboundSchema` instead. */
-  export const outboundSchema = IncurredFee$outboundSchema;
-  /** @deprecated use `IncurredFee$Outbound` instead. */
-  export type Outbound = IncurredFee$Outbound;
-}
-
 export function incurredFeeToJSON(incurredFee: IncurredFee): string {
   return JSON.stringify(IncurredFee$outboundSchema.parse(incurredFee));
 }
-
 export function incurredFeeFromJSON(
   jsonString: string,
 ): SafeParseResult<IncurredFee, SDKValidationError> {

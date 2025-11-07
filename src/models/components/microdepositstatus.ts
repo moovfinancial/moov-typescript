@@ -14,19 +14,7 @@ export type MicroDepositStatus = ClosedEnum<typeof MicroDepositStatus>;
 export const MicroDepositStatus$inboundSchema: z.ZodNativeEnum<
   typeof MicroDepositStatus
 > = z.nativeEnum(MicroDepositStatus);
-
 /** @internal */
 export const MicroDepositStatus$outboundSchema: z.ZodNativeEnum<
   typeof MicroDepositStatus
 > = MicroDepositStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MicroDepositStatus$ {
-  /** @deprecated use `MicroDepositStatus$inboundSchema` instead. */
-  export const inboundSchema = MicroDepositStatus$inboundSchema;
-  /** @deprecated use `MicroDepositStatus$outboundSchema` instead. */
-  export const outboundSchema = MicroDepositStatus$outboundSchema;
-}

@@ -45,7 +45,6 @@ export const IndustryTaxonomy$inboundSchema: z.ZodType<
   categoryDisplayName: z.string(),
   defaultMcc: z.string(),
 });
-
 /** @internal */
 export type IndustryTaxonomy$Outbound = {
   industry: string;
@@ -68,19 +67,6 @@ export const IndustryTaxonomy$outboundSchema: z.ZodType<
   defaultMcc: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndustryTaxonomy$ {
-  /** @deprecated use `IndustryTaxonomy$inboundSchema` instead. */
-  export const inboundSchema = IndustryTaxonomy$inboundSchema;
-  /** @deprecated use `IndustryTaxonomy$outboundSchema` instead. */
-  export const outboundSchema = IndustryTaxonomy$outboundSchema;
-  /** @deprecated use `IndustryTaxonomy$Outbound` instead. */
-  export type Outbound = IndustryTaxonomy$Outbound;
-}
-
 export function industryTaxonomyToJSON(
   industryTaxonomy: IndustryTaxonomy,
 ): string {
@@ -88,7 +74,6 @@ export function industryTaxonomyToJSON(
     IndustryTaxonomy$outboundSchema.parse(industryTaxonomy),
   );
 }
-
 export function industryTaxonomyFromJSON(
   jsonString: string,
 ): SafeParseResult<IndustryTaxonomy, SDKValidationError> {

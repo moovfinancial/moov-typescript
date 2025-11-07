@@ -25,7 +25,6 @@ export const EnrichedBusinessResponse$inboundSchema: z.ZodType<
 > = z.object({
   business: EnrichedBusinessProfile$inboundSchema.optional(),
 });
-
 /** @internal */
 export type EnrichedBusinessResponse$Outbound = {
   business?: EnrichedBusinessProfile$Outbound | undefined;
@@ -40,19 +39,6 @@ export const EnrichedBusinessResponse$outboundSchema: z.ZodType<
   business: EnrichedBusinessProfile$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EnrichedBusinessResponse$ {
-  /** @deprecated use `EnrichedBusinessResponse$inboundSchema` instead. */
-  export const inboundSchema = EnrichedBusinessResponse$inboundSchema;
-  /** @deprecated use `EnrichedBusinessResponse$outboundSchema` instead. */
-  export const outboundSchema = EnrichedBusinessResponse$outboundSchema;
-  /** @deprecated use `EnrichedBusinessResponse$Outbound` instead. */
-  export type Outbound = EnrichedBusinessResponse$Outbound;
-}
-
 export function enrichedBusinessResponseToJSON(
   enrichedBusinessResponse: EnrichedBusinessResponse,
 ): string {
@@ -60,7 +46,6 @@ export function enrichedBusinessResponseToJSON(
     EnrichedBusinessResponse$outboundSchema.parse(enrichedBusinessResponse),
   );
 }
-
 export function enrichedBusinessResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<EnrichedBusinessResponse, SDKValidationError> {

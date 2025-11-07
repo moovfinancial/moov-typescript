@@ -49,7 +49,6 @@ export const SendFundsError$inboundSchema: z.ZodType<
   rtp: SendFundsRtpError$inboundSchema.optional(),
   instantBank: SendFundsInstantBankError$inboundSchema.optional(),
 });
-
 /** @internal */
 export type SendFundsError$Outbound = {
   ach?: SendFundsAchError$Outbound | undefined;
@@ -70,23 +69,9 @@ export const SendFundsError$outboundSchema: z.ZodType<
   instantBank: SendFundsInstantBankError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SendFundsError$ {
-  /** @deprecated use `SendFundsError$inboundSchema` instead. */
-  export const inboundSchema = SendFundsError$inboundSchema;
-  /** @deprecated use `SendFundsError$outboundSchema` instead. */
-  export const outboundSchema = SendFundsError$outboundSchema;
-  /** @deprecated use `SendFundsError$Outbound` instead. */
-  export type Outbound = SendFundsError$Outbound;
-}
-
 export function sendFundsErrorToJSON(sendFundsError: SendFundsError): string {
   return JSON.stringify(SendFundsError$outboundSchema.parse(sendFundsError));
 }
-
 export function sendFundsErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<SendFundsError, SDKValidationError> {

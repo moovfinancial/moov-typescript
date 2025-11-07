@@ -87,16 +87,3 @@ export const CreateTicketError$outboundSchema: z.ZodType<
     contact: components.CreateTicketContactError$outboundSchema.optional(),
     foreignID: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTicketError$ {
-  /** @deprecated use `CreateTicketError$inboundSchema` instead. */
-  export const inboundSchema = CreateTicketError$inboundSchema;
-  /** @deprecated use `CreateTicketError$outboundSchema` instead. */
-  export const outboundSchema = CreateTicketError$outboundSchema;
-  /** @deprecated use `CreateTicketError$Outbound` instead. */
-  export type Outbound = CreateTicketError$Outbound;
-}

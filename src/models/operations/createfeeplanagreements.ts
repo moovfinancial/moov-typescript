@@ -48,7 +48,6 @@ export const CreateFeePlanAgreementsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateFeePlanAgreementsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const CreateFeePlanAgreementsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFeePlanAgreementsGlobals$ {
-  /** @deprecated use `CreateFeePlanAgreementsGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateFeePlanAgreementsGlobals$inboundSchema;
-  /** @deprecated use `CreateFeePlanAgreementsGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateFeePlanAgreementsGlobals$outboundSchema;
-  /** @deprecated use `CreateFeePlanAgreementsGlobals$Outbound` instead. */
-  export type Outbound = CreateFeePlanAgreementsGlobals$Outbound;
-}
-
 export function createFeePlanAgreementsGlobalsToJSON(
   createFeePlanAgreementsGlobals: CreateFeePlanAgreementsGlobals,
 ): string {
@@ -89,7 +75,6 @@ export function createFeePlanAgreementsGlobalsToJSON(
     ),
   );
 }
-
 export function createFeePlanAgreementsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateFeePlanAgreementsGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const CreateFeePlanAgreementsRequest$inboundSchema: z.ZodType<
     "CreateFeePlanAgreement": "createFeePlanAgreement",
   });
 });
-
 /** @internal */
 export type CreateFeePlanAgreementsRequest$Outbound = {
   accountID: string;
@@ -134,19 +118,6 @@ export const CreateFeePlanAgreementsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFeePlanAgreementsRequest$ {
-  /** @deprecated use `CreateFeePlanAgreementsRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateFeePlanAgreementsRequest$inboundSchema;
-  /** @deprecated use `CreateFeePlanAgreementsRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateFeePlanAgreementsRequest$outboundSchema;
-  /** @deprecated use `CreateFeePlanAgreementsRequest$Outbound` instead. */
-  export type Outbound = CreateFeePlanAgreementsRequest$Outbound;
-}
-
 export function createFeePlanAgreementsRequestToJSON(
   createFeePlanAgreementsRequest: CreateFeePlanAgreementsRequest,
 ): string {
@@ -156,7 +127,6 @@ export function createFeePlanAgreementsRequestToJSON(
     ),
   );
 }
-
 export function createFeePlanAgreementsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateFeePlanAgreementsRequest, SDKValidationError> {
@@ -181,7 +151,6 @@ export const CreateFeePlanAgreementsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateFeePlanAgreementsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -203,19 +172,6 @@ export const CreateFeePlanAgreementsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFeePlanAgreementsResponse$ {
-  /** @deprecated use `CreateFeePlanAgreementsResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateFeePlanAgreementsResponse$inboundSchema;
-  /** @deprecated use `CreateFeePlanAgreementsResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateFeePlanAgreementsResponse$outboundSchema;
-  /** @deprecated use `CreateFeePlanAgreementsResponse$Outbound` instead. */
-  export type Outbound = CreateFeePlanAgreementsResponse$Outbound;
-}
-
 export function createFeePlanAgreementsResponseToJSON(
   createFeePlanAgreementsResponse: CreateFeePlanAgreementsResponse,
 ): string {
@@ -225,7 +181,6 @@ export function createFeePlanAgreementsResponseToJSON(
     ),
   );
 }
-
 export function createFeePlanAgreementsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateFeePlanAgreementsResponse, SDKValidationError> {

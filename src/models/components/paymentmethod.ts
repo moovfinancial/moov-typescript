@@ -156,7 +156,6 @@ export const PaymentMethod$inboundSchema: z.ZodType<
       .transform((v) => ({ paymentMethodType: v.paymentMethodType })),
   ),
 ]);
-
 /** @internal */
 export type PaymentMethod$Outbound =
   | (MoovWalletPaymentMethod$Outbound & { paymentMethodType: "moov-wallet" })
@@ -245,23 +244,9 @@ export const PaymentMethod$outboundSchema: z.ZodType<
   ),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentMethod$ {
-  /** @deprecated use `PaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = PaymentMethod$inboundSchema;
-  /** @deprecated use `PaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = PaymentMethod$outboundSchema;
-  /** @deprecated use `PaymentMethod$Outbound` instead. */
-  export type Outbound = PaymentMethod$Outbound;
-}
-
 export function paymentMethodToJSON(paymentMethod: PaymentMethod): string {
   return JSON.stringify(PaymentMethod$outboundSchema.parse(paymentMethod));
 }
-
 export function paymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<PaymentMethod, SDKValidationError> {

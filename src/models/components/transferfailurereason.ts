@@ -24,19 +24,7 @@ export type TransferFailureReason = ClosedEnum<typeof TransferFailureReason>;
 export const TransferFailureReason$inboundSchema: z.ZodNativeEnum<
   typeof TransferFailureReason
 > = z.nativeEnum(TransferFailureReason);
-
 /** @internal */
 export const TransferFailureReason$outboundSchema: z.ZodNativeEnum<
   typeof TransferFailureReason
 > = TransferFailureReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferFailureReason$ {
-  /** @deprecated use `TransferFailureReason$inboundSchema` instead. */
-  export const inboundSchema = TransferFailureReason$inboundSchema;
-  /** @deprecated use `TransferFailureReason$outboundSchema` instead. */
-  export const outboundSchema = TransferFailureReason$outboundSchema;
-}

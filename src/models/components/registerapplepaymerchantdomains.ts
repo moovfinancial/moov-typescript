@@ -27,7 +27,6 @@ export const RegisterApplePayMerchantDomains$inboundSchema: z.ZodType<
   displayName: z.string().optional(),
   domains: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type RegisterApplePayMerchantDomains$Outbound = {
   displayName?: string | undefined;
@@ -44,19 +43,6 @@ export const RegisterApplePayMerchantDomains$outboundSchema: z.ZodType<
   domains: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RegisterApplePayMerchantDomains$ {
-  /** @deprecated use `RegisterApplePayMerchantDomains$inboundSchema` instead. */
-  export const inboundSchema = RegisterApplePayMerchantDomains$inboundSchema;
-  /** @deprecated use `RegisterApplePayMerchantDomains$outboundSchema` instead. */
-  export const outboundSchema = RegisterApplePayMerchantDomains$outboundSchema;
-  /** @deprecated use `RegisterApplePayMerchantDomains$Outbound` instead. */
-  export type Outbound = RegisterApplePayMerchantDomains$Outbound;
-}
-
 export function registerApplePayMerchantDomainsToJSON(
   registerApplePayMerchantDomains: RegisterApplePayMerchantDomains,
 ): string {
@@ -66,7 +52,6 @@ export function registerApplePayMerchantDomainsToJSON(
     ),
   );
 }
-
 export function registerApplePayMerchantDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<RegisterApplePayMerchantDomains, SDKValidationError> {

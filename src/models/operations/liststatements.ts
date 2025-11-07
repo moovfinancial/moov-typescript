@@ -57,7 +57,6 @@ export const ListStatementsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListStatementsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -76,19 +75,6 @@ export const ListStatementsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListStatementsGlobals$ {
-  /** @deprecated use `ListStatementsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListStatementsGlobals$inboundSchema;
-  /** @deprecated use `ListStatementsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListStatementsGlobals$outboundSchema;
-  /** @deprecated use `ListStatementsGlobals$Outbound` instead. */
-  export type Outbound = ListStatementsGlobals$Outbound;
-}
-
 export function listStatementsGlobalsToJSON(
   listStatementsGlobals: ListStatementsGlobals,
 ): string {
@@ -96,7 +82,6 @@ export function listStatementsGlobalsToJSON(
     ListStatementsGlobals$outboundSchema.parse(listStatementsGlobals),
   );
 }
-
 export function listStatementsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListStatementsGlobals, SDKValidationError> {
@@ -123,7 +108,6 @@ export const ListStatementsRequest$inboundSchema: z.ZodType<
   count: z.number().int().optional(),
   accountID: z.string(),
 });
-
 /** @internal */
 export type ListStatementsRequest$Outbound = {
   billingPeriodStartDateTime?: string | undefined;
@@ -147,19 +131,6 @@ export const ListStatementsRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListStatementsRequest$ {
-  /** @deprecated use `ListStatementsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListStatementsRequest$inboundSchema;
-  /** @deprecated use `ListStatementsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListStatementsRequest$outboundSchema;
-  /** @deprecated use `ListStatementsRequest$Outbound` instead. */
-  export type Outbound = ListStatementsRequest$Outbound;
-}
-
 export function listStatementsRequestToJSON(
   listStatementsRequest: ListStatementsRequest,
 ): string {
@@ -167,7 +138,6 @@ export function listStatementsRequestToJSON(
     ListStatementsRequest$outboundSchema.parse(listStatementsRequest),
   );
 }
-
 export function listStatementsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListStatementsRequest, SDKValidationError> {
@@ -192,7 +162,6 @@ export const ListStatementsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListStatementsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -214,19 +183,6 @@ export const ListStatementsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListStatementsResponse$ {
-  /** @deprecated use `ListStatementsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListStatementsResponse$inboundSchema;
-  /** @deprecated use `ListStatementsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListStatementsResponse$outboundSchema;
-  /** @deprecated use `ListStatementsResponse$Outbound` instead. */
-  export type Outbound = ListStatementsResponse$Outbound;
-}
-
 export function listStatementsResponseToJSON(
   listStatementsResponse: ListStatementsResponse,
 ): string {
@@ -234,7 +190,6 @@ export function listStatementsResponseToJSON(
     ListStatementsResponse$outboundSchema.parse(listStatementsResponse),
   );
 }
-
 export function listStatementsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListStatementsResponse, SDKValidationError> {

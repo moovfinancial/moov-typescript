@@ -49,7 +49,6 @@ export const CancelScheduleGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CancelScheduleGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const CancelScheduleGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CancelScheduleGlobals$ {
-  /** @deprecated use `CancelScheduleGlobals$inboundSchema` instead. */
-  export const inboundSchema = CancelScheduleGlobals$inboundSchema;
-  /** @deprecated use `CancelScheduleGlobals$outboundSchema` instead. */
-  export const outboundSchema = CancelScheduleGlobals$outboundSchema;
-  /** @deprecated use `CancelScheduleGlobals$Outbound` instead. */
-  export type Outbound = CancelScheduleGlobals$Outbound;
-}
-
 export function cancelScheduleGlobalsToJSON(
   cancelScheduleGlobals: CancelScheduleGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function cancelScheduleGlobalsToJSON(
     CancelScheduleGlobals$outboundSchema.parse(cancelScheduleGlobals),
   );
 }
-
 export function cancelScheduleGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CancelScheduleGlobals, SDKValidationError> {
@@ -108,7 +93,6 @@ export const CancelScheduleRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   scheduleID: z.string(),
 });
-
 /** @internal */
 export type CancelScheduleRequest$Outbound = {
   accountID: string;
@@ -125,19 +109,6 @@ export const CancelScheduleRequest$outboundSchema: z.ZodType<
   scheduleID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CancelScheduleRequest$ {
-  /** @deprecated use `CancelScheduleRequest$inboundSchema` instead. */
-  export const inboundSchema = CancelScheduleRequest$inboundSchema;
-  /** @deprecated use `CancelScheduleRequest$outboundSchema` instead. */
-  export const outboundSchema = CancelScheduleRequest$outboundSchema;
-  /** @deprecated use `CancelScheduleRequest$Outbound` instead. */
-  export type Outbound = CancelScheduleRequest$Outbound;
-}
-
 export function cancelScheduleRequestToJSON(
   cancelScheduleRequest: CancelScheduleRequest,
 ): string {
@@ -145,7 +116,6 @@ export function cancelScheduleRequestToJSON(
     CancelScheduleRequest$outboundSchema.parse(cancelScheduleRequest),
   );
 }
-
 export function cancelScheduleRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CancelScheduleRequest, SDKValidationError> {
@@ -168,7 +138,6 @@ export const CancelScheduleResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type CancelScheduleResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -187,19 +156,6 @@ export const CancelScheduleResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CancelScheduleResponse$ {
-  /** @deprecated use `CancelScheduleResponse$inboundSchema` instead. */
-  export const inboundSchema = CancelScheduleResponse$inboundSchema;
-  /** @deprecated use `CancelScheduleResponse$outboundSchema` instead. */
-  export const outboundSchema = CancelScheduleResponse$outboundSchema;
-  /** @deprecated use `CancelScheduleResponse$Outbound` instead. */
-  export type Outbound = CancelScheduleResponse$Outbound;
-}
-
 export function cancelScheduleResponseToJSON(
   cancelScheduleResponse: CancelScheduleResponse,
 ): string {
@@ -207,7 +163,6 @@ export function cancelScheduleResponseToJSON(
     CancelScheduleResponse$outboundSchema.parse(cancelScheduleResponse),
   );
 }
-
 export function cancelScheduleResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CancelScheduleResponse, SDKValidationError> {

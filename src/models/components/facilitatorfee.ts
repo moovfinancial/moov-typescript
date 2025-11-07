@@ -47,7 +47,6 @@ export const FacilitatorFee$inboundSchema: z.ZodType<
   markup: z.number().int().optional(),
   markupDecimal: z.string().optional(),
 });
-
 /** @internal */
 export type FacilitatorFee$Outbound = {
   total?: number | undefined;
@@ -68,23 +67,9 @@ export const FacilitatorFee$outboundSchema: z.ZodType<
   markupDecimal: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FacilitatorFee$ {
-  /** @deprecated use `FacilitatorFee$inboundSchema` instead. */
-  export const inboundSchema = FacilitatorFee$inboundSchema;
-  /** @deprecated use `FacilitatorFee$outboundSchema` instead. */
-  export const outboundSchema = FacilitatorFee$outboundSchema;
-  /** @deprecated use `FacilitatorFee$Outbound` instead. */
-  export type Outbound = FacilitatorFee$Outbound;
-}
-
 export function facilitatorFeeToJSON(facilitatorFee: FacilitatorFee): string {
   return JSON.stringify(FacilitatorFee$outboundSchema.parse(facilitatorFee));
 }
-
 export function facilitatorFeeFromJSON(
   jsonString: string,
 ): SafeParseResult<FacilitatorFee, SDKValidationError> {

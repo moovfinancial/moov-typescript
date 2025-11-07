@@ -52,7 +52,6 @@ export const GetStatementGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetStatementGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -71,19 +70,6 @@ export const GetStatementGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetStatementGlobals$ {
-  /** @deprecated use `GetStatementGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetStatementGlobals$inboundSchema;
-  /** @deprecated use `GetStatementGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetStatementGlobals$outboundSchema;
-  /** @deprecated use `GetStatementGlobals$Outbound` instead. */
-  export type Outbound = GetStatementGlobals$Outbound;
-}
-
 export function getStatementGlobalsToJSON(
   getStatementGlobals: GetStatementGlobals,
 ): string {
@@ -91,7 +77,6 @@ export function getStatementGlobalsToJSON(
     GetStatementGlobals$outboundSchema.parse(getStatementGlobals),
   );
 }
-
 export function getStatementGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetStatementGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const GetStatementRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   statementID: z.string(),
 });
-
 /** @internal */
 export type GetStatementRequest$Outbound = {
   accountID: string;
@@ -128,19 +112,6 @@ export const GetStatementRequest$outboundSchema: z.ZodType<
   statementID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetStatementRequest$ {
-  /** @deprecated use `GetStatementRequest$inboundSchema` instead. */
-  export const inboundSchema = GetStatementRequest$inboundSchema;
-  /** @deprecated use `GetStatementRequest$outboundSchema` instead. */
-  export const outboundSchema = GetStatementRequest$outboundSchema;
-  /** @deprecated use `GetStatementRequest$Outbound` instead. */
-  export type Outbound = GetStatementRequest$Outbound;
-}
-
 export function getStatementRequestToJSON(
   getStatementRequest: GetStatementRequest,
 ): string {
@@ -148,7 +119,6 @@ export function getStatementRequestToJSON(
     GetStatementRequest$outboundSchema.parse(getStatementRequest),
   );
 }
-
 export function getStatementRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetStatementRequest, SDKValidationError> {
@@ -168,7 +138,6 @@ export const GetStatementResponseResult$inboundSchema: z.ZodType<
   components.Statement$inboundSchema,
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
-
 /** @internal */
 export type GetStatementResponseResult$Outbound =
   | components.Statement$Outbound
@@ -184,19 +153,6 @@ export const GetStatementResponseResult$outboundSchema: z.ZodType<
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetStatementResponseResult$ {
-  /** @deprecated use `GetStatementResponseResult$inboundSchema` instead. */
-  export const inboundSchema = GetStatementResponseResult$inboundSchema;
-  /** @deprecated use `GetStatementResponseResult$outboundSchema` instead. */
-  export const outboundSchema = GetStatementResponseResult$outboundSchema;
-  /** @deprecated use `GetStatementResponseResult$Outbound` instead. */
-  export type Outbound = GetStatementResponseResult$Outbound;
-}
-
 export function getStatementResponseResultToJSON(
   getStatementResponseResult: GetStatementResponseResult,
 ): string {
@@ -204,7 +160,6 @@ export function getStatementResponseResultToJSON(
     GetStatementResponseResult$outboundSchema.parse(getStatementResponseResult),
   );
 }
-
 export function getStatementResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetStatementResponseResult, SDKValidationError> {
@@ -232,7 +187,6 @@ export const GetStatementResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetStatementResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -257,19 +211,6 @@ export const GetStatementResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetStatementResponse$ {
-  /** @deprecated use `GetStatementResponse$inboundSchema` instead. */
-  export const inboundSchema = GetStatementResponse$inboundSchema;
-  /** @deprecated use `GetStatementResponse$outboundSchema` instead. */
-  export const outboundSchema = GetStatementResponse$outboundSchema;
-  /** @deprecated use `GetStatementResponse$Outbound` instead. */
-  export type Outbound = GetStatementResponse$Outbound;
-}
-
 export function getStatementResponseToJSON(
   getStatementResponse: GetStatementResponse,
 ): string {
@@ -277,7 +218,6 @@ export function getStatementResponseToJSON(
     GetStatementResponse$outboundSchema.parse(getStatementResponse),
   );
 }
-
 export function getStatementResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetStatementResponse, SDKValidationError> {

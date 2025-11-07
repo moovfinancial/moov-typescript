@@ -31,19 +31,7 @@ export type AccountVerificationStatus = ClosedEnum<
 export const AccountVerificationStatus$inboundSchema: z.ZodNativeEnum<
   typeof AccountVerificationStatus
 > = z.nativeEnum(AccountVerificationStatus);
-
 /** @internal */
 export const AccountVerificationStatus$outboundSchema: z.ZodNativeEnum<
   typeof AccountVerificationStatus
 > = AccountVerificationStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountVerificationStatus$ {
-  /** @deprecated use `AccountVerificationStatus$inboundSchema` instead. */
-  export const inboundSchema = AccountVerificationStatus$inboundSchema;
-  /** @deprecated use `AccountVerificationStatus$outboundSchema` instead. */
-  export const outboundSchema = AccountVerificationStatus$outboundSchema;
-}

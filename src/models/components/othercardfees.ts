@@ -51,7 +51,6 @@ export const OtherCardFees$inboundSchema: z.ZodType<
   nameVerification: BillingCountAndAmount$inboundSchema,
   total: BillingCountAndAmount$inboundSchema,
 });
-
 /** @internal */
 export type OtherCardFees$Outbound = {
   disputes: BillingCountAndAmount$Outbound;
@@ -74,23 +73,9 @@ export const OtherCardFees$outboundSchema: z.ZodType<
   total: BillingCountAndAmount$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OtherCardFees$ {
-  /** @deprecated use `OtherCardFees$inboundSchema` instead. */
-  export const inboundSchema = OtherCardFees$inboundSchema;
-  /** @deprecated use `OtherCardFees$outboundSchema` instead. */
-  export const outboundSchema = OtherCardFees$outboundSchema;
-  /** @deprecated use `OtherCardFees$Outbound` instead. */
-  export type Outbound = OtherCardFees$Outbound;
-}
-
 export function otherCardFeesToJSON(otherCardFees: OtherCardFees): string {
   return JSON.stringify(OtherCardFees$outboundSchema.parse(otherCardFees));
 }
-
 export function otherCardFeesFromJSON(
   jsonString: string,
 ): SafeParseResult<OtherCardFees, SDKValidationError> {

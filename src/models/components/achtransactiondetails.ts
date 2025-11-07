@@ -94,7 +94,6 @@ export const ACHTransactionDetails$inboundSchema: z.ZodType<
     .optional(),
   debitHoldPeriod: DebitHoldPeriod$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ACHTransactionDetails$Outbound = {
   status: string;
@@ -137,19 +136,6 @@ export const ACHTransactionDetails$outboundSchema: z.ZodType<
   debitHoldPeriod: DebitHoldPeriod$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ACHTransactionDetails$ {
-  /** @deprecated use `ACHTransactionDetails$inboundSchema` instead. */
-  export const inboundSchema = ACHTransactionDetails$inboundSchema;
-  /** @deprecated use `ACHTransactionDetails$outboundSchema` instead. */
-  export const outboundSchema = ACHTransactionDetails$outboundSchema;
-  /** @deprecated use `ACHTransactionDetails$Outbound` instead. */
-  export type Outbound = ACHTransactionDetails$Outbound;
-}
-
 export function achTransactionDetailsToJSON(
   achTransactionDetails: ACHTransactionDetails,
 ): string {
@@ -157,7 +143,6 @@ export function achTransactionDetailsToJSON(
     ACHTransactionDetails$outboundSchema.parse(achTransactionDetails),
   );
 }
-
 export function achTransactionDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<ACHTransactionDetails, SDKValidationError> {

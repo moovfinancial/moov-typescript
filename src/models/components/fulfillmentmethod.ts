@@ -22,19 +22,7 @@ export type FulfillmentMethod = ClosedEnum<typeof FulfillmentMethod>;
 export const FulfillmentMethod$inboundSchema: z.ZodNativeEnum<
   typeof FulfillmentMethod
 > = z.nativeEnum(FulfillmentMethod);
-
 /** @internal */
 export const FulfillmentMethod$outboundSchema: z.ZodNativeEnum<
   typeof FulfillmentMethod
 > = FulfillmentMethod$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FulfillmentMethod$ {
-  /** @deprecated use `FulfillmentMethod$inboundSchema` instead. */
-  export const inboundSchema = FulfillmentMethod$inboundSchema;
-  /** @deprecated use `FulfillmentMethod$outboundSchema` instead. */
-  export const outboundSchema = FulfillmentMethod$outboundSchema;
-}

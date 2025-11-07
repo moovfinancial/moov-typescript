@@ -25,7 +25,6 @@ export const CardVolumeDistributionError$inboundSchema: z.ZodType<
   mailOrPhonePercentage: z.string().optional(),
   debtRepaymentPercentage: z.string().optional(),
 });
-
 /** @internal */
 export type CardVolumeDistributionError$Outbound = {
   ecommercePercentage?: string | undefined;
@@ -46,19 +45,6 @@ export const CardVolumeDistributionError$outboundSchema: z.ZodType<
   debtRepaymentPercentage: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardVolumeDistributionError$ {
-  /** @deprecated use `CardVolumeDistributionError$inboundSchema` instead. */
-  export const inboundSchema = CardVolumeDistributionError$inboundSchema;
-  /** @deprecated use `CardVolumeDistributionError$outboundSchema` instead. */
-  export const outboundSchema = CardVolumeDistributionError$outboundSchema;
-  /** @deprecated use `CardVolumeDistributionError$Outbound` instead. */
-  export type Outbound = CardVolumeDistributionError$Outbound;
-}
-
 export function cardVolumeDistributionErrorToJSON(
   cardVolumeDistributionError: CardVolumeDistributionError,
 ): string {
@@ -68,7 +54,6 @@ export function cardVolumeDistributionErrorToJSON(
     ),
   );
 }
-
 export function cardVolumeDistributionErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CardVolumeDistributionError, SDKValidationError> {

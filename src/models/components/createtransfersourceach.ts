@@ -47,7 +47,6 @@ export const CreateTransferSourceACH$inboundSchema: z.ZodType<
   debitHoldPeriod: DebitHoldPeriod$inboundSchema.optional(),
   secCode: SECCode$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreateTransferSourceACH$Outbound = {
   companyEntryDescription?: string | undefined;
@@ -68,19 +67,6 @@ export const CreateTransferSourceACH$outboundSchema: z.ZodType<
   secCode: SECCode$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferSourceACH$ {
-  /** @deprecated use `CreateTransferSourceACH$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferSourceACH$inboundSchema;
-  /** @deprecated use `CreateTransferSourceACH$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferSourceACH$outboundSchema;
-  /** @deprecated use `CreateTransferSourceACH$Outbound` instead. */
-  export type Outbound = CreateTransferSourceACH$Outbound;
-}
-
 export function createTransferSourceACHToJSON(
   createTransferSourceACH: CreateTransferSourceACH,
 ): string {
@@ -88,7 +74,6 @@ export function createTransferSourceACHToJSON(
     CreateTransferSourceACH$outboundSchema.parse(createTransferSourceACH),
   );
 }
-
 export function createTransferSourceACHFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferSourceACH, SDKValidationError> {

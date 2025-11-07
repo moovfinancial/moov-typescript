@@ -29,19 +29,7 @@ export type RTPFailureCode = ClosedEnum<typeof RTPFailureCode>;
 export const RTPFailureCode$inboundSchema: z.ZodNativeEnum<
   typeof RTPFailureCode
 > = z.nativeEnum(RTPFailureCode);
-
 /** @internal */
 export const RTPFailureCode$outboundSchema: z.ZodNativeEnum<
   typeof RTPFailureCode
 > = RTPFailureCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RTPFailureCode$ {
-  /** @deprecated use `RTPFailureCode$inboundSchema` instead. */
-  export const inboundSchema = RTPFailureCode$inboundSchema;
-  /** @deprecated use `RTPFailureCode$outboundSchema` instead. */
-  export const outboundSchema = RTPFailureCode$outboundSchema;
-}

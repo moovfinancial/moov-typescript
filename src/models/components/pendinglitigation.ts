@@ -24,19 +24,7 @@ export type PendingLitigation = ClosedEnum<typeof PendingLitigation>;
 export const PendingLitigation$inboundSchema: z.ZodNativeEnum<
   typeof PendingLitigation
 > = z.nativeEnum(PendingLitigation);
-
 /** @internal */
 export const PendingLitigation$outboundSchema: z.ZodNativeEnum<
   typeof PendingLitigation
 > = PendingLitigation$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PendingLitigation$ {
-  /** @deprecated use `PendingLitigation$inboundSchema` instead. */
-  export const inboundSchema = PendingLitigation$inboundSchema;
-  /** @deprecated use `PendingLitigation$outboundSchema` instead. */
-  export const outboundSchema = PendingLitigation$outboundSchema;
-}

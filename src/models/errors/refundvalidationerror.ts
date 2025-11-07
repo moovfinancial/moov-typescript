@@ -76,16 +76,3 @@ export const RefundValidationError$outboundSchema: z.ZodType<
     amount: z.string().optional(),
     error: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RefundValidationError$ {
-  /** @deprecated use `RefundValidationError$inboundSchema` instead. */
-  export const inboundSchema = RefundValidationError$inboundSchema;
-  /** @deprecated use `RefundValidationError$outboundSchema` instead. */
-  export const outboundSchema = RefundValidationError$outboundSchema;
-  /** @deprecated use `RefundValidationError$Outbound` instead. */
-  export type Outbound = RefundValidationError$Outbound;
-}

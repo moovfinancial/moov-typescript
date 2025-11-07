@@ -64,7 +64,6 @@ export const Verification$inboundSchema: z.ZodType<
   details: VerificationStatusDetail$inboundSchema.optional(),
   documents: z.array(Document$inboundSchema).optional(),
 });
-
 /** @internal */
 export type Verification$Outbound = {
   verificationStatus?: string | undefined;
@@ -85,23 +84,9 @@ export const Verification$outboundSchema: z.ZodType<
   documents: z.array(Document$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Verification$ {
-  /** @deprecated use `Verification$inboundSchema` instead. */
-  export const inboundSchema = Verification$inboundSchema;
-  /** @deprecated use `Verification$outboundSchema` instead. */
-  export const outboundSchema = Verification$outboundSchema;
-  /** @deprecated use `Verification$Outbound` instead. */
-  export type Outbound = Verification$Outbound;
-}
-
 export function verificationToJSON(verification: Verification): string {
   return JSON.stringify(Verification$outboundSchema.parse(verification));
 }
-
 export function verificationFromJSON(
   jsonString: string,
 ): SafeParseResult<Verification, SDKValidationError> {

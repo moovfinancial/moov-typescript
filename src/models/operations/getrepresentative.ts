@@ -54,7 +54,6 @@ export const GetRepresentativeGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetRepresentativeGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -73,19 +72,6 @@ export const GetRepresentativeGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRepresentativeGlobals$ {
-  /** @deprecated use `GetRepresentativeGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetRepresentativeGlobals$inboundSchema;
-  /** @deprecated use `GetRepresentativeGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetRepresentativeGlobals$outboundSchema;
-  /** @deprecated use `GetRepresentativeGlobals$Outbound` instead. */
-  export type Outbound = GetRepresentativeGlobals$Outbound;
-}
-
 export function getRepresentativeGlobalsToJSON(
   getRepresentativeGlobals: GetRepresentativeGlobals,
 ): string {
@@ -93,7 +79,6 @@ export function getRepresentativeGlobalsToJSON(
     GetRepresentativeGlobals$outboundSchema.parse(getRepresentativeGlobals),
   );
 }
-
 export function getRepresentativeGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRepresentativeGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const GetRepresentativeRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   representativeID: z.string(),
 });
-
 /** @internal */
 export type GetRepresentativeRequest$Outbound = {
   accountID: string;
@@ -130,19 +114,6 @@ export const GetRepresentativeRequest$outboundSchema: z.ZodType<
   representativeID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRepresentativeRequest$ {
-  /** @deprecated use `GetRepresentativeRequest$inboundSchema` instead. */
-  export const inboundSchema = GetRepresentativeRequest$inboundSchema;
-  /** @deprecated use `GetRepresentativeRequest$outboundSchema` instead. */
-  export const outboundSchema = GetRepresentativeRequest$outboundSchema;
-  /** @deprecated use `GetRepresentativeRequest$Outbound` instead. */
-  export type Outbound = GetRepresentativeRequest$Outbound;
-}
-
 export function getRepresentativeRequestToJSON(
   getRepresentativeRequest: GetRepresentativeRequest,
 ): string {
@@ -150,7 +121,6 @@ export function getRepresentativeRequestToJSON(
     GetRepresentativeRequest$outboundSchema.parse(getRepresentativeRequest),
   );
 }
-
 export function getRepresentativeRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRepresentativeRequest, SDKValidationError> {
@@ -175,7 +145,6 @@ export const GetRepresentativeResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetRepresentativeResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -197,19 +166,6 @@ export const GetRepresentativeResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRepresentativeResponse$ {
-  /** @deprecated use `GetRepresentativeResponse$inboundSchema` instead. */
-  export const inboundSchema = GetRepresentativeResponse$inboundSchema;
-  /** @deprecated use `GetRepresentativeResponse$outboundSchema` instead. */
-  export const outboundSchema = GetRepresentativeResponse$outboundSchema;
-  /** @deprecated use `GetRepresentativeResponse$Outbound` instead. */
-  export type Outbound = GetRepresentativeResponse$Outbound;
-}
-
 export function getRepresentativeResponseToJSON(
   getRepresentativeResponse: GetRepresentativeResponse,
 ): string {
@@ -217,7 +173,6 @@ export function getRepresentativeResponseToJSON(
     GetRepresentativeResponse$outboundSchema.parse(getRepresentativeResponse),
   );
 }
-
 export function getRepresentativeResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRepresentativeResponse, SDKValidationError> {

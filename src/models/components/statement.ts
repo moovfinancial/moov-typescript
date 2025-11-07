@@ -135,7 +135,6 @@ export const Statement$inboundSchema: z.ZodType<
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type Statement$Outbound = {
   statementID: string;
@@ -178,23 +177,9 @@ export const Statement$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Statement$ {
-  /** @deprecated use `Statement$inboundSchema` instead. */
-  export const inboundSchema = Statement$inboundSchema;
-  /** @deprecated use `Statement$outboundSchema` instead. */
-  export const outboundSchema = Statement$outboundSchema;
-  /** @deprecated use `Statement$Outbound` instead. */
-  export type Outbound = Statement$Outbound;
-}
-
 export function statementToJSON(statement: Statement): string {
   return JSON.stringify(Statement$outboundSchema.parse(statement));
 }
-
 export function statementFromJSON(
   jsonString: string,
 ): SafeParseResult<Statement, SDKValidationError> {

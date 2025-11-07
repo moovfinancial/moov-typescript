@@ -46,7 +46,6 @@ export const DisableBankAccountGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type DisableBankAccountGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -65,19 +64,6 @@ export const DisableBankAccountGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableBankAccountGlobals$ {
-  /** @deprecated use `DisableBankAccountGlobals$inboundSchema` instead. */
-  export const inboundSchema = DisableBankAccountGlobals$inboundSchema;
-  /** @deprecated use `DisableBankAccountGlobals$outboundSchema` instead. */
-  export const outboundSchema = DisableBankAccountGlobals$outboundSchema;
-  /** @deprecated use `DisableBankAccountGlobals$Outbound` instead. */
-  export type Outbound = DisableBankAccountGlobals$Outbound;
-}
-
 export function disableBankAccountGlobalsToJSON(
   disableBankAccountGlobals: DisableBankAccountGlobals,
 ): string {
@@ -85,7 +71,6 @@ export function disableBankAccountGlobalsToJSON(
     DisableBankAccountGlobals$outboundSchema.parse(disableBankAccountGlobals),
   );
 }
-
 export function disableBankAccountGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableBankAccountGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const DisableBankAccountRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   bankAccountID: z.string(),
 });
-
 /** @internal */
 export type DisableBankAccountRequest$Outbound = {
   accountID: string;
@@ -122,19 +106,6 @@ export const DisableBankAccountRequest$outboundSchema: z.ZodType<
   bankAccountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableBankAccountRequest$ {
-  /** @deprecated use `DisableBankAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = DisableBankAccountRequest$inboundSchema;
-  /** @deprecated use `DisableBankAccountRequest$outboundSchema` instead. */
-  export const outboundSchema = DisableBankAccountRequest$outboundSchema;
-  /** @deprecated use `DisableBankAccountRequest$Outbound` instead. */
-  export type Outbound = DisableBankAccountRequest$Outbound;
-}
-
 export function disableBankAccountRequestToJSON(
   disableBankAccountRequest: DisableBankAccountRequest,
 ): string {
@@ -142,7 +113,6 @@ export function disableBankAccountRequestToJSON(
     DisableBankAccountRequest$outboundSchema.parse(disableBankAccountRequest),
   );
 }
-
 export function disableBankAccountRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableBankAccountRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const DisableBankAccountResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type DisableBankAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -184,19 +153,6 @@ export const DisableBankAccountResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableBankAccountResponse$ {
-  /** @deprecated use `DisableBankAccountResponse$inboundSchema` instead. */
-  export const inboundSchema = DisableBankAccountResponse$inboundSchema;
-  /** @deprecated use `DisableBankAccountResponse$outboundSchema` instead. */
-  export const outboundSchema = DisableBankAccountResponse$outboundSchema;
-  /** @deprecated use `DisableBankAccountResponse$Outbound` instead. */
-  export type Outbound = DisableBankAccountResponse$Outbound;
-}
-
 export function disableBankAccountResponseToJSON(
   disableBankAccountResponse: DisableBankAccountResponse,
 ): string {
@@ -204,7 +160,6 @@ export function disableBankAccountResponseToJSON(
     DisableBankAccountResponse$outboundSchema.parse(disableBankAccountResponse),
   );
 }
-
 export function disableBankAccountResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableBankAccountResponse, SDKValidationError> {

@@ -57,7 +57,6 @@ export const LinkBankAccountGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type LinkBankAccountGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -76,19 +75,6 @@ export const LinkBankAccountGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkBankAccountGlobals$ {
-  /** @deprecated use `LinkBankAccountGlobals$inboundSchema` instead. */
-  export const inboundSchema = LinkBankAccountGlobals$inboundSchema;
-  /** @deprecated use `LinkBankAccountGlobals$outboundSchema` instead. */
-  export const outboundSchema = LinkBankAccountGlobals$outboundSchema;
-  /** @deprecated use `LinkBankAccountGlobals$Outbound` instead. */
-  export type Outbound = LinkBankAccountGlobals$Outbound;
-}
-
 export function linkBankAccountGlobalsToJSON(
   linkBankAccountGlobals: LinkBankAccountGlobals,
 ): string {
@@ -96,7 +82,6 @@ export function linkBankAccountGlobalsToJSON(
     LinkBankAccountGlobals$outboundSchema.parse(linkBankAccountGlobals),
   );
 }
-
 export function linkBankAccountGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkBankAccountGlobals, SDKValidationError> {
@@ -122,7 +107,6 @@ export const LinkBankAccountRequest$inboundSchema: z.ZodType<
     "LinkBankAccount": "linkBankAccount",
   });
 });
-
 /** @internal */
 export type LinkBankAccountRequest$Outbound = {
   "x-wait-for"?: string | undefined;
@@ -146,19 +130,6 @@ export const LinkBankAccountRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkBankAccountRequest$ {
-  /** @deprecated use `LinkBankAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = LinkBankAccountRequest$inboundSchema;
-  /** @deprecated use `LinkBankAccountRequest$outboundSchema` instead. */
-  export const outboundSchema = LinkBankAccountRequest$outboundSchema;
-  /** @deprecated use `LinkBankAccountRequest$Outbound` instead. */
-  export type Outbound = LinkBankAccountRequest$Outbound;
-}
-
 export function linkBankAccountRequestToJSON(
   linkBankAccountRequest: LinkBankAccountRequest,
 ): string {
@@ -166,7 +137,6 @@ export function linkBankAccountRequestToJSON(
     LinkBankAccountRequest$outboundSchema.parse(linkBankAccountRequest),
   );
 }
-
 export function linkBankAccountRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkBankAccountRequest, SDKValidationError> {
@@ -191,7 +161,6 @@ export const LinkBankAccountResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type LinkBankAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -213,19 +182,6 @@ export const LinkBankAccountResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkBankAccountResponse$ {
-  /** @deprecated use `LinkBankAccountResponse$inboundSchema` instead. */
-  export const inboundSchema = LinkBankAccountResponse$inboundSchema;
-  /** @deprecated use `LinkBankAccountResponse$outboundSchema` instead. */
-  export const outboundSchema = LinkBankAccountResponse$outboundSchema;
-  /** @deprecated use `LinkBankAccountResponse$Outbound` instead. */
-  export type Outbound = LinkBankAccountResponse$Outbound;
-}
-
 export function linkBankAccountResponseToJSON(
   linkBankAccountResponse: LinkBankAccountResponse,
 ): string {
@@ -233,7 +189,6 @@ export function linkBankAccountResponseToJSON(
     LinkBankAccountResponse$outboundSchema.parse(linkBankAccountResponse),
   );
 }
-
 export function linkBankAccountResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkBankAccountResponse, SDKValidationError> {

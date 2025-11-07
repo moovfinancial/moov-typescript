@@ -58,7 +58,6 @@ export const SearchInstitutionsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type SearchInstitutionsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -77,19 +76,6 @@ export const SearchInstitutionsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchInstitutionsGlobals$ {
-  /** @deprecated use `SearchInstitutionsGlobals$inboundSchema` instead. */
-  export const inboundSchema = SearchInstitutionsGlobals$inboundSchema;
-  /** @deprecated use `SearchInstitutionsGlobals$outboundSchema` instead. */
-  export const outboundSchema = SearchInstitutionsGlobals$outboundSchema;
-  /** @deprecated use `SearchInstitutionsGlobals$Outbound` instead. */
-  export type Outbound = SearchInstitutionsGlobals$Outbound;
-}
-
 export function searchInstitutionsGlobalsToJSON(
   searchInstitutionsGlobals: SearchInstitutionsGlobals,
 ): string {
@@ -97,7 +83,6 @@ export function searchInstitutionsGlobalsToJSON(
     SearchInstitutionsGlobals$outboundSchema.parse(searchInstitutionsGlobals),
   );
 }
-
 export function searchInstitutionsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchInstitutionsGlobals, SDKValidationError> {
@@ -118,7 +103,6 @@ export const SearchInstitutionsRequest$inboundSchema: z.ZodType<
   routingNumber: z.string().optional(),
   limit: z.number().int().optional(),
 });
-
 /** @internal */
 export type SearchInstitutionsRequest$Outbound = {
   name?: string | undefined;
@@ -137,19 +121,6 @@ export const SearchInstitutionsRequest$outboundSchema: z.ZodType<
   limit: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchInstitutionsRequest$ {
-  /** @deprecated use `SearchInstitutionsRequest$inboundSchema` instead. */
-  export const inboundSchema = SearchInstitutionsRequest$inboundSchema;
-  /** @deprecated use `SearchInstitutionsRequest$outboundSchema` instead. */
-  export const outboundSchema = SearchInstitutionsRequest$outboundSchema;
-  /** @deprecated use `SearchInstitutionsRequest$Outbound` instead. */
-  export type Outbound = SearchInstitutionsRequest$Outbound;
-}
-
 export function searchInstitutionsRequestToJSON(
   searchInstitutionsRequest: SearchInstitutionsRequest,
 ): string {
@@ -157,7 +128,6 @@ export function searchInstitutionsRequestToJSON(
     SearchInstitutionsRequest$outboundSchema.parse(searchInstitutionsRequest),
   );
 }
-
 export function searchInstitutionsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchInstitutionsRequest, SDKValidationError> {
@@ -182,7 +152,6 @@ export const SearchInstitutionsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type SearchInstitutionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -204,19 +173,6 @@ export const SearchInstitutionsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchInstitutionsResponse$ {
-  /** @deprecated use `SearchInstitutionsResponse$inboundSchema` instead. */
-  export const inboundSchema = SearchInstitutionsResponse$inboundSchema;
-  /** @deprecated use `SearchInstitutionsResponse$outboundSchema` instead. */
-  export const outboundSchema = SearchInstitutionsResponse$outboundSchema;
-  /** @deprecated use `SearchInstitutionsResponse$Outbound` instead. */
-  export type Outbound = SearchInstitutionsResponse$Outbound;
-}
-
 export function searchInstitutionsResponseToJSON(
   searchInstitutionsResponse: SearchInstitutionsResponse,
 ): string {
@@ -224,7 +180,6 @@ export function searchInstitutionsResponseToJSON(
     SearchInstitutionsResponse$outboundSchema.parse(searchInstitutionsResponse),
   );
 }
-
 export function searchInstitutionsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchInstitutionsResponse, SDKValidationError> {

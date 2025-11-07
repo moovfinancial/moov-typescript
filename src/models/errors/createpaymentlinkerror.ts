@@ -15,6 +15,7 @@ export type CreatePaymentLinkErrorData = {
   display?: components.DisplayOptionsError | undefined;
   payment?: components.PaymentDetailsError | undefined;
   payout?: components.PayoutDetailsError | undefined;
+  lineItems?: components.PaymentLinkLineItemsValidationError | undefined;
 };
 
 export class CreatePaymentLinkError extends MoovError {
@@ -26,6 +27,7 @@ export class CreatePaymentLinkError extends MoovError {
   display?: components.DisplayOptionsError | undefined;
   payment?: components.PaymentDetailsError | undefined;
   payout?: components.PayoutDetailsError | undefined;
+  lineItems?: components.PaymentLinkLineItemsValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: CreatePaymentLinkErrorData;
@@ -51,6 +53,7 @@ export class CreatePaymentLinkError extends MoovError {
     if (err.display != null) this.display = err.display;
     if (err.payment != null) this.payment = err.payment;
     if (err.payout != null) this.payout = err.payout;
+    if (err.lineItems != null) this.lineItems = err.lineItems;
 
     this.name = "CreatePaymentLinkError";
   }
@@ -70,6 +73,8 @@ export const CreatePaymentLinkError$inboundSchema: z.ZodType<
   display: components.DisplayOptionsError$inboundSchema.optional(),
   payment: components.PaymentDetailsError$inboundSchema.optional(),
   payout: components.PayoutDetailsError$inboundSchema.optional(),
+  lineItems: components.PaymentLinkLineItemsValidationError$inboundSchema
+    .optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -92,6 +97,9 @@ export type CreatePaymentLinkError$Outbound = {
   display?: components.DisplayOptionsError$Outbound | undefined;
   payment?: components.PaymentDetailsError$Outbound | undefined;
   payout?: components.PayoutDetailsError$Outbound | undefined;
+  lineItems?:
+    | components.PaymentLinkLineItemsValidationError$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -110,17 +118,6 @@ export const CreatePaymentLinkError$outboundSchema: z.ZodType<
     display: components.DisplayOptionsError$outboundSchema.optional(),
     payment: components.PaymentDetailsError$outboundSchema.optional(),
     payout: components.PayoutDetailsError$outboundSchema.optional(),
+    lineItems: components.PaymentLinkLineItemsValidationError$outboundSchema
+      .optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePaymentLinkError$ {
-  /** @deprecated use `CreatePaymentLinkError$inboundSchema` instead. */
-  export const inboundSchema = CreatePaymentLinkError$inboundSchema;
-  /** @deprecated use `CreatePaymentLinkError$outboundSchema` instead. */
-  export const outboundSchema = CreatePaymentLinkError$outboundSchema;
-  /** @deprecated use `CreatePaymentLinkError$Outbound` instead. */
-  export type Outbound = CreatePaymentLinkError$Outbound;
-}

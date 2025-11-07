@@ -45,7 +45,6 @@ export const DisconnectAccountGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type DisconnectAccountGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -64,19 +63,6 @@ export const DisconnectAccountGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisconnectAccountGlobals$ {
-  /** @deprecated use `DisconnectAccountGlobals$inboundSchema` instead. */
-  export const inboundSchema = DisconnectAccountGlobals$inboundSchema;
-  /** @deprecated use `DisconnectAccountGlobals$outboundSchema` instead. */
-  export const outboundSchema = DisconnectAccountGlobals$outboundSchema;
-  /** @deprecated use `DisconnectAccountGlobals$Outbound` instead. */
-  export type Outbound = DisconnectAccountGlobals$Outbound;
-}
-
 export function disconnectAccountGlobalsToJSON(
   disconnectAccountGlobals: DisconnectAccountGlobals,
 ): string {
@@ -84,7 +70,6 @@ export function disconnectAccountGlobalsToJSON(
     DisconnectAccountGlobals$outboundSchema.parse(disconnectAccountGlobals),
   );
 }
-
 export function disconnectAccountGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<DisconnectAccountGlobals, SDKValidationError> {
@@ -103,7 +88,6 @@ export const DisconnectAccountRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type DisconnectAccountRequest$Outbound = {
   accountID: string;
@@ -118,19 +102,6 @@ export const DisconnectAccountRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisconnectAccountRequest$ {
-  /** @deprecated use `DisconnectAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = DisconnectAccountRequest$inboundSchema;
-  /** @deprecated use `DisconnectAccountRequest$outboundSchema` instead. */
-  export const outboundSchema = DisconnectAccountRequest$outboundSchema;
-  /** @deprecated use `DisconnectAccountRequest$Outbound` instead. */
-  export type Outbound = DisconnectAccountRequest$Outbound;
-}
-
 export function disconnectAccountRequestToJSON(
   disconnectAccountRequest: DisconnectAccountRequest,
 ): string {
@@ -138,7 +109,6 @@ export function disconnectAccountRequestToJSON(
     DisconnectAccountRequest$outboundSchema.parse(disconnectAccountRequest),
   );
 }
-
 export function disconnectAccountRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DisconnectAccountRequest, SDKValidationError> {
@@ -161,7 +131,6 @@ export const DisconnectAccountResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type DisconnectAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -180,19 +149,6 @@ export const DisconnectAccountResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisconnectAccountResponse$ {
-  /** @deprecated use `DisconnectAccountResponse$inboundSchema` instead. */
-  export const inboundSchema = DisconnectAccountResponse$inboundSchema;
-  /** @deprecated use `DisconnectAccountResponse$outboundSchema` instead. */
-  export const outboundSchema = DisconnectAccountResponse$outboundSchema;
-  /** @deprecated use `DisconnectAccountResponse$Outbound` instead. */
-  export type Outbound = DisconnectAccountResponse$Outbound;
-}
-
 export function disconnectAccountResponseToJSON(
   disconnectAccountResponse: DisconnectAccountResponse,
 ): string {
@@ -200,7 +156,6 @@ export function disconnectAccountResponseToJSON(
     DisconnectAccountResponse$outboundSchema.parse(disconnectAccountResponse),
   );
 }
-
 export function disconnectAccountResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DisconnectAccountResponse, SDKValidationError> {

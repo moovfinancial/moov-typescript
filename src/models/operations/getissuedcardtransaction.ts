@@ -51,7 +51,6 @@ export const GetIssuedCardTransactionGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetIssuedCardTransactionGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const GetIssuedCardTransactionGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIssuedCardTransactionGlobals$ {
-  /** @deprecated use `GetIssuedCardTransactionGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetIssuedCardTransactionGlobals$inboundSchema;
-  /** @deprecated use `GetIssuedCardTransactionGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetIssuedCardTransactionGlobals$outboundSchema;
-  /** @deprecated use `GetIssuedCardTransactionGlobals$Outbound` instead. */
-  export type Outbound = GetIssuedCardTransactionGlobals$Outbound;
-}
-
 export function getIssuedCardTransactionGlobalsToJSON(
   getIssuedCardTransactionGlobals: GetIssuedCardTransactionGlobals,
 ): string {
@@ -92,7 +78,6 @@ export function getIssuedCardTransactionGlobalsToJSON(
     ),
   );
 }
-
 export function getIssuedCardTransactionGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIssuedCardTransactionGlobals, SDKValidationError> {
@@ -112,7 +97,6 @@ export const GetIssuedCardTransactionRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   cardTransactionID: z.string(),
 });
-
 /** @internal */
 export type GetIssuedCardTransactionRequest$Outbound = {
   accountID: string;
@@ -129,19 +113,6 @@ export const GetIssuedCardTransactionRequest$outboundSchema: z.ZodType<
   cardTransactionID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIssuedCardTransactionRequest$ {
-  /** @deprecated use `GetIssuedCardTransactionRequest$inboundSchema` instead. */
-  export const inboundSchema = GetIssuedCardTransactionRequest$inboundSchema;
-  /** @deprecated use `GetIssuedCardTransactionRequest$outboundSchema` instead. */
-  export const outboundSchema = GetIssuedCardTransactionRequest$outboundSchema;
-  /** @deprecated use `GetIssuedCardTransactionRequest$Outbound` instead. */
-  export type Outbound = GetIssuedCardTransactionRequest$Outbound;
-}
-
 export function getIssuedCardTransactionRequestToJSON(
   getIssuedCardTransactionRequest: GetIssuedCardTransactionRequest,
 ): string {
@@ -151,7 +122,6 @@ export function getIssuedCardTransactionRequestToJSON(
     ),
   );
 }
-
 export function getIssuedCardTransactionRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIssuedCardTransactionRequest, SDKValidationError> {
@@ -176,7 +146,6 @@ export const GetIssuedCardTransactionResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetIssuedCardTransactionResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -198,19 +167,6 @@ export const GetIssuedCardTransactionResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIssuedCardTransactionResponse$ {
-  /** @deprecated use `GetIssuedCardTransactionResponse$inboundSchema` instead. */
-  export const inboundSchema = GetIssuedCardTransactionResponse$inboundSchema;
-  /** @deprecated use `GetIssuedCardTransactionResponse$outboundSchema` instead. */
-  export const outboundSchema = GetIssuedCardTransactionResponse$outboundSchema;
-  /** @deprecated use `GetIssuedCardTransactionResponse$Outbound` instead. */
-  export type Outbound = GetIssuedCardTransactionResponse$Outbound;
-}
-
 export function getIssuedCardTransactionResponseToJSON(
   getIssuedCardTransactionResponse: GetIssuedCardTransactionResponse,
 ): string {
@@ -220,7 +176,6 @@ export function getIssuedCardTransactionResponseToJSON(
     ),
   );
 }
-
 export function getIssuedCardTransactionResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIssuedCardTransactionResponse, SDKValidationError> {

@@ -48,7 +48,6 @@ export const LinkAccountTerminalApplicationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type LinkAccountTerminalApplicationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,21 +66,6 @@ export const LinkAccountTerminalApplicationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkAccountTerminalApplicationGlobals$ {
-  /** @deprecated use `LinkAccountTerminalApplicationGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    LinkAccountTerminalApplicationGlobals$inboundSchema;
-  /** @deprecated use `LinkAccountTerminalApplicationGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    LinkAccountTerminalApplicationGlobals$outboundSchema;
-  /** @deprecated use `LinkAccountTerminalApplicationGlobals$Outbound` instead. */
-  export type Outbound = LinkAccountTerminalApplicationGlobals$Outbound;
-}
-
 export function linkAccountTerminalApplicationGlobalsToJSON(
   linkAccountTerminalApplicationGlobals: LinkAccountTerminalApplicationGlobals,
 ): string {
@@ -91,7 +75,6 @@ export function linkAccountTerminalApplicationGlobalsToJSON(
     ),
   );
 }
-
 export function linkAccountTerminalApplicationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkAccountTerminalApplicationGlobals, SDKValidationError> {
@@ -117,7 +100,6 @@ export const LinkAccountTerminalApplicationRequest$inboundSchema: z.ZodType<
     "LinkAccountTerminalApplication": "linkAccountTerminalApplication",
   });
 });
-
 /** @internal */
 export type LinkAccountTerminalApplicationRequest$Outbound = {
   accountID: string;
@@ -140,21 +122,6 @@ export const LinkAccountTerminalApplicationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkAccountTerminalApplicationRequest$ {
-  /** @deprecated use `LinkAccountTerminalApplicationRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    LinkAccountTerminalApplicationRequest$inboundSchema;
-  /** @deprecated use `LinkAccountTerminalApplicationRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    LinkAccountTerminalApplicationRequest$outboundSchema;
-  /** @deprecated use `LinkAccountTerminalApplicationRequest$Outbound` instead. */
-  export type Outbound = LinkAccountTerminalApplicationRequest$Outbound;
-}
-
 export function linkAccountTerminalApplicationRequestToJSON(
   linkAccountTerminalApplicationRequest: LinkAccountTerminalApplicationRequest,
 ): string {
@@ -164,7 +131,6 @@ export function linkAccountTerminalApplicationRequestToJSON(
     ),
   );
 }
-
 export function linkAccountTerminalApplicationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkAccountTerminalApplicationRequest, SDKValidationError> {
@@ -190,7 +156,6 @@ export const LinkAccountTerminalApplicationResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type LinkAccountTerminalApplicationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -212,21 +177,6 @@ export const LinkAccountTerminalApplicationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkAccountTerminalApplicationResponse$ {
-  /** @deprecated use `LinkAccountTerminalApplicationResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    LinkAccountTerminalApplicationResponse$inboundSchema;
-  /** @deprecated use `LinkAccountTerminalApplicationResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    LinkAccountTerminalApplicationResponse$outboundSchema;
-  /** @deprecated use `LinkAccountTerminalApplicationResponse$Outbound` instead. */
-  export type Outbound = LinkAccountTerminalApplicationResponse$Outbound;
-}
-
 export function linkAccountTerminalApplicationResponseToJSON(
   linkAccountTerminalApplicationResponse:
     LinkAccountTerminalApplicationResponse,
@@ -237,7 +187,6 @@ export function linkAccountTerminalApplicationResponseToJSON(
     ),
   );
 }
-
 export function linkAccountTerminalApplicationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkAccountTerminalApplicationResponse, SDKValidationError> {

@@ -47,7 +47,6 @@ export const ListPaymentLinksGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListPaymentLinksGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const ListPaymentLinksGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPaymentLinksGlobals$ {
-  /** @deprecated use `ListPaymentLinksGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListPaymentLinksGlobals$inboundSchema;
-  /** @deprecated use `ListPaymentLinksGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListPaymentLinksGlobals$outboundSchema;
-  /** @deprecated use `ListPaymentLinksGlobals$Outbound` instead. */
-  export type Outbound = ListPaymentLinksGlobals$Outbound;
-}
-
 export function listPaymentLinksGlobalsToJSON(
   listPaymentLinksGlobals: ListPaymentLinksGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function listPaymentLinksGlobalsToJSON(
     ListPaymentLinksGlobals$outboundSchema.parse(listPaymentLinksGlobals),
   );
 }
-
 export function listPaymentLinksGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPaymentLinksGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const ListPaymentLinksRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type ListPaymentLinksRequest$Outbound = {
   accountID: string;
@@ -120,19 +104,6 @@ export const ListPaymentLinksRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPaymentLinksRequest$ {
-  /** @deprecated use `ListPaymentLinksRequest$inboundSchema` instead. */
-  export const inboundSchema = ListPaymentLinksRequest$inboundSchema;
-  /** @deprecated use `ListPaymentLinksRequest$outboundSchema` instead. */
-  export const outboundSchema = ListPaymentLinksRequest$outboundSchema;
-  /** @deprecated use `ListPaymentLinksRequest$Outbound` instead. */
-  export type Outbound = ListPaymentLinksRequest$Outbound;
-}
-
 export function listPaymentLinksRequestToJSON(
   listPaymentLinksRequest: ListPaymentLinksRequest,
 ): string {
@@ -140,7 +111,6 @@ export function listPaymentLinksRequestToJSON(
     ListPaymentLinksRequest$outboundSchema.parse(listPaymentLinksRequest),
   );
 }
-
 export function listPaymentLinksRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPaymentLinksRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const ListPaymentLinksResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListPaymentLinksResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -187,19 +156,6 @@ export const ListPaymentLinksResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPaymentLinksResponse$ {
-  /** @deprecated use `ListPaymentLinksResponse$inboundSchema` instead. */
-  export const inboundSchema = ListPaymentLinksResponse$inboundSchema;
-  /** @deprecated use `ListPaymentLinksResponse$outboundSchema` instead. */
-  export const outboundSchema = ListPaymentLinksResponse$outboundSchema;
-  /** @deprecated use `ListPaymentLinksResponse$Outbound` instead. */
-  export type Outbound = ListPaymentLinksResponse$Outbound;
-}
-
 export function listPaymentLinksResponseToJSON(
   listPaymentLinksResponse: ListPaymentLinksResponse,
 ): string {
@@ -207,7 +163,6 @@ export function listPaymentLinksResponseToJSON(
     ListPaymentLinksResponse$outboundSchema.parse(listPaymentLinksResponse),
   );
 }
-
 export function listPaymentLinksResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPaymentLinksResponse, SDKValidationError> {

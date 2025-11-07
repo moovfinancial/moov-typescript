@@ -49,7 +49,6 @@ export const ListImageMetadataGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListImageMetadataGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const ListImageMetadataGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListImageMetadataGlobals$ {
-  /** @deprecated use `ListImageMetadataGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListImageMetadataGlobals$inboundSchema;
-  /** @deprecated use `ListImageMetadataGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListImageMetadataGlobals$outboundSchema;
-  /** @deprecated use `ListImageMetadataGlobals$Outbound` instead. */
-  export type Outbound = ListImageMetadataGlobals$Outbound;
-}
-
 export function listImageMetadataGlobalsToJSON(
   listImageMetadataGlobals: ListImageMetadataGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function listImageMetadataGlobalsToJSON(
     ListImageMetadataGlobals$outboundSchema.parse(listImageMetadataGlobals),
   );
 }
-
 export function listImageMetadataGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListImageMetadataGlobals, SDKValidationError> {
@@ -109,7 +94,6 @@ export const ListImageMetadataRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
 });
-
 /** @internal */
 export type ListImageMetadataRequest$Outbound = {
   accountID: string;
@@ -128,19 +112,6 @@ export const ListImageMetadataRequest$outboundSchema: z.ZodType<
   count: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListImageMetadataRequest$ {
-  /** @deprecated use `ListImageMetadataRequest$inboundSchema` instead. */
-  export const inboundSchema = ListImageMetadataRequest$inboundSchema;
-  /** @deprecated use `ListImageMetadataRequest$outboundSchema` instead. */
-  export const outboundSchema = ListImageMetadataRequest$outboundSchema;
-  /** @deprecated use `ListImageMetadataRequest$Outbound` instead. */
-  export type Outbound = ListImageMetadataRequest$Outbound;
-}
-
 export function listImageMetadataRequestToJSON(
   listImageMetadataRequest: ListImageMetadataRequest,
 ): string {
@@ -148,7 +119,6 @@ export function listImageMetadataRequestToJSON(
     ListImageMetadataRequest$outboundSchema.parse(listImageMetadataRequest),
   );
 }
-
 export function listImageMetadataRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListImageMetadataRequest, SDKValidationError> {
@@ -173,7 +143,6 @@ export const ListImageMetadataResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListImageMetadataResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -195,19 +164,6 @@ export const ListImageMetadataResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListImageMetadataResponse$ {
-  /** @deprecated use `ListImageMetadataResponse$inboundSchema` instead. */
-  export const inboundSchema = ListImageMetadataResponse$inboundSchema;
-  /** @deprecated use `ListImageMetadataResponse$outboundSchema` instead. */
-  export const outboundSchema = ListImageMetadataResponse$outboundSchema;
-  /** @deprecated use `ListImageMetadataResponse$Outbound` instead. */
-  export type Outbound = ListImageMetadataResponse$Outbound;
-}
-
 export function listImageMetadataResponseToJSON(
   listImageMetadataResponse: ListImageMetadataResponse,
 ): string {
@@ -215,7 +171,6 @@ export function listImageMetadataResponseToJSON(
     ListImageMetadataResponse$outboundSchema.parse(listImageMetadataResponse),
   );
 }
-
 export function listImageMetadataResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListImageMetadataResponse, SDKValidationError> {

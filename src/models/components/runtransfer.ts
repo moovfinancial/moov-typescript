@@ -45,7 +45,6 @@ export const RunTransfer$inboundSchema: z.ZodType<
   source: SchedulePaymentMethod$inboundSchema,
   description: z.string(),
 });
-
 /** @internal */
 export type RunTransfer$Outbound = {
   amount: Amount$Outbound;
@@ -68,23 +67,9 @@ export const RunTransfer$outboundSchema: z.ZodType<
   description: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunTransfer$ {
-  /** @deprecated use `RunTransfer$inboundSchema` instead. */
-  export const inboundSchema = RunTransfer$inboundSchema;
-  /** @deprecated use `RunTransfer$outboundSchema` instead. */
-  export const outboundSchema = RunTransfer$outboundSchema;
-  /** @deprecated use `RunTransfer$Outbound` instead. */
-  export type Outbound = RunTransfer$Outbound;
-}
-
 export function runTransferToJSON(runTransfer: RunTransfer): string {
   return JSON.stringify(RunTransfer$outboundSchema.parse(runTransfer));
 }
-
 export function runTransferFromJSON(
   jsonString: string,
 ): SafeParseResult<RunTransfer, SDKValidationError> {

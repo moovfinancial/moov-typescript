@@ -23,7 +23,6 @@ export const EstimatedActivityError$inboundSchema: z.ZodType<
   maximumTransactionAmount: z.string().optional(),
   monthlyVolumeRange: z.string().optional(),
 });
-
 /** @internal */
 export type EstimatedActivityError$Outbound = {
   averageTransactionAmount?: string | undefined;
@@ -42,19 +41,6 @@ export const EstimatedActivityError$outboundSchema: z.ZodType<
   monthlyVolumeRange: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EstimatedActivityError$ {
-  /** @deprecated use `EstimatedActivityError$inboundSchema` instead. */
-  export const inboundSchema = EstimatedActivityError$inboundSchema;
-  /** @deprecated use `EstimatedActivityError$outboundSchema` instead. */
-  export const outboundSchema = EstimatedActivityError$outboundSchema;
-  /** @deprecated use `EstimatedActivityError$Outbound` instead. */
-  export type Outbound = EstimatedActivityError$Outbound;
-}
-
 export function estimatedActivityErrorToJSON(
   estimatedActivityError: EstimatedActivityError,
 ): string {
@@ -62,7 +48,6 @@ export function estimatedActivityErrorToJSON(
     EstimatedActivityError$outboundSchema.parse(estimatedActivityError),
   );
 }
-
 export function estimatedActivityErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<EstimatedActivityError, SDKValidationError> {

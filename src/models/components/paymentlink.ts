@@ -26,6 +26,12 @@ import {
   PaymentLinkDisplayOptions$outboundSchema,
 } from "./paymentlinkdisplayoptions.js";
 import {
+  PaymentLinkLineItems,
+  PaymentLinkLineItems$inboundSchema,
+  PaymentLinkLineItems$Outbound,
+  PaymentLinkLineItems$outboundSchema,
+} from "./paymentlinklineitems.js";
+import {
   PaymentLinkPaymentDetails,
   PaymentLinkPaymentDetails$inboundSchema,
   PaymentLinkPaymentDetails$Outbound,
@@ -100,6 +106,13 @@ export type PaymentLink = {
    */
   payment?: PaymentLinkPaymentDetails | undefined;
   payout?: PaymentLinkPayoutDetails | undefined;
+  /**
+   * An optional collection of line items for a payment link.
+   *
+   * @remarks
+   * When line items are provided, their total plus sales tax must equal the payment link amount.
+   */
+  lineItems?: PaymentLinkLineItems | undefined;
   createdOn: Date;
   updatedOn: Date;
   disabledOn?: Date | undefined;
@@ -129,12 +142,12 @@ export const PaymentLink$inboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$inboundSchema,
   payment: PaymentLinkPaymentDetails$inboundSchema.optional(),
   payout: PaymentLinkPayoutDetails$inboundSchema.optional(),
+  lineItems: PaymentLinkLineItems$inboundSchema.optional(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type PaymentLink$Outbound = {
   code: string;
@@ -153,6 +166,7 @@ export type PaymentLink$Outbound = {
   customer: PaymentLinkCustomerOptions$Outbound;
   payment?: PaymentLinkPaymentDetails$Outbound | undefined;
   payout?: PaymentLinkPayoutDetails$Outbound | undefined;
+  lineItems?: PaymentLinkLineItems$Outbound | undefined;
   createdOn: string;
   updatedOn: string;
   disabledOn?: string | undefined;
@@ -180,28 +194,15 @@ export const PaymentLink$outboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$outboundSchema,
   payment: PaymentLinkPaymentDetails$outboundSchema.optional(),
   payout: PaymentLinkPayoutDetails$outboundSchema.optional(),
+  lineItems: PaymentLinkLineItems$outboundSchema.optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
   disabledOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentLink$ {
-  /** @deprecated use `PaymentLink$inboundSchema` instead. */
-  export const inboundSchema = PaymentLink$inboundSchema;
-  /** @deprecated use `PaymentLink$outboundSchema` instead. */
-  export const outboundSchema = PaymentLink$outboundSchema;
-  /** @deprecated use `PaymentLink$Outbound` instead. */
-  export type Outbound = PaymentLink$Outbound;
-}
-
 export function paymentLinkToJSON(paymentLink: PaymentLink): string {
   return JSON.stringify(PaymentLink$outboundSchema.parse(paymentLink));
 }
-
 export function paymentLinkFromJSON(
   jsonString: string,
 ): SafeParseResult<PaymentLink, SDKValidationError> {

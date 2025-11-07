@@ -34,7 +34,6 @@ export const PlaidIntegration$inboundSchema: z.ZodType<
 > = z.object({
   token: z.string(),
 });
-
 /** @internal */
 export type PlaidIntegration$Outbound = {
   token: string;
@@ -49,19 +48,6 @@ export const PlaidIntegration$outboundSchema: z.ZodType<
   token: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PlaidIntegration$ {
-  /** @deprecated use `PlaidIntegration$inboundSchema` instead. */
-  export const inboundSchema = PlaidIntegration$inboundSchema;
-  /** @deprecated use `PlaidIntegration$outboundSchema` instead. */
-  export const outboundSchema = PlaidIntegration$outboundSchema;
-  /** @deprecated use `PlaidIntegration$Outbound` instead. */
-  export type Outbound = PlaidIntegration$Outbound;
-}
-
 export function plaidIntegrationToJSON(
   plaidIntegration: PlaidIntegration,
 ): string {
@@ -69,7 +55,6 @@ export function plaidIntegrationToJSON(
     PlaidIntegration$outboundSchema.parse(plaidIntegration),
   );
 }
-
 export function plaidIntegrationFromJSON(
   jsonString: string,
 ): SafeParseResult<PlaidIntegration, SDKValidationError> {

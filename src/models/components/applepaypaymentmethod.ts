@@ -38,24 +38,10 @@ export const ApplePayPaymentMethodPaymentMethodType$inboundSchema:
   z.ZodNativeEnum<typeof ApplePayPaymentMethodPaymentMethodType> = z.nativeEnum(
     ApplePayPaymentMethodPaymentMethodType,
   );
-
 /** @internal */
 export const ApplePayPaymentMethodPaymentMethodType$outboundSchema:
   z.ZodNativeEnum<typeof ApplePayPaymentMethodPaymentMethodType> =
     ApplePayPaymentMethodPaymentMethodType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplePayPaymentMethodPaymentMethodType$ {
-  /** @deprecated use `ApplePayPaymentMethodPaymentMethodType$inboundSchema` instead. */
-  export const inboundSchema =
-    ApplePayPaymentMethodPaymentMethodType$inboundSchema;
-  /** @deprecated use `ApplePayPaymentMethodPaymentMethodType$outboundSchema` instead. */
-  export const outboundSchema =
-    ApplePayPaymentMethodPaymentMethodType$outboundSchema;
-}
 
 /** @internal */
 export const ApplePayPaymentMethod$inboundSchema: z.ZodType<
@@ -67,7 +53,6 @@ export const ApplePayPaymentMethod$inboundSchema: z.ZodType<
   paymentMethodType: ApplePayPaymentMethodPaymentMethodType$inboundSchema,
   applePay: ApplePayResponse$inboundSchema,
 });
-
 /** @internal */
 export type ApplePayPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -86,19 +71,6 @@ export const ApplePayPaymentMethod$outboundSchema: z.ZodType<
   applePay: ApplePayResponse$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplePayPaymentMethod$ {
-  /** @deprecated use `ApplePayPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = ApplePayPaymentMethod$inboundSchema;
-  /** @deprecated use `ApplePayPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = ApplePayPaymentMethod$outboundSchema;
-  /** @deprecated use `ApplePayPaymentMethod$Outbound` instead. */
-  export type Outbound = ApplePayPaymentMethod$Outbound;
-}
-
 export function applePayPaymentMethodToJSON(
   applePayPaymentMethod: ApplePayPaymentMethod,
 ): string {
@@ -106,7 +78,6 @@ export function applePayPaymentMethodToJSON(
     ApplePayPaymentMethod$outboundSchema.parse(applePayPaymentMethod),
   );
 }
-
 export function applePayPaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplePayPaymentMethod, SDKValidationError> {

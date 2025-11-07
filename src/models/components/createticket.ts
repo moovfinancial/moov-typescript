@@ -36,7 +36,6 @@ export const CreateTicket$inboundSchema: z.ZodType<
   contact: TicketContact$inboundSchema,
   foreignID: z.string().optional(),
 });
-
 /** @internal */
 export type CreateTicket$Outbound = {
   title: string;
@@ -59,23 +58,9 @@ export const CreateTicket$outboundSchema: z.ZodType<
   foreignID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTicket$ {
-  /** @deprecated use `CreateTicket$inboundSchema` instead. */
-  export const inboundSchema = CreateTicket$inboundSchema;
-  /** @deprecated use `CreateTicket$outboundSchema` instead. */
-  export const outboundSchema = CreateTicket$outboundSchema;
-  /** @deprecated use `CreateTicket$Outbound` instead. */
-  export type Outbound = CreateTicket$Outbound;
-}
-
 export function createTicketToJSON(createTicket: CreateTicket): string {
   return JSON.stringify(CreateTicket$outboundSchema.parse(createTicket));
 }
-
 export function createTicketFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTicket, SDKValidationError> {

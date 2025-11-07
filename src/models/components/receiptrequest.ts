@@ -65,21 +65,9 @@ export type ReceiptRequest = {
 export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
   Kind,
 );
-
 /** @internal */
 export const Kind$outboundSchema: z.ZodNativeEnum<typeof Kind> =
   Kind$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Kind$ {
-  /** @deprecated use `Kind$inboundSchema` instead. */
-  export const inboundSchema = Kind$inboundSchema;
-  /** @deprecated use `Kind$outboundSchema` instead. */
-  export const outboundSchema = Kind$outboundSchema;
-}
 
 /** @internal */
 export const ReceiptRequest$inboundSchema: z.ZodType<
@@ -94,7 +82,6 @@ export const ReceiptRequest$inboundSchema: z.ZodType<
   forScheduleID: z.string().optional(),
   forOccurrenceID: z.string().optional(),
 });
-
 /** @internal */
 export type ReceiptRequest$Outbound = {
   kind: string;
@@ -119,23 +106,9 @@ export const ReceiptRequest$outboundSchema: z.ZodType<
   forOccurrenceID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReceiptRequest$ {
-  /** @deprecated use `ReceiptRequest$inboundSchema` instead. */
-  export const inboundSchema = ReceiptRequest$inboundSchema;
-  /** @deprecated use `ReceiptRequest$outboundSchema` instead. */
-  export const outboundSchema = ReceiptRequest$outboundSchema;
-  /** @deprecated use `ReceiptRequest$Outbound` instead. */
-  export type Outbound = ReceiptRequest$Outbound;
-}
-
 export function receiptRequestToJSON(receiptRequest: ReceiptRequest): string {
   return JSON.stringify(ReceiptRequest$outboundSchema.parse(receiptRequest));
 }
-
 export function receiptRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ReceiptRequest, SDKValidationError> {

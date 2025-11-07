@@ -35,7 +35,6 @@ export const PaymentMethodsWallet$inboundSchema: z.ZodType<
   partnerAccountID: z.string(),
   walletType: WalletType$inboundSchema,
 });
-
 /** @internal */
 export type PaymentMethodsWallet$Outbound = {
   walletID: string;
@@ -54,19 +53,6 @@ export const PaymentMethodsWallet$outboundSchema: z.ZodType<
   walletType: WalletType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentMethodsWallet$ {
-  /** @deprecated use `PaymentMethodsWallet$inboundSchema` instead. */
-  export const inboundSchema = PaymentMethodsWallet$inboundSchema;
-  /** @deprecated use `PaymentMethodsWallet$outboundSchema` instead. */
-  export const outboundSchema = PaymentMethodsWallet$outboundSchema;
-  /** @deprecated use `PaymentMethodsWallet$Outbound` instead. */
-  export type Outbound = PaymentMethodsWallet$Outbound;
-}
-
 export function paymentMethodsWalletToJSON(
   paymentMethodsWallet: PaymentMethodsWallet,
 ): string {
@@ -74,7 +60,6 @@ export function paymentMethodsWalletToJSON(
     PaymentMethodsWallet$outboundSchema.parse(paymentMethodsWallet),
   );
 }
-
 export function paymentMethodsWalletFromJSON(
   jsonString: string,
 ): SafeParseResult<PaymentMethodsWallet, SDKValidationError> {

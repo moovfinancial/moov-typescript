@@ -115,7 +115,6 @@ export const WalletTransaction$inboundSchema: z.ZodType<
   availableBalanceDecimal: z.string().optional(),
   sweepID: z.string().optional(),
 });
-
 /** @internal */
 export type WalletTransaction$Outbound = {
   walletID: string;
@@ -168,19 +167,6 @@ export const WalletTransaction$outboundSchema: z.ZodType<
   sweepID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WalletTransaction$ {
-  /** @deprecated use `WalletTransaction$inboundSchema` instead. */
-  export const inboundSchema = WalletTransaction$inboundSchema;
-  /** @deprecated use `WalletTransaction$outboundSchema` instead. */
-  export const outboundSchema = WalletTransaction$outboundSchema;
-  /** @deprecated use `WalletTransaction$Outbound` instead. */
-  export type Outbound = WalletTransaction$Outbound;
-}
-
 export function walletTransactionToJSON(
   walletTransaction: WalletTransaction,
 ): string {
@@ -188,7 +174,6 @@ export function walletTransactionToJSON(
     WalletTransaction$outboundSchema.parse(walletTransaction),
   );
 }
-
 export function walletTransactionFromJSON(
   jsonString: string,
 ): SafeParseResult<WalletTransaction, SDKValidationError> {

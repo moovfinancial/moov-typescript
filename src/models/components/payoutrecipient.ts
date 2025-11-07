@@ -35,7 +35,6 @@ export const PayoutRecipient$inboundSchema: z.ZodType<
   email: z.string().optional(),
   phone: PhoneNumber$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PayoutRecipient$Outbound = {
   email?: string | undefined;
@@ -52,25 +51,11 @@ export const PayoutRecipient$outboundSchema: z.ZodType<
   phone: PhoneNumber$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PayoutRecipient$ {
-  /** @deprecated use `PayoutRecipient$inboundSchema` instead. */
-  export const inboundSchema = PayoutRecipient$inboundSchema;
-  /** @deprecated use `PayoutRecipient$outboundSchema` instead. */
-  export const outboundSchema = PayoutRecipient$outboundSchema;
-  /** @deprecated use `PayoutRecipient$Outbound` instead. */
-  export type Outbound = PayoutRecipient$Outbound;
-}
-
 export function payoutRecipientToJSON(
   payoutRecipient: PayoutRecipient,
 ): string {
   return JSON.stringify(PayoutRecipient$outboundSchema.parse(payoutRecipient));
 }
-
 export function payoutRecipientFromJSON(
   jsonString: string,
 ): SafeParseResult<PayoutRecipient, SDKValidationError> {

@@ -32,7 +32,6 @@ export const RTPInstitution$inboundSchema: z.ZodType<
   routingNumber: z.string(),
   services: RTPServices$inboundSchema,
 });
-
 /** @internal */
 export type RTPInstitution$Outbound = {
   name: string;
@@ -51,23 +50,9 @@ export const RTPInstitution$outboundSchema: z.ZodType<
   services: RTPServices$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RTPInstitution$ {
-  /** @deprecated use `RTPInstitution$inboundSchema` instead. */
-  export const inboundSchema = RTPInstitution$inboundSchema;
-  /** @deprecated use `RTPInstitution$outboundSchema` instead. */
-  export const outboundSchema = RTPInstitution$outboundSchema;
-  /** @deprecated use `RTPInstitution$Outbound` instead. */
-  export type Outbound = RTPInstitution$Outbound;
-}
-
 export function rtpInstitutionToJSON(rtpInstitution: RTPInstitution): string {
   return JSON.stringify(RTPInstitution$outboundSchema.parse(rtpInstitution));
 }
-
 export function rtpInstitutionFromJSON(
   jsonString: string,
 ): SafeParseResult<RTPInstitution, SDKValidationError> {

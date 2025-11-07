@@ -65,16 +65,3 @@ export const BrandValidationError$outboundSchema: z.ZodType<
   .pipe(z.object({
     colors: components.ColorsValidationError$outboundSchema.optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BrandValidationError$ {
-  /** @deprecated use `BrandValidationError$inboundSchema` instead. */
-  export const inboundSchema = BrandValidationError$inboundSchema;
-  /** @deprecated use `BrandValidationError$outboundSchema` instead. */
-  export const outboundSchema = BrandValidationError$outboundSchema;
-  /** @deprecated use `BrandValidationError$Outbound` instead. */
-  export type Outbound = BrandValidationError$Outbound;
-}

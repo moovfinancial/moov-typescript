@@ -82,7 +82,6 @@ export const FeePlanAgreement$inboundSchema: z.ZodType<
   minimumCommitment: MinimumCommitment$inboundSchema,
   monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
 });
-
 /** @internal */
 export type FeePlanAgreement$Outbound = {
   agreementID: string;
@@ -117,19 +116,6 @@ export const FeePlanAgreement$outboundSchema: z.ZodType<
   monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeePlanAgreement$ {
-  /** @deprecated use `FeePlanAgreement$inboundSchema` instead. */
-  export const inboundSchema = FeePlanAgreement$inboundSchema;
-  /** @deprecated use `FeePlanAgreement$outboundSchema` instead. */
-  export const outboundSchema = FeePlanAgreement$outboundSchema;
-  /** @deprecated use `FeePlanAgreement$Outbound` instead. */
-  export type Outbound = FeePlanAgreement$Outbound;
-}
-
 export function feePlanAgreementToJSON(
   feePlanAgreement: FeePlanAgreement,
 ): string {
@@ -137,7 +123,6 @@ export function feePlanAgreementToJSON(
     FeePlanAgreement$outboundSchema.parse(feePlanAgreement),
   );
 }
-
 export function feePlanAgreementFromJSON(
   jsonString: string,
 ): SafeParseResult<FeePlanAgreement, SDKValidationError> {

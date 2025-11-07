@@ -19,18 +19,6 @@ export type ReceiptKind = ClosedEnum<typeof ReceiptKind>;
 /** @internal */
 export const ReceiptKind$inboundSchema: z.ZodNativeEnum<typeof ReceiptKind> = z
   .nativeEnum(ReceiptKind);
-
 /** @internal */
 export const ReceiptKind$outboundSchema: z.ZodNativeEnum<typeof ReceiptKind> =
   ReceiptKind$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReceiptKind$ {
-  /** @deprecated use `ReceiptKind$inboundSchema` instead. */
-  export const inboundSchema = ReceiptKind$inboundSchema;
-  /** @deprecated use `ReceiptKind$outboundSchema` instead. */
-  export const outboundSchema = ReceiptKind$outboundSchema;
-}

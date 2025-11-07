@@ -41,7 +41,6 @@ export const TestEndToEndTokenGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type TestEndToEndTokenGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -60,19 +59,6 @@ export const TestEndToEndTokenGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TestEndToEndTokenGlobals$ {
-  /** @deprecated use `TestEndToEndTokenGlobals$inboundSchema` instead. */
-  export const inboundSchema = TestEndToEndTokenGlobals$inboundSchema;
-  /** @deprecated use `TestEndToEndTokenGlobals$outboundSchema` instead. */
-  export const outboundSchema = TestEndToEndTokenGlobals$outboundSchema;
-  /** @deprecated use `TestEndToEndTokenGlobals$Outbound` instead. */
-  export type Outbound = TestEndToEndTokenGlobals$Outbound;
-}
-
 export function testEndToEndTokenGlobalsToJSON(
   testEndToEndTokenGlobals: TestEndToEndTokenGlobals,
 ): string {
@@ -80,7 +66,6 @@ export function testEndToEndTokenGlobalsToJSON(
     TestEndToEndTokenGlobals$outboundSchema.parse(testEndToEndTokenGlobals),
   );
 }
-
 export function testEndToEndTokenGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<TestEndToEndTokenGlobals, SDKValidationError> {
@@ -103,7 +88,6 @@ export const TestEndToEndTokenResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type TestEndToEndTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -122,19 +106,6 @@ export const TestEndToEndTokenResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TestEndToEndTokenResponse$ {
-  /** @deprecated use `TestEndToEndTokenResponse$inboundSchema` instead. */
-  export const inboundSchema = TestEndToEndTokenResponse$inboundSchema;
-  /** @deprecated use `TestEndToEndTokenResponse$outboundSchema` instead. */
-  export const outboundSchema = TestEndToEndTokenResponse$outboundSchema;
-  /** @deprecated use `TestEndToEndTokenResponse$Outbound` instead. */
-  export type Outbound = TestEndToEndTokenResponse$Outbound;
-}
-
 export function testEndToEndTokenResponseToJSON(
   testEndToEndTokenResponse: TestEndToEndTokenResponse,
 ): string {
@@ -142,7 +113,6 @@ export function testEndToEndTokenResponseToJSON(
     TestEndToEndTokenResponse$outboundSchema.parse(testEndToEndTokenResponse),
   );
 }
-
 export function testEndToEndTokenResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<TestEndToEndTokenResponse, SDKValidationError> {

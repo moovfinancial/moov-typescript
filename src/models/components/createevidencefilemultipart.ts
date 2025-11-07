@@ -44,7 +44,6 @@ export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
       z.instanceof(Uint8Array),
     ]),
   });
-
 /** @internal */
 export type FileT$Outbound = {
   fileName: string;
@@ -66,23 +65,9 @@ export const FileT$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileT$ {
-  /** @deprecated use `FileT$inboundSchema` instead. */
-  export const inboundSchema = FileT$inboundSchema;
-  /** @deprecated use `FileT$outboundSchema` instead. */
-  export const outboundSchema = FileT$outboundSchema;
-  /** @deprecated use `FileT$Outbound` instead. */
-  export type Outbound = FileT$Outbound;
-}
-
 export function fileToJSON(fileT: FileT): string {
   return JSON.stringify(FileT$outboundSchema.parse(fileT));
 }
-
 export function fileFromJSON(
   jsonString: string,
 ): SafeParseResult<FileT, SDKValidationError> {
@@ -102,7 +87,6 @@ export const CreateEvidenceFileMultiPart$inboundSchema: z.ZodType<
   file: z.lazy(() => FileT$inboundSchema),
   evidenceType: EvidenceType$inboundSchema,
 });
-
 /** @internal */
 export type CreateEvidenceFileMultiPart$Outbound = {
   file: FileT$Outbound | Blob;
@@ -119,19 +103,6 @@ export const CreateEvidenceFileMultiPart$outboundSchema: z.ZodType<
   evidenceType: EvidenceType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateEvidenceFileMultiPart$ {
-  /** @deprecated use `CreateEvidenceFileMultiPart$inboundSchema` instead. */
-  export const inboundSchema = CreateEvidenceFileMultiPart$inboundSchema;
-  /** @deprecated use `CreateEvidenceFileMultiPart$outboundSchema` instead. */
-  export const outboundSchema = CreateEvidenceFileMultiPart$outboundSchema;
-  /** @deprecated use `CreateEvidenceFileMultiPart$Outbound` instead. */
-  export type Outbound = CreateEvidenceFileMultiPart$Outbound;
-}
-
 export function createEvidenceFileMultiPartToJSON(
   createEvidenceFileMultiPart: CreateEvidenceFileMultiPart,
 ): string {
@@ -141,7 +112,6 @@ export function createEvidenceFileMultiPartToJSON(
     ),
   );
 }
-
 export function createEvidenceFileMultiPartFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateEvidenceFileMultiPart, SDKValidationError> {

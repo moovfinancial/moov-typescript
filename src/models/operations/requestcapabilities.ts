@@ -48,7 +48,6 @@ export const RequestCapabilitiesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type RequestCapabilitiesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const RequestCapabilitiesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestCapabilitiesGlobals$ {
-  /** @deprecated use `RequestCapabilitiesGlobals$inboundSchema` instead. */
-  export const inboundSchema = RequestCapabilitiesGlobals$inboundSchema;
-  /** @deprecated use `RequestCapabilitiesGlobals$outboundSchema` instead. */
-  export const outboundSchema = RequestCapabilitiesGlobals$outboundSchema;
-  /** @deprecated use `RequestCapabilitiesGlobals$Outbound` instead. */
-  export type Outbound = RequestCapabilitiesGlobals$Outbound;
-}
-
 export function requestCapabilitiesGlobalsToJSON(
   requestCapabilitiesGlobals: RequestCapabilitiesGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function requestCapabilitiesGlobalsToJSON(
     RequestCapabilitiesGlobals$outboundSchema.parse(requestCapabilitiesGlobals),
   );
 }
-
 export function requestCapabilitiesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestCapabilitiesGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const RequestCapabilitiesRequest$inboundSchema: z.ZodType<
     "AddCapabilities": "addCapabilities",
   });
 });
-
 /** @internal */
 export type RequestCapabilitiesRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const RequestCapabilitiesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestCapabilitiesRequest$ {
-  /** @deprecated use `RequestCapabilitiesRequest$inboundSchema` instead. */
-  export const inboundSchema = RequestCapabilitiesRequest$inboundSchema;
-  /** @deprecated use `RequestCapabilitiesRequest$outboundSchema` instead. */
-  export const outboundSchema = RequestCapabilitiesRequest$outboundSchema;
-  /** @deprecated use `RequestCapabilitiesRequest$Outbound` instead. */
-  export type Outbound = RequestCapabilitiesRequest$Outbound;
-}
-
 export function requestCapabilitiesRequestToJSON(
   requestCapabilitiesRequest: RequestCapabilitiesRequest,
 ): string {
@@ -152,7 +123,6 @@ export function requestCapabilitiesRequestToJSON(
     RequestCapabilitiesRequest$outboundSchema.parse(requestCapabilitiesRequest),
   );
 }
-
 export function requestCapabilitiesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestCapabilitiesRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const RequestCapabilitiesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type RequestCapabilitiesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const RequestCapabilitiesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestCapabilitiesResponse$ {
-  /** @deprecated use `RequestCapabilitiesResponse$inboundSchema` instead. */
-  export const inboundSchema = RequestCapabilitiesResponse$inboundSchema;
-  /** @deprecated use `RequestCapabilitiesResponse$outboundSchema` instead. */
-  export const outboundSchema = RequestCapabilitiesResponse$outboundSchema;
-  /** @deprecated use `RequestCapabilitiesResponse$Outbound` instead. */
-  export type Outbound = RequestCapabilitiesResponse$Outbound;
-}
-
 export function requestCapabilitiesResponseToJSON(
   requestCapabilitiesResponse: RequestCapabilitiesResponse,
 ): string {
@@ -221,7 +177,6 @@ export function requestCapabilitiesResponseToJSON(
     ),
   );
 }
-
 export function requestCapabilitiesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestCapabilitiesResponse, SDKValidationError> {

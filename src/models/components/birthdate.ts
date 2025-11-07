@@ -23,7 +23,6 @@ export const BirthDate$inboundSchema: z.ZodType<
   month: z.number().int(),
   year: z.number().int(),
 });
-
 /** @internal */
 export type BirthDate$Outbound = {
   day: number;
@@ -42,23 +41,9 @@ export const BirthDate$outboundSchema: z.ZodType<
   year: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BirthDate$ {
-  /** @deprecated use `BirthDate$inboundSchema` instead. */
-  export const inboundSchema = BirthDate$inboundSchema;
-  /** @deprecated use `BirthDate$outboundSchema` instead. */
-  export const outboundSchema = BirthDate$outboundSchema;
-  /** @deprecated use `BirthDate$Outbound` instead. */
-  export type Outbound = BirthDate$Outbound;
-}
-
 export function birthDateToJSON(birthDate: BirthDate): string {
   return JSON.stringify(BirthDate$outboundSchema.parse(birthDate));
 }
-
 export function birthDateFromJSON(
   jsonString: string,
 ): SafeParseResult<BirthDate, SDKValidationError> {

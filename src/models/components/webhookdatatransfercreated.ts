@@ -33,7 +33,6 @@ export const WebhookDataTransferCreated$inboundSchema: z.ZodType<
   status: WebhookDataTransferStatus$inboundSchema,
   foreignID: z.string().optional(),
 });
-
 /** @internal */
 export type WebhookDataTransferCreated$Outbound = {
   accountID: string;
@@ -54,19 +53,6 @@ export const WebhookDataTransferCreated$outboundSchema: z.ZodType<
   foreignID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataTransferCreated$ {
-  /** @deprecated use `WebhookDataTransferCreated$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataTransferCreated$inboundSchema;
-  /** @deprecated use `WebhookDataTransferCreated$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataTransferCreated$outboundSchema;
-  /** @deprecated use `WebhookDataTransferCreated$Outbound` instead. */
-  export type Outbound = WebhookDataTransferCreated$Outbound;
-}
-
 export function webhookDataTransferCreatedToJSON(
   webhookDataTransferCreated: WebhookDataTransferCreated,
 ): string {
@@ -74,7 +60,6 @@ export function webhookDataTransferCreatedToJSON(
     WebhookDataTransferCreated$outboundSchema.parse(webhookDataTransferCreated),
   );
 }
-
 export function webhookDataTransferCreatedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataTransferCreated, SDKValidationError> {

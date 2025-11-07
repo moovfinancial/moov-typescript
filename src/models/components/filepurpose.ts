@@ -24,18 +24,6 @@ export type FilePurpose = ClosedEnum<typeof FilePurpose>;
 /** @internal */
 export const FilePurpose$inboundSchema: z.ZodNativeEnum<typeof FilePurpose> = z
   .nativeEnum(FilePurpose);
-
 /** @internal */
 export const FilePurpose$outboundSchema: z.ZodNativeEnum<typeof FilePurpose> =
   FilePurpose$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilePurpose$ {
-  /** @deprecated use `FilePurpose$inboundSchema` instead. */
-  export const inboundSchema = FilePurpose$inboundSchema;
-  /** @deprecated use `FilePurpose$outboundSchema` instead. */
-  export const outboundSchema = FilePurpose$outboundSchema;
-}

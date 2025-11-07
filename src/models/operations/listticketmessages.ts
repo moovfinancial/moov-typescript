@@ -48,7 +48,6 @@ export const ListTicketMessagesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListTicketMessagesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const ListTicketMessagesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketMessagesGlobals$ {
-  /** @deprecated use `ListTicketMessagesGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListTicketMessagesGlobals$inboundSchema;
-  /** @deprecated use `ListTicketMessagesGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListTicketMessagesGlobals$outboundSchema;
-  /** @deprecated use `ListTicketMessagesGlobals$Outbound` instead. */
-  export type Outbound = ListTicketMessagesGlobals$Outbound;
-}
-
 export function listTicketMessagesGlobalsToJSON(
   listTicketMessagesGlobals: ListTicketMessagesGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function listTicketMessagesGlobalsToJSON(
     ListTicketMessagesGlobals$outboundSchema.parse(listTicketMessagesGlobals),
   );
 }
-
 export function listTicketMessagesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTicketMessagesGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const ListTicketMessagesRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   ticketID: z.string(),
 });
-
 /** @internal */
 export type ListTicketMessagesRequest$Outbound = {
   accountID: string;
@@ -124,19 +108,6 @@ export const ListTicketMessagesRequest$outboundSchema: z.ZodType<
   ticketID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketMessagesRequest$ {
-  /** @deprecated use `ListTicketMessagesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListTicketMessagesRequest$inboundSchema;
-  /** @deprecated use `ListTicketMessagesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListTicketMessagesRequest$outboundSchema;
-  /** @deprecated use `ListTicketMessagesRequest$Outbound` instead. */
-  export type Outbound = ListTicketMessagesRequest$Outbound;
-}
-
 export function listTicketMessagesRequestToJSON(
   listTicketMessagesRequest: ListTicketMessagesRequest,
 ): string {
@@ -144,7 +115,6 @@ export function listTicketMessagesRequestToJSON(
     ListTicketMessagesRequest$outboundSchema.parse(listTicketMessagesRequest),
   );
 }
-
 export function listTicketMessagesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTicketMessagesRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const ListTicketMessagesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListTicketMessagesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const ListTicketMessagesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketMessagesResponse$ {
-  /** @deprecated use `ListTicketMessagesResponse$inboundSchema` instead. */
-  export const inboundSchema = ListTicketMessagesResponse$inboundSchema;
-  /** @deprecated use `ListTicketMessagesResponse$outboundSchema` instead. */
-  export const outboundSchema = ListTicketMessagesResponse$outboundSchema;
-  /** @deprecated use `ListTicketMessagesResponse$Outbound` instead. */
-  export type Outbound = ListTicketMessagesResponse$Outbound;
-}
-
 export function listTicketMessagesResponseToJSON(
   listTicketMessagesResponse: ListTicketMessagesResponse,
 ): string {
@@ -211,7 +167,6 @@ export function listTicketMessagesResponseToJSON(
     ListTicketMessagesResponse$outboundSchema.parse(listTicketMessagesResponse),
   );
 }
-
 export function listTicketMessagesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTicketMessagesResponse, SDKValidationError> {

@@ -41,7 +41,6 @@ export const BillingSummaryDetails$inboundSchema: z.ZodType<
   volumeCount: z.number().int().optional(),
   feeAmount: AmountDecimal$inboundSchema.optional(),
 });
-
 /** @internal */
 export type BillingSummaryDetails$Outbound = {
   volumeAmount?: AmountDecimal$Outbound | undefined;
@@ -60,19 +59,6 @@ export const BillingSummaryDetails$outboundSchema: z.ZodType<
   feeAmount: AmountDecimal$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BillingSummaryDetails$ {
-  /** @deprecated use `BillingSummaryDetails$inboundSchema` instead. */
-  export const inboundSchema = BillingSummaryDetails$inboundSchema;
-  /** @deprecated use `BillingSummaryDetails$outboundSchema` instead. */
-  export const outboundSchema = BillingSummaryDetails$outboundSchema;
-  /** @deprecated use `BillingSummaryDetails$Outbound` instead. */
-  export type Outbound = BillingSummaryDetails$Outbound;
-}
-
 export function billingSummaryDetailsToJSON(
   billingSummaryDetails: BillingSummaryDetails,
 ): string {
@@ -80,7 +66,6 @@ export function billingSummaryDetailsToJSON(
     BillingSummaryDetails$outboundSchema.parse(billingSummaryDetails),
   );
 }
-
 export function billingSummaryDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<BillingSummaryDetails, SDKValidationError> {

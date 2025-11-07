@@ -22,7 +22,6 @@ export const TerminalConfiguration$inboundSchema: z.ZodType<
 > = z.object({
   configuration: z.string(),
 });
-
 /** @internal */
 export type TerminalConfiguration$Outbound = {
   configuration: string;
@@ -37,19 +36,6 @@ export const TerminalConfiguration$outboundSchema: z.ZodType<
   configuration: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TerminalConfiguration$ {
-  /** @deprecated use `TerminalConfiguration$inboundSchema` instead. */
-  export const inboundSchema = TerminalConfiguration$inboundSchema;
-  /** @deprecated use `TerminalConfiguration$outboundSchema` instead. */
-  export const outboundSchema = TerminalConfiguration$outboundSchema;
-  /** @deprecated use `TerminalConfiguration$Outbound` instead. */
-  export type Outbound = TerminalConfiguration$Outbound;
-}
-
 export function terminalConfigurationToJSON(
   terminalConfiguration: TerminalConfiguration,
 ): string {
@@ -57,7 +43,6 @@ export function terminalConfigurationToJSON(
     TerminalConfiguration$outboundSchema.parse(terminalConfiguration),
   );
 }
-
 export function terminalConfigurationFromJSON(
   jsonString: string,
 ): SafeParseResult<TerminalConfiguration, SDKValidationError> {

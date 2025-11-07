@@ -18,19 +18,7 @@ export type CardVerificationResult = ClosedEnum<typeof CardVerificationResult>;
 export const CardVerificationResult$inboundSchema: z.ZodNativeEnum<
   typeof CardVerificationResult
 > = z.nativeEnum(CardVerificationResult);
-
 /** @internal */
 export const CardVerificationResult$outboundSchema: z.ZodNativeEnum<
   typeof CardVerificationResult
 > = CardVerificationResult$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardVerificationResult$ {
-  /** @deprecated use `CardVerificationResult$inboundSchema` instead. */
-  export const inboundSchema = CardVerificationResult$inboundSchema;
-  /** @deprecated use `CardVerificationResult$outboundSchema` instead. */
-  export const outboundSchema = CardVerificationResult$outboundSchema;
-}

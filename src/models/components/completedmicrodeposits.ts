@@ -24,7 +24,6 @@ export const CompletedMicroDeposits$inboundSchema: z.ZodType<
 > = z.object({
   status: MicroDepositStatus$inboundSchema,
 });
-
 /** @internal */
 export type CompletedMicroDeposits$Outbound = {
   status: string;
@@ -39,19 +38,6 @@ export const CompletedMicroDeposits$outboundSchema: z.ZodType<
   status: MicroDepositStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompletedMicroDeposits$ {
-  /** @deprecated use `CompletedMicroDeposits$inboundSchema` instead. */
-  export const inboundSchema = CompletedMicroDeposits$inboundSchema;
-  /** @deprecated use `CompletedMicroDeposits$outboundSchema` instead. */
-  export const outboundSchema = CompletedMicroDeposits$outboundSchema;
-  /** @deprecated use `CompletedMicroDeposits$Outbound` instead. */
-  export type Outbound = CompletedMicroDeposits$Outbound;
-}
-
 export function completedMicroDepositsToJSON(
   completedMicroDeposits: CompletedMicroDeposits,
 ): string {
@@ -59,7 +45,6 @@ export function completedMicroDepositsToJSON(
     CompletedMicroDeposits$outboundSchema.parse(completedMicroDeposits),
   );
 }
-
 export function completedMicroDepositsFromJSON(
   jsonString: string,
 ): SafeParseResult<CompletedMicroDeposits, SDKValidationError> {

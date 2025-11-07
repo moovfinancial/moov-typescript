@@ -44,7 +44,6 @@ export const ImageMetadata$inboundSchema: z.ZodType<
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type ImageMetadata$Outbound = {
   imageID: string;
@@ -69,23 +68,9 @@ export const ImageMetadata$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImageMetadata$ {
-  /** @deprecated use `ImageMetadata$inboundSchema` instead. */
-  export const inboundSchema = ImageMetadata$inboundSchema;
-  /** @deprecated use `ImageMetadata$outboundSchema` instead. */
-  export const outboundSchema = ImageMetadata$outboundSchema;
-  /** @deprecated use `ImageMetadata$Outbound` instead. */
-  export type Outbound = ImageMetadata$Outbound;
-}
-
 export function imageMetadataToJSON(imageMetadata: ImageMetadata): string {
   return JSON.stringify(ImageMetadata$outboundSchema.parse(imageMetadata));
 }
-
 export function imageMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ImageMetadata, SDKValidationError> {

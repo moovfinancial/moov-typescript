@@ -69,7 +69,6 @@ export const OnboardingInviteRequest$inboundSchema: z.ZodType<
   feePlanCodes: z.array(z.string()),
   prefill: CreateAccount$inboundSchema.optional(),
 });
-
 /** @internal */
 export type OnboardingInviteRequest$Outbound = {
   returnURL?: string | undefined;
@@ -94,19 +93,6 @@ export const OnboardingInviteRequest$outboundSchema: z.ZodType<
   prefill: CreateAccount$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OnboardingInviteRequest$ {
-  /** @deprecated use `OnboardingInviteRequest$inboundSchema` instead. */
-  export const inboundSchema = OnboardingInviteRequest$inboundSchema;
-  /** @deprecated use `OnboardingInviteRequest$outboundSchema` instead. */
-  export const outboundSchema = OnboardingInviteRequest$outboundSchema;
-  /** @deprecated use `OnboardingInviteRequest$Outbound` instead. */
-  export type Outbound = OnboardingInviteRequest$Outbound;
-}
-
 export function onboardingInviteRequestToJSON(
   onboardingInviteRequest: OnboardingInviteRequest,
 ): string {
@@ -114,7 +100,6 @@ export function onboardingInviteRequestToJSON(
     OnboardingInviteRequest$outboundSchema.parse(onboardingInviteRequest),
   );
 }
-
 export function onboardingInviteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OnboardingInviteRequest, SDKValidationError> {

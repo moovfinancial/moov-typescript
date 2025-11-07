@@ -59,7 +59,6 @@ export const ListTicketsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListTicketsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -78,19 +77,6 @@ export const ListTicketsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketsGlobals$ {
-  /** @deprecated use `ListTicketsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListTicketsGlobals$inboundSchema;
-  /** @deprecated use `ListTicketsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListTicketsGlobals$outboundSchema;
-  /** @deprecated use `ListTicketsGlobals$Outbound` instead. */
-  export type Outbound = ListTicketsGlobals$Outbound;
-}
-
 export function listTicketsGlobalsToJSON(
   listTicketsGlobals: ListTicketsGlobals,
 ): string {
@@ -98,7 +84,6 @@ export function listTicketsGlobalsToJSON(
     ListTicketsGlobals$outboundSchema.parse(listTicketsGlobals),
   );
 }
-
 export function listTicketsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTicketsGlobals, SDKValidationError> {
@@ -121,7 +106,6 @@ export const ListTicketsRequest$inboundSchema: z.ZodType<
   foreignID: z.string().optional(),
   accountID: z.string(),
 });
-
 /** @internal */
 export type ListTicketsRequest$Outbound = {
   cursor?: string | undefined;
@@ -144,19 +128,6 @@ export const ListTicketsRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketsRequest$ {
-  /** @deprecated use `ListTicketsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListTicketsRequest$inboundSchema;
-  /** @deprecated use `ListTicketsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListTicketsRequest$outboundSchema;
-  /** @deprecated use `ListTicketsRequest$Outbound` instead. */
-  export type Outbound = ListTicketsRequest$Outbound;
-}
-
 export function listTicketsRequestToJSON(
   listTicketsRequest: ListTicketsRequest,
 ): string {
@@ -164,7 +135,6 @@ export function listTicketsRequestToJSON(
     ListTicketsRequest$outboundSchema.parse(listTicketsRequest),
   );
 }
-
 export function listTicketsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTicketsRequest, SDKValidationError> {
@@ -184,7 +154,6 @@ export const ListTicketsResponseBody$inboundSchema: z.ZodType<
   items: z.array(components.Ticket$inboundSchema),
   nextPage: components.ItemListNextPage$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ListTicketsResponseBody$Outbound = {
   items: Array<components.Ticket$Outbound>;
@@ -201,19 +170,6 @@ export const ListTicketsResponseBody$outboundSchema: z.ZodType<
   nextPage: components.ItemListNextPage$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketsResponseBody$ {
-  /** @deprecated use `ListTicketsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListTicketsResponseBody$inboundSchema;
-  /** @deprecated use `ListTicketsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ListTicketsResponseBody$outboundSchema;
-  /** @deprecated use `ListTicketsResponseBody$Outbound` instead. */
-  export type Outbound = ListTicketsResponseBody$Outbound;
-}
-
 export function listTicketsResponseBodyToJSON(
   listTicketsResponseBody: ListTicketsResponseBody,
 ): string {
@@ -221,7 +177,6 @@ export function listTicketsResponseBodyToJSON(
     ListTicketsResponseBody$outboundSchema.parse(listTicketsResponseBody),
   );
 }
-
 export function listTicketsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTicketsResponseBody, SDKValidationError> {
@@ -246,7 +201,6 @@ export const ListTicketsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListTicketsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -268,19 +222,6 @@ export const ListTicketsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketsResponse$ {
-  /** @deprecated use `ListTicketsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListTicketsResponse$inboundSchema;
-  /** @deprecated use `ListTicketsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListTicketsResponse$outboundSchema;
-  /** @deprecated use `ListTicketsResponse$Outbound` instead. */
-  export type Outbound = ListTicketsResponse$Outbound;
-}
-
 export function listTicketsResponseToJSON(
   listTicketsResponse: ListTicketsResponse,
 ): string {
@@ -288,7 +229,6 @@ export function listTicketsResponseToJSON(
     ListTicketsResponse$outboundSchema.parse(listTicketsResponse),
   );
 }
-
 export function listTicketsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTicketsResponse, SDKValidationError> {

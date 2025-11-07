@@ -19,7 +19,6 @@ export const CreateFeePlanAgreement$inboundSchema: z.ZodType<
 > = z.object({
   planID: z.string(),
 });
-
 /** @internal */
 export type CreateFeePlanAgreement$Outbound = {
   planID: string;
@@ -34,19 +33,6 @@ export const CreateFeePlanAgreement$outboundSchema: z.ZodType<
   planID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFeePlanAgreement$ {
-  /** @deprecated use `CreateFeePlanAgreement$inboundSchema` instead. */
-  export const inboundSchema = CreateFeePlanAgreement$inboundSchema;
-  /** @deprecated use `CreateFeePlanAgreement$outboundSchema` instead. */
-  export const outboundSchema = CreateFeePlanAgreement$outboundSchema;
-  /** @deprecated use `CreateFeePlanAgreement$Outbound` instead. */
-  export type Outbound = CreateFeePlanAgreement$Outbound;
-}
-
 export function createFeePlanAgreementToJSON(
   createFeePlanAgreement: CreateFeePlanAgreement,
 ): string {
@@ -54,7 +40,6 @@ export function createFeePlanAgreementToJSON(
     CreateFeePlanAgreement$outboundSchema.parse(createFeePlanAgreement),
   );
 }
-
 export function createFeePlanAgreementFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateFeePlanAgreement, SDKValidationError> {

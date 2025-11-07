@@ -37,19 +37,7 @@ export type IssuedCardState = ClosedEnum<typeof IssuedCardState>;
 export const IssuedCardState$inboundSchema: z.ZodNativeEnum<
   typeof IssuedCardState
 > = z.nativeEnum(IssuedCardState);
-
 /** @internal */
 export const IssuedCardState$outboundSchema: z.ZodNativeEnum<
   typeof IssuedCardState
 > = IssuedCardState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuedCardState$ {
-  /** @deprecated use `IssuedCardState$inboundSchema` instead. */
-  export const inboundSchema = IssuedCardState$inboundSchema;
-  /** @deprecated use `IssuedCardState$outboundSchema` instead. */
-  export const outboundSchema = IssuedCardState$outboundSchema;
-}

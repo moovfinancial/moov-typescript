@@ -56,7 +56,6 @@ export const LinkApplePaymentData$inboundSchema: z.ZodType<
   signature: z.string(),
   header: ApplePayHeader$inboundSchema,
 });
-
 /** @internal */
 export type LinkApplePaymentData$Outbound = {
   version: string;
@@ -77,19 +76,6 @@ export const LinkApplePaymentData$outboundSchema: z.ZodType<
   header: ApplePayHeader$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkApplePaymentData$ {
-  /** @deprecated use `LinkApplePaymentData$inboundSchema` instead. */
-  export const inboundSchema = LinkApplePaymentData$inboundSchema;
-  /** @deprecated use `LinkApplePaymentData$outboundSchema` instead. */
-  export const outboundSchema = LinkApplePaymentData$outboundSchema;
-  /** @deprecated use `LinkApplePaymentData$Outbound` instead. */
-  export type Outbound = LinkApplePaymentData$Outbound;
-}
-
 export function linkApplePaymentDataToJSON(
   linkApplePaymentData: LinkApplePaymentData,
 ): string {
@@ -97,7 +83,6 @@ export function linkApplePaymentDataToJSON(
     LinkApplePaymentData$outboundSchema.parse(linkApplePaymentData),
   );
 }
-
 export function linkApplePaymentDataFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkApplePaymentData, SDKValidationError> {

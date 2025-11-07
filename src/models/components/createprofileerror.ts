@@ -33,7 +33,6 @@ export const CreateProfileError$inboundSchema: z.ZodType<
   individual: CreateIndividualError$inboundSchema.optional(),
   business: CreateBusinessError$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CreateProfileError$Outbound = {
   individual?: CreateIndividualError$Outbound | undefined;
@@ -50,19 +49,6 @@ export const CreateProfileError$outboundSchema: z.ZodType<
   business: CreateBusinessError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateProfileError$ {
-  /** @deprecated use `CreateProfileError$inboundSchema` instead. */
-  export const inboundSchema = CreateProfileError$inboundSchema;
-  /** @deprecated use `CreateProfileError$outboundSchema` instead. */
-  export const outboundSchema = CreateProfileError$outboundSchema;
-  /** @deprecated use `CreateProfileError$Outbound` instead. */
-  export type Outbound = CreateProfileError$Outbound;
-}
-
 export function createProfileErrorToJSON(
   createProfileError: CreateProfileError,
 ): string {
@@ -70,7 +56,6 @@ export function createProfileErrorToJSON(
     CreateProfileError$outboundSchema.parse(createProfileError),
   );
 }
-
 export function createProfileErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateProfileError, SDKValidationError> {

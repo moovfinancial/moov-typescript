@@ -30,7 +30,6 @@ export const ACHPaymentDetails$inboundSchema: z.ZodType<
   companyEntryDescription: z.string().optional(),
   originatingCompanyName: z.string().optional(),
 });
-
 /** @internal */
 export type ACHPaymentDetails$Outbound = {
   companyEntryDescription?: string | undefined;
@@ -47,19 +46,6 @@ export const ACHPaymentDetails$outboundSchema: z.ZodType<
   originatingCompanyName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ACHPaymentDetails$ {
-  /** @deprecated use `ACHPaymentDetails$inboundSchema` instead. */
-  export const inboundSchema = ACHPaymentDetails$inboundSchema;
-  /** @deprecated use `ACHPaymentDetails$outboundSchema` instead. */
-  export const outboundSchema = ACHPaymentDetails$outboundSchema;
-  /** @deprecated use `ACHPaymentDetails$Outbound` instead. */
-  export type Outbound = ACHPaymentDetails$Outbound;
-}
-
 export function achPaymentDetailsToJSON(
   achPaymentDetails: ACHPaymentDetails,
 ): string {
@@ -67,7 +53,6 @@ export function achPaymentDetailsToJSON(
     ACHPaymentDetails$outboundSchema.parse(achPaymentDetails),
   );
 }
-
 export function achPaymentDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<ACHPaymentDetails, SDKValidationError> {

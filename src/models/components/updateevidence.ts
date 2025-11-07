@@ -29,7 +29,6 @@ export const UpdateEvidence$inboundSchema: z.ZodType<
   evidenceType: EvidenceType$inboundSchema.optional(),
   text: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateEvidence$Outbound = {
   evidenceType?: string | undefined;
@@ -46,23 +45,9 @@ export const UpdateEvidence$outboundSchema: z.ZodType<
   text: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateEvidence$ {
-  /** @deprecated use `UpdateEvidence$inboundSchema` instead. */
-  export const inboundSchema = UpdateEvidence$inboundSchema;
-  /** @deprecated use `UpdateEvidence$outboundSchema` instead. */
-  export const outboundSchema = UpdateEvidence$outboundSchema;
-  /** @deprecated use `UpdateEvidence$Outbound` instead. */
-  export type Outbound = UpdateEvidence$Outbound;
-}
-
 export function updateEvidenceToJSON(updateEvidence: UpdateEvidence): string {
   return JSON.stringify(UpdateEvidence$outboundSchema.parse(updateEvidence));
 }
-
 export function updateEvidenceFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateEvidence, SDKValidationError> {

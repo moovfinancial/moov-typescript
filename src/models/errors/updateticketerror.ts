@@ -64,16 +64,3 @@ export const UpdateTicketError$outboundSchema: z.ZodType<
   .pipe(z.object({
     status: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTicketError$ {
-  /** @deprecated use `UpdateTicketError$inboundSchema` instead. */
-  export const inboundSchema = UpdateTicketError$inboundSchema;
-  /** @deprecated use `UpdateTicketError$outboundSchema` instead. */
-  export const outboundSchema = UpdateTicketError$outboundSchema;
-  /** @deprecated use `UpdateTicketError$Outbound` instead. */
-  export type Outbound = UpdateTicketError$Outbound;
-}

@@ -37,24 +37,10 @@ export type RtpCreditPaymentMethod = {
 export const RtpCreditPaymentMethodPaymentMethodType$inboundSchema:
   z.ZodNativeEnum<typeof RtpCreditPaymentMethodPaymentMethodType> = z
     .nativeEnum(RtpCreditPaymentMethodPaymentMethodType);
-
 /** @internal */
 export const RtpCreditPaymentMethodPaymentMethodType$outboundSchema:
   z.ZodNativeEnum<typeof RtpCreditPaymentMethodPaymentMethodType> =
     RtpCreditPaymentMethodPaymentMethodType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RtpCreditPaymentMethodPaymentMethodType$ {
-  /** @deprecated use `RtpCreditPaymentMethodPaymentMethodType$inboundSchema` instead. */
-  export const inboundSchema =
-    RtpCreditPaymentMethodPaymentMethodType$inboundSchema;
-  /** @deprecated use `RtpCreditPaymentMethodPaymentMethodType$outboundSchema` instead. */
-  export const outboundSchema =
-    RtpCreditPaymentMethodPaymentMethodType$outboundSchema;
-}
 
 /** @internal */
 export const RtpCreditPaymentMethod$inboundSchema: z.ZodType<
@@ -66,7 +52,6 @@ export const RtpCreditPaymentMethod$inboundSchema: z.ZodType<
   paymentMethodType: RtpCreditPaymentMethodPaymentMethodType$inboundSchema,
   bankAccount: PaymentMethodsBankAccount$inboundSchema,
 });
-
 /** @internal */
 export type RtpCreditPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -85,19 +70,6 @@ export const RtpCreditPaymentMethod$outboundSchema: z.ZodType<
   bankAccount: PaymentMethodsBankAccount$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RtpCreditPaymentMethod$ {
-  /** @deprecated use `RtpCreditPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = RtpCreditPaymentMethod$inboundSchema;
-  /** @deprecated use `RtpCreditPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = RtpCreditPaymentMethod$outboundSchema;
-  /** @deprecated use `RtpCreditPaymentMethod$Outbound` instead. */
-  export type Outbound = RtpCreditPaymentMethod$Outbound;
-}
-
 export function rtpCreditPaymentMethodToJSON(
   rtpCreditPaymentMethod: RtpCreditPaymentMethod,
 ): string {
@@ -105,7 +77,6 @@ export function rtpCreditPaymentMethodToJSON(
     RtpCreditPaymentMethod$outboundSchema.parse(rtpCreditPaymentMethod),
   );
 }
-
 export function rtpCreditPaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<RtpCreditPaymentMethod, SDKValidationError> {

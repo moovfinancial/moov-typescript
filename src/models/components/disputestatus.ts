@@ -35,19 +35,7 @@ export type DisputeStatus = ClosedEnum<typeof DisputeStatus>;
 export const DisputeStatus$inboundSchema: z.ZodNativeEnum<
   typeof DisputeStatus
 > = z.nativeEnum(DisputeStatus);
-
 /** @internal */
 export const DisputeStatus$outboundSchema: z.ZodNativeEnum<
   typeof DisputeStatus
 > = DisputeStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisputeStatus$ {
-  /** @deprecated use `DisputeStatus$inboundSchema` instead. */
-  export const inboundSchema = DisputeStatus$inboundSchema;
-  /** @deprecated use `DisputeStatus$outboundSchema` instead. */
-  export const outboundSchema = DisputeStatus$outboundSchema;
-}

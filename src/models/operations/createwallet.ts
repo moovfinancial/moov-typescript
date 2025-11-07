@@ -51,7 +51,6 @@ export const CreateWalletGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateWalletGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const CreateWalletGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateWalletGlobals$ {
-  /** @deprecated use `CreateWalletGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateWalletGlobals$inboundSchema;
-  /** @deprecated use `CreateWalletGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateWalletGlobals$outboundSchema;
-  /** @deprecated use `CreateWalletGlobals$Outbound` instead. */
-  export type Outbound = CreateWalletGlobals$Outbound;
-}
-
 export function createWalletGlobalsToJSON(
   createWalletGlobals: CreateWalletGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function createWalletGlobalsToJSON(
     CreateWalletGlobals$outboundSchema.parse(createWalletGlobals),
   );
 }
-
 export function createWalletGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateWalletGlobals, SDKValidationError> {
@@ -114,7 +99,6 @@ export const CreateWalletRequest$inboundSchema: z.ZodType<
     "CreateWallet": "createWallet",
   });
 });
-
 /** @internal */
 export type CreateWalletRequest$Outbound = {
   accountID: string;
@@ -135,19 +119,6 @@ export const CreateWalletRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateWalletRequest$ {
-  /** @deprecated use `CreateWalletRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateWalletRequest$inboundSchema;
-  /** @deprecated use `CreateWalletRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateWalletRequest$outboundSchema;
-  /** @deprecated use `CreateWalletRequest$Outbound` instead. */
-  export type Outbound = CreateWalletRequest$Outbound;
-}
-
 export function createWalletRequestToJSON(
   createWalletRequest: CreateWalletRequest,
 ): string {
@@ -155,7 +126,6 @@ export function createWalletRequestToJSON(
     CreateWalletRequest$outboundSchema.parse(createWalletRequest),
   );
 }
-
 export function createWalletRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateWalletRequest, SDKValidationError> {
@@ -180,7 +150,6 @@ export const CreateWalletResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateWalletResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -202,19 +171,6 @@ export const CreateWalletResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateWalletResponse$ {
-  /** @deprecated use `CreateWalletResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateWalletResponse$inboundSchema;
-  /** @deprecated use `CreateWalletResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateWalletResponse$outboundSchema;
-  /** @deprecated use `CreateWalletResponse$Outbound` instead. */
-  export type Outbound = CreateWalletResponse$Outbound;
-}
-
 export function createWalletResponseToJSON(
   createWalletResponse: CreateWalletResponse,
 ): string {
@@ -222,7 +178,6 @@ export function createWalletResponseToJSON(
     CreateWalletResponse$outboundSchema.parse(createWalletResponse),
   );
 }
-
 export function createWalletResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateWalletResponse, SDKValidationError> {

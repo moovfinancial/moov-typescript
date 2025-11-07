@@ -22,7 +22,6 @@ export const ItemListNextPage$inboundSchema: z.ZodType<
 > = z.object({
   cursor: z.string(),
 });
-
 /** @internal */
 export type ItemListNextPage$Outbound = {
   cursor: string;
@@ -37,19 +36,6 @@ export const ItemListNextPage$outboundSchema: z.ZodType<
   cursor: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ItemListNextPage$ {
-  /** @deprecated use `ItemListNextPage$inboundSchema` instead. */
-  export const inboundSchema = ItemListNextPage$inboundSchema;
-  /** @deprecated use `ItemListNextPage$outboundSchema` instead. */
-  export const outboundSchema = ItemListNextPage$outboundSchema;
-  /** @deprecated use `ItemListNextPage$Outbound` instead. */
-  export type Outbound = ItemListNextPage$Outbound;
-}
-
 export function itemListNextPageToJSON(
   itemListNextPage: ItemListNextPage,
 ): string {
@@ -57,7 +43,6 @@ export function itemListNextPageToJSON(
     ItemListNextPage$outboundSchema.parse(itemListNextPage),
   );
 }
-
 export function itemListNextPageFromJSON(
   jsonString: string,
 ): SafeParseResult<ItemListNextPage, SDKValidationError> {

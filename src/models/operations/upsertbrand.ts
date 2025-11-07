@@ -48,7 +48,6 @@ export const UpsertBrandGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpsertBrandGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const UpsertBrandGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertBrandGlobals$ {
-  /** @deprecated use `UpsertBrandGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpsertBrandGlobals$inboundSchema;
-  /** @deprecated use `UpsertBrandGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpsertBrandGlobals$outboundSchema;
-  /** @deprecated use `UpsertBrandGlobals$Outbound` instead. */
-  export type Outbound = UpsertBrandGlobals$Outbound;
-}
-
 export function upsertBrandGlobalsToJSON(
   upsertBrandGlobals: UpsertBrandGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function upsertBrandGlobalsToJSON(
     UpsertBrandGlobals$outboundSchema.parse(upsertBrandGlobals),
   );
 }
-
 export function upsertBrandGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpsertBrandGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const UpsertBrandRequest$inboundSchema: z.ZodType<
     "BrandProperties": "brandProperties",
   });
 });
-
 /** @internal */
 export type UpsertBrandRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const UpsertBrandRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertBrandRequest$ {
-  /** @deprecated use `UpsertBrandRequest$inboundSchema` instead. */
-  export const inboundSchema = UpsertBrandRequest$inboundSchema;
-  /** @deprecated use `UpsertBrandRequest$outboundSchema` instead. */
-  export const outboundSchema = UpsertBrandRequest$outboundSchema;
-  /** @deprecated use `UpsertBrandRequest$Outbound` instead. */
-  export type Outbound = UpsertBrandRequest$Outbound;
-}
-
 export function upsertBrandRequestToJSON(
   upsertBrandRequest: UpsertBrandRequest,
 ): string {
@@ -152,7 +123,6 @@ export function upsertBrandRequestToJSON(
     UpsertBrandRequest$outboundSchema.parse(upsertBrandRequest),
   );
 }
-
 export function upsertBrandRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpsertBrandRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const UpsertBrandResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpsertBrandResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const UpsertBrandResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertBrandResponse$ {
-  /** @deprecated use `UpsertBrandResponse$inboundSchema` instead. */
-  export const inboundSchema = UpsertBrandResponse$inboundSchema;
-  /** @deprecated use `UpsertBrandResponse$outboundSchema` instead. */
-  export const outboundSchema = UpsertBrandResponse$outboundSchema;
-  /** @deprecated use `UpsertBrandResponse$Outbound` instead. */
-  export type Outbound = UpsertBrandResponse$Outbound;
-}
-
 export function upsertBrandResponseToJSON(
   upsertBrandResponse: UpsertBrandResponse,
 ): string {
@@ -219,7 +175,6 @@ export function upsertBrandResponseToJSON(
     UpsertBrandResponse$outboundSchema.parse(upsertBrandResponse),
   );
 }
-
 export function upsertBrandResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpsertBrandResponse, SDKValidationError> {

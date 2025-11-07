@@ -21,18 +21,6 @@ export type RefundPolicy = ClosedEnum<typeof RefundPolicy>;
 /** @internal */
 export const RefundPolicy$inboundSchema: z.ZodNativeEnum<typeof RefundPolicy> =
   z.nativeEnum(RefundPolicy);
-
 /** @internal */
 export const RefundPolicy$outboundSchema: z.ZodNativeEnum<typeof RefundPolicy> =
   RefundPolicy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RefundPolicy$ {
-  /** @deprecated use `RefundPolicy$inboundSchema` instead. */
-  export const inboundSchema = RefundPolicy$inboundSchema;
-  /** @deprecated use `RefundPolicy$outboundSchema` instead. */
-  export const outboundSchema = RefundPolicy$outboundSchema;
-}

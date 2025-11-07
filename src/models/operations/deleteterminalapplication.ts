@@ -45,7 +45,6 @@ export const DeleteTerminalApplicationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type DeleteTerminalApplicationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -64,19 +63,6 @@ export const DeleteTerminalApplicationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTerminalApplicationGlobals$ {
-  /** @deprecated use `DeleteTerminalApplicationGlobals$inboundSchema` instead. */
-  export const inboundSchema = DeleteTerminalApplicationGlobals$inboundSchema;
-  /** @deprecated use `DeleteTerminalApplicationGlobals$outboundSchema` instead. */
-  export const outboundSchema = DeleteTerminalApplicationGlobals$outboundSchema;
-  /** @deprecated use `DeleteTerminalApplicationGlobals$Outbound` instead. */
-  export type Outbound = DeleteTerminalApplicationGlobals$Outbound;
-}
-
 export function deleteTerminalApplicationGlobalsToJSON(
   deleteTerminalApplicationGlobals: DeleteTerminalApplicationGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function deleteTerminalApplicationGlobalsToJSON(
     ),
   );
 }
-
 export function deleteTerminalApplicationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTerminalApplicationGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const DeleteTerminalApplicationRequest$inboundSchema: z.ZodType<
 > = z.object({
   terminalApplicationID: z.string(),
 });
-
 /** @internal */
 export type DeleteTerminalApplicationRequest$Outbound = {
   terminalApplicationID: string;
@@ -120,19 +104,6 @@ export const DeleteTerminalApplicationRequest$outboundSchema: z.ZodType<
   terminalApplicationID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTerminalApplicationRequest$ {
-  /** @deprecated use `DeleteTerminalApplicationRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteTerminalApplicationRequest$inboundSchema;
-  /** @deprecated use `DeleteTerminalApplicationRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteTerminalApplicationRequest$outboundSchema;
-  /** @deprecated use `DeleteTerminalApplicationRequest$Outbound` instead. */
-  export type Outbound = DeleteTerminalApplicationRequest$Outbound;
-}
-
 export function deleteTerminalApplicationRequestToJSON(
   deleteTerminalApplicationRequest: DeleteTerminalApplicationRequest,
 ): string {
@@ -142,7 +113,6 @@ export function deleteTerminalApplicationRequestToJSON(
     ),
   );
 }
-
 export function deleteTerminalApplicationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTerminalApplicationRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const DeleteTerminalApplicationResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type DeleteTerminalApplicationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -184,20 +153,6 @@ export const DeleteTerminalApplicationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTerminalApplicationResponse$ {
-  /** @deprecated use `DeleteTerminalApplicationResponse$inboundSchema` instead. */
-  export const inboundSchema = DeleteTerminalApplicationResponse$inboundSchema;
-  /** @deprecated use `DeleteTerminalApplicationResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteTerminalApplicationResponse$outboundSchema;
-  /** @deprecated use `DeleteTerminalApplicationResponse$Outbound` instead. */
-  export type Outbound = DeleteTerminalApplicationResponse$Outbound;
-}
-
 export function deleteTerminalApplicationResponseToJSON(
   deleteTerminalApplicationResponse: DeleteTerminalApplicationResponse,
 ): string {
@@ -207,7 +162,6 @@ export function deleteTerminalApplicationResponseToJSON(
     ),
   );
 }
-
 export function deleteTerminalApplicationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTerminalApplicationResponse, SDKValidationError> {

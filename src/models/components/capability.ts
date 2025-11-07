@@ -63,7 +63,6 @@ export const Capability$inboundSchema: z.ZodType<
   disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type Capability$Outbound = {
   capability: string;
@@ -92,23 +91,9 @@ export const Capability$outboundSchema: z.ZodType<
   disabledOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Capability$ {
-  /** @deprecated use `Capability$inboundSchema` instead. */
-  export const inboundSchema = Capability$inboundSchema;
-  /** @deprecated use `Capability$outboundSchema` instead. */
-  export const outboundSchema = Capability$outboundSchema;
-  /** @deprecated use `Capability$Outbound` instead. */
-  export type Outbound = Capability$Outbound;
-}
-
 export function capabilityToJSON(capability: Capability): string {
   return JSON.stringify(Capability$outboundSchema.parse(capability));
 }
-
 export function capabilityFromJSON(
   jsonString: string,
 ): SafeParseResult<Capability, SDKValidationError> {

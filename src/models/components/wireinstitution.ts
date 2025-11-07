@@ -40,7 +40,6 @@ export const WireInstitution$inboundSchema: z.ZodType<
   address: Address$inboundSchema.optional(),
   services: WireServices$inboundSchema,
 });
-
 /** @internal */
 export type WireInstitution$Outbound = {
   name: string;
@@ -61,25 +60,11 @@ export const WireInstitution$outboundSchema: z.ZodType<
   services: WireServices$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WireInstitution$ {
-  /** @deprecated use `WireInstitution$inboundSchema` instead. */
-  export const inboundSchema = WireInstitution$inboundSchema;
-  /** @deprecated use `WireInstitution$outboundSchema` instead. */
-  export const outboundSchema = WireInstitution$outboundSchema;
-  /** @deprecated use `WireInstitution$Outbound` instead. */
-  export type Outbound = WireInstitution$Outbound;
-}
-
 export function wireInstitutionToJSON(
   wireInstitution: WireInstitution,
 ): string {
   return JSON.stringify(WireInstitution$outboundSchema.parse(wireInstitution));
 }
-
 export function wireInstitutionFromJSON(
   jsonString: string,
 ): SafeParseResult<WireInstitution, SDKValidationError> {

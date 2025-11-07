@@ -48,7 +48,6 @@ export const GetBankAccountGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetBankAccountGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const GetBankAccountGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBankAccountGlobals$ {
-  /** @deprecated use `GetBankAccountGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetBankAccountGlobals$inboundSchema;
-  /** @deprecated use `GetBankAccountGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetBankAccountGlobals$outboundSchema;
-  /** @deprecated use `GetBankAccountGlobals$Outbound` instead. */
-  export type Outbound = GetBankAccountGlobals$Outbound;
-}
-
 export function getBankAccountGlobalsToJSON(
   getBankAccountGlobals: GetBankAccountGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function getBankAccountGlobalsToJSON(
     GetBankAccountGlobals$outboundSchema.parse(getBankAccountGlobals),
   );
 }
-
 export function getBankAccountGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBankAccountGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetBankAccountRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   bankAccountID: z.string(),
 });
-
 /** @internal */
 export type GetBankAccountRequest$Outbound = {
   accountID: string;
@@ -124,19 +108,6 @@ export const GetBankAccountRequest$outboundSchema: z.ZodType<
   bankAccountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBankAccountRequest$ {
-  /** @deprecated use `GetBankAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = GetBankAccountRequest$inboundSchema;
-  /** @deprecated use `GetBankAccountRequest$outboundSchema` instead. */
-  export const outboundSchema = GetBankAccountRequest$outboundSchema;
-  /** @deprecated use `GetBankAccountRequest$Outbound` instead. */
-  export type Outbound = GetBankAccountRequest$Outbound;
-}
-
 export function getBankAccountRequestToJSON(
   getBankAccountRequest: GetBankAccountRequest,
 ): string {
@@ -144,7 +115,6 @@ export function getBankAccountRequestToJSON(
     GetBankAccountRequest$outboundSchema.parse(getBankAccountRequest),
   );
 }
-
 export function getBankAccountRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBankAccountRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const GetBankAccountResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetBankAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const GetBankAccountResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBankAccountResponse$ {
-  /** @deprecated use `GetBankAccountResponse$inboundSchema` instead. */
-  export const inboundSchema = GetBankAccountResponse$inboundSchema;
-  /** @deprecated use `GetBankAccountResponse$outboundSchema` instead. */
-  export const outboundSchema = GetBankAccountResponse$outboundSchema;
-  /** @deprecated use `GetBankAccountResponse$Outbound` instead. */
-  export type Outbound = GetBankAccountResponse$Outbound;
-}
-
 export function getBankAccountResponseToJSON(
   getBankAccountResponse: GetBankAccountResponse,
 ): string {
@@ -211,7 +167,6 @@ export function getBankAccountResponseToJSON(
     GetBankAccountResponse$outboundSchema.parse(getBankAccountResponse),
   );
 }
-
 export function getBankAccountResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBankAccountResponse, SDKValidationError> {

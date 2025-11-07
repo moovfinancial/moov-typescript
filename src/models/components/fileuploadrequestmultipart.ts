@@ -54,7 +54,6 @@ export const FileUploadRequestMultiPartFile$inboundSchema: z.ZodType<
     z.instanceof(Uint8Array),
   ]),
 });
-
 /** @internal */
 export type FileUploadRequestMultiPartFile$Outbound = {
   fileName: string;
@@ -76,19 +75,6 @@ export const FileUploadRequestMultiPartFile$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileUploadRequestMultiPartFile$ {
-  /** @deprecated use `FileUploadRequestMultiPartFile$inboundSchema` instead. */
-  export const inboundSchema = FileUploadRequestMultiPartFile$inboundSchema;
-  /** @deprecated use `FileUploadRequestMultiPartFile$outboundSchema` instead. */
-  export const outboundSchema = FileUploadRequestMultiPartFile$outboundSchema;
-  /** @deprecated use `FileUploadRequestMultiPartFile$Outbound` instead. */
-  export type Outbound = FileUploadRequestMultiPartFile$Outbound;
-}
-
 export function fileUploadRequestMultiPartFileToJSON(
   fileUploadRequestMultiPartFile: FileUploadRequestMultiPartFile,
 ): string {
@@ -98,7 +84,6 @@ export function fileUploadRequestMultiPartFileToJSON(
     ),
   );
 }
-
 export function fileUploadRequestMultiPartFileFromJSON(
   jsonString: string,
 ): SafeParseResult<FileUploadRequestMultiPartFile, SDKValidationError> {
@@ -119,7 +104,6 @@ export const FileUploadRequestMultiPart$inboundSchema: z.ZodType<
   filePurpose: FilePurpose$inboundSchema,
   metadata: z.string().optional(),
 });
-
 /** @internal */
 export type FileUploadRequestMultiPart$Outbound = {
   file: FileUploadRequestMultiPartFile$Outbound | Blob;
@@ -140,19 +124,6 @@ export const FileUploadRequestMultiPart$outboundSchema: z.ZodType<
   metadata: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileUploadRequestMultiPart$ {
-  /** @deprecated use `FileUploadRequestMultiPart$inboundSchema` instead. */
-  export const inboundSchema = FileUploadRequestMultiPart$inboundSchema;
-  /** @deprecated use `FileUploadRequestMultiPart$outboundSchema` instead. */
-  export const outboundSchema = FileUploadRequestMultiPart$outboundSchema;
-  /** @deprecated use `FileUploadRequestMultiPart$Outbound` instead. */
-  export type Outbound = FileUploadRequestMultiPart$Outbound;
-}
-
 export function fileUploadRequestMultiPartToJSON(
   fileUploadRequestMultiPart: FileUploadRequestMultiPart,
 ): string {
@@ -160,7 +131,6 @@ export function fileUploadRequestMultiPartToJSON(
     FileUploadRequestMultiPart$outboundSchema.parse(fileUploadRequestMultiPart),
   );
 }
-
 export function fileUploadRequestMultiPartFromJSON(
   jsonString: string,
 ): SafeParseResult<FileUploadRequestMultiPart, SDKValidationError> {

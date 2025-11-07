@@ -45,7 +45,6 @@ export const ListTerminalApplicationsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListTerminalApplicationsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -64,19 +63,6 @@ export const ListTerminalApplicationsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTerminalApplicationsGlobals$ {
-  /** @deprecated use `ListTerminalApplicationsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListTerminalApplicationsGlobals$inboundSchema;
-  /** @deprecated use `ListTerminalApplicationsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListTerminalApplicationsGlobals$outboundSchema;
-  /** @deprecated use `ListTerminalApplicationsGlobals$Outbound` instead. */
-  export type Outbound = ListTerminalApplicationsGlobals$Outbound;
-}
-
 export function listTerminalApplicationsGlobalsToJSON(
   listTerminalApplicationsGlobals: ListTerminalApplicationsGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function listTerminalApplicationsGlobalsToJSON(
     ),
   );
 }
-
 export function listTerminalApplicationsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTerminalApplicationsGlobals, SDKValidationError> {
@@ -103,7 +88,6 @@ export const ListTerminalApplicationsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type ListTerminalApplicationsRequest$Outbound = {};
 
@@ -114,19 +98,6 @@ export const ListTerminalApplicationsRequest$outboundSchema: z.ZodType<
   ListTerminalApplicationsRequest
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTerminalApplicationsRequest$ {
-  /** @deprecated use `ListTerminalApplicationsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListTerminalApplicationsRequest$inboundSchema;
-  /** @deprecated use `ListTerminalApplicationsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListTerminalApplicationsRequest$outboundSchema;
-  /** @deprecated use `ListTerminalApplicationsRequest$Outbound` instead. */
-  export type Outbound = ListTerminalApplicationsRequest$Outbound;
-}
-
 export function listTerminalApplicationsRequestToJSON(
   listTerminalApplicationsRequest: ListTerminalApplicationsRequest,
 ): string {
@@ -136,7 +107,6 @@ export function listTerminalApplicationsRequestToJSON(
     ),
   );
 }
-
 export function listTerminalApplicationsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTerminalApplicationsRequest, SDKValidationError> {
@@ -161,7 +131,6 @@ export const ListTerminalApplicationsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListTerminalApplicationsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -183,19 +152,6 @@ export const ListTerminalApplicationsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTerminalApplicationsResponse$ {
-  /** @deprecated use `ListTerminalApplicationsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListTerminalApplicationsResponse$inboundSchema;
-  /** @deprecated use `ListTerminalApplicationsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListTerminalApplicationsResponse$outboundSchema;
-  /** @deprecated use `ListTerminalApplicationsResponse$Outbound` instead. */
-  export type Outbound = ListTerminalApplicationsResponse$Outbound;
-}
-
 export function listTerminalApplicationsResponseToJSON(
   listTerminalApplicationsResponse: ListTerminalApplicationsResponse,
 ): string {
@@ -205,7 +161,6 @@ export function listTerminalApplicationsResponseToJSON(
     ),
   );
 }
-
 export function listTerminalApplicationsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListTerminalApplicationsResponse, SDKValidationError> {

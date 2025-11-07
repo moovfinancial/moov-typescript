@@ -46,7 +46,6 @@ export const DisableCardGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type DisableCardGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -65,19 +64,6 @@ export const DisableCardGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableCardGlobals$ {
-  /** @deprecated use `DisableCardGlobals$inboundSchema` instead. */
-  export const inboundSchema = DisableCardGlobals$inboundSchema;
-  /** @deprecated use `DisableCardGlobals$outboundSchema` instead. */
-  export const outboundSchema = DisableCardGlobals$outboundSchema;
-  /** @deprecated use `DisableCardGlobals$Outbound` instead. */
-  export type Outbound = DisableCardGlobals$Outbound;
-}
-
 export function disableCardGlobalsToJSON(
   disableCardGlobals: DisableCardGlobals,
 ): string {
@@ -85,7 +71,6 @@ export function disableCardGlobalsToJSON(
     DisableCardGlobals$outboundSchema.parse(disableCardGlobals),
   );
 }
-
 export function disableCardGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableCardGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const DisableCardRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   cardID: z.string(),
 });
-
 /** @internal */
 export type DisableCardRequest$Outbound = {
   accountID: string;
@@ -122,19 +106,6 @@ export const DisableCardRequest$outboundSchema: z.ZodType<
   cardID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableCardRequest$ {
-  /** @deprecated use `DisableCardRequest$inboundSchema` instead. */
-  export const inboundSchema = DisableCardRequest$inboundSchema;
-  /** @deprecated use `DisableCardRequest$outboundSchema` instead. */
-  export const outboundSchema = DisableCardRequest$outboundSchema;
-  /** @deprecated use `DisableCardRequest$Outbound` instead. */
-  export type Outbound = DisableCardRequest$Outbound;
-}
-
 export function disableCardRequestToJSON(
   disableCardRequest: DisableCardRequest,
 ): string {
@@ -142,7 +113,6 @@ export function disableCardRequestToJSON(
     DisableCardRequest$outboundSchema.parse(disableCardRequest),
   );
 }
-
 export function disableCardRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableCardRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const DisableCardResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type DisableCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -184,19 +153,6 @@ export const DisableCardResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableCardResponse$ {
-  /** @deprecated use `DisableCardResponse$inboundSchema` instead. */
-  export const inboundSchema = DisableCardResponse$inboundSchema;
-  /** @deprecated use `DisableCardResponse$outboundSchema` instead. */
-  export const outboundSchema = DisableCardResponse$outboundSchema;
-  /** @deprecated use `DisableCardResponse$Outbound` instead. */
-  export type Outbound = DisableCardResponse$Outbound;
-}
-
 export function disableCardResponseToJSON(
   disableCardResponse: DisableCardResponse,
 ): string {
@@ -204,7 +160,6 @@ export function disableCardResponseToJSON(
     DisableCardResponse$outboundSchema.parse(disableCardResponse),
   );
 }
-
 export function disableCardResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableCardResponse, SDKValidationError> {

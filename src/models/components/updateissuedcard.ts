@@ -47,7 +47,6 @@ export const UpdateIssuedCard$inboundSchema: z.ZodType<
   memo: z.string().optional(),
   authorizedUser: CreateAuthorizedUserUpdate$inboundSchema.optional(),
 });
-
 /** @internal */
 export type UpdateIssuedCard$Outbound = {
   state?: string | undefined;
@@ -66,19 +65,6 @@ export const UpdateIssuedCard$outboundSchema: z.ZodType<
   authorizedUser: CreateAuthorizedUserUpdate$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateIssuedCard$ {
-  /** @deprecated use `UpdateIssuedCard$inboundSchema` instead. */
-  export const inboundSchema = UpdateIssuedCard$inboundSchema;
-  /** @deprecated use `UpdateIssuedCard$outboundSchema` instead. */
-  export const outboundSchema = UpdateIssuedCard$outboundSchema;
-  /** @deprecated use `UpdateIssuedCard$Outbound` instead. */
-  export type Outbound = UpdateIssuedCard$Outbound;
-}
-
 export function updateIssuedCardToJSON(
   updateIssuedCard: UpdateIssuedCard,
 ): string {
@@ -86,7 +72,6 @@ export function updateIssuedCardToJSON(
     UpdateIssuedCard$outboundSchema.parse(updateIssuedCard),
   );
 }
-
 export function updateIssuedCardFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateIssuedCard, SDKValidationError> {

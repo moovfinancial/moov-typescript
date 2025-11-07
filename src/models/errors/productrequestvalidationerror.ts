@@ -109,16 +109,3 @@ export const ProductRequestValidationError$outboundSchema: z.ZodType<
       components.ProductOptionGroupValidationError$outboundSchema,
     ).optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProductRequestValidationError$ {
-  /** @deprecated use `ProductRequestValidationError$inboundSchema` instead. */
-  export const inboundSchema = ProductRequestValidationError$inboundSchema;
-  /** @deprecated use `ProductRequestValidationError$outboundSchema` instead. */
-  export const outboundSchema = ProductRequestValidationError$outboundSchema;
-  /** @deprecated use `ProductRequestValidationError$Outbound` instead. */
-  export type Outbound = ProductRequestValidationError$Outbound;
-}

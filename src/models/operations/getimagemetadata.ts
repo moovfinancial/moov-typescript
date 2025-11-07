@@ -48,7 +48,6 @@ export const GetImageMetadataGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetImageMetadataGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const GetImageMetadataGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetImageMetadataGlobals$ {
-  /** @deprecated use `GetImageMetadataGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetImageMetadataGlobals$inboundSchema;
-  /** @deprecated use `GetImageMetadataGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetImageMetadataGlobals$outboundSchema;
-  /** @deprecated use `GetImageMetadataGlobals$Outbound` instead. */
-  export type Outbound = GetImageMetadataGlobals$Outbound;
-}
-
 export function getImageMetadataGlobalsToJSON(
   getImageMetadataGlobals: GetImageMetadataGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function getImageMetadataGlobalsToJSON(
     GetImageMetadataGlobals$outboundSchema.parse(getImageMetadataGlobals),
   );
 }
-
 export function getImageMetadataGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetImageMetadataGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetImageMetadataRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   imageID: z.string(),
 });
-
 /** @internal */
 export type GetImageMetadataRequest$Outbound = {
   accountID: string;
@@ -124,19 +108,6 @@ export const GetImageMetadataRequest$outboundSchema: z.ZodType<
   imageID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetImageMetadataRequest$ {
-  /** @deprecated use `GetImageMetadataRequest$inboundSchema` instead. */
-  export const inboundSchema = GetImageMetadataRequest$inboundSchema;
-  /** @deprecated use `GetImageMetadataRequest$outboundSchema` instead. */
-  export const outboundSchema = GetImageMetadataRequest$outboundSchema;
-  /** @deprecated use `GetImageMetadataRequest$Outbound` instead. */
-  export type Outbound = GetImageMetadataRequest$Outbound;
-}
-
 export function getImageMetadataRequestToJSON(
   getImageMetadataRequest: GetImageMetadataRequest,
 ): string {
@@ -144,7 +115,6 @@ export function getImageMetadataRequestToJSON(
     GetImageMetadataRequest$outboundSchema.parse(getImageMetadataRequest),
   );
 }
-
 export function getImageMetadataRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetImageMetadataRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const GetImageMetadataResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetImageMetadataResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const GetImageMetadataResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetImageMetadataResponse$ {
-  /** @deprecated use `GetImageMetadataResponse$inboundSchema` instead. */
-  export const inboundSchema = GetImageMetadataResponse$inboundSchema;
-  /** @deprecated use `GetImageMetadataResponse$outboundSchema` instead. */
-  export const outboundSchema = GetImageMetadataResponse$outboundSchema;
-  /** @deprecated use `GetImageMetadataResponse$Outbound` instead. */
-  export type Outbound = GetImageMetadataResponse$Outbound;
-}
-
 export function getImageMetadataResponseToJSON(
   getImageMetadataResponse: GetImageMetadataResponse,
 ): string {
@@ -211,7 +167,6 @@ export function getImageMetadataResponseToJSON(
     GetImageMetadataResponse$outboundSchema.parse(getImageMetadataResponse),
   );
 }
-
 export function getImageMetadataResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetImageMetadataResponse, SDKValidationError> {

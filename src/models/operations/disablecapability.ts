@@ -54,7 +54,6 @@ export const DisableCapabilityGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type DisableCapabilityGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -73,19 +72,6 @@ export const DisableCapabilityGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableCapabilityGlobals$ {
-  /** @deprecated use `DisableCapabilityGlobals$inboundSchema` instead. */
-  export const inboundSchema = DisableCapabilityGlobals$inboundSchema;
-  /** @deprecated use `DisableCapabilityGlobals$outboundSchema` instead. */
-  export const outboundSchema = DisableCapabilityGlobals$outboundSchema;
-  /** @deprecated use `DisableCapabilityGlobals$Outbound` instead. */
-  export type Outbound = DisableCapabilityGlobals$Outbound;
-}
-
 export function disableCapabilityGlobalsToJSON(
   disableCapabilityGlobals: DisableCapabilityGlobals,
 ): string {
@@ -93,7 +79,6 @@ export function disableCapabilityGlobalsToJSON(
     DisableCapabilityGlobals$outboundSchema.parse(disableCapabilityGlobals),
   );
 }
-
 export function disableCapabilityGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableCapabilityGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const DisableCapabilityRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   capabilityID: components.CapabilityID$inboundSchema,
 });
-
 /** @internal */
 export type DisableCapabilityRequest$Outbound = {
   accountID: string;
@@ -130,19 +114,6 @@ export const DisableCapabilityRequest$outboundSchema: z.ZodType<
   capabilityID: components.CapabilityID$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableCapabilityRequest$ {
-  /** @deprecated use `DisableCapabilityRequest$inboundSchema` instead. */
-  export const inboundSchema = DisableCapabilityRequest$inboundSchema;
-  /** @deprecated use `DisableCapabilityRequest$outboundSchema` instead. */
-  export const outboundSchema = DisableCapabilityRequest$outboundSchema;
-  /** @deprecated use `DisableCapabilityRequest$Outbound` instead. */
-  export type Outbound = DisableCapabilityRequest$Outbound;
-}
-
 export function disableCapabilityRequestToJSON(
   disableCapabilityRequest: DisableCapabilityRequest,
 ): string {
@@ -150,7 +121,6 @@ export function disableCapabilityRequestToJSON(
     DisableCapabilityRequest$outboundSchema.parse(disableCapabilityRequest),
   );
 }
-
 export function disableCapabilityRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableCapabilityRequest, SDKValidationError> {
@@ -173,7 +143,6 @@ export const DisableCapabilityResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type DisableCapabilityResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -192,19 +161,6 @@ export const DisableCapabilityResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableCapabilityResponse$ {
-  /** @deprecated use `DisableCapabilityResponse$inboundSchema` instead. */
-  export const inboundSchema = DisableCapabilityResponse$inboundSchema;
-  /** @deprecated use `DisableCapabilityResponse$outboundSchema` instead. */
-  export const outboundSchema = DisableCapabilityResponse$outboundSchema;
-  /** @deprecated use `DisableCapabilityResponse$Outbound` instead. */
-  export type Outbound = DisableCapabilityResponse$Outbound;
-}
-
 export function disableCapabilityResponseToJSON(
   disableCapabilityResponse: DisableCapabilityResponse,
 ): string {
@@ -212,7 +168,6 @@ export function disableCapabilityResponseToJSON(
     DisableCapabilityResponse$outboundSchema.parse(disableCapabilityResponse),
   );
 }
-
 export function disableCapabilityResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableCapabilityResponse, SDKValidationError> {

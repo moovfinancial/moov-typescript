@@ -48,7 +48,6 @@ export const UpsertUnderwritingGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpsertUnderwritingGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const UpsertUnderwritingGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertUnderwritingGlobals$ {
-  /** @deprecated use `UpsertUnderwritingGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpsertUnderwritingGlobals$inboundSchema;
-  /** @deprecated use `UpsertUnderwritingGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpsertUnderwritingGlobals$outboundSchema;
-  /** @deprecated use `UpsertUnderwritingGlobals$Outbound` instead. */
-  export type Outbound = UpsertUnderwritingGlobals$Outbound;
-}
-
 export function upsertUnderwritingGlobalsToJSON(
   upsertUnderwritingGlobals: UpsertUnderwritingGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function upsertUnderwritingGlobalsToJSON(
     UpsertUnderwritingGlobals$outboundSchema.parse(upsertUnderwritingGlobals),
   );
 }
-
 export function upsertUnderwritingGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpsertUnderwritingGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const UpsertUnderwritingRequest$inboundSchema: z.ZodType<
     "UpdateUnderwriting": "updateUnderwriting",
   });
 });
-
 /** @internal */
 export type UpsertUnderwritingRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const UpsertUnderwritingRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertUnderwritingRequest$ {
-  /** @deprecated use `UpsertUnderwritingRequest$inboundSchema` instead. */
-  export const inboundSchema = UpsertUnderwritingRequest$inboundSchema;
-  /** @deprecated use `UpsertUnderwritingRequest$outboundSchema` instead. */
-  export const outboundSchema = UpsertUnderwritingRequest$outboundSchema;
-  /** @deprecated use `UpsertUnderwritingRequest$Outbound` instead. */
-  export type Outbound = UpsertUnderwritingRequest$Outbound;
-}
-
 export function upsertUnderwritingRequestToJSON(
   upsertUnderwritingRequest: UpsertUnderwritingRequest,
 ): string {
@@ -152,7 +123,6 @@ export function upsertUnderwritingRequestToJSON(
     UpsertUnderwritingRequest$outboundSchema.parse(upsertUnderwritingRequest),
   );
 }
-
 export function upsertUnderwritingRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpsertUnderwritingRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const UpsertUnderwritingResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UpsertUnderwritingResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const UpsertUnderwritingResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertUnderwritingResponse$ {
-  /** @deprecated use `UpsertUnderwritingResponse$inboundSchema` instead. */
-  export const inboundSchema = UpsertUnderwritingResponse$inboundSchema;
-  /** @deprecated use `UpsertUnderwritingResponse$outboundSchema` instead. */
-  export const outboundSchema = UpsertUnderwritingResponse$outboundSchema;
-  /** @deprecated use `UpsertUnderwritingResponse$Outbound` instead. */
-  export type Outbound = UpsertUnderwritingResponse$Outbound;
-}
-
 export function upsertUnderwritingResponseToJSON(
   upsertUnderwritingResponse: UpsertUnderwritingResponse,
 ): string {
@@ -219,7 +175,6 @@ export function upsertUnderwritingResponseToJSON(
     UpsertUnderwritingResponse$outboundSchema.parse(upsertUnderwritingResponse),
   );
 }
-
 export function upsertUnderwritingResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpsertUnderwritingResponse, SDKValidationError> {

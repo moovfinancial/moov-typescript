@@ -70,7 +70,6 @@ export const CreateTransferGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateTransferGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -89,19 +88,6 @@ export const CreateTransferGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferGlobals$ {
-  /** @deprecated use `CreateTransferGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferGlobals$inboundSchema;
-  /** @deprecated use `CreateTransferGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferGlobals$outboundSchema;
-  /** @deprecated use `CreateTransferGlobals$Outbound` instead. */
-  export type Outbound = CreateTransferGlobals$Outbound;
-}
-
 export function createTransferGlobalsToJSON(
   createTransferGlobals: CreateTransferGlobals,
 ): string {
@@ -109,7 +95,6 @@ export function createTransferGlobalsToJSON(
     CreateTransferGlobals$outboundSchema.parse(createTransferGlobals),
   );
 }
-
 export function createTransferGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferGlobals, SDKValidationError> {
@@ -137,7 +122,6 @@ export const CreateTransferRequest$inboundSchema: z.ZodType<
     "CreateTransfer": "createTransfer",
   });
 });
-
 /** @internal */
 export type CreateTransferRequest$Outbound = {
   "x-idempotency-key": string;
@@ -164,19 +148,6 @@ export const CreateTransferRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferRequest$ {
-  /** @deprecated use `CreateTransferRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferRequest$inboundSchema;
-  /** @deprecated use `CreateTransferRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferRequest$outboundSchema;
-  /** @deprecated use `CreateTransferRequest$Outbound` instead. */
-  export type Outbound = CreateTransferRequest$Outbound;
-}
-
 export function createTransferRequestToJSON(
   createTransferRequest: CreateTransferRequest,
 ): string {
@@ -184,7 +155,6 @@ export function createTransferRequestToJSON(
     CreateTransferRequest$outboundSchema.parse(createTransferRequest),
   );
 }
-
 export function createTransferRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferRequest, SDKValidationError> {
@@ -205,7 +175,6 @@ export const CreateTransferResponseResult$inboundSchema: z.ZodType<
   components.CreatedTransfer$inboundSchema,
   components.AsyncTransfer$inboundSchema,
 ]);
-
 /** @internal */
 export type CreateTransferResponseResult$Outbound =
   | components.Transfer$Outbound
@@ -223,19 +192,6 @@ export const CreateTransferResponseResult$outboundSchema: z.ZodType<
   components.AsyncTransfer$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferResponseResult$ {
-  /** @deprecated use `CreateTransferResponseResult$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferResponseResult$inboundSchema;
-  /** @deprecated use `CreateTransferResponseResult$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferResponseResult$outboundSchema;
-  /** @deprecated use `CreateTransferResponseResult$Outbound` instead. */
-  export type Outbound = CreateTransferResponseResult$Outbound;
-}
-
 export function createTransferResponseResultToJSON(
   createTransferResponseResult: CreateTransferResponseResult,
 ): string {
@@ -245,7 +201,6 @@ export function createTransferResponseResultToJSON(
     ),
   );
 }
-
 export function createTransferResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferResponseResult, SDKValidationError> {
@@ -274,7 +229,6 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateTransferResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -303,19 +257,6 @@ export const CreateTransferResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferResponse$ {
-  /** @deprecated use `CreateTransferResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferResponse$inboundSchema;
-  /** @deprecated use `CreateTransferResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferResponse$outboundSchema;
-  /** @deprecated use `CreateTransferResponse$Outbound` instead. */
-  export type Outbound = CreateTransferResponse$Outbound;
-}
-
 export function createTransferResponseToJSON(
   createTransferResponse: CreateTransferResponse,
 ): string {
@@ -323,7 +264,6 @@ export function createTransferResponseToJSON(
     CreateTransferResponse$outboundSchema.parse(createTransferResponse),
   );
 }
-
 export function createTransferResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferResponse, SDKValidationError> {

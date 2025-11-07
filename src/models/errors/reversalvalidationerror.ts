@@ -64,16 +64,3 @@ export const ReversalValidationError$outboundSchema: z.ZodType<
   .pipe(z.object({
     amount: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReversalValidationError$ {
-  /** @deprecated use `ReversalValidationError$inboundSchema` instead. */
-  export const inboundSchema = ReversalValidationError$inboundSchema;
-  /** @deprecated use `ReversalValidationError$outboundSchema` instead. */
-  export const outboundSchema = ReversalValidationError$outboundSchema;
-  /** @deprecated use `ReversalValidationError$Outbound` instead. */
-  export type Outbound = ReversalValidationError$Outbound;
-}

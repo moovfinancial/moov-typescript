@@ -51,7 +51,6 @@ export const UpdateIssuedCardGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateIssuedCardGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const UpdateIssuedCardGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateIssuedCardGlobals$ {
-  /** @deprecated use `UpdateIssuedCardGlobals$inboundSchema` instead. */
-  export const inboundSchema = UpdateIssuedCardGlobals$inboundSchema;
-  /** @deprecated use `UpdateIssuedCardGlobals$outboundSchema` instead. */
-  export const outboundSchema = UpdateIssuedCardGlobals$outboundSchema;
-  /** @deprecated use `UpdateIssuedCardGlobals$Outbound` instead. */
-  export type Outbound = UpdateIssuedCardGlobals$Outbound;
-}
-
 export function updateIssuedCardGlobalsToJSON(
   updateIssuedCardGlobals: UpdateIssuedCardGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function updateIssuedCardGlobalsToJSON(
     UpdateIssuedCardGlobals$outboundSchema.parse(updateIssuedCardGlobals),
   );
 }
-
 export function updateIssuedCardGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateIssuedCardGlobals, SDKValidationError> {
@@ -115,7 +100,6 @@ export const UpdateIssuedCardRequest$inboundSchema: z.ZodType<
     "UpdateIssuedCard": "updateIssuedCard",
   });
 });
-
 /** @internal */
 export type UpdateIssuedCardRequest$Outbound = {
   accountID: string;
@@ -138,19 +122,6 @@ export const UpdateIssuedCardRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateIssuedCardRequest$ {
-  /** @deprecated use `UpdateIssuedCardRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateIssuedCardRequest$inboundSchema;
-  /** @deprecated use `UpdateIssuedCardRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateIssuedCardRequest$outboundSchema;
-  /** @deprecated use `UpdateIssuedCardRequest$Outbound` instead. */
-  export type Outbound = UpdateIssuedCardRequest$Outbound;
-}
-
 export function updateIssuedCardRequestToJSON(
   updateIssuedCardRequest: UpdateIssuedCardRequest,
 ): string {
@@ -158,7 +129,6 @@ export function updateIssuedCardRequestToJSON(
     UpdateIssuedCardRequest$outboundSchema.parse(updateIssuedCardRequest),
   );
 }
-
 export function updateIssuedCardRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateIssuedCardRequest, SDKValidationError> {
@@ -181,7 +151,6 @@ export const UpdateIssuedCardResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type UpdateIssuedCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -200,19 +169,6 @@ export const UpdateIssuedCardResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateIssuedCardResponse$ {
-  /** @deprecated use `UpdateIssuedCardResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateIssuedCardResponse$inboundSchema;
-  /** @deprecated use `UpdateIssuedCardResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateIssuedCardResponse$outboundSchema;
-  /** @deprecated use `UpdateIssuedCardResponse$Outbound` instead. */
-  export type Outbound = UpdateIssuedCardResponse$Outbound;
-}
-
 export function updateIssuedCardResponseToJSON(
   updateIssuedCardResponse: UpdateIssuedCardResponse,
 ): string {
@@ -220,7 +176,6 @@ export function updateIssuedCardResponseToJSON(
     UpdateIssuedCardResponse$outboundSchema.parse(updateIssuedCardResponse),
   );
 }
-
 export function updateIssuedCardResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateIssuedCardResponse, SDKValidationError> {

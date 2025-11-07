@@ -29,7 +29,6 @@ export const CreateEvidenceText$inboundSchema: z.ZodType<
   text: z.string(),
   evidenceType: EvidenceType$inboundSchema,
 });
-
 /** @internal */
 export type CreateEvidenceText$Outbound = {
   text: string;
@@ -46,19 +45,6 @@ export const CreateEvidenceText$outboundSchema: z.ZodType<
   evidenceType: EvidenceType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateEvidenceText$ {
-  /** @deprecated use `CreateEvidenceText$inboundSchema` instead. */
-  export const inboundSchema = CreateEvidenceText$inboundSchema;
-  /** @deprecated use `CreateEvidenceText$outboundSchema` instead. */
-  export const outboundSchema = CreateEvidenceText$outboundSchema;
-  /** @deprecated use `CreateEvidenceText$Outbound` instead. */
-  export type Outbound = CreateEvidenceText$Outbound;
-}
-
 export function createEvidenceTextToJSON(
   createEvidenceText: CreateEvidenceText,
 ): string {
@@ -66,7 +52,6 @@ export function createEvidenceTextToJSON(
     CreateEvidenceText$outboundSchema.parse(createEvidenceText),
   );
 }
-
 export function createEvidenceTextFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateEvidenceText, SDKValidationError> {

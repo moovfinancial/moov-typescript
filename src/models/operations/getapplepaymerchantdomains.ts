@@ -50,7 +50,6 @@ export const GetApplePayMerchantDomainsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetApplePayMerchantDomainsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -69,20 +68,6 @@ export const GetApplePayMerchantDomainsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetApplePayMerchantDomainsGlobals$ {
-  /** @deprecated use `GetApplePayMerchantDomainsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetApplePayMerchantDomainsGlobals$inboundSchema;
-  /** @deprecated use `GetApplePayMerchantDomainsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetApplePayMerchantDomainsGlobals$outboundSchema;
-  /** @deprecated use `GetApplePayMerchantDomainsGlobals$Outbound` instead. */
-  export type Outbound = GetApplePayMerchantDomainsGlobals$Outbound;
-}
-
 export function getApplePayMerchantDomainsGlobalsToJSON(
   getApplePayMerchantDomainsGlobals: GetApplePayMerchantDomainsGlobals,
 ): string {
@@ -92,7 +77,6 @@ export function getApplePayMerchantDomainsGlobalsToJSON(
     ),
   );
 }
-
 export function getApplePayMerchantDomainsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetApplePayMerchantDomainsGlobals, SDKValidationError> {
@@ -111,7 +95,6 @@ export const GetApplePayMerchantDomainsRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type GetApplePayMerchantDomainsRequest$Outbound = {
   accountID: string;
@@ -126,20 +109,6 @@ export const GetApplePayMerchantDomainsRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetApplePayMerchantDomainsRequest$ {
-  /** @deprecated use `GetApplePayMerchantDomainsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetApplePayMerchantDomainsRequest$inboundSchema;
-  /** @deprecated use `GetApplePayMerchantDomainsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetApplePayMerchantDomainsRequest$outboundSchema;
-  /** @deprecated use `GetApplePayMerchantDomainsRequest$Outbound` instead. */
-  export type Outbound = GetApplePayMerchantDomainsRequest$Outbound;
-}
-
 export function getApplePayMerchantDomainsRequestToJSON(
   getApplePayMerchantDomainsRequest: GetApplePayMerchantDomainsRequest,
 ): string {
@@ -149,7 +118,6 @@ export function getApplePayMerchantDomainsRequestToJSON(
     ),
   );
 }
-
 export function getApplePayMerchantDomainsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetApplePayMerchantDomainsRequest, SDKValidationError> {
@@ -174,7 +142,6 @@ export const GetApplePayMerchantDomainsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetApplePayMerchantDomainsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -196,20 +163,6 @@ export const GetApplePayMerchantDomainsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetApplePayMerchantDomainsResponse$ {
-  /** @deprecated use `GetApplePayMerchantDomainsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetApplePayMerchantDomainsResponse$inboundSchema;
-  /** @deprecated use `GetApplePayMerchantDomainsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetApplePayMerchantDomainsResponse$outboundSchema;
-  /** @deprecated use `GetApplePayMerchantDomainsResponse$Outbound` instead. */
-  export type Outbound = GetApplePayMerchantDomainsResponse$Outbound;
-}
-
 export function getApplePayMerchantDomainsResponseToJSON(
   getApplePayMerchantDomainsResponse: GetApplePayMerchantDomainsResponse,
 ): string {
@@ -219,7 +172,6 @@ export function getApplePayMerchantDomainsResponseToJSON(
     ),
   );
 }
-
 export function getApplePayMerchantDomainsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetApplePayMerchantDomainsResponse, SDKValidationError> {

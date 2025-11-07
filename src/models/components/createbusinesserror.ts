@@ -59,7 +59,6 @@ export const CreateBusinessErrorEin$inboundSchema: z.ZodType<
 > = z.object({
   number: z.string().optional(),
 });
-
 /** @internal */
 export type CreateBusinessErrorEin$Outbound = {
   number?: string | undefined;
@@ -74,19 +73,6 @@ export const CreateBusinessErrorEin$outboundSchema: z.ZodType<
   number: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBusinessErrorEin$ {
-  /** @deprecated use `CreateBusinessErrorEin$inboundSchema` instead. */
-  export const inboundSchema = CreateBusinessErrorEin$inboundSchema;
-  /** @deprecated use `CreateBusinessErrorEin$outboundSchema` instead. */
-  export const outboundSchema = CreateBusinessErrorEin$outboundSchema;
-  /** @deprecated use `CreateBusinessErrorEin$Outbound` instead. */
-  export type Outbound = CreateBusinessErrorEin$Outbound;
-}
-
 export function createBusinessErrorEinToJSON(
   createBusinessErrorEin: CreateBusinessErrorEin,
 ): string {
@@ -94,7 +80,6 @@ export function createBusinessErrorEinToJSON(
     CreateBusinessErrorEin$outboundSchema.parse(createBusinessErrorEin),
   );
 }
-
 export function createBusinessErrorEinFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateBusinessErrorEin, SDKValidationError> {
@@ -113,7 +98,6 @@ export const CreateBusinessErrorTaxID$inboundSchema: z.ZodType<
 > = z.object({
   ein: z.lazy(() => CreateBusinessErrorEin$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CreateBusinessErrorTaxID$Outbound = {
   ein?: CreateBusinessErrorEin$Outbound | undefined;
@@ -128,19 +112,6 @@ export const CreateBusinessErrorTaxID$outboundSchema: z.ZodType<
   ein: z.lazy(() => CreateBusinessErrorEin$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBusinessErrorTaxID$ {
-  /** @deprecated use `CreateBusinessErrorTaxID$inboundSchema` instead. */
-  export const inboundSchema = CreateBusinessErrorTaxID$inboundSchema;
-  /** @deprecated use `CreateBusinessErrorTaxID$outboundSchema` instead. */
-  export const outboundSchema = CreateBusinessErrorTaxID$outboundSchema;
-  /** @deprecated use `CreateBusinessErrorTaxID$Outbound` instead. */
-  export type Outbound = CreateBusinessErrorTaxID$Outbound;
-}
-
 export function createBusinessErrorTaxIDToJSON(
   createBusinessErrorTaxID: CreateBusinessErrorTaxID,
 ): string {
@@ -148,7 +119,6 @@ export function createBusinessErrorTaxIDToJSON(
     CreateBusinessErrorTaxID$outboundSchema.parse(createBusinessErrorTaxID),
   );
 }
-
 export function createBusinessErrorTaxIDFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateBusinessErrorTaxID, SDKValidationError> {
@@ -169,7 +139,6 @@ export const CreateBusinessErrorIndustryCodes$inboundSchema: z.ZodType<
   sic: z.string().optional(),
   mcc: z.string().optional(),
 });
-
 /** @internal */
 export type CreateBusinessErrorIndustryCodes$Outbound = {
   naics?: string | undefined;
@@ -188,19 +157,6 @@ export const CreateBusinessErrorIndustryCodes$outboundSchema: z.ZodType<
   mcc: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBusinessErrorIndustryCodes$ {
-  /** @deprecated use `CreateBusinessErrorIndustryCodes$inboundSchema` instead. */
-  export const inboundSchema = CreateBusinessErrorIndustryCodes$inboundSchema;
-  /** @deprecated use `CreateBusinessErrorIndustryCodes$outboundSchema` instead. */
-  export const outboundSchema = CreateBusinessErrorIndustryCodes$outboundSchema;
-  /** @deprecated use `CreateBusinessErrorIndustryCodes$Outbound` instead. */
-  export type Outbound = CreateBusinessErrorIndustryCodes$Outbound;
-}
-
 export function createBusinessErrorIndustryCodesToJSON(
   createBusinessErrorIndustryCodes: CreateBusinessErrorIndustryCodes,
 ): string {
@@ -210,7 +166,6 @@ export function createBusinessErrorIndustryCodesToJSON(
     ),
   );
 }
-
 export function createBusinessErrorIndustryCodesFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateBusinessErrorIndustryCodes, SDKValidationError> {
@@ -241,7 +196,6 @@ export const CreateBusinessError$inboundSchema: z.ZodType<
   industry: z.string().optional(),
   primaryRegulator: z.string().optional(),
 });
-
 /** @internal */
 export type CreateBusinessError$Outbound = {
   legalBusinessName?: string | undefined;
@@ -279,19 +233,6 @@ export const CreateBusinessError$outboundSchema: z.ZodType<
   primaryRegulator: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBusinessError$ {
-  /** @deprecated use `CreateBusinessError$inboundSchema` instead. */
-  export const inboundSchema = CreateBusinessError$inboundSchema;
-  /** @deprecated use `CreateBusinessError$outboundSchema` instead. */
-  export const outboundSchema = CreateBusinessError$outboundSchema;
-  /** @deprecated use `CreateBusinessError$Outbound` instead. */
-  export type Outbound = CreateBusinessError$Outbound;
-}
-
 export function createBusinessErrorToJSON(
   createBusinessError: CreateBusinessError,
 ): string {
@@ -299,7 +240,6 @@ export function createBusinessErrorToJSON(
     CreateBusinessError$outboundSchema.parse(createBusinessError),
   );
 }
-
 export function createBusinessErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateBusinessError, SDKValidationError> {

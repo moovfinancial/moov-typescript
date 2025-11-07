@@ -64,16 +64,3 @@ export const MicroDepositValidationError$outboundSchema: z.ZodType<
   .pipe(z.object({
     amounts: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MicroDepositValidationError$ {
-  /** @deprecated use `MicroDepositValidationError$inboundSchema` instead. */
-  export const inboundSchema = MicroDepositValidationError$inboundSchema;
-  /** @deprecated use `MicroDepositValidationError$outboundSchema` instead. */
-  export const outboundSchema = MicroDepositValidationError$outboundSchema;
-  /** @deprecated use `MicroDepositValidationError$Outbound` instead. */
-  export type Outbound = MicroDepositValidationError$Outbound;
-}

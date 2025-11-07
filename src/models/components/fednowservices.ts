@@ -32,7 +32,6 @@ export const FedNowServices$inboundSchema: z.ZodType<
   sendPayments: z.boolean(),
   requestForPayment: z.boolean(),
 });
-
 /** @internal */
 export type FedNowServices$Outbound = {
   receivePayments: boolean;
@@ -51,23 +50,9 @@ export const FedNowServices$outboundSchema: z.ZodType<
   requestForPayment: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FedNowServices$ {
-  /** @deprecated use `FedNowServices$inboundSchema` instead. */
-  export const inboundSchema = FedNowServices$inboundSchema;
-  /** @deprecated use `FedNowServices$outboundSchema` instead. */
-  export const outboundSchema = FedNowServices$outboundSchema;
-  /** @deprecated use `FedNowServices$Outbound` instead. */
-  export type Outbound = FedNowServices$Outbound;
-}
-
 export function fedNowServicesToJSON(fedNowServices: FedNowServices): string {
   return JSON.stringify(FedNowServices$outboundSchema.parse(fedNowServices));
 }
-
 export function fedNowServicesFromJSON(
   jsonString: string,
 ): SafeParseResult<FedNowServices, SDKValidationError> {

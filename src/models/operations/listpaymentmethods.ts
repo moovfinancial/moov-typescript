@@ -60,7 +60,6 @@ export const ListPaymentMethodsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListPaymentMethodsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -79,19 +78,6 @@ export const ListPaymentMethodsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPaymentMethodsGlobals$ {
-  /** @deprecated use `ListPaymentMethodsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListPaymentMethodsGlobals$inboundSchema;
-  /** @deprecated use `ListPaymentMethodsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListPaymentMethodsGlobals$outboundSchema;
-  /** @deprecated use `ListPaymentMethodsGlobals$Outbound` instead. */
-  export type Outbound = ListPaymentMethodsGlobals$Outbound;
-}
-
 export function listPaymentMethodsGlobalsToJSON(
   listPaymentMethodsGlobals: ListPaymentMethodsGlobals,
 ): string {
@@ -99,7 +85,6 @@ export function listPaymentMethodsGlobalsToJSON(
     ListPaymentMethodsGlobals$outboundSchema.parse(listPaymentMethodsGlobals),
   );
 }
-
 export function listPaymentMethodsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPaymentMethodsGlobals, SDKValidationError> {
@@ -120,7 +105,6 @@ export const ListPaymentMethodsRequest$inboundSchema: z.ZodType<
   sourceID: z.string().optional(),
   paymentMethodType: components.PaymentMethodType$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ListPaymentMethodsRequest$Outbound = {
   accountID: string;
@@ -139,19 +123,6 @@ export const ListPaymentMethodsRequest$outboundSchema: z.ZodType<
   paymentMethodType: components.PaymentMethodType$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPaymentMethodsRequest$ {
-  /** @deprecated use `ListPaymentMethodsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListPaymentMethodsRequest$inboundSchema;
-  /** @deprecated use `ListPaymentMethodsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListPaymentMethodsRequest$outboundSchema;
-  /** @deprecated use `ListPaymentMethodsRequest$Outbound` instead. */
-  export type Outbound = ListPaymentMethodsRequest$Outbound;
-}
-
 export function listPaymentMethodsRequestToJSON(
   listPaymentMethodsRequest: ListPaymentMethodsRequest,
 ): string {
@@ -159,7 +130,6 @@ export function listPaymentMethodsRequestToJSON(
     ListPaymentMethodsRequest$outboundSchema.parse(listPaymentMethodsRequest),
   );
 }
-
 export function listPaymentMethodsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPaymentMethodsRequest, SDKValidationError> {
@@ -184,7 +154,6 @@ export const ListPaymentMethodsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListPaymentMethodsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -206,19 +175,6 @@ export const ListPaymentMethodsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPaymentMethodsResponse$ {
-  /** @deprecated use `ListPaymentMethodsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListPaymentMethodsResponse$inboundSchema;
-  /** @deprecated use `ListPaymentMethodsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListPaymentMethodsResponse$outboundSchema;
-  /** @deprecated use `ListPaymentMethodsResponse$Outbound` instead. */
-  export type Outbound = ListPaymentMethodsResponse$Outbound;
-}
-
 export function listPaymentMethodsResponseToJSON(
   listPaymentMethodsResponse: ListPaymentMethodsResponse,
 ): string {
@@ -226,7 +182,6 @@ export function listPaymentMethodsResponseToJSON(
     ListPaymentMethodsResponse$outboundSchema.parse(listPaymentMethodsResponse),
   );
 }
-
 export function listPaymentMethodsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPaymentMethodsResponse, SDKValidationError> {

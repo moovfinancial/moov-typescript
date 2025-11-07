@@ -42,7 +42,6 @@ export const CardVerification$inboundSchema: z.ZodType<
   postalCode: CardVerificationResult$inboundSchema,
   accountName: AccountNameVerification$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CardVerification$Outbound = {
   cvv: string;
@@ -63,19 +62,6 @@ export const CardVerification$outboundSchema: z.ZodType<
   accountName: AccountNameVerification$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardVerification$ {
-  /** @deprecated use `CardVerification$inboundSchema` instead. */
-  export const inboundSchema = CardVerification$inboundSchema;
-  /** @deprecated use `CardVerification$outboundSchema` instead. */
-  export const outboundSchema = CardVerification$outboundSchema;
-  /** @deprecated use `CardVerification$Outbound` instead. */
-  export type Outbound = CardVerification$Outbound;
-}
-
 export function cardVerificationToJSON(
   cardVerification: CardVerification,
 ): string {
@@ -83,7 +69,6 @@ export function cardVerificationToJSON(
     CardVerification$outboundSchema.parse(cardVerification),
   );
 }
-
 export function cardVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<CardVerification, SDKValidationError> {

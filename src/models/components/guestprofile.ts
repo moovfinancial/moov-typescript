@@ -38,7 +38,6 @@ export const GuestProfile$inboundSchema: z.ZodType<
   phone: PhoneNumber$inboundSchema.optional(),
   email: z.string().optional(),
 });
-
 /** @internal */
 export type GuestProfile$Outbound = {
   name: string;
@@ -57,23 +56,9 @@ export const GuestProfile$outboundSchema: z.ZodType<
   email: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GuestProfile$ {
-  /** @deprecated use `GuestProfile$inboundSchema` instead. */
-  export const inboundSchema = GuestProfile$inboundSchema;
-  /** @deprecated use `GuestProfile$outboundSchema` instead. */
-  export const outboundSchema = GuestProfile$outboundSchema;
-  /** @deprecated use `GuestProfile$Outbound` instead. */
-  export type Outbound = GuestProfile$Outbound;
-}
-
 export function guestProfileToJSON(guestProfile: GuestProfile): string {
   return JSON.stringify(GuestProfile$outboundSchema.parse(guestProfile));
 }
-
 export function guestProfileFromJSON(
   jsonString: string,
 ): SafeParseResult<GuestProfile, SDKValidationError> {

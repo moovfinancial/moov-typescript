@@ -25,7 +25,6 @@ export const SendFundsPushToCardError$inboundSchema: z.ZodType<
 > = z.object({
   estimatedActivity: EstimatedActivityError$inboundSchema.optional(),
 });
-
 /** @internal */
 export type SendFundsPushToCardError$Outbound = {
   estimatedActivity?: EstimatedActivityError$Outbound | undefined;
@@ -40,19 +39,6 @@ export const SendFundsPushToCardError$outboundSchema: z.ZodType<
   estimatedActivity: EstimatedActivityError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SendFundsPushToCardError$ {
-  /** @deprecated use `SendFundsPushToCardError$inboundSchema` instead. */
-  export const inboundSchema = SendFundsPushToCardError$inboundSchema;
-  /** @deprecated use `SendFundsPushToCardError$outboundSchema` instead. */
-  export const outboundSchema = SendFundsPushToCardError$outboundSchema;
-  /** @deprecated use `SendFundsPushToCardError$Outbound` instead. */
-  export type Outbound = SendFundsPushToCardError$Outbound;
-}
-
 export function sendFundsPushToCardErrorToJSON(
   sendFundsPushToCardError: SendFundsPushToCardError,
 ): string {
@@ -60,7 +46,6 @@ export function sendFundsPushToCardErrorToJSON(
     SendFundsPushToCardError$outboundSchema.parse(sendFundsPushToCardError),
   );
 }
-
 export function sendFundsPushToCardErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<SendFundsPushToCardError, SDKValidationError> {

@@ -90,7 +90,6 @@ export const ListWalletTransactionsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListWalletTransactionsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -109,19 +108,6 @@ export const ListWalletTransactionsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListWalletTransactionsGlobals$ {
-  /** @deprecated use `ListWalletTransactionsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListWalletTransactionsGlobals$inboundSchema;
-  /** @deprecated use `ListWalletTransactionsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListWalletTransactionsGlobals$outboundSchema;
-  /** @deprecated use `ListWalletTransactionsGlobals$Outbound` instead. */
-  export type Outbound = ListWalletTransactionsGlobals$Outbound;
-}
-
 export function listWalletTransactionsGlobalsToJSON(
   listWalletTransactionsGlobals: ListWalletTransactionsGlobals,
 ): string {
@@ -131,7 +117,6 @@ export function listWalletTransactionsGlobalsToJSON(
     ),
   );
 }
-
 export function listWalletTransactionsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListWalletTransactionsGlobals, SDKValidationError> {
@@ -172,7 +157,6 @@ export const ListWalletTransactionsRequest$inboundSchema: z.ZodType<
   ).optional(),
   sweepID: z.string().optional(),
 });
-
 /** @internal */
 export type ListWalletTransactionsRequest$Outbound = {
   accountID: string;
@@ -214,19 +198,6 @@ export const ListWalletTransactionsRequest$outboundSchema: z.ZodType<
   sweepID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListWalletTransactionsRequest$ {
-  /** @deprecated use `ListWalletTransactionsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListWalletTransactionsRequest$inboundSchema;
-  /** @deprecated use `ListWalletTransactionsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListWalletTransactionsRequest$outboundSchema;
-  /** @deprecated use `ListWalletTransactionsRequest$Outbound` instead. */
-  export type Outbound = ListWalletTransactionsRequest$Outbound;
-}
-
 export function listWalletTransactionsRequestToJSON(
   listWalletTransactionsRequest: ListWalletTransactionsRequest,
 ): string {
@@ -236,7 +207,6 @@ export function listWalletTransactionsRequestToJSON(
     ),
   );
 }
-
 export function listWalletTransactionsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListWalletTransactionsRequest, SDKValidationError> {
@@ -261,7 +231,6 @@ export const ListWalletTransactionsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListWalletTransactionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -283,19 +252,6 @@ export const ListWalletTransactionsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListWalletTransactionsResponse$ {
-  /** @deprecated use `ListWalletTransactionsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListWalletTransactionsResponse$inboundSchema;
-  /** @deprecated use `ListWalletTransactionsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListWalletTransactionsResponse$outboundSchema;
-  /** @deprecated use `ListWalletTransactionsResponse$Outbound` instead. */
-  export type Outbound = ListWalletTransactionsResponse$Outbound;
-}
-
 export function listWalletTransactionsResponseToJSON(
   listWalletTransactionsResponse: ListWalletTransactionsResponse,
 ): string {
@@ -305,7 +261,6 @@ export function listWalletTransactionsResponseToJSON(
     ),
   );
 }
-
 export function listWalletTransactionsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListWalletTransactionsResponse, SDKValidationError> {

@@ -48,7 +48,6 @@ export const GetFileDetailsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetFileDetailsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const GetFileDetailsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFileDetailsGlobals$ {
-  /** @deprecated use `GetFileDetailsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetFileDetailsGlobals$inboundSchema;
-  /** @deprecated use `GetFileDetailsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetFileDetailsGlobals$outboundSchema;
-  /** @deprecated use `GetFileDetailsGlobals$Outbound` instead. */
-  export type Outbound = GetFileDetailsGlobals$Outbound;
-}
-
 export function getFileDetailsGlobalsToJSON(
   getFileDetailsGlobals: GetFileDetailsGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function getFileDetailsGlobalsToJSON(
     GetFileDetailsGlobals$outboundSchema.parse(getFileDetailsGlobals),
   );
 }
-
 export function getFileDetailsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFileDetailsGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetFileDetailsRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   fileID: z.string(),
 });
-
 /** @internal */
 export type GetFileDetailsRequest$Outbound = {
   accountID: string;
@@ -124,19 +108,6 @@ export const GetFileDetailsRequest$outboundSchema: z.ZodType<
   fileID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFileDetailsRequest$ {
-  /** @deprecated use `GetFileDetailsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetFileDetailsRequest$inboundSchema;
-  /** @deprecated use `GetFileDetailsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetFileDetailsRequest$outboundSchema;
-  /** @deprecated use `GetFileDetailsRequest$Outbound` instead. */
-  export type Outbound = GetFileDetailsRequest$Outbound;
-}
-
 export function getFileDetailsRequestToJSON(
   getFileDetailsRequest: GetFileDetailsRequest,
 ): string {
@@ -144,7 +115,6 @@ export function getFileDetailsRequestToJSON(
     GetFileDetailsRequest$outboundSchema.parse(getFileDetailsRequest),
   );
 }
-
 export function getFileDetailsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFileDetailsRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const GetFileDetailsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetFileDetailsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const GetFileDetailsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFileDetailsResponse$ {
-  /** @deprecated use `GetFileDetailsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetFileDetailsResponse$inboundSchema;
-  /** @deprecated use `GetFileDetailsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetFileDetailsResponse$outboundSchema;
-  /** @deprecated use `GetFileDetailsResponse$Outbound` instead. */
-  export type Outbound = GetFileDetailsResponse$Outbound;
-}
-
 export function getFileDetailsResponseToJSON(
   getFileDetailsResponse: GetFileDetailsResponse,
 ): string {
@@ -211,7 +167,6 @@ export function getFileDetailsResponseToJSON(
     GetFileDetailsResponse$outboundSchema.parse(getFileDetailsResponse),
   );
 }
-
 export function getFileDetailsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetFileDetailsResponse, SDKValidationError> {

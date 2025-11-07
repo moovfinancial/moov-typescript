@@ -48,7 +48,6 @@ export const CreateTerminalApplicationVersionGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateTerminalApplicationVersionGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,21 +66,6 @@ export const CreateTerminalApplicationVersionGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTerminalApplicationVersionGlobals$ {
-  /** @deprecated use `CreateTerminalApplicationVersionGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateTerminalApplicationVersionGlobals$inboundSchema;
-  /** @deprecated use `CreateTerminalApplicationVersionGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateTerminalApplicationVersionGlobals$outboundSchema;
-  /** @deprecated use `CreateTerminalApplicationVersionGlobals$Outbound` instead. */
-  export type Outbound = CreateTerminalApplicationVersionGlobals$Outbound;
-}
-
 export function createTerminalApplicationVersionGlobalsToJSON(
   createTerminalApplicationVersionGlobals:
     CreateTerminalApplicationVersionGlobals,
@@ -92,7 +76,6 @@ export function createTerminalApplicationVersionGlobalsToJSON(
     ),
   );
 }
-
 export function createTerminalApplicationVersionGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -123,7 +106,6 @@ export const CreateTerminalApplicationVersionRequest$inboundSchema: z.ZodType<
     "TerminalApplicationVersion": "terminalApplicationVersion",
   });
 });
-
 /** @internal */
 export type CreateTerminalApplicationVersionRequest$Outbound = {
   terminalApplicationID: string;
@@ -145,21 +127,6 @@ export const CreateTerminalApplicationVersionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTerminalApplicationVersionRequest$ {
-  /** @deprecated use `CreateTerminalApplicationVersionRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateTerminalApplicationVersionRequest$inboundSchema;
-  /** @deprecated use `CreateTerminalApplicationVersionRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateTerminalApplicationVersionRequest$outboundSchema;
-  /** @deprecated use `CreateTerminalApplicationVersionRequest$Outbound` instead. */
-  export type Outbound = CreateTerminalApplicationVersionRequest$Outbound;
-}
-
 export function createTerminalApplicationVersionRequestToJSON(
   createTerminalApplicationVersionRequest:
     CreateTerminalApplicationVersionRequest,
@@ -170,7 +137,6 @@ export function createTerminalApplicationVersionRequestToJSON(
     ),
   );
 }
-
 export function createTerminalApplicationVersionRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -201,7 +167,6 @@ export const CreateTerminalApplicationVersionResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateTerminalApplicationVersionResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -223,21 +188,6 @@ export const CreateTerminalApplicationVersionResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTerminalApplicationVersionResponse$ {
-  /** @deprecated use `CreateTerminalApplicationVersionResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateTerminalApplicationVersionResponse$inboundSchema;
-  /** @deprecated use `CreateTerminalApplicationVersionResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateTerminalApplicationVersionResponse$outboundSchema;
-  /** @deprecated use `CreateTerminalApplicationVersionResponse$Outbound` instead. */
-  export type Outbound = CreateTerminalApplicationVersionResponse$Outbound;
-}
-
 export function createTerminalApplicationVersionResponseToJSON(
   createTerminalApplicationVersionResponse:
     CreateTerminalApplicationVersionResponse,
@@ -248,7 +198,6 @@ export function createTerminalApplicationVersionResponseToJSON(
     ),
   );
 }
-
 export function createTerminalApplicationVersionResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<

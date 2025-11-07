@@ -23,7 +23,6 @@ export const ACHException$inboundSchema: z.ZodType<
   reason: z.string().optional(),
   description: z.string().optional(),
 });
-
 /** @internal */
 export type ACHException$Outbound = {
   code?: string | undefined;
@@ -42,23 +41,9 @@ export const ACHException$outboundSchema: z.ZodType<
   description: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ACHException$ {
-  /** @deprecated use `ACHException$inboundSchema` instead. */
-  export const inboundSchema = ACHException$inboundSchema;
-  /** @deprecated use `ACHException$outboundSchema` instead. */
-  export const outboundSchema = ACHException$outboundSchema;
-  /** @deprecated use `ACHException$Outbound` instead. */
-  export type Outbound = ACHException$Outbound;
-}
-
 export function achExceptionToJSON(achException: ACHException): string {
   return JSON.stringify(ACHException$outboundSchema.parse(achException));
 }
-
 export function achExceptionFromJSON(
   jsonString: string,
 ): SafeParseResult<ACHException, SDKValidationError> {

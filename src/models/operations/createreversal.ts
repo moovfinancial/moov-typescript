@@ -59,7 +59,6 @@ export const CreateReversalGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateReversalGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -78,19 +77,6 @@ export const CreateReversalGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReversalGlobals$ {
-  /** @deprecated use `CreateReversalGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateReversalGlobals$inboundSchema;
-  /** @deprecated use `CreateReversalGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateReversalGlobals$outboundSchema;
-  /** @deprecated use `CreateReversalGlobals$Outbound` instead. */
-  export type Outbound = CreateReversalGlobals$Outbound;
-}
-
 export function createReversalGlobalsToJSON(
   createReversalGlobals: CreateReversalGlobals,
 ): string {
@@ -98,7 +84,6 @@ export function createReversalGlobalsToJSON(
     CreateReversalGlobals$outboundSchema.parse(createReversalGlobals),
   );
 }
-
 export function createReversalGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateReversalGlobals, SDKValidationError> {
@@ -125,7 +110,6 @@ export const CreateReversalRequest$inboundSchema: z.ZodType<
     "CreateReversal": "createReversal",
   });
 });
-
 /** @internal */
 export type CreateReversalRequest$Outbound = {
   "x-idempotency-key": string;
@@ -151,19 +135,6 @@ export const CreateReversalRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReversalRequest$ {
-  /** @deprecated use `CreateReversalRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateReversalRequest$inboundSchema;
-  /** @deprecated use `CreateReversalRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateReversalRequest$outboundSchema;
-  /** @deprecated use `CreateReversalRequest$Outbound` instead. */
-  export type Outbound = CreateReversalRequest$Outbound;
-}
-
 export function createReversalRequestToJSON(
   createReversalRequest: CreateReversalRequest,
 ): string {
@@ -171,7 +142,6 @@ export function createReversalRequestToJSON(
     CreateReversalRequest$outboundSchema.parse(createReversalRequest),
   );
 }
-
 export function createReversalRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateReversalRequest, SDKValidationError> {
@@ -196,7 +166,6 @@ export const CreateReversalResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateReversalResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -218,19 +187,6 @@ export const CreateReversalResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReversalResponse$ {
-  /** @deprecated use `CreateReversalResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateReversalResponse$inboundSchema;
-  /** @deprecated use `CreateReversalResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateReversalResponse$outboundSchema;
-  /** @deprecated use `CreateReversalResponse$Outbound` instead. */
-  export type Outbound = CreateReversalResponse$Outbound;
-}
-
 export function createReversalResponseToJSON(
   createReversalResponse: CreateReversalResponse,
 ): string {
@@ -238,7 +194,6 @@ export function createReversalResponseToJSON(
     CreateReversalResponse$outboundSchema.parse(createReversalResponse),
   );
 }
-
 export function createReversalResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateReversalResponse, SDKValidationError> {

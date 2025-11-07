@@ -35,7 +35,6 @@ export const CreateTransferOptions$inboundSchema: z.ZodType<
   destination: SourceDestinationOptions$inboundSchema,
   amount: Amount$inboundSchema,
 });
-
 /** @internal */
 export type CreateTransferOptions$Outbound = {
   source: SourceDestinationOptions$Outbound;
@@ -54,19 +53,6 @@ export const CreateTransferOptions$outboundSchema: z.ZodType<
   amount: Amount$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferOptions$ {
-  /** @deprecated use `CreateTransferOptions$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferOptions$inboundSchema;
-  /** @deprecated use `CreateTransferOptions$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferOptions$outboundSchema;
-  /** @deprecated use `CreateTransferOptions$Outbound` instead. */
-  export type Outbound = CreateTransferOptions$Outbound;
-}
-
 export function createTransferOptionsToJSON(
   createTransferOptions: CreateTransferOptions,
 ): string {
@@ -74,7 +60,6 @@ export function createTransferOptionsToJSON(
     CreateTransferOptions$outboundSchema.parse(createTransferOptions),
   );
 }
-
 export function createTransferOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferOptions, SDKValidationError> {

@@ -84,7 +84,6 @@ export const CardBrandFees$inboundSchema: z.ZodType<
   refunds: BillingCountAndAmount$inboundSchema.optional(),
   total: BillingCountAndAmount$inboundSchema,
 });
-
 /** @internal */
 export type CardBrandFees$Outbound = {
   interchange?: BillingCountAndAmount$Outbound | undefined;
@@ -121,23 +120,9 @@ export const CardBrandFees$outboundSchema: z.ZodType<
   total: BillingCountAndAmount$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardBrandFees$ {
-  /** @deprecated use `CardBrandFees$inboundSchema` instead. */
-  export const inboundSchema = CardBrandFees$inboundSchema;
-  /** @deprecated use `CardBrandFees$outboundSchema` instead. */
-  export const outboundSchema = CardBrandFees$outboundSchema;
-  /** @deprecated use `CardBrandFees$Outbound` instead. */
-  export type Outbound = CardBrandFees$Outbound;
-}
-
 export function cardBrandFeesToJSON(cardBrandFees: CardBrandFees): string {
   return JSON.stringify(CardBrandFees$outboundSchema.parse(cardBrandFees));
 }
-
 export function cardBrandFeesFromJSON(
   jsonString: string,
 ): SafeParseResult<CardBrandFees, SDKValidationError> {

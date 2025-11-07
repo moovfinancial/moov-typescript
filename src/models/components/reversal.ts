@@ -33,7 +33,6 @@ export const Reversal$inboundSchema: z.ZodType<
   ReversedWithCancellation$inboundSchema,
   ReversedWithRefund$inboundSchema,
 ]);
-
 /** @internal */
 export type Reversal$Outbound =
   | ReversedWithCancellation$Outbound
@@ -49,23 +48,9 @@ export const Reversal$outboundSchema: z.ZodType<
   ReversedWithRefund$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Reversal$ {
-  /** @deprecated use `Reversal$inboundSchema` instead. */
-  export const inboundSchema = Reversal$inboundSchema;
-  /** @deprecated use `Reversal$outboundSchema` instead. */
-  export const outboundSchema = Reversal$outboundSchema;
-  /** @deprecated use `Reversal$Outbound` instead. */
-  export type Outbound = Reversal$Outbound;
-}
-
 export function reversalToJSON(reversal: Reversal): string {
   return JSON.stringify(Reversal$outboundSchema.parse(reversal));
 }
-
 export function reversalFromJSON(
   jsonString: string,
 ): SafeParseResult<Reversal, SDKValidationError> {

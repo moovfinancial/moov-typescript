@@ -34,7 +34,6 @@ export const Adjustment$inboundSchema: z.ZodType<
   amount: AmountDecimal$inboundSchema,
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type Adjustment$Outbound = {
   adjustmentID: string;
@@ -55,23 +54,9 @@ export const Adjustment$outboundSchema: z.ZodType<
   createdOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Adjustment$ {
-  /** @deprecated use `Adjustment$inboundSchema` instead. */
-  export const inboundSchema = Adjustment$inboundSchema;
-  /** @deprecated use `Adjustment$outboundSchema` instead. */
-  export const outboundSchema = Adjustment$outboundSchema;
-  /** @deprecated use `Adjustment$Outbound` instead. */
-  export type Outbound = Adjustment$Outbound;
-}
-
 export function adjustmentToJSON(adjustment: Adjustment): string {
   return JSON.stringify(Adjustment$outboundSchema.parse(adjustment));
 }
-
 export function adjustmentFromJSON(
   jsonString: string,
 ): SafeParseResult<Adjustment, SDKValidationError> {

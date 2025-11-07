@@ -40,7 +40,6 @@ export const ApplePayHeader$inboundSchema: z.ZodType<
   publicKeyHash: z.string(),
   transactionId: z.string(),
 });
-
 /** @internal */
 export type ApplePayHeader$Outbound = {
   ephemeralPublicKey?: string | undefined;
@@ -59,23 +58,9 @@ export const ApplePayHeader$outboundSchema: z.ZodType<
   transactionId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplePayHeader$ {
-  /** @deprecated use `ApplePayHeader$inboundSchema` instead. */
-  export const inboundSchema = ApplePayHeader$inboundSchema;
-  /** @deprecated use `ApplePayHeader$outboundSchema` instead. */
-  export const outboundSchema = ApplePayHeader$outboundSchema;
-  /** @deprecated use `ApplePayHeader$Outbound` instead. */
-  export type Outbound = ApplePayHeader$Outbound;
-}
-
 export function applePayHeaderToJSON(applePayHeader: ApplePayHeader): string {
   return JSON.stringify(ApplePayHeader$outboundSchema.parse(applePayHeader));
 }
-
 export function applePayHeaderFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplePayHeader, SDKValidationError> {

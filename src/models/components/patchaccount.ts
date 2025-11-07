@@ -90,7 +90,6 @@ export const PatchAccountTermsOfService$inboundSchema: z.ZodType<
   TermsOfServiceTokenUpdate$inboundSchema,
   ManualTermsOfServiceUpdate$inboundSchema,
 ]);
-
 /** @internal */
 export type PatchAccountTermsOfService$Outbound =
   | TermsOfServiceTokenUpdate$Outbound
@@ -106,19 +105,6 @@ export const PatchAccountTermsOfService$outboundSchema: z.ZodType<
   ManualTermsOfServiceUpdate$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchAccountTermsOfService$ {
-  /** @deprecated use `PatchAccountTermsOfService$inboundSchema` instead. */
-  export const inboundSchema = PatchAccountTermsOfService$inboundSchema;
-  /** @deprecated use `PatchAccountTermsOfService$outboundSchema` instead. */
-  export const outboundSchema = PatchAccountTermsOfService$outboundSchema;
-  /** @deprecated use `PatchAccountTermsOfService$Outbound` instead. */
-  export type Outbound = PatchAccountTermsOfService$Outbound;
-}
-
 export function patchAccountTermsOfServiceToJSON(
   patchAccountTermsOfService: PatchAccountTermsOfService,
 ): string {
@@ -126,7 +112,6 @@ export function patchAccountTermsOfServiceToJSON(
     PatchAccountTermsOfService$outboundSchema.parse(patchAccountTermsOfService),
   );
 }
-
 export function patchAccountTermsOfServiceFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchAccountTermsOfService, SDKValidationError> {
@@ -148,7 +133,6 @@ export const PatchAccountCustomerSupport$inboundSchema: z.ZodType<
   address: AddressUpdate$inboundSchema.optional(),
   website: z.string().optional(),
 });
-
 /** @internal */
 export type PatchAccountCustomerSupport$Outbound = {
   phone?: PhoneNumber$Outbound | undefined;
@@ -169,19 +153,6 @@ export const PatchAccountCustomerSupport$outboundSchema: z.ZodType<
   website: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchAccountCustomerSupport$ {
-  /** @deprecated use `PatchAccountCustomerSupport$inboundSchema` instead. */
-  export const inboundSchema = PatchAccountCustomerSupport$inboundSchema;
-  /** @deprecated use `PatchAccountCustomerSupport$outboundSchema` instead. */
-  export const outboundSchema = PatchAccountCustomerSupport$outboundSchema;
-  /** @deprecated use `PatchAccountCustomerSupport$Outbound` instead. */
-  export type Outbound = PatchAccountCustomerSupport$Outbound;
-}
-
 export function patchAccountCustomerSupportToJSON(
   patchAccountCustomerSupport: PatchAccountCustomerSupport,
 ): string {
@@ -191,7 +162,6 @@ export function patchAccountCustomerSupportToJSON(
     ),
   );
 }
-
 export function patchAccountCustomerSupportFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchAccountCustomerSupport, SDKValidationError> {
@@ -220,7 +190,6 @@ export const PatchAccount$inboundSchema: z.ZodType<
   ).optional(),
   settings: CreateAccountSettings$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PatchAccount$Outbound = {
   profile?: PatchProfile$Outbound | undefined;
@@ -253,23 +222,9 @@ export const PatchAccount$outboundSchema: z.ZodType<
   settings: CreateAccountSettings$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchAccount$ {
-  /** @deprecated use `PatchAccount$inboundSchema` instead. */
-  export const inboundSchema = PatchAccount$inboundSchema;
-  /** @deprecated use `PatchAccount$outboundSchema` instead. */
-  export const outboundSchema = PatchAccount$outboundSchema;
-  /** @deprecated use `PatchAccount$Outbound` instead. */
-  export type Outbound = PatchAccount$Outbound;
-}
-
 export function patchAccountToJSON(patchAccount: PatchAccount): string {
   return JSON.stringify(PatchAccount$outboundSchema.parse(patchAccount));
 }
-
 export function patchAccountFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchAccount, SDKValidationError> {

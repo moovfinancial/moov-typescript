@@ -16,19 +16,7 @@ export type GeographicReach = ClosedEnum<typeof GeographicReach>;
 export const GeographicReach$inboundSchema: z.ZodNativeEnum<
   typeof GeographicReach
 > = z.nativeEnum(GeographicReach);
-
 /** @internal */
 export const GeographicReach$outboundSchema: z.ZodNativeEnum<
   typeof GeographicReach
 > = GeographicReach$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GeographicReach$ {
-  /** @deprecated use `GeographicReach$inboundSchema` instead. */
-  export const inboundSchema = GeographicReach$inboundSchema;
-  /** @deprecated use `GeographicReach$outboundSchema` instead. */
-  export const outboundSchema = GeographicReach$outboundSchema;
-}

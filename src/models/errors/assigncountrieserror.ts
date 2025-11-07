@@ -64,16 +64,3 @@ export const AssignCountriesError$outboundSchema: z.ZodType<
   .pipe(z.object({
     countries: z.record(z.string()),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignCountriesError$ {
-  /** @deprecated use `AssignCountriesError$inboundSchema` instead. */
-  export const inboundSchema = AssignCountriesError$inboundSchema;
-  /** @deprecated use `AssignCountriesError$outboundSchema` instead. */
-  export const outboundSchema = AssignCountriesError$outboundSchema;
-  /** @deprecated use `AssignCountriesError$Outbound` instead. */
-  export type Outbound = AssignCountriesError$Outbound;
-}

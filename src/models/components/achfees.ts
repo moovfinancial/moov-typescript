@@ -58,7 +58,6 @@ export const ACHFees$inboundSchema: z.ZodType<ACHFees, z.ZodTypeDef, unknown> =
     noticeOfChange: BillingCountAndAmount$inboundSchema,
     total: BillingCountAndAmount$inboundSchema,
   });
-
 /** @internal */
 export type ACHFees$Outbound = {
   standardCredit: BillingCountAndAmount$Outbound;
@@ -85,23 +84,9 @@ export const ACHFees$outboundSchema: z.ZodType<
   total: BillingCountAndAmount$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ACHFees$ {
-  /** @deprecated use `ACHFees$inboundSchema` instead. */
-  export const inboundSchema = ACHFees$inboundSchema;
-  /** @deprecated use `ACHFees$outboundSchema` instead. */
-  export const outboundSchema = ACHFees$outboundSchema;
-  /** @deprecated use `ACHFees$Outbound` instead. */
-  export type Outbound = ACHFees$Outbound;
-}
-
 export function achFeesToJSON(achFees: ACHFees): string {
   return JSON.stringify(ACHFees$outboundSchema.parse(achFees));
 }
-
 export function achFeesFromJSON(
   jsonString: string,
 ): SafeParseResult<ACHFees, SDKValidationError> {

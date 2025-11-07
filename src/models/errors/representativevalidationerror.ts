@@ -56,7 +56,6 @@ export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
     responsibilities: components
       .RepresentativeResponsibilitiesError$inboundSchema.optional(),
   });
-
 /** @internal */
 export type ErrorT$Outbound = {
   name?: components.IndividualNameError$Outbound | undefined;
@@ -86,23 +85,9 @@ export const ErrorT$outboundSchema: z.ZodType<
     .RepresentativeResponsibilitiesError$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ErrorT$ {
-  /** @deprecated use `ErrorT$inboundSchema` instead. */
-  export const inboundSchema = ErrorT$inboundSchema;
-  /** @deprecated use `ErrorT$outboundSchema` instead. */
-  export const outboundSchema = ErrorT$outboundSchema;
-  /** @deprecated use `ErrorT$Outbound` instead. */
-  export type Outbound = ErrorT$Outbound;
-}
-
 export function errorToJSON(errorT: ErrorT): string {
   return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
 }
-
 export function errorFromJSON(
   jsonString: string,
 ): SafeParseResult<ErrorT, SDKValidationError> {
@@ -147,16 +132,3 @@ export const RepresentativeValidationError$outboundSchema: z.ZodType<
   .pipe(z.object({
     error: z.lazy(() => ErrorT$outboundSchema),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RepresentativeValidationError$ {
-  /** @deprecated use `RepresentativeValidationError$inboundSchema` instead. */
-  export const inboundSchema = RepresentativeValidationError$inboundSchema;
-  /** @deprecated use `RepresentativeValidationError$outboundSchema` instead. */
-  export const outboundSchema = RepresentativeValidationError$outboundSchema;
-  /** @deprecated use `RepresentativeValidationError$Outbound` instead. */
-  export type Outbound = RepresentativeValidationError$Outbound;
-}

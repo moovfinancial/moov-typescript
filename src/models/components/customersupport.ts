@@ -43,7 +43,6 @@ export const CustomerSupport$inboundSchema: z.ZodType<
   address: Address$inboundSchema.optional(),
   website: z.string().optional(),
 });
-
 /** @internal */
 export type CustomerSupport$Outbound = {
   phone?: PhoneNumber$Outbound | undefined;
@@ -64,25 +63,11 @@ export const CustomerSupport$outboundSchema: z.ZodType<
   website: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomerSupport$ {
-  /** @deprecated use `CustomerSupport$inboundSchema` instead. */
-  export const inboundSchema = CustomerSupport$inboundSchema;
-  /** @deprecated use `CustomerSupport$outboundSchema` instead. */
-  export const outboundSchema = CustomerSupport$outboundSchema;
-  /** @deprecated use `CustomerSupport$Outbound` instead. */
-  export type Outbound = CustomerSupport$Outbound;
-}
-
 export function customerSupportToJSON(
   customerSupport: CustomerSupport,
 ): string {
   return JSON.stringify(CustomerSupport$outboundSchema.parse(customerSupport));
 }
-
 export function customerSupportFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomerSupport, SDKValidationError> {

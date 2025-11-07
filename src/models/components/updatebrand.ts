@@ -25,7 +25,6 @@ export const UpdateBrand$inboundSchema: z.ZodType<
 > = z.object({
   colors: UpdateColors$inboundSchema.optional(),
 });
-
 /** @internal */
 export type UpdateBrand$Outbound = {
   colors?: UpdateColors$Outbound | undefined;
@@ -40,23 +39,9 @@ export const UpdateBrand$outboundSchema: z.ZodType<
   colors: UpdateColors$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateBrand$ {
-  /** @deprecated use `UpdateBrand$inboundSchema` instead. */
-  export const inboundSchema = UpdateBrand$inboundSchema;
-  /** @deprecated use `UpdateBrand$outboundSchema` instead. */
-  export const outboundSchema = UpdateBrand$outboundSchema;
-  /** @deprecated use `UpdateBrand$Outbound` instead. */
-  export type Outbound = UpdateBrand$Outbound;
-}
-
 export function updateBrandToJSON(updateBrand: UpdateBrand): string {
   return JSON.stringify(UpdateBrand$outboundSchema.parse(updateBrand));
 }
-
 export function updateBrandFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateBrand, SDKValidationError> {

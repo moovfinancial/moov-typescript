@@ -22,18 +22,6 @@ export type DisputePhase = ClosedEnum<typeof DisputePhase>;
 /** @internal */
 export const DisputePhase$inboundSchema: z.ZodNativeEnum<typeof DisputePhase> =
   z.nativeEnum(DisputePhase);
-
 /** @internal */
 export const DisputePhase$outboundSchema: z.ZodNativeEnum<typeof DisputePhase> =
   DisputePhase$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisputePhase$ {
-  /** @deprecated use `DisputePhase$inboundSchema` instead. */
-  export const inboundSchema = DisputePhase$inboundSchema;
-  /** @deprecated use `DisputePhase$outboundSchema` instead. */
-  export const outboundSchema = DisputePhase$outboundSchema;
-}

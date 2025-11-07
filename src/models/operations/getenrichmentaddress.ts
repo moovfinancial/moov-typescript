@@ -102,7 +102,6 @@ export const GetEnrichmentAddressGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetEnrichmentAddressGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -121,19 +120,6 @@ export const GetEnrichmentAddressGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEnrichmentAddressGlobals$ {
-  /** @deprecated use `GetEnrichmentAddressGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetEnrichmentAddressGlobals$inboundSchema;
-  /** @deprecated use `GetEnrichmentAddressGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetEnrichmentAddressGlobals$outboundSchema;
-  /** @deprecated use `GetEnrichmentAddressGlobals$Outbound` instead. */
-  export type Outbound = GetEnrichmentAddressGlobals$Outbound;
-}
-
 export function getEnrichmentAddressGlobalsToJSON(
   getEnrichmentAddressGlobals: GetEnrichmentAddressGlobals,
 ): string {
@@ -143,7 +129,6 @@ export function getEnrichmentAddressGlobalsToJSON(
     ),
   );
 }
-
 export function getEnrichmentAddressGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEnrichmentAddressGlobals, SDKValidationError> {
@@ -174,7 +159,6 @@ export const GetEnrichmentAddressRequest$inboundSchema: z.ZodType<
   selected: z.string().optional(),
   source: z.string().optional(),
 });
-
 /** @internal */
 export type GetEnrichmentAddressRequest$Outbound = {
   search: string;
@@ -213,19 +197,6 @@ export const GetEnrichmentAddressRequest$outboundSchema: z.ZodType<
   source: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEnrichmentAddressRequest$ {
-  /** @deprecated use `GetEnrichmentAddressRequest$inboundSchema` instead. */
-  export const inboundSchema = GetEnrichmentAddressRequest$inboundSchema;
-  /** @deprecated use `GetEnrichmentAddressRequest$outboundSchema` instead. */
-  export const outboundSchema = GetEnrichmentAddressRequest$outboundSchema;
-  /** @deprecated use `GetEnrichmentAddressRequest$Outbound` instead. */
-  export type Outbound = GetEnrichmentAddressRequest$Outbound;
-}
-
 export function getEnrichmentAddressRequestToJSON(
   getEnrichmentAddressRequest: GetEnrichmentAddressRequest,
 ): string {
@@ -235,7 +206,6 @@ export function getEnrichmentAddressRequestToJSON(
     ),
   );
 }
-
 export function getEnrichmentAddressRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEnrichmentAddressRequest, SDKValidationError> {
@@ -260,7 +230,6 @@ export const GetEnrichmentAddressResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetEnrichmentAddressResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -282,19 +251,6 @@ export const GetEnrichmentAddressResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEnrichmentAddressResponse$ {
-  /** @deprecated use `GetEnrichmentAddressResponse$inboundSchema` instead. */
-  export const inboundSchema = GetEnrichmentAddressResponse$inboundSchema;
-  /** @deprecated use `GetEnrichmentAddressResponse$outboundSchema` instead. */
-  export const outboundSchema = GetEnrichmentAddressResponse$outboundSchema;
-  /** @deprecated use `GetEnrichmentAddressResponse$Outbound` instead. */
-  export type Outbound = GetEnrichmentAddressResponse$Outbound;
-}
-
 export function getEnrichmentAddressResponseToJSON(
   getEnrichmentAddressResponse: GetEnrichmentAddressResponse,
 ): string {
@@ -304,7 +260,6 @@ export function getEnrichmentAddressResponseToJSON(
     ),
   );
 }
-
 export function getEnrichmentAddressResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEnrichmentAddressResponse, SDKValidationError> {

@@ -32,7 +32,6 @@ export const TermsOfService$inboundSchema: z.ZodType<
   ),
   acceptedIP: z.string(),
 });
-
 /** @internal */
 export type TermsOfService$Outbound = {
   acceptedDate: string;
@@ -49,23 +48,9 @@ export const TermsOfService$outboundSchema: z.ZodType<
   acceptedIP: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TermsOfService$ {
-  /** @deprecated use `TermsOfService$inboundSchema` instead. */
-  export const inboundSchema = TermsOfService$inboundSchema;
-  /** @deprecated use `TermsOfService$outboundSchema` instead. */
-  export const outboundSchema = TermsOfService$outboundSchema;
-  /** @deprecated use `TermsOfService$Outbound` instead. */
-  export type Outbound = TermsOfService$Outbound;
-}
-
 export function termsOfServiceToJSON(termsOfService: TermsOfService): string {
   return JSON.stringify(TermsOfService$outboundSchema.parse(termsOfService));
 }
-
 export function termsOfServiceFromJSON(
   jsonString: string,
 ): SafeParseResult<TermsOfService, SDKValidationError> {

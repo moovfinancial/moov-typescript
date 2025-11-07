@@ -23,7 +23,6 @@ export const WebhookDataTicketMessageAdded$inboundSchema: z.ZodType<
   ticketID: z.string(),
   foreignID: z.string().optional(),
 });
-
 /** @internal */
 export type WebhookDataTicketMessageAdded$Outbound = {
   accountID: string;
@@ -42,19 +41,6 @@ export const WebhookDataTicketMessageAdded$outboundSchema: z.ZodType<
   foreignID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataTicketMessageAdded$ {
-  /** @deprecated use `WebhookDataTicketMessageAdded$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataTicketMessageAdded$inboundSchema;
-  /** @deprecated use `WebhookDataTicketMessageAdded$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataTicketMessageAdded$outboundSchema;
-  /** @deprecated use `WebhookDataTicketMessageAdded$Outbound` instead. */
-  export type Outbound = WebhookDataTicketMessageAdded$Outbound;
-}
-
 export function webhookDataTicketMessageAddedToJSON(
   webhookDataTicketMessageAdded: WebhookDataTicketMessageAdded,
 ): string {
@@ -64,7 +50,6 @@ export function webhookDataTicketMessageAddedToJSON(
     ),
   );
 }
-
 export function webhookDataTicketMessageAddedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataTicketMessageAdded, SDKValidationError> {

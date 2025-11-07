@@ -33,7 +33,6 @@ export const ProductOptionGroupValidationError$inboundSchema: z.ZodType<
   maxSelect: z.string().optional(),
   options: z.record(ProductOptionValidationError$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ProductOptionGroupValidationError$Outbound = {
   name?: string | undefined;
@@ -56,20 +55,6 @@ export const ProductOptionGroupValidationError$outboundSchema: z.ZodType<
   options: z.record(ProductOptionValidationError$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProductOptionGroupValidationError$ {
-  /** @deprecated use `ProductOptionGroupValidationError$inboundSchema` instead. */
-  export const inboundSchema = ProductOptionGroupValidationError$inboundSchema;
-  /** @deprecated use `ProductOptionGroupValidationError$outboundSchema` instead. */
-  export const outboundSchema =
-    ProductOptionGroupValidationError$outboundSchema;
-  /** @deprecated use `ProductOptionGroupValidationError$Outbound` instead. */
-  export type Outbound = ProductOptionGroupValidationError$Outbound;
-}
-
 export function productOptionGroupValidationErrorToJSON(
   productOptionGroupValidationError: ProductOptionGroupValidationError,
 ): string {
@@ -79,7 +64,6 @@ export function productOptionGroupValidationErrorToJSON(
     ),
   );
 }
-
 export function productOptionGroupValidationErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<ProductOptionGroupValidationError, SDKValidationError> {

@@ -22,19 +22,7 @@ export type DomesticPullFromCard = ClosedEnum<typeof DomesticPullFromCard>;
 export const DomesticPullFromCard$inboundSchema: z.ZodNativeEnum<
   typeof DomesticPullFromCard
 > = z.nativeEnum(DomesticPullFromCard);
-
 /** @internal */
 export const DomesticPullFromCard$outboundSchema: z.ZodNativeEnum<
   typeof DomesticPullFromCard
 > = DomesticPullFromCard$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomesticPullFromCard$ {
-  /** @deprecated use `DomesticPullFromCard$inboundSchema` instead. */
-  export const inboundSchema = DomesticPullFromCard$inboundSchema;
-  /** @deprecated use `DomesticPullFromCard$outboundSchema` instead. */
-  export const outboundSchema = DomesticPullFromCard$outboundSchema;
-}

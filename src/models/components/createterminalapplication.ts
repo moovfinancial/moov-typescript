@@ -50,7 +50,6 @@ export const CreateTerminalApplication$inboundSchema: z.ZodType<
   sha256Digest: z.string().optional(),
   versionCode: z.string().optional(),
 });
-
 /** @internal */
 export type CreateTerminalApplication$Outbound = {
   platform: string;
@@ -73,19 +72,6 @@ export const CreateTerminalApplication$outboundSchema: z.ZodType<
   versionCode: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTerminalApplication$ {
-  /** @deprecated use `CreateTerminalApplication$inboundSchema` instead. */
-  export const inboundSchema = CreateTerminalApplication$inboundSchema;
-  /** @deprecated use `CreateTerminalApplication$outboundSchema` instead. */
-  export const outboundSchema = CreateTerminalApplication$outboundSchema;
-  /** @deprecated use `CreateTerminalApplication$Outbound` instead. */
-  export type Outbound = CreateTerminalApplication$Outbound;
-}
-
 export function createTerminalApplicationToJSON(
   createTerminalApplication: CreateTerminalApplication,
 ): string {
@@ -93,7 +79,6 @@ export function createTerminalApplicationToJSON(
     CreateTerminalApplication$outboundSchema.parse(createTerminalApplication),
   );
 }
-
 export function createTerminalApplicationFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTerminalApplication, SDKValidationError> {

@@ -47,7 +47,6 @@ export const GetOnboardingInviteGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetOnboardingInviteGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const GetOnboardingInviteGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOnboardingInviteGlobals$ {
-  /** @deprecated use `GetOnboardingInviteGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetOnboardingInviteGlobals$inboundSchema;
-  /** @deprecated use `GetOnboardingInviteGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetOnboardingInviteGlobals$outboundSchema;
-  /** @deprecated use `GetOnboardingInviteGlobals$Outbound` instead. */
-  export type Outbound = GetOnboardingInviteGlobals$Outbound;
-}
-
 export function getOnboardingInviteGlobalsToJSON(
   getOnboardingInviteGlobals: GetOnboardingInviteGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function getOnboardingInviteGlobalsToJSON(
     GetOnboardingInviteGlobals$outboundSchema.parse(getOnboardingInviteGlobals),
   );
 }
-
 export function getOnboardingInviteGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOnboardingInviteGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const GetOnboardingInviteRequest$inboundSchema: z.ZodType<
 > = z.object({
   code: z.string(),
 });
-
 /** @internal */
 export type GetOnboardingInviteRequest$Outbound = {
   code: string;
@@ -120,19 +104,6 @@ export const GetOnboardingInviteRequest$outboundSchema: z.ZodType<
   code: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOnboardingInviteRequest$ {
-  /** @deprecated use `GetOnboardingInviteRequest$inboundSchema` instead. */
-  export const inboundSchema = GetOnboardingInviteRequest$inboundSchema;
-  /** @deprecated use `GetOnboardingInviteRequest$outboundSchema` instead. */
-  export const outboundSchema = GetOnboardingInviteRequest$outboundSchema;
-  /** @deprecated use `GetOnboardingInviteRequest$Outbound` instead. */
-  export type Outbound = GetOnboardingInviteRequest$Outbound;
-}
-
 export function getOnboardingInviteRequestToJSON(
   getOnboardingInviteRequest: GetOnboardingInviteRequest,
 ): string {
@@ -140,7 +111,6 @@ export function getOnboardingInviteRequestToJSON(
     GetOnboardingInviteRequest$outboundSchema.parse(getOnboardingInviteRequest),
   );
 }
-
 export function getOnboardingInviteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOnboardingInviteRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const GetOnboardingInviteResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetOnboardingInviteResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -187,19 +156,6 @@ export const GetOnboardingInviteResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOnboardingInviteResponse$ {
-  /** @deprecated use `GetOnboardingInviteResponse$inboundSchema` instead. */
-  export const inboundSchema = GetOnboardingInviteResponse$inboundSchema;
-  /** @deprecated use `GetOnboardingInviteResponse$outboundSchema` instead. */
-  export const outboundSchema = GetOnboardingInviteResponse$outboundSchema;
-  /** @deprecated use `GetOnboardingInviteResponse$Outbound` instead. */
-  export type Outbound = GetOnboardingInviteResponse$Outbound;
-}
-
 export function getOnboardingInviteResponseToJSON(
   getOnboardingInviteResponse: GetOnboardingInviteResponse,
 ): string {
@@ -209,7 +165,6 @@ export function getOnboardingInviteResponseToJSON(
     ),
   );
 }
-
 export function getOnboardingInviteResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOnboardingInviteResponse, SDKValidationError> {

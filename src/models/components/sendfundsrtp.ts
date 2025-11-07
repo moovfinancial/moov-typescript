@@ -25,7 +25,6 @@ export const SendFundsRtp$inboundSchema: z.ZodType<
 > = z.object({
   estimatedActivity: EstimatedActivity$inboundSchema.optional(),
 });
-
 /** @internal */
 export type SendFundsRtp$Outbound = {
   estimatedActivity?: EstimatedActivity$Outbound | undefined;
@@ -40,23 +39,9 @@ export const SendFundsRtp$outboundSchema: z.ZodType<
   estimatedActivity: EstimatedActivity$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SendFundsRtp$ {
-  /** @deprecated use `SendFundsRtp$inboundSchema` instead. */
-  export const inboundSchema = SendFundsRtp$inboundSchema;
-  /** @deprecated use `SendFundsRtp$outboundSchema` instead. */
-  export const outboundSchema = SendFundsRtp$outboundSchema;
-  /** @deprecated use `SendFundsRtp$Outbound` instead. */
-  export type Outbound = SendFundsRtp$Outbound;
-}
-
 export function sendFundsRtpToJSON(sendFundsRtp: SendFundsRtp): string {
   return JSON.stringify(SendFundsRtp$outboundSchema.parse(sendFundsRtp));
 }
-
 export function sendFundsRtpFromJSON(
   jsonString: string,
 ): SafeParseResult<SendFundsRtp, SDKValidationError> {

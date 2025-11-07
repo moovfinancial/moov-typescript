@@ -48,7 +48,6 @@ export const AssignAccountCountriesGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type AssignAccountCountriesGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const AssignAccountCountriesGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignAccountCountriesGlobals$ {
-  /** @deprecated use `AssignAccountCountriesGlobals$inboundSchema` instead. */
-  export const inboundSchema = AssignAccountCountriesGlobals$inboundSchema;
-  /** @deprecated use `AssignAccountCountriesGlobals$outboundSchema` instead. */
-  export const outboundSchema = AssignAccountCountriesGlobals$outboundSchema;
-  /** @deprecated use `AssignAccountCountriesGlobals$Outbound` instead. */
-  export type Outbound = AssignAccountCountriesGlobals$Outbound;
-}
-
 export function assignAccountCountriesGlobalsToJSON(
   assignAccountCountriesGlobals: AssignAccountCountriesGlobals,
 ): string {
@@ -89,7 +75,6 @@ export function assignAccountCountriesGlobalsToJSON(
     ),
   );
 }
-
 export function assignAccountCountriesGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignAccountCountriesGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const AssignAccountCountriesRequest$inboundSchema: z.ZodType<
     "AccountCountries": "accountCountries",
   });
 });
-
 /** @internal */
 export type AssignAccountCountriesRequest$Outbound = {
   accountID: string;
@@ -134,19 +118,6 @@ export const AssignAccountCountriesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignAccountCountriesRequest$ {
-  /** @deprecated use `AssignAccountCountriesRequest$inboundSchema` instead. */
-  export const inboundSchema = AssignAccountCountriesRequest$inboundSchema;
-  /** @deprecated use `AssignAccountCountriesRequest$outboundSchema` instead. */
-  export const outboundSchema = AssignAccountCountriesRequest$outboundSchema;
-  /** @deprecated use `AssignAccountCountriesRequest$Outbound` instead. */
-  export type Outbound = AssignAccountCountriesRequest$Outbound;
-}
-
 export function assignAccountCountriesRequestToJSON(
   assignAccountCountriesRequest: AssignAccountCountriesRequest,
 ): string {
@@ -156,7 +127,6 @@ export function assignAccountCountriesRequestToJSON(
     ),
   );
 }
-
 export function assignAccountCountriesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignAccountCountriesRequest, SDKValidationError> {
@@ -181,7 +151,6 @@ export const AssignAccountCountriesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type AssignAccountCountriesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -203,19 +172,6 @@ export const AssignAccountCountriesResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignAccountCountriesResponse$ {
-  /** @deprecated use `AssignAccountCountriesResponse$inboundSchema` instead. */
-  export const inboundSchema = AssignAccountCountriesResponse$inboundSchema;
-  /** @deprecated use `AssignAccountCountriesResponse$outboundSchema` instead. */
-  export const outboundSchema = AssignAccountCountriesResponse$outboundSchema;
-  /** @deprecated use `AssignAccountCountriesResponse$Outbound` instead. */
-  export type Outbound = AssignAccountCountriesResponse$Outbound;
-}
-
 export function assignAccountCountriesResponseToJSON(
   assignAccountCountriesResponse: AssignAccountCountriesResponse,
 ): string {
@@ -225,7 +181,6 @@ export function assignAccountCountriesResponseToJSON(
     ),
   );
 }
-
 export function assignAccountCountriesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignAccountCountriesResponse, SDKValidationError> {

@@ -28,7 +28,6 @@ export const Cancellation$inboundSchema: z.ZodType<
   status: CancellationStatus$inboundSchema,
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type Cancellation$Outbound = {
   cancellationID: string;
@@ -47,23 +46,9 @@ export const Cancellation$outboundSchema: z.ZodType<
   createdOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Cancellation$ {
-  /** @deprecated use `Cancellation$inboundSchema` instead. */
-  export const inboundSchema = Cancellation$inboundSchema;
-  /** @deprecated use `Cancellation$outboundSchema` instead. */
-  export const outboundSchema = Cancellation$outboundSchema;
-  /** @deprecated use `Cancellation$Outbound` instead. */
-  export type Outbound = Cancellation$Outbound;
-}
-
 export function cancellationToJSON(cancellation: Cancellation): string {
   return JSON.stringify(Cancellation$outboundSchema.parse(cancellation));
 }
-
 export function cancellationFromJSON(
   jsonString: string,
 ): SafeParseResult<Cancellation, SDKValidationError> {

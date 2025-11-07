@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 8a70d30406942d1412fc9f4ffd98b091
+  docChecksum: 22576d60ca0dc7105c72c376773c2a56
   docVersion: latest
-  speakeasyVersion: 1.649.0
-  generationVersion: 2.739.1
-  releaseVersion: 0.21.4
-  configChecksum: 909f3f34928afcc31462bfbdd63cac3d
+  speakeasyVersion: 1.650.0
+  generationVersion: 2.743.2
+  releaseVersion: 0.21.5
+  configChecksum: fcca53dc8daa882bdf03e4d6e578a4df
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.0
+    core: 3.26.3
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -376,6 +376,13 @@ generatedFiles:
   - docs/models/components/paymentlinkcustomeroptions.md
   - docs/models/components/paymentlinkdisplayoptions.md
   - docs/models/components/paymentlinkdisplayoptionsupdate.md
+  - docs/models/components/paymentlinklineitem.md
+  - docs/models/components/paymentlinklineitemoption.md
+  - docs/models/components/paymentlinklineitemoptionvalidationerror.md
+  - docs/models/components/paymentlinklineitems.md
+  - docs/models/components/paymentlinklineitemsupdate.md
+  - docs/models/components/paymentlinklineitemsvalidationerror.md
+  - docs/models/components/paymentlinklineitemvalidationerror.md
   - docs/models/components/paymentlinkpaymentdetails.md
   - docs/models/components/paymentlinkpaymentdetailsupdate.md
   - docs/models/components/paymentlinkpayoutdetails.md
@@ -502,6 +509,12 @@ generatedFiles:
   - docs/models/components/transferaccount.md
   - docs/models/components/transferdestination.md
   - docs/models/components/transferfailurereason.md
+  - docs/models/components/transferlineitem.md
+  - docs/models/components/transferlineitemoption.md
+  - docs/models/components/transferlineitemoptionvalidationerror.md
+  - docs/models/components/transferlineitems.md
+  - docs/models/components/transferlineitemsvalidationerror.md
+  - docs/models/components/transferlineitemvalidationerror.md
   - docs/models/components/transferoptions.md
   - docs/models/components/transferparty.md
   - docs/models/components/transfersource.md
@@ -1824,6 +1837,13 @@ generatedFiles:
   - src/models/components/paymentlinkcustomeroptions.ts
   - src/models/components/paymentlinkdisplayoptions.ts
   - src/models/components/paymentlinkdisplayoptionsupdate.ts
+  - src/models/components/paymentlinklineitem.ts
+  - src/models/components/paymentlinklineitemoption.ts
+  - src/models/components/paymentlinklineitemoptionvalidationerror.ts
+  - src/models/components/paymentlinklineitems.ts
+  - src/models/components/paymentlinklineitemsupdate.ts
+  - src/models/components/paymentlinklineitemsvalidationerror.ts
+  - src/models/components/paymentlinklineitemvalidationerror.ts
   - src/models/components/paymentlinkpaymentdetails.ts
   - src/models/components/paymentlinkpaymentdetailsupdate.ts
   - src/models/components/paymentlinkpayoutdetails.ts
@@ -1935,6 +1955,12 @@ generatedFiles:
   - src/models/components/transferaccount.ts
   - src/models/components/transferdestination.ts
   - src/models/components/transferfailurereason.ts
+  - src/models/components/transferlineitem.ts
+  - src/models/components/transferlineitemoption.ts
+  - src/models/components/transferlineitemoptionvalidationerror.ts
+  - src/models/components/transferlineitems.ts
+  - src/models/components/transferlineitemsvalidationerror.ts
+  - src/models/components/transferlineitemvalidationerror.ts
   - src/models/components/transferoptions.ts
   - src/models/components/transferparty.ts
   - src/models/components/transfersource.ts
@@ -4778,3 +4804,4 @@ examples:
           application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.paymentLinks.create()`: \n  *  `request.createPaymentLink.lineItems` **Added**\n  *  `response.lineitems` **Added**\n  *  `error.lineitems` **Added**\n* `moov.paymentLinks.list()`:  `response.[].lineItems` **Added**\n* `moov.paymentLinks.get()`:  `response.lineitems` **Added**\n* `moov.paymentLinks.update()`: \n  *  `request.updatePaymentLink.lineItems` **Added**\n  *  `response.lineitems` **Added**\n  *  `error.lineitems` **Added**\n* `moov.transfers.create()`: \n  *  `request.createTransfer.lineItems` **Added**\n  *  `response.lineitems` **Added**\n  *  `error.lineitems` **Added**\n* `moov.transfers.list()`:  `response.[].lineItems` **Added**\n* `moov.transfers.get()`:  `response.lineitems` **Added**\n* `moov.transfers.update()`:  `response.lineitems` **Added**\n"

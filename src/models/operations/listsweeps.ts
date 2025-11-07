@@ -58,7 +58,6 @@ export const ListSweepsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListSweepsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -77,19 +76,6 @@ export const ListSweepsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSweepsGlobals$ {
-  /** @deprecated use `ListSweepsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListSweepsGlobals$inboundSchema;
-  /** @deprecated use `ListSweepsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListSweepsGlobals$outboundSchema;
-  /** @deprecated use `ListSweepsGlobals$Outbound` instead. */
-  export type Outbound = ListSweepsGlobals$Outbound;
-}
-
 export function listSweepsGlobalsToJSON(
   listSweepsGlobals: ListSweepsGlobals,
 ): string {
@@ -97,7 +83,6 @@ export function listSweepsGlobalsToJSON(
     ListSweepsGlobals$outboundSchema.parse(listSweepsGlobals),
   );
 }
-
 export function listSweepsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSweepsGlobals, SDKValidationError> {
@@ -121,7 +106,6 @@ export const ListSweepsRequest$inboundSchema: z.ZodType<
   status: components.SweepStatus$inboundSchema.optional(),
   statementDescriptor: z.string().optional(),
 });
-
 /** @internal */
 export type ListSweepsRequest$Outbound = {
   accountID: string;
@@ -146,19 +130,6 @@ export const ListSweepsRequest$outboundSchema: z.ZodType<
   statementDescriptor: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSweepsRequest$ {
-  /** @deprecated use `ListSweepsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListSweepsRequest$inboundSchema;
-  /** @deprecated use `ListSweepsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListSweepsRequest$outboundSchema;
-  /** @deprecated use `ListSweepsRequest$Outbound` instead. */
-  export type Outbound = ListSweepsRequest$Outbound;
-}
-
 export function listSweepsRequestToJSON(
   listSweepsRequest: ListSweepsRequest,
 ): string {
@@ -166,7 +137,6 @@ export function listSweepsRequestToJSON(
     ListSweepsRequest$outboundSchema.parse(listSweepsRequest),
   );
 }
-
 export function listSweepsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSweepsRequest, SDKValidationError> {
@@ -191,7 +161,6 @@ export const ListSweepsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListSweepsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -213,19 +182,6 @@ export const ListSweepsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSweepsResponse$ {
-  /** @deprecated use `ListSweepsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListSweepsResponse$inboundSchema;
-  /** @deprecated use `ListSweepsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListSweepsResponse$outboundSchema;
-  /** @deprecated use `ListSweepsResponse$Outbound` instead. */
-  export type Outbound = ListSweepsResponse$Outbound;
-}
-
 export function listSweepsResponseToJSON(
   listSweepsResponse: ListSweepsResponse,
 ): string {
@@ -233,7 +189,6 @@ export function listSweepsResponseToJSON(
     ListSweepsResponse$outboundSchema.parse(listSweepsResponse),
   );
 }
-
 export function listSweepsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSweepsResponse, SDKValidationError> {

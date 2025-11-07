@@ -54,7 +54,6 @@ export const CreateCancellationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateCancellationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -73,19 +72,6 @@ export const CreateCancellationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCancellationGlobals$ {
-  /** @deprecated use `CreateCancellationGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateCancellationGlobals$inboundSchema;
-  /** @deprecated use `CreateCancellationGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateCancellationGlobals$outboundSchema;
-  /** @deprecated use `CreateCancellationGlobals$Outbound` instead. */
-  export type Outbound = CreateCancellationGlobals$Outbound;
-}
-
 export function createCancellationGlobalsToJSON(
   createCancellationGlobals: CreateCancellationGlobals,
 ): string {
@@ -93,7 +79,6 @@ export function createCancellationGlobalsToJSON(
     CreateCancellationGlobals$outboundSchema.parse(createCancellationGlobals),
   );
 }
-
 export function createCancellationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCancellationGlobals, SDKValidationError> {
@@ -113,7 +98,6 @@ export const CreateCancellationRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   transferID: z.string(),
 });
-
 /** @internal */
 export type CreateCancellationRequest$Outbound = {
   accountID: string;
@@ -130,19 +114,6 @@ export const CreateCancellationRequest$outboundSchema: z.ZodType<
   transferID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCancellationRequest$ {
-  /** @deprecated use `CreateCancellationRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateCancellationRequest$inboundSchema;
-  /** @deprecated use `CreateCancellationRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateCancellationRequest$outboundSchema;
-  /** @deprecated use `CreateCancellationRequest$Outbound` instead. */
-  export type Outbound = CreateCancellationRequest$Outbound;
-}
-
 export function createCancellationRequestToJSON(
   createCancellationRequest: CreateCancellationRequest,
 ): string {
@@ -150,7 +121,6 @@ export function createCancellationRequestToJSON(
     CreateCancellationRequest$outboundSchema.parse(createCancellationRequest),
   );
 }
-
 export function createCancellationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCancellationRequest, SDKValidationError> {
@@ -175,7 +145,6 @@ export const CreateCancellationResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateCancellationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -197,19 +166,6 @@ export const CreateCancellationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCancellationResponse$ {
-  /** @deprecated use `CreateCancellationResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateCancellationResponse$inboundSchema;
-  /** @deprecated use `CreateCancellationResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateCancellationResponse$outboundSchema;
-  /** @deprecated use `CreateCancellationResponse$Outbound` instead. */
-  export type Outbound = CreateCancellationResponse$Outbound;
-}
-
 export function createCancellationResponseToJSON(
   createCancellationResponse: CreateCancellationResponse,
 ): string {
@@ -217,7 +173,6 @@ export function createCancellationResponseToJSON(
     CreateCancellationResponse$outboundSchema.parse(createCancellationResponse),
   );
 }
-
 export function createCancellationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCancellationResponse, SDKValidationError> {

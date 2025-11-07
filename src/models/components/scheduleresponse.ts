@@ -64,7 +64,6 @@ export const ScheduleResponse$inboundSchema: z.ZodType<
   disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type ScheduleResponse$Outbound = {
   description?: string | undefined;
@@ -101,19 +100,6 @@ export const ScheduleResponse$outboundSchema: z.ZodType<
   disabledOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduleResponse$ {
-  /** @deprecated use `ScheduleResponse$inboundSchema` instead. */
-  export const inboundSchema = ScheduleResponse$inboundSchema;
-  /** @deprecated use `ScheduleResponse$outboundSchema` instead. */
-  export const outboundSchema = ScheduleResponse$outboundSchema;
-  /** @deprecated use `ScheduleResponse$Outbound` instead. */
-  export type Outbound = ScheduleResponse$Outbound;
-}
-
 export function scheduleResponseToJSON(
   scheduleResponse: ScheduleResponse,
 ): string {
@@ -121,7 +107,6 @@ export function scheduleResponseToJSON(
     ScheduleResponse$outboundSchema.parse(scheduleResponse),
   );
 }
-
 export function scheduleResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ScheduleResponse, SDKValidationError> {

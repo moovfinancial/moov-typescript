@@ -50,7 +50,6 @@ export const Profile$inboundSchema: z.ZodType<Profile, z.ZodTypeDef, unknown> =
     business: BusinessProfile$inboundSchema.optional(),
     guest: GuestProfile$inboundSchema.optional(),
   });
-
 /** @internal */
 export type Profile$Outbound = {
   individual?: IndividualProfile$Outbound | undefined;
@@ -69,23 +68,9 @@ export const Profile$outboundSchema: z.ZodType<
   guest: GuestProfile$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Profile$ {
-  /** @deprecated use `Profile$inboundSchema` instead. */
-  export const inboundSchema = Profile$inboundSchema;
-  /** @deprecated use `Profile$outboundSchema` instead. */
-  export const outboundSchema = Profile$outboundSchema;
-  /** @deprecated use `Profile$Outbound` instead. */
-  export type Outbound = Profile$Outbound;
-}
-
 export function profileToJSON(profile: Profile): string {
   return JSON.stringify(Profile$outboundSchema.parse(profile));
 }
-
 export function profileFromJSON(
   jsonString: string,
 ): SafeParseResult<Profile, SDKValidationError> {

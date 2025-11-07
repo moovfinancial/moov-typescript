@@ -26,19 +26,7 @@ export type IssuingAuthorizationStatus = ClosedEnum<
 export const IssuingAuthorizationStatus$inboundSchema: z.ZodNativeEnum<
   typeof IssuingAuthorizationStatus
 > = z.nativeEnum(IssuingAuthorizationStatus);
-
 /** @internal */
 export const IssuingAuthorizationStatus$outboundSchema: z.ZodNativeEnum<
   typeof IssuingAuthorizationStatus
 > = IssuingAuthorizationStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuingAuthorizationStatus$ {
-  /** @deprecated use `IssuingAuthorizationStatus$inboundSchema` instead. */
-  export const inboundSchema = IssuingAuthorizationStatus$inboundSchema;
-  /** @deprecated use `IssuingAuthorizationStatus$outboundSchema` instead. */
-  export const outboundSchema = IssuingAuthorizationStatus$outboundSchema;
-}

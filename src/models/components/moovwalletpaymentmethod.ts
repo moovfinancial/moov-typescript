@@ -34,24 +34,10 @@ export type MoovWalletPaymentMethod = {
 export const MoovWalletPaymentMethodPaymentMethodType$inboundSchema:
   z.ZodNativeEnum<typeof MoovWalletPaymentMethodPaymentMethodType> = z
     .nativeEnum(MoovWalletPaymentMethodPaymentMethodType);
-
 /** @internal */
 export const MoovWalletPaymentMethodPaymentMethodType$outboundSchema:
   z.ZodNativeEnum<typeof MoovWalletPaymentMethodPaymentMethodType> =
     MoovWalletPaymentMethodPaymentMethodType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoovWalletPaymentMethodPaymentMethodType$ {
-  /** @deprecated use `MoovWalletPaymentMethodPaymentMethodType$inboundSchema` instead. */
-  export const inboundSchema =
-    MoovWalletPaymentMethodPaymentMethodType$inboundSchema;
-  /** @deprecated use `MoovWalletPaymentMethodPaymentMethodType$outboundSchema` instead. */
-  export const outboundSchema =
-    MoovWalletPaymentMethodPaymentMethodType$outboundSchema;
-}
 
 /** @internal */
 export const MoovWalletPaymentMethod$inboundSchema: z.ZodType<
@@ -63,7 +49,6 @@ export const MoovWalletPaymentMethod$inboundSchema: z.ZodType<
   paymentMethodType: MoovWalletPaymentMethodPaymentMethodType$inboundSchema,
   wallet: PaymentMethodsWallet$inboundSchema,
 });
-
 /** @internal */
 export type MoovWalletPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -82,19 +67,6 @@ export const MoovWalletPaymentMethod$outboundSchema: z.ZodType<
   wallet: PaymentMethodsWallet$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoovWalletPaymentMethod$ {
-  /** @deprecated use `MoovWalletPaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = MoovWalletPaymentMethod$inboundSchema;
-  /** @deprecated use `MoovWalletPaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = MoovWalletPaymentMethod$outboundSchema;
-  /** @deprecated use `MoovWalletPaymentMethod$Outbound` instead. */
-  export type Outbound = MoovWalletPaymentMethod$Outbound;
-}
-
 export function moovWalletPaymentMethodToJSON(
   moovWalletPaymentMethod: MoovWalletPaymentMethod,
 ): string {
@@ -102,7 +74,6 @@ export function moovWalletPaymentMethodToJSON(
     MoovWalletPaymentMethod$outboundSchema.parse(moovWalletPaymentMethod),
   );
 }
-
 export function moovWalletPaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<MoovWalletPaymentMethod, SDKValidationError> {

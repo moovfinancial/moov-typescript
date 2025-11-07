@@ -76,7 +76,6 @@ export const ScheduleListResponse$inboundSchema: z.ZodType<
   destinationAccount: PartialScheduleAccount$inboundSchema.optional(),
   partnerAccount: PartialScheduleAccount$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ScheduleListResponse$Outbound = {
   description?: string | undefined;
@@ -119,19 +118,6 @@ export const ScheduleListResponse$outboundSchema: z.ZodType<
   partnerAccount: PartialScheduleAccount$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduleListResponse$ {
-  /** @deprecated use `ScheduleListResponse$inboundSchema` instead. */
-  export const inboundSchema = ScheduleListResponse$inboundSchema;
-  /** @deprecated use `ScheduleListResponse$outboundSchema` instead. */
-  export const outboundSchema = ScheduleListResponse$outboundSchema;
-  /** @deprecated use `ScheduleListResponse$Outbound` instead. */
-  export type Outbound = ScheduleListResponse$Outbound;
-}
-
 export function scheduleListResponseToJSON(
   scheduleListResponse: ScheduleListResponse,
 ): string {
@@ -139,7 +125,6 @@ export function scheduleListResponseToJSON(
     ScheduleListResponse$outboundSchema.parse(scheduleListResponse),
   );
 }
-
 export function scheduleListResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ScheduleListResponse, SDKValidationError> {

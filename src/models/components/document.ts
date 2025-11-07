@@ -41,7 +41,6 @@ export const Document$inboundSchema: z.ZodType<
   parseErrors: z.array(z.string()).optional(),
   uploadedAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type Document$Outbound = {
   documentID: string;
@@ -64,23 +63,9 @@ export const Document$outboundSchema: z.ZodType<
   uploadedAt: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Document$ {
-  /** @deprecated use `Document$inboundSchema` instead. */
-  export const inboundSchema = Document$inboundSchema;
-  /** @deprecated use `Document$outboundSchema` instead. */
-  export const outboundSchema = Document$outboundSchema;
-  /** @deprecated use `Document$Outbound` instead. */
-  export type Outbound = Document$Outbound;
-}
-
 export function documentToJSON(document: Document): string {
   return JSON.stringify(Document$outboundSchema.parse(document));
 }
-
 export function documentFromJSON(
   jsonString: string,
 ): SafeParseResult<Document, SDKValidationError> {

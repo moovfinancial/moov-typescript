@@ -55,7 +55,6 @@ export const AuthToken$inboundSchema: z.ZodType<
     "expires_in": "expiresIn",
   });
 });
-
 /** @internal */
 export type AuthToken$Outbound = {
   token_type: string;
@@ -85,23 +84,9 @@ export const AuthToken$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthToken$ {
-  /** @deprecated use `AuthToken$inboundSchema` instead. */
-  export const inboundSchema = AuthToken$inboundSchema;
-  /** @deprecated use `AuthToken$outboundSchema` instead. */
-  export const outboundSchema = AuthToken$outboundSchema;
-  /** @deprecated use `AuthToken$Outbound` instead. */
-  export type Outbound = AuthToken$Outbound;
-}
-
 export function authTokenToJSON(authToken: AuthToken): string {
   return JSON.stringify(AuthToken$outboundSchema.parse(authToken));
 }
-
 export function authTokenFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthToken, SDKValidationError> {

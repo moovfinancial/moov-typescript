@@ -36,7 +36,6 @@ export const OnboardingPartnerAccount$inboundSchema: z.ZodType<
   accountMode: Mode$inboundSchema,
   displayName: z.string(),
 });
-
 /** @internal */
 export type OnboardingPartnerAccount$Outbound = {
   accountID: string;
@@ -55,19 +54,6 @@ export const OnboardingPartnerAccount$outboundSchema: z.ZodType<
   displayName: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OnboardingPartnerAccount$ {
-  /** @deprecated use `OnboardingPartnerAccount$inboundSchema` instead. */
-  export const inboundSchema = OnboardingPartnerAccount$inboundSchema;
-  /** @deprecated use `OnboardingPartnerAccount$outboundSchema` instead. */
-  export const outboundSchema = OnboardingPartnerAccount$outboundSchema;
-  /** @deprecated use `OnboardingPartnerAccount$Outbound` instead. */
-  export type Outbound = OnboardingPartnerAccount$Outbound;
-}
-
 export function onboardingPartnerAccountToJSON(
   onboardingPartnerAccount: OnboardingPartnerAccount,
 ): string {
@@ -75,7 +61,6 @@ export function onboardingPartnerAccountToJSON(
     OnboardingPartnerAccount$outboundSchema.parse(onboardingPartnerAccount),
   );
 }
-
 export function onboardingPartnerAccountFromJSON(
   jsonString: string,
 ): SafeParseResult<OnboardingPartnerAccount, SDKValidationError> {

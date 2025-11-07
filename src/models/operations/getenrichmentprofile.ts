@@ -47,7 +47,6 @@ export const GetEnrichmentProfileGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetEnrichmentProfileGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const GetEnrichmentProfileGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEnrichmentProfileGlobals$ {
-  /** @deprecated use `GetEnrichmentProfileGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetEnrichmentProfileGlobals$inboundSchema;
-  /** @deprecated use `GetEnrichmentProfileGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetEnrichmentProfileGlobals$outboundSchema;
-  /** @deprecated use `GetEnrichmentProfileGlobals$Outbound` instead. */
-  export type Outbound = GetEnrichmentProfileGlobals$Outbound;
-}
-
 export function getEnrichmentProfileGlobalsToJSON(
   getEnrichmentProfileGlobals: GetEnrichmentProfileGlobals,
 ): string {
@@ -88,7 +74,6 @@ export function getEnrichmentProfileGlobalsToJSON(
     ),
   );
 }
-
 export function getEnrichmentProfileGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEnrichmentProfileGlobals, SDKValidationError> {
@@ -107,7 +92,6 @@ export const GetEnrichmentProfileRequest$inboundSchema: z.ZodType<
 > = z.object({
   email: z.string(),
 });
-
 /** @internal */
 export type GetEnrichmentProfileRequest$Outbound = {
   email: string;
@@ -122,19 +106,6 @@ export const GetEnrichmentProfileRequest$outboundSchema: z.ZodType<
   email: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEnrichmentProfileRequest$ {
-  /** @deprecated use `GetEnrichmentProfileRequest$inboundSchema` instead. */
-  export const inboundSchema = GetEnrichmentProfileRequest$inboundSchema;
-  /** @deprecated use `GetEnrichmentProfileRequest$outboundSchema` instead. */
-  export const outboundSchema = GetEnrichmentProfileRequest$outboundSchema;
-  /** @deprecated use `GetEnrichmentProfileRequest$Outbound` instead. */
-  export type Outbound = GetEnrichmentProfileRequest$Outbound;
-}
-
 export function getEnrichmentProfileRequestToJSON(
   getEnrichmentProfileRequest: GetEnrichmentProfileRequest,
 ): string {
@@ -144,7 +115,6 @@ export function getEnrichmentProfileRequestToJSON(
     ),
   );
 }
-
 export function getEnrichmentProfileRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEnrichmentProfileRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const GetEnrichmentProfileResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetEnrichmentProfileResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -191,19 +160,6 @@ export const GetEnrichmentProfileResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEnrichmentProfileResponse$ {
-  /** @deprecated use `GetEnrichmentProfileResponse$inboundSchema` instead. */
-  export const inboundSchema = GetEnrichmentProfileResponse$inboundSchema;
-  /** @deprecated use `GetEnrichmentProfileResponse$outboundSchema` instead. */
-  export const outboundSchema = GetEnrichmentProfileResponse$outboundSchema;
-  /** @deprecated use `GetEnrichmentProfileResponse$Outbound` instead. */
-  export type Outbound = GetEnrichmentProfileResponse$Outbound;
-}
-
 export function getEnrichmentProfileResponseToJSON(
   getEnrichmentProfileResponse: GetEnrichmentProfileResponse,
 ): string {
@@ -213,7 +169,6 @@ export function getEnrichmentProfileResponseToJSON(
     ),
   );
 }
-
 export function getEnrichmentProfileResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEnrichmentProfileResponse, SDKValidationError> {

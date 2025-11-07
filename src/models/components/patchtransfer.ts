@@ -24,7 +24,6 @@ export const PatchTransfer$inboundSchema: z.ZodType<
   metadata: z.nullable(z.record(z.string())).optional(),
   foreignID: z.string().optional(),
 });
-
 /** @internal */
 export type PatchTransfer$Outbound = {
   metadata?: { [k: string]: string } | null | undefined;
@@ -41,23 +40,9 @@ export const PatchTransfer$outboundSchema: z.ZodType<
   foreignID: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTransfer$ {
-  /** @deprecated use `PatchTransfer$inboundSchema` instead. */
-  export const inboundSchema = PatchTransfer$inboundSchema;
-  /** @deprecated use `PatchTransfer$outboundSchema` instead. */
-  export const outboundSchema = PatchTransfer$outboundSchema;
-  /** @deprecated use `PatchTransfer$Outbound` instead. */
-  export type Outbound = PatchTransfer$Outbound;
-}
-
 export function patchTransferToJSON(patchTransfer: PatchTransfer): string {
   return JSON.stringify(PatchTransfer$outboundSchema.parse(patchTransfer));
 }
-
 export function patchTransferFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTransfer, SDKValidationError> {

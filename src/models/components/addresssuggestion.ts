@@ -32,7 +32,6 @@ export const AddressSuggestion$inboundSchema: z.ZodType<
   postalCode: z.string().optional(),
   stateOrProvince: z.string().optional(),
 });
-
 /** @internal */
 export type AddressSuggestion$Outbound = {
   addressLine1?: string | undefined;
@@ -57,19 +56,6 @@ export const AddressSuggestion$outboundSchema: z.ZodType<
   stateOrProvince: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddressSuggestion$ {
-  /** @deprecated use `AddressSuggestion$inboundSchema` instead. */
-  export const inboundSchema = AddressSuggestion$inboundSchema;
-  /** @deprecated use `AddressSuggestion$outboundSchema` instead. */
-  export const outboundSchema = AddressSuggestion$outboundSchema;
-  /** @deprecated use `AddressSuggestion$Outbound` instead. */
-  export type Outbound = AddressSuggestion$Outbound;
-}
-
 export function addressSuggestionToJSON(
   addressSuggestion: AddressSuggestion,
 ): string {
@@ -77,7 +63,6 @@ export function addressSuggestionToJSON(
     AddressSuggestion$outboundSchema.parse(addressSuggestion),
   );
 }
-
 export function addressSuggestionFromJSON(
   jsonString: string,
 ): SafeParseResult<AddressSuggestion, SDKValidationError> {

@@ -51,7 +51,6 @@ export const CreateTransferOptionsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateTransferOptionsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const CreateTransferOptionsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferOptionsGlobals$ {
-  /** @deprecated use `CreateTransferOptionsGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferOptionsGlobals$inboundSchema;
-  /** @deprecated use `CreateTransferOptionsGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferOptionsGlobals$outboundSchema;
-  /** @deprecated use `CreateTransferOptionsGlobals$Outbound` instead. */
-  export type Outbound = CreateTransferOptionsGlobals$Outbound;
-}
-
 export function createTransferOptionsGlobalsToJSON(
   createTransferOptionsGlobals: CreateTransferOptionsGlobals,
 ): string {
@@ -92,7 +78,6 @@ export function createTransferOptionsGlobalsToJSON(
     ),
   );
 }
-
 export function createTransferOptionsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferOptionsGlobals, SDKValidationError> {
@@ -116,7 +101,6 @@ export const CreateTransferOptionsRequest$inboundSchema: z.ZodType<
     "CreateTransferOptions": "createTransferOptions",
   });
 });
-
 /** @internal */
 export type CreateTransferOptionsRequest$Outbound = {
   accountID: string;
@@ -137,19 +121,6 @@ export const CreateTransferOptionsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferOptionsRequest$ {
-  /** @deprecated use `CreateTransferOptionsRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferOptionsRequest$inboundSchema;
-  /** @deprecated use `CreateTransferOptionsRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferOptionsRequest$outboundSchema;
-  /** @deprecated use `CreateTransferOptionsRequest$Outbound` instead. */
-  export type Outbound = CreateTransferOptionsRequest$Outbound;
-}
-
 export function createTransferOptionsRequestToJSON(
   createTransferOptionsRequest: CreateTransferOptionsRequest,
 ): string {
@@ -159,7 +130,6 @@ export function createTransferOptionsRequestToJSON(
     ),
   );
 }
-
 export function createTransferOptionsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferOptionsRequest, SDKValidationError> {
@@ -184,7 +154,6 @@ export const CreateTransferOptionsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateTransferOptionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -206,19 +175,6 @@ export const CreateTransferOptionsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTransferOptionsResponse$ {
-  /** @deprecated use `CreateTransferOptionsResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateTransferOptionsResponse$inboundSchema;
-  /** @deprecated use `CreateTransferOptionsResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateTransferOptionsResponse$outboundSchema;
-  /** @deprecated use `CreateTransferOptionsResponse$Outbound` instead. */
-  export type Outbound = CreateTransferOptionsResponse$Outbound;
-}
-
 export function createTransferOptionsResponseToJSON(
   createTransferOptionsResponse: CreateTransferOptionsResponse,
 ): string {
@@ -228,7 +184,6 @@ export function createTransferOptionsResponseToJSON(
     ),
   );
 }
-
 export function createTransferOptionsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTransferOptionsResponse, SDKValidationError> {

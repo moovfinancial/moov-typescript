@@ -32,7 +32,6 @@ export const FedNowInstitution$inboundSchema: z.ZodType<
   routingNumber: z.string(),
   services: FedNowServices$inboundSchema,
 });
-
 /** @internal */
 export type FedNowInstitution$Outbound = {
   name: string;
@@ -51,19 +50,6 @@ export const FedNowInstitution$outboundSchema: z.ZodType<
   services: FedNowServices$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FedNowInstitution$ {
-  /** @deprecated use `FedNowInstitution$inboundSchema` instead. */
-  export const inboundSchema = FedNowInstitution$inboundSchema;
-  /** @deprecated use `FedNowInstitution$outboundSchema` instead. */
-  export const outboundSchema = FedNowInstitution$outboundSchema;
-  /** @deprecated use `FedNowInstitution$Outbound` instead. */
-  export type Outbound = FedNowInstitution$Outbound;
-}
-
 export function fedNowInstitutionToJSON(
   fedNowInstitution: FedNowInstitution,
 ): string {
@@ -71,7 +57,6 @@ export function fedNowInstitutionToJSON(
     FedNowInstitution$outboundSchema.parse(fedNowInstitution),
   );
 }
-
 export function fedNowInstitutionFromJSON(
   jsonString: string,
 ): SafeParseResult<FedNowInstitution, SDKValidationError> {

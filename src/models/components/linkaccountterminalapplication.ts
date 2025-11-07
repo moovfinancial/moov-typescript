@@ -25,7 +25,6 @@ export const LinkAccountTerminalApplication$inboundSchema: z.ZodType<
 > = z.object({
   terminalApplicationID: z.string(),
 });
-
 /** @internal */
 export type LinkAccountTerminalApplication$Outbound = {
   terminalApplicationID: string;
@@ -40,19 +39,6 @@ export const LinkAccountTerminalApplication$outboundSchema: z.ZodType<
   terminalApplicationID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkAccountTerminalApplication$ {
-  /** @deprecated use `LinkAccountTerminalApplication$inboundSchema` instead. */
-  export const inboundSchema = LinkAccountTerminalApplication$inboundSchema;
-  /** @deprecated use `LinkAccountTerminalApplication$outboundSchema` instead. */
-  export const outboundSchema = LinkAccountTerminalApplication$outboundSchema;
-  /** @deprecated use `LinkAccountTerminalApplication$Outbound` instead. */
-  export type Outbound = LinkAccountTerminalApplication$Outbound;
-}
-
 export function linkAccountTerminalApplicationToJSON(
   linkAccountTerminalApplication: LinkAccountTerminalApplication,
 ): string {
@@ -62,7 +48,6 @@ export function linkAccountTerminalApplicationToJSON(
     ),
   );
 }
-
 export function linkAccountTerminalApplicationFromJSON(
   jsonString: string,
 ): SafeParseResult<LinkAccountTerminalApplication, SDKValidationError> {

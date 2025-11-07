@@ -43,7 +43,6 @@ export const PlaidPayload$inboundSchema: z.ZodType<
 > = z.object({
   plaid: PlaidIntegration$inboundSchema,
 });
-
 /** @internal */
 export type PlaidPayload$Outbound = {
   plaid: PlaidIntegration$Outbound;
@@ -58,23 +57,9 @@ export const PlaidPayload$outboundSchema: z.ZodType<
   plaid: PlaidIntegration$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PlaidPayload$ {
-  /** @deprecated use `PlaidPayload$inboundSchema` instead. */
-  export const inboundSchema = PlaidPayload$inboundSchema;
-  /** @deprecated use `PlaidPayload$outboundSchema` instead. */
-  export const outboundSchema = PlaidPayload$outboundSchema;
-  /** @deprecated use `PlaidPayload$Outbound` instead. */
-  export type Outbound = PlaidPayload$Outbound;
-}
-
 export function plaidPayloadToJSON(plaidPayload: PlaidPayload): string {
   return JSON.stringify(PlaidPayload$outboundSchema.parse(plaidPayload));
 }
-
 export function plaidPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<PlaidPayload, SDKValidationError> {

@@ -21,7 +21,6 @@ export const PhoneNumberError$inboundSchema: z.ZodType<
   number: z.string().optional(),
   countryCode: z.string().optional(),
 });
-
 /** @internal */
 export type PhoneNumberError$Outbound = {
   number?: string | undefined;
@@ -38,19 +37,6 @@ export const PhoneNumberError$outboundSchema: z.ZodType<
   countryCode: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PhoneNumberError$ {
-  /** @deprecated use `PhoneNumberError$inboundSchema` instead. */
-  export const inboundSchema = PhoneNumberError$inboundSchema;
-  /** @deprecated use `PhoneNumberError$outboundSchema` instead. */
-  export const outboundSchema = PhoneNumberError$outboundSchema;
-  /** @deprecated use `PhoneNumberError$Outbound` instead. */
-  export type Outbound = PhoneNumberError$Outbound;
-}
-
 export function phoneNumberErrorToJSON(
   phoneNumberError: PhoneNumberError,
 ): string {
@@ -58,7 +44,6 @@ export function phoneNumberErrorToJSON(
     PhoneNumberError$outboundSchema.parse(phoneNumberError),
   );
 }
-
 export function phoneNumberErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<PhoneNumberError, SDKValidationError> {

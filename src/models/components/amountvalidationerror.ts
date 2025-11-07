@@ -21,7 +21,6 @@ export const AmountValidationError$inboundSchema: z.ZodType<
   currency: z.string().optional(),
   value: z.string().optional(),
 });
-
 /** @internal */
 export type AmountValidationError$Outbound = {
   currency?: string | undefined;
@@ -38,19 +37,6 @@ export const AmountValidationError$outboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AmountValidationError$ {
-  /** @deprecated use `AmountValidationError$inboundSchema` instead. */
-  export const inboundSchema = AmountValidationError$inboundSchema;
-  /** @deprecated use `AmountValidationError$outboundSchema` instead. */
-  export const outboundSchema = AmountValidationError$outboundSchema;
-  /** @deprecated use `AmountValidationError$Outbound` instead. */
-  export type Outbound = AmountValidationError$Outbound;
-}
-
 export function amountValidationErrorToJSON(
   amountValidationError: AmountValidationError,
 ): string {
@@ -58,7 +44,6 @@ export function amountValidationErrorToJSON(
     AmountValidationError$outboundSchema.parse(amountValidationError),
   );
 }
-
 export function amountValidationErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<AmountValidationError, SDKValidationError> {

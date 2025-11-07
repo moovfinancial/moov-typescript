@@ -23,19 +23,7 @@ export type DomesticPushToCard = ClosedEnum<typeof DomesticPushToCard>;
 export const DomesticPushToCard$inboundSchema: z.ZodNativeEnum<
   typeof DomesticPushToCard
 > = z.nativeEnum(DomesticPushToCard);
-
 /** @internal */
 export const DomesticPushToCard$outboundSchema: z.ZodNativeEnum<
   typeof DomesticPushToCard
 > = DomesticPushToCard$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomesticPushToCard$ {
-  /** @deprecated use `DomesticPushToCard$inboundSchema` instead. */
-  export const inboundSchema = DomesticPushToCard$inboundSchema;
-  /** @deprecated use `DomesticPushToCard$outboundSchema` instead. */
-  export const outboundSchema = DomesticPushToCard$outboundSchema;
-}

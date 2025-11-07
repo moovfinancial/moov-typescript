@@ -68,7 +68,6 @@ export const PaymentMethodsBankAccount$inboundSchema: z.ZodType<
   lastFourAccountNumber: z.string(),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type PaymentMethodsBankAccount$Outbound = {
   bankAccountID: string;
@@ -101,19 +100,6 @@ export const PaymentMethodsBankAccount$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentMethodsBankAccount$ {
-  /** @deprecated use `PaymentMethodsBankAccount$inboundSchema` instead. */
-  export const inboundSchema = PaymentMethodsBankAccount$inboundSchema;
-  /** @deprecated use `PaymentMethodsBankAccount$outboundSchema` instead. */
-  export const outboundSchema = PaymentMethodsBankAccount$outboundSchema;
-  /** @deprecated use `PaymentMethodsBankAccount$Outbound` instead. */
-  export type Outbound = PaymentMethodsBankAccount$Outbound;
-}
-
 export function paymentMethodsBankAccountToJSON(
   paymentMethodsBankAccount: PaymentMethodsBankAccount,
 ): string {
@@ -121,7 +107,6 @@ export function paymentMethodsBankAccountToJSON(
     PaymentMethodsBankAccount$outboundSchema.parse(paymentMethodsBankAccount),
   );
 }
-
 export function paymentMethodsBankAccountFromJSON(
   jsonString: string,
 ): SafeParseResult<PaymentMethodsBankAccount, SDKValidationError> {

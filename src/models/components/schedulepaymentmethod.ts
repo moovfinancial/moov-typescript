@@ -40,7 +40,6 @@ export const AchDetails$inboundSchema: z.ZodType<
   companyEntryDescription: z.string().optional(),
   originatingCompanyName: z.string().optional(),
 });
-
 /** @internal */
 export type AchDetails$Outbound = {
   companyEntryDescription?: string | undefined;
@@ -57,23 +56,9 @@ export const AchDetails$outboundSchema: z.ZodType<
   originatingCompanyName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AchDetails$ {
-  /** @deprecated use `AchDetails$inboundSchema` instead. */
-  export const inboundSchema = AchDetails$inboundSchema;
-  /** @deprecated use `AchDetails$outboundSchema` instead. */
-  export const outboundSchema = AchDetails$outboundSchema;
-  /** @deprecated use `AchDetails$Outbound` instead. */
-  export type Outbound = AchDetails$Outbound;
-}
-
 export function achDetailsToJSON(achDetails: AchDetails): string {
   return JSON.stringify(AchDetails$outboundSchema.parse(achDetails));
 }
-
 export function achDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<AchDetails, SDKValidationError> {
@@ -92,7 +77,6 @@ export const CardDetails$inboundSchema: z.ZodType<
 > = z.object({
   dynamicDescriptor: z.string().optional(),
 });
-
 /** @internal */
 export type CardDetails$Outbound = {
   dynamicDescriptor?: string | undefined;
@@ -107,23 +91,9 @@ export const CardDetails$outboundSchema: z.ZodType<
   dynamicDescriptor: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardDetails$ {
-  /** @deprecated use `CardDetails$inboundSchema` instead. */
-  export const inboundSchema = CardDetails$inboundSchema;
-  /** @deprecated use `CardDetails$outboundSchema` instead. */
-  export const outboundSchema = CardDetails$outboundSchema;
-  /** @deprecated use `CardDetails$Outbound` instead. */
-  export type Outbound = CardDetails$Outbound;
-}
-
 export function cardDetailsToJSON(cardDetails: CardDetails): string {
   return JSON.stringify(CardDetails$outboundSchema.parse(cardDetails));
 }
-
 export function cardDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<CardDetails, SDKValidationError> {
@@ -144,7 +114,6 @@ export const SchedulePaymentMethod$inboundSchema: z.ZodType<
   achDetails: z.lazy(() => AchDetails$inboundSchema).optional(),
   cardDetails: z.lazy(() => CardDetails$inboundSchema).optional(),
 });
-
 /** @internal */
 export type SchedulePaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -163,19 +132,6 @@ export const SchedulePaymentMethod$outboundSchema: z.ZodType<
   cardDetails: z.lazy(() => CardDetails$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SchedulePaymentMethod$ {
-  /** @deprecated use `SchedulePaymentMethod$inboundSchema` instead. */
-  export const inboundSchema = SchedulePaymentMethod$inboundSchema;
-  /** @deprecated use `SchedulePaymentMethod$outboundSchema` instead. */
-  export const outboundSchema = SchedulePaymentMethod$outboundSchema;
-  /** @deprecated use `SchedulePaymentMethod$Outbound` instead. */
-  export type Outbound = SchedulePaymentMethod$Outbound;
-}
-
 export function schedulePaymentMethodToJSON(
   schedulePaymentMethod: SchedulePaymentMethod,
 ): string {
@@ -183,7 +139,6 @@ export function schedulePaymentMethodToJSON(
     SchedulePaymentMethod$outboundSchema.parse(schedulePaymentMethod),
   );
 }
-
 export function schedulePaymentMethodFromJSON(
   jsonString: string,
 ): SafeParseResult<SchedulePaymentMethod, SDKValidationError> {

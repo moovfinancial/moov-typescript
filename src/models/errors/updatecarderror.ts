@@ -109,16 +109,3 @@ export const UpdateCardError$outboundSchema: z.ZodType<
     verifyName: z.string().optional(),
     holderName: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateCardError$ {
-  /** @deprecated use `UpdateCardError$inboundSchema` instead. */
-  export const inboundSchema = UpdateCardError$inboundSchema;
-  /** @deprecated use `UpdateCardError$outboundSchema` instead. */
-  export const outboundSchema = UpdateCardError$outboundSchema;
-  /** @deprecated use `UpdateCardError$Outbound` instead. */
-  export type Outbound = UpdateCardError$Outbound;
-}

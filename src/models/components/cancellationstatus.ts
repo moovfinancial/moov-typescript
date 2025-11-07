@@ -16,19 +16,7 @@ export type CancellationStatus = ClosedEnum<typeof CancellationStatus>;
 export const CancellationStatus$inboundSchema: z.ZodNativeEnum<
   typeof CancellationStatus
 > = z.nativeEnum(CancellationStatus);
-
 /** @internal */
 export const CancellationStatus$outboundSchema: z.ZodNativeEnum<
   typeof CancellationStatus
 > = CancellationStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CancellationStatus$ {
-  /** @deprecated use `CancellationStatus$inboundSchema` instead. */
-  export const inboundSchema = CancellationStatus$inboundSchema;
-  /** @deprecated use `CancellationStatus$outboundSchema` instead. */
-  export const outboundSchema = CancellationStatus$outboundSchema;
-}

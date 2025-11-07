@@ -23,7 +23,6 @@ export const DisplayOptionsError$inboundSchema: z.ZodType<
   description: z.string().optional(),
   callToAction: z.string().optional(),
 });
-
 /** @internal */
 export type DisplayOptionsError$Outbound = {
   title?: string | undefined;
@@ -42,19 +41,6 @@ export const DisplayOptionsError$outboundSchema: z.ZodType<
   callToAction: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisplayOptionsError$ {
-  /** @deprecated use `DisplayOptionsError$inboundSchema` instead. */
-  export const inboundSchema = DisplayOptionsError$inboundSchema;
-  /** @deprecated use `DisplayOptionsError$outboundSchema` instead. */
-  export const outboundSchema = DisplayOptionsError$outboundSchema;
-  /** @deprecated use `DisplayOptionsError$Outbound` instead. */
-  export type Outbound = DisplayOptionsError$Outbound;
-}
-
 export function displayOptionsErrorToJSON(
   displayOptionsError: DisplayOptionsError,
 ): string {
@@ -62,7 +48,6 @@ export function displayOptionsErrorToJSON(
     DisplayOptionsError$outboundSchema.parse(displayOptionsError),
   );
 }
-
 export function displayOptionsErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<DisplayOptionsError, SDKValidationError> {

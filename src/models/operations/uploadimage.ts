@@ -48,7 +48,6 @@ export const UploadImageGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UploadImageGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const UploadImageGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadImageGlobals$ {
-  /** @deprecated use `UploadImageGlobals$inboundSchema` instead. */
-  export const inboundSchema = UploadImageGlobals$inboundSchema;
-  /** @deprecated use `UploadImageGlobals$outboundSchema` instead. */
-  export const outboundSchema = UploadImageGlobals$outboundSchema;
-  /** @deprecated use `UploadImageGlobals$Outbound` instead. */
-  export type Outbound = UploadImageGlobals$Outbound;
-}
-
 export function uploadImageGlobalsToJSON(
   uploadImageGlobals: UploadImageGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function uploadImageGlobalsToJSON(
     UploadImageGlobals$outboundSchema.parse(uploadImageGlobals),
   );
 }
-
 export function uploadImageGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadImageGlobals, SDKValidationError> {
@@ -112,7 +97,6 @@ export const UploadImageRequest$inboundSchema: z.ZodType<
     "ImageUploadRequestMultiPart": "imageUploadRequestMultiPart",
   });
 });
-
 /** @internal */
 export type UploadImageRequest$Outbound = {
   accountID: string;
@@ -134,19 +118,6 @@ export const UploadImageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadImageRequest$ {
-  /** @deprecated use `UploadImageRequest$inboundSchema` instead. */
-  export const inboundSchema = UploadImageRequest$inboundSchema;
-  /** @deprecated use `UploadImageRequest$outboundSchema` instead. */
-  export const outboundSchema = UploadImageRequest$outboundSchema;
-  /** @deprecated use `UploadImageRequest$Outbound` instead. */
-  export type Outbound = UploadImageRequest$Outbound;
-}
-
 export function uploadImageRequestToJSON(
   uploadImageRequest: UploadImageRequest,
 ): string {
@@ -154,7 +125,6 @@ export function uploadImageRequestToJSON(
     UploadImageRequest$outboundSchema.parse(uploadImageRequest),
   );
 }
-
 export function uploadImageRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadImageRequest, SDKValidationError> {
@@ -179,7 +149,6 @@ export const UploadImageResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UploadImageResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -201,19 +170,6 @@ export const UploadImageResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadImageResponse$ {
-  /** @deprecated use `UploadImageResponse$inboundSchema` instead. */
-  export const inboundSchema = UploadImageResponse$inboundSchema;
-  /** @deprecated use `UploadImageResponse$outboundSchema` instead. */
-  export const outboundSchema = UploadImageResponse$outboundSchema;
-  /** @deprecated use `UploadImageResponse$Outbound` instead. */
-  export type Outbound = UploadImageResponse$Outbound;
-}
-
 export function uploadImageResponseToJSON(
   uploadImageResponse: UploadImageResponse,
 ): string {
@@ -221,7 +177,6 @@ export function uploadImageResponseToJSON(
     UploadImageResponse$outboundSchema.parse(uploadImageResponse),
   );
 }
-
 export function uploadImageResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadImageResponse, SDKValidationError> {

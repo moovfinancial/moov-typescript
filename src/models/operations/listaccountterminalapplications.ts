@@ -47,7 +47,6 @@ export const ListAccountTerminalApplicationsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListAccountTerminalApplicationsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,21 +65,6 @@ export const ListAccountTerminalApplicationsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountTerminalApplicationsGlobals$ {
-  /** @deprecated use `ListAccountTerminalApplicationsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    ListAccountTerminalApplicationsGlobals$inboundSchema;
-  /** @deprecated use `ListAccountTerminalApplicationsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    ListAccountTerminalApplicationsGlobals$outboundSchema;
-  /** @deprecated use `ListAccountTerminalApplicationsGlobals$Outbound` instead. */
-  export type Outbound = ListAccountTerminalApplicationsGlobals$Outbound;
-}
-
 export function listAccountTerminalApplicationsGlobalsToJSON(
   listAccountTerminalApplicationsGlobals:
     ListAccountTerminalApplicationsGlobals,
@@ -91,7 +75,6 @@ export function listAccountTerminalApplicationsGlobalsToJSON(
     ),
   );
 }
-
 export function listAccountTerminalApplicationsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccountTerminalApplicationsGlobals, SDKValidationError> {
@@ -111,7 +94,6 @@ export const ListAccountTerminalApplicationsRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type ListAccountTerminalApplicationsRequest$Outbound = {
   accountID: string;
@@ -126,21 +108,6 @@ export const ListAccountTerminalApplicationsRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountTerminalApplicationsRequest$ {
-  /** @deprecated use `ListAccountTerminalApplicationsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    ListAccountTerminalApplicationsRequest$inboundSchema;
-  /** @deprecated use `ListAccountTerminalApplicationsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ListAccountTerminalApplicationsRequest$outboundSchema;
-  /** @deprecated use `ListAccountTerminalApplicationsRequest$Outbound` instead. */
-  export type Outbound = ListAccountTerminalApplicationsRequest$Outbound;
-}
-
 export function listAccountTerminalApplicationsRequestToJSON(
   listAccountTerminalApplicationsRequest:
     ListAccountTerminalApplicationsRequest,
@@ -151,7 +118,6 @@ export function listAccountTerminalApplicationsRequestToJSON(
     ),
   );
 }
-
 export function listAccountTerminalApplicationsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccountTerminalApplicationsRequest, SDKValidationError> {
@@ -177,7 +143,6 @@ export const ListAccountTerminalApplicationsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListAccountTerminalApplicationsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,21 +164,6 @@ export const ListAccountTerminalApplicationsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountTerminalApplicationsResponse$ {
-  /** @deprecated use `ListAccountTerminalApplicationsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    ListAccountTerminalApplicationsResponse$inboundSchema;
-  /** @deprecated use `ListAccountTerminalApplicationsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    ListAccountTerminalApplicationsResponse$outboundSchema;
-  /** @deprecated use `ListAccountTerminalApplicationsResponse$Outbound` instead. */
-  export type Outbound = ListAccountTerminalApplicationsResponse$Outbound;
-}
-
 export function listAccountTerminalApplicationsResponseToJSON(
   listAccountTerminalApplicationsResponse:
     ListAccountTerminalApplicationsResponse,
@@ -224,7 +174,6 @@ export function listAccountTerminalApplicationsResponseToJSON(
     ),
   );
 }
-
 export function listAccountTerminalApplicationsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<

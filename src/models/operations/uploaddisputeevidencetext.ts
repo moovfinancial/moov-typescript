@@ -49,7 +49,6 @@ export const UploadDisputeEvidenceTextGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UploadDisputeEvidenceTextGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const UploadDisputeEvidenceTextGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadDisputeEvidenceTextGlobals$ {
-  /** @deprecated use `UploadDisputeEvidenceTextGlobals$inboundSchema` instead. */
-  export const inboundSchema = UploadDisputeEvidenceTextGlobals$inboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceTextGlobals$outboundSchema` instead. */
-  export const outboundSchema = UploadDisputeEvidenceTextGlobals$outboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceTextGlobals$Outbound` instead. */
-  export type Outbound = UploadDisputeEvidenceTextGlobals$Outbound;
-}
-
 export function uploadDisputeEvidenceTextGlobalsToJSON(
   uploadDisputeEvidenceTextGlobals: UploadDisputeEvidenceTextGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function uploadDisputeEvidenceTextGlobalsToJSON(
     ),
   );
 }
-
 export function uploadDisputeEvidenceTextGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadDisputeEvidenceTextGlobals, SDKValidationError> {
@@ -115,7 +100,6 @@ export const UploadDisputeEvidenceTextRequest$inboundSchema: z.ZodType<
     "CreateEvidenceText": "createEvidenceText",
   });
 });
-
 /** @internal */
 export type UploadDisputeEvidenceTextRequest$Outbound = {
   accountID: string;
@@ -138,19 +122,6 @@ export const UploadDisputeEvidenceTextRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadDisputeEvidenceTextRequest$ {
-  /** @deprecated use `UploadDisputeEvidenceTextRequest$inboundSchema` instead. */
-  export const inboundSchema = UploadDisputeEvidenceTextRequest$inboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceTextRequest$outboundSchema` instead. */
-  export const outboundSchema = UploadDisputeEvidenceTextRequest$outboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceTextRequest$Outbound` instead. */
-  export type Outbound = UploadDisputeEvidenceTextRequest$Outbound;
-}
-
 export function uploadDisputeEvidenceTextRequestToJSON(
   uploadDisputeEvidenceTextRequest: UploadDisputeEvidenceTextRequest,
 ): string {
@@ -160,7 +131,6 @@ export function uploadDisputeEvidenceTextRequestToJSON(
     ),
   );
 }
-
 export function uploadDisputeEvidenceTextRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadDisputeEvidenceTextRequest, SDKValidationError> {
@@ -185,7 +155,6 @@ export const UploadDisputeEvidenceTextResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type UploadDisputeEvidenceTextResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -207,20 +176,6 @@ export const UploadDisputeEvidenceTextResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadDisputeEvidenceTextResponse$ {
-  /** @deprecated use `UploadDisputeEvidenceTextResponse$inboundSchema` instead. */
-  export const inboundSchema = UploadDisputeEvidenceTextResponse$inboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceTextResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    UploadDisputeEvidenceTextResponse$outboundSchema;
-  /** @deprecated use `UploadDisputeEvidenceTextResponse$Outbound` instead. */
-  export type Outbound = UploadDisputeEvidenceTextResponse$Outbound;
-}
-
 export function uploadDisputeEvidenceTextResponseToJSON(
   uploadDisputeEvidenceTextResponse: UploadDisputeEvidenceTextResponse,
 ): string {
@@ -230,7 +185,6 @@ export function uploadDisputeEvidenceTextResponseToJSON(
     ),
   );
 }
-
 export function uploadDisputeEvidenceTextResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadDisputeEvidenceTextResponse, SDKValidationError> {

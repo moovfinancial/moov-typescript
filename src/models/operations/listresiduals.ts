@@ -57,7 +57,6 @@ export const ListResidualsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListResidualsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -76,19 +75,6 @@ export const ListResidualsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResidualsGlobals$ {
-  /** @deprecated use `ListResidualsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListResidualsGlobals$inboundSchema;
-  /** @deprecated use `ListResidualsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListResidualsGlobals$outboundSchema;
-  /** @deprecated use `ListResidualsGlobals$Outbound` instead. */
-  export type Outbound = ListResidualsGlobals$Outbound;
-}
-
 export function listResidualsGlobalsToJSON(
   listResidualsGlobals: ListResidualsGlobals,
 ): string {
@@ -96,7 +82,6 @@ export function listResidualsGlobalsToJSON(
     ListResidualsGlobals$outboundSchema.parse(listResidualsGlobals),
   );
 }
-
 export function listResidualsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResidualsGlobals, SDKValidationError> {
@@ -119,7 +104,6 @@ export const ListResidualsRequest$inboundSchema: z.ZodType<
   startDateTime: z.string().optional(),
   endDateTime: z.string().optional(),
 });
-
 /** @internal */
 export type ListResidualsRequest$Outbound = {
   skip?: number | undefined;
@@ -142,19 +126,6 @@ export const ListResidualsRequest$outboundSchema: z.ZodType<
   endDateTime: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResidualsRequest$ {
-  /** @deprecated use `ListResidualsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListResidualsRequest$inboundSchema;
-  /** @deprecated use `ListResidualsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListResidualsRequest$outboundSchema;
-  /** @deprecated use `ListResidualsRequest$Outbound` instead. */
-  export type Outbound = ListResidualsRequest$Outbound;
-}
-
 export function listResidualsRequestToJSON(
   listResidualsRequest: ListResidualsRequest,
 ): string {
@@ -162,7 +133,6 @@ export function listResidualsRequestToJSON(
     ListResidualsRequest$outboundSchema.parse(listResidualsRequest),
   );
 }
-
 export function listResidualsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResidualsRequest, SDKValidationError> {
@@ -187,7 +157,6 @@ export const ListResidualsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListResidualsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -209,19 +178,6 @@ export const ListResidualsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResidualsResponse$ {
-  /** @deprecated use `ListResidualsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListResidualsResponse$inboundSchema;
-  /** @deprecated use `ListResidualsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListResidualsResponse$outboundSchema;
-  /** @deprecated use `ListResidualsResponse$Outbound` instead. */
-  export type Outbound = ListResidualsResponse$Outbound;
-}
-
 export function listResidualsResponseToJSON(
   listResidualsResponse: ListResidualsResponse,
 ): string {
@@ -229,7 +185,6 @@ export function listResidualsResponseToJSON(
     ListResidualsResponse$outboundSchema.parse(listResidualsResponse),
   );
 }
-
 export function listResidualsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResidualsResponse, SDKValidationError> {

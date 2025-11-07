@@ -22,7 +22,6 @@ export const TermsOfServiceToken$inboundSchema: z.ZodType<
 > = z.object({
   token: z.string(),
 });
-
 /** @internal */
 export type TermsOfServiceToken$Outbound = {
   token: string;
@@ -37,19 +36,6 @@ export const TermsOfServiceToken$outboundSchema: z.ZodType<
   token: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TermsOfServiceToken$ {
-  /** @deprecated use `TermsOfServiceToken$inboundSchema` instead. */
-  export const inboundSchema = TermsOfServiceToken$inboundSchema;
-  /** @deprecated use `TermsOfServiceToken$outboundSchema` instead. */
-  export const outboundSchema = TermsOfServiceToken$outboundSchema;
-  /** @deprecated use `TermsOfServiceToken$Outbound` instead. */
-  export type Outbound = TermsOfServiceToken$Outbound;
-}
-
 export function termsOfServiceTokenToJSON(
   termsOfServiceToken: TermsOfServiceToken,
 ): string {
@@ -57,7 +43,6 @@ export function termsOfServiceTokenToJSON(
     TermsOfServiceToken$outboundSchema.parse(termsOfServiceToken),
   );
 }
-
 export function termsOfServiceTokenFromJSON(
   jsonString: string,
 ): SafeParseResult<TermsOfServiceToken, SDKValidationError> {

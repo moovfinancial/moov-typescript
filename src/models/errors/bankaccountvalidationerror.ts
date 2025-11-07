@@ -88,16 +88,3 @@ export const BankAccountValidationError$outboundSchema: z.ZodType<
     mx: z.string().optional(),
     error: z.string().optional(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccountValidationError$ {
-  /** @deprecated use `BankAccountValidationError$inboundSchema` instead. */
-  export const inboundSchema = BankAccountValidationError$inboundSchema;
-  /** @deprecated use `BankAccountValidationError$outboundSchema` instead. */
-  export const outboundSchema = BankAccountValidationError$outboundSchema;
-  /** @deprecated use `BankAccountValidationError$Outbound` instead. */
-  export type Outbound = BankAccountValidationError$Outbound;
-}

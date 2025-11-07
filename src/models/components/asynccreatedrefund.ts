@@ -32,7 +32,6 @@ export const AsyncCreatedRefund$inboundSchema: z.ZodType<
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   amount: Amount$inboundSchema,
 });
-
 /** @internal */
 export type AsyncCreatedRefund$Outbound = {
   refundID: string;
@@ -51,19 +50,6 @@ export const AsyncCreatedRefund$outboundSchema: z.ZodType<
   amount: Amount$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AsyncCreatedRefund$ {
-  /** @deprecated use `AsyncCreatedRefund$inboundSchema` instead. */
-  export const inboundSchema = AsyncCreatedRefund$inboundSchema;
-  /** @deprecated use `AsyncCreatedRefund$outboundSchema` instead. */
-  export const outboundSchema = AsyncCreatedRefund$outboundSchema;
-  /** @deprecated use `AsyncCreatedRefund$Outbound` instead. */
-  export type Outbound = AsyncCreatedRefund$Outbound;
-}
-
 export function asyncCreatedRefundToJSON(
   asyncCreatedRefund: AsyncCreatedRefund,
 ): string {
@@ -71,7 +57,6 @@ export function asyncCreatedRefundToJSON(
     AsyncCreatedRefund$outboundSchema.parse(asyncCreatedRefund),
   );
 }
-
 export function asyncCreatedRefundFromJSON(
   jsonString: string,
 ): SafeParseResult<AsyncCreatedRefund, SDKValidationError> {

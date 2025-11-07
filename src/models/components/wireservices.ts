@@ -32,7 +32,6 @@ export const WireServices$inboundSchema: z.ZodType<
   fundsSettlementOnlyStatus: z.boolean(),
   bookEntrySecuritiesTransferStatus: z.boolean(),
 });
-
 /** @internal */
 export type WireServices$Outbound = {
   fundsTransferStatus: boolean;
@@ -51,23 +50,9 @@ export const WireServices$outboundSchema: z.ZodType<
   bookEntrySecuritiesTransferStatus: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WireServices$ {
-  /** @deprecated use `WireServices$inboundSchema` instead. */
-  export const inboundSchema = WireServices$inboundSchema;
-  /** @deprecated use `WireServices$outboundSchema` instead. */
-  export const outboundSchema = WireServices$outboundSchema;
-  /** @deprecated use `WireServices$Outbound` instead. */
-  export type Outbound = WireServices$Outbound;
-}
-
 export function wireServicesToJSON(wireServices: WireServices): string {
   return JSON.stringify(WireServices$outboundSchema.parse(wireServices));
 }
-
 export function wireServicesFromJSON(
   jsonString: string,
 ): SafeParseResult<WireServices, SDKValidationError> {

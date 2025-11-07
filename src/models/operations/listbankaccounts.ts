@@ -47,7 +47,6 @@ export const ListBankAccountsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListBankAccountsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,19 +65,6 @@ export const ListBankAccountsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListBankAccountsGlobals$ {
-  /** @deprecated use `ListBankAccountsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListBankAccountsGlobals$inboundSchema;
-  /** @deprecated use `ListBankAccountsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListBankAccountsGlobals$outboundSchema;
-  /** @deprecated use `ListBankAccountsGlobals$Outbound` instead. */
-  export type Outbound = ListBankAccountsGlobals$Outbound;
-}
-
 export function listBankAccountsGlobalsToJSON(
   listBankAccountsGlobals: ListBankAccountsGlobals,
 ): string {
@@ -86,7 +72,6 @@ export function listBankAccountsGlobalsToJSON(
     ListBankAccountsGlobals$outboundSchema.parse(listBankAccountsGlobals),
   );
 }
-
 export function listBankAccountsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListBankAccountsGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const ListBankAccountsRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type ListBankAccountsRequest$Outbound = {
   accountID: string;
@@ -120,19 +104,6 @@ export const ListBankAccountsRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListBankAccountsRequest$ {
-  /** @deprecated use `ListBankAccountsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListBankAccountsRequest$inboundSchema;
-  /** @deprecated use `ListBankAccountsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListBankAccountsRequest$outboundSchema;
-  /** @deprecated use `ListBankAccountsRequest$Outbound` instead. */
-  export type Outbound = ListBankAccountsRequest$Outbound;
-}
-
 export function listBankAccountsRequestToJSON(
   listBankAccountsRequest: ListBankAccountsRequest,
 ): string {
@@ -140,7 +111,6 @@ export function listBankAccountsRequestToJSON(
     ListBankAccountsRequest$outboundSchema.parse(listBankAccountsRequest),
   );
 }
-
 export function listBankAccountsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListBankAccountsRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const ListBankAccountsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListBankAccountsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -187,19 +156,6 @@ export const ListBankAccountsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListBankAccountsResponse$ {
-  /** @deprecated use `ListBankAccountsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListBankAccountsResponse$inboundSchema;
-  /** @deprecated use `ListBankAccountsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListBankAccountsResponse$outboundSchema;
-  /** @deprecated use `ListBankAccountsResponse$Outbound` instead. */
-  export type Outbound = ListBankAccountsResponse$Outbound;
-}
-
 export function listBankAccountsResponseToJSON(
   listBankAccountsResponse: ListBankAccountsResponse,
 ): string {
@@ -207,7 +163,6 @@ export function listBankAccountsResponseToJSON(
     ListBankAccountsResponse$outboundSchema.parse(listBankAccountsResponse),
   );
 }
-
 export function listBankAccountsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListBankAccountsResponse, SDKValidationError> {

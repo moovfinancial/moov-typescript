@@ -22,7 +22,6 @@ export const ListFeesFetchRequest$inboundSchema: z.ZodType<
 > = z.object({
   feeIDs: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type ListFeesFetchRequest$Outbound = {
   feeIDs?: Array<string> | undefined;
@@ -37,19 +36,6 @@ export const ListFeesFetchRequest$outboundSchema: z.ZodType<
   feeIDs: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeesFetchRequest$ {
-  /** @deprecated use `ListFeesFetchRequest$inboundSchema` instead. */
-  export const inboundSchema = ListFeesFetchRequest$inboundSchema;
-  /** @deprecated use `ListFeesFetchRequest$outboundSchema` instead. */
-  export const outboundSchema = ListFeesFetchRequest$outboundSchema;
-  /** @deprecated use `ListFeesFetchRequest$Outbound` instead. */
-  export type Outbound = ListFeesFetchRequest$Outbound;
-}
-
 export function listFeesFetchRequestToJSON(
   listFeesFetchRequest: ListFeesFetchRequest,
 ): string {
@@ -57,7 +43,6 @@ export function listFeesFetchRequestToJSON(
     ListFeesFetchRequest$outboundSchema.parse(listFeesFetchRequest),
   );
 }
-
 export function listFeesFetchRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeesFetchRequest, SDKValidationError> {

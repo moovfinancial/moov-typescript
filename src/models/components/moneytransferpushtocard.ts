@@ -25,7 +25,6 @@ export const MoneyTransferPushToCard$inboundSchema: z.ZodType<
 > = z.object({
   estimatedActivity: EstimatedActivity$inboundSchema.optional(),
 });
-
 /** @internal */
 export type MoneyTransferPushToCard$Outbound = {
   estimatedActivity?: EstimatedActivity$Outbound | undefined;
@@ -40,19 +39,6 @@ export const MoneyTransferPushToCard$outboundSchema: z.ZodType<
   estimatedActivity: EstimatedActivity$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoneyTransferPushToCard$ {
-  /** @deprecated use `MoneyTransferPushToCard$inboundSchema` instead. */
-  export const inboundSchema = MoneyTransferPushToCard$inboundSchema;
-  /** @deprecated use `MoneyTransferPushToCard$outboundSchema` instead. */
-  export const outboundSchema = MoneyTransferPushToCard$outboundSchema;
-  /** @deprecated use `MoneyTransferPushToCard$Outbound` instead. */
-  export type Outbound = MoneyTransferPushToCard$Outbound;
-}
-
 export function moneyTransferPushToCardToJSON(
   moneyTransferPushToCard: MoneyTransferPushToCard,
 ): string {
@@ -60,7 +46,6 @@ export function moneyTransferPushToCardToJSON(
     MoneyTransferPushToCard$outboundSchema.parse(moneyTransferPushToCard),
   );
 }
-
 export function moneyTransferPushToCardFromJSON(
   jsonString: string,
 ): SafeParseResult<MoneyTransferPushToCard, SDKValidationError> {

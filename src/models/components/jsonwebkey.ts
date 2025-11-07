@@ -89,21 +89,9 @@ export type JSONWebKey = {
 
 /** @internal */
 export const Use$inboundSchema: z.ZodNativeEnum<typeof Use> = z.nativeEnum(Use);
-
 /** @internal */
 export const Use$outboundSchema: z.ZodNativeEnum<typeof Use> =
   Use$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Use$ {
-  /** @deprecated use `Use$inboundSchema` instead. */
-  export const inboundSchema = Use$inboundSchema;
-  /** @deprecated use `Use$outboundSchema` instead. */
-  export const outboundSchema = Use$outboundSchema;
-}
 
 /** @internal */
 export const JSONWebKey$inboundSchema: z.ZodType<
@@ -126,7 +114,6 @@ export const JSONWebKey$inboundSchema: z.ZodType<
     "key_ops": "keyOps",
   });
 });
-
 /** @internal */
 export type JSONWebKey$Outbound = {
   kty: string;
@@ -163,23 +150,9 @@ export const JSONWebKey$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JSONWebKey$ {
-  /** @deprecated use `JSONWebKey$inboundSchema` instead. */
-  export const inboundSchema = JSONWebKey$inboundSchema;
-  /** @deprecated use `JSONWebKey$outboundSchema` instead. */
-  export const outboundSchema = JSONWebKey$outboundSchema;
-  /** @deprecated use `JSONWebKey$Outbound` instead. */
-  export type Outbound = JSONWebKey$Outbound;
-}
-
 export function jsonWebKeyToJSON(jsonWebKey: JSONWebKey): string {
   return JSON.stringify(JSONWebKey$outboundSchema.parse(jsonWebKey));
 }
-
 export function jsonWebKeyFromJSON(
   jsonString: string,
 ): SafeParseResult<JSONWebKey, SDKValidationError> {

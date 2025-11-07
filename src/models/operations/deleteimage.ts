@@ -46,7 +46,6 @@ export const DeleteImageGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type DeleteImageGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -65,19 +64,6 @@ export const DeleteImageGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteImageGlobals$ {
-  /** @deprecated use `DeleteImageGlobals$inboundSchema` instead. */
-  export const inboundSchema = DeleteImageGlobals$inboundSchema;
-  /** @deprecated use `DeleteImageGlobals$outboundSchema` instead. */
-  export const outboundSchema = DeleteImageGlobals$outboundSchema;
-  /** @deprecated use `DeleteImageGlobals$Outbound` instead. */
-  export type Outbound = DeleteImageGlobals$Outbound;
-}
-
 export function deleteImageGlobalsToJSON(
   deleteImageGlobals: DeleteImageGlobals,
 ): string {
@@ -85,7 +71,6 @@ export function deleteImageGlobalsToJSON(
     DeleteImageGlobals$outboundSchema.parse(deleteImageGlobals),
   );
 }
-
 export function deleteImageGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteImageGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const DeleteImageRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   imageID: z.string(),
 });
-
 /** @internal */
 export type DeleteImageRequest$Outbound = {
   accountID: string;
@@ -122,19 +106,6 @@ export const DeleteImageRequest$outboundSchema: z.ZodType<
   imageID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteImageRequest$ {
-  /** @deprecated use `DeleteImageRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteImageRequest$inboundSchema;
-  /** @deprecated use `DeleteImageRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteImageRequest$outboundSchema;
-  /** @deprecated use `DeleteImageRequest$Outbound` instead. */
-  export type Outbound = DeleteImageRequest$Outbound;
-}
-
 export function deleteImageRequestToJSON(
   deleteImageRequest: DeleteImageRequest,
 ): string {
@@ -142,7 +113,6 @@ export function deleteImageRequestToJSON(
     DeleteImageRequest$outboundSchema.parse(deleteImageRequest),
   );
 }
-
 export function deleteImageRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteImageRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const DeleteImageResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type DeleteImageResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -184,19 +153,6 @@ export const DeleteImageResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteImageResponse$ {
-  /** @deprecated use `DeleteImageResponse$inboundSchema` instead. */
-  export const inboundSchema = DeleteImageResponse$inboundSchema;
-  /** @deprecated use `DeleteImageResponse$outboundSchema` instead. */
-  export const outboundSchema = DeleteImageResponse$outboundSchema;
-  /** @deprecated use `DeleteImageResponse$Outbound` instead. */
-  export type Outbound = DeleteImageResponse$Outbound;
-}
-
 export function deleteImageResponseToJSON(
   deleteImageResponse: DeleteImageResponse,
 ): string {
@@ -204,7 +160,6 @@ export function deleteImageResponseToJSON(
     DeleteImageResponse$outboundSchema.parse(deleteImageResponse),
   );
 }
-
 export function deleteImageResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteImageResponse, SDKValidationError> {

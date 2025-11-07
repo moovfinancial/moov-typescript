@@ -44,7 +44,6 @@ export const PaymentLinkPayoutDetailsUpdate$inboundSchema: z.ZodType<
     .optional(),
   recipient: PayoutRecipient$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PaymentLinkPayoutDetailsUpdate$Outbound = {
   allowedMethods?: Array<string> | undefined;
@@ -62,19 +61,6 @@ export const PaymentLinkPayoutDetailsUpdate$outboundSchema: z.ZodType<
   recipient: PayoutRecipient$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentLinkPayoutDetailsUpdate$ {
-  /** @deprecated use `PaymentLinkPayoutDetailsUpdate$inboundSchema` instead. */
-  export const inboundSchema = PaymentLinkPayoutDetailsUpdate$inboundSchema;
-  /** @deprecated use `PaymentLinkPayoutDetailsUpdate$outboundSchema` instead. */
-  export const outboundSchema = PaymentLinkPayoutDetailsUpdate$outboundSchema;
-  /** @deprecated use `PaymentLinkPayoutDetailsUpdate$Outbound` instead. */
-  export type Outbound = PaymentLinkPayoutDetailsUpdate$Outbound;
-}
-
 export function paymentLinkPayoutDetailsUpdateToJSON(
   paymentLinkPayoutDetailsUpdate: PaymentLinkPayoutDetailsUpdate,
 ): string {
@@ -84,7 +70,6 @@ export function paymentLinkPayoutDetailsUpdateToJSON(
     ),
   );
 }
-
 export function paymentLinkPayoutDetailsUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<PaymentLinkPayoutDetailsUpdate, SDKValidationError> {

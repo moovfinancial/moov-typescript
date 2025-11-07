@@ -52,7 +52,6 @@ export const IssuingMerchantData$inboundSchema: z.ZodType<
   state: z.string().optional(),
   mcc: z.string().optional(),
 });
-
 /** @internal */
 export type IssuingMerchantData$Outbound = {
   networkID?: string | undefined;
@@ -79,19 +78,6 @@ export const IssuingMerchantData$outboundSchema: z.ZodType<
   mcc: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssuingMerchantData$ {
-  /** @deprecated use `IssuingMerchantData$inboundSchema` instead. */
-  export const inboundSchema = IssuingMerchantData$inboundSchema;
-  /** @deprecated use `IssuingMerchantData$outboundSchema` instead. */
-  export const outboundSchema = IssuingMerchantData$outboundSchema;
-  /** @deprecated use `IssuingMerchantData$Outbound` instead. */
-  export type Outbound = IssuingMerchantData$Outbound;
-}
-
 export function issuingMerchantDataToJSON(
   issuingMerchantData: IssuingMerchantData,
 ): string {
@@ -99,7 +85,6 @@ export function issuingMerchantDataToJSON(
     IssuingMerchantData$outboundSchema.parse(issuingMerchantData),
   );
 }
-
 export function issuingMerchantDataFromJSON(
   jsonString: string,
 ): SafeParseResult<IssuingMerchantData, SDKValidationError> {

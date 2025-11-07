@@ -64,7 +64,6 @@ export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
   .object({
     message: z.string().optional(),
   });
-
 /** @internal */
 export type ErrorT$Outbound = {
   message?: string | undefined;
@@ -79,23 +78,9 @@ export const ErrorT$outboundSchema: z.ZodType<
   message: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ErrorT$ {
-  /** @deprecated use `ErrorT$inboundSchema` instead. */
-  export const inboundSchema = ErrorT$inboundSchema;
-  /** @deprecated use `ErrorT$outboundSchema` instead. */
-  export const outboundSchema = ErrorT$outboundSchema;
-  /** @deprecated use `ErrorT$Outbound` instead. */
-  export type Outbound = ErrorT$Outbound;
-}
-
 export function errorToJSON(errorT: ErrorT): string {
   return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
 }
-
 export function errorFromJSON(
   jsonString: string,
 ): SafeParseResult<ErrorT, SDKValidationError> {
@@ -127,7 +112,6 @@ export const OccurrencesResponse$inboundSchema: z.ZodType<
   status: OccurrenceStatus$inboundSchema.optional(),
   error: z.lazy(() => ErrorT$inboundSchema).optional(),
 });
-
 /** @internal */
 export type OccurrencesResponse$Outbound = {
   scheduleID?: string | undefined;
@@ -164,19 +148,6 @@ export const OccurrencesResponse$outboundSchema: z.ZodType<
   error: z.lazy(() => ErrorT$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OccurrencesResponse$ {
-  /** @deprecated use `OccurrencesResponse$inboundSchema` instead. */
-  export const inboundSchema = OccurrencesResponse$inboundSchema;
-  /** @deprecated use `OccurrencesResponse$outboundSchema` instead. */
-  export const outboundSchema = OccurrencesResponse$outboundSchema;
-  /** @deprecated use `OccurrencesResponse$Outbound` instead. */
-  export type Outbound = OccurrencesResponse$Outbound;
-}
-
 export function occurrencesResponseToJSON(
   occurrencesResponse: OccurrencesResponse,
 ): string {
@@ -184,7 +155,6 @@ export function occurrencesResponseToJSON(
     OccurrencesResponse$outboundSchema.parse(occurrencesResponse),
   );
 }
-
 export function occurrencesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<OccurrencesResponse, SDKValidationError> {

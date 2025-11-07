@@ -30,18 +30,6 @@ export type GrantType = ClosedEnum<typeof GrantType>;
 /** @internal */
 export const GrantType$inboundSchema: z.ZodNativeEnum<typeof GrantType> = z
   .nativeEnum(GrantType);
-
 /** @internal */
 export const GrantType$outboundSchema: z.ZodNativeEnum<typeof GrantType> =
   GrantType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GrantType$ {
-  /** @deprecated use `GrantType$inboundSchema` instead. */
-  export const inboundSchema = GrantType$inboundSchema;
-  /** @deprecated use `GrantType$outboundSchema` instead. */
-  export const outboundSchema = GrantType$outboundSchema;
-}

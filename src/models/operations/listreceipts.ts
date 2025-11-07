@@ -50,7 +50,6 @@ export const ListReceiptsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListReceiptsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -69,19 +68,6 @@ export const ListReceiptsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListReceiptsGlobals$ {
-  /** @deprecated use `ListReceiptsGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListReceiptsGlobals$inboundSchema;
-  /** @deprecated use `ListReceiptsGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListReceiptsGlobals$outboundSchema;
-  /** @deprecated use `ListReceiptsGlobals$Outbound` instead. */
-  export type Outbound = ListReceiptsGlobals$Outbound;
-}
-
 export function listReceiptsGlobalsToJSON(
   listReceiptsGlobals: ListReceiptsGlobals,
 ): string {
@@ -89,7 +75,6 @@ export function listReceiptsGlobalsToJSON(
     ListReceiptsGlobals$outboundSchema.parse(listReceiptsGlobals),
   );
 }
-
 export function listReceiptsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListReceiptsGlobals, SDKValidationError> {
@@ -108,7 +93,6 @@ export const ListReceiptsRequest$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
 });
-
 /** @internal */
 export type ListReceiptsRequest$Outbound = {
   id: string;
@@ -123,19 +107,6 @@ export const ListReceiptsRequest$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListReceiptsRequest$ {
-  /** @deprecated use `ListReceiptsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListReceiptsRequest$inboundSchema;
-  /** @deprecated use `ListReceiptsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListReceiptsRequest$outboundSchema;
-  /** @deprecated use `ListReceiptsRequest$Outbound` instead. */
-  export type Outbound = ListReceiptsRequest$Outbound;
-}
-
 export function listReceiptsRequestToJSON(
   listReceiptsRequest: ListReceiptsRequest,
 ): string {
@@ -143,7 +114,6 @@ export function listReceiptsRequestToJSON(
     ListReceiptsRequest$outboundSchema.parse(listReceiptsRequest),
   );
 }
-
 export function listReceiptsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListReceiptsRequest, SDKValidationError> {
@@ -168,7 +138,6 @@ export const ListReceiptsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListReceiptsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -190,19 +159,6 @@ export const ListReceiptsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListReceiptsResponse$ {
-  /** @deprecated use `ListReceiptsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListReceiptsResponse$inboundSchema;
-  /** @deprecated use `ListReceiptsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListReceiptsResponse$outboundSchema;
-  /** @deprecated use `ListReceiptsResponse$Outbound` instead. */
-  export type Outbound = ListReceiptsResponse$Outbound;
-}
-
 export function listReceiptsResponseToJSON(
   listReceiptsResponse: ListReceiptsResponse,
 ): string {
@@ -210,7 +166,6 @@ export function listReceiptsResponseToJSON(
     ListReceiptsResponse$outboundSchema.parse(listReceiptsResponse),
   );
 }
-
 export function listReceiptsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListReceiptsResponse, SDKValidationError> {

@@ -79,7 +79,6 @@ export const Wallet$inboundSchema: z.ZodType<Wallet, z.ZodTypeDef, unknown> = z
     closedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
       .optional(),
   });
-
 /** @internal */
 export type Wallet$Outbound = {
   walletID: string;
@@ -112,23 +111,9 @@ export const Wallet$outboundSchema: z.ZodType<
   closedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Wallet$ {
-  /** @deprecated use `Wallet$inboundSchema` instead. */
-  export const inboundSchema = Wallet$inboundSchema;
-  /** @deprecated use `Wallet$outboundSchema` instead. */
-  export const outboundSchema = Wallet$outboundSchema;
-  /** @deprecated use `Wallet$Outbound` instead. */
-  export type Outbound = Wallet$Outbound;
-}
-
 export function walletToJSON(wallet: Wallet): string {
   return JSON.stringify(Wallet$outboundSchema.parse(wallet));
 }
-
 export function walletFromJSON(
   jsonString: string,
 ): SafeParseResult<Wallet, SDKValidationError> {

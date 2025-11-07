@@ -40,7 +40,6 @@ export const PatchWallet$inboundSchema: z.ZodType<
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
 });
-
 /** @internal */
 export type PatchWallet$Outbound = {
   name?: string | undefined;
@@ -61,23 +60,9 @@ export const PatchWallet$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchWallet$ {
-  /** @deprecated use `PatchWallet$inboundSchema` instead. */
-  export const inboundSchema = PatchWallet$inboundSchema;
-  /** @deprecated use `PatchWallet$outboundSchema` instead. */
-  export const outboundSchema = PatchWallet$outboundSchema;
-  /** @deprecated use `PatchWallet$Outbound` instead. */
-  export type Outbound = PatchWallet$Outbound;
-}
-
 export function patchWalletToJSON(patchWallet: PatchWallet): string {
   return JSON.stringify(PatchWallet$outboundSchema.parse(patchWallet));
 }
-
 export function patchWalletFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchWallet, SDKValidationError> {

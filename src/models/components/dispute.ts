@@ -87,7 +87,6 @@ export const Dispute$inboundSchema: z.ZodType<Dispute, z.ZodTypeDef, unknown> =
       new Date(v)
     ).optional(),
   });
-
 /** @internal */
 export type Dispute$Outbound = {
   disputeID: string;
@@ -122,23 +121,9 @@ export const Dispute$outboundSchema: z.ZodType<
   submittedOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Dispute$ {
-  /** @deprecated use `Dispute$inboundSchema` instead. */
-  export const inboundSchema = Dispute$inboundSchema;
-  /** @deprecated use `Dispute$outboundSchema` instead. */
-  export const outboundSchema = Dispute$outboundSchema;
-  /** @deprecated use `Dispute$Outbound` instead. */
-  export type Outbound = Dispute$Outbound;
-}
-
 export function disputeToJSON(dispute: Dispute): string {
   return JSON.stringify(Dispute$outboundSchema.parse(dispute));
 }
-
 export function disputeFromJSON(
   jsonString: string,
 ): SafeParseResult<Dispute, SDKValidationError> {

@@ -50,7 +50,6 @@ export const Occurrence$inboundSchema: z.ZodType<
     .optional(),
   runTransfer: RunTransfer$inboundSchema.optional(),
 });
-
 /** @internal */
 export type Occurrence$Outbound = {
   canceled?: boolean | undefined;
@@ -71,23 +70,9 @@ export const Occurrence$outboundSchema: z.ZodType<
   runTransfer: RunTransfer$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Occurrence$ {
-  /** @deprecated use `Occurrence$inboundSchema` instead. */
-  export const inboundSchema = Occurrence$inboundSchema;
-  /** @deprecated use `Occurrence$outboundSchema` instead. */
-  export const outboundSchema = Occurrence$outboundSchema;
-  /** @deprecated use `Occurrence$Outbound` instead. */
-  export type Outbound = Occurrence$Outbound;
-}
-
 export function occurrenceToJSON(occurrence: Occurrence): string {
   return JSON.stringify(Occurrence$outboundSchema.parse(occurrence));
 }
-
 export function occurrenceFromJSON(
   jsonString: string,
 ): SafeParseResult<Occurrence, SDKValidationError> {

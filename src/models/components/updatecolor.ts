@@ -19,7 +19,6 @@ export const UpdateColor$inboundSchema: z.ZodType<
 > = z.object({
   accent: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateColor$Outbound = {
   accent?: string | undefined;
@@ -34,23 +33,9 @@ export const UpdateColor$outboundSchema: z.ZodType<
   accent: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateColor$ {
-  /** @deprecated use `UpdateColor$inboundSchema` instead. */
-  export const inboundSchema = UpdateColor$inboundSchema;
-  /** @deprecated use `UpdateColor$outboundSchema` instead. */
-  export const outboundSchema = UpdateColor$outboundSchema;
-  /** @deprecated use `UpdateColor$Outbound` instead. */
-  export type Outbound = UpdateColor$Outbound;
-}
-
 export function updateColorToJSON(updateColor: UpdateColor): string {
   return JSON.stringify(UpdateColor$outboundSchema.parse(updateColor));
 }
-
 export function updateColorFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateColor, SDKValidationError> {

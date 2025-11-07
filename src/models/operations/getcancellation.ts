@@ -58,7 +58,6 @@ export const GetCancellationGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetCancellationGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -77,19 +76,6 @@ export const GetCancellationGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCancellationGlobals$ {
-  /** @deprecated use `GetCancellationGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetCancellationGlobals$inboundSchema;
-  /** @deprecated use `GetCancellationGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetCancellationGlobals$outboundSchema;
-  /** @deprecated use `GetCancellationGlobals$Outbound` instead. */
-  export type Outbound = GetCancellationGlobals$Outbound;
-}
-
 export function getCancellationGlobalsToJSON(
   getCancellationGlobals: GetCancellationGlobals,
 ): string {
@@ -97,7 +83,6 @@ export function getCancellationGlobalsToJSON(
     GetCancellationGlobals$outboundSchema.parse(getCancellationGlobals),
   );
 }
-
 export function getCancellationGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCancellationGlobals, SDKValidationError> {
@@ -118,7 +103,6 @@ export const GetCancellationRequest$inboundSchema: z.ZodType<
   transferID: z.string(),
   cancellationID: z.string(),
 });
-
 /** @internal */
 export type GetCancellationRequest$Outbound = {
   accountID: string;
@@ -137,19 +121,6 @@ export const GetCancellationRequest$outboundSchema: z.ZodType<
   cancellationID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCancellationRequest$ {
-  /** @deprecated use `GetCancellationRequest$inboundSchema` instead. */
-  export const inboundSchema = GetCancellationRequest$inboundSchema;
-  /** @deprecated use `GetCancellationRequest$outboundSchema` instead. */
-  export const outboundSchema = GetCancellationRequest$outboundSchema;
-  /** @deprecated use `GetCancellationRequest$Outbound` instead. */
-  export type Outbound = GetCancellationRequest$Outbound;
-}
-
 export function getCancellationRequestToJSON(
   getCancellationRequest: GetCancellationRequest,
 ): string {
@@ -157,7 +128,6 @@ export function getCancellationRequestToJSON(
     GetCancellationRequest$outboundSchema.parse(getCancellationRequest),
   );
 }
-
 export function getCancellationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCancellationRequest, SDKValidationError> {
@@ -182,7 +152,6 @@ export const GetCancellationResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetCancellationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -204,19 +173,6 @@ export const GetCancellationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCancellationResponse$ {
-  /** @deprecated use `GetCancellationResponse$inboundSchema` instead. */
-  export const inboundSchema = GetCancellationResponse$inboundSchema;
-  /** @deprecated use `GetCancellationResponse$outboundSchema` instead. */
-  export const outboundSchema = GetCancellationResponse$outboundSchema;
-  /** @deprecated use `GetCancellationResponse$Outbound` instead. */
-  export type Outbound = GetCancellationResponse$Outbound;
-}
-
 export function getCancellationResponseToJSON(
   getCancellationResponse: GetCancellationResponse,
 ): string {
@@ -224,7 +180,6 @@ export function getCancellationResponseToJSON(
     GetCancellationResponse$outboundSchema.parse(getCancellationResponse),
   );
 }
-
 export function getCancellationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCancellationResponse, SDKValidationError> {

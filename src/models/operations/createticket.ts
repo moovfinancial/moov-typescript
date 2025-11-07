@@ -48,7 +48,6 @@ export const CreateTicketGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type CreateTicketGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -67,19 +66,6 @@ export const CreateTicketGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTicketGlobals$ {
-  /** @deprecated use `CreateTicketGlobals$inboundSchema` instead. */
-  export const inboundSchema = CreateTicketGlobals$inboundSchema;
-  /** @deprecated use `CreateTicketGlobals$outboundSchema` instead. */
-  export const outboundSchema = CreateTicketGlobals$outboundSchema;
-  /** @deprecated use `CreateTicketGlobals$Outbound` instead. */
-  export type Outbound = CreateTicketGlobals$Outbound;
-}
-
 export function createTicketGlobalsToJSON(
   createTicketGlobals: CreateTicketGlobals,
 ): string {
@@ -87,7 +73,6 @@ export function createTicketGlobalsToJSON(
     CreateTicketGlobals$outboundSchema.parse(createTicketGlobals),
   );
 }
-
 export function createTicketGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTicketGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const CreateTicketRequest$inboundSchema: z.ZodType<
     "CreateTicket": "createTicket",
   });
 });
-
 /** @internal */
 export type CreateTicketRequest$Outbound = {
   accountID: string;
@@ -132,19 +116,6 @@ export const CreateTicketRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTicketRequest$ {
-  /** @deprecated use `CreateTicketRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateTicketRequest$inboundSchema;
-  /** @deprecated use `CreateTicketRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateTicketRequest$outboundSchema;
-  /** @deprecated use `CreateTicketRequest$Outbound` instead. */
-  export type Outbound = CreateTicketRequest$Outbound;
-}
-
 export function createTicketRequestToJSON(
   createTicketRequest: CreateTicketRequest,
 ): string {
@@ -152,7 +123,6 @@ export function createTicketRequestToJSON(
     CreateTicketRequest$outboundSchema.parse(createTicketRequest),
   );
 }
-
 export function createTicketRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTicketRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const CreateTicketResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type CreateTicketResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const CreateTicketResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTicketResponse$ {
-  /** @deprecated use `CreateTicketResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateTicketResponse$inboundSchema;
-  /** @deprecated use `CreateTicketResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateTicketResponse$outboundSchema;
-  /** @deprecated use `CreateTicketResponse$Outbound` instead. */
-  export type Outbound = CreateTicketResponse$Outbound;
-}
-
 export function createTicketResponseToJSON(
   createTicketResponse: CreateTicketResponse,
 ): string {
@@ -219,7 +175,6 @@ export function createTicketResponseToJSON(
     CreateTicketResponse$outboundSchema.parse(createTicketResponse),
   );
 }
-
 export function createTicketResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTicketResponse, SDKValidationError> {

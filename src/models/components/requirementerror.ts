@@ -34,7 +34,6 @@ export const RequirementError$inboundSchema: z.ZodType<
   requirement: RequirementID$inboundSchema,
   errorCode: RequirementErrorCode$inboundSchema.optional(),
 });
-
 /** @internal */
 export type RequirementError$Outbound = {
   requirement: string;
@@ -51,19 +50,6 @@ export const RequirementError$outboundSchema: z.ZodType<
   errorCode: RequirementErrorCode$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequirementError$ {
-  /** @deprecated use `RequirementError$inboundSchema` instead. */
-  export const inboundSchema = RequirementError$inboundSchema;
-  /** @deprecated use `RequirementError$outboundSchema` instead. */
-  export const outboundSchema = RequirementError$outboundSchema;
-  /** @deprecated use `RequirementError$Outbound` instead. */
-  export type Outbound = RequirementError$Outbound;
-}
-
 export function requirementErrorToJSON(
   requirementError: RequirementError,
 ): string {
@@ -71,7 +57,6 @@ export function requirementErrorToJSON(
     RequirementError$outboundSchema.parse(requirementError),
   );
 }
-
 export function requirementErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<RequirementError, SDKValidationError> {

@@ -25,7 +25,6 @@ export const IndividualNameError$inboundSchema: z.ZodType<
   lastName: z.string().optional(),
   suffix: z.string().optional(),
 });
-
 /** @internal */
 export type IndividualNameError$Outbound = {
   firstName?: string | undefined;
@@ -46,19 +45,6 @@ export const IndividualNameError$outboundSchema: z.ZodType<
   suffix: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndividualNameError$ {
-  /** @deprecated use `IndividualNameError$inboundSchema` instead. */
-  export const inboundSchema = IndividualNameError$inboundSchema;
-  /** @deprecated use `IndividualNameError$outboundSchema` instead. */
-  export const outboundSchema = IndividualNameError$outboundSchema;
-  /** @deprecated use `IndividualNameError$Outbound` instead. */
-  export type Outbound = IndividualNameError$Outbound;
-}
-
 export function individualNameErrorToJSON(
   individualNameError: IndividualNameError,
 ): string {
@@ -66,7 +52,6 @@ export function individualNameErrorToJSON(
     IndividualNameError$outboundSchema.parse(individualNameError),
   );
 }
-
 export function individualNameErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<IndividualNameError, SDKValidationError> {

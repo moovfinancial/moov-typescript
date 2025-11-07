@@ -39,19 +39,7 @@ export type WebhookDataTransferStatus = ClosedEnum<
 export const WebhookDataTransferStatus$inboundSchema: z.ZodNativeEnum<
   typeof WebhookDataTransferStatus
 > = z.nativeEnum(WebhookDataTransferStatus);
-
 /** @internal */
 export const WebhookDataTransferStatus$outboundSchema: z.ZodNativeEnum<
   typeof WebhookDataTransferStatus
 > = WebhookDataTransferStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataTransferStatus$ {
-  /** @deprecated use `WebhookDataTransferStatus$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataTransferStatus$inboundSchema;
-  /** @deprecated use `WebhookDataTransferStatus$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataTransferStatus$outboundSchema;
-}

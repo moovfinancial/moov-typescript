@@ -51,7 +51,6 @@ export const ListFeePlansGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type ListFeePlansGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -70,19 +69,6 @@ export const ListFeePlansGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeePlansGlobals$ {
-  /** @deprecated use `ListFeePlansGlobals$inboundSchema` instead. */
-  export const inboundSchema = ListFeePlansGlobals$inboundSchema;
-  /** @deprecated use `ListFeePlansGlobals$outboundSchema` instead. */
-  export const outboundSchema = ListFeePlansGlobals$outboundSchema;
-  /** @deprecated use `ListFeePlansGlobals$Outbound` instead. */
-  export type Outbound = ListFeePlansGlobals$Outbound;
-}
-
 export function listFeePlansGlobalsToJSON(
   listFeePlansGlobals: ListFeePlansGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function listFeePlansGlobalsToJSON(
     ListFeePlansGlobals$outboundSchema.parse(listFeePlansGlobals),
   );
 }
-
 export function listFeePlansGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeePlansGlobals, SDKValidationError> {
@@ -110,7 +95,6 @@ export const ListFeePlansRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   planIDs: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type ListFeePlansRequest$Outbound = {
   accountID: string;
@@ -127,19 +111,6 @@ export const ListFeePlansRequest$outboundSchema: z.ZodType<
   planIDs: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeePlansRequest$ {
-  /** @deprecated use `ListFeePlansRequest$inboundSchema` instead. */
-  export const inboundSchema = ListFeePlansRequest$inboundSchema;
-  /** @deprecated use `ListFeePlansRequest$outboundSchema` instead. */
-  export const outboundSchema = ListFeePlansRequest$outboundSchema;
-  /** @deprecated use `ListFeePlansRequest$Outbound` instead. */
-  export type Outbound = ListFeePlansRequest$Outbound;
-}
-
 export function listFeePlansRequestToJSON(
   listFeePlansRequest: ListFeePlansRequest,
 ): string {
@@ -147,7 +118,6 @@ export function listFeePlansRequestToJSON(
     ListFeePlansRequest$outboundSchema.parse(listFeePlansRequest),
   );
 }
-
 export function listFeePlansRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeePlansRequest, SDKValidationError> {
@@ -172,7 +142,6 @@ export const ListFeePlansResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type ListFeePlansResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -194,19 +163,6 @@ export const ListFeePlansResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFeePlansResponse$ {
-  /** @deprecated use `ListFeePlansResponse$inboundSchema` instead. */
-  export const inboundSchema = ListFeePlansResponse$inboundSchema;
-  /** @deprecated use `ListFeePlansResponse$outboundSchema` instead. */
-  export const outboundSchema = ListFeePlansResponse$outboundSchema;
-  /** @deprecated use `ListFeePlansResponse$Outbound` instead. */
-  export type Outbound = ListFeePlansResponse$Outbound;
-}
-
 export function listFeePlansResponseToJSON(
   listFeePlansResponse: ListFeePlansResponse,
 ): string {
@@ -214,7 +170,6 @@ export function listFeePlansResponseToJSON(
     ListFeePlansResponse$outboundSchema.parse(listFeePlansResponse),
   );
 }
-
 export function listFeePlansResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListFeePlansResponse, SDKValidationError> {

@@ -47,7 +47,6 @@ export const GetBrandGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetBrandGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -66,25 +65,11 @@ export const GetBrandGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBrandGlobals$ {
-  /** @deprecated use `GetBrandGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetBrandGlobals$inboundSchema;
-  /** @deprecated use `GetBrandGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetBrandGlobals$outboundSchema;
-  /** @deprecated use `GetBrandGlobals$Outbound` instead. */
-  export type Outbound = GetBrandGlobals$Outbound;
-}
-
 export function getBrandGlobalsToJSON(
   getBrandGlobals: GetBrandGlobals,
 ): string {
   return JSON.stringify(GetBrandGlobals$outboundSchema.parse(getBrandGlobals));
 }
-
 export function getBrandGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBrandGlobals, SDKValidationError> {
@@ -103,7 +88,6 @@ export const GetBrandRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
 });
-
 /** @internal */
 export type GetBrandRequest$Outbound = {
   accountID: string;
@@ -118,25 +102,11 @@ export const GetBrandRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBrandRequest$ {
-  /** @deprecated use `GetBrandRequest$inboundSchema` instead. */
-  export const inboundSchema = GetBrandRequest$inboundSchema;
-  /** @deprecated use `GetBrandRequest$outboundSchema` instead. */
-  export const outboundSchema = GetBrandRequest$outboundSchema;
-  /** @deprecated use `GetBrandRequest$Outbound` instead. */
-  export type Outbound = GetBrandRequest$Outbound;
-}
-
 export function getBrandRequestToJSON(
   getBrandRequest: GetBrandRequest,
 ): string {
   return JSON.stringify(GetBrandRequest$outboundSchema.parse(getBrandRequest));
 }
-
 export function getBrandRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBrandRequest, SDKValidationError> {
@@ -161,7 +131,6 @@ export const GetBrandResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetBrandResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -183,19 +152,6 @@ export const GetBrandResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBrandResponse$ {
-  /** @deprecated use `GetBrandResponse$inboundSchema` instead. */
-  export const inboundSchema = GetBrandResponse$inboundSchema;
-  /** @deprecated use `GetBrandResponse$outboundSchema` instead. */
-  export const outboundSchema = GetBrandResponse$outboundSchema;
-  /** @deprecated use `GetBrandResponse$Outbound` instead. */
-  export type Outbound = GetBrandResponse$Outbound;
-}
-
 export function getBrandResponseToJSON(
   getBrandResponse: GetBrandResponse,
 ): string {
@@ -203,7 +159,6 @@ export function getBrandResponseToJSON(
     GetBrandResponse$outboundSchema.parse(getBrandResponse),
   );
 }
-
 export function getBrandResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBrandResponse, SDKValidationError> {

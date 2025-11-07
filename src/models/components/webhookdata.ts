@@ -299,7 +299,6 @@ export const WebhookData$inboundSchema: z.ZodType<
   WebhookDataNetworkIDUpdated$inboundSchema,
   WebhookBillingStatementCreated$inboundSchema,
 ]);
-
 /** @internal */
 export type WebhookData$Outbound =
   | WebhookDataDisputeCreated$Outbound
@@ -381,23 +380,9 @@ export const WebhookData$outboundSchema: z.ZodType<
   WebhookBillingStatementCreated$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookData$ {
-  /** @deprecated use `WebhookData$inboundSchema` instead. */
-  export const inboundSchema = WebhookData$inboundSchema;
-  /** @deprecated use `WebhookData$outboundSchema` instead. */
-  export const outboundSchema = WebhookData$outboundSchema;
-  /** @deprecated use `WebhookData$Outbound` instead. */
-  export type Outbound = WebhookData$Outbound;
-}
-
 export function webhookDataToJSON(webhookData: WebhookData): string {
   return JSON.stringify(WebhookData$outboundSchema.parse(webhookData));
 }
-
 export function webhookDataFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookData, SDKValidationError> {

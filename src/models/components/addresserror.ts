@@ -29,7 +29,6 @@ export const AddressError$inboundSchema: z.ZodType<
   postalCode: z.string().optional(),
   country: z.string().optional(),
 });
-
 /** @internal */
 export type AddressError$Outbound = {
   addressLine1?: string | undefined;
@@ -54,23 +53,9 @@ export const AddressError$outboundSchema: z.ZodType<
   country: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddressError$ {
-  /** @deprecated use `AddressError$inboundSchema` instead. */
-  export const inboundSchema = AddressError$inboundSchema;
-  /** @deprecated use `AddressError$outboundSchema` instead. */
-  export const outboundSchema = AddressError$outboundSchema;
-  /** @deprecated use `AddressError$Outbound` instead. */
-  export type Outbound = AddressError$Outbound;
-}
-
 export function addressErrorToJSON(addressError: AddressError): string {
   return JSON.stringify(AddressError$outboundSchema.parse(addressError));
 }
-
 export function addressErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<AddressError, SDKValidationError> {

@@ -50,7 +50,6 @@ export const UpdateApplePayMerchantDomainsGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type UpdateApplePayMerchantDomainsGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -69,21 +68,6 @@ export const UpdateApplePayMerchantDomainsGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateApplePayMerchantDomainsGlobals$ {
-  /** @deprecated use `UpdateApplePayMerchantDomainsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateApplePayMerchantDomainsGlobals$inboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomainsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateApplePayMerchantDomainsGlobals$outboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomainsGlobals$Outbound` instead. */
-  export type Outbound = UpdateApplePayMerchantDomainsGlobals$Outbound;
-}
-
 export function updateApplePayMerchantDomainsGlobalsToJSON(
   updateApplePayMerchantDomainsGlobals: UpdateApplePayMerchantDomainsGlobals,
 ): string {
@@ -93,7 +77,6 @@ export function updateApplePayMerchantDomainsGlobalsToJSON(
     ),
   );
 }
-
 export function updateApplePayMerchantDomainsGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateApplePayMerchantDomainsGlobals, SDKValidationError> {
@@ -119,7 +102,6 @@ export const UpdateApplePayMerchantDomainsRequest$inboundSchema: z.ZodType<
     "UpdateApplePayMerchantDomains": "updateApplePayMerchantDomains",
   });
 });
-
 /** @internal */
 export type UpdateApplePayMerchantDomainsRequest$Outbound = {
   accountID: string;
@@ -142,21 +124,6 @@ export const UpdateApplePayMerchantDomainsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateApplePayMerchantDomainsRequest$ {
-  /** @deprecated use `UpdateApplePayMerchantDomainsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateApplePayMerchantDomainsRequest$inboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomainsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateApplePayMerchantDomainsRequest$outboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomainsRequest$Outbound` instead. */
-  export type Outbound = UpdateApplePayMerchantDomainsRequest$Outbound;
-}
-
 export function updateApplePayMerchantDomainsRequestToJSON(
   updateApplePayMerchantDomainsRequest: UpdateApplePayMerchantDomainsRequest,
 ): string {
@@ -166,7 +133,6 @@ export function updateApplePayMerchantDomainsRequestToJSON(
     ),
   );
 }
-
 export function updateApplePayMerchantDomainsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateApplePayMerchantDomainsRequest, SDKValidationError> {
@@ -190,7 +156,6 @@ export const UpdateApplePayMerchantDomainsResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type UpdateApplePayMerchantDomainsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -209,21 +174,6 @@ export const UpdateApplePayMerchantDomainsResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateApplePayMerchantDomainsResponse$ {
-  /** @deprecated use `UpdateApplePayMerchantDomainsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateApplePayMerchantDomainsResponse$inboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomainsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateApplePayMerchantDomainsResponse$outboundSchema;
-  /** @deprecated use `UpdateApplePayMerchantDomainsResponse$Outbound` instead. */
-  export type Outbound = UpdateApplePayMerchantDomainsResponse$Outbound;
-}
-
 export function updateApplePayMerchantDomainsResponseToJSON(
   updateApplePayMerchantDomainsResponse: UpdateApplePayMerchantDomainsResponse,
 ): string {
@@ -233,7 +183,6 @@ export function updateApplePayMerchantDomainsResponseToJSON(
     ),
   );
 }
-
 export function updateApplePayMerchantDomainsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateApplePayMerchantDomainsResponse, SDKValidationError> {

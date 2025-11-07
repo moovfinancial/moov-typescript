@@ -46,7 +46,6 @@ export const DisablePaymentLinkGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type DisablePaymentLinkGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -65,19 +64,6 @@ export const DisablePaymentLinkGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisablePaymentLinkGlobals$ {
-  /** @deprecated use `DisablePaymentLinkGlobals$inboundSchema` instead. */
-  export const inboundSchema = DisablePaymentLinkGlobals$inboundSchema;
-  /** @deprecated use `DisablePaymentLinkGlobals$outboundSchema` instead. */
-  export const outboundSchema = DisablePaymentLinkGlobals$outboundSchema;
-  /** @deprecated use `DisablePaymentLinkGlobals$Outbound` instead. */
-  export type Outbound = DisablePaymentLinkGlobals$Outbound;
-}
-
 export function disablePaymentLinkGlobalsToJSON(
   disablePaymentLinkGlobals: DisablePaymentLinkGlobals,
 ): string {
@@ -85,7 +71,6 @@ export function disablePaymentLinkGlobalsToJSON(
     DisablePaymentLinkGlobals$outboundSchema.parse(disablePaymentLinkGlobals),
   );
 }
-
 export function disablePaymentLinkGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<DisablePaymentLinkGlobals, SDKValidationError> {
@@ -105,7 +90,6 @@ export const DisablePaymentLinkRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   paymentLinkCode: z.string(),
 });
-
 /** @internal */
 export type DisablePaymentLinkRequest$Outbound = {
   accountID: string;
@@ -122,19 +106,6 @@ export const DisablePaymentLinkRequest$outboundSchema: z.ZodType<
   paymentLinkCode: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisablePaymentLinkRequest$ {
-  /** @deprecated use `DisablePaymentLinkRequest$inboundSchema` instead. */
-  export const inboundSchema = DisablePaymentLinkRequest$inboundSchema;
-  /** @deprecated use `DisablePaymentLinkRequest$outboundSchema` instead. */
-  export const outboundSchema = DisablePaymentLinkRequest$outboundSchema;
-  /** @deprecated use `DisablePaymentLinkRequest$Outbound` instead. */
-  export type Outbound = DisablePaymentLinkRequest$Outbound;
-}
-
 export function disablePaymentLinkRequestToJSON(
   disablePaymentLinkRequest: DisablePaymentLinkRequest,
 ): string {
@@ -142,7 +113,6 @@ export function disablePaymentLinkRequestToJSON(
     DisablePaymentLinkRequest$outboundSchema.parse(disablePaymentLinkRequest),
   );
 }
-
 export function disablePaymentLinkRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DisablePaymentLinkRequest, SDKValidationError> {
@@ -165,7 +135,6 @@ export const DisablePaymentLinkResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
   });
 });
-
 /** @internal */
 export type DisablePaymentLinkResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -184,19 +153,6 @@ export const DisablePaymentLinkResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisablePaymentLinkResponse$ {
-  /** @deprecated use `DisablePaymentLinkResponse$inboundSchema` instead. */
-  export const inboundSchema = DisablePaymentLinkResponse$inboundSchema;
-  /** @deprecated use `DisablePaymentLinkResponse$outboundSchema` instead. */
-  export const outboundSchema = DisablePaymentLinkResponse$outboundSchema;
-  /** @deprecated use `DisablePaymentLinkResponse$Outbound` instead. */
-  export type Outbound = DisablePaymentLinkResponse$Outbound;
-}
-
 export function disablePaymentLinkResponseToJSON(
   disablePaymentLinkResponse: DisablePaymentLinkResponse,
 ): string {
@@ -204,7 +160,6 @@ export function disablePaymentLinkResponseToJSON(
     DisablePaymentLinkResponse$outboundSchema.parse(disablePaymentLinkResponse),
   );
 }
-
 export function disablePaymentLinkResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DisablePaymentLinkResponse, SDKValidationError> {

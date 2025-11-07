@@ -21,7 +21,6 @@ export const WebhookDataBankAccountDeleted$inboundSchema: z.ZodType<
   bankAccountID: z.string(),
   accountID: z.string(),
 });
-
 /** @internal */
 export type WebhookDataBankAccountDeleted$Outbound = {
   bankAccountID: string;
@@ -38,19 +37,6 @@ export const WebhookDataBankAccountDeleted$outboundSchema: z.ZodType<
   accountID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataBankAccountDeleted$ {
-  /** @deprecated use `WebhookDataBankAccountDeleted$inboundSchema` instead. */
-  export const inboundSchema = WebhookDataBankAccountDeleted$inboundSchema;
-  /** @deprecated use `WebhookDataBankAccountDeleted$outboundSchema` instead. */
-  export const outboundSchema = WebhookDataBankAccountDeleted$outboundSchema;
-  /** @deprecated use `WebhookDataBankAccountDeleted$Outbound` instead. */
-  export type Outbound = WebhookDataBankAccountDeleted$Outbound;
-}
-
 export function webhookDataBankAccountDeletedToJSON(
   webhookDataBankAccountDeleted: WebhookDataBankAccountDeleted,
 ): string {
@@ -60,7 +46,6 @@ export function webhookDataBankAccountDeletedToJSON(
     ),
   );
 }
-
 export function webhookDataBankAccountDeletedFromJSON(
   jsonString: string,
 ): SafeParseResult<WebhookDataBankAccountDeleted, SDKValidationError> {

@@ -46,7 +46,6 @@ export const MxPayload$inboundSchema: z.ZodType<
 > = z.object({
   mx: MXAuthorizationCode$inboundSchema,
 });
-
 /** @internal */
 export type MxPayload$Outbound = {
   mx: MXAuthorizationCode$Outbound;
@@ -61,23 +60,9 @@ export const MxPayload$outboundSchema: z.ZodType<
   mx: MXAuthorizationCode$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MxPayload$ {
-  /** @deprecated use `MxPayload$inboundSchema` instead. */
-  export const inboundSchema = MxPayload$inboundSchema;
-  /** @deprecated use `MxPayload$outboundSchema` instead. */
-  export const outboundSchema = MxPayload$outboundSchema;
-  /** @deprecated use `MxPayload$Outbound` instead. */
-  export type Outbound = MxPayload$Outbound;
-}
-
 export function mxPayloadToJSON(mxPayload: MxPayload): string {
   return JSON.stringify(MxPayload$outboundSchema.parse(mxPayload));
 }
-
 export function mxPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<MxPayload, SDKValidationError> {

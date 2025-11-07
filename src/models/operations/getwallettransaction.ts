@@ -49,7 +49,6 @@ export const GetWalletTransactionGlobals$inboundSchema: z.ZodType<
     "X-Moov-Version": "xMoovVersion",
   });
 });
-
 /** @internal */
 export type GetWalletTransactionGlobals$Outbound = {
   "X-Moov-Version": string;
@@ -68,19 +67,6 @@ export const GetWalletTransactionGlobals$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWalletTransactionGlobals$ {
-  /** @deprecated use `GetWalletTransactionGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetWalletTransactionGlobals$inboundSchema;
-  /** @deprecated use `GetWalletTransactionGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetWalletTransactionGlobals$outboundSchema;
-  /** @deprecated use `GetWalletTransactionGlobals$Outbound` instead. */
-  export type Outbound = GetWalletTransactionGlobals$Outbound;
-}
-
 export function getWalletTransactionGlobalsToJSON(
   getWalletTransactionGlobals: GetWalletTransactionGlobals,
 ): string {
@@ -90,7 +76,6 @@ export function getWalletTransactionGlobalsToJSON(
     ),
   );
 }
-
 export function getWalletTransactionGlobalsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetWalletTransactionGlobals, SDKValidationError> {
@@ -111,7 +96,6 @@ export const GetWalletTransactionRequest$inboundSchema: z.ZodType<
   walletID: z.string(),
   transactionID: z.string(),
 });
-
 /** @internal */
 export type GetWalletTransactionRequest$Outbound = {
   accountID: string;
@@ -130,19 +114,6 @@ export const GetWalletTransactionRequest$outboundSchema: z.ZodType<
   transactionID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWalletTransactionRequest$ {
-  /** @deprecated use `GetWalletTransactionRequest$inboundSchema` instead. */
-  export const inboundSchema = GetWalletTransactionRequest$inboundSchema;
-  /** @deprecated use `GetWalletTransactionRequest$outboundSchema` instead. */
-  export const outboundSchema = GetWalletTransactionRequest$outboundSchema;
-  /** @deprecated use `GetWalletTransactionRequest$Outbound` instead. */
-  export type Outbound = GetWalletTransactionRequest$Outbound;
-}
-
 export function getWalletTransactionRequestToJSON(
   getWalletTransactionRequest: GetWalletTransactionRequest,
 ): string {
@@ -152,7 +123,6 @@ export function getWalletTransactionRequestToJSON(
     ),
   );
 }
-
 export function getWalletTransactionRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetWalletTransactionRequest, SDKValidationError> {
@@ -177,7 +147,6 @@ export const GetWalletTransactionResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type GetWalletTransactionResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -199,19 +168,6 @@ export const GetWalletTransactionResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWalletTransactionResponse$ {
-  /** @deprecated use `GetWalletTransactionResponse$inboundSchema` instead. */
-  export const inboundSchema = GetWalletTransactionResponse$inboundSchema;
-  /** @deprecated use `GetWalletTransactionResponse$outboundSchema` instead. */
-  export const outboundSchema = GetWalletTransactionResponse$outboundSchema;
-  /** @deprecated use `GetWalletTransactionResponse$Outbound` instead. */
-  export type Outbound = GetWalletTransactionResponse$Outbound;
-}
-
 export function getWalletTransactionResponseToJSON(
   getWalletTransactionResponse: GetWalletTransactionResponse,
 ): string {
@@ -221,7 +177,6 @@ export function getWalletTransactionResponseToJSON(
     ),
   );
 }
-
 export function getWalletTransactionResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetWalletTransactionResponse, SDKValidationError> {

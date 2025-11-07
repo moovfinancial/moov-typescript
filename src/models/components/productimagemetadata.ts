@@ -37,7 +37,6 @@ export const ProductImageMetadata$inboundSchema: z.ZodType<
   link: z.string(),
   publicID: z.string(),
 });
-
 /** @internal */
 export type ProductImageMetadata$Outbound = {
   imageID: string;
@@ -58,19 +57,6 @@ export const ProductImageMetadata$outboundSchema: z.ZodType<
   publicID: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProductImageMetadata$ {
-  /** @deprecated use `ProductImageMetadata$inboundSchema` instead. */
-  export const inboundSchema = ProductImageMetadata$inboundSchema;
-  /** @deprecated use `ProductImageMetadata$outboundSchema` instead. */
-  export const outboundSchema = ProductImageMetadata$outboundSchema;
-  /** @deprecated use `ProductImageMetadata$Outbound` instead. */
-  export type Outbound = ProductImageMetadata$Outbound;
-}
-
 export function productImageMetadataToJSON(
   productImageMetadata: ProductImageMetadata,
 ): string {
@@ -78,7 +64,6 @@ export function productImageMetadataToJSON(
     ProductImageMetadata$outboundSchema.parse(productImageMetadata),
   );
 }
-
 export function productImageMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ProductImageMetadata, SDKValidationError> {

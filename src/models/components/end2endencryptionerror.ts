@@ -19,7 +19,6 @@ export const End2EndEncryptionError$inboundSchema: z.ZodType<
 > = z.object({
   token: z.string().optional(),
 });
-
 /** @internal */
 export type End2EndEncryptionError$Outbound = {
   token?: string | undefined;
@@ -34,19 +33,6 @@ export const End2EndEncryptionError$outboundSchema: z.ZodType<
   token: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace End2EndEncryptionError$ {
-  /** @deprecated use `End2EndEncryptionError$inboundSchema` instead. */
-  export const inboundSchema = End2EndEncryptionError$inboundSchema;
-  /** @deprecated use `End2EndEncryptionError$outboundSchema` instead. */
-  export const outboundSchema = End2EndEncryptionError$outboundSchema;
-  /** @deprecated use `End2EndEncryptionError$Outbound` instead. */
-  export type Outbound = End2EndEncryptionError$Outbound;
-}
-
 export function end2EndEncryptionErrorToJSON(
   end2EndEncryptionError: End2EndEncryptionError,
 ): string {
@@ -54,7 +40,6 @@ export function end2EndEncryptionErrorToJSON(
     End2EndEncryptionError$outboundSchema.parse(end2EndEncryptionError),
   );
 }
-
 export function end2EndEncryptionErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<End2EndEncryptionError, SDKValidationError> {

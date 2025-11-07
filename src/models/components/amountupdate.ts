@@ -31,7 +31,6 @@ export const AmountUpdate$inboundSchema: z.ZodType<
   currency: z.string().optional(),
   value: z.number().int().optional(),
 });
-
 /** @internal */
 export type AmountUpdate$Outbound = {
   currency?: string | undefined;
@@ -48,23 +47,9 @@ export const AmountUpdate$outboundSchema: z.ZodType<
   value: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AmountUpdate$ {
-  /** @deprecated use `AmountUpdate$inboundSchema` instead. */
-  export const inboundSchema = AmountUpdate$inboundSchema;
-  /** @deprecated use `AmountUpdate$outboundSchema` instead. */
-  export const outboundSchema = AmountUpdate$outboundSchema;
-  /** @deprecated use `AmountUpdate$Outbound` instead. */
-  export type Outbound = AmountUpdate$Outbound;
-}
-
 export function amountUpdateToJSON(amountUpdate: AmountUpdate): string {
   return JSON.stringify(AmountUpdate$outboundSchema.parse(amountUpdate));
 }
-
 export function amountUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<AmountUpdate, SDKValidationError> {

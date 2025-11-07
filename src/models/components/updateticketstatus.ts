@@ -14,19 +14,7 @@ export type UpdateTicketStatus = ClosedEnum<typeof UpdateTicketStatus>;
 export const UpdateTicketStatus$inboundSchema: z.ZodNativeEnum<
   typeof UpdateTicketStatus
 > = z.nativeEnum(UpdateTicketStatus);
-
 /** @internal */
 export const UpdateTicketStatus$outboundSchema: z.ZodNativeEnum<
   typeof UpdateTicketStatus
 > = UpdateTicketStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTicketStatus$ {
-  /** @deprecated use `UpdateTicketStatus$inboundSchema` instead. */
-  export const inboundSchema = UpdateTicketStatus$inboundSchema;
-  /** @deprecated use `UpdateTicketStatus$outboundSchema` instead. */
-  export const outboundSchema = UpdateTicketStatus$outboundSchema;
-}

@@ -22,7 +22,6 @@ export const BrandColor$inboundSchema: z.ZodType<
 > = z.object({
   accent: z.string(),
 });
-
 /** @internal */
 export type BrandColor$Outbound = {
   accent: string;
@@ -37,23 +36,9 @@ export const BrandColor$outboundSchema: z.ZodType<
   accent: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BrandColor$ {
-  /** @deprecated use `BrandColor$inboundSchema` instead. */
-  export const inboundSchema = BrandColor$inboundSchema;
-  /** @deprecated use `BrandColor$outboundSchema` instead. */
-  export const outboundSchema = BrandColor$outboundSchema;
-  /** @deprecated use `BrandColor$Outbound` instead. */
-  export type Outbound = BrandColor$Outbound;
-}
-
 export function brandColorToJSON(brandColor: BrandColor): string {
   return JSON.stringify(BrandColor$outboundSchema.parse(brandColor));
 }
-
 export function brandColorFromJSON(
   jsonString: string,
 ): SafeParseResult<BrandColor, SDKValidationError> {

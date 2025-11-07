@@ -23,7 +23,6 @@ export const PartialScheduleAccount$inboundSchema: z.ZodType<
   displayName: z.string(),
   email: z.string().optional(),
 });
-
 /** @internal */
 export type PartialScheduleAccount$Outbound = {
   accountID: string;
@@ -42,19 +41,6 @@ export const PartialScheduleAccount$outboundSchema: z.ZodType<
   email: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PartialScheduleAccount$ {
-  /** @deprecated use `PartialScheduleAccount$inboundSchema` instead. */
-  export const inboundSchema = PartialScheduleAccount$inboundSchema;
-  /** @deprecated use `PartialScheduleAccount$outboundSchema` instead. */
-  export const outboundSchema = PartialScheduleAccount$outboundSchema;
-  /** @deprecated use `PartialScheduleAccount$Outbound` instead. */
-  export type Outbound = PartialScheduleAccount$Outbound;
-}
-
 export function partialScheduleAccountToJSON(
   partialScheduleAccount: PartialScheduleAccount,
 ): string {
@@ -62,7 +48,6 @@ export function partialScheduleAccountToJSON(
     PartialScheduleAccount$outboundSchema.parse(partialScheduleAccount),
   );
 }
-
 export function partialScheduleAccountFromJSON(
   jsonString: string,
 ): SafeParseResult<PartialScheduleAccount, SDKValidationError> {

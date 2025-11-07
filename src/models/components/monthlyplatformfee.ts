@@ -34,7 +34,6 @@ export const MonthlyPlatformFee$inboundSchema: z.ZodType<
   currency: z.string(),
   valueDecimal: z.string(),
 });
-
 /** @internal */
 export type MonthlyPlatformFee$Outbound = {
   currency: string;
@@ -51,19 +50,6 @@ export const MonthlyPlatformFee$outboundSchema: z.ZodType<
   valueDecimal: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MonthlyPlatformFee$ {
-  /** @deprecated use `MonthlyPlatformFee$inboundSchema` instead. */
-  export const inboundSchema = MonthlyPlatformFee$inboundSchema;
-  /** @deprecated use `MonthlyPlatformFee$outboundSchema` instead. */
-  export const outboundSchema = MonthlyPlatformFee$outboundSchema;
-  /** @deprecated use `MonthlyPlatformFee$Outbound` instead. */
-  export type Outbound = MonthlyPlatformFee$Outbound;
-}
-
 export function monthlyPlatformFeeToJSON(
   monthlyPlatformFee: MonthlyPlatformFee,
 ): string {
@@ -71,7 +57,6 @@ export function monthlyPlatformFeeToJSON(
     MonthlyPlatformFee$outboundSchema.parse(monthlyPlatformFee),
   );
 }
-
 export function monthlyPlatformFeeFromJSON(
   jsonString: string,
 ): SafeParseResult<MonthlyPlatformFee, SDKValidationError> {

@@ -49,7 +49,6 @@ export const InstitutionsSearchResponse$inboundSchema: z.ZodType<
   wire: z.nullable(z.array(WireInstitution$inboundSchema)),
   fednow: z.nullable(z.array(FedNowInstitution$inboundSchema)),
 });
-
 /** @internal */
 export type InstitutionsSearchResponse$Outbound = {
   ach: Array<ACHInstitution$Outbound> | null;
@@ -70,19 +69,6 @@ export const InstitutionsSearchResponse$outboundSchema: z.ZodType<
   fednow: z.nullable(z.array(FedNowInstitution$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InstitutionsSearchResponse$ {
-  /** @deprecated use `InstitutionsSearchResponse$inboundSchema` instead. */
-  export const inboundSchema = InstitutionsSearchResponse$inboundSchema;
-  /** @deprecated use `InstitutionsSearchResponse$outboundSchema` instead. */
-  export const outboundSchema = InstitutionsSearchResponse$outboundSchema;
-  /** @deprecated use `InstitutionsSearchResponse$Outbound` instead. */
-  export type Outbound = InstitutionsSearchResponse$Outbound;
-}
-
 export function institutionsSearchResponseToJSON(
   institutionsSearchResponse: InstitutionsSearchResponse,
 ): string {
@@ -90,7 +76,6 @@ export function institutionsSearchResponseToJSON(
     InstitutionsSearchResponse$outboundSchema.parse(institutionsSearchResponse),
   );
 }
-
 export function institutionsSearchResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<InstitutionsSearchResponse, SDKValidationError> {

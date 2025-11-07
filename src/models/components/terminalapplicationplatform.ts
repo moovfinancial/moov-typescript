@@ -24,19 +24,7 @@ export type TerminalApplicationPlatform = ClosedEnum<
 export const TerminalApplicationPlatform$inboundSchema: z.ZodNativeEnum<
   typeof TerminalApplicationPlatform
 > = z.nativeEnum(TerminalApplicationPlatform);
-
 /** @internal */
 export const TerminalApplicationPlatform$outboundSchema: z.ZodNativeEnum<
   typeof TerminalApplicationPlatform
 > = TerminalApplicationPlatform$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TerminalApplicationPlatform$ {
-  /** @deprecated use `TerminalApplicationPlatform$inboundSchema` instead. */
-  export const inboundSchema = TerminalApplicationPlatform$inboundSchema;
-  /** @deprecated use `TerminalApplicationPlatform$outboundSchema` instead. */
-  export const outboundSchema = TerminalApplicationPlatform$outboundSchema;
-}

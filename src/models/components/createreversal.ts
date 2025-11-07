@@ -22,7 +22,6 @@ export const CreateReversal$inboundSchema: z.ZodType<
 > = z.object({
   amount: z.number().int(),
 });
-
 /** @internal */
 export type CreateReversal$Outbound = {
   amount: number;
@@ -37,23 +36,9 @@ export const CreateReversal$outboundSchema: z.ZodType<
   amount: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateReversal$ {
-  /** @deprecated use `CreateReversal$inboundSchema` instead. */
-  export const inboundSchema = CreateReversal$inboundSchema;
-  /** @deprecated use `CreateReversal$outboundSchema` instead. */
-  export const outboundSchema = CreateReversal$outboundSchema;
-  /** @deprecated use `CreateReversal$Outbound` instead. */
-  export type Outbound = CreateReversal$Outbound;
-}
-
 export function createReversalToJSON(createReversal: CreateReversal): string {
   return JSON.stringify(CreateReversal$outboundSchema.parse(createReversal));
 }
-
 export function createReversalFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateReversal, SDKValidationError> {

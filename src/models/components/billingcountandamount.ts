@@ -36,7 +36,6 @@ export const BillingCountAndAmount$inboundSchema: z.ZodType<
   count: z.number().int(),
   amount: AmountDecimal$inboundSchema,
 });
-
 /** @internal */
 export type BillingCountAndAmount$Outbound = {
   count: number;
@@ -53,19 +52,6 @@ export const BillingCountAndAmount$outboundSchema: z.ZodType<
   amount: AmountDecimal$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BillingCountAndAmount$ {
-  /** @deprecated use `BillingCountAndAmount$inboundSchema` instead. */
-  export const inboundSchema = BillingCountAndAmount$inboundSchema;
-  /** @deprecated use `BillingCountAndAmount$outboundSchema` instead. */
-  export const outboundSchema = BillingCountAndAmount$outboundSchema;
-  /** @deprecated use `BillingCountAndAmount$Outbound` instead. */
-  export type Outbound = BillingCountAndAmount$Outbound;
-}
-
 export function billingCountAndAmountToJSON(
   billingCountAndAmount: BillingCountAndAmount,
 ): string {
@@ -73,7 +59,6 @@ export function billingCountAndAmountToJSON(
     BillingCountAndAmount$outboundSchema.parse(billingCountAndAmount),
   );
 }
-
 export function billingCountAndAmountFromJSON(
   jsonString: string,
 ): SafeParseResult<BillingCountAndAmount, SDKValidationError> {

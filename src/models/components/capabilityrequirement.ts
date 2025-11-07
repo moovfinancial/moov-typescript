@@ -35,7 +35,6 @@ export const CapabilityRequirement$inboundSchema: z.ZodType<
   currentlyDue: z.array(RequirementID$inboundSchema).optional(),
   errors: z.array(RequirementError$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CapabilityRequirement$Outbound = {
   currentlyDue?: Array<string> | undefined;
@@ -52,19 +51,6 @@ export const CapabilityRequirement$outboundSchema: z.ZodType<
   errors: z.array(RequirementError$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CapabilityRequirement$ {
-  /** @deprecated use `CapabilityRequirement$inboundSchema` instead. */
-  export const inboundSchema = CapabilityRequirement$inboundSchema;
-  /** @deprecated use `CapabilityRequirement$outboundSchema` instead. */
-  export const outboundSchema = CapabilityRequirement$outboundSchema;
-  /** @deprecated use `CapabilityRequirement$Outbound` instead. */
-  export type Outbound = CapabilityRequirement$Outbound;
-}
-
 export function capabilityRequirementToJSON(
   capabilityRequirement: CapabilityRequirement,
 ): string {
@@ -72,7 +58,6 @@ export function capabilityRequirementToJSON(
     CapabilityRequirement$outboundSchema.parse(capabilityRequirement),
   );
 }
-
 export function capabilityRequirementFromJSON(
   jsonString: string,
 ): SafeParseResult<CapabilityRequirement, SDKValidationError> {

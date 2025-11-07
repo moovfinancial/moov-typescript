@@ -50,7 +50,6 @@ export const AppleBillingContact$inboundSchema: z.ZodType<
   administrativeArea: z.string().optional(),
   countryCode: z.string().optional(),
 });
-
 /** @internal */
 export type AppleBillingContact$Outbound = {
   addressLines?: Array<string> | undefined;
@@ -73,19 +72,6 @@ export const AppleBillingContact$outboundSchema: z.ZodType<
   countryCode: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AppleBillingContact$ {
-  /** @deprecated use `AppleBillingContact$inboundSchema` instead. */
-  export const inboundSchema = AppleBillingContact$inboundSchema;
-  /** @deprecated use `AppleBillingContact$outboundSchema` instead. */
-  export const outboundSchema = AppleBillingContact$outboundSchema;
-  /** @deprecated use `AppleBillingContact$Outbound` instead. */
-  export type Outbound = AppleBillingContact$Outbound;
-}
-
 export function appleBillingContactToJSON(
   appleBillingContact: AppleBillingContact,
 ): string {
@@ -93,7 +79,6 @@ export function appleBillingContactToJSON(
     AppleBillingContact$outboundSchema.parse(appleBillingContact),
   );
 }
-
 export function appleBillingContactFromJSON(
   jsonString: string,
 ): SafeParseResult<AppleBillingContact, SDKValidationError> {

@@ -21,19 +21,7 @@ export type CardAcquiringModel = ClosedEnum<typeof CardAcquiringModel>;
 export const CardAcquiringModel$inboundSchema: z.ZodNativeEnum<
   typeof CardAcquiringModel
 > = z.nativeEnum(CardAcquiringModel);
-
 /** @internal */
 export const CardAcquiringModel$outboundSchema: z.ZodNativeEnum<
   typeof CardAcquiringModel
 > = CardAcquiringModel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CardAcquiringModel$ {
-  /** @deprecated use `CardAcquiringModel$inboundSchema` instead. */
-  export const inboundSchema = CardAcquiringModel$inboundSchema;
-  /** @deprecated use `CardAcquiringModel$outboundSchema` instead. */
-  export const outboundSchema = CardAcquiringModel$outboundSchema;
-}

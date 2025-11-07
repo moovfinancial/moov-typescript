@@ -94,7 +94,6 @@ export const ReceiptResponse$inboundSchema: z.ZodType<
   forOccurrenceID: z.string().optional(),
   sentFor: z.array(SentReceipt$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ReceiptResponse$Outbound = {
   receiptID: string;
@@ -127,25 +126,11 @@ export const ReceiptResponse$outboundSchema: z.ZodType<
   sentFor: z.array(SentReceipt$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReceiptResponse$ {
-  /** @deprecated use `ReceiptResponse$inboundSchema` instead. */
-  export const inboundSchema = ReceiptResponse$inboundSchema;
-  /** @deprecated use `ReceiptResponse$outboundSchema` instead. */
-  export const outboundSchema = ReceiptResponse$outboundSchema;
-  /** @deprecated use `ReceiptResponse$Outbound` instead. */
-  export type Outbound = ReceiptResponse$Outbound;
-}
-
 export function receiptResponseToJSON(
   receiptResponse: ReceiptResponse,
 ): string {
   return JSON.stringify(ReceiptResponse$outboundSchema.parse(receiptResponse));
 }
-
 export function receiptResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ReceiptResponse, SDKValidationError> {

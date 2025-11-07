@@ -58,7 +58,6 @@ export const ProductOptionGroup$inboundSchema: z.ZodType<
   maxSelect: z.number().int(),
   options: z.array(ProductOption$inboundSchema),
 });
-
 /** @internal */
 export type ProductOptionGroup$Outbound = {
   name: string;
@@ -81,19 +80,6 @@ export const ProductOptionGroup$outboundSchema: z.ZodType<
   options: z.array(ProductOption$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProductOptionGroup$ {
-  /** @deprecated use `ProductOptionGroup$inboundSchema` instead. */
-  export const inboundSchema = ProductOptionGroup$inboundSchema;
-  /** @deprecated use `ProductOptionGroup$outboundSchema` instead. */
-  export const outboundSchema = ProductOptionGroup$outboundSchema;
-  /** @deprecated use `ProductOptionGroup$Outbound` instead. */
-  export type Outbound = ProductOptionGroup$Outbound;
-}
-
 export function productOptionGroupToJSON(
   productOptionGroup: ProductOptionGroup,
 ): string {
@@ -101,7 +87,6 @@ export function productOptionGroupToJSON(
     ProductOptionGroup$outboundSchema.parse(productOptionGroup),
   );
 }
-
 export function productOptionGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<ProductOptionGroup, SDKValidationError> {

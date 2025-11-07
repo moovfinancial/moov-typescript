@@ -25,7 +25,6 @@ export const EnrichedIndustries$inboundSchema: z.ZodType<
 > = z.object({
   industries: z.array(IndustryTaxonomy$inboundSchema),
 });
-
 /** @internal */
 export type EnrichedIndustries$Outbound = {
   industries: Array<IndustryTaxonomy$Outbound>;
@@ -40,19 +39,6 @@ export const EnrichedIndustries$outboundSchema: z.ZodType<
   industries: z.array(IndustryTaxonomy$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EnrichedIndustries$ {
-  /** @deprecated use `EnrichedIndustries$inboundSchema` instead. */
-  export const inboundSchema = EnrichedIndustries$inboundSchema;
-  /** @deprecated use `EnrichedIndustries$outboundSchema` instead. */
-  export const outboundSchema = EnrichedIndustries$outboundSchema;
-  /** @deprecated use `EnrichedIndustries$Outbound` instead. */
-  export type Outbound = EnrichedIndustries$Outbound;
-}
-
 export function enrichedIndustriesToJSON(
   enrichedIndustries: EnrichedIndustries,
 ): string {
@@ -60,7 +46,6 @@ export function enrichedIndustriesToJSON(
     EnrichedIndustries$outboundSchema.parse(enrichedIndustries),
   );
 }
-
 export function enrichedIndustriesFromJSON(
   jsonString: string,
 ): SafeParseResult<EnrichedIndustries, SDKValidationError> {

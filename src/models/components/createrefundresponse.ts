@@ -30,7 +30,6 @@ export const CreateRefundResponse$inboundSchema: z.ZodType<
   CardAcquiringRefund$inboundSchema,
   AsyncCreatedRefund$inboundSchema,
 ]);
-
 /** @internal */
 export type CreateRefundResponse$Outbound =
   | CardAcquiringRefund$Outbound
@@ -46,19 +45,6 @@ export const CreateRefundResponse$outboundSchema: z.ZodType<
   AsyncCreatedRefund$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRefundResponse$ {
-  /** @deprecated use `CreateRefundResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateRefundResponse$inboundSchema;
-  /** @deprecated use `CreateRefundResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateRefundResponse$outboundSchema;
-  /** @deprecated use `CreateRefundResponse$Outbound` instead. */
-  export type Outbound = CreateRefundResponse$Outbound;
-}
-
 export function createRefundResponseToJSON(
   createRefundResponse: CreateRefundResponse,
 ): string {
@@ -66,7 +52,6 @@ export function createRefundResponseToJSON(
     CreateRefundResponse$outboundSchema.parse(createRefundResponse),
   );
 }
-
 export function createRefundResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRefundResponse, SDKValidationError> {
