@@ -185,6 +185,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.paymentLinks.list({
+    skip: 60,
+    count: 20,
     accountID: "d1039e6d-21ee-4a29-8adf-1dd2a6625a0d",
   });
 
@@ -214,6 +216,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await paymentLinksList(moov, {
+    skip: 60,
+    count: 20,
     accountID: "d1039e6d-21ee-4a29-8adf-1dd2a6625a0d",
   });
   if (res.ok) {

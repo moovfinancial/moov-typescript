@@ -27,6 +27,10 @@ export type ListPaymentLinksGlobals = {
 };
 
 export type ListPaymentLinksRequest = {
+  skip?: number | undefined;
+  count?: number | undefined;
+  type?: components.PaymentLinkType | undefined;
+  status?: components.PaymentLinkStatus | undefined;
   accountID: string;
 };
 
@@ -88,10 +92,18 @@ export const ListPaymentLinksRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  skip: z.number().int().optional(),
+  count: z.number().int().optional(),
+  type: components.PaymentLinkType$inboundSchema.optional(),
+  status: components.PaymentLinkStatus$inboundSchema.optional(),
   accountID: z.string(),
 });
 /** @internal */
 export type ListPaymentLinksRequest$Outbound = {
+  skip?: number | undefined;
+  count?: number | undefined;
+  type?: string | undefined;
+  status?: string | undefined;
   accountID: string;
 };
 
@@ -101,6 +113,10 @@ export const ListPaymentLinksRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListPaymentLinksRequest
 > = z.object({
+  skip: z.number().int().optional(),
+  count: z.number().int().optional(),
+  type: components.PaymentLinkType$outboundSchema.optional(),
+  status: components.PaymentLinkStatus$outboundSchema.optional(),
   accountID: z.string(),
 });
 

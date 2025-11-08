@@ -40,6 +40,10 @@ export type PaymentLinkPaymentDetailsUpdate = {
    * Options for payment links used to collect an ACH payment.
    */
   achDetails?: ACHPaymentDetails | undefined;
+  /**
+   * Optional free-form metadata for the transfer.
+   */
+  metadata?: { [k: string]: string } | undefined;
 };
 
 /** @internal */
@@ -51,12 +55,14 @@ export const PaymentLinkPaymentDetailsUpdate$inboundSchema: z.ZodType<
   allowedMethods: z.array(CollectionPaymentMethodType$inboundSchema).optional(),
   cardDetails: CardPaymentDetails$inboundSchema.optional(),
   achDetails: ACHPaymentDetails$inboundSchema.optional(),
+  metadata: z.record(z.string()).optional(),
 });
 /** @internal */
 export type PaymentLinkPaymentDetailsUpdate$Outbound = {
   allowedMethods?: Array<string> | undefined;
   cardDetails?: CardPaymentDetails$Outbound | undefined;
   achDetails?: ACHPaymentDetails$Outbound | undefined;
+  metadata?: { [k: string]: string } | undefined;
 };
 
 /** @internal */
@@ -69,6 +75,7 @@ export const PaymentLinkPaymentDetailsUpdate$outboundSchema: z.ZodType<
     .optional(),
   cardDetails: CardPaymentDetails$outboundSchema.optional(),
   achDetails: ACHPaymentDetails$outboundSchema.optional(),
+  metadata: z.record(z.string()).optional(),
 });
 
 export function paymentLinkPaymentDetailsUpdateToJSON(

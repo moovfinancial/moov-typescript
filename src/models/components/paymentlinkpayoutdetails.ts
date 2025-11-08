@@ -32,6 +32,10 @@ export type PaymentLinkPayoutDetails = {
    * This information will be used to authenticate the end user when they follow the payment link.
    */
   recipient: PayoutRecipient;
+  /**
+   * Optional free-form metadata for the transfer.
+   */
+  metadata?: { [k: string]: string } | undefined;
 };
 
 /** @internal */
@@ -42,11 +46,13 @@ export const PaymentLinkPayoutDetails$inboundSchema: z.ZodType<
 > = z.object({
   allowedMethods: z.array(DisbursementPaymentMethodType$inboundSchema),
   recipient: PayoutRecipient$inboundSchema,
+  metadata: z.record(z.string()).optional(),
 });
 /** @internal */
 export type PaymentLinkPayoutDetails$Outbound = {
   allowedMethods: Array<string>;
   recipient: PayoutRecipient$Outbound;
+  metadata?: { [k: string]: string } | undefined;
 };
 
 /** @internal */
@@ -57,6 +63,7 @@ export const PaymentLinkPayoutDetails$outboundSchema: z.ZodType<
 > = z.object({
   allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema),
   recipient: PayoutRecipient$outboundSchema,
+  metadata: z.record(z.string()).optional(),
 });
 
 export function paymentLinkPayoutDetailsToJSON(

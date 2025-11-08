@@ -48,12 +48,18 @@ import {
   PaymentLinkStatus$inboundSchema,
   PaymentLinkStatus$outboundSchema,
 } from "./paymentlinkstatus.js";
+import {
+  PaymentLinkType,
+  PaymentLinkType$inboundSchema,
+  PaymentLinkType$outboundSchema,
+} from "./paymentlinktype.js";
 
 export type PaymentLink = {
   /**
    * Unique code identifying this payment link.
    */
   code: string;
+  paymentLinkType: PaymentLinkType;
   /**
    * The operating mode for an account.
    */
@@ -125,6 +131,7 @@ export const PaymentLink$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   code: z.string(),
+  paymentLinkType: PaymentLinkType$inboundSchema,
   mode: Mode$inboundSchema,
   status: PaymentLinkStatus$inboundSchema,
   partnerAccountID: z.string(),
@@ -151,6 +158,7 @@ export const PaymentLink$inboundSchema: z.ZodType<
 /** @internal */
 export type PaymentLink$Outbound = {
   code: string;
+  paymentLinkType: string;
   mode: string;
   status: string;
   partnerAccountID: string;
@@ -179,6 +187,7 @@ export const PaymentLink$outboundSchema: z.ZodType<
   PaymentLink
 > = z.object({
   code: z.string(),
+  paymentLinkType: PaymentLinkType$outboundSchema,
   mode: Mode$outboundSchema,
   status: PaymentLinkStatus$outboundSchema,
   partnerAccountID: z.string(),

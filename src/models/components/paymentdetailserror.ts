@@ -23,6 +23,7 @@ export type PaymentDetailsError = {
   allowedMethods?: string | undefined;
   cardDetails?: CardPaymentDetailsError | undefined;
   achDetails?: ACHPaymentDetailsError | undefined;
+  metadata?: string | undefined;
 };
 
 /** @internal */
@@ -34,12 +35,14 @@ export const PaymentDetailsError$inboundSchema: z.ZodType<
   allowedMethods: z.string().optional(),
   cardDetails: CardPaymentDetailsError$inboundSchema.optional(),
   achDetails: ACHPaymentDetailsError$inboundSchema.optional(),
+  metadata: z.string().optional(),
 });
 /** @internal */
 export type PaymentDetailsError$Outbound = {
   allowedMethods?: string | undefined;
   cardDetails?: CardPaymentDetailsError$Outbound | undefined;
   achDetails?: ACHPaymentDetailsError$Outbound | undefined;
+  metadata?: string | undefined;
 };
 
 /** @internal */
@@ -51,6 +54,7 @@ export const PaymentDetailsError$outboundSchema: z.ZodType<
   allowedMethods: z.string().optional(),
   cardDetails: CardPaymentDetailsError$outboundSchema.optional(),
   achDetails: ACHPaymentDetailsError$outboundSchema.optional(),
+  metadata: z.string().optional(),
 });
 
 export function paymentDetailsErrorToJSON(

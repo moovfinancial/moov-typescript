@@ -311,6 +311,7 @@ export * from "./paymentlinkpaymentdetailsupdate.js";
 export * from "./paymentlinkpayoutdetails.js";
 export * from "./paymentlinkpayoutdetailsupdate.js";
 export * from "./paymentlinkstatus.js";
+export * from "./paymentlinktype.js";
 export * from "./paymentmethod.js";
 export * from "./paymentmethodsbankaccount.js";
 export * from "./paymentmethodscard.js";

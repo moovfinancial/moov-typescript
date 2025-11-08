@@ -16,6 +16,7 @@ import {
 export type PayoutDetailsError = {
   allowedMethods?: string | undefined;
   recipient?: PayoutRecipientError | undefined;
+  metadata?: string | undefined;
 };
 
 /** @internal */
@@ -26,11 +27,13 @@ export const PayoutDetailsError$inboundSchema: z.ZodType<
 > = z.object({
   allowedMethods: z.string().optional(),
   recipient: PayoutRecipientError$inboundSchema.optional(),
+  metadata: z.string().optional(),
 });
 /** @internal */
 export type PayoutDetailsError$Outbound = {
   allowedMethods?: string | undefined;
   recipient?: PayoutRecipientError$Outbound | undefined;
+  metadata?: string | undefined;
 };
 
 /** @internal */
@@ -41,6 +44,7 @@ export const PayoutDetailsError$outboundSchema: z.ZodType<
 > = z.object({
   allowedMethods: z.string().optional(),
   recipient: PayoutRecipientError$outboundSchema.optional(),
+  metadata: z.string().optional(),
 });
 
 export function payoutDetailsErrorToJSON(
