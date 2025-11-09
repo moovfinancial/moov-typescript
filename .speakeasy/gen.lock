@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 8cd740a1348d9290d3b9ffa8208e9e42
+  docChecksum: 8ea265ae3f97eeb6abb5b00a4f9f70bf
   docVersion: latest
   speakeasyVersion: 1.651.0
   generationVersion: 2.745.2
-  releaseVersion: 0.21.6
-  configChecksum: 7abb8d4a60eb1b6d8ffefbb77a8becc1
+  releaseVersion: 0.21.7
+  configChecksum: e594dafe7758867e0b3c170525f55fcc
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -4809,4 +4809,3 @@ examples:
           application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.paymentLinks.create()`: \n  *  `request.createPaymentLink` **Changed**\n  *  `response` **Changed**\n  *  `error` **Changed**\n* `moov.paymentLinks.list()`: \n  *  `request` **Changed**\n  *  `response.[]` **Changed**\n* `moov.paymentLinks.get()`:  `response` **Changed**\n* `moov.paymentLinks.update()`: \n  *  `request.updatePaymentLink` **Changed**\n  *  `response` **Changed**\n  *  `error` **Changed**\n"

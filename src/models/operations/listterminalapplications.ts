@@ -22,6 +22,7 @@ export type ListTerminalApplicationsGlobals = {
    *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
    *
    * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   * When no version is specified, the API defaults to `v2024.01.00`.
    */
   xMoovVersion?: string | undefined;
 };
@@ -39,7 +40,7 @@ export const ListTerminalApplicationsGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().default("v2024.01.00"),
+  "X-Moov-Version": z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -47,7 +48,7 @@ export const ListTerminalApplicationsGlobals$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type ListTerminalApplicationsGlobals$Outbound = {
-  "X-Moov-Version": string;
+  "X-Moov-Version"?: string | undefined;
 };
 
 /** @internal */
@@ -56,7 +57,7 @@ export const ListTerminalApplicationsGlobals$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListTerminalApplicationsGlobals
 > = z.object({
-  xMoovVersion: z.string().default("v2024.01.00"),
+  xMoovVersion: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     xMoovVersion: "X-Moov-Version",

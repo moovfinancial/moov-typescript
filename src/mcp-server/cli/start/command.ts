@@ -57,7 +57,7 @@ export const startCommand = buildCommand({
           "Allows setting the xMoovVersion parameter for all supported operations",
         optional: true,
         parse: (value) => {
-          return z.string().default("v2024.01.00").parse(value);
+          return z.string().parse(value);
         },
       },
       "server-url": {
