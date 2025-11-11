@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 8ea265ae3f97eeb6abb5b00a4f9f70bf
+  docChecksum: dbf9285d901b681d6f1e2f0996878db3
   docVersion: latest
-  speakeasyVersion: 1.651.0
-  generationVersion: 2.745.2
-  releaseVersion: 0.21.7
-  configChecksum: e594dafe7758867e0b3c170525f55fcc
+  speakeasyVersion: 1.653.0
+  generationVersion: 2.748.0
+  releaseVersion: 0.21.8
+  configChecksum: c1b1fb181b4a7443d400c1e343e18f1d
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.3
+    core: 3.26.4
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -181,7 +181,6 @@ generatedFiles:
   - docs/models/components/contact.md
   - docs/models/components/createaccount.md
   - docs/models/components/createaccountsettings.md
-  - docs/models/components/createaccounttermsofservice.md
   - docs/models/components/createaccounttype.md
   - docs/models/components/createapplepaysession.md
   - docs/models/components/createauthorizeduser.md
@@ -364,7 +363,6 @@ generatedFiles:
   - docs/models/components/partnerpricingagreement.md
   - docs/models/components/patchaccount.md
   - docs/models/components/patchaccountcustomersupport.md
-  - docs/models/components/patchaccounttermsofservice.md
   - docs/models/components/patchbusiness.md
   - docs/models/components/patchindividual.md
   - docs/models/components/patchprofile.md
@@ -497,6 +495,8 @@ generatedFiles:
   - docs/models/components/terminalconfiguration.md
   - docs/models/components/termsofservice.md
   - docs/models/components/termsofserviceerror.md
+  - docs/models/components/termsofservicepayload.md
+  - docs/models/components/termsofservicepayloadupdate.md
   - docs/models/components/termsofservicetoken.md
   - docs/models/components/termsofservicetokenupdate.md
   - docs/models/components/ticket.md
@@ -1945,6 +1945,8 @@ generatedFiles:
   - src/models/components/terminalconfiguration.ts
   - src/models/components/termsofservice.ts
   - src/models/components/termsofserviceerror.ts
+  - src/models/components/termsofservicepayload.ts
+  - src/models/components/termsofservicepayloadupdate.ts
   - src/models/components/termsofservicetoken.ts
   - src/models/components/termsofservicetokenupdate.ts
   - src/models/components/ticket.ts
@@ -2358,7 +2360,7 @@ examples:
           x-moov-version: "v2024.01.00"
           X-Moov-Version: "v2024.01.00"
       requestBody:
-        application/json: {"profile": {"individual": {"name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "birthDate": {"day": 9, "month": 11, "year": 1989}}, "business": {"businessType": "llc", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "taxID": {"ein": {"number": "12-3456789"}}, "industryCodes": {"naics": "713940", "sic": "7991", "mcc": "7997"}, "industry": "electronics-appliances"}}, "metadata": {"optional": "metadata"}, "termsOfService": {"token": "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4"}, "customerSupport": {"phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}}}
+        application/json: {"profile": {"individual": {"name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "birthDate": {"day": 9, "month": 11, "year": 1989}}, "business": {"businessType": "llc", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "taxID": {"ein": {"number": "12-3456789"}}, "industryCodes": {"naics": "713940", "sic": "7991", "mcc": "7997"}, "industry": "electronics-appliances"}}, "metadata": {"optional": "metadata"}, "termsOfService": {"token": {"token": "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4"}, "manual": {"acceptedIP": "172.217.2.46", "acceptedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36"}}, "customerSupport": {"phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}}}
       responses:
         "200":
           application/json: {"accountID": "53ca67ea-6fd3-423f-9544-ce2404159d33", "mode": "sandbox", "accountType": "business", "displayName": "Whole Body Fitness LLC", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC", "ownersProvided": false}}, "verification": {"verificationStatus": "unverified", "status": "unverified"}, "settings": {"cardPayment": {"statementDescriptor": "Whole Body Fitness LLC"}, "achPayment": {"companyName": "Whole Body Fitne"}}, "createdOn": "2024-12-16T17:55:20.557151867Z", "updatedOn": "2024-12-16T17:55:20.557151867Z"}
@@ -4809,3 +4811,4 @@ examples:
           application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.accounts.create()`: \n  *  `request.termsOfService` **Changed** **Breaking** :warning:\n* `moov.accounts.update()`: \n  *  `request.patchAccount.termsOfService` **Changed** **Breaking** :warning:\n* `moov.onboarding.createInvite()`: \n  *  `request.prefill.termsOfService` **Changed** **Breaking** :warning:\n  *  `response.prefill.termsOfService` **Changed** **Breaking** :warning:\n* `moov.onboarding.listInvites()`:  `response.[].prefill.termsOfService` **Changed** **Breaking** :warning:\n* `moov.onboarding.getInvite()`:  `response.prefill.termsOfService` **Changed** **Breaking** :warning:\n"

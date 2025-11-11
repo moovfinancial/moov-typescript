@@ -406,6 +406,8 @@ export * from "./terminalcard.js";
 export * from "./terminalconfiguration.js";
 export * from "./termsofservice.js";
 export * from "./termsofserviceerror.js";
+export * from "./termsofservicepayload.js";
+export * from "./termsofservicepayloadupdate.js";
 export * from "./termsofservicetoken.js";
 export * from "./termsofservicetokenupdate.js";
 export * from "./ticket.js";

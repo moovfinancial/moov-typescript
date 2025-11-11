@@ -19,12 +19,6 @@ import {
   CreateAccountSettings$outboundSchema,
 } from "./createaccountsettings.js";
 import {
-  ManualTermsOfServiceUpdate,
-  ManualTermsOfServiceUpdate$inboundSchema,
-  ManualTermsOfServiceUpdate$Outbound,
-  ManualTermsOfServiceUpdate$outboundSchema,
-} from "./manualtermsofserviceupdate.js";
-import {
   PatchProfile,
   PatchProfile$inboundSchema,
   PatchProfile$Outbound,
@@ -37,15 +31,11 @@ import {
   PhoneNumber$outboundSchema,
 } from "./phonenumber.js";
 import {
-  TermsOfServiceTokenUpdate,
-  TermsOfServiceTokenUpdate$inboundSchema,
-  TermsOfServiceTokenUpdate$Outbound,
-  TermsOfServiceTokenUpdate$outboundSchema,
-} from "./termsofservicetokenupdate.js";
-
-export type PatchAccountTermsOfService =
-  | TermsOfServiceTokenUpdate
-  | ManualTermsOfServiceUpdate;
+  TermsOfServicePayloadUpdate,
+  TermsOfServicePayloadUpdate$inboundSchema,
+  TermsOfServicePayloadUpdate$Outbound,
+  TermsOfServicePayloadUpdate$outboundSchema,
+} from "./termsofservicepayloadupdate.js";
 
 /**
  * User-provided information that can be displayed on credit card transactions for customers to use when
@@ -72,55 +62,11 @@ export type PatchAccount = {
    */
   profile?: PatchProfile | undefined;
   metadata?: { [k: string]: string } | null | undefined;
-  termsOfService?:
-    | TermsOfServiceTokenUpdate
-    | ManualTermsOfServiceUpdate
-    | undefined;
+  termsOfService?: TermsOfServicePayloadUpdate | undefined;
   foreignID?: string | undefined;
   customerSupport?: PatchAccountCustomerSupport | null | undefined;
   settings?: CreateAccountSettings | undefined;
 };
-
-/** @internal */
-export const PatchAccountTermsOfService$inboundSchema: z.ZodType<
-  PatchAccountTermsOfService,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  TermsOfServiceTokenUpdate$inboundSchema,
-  ManualTermsOfServiceUpdate$inboundSchema,
-]);
-/** @internal */
-export type PatchAccountTermsOfService$Outbound =
-  | TermsOfServiceTokenUpdate$Outbound
-  | ManualTermsOfServiceUpdate$Outbound;
-
-/** @internal */
-export const PatchAccountTermsOfService$outboundSchema: z.ZodType<
-  PatchAccountTermsOfService$Outbound,
-  z.ZodTypeDef,
-  PatchAccountTermsOfService
-> = z.union([
-  TermsOfServiceTokenUpdate$outboundSchema,
-  ManualTermsOfServiceUpdate$outboundSchema,
-]);
-
-export function patchAccountTermsOfServiceToJSON(
-  patchAccountTermsOfService: PatchAccountTermsOfService,
-): string {
-  return JSON.stringify(
-    PatchAccountTermsOfService$outboundSchema.parse(patchAccountTermsOfService),
-  );
-}
-export function patchAccountTermsOfServiceFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchAccountTermsOfService, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchAccountTermsOfService$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchAccountTermsOfService' from JSON`,
-  );
-}
 
 /** @internal */
 export const PatchAccountCustomerSupport$inboundSchema: z.ZodType<
@@ -180,10 +126,7 @@ export const PatchAccount$inboundSchema: z.ZodType<
 > = z.object({
   profile: PatchProfile$inboundSchema.optional(),
   metadata: z.nullable(z.record(z.string())).optional(),
-  termsOfService: z.union([
-    TermsOfServiceTokenUpdate$inboundSchema,
-    ManualTermsOfServiceUpdate$inboundSchema,
-  ]).optional(),
+  termsOfService: TermsOfServicePayloadUpdate$inboundSchema.optional(),
   foreignID: z.string().optional(),
   customerSupport: z.nullable(
     z.lazy(() => PatchAccountCustomerSupport$inboundSchema),
@@ -194,10 +137,7 @@ export const PatchAccount$inboundSchema: z.ZodType<
 export type PatchAccount$Outbound = {
   profile?: PatchProfile$Outbound | undefined;
   metadata?: { [k: string]: string } | null | undefined;
-  termsOfService?:
-    | TermsOfServiceTokenUpdate$Outbound
-    | ManualTermsOfServiceUpdate$Outbound
-    | undefined;
+  termsOfService?: TermsOfServicePayloadUpdate$Outbound | undefined;
   foreignID?: string | undefined;
   customerSupport?: PatchAccountCustomerSupport$Outbound | null | undefined;
   settings?: CreateAccountSettings$Outbound | undefined;
@@ -211,10 +151,7 @@ export const PatchAccount$outboundSchema: z.ZodType<
 > = z.object({
   profile: PatchProfile$outboundSchema.optional(),
   metadata: z.nullable(z.record(z.string())).optional(),
-  termsOfService: z.union([
-    TermsOfServiceTokenUpdate$outboundSchema,
-    ManualTermsOfServiceUpdate$outboundSchema,
-  ]).optional(),
+  termsOfService: TermsOfServicePayloadUpdate$outboundSchema.optional(),
   foreignID: z.string().optional(),
   customerSupport: z.nullable(
     z.lazy(() => PatchAccountCustomerSupport$outboundSchema),

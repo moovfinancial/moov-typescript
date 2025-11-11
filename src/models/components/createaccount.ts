@@ -28,12 +28,6 @@ import {
   CustomerSupport$Outbound,
   CustomerSupport$outboundSchema,
 } from "./customersupport.js";
-import {
-  ManualTermsOfService,
-  ManualTermsOfService$inboundSchema,
-  ManualTermsOfService$Outbound,
-  ManualTermsOfService$outboundSchema,
-} from "./manualtermsofservice.js";
 import { Mode, Mode$inboundSchema, Mode$outboundSchema } from "./mode.js";
 import {
   Settings,
@@ -42,15 +36,11 @@ import {
   Settings$outboundSchema,
 } from "./settings.js";
 import {
-  TermsOfServiceToken,
-  TermsOfServiceToken$inboundSchema,
-  TermsOfServiceToken$Outbound,
-  TermsOfServiceToken$outboundSchema,
-} from "./termsofservicetoken.js";
-
-export type CreateAccountTermsOfService =
-  | ManualTermsOfService
-  | TermsOfServiceToken;
+  TermsOfServicePayload,
+  TermsOfServicePayload$inboundSchema,
+  TermsOfServicePayload$Outbound,
+  TermsOfServicePayload$outboundSchema,
+} from "./termsofservicepayload.js";
 
 export type CreateAccount = {
   accountType: CreateAccountType;
@@ -59,7 +49,7 @@ export type CreateAccount = {
    * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
    */
   metadata?: { [k: string]: string } | undefined;
-  termsOfService?: ManualTermsOfService | TermsOfServiceToken | undefined;
+  termsOfService?: TermsOfServicePayload | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
@@ -83,49 +73,6 @@ export type CreateAccount = {
 };
 
 /** @internal */
-export const CreateAccountTermsOfService$inboundSchema: z.ZodType<
-  CreateAccountTermsOfService,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  ManualTermsOfService$inboundSchema,
-  TermsOfServiceToken$inboundSchema,
-]);
-/** @internal */
-export type CreateAccountTermsOfService$Outbound =
-  | ManualTermsOfService$Outbound
-  | TermsOfServiceToken$Outbound;
-
-/** @internal */
-export const CreateAccountTermsOfService$outboundSchema: z.ZodType<
-  CreateAccountTermsOfService$Outbound,
-  z.ZodTypeDef,
-  CreateAccountTermsOfService
-> = z.union([
-  ManualTermsOfService$outboundSchema,
-  TermsOfServiceToken$outboundSchema,
-]);
-
-export function createAccountTermsOfServiceToJSON(
-  createAccountTermsOfService: CreateAccountTermsOfService,
-): string {
-  return JSON.stringify(
-    CreateAccountTermsOfService$outboundSchema.parse(
-      createAccountTermsOfService,
-    ),
-  );
-}
-export function createAccountTermsOfServiceFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAccountTermsOfService, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAccountTermsOfService$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAccountTermsOfService' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateAccount$inboundSchema: z.ZodType<
   CreateAccount,
   z.ZodTypeDef,
@@ -134,10 +81,7 @@ export const CreateAccount$inboundSchema: z.ZodType<
   accountType: CreateAccountType$inboundSchema,
   profile: CreateProfile$inboundSchema,
   metadata: z.record(z.string()).optional(),
-  termsOfService: z.union([
-    ManualTermsOfService$inboundSchema,
-    TermsOfServiceToken$inboundSchema,
-  ]).optional(),
+  termsOfService: TermsOfServicePayload$inboundSchema.optional(),
   foreignID: z.string().optional(),
   customerSupport: CustomerSupport$inboundSchema.optional(),
   settings: Settings$inboundSchema.optional(),
@@ -149,10 +93,7 @@ export type CreateAccount$Outbound = {
   accountType: string;
   profile: CreateProfile$Outbound;
   metadata?: { [k: string]: string } | undefined;
-  termsOfService?:
-    | ManualTermsOfService$Outbound
-    | TermsOfServiceToken$Outbound
-    | undefined;
+  termsOfService?: TermsOfServicePayload$Outbound | undefined;
   foreignID?: string | undefined;
   customerSupport?: CustomerSupport$Outbound | undefined;
   settings?: Settings$Outbound | undefined;
@@ -169,10 +110,7 @@ export const CreateAccount$outboundSchema: z.ZodType<
   accountType: CreateAccountType$outboundSchema,
   profile: CreateProfile$outboundSchema,
   metadata: z.record(z.string()).optional(),
-  termsOfService: z.union([
-    ManualTermsOfService$outboundSchema,
-    TermsOfServiceToken$outboundSchema,
-  ]).optional(),
+  termsOfService: TermsOfServicePayload$outboundSchema.optional(),
   foreignID: z.string().optional(),
   customerSupport: CustomerSupport$outboundSchema.optional(),
   settings: Settings$outboundSchema.optional(),
