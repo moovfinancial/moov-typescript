@@ -409,7 +409,6 @@ export * from "./termsofserviceerror.js";
 export * from "./termsofservicepayload.js";
 export * from "./termsofservicepayloadupdate.js";
 export * from "./termsofservicetoken.js";
-export * from "./termsofservicetokenupdate.js";
 export * from "./ticket.js";
 export * from "./ticketcontact.js";
 export * from "./ticketmessage.js";

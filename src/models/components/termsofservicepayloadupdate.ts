@@ -12,18 +12,9 @@ import {
   ManualTermsOfServiceUpdate$Outbound,
   ManualTermsOfServiceUpdate$outboundSchema,
 } from "./manualtermsofserviceupdate.js";
-import {
-  TermsOfServiceTokenUpdate,
-  TermsOfServiceTokenUpdate$inboundSchema,
-  TermsOfServiceTokenUpdate$Outbound,
-  TermsOfServiceTokenUpdate$outboundSchema,
-} from "./termsofservicetokenupdate.js";
 
 export type TermsOfServicePayloadUpdate = {
-  /**
-   * An encrypted value used to record acceptance of Moov's Terms of Service.
-   */
-  token?: TermsOfServiceTokenUpdate | undefined;
+  token?: string | undefined;
   /**
    * Describes the acceptance of the Terms of Service. All data is required, and must be from the user.
    */
@@ -36,12 +27,12 @@ export const TermsOfServicePayloadUpdate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: TermsOfServiceTokenUpdate$inboundSchema.optional(),
+  token: z.string().optional(),
   manual: ManualTermsOfServiceUpdate$inboundSchema.optional(),
 });
 /** @internal */
 export type TermsOfServicePayloadUpdate$Outbound = {
-  token?: TermsOfServiceTokenUpdate$Outbound | undefined;
+  token?: string | undefined;
   manual?: ManualTermsOfServiceUpdate$Outbound | undefined;
 };
 
@@ -51,7 +42,7 @@ export const TermsOfServicePayloadUpdate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TermsOfServicePayloadUpdate
 > = z.object({
-  token: TermsOfServiceTokenUpdate$outboundSchema.optional(),
+  token: z.string().optional(),
   manual: ManualTermsOfServiceUpdate$outboundSchema.optional(),
 });
 

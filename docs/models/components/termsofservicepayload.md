@@ -6,10 +6,6 @@
 import { TermsOfServicePayload } from "@moovio/sdk/models/components";
 
 let value: TermsOfServicePayload = {
-  token: {
-    token:
-      "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4",
-  },
   manual: {
     acceptedDate: new Date("2023-09-16T06:58:44.067Z"),
     acceptedIP: "172.217.2.46",
@@ -24,5 +20,5 @@ let value: TermsOfServicePayload = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `token`                                                                                            | [components.TermsOfServiceToken](../../models/components/termsofservicetoken.md)                   | :heavy_minus_sign:                                                                                 | An encrypted value used to record acceptance of Moov's Terms of Service.                           |
+| `token`                                                                                            | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `manual`                                                                                           | [components.ManualTermsOfService](../../models/components/manualtermsofservice.md)                 | :heavy_minus_sign:                                                                                 | Describes the acceptance of the Terms of Service. All data is required, and must be from the user. |
