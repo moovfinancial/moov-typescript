@@ -57,6 +57,13 @@ let value: InstantPaymentFees = {
       valueDecimal: "12.987654321",
     },
   },
+  instantVerification: {
+    count: 942102,
+    amount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
   total: {
     count: 984400,
     amount: {
@@ -78,4 +85,5 @@ let value: InstantPaymentFees = {
 | `pullFromCardTransaction`                                                            | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_check_mark:                                                                   | Fees for pull-from-card transactions.                                                |
 | `pullFromCardDecline`                                                                | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_minus_sign:                                                                   | Fees for pull-from-card declines.                                                    |
 | `pullFromCardRefund`                                                                 | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_minus_sign:                                                                   | Fees for pull-from-card refunds.                                                     |
+| `instantVerification`                                                                | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_check_mark:                                                                   | Fees for instant payment verifications.                                              |
 | `total`                                                                              | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_check_mark:                                                                   | Total instant payment fees.                                                          |

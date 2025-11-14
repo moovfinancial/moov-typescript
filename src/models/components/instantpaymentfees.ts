@@ -46,6 +46,10 @@ export type InstantPaymentFees = {
    */
   pullFromCardRefund?: BillingCountAndAmount | undefined;
   /**
+   * Fees for instant payment verifications.
+   */
+  instantVerification: BillingCountAndAmount;
+  /**
    * Total instant payment fees.
    */
   total: BillingCountAndAmount;
@@ -64,6 +68,7 @@ export const InstantPaymentFees$inboundSchema: z.ZodType<
   pullFromCardTransaction: BillingCountAndAmount$inboundSchema,
   pullFromCardDecline: BillingCountAndAmount$inboundSchema.optional(),
   pullFromCardRefund: BillingCountAndAmount$inboundSchema.optional(),
+  instantVerification: BillingCountAndAmount$inboundSchema,
   total: BillingCountAndAmount$inboundSchema,
 });
 /** @internal */
@@ -75,6 +80,7 @@ export type InstantPaymentFees$Outbound = {
   pullFromCardTransaction: BillingCountAndAmount$Outbound;
   pullFromCardDecline?: BillingCountAndAmount$Outbound | undefined;
   pullFromCardRefund?: BillingCountAndAmount$Outbound | undefined;
+  instantVerification: BillingCountAndAmount$Outbound;
   total: BillingCountAndAmount$Outbound;
 };
 
@@ -91,6 +97,7 @@ export const InstantPaymentFees$outboundSchema: z.ZodType<
   pullFromCardTransaction: BillingCountAndAmount$outboundSchema,
   pullFromCardDecline: BillingCountAndAmount$outboundSchema.optional(),
   pullFromCardRefund: BillingCountAndAmount$outboundSchema.optional(),
+  instantVerification: BillingCountAndAmount$outboundSchema,
   total: BillingCountAndAmount$outboundSchema,
 });
 

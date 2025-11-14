@@ -521,6 +521,13 @@ const value: components.Statement = {
         valueDecimal: "12.987654321",
       },
     },
+    instantVerification: {
+      count: 942102,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
     total: {
       count: 984400,
       amount: {
@@ -545,28 +552,28 @@ const value: components.Statement = {
   },
   otherCardFees: {
     disputes: {
-      count: 942102,
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-    },
-    cardAccountUpdater: {
       count: 405208,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    cardVerification: {
+    cardAccountUpdater: {
       count: 208853,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    nameVerification: {
+    cardVerification: {
       count: 937454,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+    nameVerification: {
+      count: 371999,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -580,8 +587,8 @@ const value: components.Statement = {
       },
     },
   },
-  createdOn: new Date("2024-02-12T17:03:22.129Z"),
-  updatedOn: new Date("2024-01-10T19:03:51.345Z"),
+  createdOn: new Date("2024-01-10T19:03:51.345Z"),
+  updatedOn: new Date("2024-04-20T08:54:10.576Z"),
 };
 ```
 
