@@ -74,6 +74,10 @@ export type PaymentLink = {
    */
   merchantAccountID: string;
   /**
+   * The payment link's owner's Moov account ID.
+   */
+  ownerAccountID: string;
+  /**
    * The merchant's preferred payment method ID. Must be a wallet payment method.
    */
   merchantPaymentMethodID: string;
@@ -136,6 +140,7 @@ export const PaymentLink$inboundSchema: z.ZodType<
   status: PaymentLinkStatus$inboundSchema,
   partnerAccountID: z.string(),
   merchantAccountID: z.string(),
+  ownerAccountID: z.string(),
   merchantPaymentMethodID: z.string(),
   link: z.string(),
   amount: Amount$inboundSchema,
@@ -163,6 +168,7 @@ export type PaymentLink$Outbound = {
   status: string;
   partnerAccountID: string;
   merchantAccountID: string;
+  ownerAccountID: string;
   merchantPaymentMethodID: string;
   link: string;
   amount: Amount$Outbound;
@@ -192,6 +198,7 @@ export const PaymentLink$outboundSchema: z.ZodType<
   status: PaymentLinkStatus$outboundSchema,
   partnerAccountID: z.string(),
   merchantAccountID: z.string(),
+  ownerAccountID: z.string(),
   merchantPaymentMethodID: z.string(),
   link: z.string(),
   amount: Amount$outboundSchema,
