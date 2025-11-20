@@ -101,6 +101,7 @@ export * from "./listdisputeevidence.js";
 export * from "./listdisputes.js";
 export * from "./listfeeplanagreements.js";
 export * from "./listfeeplans.js";
+export * from "./listfeerevenue.js";
 export * from "./listfeesfetch.js";
 export * from "./listfiles.js";
 export * from "./listimagemetadata.js";

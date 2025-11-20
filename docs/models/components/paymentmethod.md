@@ -312,3 +312,24 @@ const value: components.CardPresentPaymentPaymentMethod = {
 };
 ```
 
+### `components.InstantBankCreditPaymentMethod`
+
+```typescript
+const value: components.InstantBankCreditPaymentMethod = {
+  paymentMethodID: "2fbfbefd-2438-4326-87d5-920d7a52d533",
+  paymentMethodType: "instant-bank-credit",
+  bankAccount: {
+    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+    fingerprint: "<value>",
+    status: "pending",
+    holderName: "<value>",
+    holderType: "individual",
+    bankName: "<value>",
+    bankAccountType: "checking",
+    routingNumber: "<value>",
+    lastFourAccountNumber: "<value>",
+    updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+  },
+};
+```
+

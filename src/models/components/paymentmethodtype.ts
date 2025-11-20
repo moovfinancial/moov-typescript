@@ -20,6 +20,7 @@ export const PaymentMethodType = {
   PullFromCard: "pull-from-card",
   ApplePay: "apple-pay",
   CardPresentPayment: "card-present-payment",
+  InstantBankCredit: "instant-bank-credit",
 } as const;
 /**
  * The payment method type that represents a payment rail and directionality

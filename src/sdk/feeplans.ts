@@ -6,6 +6,7 @@ import { feePlansCreateFeePlanAgreements } from "../funcs/feePlansCreateFeePlanA
 import { feePlansGetResidual } from "../funcs/feePlansGetResidual.js";
 import { feePlansListFeePlanAgreements } from "../funcs/feePlansListFeePlanAgreements.js";
 import { feePlansListFeePlans } from "../funcs/feePlansListFeePlans.js";
+import { feePlansListFeeRevenue } from "../funcs/feePlansListFeeRevenue.js";
 import { feePlansListFeesFetch } from "../funcs/feePlansListFeesFetch.js";
 import { feePlansListPartnerPricing } from "../funcs/feePlansListPartnerPricing.js";
 import { feePlansListPartnerPricingAgreements } from "../funcs/feePlansListPartnerPricingAgreements.js";
@@ -70,7 +71,24 @@ export class FeePlans extends ClientSDK {
   }
 
   /**
-   * Retrieve fees associated with an account.
+   * Used by a partner. Retrieve revenue generated from merchant fees.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+   */
+  async listFeeRevenue(
+    request: operations.ListFeeRevenueRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ListFeeRevenueResponse> {
+    return unwrapAsync(feePlansListFeeRevenue(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Retrieve fees assessed to an account.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
    * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.

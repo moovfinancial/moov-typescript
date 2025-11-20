@@ -9,13 +9,25 @@ let value: TransferOptions = {
   sourceOptions: [
     {
       paymentMethodID: "880c87e7-4097-4416-b32b-61024b85211e",
-      paymentMethodType: "card-present-payment",
+      paymentMethodType: "instant-bank-credit",
+      bankAccount: {
+        bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+        fingerprint: "<value>",
+        status: "pending",
+        holderName: "<value>",
+        holderType: "individual",
+        bankName: "<value>",
+        bankAccountType: "checking",
+        routingNumber: "<value>",
+        lastFourAccountNumber: "<value>",
+        updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+      },
     },
   ],
   destinationOptions: [
     {
       paymentMethodID: "e75eaa04-98d0-4f99-856f-912ec1ae4c0b",
-      paymentMethodType: "card-payment",
+      paymentMethodType: "push-to-card",
       card: {
         cardID: "01234567-89ab-cdef-0123-456789abcdef",
         fingerprint:

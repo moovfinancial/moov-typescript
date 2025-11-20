@@ -82,6 +82,7 @@ import { tool$feePlansCreateFeePlanAgreements } from "./tools/feePlansCreateFeeP
 import { tool$feePlansGetResidual } from "./tools/feePlansGetResidual.js";
 import { tool$feePlansListFeePlanAgreements } from "./tools/feePlansListFeePlanAgreements.js";
 import { tool$feePlansListFeePlans } from "./tools/feePlansListFeePlans.js";
+import { tool$feePlansListFeeRevenue } from "./tools/feePlansListFeeRevenue.js";
 import { tool$feePlansListFeesFetch } from "./tools/feePlansListFeesFetch.js";
 import { tool$feePlansListPartnerPricing } from "./tools/feePlansListPartnerPricing.js";
 import { tool$feePlansListPartnerPricingAgreements } from "./tools/feePlansListPartnerPricingAgreements.js";
@@ -187,7 +188,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.21.13",
+    version: "0.21.14",
   });
 
   const client = new MoovCore({
@@ -270,6 +271,7 @@ export function createMCPServer(deps: {
   tool(tool$feePlansListFeePlanAgreements);
   tool(tool$feePlansCreateFeePlanAgreements);
   tool(tool$feePlansListFeePlans);
+  tool(tool$feePlansListFeeRevenue);
   tool(tool$feePlansRetrieveFees);
   tool(tool$feePlansListFeesFetch);
   tool(tool$feePlansListPartnerPricing);

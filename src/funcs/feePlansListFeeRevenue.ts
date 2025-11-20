@@ -25,18 +25,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Retrieve fees assessed to an account.
+ * Used by a partner. Retrieve revenue generated from merchant fees.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+ * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
  */
-export function feePlansRetrieveFees(
+export function feePlansListFeeRevenue(
   client: MoovCore,
-  request: operations.RetrieveFeesRequest,
+  request: operations.ListFeeRevenueRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.RetrieveFeesResponse,
+    operations.ListFeeRevenueResponse,
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -56,12 +56,12 @@ export function feePlansRetrieveFees(
 
 async function $do(
   client: MoovCore,
-  request: operations.RetrieveFeesRequest,
+  request: operations.ListFeeRevenueRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.RetrieveFeesResponse,
+      operations.ListFeeRevenueResponse,
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -76,7 +76,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.RetrieveFeesRequest$outboundSchema.parse(value),
+    (value) => operations.ListFeeRevenueRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -92,15 +92,13 @@ async function $do(
     }),
   };
 
-  const path = pathToFunc("/accounts/{accountID}/fees")(pathParams);
+  const path = pathToFunc("/accounts/{accountID}/fee-revenue")(pathParams);
 
   const query = encodeFormQuery({
     "count": payload.count,
-    "disputeID": payload.disputeID,
     "endDateTime": payload.endDateTime,
     "skip": payload.skip,
     "startDateTime": payload.startDateTime,
-    "transferID": payload.transferID,
   }, { explode: false });
 
   const headers = new Headers(compactMap({
@@ -118,7 +116,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "retrieveFees",
+    operationID: "listFeeRevenue",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -162,7 +160,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.RetrieveFeesResponse,
+    operations.ListFeeRevenueResponse,
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -172,7 +170,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.RetrieveFeesResponse$inboundSchema, {
+    M.json(200, operations.ListFeeRevenueResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),

@@ -10,7 +10,7 @@ let value: CreatedTransfer = {
   createdOn: new Date("2025-03-10T06:52:08.646Z"),
   source: {
     paymentMethodID: "<id>",
-    paymentMethodType: "pull-from-card",
+    paymentMethodType: "apple-pay",
     account: {
       accountID: "<id>",
       email: "Mason_Koepp@hotmail.com",
@@ -99,7 +99,7 @@ let value: CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "rtp-credit",
+    paymentMethodType: "card-payment",
     account: {
       accountID: "<id>",
       email: "Mason_Koepp@hotmail.com",

@@ -7,7 +7,7 @@ import { TransferDestination } from "@moovio/sdk/models/components";
 
 let value: TransferDestination = {
   paymentMethodID: "<id>",
-  paymentMethodType: "ach-credit-same-day",
+  paymentMethodType: "rtp-credit",
   account: {
     accountID: "<id>",
     email: "Mason_Koepp@hotmail.com",

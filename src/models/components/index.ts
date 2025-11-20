@@ -230,6 +230,7 @@ export * from "./individualnameupdate.js";
 export * from "./individualprofile.js";
 export * from "./industrycodes.js";
 export * from "./industrytaxonomy.js";
+export * from "./instantbankcreditpaymentmethod.js";
 export * from "./instantpaymentfees.js";
 export * from "./institutionssearchresponse.js";
 export * from "./issuedcard.js";
