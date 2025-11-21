@@ -142,6 +142,25 @@ const value: components.WebhookDataDisputeUpdated = {
 };
 ```
 
+### `components.WebhookDataInvoiceCreated`
+
+```typescript
+const value: components.WebhookDataInvoiceCreated = {
+  accountID: "3b202066-cc64-4433-b90e-9268026f4ffb",
+  invoiceID: "a92adfef-42f2-45b0-9220-9728186bafff",
+};
+```
+
+### `components.WebhookDataInvoiceUpdated`
+
+```typescript
+const value: components.WebhookDataInvoiceUpdated = {
+  accountID: "371dff31-c951-4036-a585-7983e2429f4d",
+  invoiceID: "9a2686a6-add0-49a0-b309-e9070e1656f0",
+  status: "draft",
+};
+```
+
 ### `components.WebhookDataNetworkIDUpdated`
 
 ```typescript

@@ -24,6 +24,8 @@ export const WebhookEventType = {
   CapabilityUpdated: "capability.updated",
   DisputeCreated: "dispute.created",
   DisputeUpdated: "dispute.updated",
+  InvoiceCreated: "invoice.created",
+  InvoiceUpdated: "invoice.updated",
   NetworkIDUpdated: "networkID.updated",
   PaymentMethodEnabled: "paymentMethod.enabled",
   PaymentMethodDisabled: "paymentMethod.disabled",
