@@ -1,0 +1,39 @@
+# CreatePaymentLinkLineItem
+
+Represents a single line item in a payment link, including optional modifiers and quantity.
+
+## Example Usage
+
+```typescript
+import { CreatePaymentLinkLineItem } from "@moovio/sdk/models/components";
+
+let value: CreatePaymentLinkLineItem = {
+  name: "<value>",
+  basePrice: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  quantity: 70215,
+  options: [
+    {
+      name: "<value>",
+      quantity: 549588,
+      priceModifier: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+  ],
+};
+```
+
+## Fields
+
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `name`                                                                                                     | *string*                                                                                                   | :heavy_check_mark:                                                                                         | The name of the item.                                                                                      |
+| `basePrice`                                                                                                | [components.AmountDecimal](../../models/components/amountdecimal.md)                                       | :heavy_check_mark:                                                                                         | The base price of the item before applying option modifiers.                                               |
+| `quantity`                                                                                                 | *number*                                                                                                   | :heavy_check_mark:                                                                                         | The quantity of this item.                                                                                 |
+| `options`                                                                                                  | [components.CreatePaymentLinkLineItemOption](../../models/components/createpaymentlinklineitemoption.md)[] | :heavy_minus_sign:                                                                                         | Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).                |
+| `imageIDs`                                                                                                 | *string*[]                                                                                                 | :heavy_minus_sign:                                                                                         | Optional list of images associated with this line item.                                                    |
+| `productID`                                                                                                | *string*                                                                                                   | :heavy_minus_sign:                                                                                         | Optional unique identifier associating the line item with a product.                                       |

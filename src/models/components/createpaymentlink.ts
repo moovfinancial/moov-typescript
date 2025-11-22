@@ -13,6 +13,12 @@ import {
   Amount$outboundSchema,
 } from "./amount.js";
 import {
+  CreatePaymentLinkLineItems,
+  CreatePaymentLinkLineItems$inboundSchema,
+  CreatePaymentLinkLineItems$Outbound,
+  CreatePaymentLinkLineItems$outboundSchema,
+} from "./createpaymentlinklineitems.js";
+import {
   PaymentLinkCustomerOptions,
   PaymentLinkCustomerOptions$inboundSchema,
   PaymentLinkCustomerOptions$Outbound,
@@ -24,12 +30,6 @@ import {
   PaymentLinkDisplayOptions$Outbound,
   PaymentLinkDisplayOptions$outboundSchema,
 } from "./paymentlinkdisplayoptions.js";
-import {
-  PaymentLinkLineItems,
-  PaymentLinkLineItems$inboundSchema,
-  PaymentLinkLineItems$Outbound,
-  PaymentLinkLineItems$outboundSchema,
-} from "./paymentlinklineitems.js";
 import {
   PaymentLinkPaymentDetails,
   PaymentLinkPaymentDetails$inboundSchema,
@@ -92,7 +92,7 @@ export type CreatePaymentLink = {
    * @remarks
    * When line items are provided, their total plus sales tax must equal the payment link amount.
    */
-  lineItems?: PaymentLinkLineItems | undefined;
+  lineItems?: CreatePaymentLinkLineItems | undefined;
 };
 
 /** @internal */
@@ -111,7 +111,7 @@ export const CreatePaymentLink$inboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$inboundSchema.optional(),
   payment: PaymentLinkPaymentDetails$inboundSchema.optional(),
   payout: PaymentLinkPayoutDetails$inboundSchema.optional(),
-  lineItems: PaymentLinkLineItems$inboundSchema.optional(),
+  lineItems: CreatePaymentLinkLineItems$inboundSchema.optional(),
 });
 /** @internal */
 export type CreatePaymentLink$Outbound = {
@@ -124,7 +124,7 @@ export type CreatePaymentLink$Outbound = {
   customer?: PaymentLinkCustomerOptions$Outbound | undefined;
   payment?: PaymentLinkPaymentDetails$Outbound | undefined;
   payout?: PaymentLinkPayoutDetails$Outbound | undefined;
-  lineItems?: PaymentLinkLineItems$Outbound | undefined;
+  lineItems?: CreatePaymentLinkLineItems$Outbound | undefined;
 };
 
 /** @internal */
@@ -142,7 +142,7 @@ export const CreatePaymentLink$outboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$outboundSchema.optional(),
   payment: PaymentLinkPaymentDetails$outboundSchema.optional(),
   payout: PaymentLinkPayoutDetails$outboundSchema.optional(),
-  lineItems: PaymentLinkLineItems$outboundSchema.optional(),
+  lineItems: CreatePaymentLinkLineItems$outboundSchema.optional(),
 });
 
 export function createPaymentLinkToJSON(

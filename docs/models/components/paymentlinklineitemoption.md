@@ -14,14 +14,22 @@ let value: PaymentLinkLineItemOption = {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
+  images: [
+    {
+      imageID: "8b33557e-9413-4327-8f48-150f83a62f57",
+      link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+      publicID: "<id>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `name`                                                                                  | *string*                                                                                | :heavy_check_mark:                                                                      | The name of the option or modifier.                                                     |
-| `quantity`                                                                              | *number*                                                                                | :heavy_check_mark:                                                                      | The quantity of this option.                                                            |
-| `priceModifier`                                                                         | [components.AmountDecimal](../../models/components/amountdecimal.md)                    | :heavy_minus_sign:                                                                      | Optional price modification applied by this option. Can be positive, negative, or zero. |
-| `group`                                                                                 | *string*                                                                                | :heavy_minus_sign:                                                                      | Optional group identifier to categorize related options (e.g., 'toppings').             |
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `name`                                                                                                       | *string*                                                                                                     | :heavy_check_mark:                                                                                           | The name of the option or modifier.                                                                          |
+| `quantity`                                                                                                   | *number*                                                                                                     | :heavy_check_mark:                                                                                           | The quantity of this option.                                                                                 |
+| `priceModifier`                                                                                              | [components.AmountDecimal](../../models/components/amountdecimal.md)                                         | :heavy_minus_sign:                                                                                           | Optional price modification applied by this option. Can be positive, negative, or zero.                      |
+| `images`                                                                                                     | [components.PaymentLinkLineItemImageMetadata](../../models/components/paymentlinklineitemimagemetadata.md)[] | :heavy_minus_sign:                                                                                           | Optional list of images associated with this line item option.                                               |
+| `group`                                                                                                      | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | Optional group identifier to categorize related options (e.g., 'toppings').                                  |

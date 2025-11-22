@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 9debdf4d029f2d45c8703da3770d5954
+  docChecksum: 4118d9fa14f2cb49d8d7a649bffbb371
   docVersion: latest
-  speakeasyVersion: 1.659.0
-  generationVersion: 2.755.9
-  releaseVersion: 0.21.15
-  configChecksum: eb8a6c808871b69e392f608ce871ff40
+  speakeasyVersion: 1.660.0
+  generationVersion: 2.760.2
+  releaseVersion: 0.21.16
+  configChecksum: fbb3978d4f15a673b7a16081e926b76a
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.7
+    core: 3.26.9
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -203,6 +203,13 @@ generatedFiles:
   - docs/models/components/createindividualprofile.md
   - docs/models/components/createinvoice.md
   - docs/models/components/createpaymentlink.md
+  - docs/models/components/createpaymentlinklineitem.md
+  - docs/models/components/createpaymentlinklineitemoption.md
+  - docs/models/components/createpaymentlinklineitemoptionvalidationerror.md
+  - docs/models/components/createpaymentlinklineitems.md
+  - docs/models/components/createpaymentlinklineitemsupdate.md
+  - docs/models/components/createpaymentlinklineitemsvalidationerror.md
+  - docs/models/components/createpaymentlinklineitemvalidationerror.md
   - docs/models/components/createproductoption.md
   - docs/models/components/createproductoptiongroup.md
   - docs/models/components/createprofile.md
@@ -393,12 +400,9 @@ generatedFiles:
   - docs/models/components/paymentlinkdisplayoptions.md
   - docs/models/components/paymentlinkdisplayoptionsupdate.md
   - docs/models/components/paymentlinklineitem.md
+  - docs/models/components/paymentlinklineitemimagemetadata.md
   - docs/models/components/paymentlinklineitemoption.md
-  - docs/models/components/paymentlinklineitemoptionvalidationerror.md
   - docs/models/components/paymentlinklineitems.md
-  - docs/models/components/paymentlinklineitemsupdate.md
-  - docs/models/components/paymentlinklineitemsvalidationerror.md
-  - docs/models/components/paymentlinklineitemvalidationerror.md
   - docs/models/components/paymentlinkpaymentdetails.md
   - docs/models/components/paymentlinkpaymentdetailsupdate.md
   - docs/models/components/paymentlinkpayoutdetails.md
@@ -1738,6 +1742,13 @@ generatedFiles:
   - src/models/components/createindividualprofile.ts
   - src/models/components/createinvoice.ts
   - src/models/components/createpaymentlink.ts
+  - src/models/components/createpaymentlinklineitem.ts
+  - src/models/components/createpaymentlinklineitemoption.ts
+  - src/models/components/createpaymentlinklineitemoptionvalidationerror.ts
+  - src/models/components/createpaymentlinklineitems.ts
+  - src/models/components/createpaymentlinklineitemsupdate.ts
+  - src/models/components/createpaymentlinklineitemsvalidationerror.ts
+  - src/models/components/createpaymentlinklineitemvalidationerror.ts
   - src/models/components/createproductoption.ts
   - src/models/components/createproductoptiongroup.ts
   - src/models/components/createprofile.ts
@@ -1911,12 +1922,9 @@ generatedFiles:
   - src/models/components/paymentlinkdisplayoptions.ts
   - src/models/components/paymentlinkdisplayoptionsupdate.ts
   - src/models/components/paymentlinklineitem.ts
+  - src/models/components/paymentlinklineitemimagemetadata.ts
   - src/models/components/paymentlinklineitemoption.ts
-  - src/models/components/paymentlinklineitemoptionvalidationerror.ts
   - src/models/components/paymentlinklineitems.ts
-  - src/models/components/paymentlinklineitemsupdate.ts
-  - src/models/components/paymentlinklineitemsvalidationerror.ts
-  - src/models/components/paymentlinklineitemvalidationerror.ts
   - src/models/components/paymentlinkpaymentdetails.ts
   - src/models/components/paymentlinkpaymentdetailsupdate.ts
   - src/models/components/paymentlinkpayoutdetails.ts
@@ -2395,6 +2403,7 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - src/types/streams.ts
+  - src/types/unrecognized.ts
   - tsconfig.json
 examples:
   createAccount:
@@ -4973,10 +4982,4 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `moov.invoices.createInvoice()`: **Added**
-  * `moov.invoices.listInvoices()`: **Added**
-  * `moov.invoices.getInvoice()`: **Added**
-  * `moov.invoices.updateInvoice()`: **Added**
-  * `moov.invoices.markPaidInvoice()`: **Added**
+releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.paymentLinks.create()`: \n  *  `request.createPaymentLink.lineItems.items.[]` **Changed**\n  *  `response.lineitems.items.[]` **Changed**\n* `moov.paymentLinks.list()`:  `response.[].lineItems.items.[]` **Changed**\n* `moov.paymentLinks.get()`:  `response.lineitems.items.[]` **Changed**\n* `moov.paymentLinks.update()`: \n  *  `request.updatePaymentLink.lineItems.items.[]` **Changed**\n  *  `response.lineitems.items.[]` **Changed**\n"

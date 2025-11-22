@@ -22,6 +22,20 @@ let value: PaymentLinkLineItem = {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
+      images: [
+        {
+          imageID: "8b33557e-9413-4327-8f48-150f83a62f57",
+          link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+          publicID: "<id>",
+        },
+      ],
+    },
+  ],
+  images: [
+    {
+      imageID: "8b33557e-9413-4327-8f48-150f83a62f57",
+      link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+      publicID: "<id>",
     },
   ],
 };
@@ -29,10 +43,11 @@ let value: PaymentLinkLineItem = {
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `name`                                                                                         | *string*                                                                                       | :heavy_check_mark:                                                                             | The name of the item.                                                                          |
-| `basePrice`                                                                                    | [components.AmountDecimal](../../models/components/amountdecimal.md)                           | :heavy_check_mark:                                                                             | The base price of the item before applying option modifiers.                                   |
-| `quantity`                                                                                     | *number*                                                                                       | :heavy_check_mark:                                                                             | The quantity of this item.                                                                     |
-| `options`                                                                                      | [components.PaymentLinkLineItemOption](../../models/components/paymentlinklineitemoption.md)[] | :heavy_minus_sign:                                                                             | Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).    |
-| `productID`                                                                                    | *string*                                                                                       | :heavy_minus_sign:                                                                             | Optional unique identifier associating the line item with a product.                           |
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `name`                                                                                                       | *string*                                                                                                     | :heavy_check_mark:                                                                                           | The name of the item.                                                                                        |
+| `basePrice`                                                                                                  | [components.AmountDecimal](../../models/components/amountdecimal.md)                                         | :heavy_check_mark:                                                                                           | The base price of the item before applying option modifiers.                                                 |
+| `quantity`                                                                                                   | *number*                                                                                                     | :heavy_check_mark:                                                                                           | The quantity of this item.                                                                                   |
+| `options`                                                                                                    | [components.PaymentLinkLineItemOption](../../models/components/paymentlinklineitemoption.md)[]               | :heavy_minus_sign:                                                                                           | Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).                  |
+| `images`                                                                                                     | [components.PaymentLinkLineItemImageMetadata](../../models/components/paymentlinklineitemimagemetadata.md)[] | :heavy_minus_sign:                                                                                           | Optional list of images associated with this line item.                                                      |
+| `productID`                                                                                                  | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | Optional unique identifier associating the line item with a product.                                         |

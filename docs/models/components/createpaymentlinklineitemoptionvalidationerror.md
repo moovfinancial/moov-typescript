@@ -1,11 +1,11 @@
-# PaymentLinkLineItemOptionValidationError
+# CreatePaymentLinkLineItemOptionValidationError
 
 ## Example Usage
 
 ```typescript
-import { PaymentLinkLineItemOptionValidationError } from "@moovio/sdk/models/components";
+import { CreatePaymentLinkLineItemOptionValidationError } from "@moovio/sdk/models/components";
 
-let value: PaymentLinkLineItemOptionValidationError = {};
+let value: CreatePaymentLinkLineItemOptionValidationError = {};
 ```
 
 ## Fields

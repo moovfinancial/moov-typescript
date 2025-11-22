@@ -13,22 +13,16 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 import {
-  PaymentLinkLineItemImageMetadata,
-  PaymentLinkLineItemImageMetadata$inboundSchema,
-  PaymentLinkLineItemImageMetadata$Outbound,
-  PaymentLinkLineItemImageMetadata$outboundSchema,
-} from "./paymentlinklineitemimagemetadata.js";
-import {
-  PaymentLinkLineItemOption,
-  PaymentLinkLineItemOption$inboundSchema,
-  PaymentLinkLineItemOption$Outbound,
-  PaymentLinkLineItemOption$outboundSchema,
-} from "./paymentlinklineitemoption.js";
+  CreatePaymentLinkLineItemOption,
+  CreatePaymentLinkLineItemOption$inboundSchema,
+  CreatePaymentLinkLineItemOption$Outbound,
+  CreatePaymentLinkLineItemOption$outboundSchema,
+} from "./createpaymentlinklineitemoption.js";
 
 /**
  * Represents a single line item in a payment link, including optional modifiers and quantity.
  */
-export type PaymentLinkLineItem = {
+export type CreatePaymentLinkLineItem = {
   /**
    * The name of the item.
    */
@@ -44,11 +38,11 @@ export type PaymentLinkLineItem = {
   /**
    * Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).
    */
-  options?: Array<PaymentLinkLineItemOption> | undefined;
+  options?: Array<CreatePaymentLinkLineItemOption> | undefined;
   /**
    * Optional list of images associated with this line item.
    */
-  images?: Array<PaymentLinkLineItemImageMetadata> | undefined;
+  imageIDs?: Array<string> | undefined;
   /**
    * Optional unique identifier associating the line item with a product.
    */
@@ -56,55 +50,55 @@ export type PaymentLinkLineItem = {
 };
 
 /** @internal */
-export const PaymentLinkLineItem$inboundSchema: z.ZodType<
-  PaymentLinkLineItem,
+export const CreatePaymentLinkLineItem$inboundSchema: z.ZodType<
+  CreatePaymentLinkLineItem,
   z.ZodTypeDef,
   unknown
 > = z.object({
   name: z.string(),
   basePrice: AmountDecimal$inboundSchema,
   quantity: z.number().int(),
-  options: z.array(PaymentLinkLineItemOption$inboundSchema).optional(),
-  images: z.array(PaymentLinkLineItemImageMetadata$inboundSchema).optional(),
+  options: z.array(CreatePaymentLinkLineItemOption$inboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
   productID: z.string().optional(),
 });
 /** @internal */
-export type PaymentLinkLineItem$Outbound = {
+export type CreatePaymentLinkLineItem$Outbound = {
   name: string;
   basePrice: AmountDecimal$Outbound;
   quantity: number;
-  options?: Array<PaymentLinkLineItemOption$Outbound> | undefined;
-  images?: Array<PaymentLinkLineItemImageMetadata$Outbound> | undefined;
+  options?: Array<CreatePaymentLinkLineItemOption$Outbound> | undefined;
+  imageIDs?: Array<string> | undefined;
   productID?: string | undefined;
 };
 
 /** @internal */
-export const PaymentLinkLineItem$outboundSchema: z.ZodType<
-  PaymentLinkLineItem$Outbound,
+export const CreatePaymentLinkLineItem$outboundSchema: z.ZodType<
+  CreatePaymentLinkLineItem$Outbound,
   z.ZodTypeDef,
-  PaymentLinkLineItem
+  CreatePaymentLinkLineItem
 > = z.object({
   name: z.string(),
   basePrice: AmountDecimal$outboundSchema,
   quantity: z.number().int(),
-  options: z.array(PaymentLinkLineItemOption$outboundSchema).optional(),
-  images: z.array(PaymentLinkLineItemImageMetadata$outboundSchema).optional(),
+  options: z.array(CreatePaymentLinkLineItemOption$outboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
   productID: z.string().optional(),
 });
 
-export function paymentLinkLineItemToJSON(
-  paymentLinkLineItem: PaymentLinkLineItem,
+export function createPaymentLinkLineItemToJSON(
+  createPaymentLinkLineItem: CreatePaymentLinkLineItem,
 ): string {
   return JSON.stringify(
-    PaymentLinkLineItem$outboundSchema.parse(paymentLinkLineItem),
+    CreatePaymentLinkLineItem$outboundSchema.parse(createPaymentLinkLineItem),
   );
 }
-export function paymentLinkLineItemFromJSON(
+export function createPaymentLinkLineItemFromJSON(
   jsonString: string,
-): SafeParseResult<PaymentLinkLineItem, SDKValidationError> {
+): SafeParseResult<CreatePaymentLinkLineItem, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PaymentLinkLineItem$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PaymentLinkLineItem' from JSON`,
+    (x) => CreatePaymentLinkLineItem$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatePaymentLinkLineItem' from JSON`,
   );
 }

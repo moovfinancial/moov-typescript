@@ -12,7 +12,7 @@ export type UpdatePaymentLinkErrorData = {
   display?: components.DisplayOptionsError | undefined;
   payment?: components.PaymentDetailsError | undefined;
   payout?: components.PayoutDetailsError | undefined;
-  lineItems?: components.PaymentLinkLineItemsValidationError | undefined;
+  lineItems?: components.CreatePaymentLinkLineItemsValidationError | undefined;
 };
 
 export class UpdatePaymentLinkError extends MoovError {
@@ -21,7 +21,7 @@ export class UpdatePaymentLinkError extends MoovError {
   display?: components.DisplayOptionsError | undefined;
   payment?: components.PaymentDetailsError | undefined;
   payout?: components.PayoutDetailsError | undefined;
-  lineItems?: components.PaymentLinkLineItemsValidationError | undefined;
+  lineItems?: components.CreatePaymentLinkLineItemsValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: UpdatePaymentLinkErrorData;
@@ -57,7 +57,7 @@ export const UpdatePaymentLinkError$inboundSchema: z.ZodType<
   display: components.DisplayOptionsError$inboundSchema.optional(),
   payment: components.PaymentDetailsError$inboundSchema.optional(),
   payout: components.PayoutDetailsError$inboundSchema.optional(),
-  lineItems: components.PaymentLinkLineItemsValidationError$inboundSchema
+  lineItems: components.CreatePaymentLinkLineItemsValidationError$inboundSchema
     .optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -79,7 +79,7 @@ export type UpdatePaymentLinkError$Outbound = {
   payment?: components.PaymentDetailsError$Outbound | undefined;
   payout?: components.PayoutDetailsError$Outbound | undefined;
   lineItems?:
-    | components.PaymentLinkLineItemsValidationError$Outbound
+    | components.CreatePaymentLinkLineItemsValidationError$Outbound
     | undefined;
 };
 
@@ -96,6 +96,6 @@ export const UpdatePaymentLinkError$outboundSchema: z.ZodType<
     display: components.DisplayOptionsError$outboundSchema.optional(),
     payment: components.PaymentDetailsError$outboundSchema.optional(),
     payout: components.PayoutDetailsError$outboundSchema.optional(),
-    lineItems: components.PaymentLinkLineItemsValidationError$outboundSchema
-      .optional(),
+    lineItems: components
+      .CreatePaymentLinkLineItemsValidationError$outboundSchema.optional(),
   }));

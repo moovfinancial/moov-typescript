@@ -25,6 +25,20 @@ let value: PaymentLinkLineItems = {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
+          images: [
+            {
+              imageID: "8b33557e-9413-4327-8f48-150f83a62f57",
+              link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+              publicID: "<id>",
+            },
+          ],
+        },
+      ],
+      images: [
+        {
+          imageID: "8b33557e-9413-4327-8f48-150f83a62f57",
+          link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+          publicID: "<id>",
         },
       ],
     },
