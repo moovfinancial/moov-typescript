@@ -12,12 +12,12 @@ const args = {
 
 export const tool$applePayUpdateMerchantDomains: ToolDefinition<typeof args> = {
   name: "apple-pay-update-merchant-domains",
-  description: `Add or remove domains to be registered with Apple Pay. 
+  description: `Add or remove domains to be registered with Apple Pay.
 
-Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) 
+Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains)
 with Apple.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/apple-pay.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {

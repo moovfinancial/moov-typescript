@@ -22,7 +22,7 @@ export const tool$accountsUpdate: ToolDefinition<typeof args> = {
 
 If you need to update information in a locked state, please contact Moov support.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
 to specify the \`/accounts/{accountID}/profile.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {

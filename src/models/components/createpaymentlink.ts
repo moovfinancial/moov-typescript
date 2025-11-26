@@ -51,8 +51,6 @@ import {
  * A payment link must include either `payment` or `payout` details, but not both. For payout payment links,
  * `maxUses` will automatically be set to 1, as these are intended for a one-time disbursement
  * to a specific recipient.
- *
- * **Note:** The `payout` option is currently under development and is not yet available for general use.
  */
 export type CreatePaymentLink = {
   /**

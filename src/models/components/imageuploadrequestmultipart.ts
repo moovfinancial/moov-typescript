@@ -19,10 +19,10 @@ export type Image = {
   content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
 
-/**
- * Multipart request body for uploading an image with optional metadata.
- */
 export type ImageUploadRequestMultiPart = {
+  /**
+   * A PNG, JPEG, or WebP image file to upload.
+   */
   image: Image | Blob;
   /**
    * Optional, json-encoded metadata to associate with the uploaded image.

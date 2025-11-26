@@ -24,7 +24,7 @@ export type CreateEvidenceFileMultiPart = {
    *
    * @remarks
    *
-   * The `Content-Type` header for this form part must be one of the following:
+   *     The `Content-Type` header for this form part must be one of the following:
    *   - `image/jpeg`
    *   - `image/tiff`
    *   - `application/pdf`

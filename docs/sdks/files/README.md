@@ -52,7 +52,6 @@ async function run() {
     fileUploadRequestMultiPart: {
       file: await openAsBlob("example.file"),
       filePurpose: "representative_verification",
-      metadata: "{\"requirement_id\": \"document.individual.verification\"}",
     },
   });
 
@@ -87,7 +86,6 @@ async function run() {
     fileUploadRequestMultiPart: {
       file: await openAsBlob("example.file"),
       filePurpose: "representative_verification",
-      metadata: "{\"requirement_id\": \"document.individual.verification\"}",
     },
   });
   if (res.ok) {

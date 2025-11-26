@@ -14,7 +14,7 @@ export const tool$sweepsUpdateConfig: ToolDefinition<typeof args> = {
   name: "sweeps-update-config",
   description: `Update settings on a sweep config.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/wallets.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {

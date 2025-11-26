@@ -28,6 +28,9 @@ export type CreatePaymentLinkGlobals = {
 };
 
 export type CreatePaymentLinkRequest = {
+  /**
+   * The merchant account ID.
+   */
   accountID: string;
   createPaymentLink: components.CreatePaymentLink;
 };

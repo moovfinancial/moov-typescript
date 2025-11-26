@@ -27,6 +27,9 @@ export type DisablePaymentLinkGlobals = {
 };
 
 export type DisablePaymentLinkRequest = {
+  /**
+   * The merchant account ID.
+   */
   accountID: string;
   paymentLinkCode: string;
 };

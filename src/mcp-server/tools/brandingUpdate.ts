@@ -14,7 +14,7 @@ export const tool$brandingUpdate: ToolDefinition<typeof args> = {
   name: "branding-update",
   description: `Updates the brand properties for the specified account.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/branding.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {

@@ -32,6 +32,9 @@ export type ListPaymentLinksRequest = {
   count?: number | undefined;
   type?: components.PaymentLinkType | undefined;
   status?: components.PaymentLinkStatus | undefined;
+  /**
+   * The merchant account ID.
+   */
   accountID: string;
 };
 

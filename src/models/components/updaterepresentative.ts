@@ -18,10 +18,6 @@ export type Phone = {
   countryCode?: string | undefined;
 };
 
-export type Two = {};
-
-export type Email = string | Two;
-
 export type UpdateRepresentativeAddress = {
   addressLine1?: string | undefined;
   addressLine2?: string | undefined;
@@ -77,7 +73,7 @@ export type Responsibilities = {
 export type UpdateRepresentative = {
   name?: IndividualNameUpdate | undefined;
   phone?: Phone | null | undefined;
-  email?: string | Two | null | undefined;
+  email?: string | null | undefined;
   address?: UpdateRepresentativeAddress | null | undefined;
   birthDate?: UpdateRepresentativeBirthDate | null | undefined;
   governmentID?: UpdateRepresentativeGovernmentID | null | undefined;
@@ -116,55 +112,6 @@ export function phoneFromJSON(
     jsonString,
     (x) => Phone$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Phone' from JSON`,
-  );
-}
-
-/** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({});
-/** @internal */
-export type Two$Outbound = {};
-
-/** @internal */
-export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
-  .object({});
-
-export function twoToJSON(two: Two): string {
-  return JSON.stringify(Two$outboundSchema.parse(two));
-}
-export function twoFromJSON(
-  jsonString: string,
-): SafeParseResult<Two, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Two$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two' from JSON`,
-  );
-}
-
-/** @internal */
-export const Email$inboundSchema: z.ZodType<Email, z.ZodTypeDef, unknown> = z
-  .union([z.string(), z.lazy(() => Two$inboundSchema)]);
-/** @internal */
-export type Email$Outbound = string | Two$Outbound;
-
-/** @internal */
-export const Email$outboundSchema: z.ZodType<
-  Email$Outbound,
-  z.ZodTypeDef,
-  Email
-> = z.union([z.string(), z.lazy(() => Two$outboundSchema)]);
-
-export function emailToJSON(email: Email): string {
-  return JSON.stringify(Email$outboundSchema.parse(email));
-}
-export function emailFromJSON(
-  jsonString: string,
-): SafeParseResult<Email, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Email$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Email' from JSON`,
   );
 }
 
@@ -455,8 +402,7 @@ export const UpdateRepresentative$inboundSchema: z.ZodType<
 > = z.object({
   name: IndividualNameUpdate$inboundSchema.optional(),
   phone: z.nullable(z.lazy(() => Phone$inboundSchema)).optional(),
-  email: z.nullable(z.union([z.string(), z.lazy(() => Two$inboundSchema)]))
-    .optional(),
+  email: z.nullable(z.string()).optional(),
   address: z.nullable(z.lazy(() => UpdateRepresentativeAddress$inboundSchema))
     .optional(),
   birthDate: z.nullable(
@@ -472,7 +418,7 @@ export const UpdateRepresentative$inboundSchema: z.ZodType<
 export type UpdateRepresentative$Outbound = {
   name?: IndividualNameUpdate$Outbound | undefined;
   phone?: Phone$Outbound | null | undefined;
-  email?: string | Two$Outbound | null | undefined;
+  email?: string | null | undefined;
   address?: UpdateRepresentativeAddress$Outbound | null | undefined;
   birthDate?: UpdateRepresentativeBirthDate$Outbound | null | undefined;
   governmentID?: UpdateRepresentativeGovernmentID$Outbound | null | undefined;
@@ -487,8 +433,7 @@ export const UpdateRepresentative$outboundSchema: z.ZodType<
 > = z.object({
   name: IndividualNameUpdate$outboundSchema.optional(),
   phone: z.nullable(z.lazy(() => Phone$outboundSchema)).optional(),
-  email: z.nullable(z.union([z.string(), z.lazy(() => Two$outboundSchema)]))
-    .optional(),
+  email: z.nullable(z.string()).optional(),
   address: z.nullable(z.lazy(() => UpdateRepresentativeAddress$outboundSchema))
     .optional(),
   birthDate: z.nullable(

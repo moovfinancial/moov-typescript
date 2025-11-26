@@ -30,7 +30,7 @@ export type UpdateImageGlobals = {
 export type UpdateImageRequest = {
   accountID: string;
   imageID: string;
-  imageUpdateRequestMultiPart: components.ImageUpdateRequestMultiPart;
+  imageUploadRequestMultiPart: components.ImageUploadRequestMultiPart;
 };
 
 export type UpdateImageResponse = {
@@ -93,18 +93,18 @@ export const UpdateImageRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   imageID: z.string(),
-  ImageUpdateRequestMultiPart:
-    components.ImageUpdateRequestMultiPart$inboundSchema,
+  ImageUploadRequestMultiPart:
+    components.ImageUploadRequestMultiPart$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "ImageUpdateRequestMultiPart": "imageUpdateRequestMultiPart",
+    "ImageUploadRequestMultiPart": "imageUploadRequestMultiPart",
   });
 });
 /** @internal */
 export type UpdateImageRequest$Outbound = {
   accountID: string;
   imageID: string;
-  ImageUpdateRequestMultiPart: components.ImageUpdateRequestMultiPart$Outbound;
+  ImageUploadRequestMultiPart: components.ImageUploadRequestMultiPart$Outbound;
 };
 
 /** @internal */
@@ -115,11 +115,11 @@ export const UpdateImageRequest$outboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   imageID: z.string(),
-  imageUpdateRequestMultiPart:
-    components.ImageUpdateRequestMultiPart$outboundSchema,
+  imageUploadRequestMultiPart:
+    components.ImageUploadRequestMultiPart$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    imageUpdateRequestMultiPart: "ImageUpdateRequestMultiPart",
+    imageUploadRequestMultiPart: "ImageUploadRequestMultiPart",
   });
 });
 

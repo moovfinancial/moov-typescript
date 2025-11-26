@@ -13,7 +13,7 @@ const args = {
 export const tool$representativesUpdate: ToolDefinition<typeof args> = {
   name: "representatives-update",
   description:
-    `If a representative's information has changed you can patch the information associated with a specific representative ID. 
+    `If a representative's information has changed you can patch the information associated with a specific representative ID.
 Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
 
 When **can** profile data be updated:
@@ -28,7 +28,7 @@ When **can't** profile data be updated:
 
 If you need to update information in a locked state, please contact Moov support.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/representatives.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {

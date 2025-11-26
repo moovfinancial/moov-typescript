@@ -19,7 +19,7 @@ To access this endpoint using an [access token](https://docs.moov.io/api/authent
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 * [update](#update) - Update a payment link.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 * [disable](#disable) - Disable a payment link.
 
@@ -340,7 +340,7 @@ run();
 
 Update a payment link.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage

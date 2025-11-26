@@ -28,6 +28,9 @@ export type GetPaymentLinkQRCodeGlobals = {
 };
 
 export type GetPaymentLinkQRCodeRequest = {
+  /**
+   * The merchant account ID.
+   */
   accountID: string;
   paymentLinkCode: string;
 };

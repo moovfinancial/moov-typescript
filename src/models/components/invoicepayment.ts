@@ -30,14 +30,10 @@ export const InvoicePayment$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   InvoiceExternalPayment$inboundSchema.and(
-    z.object({ paymentType: z.literal("external") }).transform((v) => ({
-      paymentType: v.paymentType,
-    })),
+    z.object({ paymentType: z.literal("external") }),
   ),
   InvoiceTransferPayment$inboundSchema.and(
-    z.object({ paymentType: z.literal("transfer") }).transform((v) => ({
-      paymentType: v.paymentType,
-    })),
+    z.object({ paymentType: z.literal("transfer") }),
   ),
 ]);
 /** @internal */
@@ -52,14 +48,10 @@ export const InvoicePayment$outboundSchema: z.ZodType<
   InvoicePayment
 > = z.union([
   InvoiceExternalPayment$outboundSchema.and(
-    z.object({ paymentType: z.literal("external") }).transform((v) => ({
-      paymentType: v.paymentType,
-    })),
+    z.object({ paymentType: z.literal("external") }),
   ),
   InvoiceTransferPayment$outboundSchema.and(
-    z.object({ paymentType: z.literal("transfer") }).transform((v) => ({
-      paymentType: v.paymentType,
-    })),
+    z.object({ paymentType: z.literal("transfer") }),
   ),
 ]);
 

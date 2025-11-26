@@ -14,23 +14,11 @@ export const Status = {
 } as const;
 export type Status = ClosedEnum<typeof Status>;
 
-export type PushPaymentMethodId2 = {};
-
-export type PushPaymentMethodID = string | PushPaymentMethodId2;
-
-export type PullPaymentMethodId2 = {};
-
-export type PullPaymentMethodID = string | PullPaymentMethodId2;
-
-export type StatementDescriptor2 = {};
-
-export type StatementDescriptor = string | StatementDescriptor2;
-
 export type PatchSweepConfig = {
   status?: Status | null | undefined;
-  pushPaymentMethodID?: string | PushPaymentMethodId2 | null | undefined;
-  pullPaymentMethodID?: string | PullPaymentMethodId2 | null | undefined;
-  statementDescriptor?: string | StatementDescriptor2 | null | undefined;
+  pushPaymentMethodID?: string | null | undefined;
+  pullPaymentMethodID?: string | null | undefined;
+  statementDescriptor?: string | null | undefined;
   minimumBalance?: string | null | undefined;
 };
 
@@ -42,245 +30,23 @@ export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
   Status$inboundSchema;
 
 /** @internal */
-export const PushPaymentMethodId2$inboundSchema: z.ZodType<
-  PushPaymentMethodId2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type PushPaymentMethodId2$Outbound = {};
-
-/** @internal */
-export const PushPaymentMethodId2$outboundSchema: z.ZodType<
-  PushPaymentMethodId2$Outbound,
-  z.ZodTypeDef,
-  PushPaymentMethodId2
-> = z.object({});
-
-export function pushPaymentMethodID2ToJSON(
-  pushPaymentMethodId2: PushPaymentMethodId2,
-): string {
-  return JSON.stringify(
-    PushPaymentMethodId2$outboundSchema.parse(pushPaymentMethodId2),
-  );
-}
-export function pushPaymentMethodID2FromJSON(
-  jsonString: string,
-): SafeParseResult<PushPaymentMethodId2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PushPaymentMethodId2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PushPaymentMethodId2' from JSON`,
-  );
-}
-
-/** @internal */
-export const PushPaymentMethodID$inboundSchema: z.ZodType<
-  PushPaymentMethodID,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.lazy(() => PushPaymentMethodId2$inboundSchema)]);
-/** @internal */
-export type PushPaymentMethodID$Outbound =
-  | string
-  | PushPaymentMethodId2$Outbound;
-
-/** @internal */
-export const PushPaymentMethodID$outboundSchema: z.ZodType<
-  PushPaymentMethodID$Outbound,
-  z.ZodTypeDef,
-  PushPaymentMethodID
-> = z.union([z.string(), z.lazy(() => PushPaymentMethodId2$outboundSchema)]);
-
-export function pushPaymentMethodIDToJSON(
-  pushPaymentMethodID: PushPaymentMethodID,
-): string {
-  return JSON.stringify(
-    PushPaymentMethodID$outboundSchema.parse(pushPaymentMethodID),
-  );
-}
-export function pushPaymentMethodIDFromJSON(
-  jsonString: string,
-): SafeParseResult<PushPaymentMethodID, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PushPaymentMethodID$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PushPaymentMethodID' from JSON`,
-  );
-}
-
-/** @internal */
-export const PullPaymentMethodId2$inboundSchema: z.ZodType<
-  PullPaymentMethodId2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type PullPaymentMethodId2$Outbound = {};
-
-/** @internal */
-export const PullPaymentMethodId2$outboundSchema: z.ZodType<
-  PullPaymentMethodId2$Outbound,
-  z.ZodTypeDef,
-  PullPaymentMethodId2
-> = z.object({});
-
-export function pullPaymentMethodID2ToJSON(
-  pullPaymentMethodId2: PullPaymentMethodId2,
-): string {
-  return JSON.stringify(
-    PullPaymentMethodId2$outboundSchema.parse(pullPaymentMethodId2),
-  );
-}
-export function pullPaymentMethodID2FromJSON(
-  jsonString: string,
-): SafeParseResult<PullPaymentMethodId2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PullPaymentMethodId2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PullPaymentMethodId2' from JSON`,
-  );
-}
-
-/** @internal */
-export const PullPaymentMethodID$inboundSchema: z.ZodType<
-  PullPaymentMethodID,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.lazy(() => PullPaymentMethodId2$inboundSchema)]);
-/** @internal */
-export type PullPaymentMethodID$Outbound =
-  | string
-  | PullPaymentMethodId2$Outbound;
-
-/** @internal */
-export const PullPaymentMethodID$outboundSchema: z.ZodType<
-  PullPaymentMethodID$Outbound,
-  z.ZodTypeDef,
-  PullPaymentMethodID
-> = z.union([z.string(), z.lazy(() => PullPaymentMethodId2$outboundSchema)]);
-
-export function pullPaymentMethodIDToJSON(
-  pullPaymentMethodID: PullPaymentMethodID,
-): string {
-  return JSON.stringify(
-    PullPaymentMethodID$outboundSchema.parse(pullPaymentMethodID),
-  );
-}
-export function pullPaymentMethodIDFromJSON(
-  jsonString: string,
-): SafeParseResult<PullPaymentMethodID, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PullPaymentMethodID$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PullPaymentMethodID' from JSON`,
-  );
-}
-
-/** @internal */
-export const StatementDescriptor2$inboundSchema: z.ZodType<
-  StatementDescriptor2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type StatementDescriptor2$Outbound = {};
-
-/** @internal */
-export const StatementDescriptor2$outboundSchema: z.ZodType<
-  StatementDescriptor2$Outbound,
-  z.ZodTypeDef,
-  StatementDescriptor2
-> = z.object({});
-
-export function statementDescriptor2ToJSON(
-  statementDescriptor2: StatementDescriptor2,
-): string {
-  return JSON.stringify(
-    StatementDescriptor2$outboundSchema.parse(statementDescriptor2),
-  );
-}
-export function statementDescriptor2FromJSON(
-  jsonString: string,
-): SafeParseResult<StatementDescriptor2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StatementDescriptor2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StatementDescriptor2' from JSON`,
-  );
-}
-
-/** @internal */
-export const StatementDescriptor$inboundSchema: z.ZodType<
-  StatementDescriptor,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.lazy(() => StatementDescriptor2$inboundSchema)]);
-/** @internal */
-export type StatementDescriptor$Outbound =
-  | string
-  | StatementDescriptor2$Outbound;
-
-/** @internal */
-export const StatementDescriptor$outboundSchema: z.ZodType<
-  StatementDescriptor$Outbound,
-  z.ZodTypeDef,
-  StatementDescriptor
-> = z.union([z.string(), z.lazy(() => StatementDescriptor2$outboundSchema)]);
-
-export function statementDescriptorToJSON(
-  statementDescriptor: StatementDescriptor,
-): string {
-  return JSON.stringify(
-    StatementDescriptor$outboundSchema.parse(statementDescriptor),
-  );
-}
-export function statementDescriptorFromJSON(
-  jsonString: string,
-): SafeParseResult<StatementDescriptor, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StatementDescriptor$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StatementDescriptor' from JSON`,
-  );
-}
-
-/** @internal */
 export const PatchSweepConfig$inboundSchema: z.ZodType<
   PatchSweepConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
   status: z.nullable(Status$inboundSchema).optional(),
-  pushPaymentMethodID: z.nullable(
-    z.union([z.string(), z.lazy(() => PushPaymentMethodId2$inboundSchema)]),
-  ).optional(),
-  pullPaymentMethodID: z.nullable(
-    z.union([z.string(), z.lazy(() => PullPaymentMethodId2$inboundSchema)]),
-  ).optional(),
-  statementDescriptor: z.nullable(
-    z.union([z.string(), z.lazy(() => StatementDescriptor2$inboundSchema)]),
-  ).optional(),
+  pushPaymentMethodID: z.nullable(z.string()).optional(),
+  pullPaymentMethodID: z.nullable(z.string()).optional(),
+  statementDescriptor: z.nullable(z.string()).optional(),
   minimumBalance: z.nullable(z.string()).optional(),
 });
 /** @internal */
 export type PatchSweepConfig$Outbound = {
   status?: string | null | undefined;
-  pushPaymentMethodID?:
-    | string
-    | PushPaymentMethodId2$Outbound
-    | null
-    | undefined;
-  pullPaymentMethodID?:
-    | string
-    | PullPaymentMethodId2$Outbound
-    | null
-    | undefined;
-  statementDescriptor?:
-    | string
-    | StatementDescriptor2$Outbound
-    | null
-    | undefined;
+  pushPaymentMethodID?: string | null | undefined;
+  pullPaymentMethodID?: string | null | undefined;
+  statementDescriptor?: string | null | undefined;
   minimumBalance?: string | null | undefined;
 };
 
@@ -291,15 +57,9 @@ export const PatchSweepConfig$outboundSchema: z.ZodType<
   PatchSweepConfig
 > = z.object({
   status: z.nullable(Status$outboundSchema).optional(),
-  pushPaymentMethodID: z.nullable(
-    z.union([z.string(), z.lazy(() => PushPaymentMethodId2$outboundSchema)]),
-  ).optional(),
-  pullPaymentMethodID: z.nullable(
-    z.union([z.string(), z.lazy(() => PullPaymentMethodId2$outboundSchema)]),
-  ).optional(),
-  statementDescriptor: z.nullable(
-    z.union([z.string(), z.lazy(() => StatementDescriptor2$outboundSchema)]),
-  ).optional(),
+  pushPaymentMethodID: z.nullable(z.string()).optional(),
+  pullPaymentMethodID: z.nullable(z.string()).optional(),
+  statementDescriptor: z.nullable(z.string()).optional(),
   minimumBalance: z.nullable(z.string()).optional(),
 });
 

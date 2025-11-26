@@ -28,6 +28,9 @@ export type GetPaymentLinkGlobals = {
 };
 
 export type GetPaymentLinkRequest = {
+  /**
+   * The merchant account ID.
+   */
   accountID: string;
   paymentLinkCode: string;
 };

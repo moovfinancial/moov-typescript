@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 4118d9fa14f2cb49d8d7a649bffbb371
+  docChecksum: 3e0f6c361e1dcd63e8d7ecd80166ec5a
   docVersion: latest
-  speakeasyVersion: 1.660.0
-  generationVersion: 2.760.2
-  releaseVersion: 0.21.16
-  configChecksum: fbb3978d4f15a673b7a16081e926b76a
+  speakeasyVersion: 1.661.2
+  generationVersion: 2.763.3
+  releaseVersion: 0.21.17
+  configChecksum: 34c1363a9d50e105d79ae814e756ac0b
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.9
+    core: 3.26.10
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -248,7 +248,6 @@ generatedFiles:
   - docs/models/components/e2eetoken.md
   - docs/models/components/e2eetokenupdate.md
   - docs/models/components/ein.md
-  - docs/models/components/email.md
   - docs/models/components/end2endencryptionerror.md
   - docs/models/components/enrichedaddressresponse.md
   - docs/models/components/enrichedbusinessprofile.md
@@ -297,8 +296,6 @@ generatedFiles:
   - docs/models/components/imagemetadata.md
   - docs/models/components/imagemetadatarequest.md
   - docs/models/components/imagemetadatavalidationerror.md
-  - docs/models/components/imageupdaterequestmultipart.md
-  - docs/models/components/imageupdaterequestmultipartimage.md
   - docs/models/components/imageuploadrequestmultipart.md
   - docs/models/components/incurredfee.md
   - docs/models/components/individualname.md
@@ -358,7 +355,6 @@ generatedFiles:
   - docs/models/components/manualtermsofservice.md
   - docs/models/components/manualtermsofserviceupdate.md
   - docs/models/components/markinvoicepaid.md
-  - docs/models/components/metadata.md
   - docs/models/components/microdepositstatus.md
   - docs/models/components/minimumcommitment.md
   - docs/models/components/mode.md
@@ -438,10 +434,6 @@ generatedFiles:
   - docs/models/components/profile.md
   - docs/models/components/pullfromcardpaymentmethod.md
   - docs/models/components/pullfromcardpaymentmethodpaymentmethodtype.md
-  - docs/models/components/pullpaymentmethodid.md
-  - docs/models/components/pullpaymentmethodid2.md
-  - docs/models/components/pushpaymentmethodid.md
-  - docs/models/components/pushpaymentmethodid2.md
   - docs/models/components/pushtocardpaymentmethod.md
   - docs/models/components/pushtocardpaymentmethodpaymentmethodtype.md
   - docs/models/components/qrcode.md
@@ -497,8 +489,6 @@ generatedFiles:
   - docs/models/components/sourcedestinationoptions.md
   - docs/models/components/ssn.md
   - docs/models/components/statement.md
-  - docs/models/components/statementdescriptor.md
-  - docs/models/components/statementdescriptor2.md
   - docs/models/components/status.md
   - docs/models/components/submissionintent.md
   - docs/models/components/sweep.md
@@ -543,7 +533,6 @@ generatedFiles:
   - docs/models/components/transfersource.md
   - docs/models/components/transferstatus.md
   - docs/models/components/transferwaitfor.md
-  - docs/models/components/two.md
   - docs/models/components/underwriting.md
   - docs/models/components/underwritingstatus.md
   - docs/models/components/updateapplepaymerchantdomains.md
@@ -1828,7 +1817,6 @@ generatedFiles:
   - src/models/components/imagemetadata.ts
   - src/models/components/imagemetadatarequest.ts
   - src/models/components/imagemetadatavalidationerror.ts
-  - src/models/components/imageupdaterequestmultipart.ts
   - src/models/components/imageuploadrequestmultipart.ts
   - src/models/components/incurredfee.ts
   - src/models/components/index.ts
@@ -3259,7 +3247,7 @@ examples:
           x-moov-version: "v2024.01.00"
           X-Moov-Version: "v2024.01.00"
       requestBody:
-        multipart/form-data: {"file": "x-file: example.file", "filePurpose": "representative_verification", "metadata": "{\"requirement_id\": \"document.individual.verification\"}"}
+        multipart/form-data: {"file": "x-file: example.file", "filePurpose": "representative_verification"}
       responses:
         "200":
           application/json: {"fileID": "439b7a22-ec06-4993-9b21-f4f92a2aa577", "fileName": "logo.png", "accountID": "33e8f6ef-7edf-4b9a-8905-6b0649ccb34c", "filePurpose": "representative_verification", "fileStatus": "pending", "metadata": "{\"error_code\": \"document-name-mismatch\", \"requirement_id\": \"document.individual.verification\", \"representative_id\": \"c63ab175-251d-497e-a267-7346d087e180\", \"comment\": \"testing comment\"", "decisionReason": "not correct file", "fileSizeBytes": 777701, "createdOn": "2024-11-19T16:40:47.855Z", "updatedOn": "2024-06-23T05:31:09.268Z"}
@@ -3477,7 +3465,7 @@ examples:
           x-moov-version: "v2024.01.00"
           X-Moov-Version: "v2024.01.00"
       requestBody:
-        application/json: {"name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "birthDate": null, "responsibilities": {"ownershipPercentage": 38, "jobTitle": "CEO"}}
+        application/json: {"name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "birthDate": null, "responsibilities": {"ownershipPercentage": 38, "jobTitle": "CEO"}}
       responses:
         "200":
           application/json: {"representativeID": "d7cd54cf-a231-46bb-b1ac-c6cdafa8219e", "name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "responsibilities": {"ownershipPercentage": 38, "jobTitle": "CEO"}, "createdOn": "2025-06-02T03:39:27.129Z", "updatedOn": "2024-06-29T17:50:33.922Z"}
@@ -4982,4 +4970,4 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.paymentLinks.create()`: \n  *  `request.createPaymentLink.lineItems.items.[]` **Changed**\n  *  `response.lineitems.items.[]` **Changed**\n* `moov.paymentLinks.list()`:  `response.[].lineItems.items.[]` **Changed**\n* `moov.paymentLinks.get()`:  `response.lineitems.items.[]` **Changed**\n* `moov.paymentLinks.update()`: \n  *  `request.updatePaymentLink.lineItems.items.[]` **Changed**\n  *  `response.lineitems.items.[]` **Changed**\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.images.update()`:  `request` **Changed** **Breaking** :warning:\n* `moov.representatives.update()`: \n  *  `request.updateRepresentative.email` **Changed** **Breaking** :warning:\n* `moov.sweeps.updateConfig()`: \n  *  `request.patchSweepConfig` **Changed** **Breaking** :warning:\n"

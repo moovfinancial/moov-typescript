@@ -19,6 +19,7 @@ let value: UpdateRepresentativeRequest = {
       number: "8185551212",
       countryCode: "1",
     },
+    email: "jordan.lee@classbooker.dev",
     address: {
       addressLine1: "123 Main Street",
       addressLine2: "Apt 302",

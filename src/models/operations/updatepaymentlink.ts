@@ -28,6 +28,9 @@ export type UpdatePaymentLinkGlobals = {
 };
 
 export type UpdatePaymentLinkRequest = {
+  /**
+   * The merchant account ID.
+   */
   accountID: string;
   paymentLinkCode: string;
   updatePaymentLink: components.UpdatePaymentLink;

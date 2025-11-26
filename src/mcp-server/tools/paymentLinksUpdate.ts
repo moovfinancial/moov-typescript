@@ -14,7 +14,7 @@ export const tool$paymentLinksUpdate: ToolDefinition<typeof args> = {
   name: "payment-links-update",
   description: `Update a payment link.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/transfers.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {

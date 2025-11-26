@@ -35,8 +35,7 @@ import { isReadableStream } from "../types/streams.js";
  * Replace an existing image and, optionally, its metadata.
  *
  * This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
- * the metadata form section to keep existing metadata, or send `null` to clear it.
- * Duplicate images, and requests larger than 16MB will be rejected.
+ * the metadata form section to keep existing metadata. Duplicate images, and requests larger than 16MB will be rejected.
  */
 export function imagesUpdate(
   client: MoovCore,
@@ -97,44 +96,44 @@ async function $do(
   const payload = parsed.value;
   const body = new FormData();
 
-  if (isBlobLike(payload.ImageUpdateRequestMultiPart.image)) {
-    appendForm(body, "image", payload.ImageUpdateRequestMultiPart.image);
+  if (isBlobLike(payload.ImageUploadRequestMultiPart.image)) {
+    appendForm(body, "image", payload.ImageUploadRequestMultiPart.image);
   } else if (
-    isReadableStream(payload.ImageUpdateRequestMultiPart.image.content)
+    isReadableStream(payload.ImageUploadRequestMultiPart.image.content)
   ) {
     const buffer = await readableStreamToArrayBuffer(
-      payload.ImageUpdateRequestMultiPart.image.content,
+      payload.ImageUploadRequestMultiPart.image.content,
     );
     const contentType =
       getContentTypeFromFileName(
-        payload.ImageUpdateRequestMultiPart.image.fileName,
+        payload.ImageUploadRequestMultiPart.image.fileName,
       ) || "application/octet-stream";
     const blob = new Blob([buffer], { type: contentType });
     appendForm(
       body,
       "image",
       blob,
-      payload.ImageUpdateRequestMultiPart.image.fileName,
+      payload.ImageUploadRequestMultiPart.image.fileName,
     );
   } else {
     const contentType =
       getContentTypeFromFileName(
-        payload.ImageUpdateRequestMultiPart.image.fileName,
+        payload.ImageUploadRequestMultiPart.image.fileName,
       ) || "application/octet-stream";
     appendForm(
       body,
       "image",
-      new Blob([payload.ImageUpdateRequestMultiPart.image.content], {
+      new Blob([payload.ImageUploadRequestMultiPart.image.content], {
         type: contentType,
       }),
-      payload.ImageUpdateRequestMultiPart.image.fileName,
+      payload.ImageUploadRequestMultiPart.image.fileName,
     );
   }
-  if (payload.ImageUpdateRequestMultiPart.metadata !== undefined) {
+  if (payload.ImageUploadRequestMultiPart.metadata !== undefined) {
     appendForm(
       body,
       "metadata",
-      encodeJSON("metadata", payload.ImageUpdateRequestMultiPart.metadata, {
+      encodeJSON("metadata", payload.ImageUploadRequestMultiPart.metadata, {
         explode: true,
       }),
     );

@@ -111,63 +111,40 @@ export const PaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   MoovWalletPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("moov-wallet") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("moov-wallet") }),
   ),
   AchDebitFundPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("ach-debit-fund") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("ach-debit-fund") }),
   ),
   AchDebitCollectPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("ach-debit-collect") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("ach-debit-collect") }),
   ),
   AchCreditStandardPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("ach-credit-standard") }).transform(
-      (v) => ({ paymentMethodType: v.paymentMethodType })
-    ),
+    z.object({ paymentMethodType: z.literal("ach-credit-standard") }),
   ),
   AchCreditSameDayPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("ach-credit-same-day") }).transform(
-      (v) => ({ paymentMethodType: v.paymentMethodType })
-    ),
+    z.object({ paymentMethodType: z.literal("ach-credit-same-day") }),
   ),
   RtpCreditPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("rtp-credit") }).transform((v) => ({
-      paymentMethodType: v.paymentMethodType,
-    })),
+    z.object({ paymentMethodType: z.literal("rtp-credit") }),
   ),
   CardPaymentPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("card-payment") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("card-payment") }),
   ),
   PushToCardPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("push-to-card") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("push-to-card") }),
   ),
   PullFromCardPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("pull-from-card") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("pull-from-card") }),
   ),
   ApplePayPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("apple-pay") }).transform((v) => ({
-      paymentMethodType: v.paymentMethodType,
-    })),
+    z.object({ paymentMethodType: z.literal("apple-pay") }),
   ),
   InstantBankCreditPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("instant-bank-credit") }).transform(
-      (v) => ({ paymentMethodType: v.paymentMethodType })
-    ),
+    z.object({ paymentMethodType: z.literal("instant-bank-credit") }),
   ),
   CardPresentPaymentPaymentMethod$inboundSchema.and(
-    z.object({ paymentMethodType: z.literal("card-present-payment") })
-      .transform((v) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("card-present-payment") }),
   ),
 ]);
 /** @internal */
@@ -206,63 +183,40 @@ export const PaymentMethod$outboundSchema: z.ZodType<
   PaymentMethod
 > = z.union([
   MoovWalletPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("moov-wallet") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("moov-wallet") }),
   ),
   AchDebitFundPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("ach-debit-fund") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("ach-debit-fund") }),
   ),
   AchDebitCollectPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("ach-debit-collect") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("ach-debit-collect") }),
   ),
   AchCreditStandardPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("ach-credit-standard") }).transform(
-      (v) => ({ paymentMethodType: v.paymentMethodType })
-    ),
+    z.object({ paymentMethodType: z.literal("ach-credit-standard") }),
   ),
   AchCreditSameDayPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("ach-credit-same-day") }).transform(
-      (v) => ({ paymentMethodType: v.paymentMethodType })
-    ),
+    z.object({ paymentMethodType: z.literal("ach-credit-same-day") }),
   ),
   RtpCreditPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("rtp-credit") }).transform((v) => ({
-      paymentMethodType: v.paymentMethodType,
-    })),
+    z.object({ paymentMethodType: z.literal("rtp-credit") }),
   ),
   CardPaymentPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("card-payment") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("card-payment") }),
   ),
   PushToCardPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("push-to-card") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("push-to-card") }),
   ),
   PullFromCardPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("pull-from-card") }).transform((
-      v,
-    ) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("pull-from-card") }),
   ),
   ApplePayPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("apple-pay") }).transform((v) => ({
-      paymentMethodType: v.paymentMethodType,
-    })),
+    z.object({ paymentMethodType: z.literal("apple-pay") }),
   ),
   InstantBankCreditPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("instant-bank-credit") }).transform(
-      (v) => ({ paymentMethodType: v.paymentMethodType })
-    ),
+    z.object({ paymentMethodType: z.literal("instant-bank-credit") }),
   ),
   CardPresentPaymentPaymentMethod$outboundSchema.and(
-    z.object({ paymentMethodType: z.literal("card-present-payment") })
-      .transform((v) => ({ paymentMethodType: v.paymentMethodType })),
+    z.object({ paymentMethodType: z.literal("card-present-payment") }),
   ),
 ]);
 

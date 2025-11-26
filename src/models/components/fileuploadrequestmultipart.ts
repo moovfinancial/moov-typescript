@@ -18,16 +18,13 @@ export type FileUploadRequestMultiPartFile = {
   content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
 
-/**
- * Request to upload a file for an account.
- */
 export type FileUploadRequestMultiPart = {
   /**
    * The file to be added. Valid types are `csv`, `png`, `jpeg`, `pdf`.
    */
   file: FileUploadRequestMultiPartFile | Blob;
   /**
-   * The file's purpose.
+   * The purpose of the file being uploaded.
    */
   filePurpose: FilePurpose;
   /**

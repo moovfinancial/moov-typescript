@@ -230,7 +230,6 @@ export * from "./guestprofile.js";
 export * from "./imagemetadata.js";
 export * from "./imagemetadatarequest.js";
 export * from "./imagemetadatavalidationerror.js";
-export * from "./imageupdaterequestmultipart.js";
 export * from "./imageuploadrequestmultipart.js";
 export * from "./incurredfee.js";
 export * from "./individualname.js";
