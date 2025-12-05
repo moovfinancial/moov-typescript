@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -14,33 +13,17 @@ import {
   PaymentMethodsBankAccount$outboundSchema,
 } from "./paymentmethodsbankaccount.js";
 
-export const AchDebitFundPaymentMethodPaymentMethodType = {
-  AchDebitFund: "ach-debit-fund",
-} as const;
-export type AchDebitFundPaymentMethodPaymentMethodType = ClosedEnum<
-  typeof AchDebitFundPaymentMethodPaymentMethodType
->;
-
 export type AchDebitFundPaymentMethod = {
   /**
    * ID of the payment method.
    */
   paymentMethodID: string;
-  paymentMethodType: AchDebitFundPaymentMethodPaymentMethodType;
+  paymentMethodType: "ach-debit-fund";
   /**
    * A bank account as contained within a payment method.
    */
   bankAccount: PaymentMethodsBankAccount;
 };
-
-/** @internal */
-export const AchDebitFundPaymentMethodPaymentMethodType$inboundSchema:
-  z.ZodNativeEnum<typeof AchDebitFundPaymentMethodPaymentMethodType> = z
-    .nativeEnum(AchDebitFundPaymentMethodPaymentMethodType);
-/** @internal */
-export const AchDebitFundPaymentMethodPaymentMethodType$outboundSchema:
-  z.ZodNativeEnum<typeof AchDebitFundPaymentMethodPaymentMethodType> =
-    AchDebitFundPaymentMethodPaymentMethodType$inboundSchema;
 
 /** @internal */
 export const AchDebitFundPaymentMethod$inboundSchema: z.ZodType<
@@ -49,13 +32,13 @@ export const AchDebitFundPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: AchDebitFundPaymentMethodPaymentMethodType$inboundSchema,
+  paymentMethodType: z.literal("ach-debit-fund"),
   bankAccount: PaymentMethodsBankAccount$inboundSchema,
 });
 /** @internal */
 export type AchDebitFundPaymentMethod$Outbound = {
   paymentMethodID: string;
-  paymentMethodType: string;
+  paymentMethodType: "ach-debit-fund";
   bankAccount: PaymentMethodsBankAccount$Outbound;
 };
 
@@ -66,7 +49,7 @@ export const AchDebitFundPaymentMethod$outboundSchema: z.ZodType<
   AchDebitFundPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: AchDebitFundPaymentMethodPaymentMethodType$outboundSchema,
+  paymentMethodType: z.literal("ach-debit-fund"),
   bankAccount: PaymentMethodsBankAccount$outboundSchema,
 });
 

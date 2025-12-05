@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -14,33 +13,17 @@ import {
   PaymentMethodsBankAccount$outboundSchema,
 } from "./paymentmethodsbankaccount.js";
 
-export const AchCreditSameDayPaymentMethodPaymentMethodType = {
-  AchCreditSameDay: "ach-credit-same-day",
-} as const;
-export type AchCreditSameDayPaymentMethodPaymentMethodType = ClosedEnum<
-  typeof AchCreditSameDayPaymentMethodPaymentMethodType
->;
-
 export type AchCreditSameDayPaymentMethod = {
   /**
    * ID of the payment method.
    */
   paymentMethodID: string;
-  paymentMethodType: AchCreditSameDayPaymentMethodPaymentMethodType;
+  paymentMethodType: "ach-credit-same-day";
   /**
    * A bank account as contained within a payment method.
    */
   bankAccount: PaymentMethodsBankAccount;
 };
-
-/** @internal */
-export const AchCreditSameDayPaymentMethodPaymentMethodType$inboundSchema:
-  z.ZodNativeEnum<typeof AchCreditSameDayPaymentMethodPaymentMethodType> = z
-    .nativeEnum(AchCreditSameDayPaymentMethodPaymentMethodType);
-/** @internal */
-export const AchCreditSameDayPaymentMethodPaymentMethodType$outboundSchema:
-  z.ZodNativeEnum<typeof AchCreditSameDayPaymentMethodPaymentMethodType> =
-    AchCreditSameDayPaymentMethodPaymentMethodType$inboundSchema;
 
 /** @internal */
 export const AchCreditSameDayPaymentMethod$inboundSchema: z.ZodType<
@@ -49,14 +32,13 @@ export const AchCreditSameDayPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType:
-    AchCreditSameDayPaymentMethodPaymentMethodType$inboundSchema,
+  paymentMethodType: z.literal("ach-credit-same-day"),
   bankAccount: PaymentMethodsBankAccount$inboundSchema,
 });
 /** @internal */
 export type AchCreditSameDayPaymentMethod$Outbound = {
   paymentMethodID: string;
-  paymentMethodType: string;
+  paymentMethodType: "ach-credit-same-day";
   bankAccount: PaymentMethodsBankAccount$Outbound;
 };
 
@@ -67,8 +49,7 @@ export const AchCreditSameDayPaymentMethod$outboundSchema: z.ZodType<
   AchCreditSameDayPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType:
-    AchCreditSameDayPaymentMethodPaymentMethodType$outboundSchema,
+  paymentMethodType: z.literal("ach-credit-same-day"),
   bankAccount: PaymentMethodsBankAccount$outboundSchema,
 });
 

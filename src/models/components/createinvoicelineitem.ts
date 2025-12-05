@@ -13,22 +13,16 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 import {
-  InvoiceLineItemImageMetadata,
-  InvoiceLineItemImageMetadata$inboundSchema,
-  InvoiceLineItemImageMetadata$Outbound,
-  InvoiceLineItemImageMetadata$outboundSchema,
-} from "./invoicelineitemimagemetadata.js";
-import {
-  InvoiceLineItemOption,
-  InvoiceLineItemOption$inboundSchema,
-  InvoiceLineItemOption$Outbound,
-  InvoiceLineItemOption$outboundSchema,
-} from "./invoicelineitemoption.js";
+  CreateInvoiceLineItemOption,
+  CreateInvoiceLineItemOption$inboundSchema,
+  CreateInvoiceLineItemOption$Outbound,
+  CreateInvoiceLineItemOption$outboundSchema,
+} from "./createinvoicelineitemoption.js";
 
 /**
  * Represents a single item in an invoice, including optional modifiers and quantity.
  */
-export type InvoiceLineItem = {
+export type CreateInvoiceLineItem = {
   /**
    * The name of the item.
    */
@@ -48,16 +42,16 @@ export type InvoiceLineItem = {
   /**
    * Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).
    */
-  options?: Array<InvoiceLineItemOption> | undefined;
+  options?: Array<CreateInvoiceLineItemOption> | undefined;
   /**
    * Optional list of images associated with this line item.
    */
-  images?: Array<InvoiceLineItemImageMetadata> | undefined;
+  imageIDs?: Array<string> | undefined;
 };
 
 /** @internal */
-export const InvoiceLineItem$inboundSchema: z.ZodType<
-  InvoiceLineItem,
+export const CreateInvoiceLineItem$inboundSchema: z.ZodType<
+  CreateInvoiceLineItem,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -65,44 +59,46 @@ export const InvoiceLineItem$inboundSchema: z.ZodType<
   basePrice: AmountDecimal$inboundSchema,
   quantity: z.number().int(),
   productID: z.string().optional(),
-  options: z.array(InvoiceLineItemOption$inboundSchema).optional(),
-  images: z.array(InvoiceLineItemImageMetadata$inboundSchema).optional(),
+  options: z.array(CreateInvoiceLineItemOption$inboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
 });
 /** @internal */
-export type InvoiceLineItem$Outbound = {
+export type CreateInvoiceLineItem$Outbound = {
   name: string;
   basePrice: AmountDecimal$Outbound;
   quantity: number;
   productID?: string | undefined;
-  options?: Array<InvoiceLineItemOption$Outbound> | undefined;
-  images?: Array<InvoiceLineItemImageMetadata$Outbound> | undefined;
+  options?: Array<CreateInvoiceLineItemOption$Outbound> | undefined;
+  imageIDs?: Array<string> | undefined;
 };
 
 /** @internal */
-export const InvoiceLineItem$outboundSchema: z.ZodType<
-  InvoiceLineItem$Outbound,
+export const CreateInvoiceLineItem$outboundSchema: z.ZodType<
+  CreateInvoiceLineItem$Outbound,
   z.ZodTypeDef,
-  InvoiceLineItem
+  CreateInvoiceLineItem
 > = z.object({
   name: z.string(),
   basePrice: AmountDecimal$outboundSchema,
   quantity: z.number().int(),
   productID: z.string().optional(),
-  options: z.array(InvoiceLineItemOption$outboundSchema).optional(),
-  images: z.array(InvoiceLineItemImageMetadata$outboundSchema).optional(),
+  options: z.array(CreateInvoiceLineItemOption$outboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
 });
 
-export function invoiceLineItemToJSON(
-  invoiceLineItem: InvoiceLineItem,
+export function createInvoiceLineItemToJSON(
+  createInvoiceLineItem: CreateInvoiceLineItem,
 ): string {
-  return JSON.stringify(InvoiceLineItem$outboundSchema.parse(invoiceLineItem));
+  return JSON.stringify(
+    CreateInvoiceLineItem$outboundSchema.parse(createInvoiceLineItem),
+  );
 }
-export function invoiceLineItemFromJSON(
+export function createInvoiceLineItemFromJSON(
   jsonString: string,
-): SafeParseResult<InvoiceLineItem, SDKValidationError> {
+): SafeParseResult<CreateInvoiceLineItem, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => InvoiceLineItem$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InvoiceLineItem' from JSON`,
+    (x) => CreateInvoiceLineItem$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateInvoiceLineItem' from JSON`,
   );
 }

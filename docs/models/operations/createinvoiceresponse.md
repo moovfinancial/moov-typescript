@@ -6,9 +6,7 @@
 import { CreateInvoiceResponse } from "@moovio/sdk/models/operations";
 
 let value: CreateInvoiceResponse = {
-  headers: {
-    "key": [],
-  },
+  headers: {},
   result: {
     invoiceID: "bc3285ad-857f-484c-9f25-56b606e55259",
     invoiceNumber: "INV-1001",
@@ -18,7 +16,33 @@ let value: CreateInvoiceResponse = {
     partnerAccountID: "bbb9170c-e559-4a2d-a3e4-3629e1dca367",
     status: "canceled",
     lineItems: {
-      items: [],
+      items: [
+        {
+          name: "<value>",
+          basePrice: {
+            currency: "USD",
+            valueDecimal: "12.987654321",
+          },
+          quantity: 108714,
+          options: [
+            {
+              name: "<value>",
+              quantity: 11853,
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "12.987654321",
+              },
+            },
+          ],
+          images: [
+            {
+              imageID: "4925642d-ae6d-43c8-bb16-aa953186a0b9",
+              link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+              publicID: "<id>",
+            },
+          ],
+        },
+      ],
     },
     subtotalAmount: {
       currency: "USD",
@@ -50,15 +74,11 @@ let value: CreateInvoiceResponse = {
     },
     payments: [
       {
-        paymentType: "external",
-        description: "if esteemed overheard",
-        amount: {
-          currency: "USD",
-          valueDecimal: "12.987654321",
-        },
+        paymentType: "transfer",
+        transferID: "902d12a1-f845-414c-ae9b-09696afa3279",
       },
     ],
-    createdOn: new Date("2024-10-05T23:48:46.672Z"),
+    createdOn: new Date("2023-03-11T04:38:05.353Z"),
   },
 };
 ```

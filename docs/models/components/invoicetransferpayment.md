@@ -13,7 +13,7 @@ let value: InvoiceTransferPayment = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `paymentType`                                                    | [components.PaymentType](../../models/components/paymenttype.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `transferID`                                                     | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `paymentType`      | *"transfer"*       | :heavy_check_mark: | N/A                |
+| `transferID`       | *string*           | :heavy_check_mark: | N/A                |

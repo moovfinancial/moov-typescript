@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -14,13 +13,6 @@ import {
   TerminalCard$outboundSchema,
 } from "./terminalcard.js";
 
-export const CardPresentPaymentPaymentMethodPaymentMethodType = {
-  CardPresentPayment: "card-present-payment",
-} as const;
-export type CardPresentPaymentPaymentMethodPaymentMethodType = ClosedEnum<
-  typeof CardPresentPaymentPaymentMethodPaymentMethodType
->;
-
 /**
  * A card used at point of sale terminal for a card present transaction as contained within a payment method.
  */
@@ -29,21 +21,12 @@ export type CardPresentPaymentPaymentMethod = {
    * ID of the payment method.
    */
   paymentMethodID: string;
-  paymentMethodType: CardPresentPaymentPaymentMethodPaymentMethodType;
+  paymentMethodType: "card-present-payment";
   /**
    * Describes payment card details captured with tap or in-person payment.
    */
   terminalCard?: TerminalCard | undefined;
 };
-
-/** @internal */
-export const CardPresentPaymentPaymentMethodPaymentMethodType$inboundSchema:
-  z.ZodNativeEnum<typeof CardPresentPaymentPaymentMethodPaymentMethodType> = z
-    .nativeEnum(CardPresentPaymentPaymentMethodPaymentMethodType);
-/** @internal */
-export const CardPresentPaymentPaymentMethodPaymentMethodType$outboundSchema:
-  z.ZodNativeEnum<typeof CardPresentPaymentPaymentMethodPaymentMethodType> =
-    CardPresentPaymentPaymentMethodPaymentMethodType$inboundSchema;
 
 /** @internal */
 export const CardPresentPaymentPaymentMethod$inboundSchema: z.ZodType<
@@ -52,14 +35,13 @@ export const CardPresentPaymentPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType:
-    CardPresentPaymentPaymentMethodPaymentMethodType$inboundSchema,
+  paymentMethodType: z.literal("card-present-payment"),
   terminalCard: TerminalCard$inboundSchema.optional(),
 });
 /** @internal */
 export type CardPresentPaymentPaymentMethod$Outbound = {
   paymentMethodID: string;
-  paymentMethodType: string;
+  paymentMethodType: "card-present-payment";
   terminalCard?: TerminalCard$Outbound | undefined;
 };
 
@@ -70,8 +52,7 @@ export const CardPresentPaymentPaymentMethod$outboundSchema: z.ZodType<
   CardPresentPaymentPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType:
-    CardPresentPaymentPaymentMethodPaymentMethodType$outboundSchema,
+  paymentMethodType: z.literal("card-present-payment"),
   terminalCard: TerminalCard$outboundSchema.optional(),
 });
 

@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -14,30 +13,14 @@ import {
   PaymentMethodsWallet$outboundSchema,
 } from "./paymentmethodswallet.js";
 
-export const MoovWalletPaymentMethodPaymentMethodType = {
-  MoovWallet: "moov-wallet",
-} as const;
-export type MoovWalletPaymentMethodPaymentMethodType = ClosedEnum<
-  typeof MoovWalletPaymentMethodPaymentMethodType
->;
-
 export type MoovWalletPaymentMethod = {
   /**
    * ID of the payment method.
    */
   paymentMethodID: string;
-  paymentMethodType: MoovWalletPaymentMethodPaymentMethodType;
+  paymentMethodType: "moov-wallet";
   wallet: PaymentMethodsWallet;
 };
-
-/** @internal */
-export const MoovWalletPaymentMethodPaymentMethodType$inboundSchema:
-  z.ZodNativeEnum<typeof MoovWalletPaymentMethodPaymentMethodType> = z
-    .nativeEnum(MoovWalletPaymentMethodPaymentMethodType);
-/** @internal */
-export const MoovWalletPaymentMethodPaymentMethodType$outboundSchema:
-  z.ZodNativeEnum<typeof MoovWalletPaymentMethodPaymentMethodType> =
-    MoovWalletPaymentMethodPaymentMethodType$inboundSchema;
 
 /** @internal */
 export const MoovWalletPaymentMethod$inboundSchema: z.ZodType<
@@ -46,13 +29,13 @@ export const MoovWalletPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: MoovWalletPaymentMethodPaymentMethodType$inboundSchema,
+  paymentMethodType: z.literal("moov-wallet"),
   wallet: PaymentMethodsWallet$inboundSchema,
 });
 /** @internal */
 export type MoovWalletPaymentMethod$Outbound = {
   paymentMethodID: string;
-  paymentMethodType: string;
+  paymentMethodType: "moov-wallet";
   wallet: PaymentMethodsWallet$Outbound;
 };
 
@@ -63,7 +46,7 @@ export const MoovWalletPaymentMethod$outboundSchema: z.ZodType<
   MoovWalletPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: MoovWalletPaymentMethodPaymentMethodType$outboundSchema,
+  paymentMethodType: z.literal("moov-wallet"),
   wallet: PaymentMethodsWallet$outboundSchema,
 });
 

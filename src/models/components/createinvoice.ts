@@ -13,11 +13,11 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 import {
-  InvoiceLineItems,
-  InvoiceLineItems$inboundSchema,
-  InvoiceLineItems$Outbound,
-  InvoiceLineItems$outboundSchema,
-} from "./invoicelineitems.js";
+  CreateInvoiceLineItems,
+  CreateInvoiceLineItems$inboundSchema,
+  CreateInvoiceLineItems$Outbound,
+  CreateInvoiceLineItems$outboundSchema,
+} from "./createinvoicelineitems.js";
 
 export type CreateInvoice = {
   customerAccountID: string;
@@ -25,7 +25,7 @@ export type CreateInvoice = {
   /**
    * A collection of line items for an invoice.
    */
-  lineItems: InvoiceLineItems;
+  lineItems: CreateInvoiceLineItems;
   invoiceDate?: Date | undefined;
   dueDate?: Date | undefined;
   taxAmount?: AmountDecimal | undefined;
@@ -39,7 +39,7 @@ export const CreateInvoice$inboundSchema: z.ZodType<
 > = z.object({
   customerAccountID: z.string(),
   description: z.string(),
-  lineItems: InvoiceLineItems$inboundSchema,
+  lineItems: CreateInvoiceLineItems$inboundSchema,
   invoiceDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   dueDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -50,7 +50,7 @@ export const CreateInvoice$inboundSchema: z.ZodType<
 export type CreateInvoice$Outbound = {
   customerAccountID: string;
   description: string;
-  lineItems: InvoiceLineItems$Outbound;
+  lineItems: CreateInvoiceLineItems$Outbound;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
   taxAmount?: AmountDecimal$Outbound | undefined;
@@ -64,7 +64,7 @@ export const CreateInvoice$outboundSchema: z.ZodType<
 > = z.object({
   customerAccountID: z.string(),
   description: z.string(),
-  lineItems: InvoiceLineItems$outboundSchema,
+  lineItems: CreateInvoiceLineItems$outboundSchema,
   invoiceDate: z.date().transform(v => v.toISOString()).optional(),
   dueDate: z.date().transform(v => v.toISOString()).optional(),
   taxAmount: AmountDecimal$outboundSchema.optional(),

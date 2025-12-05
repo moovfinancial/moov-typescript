@@ -13,7 +13,33 @@ let value: Invoice = {
   partnerAccountID: "bff019b3-bb07-4fde-963e-dbe054af31b6",
   status: "canceled",
   lineItems: {
-    items: [],
+    items: [
+      {
+        name: "<value>",
+        basePrice: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+        quantity: 108714,
+        options: [
+          {
+            name: "<value>",
+            quantity: 11853,
+            priceModifier: {
+              currency: "USD",
+              valueDecimal: "12.987654321",
+            },
+          },
+        ],
+        images: [
+          {
+            imageID: "4925642d-ae6d-43c8-bb16-aa953186a0b9",
+            link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+            publicID: "<id>",
+          },
+        ],
+      },
+    ],
   },
   subtotalAmount: {
     currency: "USD",

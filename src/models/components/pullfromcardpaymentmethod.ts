@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -14,33 +13,17 @@ import {
   PaymentMethodsCard$outboundSchema,
 } from "./paymentmethodscard.js";
 
-export const PullFromCardPaymentMethodPaymentMethodType = {
-  PullFromCard: "pull-from-card",
-} as const;
-export type PullFromCardPaymentMethodPaymentMethodType = ClosedEnum<
-  typeof PullFromCardPaymentMethodPaymentMethodType
->;
-
 export type PullFromCardPaymentMethod = {
   /**
    * ID of the payment method.
    */
   paymentMethodID: string;
-  paymentMethodType: PullFromCardPaymentMethodPaymentMethodType;
+  paymentMethodType: "pull-from-card";
   /**
    * A card as contained within a payment method.
    */
   card: PaymentMethodsCard;
 };
-
-/** @internal */
-export const PullFromCardPaymentMethodPaymentMethodType$inboundSchema:
-  z.ZodNativeEnum<typeof PullFromCardPaymentMethodPaymentMethodType> = z
-    .nativeEnum(PullFromCardPaymentMethodPaymentMethodType);
-/** @internal */
-export const PullFromCardPaymentMethodPaymentMethodType$outboundSchema:
-  z.ZodNativeEnum<typeof PullFromCardPaymentMethodPaymentMethodType> =
-    PullFromCardPaymentMethodPaymentMethodType$inboundSchema;
 
 /** @internal */
 export const PullFromCardPaymentMethod$inboundSchema: z.ZodType<
@@ -49,13 +32,13 @@ export const PullFromCardPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: PullFromCardPaymentMethodPaymentMethodType$inboundSchema,
+  paymentMethodType: z.literal("pull-from-card"),
   card: PaymentMethodsCard$inboundSchema,
 });
 /** @internal */
 export type PullFromCardPaymentMethod$Outbound = {
   paymentMethodID: string;
-  paymentMethodType: string;
+  paymentMethodType: "pull-from-card";
   card: PaymentMethodsCard$Outbound;
 };
 
@@ -66,7 +49,7 @@ export const PullFromCardPaymentMethod$outboundSchema: z.ZodType<
   PullFromCardPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: PullFromCardPaymentMethodPaymentMethodType$outboundSchema,
+  paymentMethodType: z.literal("pull-from-card"),
   card: PaymentMethodsCard$outboundSchema,
 });
 

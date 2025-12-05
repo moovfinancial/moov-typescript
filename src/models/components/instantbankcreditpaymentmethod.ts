@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -14,13 +13,6 @@ import {
   PaymentMethodsBankAccount$outboundSchema,
 } from "./paymentmethodsbankaccount.js";
 
-export const InstantBankCreditPaymentMethodPaymentMethodType = {
-  InstantBankCredit: "instant-bank-credit",
-} as const;
-export type InstantBankCreditPaymentMethodPaymentMethodType = ClosedEnum<
-  typeof InstantBankCreditPaymentMethodPaymentMethodType
->;
-
 /**
  * Instantly send funds to a bank account.
  */
@@ -29,21 +21,12 @@ export type InstantBankCreditPaymentMethod = {
    * ID of the payment method.
    */
   paymentMethodID: string;
-  paymentMethodType: InstantBankCreditPaymentMethodPaymentMethodType;
+  paymentMethodType: "instant-bank-credit";
   /**
    * A bank account as contained within a payment method.
    */
   bankAccount: PaymentMethodsBankAccount;
 };
-
-/** @internal */
-export const InstantBankCreditPaymentMethodPaymentMethodType$inboundSchema:
-  z.ZodNativeEnum<typeof InstantBankCreditPaymentMethodPaymentMethodType> = z
-    .nativeEnum(InstantBankCreditPaymentMethodPaymentMethodType);
-/** @internal */
-export const InstantBankCreditPaymentMethodPaymentMethodType$outboundSchema:
-  z.ZodNativeEnum<typeof InstantBankCreditPaymentMethodPaymentMethodType> =
-    InstantBankCreditPaymentMethodPaymentMethodType$inboundSchema;
 
 /** @internal */
 export const InstantBankCreditPaymentMethod$inboundSchema: z.ZodType<
@@ -52,14 +35,13 @@ export const InstantBankCreditPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType:
-    InstantBankCreditPaymentMethodPaymentMethodType$inboundSchema,
+  paymentMethodType: z.literal("instant-bank-credit"),
   bankAccount: PaymentMethodsBankAccount$inboundSchema,
 });
 /** @internal */
 export type InstantBankCreditPaymentMethod$Outbound = {
   paymentMethodID: string;
-  paymentMethodType: string;
+  paymentMethodType: "instant-bank-credit";
   bankAccount: PaymentMethodsBankAccount$Outbound;
 };
 
@@ -70,8 +52,7 @@ export const InstantBankCreditPaymentMethod$outboundSchema: z.ZodType<
   InstantBankCreditPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType:
-    InstantBankCreditPaymentMethodPaymentMethodType$outboundSchema,
+  paymentMethodType: z.literal("instant-bank-credit"),
   bankAccount: PaymentMethodsBankAccount$outboundSchema,
 });
 

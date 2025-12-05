@@ -13,11 +13,11 @@ import {
   AmountDecimalUpdate$outboundSchema,
 } from "./amountdecimalupdate.js";
 import {
-  InvoiceLineItemsUpdate,
-  InvoiceLineItemsUpdate$inboundSchema,
-  InvoiceLineItemsUpdate$Outbound,
-  InvoiceLineItemsUpdate$outboundSchema,
-} from "./invoicelineitemsupdate.js";
+  CreateInvoiceLineItemsUpdate,
+  CreateInvoiceLineItemsUpdate$inboundSchema,
+  CreateInvoiceLineItemsUpdate$Outbound,
+  CreateInvoiceLineItemsUpdate$outboundSchema,
+} from "./createinvoicelineitemsupdate.js";
 import {
   InvoiceStatus,
   InvoiceStatus$inboundSchema,
@@ -29,7 +29,7 @@ export type UpdateInvoice = {
   /**
    * A collection of line items for an invoice.
    */
-  lineItems?: InvoiceLineItemsUpdate | undefined;
+  lineItems?: CreateInvoiceLineItemsUpdate | undefined;
   invoiceDate?: Date | null | undefined;
   dueDate?: Date | null | undefined;
   /**
@@ -46,7 +46,7 @@ export const UpdateInvoice$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: z.string().optional(),
-  lineItems: InvoiceLineItemsUpdate$inboundSchema.optional(),
+  lineItems: CreateInvoiceLineItemsUpdate$inboundSchema.optional(),
   invoiceDate: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -59,7 +59,7 @@ export const UpdateInvoice$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateInvoice$Outbound = {
   description?: string | undefined;
-  lineItems?: InvoiceLineItemsUpdate$Outbound | undefined;
+  lineItems?: CreateInvoiceLineItemsUpdate$Outbound | undefined;
   invoiceDate?: string | null | undefined;
   dueDate?: string | null | undefined;
   status?: string | undefined;
@@ -73,7 +73,7 @@ export const UpdateInvoice$outboundSchema: z.ZodType<
   UpdateInvoice
 > = z.object({
   description: z.string().optional(),
-  lineItems: InvoiceLineItemsUpdate$outboundSchema.optional(),
+  lineItems: CreateInvoiceLineItemsUpdate$outboundSchema.optional(),
   invoiceDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: InvoiceStatus$outboundSchema.optional(),

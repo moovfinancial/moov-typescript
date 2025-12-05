@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -14,34 +13,17 @@ import {
   ApplePayResponse$outboundSchema,
 } from "./applepayresponse.js";
 
-export const ApplePayPaymentMethodPaymentMethodType = {
-  ApplePay: "apple-pay",
-} as const;
-export type ApplePayPaymentMethodPaymentMethodType = ClosedEnum<
-  typeof ApplePayPaymentMethodPaymentMethodType
->;
-
 export type ApplePayPaymentMethod = {
   /**
    * ID of the payment method.
    */
   paymentMethodID: string;
-  paymentMethodType: ApplePayPaymentMethodPaymentMethodType;
+  paymentMethodType: "apple-pay";
   /**
    * Describes an Apple Pay token on a Moov account.
    */
   applePay: ApplePayResponse;
 };
-
-/** @internal */
-export const ApplePayPaymentMethodPaymentMethodType$inboundSchema:
-  z.ZodNativeEnum<typeof ApplePayPaymentMethodPaymentMethodType> = z.nativeEnum(
-    ApplePayPaymentMethodPaymentMethodType,
-  );
-/** @internal */
-export const ApplePayPaymentMethodPaymentMethodType$outboundSchema:
-  z.ZodNativeEnum<typeof ApplePayPaymentMethodPaymentMethodType> =
-    ApplePayPaymentMethodPaymentMethodType$inboundSchema;
 
 /** @internal */
 export const ApplePayPaymentMethod$inboundSchema: z.ZodType<
@@ -50,13 +32,13 @@ export const ApplePayPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: ApplePayPaymentMethodPaymentMethodType$inboundSchema,
+  paymentMethodType: z.literal("apple-pay"),
   applePay: ApplePayResponse$inboundSchema,
 });
 /** @internal */
 export type ApplePayPaymentMethod$Outbound = {
   paymentMethodID: string;
-  paymentMethodType: string;
+  paymentMethodType: "apple-pay";
   applePay: ApplePayResponse$Outbound;
 };
 
@@ -67,7 +49,7 @@ export const ApplePayPaymentMethod$outboundSchema: z.ZodType<
   ApplePayPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: ApplePayPaymentMethodPaymentMethodType$outboundSchema,
+  paymentMethodType: z.literal("apple-pay"),
   applePay: ApplePayResponse$outboundSchema,
 });
 

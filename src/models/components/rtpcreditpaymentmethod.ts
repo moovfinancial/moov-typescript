@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -14,33 +13,17 @@ import {
   PaymentMethodsBankAccount$outboundSchema,
 } from "./paymentmethodsbankaccount.js";
 
-export const RtpCreditPaymentMethodPaymentMethodType = {
-  RtpCredit: "rtp-credit",
-} as const;
-export type RtpCreditPaymentMethodPaymentMethodType = ClosedEnum<
-  typeof RtpCreditPaymentMethodPaymentMethodType
->;
-
 export type RtpCreditPaymentMethod = {
   /**
    * ID of the payment method.
    */
   paymentMethodID: string;
-  paymentMethodType: RtpCreditPaymentMethodPaymentMethodType;
+  paymentMethodType: "rtp-credit";
   /**
    * A bank account as contained within a payment method.
    */
   bankAccount: PaymentMethodsBankAccount;
 };
-
-/** @internal */
-export const RtpCreditPaymentMethodPaymentMethodType$inboundSchema:
-  z.ZodNativeEnum<typeof RtpCreditPaymentMethodPaymentMethodType> = z
-    .nativeEnum(RtpCreditPaymentMethodPaymentMethodType);
-/** @internal */
-export const RtpCreditPaymentMethodPaymentMethodType$outboundSchema:
-  z.ZodNativeEnum<typeof RtpCreditPaymentMethodPaymentMethodType> =
-    RtpCreditPaymentMethodPaymentMethodType$inboundSchema;
 
 /** @internal */
 export const RtpCreditPaymentMethod$inboundSchema: z.ZodType<
@@ -49,13 +32,13 @@ export const RtpCreditPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: RtpCreditPaymentMethodPaymentMethodType$inboundSchema,
+  paymentMethodType: z.literal("rtp-credit"),
   bankAccount: PaymentMethodsBankAccount$inboundSchema,
 });
 /** @internal */
 export type RtpCreditPaymentMethod$Outbound = {
   paymentMethodID: string;
-  paymentMethodType: string;
+  paymentMethodType: "rtp-credit";
   bankAccount: PaymentMethodsBankAccount$Outbound;
 };
 
@@ -66,7 +49,7 @@ export const RtpCreditPaymentMethod$outboundSchema: z.ZodType<
   RtpCreditPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType: RtpCreditPaymentMethodPaymentMethodType$outboundSchema,
+  paymentMethodType: z.literal("rtp-credit"),
   bankAccount: PaymentMethodsBankAccount$outboundSchema,
 });
 

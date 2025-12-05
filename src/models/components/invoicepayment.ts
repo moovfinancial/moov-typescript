@@ -19,9 +19,7 @@ import {
   InvoiceTransferPayment$outboundSchema,
 } from "./invoicetransferpayment.js";
 
-export type InvoicePayment =
-  | (InvoiceExternalPayment & { paymentType: "external" })
-  | (InvoiceTransferPayment & { paymentType: "transfer" });
+export type InvoicePayment = InvoiceTransferPayment | InvoiceExternalPayment;
 
 /** @internal */
 export const InvoicePayment$inboundSchema: z.ZodType<
@@ -29,17 +27,13 @@ export const InvoicePayment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  InvoiceExternalPayment$inboundSchema.and(
-    z.object({ paymentType: z.literal("external") }),
-  ),
-  InvoiceTransferPayment$inboundSchema.and(
-    z.object({ paymentType: z.literal("transfer") }),
-  ),
+  InvoiceTransferPayment$inboundSchema,
+  InvoiceExternalPayment$inboundSchema,
 ]);
 /** @internal */
 export type InvoicePayment$Outbound =
-  | (InvoiceExternalPayment$Outbound & { paymentType: "external" })
-  | (InvoiceTransferPayment$Outbound & { paymentType: "transfer" });
+  | InvoiceTransferPayment$Outbound
+  | InvoiceExternalPayment$Outbound;
 
 /** @internal */
 export const InvoicePayment$outboundSchema: z.ZodType<
@@ -47,12 +41,8 @@ export const InvoicePayment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InvoicePayment
 > = z.union([
-  InvoiceExternalPayment$outboundSchema.and(
-    z.object({ paymentType: z.literal("external") }),
-  ),
-  InvoiceTransferPayment$outboundSchema.and(
-    z.object({ paymentType: z.literal("transfer") }),
-  ),
+  InvoiceTransferPayment$outboundSchema,
+  InvoiceExternalPayment$outboundSchema,
 ]);
 
 export function invoicePaymentToJSON(invoicePayment: InvoicePayment): string {

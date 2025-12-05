@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 3e0f6c361e1dcd63e8d7ecd80166ec5a
+  docChecksum: dc987cf87d17146ae09fbcdeecc27ceb
   docVersion: latest
-  speakeasyVersion: 1.661.2
-  generationVersion: 2.763.3
-  releaseVersion: 0.21.17
-  configChecksum: 34c1363a9d50e105d79ae814e756ac0b
+  speakeasyVersion: 1.668.0
+  generationVersion: 2.770.0
+  releaseVersion: 0.22.0
+  configChecksum: eec48613a456d778af12088e96671f30
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.10
+    core: 3.26.14
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -33,8 +33,8 @@ features:
     nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.3.0
-    unions: 2.86.0
+    sdkHooks: 0.4.0
+    unions: 2.86.3
     uploadStreams: 0.1.0
 generatedFiles:
   - .gitattributes
@@ -51,13 +51,9 @@ generatedFiles:
   - docs/models/components/accounttype.md
   - docs/models/components/accountverificationstatus.md
   - docs/models/components/achcreditsamedaypaymentmethod.md
-  - docs/models/components/achcreditsamedaypaymentmethodpaymentmethodtype.md
   - docs/models/components/achcreditstandardpaymentmethod.md
-  - docs/models/components/achcreditstandardpaymentmethodpaymentmethodtype.md
   - docs/models/components/achdebitcollectpaymentmethod.md
-  - docs/models/components/achdebitcollectpaymentmethodpaymentmethodtype.md
   - docs/models/components/achdebitfundpaymentmethod.md
-  - docs/models/components/achdebitfundpaymentmethodpaymentmethodtype.md
   - docs/models/components/achdetails.md
   - docs/models/components/achexception.md
   - docs/models/components/achfees.md
@@ -87,7 +83,6 @@ generatedFiles:
   - docs/models/components/applepayheader.md
   - docs/models/components/applepaymerchantdomains.md
   - docs/models/components/applepaypaymentmethod.md
-  - docs/models/components/applepaypaymentmethodpaymentmethodtype.md
   - docs/models/components/applepayresponse.md
   - docs/models/components/applicationscope.md
   - docs/models/components/assignproductimage.md
@@ -155,10 +150,8 @@ generatedFiles:
   - docs/models/components/cardpaymentdetails.md
   - docs/models/components/cardpaymentdetailserror.md
   - docs/models/components/cardpaymentpaymentmethod.md
-  - docs/models/components/cardpaymentpaymentmethodpaymentmethodtype.md
   - docs/models/components/cardpaymentsettings.md
   - docs/models/components/cardpresentpaymentpaymentmethod.md
-  - docs/models/components/cardpresentpaymentpaymentmethodpaymentmethodtype.md
   - docs/models/components/cardtransactiondetails.md
   - docs/models/components/cardtransactionfailurecode.md
   - docs/models/components/cardtransactionstatus.md
@@ -202,6 +195,13 @@ generatedFiles:
   - docs/models/components/createindividualerrorssn.md
   - docs/models/components/createindividualprofile.md
   - docs/models/components/createinvoice.md
+  - docs/models/components/createinvoicelineitem.md
+  - docs/models/components/createinvoicelineitemoption.md
+  - docs/models/components/createinvoicelineitemoptionvalidationerror.md
+  - docs/models/components/createinvoicelineitems.md
+  - docs/models/components/createinvoicelineitemsupdate.md
+  - docs/models/components/createinvoicelineitemsvalidationerror.md
+  - docs/models/components/createinvoicelineitemvalidationerror.md
   - docs/models/components/createpaymentlink.md
   - docs/models/components/createpaymentlinklineitem.md
   - docs/models/components/createpaymentlinklineitemoption.md
@@ -305,17 +305,15 @@ generatedFiles:
   - docs/models/components/industrycodes.md
   - docs/models/components/industrytaxonomy.md
   - docs/models/components/instantbankcreditpaymentmethod.md
-  - docs/models/components/instantbankcreditpaymentmethodpaymentmethodtype.md
   - docs/models/components/instantpaymentfees.md
   - docs/models/components/institutionssearchresponse.md
   - docs/models/components/invoice.md
   - docs/models/components/invoiceexternalpayment.md
-  - docs/models/components/invoiceexternalpaymentpaymenttype.md
   - docs/models/components/invoicelineitem.md
+  - docs/models/components/invoicelineitemimagemetadata.md
   - docs/models/components/invoicelineitemoption.md
   - docs/models/components/invoicelineitemoptionvalidationerror.md
   - docs/models/components/invoicelineitems.md
-  - docs/models/components/invoicelineitemsupdate.md
   - docs/models/components/invoicelineitemsvalidationerror.md
   - docs/models/components/invoicelineitemvalidationerror.md
   - docs/models/components/invoicepayment.md
@@ -369,7 +367,6 @@ generatedFiles:
   - docs/models/components/moovfee.md
   - docs/models/components/moovfeedetails.md
   - docs/models/components/moovwalletpaymentmethod.md
-  - docs/models/components/moovwalletpaymentmethodpaymentmethodtype.md
   - docs/models/components/mxauthorizationcode.md
   - docs/models/components/mxpayload.md
   - docs/models/components/occurrence.md
@@ -410,7 +407,6 @@ generatedFiles:
   - docs/models/components/paymentmethodscard.md
   - docs/models/components/paymentmethodswallet.md
   - docs/models/components/paymentmethodtype.md
-  - docs/models/components/paymenttype.md
   - docs/models/components/payoutdetailserror.md
   - docs/models/components/payoutrecipient.md
   - docs/models/components/payoutrecipienterror.md
@@ -433,9 +429,7 @@ generatedFiles:
   - docs/models/components/productrequest.md
   - docs/models/components/profile.md
   - docs/models/components/pullfromcardpaymentmethod.md
-  - docs/models/components/pullfromcardpaymentmethodpaymentmethodtype.md
   - docs/models/components/pushtocardpaymentmethod.md
-  - docs/models/components/pushtocardpaymentmethodpaymentmethodtype.md
   - docs/models/components/qrcode.md
   - docs/models/components/receiptkind.md
   - docs/models/components/receiptrequest.md
@@ -461,7 +455,6 @@ generatedFiles:
   - docs/models/components/reversedwithrefund.md
   - docs/models/components/revoketokenrequest.md
   - docs/models/components/rtpcreditpaymentmethod.md
-  - docs/models/components/rtpcreditpaymentmethodpaymentmethodtype.md
   - docs/models/components/rtpfailurecode.md
   - docs/models/components/rtpinstitution.md
   - docs/models/components/rtprejectioncode.md
@@ -1730,6 +1723,13 @@ generatedFiles:
   - src/models/components/createindividualerror.ts
   - src/models/components/createindividualprofile.ts
   - src/models/components/createinvoice.ts
+  - src/models/components/createinvoicelineitem.ts
+  - src/models/components/createinvoicelineitemoption.ts
+  - src/models/components/createinvoicelineitemoptionvalidationerror.ts
+  - src/models/components/createinvoicelineitems.ts
+  - src/models/components/createinvoicelineitemsupdate.ts
+  - src/models/components/createinvoicelineitemsvalidationerror.ts
+  - src/models/components/createinvoicelineitemvalidationerror.ts
   - src/models/components/createpaymentlink.ts
   - src/models/components/createpaymentlinklineitem.ts
   - src/models/components/createpaymentlinklineitemoption.ts
@@ -1832,10 +1832,10 @@ generatedFiles:
   - src/models/components/invoice.ts
   - src/models/components/invoiceexternalpayment.ts
   - src/models/components/invoicelineitem.ts
+  - src/models/components/invoicelineitemimagemetadata.ts
   - src/models/components/invoicelineitemoption.ts
   - src/models/components/invoicelineitemoptionvalidationerror.ts
   - src/models/components/invoicelineitems.ts
-  - src/models/components/invoicelineitemsupdate.ts
   - src/models/components/invoicelineitemsvalidationerror.ts
   - src/models/components/invoicelineitemvalidationerror.ts
   - src/models/components/invoicepayment.ts
@@ -4970,4 +4970,4 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `moov.images.update()`:  `request` **Changed** **Breaking** :warning:\n* `moov.representatives.update()`: \n  *  `request.updateRepresentative.email` **Changed** **Breaking** :warning:\n* `moov.sweeps.updateConfig()`: \n  *  `request.patchSweepConfig` **Changed** **Breaking** :warning:\n"
+releaseNotes: "## Typescript SDK Changes:\n* `moov.invoices.createInvoice()`: \n  *  `request.createInvoice.lineItems.items.[]` **Changed**\n  *  `response.lineitems.items.[].images` **Added**\n* `moov.invoices.listInvoices()`:  `response.[].lineItems.items.[].images` **Added**\n* `moov.invoices.getInvoice()`:  `response.lineitems.items.[].images` **Added**\n* `moov.invoices.updateInvoice()`: \n  *  `request.updateInvoice.lineItems.items.[]` **Changed**\n  *  `response.lineitems.items.[].images` **Added**\n* `moov.invoices.markPaidInvoice()`:  `response.lineitems.items.[].images` **Added**\n"
