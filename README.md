@@ -248,7 +248,26 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [accounts](docs/sdks/accounts/README.md)
+### [AccountTerminalApplications](docs/sdks/accountterminalapplications/README.md)
+
+* [link](docs/sdks/accountterminalapplications/README.md#link) - Link an account with a terminal application.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/terminal-applications.write` scope.
+* [list](docs/sdks/accountterminalapplications/README.md#list) - Retrieve all terminal applications linked to a specific account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
+* [get](docs/sdks/accountterminalapplications/README.md#get) - Verifies if a specific Terminal Application is linked to an Account. This endpoint acts as a validation check for the link's existence.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
+* [getConfiguration](docs/sdks/accountterminalapplications/README.md#getconfiguration) - Fetch the configuration for a given Terminal Application linked to a specific Account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` scope.
+
+### [Accounts](docs/sdks/accounts/README.md)
 
 * [create](docs/sdks/accounts/README.md#create) - You can create **business** or **individual** accounts for your users (i.e., customers, merchants) by passing the required
 information to Moov. Requirements differ per account type and requested [capabilities](https://docs.moov.io/guides/accounts/capabilities/requirements/).
@@ -315,26 +334,7 @@ This token can only be generated via API. Any Moov account requesting the collec
 or card issuing capabilities must accept Moov's terms of service, then have the generated terms of service 
 token patched to the account. Read more in our [documentation](https://docs.moov.io/guides/accounts/requirements/platform-agreement/).
 
-### [accountTerminalApplications](docs/sdks/accountterminalapplications/README.md)
-
-* [link](docs/sdks/accountterminalapplications/README.md#link) - Link an account with a terminal application.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/terminal-applications.write` scope.
-* [list](docs/sdks/accountterminalapplications/README.md#list) - Retrieve all terminal applications linked to a specific account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
-* [get](docs/sdks/accountterminalapplications/README.md#get) - Verifies if a specific Terminal Application is linked to an Account. This endpoint acts as a validation check for the link's existence.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
-* [getConfiguration](docs/sdks/accountterminalapplications/README.md#getconfiguration) - Fetch the configuration for a given Terminal Application linked to a specific Account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` scope.
-
-### [adjustments](docs/sdks/adjustments/README.md)
+### [Adjustments](docs/sdks/adjustments/README.md)
 
 * [list](docs/sdks/adjustments/README.md#list) - List adjustments associated with a Moov account.
 
@@ -345,7 +345,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
-### [applePay](docs/sdks/applepay/README.md)
+### [ApplePay](docs/sdks/applepay/README.md)
 
 * [registerMerchantDomains](docs/sdks/applepay/README.md#registermerchantdomains) - Add domains to be registered with Apple Pay.
 
@@ -382,21 +382,21 @@ The `token` data is defined by Apple Pay and should be passed through from Apple
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
-### [authentication](docs/sdks/authentication/README.md)
+### [Authentication](docs/sdks/authentication/README.md)
 
 * [revokeAccessToken](docs/sdks/authentication/README.md#revokeaccesstoken) - Revoke an auth token.
 
 Allows clients to notify the authorization server that a previously obtained refresh or access token is no longer needed.
 * [createAccessToken](docs/sdks/authentication/README.md#createaccesstoken) - Create or refresh an access token.
 
-### [avatars](docs/sdks/avatars/README.md)
+### [Avatars](docs/sdks/avatars/README.md)
 
 * [get](docs/sdks/avatars/README.md#get) - Get avatar image for an account using a unique ID.    
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/profile-enrichment.read` scope.
 
-### [bankAccounts](docs/sdks/bankaccounts/README.md)
+### [BankAccounts](docs/sdks/bankaccounts/README.md)
 
 * [link](docs/sdks/bankaccounts/README.md#link) - Link a bank account to an existing Moov account. Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts/) to learn more.
 
@@ -486,7 +486,7 @@ The following formats are accepted:
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
 
-### [branding](docs/sdks/branding/README.md)
+### [Branding](docs/sdks/branding/README.md)
 
 * [create](docs/sdks/branding/README.md#create) - Create brand properties for the specified account.
 
@@ -505,7 +505,7 @@ you'll need to specify the `/accounts/{accountID}/branding.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 
-### [capabilities](docs/sdks/capabilities/README.md)
+### [Capabilities](docs/sdks/capabilities/README.md)
 
 * [list](docs/sdks/capabilities/README.md#list) - Retrieve all the capabilities an account has requested.
 
@@ -526,7 +526,7 @@ you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
   To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 
-### [cardIssuing](docs/sdks/cardissuing/README.md)
+### [CardIssuing](docs/sdks/cardissuing/README.md)
 
 * [request](docs/sdks/cardissuing/README.md#request) - Request a virtual card be issued.
 
@@ -551,7 +551,7 @@ Only use this endpoint if you have provided Moov with a copy of your PCI attesta
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/issued-cards.read-secure` scope.
 
-### [cards](docs/sdks/cards/README.md)
+### [Cards](docs/sdks/cards/README.md)
 
 * [link](docs/sdks/cards/README.md#link) - Link a card to an existing Moov account. 
 
@@ -601,7 +601,7 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
-### [disputes](docs/sdks/disputes/README.md)
+### [Disputes](docs/sdks/disputes/README.md)
 
 * [list](docs/sdks/disputes/README.md#list) - Returns the list of disputes. 
 
@@ -673,7 +673,7 @@ Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-paym
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
-### [endToEndEncryption](docs/sdks/endtoendencryption/README.md)
+### [EndToEndEncryption](docs/sdks/endtoendencryption/README.md)
 
 * [testEncryptedToken](docs/sdks/endtoendencryption/README.md#testencryptedtoken) - Allows for testing a JWE token to ensure it's acceptable by Moov. 
 
@@ -681,21 +681,21 @@ To access this endpoint using an [access token](https://docs.moov.io/api/authent
 you'll need to specify the `/ping.read` scope.
 * [generateKey](docs/sdks/endtoendencryption/README.md#generatekey) - Generates a public key used to create a JWE token for passing secure authentication data through non-PCI compliant intermediaries.
 
-### [enrichedAddress](docs/sdks/enrichedaddress/README.md)
+### [EnrichedAddress](docs/sdks/enrichedaddress/README.md)
 
 * [get](docs/sdks/enrichedaddress/README.md#get) - Fetch enriched address suggestions. Requires a partial address. 
   
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/profile-enrichment.read` scope.
 
-### [enrichedProfile](docs/sdks/enrichedprofile/README.md)
+### [EnrichedProfile](docs/sdks/enrichedprofile/README.md)
 
 * [get](docs/sdks/enrichedprofile/README.md#get) - Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/profile-enrichment.read` scope.
 
-### [feePlans](docs/sdks/feeplans/README.md)
+### [FeePlans](docs/sdks/feeplans/README.md)
 
 * [listFeePlanAgreements](docs/sdks/feeplans/README.md#listfeeplanagreements) - List all fee plan agreements associated with an account.
 
@@ -743,7 +743,7 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
-### [files](docs/sdks/files/README.md)
+### [Files](docs/sdks/files/README.md)
 
 * [upload](docs/sdks/files/README.md#upload) - Upload a file and link it to the specified Moov account. 
 
@@ -761,7 +761,7 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
-### [images](docs/sdks/images/README.md)
+### [Images](docs/sdks/images/README.md)
 
 * [list](docs/sdks/images/README.md#list) - List metadata for all images in the specified account.
 * [upload](docs/sdks/images/README.md#upload) -   Upload a new PNG, JPEG, or WebP image with optional metadata. 
@@ -775,14 +775,14 @@ the metadata form section to keep existing metadata. Duplicate images, and reque
 * [updateMetadata](docs/sdks/images/README.md#updatemetadata) - Replace the metadata for an existing image.
 * [getPublic](docs/sdks/images/README.md#getpublic) - Get an image by its public ID.
 
-### [industries](docs/sdks/industries/README.md)
+### [Industries](docs/sdks/industries/README.md)
 
 * [list](docs/sdks/industries/README.md#list) - Returns a list of industries relevant to merchant profile enrichment.  Results are ordered by industry name.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
 you'll need to specify the `/profile-enrichment.read` scope.
 
-### [institutions](docs/sdks/institutions/README.md)
+### [Institutions](docs/sdks/institutions/README.md)
 
 * [searchInstitutions](docs/sdks/institutions/README.md#searchinstitutions) - Search for financial institutions by name or routing number.
 
@@ -797,7 +797,7 @@ you'll need to specify the `/institutions.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/fed.read` scope.
 
-### [invoices](docs/sdks/invoices/README.md)
+### [Invoices](docs/sdks/invoices/README.md)
 
 * [createInvoice](docs/sdks/invoices/README.md#createinvoice) - Create an invoice for a Moov account.
 
@@ -821,7 +821,7 @@ If a payment link was created, the corresponding payment link is canceled, but a
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
-### [issuingTransactions](docs/sdks/issuingtransactions/README.md)
+### [IssuingTransactions](docs/sdks/issuingtransactions/README.md)
 
 * [listAuthorizations](docs/sdks/issuingtransactions/README.md#listauthorizations) - List issued card authorizations associated with a Moov account.
 
@@ -844,7 +844,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
-### [onboarding](docs/sdks/onboarding/README.md)
+### [Onboarding](docs/sdks/onboarding/README.md)
 
 * [createInvite](docs/sdks/onboarding/README.md#createinvite) - Create an invitation containing a unique link that allows the recipient to onboard their organization with Moov.
 
@@ -863,7 +863,7 @@ you'll need to specify the `/accounts.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts.write` scope.
 
-### [paymentLinks](docs/sdks/paymentlinks/README.md)
+### [PaymentLinks](docs/sdks/paymentlinks/README.md)
 
 * [create](docs/sdks/paymentlinks/README.md#create) - Create a payment link that allows an end user to make a payment on Moov's hosted payment link page.
 
@@ -892,7 +892,7 @@ Use the `Accept` header to specify the format of the response. Supported formats
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
-### [paymentMethods](docs/sdks/paymentmethods/README.md)
+### [PaymentMethods](docs/sdks/paymentmethods/README.md)
 
 * [list](docs/sdks/paymentmethods/README.md#list) - Retrieve a list of payment methods associated with a Moov account. Read our [payment methods 
 guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.
@@ -904,14 +904,14 @@ you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
 
-### [ping](docs/sdks/ping/README.md)
+### [Ping](docs/sdks/ping/README.md)
 
 * [ping](docs/sdks/ping/README.md#ping) - A simple endpoint to check auth.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/ping.read` scope.
 
-### [products](docs/sdks/products/README.md)
+### [Products](docs/sdks/products/README.md)
 
 * [list](docs/sdks/products/README.md#list) - List active (non-disabled) products for an account.
 * [create](docs/sdks/products/README.md#create) - Creates a new product for the specified account.
@@ -921,7 +921,7 @@ you'll need to specify the `/ping.read` scope.
 
 The product will no longer be available, but will remain in the system for historical and reporting purposes.
 
-### [receipts](docs/sdks/receipts/README.md)
+### [Receipts](docs/sdks/receipts/README.md)
 
 * [create](docs/sdks/receipts/README.md#create) -  Create receipts for transfers and scheduled transfers.
 
@@ -932,7 +932,7 @@ The product will no longer be available, but will remain in the system for histo
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
-### [representatives](docs/sdks/representatives/README.md)
+### [Representatives](docs/sdks/representatives/README.md)
 
 * [create](docs/sdks/representatives/README.md#create) - Moov accounts associated with businesses require information regarding individuals who represent the business. 
 You can provide this information by creating a representative. Each account is allowed a maximum of 7 representatives. 
@@ -973,7 +973,7 @@ If you need to update information in a locked state, please contact Moov support
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 
-### [scheduling](docs/sdks/scheduling/README.md)
+### [Scheduling](docs/sdks/scheduling/README.md)
 
 * [create](docs/sdks/scheduling/README.md#create) - Describes the schedule to create or modify.
 
@@ -1000,7 +1000,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
-### [statements](docs/sdks/statements/README.md)
+### [Statements](docs/sdks/statements/README.md)
 
 * [list](docs/sdks/statements/README.md#list) - Retrieve all statements associated with an account.
 
@@ -1013,7 +1013,7 @@ Use the `Accept` header to specify the format of the response. Supported formats
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
-### [support](docs/sdks/support/README.md)
+### [Support](docs/sdks/support/README.md)
 
 * [createTicket](docs/sdks/support/README.md#createticket) - Create a support ticket for a Moov account.
 
@@ -1051,7 +1051,7 @@ you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
 If you're listing another account's messages, then you'll need to
 specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
 
-### [sweeps](docs/sdks/sweeps/README.md)
+### [Sweeps](docs/sdks/sweeps/README.md)
 
 * [createConfig](docs/sdks/sweeps/README.md#createconfig) - Create a sweep config for a wallet.
 
@@ -1078,7 +1078,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
-### [terminalApplications](docs/sdks/terminalapplications/README.md)
+### [TerminalApplications](docs/sdks/terminalapplications/README.md)
 
 * [create](docs/sdks/terminalapplications/README.md#create) - Create a new terminal application.
 
@@ -1101,7 +1101,7 @@ you'll need to specify the `/terminal-applications.write` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/terminal-applications.write` scope.
 
-### [transfers](docs/sdks/transfers/README.md)
+### [Transfers](docs/sdks/transfers/README.md)
 
 * [generateOptions](docs/sdks/transfers/README.md#generateoptions) - Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
 supply in the request body.
@@ -1172,7 +1172,7 @@ to learn more.
 To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
 to specify the `/accounts/{accountID}/transfers.write` scope.
 
-### [underwriting](docs/sdks/underwriting/README.md)
+### [Underwriting](docs/sdks/underwriting/README.md)
 
 * [get](docs/sdks/underwriting/README.md#get) - Retrieve underwriting associated with a given Moov account. 
 
@@ -1193,7 +1193,22 @@ Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 
-### [wallets](docs/sdks/wallets/README.md)
+### [WalletTransactions](docs/sdks/wallettransactions/README.md)
+
+* [list](docs/sdks/wallettransactions/README.md#list) - List all the transactions associated with a particular Moov wallet. 
+
+Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
+* [get](docs/sdks/wallettransactions/README.md#get) - Get details on a specific wallet transaction. 
+
+Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
+
+### [Wallets](docs/sdks/wallets/README.md)
 
 * [create](docs/sdks/wallets/README.md#create) - Create a new wallet for an account. You can specify optional attributes such as a display name and description to specify the intended use of the wallet. This will generate a new moov-wallet payment method.
 
@@ -1219,21 +1234,6 @@ Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to l
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
-
-### [walletTransactions](docs/sdks/wallettransactions/README.md)
-
-* [list](docs/sdks/wallettransactions/README.md#list) - List all the transactions associated with a particular Moov wallet. 
-
-Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
-* [get](docs/sdks/wallettransactions/README.md#get) - Get details on a specific wallet transaction. 
-
-Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 </details>
 <!-- End Available Resources and Operations [operations] -->

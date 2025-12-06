@@ -12,6 +12,12 @@ import {
   AmountDecimal$Outbound,
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
+import {
+  InvoiceLineItemImageMetadata,
+  InvoiceLineItemImageMetadata$inboundSchema,
+  InvoiceLineItemImageMetadata$Outbound,
+  InvoiceLineItemImageMetadata$outboundSchema,
+} from "./invoicelineitemimagemetadata.js";
 
 /**
  * Represents a modifier or option applied to a line item.
@@ -33,6 +39,10 @@ export type InvoiceLineItemOption = {
    * Optional group identifier to categorize related options (e.g., 'toppings').
    */
   group?: string | undefined;
+  /**
+   * Optional list of images associated with this line item option.
+   */
+  images?: Array<InvoiceLineItemImageMetadata> | undefined;
 };
 
 /** @internal */
@@ -45,6 +55,7 @@ export const InvoiceLineItemOption$inboundSchema: z.ZodType<
   quantity: z.number().int(),
   priceModifier: AmountDecimal$inboundSchema.optional(),
   group: z.string().optional(),
+  images: z.array(InvoiceLineItemImageMetadata$inboundSchema).optional(),
 });
 /** @internal */
 export type InvoiceLineItemOption$Outbound = {
@@ -52,6 +63,7 @@ export type InvoiceLineItemOption$Outbound = {
   quantity: number;
   priceModifier?: AmountDecimal$Outbound | undefined;
   group?: string | undefined;
+  images?: Array<InvoiceLineItemImageMetadata$Outbound> | undefined;
 };
 
 /** @internal */
@@ -64,6 +76,7 @@ export const InvoiceLineItemOption$outboundSchema: z.ZodType<
   quantity: z.number().int(),
   priceModifier: AmountDecimal$outboundSchema.optional(),
   group: z.string().optional(),
+  images: z.array(InvoiceLineItemImageMetadata$outboundSchema).optional(),
 });
 
 export function invoiceLineItemOptionToJSON(

@@ -22,6 +22,13 @@ let value: InvoiceLineItem = {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
+      images: [
+        {
+          imageID: "4925642d-ae6d-43c8-bb16-aa953186a0b9",
+          link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+          publicID: "<id>",
+        },
+      ],
     },
   ],
   images: [
