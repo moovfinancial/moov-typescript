@@ -149,7 +149,6 @@ export * from "./submitdisputeevidence.js";
 export * from "./testendtoendtoken.js";
 export * from "./updateaccount.js";
 export * from "./updateapplepaymerchantdomains.js";
-export * from "./updatebrand.js";
 export * from "./updatecard.js";
 export * from "./updatedisputeevidence.js";
 export * from "./updateimage.js";

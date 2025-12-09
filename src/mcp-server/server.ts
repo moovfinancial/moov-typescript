@@ -47,7 +47,6 @@ import { tool$bankAccountsLink } from "./tools/bankAccountsLink.js";
 import { tool$bankAccountsList } from "./tools/bankAccountsList.js";
 import { tool$brandingCreate } from "./tools/brandingCreate.js";
 import { tool$brandingGet } from "./tools/brandingGet.js";
-import { tool$brandingUpdate } from "./tools/brandingUpdate.js";
 import { tool$brandingUpsert } from "./tools/brandingUpsert.js";
 import { tool$capabilitiesDisable } from "./tools/capabilitiesDisable.js";
 import { tool$capabilitiesGet } from "./tools/capabilitiesGet.js";
@@ -193,7 +192,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.22.1",
+    version: "0.22.2",
   });
 
   const client = new MoovCore({
@@ -252,7 +251,6 @@ export function createMCPServer(deps: {
   tool(tool$brandingCreate);
   tool(tool$brandingUpsert);
   tool(tool$brandingGet);
-  tool(tool$brandingUpdate);
   tool(tool$capabilitiesList);
   tool(tool$capabilitiesRequest);
   tool(tool$capabilitiesGet);

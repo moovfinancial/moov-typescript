@@ -4,7 +4,6 @@
 
 import { brandingCreate } from "../funcs/brandingCreate.js";
 import { brandingGet } from "../funcs/brandingGet.js";
-import { brandingUpdate } from "../funcs/brandingUpdate.js";
 import { brandingUpsert } from "../funcs/brandingUpsert.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
@@ -56,23 +55,6 @@ export class Branding extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetBrandResponse> {
     return unwrapAsync(brandingGet(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Updates the brand properties for the specified account.
-   *
-   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/branding.write` scope.
-   */
-  async update(
-    request: operations.UpdateBrandRequest,
-    options?: RequestOptions,
-  ): Promise<operations.UpdateBrandResponse> {
-    return unwrapAsync(brandingUpdate(
       this,
       request,
       options,
