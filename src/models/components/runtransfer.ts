@@ -24,6 +24,10 @@ import {
  */
 export type RunTransfer = {
   amount: Amount;
+  /**
+   * Optional sales tax amount. This amount is included in the total transfer amount.
+   */
+  salesTaxAmount?: Amount | undefined;
   destination: SchedulePaymentMethod;
   partnerAccountID: string;
   source: SchedulePaymentMethod;
@@ -40,6 +44,7 @@ export const RunTransfer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: Amount$inboundSchema,
+  salesTaxAmount: Amount$inboundSchema.optional(),
   destination: SchedulePaymentMethod$inboundSchema,
   partnerAccountID: z.string(),
   source: SchedulePaymentMethod$inboundSchema,
@@ -48,6 +53,7 @@ export const RunTransfer$inboundSchema: z.ZodType<
 /** @internal */
 export type RunTransfer$Outbound = {
   amount: Amount$Outbound;
+  salesTaxAmount?: Amount$Outbound | undefined;
   destination: SchedulePaymentMethod$Outbound;
   partnerAccountID: string;
   source: SchedulePaymentMethod$Outbound;
@@ -61,6 +67,7 @@ export const RunTransfer$outboundSchema: z.ZodType<
   RunTransfer
 > = z.object({
   amount: Amount$outboundSchema,
+  salesTaxAmount: Amount$outboundSchema.optional(),
   destination: SchedulePaymentMethod$outboundSchema,
   partnerAccountID: z.string(),
   source: SchedulePaymentMethod$outboundSchema,

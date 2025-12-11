@@ -22,6 +22,10 @@ let value: GetScheduledOccurrenceResponse = {
         currency: "USD",
         value: 1204,
       },
+      salesTaxAmount: {
+        currency: "USD",
+        value: 1204,
+      },
       destination: {
         paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
         achDetails: {

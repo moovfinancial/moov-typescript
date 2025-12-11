@@ -12,6 +12,10 @@ let value: RunTransfer = {
     currency: "USD",
     value: 1204,
   },
+  salesTaxAmount: {
+    currency: "USD",
+    value: 1204,
+  },
   destination: {
     paymentMethodID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     achDetails: {
@@ -42,6 +46,7 @@ let value: RunTransfer = {
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | `amount`                                                                             | [components.Amount](../../models/components/amount.md)                               | :heavy_check_mark:                                                                   | N/A                                                                                  |                                                                                      |
+| `salesTaxAmount`                                                                     | [components.Amount](../../models/components/amount.md)                               | :heavy_minus_sign:                                                                   | Optional sales tax amount. This amount is included in the total transfer amount.     |                                                                                      |
 | `destination`                                                                        | [components.SchedulePaymentMethod](../../models/components/schedulepaymentmethod.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |                                                                                      |
 | `partnerAccountID`                                                                   | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                 |
 | `source`                                                                             | [components.SchedulePaymentMethod](../../models/components/schedulepaymentmethod.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |                                                                                      |
