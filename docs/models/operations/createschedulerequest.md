@@ -44,6 +44,28 @@ let value: CreateScheduleRequest = {
           },
           description:
             "among supposing futon contrast or absolve geez haul unit deceivingly",
+          lineItems: {
+            items: [
+              {
+                name: "<value>",
+                basePrice: {
+                  currency: "USD",
+                  valueDecimal: "12.987654321",
+                },
+                quantity: 988494,
+                options: [
+                  {
+                    name: "<value>",
+                    quantity: 556915,
+                    priceModifier: {
+                      currency: "USD",
+                      valueDecimal: "12.987654321",
+                    },
+                  },
+                ],
+              },
+            ],
+          },
         },
       },
     ],
@@ -81,6 +103,28 @@ let value: CreateScheduleRequest = {
         },
         description:
           "among supposing futon contrast or absolve geez haul unit deceivingly",
+        lineItems: {
+          items: [
+            {
+              name: "<value>",
+              basePrice: {
+                currency: "USD",
+                valueDecimal: "12.987654321",
+              },
+              quantity: 988494,
+              options: [
+                {
+                  name: "<value>",
+                  quantity: 556915,
+                  priceModifier: {
+                    currency: "USD",
+                    valueDecimal: "12.987654321",
+                  },
+                },
+              ],
+            },
+          ],
+        },
       },
       start: new Date("2009-11-10T23:00:00Z"),
     },

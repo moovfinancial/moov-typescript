@@ -13,7 +13,7 @@ const args = {
 export const tool$bankAccountsGetVerification: ToolDefinition<typeof args> = {
   name: "bank-accounts-get-verification",
   description:
-    `Retrieve the current status and details of an instant verification, including whether the verification method was instant or same-day 
+    `Retrieve the current status and details of an instant verification, including whether the verification method was instant (RTP or FedNow) or same-day
 ACH. This helps track the verification process in real-time and provides details in case of exceptions.
 
 The status will indicate the following:

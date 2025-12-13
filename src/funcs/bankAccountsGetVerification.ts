@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Retrieve the current status and details of an instant verification, including whether the verification method was instant or same-day
+ * Retrieve the current status and details of an instant verification, including whether the verification method was instant (RTP or FedNow) or same-day
  * ACH. This helps track the verification process in real-time and provides details in case of exceptions.
  *
  * The status will indicate the following:

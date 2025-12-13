@@ -153,6 +153,9 @@ async function run() {
             },
           },
           description: "sediment yahoo a rudely mmm massive helpful brr",
+          lineItems: {
+            items: [],
+          },
         },
         start: new Date("2009-11-10T23:00:00Z"),
       },
@@ -286,6 +289,9 @@ async function run() {
             },
           },
           description: "sediment yahoo a rudely mmm massive helpful brr",
+          lineItems: {
+            items: [],
+          },
         },
         start: new Date("2009-11-10T23:00:00Z"),
       },
@@ -568,6 +574,28 @@ async function run() {
             },
           },
           description: "er reasoning following veto oof fervently ha how till now",
+          lineItems: {
+            items: [
+              {
+                name: "<value>",
+                basePrice: {
+                  currency: "USD",
+                  valueDecimal: "12.987654321",
+                },
+                quantity: 973458,
+                options: [
+                  {
+                    name: "<value>",
+                    quantity: 221042,
+                    priceModifier: {
+                      currency: "USD",
+                      valueDecimal: "12.987654321",
+                    },
+                  },
+                ],
+              },
+            ],
+          },
         },
         start: new Date("2009-11-10T23:00:00Z"),
       },
@@ -734,6 +762,28 @@ async function run() {
             },
           },
           description: "er reasoning following veto oof fervently ha how till now",
+          lineItems: {
+            items: [
+              {
+                name: "<value>",
+                basePrice: {
+                  currency: "USD",
+                  valueDecimal: "12.987654321",
+                },
+                quantity: 973458,
+                options: [
+                  {
+                    name: "<value>",
+                    quantity: 221042,
+                    priceModifier: {
+                      currency: "USD",
+                      valueDecimal: "12.987654321",
+                    },
+                  },
+                ],
+              },
+            ],
+          },
         },
         start: new Date("2009-11-10T23:00:00Z"),
       },

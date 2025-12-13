@@ -63,6 +63,31 @@ export type BankAccountException = {
    */
   rtpRejectionCode?: RTPRejectionCode | undefined;
   /**
+   * The rejection code of a FedNow transaction that caused the bank account status to change.
+   *
+   * @remarks
+   *
+   * - AC02: Debtor account is invalid
+   * - AC03: Creditor account is invalid
+   * - AC04: Account closed
+   * - AC06: Account is blocked
+   * - AC07: Creditor account closed
+   * - AC10: Debtor account currency is invalid or missing
+   * - AC11: Creditor account currency is invalid or missing
+   * - AC13: Debtor account type missing or invalid
+   * - AC14: Creditor account type missing or invalid
+   * - AG01: Transaction is forbidden on this type of account
+   * - AG03: Transaction type is not supported/authorized on this account
+   * - BE06: End customer specified is not known at associated Sort/National Bank Code or no longer exists in the books
+   * - DUPL: Payment is a duplicate of another payment
+   * - MD07: End customer is deceased
+   * - NOAT: Receiving customer account does not support/accept this message type
+   * - RC02: Bank identifier is invalid or missing
+   * - RC03: Debtor FI identifier is invalid or missing
+   * - RC04: Creditor FI identifier is invalid or missing
+   */
+  fednowRejectionCode?: string | undefined;
+  /**
    * Details related to an `errored` or `verificationFailed` bank account status.
    */
   description: string;
@@ -76,12 +101,14 @@ export const BankAccountException$inboundSchema: z.ZodType<
 > = z.object({
   achReturnCode: ACHReturnCode$inboundSchema.optional(),
   rtpRejectionCode: RTPRejectionCode$inboundSchema.optional(),
+  fednowRejectionCode: z.string().optional(),
   description: z.string(),
 });
 /** @internal */
 export type BankAccountException$Outbound = {
   achReturnCode?: string | undefined;
   rtpRejectionCode?: string | undefined;
+  fednowRejectionCode?: string | undefined;
   description: string;
 };
 
@@ -93,6 +120,7 @@ export const BankAccountException$outboundSchema: z.ZodType<
 > = z.object({
   achReturnCode: ACHReturnCode$outboundSchema.optional(),
   rtpRejectionCode: RTPRejectionCode$outboundSchema.optional(),
+  fednowRejectionCode: z.string().optional(),
   description: z.string(),
 });
 

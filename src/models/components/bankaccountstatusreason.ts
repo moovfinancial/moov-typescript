@@ -20,6 +20,7 @@ export const BankAccountStatusReason = {
   AchDebitReturn: "ach-debit-return",
   AchCreditReturn: "ach-credit-return",
   RtpCreditFailure: "rtp-credit-failure",
+  FednowCreditFailure: "fednow-credit-failure",
   MicroDepositReturn: "micro-deposit-return",
   AdminAction: "admin-action",
   Other: "other",

@@ -1,20 +1,30 @@
-# ~~PlatformFees~~
+# AccountFees
 
-A detailed breakdown of platform fees. This field is deprecated and will be removed in a future release. Use accountFees.
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+A detailed breakdown of account fees.
 
 ## Example Usage
 
 ```typescript
-import { PlatformFees } from "@moovio/sdk/models/components";
+import { AccountFees } from "@moovio/sdk/models/components";
 
-let value: PlatformFees = {
+let value: AccountFees = {
   walletFee: {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
   merchantPCIFee: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  kybFee: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  kycFee: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  transactionMonitoringFee: {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
@@ -31,4 +41,7 @@ let value: PlatformFees = {
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `walletFee`                                                          | [components.AmountDecimal](../../models/components/amountdecimal.md) | :heavy_check_mark:                                                   | Fees associated with wallet services.                                |
 | `merchantPCIFee`                                                     | [components.AmountDecimal](../../models/components/amountdecimal.md) | :heavy_check_mark:                                                   | Fees for PCI compliance.                                             |
+| `kybFee`                                                             | [components.AmountDecimal](../../models/components/amountdecimal.md) | :heavy_minus_sign:                                                   | Fees for business verification.                                      |
+| `kycFee`                                                             | [components.AmountDecimal](../../models/components/amountdecimal.md) | :heavy_minus_sign:                                                   | Fees for customer verification.                                      |
+| `transactionMonitoringFee`                                           | [components.AmountDecimal](../../models/components/amountdecimal.md) | :heavy_minus_sign:                                                   | Fees for transaction risk monitoring.                                |
 | `total`                                                              | [components.AmountDecimal](../../models/components/amountdecimal.md) | :heavy_check_mark:                                                   | Total platform fees.                                                 |

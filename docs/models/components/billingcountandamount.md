@@ -1,7 +1,5 @@
 # BillingCountAndAmount
 
-Represents a count of items and their total amount.
-
 ## Example Usage
 
 ```typescript

@@ -13,6 +13,12 @@ import {
   Amount$outboundSchema,
 } from "./amount.js";
 import {
+  ScheduledTransferLineItems,
+  ScheduledTransferLineItems$inboundSchema,
+  ScheduledTransferLineItems$Outbound,
+  ScheduledTransferLineItems$outboundSchema,
+} from "./scheduledtransferlineitems.js";
+import {
   SchedulePaymentMethod,
   SchedulePaymentMethod$inboundSchema,
   SchedulePaymentMethod$Outbound,
@@ -35,6 +41,13 @@ export type RunTransfer = {
    * Simple description to place on the transfer.
    */
   description: string;
+  /**
+   * An optional collection of line items for a scheduled transfer.
+   *
+   * @remarks
+   * When line items are provided their total must equal `amount` minus `salesTaxAmount`.
+   */
+  lineItems?: ScheduledTransferLineItems | undefined;
 };
 
 /** @internal */
@@ -49,6 +62,7 @@ export const RunTransfer$inboundSchema: z.ZodType<
   partnerAccountID: z.string(),
   source: SchedulePaymentMethod$inboundSchema,
   description: z.string(),
+  lineItems: ScheduledTransferLineItems$inboundSchema.optional(),
 });
 /** @internal */
 export type RunTransfer$Outbound = {
@@ -58,6 +72,7 @@ export type RunTransfer$Outbound = {
   partnerAccountID: string;
   source: SchedulePaymentMethod$Outbound;
   description: string;
+  lineItems?: ScheduledTransferLineItems$Outbound | undefined;
 };
 
 /** @internal */
@@ -72,6 +87,7 @@ export const RunTransfer$outboundSchema: z.ZodType<
   partnerAccountID: z.string(),
   source: SchedulePaymentMethod$outboundSchema,
   description: z.string(),
+  lineItems: ScheduledTransferLineItems$outboundSchema.optional(),
 });
 
 export function runTransferToJSON(runTransfer: RunTransfer): string {

@@ -14,22 +14,93 @@ import {
 } from "./amountdecimal.js";
 
 /**
- * Details of volume and fees for a specific payment method.
+ * The total transaction volume amount. This field is deprecated and will be removed in a future release.
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
+export type VolumeAmount = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency: string;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal: string;
+};
+
 export type BillingSummaryDetails = {
   /**
-   * The total transaction volume amount.
+   * The total transaction volume amount. This field is deprecated and will be removed in a future release.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  volumeAmount?: AmountDecimal | undefined;
+  volumeAmount?: VolumeAmount | undefined;
   /**
-   * The total number of transactions.
+   * The total number of transactions. This field is deprecated and will be removed in a future release.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   volumeCount?: number | undefined;
   /**
    * The total fee amount.
    */
   feeAmount?: AmountDecimal | undefined;
+  /**
+   * Total fee revenue collected from merchants.
+   */
+  merchantFeesCollected?: AmountDecimal | undefined;
+  /**
+   * Total fee costs incurred by the partner.
+   */
+  partnerFeesAssessed?: AmountDecimal | undefined;
+  /**
+   * Net revenue after deducting partner fee costs.
+   */
+  netIncome?: AmountDecimal | undefined;
 };
+
+/** @internal */
+export const VolumeAmount$inboundSchema: z.ZodType<
+  VolumeAmount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+/** @internal */
+export type VolumeAmount$Outbound = {
+  currency: string;
+  valueDecimal: string;
+};
+
+/** @internal */
+export const VolumeAmount$outboundSchema: z.ZodType<
+  VolumeAmount$Outbound,
+  z.ZodTypeDef,
+  VolumeAmount
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+export function volumeAmountToJSON(volumeAmount: VolumeAmount): string {
+  return JSON.stringify(VolumeAmount$outboundSchema.parse(volumeAmount));
+}
+export function volumeAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<VolumeAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => VolumeAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'VolumeAmount' from JSON`,
+  );
+}
 
 /** @internal */
 export const BillingSummaryDetails$inboundSchema: z.ZodType<
@@ -37,15 +108,21 @@ export const BillingSummaryDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  volumeAmount: AmountDecimal$inboundSchema.optional(),
+  volumeAmount: z.lazy(() => VolumeAmount$inboundSchema).optional(),
   volumeCount: z.number().int().optional(),
   feeAmount: AmountDecimal$inboundSchema.optional(),
+  merchantFeesCollected: AmountDecimal$inboundSchema.optional(),
+  partnerFeesAssessed: AmountDecimal$inboundSchema.optional(),
+  netIncome: AmountDecimal$inboundSchema.optional(),
 });
 /** @internal */
 export type BillingSummaryDetails$Outbound = {
-  volumeAmount?: AmountDecimal$Outbound | undefined;
+  volumeAmount?: VolumeAmount$Outbound | undefined;
   volumeCount?: number | undefined;
   feeAmount?: AmountDecimal$Outbound | undefined;
+  merchantFeesCollected?: AmountDecimal$Outbound | undefined;
+  partnerFeesAssessed?: AmountDecimal$Outbound | undefined;
+  netIncome?: AmountDecimal$Outbound | undefined;
 };
 
 /** @internal */
@@ -54,9 +131,12 @@ export const BillingSummaryDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BillingSummaryDetails
 > = z.object({
-  volumeAmount: AmountDecimal$outboundSchema.optional(),
+  volumeAmount: z.lazy(() => VolumeAmount$outboundSchema).optional(),
   volumeCount: z.number().int().optional(),
   feeAmount: AmountDecimal$outboundSchema.optional(),
+  merchantFeesCollected: AmountDecimal$outboundSchema.optional(),
+  partnerFeesAssessed: AmountDecimal$outboundSchema.optional(),
+  netIncome: AmountDecimal$outboundSchema.optional(),
 });
 
 export function billingSummaryDetailsToJSON(

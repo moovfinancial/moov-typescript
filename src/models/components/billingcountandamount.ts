@@ -13,9 +13,6 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 
-/**
- * Represents a count of items and their total amount.
- */
 export type BillingCountAndAmount = {
   /**
    * The number of items.

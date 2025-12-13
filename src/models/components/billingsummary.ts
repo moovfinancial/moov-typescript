@@ -24,17 +24,47 @@ import {
   BillingSummaryInterchange$Outbound,
   BillingSummaryInterchange$outboundSchema,
 } from "./billingsummaryinterchange.js";
+import {
+  PartnerFees,
+  PartnerFees$inboundSchema,
+  PartnerFees$Outbound,
+  PartnerFees$outboundSchema,
+} from "./partnerfees.js";
 
 /**
- * A summary of card acquiring volume and fees.
+ * The total transaction volume amount. This field is deprecated and will be removed in a future release.
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+ */
+export type BillingSummaryVolumeAmount = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency: string;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal: string;
+};
+
+/**
+ * A summary of card acquiring fees.
  */
 export type CardAcquiring = {
   /**
-   * The total transaction volume amount.
+   * The total transaction volume amount. This field is deprecated and will be removed in a future release.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  volumeAmount?: AmountDecimal | undefined;
+  volumeAmount?: BillingSummaryVolumeAmount | undefined;
   /**
-   * The total number of transactions.
+   * The total number of transactions. This field is deprecated and will be removed in a future release.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   volumeCount?: number | undefined;
   /**
@@ -42,9 +72,81 @@ export type CardAcquiring = {
    */
   feeAmount?: AmountDecimal | undefined;
   /**
+   * Total fee revenue collected from merchants.
+   */
+  merchantFeesCollected?: AmountDecimal | undefined;
+  /**
+   * Total fee costs incurred by the partner.
+   */
+  partnerFeesAssessed?: AmountDecimal | undefined;
+  /**
+   * Net revenue after deducting partner fee costs.
+   */
+  netIncome?: AmountDecimal | undefined;
+  /**
    * A summary of interchange fees by card brand.
    */
   interchangeFees?: BillingSummaryInterchange | undefined;
+};
+
+/**
+ * The total amount of platform fees. This field is deprecated and will be removed in a future release. Use summary.accountFees.
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+ */
+export type BillingSummaryPlatformFees = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency: string;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal: string;
+};
+
+/**
+ * The total amount of adjustment fees. This field is deprecated and will be removed in a future release.
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+ */
+export type AdjustmentFees = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency: string;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal: string;
+};
+
+/**
+ * The total amount of other card fees. This field is deprecated and will be removed in a future release. Use summary.otherCardFees.
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+ */
+export type OtherFees = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency: string;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal: string;
 };
 
 /**
@@ -52,34 +154,110 @@ export type CardAcquiring = {
  */
 export type BillingSummary = {
   /**
-   * A summary of card acquiring volume and fees.
+   * A summary of card acquiring fees.
    */
   cardAcquiring?: CardAcquiring | undefined;
   /**
-   * A summary of ACH volume and fees.
+   * A summary of ACH fees.
    */
   ach?: BillingSummaryDetails | undefined;
   /**
-   * A summary of instant payment volume and fees.
+   * A summary of instant payment fees.
    */
   instantPayments?: BillingSummaryDetails | undefined;
   /**
-   * The total amount of platform fees.
+   * The total amount of platform fees. This field is deprecated and will be removed in a future release. Use summary.accountFees.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  platformFees?: AmountDecimal | undefined;
+  platformFees?: BillingSummaryPlatformFees | undefined;
   /**
-   * The total amount of adjustment fees.
+   * A summary of account fees.
    */
-  adjustmentFees?: AmountDecimal | undefined;
+  accountFees?: BillingSummaryDetails | undefined;
   /**
-   * The total amount of other fees.
+   * The total amount of adjustment fees. This field is deprecated and will be removed in a future release.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  otherFees?: AmountDecimal | undefined;
+  adjustmentFees?: AdjustmentFees | undefined;
+  /**
+   * The total amount of other card fees. This field is deprecated and will be removed in a future release. Use summary.otherCardFees.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  otherFees?: OtherFees | undefined;
+  /**
+   * A summary of other card fees.
+   */
+  otherCardFees?: BillingSummaryDetails | undefined;
   /**
    * The total amount of all fees.
    */
   total?: AmountDecimal | undefined;
+  /**
+   * Total net revenue after deducting total partner fees.
+   */
+  netIncomeSubtotal?: BillingSummaryDetails | undefined;
+  /**
+   * Partner’s share of the net income, expressed as a percentage.
+   */
+  revenueShare?: string | undefined;
+  /**
+   * The portion of net income allocated to the partner before monthly partner costs.
+   */
+  residualSubtotal?: AmountDecimal | undefined;
+  /**
+   * Monthly partner costs that are charged separately and not included in residual subtotal (e.g. platform fees, minimums).
+   */
+  monthlyPartnerCosts?: PartnerFees | undefined;
+  /**
+   * Final partner payment after deducting monthlyPartnerCosts.
+   */
+  netPartnerPayment?: AmountDecimal | undefined;
 };
+
+/** @internal */
+export const BillingSummaryVolumeAmount$inboundSchema: z.ZodType<
+  BillingSummaryVolumeAmount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+/** @internal */
+export type BillingSummaryVolumeAmount$Outbound = {
+  currency: string;
+  valueDecimal: string;
+};
+
+/** @internal */
+export const BillingSummaryVolumeAmount$outboundSchema: z.ZodType<
+  BillingSummaryVolumeAmount$Outbound,
+  z.ZodTypeDef,
+  BillingSummaryVolumeAmount
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+export function billingSummaryVolumeAmountToJSON(
+  billingSummaryVolumeAmount: BillingSummaryVolumeAmount,
+): string {
+  return JSON.stringify(
+    BillingSummaryVolumeAmount$outboundSchema.parse(billingSummaryVolumeAmount),
+  );
+}
+export function billingSummaryVolumeAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<BillingSummaryVolumeAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BillingSummaryVolumeAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BillingSummaryVolumeAmount' from JSON`,
+  );
+}
 
 /** @internal */
 export const CardAcquiring$inboundSchema: z.ZodType<
@@ -87,16 +265,23 @@ export const CardAcquiring$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  volumeAmount: AmountDecimal$inboundSchema.optional(),
+  volumeAmount: z.lazy(() => BillingSummaryVolumeAmount$inboundSchema)
+    .optional(),
   volumeCount: z.number().int().optional(),
   feeAmount: AmountDecimal$inboundSchema.optional(),
+  merchantFeesCollected: AmountDecimal$inboundSchema.optional(),
+  partnerFeesAssessed: AmountDecimal$inboundSchema.optional(),
+  netIncome: AmountDecimal$inboundSchema.optional(),
   interchangeFees: BillingSummaryInterchange$inboundSchema.optional(),
 });
 /** @internal */
 export type CardAcquiring$Outbound = {
-  volumeAmount?: AmountDecimal$Outbound | undefined;
+  volumeAmount?: BillingSummaryVolumeAmount$Outbound | undefined;
   volumeCount?: number | undefined;
   feeAmount?: AmountDecimal$Outbound | undefined;
+  merchantFeesCollected?: AmountDecimal$Outbound | undefined;
+  partnerFeesAssessed?: AmountDecimal$Outbound | undefined;
+  netIncome?: AmountDecimal$Outbound | undefined;
   interchangeFees?: BillingSummaryInterchange$Outbound | undefined;
 };
 
@@ -106,9 +291,13 @@ export const CardAcquiring$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CardAcquiring
 > = z.object({
-  volumeAmount: AmountDecimal$outboundSchema.optional(),
+  volumeAmount: z.lazy(() => BillingSummaryVolumeAmount$outboundSchema)
+    .optional(),
   volumeCount: z.number().int().optional(),
   feeAmount: AmountDecimal$outboundSchema.optional(),
+  merchantFeesCollected: AmountDecimal$outboundSchema.optional(),
+  partnerFeesAssessed: AmountDecimal$outboundSchema.optional(),
+  netIncome: AmountDecimal$outboundSchema.optional(),
   interchangeFees: BillingSummaryInterchange$outboundSchema.optional(),
 });
 
@@ -126,6 +315,124 @@ export function cardAcquiringFromJSON(
 }
 
 /** @internal */
+export const BillingSummaryPlatformFees$inboundSchema: z.ZodType<
+  BillingSummaryPlatformFees,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+/** @internal */
+export type BillingSummaryPlatformFees$Outbound = {
+  currency: string;
+  valueDecimal: string;
+};
+
+/** @internal */
+export const BillingSummaryPlatformFees$outboundSchema: z.ZodType<
+  BillingSummaryPlatformFees$Outbound,
+  z.ZodTypeDef,
+  BillingSummaryPlatformFees
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+export function billingSummaryPlatformFeesToJSON(
+  billingSummaryPlatformFees: BillingSummaryPlatformFees,
+): string {
+  return JSON.stringify(
+    BillingSummaryPlatformFees$outboundSchema.parse(billingSummaryPlatformFees),
+  );
+}
+export function billingSummaryPlatformFeesFromJSON(
+  jsonString: string,
+): SafeParseResult<BillingSummaryPlatformFees, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BillingSummaryPlatformFees$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BillingSummaryPlatformFees' from JSON`,
+  );
+}
+
+/** @internal */
+export const AdjustmentFees$inboundSchema: z.ZodType<
+  AdjustmentFees,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+/** @internal */
+export type AdjustmentFees$Outbound = {
+  currency: string;
+  valueDecimal: string;
+};
+
+/** @internal */
+export const AdjustmentFees$outboundSchema: z.ZodType<
+  AdjustmentFees$Outbound,
+  z.ZodTypeDef,
+  AdjustmentFees
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+export function adjustmentFeesToJSON(adjustmentFees: AdjustmentFees): string {
+  return JSON.stringify(AdjustmentFees$outboundSchema.parse(adjustmentFees));
+}
+export function adjustmentFeesFromJSON(
+  jsonString: string,
+): SafeParseResult<AdjustmentFees, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AdjustmentFees$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AdjustmentFees' from JSON`,
+  );
+}
+
+/** @internal */
+export const OtherFees$inboundSchema: z.ZodType<
+  OtherFees,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+/** @internal */
+export type OtherFees$Outbound = {
+  currency: string;
+  valueDecimal: string;
+};
+
+/** @internal */
+export const OtherFees$outboundSchema: z.ZodType<
+  OtherFees$Outbound,
+  z.ZodTypeDef,
+  OtherFees
+> = z.object({
+  currency: z.string(),
+  valueDecimal: z.string(),
+});
+
+export function otherFeesToJSON(otherFees: OtherFees): string {
+  return JSON.stringify(OtherFees$outboundSchema.parse(otherFees));
+}
+export function otherFeesFromJSON(
+  jsonString: string,
+): SafeParseResult<OtherFees, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OtherFees$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OtherFees' from JSON`,
+  );
+}
+
+/** @internal */
 export const BillingSummary$inboundSchema: z.ZodType<
   BillingSummary,
   z.ZodTypeDef,
@@ -134,20 +441,35 @@ export const BillingSummary$inboundSchema: z.ZodType<
   cardAcquiring: z.lazy(() => CardAcquiring$inboundSchema).optional(),
   ach: BillingSummaryDetails$inboundSchema.optional(),
   instantPayments: BillingSummaryDetails$inboundSchema.optional(),
-  platformFees: AmountDecimal$inboundSchema.optional(),
-  adjustmentFees: AmountDecimal$inboundSchema.optional(),
-  otherFees: AmountDecimal$inboundSchema.optional(),
+  platformFees: z.lazy(() => BillingSummaryPlatformFees$inboundSchema)
+    .optional(),
+  accountFees: BillingSummaryDetails$inboundSchema.optional(),
+  adjustmentFees: z.lazy(() => AdjustmentFees$inboundSchema).optional(),
+  otherFees: z.lazy(() => OtherFees$inboundSchema).optional(),
+  otherCardFees: BillingSummaryDetails$inboundSchema.optional(),
   total: AmountDecimal$inboundSchema.optional(),
+  netIncomeSubtotal: BillingSummaryDetails$inboundSchema.optional(),
+  revenueShare: z.string().optional(),
+  residualSubtotal: AmountDecimal$inboundSchema.optional(),
+  monthlyPartnerCosts: PartnerFees$inboundSchema.optional(),
+  netPartnerPayment: AmountDecimal$inboundSchema.optional(),
 });
 /** @internal */
 export type BillingSummary$Outbound = {
   cardAcquiring?: CardAcquiring$Outbound | undefined;
   ach?: BillingSummaryDetails$Outbound | undefined;
   instantPayments?: BillingSummaryDetails$Outbound | undefined;
-  platformFees?: AmountDecimal$Outbound | undefined;
-  adjustmentFees?: AmountDecimal$Outbound | undefined;
-  otherFees?: AmountDecimal$Outbound | undefined;
+  platformFees?: BillingSummaryPlatformFees$Outbound | undefined;
+  accountFees?: BillingSummaryDetails$Outbound | undefined;
+  adjustmentFees?: AdjustmentFees$Outbound | undefined;
+  otherFees?: OtherFees$Outbound | undefined;
+  otherCardFees?: BillingSummaryDetails$Outbound | undefined;
   total?: AmountDecimal$Outbound | undefined;
+  netIncomeSubtotal?: BillingSummaryDetails$Outbound | undefined;
+  revenueShare?: string | undefined;
+  residualSubtotal?: AmountDecimal$Outbound | undefined;
+  monthlyPartnerCosts?: PartnerFees$Outbound | undefined;
+  netPartnerPayment?: AmountDecimal$Outbound | undefined;
 };
 
 /** @internal */
@@ -159,10 +481,18 @@ export const BillingSummary$outboundSchema: z.ZodType<
   cardAcquiring: z.lazy(() => CardAcquiring$outboundSchema).optional(),
   ach: BillingSummaryDetails$outboundSchema.optional(),
   instantPayments: BillingSummaryDetails$outboundSchema.optional(),
-  platformFees: AmountDecimal$outboundSchema.optional(),
-  adjustmentFees: AmountDecimal$outboundSchema.optional(),
-  otherFees: AmountDecimal$outboundSchema.optional(),
+  platformFees: z.lazy(() => BillingSummaryPlatformFees$outboundSchema)
+    .optional(),
+  accountFees: BillingSummaryDetails$outboundSchema.optional(),
+  adjustmentFees: z.lazy(() => AdjustmentFees$outboundSchema).optional(),
+  otherFees: z.lazy(() => OtherFees$outboundSchema).optional(),
+  otherCardFees: BillingSummaryDetails$outboundSchema.optional(),
   total: AmountDecimal$outboundSchema.optional(),
+  netIncomeSubtotal: BillingSummaryDetails$outboundSchema.optional(),
+  revenueShare: z.string().optional(),
+  residualSubtotal: AmountDecimal$outboundSchema.optional(),
+  monthlyPartnerCosts: PartnerFees$outboundSchema.optional(),
+  netPartnerPayment: AmountDecimal$outboundSchema.optional(),
 });
 
 export function billingSummaryToJSON(billingSummary: BillingSummary): string {

@@ -1,7 +1,5 @@
 # CardBrandFees
 
-A detailed breakdown of fees for a specific card brand.
-
 ## Example Usage
 
 ```typescript
@@ -10,7 +8,7 @@ import { Decimal } from "@moovio/sdk/types";
 
 let value: CardBrandFees = {
   interchange: {
-    count: 869953,
+    count: 61692,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
@@ -19,8 +17,8 @@ let value: CardBrandFees = {
   interchangePrograms: [
     {
       programName: "<value>",
-      count: 474711,
-      percentageRate: new Decimal("8423.25"),
+      count: 886189,
+      percentageRate: new Decimal("2654.52"),
       perItemRate: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -36,56 +34,56 @@ let value: CardBrandFees = {
     },
   ],
   networkPassthrough: {
-    count: 61692,
-    amount: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
-    },
-  },
-  completedDomesticOnline: {
-    count: 886189,
-    amount: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
-    },
-  },
-  completedDomesticInPerson: {
-    count: 265452,
-    amount: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
-    },
-  },
-  completedInternationalOnline: {
     count: 731715,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  completedInternationalInPerson: {
+  completedDomesticOnline: {
     count: 459127,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  declines: {
+  completedDomesticInPerson: {
     count: 398071,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  refunds: {
+  completedInternationalOnline: {
     count: 60255,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  total: {
+  completedInternationalInPerson: {
     count: 984400,
+    amount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
+  declines: {
+    count: 289671,
+    amount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
+  refunds: {
+    count: 530096,
+    amount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
+  total: {
+    count: 842325,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",

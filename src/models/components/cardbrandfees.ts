@@ -19,9 +19,6 @@ import {
   BillingInterchangeProgramFee$outboundSchema,
 } from "./billinginterchangeprogramfee.js";
 
-/**
- * A detailed breakdown of fees for a specific card brand.
- */
 export type CardBrandFees = {
   /**
    * Details of interchange fees.

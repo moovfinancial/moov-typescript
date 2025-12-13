@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AccountFees,
+  AccountFees$inboundSchema,
+  AccountFees$Outbound,
+  AccountFees$outboundSchema,
+} from "./accountfees.js";
+import {
   ACHFees,
   ACHFees$inboundSchema,
   ACHFees$Outbound,
@@ -36,6 +42,12 @@ import {
   OtherCardFees$Outbound,
   OtherCardFees$outboundSchema,
 } from "./othercardfees.js";
+import {
+  PartnerFees,
+  PartnerFees$inboundSchema,
+  PartnerFees$Outbound,
+  PartnerFees$outboundSchema,
+} from "./partnerfees.js";
 import {
   PlatformFees,
   PlatformFees$inboundSchema,
@@ -76,11 +88,11 @@ export type Statement = {
    */
   subscriptionIDs: Array<string>;
   /**
-   * A summary of all fees included in this statement.
+   * A summary of all fees included in a statement.
    */
   summary: BillingSummary;
   /**
-   * A detailed breakdown of card acquiring fees.
+   * A detailed breakdown of card acquiring fees by card brand.
    */
   cardAcquiringFees?: CardAcquiringFees | undefined;
   /**
@@ -92,13 +104,23 @@ export type Statement = {
    */
   instantPaymentFees?: InstantPaymentFees | undefined;
   /**
-   * A detailed breakdown of platform fees.
+   * A detailed breakdown of platform fees. This field is deprecated and will be removed in a future release. Use accountFees.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   platformFees?: PlatformFees | undefined;
+  /**
+   * A detailed breakdown of account fees.
+   */
+  accountFees?: AccountFees | undefined;
   /**
    * A detailed breakdown of other card-related fees.
    */
   otherCardFees?: OtherCardFees | undefined;
+  /**
+   * Monthly partner costs that are charged separately and not included in residual subtotal (e.g. platform fees, minimums).
+   */
+  partnerFees?: PartnerFees | undefined;
   /**
    * The date and time the statement was created.
    */
@@ -131,7 +153,9 @@ export const Statement$inboundSchema: z.ZodType<
   achFees: ACHFees$inboundSchema.optional(),
   instantPaymentFees: InstantPaymentFees$inboundSchema.optional(),
   platformFees: PlatformFees$inboundSchema.optional(),
+  accountFees: AccountFees$inboundSchema.optional(),
   otherCardFees: OtherCardFees$inboundSchema.optional(),
+  partnerFees: PartnerFees$inboundSchema.optional(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
@@ -149,7 +173,9 @@ export type Statement$Outbound = {
   achFees?: ACHFees$Outbound | undefined;
   instantPaymentFees?: InstantPaymentFees$Outbound | undefined;
   platformFees?: PlatformFees$Outbound | undefined;
+  accountFees?: AccountFees$Outbound | undefined;
   otherCardFees?: OtherCardFees$Outbound | undefined;
+  partnerFees?: PartnerFees$Outbound | undefined;
   createdOn: string;
   updatedOn: string;
 };
@@ -172,7 +198,9 @@ export const Statement$outboundSchema: z.ZodType<
   achFees: ACHFees$outboundSchema.optional(),
   instantPaymentFees: InstantPaymentFees$outboundSchema.optional(),
   platformFees: PlatformFees$outboundSchema.optional(),
+  accountFees: AccountFees$outboundSchema.optional(),
   otherCardFees: OtherCardFees$outboundSchema.optional(),
+  partnerFees: PartnerFees$outboundSchema.optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
 });
