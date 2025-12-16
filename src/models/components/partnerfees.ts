@@ -7,11 +7,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  BillingCountAndAmount,
-  BillingCountAndAmount$inboundSchema,
-  BillingCountAndAmount$Outbound,
-  BillingCountAndAmount$outboundSchema,
-} from "./billingcountandamount.js";
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
 
 /**
  * Monthly partner costs that are charged separately and not included in residual subtotal (e.g. platform fees, minimums).
@@ -20,15 +20,15 @@ export type PartnerFees = {
   /**
    * The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.
    */
-  minimumCommitment?: BillingCountAndAmount | undefined;
+  minimumCommitment: AmountDecimal;
   /**
    * Fixed recurring fee for the billing period regardless of usage.
    */
-  monthlyPlatform?: BillingCountAndAmount | undefined;
+  monthlyPlatform: AmountDecimal;
   /**
    * Total partner fees.
    */
-  total: BillingCountAndAmount;
+  total: AmountDecimal;
 };
 
 /** @internal */
@@ -37,15 +37,15 @@ export const PartnerFees$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  minimumCommitment: BillingCountAndAmount$inboundSchema.optional(),
-  monthlyPlatform: BillingCountAndAmount$inboundSchema.optional(),
-  total: BillingCountAndAmount$inboundSchema,
+  minimumCommitment: AmountDecimal$inboundSchema,
+  monthlyPlatform: AmountDecimal$inboundSchema,
+  total: AmountDecimal$inboundSchema,
 });
 /** @internal */
 export type PartnerFees$Outbound = {
-  minimumCommitment?: BillingCountAndAmount$Outbound | undefined;
-  monthlyPlatform?: BillingCountAndAmount$Outbound | undefined;
-  total: BillingCountAndAmount$Outbound;
+  minimumCommitment: AmountDecimal$Outbound;
+  monthlyPlatform: AmountDecimal$Outbound;
+  total: AmountDecimal$Outbound;
 };
 
 /** @internal */
@@ -54,9 +54,9 @@ export const PartnerFees$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PartnerFees
 > = z.object({
-  minimumCommitment: BillingCountAndAmount$outboundSchema.optional(),
-  monthlyPlatform: BillingCountAndAmount$outboundSchema.optional(),
-  total: BillingCountAndAmount$outboundSchema,
+  minimumCommitment: AmountDecimal$outboundSchema,
+  monthlyPlatform: AmountDecimal$outboundSchema,
+  total: AmountDecimal$outboundSchema,
 });
 
 export function partnerFeesToJSON(partnerFees: PartnerFees): string {

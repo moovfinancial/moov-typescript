@@ -144,25 +144,16 @@ let value: BillingSummary = {
   },
   monthlyPartnerCosts: {
     minimumCommitment: {
-      count: 869953,
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
+      currency: "USD",
+      valueDecimal: "12.987654321",
     },
     monthlyPlatform: {
-      count: 474711,
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
+      currency: "USD",
+      valueDecimal: "12.987654321",
     },
     total: {
-      count: 842325,
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
+      currency: "USD",
+      valueDecimal: "12.987654321",
     },
   },
   netPartnerPayment: {

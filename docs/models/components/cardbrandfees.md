@@ -8,7 +8,7 @@ import { Decimal } from "@moovio/sdk/types";
 
 let value: CardBrandFees = {
   interchange: {
-    count: 61692,
+    count: 869953,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
@@ -17,8 +17,8 @@ let value: CardBrandFees = {
   interchangePrograms: [
     {
       programName: "<value>",
-      count: 886189,
-      percentageRate: new Decimal("2654.52"),
+      count: 474711,
+      percentageRate: new Decimal("8423.25"),
       perItemRate: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -34,56 +34,56 @@ let value: CardBrandFees = {
     },
   ],
   networkPassthrough: {
-    count: 731715,
+    count: 61692,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   completedDomesticOnline: {
-    count: 459127,
+    count: 886189,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   completedDomesticInPerson: {
-    count: 398071,
+    count: 265452,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   completedInternationalOnline: {
-    count: 60255,
+    count: 731715,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   completedInternationalInPerson: {
-    count: 984400,
+    count: 459127,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   declines: {
-    count: 289671,
+    count: 398071,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   refunds: {
-    count: 530096,
+    count: 60255,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   total: {
-    count: 842325,
+    count: 984400,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",

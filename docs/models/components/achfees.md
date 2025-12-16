@@ -9,49 +9,49 @@ import { ACHFees } from "@moovio/sdk/models/components";
 
 let value: ACHFees = {
   standardCredit: {
-    count: 400977,
+    count: 289671,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   sameDayCredit: {
-    count: 713116,
+    count: 530096,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   debits: {
-    count: 798297,
+    count: 400977,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   return: {
-    count: 991387,
+    count: 713116,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   unauthorizedReturn: {
-    count: 513363,
+    count: 798297,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   noticeOfChange: {
-    count: 61495,
+    count: 991387,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
   total: {
-    count: 842325,
+    count: 984400,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
