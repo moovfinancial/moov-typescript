@@ -10,6 +10,7 @@ export type CreatePaymentLinkErrorData = {
   partnerAccountID?: string | undefined;
   merchantPaymentMethodID?: string | undefined;
   amount?: components.AmountValidationError | undefined;
+  salesTaxAmount?: components.AmountValidationError | undefined;
   maxUses?: string | undefined;
   expiresOn?: string | undefined;
   display?: components.DisplayOptionsError | undefined;
@@ -22,6 +23,7 @@ export class CreatePaymentLinkError extends MoovError {
   partnerAccountID?: string | undefined;
   merchantPaymentMethodID?: string | undefined;
   amount?: components.AmountValidationError | undefined;
+  salesTaxAmount?: components.AmountValidationError | undefined;
   maxUses?: string | undefined;
   expiresOn?: string | undefined;
   display?: components.DisplayOptionsError | undefined;
@@ -48,6 +50,7 @@ export class CreatePaymentLinkError extends MoovError {
       this.merchantPaymentMethodID = err.merchantPaymentMethodID;
     }
     if (err.amount != null) this.amount = err.amount;
+    if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
     if (err.maxUses != null) this.maxUses = err.maxUses;
     if (err.expiresOn != null) this.expiresOn = err.expiresOn;
     if (err.display != null) this.display = err.display;
@@ -68,6 +71,7 @@ export const CreatePaymentLinkError$inboundSchema: z.ZodType<
   partnerAccountID: z.string().optional(),
   merchantPaymentMethodID: z.string().optional(),
   amount: components.AmountValidationError$inboundSchema.optional(),
+  salesTaxAmount: components.AmountValidationError$inboundSchema.optional(),
   maxUses: z.string().optional(),
   expiresOn: z.string().optional(),
   display: components.DisplayOptionsError$inboundSchema.optional(),
@@ -92,6 +96,7 @@ export type CreatePaymentLinkError$Outbound = {
   partnerAccountID?: string | undefined;
   merchantPaymentMethodID?: string | undefined;
   amount?: components.AmountValidationError$Outbound | undefined;
+  salesTaxAmount?: components.AmountValidationError$Outbound | undefined;
   maxUses?: string | undefined;
   expiresOn?: string | undefined;
   display?: components.DisplayOptionsError$Outbound | undefined;
@@ -113,6 +118,7 @@ export const CreatePaymentLinkError$outboundSchema: z.ZodType<
     partnerAccountID: z.string().optional(),
     merchantPaymentMethodID: z.string().optional(),
     amount: components.AmountValidationError$outboundSchema.optional(),
+    salesTaxAmount: components.AmountValidationError$outboundSchema.optional(),
     maxUses: z.string().optional(),
     expiresOn: z.string().optional(),
     display: components.DisplayOptionsError$outboundSchema.optional(),

@@ -19,6 +19,7 @@ let value: GetIssuedCardAuthorizationResponse = {
     authorizedAmount: "-14.89",
     status: "expired",
     merchantData: {
+      networkID: "<id>",
       name: "Whole Body Fitness",
       city: "San Francisco",
       country: "US",

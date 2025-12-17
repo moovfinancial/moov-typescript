@@ -62,6 +62,7 @@ export type CreatePaymentLink = {
    */
   merchantPaymentMethodID: string;
   amount: Amount;
+  salesTaxAmount?: Amount | undefined;
   /**
    * An optional limit on the number of times this payment link can be used.
    *
@@ -102,6 +103,7 @@ export const CreatePaymentLink$inboundSchema: z.ZodType<
   partnerAccountID: z.string(),
   merchantPaymentMethodID: z.string(),
   amount: Amount$inboundSchema,
+  salesTaxAmount: Amount$inboundSchema.optional(),
   maxUses: z.number().int().optional(),
   expiresOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
@@ -116,6 +118,7 @@ export type CreatePaymentLink$Outbound = {
   partnerAccountID: string;
   merchantPaymentMethodID: string;
   amount: Amount$Outbound;
+  salesTaxAmount?: Amount$Outbound | undefined;
   maxUses?: number | undefined;
   expiresOn?: string | undefined;
   display: PaymentLinkDisplayOptions$Outbound;
@@ -134,6 +137,7 @@ export const CreatePaymentLink$outboundSchema: z.ZodType<
   partnerAccountID: z.string(),
   merchantPaymentMethodID: z.string(),
   amount: Amount$outboundSchema,
+  salesTaxAmount: Amount$outboundSchema.optional(),
   maxUses: z.number().int().optional(),
   expiresOn: z.date().transform(v => v.toISOString()).optional(),
   display: PaymentLinkDisplayOptions$outboundSchema,

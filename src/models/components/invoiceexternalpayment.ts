@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -13,8 +14,15 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 
+export const InvoiceExternalPaymentPaymentType = {
+  External: "external",
+} as const;
+export type InvoiceExternalPaymentPaymentType = ClosedEnum<
+  typeof InvoiceExternalPaymentPaymentType
+>;
+
 export type InvoiceExternalPayment = {
-  paymentType: "external";
+  paymentType: InvoiceExternalPaymentPaymentType;
   description: string;
   foreignID?: string | undefined;
   paymentDate?: Date | undefined;
@@ -22,12 +30,21 @@ export type InvoiceExternalPayment = {
 };
 
 /** @internal */
+export const InvoiceExternalPaymentPaymentType$inboundSchema: z.ZodNativeEnum<
+  typeof InvoiceExternalPaymentPaymentType
+> = z.nativeEnum(InvoiceExternalPaymentPaymentType);
+/** @internal */
+export const InvoiceExternalPaymentPaymentType$outboundSchema: z.ZodNativeEnum<
+  typeof InvoiceExternalPaymentPaymentType
+> = InvoiceExternalPaymentPaymentType$inboundSchema;
+
+/** @internal */
 export const InvoiceExternalPayment$inboundSchema: z.ZodType<
   InvoiceExternalPayment,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paymentType: z.literal("external"),
+  paymentType: InvoiceExternalPaymentPaymentType$inboundSchema,
   description: z.string(),
   foreignID: z.string().optional(),
   paymentDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -36,7 +53,7 @@ export const InvoiceExternalPayment$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type InvoiceExternalPayment$Outbound = {
-  paymentType: "external";
+  paymentType: string;
   description: string;
   foreignID?: string | undefined;
   paymentDate?: string | undefined;
@@ -49,7 +66,7 @@ export const InvoiceExternalPayment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InvoiceExternalPayment
 > = z.object({
-  paymentType: z.literal("external"),
+  paymentType: InvoiceExternalPaymentPaymentType$outboundSchema,
   description: z.string(),
   foreignID: z.string().optional(),
   paymentDate: z.date().transform(v => v.toISOString()).optional(),

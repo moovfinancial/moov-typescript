@@ -13,6 +13,7 @@ let value: IssuedCardAuthorization = {
   authorizedAmount: "-14.89",
   status: "canceled",
   merchantData: {
+    networkID: "<id>",
     name: "Whole Body Fitness",
     city: "San Francisco",
     country: "US",

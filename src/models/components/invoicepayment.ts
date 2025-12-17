@@ -13,37 +13,53 @@ import {
   InvoiceExternalPayment$outboundSchema,
 } from "./invoiceexternalpayment.js";
 import {
+  InvoicePaymentType,
+  InvoicePaymentType$inboundSchema,
+  InvoicePaymentType$outboundSchema,
+} from "./invoicepaymenttype.js";
+import {
   InvoiceTransferPayment,
   InvoiceTransferPayment$inboundSchema,
   InvoiceTransferPayment$Outbound,
   InvoiceTransferPayment$outboundSchema,
 } from "./invoicetransferpayment.js";
 
-export type InvoicePayment = InvoiceTransferPayment | InvoiceExternalPayment;
+/**
+ * Payment made towards an invoice, will be either a transfer or an external payment.
+ */
+export type InvoicePayment = {
+  paymentType: InvoicePaymentType;
+  transfer?: InvoiceTransferPayment | undefined;
+  external?: InvoiceExternalPayment | undefined;
+};
 
 /** @internal */
 export const InvoicePayment$inboundSchema: z.ZodType<
   InvoicePayment,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  InvoiceTransferPayment$inboundSchema,
-  InvoiceExternalPayment$inboundSchema,
-]);
+> = z.object({
+  paymentType: InvoicePaymentType$inboundSchema,
+  transfer: InvoiceTransferPayment$inboundSchema.optional(),
+  external: InvoiceExternalPayment$inboundSchema.optional(),
+});
 /** @internal */
-export type InvoicePayment$Outbound =
-  | InvoiceTransferPayment$Outbound
-  | InvoiceExternalPayment$Outbound;
+export type InvoicePayment$Outbound = {
+  paymentType: string;
+  transfer?: InvoiceTransferPayment$Outbound | undefined;
+  external?: InvoiceExternalPayment$Outbound | undefined;
+};
 
 /** @internal */
 export const InvoicePayment$outboundSchema: z.ZodType<
   InvoicePayment$Outbound,
   z.ZodTypeDef,
   InvoicePayment
-> = z.union([
-  InvoiceTransferPayment$outboundSchema,
-  InvoiceExternalPayment$outboundSchema,
-]);
+> = z.object({
+  paymentType: InvoicePaymentType$outboundSchema,
+  transfer: InvoiceTransferPayment$outboundSchema.optional(),
+  external: InvoiceExternalPayment$outboundSchema.optional(),
+});
 
 export function invoicePaymentToJSON(invoicePayment: InvoicePayment): string {
   return JSON.stringify(InvoicePayment$outboundSchema.parse(invoicePayment));

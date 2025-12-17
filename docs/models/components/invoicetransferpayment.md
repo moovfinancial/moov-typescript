@@ -7,13 +7,13 @@ import { InvoiceTransferPayment } from "@moovio/sdk/models/components";
 
 let value: InvoiceTransferPayment = {
   paymentType: "transfer",
-  transferID: "9dd9928c-457e-4657-8a0e-c33437e452cc",
+  transferID: "bb6e4b47-df52-4ec2-b787-c88cfbebb7d9",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `paymentType`      | *"transfer"*       | :heavy_check_mark: | N/A                |
-| `transferID`       | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `paymentType`                                                    | [components.PaymentType](../../models/components/paymenttype.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `transferID`                                                     | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |

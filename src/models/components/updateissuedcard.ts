@@ -13,23 +13,19 @@ import {
   CreateAuthorizedUserUpdate$outboundSchema,
 } from "./createauthorizeduserupdate.js";
 import {
-  IssuedCardState,
-  IssuedCardState$inboundSchema,
-  IssuedCardState$outboundSchema,
-} from "./issuedcardstate.js";
+  UpdateIssuedCardState,
+  UpdateIssuedCardState$inboundSchema,
+  UpdateIssuedCardState$outboundSchema,
+} from "./updateissuedcardstate.js";
 
 export type UpdateIssuedCard = {
   /**
-   * The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
+   * Updates the state of a Moov issued card.
    *
    * @remarks
-   *
-   * - `active`: The card is operational and approves authorizations. Generally becomes active shortly after card creation.
-   * - `inactive`: The card cannot approve authorizations. This is currently a temporary state assigned post-creation during the activation process.
    * - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
-   * - `pending-verification`: Awaiting additional authorized user verification before the card can be activated.
    */
-  state?: IssuedCardState | undefined;
+  state?: UpdateIssuedCardState | undefined;
   memo?: string | undefined;
   /**
    * Fields for identifying an authorized individual.
@@ -43,7 +39,7 @@ export const UpdateIssuedCard$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  state: IssuedCardState$inboundSchema.optional(),
+  state: UpdateIssuedCardState$inboundSchema.optional(),
   memo: z.string().optional(),
   authorizedUser: CreateAuthorizedUserUpdate$inboundSchema.optional(),
 });
@@ -60,7 +56,7 @@ export const UpdateIssuedCard$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateIssuedCard
 > = z.object({
-  state: IssuedCardState$outboundSchema.optional(),
+  state: UpdateIssuedCardState$outboundSchema.optional(),
   memo: z.string().optional(),
   authorizedUser: CreateAuthorizedUserUpdate$outboundSchema.optional(),
 });

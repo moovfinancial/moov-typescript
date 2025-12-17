@@ -79,10 +79,17 @@ let value: Invoice = {
   payments: [
     {
       paymentType: "transfer",
-      transferID: "5c6e7df0-f177-435e-a18d-f0c44d00228e",
+      external: {
+        paymentType: "external",
+        description: "before save so loftily although stunning lest",
+        amount: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   ],
-  createdOn: new Date("2023-12-17T08:30:11.725Z"),
+  createdOn: new Date("2023-06-03T22:38:49.534Z"),
 };
 ```
 
@@ -105,7 +112,7 @@ let value: Invoice = {
 | `refundedAmount`                                                                              | [components.AmountDecimal](../../models/components/amountdecimal.md)                          | :heavy_check_mark:                                                                            | Total amount of refunds initiated against transfers paid towards the invoice                  |                                                                                               |
 | `disputedAmount`                                                                              | [components.AmountDecimal](../../models/components/amountdecimal.md)                          | :heavy_check_mark:                                                                            | Total amount of disputes initiated against transfers paid towards the invoice                 |                                                                                               |
 | `paymentLinkCode`                                                                             | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
-| `payments`                                                                                    | *components.InvoicePayment*[]                                                                 | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
+| `payments`                                                                                    | [components.InvoicePayment](../../models/components/invoicepayment.md)[]                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `createdOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
 | `invoiceDate`                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `dueDate`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |

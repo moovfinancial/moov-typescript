@@ -87,6 +87,10 @@ export type PaymentLink = {
   link: string;
   amount: Amount;
   /**
+   * Optional sales tax amount.
+   */
+  salesTaxAmount?: Amount | undefined;
+  /**
    * The number of times this payment link has been used.
    */
   uses: number;
@@ -144,6 +148,7 @@ export const PaymentLink$inboundSchema: z.ZodType<
   merchantPaymentMethodID: z.string(),
   link: z.string(),
   amount: Amount$inboundSchema,
+  salesTaxAmount: Amount$inboundSchema.optional(),
   uses: z.number().int(),
   maxUses: z.number().int().optional(),
   lastUsedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -172,6 +177,7 @@ export type PaymentLink$Outbound = {
   merchantPaymentMethodID: string;
   link: string;
   amount: Amount$Outbound;
+  salesTaxAmount?: Amount$Outbound | undefined;
   uses: number;
   maxUses?: number | undefined;
   lastUsedOn?: string | undefined;
@@ -202,6 +208,7 @@ export const PaymentLink$outboundSchema: z.ZodType<
   merchantPaymentMethodID: z.string(),
   link: z.string(),
   amount: Amount$outboundSchema,
+  salesTaxAmount: Amount$outboundSchema.optional(),
   uses: z.number().int(),
   maxUses: z.number().int().optional(),
   lastUsedOn: z.date().transform(v => v.toISOString()).optional(),

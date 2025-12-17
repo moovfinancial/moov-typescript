@@ -11,7 +11,7 @@ export type IssuingMerchantData = {
   /**
    * External identifier used to identify the merchant with the card brand.
    */
-  networkID?: string | undefined;
+  networkID: string;
   /**
    * Name of the merchant.
    */
@@ -23,7 +23,7 @@ export type IssuingMerchantData = {
   /**
    * Two-letter country code.
    */
-  country?: string | undefined;
+  country: string;
   /**
    * The merchant's five-digit postal code.
    */
@@ -35,7 +35,7 @@ export type IssuingMerchantData = {
   /**
    * The Merchant Category Code.
    */
-  mcc?: string | undefined;
+  mcc: string;
 };
 
 /** @internal */
@@ -44,23 +44,23 @@ export const IssuingMerchantData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  networkID: z.string().optional(),
+  networkID: z.string(),
   name: z.string().optional(),
   city: z.string().optional(),
-  country: z.string().optional(),
+  country: z.string(),
   postalCode: z.string().optional(),
   state: z.string().optional(),
-  mcc: z.string().optional(),
+  mcc: z.string(),
 });
 /** @internal */
 export type IssuingMerchantData$Outbound = {
-  networkID?: string | undefined;
+  networkID: string;
   name?: string | undefined;
   city?: string | undefined;
-  country?: string | undefined;
+  country: string;
   postalCode?: string | undefined;
   state?: string | undefined;
-  mcc?: string | undefined;
+  mcc: string;
 };
 
 /** @internal */
@@ -69,13 +69,13 @@ export const IssuingMerchantData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IssuingMerchantData
 > = z.object({
-  networkID: z.string().optional(),
+  networkID: z.string(),
   name: z.string().optional(),
   city: z.string().optional(),
-  country: z.string().optional(),
+  country: z.string(),
   postalCode: z.string().optional(),
   state: z.string().optional(),
-  mcc: z.string().optional(),
+  mcc: z.string(),
 });
 
 export function issuingMerchantDataToJSON(

@@ -96,10 +96,17 @@ let value: GetInvoiceResponse = {
     payments: [
       {
         paymentType: "transfer",
-        transferID: "902d12a1-f845-414c-ae9b-09696afa3279",
+        external: {
+          paymentType: "external",
+          description: "before save so loftily although stunning lest",
+          amount: {
+            currency: "USD",
+            valueDecimal: "12.987654321",
+          },
+        },
       },
     ],
-    createdOn: new Date("2023-03-11T04:38:05.353Z"),
+    createdOn: new Date("2025-05-09T09:46:42.983Z"),
   },
 };
 ```
