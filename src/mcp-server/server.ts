@@ -14,6 +14,7 @@ import {
 import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$accountsAssignCountries } from "./tools/accountsAssignCountries.js";
+import { tool$accountsConnect } from "./tools/accountsConnect.js";
 import { tool$accountsCreate } from "./tools/accountsCreate.js";
 import { tool$accountsDisconnect } from "./tools/accountsDisconnect.js";
 import { tool$accountsGet } from "./tools/accountsGet.js";
@@ -21,6 +22,7 @@ import { tool$accountsGetCountries } from "./tools/accountsGetCountries.js";
 import { tool$accountsGetMerchantProcessingAgreement } from "./tools/accountsGetMerchantProcessingAgreement.js";
 import { tool$accountsGetTermsOfServiceToken } from "./tools/accountsGetTermsOfServiceToken.js";
 import { tool$accountsList } from "./tools/accountsList.js";
+import { tool$accountsListConnected } from "./tools/accountsListConnected.js";
 import { tool$accountsUpdate } from "./tools/accountsUpdate.js";
 import { tool$accountTerminalApplicationsGet } from "./tools/accountTerminalApplicationsGet.js";
 import { tool$accountTerminalApplicationsGetConfiguration } from "./tools/accountTerminalApplicationsGetConfiguration.js";
@@ -192,7 +194,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.22.7",
+    version: "0.22.8",
   });
 
   const client = new MoovCore({
@@ -228,6 +230,8 @@ export function createMCPServer(deps: {
   tool(tool$accountsGet);
   tool(tool$accountsUpdate);
   tool(tool$accountsDisconnect);
+  tool(tool$accountsListConnected);
+  tool(tool$accountsConnect);
   tool(tool$accountsGetCountries);
   tool(tool$accountsAssignCountries);
   tool(tool$accountsGetMerchantProcessingAgreement);

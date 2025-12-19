@@ -49,6 +49,16 @@ forward for reporting purposes.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/profile.disconnect` scope.
+* [listConnected](#listconnected) - List or search accounts to which the caller is connected.
+
+All supported query parameters are optional. If none are provided the response will include all connected accounts.
+Pagination is supported via the `skip` and `count` query parameters. Searching by name and email will overlap and 
+return results based on relevance. Accounts with AccountType `guest` will not be included in the response.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
+to specify the `/accounts.read` scope.
+* [connect](#connect) - Shares access scopes from the account specified to the caller, establishing a connection 
+between the two accounts with the specified permissions.
 * [getCountries](#getcountries) - Retrieve the specified countries of operation for an account. 
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -694,6 +704,196 @@ run();
 | ------------------- | ------------------- | ------------------- |
 | errors.GenericError | 400, 409            | application/json    |
 | errors.APIError     | 4XX, 5XX            | \*/\*               |
+
+## listConnected
+
+List or search accounts to which the caller is connected.
+
+All supported query parameters are optional. If none are provided the response will include all connected accounts.
+Pagination is supported via the `skip` and `count` query parameters. Searching by name and email will overlap and 
+return results based on relevance. Accounts with AccountType `guest` will not be included in the response.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
+to specify the `/accounts.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listConnectedAccountsForAccount" method="get" path="/accounts/{accountID}/connected-accounts" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  xMoovVersion: "<value>",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.accounts.listConnected({
+    accountID: "7e09ffc8-e508-4fd4-a54e-21cff90a1824",
+    skip: 60,
+    count: 20,
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { accountsListConnected } from "@moovio/sdk/funcs/accountsListConnected.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  xMoovVersion: "<value>",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await accountsListConnected(moov, {
+    accountID: "7e09ffc8-e508-4fd4-a54e-21cff90a1824",
+    skip: 60,
+    count: 20,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsListConnected failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListConnectedAccountsForAccountRequest](../../models/operations/listconnectedaccountsforaccountrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ListConnectedAccountsForAccountResponse](../../models/operations/listconnectedaccountsforaccountresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.APIError | 4XX, 5XX        | \*/\*           |
+
+## connect
+
+Shares access scopes from the account specified to the caller, establishing a connection 
+between the two accounts with the specified permissions.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="connectAccount" method="post" path="/accounts/{accountID}/connections" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  xMoovVersion: "<value>",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.accounts.connect({
+    accountID: "456cb5b6-20dc-4585-97b4-745d013adb1f",
+    shareScopes: {
+      principalAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+      allowScopes: [
+        "transfers.write",
+        "payment-methods.read",
+      ],
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { accountsConnect } from "@moovio/sdk/funcs/accountsConnect.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  xMoovVersion: "<value>",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await accountsConnect(moov, {
+    accountID: "456cb5b6-20dc-4585-97b4-745d013adb1f",
+    shareScopes: {
+      principalAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
+      allowScopes: [
+        "transfers.write",
+        "payment-methods.read",
+      ],
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountsConnect failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ConnectAccountRequest](../../models/operations/connectaccountrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ConnectAccountResponse](../../models/operations/connectaccountresponse.md)\>**
+
+### Errors
+
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.GenericError                         | 400, 409                                    | application/json                            |
+| errors.ConnectAccountRequestValidationError | 422                                         | application/json                            |
+| errors.APIError                             | 4XX, 5XX                                    | \*/\*                                       |
 
 ## getCountries
 

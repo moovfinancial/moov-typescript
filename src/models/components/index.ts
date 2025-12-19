@@ -419,6 +419,7 @@ export * from "./sendfundsrtp.js";
 export * from "./sendfundsrtperror.js";
 export * from "./sentreceipt.js";
 export * from "./settings.js";
+export * from "./sharescopes.js";
 export * from "./sourcedestinationoptions.js";
 export * from "./statement.js";
 export * from "./submissionintent.js";

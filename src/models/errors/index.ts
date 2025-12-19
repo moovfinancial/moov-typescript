@@ -10,6 +10,7 @@ export * from "./authtokenrequesterror.js";
 export * from "./bankaccountvalidationerror.js";
 export * from "./brandvalidationerror.js";
 export * from "./cardacquiringrefund.js";
+export * from "./connectaccountrequestvalidationerror.js";
 export * from "./createaccounterror.js";
 export * from "./createinvoiceerror.js";
 export * from "./createpaymentlinkerror.js";

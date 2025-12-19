@@ -3,6 +3,7 @@
  */
 
 import { accountsAssignCountries } from "../funcs/accountsAssignCountries.js";
+import { accountsConnect } from "../funcs/accountsConnect.js";
 import { accountsCreate } from "../funcs/accountsCreate.js";
 import { accountsDisconnect } from "../funcs/accountsDisconnect.js";
 import { accountsGet } from "../funcs/accountsGet.js";
@@ -10,6 +11,7 @@ import { accountsGetCountries } from "../funcs/accountsGetCountries.js";
 import { accountsGetMerchantProcessingAgreement } from "../funcs/accountsGetMerchantProcessingAgreement.js";
 import { accountsGetTermsOfServiceToken } from "../funcs/accountsGetTermsOfServiceToken.js";
 import { accountsList } from "../funcs/accountsList.js";
+import { accountsListConnected } from "../funcs/accountsListConnected.js";
 import { accountsUpdate } from "../funcs/accountsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -121,6 +123,42 @@ export class Accounts extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.DisconnectAccountResponse | undefined> {
     return unwrapAsync(accountsDisconnect(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List or search accounts to which the caller is connected.
+   *
+   * All supported query parameters are optional. If none are provided the response will include all connected accounts.
+   * Pagination is supported via the `skip` and `count` query parameters. Searching by name and email will overlap and
+   * return results based on relevance. Accounts with AccountType `guest` will not be included in the response.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
+   * to specify the `/accounts.read` scope.
+   */
+  async listConnected(
+    request: operations.ListConnectedAccountsForAccountRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ListConnectedAccountsForAccountResponse> {
+    return unwrapAsync(accountsListConnected(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Shares access scopes from the account specified to the caller, establishing a connection
+   * between the two accounts with the specified permissions.
+   */
+  async connect(
+    request: operations.ConnectAccountRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ConnectAccountResponse | undefined> {
+    return unwrapAsync(accountsConnect(
       this,
       request,
       options,
