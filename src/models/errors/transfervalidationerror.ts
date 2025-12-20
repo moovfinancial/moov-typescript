@@ -18,7 +18,7 @@ export type TransferValidationErrorData = {
   metadata?: string | undefined;
   salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
-  lineItems?: components.TransferLineItemsValidationError | undefined;
+  lineItems?: components.CreateTransferLineItemsValidationError | undefined;
 };
 
 export class TransferValidationError extends MoovError {
@@ -32,7 +32,7 @@ export class TransferValidationError extends MoovError {
   metadata?: string | undefined;
   salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
-  lineItems?: components.TransferLineItemsValidationError | undefined;
+  lineItems?: components.CreateTransferLineItemsValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferValidationErrorData;
@@ -86,7 +86,7 @@ export const TransferValidationError$inboundSchema: z.ZodType<
   metadata: z.string().optional(),
   salesTaxAmount: z.string().optional(),
   foreignID: z.string().optional(),
-  lineItems: components.TransferLineItemsValidationError$inboundSchema
+  lineItems: components.CreateTransferLineItemsValidationError$inboundSchema
     .optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -117,7 +117,9 @@ export type TransferValidationError$Outbound = {
   metadata?: string | undefined;
   salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
-  lineItems?: components.TransferLineItemsValidationError$Outbound | undefined;
+  lineItems?:
+    | components.CreateTransferLineItemsValidationError$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -139,8 +141,8 @@ export const TransferValidationError$outboundSchema: z.ZodType<
       metadata: z.string().optional(),
       salesTaxAmount: z.string().optional(),
       foreignID: z.string().optional(),
-      lineItems: components.TransferLineItemsValidationError$outboundSchema
-        .optional(),
+      lineItems: components
+        .CreateTransferLineItemsValidationError$outboundSchema.optional(),
     }).transform((v) => {
       return remap$(v, {
         facilitatorFeeTotalDecimal: "FacilitatorFee.TotalDecimal",

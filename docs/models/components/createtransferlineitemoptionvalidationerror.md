@@ -1,11 +1,11 @@
-# TransferLineItemOptionValidationError
+# CreateTransferLineItemOptionValidationError
 
 ## Example Usage
 
 ```typescript
-import { TransferLineItemOptionValidationError } from "@moovio/sdk/models/components";
+import { CreateTransferLineItemOptionValidationError } from "@moovio/sdk/models/components";
 
-let value: TransferLineItemOptionValidationError = {};
+let value: CreateTransferLineItemOptionValidationError = {};
 ```
 
 ## Fields
@@ -16,3 +16,4 @@ let value: TransferLineItemOptionValidationError = {};
 | `group`                                                                                            | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `priceModifier`                                                                                    | [components.AmountDecimalValidationError](../../models/components/amountdecimalvalidationerror.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `quantity`                                                                                         | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `imageIDs`                                                                                         | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

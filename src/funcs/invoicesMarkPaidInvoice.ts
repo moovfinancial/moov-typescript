@@ -136,7 +136,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "PUT",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,

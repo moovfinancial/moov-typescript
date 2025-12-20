@@ -13,22 +13,16 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 import {
-  TransferLineItemImageMetadata,
-  TransferLineItemImageMetadata$inboundSchema,
-  TransferLineItemImageMetadata$Outbound,
-  TransferLineItemImageMetadata$outboundSchema,
-} from "./transferlineitemimagemetadata.js";
-import {
-  TransferLineItemOption,
-  TransferLineItemOption$inboundSchema,
-  TransferLineItemOption$Outbound,
-  TransferLineItemOption$outboundSchema,
-} from "./transferlineitemoption.js";
+  CreateTransferLineItemOption,
+  CreateTransferLineItemOption$inboundSchema,
+  CreateTransferLineItemOption$Outbound,
+  CreateTransferLineItemOption$outboundSchema,
+} from "./createtransferlineitemoption.js";
 
 /**
  * Represents a single item in a transfer, including optional modifiers and quantity.
  */
-export type TransferLineItem = {
+export type CreateTransferLineItem = {
   /**
    * The name of the item.
    */
@@ -44,11 +38,11 @@ export type TransferLineItem = {
   /**
    * Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).
    */
-  options?: Array<TransferLineItemOption> | undefined;
+  options?: Array<CreateTransferLineItemOption> | undefined;
   /**
    * Optional list of images associated with this line item.
    */
-  images?: Array<TransferLineItemImageMetadata> | undefined;
+  imageIDs?: Array<string> | undefined;
   /**
    * Optional unique identifier associating the line item with a product.
    */
@@ -56,55 +50,55 @@ export type TransferLineItem = {
 };
 
 /** @internal */
-export const TransferLineItem$inboundSchema: z.ZodType<
-  TransferLineItem,
+export const CreateTransferLineItem$inboundSchema: z.ZodType<
+  CreateTransferLineItem,
   z.ZodTypeDef,
   unknown
 > = z.object({
   name: z.string(),
   basePrice: AmountDecimal$inboundSchema,
   quantity: z.number().int(),
-  options: z.array(TransferLineItemOption$inboundSchema).optional(),
-  images: z.array(TransferLineItemImageMetadata$inboundSchema).optional(),
+  options: z.array(CreateTransferLineItemOption$inboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
   productID: z.string().optional(),
 });
 /** @internal */
-export type TransferLineItem$Outbound = {
+export type CreateTransferLineItem$Outbound = {
   name: string;
   basePrice: AmountDecimal$Outbound;
   quantity: number;
-  options?: Array<TransferLineItemOption$Outbound> | undefined;
-  images?: Array<TransferLineItemImageMetadata$Outbound> | undefined;
+  options?: Array<CreateTransferLineItemOption$Outbound> | undefined;
+  imageIDs?: Array<string> | undefined;
   productID?: string | undefined;
 };
 
 /** @internal */
-export const TransferLineItem$outboundSchema: z.ZodType<
-  TransferLineItem$Outbound,
+export const CreateTransferLineItem$outboundSchema: z.ZodType<
+  CreateTransferLineItem$Outbound,
   z.ZodTypeDef,
-  TransferLineItem
+  CreateTransferLineItem
 > = z.object({
   name: z.string(),
   basePrice: AmountDecimal$outboundSchema,
   quantity: z.number().int(),
-  options: z.array(TransferLineItemOption$outboundSchema).optional(),
-  images: z.array(TransferLineItemImageMetadata$outboundSchema).optional(),
+  options: z.array(CreateTransferLineItemOption$outboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
   productID: z.string().optional(),
 });
 
-export function transferLineItemToJSON(
-  transferLineItem: TransferLineItem,
+export function createTransferLineItemToJSON(
+  createTransferLineItem: CreateTransferLineItem,
 ): string {
   return JSON.stringify(
-    TransferLineItem$outboundSchema.parse(transferLineItem),
+    CreateTransferLineItem$outboundSchema.parse(createTransferLineItem),
   );
 }
-export function transferLineItemFromJSON(
+export function createTransferLineItemFromJSON(
   jsonString: string,
-): SafeParseResult<TransferLineItem, SDKValidationError> {
+): SafeParseResult<CreateTransferLineItem, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TransferLineItem$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferLineItem' from JSON`,
+    (x) => CreateTransferLineItem$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransferLineItem' from JSON`,
   );
 }

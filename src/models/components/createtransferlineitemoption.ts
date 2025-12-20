@@ -12,17 +12,11 @@ import {
   AmountDecimal$Outbound,
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
-import {
-  TransferLineItemImageMetadata,
-  TransferLineItemImageMetadata$inboundSchema,
-  TransferLineItemImageMetadata$Outbound,
-  TransferLineItemImageMetadata$outboundSchema,
-} from "./transferlineitemimagemetadata.js";
 
 /**
  * Represents a modifier or option applied to a line item.
  */
-export type TransferLineItemOption = {
+export type CreateTransferLineItemOption = {
   /**
    * The name of the option or modifier.
    */
@@ -38,7 +32,7 @@ export type TransferLineItemOption = {
   /**
    * Optional list of images associated with this line item option.
    */
-  images?: Array<TransferLineItemImageMetadata> | undefined;
+  imageIDs?: Array<string> | undefined;
   /**
    * Optional group identifier to categorize related options (e.g., 'toppings').
    */
@@ -46,52 +40,54 @@ export type TransferLineItemOption = {
 };
 
 /** @internal */
-export const TransferLineItemOption$inboundSchema: z.ZodType<
-  TransferLineItemOption,
+export const CreateTransferLineItemOption$inboundSchema: z.ZodType<
+  CreateTransferLineItemOption,
   z.ZodTypeDef,
   unknown
 > = z.object({
   name: z.string(),
   quantity: z.number().int(),
   priceModifier: AmountDecimal$inboundSchema.optional(),
-  images: z.array(TransferLineItemImageMetadata$inboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
   group: z.string().optional(),
 });
 /** @internal */
-export type TransferLineItemOption$Outbound = {
+export type CreateTransferLineItemOption$Outbound = {
   name: string;
   quantity: number;
   priceModifier?: AmountDecimal$Outbound | undefined;
-  images?: Array<TransferLineItemImageMetadata$Outbound> | undefined;
+  imageIDs?: Array<string> | undefined;
   group?: string | undefined;
 };
 
 /** @internal */
-export const TransferLineItemOption$outboundSchema: z.ZodType<
-  TransferLineItemOption$Outbound,
+export const CreateTransferLineItemOption$outboundSchema: z.ZodType<
+  CreateTransferLineItemOption$Outbound,
   z.ZodTypeDef,
-  TransferLineItemOption
+  CreateTransferLineItemOption
 > = z.object({
   name: z.string(),
   quantity: z.number().int(),
   priceModifier: AmountDecimal$outboundSchema.optional(),
-  images: z.array(TransferLineItemImageMetadata$outboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
   group: z.string().optional(),
 });
 
-export function transferLineItemOptionToJSON(
-  transferLineItemOption: TransferLineItemOption,
+export function createTransferLineItemOptionToJSON(
+  createTransferLineItemOption: CreateTransferLineItemOption,
 ): string {
   return JSON.stringify(
-    TransferLineItemOption$outboundSchema.parse(transferLineItemOption),
+    CreateTransferLineItemOption$outboundSchema.parse(
+      createTransferLineItemOption,
+    ),
   );
 }
-export function transferLineItemOptionFromJSON(
+export function createTransferLineItemOptionFromJSON(
   jsonString: string,
-): SafeParseResult<TransferLineItemOption, SDKValidationError> {
+): SafeParseResult<CreateTransferLineItemOption, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TransferLineItemOption$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferLineItemOption' from JSON`,
+    (x) => CreateTransferLineItemOption$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTransferLineItemOption' from JSON`,
   );
 }
