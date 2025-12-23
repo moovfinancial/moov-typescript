@@ -297,7 +297,6 @@ export * from "./linkedapplepaypaymentmethod.js";
 export * from "./listfeesfetchrequest.js";
 export * from "./manualtermsofservice.js";
 export * from "./manualtermsofserviceupdate.js";
-export * from "./markinvoicepaid.js";
 export * from "./microdepositstatus.js";
 export * from "./minimumcommitment.js";
 export * from "./mode.js";

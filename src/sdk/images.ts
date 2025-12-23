@@ -80,7 +80,10 @@ export class Images extends ClientSDK {
   }
 
   /**
-   * Permanently delete an image by its ID.
+   *   Disable an image by its ID.
+   *
+   *   Disabled images are still be accessible via their public URL, and cannot be assigned
+   *   to products or line-items.
    */
   async delete(
     request: operations.DeleteImageRequest,

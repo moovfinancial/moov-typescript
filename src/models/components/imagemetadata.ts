@@ -29,6 +29,7 @@ export type ImageMetadata = {
   link: string;
   createdOn: Date;
   updatedOn: Date;
+  disabledOn?: Date | undefined;
 };
 
 /** @internal */
@@ -43,6 +44,8 @@ export const ImageMetadata$inboundSchema: z.ZodType<
   link: z.string(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
 });
 /** @internal */
 export type ImageMetadata$Outbound = {
@@ -52,6 +55,7 @@ export type ImageMetadata$Outbound = {
   link: string;
   createdOn: string;
   updatedOn: string;
+  disabledOn?: string | undefined;
 };
 
 /** @internal */
@@ -66,6 +70,7 @@ export const ImageMetadata$outboundSchema: z.ZodType<
   link: z.string(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
+  disabledOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
 export function imageMetadataToJSON(imageMetadata: ImageMetadata): string {

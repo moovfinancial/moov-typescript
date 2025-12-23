@@ -137,7 +137,6 @@ export * from "./listtickets.js";
 export * from "./listtransfers.js";
 export * from "./listwallets.js";
 export * from "./listwallettransactions.js";
-export * from "./markpaidinvoice.js";
 export * from "./ping.js";
 export * from "./registerapplepaymerchantdomains.js";
 export * from "./requestcapabilities.js";

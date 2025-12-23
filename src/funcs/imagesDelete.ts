@@ -26,7 +26,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Permanently delete an image by its ID.
+ *   Disable an image by its ID.
+ *
+ *   Disabled images are still be accessible via their public URL, and cannot be assigned
+ *   to products or line-items.
  */
 export function imagesDelete(
   client: MoovCore,

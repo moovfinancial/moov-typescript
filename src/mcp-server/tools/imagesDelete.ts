@@ -12,7 +12,10 @@ const args = {
 
 export const tool$imagesDelete: ToolDefinition<typeof args> = {
   name: "images-delete",
-  description: `Permanently delete an image by its ID.`,
+  description: `  Disable an image by its ID.
+  
+  Disabled images are still be accessible via their public URL, and cannot be assigned
+  to products or line-items.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await imagesDelete(

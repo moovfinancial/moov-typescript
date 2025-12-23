@@ -5,7 +5,6 @@
 import { invoicesCreateInvoice } from "../funcs/invoicesCreateInvoice.js";
 import { invoicesGetInvoice } from "../funcs/invoicesGetInvoice.js";
 import { invoicesListInvoices } from "../funcs/invoicesListInvoices.js";
-import { invoicesMarkPaidInvoice } from "../funcs/invoicesMarkPaidInvoice.js";
 import { invoicesUpdateInvoice } from "../funcs/invoicesUpdateInvoice.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
@@ -74,24 +73,6 @@ export class Invoices extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateInvoiceResponse> {
     return unwrapAsync(invoicesUpdateInvoice(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Marks an invoice as paid outside of the Moov platform.
-   * If a payment link was created, the corresponding payment link is canceled, but a receipt is still sent.
-   *
-   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
-   */
-  async markPaidInvoice(
-    request: operations.MarkPaidInvoiceRequest,
-    options?: RequestOptions,
-  ): Promise<operations.MarkPaidInvoiceResponse> {
-    return unwrapAsync(invoicesMarkPaidInvoice(
       this,
       request,
       options,

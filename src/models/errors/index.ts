@@ -30,7 +30,6 @@ export * from "./listinvoicesvalidationerror.js";
 export * from "./listtransfersvalidationerror.js";
 export * from "./listwalletsvalidationerror.js";
 export * from "./listwallettransactionsvalidationerror.js";
-export * from "./markinvoicepaiderror.js";
 export * from "./microdepositvalidationerror.js";
 export * from "./mooverror.js";
 export * from "./onboardinginviteerror.js";
