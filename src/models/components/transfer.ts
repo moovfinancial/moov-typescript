@@ -151,6 +151,10 @@ export type Transfer = {
    * When line items are provided, their total plus sales tax must equal the transfer amount.
    */
   lineItems?: TransferLineItems | undefined;
+  /**
+   * ID of the invoice that the transfer is associated with.
+   */
+  invoiceID?: string | undefined;
 };
 
 /** @internal */
@@ -188,6 +192,7 @@ export const Transfer$inboundSchema: z.ZodType<
   salesTaxAmount: Amount$inboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$inboundSchema.optional(),
+  invoiceID: z.string().optional(),
 });
 /** @internal */
 export type Transfer$Outbound = {
@@ -219,6 +224,7 @@ export type Transfer$Outbound = {
   salesTaxAmount?: Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: TransferLineItems$Outbound | undefined;
+  invoiceID?: string | undefined;
 };
 
 /** @internal */
@@ -255,6 +261,7 @@ export const Transfer$outboundSchema: z.ZodType<
   salesTaxAmount: Amount$outboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$outboundSchema.optional(),
+  invoiceID: z.string().optional(),
 });
 
 export function transferToJSON(transfer: Transfer): string {
