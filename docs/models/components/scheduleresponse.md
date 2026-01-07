@@ -11,7 +11,7 @@ let value: ScheduleResponse = {
   occurrences: [
     {
       mode: "production",
-      runOn: new Date("2023-12-07T16:58:18.357Z"),
+      runOn: new Date("2024-12-06T16:58:18.357Z"),
       runTransfer: {
         amount: {
           currency: "USD",
@@ -132,8 +132,8 @@ let value: ScheduleResponse = {
   },
   scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
   sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-  createdOn: new Date("2024-12-06T18:10:16.110Z"),
-  updatedOn: new Date("2025-03-25T02:08:06.106Z"),
+  createdOn: new Date("2025-12-06T18:10:16.110Z"),
+  updatedOn: new Date("2026-03-25T02:08:06.106Z"),
 };
 ```
 

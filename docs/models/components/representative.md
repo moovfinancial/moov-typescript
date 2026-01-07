@@ -32,8 +32,8 @@ let value: Representative = {
     ownershipPercentage: 38,
     jobTitle: "CEO",
   },
-  createdOn: new Date("2023-03-27T11:26:34.450Z"),
-  updatedOn: new Date("2025-11-26T16:10:06.018Z"),
+  createdOn: new Date("2024-03-26T11:26:34.450Z"),
+  updatedOn: new Date("2026-11-26T16:10:06.018Z"),
 };
 ```
 

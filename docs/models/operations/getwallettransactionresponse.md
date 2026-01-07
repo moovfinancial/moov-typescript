@@ -24,7 +24,7 @@ let value: GetWalletTransactionResponse = {
     sourceID: "0696c3fe-3140-40c8-8cc6-daa4fa67472b",
     status: "canceled",
     memo: "<value>",
-    createdOn: new Date("2023-12-16T14:20:21.256Z"),
+    createdOn: new Date("2024-12-15T14:20:21.256Z"),
     currency: "USD",
     grossAmount: 465435,
     grossAmountDecimal: "<value>",

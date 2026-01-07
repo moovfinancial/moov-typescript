@@ -37,7 +37,7 @@ let value: CreateOnboardingInviteResponse = {
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2023-07-11T10:16:24.410Z"),
+    createdOn: new Date("2024-07-10T10:16:24.410Z"),
   },
 };
 ```

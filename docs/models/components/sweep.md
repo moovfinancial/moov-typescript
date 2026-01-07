@@ -10,7 +10,7 @@ let value: Sweep = {
   status: "closed",
   accruedAmount: "<value>",
   currency: "USD",
-  accrualStartedOn: new Date("2023-07-27T01:48:08.217Z"),
+  accrualStartedOn: new Date("2024-07-26T01:48:08.217Z"),
   subtotals: [
     {
       type: "ach-reversal",

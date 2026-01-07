@@ -27,7 +27,7 @@ let value: GetIssuedCardAuthorizationResponse = {
       state: "CA",
       mcc: "7298",
     },
-    createdOn: new Date("2025-08-19T12:32:20.247Z"),
+    createdOn: new Date("2026-08-19T12:32:20.247Z"),
   },
 };
 ```

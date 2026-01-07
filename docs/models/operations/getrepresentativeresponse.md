@@ -32,8 +32,8 @@ let value: GetRepresentativeResponse = {
       ownershipPercentage: 38,
       jobTitle: "CEO",
     },
-    createdOn: new Date("2024-10-19T02:15:20.255Z"),
-    updatedOn: new Date("2025-06-27T09:02:04.151Z"),
+    createdOn: new Date("2025-10-19T02:15:20.255Z"),
+    updatedOn: new Date("2026-06-27T09:02:04.151Z"),
   },
 };
 ```

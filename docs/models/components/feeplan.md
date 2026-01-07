@@ -60,7 +60,7 @@ let value: FeePlan = {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
-  createdAt: new Date("2024-01-13T05:25:04.069Z"),
+  createdAt: new Date("2025-01-12T05:25:04.069Z"),
 };
 ```
 

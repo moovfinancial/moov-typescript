@@ -13,8 +13,8 @@ let value: Statement = {
   statementName: "<value>",
   fileName: "example.file",
   fileSize: 788385,
-  billingPeriodStartDateTime: new Date("2024-09-04T04:27:37.726Z"),
-  billingPeriodEndDateTime: new Date("2024-04-09T12:25:57.747Z"),
+  billingPeriodStartDateTime: new Date("2025-09-04T04:27:37.726Z"),
+  billingPeriodEndDateTime: new Date("2025-04-09T12:25:57.747Z"),
   subscriptionIDs: [
     "<value 1>",
   ],
@@ -703,8 +703,8 @@ let value: Statement = {
       valueDecimal: "12.987654321",
     },
   },
-  createdOn: new Date("2024-01-10T19:03:51.345Z"),
-  updatedOn: new Date("2024-04-20T08:54:10.576Z"),
+  createdOn: new Date("2025-01-09T19:03:51.345Z"),
+  updatedOn: new Date("2025-04-20T08:54:10.576Z"),
 };
 ```
 

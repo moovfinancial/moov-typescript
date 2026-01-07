@@ -10,7 +10,7 @@ let value: IssuedCardAuthorizationEvent = {
   eventType: "clearing",
   amount: "-14.89",
   result: "approved",
-  createdOn: new Date("2025-07-22T05:19:49.165Z"),
+  createdOn: new Date("2026-07-22T05:19:49.165Z"),
 };
 ```
 

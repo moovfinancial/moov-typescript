@@ -11,8 +11,8 @@ let value: ImageMetadata = {
   imageID: "e529fc1b-b38d-41d4-b845-70dc9bf0945f",
   publicID: "<id>",
   link: "https://api.moov.io/images/qJRAaAwwF5hmfeAFdHjIb",
-  createdOn: new Date("2024-03-17T07:40:16.408Z"),
-  updatedOn: new Date("2024-09-01T10:42:05.658Z"),
+  createdOn: new Date("2025-03-17T07:40:16.408Z"),
+  updatedOn: new Date("2025-09-01T10:42:05.658Z"),
 };
 ```
 

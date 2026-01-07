@@ -24,8 +24,8 @@ let value: ListSweepConfigsResponse = {
       pullPaymentMethod: {
         paymentMethodID: "6e6facf0-2f8e-47c2-b493-c9e1a43668ba",
       },
-      createdOn: new Date("2025-12-07T19:04:27.292Z"),
-      updatedOn: new Date("2023-06-09T17:53:29.548Z"),
+      createdOn: new Date("2026-12-07T19:04:27.292Z"),
+      updatedOn: new Date("2024-06-08T17:53:29.548Z"),
     },
   ],
 };

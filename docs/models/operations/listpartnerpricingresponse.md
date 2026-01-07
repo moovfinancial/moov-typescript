@@ -73,7 +73,7 @@ let value: ListPartnerPricingResponse = {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
-      createdAt: new Date("2025-02-13T16:36:55.378Z"),
+      createdAt: new Date("2026-02-13T16:36:55.378Z"),
     },
   ],
 };

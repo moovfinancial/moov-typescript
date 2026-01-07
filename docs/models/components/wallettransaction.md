@@ -15,7 +15,7 @@ let value: WalletTransaction = {
   sourceID: "ebce848b-ba25-4b10-9678-031064dbb59b",
   status: "failed",
   memo: "<value>",
-  createdOn: new Date("2024-01-07T00:32:32.934Z"),
+  createdOn: new Date("2025-01-06T00:32:32.934Z"),
   currency: "USD",
   grossAmount: 660840,
   grossAmountDecimal: "<value>",

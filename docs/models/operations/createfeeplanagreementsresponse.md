@@ -20,7 +20,7 @@ let value: CreateFeePlanAgreementsResponse = {
     agreementID: "b8075276-bf03-49f8-8544-2a8b070ebeeb",
     planID: "0e390040-b61d-4a77-bb10-915abe943940",
     name: "<value>",
-    acceptedOn: new Date("2025-08-26T10:13:58.068Z"),
+    acceptedOn: new Date("2026-08-26T10:13:58.068Z"),
     status: "terminated",
     cardAcquiringModel: "flat-rate",
     billableFees: [

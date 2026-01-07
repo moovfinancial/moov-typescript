@@ -17,7 +17,7 @@ let value: PaymentMethodsBankAccount = {
   bankAccountType: "loan",
   routingNumber: "<value>",
   lastFourAccountNumber: "<value>",
-  updatedOn: new Date("2025-03-18T01:09:45.002Z"),
+  updatedOn: new Date("2026-03-18T01:09:45.002Z"),
 };
 ```
 

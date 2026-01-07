@@ -24,7 +24,7 @@ let value: GetIssuedCardTransactionResponse = {
     issuedCardID: "a4e9261a-1342-4287-8c1e-d2f8e46b02c5",
     fundingWalletID: "e5d6c0de-97a0-4b92-a46e-876b717135ac",
     amount: "-14.89",
-    authorizedOn: new Date("2025-10-09T03:03:39.072Z"),
+    authorizedOn: new Date("2026-10-09T03:03:39.072Z"),
     merchantData: {
       networkID: "<id>",
       name: "Whole Body Fitness",
@@ -34,7 +34,7 @@ let value: GetIssuedCardTransactionResponse = {
       state: "CA",
       mcc: "7298",
     },
-    createdOn: new Date("2023-10-16T09:50:12.324Z"),
+    createdOn: new Date("2024-10-15T09:50:12.324Z"),
   },
 };
 ```

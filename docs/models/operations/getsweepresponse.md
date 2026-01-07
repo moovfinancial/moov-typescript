@@ -17,7 +17,7 @@ let value: GetSweepResponse = {
     status: "failed",
     accruedAmount: "<value>",
     currency: "USD",
-    accrualStartedOn: new Date("2023-11-17T14:11:40.669Z"),
+    accrualStartedOn: new Date("2024-11-16T14:11:40.669Z"),
     subtotals: [
       {
         type: "ach-reversal",

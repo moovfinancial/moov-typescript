@@ -27,6 +27,12 @@ import {
   SECCode$inboundSchema,
   SECCode$outboundSchema,
 } from "./seccode.js";
+import {
+  TransferACHAddendaRecord,
+  TransferACHAddendaRecord$inboundSchema,
+  TransferACHAddendaRecord$Outbound,
+  TransferACHAddendaRecord$outboundSchema,
+} from "./transferachaddendarecord.js";
 
 /**
  * ACH specific details about the transaction.
@@ -62,6 +68,7 @@ export type ACHTransactionDetails = {
    * An optional override of your default ACH hold period in banking days. The hold period must be longer than or equal to your default setting.
    */
   debitHoldPeriod?: DebitHoldPeriod | undefined;
+  addenda?: Array<TransferACHAddendaRecord> | undefined;
 };
 
 /** @internal */
@@ -93,6 +100,7 @@ export const ACHTransactionDetails$inboundSchema: z.ZodType<
   completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   debitHoldPeriod: DebitHoldPeriod$inboundSchema.optional(),
+  addenda: z.array(TransferACHAddendaRecord$inboundSchema).optional(),
 });
 /** @internal */
 export type ACHTransactionDetails$Outbound = {
@@ -111,6 +119,7 @@ export type ACHTransactionDetails$Outbound = {
   failedOn?: string | undefined;
   completedOn?: string | undefined;
   debitHoldPeriod?: string | undefined;
+  addenda?: Array<TransferACHAddendaRecord$Outbound> | undefined;
 };
 
 /** @internal */
@@ -134,6 +143,7 @@ export const ACHTransactionDetails$outboundSchema: z.ZodType<
   failedOn: z.date().transform(v => v.toISOString()).optional(),
   completedOn: z.date().transform(v => v.toISOString()).optional(),
   debitHoldPeriod: DebitHoldPeriod$outboundSchema.optional(),
+  addenda: z.array(TransferACHAddendaRecord$outboundSchema).optional(),
 });
 
 export function achTransactionDetailsToJSON(

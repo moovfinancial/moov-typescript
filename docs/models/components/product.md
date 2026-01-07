@@ -29,8 +29,8 @@ let value: Product = {
       publicID: "q7lKWleAy9fUNhEGezQ1g",
     },
   ],
-  createdOn: new Date("2023-05-19T14:18:53.943Z"),
-  updatedOn: new Date("2024-07-14T15:57:26.940Z"),
+  createdOn: new Date("2024-05-18T14:18:53.943Z"),
+  updatedOn: new Date("2025-07-14T15:57:26.940Z"),
 };
 ```
 

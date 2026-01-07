@@ -15,8 +15,8 @@ let value: SweepConfig = {
   pullPaymentMethod: {
     paymentMethodID: "6e6facf0-2f8e-47c2-b493-c9e1a43668ba",
   },
-  createdOn: new Date("2024-07-26T23:09:55.034Z"),
-  updatedOn: new Date("2024-09-07T04:39:29.290Z"),
+  createdOn: new Date("2025-07-26T23:09:55.034Z"),
+  updatedOn: new Date("2025-09-07T04:39:29.290Z"),
 };
 ```
 

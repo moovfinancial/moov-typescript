@@ -10,8 +10,8 @@ let value: GetResidualResponse = {
   result: {
     residualID: "915b9286-b5bd-4d1b-b4ec-daef49e60e1c",
     partnerAccountID: "a7438f6d-f94a-46c9-a3a8-4cfed8d7ae12",
-    periodStart: new Date("2025-07-16T15:15:55.948Z"),
-    periodEnd: new Date("2023-12-11T09:00:23.990Z"),
+    periodStart: new Date("2026-07-16T15:15:55.948Z"),
+    periodEnd: new Date("2024-12-10T09:00:23.990Z"),
     merchantFees: {
       currency: "USD",
       valueDecimal: "12.987654321",
@@ -33,8 +33,8 @@ let value: GetResidualResponse = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
-    createdOn: new Date("2023-02-27T09:21:19.609Z"),
-    updatedOn: new Date("2024-02-06T09:20:22.869Z"),
+    createdOn: new Date("2024-02-27T09:21:19.609Z"),
+    updatedOn: new Date("2025-02-05T09:20:22.869Z"),
   },
 };
 ```

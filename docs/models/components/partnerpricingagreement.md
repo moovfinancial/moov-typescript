@@ -9,7 +9,7 @@ let value: PartnerPricingAgreement = {
   agreementID: "9d4b2654-3bb9-4277-826d-8fac307e227a",
   planID: "6e79fb49-f08c-46a9-b743-754b54bc9b35",
   name: "<value>",
-  acceptedOn: new Date("2023-11-15T03:55:35.742Z"),
+  acceptedOn: new Date("2024-11-14T03:55:35.742Z"),
   status: "terminated",
   cardAcquiringModel: "cost-plus",
   billableFees: [

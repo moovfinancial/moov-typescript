@@ -6,6 +6,12 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  CreateTransferACHAddendaRecord,
+  CreateTransferACHAddendaRecord$inboundSchema,
+  CreateTransferACHAddendaRecord$Outbound,
+  CreateTransferACHAddendaRecord$outboundSchema,
+} from "./createtransferachaddendarecord.js";
 
 export type CreateTransferDestinationACH = {
   /**
@@ -16,6 +22,7 @@ export type CreateTransferDestinationACH = {
    * An optional override of the default NACHA company name for a transfer.
    */
   originatingCompanyName?: string | undefined;
+  addenda?: Array<CreateTransferACHAddendaRecord> | undefined;
 };
 
 /** @internal */
@@ -26,11 +33,13 @@ export const CreateTransferDestinationACH$inboundSchema: z.ZodType<
 > = z.object({
   companyEntryDescription: z.string().optional(),
   originatingCompanyName: z.string().optional(),
+  addenda: z.array(CreateTransferACHAddendaRecord$inboundSchema).optional(),
 });
 /** @internal */
 export type CreateTransferDestinationACH$Outbound = {
   companyEntryDescription?: string | undefined;
   originatingCompanyName?: string | undefined;
+  addenda?: Array<CreateTransferACHAddendaRecord$Outbound> | undefined;
 };
 
 /** @internal */
@@ -41,6 +50,7 @@ export const CreateTransferDestinationACH$outboundSchema: z.ZodType<
 > = z.object({
   companyEntryDescription: z.string().optional(),
   originatingCompanyName: z.string().optional(),
+  addenda: z.array(CreateTransferACHAddendaRecord$outboundSchema).optional(),
 });
 
 export function createTransferDestinationACHToJSON(

@@ -15,8 +15,8 @@ let value: CreateTicketResponse = {
       email: "Anjali_Schiller@yahoo.com",
     },
     status: "new",
-    createdOn: new Date("2025-06-12T01:08:12.000Z"),
-    updatedOn: new Date("2023-04-16T06:47:21.212Z"),
+    createdOn: new Date("2026-06-12T01:08:12.000Z"),
+    updatedOn: new Date("2024-04-15T06:47:21.212Z"),
   },
 };
 ```

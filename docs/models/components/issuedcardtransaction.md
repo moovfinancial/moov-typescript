@@ -10,7 +10,7 @@ let value: IssuedCardTransaction = {
   issuedCardID: "71ccca64-cf86-4fa4-88b3-879bb1519ad2",
   fundingWalletID: "962c362f-c8d9-4489-87e3-0349289ad2db",
   amount: "-14.89",
-  authorizedOn: new Date("2024-02-05T11:44:35.040Z"),
+  authorizedOn: new Date("2025-02-04T11:44:35.040Z"),
   merchantData: {
     networkID: "<id>",
     name: "Whole Body Fitness",
@@ -20,7 +20,7 @@ let value: IssuedCardTransaction = {
     state: "CA",
     mcc: "7298",
   },
-  createdOn: new Date("2024-03-15T12:52:49.206Z"),
+  createdOn: new Date("2025-03-15T12:52:49.206Z"),
 };
 ```
 

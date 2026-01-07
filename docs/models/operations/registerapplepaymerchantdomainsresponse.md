@@ -17,8 +17,8 @@ let value: RegisterApplePayMerchantDomainsResponse = {
     domains: [
       "checkout.classbooker.dev",
     ],
-    createdOn: new Date("2025-03-08T02:27:01.578Z"),
-    updatedOn: new Date("2025-11-27T16:53:47.495Z"),
+    createdOn: new Date("2026-03-08T02:27:01.578Z"),
+    updatedOn: new Date("2026-11-27T16:53:47.495Z"),
   },
 };
 ```

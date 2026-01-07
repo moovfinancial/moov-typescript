@@ -16,7 +16,7 @@ let value: GetScheduledOccurrenceResponse = {
   },
   result: {
     mode: "production",
-    runOn: new Date("2023-12-08T23:18:44.350Z"),
+    runOn: new Date("2024-12-07T23:18:44.350Z"),
     runTransfer: {
       amount: {
         currency: "USD",

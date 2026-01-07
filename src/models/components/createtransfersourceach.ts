@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CreateTransferACHAddendaRecord,
+  CreateTransferACHAddendaRecord$inboundSchema,
+  CreateTransferACHAddendaRecord$Outbound,
+  CreateTransferACHAddendaRecord$outboundSchema,
+} from "./createtransferachaddendarecord.js";
+import {
   DebitHoldPeriod,
   DebitHoldPeriod$inboundSchema,
   DebitHoldPeriod$outboundSchema,
@@ -34,6 +40,7 @@ export type CreateTransferSourceACH = {
    * Code used to identify the ACH authorization method.
    */
   secCode?: SECCode | undefined;
+  addenda?: Array<CreateTransferACHAddendaRecord> | undefined;
 };
 
 /** @internal */
@@ -46,6 +53,7 @@ export const CreateTransferSourceACH$inboundSchema: z.ZodType<
   originatingCompanyName: z.string().optional(),
   debitHoldPeriod: DebitHoldPeriod$inboundSchema.optional(),
   secCode: SECCode$inboundSchema.optional(),
+  addenda: z.array(CreateTransferACHAddendaRecord$inboundSchema).optional(),
 });
 /** @internal */
 export type CreateTransferSourceACH$Outbound = {
@@ -53,6 +61,7 @@ export type CreateTransferSourceACH$Outbound = {
   originatingCompanyName?: string | undefined;
   debitHoldPeriod?: string | undefined;
   secCode?: string | undefined;
+  addenda?: Array<CreateTransferACHAddendaRecord$Outbound> | undefined;
 };
 
 /** @internal */
@@ -65,6 +74,7 @@ export const CreateTransferSourceACH$outboundSchema: z.ZodType<
   originatingCompanyName: z.string().optional(),
   debitHoldPeriod: DebitHoldPeriod$outboundSchema.optional(),
   secCode: SECCode$outboundSchema.optional(),
+  addenda: z.array(CreateTransferACHAddendaRecord$outboundSchema).optional(),
 });
 
 export function createTransferSourceACHToJSON(

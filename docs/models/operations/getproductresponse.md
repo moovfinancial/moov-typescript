@@ -31,8 +31,8 @@ let value: GetProductResponse = {
         publicID: "q7lKWleAy9fUNhEGezQ1g",
       },
     ],
-    createdOn: new Date("2024-02-17T23:26:04.032Z"),
-    updatedOn: new Date("2025-01-03T17:47:03.549Z"),
+    createdOn: new Date("2025-02-16T23:26:04.032Z"),
+    updatedOn: new Date("2026-01-03T17:47:03.549Z"),
   },
 };
 ```

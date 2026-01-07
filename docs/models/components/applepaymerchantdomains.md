@@ -11,8 +11,8 @@ let value: ApplePayMerchantDomains = {
   domains: [
     "checkout.classbooker.dev",
   ],
-  createdOn: new Date("2023-02-15T18:59:05.535Z"),
-  updatedOn: new Date("2025-04-25T07:19:02.675Z"),
+  createdOn: new Date("2024-02-15T18:59:05.535Z"),
+  updatedOn: new Date("2026-04-25T07:19:02.675Z"),
 };
 ```
 

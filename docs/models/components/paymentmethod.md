@@ -35,7 +35,7 @@ const value: components.AchDebitFundPaymentMethod = {
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
   },
 };
 ```
@@ -56,7 +56,7 @@ const value: components.AchDebitCollectPaymentMethod = {
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
   },
 };
 ```
@@ -77,7 +77,7 @@ const value: components.AchCreditStandardPaymentMethod = {
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
   },
 };
 ```
@@ -98,7 +98,7 @@ const value: components.AchCreditSameDayPaymentMethod = {
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
   },
 };
 ```
@@ -119,7 +119,7 @@ const value: components.RtpCreditPaymentMethod = {
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
   },
 };
 ```
@@ -328,7 +328,7 @@ const value: components.InstantBankCreditPaymentMethod = {
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
   },
 };
 ```

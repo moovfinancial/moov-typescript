@@ -9,8 +9,8 @@ let value: Capability = {
   capability: "transfers",
   accountID: "0d3d2640-5791-433c-b037-fb724d636016",
   status: "disabled",
-  createdOn: new Date("2024-04-21T06:40:54.967Z"),
-  updatedOn: new Date("2024-01-24T00:24:56.706Z"),
+  createdOn: new Date("2025-04-21T06:40:54.967Z"),
+  updatedOn: new Date("2025-01-23T00:24:56.706Z"),
 };
 ```
 

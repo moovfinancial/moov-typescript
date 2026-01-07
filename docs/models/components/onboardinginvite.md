@@ -30,7 +30,7 @@ let value: OnboardingInvite = {
     accountMode: "production",
     displayName: "Bob's Widgets",
   },
-  createdOn: new Date("2024-02-04T03:31:02.111Z"),
+  createdOn: new Date("2025-02-03T03:31:02.111Z"),
 };
 ```
 

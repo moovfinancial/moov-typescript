@@ -20,7 +20,7 @@ let value: TransferOptions = {
         bankAccountType: "checking",
         routingNumber: "<value>",
         lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2024-05-13T19:17:44.414Z"),
+        updatedOn: new Date("2025-05-13T19:17:44.414Z"),
       },
     },
   ],

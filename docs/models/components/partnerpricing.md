@@ -61,7 +61,7 @@ let value: PartnerPricing = {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
-  createdAt: new Date("2024-04-09T19:32:42.037Z"),
+  createdAt: new Date("2025-04-09T19:32:42.037Z"),
 };
 ```
 
