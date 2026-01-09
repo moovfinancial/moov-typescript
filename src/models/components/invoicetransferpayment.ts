@@ -4,26 +4,12 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export const PaymentType = {
-  Transfer: "transfer",
-} as const;
-export type PaymentType = ClosedEnum<typeof PaymentType>;
-
 export type InvoiceTransferPayment = {
-  paymentType: PaymentType;
   transferID: string;
 };
-
-/** @internal */
-export const PaymentType$inboundSchema: z.ZodNativeEnum<typeof PaymentType> = z
-  .nativeEnum(PaymentType);
-/** @internal */
-export const PaymentType$outboundSchema: z.ZodNativeEnum<typeof PaymentType> =
-  PaymentType$inboundSchema;
 
 /** @internal */
 export const InvoiceTransferPayment$inboundSchema: z.ZodType<
@@ -31,12 +17,10 @@ export const InvoiceTransferPayment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paymentType: PaymentType$inboundSchema,
   transferID: z.string(),
 });
 /** @internal */
 export type InvoiceTransferPayment$Outbound = {
-  paymentType: string;
   transferID: string;
 };
 
@@ -46,7 +30,6 @@ export const InvoiceTransferPayment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InvoiceTransferPayment
 > = z.object({
-  paymentType: PaymentType$outboundSchema,
   transferID: z.string(),
 });
 

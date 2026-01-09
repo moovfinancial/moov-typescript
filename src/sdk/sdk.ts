@@ -41,6 +41,7 @@ import { Transfers } from "./transfers.js";
 import { Underwriting } from "./underwriting.js";
 import { Wallets } from "./wallets.js";
 import { WalletTransactions } from "./wallettransactions.js";
+import { Webhooks } from "./webhooks.js";
 
 export class Moov extends ClientSDK {
   private _accounts?: Accounts;
@@ -187,6 +188,11 @@ export class Moov extends ClientSDK {
   private _enrichedProfile?: EnrichedProfile;
   get enrichedProfile(): EnrichedProfile {
     return (this._enrichedProfile ??= new EnrichedProfile(this._options));
+  }
+
+  private _webhooks?: Webhooks;
+  get webhooks(): Webhooks {
+    return (this._webhooks ??= new Webhooks(this._options));
   }
 
   private _industries?: Industries;

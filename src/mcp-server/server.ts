@@ -104,7 +104,9 @@ import { tool$industriesList } from "./tools/industriesList.js";
 import { tool$institutionsSearch } from "./tools/institutionsSearch.js";
 import { tool$institutionsSearchInstitutions } from "./tools/institutionsSearchInstitutions.js";
 import { tool$invoicesCreateInvoice } from "./tools/invoicesCreateInvoice.js";
+import { tool$invoicesCreateInvoicePayment } from "./tools/invoicesCreateInvoicePayment.js";
 import { tool$invoicesGetInvoice } from "./tools/invoicesGetInvoice.js";
+import { tool$invoicesListInvoicePayments } from "./tools/invoicesListInvoicePayments.js";
 import { tool$invoicesListInvoices } from "./tools/invoicesListInvoices.js";
 import { tool$invoicesUpdateInvoice } from "./tools/invoicesUpdateInvoice.js";
 import { tool$issuingTransactionsGet } from "./tools/issuingTransactionsGet.js";
@@ -181,6 +183,14 @@ import { tool$walletsList } from "./tools/walletsList.js";
 import { tool$walletsUpdate } from "./tools/walletsUpdate.js";
 import { tool$walletTransactionsGet } from "./tools/walletTransactionsGet.js";
 import { tool$walletTransactionsList } from "./tools/walletTransactionsList.js";
+import { tool$webhooksCreate } from "./tools/webhooksCreate.js";
+import { tool$webhooksDisable } from "./tools/webhooksDisable.js";
+import { tool$webhooksGet } from "./tools/webhooksGet.js";
+import { tool$webhooksGetSecret } from "./tools/webhooksGetSecret.js";
+import { tool$webhooksList } from "./tools/webhooksList.js";
+import { tool$webhooksListEventTypes } from "./tools/webhooksListEventTypes.js";
+import { tool$webhooksPing } from "./tools/webhooksPing.js";
+import { tool$webhooksUpdate } from "./tools/webhooksUpdate.js";
 
 export function createMCPServer(deps: {
   logger: ConsoleLogger;
@@ -193,7 +203,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.22.12",
+    version: "0.22.13",
   });
 
   const client = new MoovCore({
@@ -299,6 +309,8 @@ export function createMCPServer(deps: {
   tool(tool$invoicesListInvoices);
   tool(tool$invoicesGetInvoice);
   tool(tool$invoicesUpdateInvoice);
+  tool(tool$invoicesCreateInvoicePayment);
+  tool(tool$invoicesListInvoicePayments);
   tool(tool$paymentLinksCreate);
   tool(tool$paymentLinksList);
   tool(tool$paymentLinksGet);
@@ -365,6 +377,14 @@ export function createMCPServer(deps: {
   tool(tool$endToEndEncryptionGenerateKey);
   tool(tool$enrichedAddressGet);
   tool(tool$enrichedProfileGet);
+  tool(tool$webhooksListEventTypes);
+  tool(tool$webhooksList);
+  tool(tool$webhooksCreate);
+  tool(tool$webhooksGet);
+  tool(tool$webhooksUpdate);
+  tool(tool$webhooksDisable);
+  tool(tool$webhooksPing);
+  tool(tool$webhooksGetSecret);
   tool(tool$industriesList);
   tool(tool$institutionsSearchInstitutions);
   tool(tool$institutionsSearch);

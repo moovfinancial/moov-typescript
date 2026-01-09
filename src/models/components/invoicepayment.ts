@@ -28,7 +28,8 @@ import {
  * Payment made towards an invoice, will be either a transfer or an external payment.
  */
 export type InvoicePayment = {
-  paymentType: InvoicePaymentType;
+  invoicePaymentID: string;
+  invoicePaymentType: InvoicePaymentType;
   transfer?: InvoiceTransferPayment | undefined;
   external?: InvoiceExternalPayment | undefined;
 };
@@ -39,13 +40,15 @@ export const InvoicePayment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paymentType: InvoicePaymentType$inboundSchema,
+  invoicePaymentID: z.string(),
+  invoicePaymentType: InvoicePaymentType$inboundSchema,
   transfer: InvoiceTransferPayment$inboundSchema.optional(),
   external: InvoiceExternalPayment$inboundSchema.optional(),
 });
 /** @internal */
 export type InvoicePayment$Outbound = {
-  paymentType: string;
+  invoicePaymentID: string;
+  invoicePaymentType: string;
   transfer?: InvoiceTransferPayment$Outbound | undefined;
   external?: InvoiceExternalPayment$Outbound | undefined;
 };
@@ -56,7 +59,8 @@ export const InvoicePayment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InvoicePayment
 > = z.object({
-  paymentType: InvoicePaymentType$outboundSchema,
+  invoicePaymentID: z.string(),
+  invoicePaymentType: InvoicePaymentType$outboundSchema,
   transfer: InvoiceTransferPayment$outboundSchema.optional(),
   external: InvoiceExternalPayment$outboundSchema.optional(),
 });

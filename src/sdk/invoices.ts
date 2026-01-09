@@ -3,7 +3,9 @@
  */
 
 import { invoicesCreateInvoice } from "../funcs/invoicesCreateInvoice.js";
+import { invoicesCreateInvoicePayment } from "../funcs/invoicesCreateInvoicePayment.js";
 import { invoicesGetInvoice } from "../funcs/invoicesGetInvoice.js";
+import { invoicesListInvoicePayments } from "../funcs/invoicesListInvoicePayments.js";
 import { invoicesListInvoices } from "../funcs/invoicesListInvoices.js";
 import { invoicesUpdateInvoice } from "../funcs/invoicesUpdateInvoice.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -73,6 +75,41 @@ export class Invoices extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateInvoiceResponse> {
     return unwrapAsync(invoicesUpdateInvoice(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
+   * If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+   */
+  async createInvoicePayment(
+    request: operations.CreateInvoicePaymentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateInvoicePaymentResponse> {
+    return unwrapAsync(invoicesCreateInvoicePayment(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List all the payments made towards an invoice.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
+   */
+  async listInvoicePayments(
+    request: operations.ListInvoicePaymentsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ListInvoicePaymentsResponse> {
+    return unwrapAsync(invoicesListInvoicePayments(
       this,
       request,
       options,

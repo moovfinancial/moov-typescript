@@ -9,16 +9,11 @@ let value: CreateInvoiceResponse = {
   headers: {
     "key": [
       "<value 1>",
-      "<value 2>",
-      "<value 3>",
     ],
-    "key1": [
-      "<value 1>",
-    ],
+    "key1": [],
     "key2": [
       "<value 1>",
       "<value 2>",
-      "<value 3>",
     ],
   },
   result: {
@@ -95,10 +90,10 @@ let value: CreateInvoiceResponse = {
     },
     payments: [
       {
-        paymentType: "transfer",
+        invoicePaymentID: "0902d12a-1f84-4514-ace9-b09696afa327",
+        invoicePaymentType: "external",
         external: {
-          paymentType: "external",
-          description: "before save so loftily although stunning lest",
+          description: "deer funny the",
           amount: {
             currency: "USD",
             valueDecimal: "12.987654321",
@@ -106,7 +101,7 @@ let value: CreateInvoiceResponse = {
         },
       },
     ],
-    createdOn: new Date("2026-05-09T09:46:42.983Z"),
+    createdOn: new Date("2025-05-17T23:47:04.027Z"),
   },
 };
 ```

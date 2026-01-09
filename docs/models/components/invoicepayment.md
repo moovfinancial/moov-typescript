@@ -8,10 +8,10 @@ Payment made towards an invoice, will be either a transfer or an external paymen
 import { InvoicePayment } from "@moovio/sdk/models/components";
 
 let value: InvoicePayment = {
-  paymentType: "transfer",
+  invoicePaymentID: "0d4bdcfc-499c-4fed-b7b0-df310ba1d552",
+  invoicePaymentType: "external",
   external: {
-    paymentType: "external",
-    description: "before save so loftily although stunning lest",
+    description: "deer funny the",
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
@@ -24,6 +24,7 @@ let value: InvoicePayment = {
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `paymentType`                                                                          | [components.InvoicePaymentType](../../models/components/invoicepaymenttype.md)         | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `invoicePaymentID`                                                                     | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `invoicePaymentType`                                                                   | [components.InvoicePaymentType](../../models/components/invoicepaymenttype.md)         | :heavy_check_mark:                                                                     | N/A                                                                                    |
 | `transfer`                                                                             | [components.InvoiceTransferPayment](../../models/components/invoicetransferpayment.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |
 | `external`                                                                             | [components.InvoiceExternalPayment](../../models/components/invoiceexternalpayment.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |

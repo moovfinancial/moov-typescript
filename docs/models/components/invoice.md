@@ -78,10 +78,10 @@ let value: Invoice = {
   },
   payments: [
     {
-      paymentType: "transfer",
+      invoicePaymentID: "0902d12a-1f84-4514-ace9-b09696afa327",
+      invoicePaymentType: "external",
       external: {
-        paymentType: "external",
-        description: "before save so loftily although stunning lest",
+        description: "deer funny the",
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
