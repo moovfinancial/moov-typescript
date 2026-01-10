@@ -7,11 +7,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  RunTransfer,
-  RunTransfer$inboundSchema,
-  RunTransfer$Outbound,
-  RunTransfer$outboundSchema,
-} from "./runtransfer.js";
+  CreateRunTransfer,
+  CreateRunTransfer$inboundSchema,
+  CreateRunTransfer$Outbound,
+  CreateRunTransfer$outboundSchema,
+} from "./createruntransfer.js";
 
 /**
  * Defines configuration for recurring transfers.
@@ -27,7 +27,7 @@ export type Recur = {
   /**
    * Defines the attributes of a transfer.
    */
-  runTransfer: RunTransfer;
+  runTransfer: CreateRunTransfer;
   /**
    * True if the RRule set runs indefinitely.
    */
@@ -39,7 +39,7 @@ export type Recur = {
 export const Recur$inboundSchema: z.ZodType<Recur, z.ZodTypeDef, unknown> = z
   .object({
     recurrenceRule: z.string(),
-    runTransfer: RunTransfer$inboundSchema,
+    runTransfer: CreateRunTransfer$inboundSchema,
     indefinite: z.boolean().optional(),
     start: z.string().datetime({ offset: true }).transform(v => new Date(v))
       .optional(),
@@ -47,7 +47,7 @@ export const Recur$inboundSchema: z.ZodType<Recur, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Recur$Outbound = {
   recurrenceRule: string;
-  runTransfer: RunTransfer$Outbound;
+  runTransfer: CreateRunTransfer$Outbound;
   indefinite?: boolean | undefined;
   start?: string | undefined;
 };
@@ -59,7 +59,7 @@ export const Recur$outboundSchema: z.ZodType<
   Recur
 > = z.object({
   recurrenceRule: z.string(),
-  runTransfer: RunTransfer$outboundSchema,
+  runTransfer: CreateRunTransfer$outboundSchema,
   indefinite: z.boolean().optional(),
   start: z.date().transform(v => v.toISOString()).optional(),
 });

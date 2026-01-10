@@ -7,11 +7,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  RunTransfer,
-  RunTransfer$inboundSchema,
-  RunTransfer$Outbound,
-  RunTransfer$outboundSchema,
-} from "./runtransfer.js";
+  CreateRunTransfer,
+  CreateRunTransfer$inboundSchema,
+  CreateRunTransfer$Outbound,
+  CreateRunTransfer$outboundSchema,
+} from "./createruntransfer.js";
 
 /**
  * Occurrences to either create or modify.
@@ -35,7 +35,7 @@ export type Occurrence = {
   /**
    * Defines the attributes of a transfer.
    */
-  runTransfer?: RunTransfer | undefined;
+  runTransfer?: CreateRunTransfer | undefined;
 };
 
 /** @internal */
@@ -48,14 +48,14 @@ export const Occurrence$inboundSchema: z.ZodType<
   occurrenceID: z.string().optional(),
   runOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
-  runTransfer: RunTransfer$inboundSchema.optional(),
+  runTransfer: CreateRunTransfer$inboundSchema.optional(),
 });
 /** @internal */
 export type Occurrence$Outbound = {
   canceled?: boolean | undefined;
   occurrenceID?: string | undefined;
   runOn?: string | undefined;
-  runTransfer?: RunTransfer$Outbound | undefined;
+  runTransfer?: CreateRunTransfer$Outbound | undefined;
 };
 
 /** @internal */
@@ -67,7 +67,7 @@ export const Occurrence$outboundSchema: z.ZodType<
   canceled: z.boolean().optional(),
   occurrenceID: z.string().optional(),
   runOn: z.date().transform(v => v.toISOString()).optional(),
-  runTransfer: RunTransfer$outboundSchema.optional(),
+  runTransfer: CreateRunTransfer$outboundSchema.optional(),
 });
 
 export function occurrenceToJSON(occurrence: Occurrence): string {

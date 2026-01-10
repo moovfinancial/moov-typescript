@@ -17,11 +17,11 @@ let value: UpdateInvoiceRequest = {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
-          quantity: 877349,
+          quantity: 188713,
           options: [
             {
               name: "<value>",
-              quantity: 588981,
+              quantity: 985052,
               priceModifier: {
                 currency: "USD",
                 valueDecimal: "12.987654321",

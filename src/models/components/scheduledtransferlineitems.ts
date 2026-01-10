@@ -14,10 +14,7 @@ import {
 } from "./scheduledtransferlineitem.js";
 
 /**
- * An optional collection of line items for a scheduled transfer.
- *
- * @remarks
- * When line items are provided their total must equal `amount` minus `salesTaxAmount`.
+ * Line items for a scheduled transfer.
  */
 export type ScheduledTransferLineItems = {
   /**

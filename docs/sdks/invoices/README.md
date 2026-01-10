@@ -56,7 +56,6 @@ async function run() {
     accountID: "241bf524-e777-4941-a5e4-d7f3f34d7a00",
     createInvoice: {
       customerAccountID: "<id>",
-      description: "austere gah under ew failing provided repeatedly pick onto",
       lineItems: {
         items: [],
       },
@@ -96,7 +95,6 @@ async function run() {
     accountID: "241bf524-e777-4941-a5e4-d7f3f34d7a00",
     createInvoice: {
       customerAccountID: "<id>",
-      description: "austere gah under ew failing provided repeatedly pick onto",
       lineItems: {
         items: [],
       },
@@ -483,7 +481,12 @@ async function run() {
   const result = await moov.invoices.createInvoicePayment({
     accountID: "e02333e4-a835-46d1-8d02-9af7a405e65f",
     invoiceID: "99e7ebb0-9996-49b2-98f0-304c7332ece6",
-    createInvoicePayment: {},
+    createInvoicePayment: {
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
   });
 
   console.log(result);
@@ -514,7 +517,12 @@ async function run() {
   const res = await invoicesCreateInvoicePayment(moov, {
     accountID: "e02333e4-a835-46d1-8d02-9af7a405e65f",
     invoiceID: "99e7ebb0-9996-49b2-98f0-304c7332ece6",
-    createInvoicePayment: {},
+    createInvoicePayment: {
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
   });
   if (res.ok) {
     const { value: result } = res;

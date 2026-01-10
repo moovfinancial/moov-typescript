@@ -17,11 +17,25 @@ let value: ScheduledTransferLineItem = {
   options: [
     {
       name: "<value>",
-      quantity: 556915,
+      quantity: 898379,
       priceModifier: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
+      images: [
+        {
+          imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+          link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+          publicID: "<id>",
+        },
+      ],
+    },
+  ],
+  images: [
+    {
+      imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+      link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+      publicID: "<id>",
     },
   ],
 };
@@ -36,3 +50,4 @@ let value: ScheduledTransferLineItem = {
 | `quantity`                                                                                                 | *number*                                                                                                   | :heavy_check_mark:                                                                                         | The quantity of this item.                                                                                 |
 | `options`                                                                                                  | [components.ScheduledTransferLineItemOption](../../models/components/scheduledtransferlineitemoption.md)[] | :heavy_minus_sign:                                                                                         | Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).                |
 | `productID`                                                                                                | *string*                                                                                                   | :heavy_minus_sign:                                                                                         | Optional unique identifier associating the line item with a product.                                       |
+| `images`                                                                                                   | [components.ScheduledTransferImageMetadata](../../models/components/scheduledtransferimagemetadata.md)[]   | :heavy_minus_sign:                                                                                         | Optional list of images associated with this line item.                                                    |

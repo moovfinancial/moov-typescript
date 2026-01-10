@@ -3,15 +3,18 @@
  */
 
 import * as z from "zod/v3";
+import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
 export type CreateInvoicePaymentErrorData = {
+  amount?: components.AmountDecimalValidationError | undefined;
   foreignID?: string | undefined;
   description?: string | undefined;
   paymentDate?: string | undefined;
 };
 
 export class CreateInvoicePaymentError extends MoovError {
+  amount?: components.AmountDecimalValidationError | undefined;
   foreignID?: string | undefined;
   description?: string | undefined;
   paymentDate?: string | undefined;
@@ -28,6 +31,7 @@ export class CreateInvoicePaymentError extends MoovError {
       : `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
+    if (err.amount != null) this.amount = err.amount;
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.description != null) this.description = err.description;
     if (err.paymentDate != null) this.paymentDate = err.paymentDate;
@@ -42,6 +46,7 @@ export const CreateInvoicePaymentError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  amount: components.AmountDecimalValidationError$inboundSchema.optional(),
   foreignID: z.string().optional(),
   description: z.string().optional(),
   paymentDate: z.string().optional(),
@@ -59,6 +64,7 @@ export const CreateInvoicePaymentError$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateInvoicePaymentError$Outbound = {
+  amount?: components.AmountDecimalValidationError$Outbound | undefined;
   foreignID?: string | undefined;
   description?: string | undefined;
   paymentDate?: string | undefined;
@@ -72,6 +78,7 @@ export const CreateInvoicePaymentError$outboundSchema: z.ZodType<
 > = z.instanceof(CreateInvoicePaymentError)
   .transform(v => v.data$)
   .pipe(z.object({
+    amount: components.AmountDecimalValidationError$outboundSchema.optional(),
     foreignID: z.string().optional(),
     description: z.string().optional(),
     paymentDate: z.string().optional(),

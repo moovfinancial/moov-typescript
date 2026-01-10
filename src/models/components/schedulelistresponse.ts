@@ -20,11 +20,11 @@ import {
   PartialScheduleAccount$outboundSchema,
 } from "./partialscheduleaccount.js";
 import {
-  Recur,
-  Recur$inboundSchema,
-  Recur$Outbound,
-  Recur$outboundSchema,
-} from "./recur.js";
+  RecurResponse,
+  RecurResponse$inboundSchema,
+  RecurResponse$Outbound,
+  RecurResponse$outboundSchema,
+} from "./recurresponse.js";
 
 export type ScheduleListResponse = {
   /**
@@ -39,10 +39,7 @@ export type ScheduleListResponse = {
   occurrences?: Array<OccurrencesResponse> | undefined;
   ownerAccountID: string;
   partnerAccountID: string;
-  /**
-   * Defines configuration for recurring transfers.
-   */
-  recur?: Recur | undefined;
+  recur?: RecurResponse | undefined;
   scheduleID: string;
   sourceAccountID: string;
   createdOn: Date;
@@ -65,7 +62,7 @@ export const ScheduleListResponse$inboundSchema: z.ZodType<
   occurrences: z.array(OccurrencesResponse$inboundSchema).optional(),
   ownerAccountID: z.string(),
   partnerAccountID: z.string(),
-  recur: Recur$inboundSchema.optional(),
+  recur: RecurResponse$inboundSchema.optional(),
   scheduleID: z.string(),
   sourceAccountID: z.string(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -84,7 +81,7 @@ export type ScheduleListResponse$Outbound = {
   occurrences?: Array<OccurrencesResponse$Outbound> | undefined;
   ownerAccountID: string;
   partnerAccountID: string;
-  recur?: Recur$Outbound | undefined;
+  recur?: RecurResponse$Outbound | undefined;
   scheduleID: string;
   sourceAccountID: string;
   createdOn: string;
@@ -107,7 +104,7 @@ export const ScheduleListResponse$outboundSchema: z.ZodType<
   occurrences: z.array(OccurrencesResponse$outboundSchema).optional(),
   ownerAccountID: z.string(),
   partnerAccountID: z.string(),
-  recur: Recur$outboundSchema.optional(),
+  recur: RecurResponse$outboundSchema.optional(),
   scheduleID: z.string(),
   sourceAccountID: z.string(),
   createdOn: z.date().transform(v => v.toISOString()),

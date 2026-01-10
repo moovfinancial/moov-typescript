@@ -43,9 +43,6 @@ export type OccurrencesResponse = {
   indefinite?: boolean | undefined;
   canceledOn?: Date | undefined;
   runOn: Date;
-  /**
-   * Defines the attributes of a transfer.
-   */
   runTransfer: RunTransfer;
   ranOn?: Date | undefined;
   ranTransferID?: string | undefined;

@@ -13,11 +13,11 @@ import {
   Amount$outboundSchema,
 } from "./amount.js";
 import {
-  ScheduledTransferLineItems,
-  ScheduledTransferLineItems$inboundSchema,
-  ScheduledTransferLineItems$Outbound,
-  ScheduledTransferLineItems$outboundSchema,
-} from "./scheduledtransferlineitems.js";
+  CreateScheduledTransferLineItems,
+  CreateScheduledTransferLineItems$inboundSchema,
+  CreateScheduledTransferLineItems$Outbound,
+  CreateScheduledTransferLineItems$outboundSchema,
+} from "./createscheduledtransferlineitems.js";
 import {
   SchedulePaymentMethod,
   SchedulePaymentMethod$inboundSchema,
@@ -25,7 +25,10 @@ import {
   SchedulePaymentMethod$outboundSchema,
 } from "./schedulepaymentmethod.js";
 
-export type RunTransfer = {
+/**
+ * Defines the attributes of a transfer.
+ */
+export type CreateRunTransfer = {
   amount: Amount;
   /**
    * Optional sales tax amount. This amount is included in the total transfer amount.
@@ -39,14 +42,17 @@ export type RunTransfer = {
    */
   description: string;
   /**
-   * Line items for a scheduled transfer.
+   * An optional collection of line items for a scheduled transfer.
+   *
+   * @remarks
+   * When line items are provided their total must equal `amount` minus `salesTaxAmount`.
    */
-  lineItems?: ScheduledTransferLineItems | undefined;
+  lineItems?: CreateScheduledTransferLineItems | undefined;
 };
 
 /** @internal */
-export const RunTransfer$inboundSchema: z.ZodType<
-  RunTransfer,
+export const CreateRunTransfer$inboundSchema: z.ZodType<
+  CreateRunTransfer,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -56,24 +62,24 @@ export const RunTransfer$inboundSchema: z.ZodType<
   partnerAccountID: z.string(),
   source: SchedulePaymentMethod$inboundSchema,
   description: z.string(),
-  lineItems: ScheduledTransferLineItems$inboundSchema.optional(),
+  lineItems: CreateScheduledTransferLineItems$inboundSchema.optional(),
 });
 /** @internal */
-export type RunTransfer$Outbound = {
+export type CreateRunTransfer$Outbound = {
   amount: Amount$Outbound;
   salesTaxAmount?: Amount$Outbound | undefined;
   destination: SchedulePaymentMethod$Outbound;
   partnerAccountID: string;
   source: SchedulePaymentMethod$Outbound;
   description: string;
-  lineItems?: ScheduledTransferLineItems$Outbound | undefined;
+  lineItems?: CreateScheduledTransferLineItems$Outbound | undefined;
 };
 
 /** @internal */
-export const RunTransfer$outboundSchema: z.ZodType<
-  RunTransfer$Outbound,
+export const CreateRunTransfer$outboundSchema: z.ZodType<
+  CreateRunTransfer$Outbound,
   z.ZodTypeDef,
-  RunTransfer
+  CreateRunTransfer
 > = z.object({
   amount: Amount$outboundSchema,
   salesTaxAmount: Amount$outboundSchema.optional(),
@@ -81,18 +87,22 @@ export const RunTransfer$outboundSchema: z.ZodType<
   partnerAccountID: z.string(),
   source: SchedulePaymentMethod$outboundSchema,
   description: z.string(),
-  lineItems: ScheduledTransferLineItems$outboundSchema.optional(),
+  lineItems: CreateScheduledTransferLineItems$outboundSchema.optional(),
 });
 
-export function runTransferToJSON(runTransfer: RunTransfer): string {
-  return JSON.stringify(RunTransfer$outboundSchema.parse(runTransfer));
+export function createRunTransferToJSON(
+  createRunTransfer: CreateRunTransfer,
+): string {
+  return JSON.stringify(
+    CreateRunTransfer$outboundSchema.parse(createRunTransfer),
+  );
 }
-export function runTransferFromJSON(
+export function createRunTransferFromJSON(
   jsonString: string,
-): SafeParseResult<RunTransfer, SDKValidationError> {
+): SafeParseResult<CreateRunTransfer, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RunTransfer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RunTransfer' from JSON`,
+    (x) => CreateRunTransfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRunTransfer' from JSON`,
   );
 }

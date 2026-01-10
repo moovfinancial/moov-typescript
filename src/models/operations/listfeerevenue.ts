@@ -35,6 +35,18 @@ export type ListFeeRevenueRequest = {
    */
   accountID: string;
   /**
+   * Optional transfer ID to filter the results by.
+   */
+  transferID?: string | undefined;
+  /**
+   * Optional dispute ID to filter the results by.
+   */
+  disputeID?: string | undefined;
+  /**
+   * Optional residual ID to filter the results by.
+   */
+  residualID?: string | undefined;
+  /**
    * Optional date-time to inclusively filter all fees created after this date-time.
    */
   startDateTime?: string | undefined;
@@ -105,6 +117,9 @@ export const ListFeeRevenueRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
+  transferID: z.string().optional(),
+  disputeID: z.string().optional(),
+  residualID: z.string().optional(),
   startDateTime: z.string().optional(),
   endDateTime: z.string().optional(),
 });
@@ -113,6 +128,9 @@ export type ListFeeRevenueRequest$Outbound = {
   skip?: number | undefined;
   count?: number | undefined;
   accountID: string;
+  transferID?: string | undefined;
+  disputeID?: string | undefined;
+  residualID?: string | undefined;
   startDateTime?: string | undefined;
   endDateTime?: string | undefined;
 };
@@ -126,6 +144,9 @@ export const ListFeeRevenueRequest$outboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
+  transferID: z.string().optional(),
+  disputeID: z.string().optional(),
+  residualID: z.string().optional(),
   startDateTime: z.string().optional(),
   endDateTime: z.string().optional(),
 });

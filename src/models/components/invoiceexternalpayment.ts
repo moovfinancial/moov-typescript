@@ -6,18 +6,11 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  AmountDecimal,
-  AmountDecimal$inboundSchema,
-  AmountDecimal$Outbound,
-  AmountDecimal$outboundSchema,
-} from "./amountdecimal.js";
 
 export type InvoiceExternalPayment = {
-  description: string;
+  description?: string | undefined;
   foreignID?: string | undefined;
   paymentDate?: Date | undefined;
-  amount: AmountDecimal;
 };
 
 /** @internal */
@@ -26,18 +19,16 @@ export const InvoiceExternalPayment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  description: z.string(),
+  description: z.string().optional(),
   foreignID: z.string().optional(),
   paymentDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
-  amount: AmountDecimal$inboundSchema,
 });
 /** @internal */
 export type InvoiceExternalPayment$Outbound = {
-  description: string;
+  description?: string | undefined;
   foreignID?: string | undefined;
   paymentDate?: string | undefined;
-  amount: AmountDecimal$Outbound;
 };
 
 /** @internal */
@@ -46,10 +37,9 @@ export const InvoiceExternalPayment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InvoiceExternalPayment
 > = z.object({
-  description: z.string(),
+  description: z.string().optional(),
   foreignID: z.string().optional(),
   paymentDate: z.date().transform(v => v.toISOString()).optional(),
-  amount: AmountDecimal$outboundSchema,
 });
 
 export function invoiceExternalPaymentToJSON(

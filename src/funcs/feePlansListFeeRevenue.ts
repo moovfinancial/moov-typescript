@@ -96,9 +96,12 @@ async function $do(
 
   const query = encodeFormQuery({
     "count": payload.count,
+    "disputeID": payload.disputeID,
     "endDateTime": payload.endDateTime,
+    "residualID": payload.residualID,
     "skip": payload.skip,
     "startDateTime": payload.startDateTime,
+    "transferID": payload.transferID,
   }, { explode: false });
 
   const headers = new Headers(compactMap({

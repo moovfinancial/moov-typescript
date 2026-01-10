@@ -1,7 +1,5 @@
 # RunTransfer
 
-Defines the attributes of a transfer.
-
 ## Example Usage
 
 ```typescript
@@ -46,15 +44,29 @@ let value: RunTransfer = {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
-        quantity: 988494,
+        quantity: 721250,
         options: [
           {
             name: "<value>",
-            quantity: 556915,
+            quantity: 898379,
             priceModifier: {
               currency: "USD",
               valueDecimal: "12.987654321",
             },
+            images: [
+              {
+                imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                publicID: "<id>",
+              },
+            ],
+          },
+        ],
+        images: [
+          {
+            imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+            link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+            publicID: "<id>",
           },
         ],
       },
@@ -65,12 +77,12 @@ let value: RunTransfer = {
 
 ## Fields
 
-| Field                                                                                                                                               | Type                                                                                                                                                | Required                                                                                                                                            | Description                                                                                                                                         | Example                                                                                                                                             |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `amount`                                                                                                                                            | [components.Amount](../../models/components/amount.md)                                                                                              | :heavy_check_mark:                                                                                                                                  | N/A                                                                                                                                                 |                                                                                                                                                     |
-| `salesTaxAmount`                                                                                                                                    | [components.Amount](../../models/components/amount.md)                                                                                              | :heavy_minus_sign:                                                                                                                                  | Optional sales tax amount. This amount is included in the total transfer amount.                                                                    |                                                                                                                                                     |
-| `destination`                                                                                                                                       | [components.SchedulePaymentMethod](../../models/components/schedulepaymentmethod.md)                                                                | :heavy_check_mark:                                                                                                                                  | N/A                                                                                                                                                 |                                                                                                                                                     |
-| `partnerAccountID`                                                                                                                                  | *string*                                                                                                                                            | :heavy_check_mark:                                                                                                                                  | N/A                                                                                                                                                 | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                                                                                |
-| `source`                                                                                                                                            | [components.SchedulePaymentMethod](../../models/components/schedulepaymentmethod.md)                                                                | :heavy_check_mark:                                                                                                                                  | N/A                                                                                                                                                 |                                                                                                                                                     |
-| `description`                                                                                                                                       | *string*                                                                                                                                            | :heavy_check_mark:                                                                                                                                  | Simple description to place on the transfer.                                                                                                        |                                                                                                                                                     |
-| `lineItems`                                                                                                                                         | [components.ScheduledTransferLineItems](../../models/components/scheduledtransferlineitems.md)                                                      | :heavy_minus_sign:                                                                                                                                  | An optional collection of line items for a scheduled transfer.<br/>When line items are provided their total must equal `amount` minus `salesTaxAmount`. |                                                                                                                                                     |
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    | Example                                                                                        |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `amount`                                                                                       | [components.Amount](../../models/components/amount.md)                                         | :heavy_check_mark:                                                                             | N/A                                                                                            |                                                                                                |
+| `salesTaxAmount`                                                                               | [components.Amount](../../models/components/amount.md)                                         | :heavy_minus_sign:                                                                             | Optional sales tax amount. This amount is included in the total transfer amount.               |                                                                                                |
+| `destination`                                                                                  | [components.SchedulePaymentMethod](../../models/components/schedulepaymentmethod.md)           | :heavy_check_mark:                                                                             | N/A                                                                                            |                                                                                                |
+| `partnerAccountID`                                                                             | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                           |
+| `source`                                                                                       | [components.SchedulePaymentMethod](../../models/components/schedulepaymentmethod.md)           | :heavy_check_mark:                                                                             | N/A                                                                                            |                                                                                                |
+| `description`                                                                                  | *string*                                                                                       | :heavy_check_mark:                                                                             | Simple description to place on the transfer.                                                   |                                                                                                |
+| `lineItems`                                                                                    | [components.ScheduledTransferLineItems](../../models/components/scheduledtransferlineitems.md) | :heavy_minus_sign:                                                                             | Line items for a scheduled transfer.                                                           |                                                                                                |

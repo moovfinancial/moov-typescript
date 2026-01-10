@@ -12,17 +12,11 @@ import {
   AmountDecimal$Outbound,
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
-import {
-  ScheduledTransferImageMetadata,
-  ScheduledTransferImageMetadata$inboundSchema,
-  ScheduledTransferImageMetadata$Outbound,
-  ScheduledTransferImageMetadata$outboundSchema,
-} from "./scheduledtransferimagemetadata.js";
 
 /**
  * Represents a modifier or option applied to a scheduled transfer line item.
  */
-export type ScheduledTransferLineItemOption = {
+export type CreateScheduledTransferLineItemOption = {
   /**
    * The name of the option or modifier.
    */
@@ -42,12 +36,12 @@ export type ScheduledTransferLineItemOption = {
   /**
    * Optional list of images associated with this line item.
    */
-  images?: Array<ScheduledTransferImageMetadata> | undefined;
+  imageIDs?: Array<string> | undefined;
 };
 
 /** @internal */
-export const ScheduledTransferLineItemOption$inboundSchema: z.ZodType<
-  ScheduledTransferLineItemOption,
+export const CreateScheduledTransferLineItemOption$inboundSchema: z.ZodType<
+  CreateScheduledTransferLineItemOption,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -55,45 +49,46 @@ export const ScheduledTransferLineItemOption$inboundSchema: z.ZodType<
   quantity: z.number().int(),
   priceModifier: AmountDecimal$inboundSchema.optional(),
   group: z.string().optional(),
-  images: z.array(ScheduledTransferImageMetadata$inboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
 });
 /** @internal */
-export type ScheduledTransferLineItemOption$Outbound = {
+export type CreateScheduledTransferLineItemOption$Outbound = {
   name: string;
   quantity: number;
   priceModifier?: AmountDecimal$Outbound | undefined;
   group?: string | undefined;
-  images?: Array<ScheduledTransferImageMetadata$Outbound> | undefined;
+  imageIDs?: Array<string> | undefined;
 };
 
 /** @internal */
-export const ScheduledTransferLineItemOption$outboundSchema: z.ZodType<
-  ScheduledTransferLineItemOption$Outbound,
+export const CreateScheduledTransferLineItemOption$outboundSchema: z.ZodType<
+  CreateScheduledTransferLineItemOption$Outbound,
   z.ZodTypeDef,
-  ScheduledTransferLineItemOption
+  CreateScheduledTransferLineItemOption
 > = z.object({
   name: z.string(),
   quantity: z.number().int(),
   priceModifier: AmountDecimal$outboundSchema.optional(),
   group: z.string().optional(),
-  images: z.array(ScheduledTransferImageMetadata$outboundSchema).optional(),
+  imageIDs: z.array(z.string()).optional(),
 });
 
-export function scheduledTransferLineItemOptionToJSON(
-  scheduledTransferLineItemOption: ScheduledTransferLineItemOption,
+export function createScheduledTransferLineItemOptionToJSON(
+  createScheduledTransferLineItemOption: CreateScheduledTransferLineItemOption,
 ): string {
   return JSON.stringify(
-    ScheduledTransferLineItemOption$outboundSchema.parse(
-      scheduledTransferLineItemOption,
+    CreateScheduledTransferLineItemOption$outboundSchema.parse(
+      createScheduledTransferLineItemOption,
     ),
   );
 }
-export function scheduledTransferLineItemOptionFromJSON(
+export function createScheduledTransferLineItemOptionFromJSON(
   jsonString: string,
-): SafeParseResult<ScheduledTransferLineItemOption, SDKValidationError> {
+): SafeParseResult<CreateScheduledTransferLineItemOption, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ScheduledTransferLineItemOption$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ScheduledTransferLineItemOption' from JSON`,
+    (x) =>
+      CreateScheduledTransferLineItemOption$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateScheduledTransferLineItemOption' from JSON`,
   );
 }

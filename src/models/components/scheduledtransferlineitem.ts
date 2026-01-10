@@ -13,6 +13,12 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 import {
+  ScheduledTransferImageMetadata,
+  ScheduledTransferImageMetadata$inboundSchema,
+  ScheduledTransferImageMetadata$Outbound,
+  ScheduledTransferImageMetadata$outboundSchema,
+} from "./scheduledtransferimagemetadata.js";
+import {
   ScheduledTransferLineItemOption,
   ScheduledTransferLineItemOption$inboundSchema,
   ScheduledTransferLineItemOption$Outbound,
@@ -43,6 +49,10 @@ export type ScheduledTransferLineItem = {
    * Optional unique identifier associating the line item with a product.
    */
   productID?: string | undefined;
+  /**
+   * Optional list of images associated with this line item.
+   */
+  images?: Array<ScheduledTransferImageMetadata> | undefined;
 };
 
 /** @internal */
@@ -56,6 +66,7 @@ export const ScheduledTransferLineItem$inboundSchema: z.ZodType<
   quantity: z.number().int(),
   options: z.array(ScheduledTransferLineItemOption$inboundSchema).optional(),
   productID: z.string().optional(),
+  images: z.array(ScheduledTransferImageMetadata$inboundSchema).optional(),
 });
 /** @internal */
 export type ScheduledTransferLineItem$Outbound = {
@@ -64,6 +75,7 @@ export type ScheduledTransferLineItem$Outbound = {
   quantity: number;
   options?: Array<ScheduledTransferLineItemOption$Outbound> | undefined;
   productID?: string | undefined;
+  images?: Array<ScheduledTransferImageMetadata$Outbound> | undefined;
 };
 
 /** @internal */
@@ -77,6 +89,7 @@ export const ScheduledTransferLineItem$outboundSchema: z.ZodType<
   quantity: z.number().int(),
   options: z.array(ScheduledTransferLineItemOption$outboundSchema).optional(),
   productID: z.string().optional(),
+  images: z.array(ScheduledTransferImageMetadata$outboundSchema).optional(),
 });
 
 export function scheduledTransferLineItemToJSON(

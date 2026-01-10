@@ -10,20 +10,13 @@ let value: CreateInvoiceResponse = {
     "key": [
       "<value 1>",
     ],
-    "key1": [],
-    "key2": [
-      "<value 1>",
-      "<value 2>",
-    ],
   },
   result: {
     invoiceID: "bc3285ad-857f-484c-9f25-56b606e55259",
     invoiceNumber: "INV-1001",
-    description:
-      "far before quietly crank separately trash drab book inside dissemble",
-    customerAccountID: "515aa19e-cdb0-41f9-a361-5e83ee4aee52",
-    partnerAccountID: "bbb9170c-e559-4a2d-a3e4-3629e1dca367",
-    status: "canceled",
+    customerAccountID: "f8e9b163-ad46-4581-8dde-8e1a0734992c",
+    partnerAccountID: "0836b0df-6dee-433c-9e89-31849af157e4",
+    status: "draft",
     lineItems: {
       items: [
         {
@@ -32,18 +25,18 @@ let value: CreateInvoiceResponse = {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
-          quantity: 108714,
+          quantity: 68821,
           options: [
             {
               name: "<value>",
-              quantity: 11853,
+              quantity: 352438,
               priceModifier: {
                 currency: "USD",
                 valueDecimal: "12.987654321",
               },
               images: [
                 {
-                  imageID: "4925642d-ae6d-43c8-bb16-aa953186a0b9",
+                  imageID: "35fb4515-aa19-4ecd-ab01-f93615e83ee4",
                   link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
                   publicID: "<id>",
                 },
@@ -52,7 +45,7 @@ let value: CreateInvoiceResponse = {
           ],
           images: [
             {
-              imageID: "4925642d-ae6d-43c8-bb16-aa953186a0b9",
+              imageID: "35fb4515-aa19-4ecd-ab01-f93615e83ee4",
               link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
               publicID: "<id>",
             },
@@ -88,20 +81,17 @@ let value: CreateInvoiceResponse = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
-    payments: [
+    invoicePayments: [
       {
-        invoicePaymentID: "0902d12a-1f84-4514-ace9-b09696afa327",
+        invoicePaymentID: "ee529bbb-9170-4ce5-b59a-2d3e43629e1d",
         invoicePaymentType: "external",
-        external: {
-          description: "deer funny the",
-          amount: {
-            currency: "USD",
-            valueDecimal: "12.987654321",
-          },
+        amount: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
         },
       },
     ],
-    createdOn: new Date("2025-05-17T23:47:04.027Z"),
+    createdOn: new Date("2024-08-15T11:21:40.445Z"),
   },
 };
 ```

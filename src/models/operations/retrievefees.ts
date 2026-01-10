@@ -38,6 +38,10 @@ export type RetrieveFeesRequest = {
    */
   disputeID?: string | undefined;
   /**
+   * Optional residual ID to filter the results by.
+   */
+  residualID?: string | undefined;
+  /**
    * Optional date-time to inclusively filter all fees created after this date-time.
    */
   startDateTime?: string | undefined;
@@ -110,6 +114,7 @@ export const RetrieveFeesRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   transferID: z.string().optional(),
   disputeID: z.string().optional(),
+  residualID: z.string().optional(),
   startDateTime: z.string().optional(),
   endDateTime: z.string().optional(),
   skip: z.number().int().optional(),
@@ -120,6 +125,7 @@ export type RetrieveFeesRequest$Outbound = {
   accountID: string;
   transferID?: string | undefined;
   disputeID?: string | undefined;
+  residualID?: string | undefined;
   startDateTime?: string | undefined;
   endDateTime?: string | undefined;
   skip?: number | undefined;
@@ -135,6 +141,7 @@ export const RetrieveFeesRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
   transferID: z.string().optional(),
   disputeID: z.string().optional(),
+  residualID: z.string().optional(),
   startDateTime: z.string().optional(),
   endDateTime: z.string().optional(),
   skip: z.number().int().optional(),

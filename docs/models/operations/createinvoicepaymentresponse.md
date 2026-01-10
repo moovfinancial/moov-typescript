@@ -18,12 +18,9 @@ let value: CreateInvoicePaymentResponse = {
   result: {
     invoicePaymentID: "a76035b3-87ca-467c-96af-be4a6ddf2f2f",
     invoicePaymentType: "external",
-    external: {
-      description: "deer funny the",
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
+    amount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
     },
   },
 };

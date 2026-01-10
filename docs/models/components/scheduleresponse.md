@@ -43,7 +43,7 @@ let value: ScheduleResponse = {
           },
         },
         description:
-          "among supposing futon contrast or absolve geez haul unit deceivingly",
+          "over towards proper suspension but sweetly unto uh-huh limp",
         lineItems: {
           items: [
             {
@@ -52,15 +52,29 @@ let value: ScheduleResponse = {
                 currency: "USD",
                 valueDecimal: "12.987654321",
               },
-              quantity: 988494,
+              quantity: 721250,
               options: [
                 {
                   name: "<value>",
-                  quantity: 556915,
+                  quantity: 898379,
                   priceModifier: {
                     currency: "USD",
                     valueDecimal: "12.987654321",
                   },
+                  images: [
+                    {
+                      imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                      link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                      publicID: "<id>",
+                    },
+                  ],
+                },
+              ],
+              images: [
+                {
+                  imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                  link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                  publicID: "<id>",
                 },
               ],
             },
@@ -104,7 +118,7 @@ let value: ScheduleResponse = {
         },
       },
       description:
-        "among supposing futon contrast or absolve geez haul unit deceivingly",
+        "over towards proper suspension but sweetly unto uh-huh limp",
       lineItems: {
         items: [
           {
@@ -113,15 +127,29 @@ let value: ScheduleResponse = {
               currency: "USD",
               valueDecimal: "12.987654321",
             },
-            quantity: 988494,
+            quantity: 721250,
             options: [
               {
                 name: "<value>",
-                quantity: 556915,
+                quantity: 898379,
                 priceModifier: {
                   currency: "USD",
                   valueDecimal: "12.987654321",
                 },
+                images: [
+                  {
+                    imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                    link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                    publicID: "<id>",
+                  },
+                ],
+              },
+            ],
+            images: [
+              {
+                imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                publicID: "<id>",
               },
             ],
           },
@@ -147,7 +175,7 @@ let value: ScheduleResponse = {
 | `occurrences`                                                                                 | [components.OccurrencesResponse](../../models/components/occurrencesresponse.md)[]            | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `ownerAccountID`                                                                              | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                          |
 | `partnerAccountID`                                                                            | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                          |
-| `recur`                                                                                       | [components.Recur](../../models/components/recur.md)                                          | :heavy_minus_sign:                                                                            | Defines configuration for recurring transfers.                                                |                                                                                               |
+| `recur`                                                                                       | [components.RecurResponse](../../models/components/recurresponse.md)                          | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `scheduleID`                                                                                  | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                          |
 | `sourceAccountID`                                                                             | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | c520f1b9-0ba7-42f5-b977-248cdbe41c69                                                          |
 | `createdOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |

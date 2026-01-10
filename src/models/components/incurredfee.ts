@@ -34,6 +34,7 @@ export type IncurredFee = {
    */
   generatedBy?: GeneratedBy | undefined;
   feeGroup?: string | undefined;
+  residualID?: string | undefined;
 };
 
 /** @internal */
@@ -51,6 +52,7 @@ export const IncurredFee$inboundSchema: z.ZodType<
   amount: AmountDecimal$inboundSchema.optional(),
   generatedBy: GeneratedBy$inboundSchema.optional(),
   feeGroup: z.string().optional(),
+  residualID: z.string().optional(),
 });
 /** @internal */
 export type IncurredFee$Outbound = {
@@ -62,6 +64,7 @@ export type IncurredFee$Outbound = {
   amount?: AmountDecimal$Outbound | undefined;
   generatedBy?: GeneratedBy$Outbound | undefined;
   feeGroup?: string | undefined;
+  residualID?: string | undefined;
 };
 
 /** @internal */
@@ -78,6 +81,7 @@ export const IncurredFee$outboundSchema: z.ZodType<
   amount: AmountDecimal$outboundSchema.optional(),
   generatedBy: GeneratedBy$outboundSchema.optional(),
   feeGroup: z.string().optional(),
+  residualID: z.string().optional(),
 });
 
 export function incurredFeeToJSON(incurredFee: IncurredFee): string {

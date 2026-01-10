@@ -8,9 +8,8 @@ import { Invoice } from "@moovio/sdk/models/components";
 let value: Invoice = {
   invoiceID: "3ea3eff8-41dc-460f-8e5e-0b479a6a2e86",
   invoiceNumber: "INV-1001",
-  description: "replicate penalise pfft smarten and",
-  customerAccountID: "48b14f11-7920-4ea7-8105-5c798af0e994",
-  partnerAccountID: "bff019b3-bb07-4fde-963e-dbe054af31b6",
+  customerAccountID: "42335d9b-271a-4d19-b92d-a2836fe529da",
+  partnerAccountID: "6464048b-14f1-4179-820e-a71055c798af",
   status: "canceled",
   lineItems: {
     items: [
@@ -20,18 +19,18 @@ let value: Invoice = {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
-        quantity: 108714,
+        quantity: 68821,
         options: [
           {
             name: "<value>",
-            quantity: 11853,
+            quantity: 352438,
             priceModifier: {
               currency: "USD",
               valueDecimal: "12.987654321",
             },
             images: [
               {
-                imageID: "4925642d-ae6d-43c8-bb16-aa953186a0b9",
+                imageID: "35fb4515-aa19-4ecd-ab01-f93615e83ee4",
                 link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
                 publicID: "<id>",
               },
@@ -40,7 +39,7 @@ let value: Invoice = {
         ],
         images: [
           {
-            imageID: "4925642d-ae6d-43c8-bb16-aa953186a0b9",
+            imageID: "35fb4515-aa19-4ecd-ab01-f93615e83ee4",
             link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
             publicID: "<id>",
           },
@@ -76,20 +75,17 @@ let value: Invoice = {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
-  payments: [
+  invoicePayments: [
     {
-      invoicePaymentID: "0902d12a-1f84-4514-ace9-b09696afa327",
+      invoicePaymentID: "ee529bbb-9170-4ce5-b59a-2d3e43629e1d",
       invoicePaymentType: "external",
-      external: {
-        description: "deer funny the",
-        amount: {
-          currency: "USD",
-          valueDecimal: "12.987654321",
-        },
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
       },
     },
   ],
-  createdOn: new Date("2024-06-02T22:38:49.534Z"),
+  createdOn: new Date("2025-10-10T20:06:50.578Z"),
 };
 ```
 
@@ -99,7 +95,7 @@ let value: Invoice = {
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `invoiceID`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
 | `invoiceNumber`                                                                               | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | INV-1001                                                                                      |
-| `description`                                                                                 | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
+| `description`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `customerAccountID`                                                                           | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
 | `partnerAccountID`                                                                            | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
 | `status`                                                                                      | [components.InvoiceStatus](../../models/components/invoicestatus.md)                          | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
@@ -112,7 +108,7 @@ let value: Invoice = {
 | `refundedAmount`                                                                              | [components.AmountDecimal](../../models/components/amountdecimal.md)                          | :heavy_check_mark:                                                                            | Total amount of refunds initiated against transfers paid towards the invoice                  |                                                                                               |
 | `disputedAmount`                                                                              | [components.AmountDecimal](../../models/components/amountdecimal.md)                          | :heavy_check_mark:                                                                            | Total amount of disputes initiated against transfers paid towards the invoice                 |                                                                                               |
 | `paymentLinkCode`                                                                             | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
-| `payments`                                                                                    | [components.InvoicePayment](../../models/components/invoicepayment.md)[]                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
+| `invoicePayments`                                                                             | [components.InvoicePayment](../../models/components/invoicepayment.md)[]                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `createdOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
 | `invoiceDate`                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `dueDate`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |

@@ -33,7 +33,7 @@ import {
 export type Invoice = {
   invoiceID: string;
   invoiceNumber: string;
-  description: string;
+  description?: string | undefined;
   customerAccountID: string;
   partnerAccountID: string;
   status: InvoiceStatus;
@@ -64,7 +64,7 @@ export type Invoice = {
    */
   disputedAmount: AmountDecimal;
   paymentLinkCode?: string | undefined;
-  payments?: Array<InvoicePayment> | undefined;
+  invoicePayments?: Array<InvoicePayment> | undefined;
   createdOn: Date;
   invoiceDate?: Date | undefined;
   dueDate?: Date | undefined;
@@ -78,7 +78,7 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
   z.object({
     invoiceID: z.string(),
     invoiceNumber: z.string(),
-    description: z.string(),
+    description: z.string().optional(),
     customerAccountID: z.string(),
     partnerAccountID: z.string(),
     status: InvoiceStatus$inboundSchema,
@@ -91,7 +91,7 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
     refundedAmount: AmountDecimal$inboundSchema,
     disputedAmount: AmountDecimal$inboundSchema,
     paymentLinkCode: z.string().optional(),
-    payments: z.array(InvoicePayment$inboundSchema).optional(),
+    invoicePayments: z.array(InvoicePayment$inboundSchema).optional(),
     createdOn: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),
@@ -112,7 +112,7 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
 export type Invoice$Outbound = {
   invoiceID: string;
   invoiceNumber: string;
-  description: string;
+  description?: string | undefined;
   customerAccountID: string;
   partnerAccountID: string;
   status: string;
@@ -125,7 +125,7 @@ export type Invoice$Outbound = {
   refundedAmount: AmountDecimal$Outbound;
   disputedAmount: AmountDecimal$Outbound;
   paymentLinkCode?: string | undefined;
-  payments?: Array<InvoicePayment$Outbound> | undefined;
+  invoicePayments?: Array<InvoicePayment$Outbound> | undefined;
   createdOn: string;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
@@ -142,7 +142,7 @@ export const Invoice$outboundSchema: z.ZodType<
 > = z.object({
   invoiceID: z.string(),
   invoiceNumber: z.string(),
-  description: z.string(),
+  description: z.string().optional(),
   customerAccountID: z.string(),
   partnerAccountID: z.string(),
   status: InvoiceStatus$outboundSchema,
@@ -155,7 +155,7 @@ export const Invoice$outboundSchema: z.ZodType<
   refundedAmount: AmountDecimal$outboundSchema,
   disputedAmount: AmountDecimal$outboundSchema,
   paymentLinkCode: z.string().optional(),
-  payments: z.array(InvoicePayment$outboundSchema).optional(),
+  invoicePayments: z.array(InvoicePayment$outboundSchema).optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   invoiceDate: z.date().transform(v => v.toISOString()).optional(),
   dueDate: z.date().transform(v => v.toISOString()).optional(),

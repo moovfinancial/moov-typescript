@@ -51,7 +51,7 @@ let value: GetSchedulesResponse = {
             },
           },
           description:
-            "among supposing futon contrast or absolve geez haul unit deceivingly",
+            "over towards proper suspension but sweetly unto uh-huh limp",
           lineItems: {
             items: [
               {
@@ -60,15 +60,30 @@ let value: GetSchedulesResponse = {
                   currency: "USD",
                   valueDecimal: "12.987654321",
                 },
-                quantity: 988494,
+                quantity: 721250,
                 options: [
                   {
                     name: "<value>",
-                    quantity: 556915,
+                    quantity: 898379,
                     priceModifier: {
                       currency: "USD",
                       valueDecimal: "12.987654321",
                     },
+                    images: [
+                      {
+                        imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                        link:
+                          "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                        publicID: "<id>",
+                      },
+                    ],
+                  },
+                ],
+                images: [
+                  {
+                    imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                    link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                    publicID: "<id>",
                   },
                 ],
               },
@@ -112,7 +127,7 @@ let value: GetSchedulesResponse = {
           },
         },
         description:
-          "among supposing futon contrast or absolve geez haul unit deceivingly",
+          "over towards proper suspension but sweetly unto uh-huh limp",
         lineItems: {
           items: [
             {
@@ -121,15 +136,29 @@ let value: GetSchedulesResponse = {
                 currency: "USD",
                 valueDecimal: "12.987654321",
               },
-              quantity: 988494,
+              quantity: 721250,
               options: [
                 {
                   name: "<value>",
-                  quantity: 556915,
+                  quantity: 898379,
                   priceModifier: {
                     currency: "USD",
                     valueDecimal: "12.987654321",
                   },
+                  images: [
+                    {
+                      imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                      link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                      publicID: "<id>",
+                    },
+                  ],
+                },
+              ],
+              images: [
+                {
+                  imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                  link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                  publicID: "<id>",
                 },
               ],
             },
@@ -140,8 +169,8 @@ let value: GetSchedulesResponse = {
     },
     scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-    createdOn: new Date("2026-08-09T22:33:00.843Z"),
-    updatedOn: new Date("2025-03-13T02:19:07.402Z"),
+    createdOn: new Date("2026-05-12T09:50:36.363Z"),
+    updatedOn: new Date("2025-09-19T09:41:07.308Z"),
   },
 };
 ```

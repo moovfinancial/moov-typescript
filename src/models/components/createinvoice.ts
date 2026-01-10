@@ -21,7 +21,7 @@ import {
 
 export type CreateInvoice = {
   customerAccountID: string;
-  description: string;
+  description?: string | undefined;
   /**
    * A collection of line items for an invoice.
    */
@@ -38,7 +38,7 @@ export const CreateInvoice$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   customerAccountID: z.string(),
-  description: z.string(),
+  description: z.string().optional(),
   lineItems: CreateInvoiceLineItems$inboundSchema,
   invoiceDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
@@ -49,7 +49,7 @@ export const CreateInvoice$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateInvoice$Outbound = {
   customerAccountID: string;
-  description: string;
+  description?: string | undefined;
   lineItems: CreateInvoiceLineItems$Outbound;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
@@ -63,7 +63,7 @@ export const CreateInvoice$outboundSchema: z.ZodType<
   CreateInvoice
 > = z.object({
   customerAccountID: z.string(),
-  description: z.string(),
+  description: z.string().optional(),
   lineItems: CreateInvoiceLineItems$outboundSchema,
   invoiceDate: z.date().transform(v => v.toISOString()).optional(),
   dueDate: z.date().transform(v => v.toISOString()).optional(),

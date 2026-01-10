@@ -38,8 +38,7 @@ let value: OccurrencesResponse = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description:
-      "among supposing futon contrast or absolve geez haul unit deceivingly",
+    description: "over towards proper suspension but sweetly unto uh-huh limp",
     lineItems: {
       items: [
         {
@@ -48,15 +47,29 @@ let value: OccurrencesResponse = {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
-          quantity: 988494,
+          quantity: 721250,
           options: [
             {
               name: "<value>",
-              quantity: 556915,
+              quantity: 898379,
               priceModifier: {
                 currency: "USD",
                 valueDecimal: "12.987654321",
               },
+              images: [
+                {
+                  imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                  link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                  publicID: "<id>",
+                },
+              ],
+            },
+          ],
+          images: [
+            {
+              imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+              link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+              publicID: "<id>",
             },
           ],
         },
@@ -77,7 +90,7 @@ let value: OccurrencesResponse = {
 | `indefinite`                                                                                  | *boolean*                                                                                     | :heavy_minus_sign:                                                                            | True if the RRule set runs indefinitely.                                                      |                                                                                               |
 | `canceledOn`                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `runOn`                                                                                       | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
-| `runTransfer`                                                                                 | [components.RunTransfer](../../models/components/runtransfer.md)                              | :heavy_check_mark:                                                                            | Defines the attributes of a transfer.                                                         |                                                                                               |
+| `runTransfer`                                                                                 | [components.RunTransfer](../../models/components/runtransfer.md)                              | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
 | `ranOn`                                                                                       | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `ranTransferID`                                                                               | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `status`                                                                                      | [components.OccurrenceStatus](../../models/components/occurrencestatus.md)                    | :heavy_minus_sign:                                                                            | Status of the completed occurrence.                                                           |                                                                                               |

@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
+import {
   InvoiceExternalPayment,
   InvoiceExternalPayment$inboundSchema,
   InvoiceExternalPayment$Outbound,
@@ -30,6 +36,7 @@ import {
 export type InvoicePayment = {
   invoicePaymentID: string;
   invoicePaymentType: InvoicePaymentType;
+  amount: AmountDecimal;
   transfer?: InvoiceTransferPayment | undefined;
   external?: InvoiceExternalPayment | undefined;
 };
@@ -42,6 +49,7 @@ export const InvoicePayment$inboundSchema: z.ZodType<
 > = z.object({
   invoicePaymentID: z.string(),
   invoicePaymentType: InvoicePaymentType$inboundSchema,
+  amount: AmountDecimal$inboundSchema,
   transfer: InvoiceTransferPayment$inboundSchema.optional(),
   external: InvoiceExternalPayment$inboundSchema.optional(),
 });
@@ -49,6 +57,7 @@ export const InvoicePayment$inboundSchema: z.ZodType<
 export type InvoicePayment$Outbound = {
   invoicePaymentID: string;
   invoicePaymentType: string;
+  amount: AmountDecimal$Outbound;
   transfer?: InvoiceTransferPayment$Outbound | undefined;
   external?: InvoiceExternalPayment$Outbound | undefined;
 };
@@ -61,6 +70,7 @@ export const InvoicePayment$outboundSchema: z.ZodType<
 > = z.object({
   invoicePaymentID: z.string(),
   invoicePaymentType: InvoicePaymentType$outboundSchema,
+  amount: AmountDecimal$outboundSchema,
   transfer: InvoiceTransferPayment$outboundSchema.optional(),
   external: InvoiceExternalPayment$outboundSchema.optional(),
 });

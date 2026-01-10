@@ -9,9 +9,27 @@ let value: CreateInvoiceRequest = {
   accountID: "ba53f8ee-33b0-415f-92f5-b56409d7709e",
   createInvoice: {
     customerAccountID: "<id>",
-    description: "habit until handsome till via nougat inside",
     lineItems: {
-      items: [],
+      items: [
+        {
+          name: "<value>",
+          basePrice: {
+            currency: "USD",
+            valueDecimal: "12.987654321",
+          },
+          quantity: 188713,
+          options: [
+            {
+              name: "<value>",
+              quantity: 985052,
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "12.987654321",
+              },
+            },
+          ],
+        },
+      ],
     },
     taxAmount: {
       currency: "USD",

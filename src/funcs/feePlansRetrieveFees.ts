@@ -98,6 +98,7 @@ async function $do(
     "count": payload.count,
     "disputeID": payload.disputeID,
     "endDateTime": payload.endDateTime,
+    "residualID": payload.residualID,
     "skip": payload.skip,
     "startDateTime": payload.startDateTime,
     "transferID": payload.transferID,

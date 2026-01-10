@@ -6,9 +6,16 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
 
 export type CreateInvoicePayment = {
   foreignID?: string | undefined;
+  amount: AmountDecimal;
   description?: string | undefined;
   paymentDate?: Date | undefined;
 };
@@ -20,6 +27,7 @@ export const CreateInvoicePayment$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   foreignID: z.string().optional(),
+  amount: AmountDecimal$inboundSchema,
   description: z.string().optional(),
   paymentDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
@@ -27,6 +35,7 @@ export const CreateInvoicePayment$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateInvoicePayment$Outbound = {
   foreignID?: string | undefined;
+  amount: AmountDecimal$Outbound;
   description?: string | undefined;
   paymentDate?: string | undefined;
 };
@@ -38,6 +47,7 @@ export const CreateInvoicePayment$outboundSchema: z.ZodType<
   CreateInvoicePayment
 > = z.object({
   foreignID: z.string().optional(),
+  amount: AmountDecimal$outboundSchema,
   description: z.string().optional(),
   paymentDate: z.date().transform(v => v.toISOString()).optional(),
 });
