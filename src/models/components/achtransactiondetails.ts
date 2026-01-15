@@ -41,8 +41,8 @@ export type ACHTransactionDetails = {
   /**
    * Status of a transaction within the ACH lifecycle.
    */
-  status: ACHTransactionStatus;
-  traceNumber: string;
+  status?: ACHTransactionStatus | undefined;
+  traceNumber?: string | undefined;
   return?: ACHException | undefined;
   correction?: ACHException | undefined;
   /**
@@ -77,8 +77,8 @@ export const ACHTransactionDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: ACHTransactionStatus$inboundSchema,
-  traceNumber: z.string(),
+  status: ACHTransactionStatus$inboundSchema.optional(),
+  traceNumber: z.string().optional(),
   return: ACHException$inboundSchema.optional(),
   correction: ACHException$inboundSchema.optional(),
   companyEntryDescription: z.string().optional(),
@@ -104,8 +104,8 @@ export const ACHTransactionDetails$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type ACHTransactionDetails$Outbound = {
-  status: string;
-  traceNumber: string;
+  status?: string | undefined;
+  traceNumber?: string | undefined;
   return?: ACHException$Outbound | undefined;
   correction?: ACHException$Outbound | undefined;
   companyEntryDescription?: string | undefined;
@@ -128,8 +128,8 @@ export const ACHTransactionDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ACHTransactionDetails
 > = z.object({
-  status: ACHTransactionStatus$outboundSchema,
-  traceNumber: z.string(),
+  status: ACHTransactionStatus$outboundSchema.optional(),
+  traceNumber: z.string().optional(),
   return: ACHException$outboundSchema.optional(),
   correction: ACHException$outboundSchema.optional(),
   companyEntryDescription: z.string().optional(),

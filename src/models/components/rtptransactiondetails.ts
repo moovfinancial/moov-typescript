@@ -24,7 +24,7 @@ export type RTPTransactionDetails = {
   /**
    * Status of a transaction within the RTP lifecycle.
    */
-  status: RTPTransactionStatus;
+  status?: RTPTransactionStatus | undefined;
   /**
    * Response code returned by network on failure.
    */
@@ -45,7 +45,7 @@ export const RTPTransactionDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: RTPTransactionStatus$inboundSchema,
+  status: RTPTransactionStatus$inboundSchema.optional(),
   networkResponseCode: z.string().optional(),
   failureCode: RTPFailureCode$inboundSchema.optional(),
   initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -60,7 +60,7 @@ export const RTPTransactionDetails$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type RTPTransactionDetails$Outbound = {
-  status: string;
+  status?: string | undefined;
   networkResponseCode?: string | undefined;
   failureCode?: string | undefined;
   initiatedOn?: string | undefined;
@@ -75,7 +75,7 @@ export const RTPTransactionDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RTPTransactionDetails
 > = z.object({
-  status: RTPTransactionStatus$outboundSchema,
+  status: RTPTransactionStatus$outboundSchema.optional(),
   networkResponseCode: z.string().optional(),
   failureCode: RTPFailureCode$outboundSchema.optional(),
   initiatedOn: z.date().transform(v => v.toISOString()).optional(),

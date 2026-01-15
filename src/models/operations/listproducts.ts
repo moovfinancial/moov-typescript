@@ -29,6 +29,10 @@ export type ListProductsGlobals = {
 
 export type ListProductsRequest = {
   accountID: string;
+  /**
+   * Allows filtering products by title. This supports partial matches and is case-insensitive
+   */
+  title?: string | undefined;
   skip?: number | undefined;
   count?: number | undefined;
 };
@@ -92,12 +96,14 @@ export const ListProductsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accountID: z.string(),
+  title: z.string().optional(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
 });
 /** @internal */
 export type ListProductsRequest$Outbound = {
   accountID: string;
+  title?: string | undefined;
   skip?: number | undefined;
   count?: number | undefined;
 };
@@ -109,6 +115,7 @@ export const ListProductsRequest$outboundSchema: z.ZodType<
   ListProductsRequest
 > = z.object({
   accountID: z.string(),
+  title: z.string().optional(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
 });

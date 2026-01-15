@@ -52,7 +52,6 @@ let value: TransferDestination = {
     domesticPullFromCard: "supported",
   },
   achDetails: {
-    status: "originated",
     traceNumber: "124782618117",
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
@@ -72,7 +71,6 @@ let value: TransferDestination = {
     issuerCountry: "US",
   },
   cardDetails: {
-    status: "canceled",
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
       "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",

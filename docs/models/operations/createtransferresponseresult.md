@@ -85,13 +85,11 @@ const value: components.CreatedTransfer = {
       lastFourCardNumber: "1234",
     },
     cardDetails: {
-      status: "canceled",
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
       feeProgram:
         "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
     },
     achDetails: {
-      status: "originated",
       traceNumber: "124782618117",
       companyEntryDescription: "Gym dues",
       originatingCompanyName: "Whole Body Fit",
@@ -100,7 +98,7 @@ const value: components.CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "card-payment",
+    paymentMethodType: "rtp-credit",
     account: {
       accountID: "<id>",
       email: "Mason_Koepp@hotmail.com",
@@ -145,7 +143,6 @@ const value: components.CreatedTransfer = {
       domesticPullFromCard: "supported",
     },
     achDetails: {
-      status: "originated",
       traceNumber: "124782618117",
       companyEntryDescription: "Gym dues",
       originatingCompanyName: "Whole Body Fit",
@@ -165,7 +162,6 @@ const value: components.CreatedTransfer = {
       issuerCountry: "US",
     },
     cardDetails: {
-      status: "canceled",
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
       feeProgram:
         "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
@@ -189,10 +185,10 @@ const value: components.CreatedTransfer = {
   },
   refunds: [
     {
-      refundID: "58b6438e-8b2b-4576-a3cc-91a9e82c2065",
-      createdOn: new Date("2024-03-31T04:47:38.422Z"),
-      updatedOn: new Date("2024-07-01T05:13:02.406Z"),
-      status: "failed",
+      refundID: "5858b643-8e8b-42b5-9763-cc91a9e82c20",
+      createdOn: new Date("2025-01-20T09:13:11.472Z"),
+      updatedOn: new Date("2026-03-08T12:04:57.037Z"),
+      status: "created",
       amount: {
         currency: "USD",
         value: 1204,
@@ -205,8 +201,8 @@ const value: components.CreatedTransfer = {
   },
   disputes: [
     {
-      disputeID: "8302f6cd-706f-4a3a-8f2f-3448109dee51",
-      createdOn: new Date("2025-08-21T22:07:52.236Z"),
+      disputeID: "2e8302f6-cd70-46fa-93af-2f3448109dee",
+      createdOn: new Date("2024-05-12T10:26:33.460Z"),
       amount: {
         currency: "USD",
         value: 1204,

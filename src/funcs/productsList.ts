@@ -94,6 +94,7 @@ async function $do(
   const query = encodeFormQuery({
     "count": payload.count,
     "skip": payload.skip,
+    "title": payload.title,
   }, { explode: false });
 
   const headers = new Headers(compactMap({

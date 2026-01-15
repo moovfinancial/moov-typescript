@@ -29,7 +29,7 @@ export type CardTransactionDetails = {
   /**
    * Status of a transaction within the card payment lifecycle.
    */
-  status: CardTransactionStatus;
+  status?: CardTransactionStatus | undefined;
   failureCode?: CardTransactionFailureCode | undefined;
   /**
    * An optional override of the default card statement descriptor for a transfer. Accounts must be enabled by Moov to set this field.
@@ -72,7 +72,7 @@ export const CardTransactionDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: CardTransactionStatus$inboundSchema,
+  status: CardTransactionStatus$inboundSchema.optional(),
   failureCode: CardTransactionFailureCode$inboundSchema.optional(),
   dynamicDescriptor: z.string().optional(),
   transactionSource: TransactionSource$inboundSchema.optional(),
@@ -94,7 +94,7 @@ export const CardTransactionDetails$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CardTransactionDetails$Outbound = {
-  status: string;
+  status?: string | undefined;
   failureCode?: string | undefined;
   dynamicDescriptor?: string | undefined;
   transactionSource?: string | undefined;
@@ -115,7 +115,7 @@ export const CardTransactionDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CardTransactionDetails
 > = z.object({
-  status: CardTransactionStatus$outboundSchema,
+  status: CardTransactionStatus$outboundSchema.optional(),
   failureCode: CardTransactionFailureCode$outboundSchema.optional(),
   dynamicDescriptor: z.string().optional(),
   transactionSource: TransactionSource$outboundSchema.optional(),
