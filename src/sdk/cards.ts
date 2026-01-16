@@ -108,10 +108,10 @@ export class Cards extends ClientSDK {
   }
 
   /**
-   * Disables a card associated with a Moov account.
+   * Discontinue using a specified bank account linked to a Moov account.
    *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/cards.write` scope.
+   * you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
    */
   async disable(
     request: operations.DisableCardRequest,

@@ -42,6 +42,10 @@ export type ACHFees = {
    */
   noticeOfChange: BillingCountAndAmount;
   /**
+   * Fees for successful bank account verifications via Plaid or MX.
+   */
+  bankAccountVerification: BillingCountAndAmount;
+  /**
    * Total ACH fees.
    */
   total: BillingCountAndAmount;
@@ -56,6 +60,7 @@ export const ACHFees$inboundSchema: z.ZodType<ACHFees, z.ZodTypeDef, unknown> =
     return: BillingCountAndAmount$inboundSchema,
     unauthorizedReturn: BillingCountAndAmount$inboundSchema,
     noticeOfChange: BillingCountAndAmount$inboundSchema,
+    bankAccountVerification: BillingCountAndAmount$inboundSchema,
     total: BillingCountAndAmount$inboundSchema,
   });
 /** @internal */
@@ -66,6 +71,7 @@ export type ACHFees$Outbound = {
   return: BillingCountAndAmount$Outbound;
   unauthorizedReturn: BillingCountAndAmount$Outbound;
   noticeOfChange: BillingCountAndAmount$Outbound;
+  bankAccountVerification: BillingCountAndAmount$Outbound;
   total: BillingCountAndAmount$Outbound;
 };
 
@@ -81,6 +87,7 @@ export const ACHFees$outboundSchema: z.ZodType<
   return: BillingCountAndAmount$outboundSchema,
   unauthorizedReturn: BillingCountAndAmount$outboundSchema,
   noticeOfChange: BillingCountAndAmount$outboundSchema,
+  bankAccountVerification: BillingCountAndAmount$outboundSchema,
   total: BillingCountAndAmount$outboundSchema,
 });
 

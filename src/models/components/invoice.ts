@@ -64,6 +64,9 @@ export type Invoice = {
    */
   disputedAmount: AmountDecimal;
   paymentLinkCode?: string | undefined;
+  /**
+   * Payment made towards an invoice, will be either a transfer or an external payment.
+   */
   invoicePayments?: Array<InvoicePayment> | undefined;
   createdOn: Date;
   invoiceDate?: Date | undefined;

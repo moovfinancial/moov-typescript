@@ -553,6 +553,13 @@ let value: Statement = {
         valueDecimal: "12.987654321",
       },
     },
+    bankAccountVerification: {
+      count: 513363,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
     total: {
       count: 984400,
       amount: {
@@ -563,56 +570,56 @@ let value: Statement = {
   },
   instantPaymentFees: {
     rtpCreditTransaction: {
-      count: 513363,
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-    },
-    rtpDecline: {
       count: 61495,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pushToCardTransaction: {
+    rtpDecline: {
       count: 252042,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pushToCardDecline: {
+    pushToCardTransaction: {
       count: 832847,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pullFromCardTransaction: {
+    pushToCardDecline: {
       count: 139127,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pullFromCardDecline: {
+    pullFromCardTransaction: {
       count: 296674,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pullFromCardRefund: {
+    pullFromCardDecline: {
       count: 65974,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    instantVerification: {
+    pullFromCardRefund: {
       count: 942102,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+    instantVerification: {
+      count: 405208,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -654,28 +661,28 @@ let value: Statement = {
   },
   otherCardFees: {
     disputes: {
-      count: 405208,
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-    },
-    cardAccountUpdater: {
       count: 208853,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    cardVerification: {
+    cardAccountUpdater: {
       count: 937454,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    nameVerification: {
+    cardVerification: {
       count: 371999,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+    nameVerification: {
+      count: 341965,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -703,8 +710,8 @@ let value: Statement = {
       valueDecimal: "12.987654321",
     },
   },
-  createdOn: new Date("2025-01-09T19:03:51.345Z"),
-  updatedOn: new Date("2025-04-20T08:54:10.576Z"),
+  createdOn: new Date("2025-04-20T08:54:10.576Z"),
+  updatedOn: new Date("2025-12-08T10:05:28.777Z"),
 };
 ```
 

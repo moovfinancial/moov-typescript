@@ -50,6 +50,13 @@ let value: ACHFees = {
       valueDecimal: "12.987654321",
     },
   },
+  bankAccountVerification: {
+    count: 513363,
+    amount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
   total: {
     count: 984400,
     amount: {
@@ -70,4 +77,5 @@ let value: ACHFees = {
 | `return`                                                                             | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_check_mark:                                                                   | Fees for authorized returns.                                                         |
 | `unauthorizedReturn`                                                                 | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_check_mark:                                                                   | Fees for unauthorized returns.                                                       |
 | `noticeOfChange`                                                                     | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_check_mark:                                                                   | Fees for notices of change.                                                          |
+| `bankAccountVerification`                                                            | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_check_mark:                                                                   | Fees for successful bank account verifications via Plaid or MX.                      |
 | `total`                                                                              | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md) | :heavy_check_mark:                                                                   | Total ACH fees.                                                                      |
