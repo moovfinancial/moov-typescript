@@ -15,18 +15,18 @@ let value: InvoiceLineItems = {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
-      quantity: 68821,
+      quantity: 200568,
       options: [
         {
           name: "<value>",
-          quantity: 352438,
+          quantity: 163512,
           priceModifier: {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
           images: [
             {
-              imageID: "35fb4515-aa19-4ecd-ab01-f93615e83ee4",
+              imageID: "<id>",
               link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
               publicID: "<id>",
             },
@@ -35,7 +35,7 @@ let value: InvoiceLineItems = {
       ],
       images: [
         {
-          imageID: "35fb4515-aa19-4ecd-ab01-f93615e83ee4",
+          imageID: "<id>",
           link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
           publicID: "<id>",
         },

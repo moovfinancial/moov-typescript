@@ -10,13 +10,9 @@ let value: CreateInvoicePaymentResponse = {
     "key": [
       "<value 1>",
     ],
-    "key1": [],
-    "key2": [
-      "<value 1>",
-    ],
   },
   result: {
-    invoicePaymentID: "a76035b3-87ca-467c-96af-be4a6ddf2f2f",
+    invoicePaymentID: "<id>",
     invoicePaymentType: "external",
     amount: {
       currency: "USD",

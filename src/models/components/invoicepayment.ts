@@ -34,6 +34,9 @@ import {
  * Payment made towards an invoice, will be either a transfer or an external payment.
  */
 export type InvoicePayment = {
+  /**
+   * A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
+   */
   invoicePaymentID: string;
   invoicePaymentType: InvoicePaymentType;
   amount: AmountDecimal;

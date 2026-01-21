@@ -16,7 +16,7 @@ let value: InvoiceLineItemOption = {
   },
   images: [
     {
-      imageID: "35fb4515-aa19-4ecd-ab01-f93615e83ee4",
+      imageID: "<id>",
       link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
       publicID: "<id>",
     },

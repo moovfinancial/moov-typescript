@@ -9,14 +9,20 @@ let value: CreateInvoiceResponse = {
   headers: {
     "key": [
       "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
     ],
   },
   result: {
-    invoiceID: "bc3285ad-857f-484c-9f25-56b606e55259",
+    invoiceID: "<id>",
     invoiceNumber: "INV-1001",
-    customerAccountID: "f8e9b163-ad46-4581-8dde-8e1a0734992c",
-    partnerAccountID: "0836b0df-6dee-433c-9e89-31849af157e4",
-    status: "draft",
+    customerAccountID: "<id>",
+    partnerAccountID: "<id>",
+    status: "overdue",
     lineItems: {
       items: [
         {
@@ -25,18 +31,18 @@ let value: CreateInvoiceResponse = {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
-          quantity: 68821,
+          quantity: 200568,
           options: [
             {
               name: "<value>",
-              quantity: 352438,
+              quantity: 163512,
               priceModifier: {
                 currency: "USD",
                 valueDecimal: "12.987654321",
               },
               images: [
                 {
-                  imageID: "35fb4515-aa19-4ecd-ab01-f93615e83ee4",
+                  imageID: "<id>",
                   link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
                   publicID: "<id>",
                 },
@@ -45,7 +51,7 @@ let value: CreateInvoiceResponse = {
           ],
           images: [
             {
-              imageID: "35fb4515-aa19-4ecd-ab01-f93615e83ee4",
+              imageID: "<id>",
               link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
               publicID: "<id>",
             },
@@ -83,7 +89,7 @@ let value: CreateInvoiceResponse = {
     },
     invoicePayments: [
       {
-        invoicePaymentID: "ee529bbb-9170-4ce5-b59a-2d3e43629e1d",
+        invoicePaymentID: "<id>",
         invoicePaymentType: "external",
         amount: {
           currency: "USD",
@@ -91,7 +97,7 @@ let value: CreateInvoiceResponse = {
         },
       },
     ],
-    createdOn: new Date("2024-08-15T11:21:40.445Z"),
+    createdOn: new Date("2025-02-09T19:49:01.456Z"),
   },
 };
 ```
