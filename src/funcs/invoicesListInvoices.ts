@@ -99,7 +99,11 @@ async function $do(
 
   const query = encodeFormQuery({
     "count": payload.count,
+    "createdEndDateTime": payload.createdEndDateTime,
+    "createdStartDateTime": payload.createdStartDateTime,
     "customerAccountID": payload.customerAccountID,
+    "dueEndDateTime": payload.dueEndDateTime,
+    "dueStartDateTime": payload.dueStartDateTime,
     "skip": payload.skip,
     "status": payload.status,
   }, { explode: false });

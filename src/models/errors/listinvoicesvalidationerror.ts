@@ -8,6 +8,10 @@ import { MoovError } from "./mooverror.js";
 export type ListInvoicesValidationErrorData = {
   status?: string | undefined;
   customerAccountID?: string | undefined;
+  createdStartDateTime?: string | undefined;
+  createdEndDateTime?: string | undefined;
+  dueStartDateTime?: string | undefined;
+  dueEndDateTime?: string | undefined;
   skip?: string | undefined;
   count?: string | undefined;
 };
@@ -15,6 +19,10 @@ export type ListInvoicesValidationErrorData = {
 export class ListInvoicesValidationError extends MoovError {
   status?: string | undefined;
   customerAccountID?: string | undefined;
+  createdStartDateTime?: string | undefined;
+  createdEndDateTime?: string | undefined;
+  dueStartDateTime?: string | undefined;
+  dueEndDateTime?: string | undefined;
   skip?: string | undefined;
   count?: string | undefined;
 
@@ -34,6 +42,16 @@ export class ListInvoicesValidationError extends MoovError {
     if (err.customerAccountID != null) {
       this.customerAccountID = err.customerAccountID;
     }
+    if (err.createdStartDateTime != null) {
+      this.createdStartDateTime = err.createdStartDateTime;
+    }
+    if (err.createdEndDateTime != null) {
+      this.createdEndDateTime = err.createdEndDateTime;
+    }
+    if (err.dueStartDateTime != null) {
+      this.dueStartDateTime = err.dueStartDateTime;
+    }
+    if (err.dueEndDateTime != null) this.dueEndDateTime = err.dueEndDateTime;
     if (err.skip != null) this.skip = err.skip;
     if (err.count != null) this.count = err.count;
 
@@ -49,6 +67,10 @@ export const ListInvoicesValidationError$inboundSchema: z.ZodType<
 > = z.object({
   status: z.string().optional(),
   customerAccountID: z.string().optional(),
+  createdStartDateTime: z.string().optional(),
+  createdEndDateTime: z.string().optional(),
+  dueStartDateTime: z.string().optional(),
+  dueEndDateTime: z.string().optional(),
   skip: z.string().optional(),
   count: z.string().optional(),
   request$: z.instanceof(Request),
@@ -67,6 +89,10 @@ export const ListInvoicesValidationError$inboundSchema: z.ZodType<
 export type ListInvoicesValidationError$Outbound = {
   status?: string | undefined;
   customerAccountID?: string | undefined;
+  createdStartDateTime?: string | undefined;
+  createdEndDateTime?: string | undefined;
+  dueStartDateTime?: string | undefined;
+  dueEndDateTime?: string | undefined;
   skip?: string | undefined;
   count?: string | undefined;
 };
@@ -81,6 +107,10 @@ export const ListInvoicesValidationError$outboundSchema: z.ZodType<
   .pipe(z.object({
     status: z.string().optional(),
     customerAccountID: z.string().optional(),
+    createdStartDateTime: z.string().optional(),
+    createdEndDateTime: z.string().optional(),
+    dueStartDateTime: z.string().optional(),
+    dueEndDateTime: z.string().optional(),
     skip: z.string().optional(),
     count: z.string().optional(),
   }));

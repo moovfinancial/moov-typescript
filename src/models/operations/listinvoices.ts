@@ -32,6 +32,10 @@ export type ListInvoicesRequest = {
   count?: number | undefined;
   status?: components.InvoiceStatus | undefined;
   customerAccountID?: string | undefined;
+  createdStartDateTime?: Date | undefined;
+  createdEndDateTime?: Date | undefined;
+  dueStartDateTime?: Date | undefined;
+  dueEndDateTime?: Date | undefined;
   accountID: string;
 };
 
@@ -97,6 +101,18 @@ export const ListInvoicesRequest$inboundSchema: z.ZodType<
   count: z.number().int().optional(),
   status: components.InvoiceStatus$inboundSchema.optional(),
   customerAccountID: z.string().optional(),
+  createdStartDateTime: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
+  createdEndDateTime: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
+  dueStartDateTime: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
+  dueEndDateTime: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
   accountID: z.string(),
 });
 /** @internal */
@@ -105,6 +121,10 @@ export type ListInvoicesRequest$Outbound = {
   count?: number | undefined;
   status?: string | undefined;
   customerAccountID?: string | undefined;
+  createdStartDateTime?: string | undefined;
+  createdEndDateTime?: string | undefined;
+  dueStartDateTime?: string | undefined;
+  dueEndDateTime?: string | undefined;
   accountID: string;
 };
 
@@ -118,6 +138,10 @@ export const ListInvoicesRequest$outboundSchema: z.ZodType<
   count: z.number().int().optional(),
   status: components.InvoiceStatus$outboundSchema.optional(),
   customerAccountID: z.string().optional(),
+  createdStartDateTime: z.date().transform(v => v.toISOString()).optional(),
+  createdEndDateTime: z.date().transform(v => v.toISOString()).optional(),
+  dueStartDateTime: z.date().transform(v => v.toISOString()).optional(),
+  dueEndDateTime: z.date().transform(v => v.toISOString()).optional(),
   accountID: z.string(),
 });
 
