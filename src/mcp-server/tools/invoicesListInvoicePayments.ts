@@ -14,7 +14,7 @@ export const tool$invoicesListInvoicePayments: ToolDefinition<typeof args> = {
   name: "invoices-list-invoice-payments",
   description: `List all the payments made towards an invoice.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/invoices.read\` scope.`,
   args,
   tool: async (client, args, ctx) => {

@@ -14,7 +14,7 @@ export const tool$invoicesGetInvoice: ToolDefinition<typeof args> = {
   name: "invoices-get-invoice",
   description: `Retrieve an invoice by ID.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/invoices.read\` scope.`,
   args,
   tool: async (client, args, ctx) => {

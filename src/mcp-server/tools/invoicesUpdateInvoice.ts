@@ -14,7 +14,7 @@ export const tool$invoicesUpdateInvoice: ToolDefinition<typeof args> = {
   name: "invoices-update-invoice",
   description: `Updates an invoice.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/invoices.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {

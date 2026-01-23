@@ -16,7 +16,7 @@ export const tool$invoicesCreateInvoicePayment: ToolDefinition<typeof args> = {
     `Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
 If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/invoices.write\` scope.`,
   args,
   tool: async (client, args, ctx) => {

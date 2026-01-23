@@ -6,35 +6,35 @@
 
 * [createInvoice](#createinvoice) - Create an invoice for a Moov account.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 * [listInvoices](#listinvoices) - List all the invoices created under a Moov account.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 * [getInvoice](#getinvoice) - Retrieve an invoice by ID.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 * [updateInvoice](#updateinvoice) - Updates an invoice.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 * [createInvoicePayment](#createinvoicepayment) - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
 If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 * [listInvoicePayments](#listinvoicepayments) - List all the payments made towards an invoice.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ## createInvoice
 
 Create an invoice for a Moov account.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
 ### Example Usage
@@ -55,13 +55,25 @@ async function run() {
   const result = await moov.invoices.createInvoice({
     accountID: "241bf524-e777-4941-a5e4-d7f3f34d7a00",
     createInvoice: {
-      customerAccountID: "<id>",
+      customerAccountID: "3dfff852-927d-47e8-822c-2fffc57ff6b9",
+      description: "Professional services for Q1 2026",
       lineItems: {
-        items: [],
+        items: [
+          {
+            name: "Professional Services",
+            basePrice: {
+              currency: "USD",
+              valueDecimal: "1000.00",
+            },
+            quantity: 1,
+          },
+        ],
       },
+      invoiceDate: new Date("2026-01-15T00:00:00Z"),
+      dueDate: new Date("2026-02-15T00:00:00Z"),
       taxAmount: {
         currency: "USD",
-        valueDecimal: "12.987654321",
+        valueDecimal: "80.00",
       },
     },
   });
@@ -94,13 +106,25 @@ async function run() {
   const res = await invoicesCreateInvoice(moov, {
     accountID: "241bf524-e777-4941-a5e4-d7f3f34d7a00",
     createInvoice: {
-      customerAccountID: "<id>",
+      customerAccountID: "3dfff852-927d-47e8-822c-2fffc57ff6b9",
+      description: "Professional services for Q1 2026",
       lineItems: {
-        items: [],
+        items: [
+          {
+            name: "Professional Services",
+            basePrice: {
+              currency: "USD",
+              valueDecimal: "1000.00",
+            },
+            quantity: 1,
+          },
+        ],
       },
+      invoiceDate: new Date("2026-01-15T00:00:00Z"),
+      dueDate: new Date("2026-02-15T00:00:00Z"),
       taxAmount: {
         currency: "USD",
-        valueDecimal: "12.987654321",
+        valueDecimal: "80.00",
       },
     },
   });
@@ -140,7 +164,7 @@ run();
 
 List all the invoices created under a Moov account.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### Example Usage
@@ -229,7 +253,7 @@ run();
 
 Retrieve an invoice by ID.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### Example Usage
@@ -315,7 +339,7 @@ run();
 
 Updates an invoice.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
 ### Example Usage
@@ -337,32 +361,21 @@ async function run() {
     accountID: "ce46d65a-8504-4afa-b3f7-303401bd08b3",
     invoiceID: "ef510999-370a-4350-87d5-bc81fc02a2ea",
     updateInvoice: {
+      description: "Updated professional services for Q1 2026",
       lineItems: {
         items: [
           {
-            name: "<value>",
+            name: "Professional Services",
             basePrice: {
               currency: "USD",
-              valueDecimal: "12.987654321",
+              valueDecimal: "1000.00",
             },
-            quantity: 984515,
-            options: [
-              {
-                name: "<value>",
-                quantity: 761923,
-                priceModifier: {
-                  currency: "USD",
-                  valueDecimal: "12.987654321",
-                },
-              },
-            ],
+            quantity: 1,
           },
         ],
       },
-      taxAmount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
+      invoiceDate: new Date("2026-01-16T00:00:00Z"),
+      dueDate: new Date("2026-02-16T00:00:00Z"),
     },
   });
 
@@ -395,32 +408,21 @@ async function run() {
     accountID: "ce46d65a-8504-4afa-b3f7-303401bd08b3",
     invoiceID: "ef510999-370a-4350-87d5-bc81fc02a2ea",
     updateInvoice: {
+      description: "Updated professional services for Q1 2026",
       lineItems: {
         items: [
           {
-            name: "<value>",
+            name: "Professional Services",
             basePrice: {
               currency: "USD",
-              valueDecimal: "12.987654321",
+              valueDecimal: "1000.00",
             },
-            quantity: 984515,
-            options: [
-              {
-                name: "<value>",
-                quantity: 761923,
-                priceModifier: {
-                  currency: "USD",
-                  valueDecimal: "12.987654321",
-                },
-              },
-            ],
+            quantity: 1,
           },
         ],
       },
-      taxAmount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
+      invoiceDate: new Date("2026-01-16T00:00:00Z"),
+      dueDate: new Date("2026-02-16T00:00:00Z"),
     },
   });
   if (res.ok) {
@@ -460,7 +462,7 @@ run();
 Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
 If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
 ### Example Usage
@@ -482,10 +484,13 @@ async function run() {
     accountID: "e02333e4-a835-46d1-8d02-9af7a405e65f",
     invoiceID: "99e7ebb0-9996-49b2-98f0-304c7332ece6",
     createInvoicePayment: {
+      foreignID: "EXT-PAY-12345",
       amount: {
         currency: "USD",
-        valueDecimal: "12.987654321",
+        valueDecimal: "500.00",
       },
+      description: "Payment received via wire transfer",
+      paymentDate: new Date("2026-01-20T14:45:00Z"),
     },
   });
 
@@ -518,10 +523,13 @@ async function run() {
     accountID: "e02333e4-a835-46d1-8d02-9af7a405e65f",
     invoiceID: "99e7ebb0-9996-49b2-98f0-304c7332ece6",
     createInvoicePayment: {
+      foreignID: "EXT-PAY-12345",
       amount: {
         currency: "USD",
-        valueDecimal: "12.987654321",
+        valueDecimal: "500.00",
       },
+      description: "Payment received via wire transfer",
+      paymentDate: new Date("2026-01-20T14:45:00Z"),
     },
   });
   if (res.ok) {
@@ -560,7 +568,7 @@ run();
 
 List all the payments made towards an invoice.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### Example Usage
