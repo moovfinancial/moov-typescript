@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 82a3a468be914fa4df92034f13c8f805
+  docChecksum: 901eedb2cf769175b2418371990af1ed
   docVersion: latest
-  speakeasyVersion: 1.696.0
-  generationVersion: 2.799.0
-  releaseVersion: 0.22.20
-  configChecksum: c3533ee5ef04329fa1b7fc20d0111c66
+  speakeasyVersion: 1.700.1
+  generationVersion: 2.801.0
+  releaseVersion: 0.22.21
+  configChecksum: 5018182b320fac43db0f49a0c3e8cea8
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 76658ab6-960c-4d78-8c7a-92b48818c5b9
-  pristine_commit_hash: df8be681059e8735195002e7d83f50418f7177fa
-  pristine_tree_hash: 8ede7acdebff9c61f09ff257bc89c94fa2b08603
+  generation_id: 832e4486-ec82-4756-ab44-9401a61c01e8
+  pristine_commit_hash: 98ed9b215777447d47f601444c00d843f4a0a639
+  pristine_tree_hash: f95734e7fe314581108ce005693a25cf52145a01
 features:
   typescript:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.22
+    core: 3.26.23
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -1455,12 +1455,12 @@ trackedFiles:
     pristine_git_object: 4e4a98196706a6b51c8f26b00d8e7f4de0e63555
   docs/models/components/onboardinginvite.md:
     id: 8357af2b90ac
-    last_write_checksum: sha1:ff6441165fcc3ad90a81e800e542fb803b114f17
-    pristine_git_object: 111499ea09c8b6ac8c3a27fd3c43b8bbf2499eb7
+    last_write_checksum: sha1:9547f07b5ebadf68a22013317ce93f342ced1ab4
+    pristine_git_object: cce0cb58bb0951d1106d365d75cb85a9e6036fa7
   docs/models/components/onboardinginviterequest.md:
     id: 8df4c9e0b9c5
-    last_write_checksum: sha1:9af53e4432b29cdec69631ded1b0f29e9cf13036
-    pristine_git_object: a344fb25b933f168a9386c6200d96df160044ebb
+    last_write_checksum: sha1:a944a67de7201e043e019d4d91f14c8c014e49fa
+    pristine_git_object: cd4e557a39d763413c2d4752eb152774b3a1faf1
   docs/models/components/onboardingpartneraccount.md:
     id: 0cd9175b3bb0
     last_write_checksum: sha1:2e5da1556c9b3e821867a19ad5d61eb6d43541ea
@@ -2843,8 +2843,8 @@ trackedFiles:
     pristine_git_object: 15fdced70ed0e0a5b9ac1989914f6008158eb0f2
   docs/models/operations/createonboardinginviteresponse.md:
     id: c586dff35524
-    last_write_checksum: sha1:ade27ddeae89262464430fe076bada1923bef4d4
-    pristine_git_object: 28a66dce46ac9a5429be8a30babeb8683fc74e6e
+    last_write_checksum: sha1:e8dabffd26fee44e944a2ebb0ad4c2dea809adc2
+    pristine_git_object: 5899a944edcfdb8c3e14871b9b0e424d60f7548b
   docs/models/operations/createpaymentlinkglobals.md:
     id: 4ca44fd1113a
     last_write_checksum: sha1:cd71d559bd264521da048199d4f515716e41ee42
@@ -3463,8 +3463,8 @@ trackedFiles:
     pristine_git_object: 45a02f5b2a6c7afb3542f7f3c723acab7b53e37a
   docs/models/operations/getonboardinginviteresponse.md:
     id: db7f50375576
-    last_write_checksum: sha1:bd1e3bf435b7cf5afa897cba4c649cdbbcf530a3
-    pristine_git_object: 64407d8a0e2386cf58816e9f2327b057afb29c21
+    last_write_checksum: sha1:cac13791474d37ad2da3417c47d7d338c0da98a6
+    pristine_git_object: f3e53b473c71920c3626494cfde0dc6a4253382b
   docs/models/operations/getpaymentlinkglobals.md:
     id: 46e5f42f8ed0
     last_write_checksum: sha1:389daec2cbd0927722f305213adeea8acb348176
@@ -4139,8 +4139,8 @@ trackedFiles:
     pristine_git_object: d154a2200ffa891c78dfe009430fd81511fb161a
   docs/models/operations/listonboardinginvitesresponse.md:
     id: ad5919447665
-    last_write_checksum: sha1:28fb5e6d688ed9e7005bc781cdfa63b628513803
-    pristine_git_object: c78d9b409f7bf85b40ab003935f7ac4e9932e028
+    last_write_checksum: sha1:ba119cfed246357da405ee4944b0b6b1a0a99d9c
+    pristine_git_object: 2a64bf034224790e0be241b934f395ee1bb91106
   docs/models/operations/listpartnerpricingagreementsglobals.md:
     id: 07b4fcb99553
     last_write_checksum: sha1:739342418437eb5667f252d95a8ac6c4e3db553b
@@ -4899,8 +4899,8 @@ trackedFiles:
     pristine_git_object: 2a293dcbf87bd6fdf20cd9bf849d36b1b6dcc54c
   docs/sdks/onboarding/README.md:
     id: 395b30e93e5f
-    last_write_checksum: sha1:a937b07de16273f4e83cd8d20c8ba3436847d71d
-    pristine_git_object: 24f537635e139ff4d64c50d2a660b7f2c2872c21
+    last_write_checksum: sha1:6331275dfda54d50d065bfbdc1cadafc61659347
+    pristine_git_object: 2cc76234735a82d2e624f954d3368b071e2d733d
   docs/sdks/paymentlinks/README.md:
     id: 35777159619c
     last_write_checksum: sha1:0bc5dcaa8d49eb6330d98b11ca42080fbcc3b2c3
@@ -4987,12 +4987,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:17cddc58983e04fcff7caba3ae0f65b6c0ee320e
-    pristine_git_object: dd211a341d171fb8f6c9441713e2dfde01e34e58
+    last_write_checksum: sha1:361466445bc854b6360319696878929ae2ead79d
+    pristine_git_object: 73f6c467c6ef5085e365fe464913a08254474d7f
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:f8b42463753da586a76aae508ca2826fa29575ef
-    pristine_git_object: 998dc1193ead1c86e4549532b43d271b35bf4358
+    last_write_checksum: sha1:b91bcec4d3cd1447667d9071128b4415803f393b
+    pristine_git_object: 03a735023ba54e4371c88c294510bf1cd2a6010e
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5731,8 +5731,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:73e391567793e411bf51cc2c75cb3bfee8ced316
-    pristine_git_object: b74e702e62e85b035eaf7317bcee877cf0cbcf7d
+    last_write_checksum: sha1:3bb7965fe94e2d55f91fd5d25f41ac3882929a33
+    pristine_git_object: 66707bf6699ec9719bed239dc73c35fd4e0e230a
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5811,8 +5811,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:e7823ff92dd94f6c19ed544f7d3cc8fd229eabcf
-    pristine_git_object: 4f747c829cda9fe17c94703a21969bb0a55a5548
+    last_write_checksum: sha1:b3e2711b8af2457cdf6ed0f36c3d4616380949bd
+    pristine_git_object: fccbe05f6e15fb7968dc54e3ddbdcdffd793cf8c
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5827,8 +5827,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:60788cf061525a769aa1b5e8627ff4fb492db3d9
-    pristine_git_object: 3cf2ab79e042f863312257e509664ebc043ec10b
+    last_write_checksum: sha1:1ccf09d75dcdeb69d38facaa1c82d1c41feb3c76
+    pristine_git_object: d75a06f7a9ea89d09595c5ff31e28208ac4233fe
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:56c73d4429691516e35541825e759a0285747a2b
@@ -7843,12 +7843,12 @@ trackedFiles:
     pristine_git_object: b86e98caa6afe5a819aeb49e0b95d55b32b60bed
   src/models/components/onboardinginvite.ts:
     id: 2b8c9b3102ae
-    last_write_checksum: sha1:114c4f3dbcd4c204af6387ea8d29e32e49cc2579
-    pristine_git_object: c443db587fbed2a63138ea4bea1f1a85b60d8757
+    last_write_checksum: sha1:329e4b0a12bccf84d58fdc7e987a1ea5f34b38e3
+    pristine_git_object: 870431d1f03ab82821b7e6337dc11ac579796d92
   src/models/components/onboardinginviterequest.ts:
     id: e503dbfb05e2
-    last_write_checksum: sha1:6c2ffa885d4d45441af78ed6bb63a2b583351718
-    pristine_git_object: 4707dbbfe43c9c8b52dd9ff79d1d943033b3d822
+    last_write_checksum: sha1:3622d6439d3c2fd2b16e59b6b88658e3a343e30b
+    pristine_git_object: c94d186d2c9bdbf6ed29999f2d1df03a3df5d8b7
   src/models/components/onboardingpartneraccount.ts:
     id: 9e6361a17074
     last_write_checksum: sha1:ad282f71975b43aa321834dc1553f146ed83e94d
@@ -11919,10 +11919,10 @@ examples:
           x-moov-version: "v2024.01.00"
           X-Moov-Version: "v2024.01.00"
       requestBody:
-        application/json: {"scopes": ["accounts.read"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}}
+        application/json: {"scopes": ["accounts.read"], "grantScopes": ["transfers.write"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}}
       responses:
         "200":
-          application/json: {"code": "N1IA5eWYNh", "link": "https://failing-wasabi.com", "scopes": ["accounts.read"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}, "partner": {"accountID": "ee73fe4c-8ea3-4469-a841-92278013c9ea", "accountMode": "production", "displayName": "Bob's Widgets"}, "createdOn": "2024-05-08T22:53:24.634Z"}
+          application/json: {"code": "N1IA5eWYNh", "link": "https://failing-wasabi.com", "scopes": ["accounts.read"], "grantScopes": ["transfers.write"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}, "partner": {"accountID": "ee73fe4c-8ea3-4469-a841-92278013c9ea", "accountMode": "production", "displayName": "Bob's Widgets"}, "createdOn": "2024-05-08T22:53:24.634Z"}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -11946,7 +11946,7 @@ examples:
           X-Moov-Version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"code": "N1IA5eWYNh", "link": "https://austere-cappelletti.com", "scopes": ["accounts.read"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}, "partner": {"accountID": "056b20bf-2d5d-4e89-9317-29958a4e4a82", "accountMode": "production", "displayName": "Bob's Widgets"}, "createdOn": "2025-08-08T10:05:08.362Z"}
+          application/json: {"code": "N1IA5eWYNh", "link": "https://austere-cappelletti.com", "scopes": ["accounts.read"], "grantScopes": ["transfers.write"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}, "partner": {"accountID": "056b20bf-2d5d-4e89-9317-29958a4e4a82", "accountMode": "production", "displayName": "Bob's Widgets"}, "createdOn": "2025-08-08T10:05:08.362Z"}
   revokeOnboardingInvite:
     speakeasy-default-revoke-onboarding-invite:
       parameters:
@@ -12691,6 +12691,7 @@ examples:
           application/json: {"secret": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `moov.onboarding.createInvite()`: \n  *  `request.grantScopes` **Added**\n  *  `response.grantScopes` **Added**\n* `moov.onboarding.listInvites()`:  `response.[].grantScopes` **Added**\n* `moov.onboarding.getInvite()`:  `response.grantScopes` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
