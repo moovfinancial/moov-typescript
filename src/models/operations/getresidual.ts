@@ -29,6 +29,9 @@ export type GetResidualGlobals = {
 
 export type GetResidualRequest = {
   accountID: string;
+  /**
+   * Unique identifier for this residual payment calculation.
+   */
   residualID: string;
 };
 

@@ -14,24 +14,49 @@ import {
 } from "./amountdecimal.js";
 
 export type Residual = {
+  /**
+   * Unique identifier for this residual payment calculation.
+   */
   residualID: string;
+  /**
+   * The partner account ID this residual belongs to.
+   */
   partnerAccountID: string;
+  /**
+   * Start date and time of the residual calculation period.
+   */
   periodStart: Date;
+  /**
+   * End date and time of the residual calculation period.
+   */
   periodEnd: Date;
+  /**
+   * Total amount of merchant fees collected during the period. This represents the partner's revenue from merchant fees.
+   */
   merchantFees: AmountDecimal;
+  /**
+   * Partner's total cost (buy rate) during the period.
+   */
   partnerCost: AmountDecimal;
+  /**
+   * Net income calculated as merchant fee revenue minus partner costs.
+   */
   netIncome: AmountDecimal;
   /**
-   *   The decimal-formatted numerical string of the revenue split for partner.
-   *
-   * @remarks
-   *
-   *   For example, 2.25% is '2.25'.
+   * The revenue share percentage the partner receives, expressed as a decimal string (e.g., "25.00" for 25%).
    */
   revenueShare: string;
+  /**
+   * The amount the partner receives as their share of the net income (netIncome × revenueShare).
+   */
   residualAmount: AmountDecimal;
-  moovShare: AmountDecimal;
+  /**
+   * Timestamp when the residual was created.
+   */
   createdOn: Date;
+  /**
+   * Timestamp when the residual was last updated.
+   */
   updatedOn: Date;
 };
 
@@ -52,7 +77,6 @@ export const Residual$inboundSchema: z.ZodType<
   netIncome: AmountDecimal$inboundSchema,
   revenueShare: z.string(),
   residualAmount: AmountDecimal$inboundSchema,
-  moovShare: AmountDecimal$inboundSchema,
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
@@ -67,7 +91,6 @@ export type Residual$Outbound = {
   netIncome: AmountDecimal$Outbound;
   revenueShare: string;
   residualAmount: AmountDecimal$Outbound;
-  moovShare: AmountDecimal$Outbound;
   createdOn: string;
   updatedOn: string;
 };
@@ -87,7 +110,6 @@ export const Residual$outboundSchema: z.ZodType<
   netIncome: AmountDecimal$outboundSchema,
   revenueShare: z.string(),
   residualAmount: AmountDecimal$outboundSchema,
-  moovShare: AmountDecimal$outboundSchema,
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
 });

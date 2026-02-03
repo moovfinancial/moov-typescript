@@ -29,10 +29,6 @@ let value: GetResidualResponse = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
-    moovShare: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
-    },
     createdOn: new Date("2024-02-27T09:21:19.609Z"),
     updatedOn: new Date("2025-02-05T09:20:22.869Z"),
   },

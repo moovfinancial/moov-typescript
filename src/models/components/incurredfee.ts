@@ -24,16 +24,37 @@ import {
  */
 export type IncurredFee = {
   feeID?: string | undefined;
+  /**
+   * Account ID the fee belongs to.
+   */
   accountID?: string | undefined;
+  /**
+   * Wallet ID associated with the fee.
+   */
   walletID?: string | undefined;
+  /**
+   * Timestamp when the fee was created.
+   */
   createdOn?: Date | undefined;
+  /**
+   * Name of the fee.
+   */
   feeName?: string | undefined;
+  /**
+   * The fee amount.
+   */
   amount?: AmountDecimal | undefined;
   /**
-   * The entity that generated the fee.
+   * Object indicating what generated the fee (TransferID, CardID, DisputeID, AccountID, or BankAccountID).
    */
   generatedBy?: GeneratedBy | undefined;
+  /**
+   * Describes the source of the fee, such as a Moov-set processing fee, a network pass-through fee, or an interchange or discount fee.
+   */
   feeGroup?: string | undefined;
+  /**
+   * Unique identifier for this residual payment calculation.
+   */
   residualID?: string | undefined;
 };
 

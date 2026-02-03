@@ -31,6 +31,9 @@ export type ListResidualFeesRequest = {
   skip?: number | undefined;
   count?: number | undefined;
   accountID: string;
+  /**
+   * Unique identifier for this residual payment calculation.
+   */
   residualID: string;
   /**
    * Optional date-time to inclusively filter all fees created after this date-time.

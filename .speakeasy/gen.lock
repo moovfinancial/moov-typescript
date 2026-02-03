@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 901eedb2cf769175b2418371990af1ed
+  docChecksum: fe16991a0e880603ece0ddd7107307c9
   docVersion: latest
-  speakeasyVersion: 1.700.1
-  generationVersion: 2.801.0
-  releaseVersion: 0.22.21
-  configChecksum: 5018182b320fac43db0f49a0c3e8cea8
+  speakeasyVersion: 1.700.2
+  generationVersion: 2.801.2
+  releaseVersion: 0.22.22
+  configChecksum: 01c5784f939887307a5c188e965ff2c3
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 832e4486-ec82-4756-ab44-9401a61c01e8
-  pristine_commit_hash: 98ed9b215777447d47f601444c00d843f4a0a639
-  pristine_tree_hash: f95734e7fe314581108ce005693a25cf52145a01
+  generation_id: 6ed2e84a-7684-4c3c-91b8-c198908b88be
+  pristine_commit_hash: dca491aadb052aa7b06105877fa91aae6f1c1864
+  pristine_tree_hash: cacb23cc5ca2e249cf420b13245446cb99467ab0
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -1155,8 +1155,8 @@ trackedFiles:
     pristine_git_object: 557ee8a33afd5ac2ac5b91b7ae6ea2a77d3efc2f
   docs/models/components/incurredfee.md:
     id: b6723dcd3a52
-    last_write_checksum: sha1:abd4106fb89ad5f38e66a72449092e264128627f
-    pristine_git_object: a5e8aed57b2077194fb16f856fd43e065a35c8ed
+    last_write_checksum: sha1:ccb7ae6693aa6ea05c9c467b7d31e2452cd8d683
+    pristine_git_object: 49018dbb77bebf23bb634ea555f875b873a09c76
   docs/models/components/individualname.md:
     id: dd409a4f643e
     last_write_checksum: sha1:0945e3d368e6e71975e9bc8d90fdf64c4fbe5013
@@ -1771,8 +1771,8 @@ trackedFiles:
     pristine_git_object: fda26e0f5f90776754436c49953324f49b7258eb
   docs/models/components/residual.md:
     id: 9f688821b6e1
-    last_write_checksum: sha1:c7e6ec423d54bb6b357aaa5d314658b5c5ef68b6
-    pristine_git_object: 3b8e0f7aabcc2117e08b7073ee5780e13ec625d4
+    last_write_checksum: sha1:64dee6e3f8ff67399a2d90727327956ed516443b
+    pristine_git_object: 26ae194d5bd8967b5d264dc143f257b363a8fae9
   docs/models/components/responsibilities.md:
     id: d01925883b4b
     last_write_checksum: sha1:446b4e732990aa40506f10b5a65160a58a8cf7f1
@@ -3559,12 +3559,12 @@ trackedFiles:
     pristine_git_object: 9cf5b1871da0b297df466866dfb93c48216df036
   docs/models/operations/getresidualrequest.md:
     id: 500693f86c5a
-    last_write_checksum: sha1:3970243d8811eac3b1e41db94a2646f365219c58
-    pristine_git_object: 364c9bd5c5fab147e32f77a1f5710254dbfb4295
+    last_write_checksum: sha1:690470e17c8c318d61b4d0306403b23eef89e57a
+    pristine_git_object: 2e7db025078ada6c2880971c9f302ed237ddaae0
   docs/models/operations/getresidualresponse.md:
     id: e7ad08ec4d15
-    last_write_checksum: sha1:fc5407da7d26893a48644871d8afc796994215e8
-    pristine_git_object: 496490525259502011c4da11a3f4e84dcf571b9f
+    last_write_checksum: sha1:e85c837ff1b44e6396592f0b2b1c8eeb6971af51
+    pristine_git_object: 394424a2e1b5cb4e5b335fd059b9e6c5ea7f9dd8
   docs/models/operations/getscheduledoccurrenceglobals.md:
     id: 609645e0193b
     last_write_checksum: sha1:831ae1439a4b62af782c877af0fb0ceca7628ed3
@@ -4243,8 +4243,8 @@ trackedFiles:
     pristine_git_object: d5a963a008c5acf6705241c1253031a0452d2009
   docs/models/operations/listresidualfeesrequest.md:
     id: 56e3681c4dbb
-    last_write_checksum: sha1:fa0e583bc16e3f3744de18637517be10c12964a5
-    pristine_git_object: 4324bf4cdf26604e18979c806bbf6cbdbaf4f45e
+    last_write_checksum: sha1:348ac2fc1e115372212073569f8bf7d30e379bbf
+    pristine_git_object: e7a9483a4e2b0d1eb5e985c66c5d0b05c697ebe6
   docs/models/operations/listresidualfeesresponse.md:
     id: 6289f7f2a216
     last_write_checksum: sha1:9455b1e8548540a87061a4520b2b471c5e005252
@@ -4987,12 +4987,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:361466445bc854b6360319696878929ae2ead79d
-    pristine_git_object: 73f6c467c6ef5085e365fe464913a08254474d7f
+    last_write_checksum: sha1:6b2c6d56129e1dbbb06bb3aa12587788cfc010d5
+    pristine_git_object: eb7f22b7e5cbe74b36257ddb23d157d4b7d581dc
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:b91bcec4d3cd1447667d9071128b4415803f393b
-    pristine_git_object: 03a735023ba54e4371c88c294510bf1cd2a6010e
+    last_write_checksum: sha1:47204a6c45eb477a593f609e33261ea70781f0bd
+    pristine_git_object: 2ee4732800b396bfc1e1bec35deb945df596f9dd
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5731,8 +5731,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:3bb7965fe94e2d55f91fd5d25f41ac3882929a33
-    pristine_git_object: 66707bf6699ec9719bed239dc73c35fd4e0e230a
+    last_write_checksum: sha1:bad12dfdece7abdd6af343d30cb89c6c292d3c6a
+    pristine_git_object: 286760aab5cb4f7bf325ddb43410e2d9bdffa7c1
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5811,8 +5811,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:b3e2711b8af2457cdf6ed0f36c3d4616380949bd
-    pristine_git_object: fccbe05f6e15fb7968dc54e3ddbdcdffd793cf8c
+    last_write_checksum: sha1:bea4da21c003195421fb068170c80ea1b99a4e50
+    pristine_git_object: 5f8e4ace06cdb9e69a29bd48fb97dc1d196c2946
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5827,8 +5827,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:1ccf09d75dcdeb69d38facaa1c82d1c41feb3c76
-    pristine_git_object: d75a06f7a9ea89d09595c5ff31e28208ac4233fe
+    last_write_checksum: sha1:7689f6fbd4598997c75fa97e84acec7f7b4db069
+    pristine_git_object: a28035885a65a8f423f10e845e8cf5995ebcf18f
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:56c73d4429691516e35541825e759a0285747a2b
@@ -7555,8 +7555,8 @@ trackedFiles:
     pristine_git_object: 27f4c56624cbec03d7bd063f297087bd2c4f61ec
   src/models/components/incurredfee.ts:
     id: fed4bcc3f016
-    last_write_checksum: sha1:73995e3ab0e8603ea132bdb77262feea41472af0
-    pristine_git_object: 30a0388154fa70516b668a13f9c24dcc83c2af62
+    last_write_checksum: sha1:a3a0d4cb1ea5254ef589c275933baa6255ac089c
+    pristine_git_object: 32e5667cfb983c4d6192ce7db8abf0f0f9345028
   src/models/components/index.ts:
     id: 0aa842dce54d
     last_write_checksum: sha1:934f71dad85df630629a6578eade74d512c18d02
@@ -8147,8 +8147,8 @@ trackedFiles:
     pristine_git_object: 98aa37e15f561705a85ac4929ea5524f269ec4a2
   src/models/components/residual.ts:
     id: 684d28a4f56d
-    last_write_checksum: sha1:23bb154df0ed7a90eefd3a1f7fbac488884587eb
-    pristine_git_object: 002bec543684d297e10f2c210023e73a8b454d39
+    last_write_checksum: sha1:32f0e7e446e2db9232fb9bb66b9659dc9a9088ff
+    pristine_git_object: 86b06af70df58d9082405e48613e69c2dfb91644
   src/models/components/returnpolicytype.ts:
     id: 64137ab48eac
     last_write_checksum: sha1:45c4e814cbba915adb7dce1c9942b14dd72fc6d2
@@ -9315,8 +9315,8 @@ trackedFiles:
     pristine_git_object: 13152920c177be231eff41349ec188a824f7685f
   src/models/operations/getresidual.ts:
     id: 8874be1cc96b
-    last_write_checksum: sha1:67c299f0ea463ef8ade4b7d02df46e1b5285acb0
-    pristine_git_object: a579cce6468e69ce31de7b09387342402a64664a
+    last_write_checksum: sha1:6737bdba454e23ba150e47cec5b1fcfa96f3bf08
+    pristine_git_object: d8c71c160eff9e8c62d3ce87e11c48dbaeae12bf
   src/models/operations/getscheduledoccurrence.ts:
     id: c7794eee805d
     last_write_checksum: sha1:3fc2c6de87789634c4d72ed34817af44933d1cb6
@@ -9543,8 +9543,8 @@ trackedFiles:
     pristine_git_object: 6137a07c6ee51978b1d909d52b0db7cc7953da6b
   src/models/operations/listresidualfees.ts:
     id: 13a5436f147d
-    last_write_checksum: sha1:c877761f30d13aed15d0d4106be8e88749277bd7
-    pristine_git_object: c8501a08a66843fdac90af89ca23e497e7c9f4f6
+    last_write_checksum: sha1:5407e4bcdc2510848cf2d785d4ce0d8b89f67343
+    pristine_git_object: bf081b808f1fdc9fa4c4c1d01fbf14167146002f
   src/models/operations/listresiduals.ts:
     id: 2a27c7efe188
     last_write_checksum: sha1:2799d1da0aa7fd3a61577a7199218e9ad3418d58
@@ -12417,7 +12417,7 @@ examples:
           X-Moov-Version: "v2024.01.00"
       responses:
         "200":
-          application/json: [{"residualID": "e0bcab02-96d4-4555-9535-fff6f9fac05c", "partnerAccountID": "59fad78d-485c-4aa0-95e0-b6723b4489a3", "periodStart": "2025-08-23T18:39:55.611Z", "periodEnd": "2024-06-17T17:54:17.689Z", "merchantFees": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerCost": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}, "revenueShare": "2.25", "residualAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "moovShare": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdOn": "2023-11-11T13:56:49.759Z", "updatedOn": "2024-07-25T04:59:02.000Z"}]
+          application/json: [{"residualID": "e0bcab02-96d4-4555-9535-fff6f9fac05c", "partnerAccountID": "59fad78d-485c-4aa0-95e0-b6723b4489a3", "periodStart": "2025-08-23T18:39:55.611Z", "periodEnd": "2024-06-17T17:54:17.689Z", "merchantFees": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerCost": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}, "revenueShare": "2.25", "residualAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdOn": "2023-11-11T13:56:49.759Z", "updatedOn": "2024-07-25T04:59:02.000Z"}]
   getResidual:
     speakeasy-default-get-residual:
       parameters:
@@ -12428,7 +12428,7 @@ examples:
           X-Moov-Version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"residualID": "6969e439-dfcd-42de-bfb2-5c66b1163e3a", "partnerAccountID": "35af6ebf-647d-4b63-b996-dc1bfb4ac6d2", "periodStart": "2025-10-12T20:03:24.360Z", "periodEnd": "2024-10-08T00:08:30.005Z", "merchantFees": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerCost": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}, "revenueShare": "2.25", "residualAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "moovShare": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdOn": "2025-05-15T10:09:57.129Z", "updatedOn": "2023-05-10T01:27:08.185Z"}
+          application/json: {"residualID": "6969e439-dfcd-42de-bfb2-5c66b1163e3a", "partnerAccountID": "35af6ebf-647d-4b63-b996-dc1bfb4ac6d2", "periodStart": "2025-10-12T20:03:24.360Z", "periodEnd": "2024-10-08T00:08:30.005Z", "merchantFees": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerCost": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}, "revenueShare": "2.25", "residualAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdOn": "2025-05-15T10:09:57.129Z", "updatedOn": "2023-05-10T01:27:08.185Z"}
   listResidualFees:
     speakeasy-default-list-residual-fees:
       parameters:
@@ -12691,7 +12691,10 @@ examples:
           application/json: {"secret": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `moov.onboarding.createInvite()`: \n  *  `request.grantScopes` **Added**\n  *  `response.grantScopes` **Added**\n* `moov.onboarding.listInvites()`:  `response.[].grantScopes` **Added**\n* `moov.onboarding.getInvite()`:  `response.grantScopes` **Added**\n"
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `moov.feePlans.listResiduals()`:  `response.[].moovShare` **Removed** **Breaking** ⚠️
+  * `moov.feePlans.getResidual()`:  `response.moovShare` **Removed** **Breaking** ⚠️
 generatedFiles:
   - .gitattributes
   - .npmignore
