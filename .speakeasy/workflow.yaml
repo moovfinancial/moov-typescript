@@ -3,9 +3,9 @@ speakeasyVersion: latest
 sources:
     latest:
         inputs:
-            - location: registry.speakeasyapi.dev/moov/moov/api-latest
+            - location: registry.speakeasyapi.dev/moov/moov/api-v2024.01.00
         registry:
-            location: registry.speakeasyapi.dev/moov/moov/latest
+            location: registry.speakeasyapi.dev/moov/moov/typescript-v2024.01.00
 targets:
     latest:
         target: typescript
@@ -15,7 +15,7 @@ targets:
                 token: $npm_token
         codeSamples:
             registry:
-                location: registry.speakeasyapi.dev/moov/moov/latest-ts-typescript-code-samples
+                location: registry.speakeasyapi.dev/moov/moov/v2024.01.00-ts-typescript-code-samples
             labelOverride:
                 fixedValue: Typescript (SDK)
             blocking: false
