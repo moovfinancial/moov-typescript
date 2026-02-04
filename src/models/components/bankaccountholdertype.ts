@@ -11,7 +11,6 @@ import { ClosedEnum } from "../../types/enums.js";
 export const BankAccountHolderType = {
   Individual: "individual",
   Business: "business",
-  Guest: "guest",
 } as const;
 /**
  * The type of holder on a funding source.

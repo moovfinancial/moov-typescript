@@ -23,7 +23,6 @@ import { Files } from "./files.js";
 import { Images } from "./images.js";
 import { Industries } from "./industries.js";
 import { Institutions } from "./institutions.js";
-import { Invoices } from "./invoices.js";
 import { IssuingTransactions } from "./issuingtransactions.js";
 import { Onboarding } from "./onboarding.js";
 import { PaymentLinks } from "./paymentlinks.js";
@@ -34,7 +33,6 @@ import { Receipts } from "./receipts.js";
 import { Representatives } from "./representatives.js";
 import { Scheduling } from "./scheduling.js";
 import { Statements } from "./statements.js";
-import { Support } from "./support.js";
 import { Sweeps } from "./sweeps.js";
 import { TerminalApplications } from "./terminalapplications.js";
 import { Transfers } from "./transfers.js";
@@ -99,11 +97,6 @@ export class Moov extends ClientSDK {
     return (this._images ??= new Images(this._options));
   }
 
-  private _invoices?: Invoices;
-  get invoices(): Invoices {
-    return (this._invoices ??= new Invoices(this._options));
-  }
-
   private _paymentLinks?: PaymentLinks;
   get paymentLinks(): PaymentLinks {
     return (this._paymentLinks ??= new PaymentLinks(this._options));
@@ -143,11 +136,6 @@ export class Moov extends ClientSDK {
   get accountTerminalApplications(): AccountTerminalApplications {
     return (this._accountTerminalApplications ??=
       new AccountTerminalApplications(this._options));
-  }
-
-  private _support?: Support;
-  get support(): Support {
-    return (this._support ??= new Support(this._options));
   }
 
   private _transfers?: Transfers;

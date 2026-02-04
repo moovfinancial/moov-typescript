@@ -6,7 +6,7 @@
 import { RequirementError } from "@moovio/sdk/models/components";
 
 let value: RequirementError = {
-  requirement: "individual.ssn-last4",
+  requirement: "individual.email-or-mobile",
 };
 ```
 

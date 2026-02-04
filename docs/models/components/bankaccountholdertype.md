@@ -7,11 +7,11 @@ The type of holder on a funding source.
 ```typescript
 import { BankAccountHolderType } from "@moovio/sdk/models/components";
 
-let value: BankAccountHolderType = "business";
+let value: BankAccountHolderType = "individual";
 ```
 
 ## Values
 
 ```typescript
-"individual" | "business" | "guest"
+"individual" | "business"
 ```

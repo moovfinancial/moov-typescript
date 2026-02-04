@@ -18,11 +18,10 @@ let value: ListIndustriesResponse = {
   result: {
     industries: [
       {
-        industry: "clothing-accessories",
-        displayName: "Clothing & Accessories",
-        category: "retail",
-        categoryDisplayName: "Retail",
-        defaultMcc: "5651",
+        title: "AC, Refrigeration Repair",
+        naics: "811412",
+        sic: "7623",
+        mcc: "7623",
       },
     ],
   },

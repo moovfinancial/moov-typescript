@@ -11,7 +11,7 @@ const value: components.CreatedTransfer = {
   createdOn: new Date("2026-03-10T06:52:08.646Z"),
   source: {
     paymentMethodID: "<id>",
-    paymentMethodType: "apple-pay",
+    paymentMethodType: "pull-from-card",
     account: {
       accountID: "<id>",
       email: "Mason_Koepp@hotmail.com",
@@ -98,7 +98,7 @@ const value: components.CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "rtp-credit",
+    paymentMethodType: "ach-credit-same-day",
     account: {
       accountID: "<id>",
       email: "Mason_Koepp@hotmail.com",

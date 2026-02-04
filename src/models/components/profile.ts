@@ -13,12 +13,6 @@ import {
   BusinessProfile$outboundSchema,
 } from "./businessprofile.js";
 import {
-  GuestProfile,
-  GuestProfile$inboundSchema,
-  GuestProfile$Outbound,
-  GuestProfile$outboundSchema,
-} from "./guestprofile.js";
-import {
   IndividualProfile,
   IndividualProfile$inboundSchema,
   IndividualProfile$Outbound,
@@ -37,10 +31,6 @@ export type Profile = {
    * Describes a business.
    */
   business?: BusinessProfile | undefined;
-  /**
-   * Describes a guest account profile.
-   */
-  guest?: GuestProfile | undefined;
 };
 
 /** @internal */
@@ -48,13 +38,11 @@ export const Profile$inboundSchema: z.ZodType<Profile, z.ZodTypeDef, unknown> =
   z.object({
     individual: IndividualProfile$inboundSchema.optional(),
     business: BusinessProfile$inboundSchema.optional(),
-    guest: GuestProfile$inboundSchema.optional(),
   });
 /** @internal */
 export type Profile$Outbound = {
   individual?: IndividualProfile$Outbound | undefined;
   business?: BusinessProfile$Outbound | undefined;
-  guest?: GuestProfile$Outbound | undefined;
 };
 
 /** @internal */
@@ -65,7 +53,6 @@ export const Profile$outboundSchema: z.ZodType<
 > = z.object({
   individual: IndividualProfile$outboundSchema.optional(),
   business: BusinessProfile$outboundSchema.optional(),
-  guest: GuestProfile$outboundSchema.optional(),
 });
 
 export function profileToJSON(profile: Profile): string {

@@ -7,15 +7,15 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AccountType,
+  AccountType$inboundSchema,
+  AccountType$outboundSchema,
+} from "./accounttype.js";
+import {
   CapabilityID,
   CapabilityID$inboundSchema,
   CapabilityID$outboundSchema,
 } from "./capabilityid.js";
-import {
-  CreateAccountType,
-  CreateAccountType$inboundSchema,
-  CreateAccountType$outboundSchema,
-} from "./createaccounttype.js";
 import {
   CreateProfile,
   CreateProfile$inboundSchema,
@@ -43,7 +43,10 @@ import {
 } from "./termsofservicepayload.js";
 
 export type CreateAccount = {
-  accountType: CreateAccountType;
+  /**
+   * The type of entity represented by this account.
+   */
+  accountType: AccountType;
   profile: CreateProfile;
   /**
    * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
@@ -78,7 +81,7 @@ export const CreateAccount$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountType: CreateAccountType$inboundSchema,
+  accountType: AccountType$inboundSchema,
   profile: CreateProfile$inboundSchema,
   metadata: z.record(z.string()).optional(),
   termsOfService: TermsOfServicePayload$inboundSchema.optional(),
@@ -107,7 +110,7 @@ export const CreateAccount$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateAccount
 > = z.object({
-  accountType: CreateAccountType$outboundSchema,
+  accountType: AccountType$outboundSchema,
   profile: CreateProfile$outboundSchema,
   metadata: z.record(z.string()).optional(),
   termsOfService: TermsOfServicePayload$outboundSchema.optional(),

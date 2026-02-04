@@ -9,7 +9,7 @@ let value: RequestCapabilitiesResponse = {
   headers: {},
   result: [
     {
-      capability: "send-funds.rtp",
+      capability: "collect-funds",
       accountID: "ee65bd48-3de1-496e-83b6-fce65af07b9f",
       status: "enabled",
       createdOn: new Date("2025-03-30T16:43:22.332Z"),
