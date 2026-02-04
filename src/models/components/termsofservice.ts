@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -27,10 +28,8 @@ export const TermsOfService$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  acceptedDate: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  acceptedIP: z.string(),
+  acceptedDate: types.date(),
+  acceptedIP: types.string(),
 });
 /** @internal */
 export type TermsOfService$Outbound = {

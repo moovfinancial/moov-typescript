@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Amount,
@@ -100,18 +101,17 @@ export const CreatePaymentLink$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  partnerAccountID: z.string(),
-  merchantPaymentMethodID: z.string(),
+  partnerAccountID: types.string(),
+  merchantPaymentMethodID: types.string(),
   amount: Amount$inboundSchema,
-  salesTaxAmount: Amount$inboundSchema.optional(),
-  maxUses: z.number().int().optional(),
-  expiresOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  salesTaxAmount: types.optional(Amount$inboundSchema),
+  maxUses: types.optional(types.number()),
+  expiresOn: types.optional(types.date()),
   display: PaymentLinkDisplayOptions$inboundSchema,
-  customer: PaymentLinkCustomerOptions$inboundSchema.optional(),
-  payment: PaymentLinkPaymentDetails$inboundSchema.optional(),
-  payout: PaymentLinkPayoutDetails$inboundSchema.optional(),
-  lineItems: CreatePaymentLinkLineItems$inboundSchema.optional(),
+  customer: types.optional(PaymentLinkCustomerOptions$inboundSchema),
+  payment: types.optional(PaymentLinkPaymentDetails$inboundSchema),
+  payout: types.optional(PaymentLinkPayoutDetails$inboundSchema),
+  lineItems: types.optional(CreatePaymentLinkLineItems$inboundSchema),
 });
 /** @internal */
 export type CreatePaymentLink$Outbound = {

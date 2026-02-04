@@ -25,6 +25,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Allows for testing a JWE token to ensure it's acceptable by Moov.
@@ -161,9 +162,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(204, operations.TestEndToEndTokenResponse$inboundSchema.optional(), {
-      hdrs: true,
-    }),
+    M.nil(
+      204,
+      types$.optional(operations.TestEndToEndTokenResponse$inboundSchema),
+      { hdrs: true },
+    ),
     M.jsonErr(400, errors.GenericError$inboundSchema, { hdrs: true }),
     M.fail(429),
     M.fail([500, 504]),

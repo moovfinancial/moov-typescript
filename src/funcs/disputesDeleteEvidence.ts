@@ -24,6 +24,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Deletes dispute evidence by ID.
@@ -181,7 +182,9 @@ async function $do(
   >(
     M.nil(
       204,
-      operations.DeleteDisputeEvidenceFileResponse$inboundSchema.optional(),
+      types$.optional(
+        operations.DeleteDisputeEvidenceFileResponse$inboundSchema,
+      ),
       { hdrs: true },
     ),
     M.jsonErr(409, errors.GenericError$inboundSchema, { hdrs: true }),

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BankAccountException,
@@ -40,7 +41,7 @@ export const BankAccountVerification$inboundSchema: z.ZodType<
 > = z.object({
   verificationMethod: BankAccountVerificationMethod$inboundSchema,
   status: BankAccountVerificationStatus$inboundSchema,
-  exceptionDetails: BankAccountException$inboundSchema.optional(),
+  exceptionDetails: types.optional(BankAccountException$inboundSchema),
 });
 /** @internal */
 export type BankAccountVerification$Outbound = {

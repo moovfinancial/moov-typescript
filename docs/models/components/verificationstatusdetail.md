@@ -14,6 +14,8 @@ let value: VerificationStatusDetail = "docAddressMismatch";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"failedAutoVerify" | "docDobMismatch" | "docNameMismatch" | "docAddressMismatch" | "docNumberMismatch" | "docIncomplete" | "docFailedRisk" | "potentialAccountSanctionsMatch" | "potentialRepresentativeSanctionsMatch" | "failedOther"
+"failedAutoVerify" | "docDobMismatch" | "docNameMismatch" | "docAddressMismatch" | "docNumberMismatch" | "docIncomplete" | "docFailedRisk" | "potentialAccountSanctionsMatch" | "potentialRepresentativeSanctionsMatch" | "failedOther" | Unrecognized<string>
 ```

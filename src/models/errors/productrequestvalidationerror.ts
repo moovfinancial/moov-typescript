@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -57,14 +58,17 @@ export const ProductRequestValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
-  basePrice: components.AmountDecimalValidationError$inboundSchema.optional(),
-  images: z.record(components.AssignProductImageValidationError$inboundSchema)
-    .optional(),
-  optionGroups: z.record(
-    components.ProductOptionGroupValidationError$inboundSchema,
-  ).optional(),
+  title: types.optional(types.string()),
+  description: types.optional(types.string()),
+  basePrice: types.optional(
+    components.AmountDecimalValidationError$inboundSchema,
+  ),
+  images: types.optional(
+    z.record(components.AssignProductImageValidationError$inboundSchema),
+  ),
+  optionGroups: types.optional(
+    z.record(components.ProductOptionGroupValidationError$inboundSchema),
+  ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

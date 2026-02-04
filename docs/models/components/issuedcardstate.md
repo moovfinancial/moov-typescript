@@ -17,6 +17,8 @@ let value: IssuedCardState = "inactive";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"active" | "inactive" | "pending-verification" | "closed"
+"active" | "inactive" | "pending-verification" | "closed" | Unrecognized<string>
 ```

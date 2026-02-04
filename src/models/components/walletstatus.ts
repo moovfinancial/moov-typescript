@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Status of a wallet.
@@ -23,11 +24,17 @@ export const WalletStatus = {
  *   - `active`: The wallet is available for use and has an enabled payment method.
  *   - `closed`: The wallet is no longer active and the corresponding payment method has been disabled.
  */
-export type WalletStatus = ClosedEnum<typeof WalletStatus>;
+export type WalletStatus = OpenEnum<typeof WalletStatus>;
 
 /** @internal */
-export const WalletStatus$inboundSchema: z.ZodNativeEnum<typeof WalletStatus> =
-  z.nativeEnum(WalletStatus);
+export const WalletStatus$inboundSchema: z.ZodType<
+  WalletStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(WalletStatus);
 /** @internal */
-export const WalletStatus$outboundSchema: z.ZodNativeEnum<typeof WalletStatus> =
-  WalletStatus$inboundSchema;
+export const WalletStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  WalletStatus
+> = openEnums.outboundSchema(WalletStatus);

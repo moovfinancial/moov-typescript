@@ -12,6 +12,8 @@ let value: PrimaryRegulator = "OCC";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"OCC" | "FDIC" | "NCUA" | "FRB" | "state-cu-regulator"
+"OCC" | "FDIC" | "NCUA" | "FRB" | "state-cu-regulator" | Unrecognized<string>
 ```

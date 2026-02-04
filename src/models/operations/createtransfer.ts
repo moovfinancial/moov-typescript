@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -68,7 +70,7 @@ export const CreateTransferGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -115,9 +117,9 @@ export const CreateTransferRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-idempotency-key": z.string(),
-  "x-wait-for": components.TransferWaitFor$inboundSchema.optional(),
-  accountID: z.string(),
+  "x-idempotency-key": types.string(),
+  "x-wait-for": types.optional(components.TransferWaitFor$inboundSchema),
+  accountID: types.string(),
   CreateTransfer: components.CreateTransfer$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
@@ -174,7 +176,7 @@ export const CreateTransferResponseResult$inboundSchema: z.ZodType<
   CreateTransferResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   components.Transfer$inboundSchema,
   components.CreatedTransfer$inboundSchema,
   components.AsyncTransfer$inboundSchema,
@@ -190,7 +192,7 @@ export const CreateTransferResponseResult$outboundSchema: z.ZodType<
   CreateTransferResponseResult$Outbound,
   z.ZodTypeDef,
   CreateTransferResponseResult
-> = z.union([
+> = smartUnion([
   components.Transfer$outboundSchema,
   components.CreatedTransfer$outboundSchema,
   components.AsyncTransfer$outboundSchema,
@@ -222,7 +224,7 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
+  Result: smartUnion([
     components.Transfer$inboundSchema,
     components.CreatedTransfer$inboundSchema,
     components.AsyncTransfer$inboundSchema,
@@ -249,7 +251,7 @@ export const CreateTransferResponse$outboundSchema: z.ZodType<
   CreateTransferResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.union([
+  result: smartUnion([
     components.Transfer$outboundSchema,
     components.CreatedTransfer$outboundSchema,
     components.AsyncTransfer$outboundSchema,

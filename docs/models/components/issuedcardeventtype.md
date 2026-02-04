@@ -12,6 +12,8 @@ let value: IssuedCardEventType = "clearing";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"authorization" | "reversal" | "authorization-advice" | "authorization-expiration" | "authorization-incremental" | "clearing"
+"authorization" | "reversal" | "authorization-advice" | "authorization-expiration" | "authorization-incremental" | "clearing" | Unrecognized<string>
 ```

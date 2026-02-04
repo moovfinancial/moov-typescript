@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -85,7 +86,7 @@ export const ListWalletTransactionsGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -134,29 +135,26 @@ export const ListWalletTransactionsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  walletID: z.string(),
-  transactionType: components.WalletTransactionType$inboundSchema.optional(),
-  transactionTypes: z.array(components.WalletTransactionType$inboundSchema)
-    .optional(),
-  sourceType: components.WalletTransactionSourceType$inboundSchema.optional(),
-  sourceID: z.string().optional(),
-  status: components.WalletTransactionStatus$inboundSchema.optional(),
-  createdStartDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  createdEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  completedStartDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  completedEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  sweepID: z.string().optional(),
+  accountID: types.string(),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  walletID: types.string(),
+  transactionType: types.optional(
+    components.WalletTransactionType$inboundSchema,
+  ),
+  transactionTypes: types.optional(
+    z.array(components.WalletTransactionType$inboundSchema),
+  ),
+  sourceType: types.optional(
+    components.WalletTransactionSourceType$inboundSchema,
+  ),
+  sourceID: types.optional(types.string()),
+  status: types.optional(components.WalletTransactionStatus$inboundSchema),
+  createdStartDateTime: types.optional(types.date()),
+  createdEndDateTime: types.optional(types.date()),
+  completedStartDateTime: types.optional(types.date()),
+  completedEndDateTime: types.optional(types.date()),
+  sweepID: types.optional(types.string()),
 });
 /** @internal */
 export type ListWalletTransactionsRequest$Outbound = {

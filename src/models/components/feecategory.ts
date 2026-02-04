@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const FeeCategory = {
   Ach: "ach",
@@ -16,11 +17,17 @@ export const FeeCategory = {
   Other: "other",
   Rtp: "rtp",
 } as const;
-export type FeeCategory = ClosedEnum<typeof FeeCategory>;
+export type FeeCategory = OpenEnum<typeof FeeCategory>;
 
 /** @internal */
-export const FeeCategory$inboundSchema: z.ZodNativeEnum<typeof FeeCategory> = z
-  .nativeEnum(FeeCategory);
+export const FeeCategory$inboundSchema: z.ZodType<
+  FeeCategory,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(FeeCategory);
 /** @internal */
-export const FeeCategory$outboundSchema: z.ZodNativeEnum<typeof FeeCategory> =
-  FeeCategory$inboundSchema;
+export const FeeCategory$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  FeeCategory
+> = openEnums.outboundSchema(FeeCategory);

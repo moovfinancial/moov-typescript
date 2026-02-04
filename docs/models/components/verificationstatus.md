@@ -14,6 +14,8 @@ let value: VerificationStatus = "unverified";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"unverified" | "pending" | "verified" | "errored"
+"unverified" | "pending" | "verified" | "errored" | Unrecognized<string>
 ```

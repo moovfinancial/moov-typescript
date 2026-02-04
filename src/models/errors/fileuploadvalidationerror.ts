@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -44,8 +45,8 @@ export class FileUploadValidationError extends MoovError {
 /** @internal */
 export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
   .object({
-    filename: z.string().optional(),
-    mimeType: z.string().optional(),
+    filename: types.optional(types.string()),
+    mimeType: types.optional(types.string()),
   });
 /** @internal */
 export type FileT$Outbound = {
@@ -82,8 +83,8 @@ export const FileUploadValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  evidenceType: z.string().optional(),
-  file: z.lazy(() => FileT$inboundSchema).optional(),
+  evidenceType: types.optional(types.string()),
+  file: types.optional(z.lazy(() => FileT$inboundSchema)),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Occurrence,
@@ -37,9 +38,9 @@ export const UpsertSchedule$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  description: z.string().optional(),
-  occurrences: z.array(Occurrence$inboundSchema).optional(),
-  recur: Recur$inboundSchema.optional(),
+  description: types.optional(types.string()),
+  occurrences: types.optional(z.array(Occurrence$inboundSchema)),
+  recur: types.optional(Recur$inboundSchema),
 });
 /** @internal */
 export type UpsertSchedule$Outbound = {

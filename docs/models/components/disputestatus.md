@@ -14,6 +14,8 @@ let value: DisputeStatus = "under-review";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"response-needed" | "resolved" | "under-review" | "closed" | "accepted" | "expired" | "won" | "lost"
+"response-needed" | "resolved" | "under-review" | "closed" | "accepted" | "expired" | "won" | "lost" | Unrecognized<string>
 ```

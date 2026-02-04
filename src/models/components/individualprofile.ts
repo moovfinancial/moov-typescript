@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Address,
@@ -50,11 +51,11 @@ export const IndividualProfile$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: IndividualName$inboundSchema,
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$inboundSchema.optional(),
-  birthDateProvided: z.boolean().optional(),
-  governmentIDProvided: z.boolean().optional(),
+  phone: types.optional(PhoneNumber$inboundSchema),
+  email: types.optional(types.string()),
+  address: types.optional(Address$inboundSchema),
+  birthDateProvided: types.optional(types.boolean()),
+  governmentIDProvided: types.optional(types.boolean()),
 });
 /** @internal */
 export type IndividualProfile$Outbound = {

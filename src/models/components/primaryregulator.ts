@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * If the business is a financial institution, this field describes its primary regulator.
@@ -18,13 +19,17 @@ export const PrimaryRegulator = {
 /**
  * If the business is a financial institution, this field describes its primary regulator.
  */
-export type PrimaryRegulator = ClosedEnum<typeof PrimaryRegulator>;
+export type PrimaryRegulator = OpenEnum<typeof PrimaryRegulator>;
 
 /** @internal */
-export const PrimaryRegulator$inboundSchema: z.ZodNativeEnum<
-  typeof PrimaryRegulator
-> = z.nativeEnum(PrimaryRegulator);
+export const PrimaryRegulator$inboundSchema: z.ZodType<
+  PrimaryRegulator,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(PrimaryRegulator);
 /** @internal */
-export const PrimaryRegulator$outboundSchema: z.ZodNativeEnum<
-  typeof PrimaryRegulator
-> = PrimaryRegulator$inboundSchema;
+export const PrimaryRegulator$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  PrimaryRegulator
+> = openEnums.outboundSchema(PrimaryRegulator);

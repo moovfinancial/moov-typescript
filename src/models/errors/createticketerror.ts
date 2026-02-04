@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -47,11 +48,11 @@ export const CreateTicketError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  title: z.string().optional(),
-  body: z.string().optional(),
-  author: z.string().optional(),
-  contact: components.CreateTicketContactError$inboundSchema.optional(),
-  foreignID: z.string().optional(),
+  title: types.optional(types.string()),
+  body: types.optional(types.string()),
+  author: types.optional(types.string()),
+  contact: types.optional(components.CreateTicketContactError$inboundSchema),
+  foreignID: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

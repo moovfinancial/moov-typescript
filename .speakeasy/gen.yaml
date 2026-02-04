@@ -22,13 +22,14 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.22.22
+  version: 0.23.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -73,7 +74,7 @@ typescript:
   moduleFormat: commonjs
   multipartArrayFormat: legacy
   outputModelSuffix: output
-  packageName: "@moovio/sdk"
+  packageName: '@moovio/sdk'
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   responseFormat: flat

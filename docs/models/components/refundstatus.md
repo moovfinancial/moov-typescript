@@ -10,6 +10,8 @@ let value: RefundStatus = "created";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"created" | "pending" | "completed" | "failed"
+"created" | "pending" | "completed" | "failed" | Unrecognized<string>
 ```

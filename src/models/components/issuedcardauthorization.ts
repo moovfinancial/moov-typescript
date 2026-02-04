@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardIssuingNetwork,
@@ -53,15 +54,15 @@ export const IssuedCardAuthorization$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  authorizationID: z.string(),
-  issuedCardID: z.string(),
-  fundingWalletID: z.string(),
+  authorizationID: types.string(),
+  issuedCardID: types.string(),
+  fundingWalletID: types.string(),
   network: CardIssuingNetwork$inboundSchema,
-  authorizedAmount: z.string(),
+  authorizedAmount: types.string(),
   status: IssuingAuthorizationStatus$inboundSchema,
   merchantData: IssuingMerchantData$inboundSchema,
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  cardTransactions: z.array(z.string()).optional(),
+  createdOn: types.date(),
+  cardTransactions: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type IssuedCardAuthorization$Outbound = {

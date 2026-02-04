@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationScope,
@@ -91,22 +92,20 @@ export const OnboardingInvite$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
-  link: z.string(),
-  returnURL: z.string().optional(),
-  termsOfServiceURL: z.string().optional(),
+  code: types.string(),
+  link: types.string(),
+  returnURL: types.optional(types.string()),
+  termsOfServiceURL: types.optional(types.string()),
   scopes: z.array(ApplicationScope$inboundSchema),
-  grantScopes: z.array(ApplicationScope$inboundSchema).optional(),
+  grantScopes: types.optional(z.array(ApplicationScope$inboundSchema)),
   capabilities: z.array(CapabilityID$inboundSchema),
-  feePlanCodes: z.array(z.string()),
-  redeemedAccountID: z.string().optional(),
-  prefill: CreateAccount$inboundSchema.optional(),
-  partner: OnboardingPartnerAccount$inboundSchema.optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  revokedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  redeemedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  feePlanCodes: z.array(types.string()),
+  redeemedAccountID: types.optional(types.string()),
+  prefill: types.optional(CreateAccount$inboundSchema),
+  partner: types.optional(OnboardingPartnerAccount$inboundSchema),
+  createdOn: types.date(),
+  revokedOn: types.optional(types.date()),
+  redeemedOn: types.optional(types.date()),
 });
 /** @internal */
 export type OnboardingInvite$Outbound = {

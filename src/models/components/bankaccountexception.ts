@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ACHReturnCode,
@@ -99,10 +100,10 @@ export const BankAccountException$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  achReturnCode: ACHReturnCode$inboundSchema.optional(),
-  rtpRejectionCode: RTPRejectionCode$inboundSchema.optional(),
-  fednowRejectionCode: z.string().optional(),
-  description: z.string(),
+  achReturnCode: types.optional(ACHReturnCode$inboundSchema),
+  rtpRejectionCode: types.optional(RTPRejectionCode$inboundSchema),
+  fednowRejectionCode: types.optional(types.string()),
+  description: types.string(),
 });
 /** @internal */
 export type BankAccountException$Outbound = {

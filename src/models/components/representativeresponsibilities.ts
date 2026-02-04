@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -35,10 +36,10 @@ export const RepresentativeResponsibilities$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isController: z.boolean().optional(),
-  isOwner: z.boolean().optional(),
-  ownershipPercentage: z.number().int().optional(),
-  jobTitle: z.string().optional(),
+  isController: types.optional(types.boolean()),
+  isOwner: types.optional(types.boolean()),
+  ownershipPercentage: types.optional(types.number()),
+  jobTitle: types.optional(types.string()),
 });
 /** @internal */
 export type RepresentativeResponsibilities$Outbound = {

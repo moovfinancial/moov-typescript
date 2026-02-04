@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -97,23 +98,26 @@ export const UpsertUnderwritingError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  geographicReach: z.string().optional(),
-  businessPresence: z.string().optional(),
-  pendingLitigation: z.string().optional(),
-  volumeShareByCustomerType: components
-    .VolumeShareByCustomerTypeError$inboundSchema.optional(),
-  collectFunds: components.CollectFundsError$inboundSchema.optional(),
-  moneyTransfer: components.MoneyTransferError$inboundSchema.optional(),
-  sendFunds: components.SendFundsError$inboundSchema.optional(),
-  averageMonthlyTransactionVolume: z.string().optional(),
-  error: z.string().optional(),
-  averageTransactionSize: z.string().optional(),
-  maxTransactionSize: z.string().optional(),
-  volumeByCustomerType: components.VolumeByCustomerTypeError$inboundSchema
-    .optional(),
-  cardVolumeDistribution: components.CardVolumeDistributionError$inboundSchema
-    .optional(),
-  fulfillment: components.FulfillmentDetailsError$inboundSchema.optional(),
+  geographicReach: types.optional(types.string()),
+  businessPresence: types.optional(types.string()),
+  pendingLitigation: types.optional(types.string()),
+  volumeShareByCustomerType: types.optional(
+    components.VolumeShareByCustomerTypeError$inboundSchema,
+  ),
+  collectFunds: types.optional(components.CollectFundsError$inboundSchema),
+  moneyTransfer: types.optional(components.MoneyTransferError$inboundSchema),
+  sendFunds: types.optional(components.SendFundsError$inboundSchema),
+  averageMonthlyTransactionVolume: types.optional(types.string()),
+  error: types.optional(types.string()),
+  averageTransactionSize: types.optional(types.string()),
+  maxTransactionSize: types.optional(types.string()),
+  volumeByCustomerType: types.optional(
+    components.VolumeByCustomerTypeError$inboundSchema,
+  ),
+  cardVolumeDistribution: types.optional(
+    components.CardVolumeDistributionError$inboundSchema,
+  ),
+  fulfillment: types.optional(components.FulfillmentDetailsError$inboundSchema),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

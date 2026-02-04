@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PhoneNumberError,
@@ -24,8 +25,8 @@ export const PayoutRecipientError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string().optional(),
-  phone: PhoneNumberError$inboundSchema.optional(),
+  email: types.optional(types.string()),
+  phone: types.optional(PhoneNumberError$inboundSchema),
 });
 /** @internal */
 export type PayoutRecipientError$Outbound = {

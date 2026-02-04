@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -49,7 +50,7 @@ export const ListPaymentLinksGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -96,11 +97,11 @@ export const ListPaymentLinksRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  type: components.PaymentLinkType$inboundSchema.optional(),
-  status: components.PaymentLinkStatus$inboundSchema.optional(),
-  accountID: z.string(),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  type: types.optional(components.PaymentLinkType$inboundSchema),
+  status: types.optional(components.PaymentLinkStatus$inboundSchema),
+  accountID: types.string(),
 });
 /** @internal */
 export type ListPaymentLinksRequest$Outbound = {

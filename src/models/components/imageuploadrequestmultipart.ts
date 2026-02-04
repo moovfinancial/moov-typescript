@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ImageMetadataRequest,
@@ -33,7 +34,7 @@ export type ImageUploadRequestMultiPart = {
 /** @internal */
 export const Image$inboundSchema: z.ZodType<Image, z.ZodTypeDef, unknown> = z
   .object({
-    fileName: z.string(),
+    fileName: types.string(),
     content: z.union([
       z.instanceof(ReadableStream<Uint8Array>),
       z.instanceof(Blob),
@@ -82,7 +83,7 @@ export const ImageUploadRequestMultiPart$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   image: z.lazy(() => Image$inboundSchema),
-  metadata: ImageMetadataRequest$inboundSchema.optional(),
+  metadata: types.optional(ImageMetadataRequest$inboundSchema),
 });
 /** @internal */
 export type ImageUploadRequestMultiPart$Outbound = {

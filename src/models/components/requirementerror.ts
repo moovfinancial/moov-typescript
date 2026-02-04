@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RequirementErrorCode,
@@ -32,7 +33,7 @@ export const RequirementError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   requirement: RequirementID$inboundSchema,
-  errorCode: RequirementErrorCode$inboundSchema.optional(),
+  errorCode: types.optional(RequirementErrorCode$inboundSchema),
 });
 /** @internal */
 export type RequirementError$Outbound = {

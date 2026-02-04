@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Amount,
@@ -69,23 +70,17 @@ export type Dispute = {
 /** @internal */
 export const Dispute$inboundSchema: z.ZodType<Dispute, z.ZodTypeDef, unknown> =
   z.object({
-    disputeID: z.string(),
-    merchantAccountID: z.string(),
+    disputeID: types.string(),
+    merchantAccountID: types.string(),
     amount: Amount$inboundSchema,
-    networkReasonCode: z.string(),
-    networkReasonDescription: z.string().optional(),
+    networkReasonCode: types.string(),
+    networkReasonDescription: types.optional(types.string()),
     transfer: DisputeTransferDetails$inboundSchema,
-    respondBy: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
+    respondBy: types.date(),
     status: DisputeStatus$inboundSchema,
     phase: DisputePhase$inboundSchema,
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    submittedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
+    createdOn: types.date(),
+    submittedOn: types.optional(types.date()),
   });
 /** @internal */
 export type Dispute$Outbound = {

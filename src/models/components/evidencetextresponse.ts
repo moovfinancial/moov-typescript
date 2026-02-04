@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EvidenceType,
@@ -26,11 +27,11 @@ export const EvidenceTextResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  evidenceID: z.string(),
-  disputeID: z.string(),
+  evidenceID: types.string(),
+  disputeID: types.string(),
   evidenceType: EvidenceType$inboundSchema,
-  text: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  text: types.string(),
+  createdOn: types.date(),
 });
 /** @internal */
 export type EvidenceTextResponse$Outbound = {

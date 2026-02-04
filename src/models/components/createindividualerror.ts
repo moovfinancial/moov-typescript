@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AddressError,
@@ -61,8 +62,8 @@ export const CreateIndividualErrorSsn$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
+  full: types.optional(types.string()),
+  lastFour: types.optional(types.string()),
 });
 /** @internal */
 export type CreateIndividualErrorSsn$Outbound = {
@@ -103,8 +104,8 @@ export const CreateIndividualErrorItin$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
+  full: types.optional(types.string()),
+  lastFour: types.optional(types.string()),
 });
 /** @internal */
 export type CreateIndividualErrorItin$Outbound = {
@@ -145,8 +146,8 @@ export const CreateIndividualErrorGovernmentID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ssn: z.lazy(() => CreateIndividualErrorSsn$inboundSchema).optional(),
-  itin: z.lazy(() => CreateIndividualErrorItin$inboundSchema).optional(),
+  ssn: types.optional(z.lazy(() => CreateIndividualErrorSsn$inboundSchema)),
+  itin: types.optional(z.lazy(() => CreateIndividualErrorItin$inboundSchema)),
 });
 /** @internal */
 export type CreateIndividualErrorGovernmentID$Outbound = {
@@ -189,13 +190,14 @@ export const CreateIndividualError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: IndividualNameError$inboundSchema.optional(),
-  phone: PhoneNumberError$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: AddressError$inboundSchema.optional(),
-  birthDate: BirthDateError$inboundSchema.optional(),
-  governmentID: z.lazy(() => CreateIndividualErrorGovernmentID$inboundSchema)
-    .optional(),
+  name: types.optional(IndividualNameError$inboundSchema),
+  phone: types.optional(PhoneNumberError$inboundSchema),
+  email: types.optional(types.string()),
+  address: types.optional(AddressError$inboundSchema),
+  birthDate: types.optional(BirthDateError$inboundSchema),
+  governmentID: types.optional(
+    z.lazy(() => CreateIndividualErrorGovernmentID$inboundSchema),
+  ),
 });
 /** @internal */
 export type CreateIndividualError$Outbound = {

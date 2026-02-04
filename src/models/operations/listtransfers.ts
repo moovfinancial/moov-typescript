@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -84,7 +85,7 @@ export const ListTransfersGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -131,22 +132,19 @@ export const ListTransfersRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountIDs: z.array(z.string()).optional(),
-  status: components.TransferStatus$inboundSchema.optional(),
-  startDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  endDateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  groupID: z.string().optional(),
-  scheduleID: z.string().optional(),
-  paymentLinkCode: z.string().optional(),
-  refunded: z.boolean().optional(),
-  disputed: z.boolean().optional(),
-  foreignID: z.string().optional(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  accountID: z.string(),
+  accountIDs: types.optional(z.array(types.string())),
+  status: types.optional(components.TransferStatus$inboundSchema),
+  startDateTime: types.optional(types.date()),
+  endDateTime: types.optional(types.date()),
+  groupID: types.optional(types.string()),
+  scheduleID: types.optional(types.string()),
+  paymentLinkCode: types.optional(types.string()),
+  refunded: types.optional(types.boolean()),
+  disputed: types.optional(types.boolean()),
+  foreignID: types.optional(types.string()),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  accountID: types.string(),
 });
 /** @internal */
 export type ListTransfersRequest$Outbound = {

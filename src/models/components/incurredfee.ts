@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -64,16 +65,15 @@ export const IncurredFee$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  feeID: z.string().optional(),
-  accountID: z.string().optional(),
-  walletID: z.string().optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  feeName: z.string().optional(),
-  amount: AmountDecimal$inboundSchema.optional(),
-  generatedBy: GeneratedBy$inboundSchema.optional(),
-  feeGroup: z.string().optional(),
-  residualID: z.string().optional(),
+  feeID: types.optional(types.string()),
+  accountID: types.optional(types.string()),
+  walletID: types.optional(types.string()),
+  createdOn: types.optional(types.date()),
+  feeName: types.optional(types.string()),
+  amount: types.optional(AmountDecimal$inboundSchema),
+  generatedBy: types.optional(GeneratedBy$inboundSchema),
+  feeGroup: types.optional(types.string()),
+  residualID: types.optional(types.string()),
 });
 /** @internal */
 export type IncurredFee$Outbound = {

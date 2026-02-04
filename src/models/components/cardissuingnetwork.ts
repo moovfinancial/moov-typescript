@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The name of the network a card transaction is routed through.
@@ -16,13 +17,17 @@ export const CardIssuingNetwork = {
 /**
  * The name of the network a card transaction is routed through.
  */
-export type CardIssuingNetwork = ClosedEnum<typeof CardIssuingNetwork>;
+export type CardIssuingNetwork = OpenEnum<typeof CardIssuingNetwork>;
 
 /** @internal */
-export const CardIssuingNetwork$inboundSchema: z.ZodNativeEnum<
-  typeof CardIssuingNetwork
-> = z.nativeEnum(CardIssuingNetwork);
+export const CardIssuingNetwork$inboundSchema: z.ZodType<
+  CardIssuingNetwork,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CardIssuingNetwork);
 /** @internal */
-export const CardIssuingNetwork$outboundSchema: z.ZodNativeEnum<
-  typeof CardIssuingNetwork
-> = CardIssuingNetwork$inboundSchema;
+export const CardIssuingNetwork$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CardIssuingNetwork
+> = openEnums.outboundSchema(CardIssuingNetwork);

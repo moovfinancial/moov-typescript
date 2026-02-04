@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Manual = {
@@ -22,10 +23,10 @@ export type TermsOfServiceError = {
 /** @internal */
 export const Manual$inboundSchema: z.ZodType<Manual, z.ZodTypeDef, unknown> = z
   .object({
-    acceptedDate: z.string().optional(),
-    acceptedDomain: z.string().optional(),
-    acceptedIP: z.string().optional(),
-    acceptedUserAgent: z.string().optional(),
+    acceptedDate: types.optional(types.string()),
+    acceptedDomain: types.optional(types.string()),
+    acceptedIP: types.optional(types.string()),
+    acceptedUserAgent: types.optional(types.string()),
   });
 /** @internal */
 export type Manual$Outbound = {
@@ -66,8 +67,8 @@ export const TermsOfServiceError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  manual: z.lazy(() => Manual$inboundSchema).optional(),
+  token: types.optional(types.string()),
+  manual: types.optional(z.lazy(() => Manual$inboundSchema)),
 });
 /** @internal */
 export type TermsOfServiceError$Outbound = {

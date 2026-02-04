@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InvoiceLineItemValidationError,
@@ -23,7 +24,7 @@ export const InvoiceLineItemsValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: z.record(InvoiceLineItemValidationError$inboundSchema).optional(),
+  items: types.optional(z.record(InvoiceLineItemValidationError$inboundSchema)),
 });
 /** @internal */
 export type InvoiceLineItemsValidationError$Outbound = {

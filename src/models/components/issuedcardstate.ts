@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
@@ -31,13 +32,17 @@ export const IssuedCardState = {
  * - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
  * - `pending-verification`: Awaiting additional authorized user verification before the card can be activated.
  */
-export type IssuedCardState = ClosedEnum<typeof IssuedCardState>;
+export type IssuedCardState = OpenEnum<typeof IssuedCardState>;
 
 /** @internal */
-export const IssuedCardState$inboundSchema: z.ZodNativeEnum<
-  typeof IssuedCardState
-> = z.nativeEnum(IssuedCardState);
+export const IssuedCardState$inboundSchema: z.ZodType<
+  IssuedCardState,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(IssuedCardState);
 /** @internal */
-export const IssuedCardState$outboundSchema: z.ZodNativeEnum<
-  typeof IssuedCardState
-> = IssuedCardState$inboundSchema;
+export const IssuedCardState$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  IssuedCardState
+> = openEnums.outboundSchema(IssuedCardState);

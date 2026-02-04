@@ -4,6 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
+import * as discriminatedUnionTypes from "../../types/discriminatedUnion.js";
+import { discriminatedUnion } from "../../types/discriminatedUnion.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -94,27 +96,28 @@ export type PaymentMethod =
   | PullFromCardPaymentMethod
   | ApplePayPaymentMethod
   | CardPresentPaymentPaymentMethod
-  | InstantBankCreditPaymentMethod;
+  | InstantBankCreditPaymentMethod
+  | discriminatedUnionTypes.Unknown<"paymentMethodType">;
 
 /** @internal */
 export const PaymentMethod$inboundSchema: z.ZodType<
   PaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  MoovWalletPaymentMethod$inboundSchema,
-  AchDebitFundPaymentMethod$inboundSchema,
-  AchDebitCollectPaymentMethod$inboundSchema,
-  AchCreditStandardPaymentMethod$inboundSchema,
-  AchCreditSameDayPaymentMethod$inboundSchema,
-  RtpCreditPaymentMethod$inboundSchema,
-  CardPaymentPaymentMethod$inboundSchema,
-  PushToCardPaymentMethod$inboundSchema,
-  PullFromCardPaymentMethod$inboundSchema,
-  ApplePayPaymentMethod$inboundSchema,
-  CardPresentPaymentPaymentMethod$inboundSchema,
-  InstantBankCreditPaymentMethod$inboundSchema,
-]);
+> = discriminatedUnion("paymentMethodType", {
+  ["moov-wallet"]: MoovWalletPaymentMethod$inboundSchema,
+  ["ach-debit-fund"]: AchDebitFundPaymentMethod$inboundSchema,
+  ["ach-debit-collect"]: AchDebitCollectPaymentMethod$inboundSchema,
+  ["ach-credit-standard"]: AchCreditStandardPaymentMethod$inboundSchema,
+  ["ach-credit-same-day"]: AchCreditSameDayPaymentMethod$inboundSchema,
+  ["rtp-credit"]: RtpCreditPaymentMethod$inboundSchema,
+  ["card-payment"]: CardPaymentPaymentMethod$inboundSchema,
+  ["push-to-card"]: PushToCardPaymentMethod$inboundSchema,
+  ["pull-from-card"]: PullFromCardPaymentMethod$inboundSchema,
+  ["apple-pay"]: ApplePayPaymentMethod$inboundSchema,
+  ["card-present-payment"]: CardPresentPaymentPaymentMethod$inboundSchema,
+  ["instant-bank-credit"]: InstantBankCreditPaymentMethod$inboundSchema,
+});
 /** @internal */
 export type PaymentMethod$Outbound =
   | MoovWalletPaymentMethod$Outbound

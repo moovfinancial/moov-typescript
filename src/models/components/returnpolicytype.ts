@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const ReturnPolicyType = {
   None: "none",
@@ -11,13 +12,17 @@ export const ReturnPolicyType = {
   WithinThirtyDays: "withinThirtyDays",
   Other: "other",
 } as const;
-export type ReturnPolicyType = ClosedEnum<typeof ReturnPolicyType>;
+export type ReturnPolicyType = OpenEnum<typeof ReturnPolicyType>;
 
 /** @internal */
-export const ReturnPolicyType$inboundSchema: z.ZodNativeEnum<
-  typeof ReturnPolicyType
-> = z.nativeEnum(ReturnPolicyType);
+export const ReturnPolicyType$inboundSchema: z.ZodType<
+  ReturnPolicyType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ReturnPolicyType);
 /** @internal */
-export const ReturnPolicyType$outboundSchema: z.ZodNativeEnum<
-  typeof ReturnPolicyType
-> = ReturnPolicyType$inboundSchema;
+export const ReturnPolicyType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ReturnPolicyType
+> = openEnums.outboundSchema(ReturnPolicyType);

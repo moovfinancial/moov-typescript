@@ -15,6 +15,8 @@ let value: CallToAction = "book";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"pay" | "book" | "subscribe" | "donate" | "confirm" | "auto"
+"pay" | "book" | "subscribe" | "donate" | "confirm" | "auto" | Unrecognized<string>
 ```

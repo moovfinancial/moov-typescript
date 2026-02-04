@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type LinkApplePayErrorData = {
@@ -71,10 +72,10 @@ export const LinkApplePayError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  error: z.string().optional(),
-  paymentData: z.string().optional(),
-  paymentMethod: z.string().optional(),
-  transactionIdentifier: z.string().optional(),
+  error: types.optional(types.string()),
+  paymentData: types.optional(types.string()),
+  paymentMethod: types.optional(types.string()),
+  transactionIdentifier: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

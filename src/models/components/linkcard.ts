@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardAddress,
@@ -53,15 +54,15 @@ export const LinkCard$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  e2ee: E2EEToken$inboundSchema.optional(),
-  cardNumber: z.string(),
-  cardCvv: z.string(),
+  e2ee: types.optional(E2EEToken$inboundSchema),
+  cardNumber: types.string(),
+  cardCvv: types.string(),
   expiration: CardExpiration$inboundSchema,
-  holderName: z.string().optional(),
+  holderName: types.optional(types.string()),
   billingAddress: CardAddress$inboundSchema,
-  cardOnFile: z.boolean().optional(),
-  merchantAccountID: z.string().optional(),
-  verifyName: z.boolean().optional(),
+  cardOnFile: types.optional(types.boolean()),
+  merchantAccountID: types.optional(types.string()),
+  verifyName: types.optional(types.boolean()),
 });
 /** @internal */
 export type LinkCard$Outbound = {

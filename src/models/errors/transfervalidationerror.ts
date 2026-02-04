@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -76,18 +77,19 @@ export const TransferValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  amount: z.string().optional(),
-  source: z.string().optional(),
-  sourcePaymentMethodID: z.string().optional(),
-  destinationPaymentMethodID: z.string().optional(),
-  description: z.string().optional(),
-  "FacilitatorFee.TotalDecimal": z.string().optional(),
-  "FacilitatorFee.MarkupDecimal": z.string().optional(),
-  metadata: z.string().optional(),
-  salesTaxAmount: z.string().optional(),
-  foreignID: z.string().optional(),
-  lineItems: components.CreateTransferLineItemsValidationError$inboundSchema
-    .optional(),
+  amount: types.optional(types.string()),
+  source: types.optional(types.string()),
+  sourcePaymentMethodID: types.optional(types.string()),
+  destinationPaymentMethodID: types.optional(types.string()),
+  description: types.optional(types.string()),
+  "FacilitatorFee.TotalDecimal": types.optional(types.string()),
+  "FacilitatorFee.MarkupDecimal": types.optional(types.string()),
+  metadata: types.optional(types.string()),
+  salesTaxAmount: types.optional(types.string()),
+  foreignID: types.optional(types.string()),
+  lineItems: types.optional(
+    components.CreateTransferLineItemsValidationError$inboundSchema,
+  ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

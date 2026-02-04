@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const RefundCardStatus = {
   Initiated: "initiated",
@@ -12,13 +13,17 @@ export const RefundCardStatus = {
   Failed: "failed",
   Completed: "completed",
 } as const;
-export type RefundCardStatus = ClosedEnum<typeof RefundCardStatus>;
+export type RefundCardStatus = OpenEnum<typeof RefundCardStatus>;
 
 /** @internal */
-export const RefundCardStatus$inboundSchema: z.ZodNativeEnum<
-  typeof RefundCardStatus
-> = z.nativeEnum(RefundCardStatus);
+export const RefundCardStatus$inboundSchema: z.ZodType<
+  RefundCardStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(RefundCardStatus);
 /** @internal */
-export const RefundCardStatus$outboundSchema: z.ZodNativeEnum<
-  typeof RefundCardStatus
-> = RefundCardStatus$inboundSchema;
+export const RefundCardStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  RefundCardStatus
+> = openEnums.outboundSchema(RefundCardStatus);

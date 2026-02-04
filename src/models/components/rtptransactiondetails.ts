@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RTPFailureCode,
@@ -45,18 +46,13 @@ export const RTPTransactionDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: RTPTransactionStatus$inboundSchema.optional(),
-  networkResponseCode: z.string().optional(),
-  failureCode: RTPFailureCode$inboundSchema.optional(),
-  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  acceptedWithoutPostingOn: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
+  status: types.optional(RTPTransactionStatus$inboundSchema),
+  networkResponseCode: types.optional(types.string()),
+  failureCode: types.optional(RTPFailureCode$inboundSchema),
+  initiatedOn: types.optional(types.date()),
+  completedOn: types.optional(types.date()),
+  failedOn: types.optional(types.date()),
+  acceptedWithoutPostingOn: types.optional(types.date()),
 });
 /** @internal */
 export type RTPTransactionDetails$Outbound = {

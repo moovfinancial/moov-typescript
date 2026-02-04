@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FeeCategory,
@@ -54,13 +55,13 @@ export const BillableFee$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  billableFeeID: z.string().optional(),
-  billableEvent: z.string().optional(),
-  feeName: z.string().optional(),
+  billableFeeID: types.optional(types.string()),
+  billableEvent: types.optional(types.string()),
+  feeName: types.optional(types.string()),
   feeModel: FeeModel$inboundSchema,
   feeCategory: FeeCategory$inboundSchema,
-  feeProperties: FeeProperties$inboundSchema.optional(),
-  feeConditions: z.record(z.any()).optional(),
+  feeProperties: types.optional(FeeProperties$inboundSchema),
+  feeConditions: types.optional(z.record(z.any())),
 });
 /** @internal */
 export type BillableFee$Outbound = {

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The status of a particular dispute.
@@ -29,13 +30,17 @@ export const DisputeStatus = {
  *
  * Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/#dispute-statuses) to learn what each status means.
  */
-export type DisputeStatus = ClosedEnum<typeof DisputeStatus>;
+export type DisputeStatus = OpenEnum<typeof DisputeStatus>;
 
 /** @internal */
-export const DisputeStatus$inboundSchema: z.ZodNativeEnum<
-  typeof DisputeStatus
-> = z.nativeEnum(DisputeStatus);
+export const DisputeStatus$inboundSchema: z.ZodType<
+  DisputeStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DisputeStatus);
 /** @internal */
-export const DisputeStatus$outboundSchema: z.ZodNativeEnum<
-  typeof DisputeStatus
-> = DisputeStatus$inboundSchema;
+export const DisputeStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DisputeStatus
+> = openEnums.outboundSchema(DisputeStatus);

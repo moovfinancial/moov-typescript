@@ -24,6 +24,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Deletes a business representative associated with a Moov account. Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
@@ -187,7 +188,7 @@ async function $do(
   >(
     M.nil(
       204,
-      operations.DeleteRepresentativeResponse$inboundSchema.optional(),
+      types$.optional(operations.DeleteRepresentativeResponse$inboundSchema),
       { hdrs: true },
     ),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),

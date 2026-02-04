@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountCapability,
@@ -103,27 +104,21 @@ export type Account = {
 /** @internal */
 export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
   z.object({
-    accountID: z.string(),
+    accountID: types.string(),
     mode: Mode$inboundSchema,
     accountType: AccountType$inboundSchema,
-    displayName: z.string(),
+    displayName: types.string(),
     profile: Profile$inboundSchema,
-    metadata: z.record(z.string()).optional(),
-    termsOfService: TermsOfService$inboundSchema.optional(),
-    capabilities: z.array(AccountCapability$inboundSchema).optional(),
+    metadata: types.optional(z.record(types.string())),
+    termsOfService: types.optional(TermsOfService$inboundSchema),
+    capabilities: types.optional(z.array(AccountCapability$inboundSchema)),
     verification: Verification$inboundSchema,
-    foreignID: z.string().optional(),
-    customerSupport: CustomerSupport$inboundSchema.optional(),
-    settings: Settings$inboundSchema.optional(),
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    updatedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    disconnectedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
+    foreignID: types.optional(types.string()),
+    customerSupport: types.optional(CustomerSupport$inboundSchema),
+    settings: types.optional(Settings$inboundSchema),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+    disconnectedOn: types.optional(types.date()),
   });
 /** @internal */
 export type Account$Outbound = {

@@ -24,6 +24,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Disables a card associated with a Moov account.
@@ -181,7 +182,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(204, operations.DisableCardResponse$inboundSchema.optional(), {
+    M.nil(204, types$.optional(operations.DisableCardResponse$inboundSchema), {
       hdrs: true,
     }),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),

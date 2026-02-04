@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -97,7 +98,7 @@ export const GetEnrichmentAddressGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -146,19 +147,19 @@ export const GetEnrichmentAddressRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  search: z.string(),
-  maxResults: z.number().int().optional(),
-  includeCities: z.string().optional(),
-  includeStates: z.string().optional(),
-  includeZipcodes: z.string().optional(),
-  excludeStates: z.string().optional(),
-  preferCities: z.string().optional(),
-  preferStates: z.string().optional(),
-  preferZipcodes: z.string().optional(),
-  preferRatio: z.number().int().optional(),
-  preferGeolocation: z.string().optional(),
-  selected: z.string().optional(),
-  source: z.string().optional(),
+  search: types.string(),
+  maxResults: types.optional(types.number()),
+  includeCities: types.optional(types.string()),
+  includeStates: types.optional(types.string()),
+  includeZipcodes: types.optional(types.string()),
+  excludeStates: types.optional(types.string()),
+  preferCities: types.optional(types.string()),
+  preferStates: types.optional(types.string()),
+  preferZipcodes: types.optional(types.string()),
+  preferRatio: types.optional(types.number()),
+  preferGeolocation: types.optional(types.string()),
+  selected: types.optional(types.string()),
+  source: types.optional(types.string()),
 });
 /** @internal */
 export type GetEnrichmentAddressRequest$Outbound = {

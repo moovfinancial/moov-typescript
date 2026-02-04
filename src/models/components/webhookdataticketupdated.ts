@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TicketStatus,
@@ -25,9 +26,9 @@ export const WebhookDataTicketUpdated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  ticketID: z.string(),
-  foreignID: z.string().optional(),
+  accountID: types.string(),
+  ticketID: types.string(),
+  foreignID: types.optional(types.string()),
   status: TicketStatus$inboundSchema,
 });
 /** @internal */

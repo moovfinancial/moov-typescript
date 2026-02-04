@@ -24,6 +24,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Micro-deposits help confirm bank account ownership, helping reduce fraud and the risk of unauthorized activity.
@@ -197,7 +198,7 @@ async function $do(
   >(
     M.nil(
       204,
-      operations.InitiateMicroDepositsResponse$inboundSchema.optional(),
+      types$.optional(operations.InitiateMicroDepositsResponse$inboundSchema),
       { hdrs: true },
     ),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),

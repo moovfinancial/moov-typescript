@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateTransferLineItemValidationError,
@@ -23,8 +24,9 @@ export const CreateTransferLineItemsValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: z.record(CreateTransferLineItemValidationError$inboundSchema)
-    .optional(),
+  items: types.optional(
+    z.record(CreateTransferLineItemValidationError$inboundSchema),
+  ),
 });
 /** @internal */
 export type CreateTransferLineItemsValidationError$Outbound = {

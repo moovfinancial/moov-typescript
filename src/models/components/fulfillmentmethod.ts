@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const FulfillmentMethod = {
   BillOrDebtPayment: "bill-or-debt-payment",
@@ -16,13 +17,17 @@ export const FulfillmentMethod = {
   ShippedPhysicalGoods: "shipped-physical-goods",
   SubscriptionOrMembership: "subscription-or-membership",
 } as const;
-export type FulfillmentMethod = ClosedEnum<typeof FulfillmentMethod>;
+export type FulfillmentMethod = OpenEnum<typeof FulfillmentMethod>;
 
 /** @internal */
-export const FulfillmentMethod$inboundSchema: z.ZodNativeEnum<
-  typeof FulfillmentMethod
-> = z.nativeEnum(FulfillmentMethod);
+export const FulfillmentMethod$inboundSchema: z.ZodType<
+  FulfillmentMethod,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(FulfillmentMethod);
 /** @internal */
-export const FulfillmentMethod$outboundSchema: z.ZodNativeEnum<
-  typeof FulfillmentMethod
-> = FulfillmentMethod$inboundSchema;
+export const FulfillmentMethod$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  FulfillmentMethod
+> = openEnums.outboundSchema(FulfillmentMethod);

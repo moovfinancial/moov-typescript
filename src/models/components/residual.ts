@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -66,19 +67,17 @@ export const Residual$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  residualID: z.string(),
-  partnerAccountID: z.string(),
-  periodStart: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  periodEnd: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  residualID: types.string(),
+  partnerAccountID: types.string(),
+  periodStart: types.date(),
+  periodEnd: types.date(),
   merchantFees: AmountDecimal$inboundSchema,
   partnerCost: AmountDecimal$inboundSchema,
   netIncome: AmountDecimal$inboundSchema,
-  revenueShare: z.string(),
+  revenueShare: types.string(),
   residualAmount: AmountDecimal$inboundSchema,
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  createdOn: types.date(),
+  updatedOn: types.date(),
 });
 /** @internal */
 export type Residual$Outbound = {

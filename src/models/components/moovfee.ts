@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -43,10 +44,10 @@ export type MoovFee = {
 /** @internal */
 export const MoovFee$inboundSchema: z.ZodType<MoovFee, z.ZodTypeDef, unknown> =
   z.object({
-    accountID: z.string(),
+    accountID: types.string(),
     transferParty: TransferParty$inboundSchema,
     totalAmount: AmountDecimal$inboundSchema,
-    feeIDs: z.array(z.string()),
+    feeIDs: z.array(types.string()),
   });
 /** @internal */
 export type MoovFee$Outbound = {

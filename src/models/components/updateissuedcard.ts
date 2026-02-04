@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateAuthorizedUserUpdate,
@@ -39,9 +40,9 @@ export const UpdateIssuedCard$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  state: UpdateIssuedCardState$inboundSchema.optional(),
-  memo: z.string().optional(),
-  authorizedUser: CreateAuthorizedUserUpdate$inboundSchema.optional(),
+  state: types.optional(UpdateIssuedCardState$inboundSchema),
+  memo: types.optional(types.string()),
+  authorizedUser: types.optional(CreateAuthorizedUserUpdate$inboundSchema),
 });
 /** @internal */
 export type UpdateIssuedCard$Outbound = {

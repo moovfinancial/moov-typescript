@@ -23,6 +23,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Disable a payment link.
@@ -168,9 +169,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(204, operations.DisablePaymentLinkResponse$inboundSchema.optional(), {
-      hdrs: true,
-    }),
+    M.nil(
+      204,
+      types$.optional(operations.DisablePaymentLinkResponse$inboundSchema),
+      { hdrs: true },
+    ),
     M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),

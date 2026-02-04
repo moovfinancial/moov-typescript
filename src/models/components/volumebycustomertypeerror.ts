@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type VolumeByCustomerTypeError = {
@@ -18,8 +19,8 @@ export const VolumeByCustomerTypeError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  businessToBusinessPercentage: z.string().optional(),
-  consumerToBusinessPercentage: z.string().optional(),
+  businessToBusinessPercentage: types.optional(types.string()),
+  consumerToBusinessPercentage: types.optional(types.string()),
 });
 /** @internal */
 export type VolumeByCustomerTypeError$Outbound = {

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Status codes for RTP failures.
@@ -23,13 +24,17 @@ export const RTPFailureCode = {
 /**
  * Status codes for RTP failures.
  */
-export type RTPFailureCode = ClosedEnum<typeof RTPFailureCode>;
+export type RTPFailureCode = OpenEnum<typeof RTPFailureCode>;
 
 /** @internal */
-export const RTPFailureCode$inboundSchema: z.ZodNativeEnum<
-  typeof RTPFailureCode
-> = z.nativeEnum(RTPFailureCode);
+export const RTPFailureCode$inboundSchema: z.ZodType<
+  RTPFailureCode,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(RTPFailureCode);
 /** @internal */
-export const RTPFailureCode$outboundSchema: z.ZodNativeEnum<
-  typeof RTPFailureCode
-> = RTPFailureCode$inboundSchema;
+export const RTPFailureCode$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  RTPFailureCode
+> = openEnums.outboundSchema(RTPFailureCode);

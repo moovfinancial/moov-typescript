@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -36,9 +37,9 @@ export const LinkApplePaymentMethod$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  displayName: z.string(),
-  network: z.string(),
-  type: z.string(),
+  displayName: types.string(),
+  network: types.string(),
+  type: types.string(),
 });
 /** @internal */
 export type LinkApplePaymentMethod$Outbound = {

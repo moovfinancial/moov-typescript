@@ -22,6 +22,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * A simple endpoint to check auth.
@@ -142,7 +143,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(200, operations.PingResponse$inboundSchema.optional(), {
+    M.nil(200, types$.optional(operations.PingResponse$inboundSchema), {
       hdrs: true,
     }),
     M.fail([401, 403, 404, 429]),

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Indicates which level of domestic push-to-card transfer is supported by the card, if any.
@@ -17,13 +18,17 @@ export const DomesticPushToCard = {
 /**
  * Indicates which level of domestic push-to-card transfer is supported by the card, if any.
  */
-export type DomesticPushToCard = ClosedEnum<typeof DomesticPushToCard>;
+export type DomesticPushToCard = OpenEnum<typeof DomesticPushToCard>;
 
 /** @internal */
-export const DomesticPushToCard$inboundSchema: z.ZodNativeEnum<
-  typeof DomesticPushToCard
-> = z.nativeEnum(DomesticPushToCard);
+export const DomesticPushToCard$inboundSchema: z.ZodType<
+  DomesticPushToCard,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DomesticPushToCard);
 /** @internal */
-export const DomesticPushToCard$outboundSchema: z.ZodNativeEnum<
-  typeof DomesticPushToCard
-> = DomesticPushToCard$inboundSchema;
+export const DomesticPushToCard$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DomesticPushToCard
+> = openEnums.outboundSchema(DomesticPushToCard);

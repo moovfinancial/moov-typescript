@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -88,11 +89,11 @@ export type Invoice = {
 /** @internal */
 export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
   z.object({
-    invoiceID: z.string(),
-    invoiceNumber: z.string(),
-    description: z.string().optional(),
-    customerAccountID: z.string(),
-    partnerAccountID: z.string(),
+    invoiceID: types.string(),
+    invoiceNumber: types.string(),
+    description: types.optional(types.string()),
+    customerAccountID: types.string(),
+    partnerAccountID: types.string(),
     status: InvoiceStatus$inboundSchema,
     lineItems: InvoiceLineItems$inboundSchema,
     subtotalAmount: AmountDecimal$inboundSchema,
@@ -102,23 +103,14 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
     paidAmount: AmountDecimal$inboundSchema,
     refundedAmount: AmountDecimal$inboundSchema,
     disputedAmount: AmountDecimal$inboundSchema,
-    paymentLinkCode: z.string().optional(),
-    invoicePayments: z.array(InvoicePayment$inboundSchema).optional(),
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    invoiceDate: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    dueDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    sentOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    paidOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    canceledOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
+    paymentLinkCode: types.optional(types.string()),
+    invoicePayments: types.optional(z.array(InvoicePayment$inboundSchema)),
+    createdOn: types.date(),
+    invoiceDate: types.optional(types.date()),
+    dueDate: types.optional(types.date()),
+    sentOn: types.optional(types.date()),
+    paidOn: types.optional(types.date()),
+    canceledOn: types.optional(types.date()),
   });
 /** @internal */
 export type Invoice$Outbound = {

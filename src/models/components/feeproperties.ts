@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -55,10 +56,10 @@ export const FeeProperties$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fixedAmount: AmountDecimal$inboundSchema.optional(),
-  variableRate: z.string().optional(),
-  minPerTransaction: AmountDecimal$inboundSchema.optional(),
-  maxPerTransaction: AmountDecimal$inboundSchema.optional(),
+  fixedAmount: types.optional(AmountDecimal$inboundSchema),
+  variableRate: types.optional(types.string()),
+  minPerTransaction: types.optional(AmountDecimal$inboundSchema),
+  maxPerTransaction: types.optional(AmountDecimal$inboundSchema),
   volumeRanges: z.array(VolumeRange$inboundSchema),
 });
 /** @internal */

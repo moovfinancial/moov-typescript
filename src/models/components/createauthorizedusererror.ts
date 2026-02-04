@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BirthDateError,
@@ -25,9 +26,9 @@ export const CreateAuthorizedUserError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  birthDate: BirthDateError$inboundSchema.optional(),
+  firstName: types.optional(types.string()),
+  lastName: types.optional(types.string()),
+  birthDate: types.optional(BirthDateError$inboundSchema),
 });
 /** @internal */
 export type CreateAuthorizedUserError$Outbound = {

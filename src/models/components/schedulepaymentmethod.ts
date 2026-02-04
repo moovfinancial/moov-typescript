@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchDetails = {
@@ -37,8 +38,8 @@ export const AchDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  companyEntryDescription: z.string().optional(),
-  originatingCompanyName: z.string().optional(),
+  companyEntryDescription: types.optional(types.string()),
+  originatingCompanyName: types.optional(types.string()),
 });
 /** @internal */
 export type AchDetails$Outbound = {
@@ -75,7 +76,7 @@ export const CardDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  dynamicDescriptor: z.string().optional(),
+  dynamicDescriptor: types.optional(types.string()),
 });
 /** @internal */
 export type CardDetails$Outbound = {
@@ -110,9 +111,9 @@ export const SchedulePaymentMethod$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paymentMethodID: z.string(),
-  achDetails: z.lazy(() => AchDetails$inboundSchema).optional(),
-  cardDetails: z.lazy(() => CardDetails$inboundSchema).optional(),
+  paymentMethodID: types.string(),
+  achDetails: types.optional(z.lazy(() => AchDetails$inboundSchema)),
+  cardDetails: types.optional(z.lazy(() => CardDetails$inboundSchema)),
 });
 /** @internal */
 export type SchedulePaymentMethod$Outbound = {

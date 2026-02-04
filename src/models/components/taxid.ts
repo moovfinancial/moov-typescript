@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Ein = {
@@ -21,7 +22,7 @@ export type TaxID = {
 /** @internal */
 export const Ein$inboundSchema: z.ZodType<Ein, z.ZodTypeDef, unknown> = z
   .object({
-    number: z.string(),
+    number: types.string(),
   });
 /** @internal */
 export type Ein$Outbound = {

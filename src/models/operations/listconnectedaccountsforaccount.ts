@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -99,7 +100,7 @@ export const ListConnectedAccountsForAccountGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -150,16 +151,16 @@ export const ListConnectedAccountsForAccountRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  name: z.string().optional(),
-  email: z.string().optional(),
-  type: components.CreateAccountType$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  includeDisconnected: z.boolean().optional(),
-  capability: components.CapabilityID$inboundSchema.optional(),
-  capabilityStatus: components.CapabilityStatus$inboundSchema.optional(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
+  accountID: types.string(),
+  name: types.optional(types.string()),
+  email: types.optional(types.string()),
+  type: types.optional(components.CreateAccountType$inboundSchema),
+  foreignID: types.optional(types.string()),
+  includeDisconnected: types.optional(types.boolean()),
+  capability: types.optional(components.CapabilityID$inboundSchema),
+  capabilityStatus: types.optional(components.CapabilityStatus$inboundSchema),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
 });
 /** @internal */
 export type ListConnectedAccountsForAccountRequest$Outbound = {

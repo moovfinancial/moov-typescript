@@ -12,6 +12,8 @@ let value: TerminalApplicationPlatform = "ios";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"undefined" | "ios" | "android"
+"undefined" | "ios" | "android" | Unrecognized<string>
 ```

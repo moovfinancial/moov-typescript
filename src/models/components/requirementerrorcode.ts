@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const RequirementErrorCode = {
   InvalidValue: "invalid-value",
@@ -25,13 +26,17 @@ export const RequirementErrorCode = {
   DocumentCorrupt: "document-corrupt",
   DocumentExpired: "document-expired",
 } as const;
-export type RequirementErrorCode = ClosedEnum<typeof RequirementErrorCode>;
+export type RequirementErrorCode = OpenEnum<typeof RequirementErrorCode>;
 
 /** @internal */
-export const RequirementErrorCode$inboundSchema: z.ZodNativeEnum<
-  typeof RequirementErrorCode
-> = z.nativeEnum(RequirementErrorCode);
+export const RequirementErrorCode$inboundSchema: z.ZodType<
+  RequirementErrorCode,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(RequirementErrorCode);
 /** @internal */
-export const RequirementErrorCode$outboundSchema: z.ZodNativeEnum<
-  typeof RequirementErrorCode
-> = RequirementErrorCode$inboundSchema;
+export const RequirementErrorCode$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  RequirementErrorCode
+> = openEnums.outboundSchema(RequirementErrorCode);

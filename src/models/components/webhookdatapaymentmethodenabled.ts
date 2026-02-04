@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WebhookDataPaymentMethodEnabled = {
@@ -19,9 +20,9 @@ export const WebhookDataPaymentMethodEnabled$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  paymentMethodID: z.string(),
-  sourceID: z.string(),
+  accountID: types.string(),
+  paymentMethodID: types.string(),
+  sourceID: types.string(),
 });
 /** @internal */
 export type WebhookDataPaymentMethodEnabled$Outbound = {

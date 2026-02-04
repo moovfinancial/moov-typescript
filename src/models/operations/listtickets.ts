@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -54,7 +55,7 @@ export const ListTicketsGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -101,11 +102,11 @@ export const ListTicketsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cursor: z.string().optional(),
-  count: z.number().int().optional(),
-  status: components.TicketStatus$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  accountID: z.string(),
+  cursor: types.optional(types.string()),
+  count: types.optional(types.number()),
+  status: types.optional(components.TicketStatus$inboundSchema),
+  foreignID: types.optional(types.string()),
+  accountID: types.string(),
 });
 /** @internal */
 export type ListTicketsRequest$Outbound = {
@@ -153,7 +154,7 @@ export const ListTicketsResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   items: z.array(components.Ticket$inboundSchema),
-  nextPage: components.ItemListNextPage$inboundSchema.optional(),
+  nextPage: types.optional(components.ItemListNextPage$inboundSchema),
 });
 /** @internal */
 export type ListTicketsResponseBody$Outbound = {

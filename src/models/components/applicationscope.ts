@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * A permission that the application requests on another account.
@@ -45,13 +46,17 @@ export const ApplicationScope = {
 /**
  * A permission that the application requests on another account.
  */
-export type ApplicationScope = ClosedEnum<typeof ApplicationScope>;
+export type ApplicationScope = OpenEnum<typeof ApplicationScope>;
 
 /** @internal */
-export const ApplicationScope$inboundSchema: z.ZodNativeEnum<
-  typeof ApplicationScope
-> = z.nativeEnum(ApplicationScope);
+export const ApplicationScope$inboundSchema: z.ZodType<
+  ApplicationScope,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ApplicationScope);
 /** @internal */
-export const ApplicationScope$outboundSchema: z.ZodNativeEnum<
-  typeof ApplicationScope
-> = ApplicationScope$inboundSchema;
+export const ApplicationScope$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ApplicationScope
+> = openEnums.outboundSchema(ApplicationScope);
