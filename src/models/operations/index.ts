@@ -117,7 +117,6 @@ export * from "./listissuedcardauthorizations.js";
 export * from "./listissuedcards.js";
 export * from "./listissuedcardtransactions.js";
 export * from "./listonboardinginvites.js";
-export * from "./listpartnerpricing.js";
 export * from "./listpartnerpricingagreements.js";
 export * from "./listpaymentlinks.js";
 export * from "./listpaymentmethods.js";
