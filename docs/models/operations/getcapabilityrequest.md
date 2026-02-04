@@ -7,7 +7,7 @@ import { GetCapabilityRequest } from "@moovio/sdk/models/operations";
 
 let value: GetCapabilityRequest = {
   accountID: "dad0af52-9f03-4412-b0de-08337396ad43",
-  capabilityID: "send-funds.ach",
+  capabilityID: "send-funds",
 };
 ```
 

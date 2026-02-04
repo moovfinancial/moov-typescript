@@ -63,7 +63,7 @@ export type ListConnectedAccountsForAccountRequest = {
    *
    *   Filtering by `type=guest` is not currently supported.
    */
-  type?: components.CreateAccountType | undefined;
+  type?: components.AccountType | undefined;
   /**
    *   Serves as an optional alias from a foreign/external system which can be used to reference this resource.
    */
@@ -153,7 +153,7 @@ export const ListConnectedAccountsForAccountRequest$inboundSchema: z.ZodType<
   accountID: z.string(),
   name: z.string().optional(),
   email: z.string().optional(),
-  type: components.CreateAccountType$inboundSchema.optional(),
+  type: components.AccountType$inboundSchema.optional(),
   foreignID: z.string().optional(),
   includeDisconnected: z.boolean().optional(),
   capability: components.CapabilityID$inboundSchema.optional(),
@@ -184,7 +184,7 @@ export const ListConnectedAccountsForAccountRequest$outboundSchema: z.ZodType<
   accountID: z.string(),
   name: z.string().optional(),
   email: z.string().optional(),
-  type: components.CreateAccountType$outboundSchema.optional(),
+  type: components.AccountType$outboundSchema.optional(),
   foreignID: z.string().optional(),
   includeDisconnected: z.boolean().optional(),
   capability: components.CapabilityID$outboundSchema.optional(),

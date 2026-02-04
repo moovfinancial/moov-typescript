@@ -15,21 +15,10 @@ import { ClosedEnum } from "../../types/enums.js";
 export const CapabilityID = {
   Transfers: "transfers",
   SendFunds: "send-funds",
-  SendFundsPushToCard: "send-funds.push-to-card",
-  MoneyTransferPushToCard: "money-transfer.push-to-card",
-  SendFundsAch: "send-funds.ach",
-  SendFundsRtp: "send-funds.rtp",
-  SendFundsInstantBank: "send-funds.instant-bank",
   CollectFunds: "collect-funds",
-  CollectFundsCardPayments: "collect-funds.card-payments",
-  MoneyTransferPullFromCard: "money-transfer.pull-from-card",
-  CollectFundsAch: "collect-funds.ach",
   Wallet: "wallet",
-  WalletBalance: "wallet.balance",
   CardIssuing: "card-issuing",
   ProductionApp: "production-app",
-  PlatformProductionApp: "platform.production-app",
-  PlatformWalletTransfers: "platform.wallet-transfers",
 } as const;
 /**
  * Moov account capabilities.

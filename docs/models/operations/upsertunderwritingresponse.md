@@ -7,7 +7,28 @@ import { UpsertUnderwritingResponse } from "@moovio/sdk/models/operations";
 
 let value: UpsertUnderwritingResponse = {
   headers: {},
-  result: {},
+  result: {
+    averageTransactionSize: 112418,
+    maxTransactionSize: 41178,
+    averageMonthlyTransactionVolume: 58307,
+    status: "pending",
+    volumeByCustomerType: {
+      businessToBusinessPercentage: 787377,
+      consumerToBusinessPercentage: 665130,
+    },
+    cardVolumeDistribution: {
+      ecommercePercentage: 616555,
+      cardPresentPercentage: 770976,
+      mailOrPhonePercentage: 643918,
+      debtRepaymentPercentage: 613082,
+    },
+    fulfillment: {
+      hasPhysicalGoods: false,
+      isShippingProduct: true,
+      shipmentDurationDays: 253308,
+      returnPolicy: "exchangeOnly",
+    },
+  },
 };
 ```
 
