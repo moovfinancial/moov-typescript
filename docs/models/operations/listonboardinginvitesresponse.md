@@ -22,6 +22,9 @@ let value: ListOnboardingInvitesResponse = {
       scopes: [
         "accounts.read",
       ],
+      grantScopes: [
+        "transfers.write",
+      ],
       capabilities: [
         "transfers",
       ],

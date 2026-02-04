@@ -28,7 +28,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.22.20
+  version: 0.22.22
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -66,13 +66,14 @@ typescript:
   inputModelSuffix: input
   jsonpath: legacy
   laxMode: lax
+  legacyFileNaming: true
   maxMethodParams: 0
   methodArguments: require-security-and-request
   modelPropertyCasing: camel
   moduleFormat: commonjs
   multipartArrayFormat: legacy
   outputModelSuffix: output
-  packageName: '@moovio/sdk'
+  packageName: "@moovio/sdk"
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   responseFormat: flat

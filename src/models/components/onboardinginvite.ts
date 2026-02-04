@@ -54,6 +54,13 @@ export type OnboardingInvite = {
    */
   scopes: Array<ApplicationScope>;
   /**
+   *   List of [scopes](https://docs.moov.io/api/authentication/scopes/) you grant to allow being used
+   *
+   * @remarks
+   *   by the new account on yourself. These values are used to determine what the account onboarded can do.
+   */
+  grantScopes?: Array<ApplicationScope> | undefined;
+  /**
    *   List of [capabilities](https://docs.moov.io/guides/accounts/capabilities/) you intend to request for this
    *
    * @remarks
@@ -89,6 +96,7 @@ export const OnboardingInvite$inboundSchema: z.ZodType<
   returnURL: z.string().optional(),
   termsOfServiceURL: z.string().optional(),
   scopes: z.array(ApplicationScope$inboundSchema),
+  grantScopes: z.array(ApplicationScope$inboundSchema).optional(),
   capabilities: z.array(CapabilityID$inboundSchema),
   feePlanCodes: z.array(z.string()),
   redeemedAccountID: z.string().optional(),
@@ -107,6 +115,7 @@ export type OnboardingInvite$Outbound = {
   returnURL?: string | undefined;
   termsOfServiceURL?: string | undefined;
   scopes: Array<string>;
+  grantScopes?: Array<string> | undefined;
   capabilities: Array<string>;
   feePlanCodes: Array<string>;
   redeemedAccountID?: string | undefined;
@@ -128,6 +137,7 @@ export const OnboardingInvite$outboundSchema: z.ZodType<
   returnURL: z.string().optional(),
   termsOfServiceURL: z.string().optional(),
   scopes: z.array(ApplicationScope$outboundSchema),
+  grantScopes: z.array(ApplicationScope$outboundSchema).optional(),
   capabilities: z.array(CapabilityID$outboundSchema),
   feePlanCodes: z.array(z.string()),
   redeemedAccountID: z.string().optional(),

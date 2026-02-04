@@ -47,6 +47,9 @@ async function run() {
     scopes: [
       "accounts.read",
     ],
+    grantScopes: [
+      "transfers.write",
+    ],
     capabilities: [
       "transfers",
     ],
@@ -91,6 +94,9 @@ async function run() {
   const res = await onboardingCreateInvite(moov, {
     scopes: [
       "accounts.read",
+    ],
+    grantScopes: [
+      "transfers.write",
     ],
     capabilities: [
       "transfers",
