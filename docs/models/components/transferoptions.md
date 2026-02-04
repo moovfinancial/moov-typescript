@@ -9,25 +9,26 @@ let value: TransferOptions = {
   sourceOptions: [
     {
       paymentMethodID: "880c87e7-4097-4416-b32b-61024b85211e",
-      paymentMethodType: "instant-bank-credit",
-      bankAccount: {
-        bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
-        fingerprint: "<value>",
-        status: "pending",
-        holderName: "<value>",
-        holderType: "individual",
-        bankName: "<value>",
-        bankAccountType: "checking",
-        routingNumber: "<value>",
-        lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2025-05-13T19:17:44.414Z"),
+      paymentMethodType: "apple-pay",
+      applePay: {
+        brand: "Visa",
+        cardType: "credit",
+        cardDisplayName: "Visa 1256",
+        fingerprint:
+          "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+        expiration: {
+          month: "01",
+          year: "21",
+        },
+        dynamicLastFour: "<value>",
+        issuerCountry: "US",
       },
     },
   ],
   destinationOptions: [
     {
       paymentMethodID: "e75eaa04-98d0-4f99-856f-912ec1ae4c0b",
-      paymentMethodType: "push-to-card",
+      paymentMethodType: "card-payment",
       card: {
         cardID: "01234567-89ab-cdef-0123-456789abcdef",
         fingerprint:

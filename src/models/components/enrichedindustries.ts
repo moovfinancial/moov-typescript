@@ -7,14 +7,14 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  IndustryTaxonomy,
-  IndustryTaxonomy$inboundSchema,
-  IndustryTaxonomy$Outbound,
-  IndustryTaxonomy$outboundSchema,
-} from "./industrytaxonomy.js";
+  EnrichedIndustry,
+  EnrichedIndustry$inboundSchema,
+  EnrichedIndustry$Outbound,
+  EnrichedIndustry$outboundSchema,
+} from "./enrichedindustry.js";
 
 export type EnrichedIndustries = {
-  industries: Array<IndustryTaxonomy>;
+  industries: Array<EnrichedIndustry>;
 };
 
 /** @internal */
@@ -23,11 +23,11 @@ export const EnrichedIndustries$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  industries: z.array(IndustryTaxonomy$inboundSchema),
+  industries: z.array(EnrichedIndustry$inboundSchema),
 });
 /** @internal */
 export type EnrichedIndustries$Outbound = {
-  industries: Array<IndustryTaxonomy$Outbound>;
+  industries: Array<EnrichedIndustry$Outbound>;
 };
 
 /** @internal */
@@ -36,7 +36,7 @@ export const EnrichedIndustries$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EnrichedIndustries
 > = z.object({
-  industries: z.array(IndustryTaxonomy$outboundSchema),
+  industries: z.array(EnrichedIndustry$outboundSchema),
 });
 
 export function enrichedIndustriesToJSON(

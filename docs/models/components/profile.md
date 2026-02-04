@@ -84,14 +84,6 @@ let value: Profile = {
     },
     industry: "electronics-appliances",
   },
-  guest: {
-    name: "Guest 75e5fbb8",
-    phone: {
-      number: "8185551212",
-      countryCode: "1",
-    },
-    email: "jordan.lee@classbooker.dev",
-  },
 };
 ```
 
@@ -101,4 +93,3 @@ let value: Profile = {
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `individual`                                                                 | [components.IndividualProfile](../../models/components/individualprofile.md) | :heavy_minus_sign:                                                           | Describes an individual.                                                     |
 | `business`                                                                   | [components.BusinessProfile](../../models/components/businessprofile.md)     | :heavy_minus_sign:                                                           | Describes a business.                                                        |
-| `guest`                                                                      | [components.GuestProfile](../../models/components/guestprofile.md)           | :heavy_minus_sign:                                                           | Describes a guest account profile.                                           |

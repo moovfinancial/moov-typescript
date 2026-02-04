@@ -11,7 +11,7 @@ const value: components.CreatedTransfer = {
   createdOn: new Date("2026-03-10T06:52:08.646Z"),
   source: {
     paymentMethodID: "<id>",
-    paymentMethodType: "apple-pay",
+    paymentMethodType: "push-to-card",
     account: {
       accountID: "<id>",
       email: "Mason_Koepp@hotmail.com",
@@ -68,22 +68,6 @@ const value: components.CreatedTransfer = {
       dynamicLastFour: "<value>",
       issuerCountry: "US",
     },
-    terminalCard: {
-      entryMode: "contactless",
-      brand: "Visa",
-      bin: "123456",
-      cardType: "credit",
-      expiration: {
-        month: "01",
-        year: "21",
-      },
-      fingerprint:
-        "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
-      holderName: "Jules Jackson",
-      issuer: "GRINGOTTS BANK",
-      issuerCountry: "US",
-      lastFourCardNumber: "1234",
-    },
     cardDetails: {
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
       feeProgram:
@@ -98,7 +82,7 @@ const value: components.CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "rtp-credit",
+    paymentMethodType: "ach-credit-same-day",
     account: {
       accountID: "<id>",
       email: "Mason_Koepp@hotmail.com",

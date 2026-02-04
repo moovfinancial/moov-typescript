@@ -9,16 +9,16 @@ let value: RtpCreditPaymentMethod = {
   paymentMethodID: "d7c83ad0-ead3-413b-bcdf-21ca277acb5b",
   paymentMethodType: "rtp-credit",
   bankAccount: {
-    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+    bankAccountID: "9b467f1c-9448-436e-ae4c-b66a00f95edd",
     fingerprint: "<value>",
-    status: "pending",
+    status: "verified",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "checking",
+    bankAccountType: "general-ledger",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-10-01T01:34:04.625Z"),
   },
 };
 ```

@@ -48,12 +48,6 @@ import {
   PaymentMethodType$outboundSchema,
 } from "./paymentmethodtype.js";
 import {
-  TerminalCard,
-  TerminalCard$inboundSchema,
-  TerminalCard$Outbound,
-  TerminalCard$outboundSchema,
-} from "./terminalcard.js";
-import {
   TransferAccount,
   TransferAccount$inboundSchema,
   TransferAccount$Outbound,
@@ -85,10 +79,6 @@ export type TransferSource = {
    */
   applePay?: ApplePayResponse | undefined;
   /**
-   * Describes payment card details captured with tap or in-person payment.
-   */
-  terminalCard?: TerminalCard | undefined;
-  /**
    * Card-specific details about the transaction.
    */
   cardDetails?: CardTransactionDetails | undefined;
@@ -112,7 +102,6 @@ export const TransferSource$inboundSchema: z.ZodType<
   wallet: PaymentMethodsWallet$inboundSchema.optional(),
   card: PaymentMethodsCard$inboundSchema.optional(),
   applePay: ApplePayResponse$inboundSchema.optional(),
-  terminalCard: TerminalCard$inboundSchema.optional(),
   cardDetails: CardTransactionDetails$inboundSchema.optional(),
   achDetails: ACHTransactionDetails$inboundSchema.optional(),
 });
@@ -126,7 +115,6 @@ export type TransferSource$Outbound = {
   wallet?: PaymentMethodsWallet$Outbound | undefined;
   card?: PaymentMethodsCard$Outbound | undefined;
   applePay?: ApplePayResponse$Outbound | undefined;
-  terminalCard?: TerminalCard$Outbound | undefined;
   cardDetails?: CardTransactionDetails$Outbound | undefined;
   achDetails?: ACHTransactionDetails$Outbound | undefined;
 };
@@ -145,7 +133,6 @@ export const TransferSource$outboundSchema: z.ZodType<
   wallet: PaymentMethodsWallet$outboundSchema.optional(),
   card: PaymentMethodsCard$outboundSchema.optional(),
   applePay: ApplePayResponse$outboundSchema.optional(),
-  terminalCard: TerminalCard$outboundSchema.optional(),
   cardDetails: CardTransactionDetails$outboundSchema.optional(),
   achDetails: ACHTransactionDetails$outboundSchema.optional(),
 });

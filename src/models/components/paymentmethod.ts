@@ -43,18 +43,6 @@ import {
   CardPaymentPaymentMethod$outboundSchema,
 } from "./cardpaymentpaymentmethod.js";
 import {
-  CardPresentPaymentPaymentMethod,
-  CardPresentPaymentPaymentMethod$inboundSchema,
-  CardPresentPaymentPaymentMethod$Outbound,
-  CardPresentPaymentPaymentMethod$outboundSchema,
-} from "./cardpresentpaymentpaymentmethod.js";
-import {
-  InstantBankCreditPaymentMethod,
-  InstantBankCreditPaymentMethod$inboundSchema,
-  InstantBankCreditPaymentMethod$Outbound,
-  InstantBankCreditPaymentMethod$outboundSchema,
-} from "./instantbankcreditpaymentmethod.js";
-import {
   MoovWalletPaymentMethod,
   MoovWalletPaymentMethod$inboundSchema,
   MoovWalletPaymentMethod$Outbound,
@@ -92,9 +80,7 @@ export type PaymentMethod =
   | CardPaymentPaymentMethod
   | PushToCardPaymentMethod
   | PullFromCardPaymentMethod
-  | ApplePayPaymentMethod
-  | CardPresentPaymentPaymentMethod
-  | InstantBankCreditPaymentMethod;
+  | ApplePayPaymentMethod;
 
 /** @internal */
 export const PaymentMethod$inboundSchema: z.ZodType<
@@ -112,8 +98,6 @@ export const PaymentMethod$inboundSchema: z.ZodType<
   PushToCardPaymentMethod$inboundSchema,
   PullFromCardPaymentMethod$inboundSchema,
   ApplePayPaymentMethod$inboundSchema,
-  CardPresentPaymentPaymentMethod$inboundSchema,
-  InstantBankCreditPaymentMethod$inboundSchema,
 ]);
 /** @internal */
 export type PaymentMethod$Outbound =
@@ -126,9 +110,7 @@ export type PaymentMethod$Outbound =
   | CardPaymentPaymentMethod$Outbound
   | PushToCardPaymentMethod$Outbound
   | PullFromCardPaymentMethod$Outbound
-  | ApplePayPaymentMethod$Outbound
-  | CardPresentPaymentPaymentMethod$Outbound
-  | InstantBankCreditPaymentMethod$Outbound;
+  | ApplePayPaymentMethod$Outbound;
 
 /** @internal */
 export const PaymentMethod$outboundSchema: z.ZodType<
@@ -146,8 +128,6 @@ export const PaymentMethod$outboundSchema: z.ZodType<
   PushToCardPaymentMethod$outboundSchema,
   PullFromCardPaymentMethod$outboundSchema,
   ApplePayPaymentMethod$outboundSchema,
-  CardPresentPaymentPaymentMethod$outboundSchema,
-  InstantBankCreditPaymentMethod$outboundSchema,
 ]);
 
 export function paymentMethodToJSON(paymentMethod: PaymentMethod): string {

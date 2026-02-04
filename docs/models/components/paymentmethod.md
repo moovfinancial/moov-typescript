@@ -12,8 +12,8 @@ const value: components.MoovWalletPaymentMethod = {
   paymentMethodID: "230e5787-9448-4b31-b468-95e051e5a131",
   paymentMethodType: "moov-wallet",
   wallet: {
-    walletID: "5b8fabc3-cfb4-4c3b-a98d-557a1ffd26cc",
-    partnerAccountID: "e4f5a400-b4d3-491b-a89a-484206ac0d0a",
+    walletID: "3e095e99-464f-4d24-b1e1-1dd152488431",
+    partnerAccountID: "58b17cf8-0ee7-46b8-a22d-cb69ead37220",
     walletType: "default",
   },
 };
@@ -26,16 +26,16 @@ const value: components.AchDebitFundPaymentMethod = {
   paymentMethodID: "bb2c562b-2639-464b-ad21-86a58fa17e0a",
   paymentMethodType: "ach-debit-fund",
   bankAccount: {
-    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+    bankAccountID: "9b467f1c-9448-436e-ae4c-b66a00f95edd",
     fingerprint: "<value>",
-    status: "pending",
+    status: "verified",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "checking",
+    bankAccountType: "general-ledger",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-10-01T01:34:04.625Z"),
   },
 };
 ```
@@ -47,16 +47,16 @@ const value: components.AchDebitCollectPaymentMethod = {
   paymentMethodID: "6a8ac579-1154-487e-add5-20b146822c84",
   paymentMethodType: "ach-debit-collect",
   bankAccount: {
-    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+    bankAccountID: "9b467f1c-9448-436e-ae4c-b66a00f95edd",
     fingerprint: "<value>",
-    status: "pending",
+    status: "verified",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "checking",
+    bankAccountType: "general-ledger",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-10-01T01:34:04.625Z"),
   },
 };
 ```
@@ -68,16 +68,16 @@ const value: components.AchCreditStandardPaymentMethod = {
   paymentMethodID: "927a0836-74af-4b7a-9c60-2557fb5ac2b9",
   paymentMethodType: "ach-credit-standard",
   bankAccount: {
-    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+    bankAccountID: "9b467f1c-9448-436e-ae4c-b66a00f95edd",
     fingerprint: "<value>",
-    status: "pending",
+    status: "verified",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "checking",
+    bankAccountType: "general-ledger",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-10-01T01:34:04.625Z"),
   },
 };
 ```
@@ -89,16 +89,16 @@ const value: components.AchCreditSameDayPaymentMethod = {
   paymentMethodID: "80bca603-5db2-41f1-989e-6f05d94de12a",
   paymentMethodType: "ach-credit-same-day",
   bankAccount: {
-    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+    bankAccountID: "9b467f1c-9448-436e-ae4c-b66a00f95edd",
     fingerprint: "<value>",
-    status: "pending",
+    status: "verified",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "checking",
+    bankAccountType: "general-ledger",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-10-01T01:34:04.625Z"),
   },
 };
 ```
@@ -110,16 +110,16 @@ const value: components.RtpCreditPaymentMethod = {
   paymentMethodID: "d7c83ad0-ead3-413b-bcdf-21ca277acb5b",
   paymentMethodType: "rtp-credit",
   bankAccount: {
-    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+    bankAccountID: "9b467f1c-9448-436e-ae4c-b66a00f95edd",
     fingerprint: "<value>",
-    status: "pending",
+    status: "verified",
     holderName: "<value>",
     holderType: "individual",
     bankName: "<value>",
-    bankAccountType: "checking",
+    bankAccountType: "general-ledger",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2025-10-01T01:34:04.625Z"),
   },
 };
 ```
@@ -283,52 +283,6 @@ const value: components.ApplePayPaymentMethod = {
     },
     dynamicLastFour: "<value>",
     issuerCountry: "US",
-  },
-};
-```
-
-### `components.CardPresentPaymentPaymentMethod`
-
-```typescript
-const value: components.CardPresentPaymentPaymentMethod = {
-  paymentMethodID: "70d0dcac-2f06-402e-b2e9-61437f0e2872",
-  paymentMethodType: "card-present-payment",
-  terminalCard: {
-    entryMode: "contactless",
-    brand: "Visa",
-    bin: "123456",
-    cardType: "credit",
-    expiration: {
-      month: "01",
-      year: "21",
-    },
-    fingerprint:
-      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
-    holderName: "Jules Jackson",
-    issuer: "GRINGOTTS BANK",
-    issuerCountry: "US",
-    lastFourCardNumber: "1234",
-  },
-};
-```
-
-### `components.InstantBankCreditPaymentMethod`
-
-```typescript
-const value: components.InstantBankCreditPaymentMethod = {
-  paymentMethodID: "2fbfbefd-2438-4326-87d5-920d7a52d533",
-  paymentMethodType: "instant-bank-credit",
-  bankAccount: {
-    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
-    fingerprint: "<value>",
-    status: "pending",
-    holderName: "<value>",
-    holderType: "individual",
-    bankName: "<value>",
-    bankAccountType: "checking",
-    routingNumber: "<value>",
-    lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
   },
 };
 ```

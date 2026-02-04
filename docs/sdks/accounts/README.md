@@ -733,6 +733,7 @@ const moov = new Moov({
 async function run() {
   const result = await moov.accounts.listConnected({
     accountID: "7e09ffc8-e508-4fd4-a54e-21cff90a1824",
+    type: "business",
     skip: 60,
     count: 20,
   });
@@ -764,6 +765,7 @@ const moov = new MoovCore({
 async function run() {
   const res = await accountsListConnected(moov, {
     accountID: "7e09ffc8-e508-4fd4-a54e-21cff90a1824",
+    type: "business",
     skip: 60,
     count: 20,
   });

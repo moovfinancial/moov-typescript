@@ -103,12 +103,6 @@ import { tool$imagesUpload } from "./tools/imagesUpload.js";
 import { tool$industriesList } from "./tools/industriesList.js";
 import { tool$institutionsSearch } from "./tools/institutionsSearch.js";
 import { tool$institutionsSearchInstitutions } from "./tools/institutionsSearchInstitutions.js";
-import { tool$invoicesCreateInvoice } from "./tools/invoicesCreateInvoice.js";
-import { tool$invoicesCreateInvoicePayment } from "./tools/invoicesCreateInvoicePayment.js";
-import { tool$invoicesGetInvoice } from "./tools/invoicesGetInvoice.js";
-import { tool$invoicesListInvoicePayments } from "./tools/invoicesListInvoicePayments.js";
-import { tool$invoicesListInvoices } from "./tools/invoicesListInvoices.js";
-import { tool$invoicesUpdateInvoice } from "./tools/invoicesUpdateInvoice.js";
 import { tool$issuingTransactionsGet } from "./tools/issuingTransactionsGet.js";
 import { tool$issuingTransactionsGetAuthorization } from "./tools/issuingTransactionsGetAuthorization.js";
 import { tool$issuingTransactionsList } from "./tools/issuingTransactionsList.js";
@@ -147,11 +141,6 @@ import { tool$schedulingList } from "./tools/schedulingList.js";
 import { tool$schedulingUpdate } from "./tools/schedulingUpdate.js";
 import { tool$statementsGet } from "./tools/statementsGet.js";
 import { tool$statementsList } from "./tools/statementsList.js";
-import { tool$supportCreateTicket } from "./tools/supportCreateTicket.js";
-import { tool$supportGetTicket } from "./tools/supportGetTicket.js";
-import { tool$supportListTicketMessages } from "./tools/supportListTicketMessages.js";
-import { tool$supportListTickets } from "./tools/supportListTickets.js";
-import { tool$supportUpdateTicket } from "./tools/supportUpdateTicket.js";
 import { tool$sweepsCreateConfig } from "./tools/sweepsCreateConfig.js";
 import { tool$sweepsGet } from "./tools/sweepsGet.js";
 import { tool$sweepsGetConfig } from "./tools/sweepsGetConfig.js";
@@ -175,7 +164,6 @@ import { tool$transfersList } from "./tools/transfersList.js";
 import { tool$transfersListRefunds } from "./tools/transfersListRefunds.js";
 import { tool$transfersUpdate } from "./tools/transfersUpdate.js";
 import { tool$underwritingGet } from "./tools/underwritingGet.js";
-import { tool$underwritingSave } from "./tools/underwritingSave.js";
 import { tool$underwritingUpsert } from "./tools/underwritingUpsert.js";
 import { tool$walletsCreate } from "./tools/walletsCreate.js";
 import { tool$walletsGet } from "./tools/walletsGet.js";
@@ -203,7 +191,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.22.22",
+    version: "25.1.0-dev.0",
   });
 
   const client = new MoovCore({
@@ -305,12 +293,6 @@ export function createMCPServer(deps: {
   tool(tool$imagesDelete);
   tool(tool$imagesUpdateMetadata);
   tool(tool$imagesGetPublic);
-  tool(tool$invoicesCreateInvoice);
-  tool(tool$invoicesListInvoices);
-  tool(tool$invoicesGetInvoice);
-  tool(tool$invoicesUpdateInvoice);
-  tool(tool$invoicesCreateInvoicePayment);
-  tool(tool$invoicesListInvoicePayments);
   tool(tool$paymentLinksCreate);
   tool(tool$paymentLinksList);
   tool(tool$paymentLinksGet);
@@ -347,11 +329,6 @@ export function createMCPServer(deps: {
   tool(tool$accountTerminalApplicationsList);
   tool(tool$accountTerminalApplicationsGet);
   tool(tool$accountTerminalApplicationsGetConfiguration);
-  tool(tool$supportCreateTicket);
-  tool(tool$supportListTickets);
-  tool(tool$supportGetTicket);
-  tool(tool$supportUpdateTicket);
-  tool(tool$supportListTicketMessages);
   tool(tool$transfersGenerateOptions);
   tool(tool$transfersCreate);
   tool(tool$transfersList);
@@ -364,7 +341,6 @@ export function createMCPServer(deps: {
   tool(tool$transfersGetRefund);
   tool(tool$transfersCreateReversal);
   tool(tool$underwritingGet);
-  tool(tool$underwritingSave);
   tool(tool$underwritingUpsert);
   tool(tool$walletsCreate);
   tool(tool$walletsList);

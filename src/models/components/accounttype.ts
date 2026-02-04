@@ -11,7 +11,6 @@ import { ClosedEnum } from "../../types/enums.js";
 export const AccountType = {
   Individual: "individual",
   Business: "business",
-  Guest: "guest",
 } as const;
 /**
  * The type of entity represented by this account.
