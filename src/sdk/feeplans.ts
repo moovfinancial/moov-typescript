@@ -8,7 +8,6 @@ import { feePlansListFeePlanAgreements } from "../funcs/feePlansListFeePlanAgree
 import { feePlansListFeePlans } from "../funcs/feePlansListFeePlans.js";
 import { feePlansListFeeRevenue } from "../funcs/feePlansListFeeRevenue.js";
 import { feePlansListFeesFetch } from "../funcs/feePlansListFeesFetch.js";
-import { feePlansListPartnerPricing } from "../funcs/feePlansListPartnerPricing.js";
 import { feePlansListPartnerPricingAgreements } from "../funcs/feePlansListPartnerPricingAgreements.js";
 import { feePlansListResidualFees } from "../funcs/feePlansListResidualFees.js";
 import { feePlansListResiduals } from "../funcs/feePlansListResiduals.js";
@@ -115,23 +114,6 @@ export class FeePlans extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.ListFeesFetchResponse> {
     return unwrapAsync(feePlansListFeesFetch(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * List all partner pricing plans available for use by an account.
-   *
-   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-   * you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-   */
-  async listPartnerPricing(
-    request: operations.ListPartnerPricingRequest,
-    options?: RequestOptions,
-  ): Promise<operations.ListPartnerPricingResponse> {
-    return unwrapAsync(feePlansListPartnerPricing(
       this,
       request,
       options,

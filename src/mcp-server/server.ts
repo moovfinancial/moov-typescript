@@ -85,7 +85,6 @@ import { tool$feePlansListFeePlanAgreements } from "./tools/feePlansListFeePlanA
 import { tool$feePlansListFeePlans } from "./tools/feePlansListFeePlans.js";
 import { tool$feePlansListFeeRevenue } from "./tools/feePlansListFeeRevenue.js";
 import { tool$feePlansListFeesFetch } from "./tools/feePlansListFeesFetch.js";
-import { tool$feePlansListPartnerPricing } from "./tools/feePlansListPartnerPricing.js";
 import { tool$feePlansListPartnerPricingAgreements } from "./tools/feePlansListPartnerPricingAgreements.js";
 import { tool$feePlansListResidualFees } from "./tools/feePlansListResidualFees.js";
 import { tool$feePlansListResiduals } from "./tools/feePlansListResiduals.js";
@@ -103,12 +102,6 @@ import { tool$imagesUpload } from "./tools/imagesUpload.js";
 import { tool$industriesList } from "./tools/industriesList.js";
 import { tool$institutionsSearch } from "./tools/institutionsSearch.js";
 import { tool$institutionsSearchInstitutions } from "./tools/institutionsSearchInstitutions.js";
-import { tool$invoicesCreateInvoice } from "./tools/invoicesCreateInvoice.js";
-import { tool$invoicesCreateInvoicePayment } from "./tools/invoicesCreateInvoicePayment.js";
-import { tool$invoicesGetInvoice } from "./tools/invoicesGetInvoice.js";
-import { tool$invoicesListInvoicePayments } from "./tools/invoicesListInvoicePayments.js";
-import { tool$invoicesListInvoices } from "./tools/invoicesListInvoices.js";
-import { tool$invoicesUpdateInvoice } from "./tools/invoicesUpdateInvoice.js";
 import { tool$issuingTransactionsGet } from "./tools/issuingTransactionsGet.js";
 import { tool$issuingTransactionsGetAuthorization } from "./tools/issuingTransactionsGetAuthorization.js";
 import { tool$issuingTransactionsList } from "./tools/issuingTransactionsList.js";
@@ -203,7 +196,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.22.22",
+    version: "26.4.0-dev.0",
   });
 
   const client = new MoovCore({
@@ -290,7 +283,6 @@ export function createMCPServer(deps: {
   tool(tool$feePlansListFeeRevenue);
   tool(tool$feePlansRetrieveFees);
   tool(tool$feePlansListFeesFetch);
-  tool(tool$feePlansListPartnerPricing);
   tool(tool$feePlansListPartnerPricingAgreements);
   tool(tool$feePlansListResiduals);
   tool(tool$feePlansGetResidual);
@@ -305,12 +297,6 @@ export function createMCPServer(deps: {
   tool(tool$imagesDelete);
   tool(tool$imagesUpdateMetadata);
   tool(tool$imagesGetPublic);
-  tool(tool$invoicesCreateInvoice);
-  tool(tool$invoicesListInvoices);
-  tool(tool$invoicesGetInvoice);
-  tool(tool$invoicesUpdateInvoice);
-  tool(tool$invoicesCreateInvoicePayment);
-  tool(tool$invoicesListInvoicePayments);
   tool(tool$paymentLinksCreate);
   tool(tool$paymentLinksList);
   tool(tool$paymentLinksGet);
