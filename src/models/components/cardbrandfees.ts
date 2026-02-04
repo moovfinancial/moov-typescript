@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BillingCountAndAmount,
@@ -68,17 +69,23 @@ export const CardBrandFees$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  interchange: BillingCountAndAmount$inboundSchema.optional(),
-  interchangePrograms: z.array(BillingInterchangeProgramFee$inboundSchema)
-    .optional(),
-  networkPassthrough: BillingCountAndAmount$inboundSchema.optional(),
-  completedDomesticOnline: BillingCountAndAmount$inboundSchema.optional(),
-  completedDomesticInPerson: BillingCountAndAmount$inboundSchema.optional(),
-  completedInternationalOnline: BillingCountAndAmount$inboundSchema.optional(),
-  completedInternationalInPerson: BillingCountAndAmount$inboundSchema
-    .optional(),
-  declines: BillingCountAndAmount$inboundSchema.optional(),
-  refunds: BillingCountAndAmount$inboundSchema.optional(),
+  interchange: types.optional(BillingCountAndAmount$inboundSchema),
+  interchangePrograms: types.optional(
+    z.array(BillingInterchangeProgramFee$inboundSchema),
+  ),
+  networkPassthrough: types.optional(BillingCountAndAmount$inboundSchema),
+  completedDomesticOnline: types.optional(BillingCountAndAmount$inboundSchema),
+  completedDomesticInPerson: types.optional(
+    BillingCountAndAmount$inboundSchema,
+  ),
+  completedInternationalOnline: types.optional(
+    BillingCountAndAmount$inboundSchema,
+  ),
+  completedInternationalInPerson: types.optional(
+    BillingCountAndAmount$inboundSchema,
+  ),
+  declines: types.optional(BillingCountAndAmount$inboundSchema),
+  refunds: types.optional(BillingCountAndAmount$inboundSchema),
   total: BillingCountAndAmount$inboundSchema,
 });
 /** @internal */

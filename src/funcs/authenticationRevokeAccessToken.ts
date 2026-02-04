@@ -25,6 +25,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Revoke an auth token.
@@ -163,9 +164,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(204, operations.RevokeAccessTokenResponse$inboundSchema.optional(), {
-      hdrs: true,
-    }),
+    M.nil(
+      204,
+      types$.optional(operations.RevokeAccessTokenResponse$inboundSchema),
+      { hdrs: true },
+    ),
     M.jsonErr(400, errors.GenericError$inboundSchema, { hdrs: true }),
     M.jsonErr(422, errors.RevokeTokenRequestError$inboundSchema, {
       hdrs: true,

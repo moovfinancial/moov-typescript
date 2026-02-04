@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Status of the terminal application.
@@ -17,15 +18,19 @@ export const TerminalApplicationStatus = {
 /**
  * Status of the terminal application.
  */
-export type TerminalApplicationStatus = ClosedEnum<
+export type TerminalApplicationStatus = OpenEnum<
   typeof TerminalApplicationStatus
 >;
 
 /** @internal */
-export const TerminalApplicationStatus$inboundSchema: z.ZodNativeEnum<
-  typeof TerminalApplicationStatus
-> = z.nativeEnum(TerminalApplicationStatus);
+export const TerminalApplicationStatus$inboundSchema: z.ZodType<
+  TerminalApplicationStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(TerminalApplicationStatus);
 /** @internal */
-export const TerminalApplicationStatus$outboundSchema: z.ZodNativeEnum<
-  typeof TerminalApplicationStatus
-> = TerminalApplicationStatus$inboundSchema;
+export const TerminalApplicationStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  TerminalApplicationStatus
+> = openEnums.outboundSchema(TerminalApplicationStatus);

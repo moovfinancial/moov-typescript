@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FilePurpose,
@@ -43,7 +44,7 @@ export const FileUploadRequestMultiPartFile$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fileName: z.string(),
+  fileName: types.string(),
   content: z.union([
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(Blob),
@@ -99,7 +100,7 @@ export const FileUploadRequestMultiPart$inboundSchema: z.ZodType<
 > = z.object({
   file: z.lazy(() => FileUploadRequestMultiPartFile$inboundSchema),
   filePurpose: FilePurpose$inboundSchema,
-  metadata: z.string().optional(),
+  metadata: types.optional(types.string()),
 });
 /** @internal */
 export type FileUploadRequestMultiPart$Outbound = {

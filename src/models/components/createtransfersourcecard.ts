@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TransactionSource,
@@ -34,8 +35,8 @@ export const CreateTransferSourceCard$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  dynamicDescriptor: z.string().optional(),
-  transactionSource: TransactionSource$inboundSchema.optional(),
+  dynamicDescriptor: types.optional(types.string()),
+  transactionSource: types.optional(TransactionSource$inboundSchema),
 });
 /** @internal */
 export type CreateTransferSourceCard$Outbound = {

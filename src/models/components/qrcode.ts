@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type QRCode = {
@@ -17,7 +18,7 @@ export type QRCode = {
 /** @internal */
 export const QRCode$inboundSchema: z.ZodType<QRCode, z.ZodTypeDef, unknown> = z
   .object({
-    qrCode: z.string(),
+    qrCode: types.string(),
   });
 /** @internal */
 export type QRCode$Outbound = {

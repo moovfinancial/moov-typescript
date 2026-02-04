@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Specifies the pricing model used for the calculation of the final fee.
@@ -16,11 +17,17 @@ export const FeeModel = {
 /**
  * Specifies the pricing model used for the calculation of the final fee.
  */
-export type FeeModel = ClosedEnum<typeof FeeModel>;
+export type FeeModel = OpenEnum<typeof FeeModel>;
 
 /** @internal */
-export const FeeModel$inboundSchema: z.ZodNativeEnum<typeof FeeModel> = z
-  .nativeEnum(FeeModel);
+export const FeeModel$inboundSchema: z.ZodType<
+  FeeModel,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(FeeModel);
 /** @internal */
-export const FeeModel$outboundSchema: z.ZodNativeEnum<typeof FeeModel> =
-  FeeModel$inboundSchema;
+export const FeeModel$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  FeeModel
+> = openEnums.outboundSchema(FeeModel);

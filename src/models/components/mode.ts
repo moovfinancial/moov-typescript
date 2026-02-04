@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The operating mode for an account.
@@ -15,12 +16,11 @@ export const Mode = {
 /**
  * The operating mode for an account.
  */
-export type Mode = ClosedEnum<typeof Mode>;
+export type Mode = OpenEnum<typeof Mode>;
 
 /** @internal */
-export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
-  Mode,
-);
+export const Mode$inboundSchema: z.ZodType<Mode, z.ZodTypeDef, unknown> =
+  openEnums.inboundSchema(Mode);
 /** @internal */
-export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> =
-  Mode$inboundSchema;
+export const Mode$outboundSchema: z.ZodType<string, z.ZodTypeDef, Mode> =
+  openEnums.outboundSchema(Mode);

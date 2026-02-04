@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LinkApplePaymentData,
@@ -60,7 +61,7 @@ export const LinkApplePayToken$inboundSchema: z.ZodType<
 > = z.object({
   paymentData: LinkApplePaymentData$inboundSchema,
   paymentMethod: LinkApplePaymentMethod$inboundSchema,
-  transactionIdentifier: z.string(),
+  transactionIdentifier: types.string(),
 });
 /** @internal */
 export type LinkApplePayToken$Outbound = {

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Payment methods allowed for disbursing funds.
@@ -17,15 +18,19 @@ export const DisbursementPaymentMethodType = {
 /**
  * Payment methods allowed for disbursing funds.
  */
-export type DisbursementPaymentMethodType = ClosedEnum<
+export type DisbursementPaymentMethodType = OpenEnum<
   typeof DisbursementPaymentMethodType
 >;
 
 /** @internal */
-export const DisbursementPaymentMethodType$inboundSchema: z.ZodNativeEnum<
-  typeof DisbursementPaymentMethodType
-> = z.nativeEnum(DisbursementPaymentMethodType);
+export const DisbursementPaymentMethodType$inboundSchema: z.ZodType<
+  DisbursementPaymentMethodType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DisbursementPaymentMethodType);
 /** @internal */
-export const DisbursementPaymentMethodType$outboundSchema: z.ZodNativeEnum<
-  typeof DisbursementPaymentMethodType
-> = DisbursementPaymentMethodType$inboundSchema;
+export const DisbursementPaymentMethodType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DisbursementPaymentMethodType
+> = openEnums.outboundSchema(DisbursementPaymentMethodType);

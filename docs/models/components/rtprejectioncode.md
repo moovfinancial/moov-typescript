@@ -20,6 +20,8 @@ let value: RTPRejectionCode = "AG01";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"AC03" | "AC04" | "AC06" | "AC14" | "AG01" | "AG03" | "MD07"
+"AC03" | "AC04" | "AC06" | "AC14" | "AG01" | "AG03" | "MD07" | Unrecognized<string>
 ```

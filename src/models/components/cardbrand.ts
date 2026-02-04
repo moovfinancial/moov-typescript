@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The card brand.
@@ -18,11 +19,17 @@ export const CardBrand = {
 /**
  * The card brand.
  */
-export type CardBrand = ClosedEnum<typeof CardBrand>;
+export type CardBrand = OpenEnum<typeof CardBrand>;
 
 /** @internal */
-export const CardBrand$inboundSchema: z.ZodNativeEnum<typeof CardBrand> = z
-  .nativeEnum(CardBrand);
+export const CardBrand$inboundSchema: z.ZodType<
+  CardBrand,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CardBrand);
 /** @internal */
-export const CardBrand$outboundSchema: z.ZodNativeEnum<typeof CardBrand> =
-  CardBrand$inboundSchema;
+export const CardBrand$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CardBrand
+> = openEnums.outboundSchema(CardBrand);

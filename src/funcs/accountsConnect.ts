@@ -24,6 +24,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Shares access scopes from the account specified to the caller, establishing a connection
@@ -180,9 +181,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(201, operations.ConnectAccountResponse$inboundSchema.optional(), {
-      hdrs: true,
-    }),
+    M.nil(
+      201,
+      types$.optional(operations.ConnectAccountResponse$inboundSchema),
+      { hdrs: true },
+    ),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
     M.jsonErr(422, errors.ConnectAccountRequestValidationError$inboundSchema, {
       hdrs: true,

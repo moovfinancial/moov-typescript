@@ -12,6 +12,8 @@ let value: CollectionPaymentMethodType = "card-payment";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"apple-pay" | "card-payment" | "ach-debit-collect"
+"apple-pay" | "card-payment" | "ach-debit-collect" | Unrecognized<string>
 ```

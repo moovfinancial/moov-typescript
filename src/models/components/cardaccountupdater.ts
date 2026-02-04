@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardUpdateReason,
@@ -29,9 +30,8 @@ export const CardAccountUpdater$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updateType: CardUpdateReason$inboundSchema.optional(),
+  updatedOn: types.optional(types.date()),
+  updateType: types.optional(CardUpdateReason$inboundSchema),
 });
 /** @internal */
 export type CardAccountUpdater$Outbound = {

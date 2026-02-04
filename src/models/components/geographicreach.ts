@@ -3,20 +3,25 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const GeographicReach = {
   InternationalOnly: "international-only",
   UsAndInternational: "us-and-international",
   UsOnly: "us-only",
 } as const;
-export type GeographicReach = ClosedEnum<typeof GeographicReach>;
+export type GeographicReach = OpenEnum<typeof GeographicReach>;
 
 /** @internal */
-export const GeographicReach$inboundSchema: z.ZodNativeEnum<
-  typeof GeographicReach
-> = z.nativeEnum(GeographicReach);
+export const GeographicReach$inboundSchema: z.ZodType<
+  GeographicReach,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(GeographicReach);
 /** @internal */
-export const GeographicReach$outboundSchema: z.ZodNativeEnum<
-  typeof GeographicReach
-> = GeographicReach$inboundSchema;
+export const GeographicReach$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  GeographicReach
+> = openEnums.outboundSchema(GeographicReach);

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The unique ID of what the requirement is asking to be filled out.
@@ -175,13 +176,17 @@ export const RequirementID = {
 /**
  * The unique ID of what the requirement is asking to be filled out.
  */
-export type RequirementID = ClosedEnum<typeof RequirementID>;
+export type RequirementID = OpenEnum<typeof RequirementID>;
 
 /** @internal */
-export const RequirementID$inboundSchema: z.ZodNativeEnum<
-  typeof RequirementID
-> = z.nativeEnum(RequirementID);
+export const RequirementID$inboundSchema: z.ZodType<
+  RequirementID,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(RequirementID);
 /** @internal */
-export const RequirementID$outboundSchema: z.ZodNativeEnum<
-  typeof RequirementID
-> = RequirementID$inboundSchema;
+export const RequirementID$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  RequirementID
+> = openEnums.outboundSchema(RequirementID);

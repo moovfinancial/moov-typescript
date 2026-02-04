@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   MoneyTransferPullFromCardError,
@@ -30,8 +31,8 @@ export const MoneyTransferError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  pullFromCard: MoneyTransferPullFromCardError$inboundSchema.optional(),
-  pushToCard: MoneyTransferPushToCardError$inboundSchema.optional(),
+  pullFromCard: types.optional(MoneyTransferPullFromCardError$inboundSchema),
+  pushToCard: types.optional(MoneyTransferPushToCardError$inboundSchema),
 });
 /** @internal */
 export type MoneyTransferError$Outbound = {

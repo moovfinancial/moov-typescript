@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The return code of an ACH transaction that caused the bank account status to change.
@@ -79,13 +80,17 @@ export const ACHReturnCode = {
  * - R38: Stop Payment on Source Document (Adjustment Entry)
  * - R39: Improper Source Document
  */
-export type ACHReturnCode = ClosedEnum<typeof ACHReturnCode>;
+export type ACHReturnCode = OpenEnum<typeof ACHReturnCode>;
 
 /** @internal */
-export const ACHReturnCode$inboundSchema: z.ZodNativeEnum<
-  typeof ACHReturnCode
-> = z.nativeEnum(ACHReturnCode);
+export const ACHReturnCode$inboundSchema: z.ZodType<
+  ACHReturnCode,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ACHReturnCode);
 /** @internal */
-export const ACHReturnCode$outboundSchema: z.ZodNativeEnum<
-  typeof ACHReturnCode
-> = ACHReturnCode$inboundSchema;
+export const ACHReturnCode$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ACHReturnCode
+> = openEnums.outboundSchema(ACHReturnCode);

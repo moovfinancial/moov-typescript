@@ -10,6 +10,8 @@ let value: InvoicePaymentType = "external";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"transfer" | "external"
+"transfer" | "external" | Unrecognized<string>
 ```

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -49,14 +50,16 @@ export const UpdateUnderwritingErrorError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  averageMonthlyTransactionVolume: z.string().optional(),
-  averageTransactionSize: z.string().optional(),
-  maxTransactionSize: z.string().optional(),
-  volumeByCustomerType: components.VolumeByCustomerTypeError$inboundSchema
-    .optional(),
-  cardVolumeDistribution: components.CardVolumeDistributionError$inboundSchema
-    .optional(),
-  fulfillment: components.FulfillmentDetailsError$inboundSchema.optional(),
+  averageMonthlyTransactionVolume: types.optional(types.string()),
+  averageTransactionSize: types.optional(types.string()),
+  maxTransactionSize: types.optional(types.string()),
+  volumeByCustomerType: types.optional(
+    components.VolumeByCustomerTypeError$inboundSchema,
+  ),
+  cardVolumeDistribution: types.optional(
+    components.CardVolumeDistributionError$inboundSchema,
+  ),
+  fulfillment: types.optional(components.FulfillmentDetailsError$inboundSchema),
 });
 /** @internal */
 export type UpdateUnderwritingErrorError$Outbound = {

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardVerificationResult,
@@ -28,10 +29,10 @@ export const AccountNameVerification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  firstName: CardVerificationResult$inboundSchema.optional(),
-  lastName: CardVerificationResult$inboundSchema.optional(),
-  middleName: CardVerificationResult$inboundSchema.optional(),
-  fullName: CardVerificationResult$inboundSchema.optional(),
+  firstName: types.optional(CardVerificationResult$inboundSchema),
+  lastName: types.optional(CardVerificationResult$inboundSchema),
+  middleName: types.optional(CardVerificationResult$inboundSchema),
+  fullName: types.optional(CardVerificationResult$inboundSchema),
 });
 /** @internal */
 export type AccountNameVerification$Outbound = {

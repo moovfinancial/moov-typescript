@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BankAccountException,
@@ -43,11 +44,11 @@ export const WebhookDataBankAccountUpdated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bankAccountID: z.string(),
-  accountID: z.string(),
+  bankAccountID: types.string(),
+  accountID: types.string(),
   status: BankAccountStatus$inboundSchema,
   statusReason: BankAccountStatusReason$inboundSchema,
-  exceptionDetails: BankAccountException$inboundSchema.optional(),
+  exceptionDetails: types.optional(BankAccountException$inboundSchema),
 });
 /** @internal */
 export type WebhookDataBankAccountUpdated$Outbound = {

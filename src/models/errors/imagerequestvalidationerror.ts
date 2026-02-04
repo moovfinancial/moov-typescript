@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -40,8 +41,10 @@ export const ImageRequestValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  image: z.string().optional(),
-  metadata: components.ImageMetadataValidationError$inboundSchema.optional(),
+  image: types.optional(types.string()),
+  metadata: types.optional(
+    components.ImageMetadataValidationError$inboundSchema,
+  ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

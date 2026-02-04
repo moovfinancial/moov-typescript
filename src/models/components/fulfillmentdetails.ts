@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ReturnPolicyType,
@@ -25,9 +26,9 @@ export const FulfillmentDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  hasPhysicalGoods: z.boolean(),
-  isShippingProduct: z.boolean(),
-  shipmentDurationDays: z.number().int(),
+  hasPhysicalGoods: types.boolean(),
+  isShippingProduct: types.boolean(),
+  shipmentDurationDays: types.number(),
   returnPolicy: ReturnPolicyType$inboundSchema,
 });
 /** @internal */

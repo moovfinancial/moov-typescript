@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ACHInstitution,
@@ -44,10 +45,10 @@ export const InstitutionsSearchResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ach: z.nullable(z.array(ACHInstitution$inboundSchema)),
-  rtp: z.nullable(z.array(RTPInstitution$inboundSchema)),
-  wire: z.nullable(z.array(WireInstitution$inboundSchema)),
-  fednow: z.nullable(z.array(FedNowInstitution$inboundSchema)),
+  ach: types.nullable(z.array(ACHInstitution$inboundSchema)),
+  rtp: types.nullable(z.array(RTPInstitution$inboundSchema)),
+  wire: types.nullable(z.array(WireInstitution$inboundSchema)),
+  fednow: types.nullable(z.array(FedNowInstitution$inboundSchema)),
 });
 /** @internal */
 export type InstitutionsSearchResponse$Outbound = {

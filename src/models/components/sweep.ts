@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   SweepStatus,
@@ -67,23 +68,19 @@ export type Sweep = {
 /** @internal */
 export const Sweep$inboundSchema: z.ZodType<Sweep, z.ZodTypeDef, unknown> = z
   .object({
-    sweepID: z.string(),
+    sweepID: types.string(),
     status: SweepStatus$inboundSchema,
-    accruedAmount: z.string(),
-    residualBalance: z.string().optional(),
-    currency: z.string(),
-    accrualStartedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    accrualEndedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    pushPaymentMethodID: z.string().optional(),
-    pullPaymentMethodID: z.string().optional(),
-    transferID: z.string().optional(),
-    transferAmount: z.string().optional(),
-    statementDescriptor: z.string().optional(),
-    subtotals: z.array(SweepSubtotal$inboundSchema).optional(),
+    accruedAmount: types.string(),
+    residualBalance: types.optional(types.string()),
+    currency: types.string(),
+    accrualStartedOn: types.date(),
+    accrualEndedOn: types.optional(types.date()),
+    pushPaymentMethodID: types.optional(types.string()),
+    pullPaymentMethodID: types.optional(types.string()),
+    transferID: types.optional(types.string()),
+    transferAmount: types.optional(types.string()),
+    statementDescriptor: types.optional(types.string()),
+    subtotals: types.optional(z.array(SweepSubtotal$inboundSchema)),
   });
 /** @internal */
 export type Sweep$Outbound = {

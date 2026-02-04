@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PayoutRecipientError,
@@ -25,9 +26,9 @@ export const PayoutDetailsError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  allowedMethods: z.string().optional(),
-  recipient: PayoutRecipientError$inboundSchema.optional(),
-  metadata: z.string().optional(),
+  allowedMethods: types.optional(types.string()),
+  recipient: types.optional(PayoutRecipientError$inboundSchema),
+  metadata: types.optional(types.string()),
 });
 /** @internal */
 export type PayoutDetailsError$Outbound = {

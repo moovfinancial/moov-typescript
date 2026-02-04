@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WebhookDataNetworkIDUpdated = {
@@ -22,13 +23,12 @@ export const WebhookDataNetworkIDUpdated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  visaMid: z.string().optional(),
-  mastercardMid: z.string().optional(),
-  discoverMid: z.string().optional(),
-  amexMid: z.string().optional(),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  accountID: types.string(),
+  visaMid: types.optional(types.string()),
+  mastercardMid: types.optional(types.string()),
+  discoverMid: types.optional(types.string()),
+  amexMid: types.optional(types.string()),
+  updatedOn: types.optional(types.date()),
 });
 /** @internal */
 export type WebhookDataNetworkIDUpdated$Outbound = {

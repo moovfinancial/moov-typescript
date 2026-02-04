@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InvoiceExternalPayment = {
@@ -19,10 +20,9 @@ export const InvoiceExternalPayment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  description: z.string().optional(),
-  foreignID: z.string().optional(),
-  paymentDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  description: types.optional(types.string()),
+  foreignID: types.optional(types.string()),
+  paymentDate: types.optional(types.date()),
 });
 /** @internal */
 export type InvoiceExternalPayment$Outbound = {

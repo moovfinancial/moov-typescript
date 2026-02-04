@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IssuingMerchantData = {
@@ -44,13 +45,13 @@ export const IssuingMerchantData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  networkID: z.string(),
-  name: z.string().optional(),
-  city: z.string().optional(),
-  country: z.string(),
-  postalCode: z.string().optional(),
-  state: z.string().optional(),
-  mcc: z.string(),
+  networkID: types.string(),
+  name: types.optional(types.string()),
+  city: types.optional(types.string()),
+  country: types.string(),
+  postalCode: types.optional(types.string()),
+  state: types.optional(types.string()),
+  mcc: types.string(),
 });
 /** @internal */
 export type IssuingMerchantData$Outbound = {

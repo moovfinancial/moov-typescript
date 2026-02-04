@@ -12,6 +12,8 @@ let value: ApplicationScope = "transfers.read";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"accounts.read" | "accounts.write" | "analytics.read" | "apple-pay-merchant.read" | "apple-pay-merchant.write" | "apple-pay.read" | "apple-pay.write" | "bank-accounts.read" | "bank-accounts.write" | "capabilities.read" | "capabilities.write" | "cards.read" | "cards.write" | "documents.read" | "documents.write" | "fed.read" | "files.read" | "files.write" | "issued-cards.read" | "issued-cards.write" | "issued-cards.read-secure" | "payment-methods.read" | "ping.read" | "profile-enrichment.read" | "profile.read" | "profile.write" | "profile.disconnect" | "representatives.read" | "representatives.write" | "transfers.read" | "transfers.write" | "wallets.read"
+"accounts.read" | "accounts.write" | "analytics.read" | "apple-pay-merchant.read" | "apple-pay-merchant.write" | "apple-pay.read" | "apple-pay.write" | "bank-accounts.read" | "bank-accounts.write" | "capabilities.read" | "capabilities.write" | "cards.read" | "cards.write" | "documents.read" | "documents.write" | "fed.read" | "files.read" | "files.write" | "issued-cards.read" | "issued-cards.write" | "issued-cards.read-secure" | "payment-methods.read" | "ping.read" | "profile-enrichment.read" | "profile.read" | "profile.write" | "profile.disconnect" | "representatives.read" | "representatives.write" | "transfers.read" | "transfers.write" | "wallets.read" | Unrecognized<string>
 ```

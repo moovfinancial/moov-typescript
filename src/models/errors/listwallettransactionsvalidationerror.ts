@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type ListWalletTransactionsValidationErrorData = {
@@ -84,19 +85,19 @@ export const ListWalletTransactionsValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  transactionType: z.string().optional(),
-  transactionTypes: z.string().optional(),
-  sourceType: z.string().optional(),
-  sourceID: z.string().optional(),
-  status: z.string().optional(),
-  sweepID: z.string().optional(),
-  createdStartDateTime: z.string().optional(),
-  createdEndDateTime: z.string().optional(),
-  completedStartDateTime: z.string().optional(),
-  completedEndDateTime: z.string().optional(),
-  statementDescriptor: z.string().optional(),
-  skip: z.string().optional(),
-  count: z.string().optional(),
+  transactionType: types.optional(types.string()),
+  transactionTypes: types.optional(types.string()),
+  sourceType: types.optional(types.string()),
+  sourceID: types.optional(types.string()),
+  status: types.optional(types.string()),
+  sweepID: types.optional(types.string()),
+  createdStartDateTime: types.optional(types.string()),
+  createdEndDateTime: types.optional(types.string()),
+  completedStartDateTime: types.optional(types.string()),
+  completedEndDateTime: types.optional(types.string()),
+  statementDescriptor: types.optional(types.string()),
+  skip: types.optional(types.string()),
+  count: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

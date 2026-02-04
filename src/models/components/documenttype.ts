@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Types of documents that can be uploaded.
@@ -17,11 +18,17 @@ export const DocumentType = {
 /**
  * Types of documents that can be uploaded.
  */
-export type DocumentType = ClosedEnum<typeof DocumentType>;
+export type DocumentType = OpenEnum<typeof DocumentType>;
 
 /** @internal */
-export const DocumentType$inboundSchema: z.ZodNativeEnum<typeof DocumentType> =
-  z.nativeEnum(DocumentType);
+export const DocumentType$inboundSchema: z.ZodType<
+  DocumentType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DocumentType);
 /** @internal */
-export const DocumentType$outboundSchema: z.ZodNativeEnum<typeof DocumentType> =
-  DocumentType$inboundSchema;
+export const DocumentType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DocumentType
+> = openEnums.outboundSchema(DocumentType);

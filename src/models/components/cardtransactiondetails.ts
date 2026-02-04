@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardTransactionFailureCode,
@@ -72,25 +73,19 @@ export const CardTransactionDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: CardTransactionStatus$inboundSchema.optional(),
-  failureCode: CardTransactionFailureCode$inboundSchema.optional(),
-  dynamicDescriptor: z.string().optional(),
-  transactionSource: TransactionSource$inboundSchema.optional(),
-  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  confirmedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  settledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  canceledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  interchangeQualification: z.string().optional(),
-  feeProgram: z.string().optional(),
-  authorizationCode: z.string().optional(),
+  status: types.optional(CardTransactionStatus$inboundSchema),
+  failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
+  dynamicDescriptor: types.optional(types.string()),
+  transactionSource: types.optional(TransactionSource$inboundSchema),
+  initiatedOn: types.optional(types.date()),
+  confirmedOn: types.optional(types.date()),
+  settledOn: types.optional(types.date()),
+  failedOn: types.optional(types.date()),
+  canceledOn: types.optional(types.date()),
+  completedOn: types.optional(types.date()),
+  interchangeQualification: types.optional(types.string()),
+  feeProgram: types.optional(types.string()),
+  authorizationCode: types.optional(types.string()),
 });
 /** @internal */
 export type CardTransactionDetails$Outbound = {

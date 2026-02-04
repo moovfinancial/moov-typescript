@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -50,7 +51,7 @@ export const ListInvoicesGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -97,23 +98,15 @@ export const ListInvoicesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  status: components.InvoiceStatus$inboundSchema.optional(),
-  customerAccountID: z.string().optional(),
-  createdStartDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  createdEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  dueStartDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  dueEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  accountID: z.string(),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  status: types.optional(components.InvoiceStatus$inboundSchema),
+  customerAccountID: types.optional(types.string()),
+  createdStartDateTime: types.optional(types.date()),
+  createdEndDateTime: types.optional(types.date()),
+  dueStartDateTime: types.optional(types.date()),
+  dueEndDateTime: types.optional(types.date()),
+  accountID: types.string(),
 });
 /** @internal */
 export type ListInvoicesRequest$Outbound = {

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AddressError,
@@ -57,7 +58,7 @@ export const CreateBusinessErrorEin$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  number: z.string().optional(),
+  number: types.optional(types.string()),
 });
 /** @internal */
 export type CreateBusinessErrorEin$Outbound = {
@@ -96,7 +97,7 @@ export const CreateBusinessErrorTaxID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ein: z.lazy(() => CreateBusinessErrorEin$inboundSchema).optional(),
+  ein: types.optional(z.lazy(() => CreateBusinessErrorEin$inboundSchema)),
 });
 /** @internal */
 export type CreateBusinessErrorTaxID$Outbound = {
@@ -135,9 +136,9 @@ export const CreateBusinessErrorIndustryCodes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  naics: z.string().optional(),
-  sic: z.string().optional(),
-  mcc: z.string().optional(),
+  naics: types.optional(types.string()),
+  sic: types.optional(types.string()),
+  mcc: types.optional(types.string()),
 });
 /** @internal */
 export type CreateBusinessErrorIndustryCodes$Outbound = {
@@ -182,19 +183,20 @@ export const CreateBusinessError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  legalBusinessName: z.string().optional(),
-  doingBusinessAs: z.string().optional(),
-  businessType: z.string().optional(),
-  address: AddressError$inboundSchema.optional(),
-  phone: PhoneNumberError$inboundSchema.optional(),
-  email: z.string().optional(),
-  website: z.string().optional(),
-  description: z.string().optional(),
-  taxID: z.lazy(() => CreateBusinessErrorTaxID$inboundSchema).optional(),
-  industryCodes: z.lazy(() => CreateBusinessErrorIndustryCodes$inboundSchema)
-    .optional(),
-  industry: z.string().optional(),
-  primaryRegulator: z.string().optional(),
+  legalBusinessName: types.optional(types.string()),
+  doingBusinessAs: types.optional(types.string()),
+  businessType: types.optional(types.string()),
+  address: types.optional(AddressError$inboundSchema),
+  phone: types.optional(PhoneNumberError$inboundSchema),
+  email: types.optional(types.string()),
+  website: types.optional(types.string()),
+  description: types.optional(types.string()),
+  taxID: types.optional(z.lazy(() => CreateBusinessErrorTaxID$inboundSchema)),
+  industryCodes: types.optional(
+    z.lazy(() => CreateBusinessErrorIndustryCodes$inboundSchema),
+  ),
+  industry: types.optional(types.string()),
+  primaryRegulator: types.optional(types.string()),
 });
 /** @internal */
 export type CreateBusinessError$Outbound = {

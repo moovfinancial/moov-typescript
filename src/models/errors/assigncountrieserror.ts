@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type AssignCountriesErrorData = {
@@ -36,7 +37,7 @@ export const AssignCountriesError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  countries: z.record(z.string()),
+  countries: z.record(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

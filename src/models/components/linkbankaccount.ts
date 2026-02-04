@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BankAccountPayload,
@@ -42,7 +43,7 @@ export const LinkBankAccount$inboundSchema: z.ZodType<
   LinkBankAccount,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   BankAccountPayload$inboundSchema,
   PlaidPayload$inboundSchema,
   PlaidLinkPayload$inboundSchema,
@@ -60,7 +61,7 @@ export const LinkBankAccount$outboundSchema: z.ZodType<
   LinkBankAccount$Outbound,
   z.ZodTypeDef,
   LinkBankAccount
-> = z.union([
+> = smartUnion([
   BankAccountPayload$outboundSchema,
   PlaidPayload$outboundSchema,
   PlaidLinkPayload$outboundSchema,

@@ -12,6 +12,8 @@ let value: BankAccountType = "checking";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"checking" | "savings" | "general-ledger" | "loan"
+"checking" | "savings" | "general-ledger" | "loan" | Unrecognized<string>
 ```

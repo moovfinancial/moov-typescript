@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Amount,
@@ -138,32 +139,29 @@ export const PaymentLink$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
+  code: types.string(),
   paymentLinkType: PaymentLinkType$inboundSchema,
   mode: Mode$inboundSchema,
   status: PaymentLinkStatus$inboundSchema,
-  partnerAccountID: z.string(),
-  merchantAccountID: z.string(),
-  ownerAccountID: z.string(),
-  merchantPaymentMethodID: z.string(),
-  link: z.string(),
+  partnerAccountID: types.string(),
+  merchantAccountID: types.string(),
+  ownerAccountID: types.string(),
+  merchantPaymentMethodID: types.string(),
+  link: types.string(),
   amount: Amount$inboundSchema,
-  salesTaxAmount: Amount$inboundSchema.optional(),
-  uses: z.number().int(),
-  maxUses: z.number().int().optional(),
-  lastUsedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  expiresOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  salesTaxAmount: types.optional(Amount$inboundSchema),
+  uses: types.number(),
+  maxUses: types.optional(types.number()),
+  lastUsedOn: types.optional(types.date()),
+  expiresOn: types.optional(types.date()),
   display: PaymentLinkDisplayOptions$inboundSchema,
   customer: PaymentLinkCustomerOptions$inboundSchema,
-  payment: PaymentLinkPaymentDetails$inboundSchema.optional(),
-  payout: PaymentLinkPayoutDetails$inboundSchema.optional(),
-  lineItems: PaymentLinkLineItems$inboundSchema.optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  payment: types.optional(PaymentLinkPaymentDetails$inboundSchema),
+  payout: types.optional(PaymentLinkPayoutDetails$inboundSchema),
+  lineItems: types.optional(PaymentLinkLineItems$inboundSchema),
+  createdOn: types.date(),
+  updatedOn: types.date(),
+  disabledOn: types.optional(types.date()),
 });
 /** @internal */
 export type PaymentLink$Outbound = {

@@ -12,6 +12,8 @@ let value: SECCode = "WEB";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"WEB" | "PPD" | "CCD" | "TEL"
+"WEB" | "PPD" | "CCD" | "TEL" | Unrecognized<string>
 ```

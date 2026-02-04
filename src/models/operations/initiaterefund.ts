@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -65,7 +67,7 @@ export const InitiateRefundGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -112,11 +114,11 @@ export const InitiateRefundRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-idempotency-key": z.string(),
-  "x-wait-for": components.TransferWaitFor$inboundSchema.optional(),
-  accountID: z.string(),
-  transferID: z.string(),
-  CreateRefund: components.CreateRefund$inboundSchema.optional(),
+  "x-idempotency-key": types.string(),
+  "x-wait-for": types.optional(components.TransferWaitFor$inboundSchema),
+  accountID: types.string(),
+  transferID: types.string(),
+  CreateRefund: types.optional(components.CreateRefund$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "x-idempotency-key": "xIdempotencyKey",
@@ -174,7 +176,7 @@ export const InitiateRefundResponseResult$inboundSchema: z.ZodType<
   InitiateRefundResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   components.CardAcquiringRefund$inboundSchema,
   components.CreateRefundResponse$inboundSchema,
 ]);
@@ -188,7 +190,7 @@ export const InitiateRefundResponseResult$outboundSchema: z.ZodType<
   InitiateRefundResponseResult$Outbound,
   z.ZodTypeDef,
   InitiateRefundResponseResult
-> = z.union([
+> = smartUnion([
   components.CardAcquiringRefund$outboundSchema,
   components.CreateRefundResponse$outboundSchema,
 ]);
@@ -219,7 +221,7 @@ export const InitiateRefundResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
+  Result: smartUnion([
     components.CardAcquiringRefund$inboundSchema,
     components.CreateRefundResponse$inboundSchema,
   ]),
@@ -244,7 +246,7 @@ export const InitiateRefundResponse$outboundSchema: z.ZodType<
   InitiateRefundResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.union([
+  result: smartUnion([
     components.CardAcquiringRefund$outboundSchema,
     components.CreateRefundResponse$outboundSchema,
   ]),

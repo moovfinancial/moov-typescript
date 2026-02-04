@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -55,13 +56,14 @@ export const CreateScheduledTransferLineItem$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
   basePrice: AmountDecimal$inboundSchema,
-  quantity: z.number().int(),
-  options: z.array(CreateScheduledTransferLineItemOption$inboundSchema)
-    .optional(),
-  productID: z.string().optional(),
-  imageIDs: z.array(z.string()).optional(),
+  quantity: types.number(),
+  options: types.optional(
+    z.array(CreateScheduledTransferLineItemOption$inboundSchema),
+  ),
+  productID: types.optional(types.string()),
+  imageIDs: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type CreateScheduledTransferLineItem$Outbound = {

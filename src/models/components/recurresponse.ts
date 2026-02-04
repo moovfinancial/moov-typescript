@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RunTransfer,
@@ -35,11 +36,10 @@ export const RecurResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  recurrenceRule: z.string(),
+  recurrenceRule: types.string(),
   runTransfer: RunTransfer$inboundSchema,
-  indefinite: z.boolean().optional(),
-  start: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  indefinite: types.optional(types.boolean()),
+  start: types.optional(types.date()),
 });
 /** @internal */
 export type RecurResponse$Outbound = {

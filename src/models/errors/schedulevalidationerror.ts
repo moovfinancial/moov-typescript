@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type ScheduleValidationErrorData = {
@@ -42,9 +43,9 @@ export const ScheduleValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  occurrences: z.record(z.string()).optional(),
-  recur: z.string().optional(),
-  description: z.string().optional(),
+  occurrences: types.optional(z.record(types.string())),
+  recur: types.optional(types.string()),
+  description: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BillableFee,
@@ -78,18 +79,18 @@ export const PartnerPricingAgreement$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  agreementID: z.string(),
-  planID: z.string(),
-  accountID: z.string().optional(),
-  name: z.string(),
-  description: z.string().optional(),
-  acceptedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  agreementID: types.string(),
+  planID: types.string(),
+  accountID: types.optional(types.string()),
+  name: types.string(),
+  description: types.optional(types.string()),
+  acceptedOn: types.date(),
   status: FeePlanAgreementStatus$inboundSchema,
   cardAcquiringModel: CardAcquiringModel$inboundSchema,
   billableFees: z.array(BillableFee$inboundSchema),
   minimumCommitment: MinimumCommitment$inboundSchema,
   monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
-  revenueShare: z.string(),
+  revenueShare: types.string(),
 });
 /** @internal */
 export type PartnerPricingAgreement$Outbound = {

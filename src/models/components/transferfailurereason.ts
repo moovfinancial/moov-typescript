@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Reason for a transfer's failure.
@@ -18,13 +19,17 @@ export const TransferFailureReason = {
 /**
  * Reason for a transfer's failure.
  */
-export type TransferFailureReason = ClosedEnum<typeof TransferFailureReason>;
+export type TransferFailureReason = OpenEnum<typeof TransferFailureReason>;
 
 /** @internal */
-export const TransferFailureReason$inboundSchema: z.ZodNativeEnum<
-  typeof TransferFailureReason
-> = z.nativeEnum(TransferFailureReason);
+export const TransferFailureReason$inboundSchema: z.ZodType<
+  TransferFailureReason,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(TransferFailureReason);
 /** @internal */
-export const TransferFailureReason$outboundSchema: z.ZodNativeEnum<
-  typeof TransferFailureReason
-> = TransferFailureReason$inboundSchema;
+export const TransferFailureReason$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  TransferFailureReason
+> = openEnums.outboundSchema(TransferFailureReason);

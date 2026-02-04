@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -44,7 +45,7 @@ export const ListImageMetadataGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -91,9 +92,9 @@ export const ListImageMetadataRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
+  accountID: types.string(),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
 });
 /** @internal */
 export type ListImageMetadataRequest$Outbound = {

@@ -12,6 +12,8 @@ let value: DomesticPullFromCard = "supported";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"not-supported" | "supported" | "unknown"
+"not-supported" | "supported" | "unknown" | Unrecognized<string>
 ```

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Specifies the card processing pricing model
@@ -15,13 +16,17 @@ export const CardAcquiringModel = {
 /**
  * Specifies the card processing pricing model
  */
-export type CardAcquiringModel = ClosedEnum<typeof CardAcquiringModel>;
+export type CardAcquiringModel = OpenEnum<typeof CardAcquiringModel>;
 
 /** @internal */
-export const CardAcquiringModel$inboundSchema: z.ZodNativeEnum<
-  typeof CardAcquiringModel
-> = z.nativeEnum(CardAcquiringModel);
+export const CardAcquiringModel$inboundSchema: z.ZodType<
+  CardAcquiringModel,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CardAcquiringModel);
 /** @internal */
-export const CardAcquiringModel$outboundSchema: z.ZodNativeEnum<
-  typeof CardAcquiringModel
-> = CardAcquiringModel$inboundSchema;
+export const CardAcquiringModel$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CardAcquiringModel
+> = openEnums.outboundSchema(CardAcquiringModel);

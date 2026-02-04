@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationScope,
@@ -32,8 +33,8 @@ export const ShareScopes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  principalAccountID: z.string(),
-  allowScopes: z.array(ApplicationScope$inboundSchema).optional(),
+  principalAccountID: types.string(),
+  allowScopes: types.optional(z.array(ApplicationScope$inboundSchema)),
 });
 /** @internal */
 export type ShareScopes$Outbound = {

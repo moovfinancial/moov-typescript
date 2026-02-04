@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ProductOption,
@@ -52,10 +53,10 @@ export const ProductOptionGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  description: z.string().optional(),
-  minSelect: z.number().int(),
-  maxSelect: z.number().int(),
+  name: types.string(),
+  description: types.optional(types.string()),
+  minSelect: types.number(),
+  maxSelect: types.number(),
   options: z.array(ProductOption$inboundSchema),
 });
 /** @internal */

@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -52,7 +53,7 @@ export const ListStatementsGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -99,15 +100,11 @@ export const ListStatementsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  billingPeriodStartDateTime: z.string().datetime({ offset: true }).transform(
-    v => new Date(v)
-  ).optional(),
-  billingPeriodEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  accountID: z.string(),
+  billingPeriodStartDateTime: types.optional(types.date()),
+  billingPeriodEndDateTime: types.optional(types.date()),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  accountID: types.string(),
 });
 /** @internal */
 export type ListStatementsRequest$Outbound = {

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BasicPaymentMethod,
@@ -169,29 +170,29 @@ export type Card = {
 /** @internal */
 export const Card$inboundSchema: z.ZodType<Card, z.ZodTypeDef, unknown> = z
   .object({
-    cardID: z.string(),
-    fingerprint: z.string(),
+    cardID: types.string(),
+    fingerprint: types.string(),
     brand: CardBrand$inboundSchema,
     cardType: CardType$inboundSchema,
-    cardCategory: z.string().optional(),
-    lastFourCardNumber: z.string(),
-    bin: z.string(),
+    cardCategory: types.optional(types.string()),
+    lastFourCardNumber: types.string(),
+    bin: types.string(),
     expiration: CardExpiration$inboundSchema,
-    holderName: z.string().optional(),
+    holderName: types.optional(types.string()),
     billingAddress: CardAddress$inboundSchema,
     cardVerification: CardVerification$inboundSchema,
-    issuer: z.string().optional(),
-    issuerCountry: z.string().optional(),
-    issuerURL: z.string().optional(),
-    issuerPhone: z.string().optional(),
-    commercial: z.boolean().optional(),
-    regulated: z.boolean().optional(),
-    cardOnFile: z.boolean().optional(),
-    merchantAccountID: z.string().optional(),
-    cardAccountUpdater: CardAccountUpdater$inboundSchema.optional(),
-    domesticPushToCard: DomesticPushToCard$inboundSchema.optional(),
-    domesticPullFromCard: DomesticPullFromCard$inboundSchema.optional(),
-    paymentMethods: z.array(BasicPaymentMethod$inboundSchema).optional(),
+    issuer: types.optional(types.string()),
+    issuerCountry: types.optional(types.string()),
+    issuerURL: types.optional(types.string()),
+    issuerPhone: types.optional(types.string()),
+    commercial: types.optional(types.boolean()),
+    regulated: types.optional(types.boolean()),
+    cardOnFile: types.optional(types.boolean()),
+    merchantAccountID: types.optional(types.string()),
+    cardAccountUpdater: types.optional(CardAccountUpdater$inboundSchema),
+    domesticPushToCard: types.optional(DomesticPushToCard$inboundSchema),
+    domesticPullFromCard: types.optional(DomesticPullFromCard$inboundSchema),
+    paymentMethods: types.optional(z.array(BasicPaymentMethod$inboundSchema)),
   });
 /** @internal */
 export type Card$Outbound = {

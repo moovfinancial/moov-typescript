@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetPublicImageRequest = {
@@ -42,9 +44,9 @@ export const GetPublicImageRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "if-none-match": z.string().optional(),
-  publicID: z.string(),
-  size: z.string().default("400x400"),
+  "if-none-match": types.optional(types.string()),
+  publicID: types.string(),
+  size: types.string().default("400x400"),
 }).transform((v) => {
   return remap$(v, {
     "if-none-match": "ifNoneMatch",
@@ -94,7 +96,7 @@ export const GetPublicImageResponseResult$inboundSchema: z.ZodType<
   GetPublicImageResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
@@ -110,7 +112,7 @@ export const GetPublicImageResponseResult$outboundSchema: z.ZodType<
   GetPublicImageResponseResult$Outbound,
   z.ZodTypeDef,
   GetPublicImageResponseResult
-> = z.union([
+> = smartUnion([
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
@@ -142,7 +144,7 @@ export const GetPublicImageResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
+  Result: smartUnion([
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
@@ -169,7 +171,7 @@ export const GetPublicImageResponse$outboundSchema: z.ZodType<
   GetPublicImageResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.union([
+  result: smartUnion([
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),

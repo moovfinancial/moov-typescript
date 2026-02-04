@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimalUpdate,
@@ -49,16 +50,12 @@ export const UpdateInvoice$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  description: z.string().optional(),
-  lineItems: CreateInvoiceLineItemsUpdate$inboundSchema.optional(),
-  invoiceDate: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  dueDate: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  status: InvoiceStatus$inboundSchema.optional(),
-  taxAmount: AmountDecimalUpdate$inboundSchema.optional(),
+  description: types.optional(types.string()),
+  lineItems: types.optional(CreateInvoiceLineItemsUpdate$inboundSchema),
+  invoiceDate: z.nullable(types.date()).optional(),
+  dueDate: z.nullable(types.date()).optional(),
+  status: types.optional(InvoiceStatus$inboundSchema),
+  taxAmount: types.optional(AmountDecimalUpdate$inboundSchema),
 });
 /** @internal */
 export type UpdateInvoice$Outbound = {

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FulfillmentMethod,
@@ -28,8 +29,8 @@ export const Fulfillment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  method: FulfillmentMethod$inboundSchema.optional(),
-  timeframe: FulfillmentTimeframe$inboundSchema.optional(),
+  method: types.optional(FulfillmentMethod$inboundSchema),
+  timeframe: types.optional(FulfillmentTimeframe$inboundSchema),
 });
 /** @internal */
 export type Fulfillment$Outbound = {

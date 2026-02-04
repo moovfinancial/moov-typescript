@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const CardVerificationResult = {
   NoMatch: "noMatch",
@@ -12,13 +13,17 @@ export const CardVerificationResult = {
   Unavailable: "unavailable",
   PartialMatch: "partialMatch",
 } as const;
-export type CardVerificationResult = ClosedEnum<typeof CardVerificationResult>;
+export type CardVerificationResult = OpenEnum<typeof CardVerificationResult>;
 
 /** @internal */
-export const CardVerificationResult$inboundSchema: z.ZodNativeEnum<
-  typeof CardVerificationResult
-> = z.nativeEnum(CardVerificationResult);
+export const CardVerificationResult$inboundSchema: z.ZodType<
+  CardVerificationResult,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CardVerificationResult);
 /** @internal */
-export const CardVerificationResult$outboundSchema: z.ZodNativeEnum<
-  typeof CardVerificationResult
-> = CardVerificationResult$inboundSchema;
+export const CardVerificationResult$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CardVerificationResult
+> = openEnums.outboundSchema(CardVerificationResult);

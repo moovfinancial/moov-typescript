@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   SendFundsAchError,
@@ -44,10 +45,10 @@ export const SendFundsError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ach: SendFundsAchError$inboundSchema.optional(),
-  pushToCard: SendFundsPushToCardError$inboundSchema.optional(),
-  rtp: SendFundsRtpError$inboundSchema.optional(),
-  instantBank: SendFundsInstantBankError$inboundSchema.optional(),
+  ach: types.optional(SendFundsAchError$inboundSchema),
+  pushToCard: types.optional(SendFundsPushToCardError$inboundSchema),
+  rtp: types.optional(SendFundsRtpError$inboundSchema),
+  instantBank: types.optional(SendFundsInstantBankError$inboundSchema),
 });
 /** @internal */
 export type SendFundsError$Outbound = {

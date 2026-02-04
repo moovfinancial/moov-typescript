@@ -3,21 +3,26 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const BankAccountVerificationMethod = {
   Instant: "instant",
   Ach: "ach",
 } as const;
-export type BankAccountVerificationMethod = ClosedEnum<
+export type BankAccountVerificationMethod = OpenEnum<
   typeof BankAccountVerificationMethod
 >;
 
 /** @internal */
-export const BankAccountVerificationMethod$inboundSchema: z.ZodNativeEnum<
-  typeof BankAccountVerificationMethod
-> = z.nativeEnum(BankAccountVerificationMethod);
+export const BankAccountVerificationMethod$inboundSchema: z.ZodType<
+  BankAccountVerificationMethod,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(BankAccountVerificationMethod);
 /** @internal */
-export const BankAccountVerificationMethod$outboundSchema: z.ZodNativeEnum<
-  typeof BankAccountVerificationMethod
-> = BankAccountVerificationMethod$inboundSchema;
+export const BankAccountVerificationMethod$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  BankAccountVerificationMethod
+> = openEnums.outboundSchema(BankAccountVerificationMethod);

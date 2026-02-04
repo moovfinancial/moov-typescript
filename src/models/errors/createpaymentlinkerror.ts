@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -68,17 +69,20 @@ export const CreatePaymentLinkError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  partnerAccountID: z.string().optional(),
-  merchantPaymentMethodID: z.string().optional(),
-  amount: components.AmountValidationError$inboundSchema.optional(),
-  salesTaxAmount: components.AmountValidationError$inboundSchema.optional(),
-  maxUses: z.string().optional(),
-  expiresOn: z.string().optional(),
-  display: components.DisplayOptionsError$inboundSchema.optional(),
-  payment: components.PaymentDetailsError$inboundSchema.optional(),
-  payout: components.PayoutDetailsError$inboundSchema.optional(),
-  lineItems: components.CreatePaymentLinkLineItemsValidationError$inboundSchema
-    .optional(),
+  partnerAccountID: types.optional(types.string()),
+  merchantPaymentMethodID: types.optional(types.string()),
+  amount: types.optional(components.AmountValidationError$inboundSchema),
+  salesTaxAmount: types.optional(
+    components.AmountValidationError$inboundSchema,
+  ),
+  maxUses: types.optional(types.string()),
+  expiresOn: types.optional(types.string()),
+  display: types.optional(components.DisplayOptionsError$inboundSchema),
+  payment: types.optional(components.PaymentDetailsError$inboundSchema),
+  payout: types.optional(components.PayoutDetailsError$inboundSchema),
+  lineItems: types.optional(
+    components.CreatePaymentLinkLineItemsValidationError$inboundSchema,
+  ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

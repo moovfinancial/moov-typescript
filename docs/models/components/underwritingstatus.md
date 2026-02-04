@@ -12,6 +12,8 @@ let value: UnderwritingStatus = "pendingReview";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"approved" | "rejected" | "pendingReview" | "pending" | "notRequested"
+"approved" | "rejected" | "pendingReview" | "pending" | "notRequested" | Unrecognized<string>
 ```

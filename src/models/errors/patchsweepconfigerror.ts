@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type PatchSweepConfigErrorData = {
@@ -54,11 +55,11 @@ export const PatchSweepConfigError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.string().optional(),
-  pushPaymentMethodID: z.string().optional(),
-  pullPaymentMethodID: z.string().optional(),
-  statementDescriptor: z.string().optional(),
-  minimumBalance: z.string().optional(),
+  status: types.optional(types.string()),
+  pushPaymentMethodID: types.optional(types.string()),
+  pullPaymentMethodID: types.optional(types.string()),
+  statementDescriptor: types.optional(types.string()),
+  minimumBalance: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -38,14 +39,13 @@ export const ImageMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  imageID: z.string(),
-  publicID: z.string(),
-  altText: z.string().optional(),
-  link: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  imageID: types.string(),
+  publicID: types.string(),
+  altText: types.optional(types.string()),
+  link: types.string(),
+  createdOn: types.date(),
+  updatedOn: types.date(),
+  disabledOn: types.optional(types.date()),
 });
 /** @internal */
 export type ImageMetadata$Outbound = {

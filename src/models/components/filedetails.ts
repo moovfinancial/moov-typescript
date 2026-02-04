@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FilePurpose,
@@ -45,16 +46,16 @@ export const FileDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fileID: z.string(),
-  fileName: z.string(),
-  accountID: z.string(),
+  fileID: types.string(),
+  fileName: types.string(),
+  accountID: types.string(),
   filePurpose: FilePurpose$inboundSchema,
   fileStatus: FileStatus$inboundSchema,
-  metadata: z.string(),
-  decisionReason: z.string().optional(),
-  fileSizeBytes: z.number().int(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  metadata: types.string(),
+  decisionReason: types.optional(types.string()),
+  fileSizeBytes: types.number(),
+  createdOn: types.date(),
+  updatedOn: types.date(),
 });
 /** @internal */
 export type FileDetails$Outbound = {

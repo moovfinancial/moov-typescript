@@ -22,6 +22,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 export enum GetPublicAcceptEnum {
   imageJpeg = "image/jpeg",
@@ -165,24 +166,26 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.stream(200, operations.GetPublicImageResponse$inboundSchema.optional(), {
-      ctype: "image/webp",
-      hdrs: true,
-      key: "Result",
-    }),
-    M.stream(200, operations.GetPublicImageResponse$inboundSchema.optional(), {
-      ctype: "image/png",
-      hdrs: true,
-      key: "Result",
-    }),
-    M.stream(200, operations.GetPublicImageResponse$inboundSchema.optional(), {
-      ctype: "image/jpeg",
-      hdrs: true,
-      key: "Result",
-    }),
-    M.nil(304, operations.GetPublicImageResponse$inboundSchema.optional(), {
-      hdrs: true,
-    }),
+    M.stream(
+      200,
+      types$.optional(operations.GetPublicImageResponse$inboundSchema),
+      { ctype: "image/webp", hdrs: true, key: "Result" },
+    ),
+    M.stream(
+      200,
+      types$.optional(operations.GetPublicImageResponse$inboundSchema),
+      { ctype: "image/png", hdrs: true, key: "Result" },
+    ),
+    M.stream(
+      200,
+      types$.optional(operations.GetPublicImageResponse$inboundSchema),
+      { ctype: "image/jpeg", hdrs: true, key: "Result" },
+    ),
+    M.nil(
+      304,
+      types$.optional(operations.GetPublicImageResponse$inboundSchema),
+      { hdrs: true },
+    ),
     M.fail([404, 429]),
     M.fail([500, 502, 503, 504]),
     M.fail("4XX"),

@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -81,7 +82,7 @@ export const ListDisputesGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -128,26 +129,19 @@ export const ListDisputesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  startDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  endDateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  respondStartDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  respondEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  status: components.DisputeStatus$inboundSchema.optional(),
-  merchantAccountID: z.string().optional(),
-  cardholderAccountID: z.string().optional(),
-  disputeIDs: z.array(z.string()).optional(),
-  transferIDs: z.array(z.string()).optional(),
-  orderBy: z.string().optional(),
+  accountID: types.string(),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  startDateTime: types.optional(types.date()),
+  endDateTime: types.optional(types.date()),
+  respondStartDateTime: types.optional(types.date()),
+  respondEndDateTime: types.optional(types.date()),
+  status: types.optional(components.DisputeStatus$inboundSchema),
+  merchantAccountID: types.optional(types.string()),
+  cardholderAccountID: types.optional(types.string()),
+  disputeIDs: types.optional(z.array(types.string())),
+  transferIDs: types.optional(z.array(types.string())),
+  orderBy: types.optional(types.string()),
 });
 /** @internal */
 export type ListDisputesRequest$Outbound = {

@@ -12,6 +12,8 @@ let value: CardAcquiringModel = "cost-plus";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"cost-plus" | "flat-rate"
+"cost-plus" | "flat-rate" | Unrecognized<string>
 ```

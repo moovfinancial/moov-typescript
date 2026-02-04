@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   E2EETokenUpdate,
@@ -49,14 +50,14 @@ export const UpdateCard$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  e2ee: E2EETokenUpdate$inboundSchema.optional(),
-  billingAddress: UpdateCardAddress$inboundSchema.optional(),
-  expiration: UpdateCardExpiration$inboundSchema.optional(),
-  cardCvv: z.string().optional(),
-  cardOnFile: z.boolean().optional(),
-  merchantAccountID: z.string().optional(),
-  verifyName: z.boolean().optional(),
-  holderName: z.string().optional(),
+  e2ee: types.optional(E2EETokenUpdate$inboundSchema),
+  billingAddress: types.optional(UpdateCardAddress$inboundSchema),
+  expiration: types.optional(UpdateCardExpiration$inboundSchema),
+  cardCvv: types.optional(types.string()),
+  cardOnFile: types.optional(types.boolean()),
+  merchantAccountID: types.optional(types.string()),
+  verifyName: types.optional(types.boolean()),
+  holderName: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateCard$Outbound = {

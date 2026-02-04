@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const CardTransactionFailureCode = {
   CallIssuer: "call-issuer",
@@ -32,15 +33,19 @@ export const CardTransactionFailureCode = {
   UnknownIssue: "unknown-issue",
   DuplicateTransaction: "duplicate-transaction",
 } as const;
-export type CardTransactionFailureCode = ClosedEnum<
+export type CardTransactionFailureCode = OpenEnum<
   typeof CardTransactionFailureCode
 >;
 
 /** @internal */
-export const CardTransactionFailureCode$inboundSchema: z.ZodNativeEnum<
-  typeof CardTransactionFailureCode
-> = z.nativeEnum(CardTransactionFailureCode);
+export const CardTransactionFailureCode$inboundSchema: z.ZodType<
+  CardTransactionFailureCode,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CardTransactionFailureCode);
 /** @internal */
-export const CardTransactionFailureCode$outboundSchema: z.ZodNativeEnum<
-  typeof CardTransactionFailureCode
-> = CardTransactionFailureCode$inboundSchema;
+export const CardTransactionFailureCode$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CardTransactionFailureCode
+> = openEnums.outboundSchema(CardTransactionFailureCode);

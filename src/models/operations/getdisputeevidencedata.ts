@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetDisputeEvidenceDataGlobals = {
@@ -51,7 +53,7 @@ export const GetDisputeEvidenceDataGlobals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Moov-Version": z.string().optional(),
+  "X-Moov-Version": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "X-Moov-Version": "xMoovVersion",
@@ -100,9 +102,9 @@ export const GetDisputeEvidenceDataRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  evidenceID: z.string(),
+  accountID: types.string(),
+  disputeID: types.string(),
+  evidenceID: types.string(),
 });
 /** @internal */
 export type GetDisputeEvidenceDataRequest$Outbound = {
@@ -146,7 +148,7 @@ export const GetDisputeEvidenceDataResponseResult$inboundSchema: z.ZodType<
   GetDisputeEvidenceDataResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
@@ -162,7 +164,7 @@ export const GetDisputeEvidenceDataResponseResult$outboundSchema: z.ZodType<
   GetDisputeEvidenceDataResponseResult$Outbound,
   z.ZodTypeDef,
   GetDisputeEvidenceDataResponseResult
-> = z.union([
+> = smartUnion([
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
   z.instanceof(ReadableStream<Uint8Array>),
@@ -195,7 +197,7 @@ export const GetDisputeEvidenceDataResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
+  Result: smartUnion([
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
@@ -222,7 +224,7 @@ export const GetDisputeEvidenceDataResponse$outboundSchema: z.ZodType<
   GetDisputeEvidenceDataResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.union([
+  result: smartUnion([
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),

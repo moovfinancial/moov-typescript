@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TicketContact,
@@ -30,11 +31,11 @@ export const CreateTicket$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  title: z.string(),
-  body: z.string(),
-  author: z.string().optional(),
+  title: types.string(),
+  body: types.string(),
+  author: types.optional(types.string()),
   contact: TicketContact$inboundSchema,
-  foreignID: z.string().optional(),
+  foreignID: types.optional(types.string()),
 });
 /** @internal */
 export type CreateTicket$Outbound = {

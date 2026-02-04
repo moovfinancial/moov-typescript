@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The status of the capability requested for an account.
@@ -17,13 +18,17 @@ export const CapabilityStatus = {
 /**
  * The status of the capability requested for an account.
  */
-export type CapabilityStatus = ClosedEnum<typeof CapabilityStatus>;
+export type CapabilityStatus = OpenEnum<typeof CapabilityStatus>;
 
 /** @internal */
-export const CapabilityStatus$inboundSchema: z.ZodNativeEnum<
-  typeof CapabilityStatus
-> = z.nativeEnum(CapabilityStatus);
+export const CapabilityStatus$inboundSchema: z.ZodType<
+  CapabilityStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CapabilityStatus);
 /** @internal */
-export const CapabilityStatus$outboundSchema: z.ZodNativeEnum<
-  typeof CapabilityStatus
-> = CapabilityStatus$inboundSchema;
+export const CapabilityStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CapabilityStatus
+> = openEnums.outboundSchema(CapabilityStatus);

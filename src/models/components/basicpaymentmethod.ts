@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PaymentMethodType,
@@ -29,7 +30,7 @@ export const BasicPaymentMethod$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paymentMethodID: z.string(),
+  paymentMethodID: types.string(),
   paymentMethodType: PaymentMethodType$inboundSchema,
 });
 /** @internal */

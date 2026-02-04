@@ -3,19 +3,24 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const PaymentLinkType = {
   Payment: "payment",
   Payout: "payout",
 } as const;
-export type PaymentLinkType = ClosedEnum<typeof PaymentLinkType>;
+export type PaymentLinkType = OpenEnum<typeof PaymentLinkType>;
 
 /** @internal */
-export const PaymentLinkType$inboundSchema: z.ZodNativeEnum<
-  typeof PaymentLinkType
-> = z.nativeEnum(PaymentLinkType);
+export const PaymentLinkType$inboundSchema: z.ZodType<
+  PaymentLinkType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(PaymentLinkType);
 /** @internal */
-export const PaymentLinkType$outboundSchema: z.ZodNativeEnum<
-  typeof PaymentLinkType
-> = PaymentLinkType$inboundSchema;
+export const PaymentLinkType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  PaymentLinkType
+> = openEnums.outboundSchema(PaymentLinkType);

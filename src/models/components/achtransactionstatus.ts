@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Status of a transaction within the ACH lifecycle.
@@ -20,13 +21,17 @@ export const ACHTransactionStatus = {
 /**
  * Status of a transaction within the ACH lifecycle.
  */
-export type ACHTransactionStatus = ClosedEnum<typeof ACHTransactionStatus>;
+export type ACHTransactionStatus = OpenEnum<typeof ACHTransactionStatus>;
 
 /** @internal */
-export const ACHTransactionStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ACHTransactionStatus
-> = z.nativeEnum(ACHTransactionStatus);
+export const ACHTransactionStatus$inboundSchema: z.ZodType<
+  ACHTransactionStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ACHTransactionStatus);
 /** @internal */
-export const ACHTransactionStatus$outboundSchema: z.ZodNativeEnum<
-  typeof ACHTransactionStatus
-> = ACHTransactionStatus$inboundSchema;
+export const ACHTransactionStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ACHTransactionStatus
+> = openEnums.outboundSchema(ACHTransactionStatus);

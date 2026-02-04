@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Amount,
@@ -57,12 +58,12 @@ export const CreateRunTransfer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: Amount$inboundSchema,
-  salesTaxAmount: Amount$inboundSchema.optional(),
+  salesTaxAmount: types.optional(Amount$inboundSchema),
   destination: SchedulePaymentMethod$inboundSchema,
-  partnerAccountID: z.string(),
+  partnerAccountID: types.string(),
   source: SchedulePaymentMethod$inboundSchema,
-  description: z.string(),
-  lineItems: CreateScheduledTransferLineItems$inboundSchema.optional(),
+  description: types.string(),
+  lineItems: types.optional(CreateScheduledTransferLineItems$inboundSchema),
 });
 /** @internal */
 export type CreateRunTransfer$Outbound = {

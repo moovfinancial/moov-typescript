@@ -15,6 +15,8 @@ let value: TransactionSource = "recurring";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"first-recurring" | "recurring" | "unscheduled"
+"first-recurring" | "recurring" | "unscheduled" | Unrecognized<string>
 ```

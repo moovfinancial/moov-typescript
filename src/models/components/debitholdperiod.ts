@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * An optional override of your default ACH hold period in banking days. The hold period must be longer than or equal to your default setting.
@@ -16,13 +17,17 @@ export const DebitHoldPeriod = {
 /**
  * An optional override of your default ACH hold period in banking days. The hold period must be longer than or equal to your default setting.
  */
-export type DebitHoldPeriod = ClosedEnum<typeof DebitHoldPeriod>;
+export type DebitHoldPeriod = OpenEnum<typeof DebitHoldPeriod>;
 
 /** @internal */
-export const DebitHoldPeriod$inboundSchema: z.ZodNativeEnum<
-  typeof DebitHoldPeriod
-> = z.nativeEnum(DebitHoldPeriod);
+export const DebitHoldPeriod$inboundSchema: z.ZodType<
+  DebitHoldPeriod,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DebitHoldPeriod);
 /** @internal */
-export const DebitHoldPeriod$outboundSchema: z.ZodNativeEnum<
-  typeof DebitHoldPeriod
-> = DebitHoldPeriod$inboundSchema;
+export const DebitHoldPeriod$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DebitHoldPeriod
+> = openEnums.outboundSchema(DebitHoldPeriod);

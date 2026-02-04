@@ -3,20 +3,25 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const CancellationStatus = {
   Pending: "pending",
   Completed: "completed",
   Failed: "failed",
 } as const;
-export type CancellationStatus = ClosedEnum<typeof CancellationStatus>;
+export type CancellationStatus = OpenEnum<typeof CancellationStatus>;
 
 /** @internal */
-export const CancellationStatus$inboundSchema: z.ZodNativeEnum<
-  typeof CancellationStatus
-> = z.nativeEnum(CancellationStatus);
+export const CancellationStatus$inboundSchema: z.ZodType<
+  CancellationStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CancellationStatus);
 /** @internal */
-export const CancellationStatus$outboundSchema: z.ZodNativeEnum<
-  typeof CancellationStatus
-> = CancellationStatus$inboundSchema;
+export const CancellationStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CancellationStatus
+> = openEnums.outboundSchema(CancellationStatus);

@@ -23,6 +23,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Revoke an onboarding invite, rendering the invitation link unusable.
@@ -165,7 +166,7 @@ async function $do(
   >(
     M.nil(
       204,
-      operations.RevokeOnboardingInviteResponse$inboundSchema.optional(),
+      types$.optional(operations.RevokeOnboardingInviteResponse$inboundSchema),
       { hdrs: true },
     ),
     M.fail("4XX"),

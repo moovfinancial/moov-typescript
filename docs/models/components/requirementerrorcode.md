@@ -10,6 +10,8 @@ let value: RequirementErrorCode = "document-incomplete";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"invalid-value" | "failed-automatic-verification" | "failed-other" | "invalid-address" | "address-restricted" | "tax-id-mismatch" | "document-id-mismatch" | "document-date-of-birth-mismatch" | "document-name-mismatch" | "document-address.mismatch" | "document-number-mismatch" | "document-incomplete" | "document-failed-risk" | "document-illegible" | "document-unsupported" | "document-not-uploaded" | "document-corrupt" | "document-expired"
+"invalid-value" | "failed-automatic-verification" | "failed-other" | "invalid-address" | "address-restricted" | "tax-id-mismatch" | "document-id-mismatch" | "document-date-of-birth-mismatch" | "document-name-mismatch" | "document-address.mismatch" | "document-number-mismatch" | "document-incomplete" | "document-failed-risk" | "document-illegible" | "document-unsupported" | "document-not-uploaded" | "document-corrupt" | "document-expired" | Unrecognized<string>
 ```

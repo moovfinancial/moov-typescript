@@ -12,6 +12,8 @@ let value: IssuingAuthorizationStatus = "expired";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"pending" | "declined" | "canceled" | "cleared" | "expired"
+"pending" | "declined" | "canceled" | "cleared" | "expired" | Unrecognized<string>
 ```

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -26,11 +27,10 @@ export const CreateInvoicePayment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  foreignID: z.string().optional(),
+  foreignID: types.optional(types.string()),
   amount: AmountDecimal$inboundSchema,
-  description: z.string().optional(),
-  paymentDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  description: types.optional(types.string()),
+  paymentDate: types.optional(types.date()),
 });
 /** @internal */
 export type CreateInvoicePayment$Outbound = {

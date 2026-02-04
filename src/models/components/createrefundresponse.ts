@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AsyncCreatedRefund,
@@ -26,7 +27,7 @@ export const CreateRefundResponse$inboundSchema: z.ZodType<
   CreateRefundResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   CardAcquiringRefund$inboundSchema,
   AsyncCreatedRefund$inboundSchema,
 ]);
@@ -40,7 +41,7 @@ export const CreateRefundResponse$outboundSchema: z.ZodType<
   CreateRefundResponse$Outbound,
   z.ZodTypeDef,
   CreateRefundResponse
-> = z.union([
+> = smartUnion([
   CardAcquiringRefund$outboundSchema,
   AsyncCreatedRefund$outboundSchema,
 ]);

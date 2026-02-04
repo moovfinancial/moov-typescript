@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -70,8 +71,8 @@ export const VolumeAmount$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
+  currency: types.string(),
+  valueDecimal: types.string(),
 });
 /** @internal */
 export type VolumeAmount$Outbound = {
@@ -108,12 +109,12 @@ export const BillingSummaryDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  volumeAmount: z.lazy(() => VolumeAmount$inboundSchema).optional(),
-  volumeCount: z.number().int().optional(),
-  feeAmount: AmountDecimal$inboundSchema.optional(),
-  merchantFeesCollected: AmountDecimal$inboundSchema.optional(),
-  partnerFeesAssessed: AmountDecimal$inboundSchema.optional(),
-  netIncome: AmountDecimal$inboundSchema.optional(),
+  volumeAmount: types.optional(z.lazy(() => VolumeAmount$inboundSchema)),
+  volumeCount: types.optional(types.number()),
+  feeAmount: types.optional(AmountDecimal$inboundSchema),
+  merchantFeesCollected: types.optional(AmountDecimal$inboundSchema),
+  partnerFeesAssessed: types.optional(AmountDecimal$inboundSchema),
+  netIncome: types.optional(AmountDecimal$inboundSchema),
 });
 /** @internal */
 export type BillingSummaryDetails$Outbound = {

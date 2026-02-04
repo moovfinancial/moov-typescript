@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Status of a transaction within the RTP lifecycle.
@@ -17,13 +18,17 @@ export const RTPTransactionStatus = {
 /**
  * Status of a transaction within the RTP lifecycle.
  */
-export type RTPTransactionStatus = ClosedEnum<typeof RTPTransactionStatus>;
+export type RTPTransactionStatus = OpenEnum<typeof RTPTransactionStatus>;
 
 /** @internal */
-export const RTPTransactionStatus$inboundSchema: z.ZodNativeEnum<
-  typeof RTPTransactionStatus
-> = z.nativeEnum(RTPTransactionStatus);
+export const RTPTransactionStatus$inboundSchema: z.ZodType<
+  RTPTransactionStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(RTPTransactionStatus);
 /** @internal */
-export const RTPTransactionStatus$outboundSchema: z.ZodNativeEnum<
-  typeof RTPTransactionStatus
-> = RTPTransactionStatus$inboundSchema;
+export const RTPTransactionStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  RTPTransactionStatus
+> = openEnums.outboundSchema(RTPTransactionStatus);
