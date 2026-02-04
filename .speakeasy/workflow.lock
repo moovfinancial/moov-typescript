@@ -1,20 +1,20 @@
-speakeasyVersion: 1.700.2
+speakeasyVersion: 1.703.0
 sources:
     latest:
-        sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:f113bf1bc2313a27d73754c4dde0433801ccc2b0afe5b88a97d53f4ec0776848
-        sourceBlobDigest: sha256:dd5d30466ad3ca0e8cf1b984cf6539ae6170dfca21fb194935a9c2e688bd31fc
+        sourceNamespace: api-v2025.10.00
+        sourceRevisionDigest: sha256:f1afd7f5bae642138e8d8b69d9b6d9e6985235c8d495472f4434a2acd64e7a77
+        sourceBlobDigest: sha256:ec1f0bcf700bfbd854c3e7d1fcee9623305071bde3e2b2f437572fa69049bb51
         tags:
             - latest
-            - speakeasy-sdk-regen-1770079322
+            - speakeasy-sdk-regen-versions-2025.10-1770230742
 targets:
     latest:
         source: latest
-        sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:f113bf1bc2313a27d73754c4dde0433801ccc2b0afe5b88a97d53f4ec0776848
-        sourceBlobDigest: sha256:dd5d30466ad3ca0e8cf1b984cf6539ae6170dfca21fb194935a9c2e688bd31fc
-        codeSamplesNamespace: latest-ts-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:75e0ae4cb2ed1e4a50c1a2ac5369aeb0d10b906ced7d20aa1a030530508b4e2a
+        sourceNamespace: api-v2025.10.00
+        sourceRevisionDigest: sha256:f1afd7f5bae642138e8d8b69d9b6d9e6985235c8d495472f4434a2acd64e7a77
+        sourceBlobDigest: sha256:ec1f0bcf700bfbd854c3e7d1fcee9623305071bde3e2b2f437572fa69049bb51
+        codeSamplesNamespace: v2025.10.00-ts-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:8e441c40e7cdad11ca0eb53c5ce574c1b4a24a34b62ec4bd97f7f827b9ab4f01
     moov:
         source: latest
         sourceNamespace: api-latest
@@ -28,9 +28,9 @@ workflow:
     sources:
         latest:
             inputs:
-                - location: registry.speakeasyapi.dev/moov/moov/api-latest
+                - location: registry.speakeasyapi.dev/moov/moov/api-v2025.10.00
             registry:
-                location: registry.speakeasyapi.dev/moov/moov/latest
+                location: registry.speakeasyapi.dev/moov/moov/typescript-v2025.10.00
     targets:
         latest:
             target: typescript
@@ -40,7 +40,7 @@ workflow:
                     token: $npm_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/moov/moov/latest-ts-typescript-code-samples
+                    location: registry.speakeasyapi.dev/moov/moov/v2025.10.00-ts-typescript-code-samples
                 labelOverride:
                     fixedValue: Typescript (SDK)
                 blocking: false

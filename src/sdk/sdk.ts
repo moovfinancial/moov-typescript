@@ -23,7 +23,6 @@ import { Files } from "./files.js";
 import { Images } from "./images.js";
 import { Industries } from "./industries.js";
 import { Institutions } from "./institutions.js";
-import { Invoices } from "./invoices.js";
 import { IssuingTransactions } from "./issuingtransactions.js";
 import { Onboarding } from "./onboarding.js";
 import { PaymentLinks } from "./paymentlinks.js";
@@ -97,11 +96,6 @@ export class Moov extends ClientSDK {
   private _images?: Images;
   get images(): Images {
     return (this._images ??= new Images(this._options));
-  }
-
-  private _invoices?: Invoices;
-  get invoices(): Invoices {
-    return (this._invoices ??= new Invoices(this._options));
   }
 
   private _paymentLinks?: PaymentLinks;
