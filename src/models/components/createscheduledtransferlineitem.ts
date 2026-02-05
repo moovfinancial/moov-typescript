@@ -40,7 +40,10 @@ export type CreateScheduledTransferLineItem = {
    */
   options?: Array<CreateScheduledTransferLineItemOption> | undefined;
   /**
-   * Optional unique identifier associating the line item with a product.
+   *   Optional unique identifier associating the line item with a product.
+   *
+   * @remarks
+   *   This is for reporting or tracking purposes, and does not populate other details of the line item.
    */
   productID?: string | undefined;
   /**

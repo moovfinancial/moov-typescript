@@ -330,7 +330,6 @@ export * from "./onboardingpartneraccount.js";
 export * from "./othercardfees.js";
 export * from "./partialscheduleaccount.js";
 export * from "./partnerfees.js";
-export * from "./partnerpricing.js";
 export * from "./partnerpricingagreement.js";
 export * from "./patchaccount.js";
 export * from "./patchbusiness.js";
