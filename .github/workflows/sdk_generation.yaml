@@ -18,12 +18,26 @@ permissions:
   schedule:
     - cron: 0 0 * * *
 jobs:
+  get-npm-tag:
+    runs-on: ubuntu-latest
+    outputs:
+      npm_tag: ${{ steps.extract.outputs.tag }}
+    steps:
+      - name: Extract npm tag from branch name
+        id: extract
+        run: |
+          BRANCH="${{ github.ref_name }}"
+          if [[ "$BRANCH" == versions/* ]]; then
+            echo "tag=${BRANCH#versions/}" >> $GITHUB_OUTPUT
+          fi
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
+    needs: get-npm-tag
+    uses: moovfinancial/sdk-generation-action/.github/workflows/workflow-executor.yaml@main
     with:
       force: ${{ github.event.inputs.force }}
       mode: direct
       set_version: ${{ github.event.inputs.set_version }}
+      npm_tag: ${{ needs.get-npm-tag.outputs.npm_tag }}
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
