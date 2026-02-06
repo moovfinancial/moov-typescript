@@ -28,7 +28,9 @@ jobs:
         run: |
           BRANCH="${{ github.ref_name }}"
           if [[ "$BRANCH" == versions/* ]]; then
-            echo "tag=${BRANCH#versions/}" >> $GITHUB_OUTPUT
+            TAG="${BRANCH#versions/}"
+            TAG="${TAG//./-}"
+            echo "tag=${TAG}" >> $GITHUB_OUTPUT
           fi
   generate:
     needs: get-npm-tag
