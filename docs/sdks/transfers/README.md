@@ -189,9 +189,100 @@ Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/o
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
-### Example Usage
+### Example Usage: Created async transfer
 
-<!-- UsageSnippet language="typescript" operationID="createTransfer" method="post" path="/accounts/{accountID}/transfers" -->
+<!-- UsageSnippet language="typescript" operationID="createTransfer" method="post" path="/accounts/{accountID}/transfers" example="Created async transfer" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.transfers.create({
+    xIdempotencyKey: "6de5561f-5a9f-4bd3-a458-ce0baacae20d",
+    accountID: "d5696c5b-7106-4093-8a7d-faa71dda002c",
+    createTransfer: {
+      source: {
+        paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
+      },
+      destination: {
+        paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
+      },
+      amount: {
+        currency: "USD",
+        value: 32945,
+      },
+      description: "Transfer from card to wallet",
+      metadata: {
+        "optional": "metadata",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersCreate } from "@moovio/sdk/funcs/transfersCreate.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await transfersCreate(moov, {
+    xIdempotencyKey: "6de5561f-5a9f-4bd3-a458-ce0baacae20d",
+    accountID: "d5696c5b-7106-4093-8a7d-faa71dda002c",
+    createTransfer: {
+      source: {
+        paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
+      },
+      destination: {
+        paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
+      },
+      amount: {
+        currency: "USD",
+        value: 32945,
+      },
+      description: "Transfer from card to wallet",
+      metadata: {
+        "optional": "metadata",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersCreate failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Created synchronous transfer
+
+<!-- UsageSnippet language="typescript" operationID="createTransfer" method="post" path="/accounts/{accountID}/transfers" example="Created synchronous transfer" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -596,7 +687,7 @@ run();
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="createCancellation" method="post" path="/accounts/{accountID}/transfers/{transferID}/cancellations" -->
+<!-- UsageSnippet language="typescript" operationID="createCancellation" method="post" path="/accounts/{accountID}/transfers/{transferID}/cancellations" example="Created cancellation" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -681,9 +772,70 @@ run();
   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
   to specify the `/accounts/{accountID}/transfers.read` scope.
 
-### Example Usage
+### Example Usage: Cancellation
 
-<!-- UsageSnippet language="typescript" operationID="getCancellation" method="get" path="/accounts/{accountID}/transfers/{transferID}/cancellations/{cancellationID}" -->
+<!-- UsageSnippet language="typescript" operationID="getCancellation" method="get" path="/accounts/{accountID}/transfers/{transferID}/cancellations/{cancellationID}" example="Cancellation" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.transfers.getCancellation({
+    accountID: "55cb62c2-22e4-4a36-bd53-3b9adc77ee81",
+    transferID: "bc13b680-bac3-432e-bf44-e9aa6426cbb2",
+    cancellationID: "770cb4b5-d5b0-4e8b-995b-86b790296ba5",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersGetCancellation } from "@moovio/sdk/funcs/transfersGetCancellation.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await transfersGetCancellation(moov, {
+    accountID: "55cb62c2-22e4-4a36-bd53-3b9adc77ee81",
+    transferID: "bc13b680-bac3-432e-bf44-e9aa6426cbb2",
+    cancellationID: "770cb4b5-d5b0-4e8b-995b-86b790296ba5",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersGetCancellation failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Got cancellation
+
+<!-- UsageSnippet language="typescript" operationID="getCancellation" method="get" path="/accounts/{accountID}/transfers/{transferID}/cancellations/{cancellationID}" example="Got cancellation" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -772,9 +924,9 @@ See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/c
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
-### Example Usage
+### Example Usage: Successful async refund
 
-<!-- UsageSnippet language="typescript" operationID="initiateRefund" method="post" path="/accounts/{accountID}/transfers/{transferID}/refunds" -->
+<!-- UsageSnippet language="typescript" operationID="initiateRefund" method="post" path="/accounts/{accountID}/transfers/{transferID}/refunds" example="Successful async refund" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -825,6 +977,73 @@ async function run() {
     xIdempotencyKey: "8d9af6b8-67e1-4efa-8188-68039f34097d",
     accountID: "cb6ae9f9-afab-4f06-9eb0-8abf54a3ada2",
     transferID: "04022119-95be-4ef4-9dd4-b3782f6aa7b9",
+    createRefund: {
+      amount: 1000,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersInitiateRefund failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Successful sync refund
+
+<!-- UsageSnippet language="typescript" operationID="initiateRefund" method="post" path="/accounts/{accountID}/transfers/{transferID}/refunds" example="Successful sync refund" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.transfers.initiateRefund({
+    xIdempotencyKey: "4e7a906a-e6d1-4bca-9cc5-6246295ef93c",
+    accountID: "d12ddb6e-0ed9-44e8-92a7-1716ae7cc759",
+    transferID: "d73be489-9da4-4be7-bc04-147d8552279d",
+    createRefund: {
+      amount: 1000,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersInitiateRefund } from "@moovio/sdk/funcs/transfersInitiateRefund.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await transfersInitiateRefund(moov, {
+    xIdempotencyKey: "4e7a906a-e6d1-4bca-9cc5-6246295ef93c",
+    accountID: "d12ddb6e-0ed9-44e8-92a7-1716ae7cc759",
+    transferID: "d73be489-9da4-4be7-bc04-147d8552279d",
     createRefund: {
       amount: 1000,
     },
@@ -1045,9 +1264,76 @@ to learn more.
 To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
 to specify the `/accounts/{accountID}/transfers.write` scope.
 
-### Example Usage
+### Example Usage: Reversed by cancellation
 
-<!-- UsageSnippet language="typescript" operationID="createReversal" method="post" path="/accounts/{accountID}/transfers/{transferID}/reversals" -->
+<!-- UsageSnippet language="typescript" operationID="createReversal" method="post" path="/accounts/{accountID}/transfers/{transferID}/reversals" example="Reversed by cancellation" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.transfers.createReversal({
+    xIdempotencyKey: "93d03831-45c4-49ec-a9b2-88cbd41dfca7",
+    accountID: "c5fade57-7e5a-4380-ac7b-4abf8b3c24cf",
+    transferID: "82c6eae7-b7e5-4b20-b24e-5116a4d70bde",
+    createReversal: {
+      amount: 1000,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersCreateReversal } from "@moovio/sdk/funcs/transfersCreateReversal.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  xMoovVersion: "v2024.01.00",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await transfersCreateReversal(moov, {
+    xIdempotencyKey: "93d03831-45c4-49ec-a9b2-88cbd41dfca7",
+    accountID: "c5fade57-7e5a-4380-ac7b-4abf8b3c24cf",
+    transferID: "82c6eae7-b7e5-4b20-b24e-5116a4d70bde",
+    createReversal: {
+      amount: 1000,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersCreateReversal failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Reversed by refund
+
+<!-- UsageSnippet language="typescript" operationID="createReversal" method="post" path="/accounts/{accountID}/transfers/{transferID}/reversals" example="Reversed by refund" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
