@@ -20,27 +20,30 @@ permissions:
 jobs:
   # we run this only for version branches, where we set tag to the YYYY.MM value,
   # for main brach we do not use it as it's always a pre-release version like 0.0.0-dev
-  # get-npm-tag:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     npm_tag: ${{ steps.extract.outputs.tag }}
-  #   steps:
-  #     - name: Extract npm tag from branch name
-  #       id: extract
-  #       run: |
-  #         BRANCH="${{ github.ref_name }}"
-  #         if [[ "$BRANCH" == versions/* ]]; then
-  #           echo "tag=${BRANCH#versions/}" >> $GITHUB_OUTPUT
-  #         fi
+  get-npm-tag:
+    runs-on: ubuntu-latest
+    outputs:
+      npm_tag: ${{ steps.extract.outputs.tag }}
+    steps:
+      - name: Extract npm tag from branch name
+        id: extract
+        run: |
+          BRANCH="${{ github.ref_name }}"
+          if [[ "$BRANCH" == "main" ]]; then
+            TAG="dev"
+          elif [[ "$BRANCH" == versions/* ]]; then
+            TAG="${BRANCH#versions/}"
+            TAG="${TAG//./-}"
+          fi
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
   generate:
-    # needs: get-npm-tag
+    needs: get-npm-tag
     uses: moovfinancial/sdk-generation-action/.github/workflows/workflow-executor.yaml@main
     with:
       force: ${{ github.event.inputs.force }}
       mode: direct
       set_version: ${{ github.event.inputs.set_version }}
-      # we set the tag for the published package to dev for the main branch
-      npm_tag: dev
+      npm_tag: ${{ needs.get-npm-tag.outputs.npm_tag }}
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
