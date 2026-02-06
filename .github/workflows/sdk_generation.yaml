@@ -33,7 +33,7 @@ jobs:
   #           echo "tag=${BRANCH#versions/}" >> $GITHUB_OUTPUT
   #         fi
   generate:
-    needs: get-npm-tag
+    # needs: get-npm-tag
     uses: moovfinancial/sdk-generation-action/.github/workflows/workflow-executor.yaml@main
     with:
       force: ${{ github.event.inputs.force }}
