@@ -12,12 +12,19 @@ import {
   AmountDecimalValidationError$Outbound,
   AmountDecimalValidationError$outboundSchema,
 } from "./amountdecimalvalidationerror.js";
+import {
+  InvoiceLineItemImageValidationError,
+  InvoiceLineItemImageValidationError$inboundSchema,
+  InvoiceLineItemImageValidationError$Outbound,
+  InvoiceLineItemImageValidationError$outboundSchema,
+} from "./invoicelineitemimagevalidationerror.js";
 
 export type InvoiceLineItemOptionValidationError = {
   name?: string | undefined;
   group?: string | undefined;
   priceModifier?: AmountDecimalValidationError | undefined;
   quantity?: string | undefined;
+  images?: { [k: string]: InvoiceLineItemImageValidationError } | undefined;
 };
 
 /** @internal */
@@ -30,6 +37,8 @@ export const InvoiceLineItemOptionValidationError$inboundSchema: z.ZodType<
   group: z.string().optional(),
   priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
   quantity: z.string().optional(),
+  images: z.record(InvoiceLineItemImageValidationError$inboundSchema)
+    .optional(),
 });
 /** @internal */
 export type InvoiceLineItemOptionValidationError$Outbound = {
@@ -37,6 +46,9 @@ export type InvoiceLineItemOptionValidationError$Outbound = {
   group?: string | undefined;
   priceModifier?: AmountDecimalValidationError$Outbound | undefined;
   quantity?: string | undefined;
+  images?:
+    | { [k: string]: InvoiceLineItemImageValidationError$Outbound }
+    | undefined;
 };
 
 /** @internal */
@@ -49,6 +61,8 @@ export const InvoiceLineItemOptionValidationError$outboundSchema: z.ZodType<
   group: z.string().optional(),
   priceModifier: AmountDecimalValidationError$outboundSchema.optional(),
   quantity: z.string().optional(),
+  images: z.record(InvoiceLineItemImageValidationError$outboundSchema)
+    .optional(),
 });
 
 export function invoiceLineItemOptionValidationErrorToJSON(

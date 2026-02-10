@@ -39,7 +39,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="createInvoice" method="post" path="/accounts/{accountID}/invoices" -->
+<!-- UsageSnippet language="typescript" operationID="createInvoice" method="post" path="/accounts/{accountID}/invoices" example="Created invoice" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -53,7 +53,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.invoices.createInvoice({
-    accountID: "241bf524-e777-4941-a5e4-d7f3f34d7a00",
+    accountID: "c463fb80-6410-48b7-9e2e-6e9ec58a654f",
     createInvoice: {
       customerAccountID: "3dfff852-927d-47e8-822c-2fffc57ff6b9",
       description: "Professional services for Q1 2026",
@@ -104,7 +104,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await invoicesCreateInvoice(moov, {
-    accountID: "241bf524-e777-4941-a5e4-d7f3f34d7a00",
+    accountID: "c463fb80-6410-48b7-9e2e-6e9ec58a654f",
     createInvoice: {
       customerAccountID: "3dfff852-927d-47e8-822c-2fffc57ff6b9",
       description: "Professional services for Q1 2026",
@@ -169,7 +169,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="listInvoices" method="get" path="/accounts/{accountID}/invoices" -->
+<!-- UsageSnippet language="typescript" operationID="listInvoices" method="get" path="/accounts/{accountID}/invoices" example="Invoices" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -258,7 +258,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getInvoice" method="get" path="/accounts/{accountID}/invoices/{invoiceID}" -->
+<!-- UsageSnippet language="typescript" operationID="getInvoice" method="get" path="/accounts/{accountID}/invoices/{invoiceID}" example="Invoice" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -344,7 +344,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="updateInvoice" method="patch" path="/accounts/{accountID}/invoices/{invoiceID}" -->
+<!-- UsageSnippet language="typescript" operationID="updateInvoice" method="patch" path="/accounts/{accountID}/invoices/{invoiceID}" example="Updated invoice" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -358,8 +358,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.invoices.updateInvoice({
-    accountID: "ce46d65a-8504-4afa-b3f7-303401bd08b3",
-    invoiceID: "ef510999-370a-4350-87d5-bc81fc02a2ea",
+    accountID: "fcce46d6-5a85-404a-afa3-f7303401bd08",
+    invoiceID: "3eef5109-9937-40a3-b507-d5bc81fc02a2",
     updateInvoice: {
       description: "Updated professional services for Q1 2026",
       lineItems: {
@@ -405,8 +405,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await invoicesUpdateInvoice(moov, {
-    accountID: "ce46d65a-8504-4afa-b3f7-303401bd08b3",
-    invoiceID: "ef510999-370a-4350-87d5-bc81fc02a2ea",
+    accountID: "fcce46d6-5a85-404a-afa3-f7303401bd08",
+    invoiceID: "3eef5109-9937-40a3-b507-d5bc81fc02a2",
     updateInvoice: {
       description: "Updated professional services for Q1 2026",
       lineItems: {
@@ -467,7 +467,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="createInvoicePayment" method="post" path="/accounts/{accountID}/invoices/{invoiceID}/payments" -->
+<!-- UsageSnippet language="typescript" operationID="createInvoicePayment" method="post" path="/accounts/{accountID}/invoices/{invoiceID}/payments" example="External payment" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -573,7 +573,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="listInvoicePayments" method="get" path="/accounts/{accountID}/invoices/{invoiceID}/payments" -->
+<!-- UsageSnippet language="typescript" operationID="listInvoicePayments" method="get" path="/accounts/{accountID}/invoices/{invoiceID}/payments" example="Payments" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

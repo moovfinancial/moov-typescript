@@ -13,6 +13,12 @@ import {
   AmountDecimalValidationError$outboundSchema,
 } from "./amountdecimalvalidationerror.js";
 import {
+  InvoiceLineItemImageValidationError,
+  InvoiceLineItemImageValidationError$inboundSchema,
+  InvoiceLineItemImageValidationError$Outbound,
+  InvoiceLineItemImageValidationError$outboundSchema,
+} from "./invoicelineitemimagevalidationerror.js";
+import {
   InvoiceLineItemOptionValidationError,
   InvoiceLineItemOptionValidationError$inboundSchema,
   InvoiceLineItemOptionValidationError$Outbound,
@@ -25,6 +31,7 @@ export type InvoiceLineItemValidationError = {
   basePrice?: AmountDecimalValidationError | undefined;
   options?: { [k: string]: InvoiceLineItemOptionValidationError } | undefined;
   quantity?: string | undefined;
+  images?: { [k: string]: InvoiceLineItemImageValidationError } | undefined;
 };
 
 /** @internal */
@@ -39,6 +46,8 @@ export const InvoiceLineItemValidationError$inboundSchema: z.ZodType<
   options: z.record(InvoiceLineItemOptionValidationError$inboundSchema)
     .optional(),
   quantity: z.string().optional(),
+  images: z.record(InvoiceLineItemImageValidationError$inboundSchema)
+    .optional(),
 });
 /** @internal */
 export type InvoiceLineItemValidationError$Outbound = {
@@ -49,6 +58,9 @@ export type InvoiceLineItemValidationError$Outbound = {
     | { [k: string]: InvoiceLineItemOptionValidationError$Outbound }
     | undefined;
   quantity?: string | undefined;
+  images?:
+    | { [k: string]: InvoiceLineItemImageValidationError$Outbound }
+    | undefined;
 };
 
 /** @internal */
@@ -63,6 +75,8 @@ export const InvoiceLineItemValidationError$outboundSchema: z.ZodType<
   options: z.record(InvoiceLineItemOptionValidationError$outboundSchema)
     .optional(),
   quantity: z.string().optional(),
+  images: z.record(InvoiceLineItemImageValidationError$outboundSchema)
+    .optional(),
 });
 
 export function invoiceLineItemValidationErrorToJSON(
