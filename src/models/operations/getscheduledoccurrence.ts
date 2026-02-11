@@ -31,13 +31,13 @@ export type GetScheduledOccurrenceRequest = {
   accountID: string;
   scheduleID: string;
   /**
-   * Allows the specification of additional filters beyond the UUID.
+   *   Allows the specification of additional filters beyond the UUID.
    *
    * @remarks
    *
-   * Specifying a UUID string returns the exact occurrence.
-   * Specifying a RFC 3339 timestamp returns the latest occurrence at or before that timestamp.
-   * Specifying `latest` returns the latest occurrence at or before now.
+   *   Specifying a UUID string returns the exact occurrence.
+   *   Specifying a RFC 3339 timestamp returns the latest occurrence at or before that timestamp.
+   *   Specifying `latest` returns the latest occurrence at or before now.
    */
   occurrenceFilter: string;
 };
