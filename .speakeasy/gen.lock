@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 32e19427d8409a5e6dc83a1e42b5eab2
+  docChecksum: 8605c83a8968c52c984da6462883148f
   docVersion: latest
-  speakeasyVersion: 1.709.1
-  generationVersion: 2.812.2
-  releaseVersion: 0.23.2
-  configChecksum: 21ce28dccdd7b7569950f0e7339ec01b
+  speakeasyVersion: 1.709.4
+  generationVersion: 2.816.0
+  releaseVersion: 0.23.3
+  configChecksum: 76b68412aac9e6c1c21c20bbbd3a530e
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 242fdbe7-7b5e-43e8-b475-9a04c5a0354c
-  pristine_commit_hash: ad77d2ad33a6d05491e185d8de7e57949d271b30
-  pristine_tree_hash: 17f2e7124c9be19ae56a654d90a024eecaa68c60
+  generation_id: 10fe4df8-c8ec-4bb7-9402-055db5e2deef
+  pristine_commit_hash: 2bac19d4fd80bfccb32408aaf4108d1fc7671ef1
+  pristine_tree_hash: 0f78be8bca548ee95054ed098f457ef77ae1e9c8
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -2983,8 +2983,8 @@ trackedFiles:
     pristine_git_object: 019d2674ace832ab0c2e905709893f43576edc2b
   docs/models/operations/createtransferrequest.md:
     id: 479572132ed9
-    last_write_checksum: sha1:cb464063b05d2a3a071632a55d1a34445f692b53
-    pristine_git_object: e6b9e85c2c65ffdb902feb78463691c8d6def5e4
+    last_write_checksum: sha1:3625e4d7e6c11107d04c8107bd3052bac7d1f633
+    pristine_git_object: e7a5b10c11149adb4e1695935ecd8efcc743aa76
   docs/models/operations/createtransferresponse.md:
     id: 1fdce9316bfb
     last_write_checksum: sha1:57e4281929d50b56715456138358a260cc5de48f
@@ -3579,8 +3579,8 @@ trackedFiles:
     pristine_git_object: c59e1b875b40093a186f303d98ff7bea3e67fc69
   docs/models/operations/getscheduledoccurrencerequest.md:
     id: 8f9abb149231
-    last_write_checksum: sha1:ec8dd71e6f6a50b8bcdfa35c34c471f3969e0f71
-    pristine_git_object: 20606782b244f8d5b5882d9c6cad49e7a8db4a05
+    last_write_checksum: sha1:5d40414a6fad5a28d26a1d525e58c0499faa5790
+    pristine_git_object: b96e0155b26cb2e3106db089069caff394c2f9a0
   docs/models/operations/getscheduledoccurrenceresponse.md:
     id: 65bce9a03389
     last_write_checksum: sha1:d6ec49f9bc1d9ce11e273778794208796ae943f8
@@ -4983,12 +4983,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:7544b58bc3656c4ef77f2a0fd1f93175339b7e6e
-    pristine_git_object: 698e12fd0ae03e80e558eaee32bf77f35b9fd4d4
+    last_write_checksum: sha1:27d43ecdbd1dc37c9507ca918da61b3a2f0c9703
+    pristine_git_object: 7741d5e3afbfe082e9976c6ddab3b03ee99ffbd4
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:cbdafc4988bc7878821e3e3c04d1c5651d7285cd
-    pristine_git_object: e1004dda3abb4cc70a145284c587da4403cb713a
+    last_write_checksum: sha1:e0beb55ec41d17ba3e21cb987ab26023cdf71f4e
+    pristine_git_object: 66e0ace9ac80797fe326bdf5ae7c2b89bdb9feaf
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5723,8 +5723,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:f93905a0d1beca4b7d41935c8dcbcb10f63ff3c9
-    pristine_git_object: 2f41250e42ba1fe5fae762c82721417ebd0ec02c
+    last_write_checksum: sha1:02d87436c74711fc95e6dea2da2effab665085e5
+    pristine_git_object: 0ef8f1bed86430aaa6fc7065a2cb6295853649e9
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5803,8 +5803,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:b63146f8157f57dce25bb2913135a25a54315120
-    pristine_git_object: bd21faf01427019e5b81445c5f84cf036b08e477
+    last_write_checksum: sha1:8111bace6330b270c1fbd12aaeeab884bc336f8f
+    pristine_git_object: 23dc03da4464da7b25d88321fb758ba3804f3a0b
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5819,8 +5819,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:1bf97b51a6a6bb66b8ada4244711f851718d6951
-    pristine_git_object: f1488df0df1c6ccb8ddce57778a8a34952b50b5e
+    last_write_checksum: sha1:4ef8ca086dfbfd42b187e0df2c68c6dd8fb42d45
+    pristine_git_object: 0e6a814cc12e49d1c1dbcb7b3cc4471f931e5c86
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:56c73d4429691516e35541825e759a0285747a2b
@@ -9115,8 +9115,8 @@ trackedFiles:
     pristine_git_object: 7bb2cbaf68a5e74e5607a1d9e4a20e87fa98ba72
   src/models/operations/createtransfer.ts:
     id: 72eeb23df9cb
-    last_write_checksum: sha1:7018dd0fa7bc9f4e80f5c50c559e1146ede0e823
-    pristine_git_object: 1e4c50d2203b9bf8f763ef535caf2607085134aa
+    last_write_checksum: sha1:1ed61651c9c44aee021efab06494b70b28585eff
+    pristine_git_object: 8e2995d7a5dcb22fa1dea5c840572387a17e9ef6
   src/models/operations/createtransferoptions.ts:
     id: bd9d4e8ec498
     last_write_checksum: sha1:f41614dffae8f6059efe6c8c80eee35a4622ceae
@@ -9315,8 +9315,8 @@ trackedFiles:
     pristine_git_object: d8c71c160eff9e8c62d3ce87e11c48dbaeae12bf
   src/models/operations/getscheduledoccurrence.ts:
     id: c7794eee805d
-    last_write_checksum: sha1:3fc2c6de87789634c4d72ed34817af44933d1cb6
-    pristine_git_object: eafbf0e629765c47f70323a59aaf46f8d5196e4a
+    last_write_checksum: sha1:b9d34c6c560a699d5ff79a78e420b546e389dcce
+    pristine_git_object: f2da6a56b8520006045ffa5fd6ed189b3fa2ed66
   src/models/operations/getschedules.ts:
     id: 603f98b43b36
     last_write_checksum: sha1:b5fc276d5a9f6a4e5cde2a0c8de95210ffd3d62e
@@ -12683,7 +12683,6 @@ examples:
           application/json: {"secret": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `moov.invoices.createInvoice()`: \n  *  `request.createInvoice.lineItems.items[]` **Changed** (Breaking ⚠️)\n  *  `error.lineItems.items.Map<CreateInvoiceLineItemValidationError>` **Changed**\n* `moov.invoices.updateInvoice()`: \n  *  `request.updateInvoice.lineItems.items[]` **Changed** (Breaking ⚠️)\n  *  `error.lineItems.items.Map<InvoiceLineItemValidationError>` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
