@@ -29,10 +29,10 @@ export type CreateTransferGlobals = {
 
 export type CreateTransferRequest = {
   /**
-   * Identifies a unique request to create a transfer.
+   *   Identifies a unique request to create a transfer.
    *
    * @remarks
-   * In order to avoid creating duplicate transfers, the same idempotency key should be reused when retrying a request.
+   *   In order to avoid creating duplicate transfers, the same idempotency key should be reused when retrying a request.
    */
   xIdempotencyKey: string;
   /**
