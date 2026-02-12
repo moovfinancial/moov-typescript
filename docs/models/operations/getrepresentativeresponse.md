@@ -8,7 +8,7 @@ import { GetRepresentativeResponse } from "@moovio/sdk/models/operations";
 let value: GetRepresentativeResponse = {
   headers: {},
   result: {
-    representativeID: "ab365088-4599-48dd-98ef-779f0dd7e1aa",
+    representativeID: "<id>",
     name: {
       firstName: "Jordan",
       middleName: "Reese",
@@ -32,8 +32,8 @@ let value: GetRepresentativeResponse = {
       ownershipPercentage: 38,
       jobTitle: "CEO",
     },
-    createdOn: new Date("2025-10-19T02:15:20.255Z"),
-    updatedOn: new Date("2026-06-27T09:02:04.151Z"),
+    createdOn: new Date("2025-12-21T17:22:40.206Z"),
+    updatedOn: new Date("2026-02-15T00:56:15.037Z"),
   },
 };
 ```

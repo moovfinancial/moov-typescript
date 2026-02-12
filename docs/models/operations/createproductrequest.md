@@ -6,7 +6,7 @@
 import { CreateProductRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateProductRequest = {
-  accountID: "f5ebe946-352a-4efb-aa60-bc965780d615",
+  accountID: "<id>",
   productRequest: {
     title: "<value>",
     basePrice: {
@@ -16,8 +16,8 @@ let value: CreateProductRequest = {
     optionGroups: [
       {
         name: "<value>",
-        minSelect: 903729,
-        maxSelect: 102098,
+        minSelect: 977644,
+        maxSelect: 374163,
         options: [
           {
             name: "<value>",

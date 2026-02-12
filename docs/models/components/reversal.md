@@ -12,7 +12,7 @@ const value: components.ReversedWithCancellation = {
   cancellation: {
     cancellationID: "<id>",
     status: "failed",
-    createdOn: new Date("2024-08-07T20:06:14.959Z"),
+    createdOn: new Date("2026-04-14T05:21:20.175Z"),
   },
 };
 ```
@@ -22,10 +22,10 @@ const value: components.ReversedWithCancellation = {
 ```typescript
 const value: components.ReversedWithRefund = {
   refund: {
-    refundID: "160cfb90-ecd0-4422-8825-9ff21c8fc73b",
-    createdOn: new Date("2025-07-14T07:59:29.449Z"),
-    updatedOn: new Date("2025-12-10T23:22:58.110Z"),
-    status: "failed",
+    refundID: "<id>",
+    createdOn: new Date("2024-03-29T04:09:57.414Z"),
+    updatedOn: new Date("2025-03-05T10:28:51.213Z"),
+    status: "created",
     amount: {
       currency: "USD",
       value: 1204,

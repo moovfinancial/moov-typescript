@@ -6,7 +6,7 @@
 import { CreateInvoiceRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateInvoiceRequest = {
-  accountID: "ba53f8ee-33b0-415f-92f5-b56409d7709e",
+  accountID: "<id>",
   createInvoice: {
     customerAccountID: "<id>",
     lineItems: {
@@ -17,11 +17,11 @@ let value: CreateInvoiceRequest = {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
-          quantity: 188713,
+          quantity: 673710,
           options: [
             {
               name: "<value>",
-              quantity: 985052,
+              quantity: 337766,
               priceModifier: {
                 currency: "USD",
                 valueDecimal: "12.987654321",

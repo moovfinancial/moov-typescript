@@ -10,8 +10,8 @@ let value: TransferDestination = {
   paymentMethodType: "rtp-credit",
   account: {
     accountID: "<id>",
-    email: "Mason_Koepp@hotmail.com",
-    displayName: "Concepcion46",
+    email: "Jaeden92@yahoo.com",
+    displayName: "Pearlie_Tromp70",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",

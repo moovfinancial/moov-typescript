@@ -8,19 +8,19 @@ Instantly send funds to a bank account.
 import { InstantBankCreditPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: InstantBankCreditPaymentMethod = {
-  paymentMethodID: "2fbfbefd-2438-4326-87d5-920d7a52d533",
+  paymentMethodID: "<id>",
   paymentMethodType: "instant-bank-credit",
   bankAccount: {
-    bankAccountID: "844f0b74-3367-4ec6-bd20-31d80a5bd587",
+    bankAccountID: "<id>",
     fingerprint: "<value>",
-    status: "pending",
+    status: "verified",
     holderName: "<value>",
-    holderType: "individual",
+    holderType: "business",
     bankName: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2025-05-13T19:17:44.414Z"),
+    updatedOn: new Date("2024-09-12T06:36:19.592Z"),
   },
 };
 ```

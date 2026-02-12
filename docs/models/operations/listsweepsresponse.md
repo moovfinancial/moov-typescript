@@ -9,15 +9,15 @@ let value: ListSweepsResponse = {
   headers: {},
   result: [
     {
-      sweepID: "629c7a64-36f0-432d-b539-bc42f61888e0",
+      sweepID: "<id>",
       status: "canceled",
       accruedAmount: "<value>",
       currency: "USD",
-      accrualStartedOn: new Date("2026-01-25T08:43:52.998Z"),
+      accrualStartedOn: new Date("2024-05-29T23:23:30.304Z"),
       subtotals: [
         {
-          type: "ach-reversal",
-          count: 901665,
+          type: "moov-fee",
+          count: 782798,
           amount: {
             currency: "USD",
             valueDecimal: "12.987654321",

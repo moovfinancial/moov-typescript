@@ -6,7 +6,7 @@
 import { SaveUnderwritingRequest } from "@moovio/sdk/models/operations";
 
 let value: SaveUnderwritingRequest = {
-  accountID: "eebaf8fd-a00e-456c-b486-fdce11760bc8",
+  accountID: "<id>",
   upsertUnderwriting: {},
 };
 ```

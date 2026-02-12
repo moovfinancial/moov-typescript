@@ -6,7 +6,7 @@
 import { ListProductsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListProductsRequest = {
-  accountID: "7fb654e2-68ad-4f4d-83c2-405581c205be",
+  accountID: "<id>",
   skip: 60,
   count: 20,
 };

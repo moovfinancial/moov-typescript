@@ -70,7 +70,7 @@ let value: UpdateScheduleResponse = {
                     },
                     images: [
                       {
-                        imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                        imageID: "<id>",
                         link:
                           "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
                         publicID: "<id>",
@@ -80,7 +80,7 @@ let value: UpdateScheduleResponse = {
                 ],
                 images: [
                   {
-                    imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                    imageID: "<id>",
                     link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
                     publicID: "<id>",
                   },
@@ -146,7 +146,7 @@ let value: UpdateScheduleResponse = {
                   },
                   images: [
                     {
-                      imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                      imageID: "<id>",
                       link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
                       publicID: "<id>",
                     },
@@ -155,7 +155,7 @@ let value: UpdateScheduleResponse = {
               ],
               images: [
                 {
-                  imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                  imageID: "<id>",
                   link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
                   publicID: "<id>",
                 },
@@ -168,8 +168,8 @@ let value: UpdateScheduleResponse = {
     },
     scheduleID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
     sourceAccountID: "c520f1b9-0ba7-42f5-b977-248cdbe41c69",
-    createdOn: new Date("2026-05-12T09:50:36.363Z"),
-    updatedOn: new Date("2025-09-19T09:41:07.308Z"),
+    createdOn: new Date("2025-01-13T23:54:26.206Z"),
+    updatedOn: new Date("2026-07-04T10:48:35.137Z"),
   },
 };
 ```

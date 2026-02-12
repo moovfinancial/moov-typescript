@@ -11,7 +11,7 @@ let value: CreateTicket = {
   title: "<value>",
   body: "<value>",
   contact: {
-    email: "Anjali_Schiller@yahoo.com",
+    email: "Icie46@gmail.com",
   },
 };
 ```

@@ -6,19 +6,10 @@
 import { ListProductsResponse } from "@moovio/sdk/models/operations";
 
 let value: ListProductsResponse = {
-  headers: {
-    "key": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-    "key1": [
-      "<value 1>",
-    ],
-  },
+  headers: {},
   result: [
     {
-      productID: "30e37085-8508-4045-8d2f-ec5edf893c7e",
+      productID: "<id>",
       title: "<value>",
       basePrice: {
         currency: "USD",
@@ -27,20 +18,35 @@ let value: ListProductsResponse = {
       optionGroups: [
         {
           name: "<value>",
-          minSelect: 18424,
-          maxSelect: 504490,
-          options: [],
+          minSelect: 225596,
+          maxSelect: 59952,
+          options: [
+            {
+              name: "<value>",
+              priceModifier: {
+                currency: "USD",
+                valueDecimal: "12.987654321",
+              },
+              images: [
+                {
+                  imageID: "<id>",
+                  link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                  publicID: "q7lKWleAy9fUNhEGezQ1g",
+                },
+              ],
+            },
+          ],
         },
       ],
       images: [
         {
-          imageID: "f7be8907-e233-4bcb-8b74-4d8d7ceefe37",
+          imageID: "<id>",
           link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
           publicID: "q7lKWleAy9fUNhEGezQ1g",
         },
       ],
-      createdOn: new Date("2025-04-02T23:47:44.686Z"),
-      updatedOn: new Date("2026-06-17T20:01:38.823Z"),
+      createdOn: new Date("2024-09-17T22:55:29.103Z"),
+      updatedOn: new Date("2025-06-29T21:11:27.020Z"),
     },
   ],
 };

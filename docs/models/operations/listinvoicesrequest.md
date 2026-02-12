@@ -8,7 +8,7 @@ import { ListInvoicesRequest } from "@moovio/sdk/models/operations";
 let value: ListInvoicesRequest = {
   skip: 60,
   count: 20,
-  accountID: "6af9d144-00c6-4020-a17c-cc930ec81af4",
+  accountID: "<id>",
 };
 ```
 

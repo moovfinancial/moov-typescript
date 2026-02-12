@@ -6,7 +6,7 @@
 import { GetPaymentLinkQRCodeRequest } from "@moovio/sdk/models/operations";
 
 let value: GetPaymentLinkQRCodeRequest = {
-  accountID: "cd290adc-0bdb-4122-a3f2-fd49e2c2eacc",
+  accountID: "<id>",
   paymentLinkCode: "uc7ZYKrMhi",
 };
 ```

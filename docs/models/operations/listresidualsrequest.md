@@ -8,7 +8,7 @@ import { ListResidualsRequest } from "@moovio/sdk/models/operations";
 let value: ListResidualsRequest = {
   skip: 60,
   count: 20,
-  accountID: "be282ca8-77c8-414a-87a9-63b2ff57ffde",
+  accountID: "<id>",
 };
 ```
 

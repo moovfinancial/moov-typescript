@@ -6,8 +6,8 @@
 import { UpdateInvoiceRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateInvoiceRequest = {
-  accountID: "28c8941e-564a-438e-b2c7-63ef66418110",
-  invoiceID: "383b525a-0363-403c-ab4c-186fe0d26eee",
+  accountID: "<id>",
+  invoiceID: "<id>",
   updateInvoice: {
     lineItems: {
       items: [
@@ -17,11 +17,11 @@ let value: UpdateInvoiceRequest = {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
-          quantity: 188713,
+          quantity: 673710,
           options: [
             {
               name: "<value>",
-              quantity: 985052,
+              quantity: 337766,
               priceModifier: {
                 currency: "USD",
                 valueDecimal: "12.987654321",

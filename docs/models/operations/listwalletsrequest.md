@@ -8,7 +8,7 @@ import { ListWalletsRequest } from "@moovio/sdk/models/operations";
 let value: ListWalletsRequest = {
   skip: 60,
   count: 20,
-  accountID: "cc70c463-f3a3-4c1f-8efb-26d0759df41f",
+  accountID: "<id>",
 };
 ```
 

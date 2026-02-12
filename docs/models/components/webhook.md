@@ -8,13 +8,15 @@ A configured webhook endpoint that receives event notifications.
 import { Webhook } from "@moovio/sdk/models/components";
 
 let value: Webhook = {
-  webhookID: "cbaea92a-d065-47e9-bddf-3491757c3776",
-  url: "https://fuzzy-sock.org",
+  webhookID: "<id>",
+  url: "https://sad-outlaw.org",
   status: "disabled",
-  eventTypes: [],
-  description: "between maroon divert wafer crushing",
-  createdOn: new Date("2024-06-28T04:16:58.387Z"),
-  updatedOn: new Date("2024-02-17T19:49:14.383Z"),
+  eventTypes: [
+    "bankAccount.updated",
+  ],
+  description: "overcook as loosely total gosh absent hmph for",
+  createdOn: new Date("2026-01-29T16:35:26.923Z"),
+  updatedOn: new Date("2026-12-04T00:18:18.481Z"),
 };
 ```
 

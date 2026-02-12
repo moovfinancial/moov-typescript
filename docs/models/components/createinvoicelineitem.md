@@ -17,7 +17,7 @@ let value: CreateInvoiceLineItem = {
   options: [
     {
       name: "<value>",
-      quantity: 985052,
+      quantity: 337766,
       priceModifier: {
         currency: "USD",
         valueDecimal: "12.987654321",
