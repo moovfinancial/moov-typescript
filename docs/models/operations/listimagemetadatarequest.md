@@ -6,7 +6,7 @@
 import { ListImageMetadataRequest } from "@moovio/sdk/models/operations";
 
 let value: ListImageMetadataRequest = {
-  accountID: "a567a671-1f11-4935-aca2-de06203aa623",
+  accountID: "<id>",
   skip: 60,
   count: 20,
 };

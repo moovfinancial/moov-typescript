@@ -8,7 +8,7 @@ import { ListFeeRevenueRequest } from "@moovio/sdk/models/operations";
 let value: ListFeeRevenueRequest = {
   skip: 60,
   count: 20,
-  accountID: "ce719a2a-1ebd-4c09-a5ba-b978c4dc2328",
+  accountID: "<id>",
 };
 ```
 

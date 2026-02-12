@@ -7,7 +7,10 @@ import { ListRefundsResponse } from "@moovio/sdk/models/operations";
 
 let value: ListRefundsResponse = {
   headers: {
-    "key": [],
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
     "key1": [
       "<value 1>",
       "<value 2>",
@@ -15,14 +18,15 @@ let value: ListRefundsResponse = {
     "key2": [
       "<value 1>",
       "<value 2>",
+      "<value 3>",
     ],
   },
   result: [
     {
-      refundID: "c99ec072-5acd-4ee3-996d-309746950e23",
-      createdOn: new Date("2026-09-25T02:21:45.824Z"),
-      updatedOn: new Date("2024-12-16T11:24:33.349Z"),
-      status: "created",
+      refundID: "<id>",
+      createdOn: new Date("2025-04-12T00:48:30.586Z"),
+      updatedOn: new Date("2026-11-18T21:54:45.944Z"),
+      status: "failed",
       amount: {
         currency: "USD",
         value: 1204,

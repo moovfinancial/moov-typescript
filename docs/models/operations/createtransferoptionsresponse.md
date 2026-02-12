@@ -6,41 +6,46 @@
 import { CreateTransferOptionsResponse } from "@moovio/sdk/models/operations";
 
 let value: CreateTransferOptionsResponse = {
-  headers: {},
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+    ],
+  },
   result: {
     sourceOptions: [
       {
-        paymentMethodID: "8a0652ec-9a9f-4a34-85b0-3c2d5c8eaf23",
+        paymentMethodID: "<id>",
         paymentMethodType: "ach-debit-collect",
         bankAccount: {
-          bankAccountID: "9b467f1c-9448-436e-ae4c-b66a00f95edd",
+          bankAccountID: "<id>",
           fingerprint: "<value>",
           status: "verified",
           holderName: "<value>",
-          holderType: "individual",
+          holderType: "business",
           bankName: "<value>",
-          bankAccountType: "general-ledger",
+          bankAccountType: "loan",
           routingNumber: "<value>",
           lastFourAccountNumber: "<value>",
-          updatedOn: new Date("2025-10-01T01:34:04.625Z"),
+          updatedOn: new Date("2026-10-09T09:15:43.090Z"),
         },
       },
     ],
     destinationOptions: [
       {
-        paymentMethodID: "44f0b743-367e-4c6d-a203-1d80a5bd587d",
+        paymentMethodID: "<id>",
         paymentMethodType: "rtp-credit",
         bankAccount: {
-          bankAccountID: "9b467f1c-9448-436e-ae4c-b66a00f95edd",
+          bankAccountID: "<id>",
           fingerprint: "<value>",
           status: "verified",
           holderName: "<value>",
-          holderType: "individual",
+          holderType: "business",
           bankName: "<value>",
-          bankAccountType: "general-ledger",
+          bankAccountType: "loan",
           routingNumber: "<value>",
           lastFourAccountNumber: "<value>",
-          updatedOn: new Date("2025-10-01T01:34:04.625Z"),
+          updatedOn: new Date("2026-10-09T09:15:43.090Z"),
         },
       },
     ],

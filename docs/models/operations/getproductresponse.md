@@ -10,7 +10,7 @@ let value: GetProductResponse = {
     "key": [],
   },
   result: {
-    productID: "7bccae5e-0eb4-45cc-bf46-dac9bc66de27",
+    productID: "<id>",
     title: "<value>",
     basePrice: {
       currency: "USD",
@@ -19,20 +19,35 @@ let value: GetProductResponse = {
     optionGroups: [
       {
         name: "<value>",
-        minSelect: 18424,
-        maxSelect: 504490,
-        options: [],
+        minSelect: 225596,
+        maxSelect: 59952,
+        options: [
+          {
+            name: "<value>",
+            priceModifier: {
+              currency: "USD",
+              valueDecimal: "12.987654321",
+            },
+            images: [
+              {
+                imageID: "<id>",
+                link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                publicID: "q7lKWleAy9fUNhEGezQ1g",
+              },
+            ],
+          },
+        ],
       },
     ],
     images: [
       {
-        imageID: "f7be8907-e233-4bcb-8b74-4d8d7ceefe37",
+        imageID: "<id>",
         link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
         publicID: "q7lKWleAy9fUNhEGezQ1g",
       },
     ],
-    createdOn: new Date("2025-02-16T23:26:04.032Z"),
-    updatedOn: new Date("2026-01-03T17:47:03.549Z"),
+    createdOn: new Date("2025-06-12T00:16:40.280Z"),
+    updatedOn: new Date("2026-03-01T18:29:56.552Z"),
   },
 };
 ```

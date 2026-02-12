@@ -10,11 +10,12 @@ let value: LinkApplePayTokenResponse = {
     "key": [
       "<value 1>",
       "<value 2>",
+      "<value 3>",
     ],
   },
   result: {
-    paymentMethodID: "d6f1e4a6-51e3-45f0-a1b9-b57a1aebb00c",
-    paymentMethodType: "card-payment",
+    paymentMethodID: "<id>",
+    paymentMethodType: "pull-from-card",
     applePay: {
       brand: "Visa",
       cardType: "credit",

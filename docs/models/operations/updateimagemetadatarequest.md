@@ -6,8 +6,8 @@
 import { UpdateImageMetadataRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateImageMetadataRequest = {
-  accountID: "adb97ef7-1e79-46d7-a526-fae888af137b",
-  imageID: "75419bed-574d-4c00-b96e-c6c8a46c1896",
+  accountID: "<id>",
+  imageID: "<id>",
   imageMetadataRequest: {},
 };
 ```

@@ -6,15 +6,15 @@
 import { Sweep } from "@moovio/sdk/models/components";
 
 let value: Sweep = {
-  sweepID: "bc240500-5afc-494e-9a93-bced3129782f",
-  status: "closed",
+  sweepID: "<id>",
+  status: "failed",
   accruedAmount: "<value>",
   currency: "USD",
-  accrualStartedOn: new Date("2024-07-26T01:48:08.217Z"),
+  accrualStartedOn: new Date("2026-06-07T03:04:47.826Z"),
   subtotals: [
     {
-      type: "ach-reversal",
-      count: 901665,
+      type: "moov-fee",
+      count: 782798,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",

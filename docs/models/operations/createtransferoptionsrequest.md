@@ -6,7 +6,7 @@
 import { CreateTransferOptionsRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateTransferOptionsRequest = {
-  accountID: "138bdb49-c1c7-4c8b-ad38-ed8df9a7452a",
+  accountID: "<id>",
   createTransferOptions: {
     source: {},
     destination: {},

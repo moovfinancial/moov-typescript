@@ -6,28 +6,23 @@
 import { CreateWalletResponse } from "@moovio/sdk/models/operations";
 
 let value: CreateWalletResponse = {
-  headers: {
-    "key": [
-      "<value 1>",
-    ],
-  },
+  headers: {},
   result: {
-    walletID: "f033a163-aef4-4033-976a-2bf12addd99a",
+    walletID: "<id>",
     availableBalance: {
       currency: "USD",
       value: 1204,
       valueDecimal: "<value>",
     },
-    partnerAccountID: "81a2634f-e135-42ec-ae6e-01511d21a84b",
+    partnerAccountID: "<id>",
     name: "<value>",
-    status: "active",
-    walletType: "general",
-    description:
-      "formula serene gazebo wherever hence triumphantly indeed scent",
+    status: "closed",
+    walletType: "default",
+    description: "who concerning rightfully ignorant",
     metadata: {
       "optional": "metadata",
     },
-    createdOn: new Date("2026-01-14T00:19:42.627Z"),
+    createdOn: new Date("2025-08-14T11:36:28.146Z"),
   },
 };
 ```

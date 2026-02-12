@@ -27,7 +27,7 @@ let value: PaymentLinkLineItems = {
           },
           images: [
             {
-              imageID: "8b33557e-9413-4327-8f48-150f83a62f57",
+              imageID: "<id>",
               link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
               publicID: "<id>",
             },
@@ -36,7 +36,7 @@ let value: PaymentLinkLineItems = {
       ],
       images: [
         {
-          imageID: "8b33557e-9413-4327-8f48-150f83a62f57",
+          imageID: "<id>",
           link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
           publicID: "<id>",
         },
