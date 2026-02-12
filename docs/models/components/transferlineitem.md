@@ -24,7 +24,7 @@ let value: TransferLineItem = {
       },
       images: [
         {
-          imageID: "44707590-7b30-46e6-a6ce-36785ccee925",
+          imageID: "<id>",
           link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
           publicID: "<id>",
         },
@@ -33,7 +33,7 @@ let value: TransferLineItem = {
   ],
   images: [
     {
-      imageID: "44707590-7b30-46e6-a6ce-36785ccee925",
+      imageID: "<id>",
       link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
       publicID: "<id>",
     },

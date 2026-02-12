@@ -31,11 +31,11 @@ let value: GetOnboardingInviteResponse = {
       },
     },
     partner: {
-      accountID: "c6812db5-460a-4d4b-b5f0-8944e7d44461",
+      accountID: "<id>",
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2024-07-10T10:16:24.410Z"),
+    createdOn: new Date("2026-04-10T10:25:23.393Z"),
   },
 };
 ```

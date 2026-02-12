@@ -8,7 +8,7 @@ Describes a business representative.
 import { Representative } from "@moovio/sdk/models/components";
 
 let value: Representative = {
-  representativeID: "fa3d2e6f-e27c-4a45-93ec-fb1b36410de4",
+  representativeID: "<id>",
   name: {
     firstName: "Jordan",
     middleName: "Reese",
@@ -32,8 +32,8 @@ let value: Representative = {
     ownershipPercentage: 38,
     jobTitle: "CEO",
   },
-  createdOn: new Date("2024-03-26T11:26:34.450Z"),
-  updatedOn: new Date("2026-11-26T16:10:06.018Z"),
+  createdOn: new Date("2026-10-24T15:01:06.684Z"),
+  updatedOn: new Date("2025-12-04T05:34:14.629Z"),
 };
 ```
 

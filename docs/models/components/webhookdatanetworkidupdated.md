@@ -6,7 +6,7 @@
 import { WebhookDataNetworkIDUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataNetworkIDUpdated = {
-  accountID: "227f2775-f56f-4801-9052-9636ab5c06b8",
+  accountID: "<id>",
 };
 ```
 

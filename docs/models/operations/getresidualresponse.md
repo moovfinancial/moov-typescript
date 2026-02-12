@@ -6,12 +6,18 @@
 import { GetResidualResponse } from "@moovio/sdk/models/operations";
 
 let value: GetResidualResponse = {
-  headers: {},
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
   result: {
-    residualID: "915b9286-b5bd-4d1b-b4ec-daef49e60e1c",
-    partnerAccountID: "a7438f6d-f94a-46c9-a3a8-4cfed8d7ae12",
-    periodStart: new Date("2026-07-16T15:15:55.948Z"),
-    periodEnd: new Date("2024-12-10T09:00:23.990Z"),
+    residualID: "<id>",
+    partnerAccountID: "<id>",
+    periodStart: new Date("2025-10-19T03:09:51.352Z"),
+    periodEnd: new Date("2024-04-16T12:56:12.342Z"),
     merchantFees: {
       currency: "USD",
       valueDecimal: "12.987654321",
@@ -29,8 +35,8 @@ let value: GetResidualResponse = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
-    createdOn: new Date("2024-02-27T09:21:19.609Z"),
-    updatedOn: new Date("2025-02-05T09:20:22.869Z"),
+    createdOn: new Date("2024-12-12T15:51:06.813Z"),
+    updatedOn: new Date("2026-02-14T01:01:45.152Z"),
   },
 };
 ```

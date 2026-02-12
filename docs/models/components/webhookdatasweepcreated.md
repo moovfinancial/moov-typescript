@@ -6,8 +6,8 @@
 import { WebhookDataSweepCreated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataSweepCreated = {
-  walletID: "b3448046-0079-4b33-81d4-58be44d10630",
-  sweepID: "f447ba26-4ce2-45d2-9827-0489e6b882fd",
+  walletID: "<id>",
+  sweepID: "<id>",
 };
 ```
 

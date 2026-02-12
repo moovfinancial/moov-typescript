@@ -6,14 +6,20 @@
 import { ListImageMetadataResponse } from "@moovio/sdk/models/operations";
 
 let value: ListImageMetadataResponse = {
-  headers: {},
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
   result: [
     {
-      imageID: "764fcd83-2c81-4088-8009-7e84522e9ec8",
+      imageID: "<id>",
       publicID: "<id>",
       link: "https://api.moov.io/images/qJRAaAwwF5hmfeAFdHjIb",
-      createdOn: new Date("2026-07-10T01:24:54.615Z"),
-      updatedOn: new Date("2025-05-02T15:38:31.842Z"),
+      createdOn: new Date("2025-05-12T00:22:28.280Z"),
+      updatedOn: new Date("2025-03-30T11:26:15.967Z"),
     },
   ],
 };

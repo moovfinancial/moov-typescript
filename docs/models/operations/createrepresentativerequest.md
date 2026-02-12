@@ -6,7 +6,7 @@
 import { CreateRepresentativeRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateRepresentativeRequest = {
-  accountID: "e25112da-25e0-4622-8983-5fa2c9529e55",
+  accountID: "<id>",
   createRepresentative: {
     name: {
       firstName: "Jordan",

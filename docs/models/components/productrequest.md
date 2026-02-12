@@ -16,8 +16,8 @@ let value: ProductRequest = {
   optionGroups: [
     {
       name: "<value>",
-      minSelect: 903729,
-      maxSelect: 102098,
+      minSelect: 977644,
+      maxSelect: 374163,
       options: [
         {
           name: "<value>",

@@ -6,10 +6,10 @@
 import { Residual } from "@moovio/sdk/models/components";
 
 let value: Residual = {
-  residualID: "2341c29d-f93c-42f8-af22-8195c34b7191",
-  partnerAccountID: "d3454d32-aa0c-4d26-9791-3b66dd15870b",
-  periodStart: new Date("2024-05-06T17:58:56.512Z"),
-  periodEnd: new Date("2026-09-11T16:01:29.381Z"),
+  residualID: "<id>",
+  partnerAccountID: "<id>",
+  periodStart: new Date("2024-07-08T15:36:45.257Z"),
+  periodEnd: new Date("2024-09-04T13:40:51.094Z"),
   merchantFees: {
     currency: "USD",
     valueDecimal: "12.987654321",
@@ -27,8 +27,8 @@ let value: Residual = {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
-  createdOn: new Date("2026-11-13T14:20:09.847Z"),
-  updatedOn: new Date("2025-12-19T17:29:10.040Z"),
+  createdOn: new Date("2024-10-07T09:59:23.847Z"),
+  updatedOn: new Date("2024-03-27T23:35:26.423Z"),
 };
 ```
 

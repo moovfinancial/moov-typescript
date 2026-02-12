@@ -6,7 +6,7 @@
 import { PaymentLinkLineItemImageMetadata } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkLineItemImageMetadata = {
-  imageID: "d9d97cd4-327b-4af1-8afd-d4d7e218f2f6",
+  imageID: "<id>",
   link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
   publicID: "<id>",
 };

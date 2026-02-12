@@ -8,17 +8,17 @@ import { GetSweepConfigResponse } from "@moovio/sdk/models/operations";
 let value: GetSweepConfigResponse = {
   headers: {},
   result: {
-    sweepConfigID: "ae43eef7-c163-4347-acf8-c2243c3431be",
-    walletID: "87597fc8-e61f-46e3-9c18-6c6ea20dd43e",
-    status: "enabled",
+    sweepConfigID: "<id>",
+    walletID: "<id>",
+    status: "disabled",
     pushPaymentMethod: {
-      paymentMethodID: "cb74fdaf-14de-43d7-95e6-270c9422550b",
+      paymentMethodID: "<id>",
     },
     pullPaymentMethod: {
-      paymentMethodID: "6e6facf0-2f8e-47c2-b493-c9e1a43668ba",
+      paymentMethodID: "<id>",
     },
-    createdOn: new Date("2025-04-06T13:54:31.686Z"),
-    updatedOn: new Date("2025-06-30T05:26:49.123Z"),
+    createdOn: new Date("2026-09-17T09:21:48.954Z"),
+    updatedOn: new Date("2024-10-07T15:07:33.412Z"),
   },
 };
 ```
