@@ -9,19 +9,24 @@ let value: GetSweepResponse = {
   headers: {
     "key": [
       "<value 1>",
+      "<value 2>",
     ],
-    "key1": [],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key2": [],
   },
   result: {
-    sweepID: "8dda803f-fcd9-4154-ab19-4bb163fe021e",
-    status: "failed",
+    sweepID: "<id>",
+    status: "closed",
     accruedAmount: "<value>",
     currency: "USD",
-    accrualStartedOn: new Date("2024-11-16T14:11:40.669Z"),
+    accrualStartedOn: new Date("2026-08-09T15:26:11.381Z"),
     subtotals: [
       {
-        type: "ach-reversal",
-        count: 901665,
+        type: "moov-fee",
+        count: 782798,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",

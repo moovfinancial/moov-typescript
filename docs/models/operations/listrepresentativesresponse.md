@@ -6,10 +6,22 @@
 import { ListRepresentativesResponse } from "@moovio/sdk/models/operations";
 
 let value: ListRepresentativesResponse = {
-  headers: {},
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [
+      "<value 1>",
+    ],
+    "key2": [
+      "<value 1>",
+    ],
+  },
   result: [
     {
-      representativeID: "36dc46d3-6458-4ae9-8c42-2e89bf788f99",
+      representativeID: "<id>",
       name: {
         firstName: "Jordan",
         middleName: "Reese",
@@ -33,8 +45,8 @@ let value: ListRepresentativesResponse = {
         ownershipPercentage: 38,
         jobTitle: "CEO",
       },
-      createdOn: new Date("2026-01-13T15:37:04.091Z"),
-      updatedOn: new Date("2026-07-09T20:37:47.903Z"),
+      createdOn: new Date("2024-08-11T07:08:48.943Z"),
+      updatedOn: new Date("2025-02-28T04:44:26.083Z"),
     },
   ],
 };

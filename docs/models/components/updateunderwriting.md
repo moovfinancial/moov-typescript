@@ -10,20 +10,20 @@ let value: UpdateUnderwriting = {
   maxTransactionSize: 688707,
   averageMonthlyTransactionVolume: 528202,
   volumeByCustomerType: {
-    businessToBusinessPercentage: 692777,
-    consumerToBusinessPercentage: 420839,
+    businessToBusinessPercentage: 524515,
+    consumerToBusinessPercentage: 591999,
   },
   cardVolumeDistribution: {
-    ecommercePercentage: 342750,
-    cardPresentPercentage: 365859,
-    mailOrPhonePercentage: 994153,
-    debtRepaymentPercentage: 966964,
+    ecommercePercentage: 308893,
+    cardPresentPercentage: 200339,
+    mailOrPhonePercentage: 959660,
+    debtRepaymentPercentage: 853495,
   },
   fulfillment: {
     hasPhysicalGoods: true,
     isShippingProduct: true,
-    shipmentDurationDays: 284858,
-    returnPolicy: "exchangeOnly",
+    shipmentDurationDays: 781843,
+    returnPolicy: "withinThirtyDays",
   },
 };
 ```

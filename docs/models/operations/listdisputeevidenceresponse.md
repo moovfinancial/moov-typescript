@@ -10,14 +10,19 @@ let value: ListDisputeEvidenceResponse = {
     "key": [
       "<value 1>",
       "<value 2>",
-    ],
-    "key1": [
-      "<value 1>",
-      "<value 2>",
       "<value 3>",
     ],
+    "key1": [],
   },
-  result: [],
+  result: [
+    {
+      evidenceID: "<id>",
+      disputeID: "<id>",
+      evidenceType: "cancelation-policy",
+      createdOn: new Date("2025-07-15T05:55:10.643Z"),
+      updatedOn: new Date("2026-07-27T13:22:49.568Z"),
+    },
+  ],
 };
 ```
 

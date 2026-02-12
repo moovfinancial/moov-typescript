@@ -6,7 +6,7 @@
 import { GetUnderwritingRequest } from "@moovio/sdk/models/operations";
 
 let value: GetUnderwritingRequest = {
-  accountID: "c0d69bda-fc62-4466-b1e4-e72ee2b65416",
+  accountID: "<id>",
 };
 ```
 

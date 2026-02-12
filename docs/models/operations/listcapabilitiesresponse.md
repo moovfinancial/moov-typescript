@@ -11,18 +11,16 @@ let value: ListCapabilitiesResponse = {
       "<value 1>",
       "<value 2>",
     ],
-    "key1": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-    "key2": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
   },
-  result: [],
+  result: [
+    {
+      capability: "send-funds.rtp",
+      accountID: "<id>",
+      status: "in-review",
+      createdOn: new Date("2026-09-22T23:59:04.800Z"),
+      updatedOn: new Date("2025-02-17T07:49:20.437Z"),
+    },
+  ],
 };
 ```
 

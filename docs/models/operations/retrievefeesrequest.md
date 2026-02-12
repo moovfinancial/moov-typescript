@@ -6,7 +6,7 @@
 import { RetrieveFeesRequest } from "@moovio/sdk/models/operations";
 
 let value: RetrieveFeesRequest = {
-  accountID: "53397a2d-769a-4532-babe-e52a28ea49da",
+  accountID: "<id>",
   skip: 60,
   count: 20,
 };

@@ -6,7 +6,7 @@
 import { ListConnectedAccountsForAccountRequest } from "@moovio/sdk/models/operations";
 
 let value: ListConnectedAccountsForAccountRequest = {
-  accountID: "b6187c26-08c4-4e63-b159-e34183379667",
+  accountID: "<id>",
   skip: 60,
   count: 20,
 };

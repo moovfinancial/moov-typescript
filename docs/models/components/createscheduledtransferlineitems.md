@@ -16,11 +16,11 @@ let value: CreateScheduledTransferLineItems = {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
-      quantity: 988494,
+      quantity: 974634,
       options: [
         {
           name: "<value>",
-          quantity: 556915,
+          quantity: 907065,
           priceModifier: {
             currency: "USD",
             valueDecimal: "12.987654321",

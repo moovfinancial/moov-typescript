@@ -6,7 +6,7 @@
 import { ListAdjustmentsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListAdjustmentsRequest = {
-  accountID: "d6ff54b0-b39b-4349-83e0-bf6168cea459",
+  accountID: "<id>",
 };
 ```
 

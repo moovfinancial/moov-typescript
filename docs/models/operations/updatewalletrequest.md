@@ -6,8 +6,8 @@
 import { UpdateWalletRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateWalletRequest = {
-  walletID: "c52c924d-1e66-4c55-9b7c-383e321305f4",
-  accountID: "10ed786c-1078-41d5-bad2-f65328800c98",
+  walletID: "<id>",
+  accountID: "<id>",
   patchWallet: {
     name: "My second wallet",
     description: "My new description",

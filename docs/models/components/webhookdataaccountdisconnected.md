@@ -6,7 +6,7 @@
 import { WebhookDataAccountDisconnected } from "@moovio/sdk/models/components";
 
 let value: WebhookDataAccountDisconnected = {
-  accountID: "a8d8f566-2ddb-4667-b0ac-afab2cd67de8",
+  accountID: "<id>",
 };
 ```
 

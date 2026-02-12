@@ -7,7 +7,7 @@ import { ListTicketsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListTicketsRequest = {
   count: 20,
-  accountID: "23366ec4-e91c-4f23-9260-5483dd81cbdc",
+  accountID: "<id>",
 };
 ```
 
