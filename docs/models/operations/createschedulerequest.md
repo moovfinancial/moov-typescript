@@ -6,7 +6,7 @@
 import { CreateScheduleRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateScheduleRequest = {
-  accountID: "32fdd1a4-cbce-4d16-b063-82ef1d27155c",
+  accountID: "<id>",
   upsertSchedule: {
     occurrences: [
       {
@@ -42,8 +42,7 @@ let value: CreateScheduleRequest = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description:
-            "among supposing futon contrast or absolve geez haul unit deceivingly",
+          description: "however jubilantly oof yum",
           lineItems: {
             items: [
               {
@@ -52,11 +51,11 @@ let value: CreateScheduleRequest = {
                   currency: "USD",
                   valueDecimal: "12.987654321",
                 },
-                quantity: 988494,
+                quantity: 974634,
                 options: [
                   {
                     name: "<value>",
-                    quantity: 556915,
+                    quantity: 907065,
                     priceModifier: {
                       currency: "USD",
                       valueDecimal: "12.987654321",
@@ -101,8 +100,7 @@ let value: CreateScheduleRequest = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description:
-          "among supposing futon contrast or absolve geez haul unit deceivingly",
+        description: "however jubilantly oof yum",
         lineItems: {
           items: [
             {
@@ -111,11 +109,11 @@ let value: CreateScheduleRequest = {
                 currency: "USD",
                 valueDecimal: "12.987654321",
               },
-              quantity: 988494,
+              quantity: 974634,
               options: [
                 {
                   name: "<value>",
-                  quantity: 556915,
+                  quantity: 907065,
                   priceModifier: {
                     currency: "USD",
                     valueDecimal: "12.987654321",

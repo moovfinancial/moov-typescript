@@ -10,8 +10,8 @@ let value: TransferSource = {
   paymentMethodType: "moov-wallet",
   account: {
     accountID: "<id>",
-    email: "Mason_Koepp@hotmail.com",
-    displayName: "Concepcion46",
+    email: "Jaeden92@yahoo.com",
+    displayName: "Pearlie_Tromp70",
   },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -82,7 +82,7 @@ let value: TransferSource = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `transferID`                                                                                 | *string*                                                                                     | :heavy_minus_sign:                                                                           | UUID present only if the transfer is part of a transfer group.                               |
+| `transferID`                                                                                 | *string*                                                                                     | :heavy_minus_sign:                                                                           | String present only if the transfer is part of a transfer group.                             |
 | `paymentMethodID`                                                                            | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `paymentMethodType`                                                                          | [components.PaymentMethodType](../../models/components/paymentmethodtype.md)                 | :heavy_check_mark:                                                                           | The payment method type that represents a payment rail and directionality                    |
 | `account`                                                                                    | [components.TransferAccount](../../models/components/transferaccount.md)                     | :heavy_check_mark:                                                                           | N/A                                                                                          |

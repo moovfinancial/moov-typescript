@@ -10,10 +10,10 @@ let value: RequestCapabilitiesResponse = {
   result: [
     {
       capability: "collect-funds",
-      accountID: "ee65bd48-3de1-496e-83b6-fce65af07b9f",
-      status: "enabled",
-      createdOn: new Date("2025-03-30T16:43:22.332Z"),
-      updatedOn: new Date("2026-01-22T20:20:02.903Z"),
+      accountID: "<id>",
+      status: "in-review",
+      createdOn: new Date("2026-09-22T23:59:04.800Z"),
+      updatedOn: new Date("2025-02-17T07:49:20.437Z"),
     },
   ],
 };

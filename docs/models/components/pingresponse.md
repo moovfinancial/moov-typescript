@@ -9,16 +9,14 @@ import { PingResponse } from "@moovio/sdk/models/components";
 
 let value: PingResponse = {
   webhook: {
-    webhookID: "365db4c7-a414-4d90-8b00-147e64afca58",
-    url: "https://informal-scenario.info",
-    status: "enabled",
-    eventTypes: [
-      "sweep.created",
-    ],
+    webhookID: "<id>",
+    url: "https://instructive-fort.org/",
+    status: "disabled",
+    eventTypes: [],
     description:
-      "uh-huh till welcome wetly qua majestically obedience edge once",
-    createdOn: new Date("2025-03-12T15:39:25.818Z"),
-    updatedOn: new Date("2026-06-06T11:34:10.854Z"),
+      "supposing loosely powerful hutch obediently after yesterday lieu strictly",
+    createdOn: new Date("2026-09-15T01:25:12.094Z"),
+    updatedOn: new Date("2024-12-19T08:26:36.576Z"),
   },
   requestBodySent: {},
   responseStatusCode: 782844,

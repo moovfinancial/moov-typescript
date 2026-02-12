@@ -7,23 +7,23 @@ import { UploadDisputeEvidenceFileResponse } from "@moovio/sdk/models/operations
 
 let value: UploadDisputeEvidenceFileResponse = {
   headers: {
-    "key": [],
-    "key1": [
+    "key": [
       "<value 1>",
       "<value 2>",
     ],
+    "key1": [],
     "key2": [
       "<value 1>",
     ],
   },
   result: {
-    evidenceID: "f7dfb15b-5ab2-4626-b26c-b7f4d5f78f5c",
-    disputeID: "abdf9e6b-7cd6-4b57-96f0-635b4ea88162",
+    evidenceID: "<id>",
+    disputeID: "<id>",
     filename: "example.file",
     mimeType: "<value>",
-    size: 766745,
-    evidenceType: "cover-letter",
-    createdOn: new Date("2026-04-23T22:37:19.007Z"),
+    size: 983584,
+    evidenceType: "terms-of-service",
+    createdOn: new Date("2026-07-12T19:36:13.989Z"),
   },
 };
 ```

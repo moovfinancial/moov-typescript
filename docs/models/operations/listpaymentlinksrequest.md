@@ -8,7 +8,7 @@ import { ListPaymentLinksRequest } from "@moovio/sdk/models/operations";
 let value: ListPaymentLinksRequest = {
   skip: 60,
   count: 20,
-  accountID: "4120a5a5-2cd4-4117-b454-85dac93f27cd",
+  accountID: "<id>",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { ListFeePlansRequest } from "@moovio/sdk/models/operations";
 
 let value: ListFeePlansRequest = {
-  accountID: "b2c4d9a1-8cbf-43cb-893e-78591c7f1071",
+  accountID: "<id>",
 };
 ```
 

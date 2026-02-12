@@ -6,8 +6,8 @@
 import { WebhookDataRepresentativeDisabled } from "@moovio/sdk/models/components";
 
 let value: WebhookDataRepresentativeDisabled = {
-  accountID: "c4e6ae8e-a9e6-4053-8d90-24e202e88b11",
-  representativeID: "bcb9c961-4d62-4ceb-99db-eb29fec9958c",
+  accountID: "<id>",
+  representativeID: "<id>",
 };
 ```
 

@@ -7,15 +7,15 @@
 
 ```typescript
 const value: components.CreatedTransfer = {
-  transferID: "7787207e-ac7e-48b1-b866-201c0ad8281d",
-  createdOn: new Date("2026-03-10T06:52:08.646Z"),
+  transferID: "<id>",
+  createdOn: new Date("2025-06-12T12:10:37.812Z"),
   source: {
     paymentMethodID: "<id>",
-    paymentMethodType: "push-to-card",
+    paymentMethodType: "ach-credit-same-day",
     account: {
       accountID: "<id>",
-      email: "Mason_Koepp@hotmail.com",
-      displayName: "Concepcion46",
+      email: "Jaeden92@yahoo.com",
+      displayName: "Pearlie_Tromp70",
     },
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -82,11 +82,11 @@ const value: components.CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "ach-credit-same-day",
+    paymentMethodType: "rtp-credit",
     account: {
       accountID: "<id>",
-      email: "Mason_Koepp@hotmail.com",
-      displayName: "Concepcion46",
+      email: "Jaeden92@yahoo.com",
+      displayName: "Pearlie_Tromp70",
     },
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -169,9 +169,9 @@ const value: components.CreatedTransfer = {
   },
   refunds: [
     {
-      refundID: "5858b643-8e8b-42b5-9763-cc91a9e82c20",
-      createdOn: new Date("2025-01-20T09:13:11.472Z"),
-      updatedOn: new Date("2026-03-08T12:04:57.037Z"),
+      refundID: "<id>",
+      createdOn: new Date("2025-03-17T07:10:51.141Z"),
+      updatedOn: new Date("2025-03-19T15:39:17.424Z"),
       status: "created",
       amount: {
         currency: "USD",
@@ -185,8 +185,8 @@ const value: components.CreatedTransfer = {
   },
   disputes: [
     {
-      disputeID: "2e8302f6-cd70-46fa-93af-2f3448109dee",
-      createdOn: new Date("2024-05-12T10:26:33.460Z"),
+      disputeID: "<id>",
+      createdOn: new Date("2024-01-18T18:20:12.179Z"),
       amount: {
         currency: "USD",
         value: 1204,
@@ -207,8 +207,8 @@ const value: components.CreatedTransfer = {
 
 ```typescript
 const value: components.AsyncTransfer = {
-  transferID: "38df4b3a-25b9-4b06-ab15-e8c8835df3ec",
-  createdOn: new Date("2024-11-30T13:30:12.805Z"),
+  transferID: "<id>",
+  createdOn: new Date("2024-09-12T14:46:37.589Z"),
 };
 ```
 

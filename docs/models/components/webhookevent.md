@@ -8,15 +8,12 @@ Webhook events are sent to your webhook URL when certain actions occur in the Mo
 import { WebhookEvent } from "@moovio/sdk/models/components";
 
 let value: WebhookEvent = {
-  eventID: "f08758f0-91c3-4b27-a7f8-0512cef9f555",
-  type: "billingStatement.created",
+  eventID: "<id>",
+  type: "walletTransaction.updated",
   data: {
-    accountID: "95328e1d-0160-4129-a329-5aedc05109bd",
-    transferID: "cce0d79c-bead-4938-9576-b578321dde44",
-    refundID: "6109f427-03c4-49cc-8449-bfcefade02f4",
-    status: "pending",
+    accountID: "<id>",
   },
-  createdOn: new Date("2026-03-01T18:11:11.403Z"),
+  createdOn: new Date("2025-07-28T10:02:51.091Z"),
 };
 ```
 
