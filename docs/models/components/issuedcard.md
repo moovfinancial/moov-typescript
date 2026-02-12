@@ -6,7 +6,7 @@
 import { IssuedCard } from "@moovio/sdk/models/components";
 
 let value: IssuedCard = {
-  issuedCardID: "f95270b4-cf63-430a-be45-e797e13a1ecc",
+  issuedCardID: "<id>",
   brand: "Visa",
   lastFourCardNumber: "<value>",
   expiration: {
@@ -14,11 +14,11 @@ let value: IssuedCard = {
     year: "21",
   },
   authorizedUser: {
-    firstName: "Vincenzo",
-    lastName: "Lesch",
+    firstName: "Oswald",
+    lastName: "Jacobs",
   },
   fundingWalletID: "<id>",
-  state: "pending-verification",
+  state: "closed",
   formFactor: "virtual",
   controls: {
     velocityLimits: [
@@ -28,7 +28,7 @@ let value: IssuedCard = {
       },
     ],
   },
-  createdOn: new Date("2024-11-17T08:29:35.036Z"),
+  createdOn: new Date("2025-10-15T05:44:53.071Z"),
 };
 ```
 

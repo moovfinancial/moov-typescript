@@ -6,7 +6,7 @@
 import { AssignAccountCountriesRequest } from "@moovio/sdk/models/operations";
 
 let value: AssignAccountCountriesRequest = {
-  accountID: "3badeefc-f92e-4499-8e74-942adcb814be",
+  accountID: "<id>",
   accountCountries: {
     countries: [
       "United States",

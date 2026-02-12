@@ -18,13 +18,15 @@ let value: ListWebhooksResponse = {
   },
   result: [
     {
-      webhookID: "e2b46e77-899e-4837-8de5-9fd9dc41abba",
-      url: "https://favorite-hepatitis.net/",
+      webhookID: "<id>",
+      url: "https://colorful-pulse.biz",
       status: "enabled",
-      eventTypes: [],
-      description: "vamoose timely ha measly",
-      createdOn: new Date("2024-07-14T05:45:58.243Z"),
-      updatedOn: new Date("2026-05-24T08:43:13.634Z"),
+      eventTypes: [
+        "invoice.updated",
+      ],
+      description: "kettledrum posh ha dissemble place stealthily",
+      createdOn: new Date("2025-08-26T21:02:35.181Z"),
+      updatedOn: new Date("2026-07-27T05:49:06.460Z"),
     },
   ],
 };

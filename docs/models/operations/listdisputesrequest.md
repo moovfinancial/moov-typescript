@@ -6,7 +6,7 @@
 import { ListDisputesRequest } from "@moovio/sdk/models/operations";
 
 let value: ListDisputesRequest = {
-  accountID: "166023f1-2c6c-450d-91fc-9d4cf9f2b40f",
+  accountID: "<id>",
   skip: 60,
   count: 20,
 };

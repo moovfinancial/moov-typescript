@@ -57,7 +57,7 @@ let value: RecurResponse = {
               },
               images: [
                 {
-                  imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+                  imageID: "<id>",
                   link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
                   publicID: "<id>",
                 },
@@ -66,7 +66,7 @@ let value: RecurResponse = {
           ],
           images: [
             {
-              imageID: "5d5d240d-d6b6-497f-9d81-3f2acaf445ca",
+              imageID: "<id>",
               link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
               publicID: "<id>",
             },

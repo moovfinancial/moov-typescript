@@ -6,7 +6,7 @@
 import { ScheduledTransferImageMetadata } from "@moovio/sdk/models/components";
 
 let value: ScheduledTransferImageMetadata = {
-  imageID: "b2ba5f28-b4d7-4c28-ae15-7f5602533857",
+  imageID: "<id>",
   link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
   publicID: "<id>",
 };

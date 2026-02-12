@@ -26,7 +26,7 @@ let value: BusinessProfile = {
   description: "Local fitness gym paying out instructors",
   representatives: [
     {
-      representativeID: "80c48471-4be2-4148-a022-9aa1b4c31942",
+      representativeID: "<id>",
       name: {
         firstName: "Jordan",
         middleName: "Reese",
@@ -50,8 +50,8 @@ let value: BusinessProfile = {
         ownershipPercentage: 38,
         jobTitle: "CEO",
       },
-      createdOn: new Date("2025-09-19T12:49:19.971Z"),
-      updatedOn: new Date("2026-11-22T01:13:47.243Z"),
+      createdOn: new Date("2025-07-31T02:11:52.633Z"),
+      updatedOn: new Date("2024-01-19T08:58:03.676Z"),
     },
   ],
   ownersProvided: true,

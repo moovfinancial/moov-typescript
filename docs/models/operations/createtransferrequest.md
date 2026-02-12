@@ -6,8 +6,8 @@
 import { CreateTransferRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateTransferRequest = {
-  xIdempotencyKey: "452bfada-ad7f-4795-8c64-2fdbe87fed90",
-  accountID: "00044efe-446b-4a6c-b666-77172fdb0530",
+  xIdempotencyKey: "<value>",
+  accountID: "<id>",
   createTransfer: {
     source: {
       paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",

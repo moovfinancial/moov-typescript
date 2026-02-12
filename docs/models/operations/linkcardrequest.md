@@ -7,7 +7,7 @@ import { LinkCardRequest } from "@moovio/sdk/models/operations";
 
 let value: LinkCardRequest = {
   xWaitFor: "payment-method",
-  accountID: "6437f169-8fc9-432c-a408-332ac030418d",
+  accountID: "<id>",
   linkCard: {
     cardNumber: "4111111111111111",
     cardCvv: "123",

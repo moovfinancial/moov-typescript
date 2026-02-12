@@ -6,11 +6,11 @@
 import { IssuedCardTransaction } from "@moovio/sdk/models/components";
 
 let value: IssuedCardTransaction = {
-  cardTransactionID: "7250a225-dd9f-4dfc-9aa0-8e57eb57941d",
-  issuedCardID: "71ccca64-cf86-4fa4-88b3-879bb1519ad2",
-  fundingWalletID: "962c362f-c8d9-4489-87e3-0349289ad2db",
+  cardTransactionID: "<id>",
+  issuedCardID: "<id>",
+  fundingWalletID: "<id>",
   amount: "-14.89",
-  authorizedOn: new Date("2025-02-04T11:44:35.040Z"),
+  authorizedOn: new Date("2025-05-05T02:33:49.501Z"),
   merchantData: {
     networkID: "<id>",
     name: "Whole Body Fitness",
@@ -20,7 +20,7 @@ let value: IssuedCardTransaction = {
     state: "CA",
     mcc: "7298",
   },
-  createdOn: new Date("2025-03-15T12:52:49.206Z"),
+  createdOn: new Date("2024-05-23T02:42:03.351Z"),
 };
 ```
 

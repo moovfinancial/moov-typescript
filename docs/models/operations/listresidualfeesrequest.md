@@ -8,8 +8,8 @@ import { ListResidualFeesRequest } from "@moovio/sdk/models/operations";
 let value: ListResidualFeesRequest = {
   skip: 60,
   count: 20,
-  accountID: "4d1efaf2-6d84-489e-a95c-745590f4b18c",
-  residualID: "c0c1e9e0-371e-4134-b203-602478bf1ca3",
+  accountID: "<id>",
+  residualID: "<id>",
 };
 ```
 

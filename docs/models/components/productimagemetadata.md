@@ -6,7 +6,7 @@
 import { ProductImageMetadata } from "@moovio/sdk/models/components";
 
 let value: ProductImageMetadata = {
-  imageID: "daa03b9d-6036-478a-ad16-1e0c402bb87c",
+  imageID: "<id>",
   link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
   publicID: "q7lKWleAy9fUNhEGezQ1g",
 };

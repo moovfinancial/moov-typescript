@@ -6,12 +6,12 @@
 import { WebhookDataDisputeUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataDisputeUpdated = {
-  accountID: "30af6f83-e464-4ec6-877d-46f83da105aa",
-  transferID: "f68fa9d9-0f87-4466-896f-af7922a88237",
-  transactionID: "a2680c29-7e95-4f0e-a191-ba05cb43578e",
-  disputeID: "4a5fe9c9-88a0-4e5e-8e2d-4520dfcca96d",
+  accountID: "<id>",
+  transferID: "<id>",
+  transactionID: "<id>",
+  disputeID: "<id>",
   status: "resolved",
-  phase: "unknown",
+  phase: "pre-dispute",
 };
 ```
 
