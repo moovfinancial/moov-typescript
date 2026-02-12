@@ -6,7 +6,7 @@
 import { UpdateAccountRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateAccountRequest = {
-  accountID: "4457cf66-6d83-40da-9fdc-8220083794c3",
+  accountID: "<id>",
   patchAccount: {
     profile: {
       individual: {

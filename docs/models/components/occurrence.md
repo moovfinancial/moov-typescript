@@ -40,8 +40,7 @@ let value: Occurrence = {
         dynamicDescriptor: "WhlBdy *Yoga 11-12",
       },
     },
-    description:
-      "among supposing futon contrast or absolve geez haul unit deceivingly",
+    description: "however jubilantly oof yum",
     lineItems: {
       items: [
         {
@@ -50,11 +49,11 @@ let value: Occurrence = {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
-          quantity: 988494,
+          quantity: 974634,
           options: [
             {
               name: "<value>",
-              quantity: 556915,
+              quantity: 907065,
               priceModifier: {
                 currency: "USD",
                 valueDecimal: "12.987654321",

@@ -10,12 +10,27 @@ let value: ListPaymentMethodsResponse = {
     "key": [
       "<value 1>",
       "<value 2>",
-    ],
-    "key1": [
-      "<value 1>",
+      "<value 3>",
     ],
   },
-  result: [],
+  result: [
+    {
+      paymentMethodID: "<id>",
+      paymentMethodType: "instant-bank-credit",
+      bankAccount: {
+        bankAccountID: "<id>",
+        fingerprint: "<value>",
+        status: "verified",
+        holderName: "<value>",
+        holderType: "business",
+        bankName: "<value>",
+        bankAccountType: "checking",
+        routingNumber: "<value>",
+        lastFourAccountNumber: "<value>",
+        updatedOn: new Date("2024-09-12T06:36:19.592Z"),
+      },
+    },
+  ],
 };
 ```
 

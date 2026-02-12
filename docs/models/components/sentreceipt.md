@@ -6,8 +6,8 @@
 import { SentReceipt } from "@moovio/sdk/models/components";
 
 let value: SentReceipt = {
-  receiptID: "a541241b-7a43-4c72-ab4e-a0fd79df70c2",
-  idempotencyKey: "e22589e0-1fce-467f-9494-d58a1f605351",
+  receiptID: "<id>",
+  idempotencyKey: "<value>",
   sentOn: new Date("2025-11-10T23:00:000Z"),
 };
 ```

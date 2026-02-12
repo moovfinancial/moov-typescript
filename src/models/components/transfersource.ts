@@ -62,7 +62,7 @@ import {
 
 export type TransferSource = {
   /**
-   * UUID present only if the transfer is part of a transfer group.
+   * String present only if the transfer is part of a transfer group.
    */
   transferID?: string | undefined;
   paymentMethodID: string;

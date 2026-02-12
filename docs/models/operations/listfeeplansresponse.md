@@ -20,7 +20,7 @@ let value: ListFeePlansResponse = {
   },
   result: [
     {
-      planID: "8a4bacee-b059-4868-ad95-ef82b369f4c5",
+      planID: "<id>",
       name: "Fixed Rate Merchant Plan",
       cardAcquiringModel: "flat-rate",
       billableFees: [
@@ -74,7 +74,7 @@ let value: ListFeePlansResponse = {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
-      createdAt: new Date("2025-08-24T10:23:39.488Z"),
+      createdAt: new Date("2025-11-22T01:30:27.323Z"),
     },
   ],
 };

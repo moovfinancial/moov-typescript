@@ -9,14 +9,16 @@ import { Statement } from "@moovio/sdk/models/components";
 import { Decimal } from "@moovio/sdk/types";
 
 let value: Statement = {
-  statementID: "56dd0781-6ce4-4582-86a3-285f2834ec78",
+  statementID: "<id>",
   statementName: "<value>",
   fileName: "example.file",
-  fileSize: 788385,
-  billingPeriodStartDateTime: new Date("2025-09-04T04:27:37.726Z"),
-  billingPeriodEndDateTime: new Date("2025-04-09T12:25:57.747Z"),
+  fileSize: 353676,
+  billingPeriodStartDateTime: new Date("2025-02-23T14:24:09.014Z"),
+  billingPeriodEndDateTime: new Date("2026-06-27T04:23:41.659Z"),
   subscriptionIDs: [
     "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
   summary: {
     cardAcquiring: {
@@ -175,7 +177,7 @@ let value: Statement = {
   cardAcquiringFees: {
     visa: {
       interchange: {
-        count: 869953,
+        count: 47399,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -184,8 +186,8 @@ let value: Statement = {
       interchangePrograms: [
         {
           programName: "<value>",
-          count: 474711,
-          percentageRate: new Decimal("8423.25"),
+          count: 474428,
+          percentageRate: new Decimal("5621.1"),
           perItemRate: {
             currency: "USD",
             valueDecimal: "12.987654321",
@@ -201,56 +203,56 @@ let value: Statement = {
         },
       ],
       networkPassthrough: {
-        count: 61692,
+        count: 116027,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedDomesticOnline: {
-        count: 886189,
+        count: 418959,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedDomesticInPerson: {
-        count: 265452,
+        count: 778418,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedInternationalOnline: {
-        count: 731715,
+        count: 921238,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedInternationalInPerson: {
-        count: 459127,
+        count: 271021,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       declines: {
-        count: 398071,
+        count: 367368,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       refunds: {
-        count: 60255,
+        count: 539173,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       total: {
-        count: 984400,
+        count: 172473,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -259,7 +261,7 @@ let value: Statement = {
     },
     mastercard: {
       interchange: {
-        count: 869953,
+        count: 47399,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -268,8 +270,8 @@ let value: Statement = {
       interchangePrograms: [
         {
           programName: "<value>",
-          count: 474711,
-          percentageRate: new Decimal("8423.25"),
+          count: 474428,
+          percentageRate: new Decimal("5621.1"),
           perItemRate: {
             currency: "USD",
             valueDecimal: "12.987654321",
@@ -285,56 +287,56 @@ let value: Statement = {
         },
       ],
       networkPassthrough: {
-        count: 61692,
+        count: 116027,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedDomesticOnline: {
-        count: 886189,
+        count: 418959,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedDomesticInPerson: {
-        count: 265452,
+        count: 778418,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedInternationalOnline: {
-        count: 731715,
+        count: 921238,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedInternationalInPerson: {
-        count: 459127,
+        count: 271021,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       declines: {
-        count: 398071,
+        count: 367368,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       refunds: {
-        count: 60255,
+        count: 539173,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       total: {
-        count: 984400,
+        count: 172473,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -343,7 +345,7 @@ let value: Statement = {
     },
     discover: {
       interchange: {
-        count: 869953,
+        count: 47399,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -352,8 +354,8 @@ let value: Statement = {
       interchangePrograms: [
         {
           programName: "<value>",
-          count: 474711,
-          percentageRate: new Decimal("8423.25"),
+          count: 474428,
+          percentageRate: new Decimal("5621.1"),
           perItemRate: {
             currency: "USD",
             valueDecimal: "12.987654321",
@@ -369,56 +371,56 @@ let value: Statement = {
         },
       ],
       networkPassthrough: {
-        count: 61692,
+        count: 116027,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedDomesticOnline: {
-        count: 886189,
+        count: 418959,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedDomesticInPerson: {
-        count: 265452,
+        count: 778418,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedInternationalOnline: {
-        count: 731715,
+        count: 921238,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedInternationalInPerson: {
-        count: 459127,
+        count: 271021,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       declines: {
-        count: 398071,
+        count: 367368,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       refunds: {
-        count: 60255,
+        count: 539173,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       total: {
-        count: 984400,
+        count: 172473,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -427,7 +429,7 @@ let value: Statement = {
     },
     americanExpress: {
       interchange: {
-        count: 869953,
+        count: 47399,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -436,8 +438,8 @@ let value: Statement = {
       interchangePrograms: [
         {
           programName: "<value>",
-          count: 474711,
-          percentageRate: new Decimal("8423.25"),
+          count: 474428,
+          percentageRate: new Decimal("5621.1"),
           perItemRate: {
             currency: "USD",
             valueDecimal: "12.987654321",
@@ -453,56 +455,56 @@ let value: Statement = {
         },
       ],
       networkPassthrough: {
-        count: 61692,
+        count: 116027,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedDomesticOnline: {
-        count: 886189,
+        count: 418959,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedDomesticInPerson: {
-        count: 265452,
+        count: 778418,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedInternationalOnline: {
-        count: 731715,
+        count: 921238,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       completedInternationalInPerson: {
-        count: 459127,
+        count: 271021,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       declines: {
-        count: 398071,
+        count: 367368,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       refunds: {
-        count: 60255,
+        count: 539173,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
       },
       total: {
-        count: 984400,
+        count: 172473,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -512,56 +514,56 @@ let value: Statement = {
   },
   achFees: {
     standardCredit: {
-      count: 289671,
+      count: 429311,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     sameDayCredit: {
-      count: 530096,
+      count: 641426,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     debits: {
-      count: 400977,
+      count: 243742,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     return: {
-      count: 713116,
+      count: 174053,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     unauthorizedReturn: {
-      count: 798297,
+      count: 532273,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     noticeOfChange: {
-      count: 991387,
+      count: 360465,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     bankAccountVerification: {
-      count: 513363,
+      count: 975255,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     total: {
-      count: 984400,
+      count: 172473,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -570,63 +572,63 @@ let value: Statement = {
   },
   instantPaymentFees: {
     rtpCreditTransaction: {
-      count: 61495,
+      count: 163873,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     rtpDecline: {
-      count: 252042,
+      count: 519146,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     pushToCardTransaction: {
-      count: 832847,
+      count: 200161,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     pushToCardDecline: {
-      count: 139127,
+      count: 269601,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     pullFromCardTransaction: {
-      count: 296674,
+      count: 899791,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     pullFromCardDecline: {
-      count: 65974,
+      count: 808278,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     pullFromCardRefund: {
-      count: 942102,
+      count: 487513,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     instantVerification: {
-      count: 405208,
+      count: 553308,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     total: {
-      count: 984400,
+      count: 172473,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -661,35 +663,35 @@ let value: Statement = {
   },
   otherCardFees: {
     disputes: {
-      count: 208853,
+      count: 14483,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     cardAccountUpdater: {
-      count: 937454,
+      count: 788385,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     cardVerification: {
-      count: 371999,
+      count: 558564,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     nameVerification: {
-      count: 341965,
+      count: 423830,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
     total: {
-      count: 984400,
+      count: 172473,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -710,8 +712,8 @@ let value: Statement = {
       valueDecimal: "12.987654321",
     },
   },
-  createdOn: new Date("2025-04-20T08:54:10.576Z"),
-  updatedOn: new Date("2025-12-08T10:05:28.777Z"),
+  createdOn: new Date("2024-12-16T22:14:29.585Z"),
+  updatedOn: new Date("2026-08-11T11:14:26.652Z"),
 };
 ```
 

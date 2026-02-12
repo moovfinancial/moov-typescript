@@ -8,7 +8,7 @@ import { ListTransfersRequest } from "@moovio/sdk/models/operations";
 let value: ListTransfersRequest = {
   skip: 60,
   count: 20,
-  accountID: "24cbdb09-bfe3-4786-8394-1576b1923042",
+  accountID: "<id>",
 };
 ```
 

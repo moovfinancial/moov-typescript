@@ -6,8 +6,8 @@
 import { UpdateIssuedCardRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateIssuedCardRequest = {
-  accountID: "c7354eaf-e266-4e68-b172-28359c550899",
-  issuedCardID: "71bbe79e-5cf5-44c4-9609-f020ee6e898f",
+  accountID: "<id>",
+  issuedCardID: "<id>",
   updateIssuedCard: {
     authorizedUser: {
       birthDate: {

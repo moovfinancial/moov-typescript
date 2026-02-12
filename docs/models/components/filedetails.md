@@ -8,17 +8,17 @@ Describes a file linked to a Moov account.
 import { FileDetails } from "@moovio/sdk/models/components";
 
 let value: FileDetails = {
-  fileID: "a5609a20-0815-4467-b067-258d6e105fde",
+  fileID: "<id>",
   fileName: "logo.png",
-  accountID: "bde84d33-a2a3-4d2f-946b-cebe55adc4fd",
+  accountID: "<id>",
   filePurpose: "representative_verification",
   fileStatus: "pending",
   metadata:
     "{\"error_code\": \"document-name-mismatch\", \"requirement_id\": \"document.individual.verification\", \"representative_id\": \"c63ab175-251d-497e-a267-7346d087e180\", \"comment\": \"testing comment\"",
   decisionReason: "not correct file",
-  fileSizeBytes: 299881,
-  createdOn: new Date("2026-01-29T05:07:55.810Z"),
-  updatedOn: new Date("2026-01-03T04:35:38.580Z"),
+  fileSizeBytes: 640067,
+  createdOn: new Date("2025-01-20T11:54:19.192Z"),
+  updatedOn: new Date("2025-03-25T05:58:57.661Z"),
 };
 ```
 

@@ -6,10 +6,10 @@
 import { WebhookDataWalletTransactionUpdated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataWalletTransactionUpdated = {
-  accountID: "e491bd4d-7651-462a-9ebb-cd425ad33721",
-  walletID: "33116a57-862b-43c9-aa42-3ee3b87d442d",
-  transactionID: "378090e8-e3a0-4a6e-a96e-d2e5ca55e064",
-  status: "canceled",
+  accountID: "<id>",
+  walletID: "<id>",
+  transactionID: "<id>",
+  status: "failed",
   availableBalance: {
     currency: "USD",
     value: 1204,

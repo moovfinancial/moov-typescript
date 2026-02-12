@@ -10,13 +10,18 @@ let value: InitiateRefundResponse = {
     "key": [
       "<value 1>",
       "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
       "<value 3>",
     ],
-    "key1": [],
   },
   result: {
-    refundID: "688f136f-c16e-4ae5-83d5-d39f62ca3550",
-    createdOn: new Date("2025-10-17T12:08:15.756Z"),
+    refundID: "<id>",
+    createdOn: new Date("2025-04-12T00:48:30.586Z"),
+    updatedOn: new Date("2026-11-18T21:54:45.944Z"),
+    status: "failed",
     amount: {
       currency: "USD",
       value: 1204,

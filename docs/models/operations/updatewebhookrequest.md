@@ -6,13 +6,15 @@
 import { UpdateWebhookRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateWebhookRequest = {
-  webhookID: "f5aa9e8d-33b8-4ea9-a2a0-4723114fb58c",
+  webhookID: "<id>",
   updateWebhook: {
-    url: "https://grizzled-tuba.info",
-    status: "enabled",
-    eventTypes: [],
+    url: "https://gripping-outlaw.name",
+    status: "disabled",
+    eventTypes: [
+      "refund.updated",
+    ],
     description:
-      "maul after incidentally gratefully dredger guest lest forsaken alive",
+      "plump furthermore knitting institutionalize past although mockingly ashamed gee",
   },
 };
 ```

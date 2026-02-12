@@ -8,7 +8,7 @@ import { ListSchedulesRequest } from "@moovio/sdk/models/operations";
 let value: ListSchedulesRequest = {
   skip: 60,
   count: 20,
-  accountID: "02d4ceb7-4faf-4c25-801c-273246deba20",
+  accountID: "<id>",
 };
 ```
 

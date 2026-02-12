@@ -13,15 +13,15 @@ let value: UpdateWebhookResponse = {
     "key1": [],
   },
   result: {
-    webhookID: "7e45ce23-0a3c-465a-8553-ff923a434e69",
-    url: "https://swift-cash.com",
+    webhookID: "<id>",
+    url: "https://upbeat-duffel.info/",
     status: "disabled",
     eventTypes: [
-      "terminalApplication.updated",
+      "bankAccount.updated",
     ],
-    description: "mechanic pertain shoulder uh-huh phooey whenever",
-    createdOn: new Date("2025-07-20T10:21:45.081Z"),
-    updatedOn: new Date("2026-03-18T08:24:03.799Z"),
+    description: "till cuddly likewise quickly",
+    createdOn: new Date("2026-07-10T10:38:57.655Z"),
+    updatedOn: new Date("2026-03-26T19:47:11.043Z"),
   },
 };
 ```

@@ -6,8 +6,8 @@
 import { UpdateProductRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateProductRequest = {
-  accountID: "792c7a95-c37e-4426-9009-31f5c86b555a",
-  productID: "3406229f-124b-4770-919a-14b2650ce63f",
+  accountID: "<id>",
+  productID: "<id>",
   productRequest: {
     title: "<value>",
     basePrice: {
@@ -17,8 +17,8 @@ let value: UpdateProductRequest = {
     optionGroups: [
       {
         name: "<value>",
-        minSelect: 903729,
-        maxSelect: 102098,
+        minSelect: 977644,
+        maxSelect: 374163,
         options: [
           {
             name: "<value>",
