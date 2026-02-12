@@ -6,15 +6,15 @@
 import { CreatedTransfer } from "@moovio/sdk/models/components";
 
 let value: CreatedTransfer = {
-  transferID: "7787207e-ac7e-48b1-b866-201c0ad8281d",
-  createdOn: new Date("2026-03-10T06:52:08.646Z"),
+  transferID: "<id>",
+  createdOn: new Date("2025-06-12T12:10:37.812Z"),
   source: {
     paymentMethodID: "<id>",
-    paymentMethodType: "apple-pay",
+    paymentMethodType: "rtp-credit",
     account: {
       accountID: "<id>",
-      email: "Mason_Koepp@hotmail.com",
-      displayName: "Concepcion46",
+      email: "Jaeden92@yahoo.com",
+      displayName: "Pearlie_Tromp70",
     },
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -97,11 +97,11 @@ let value: CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "rtp-credit",
+    paymentMethodType: "card-payment",
     account: {
       accountID: "<id>",
-      email: "Mason_Koepp@hotmail.com",
-      displayName: "Concepcion46",
+      email: "Jaeden92@yahoo.com",
+      displayName: "Pearlie_Tromp70",
     },
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -184,9 +184,9 @@ let value: CreatedTransfer = {
   },
   refunds: [
     {
-      refundID: "5858b643-8e8b-42b5-9763-cc91a9e82c20",
-      createdOn: new Date("2025-01-20T09:13:11.472Z"),
-      updatedOn: new Date("2026-03-08T12:04:57.037Z"),
+      refundID: "<id>",
+      createdOn: new Date("2025-03-17T07:10:51.141Z"),
+      updatedOn: new Date("2025-03-19T15:39:17.424Z"),
       status: "created",
       amount: {
         currency: "USD",
@@ -200,8 +200,8 @@ let value: CreatedTransfer = {
   },
   disputes: [
     {
-      disputeID: "2e8302f6-cd70-46fa-93af-2f3448109dee",
-      createdOn: new Date("2024-05-12T10:26:33.460Z"),
+      disputeID: "<id>",
+      createdOn: new Date("2024-01-18T18:20:12.179Z"),
       amount: {
         currency: "USD",
         value: 1204,

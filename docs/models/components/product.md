@@ -8,7 +8,7 @@ A good or service offered by a merchant.
 import { Product } from "@moovio/sdk/models/components";
 
 let value: Product = {
-  productID: "2b09abb7-4d07-4032-9060-1fb05956f839",
+  productID: "<id>",
   title: "<value>",
   basePrice: {
     currency: "USD",
@@ -17,20 +17,35 @@ let value: Product = {
   optionGroups: [
     {
       name: "<value>",
-      minSelect: 18424,
-      maxSelect: 504490,
-      options: [],
+      minSelect: 225596,
+      maxSelect: 59952,
+      options: [
+        {
+          name: "<value>",
+          priceModifier: {
+            currency: "USD",
+            valueDecimal: "12.987654321",
+          },
+          images: [
+            {
+              imageID: "<id>",
+              link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+              publicID: "q7lKWleAy9fUNhEGezQ1g",
+            },
+          ],
+        },
+      ],
     },
   ],
   images: [
     {
-      imageID: "f7be8907-e233-4bcb-8b74-4d8d7ceefe37",
+      imageID: "<id>",
       link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
       publicID: "q7lKWleAy9fUNhEGezQ1g",
     },
   ],
-  createdOn: new Date("2024-05-18T14:18:53.943Z"),
-  updatedOn: new Date("2025-07-14T15:57:26.940Z"),
+  createdOn: new Date("2024-06-20T18:41:01.992Z"),
+  updatedOn: new Date("2026-01-24T01:11:05.530Z"),
 };
 ```
 

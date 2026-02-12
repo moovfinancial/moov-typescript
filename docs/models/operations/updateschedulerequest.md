@@ -6,8 +6,8 @@
 import { UpdateScheduleRequest } from "@moovio/sdk/models/operations";
 
 let value: UpdateScheduleRequest = {
-  accountID: "e4c4a29e-894c-48ef-9c1c-1be392bc182f",
-  scheduleID: "a5317d57-01a8-4394-8f58-29b18496194b",
+  accountID: "<id>",
+  scheduleID: "<id>",
   upsertSchedule: {
     occurrences: [
       {
@@ -43,8 +43,7 @@ let value: UpdateScheduleRequest = {
               dynamicDescriptor: "WhlBdy *Yoga 11-12",
             },
           },
-          description:
-            "among supposing futon contrast or absolve geez haul unit deceivingly",
+          description: "however jubilantly oof yum",
           lineItems: {
             items: [
               {
@@ -53,11 +52,11 @@ let value: UpdateScheduleRequest = {
                   currency: "USD",
                   valueDecimal: "12.987654321",
                 },
-                quantity: 988494,
+                quantity: 974634,
                 options: [
                   {
                     name: "<value>",
-                    quantity: 556915,
+                    quantity: 907065,
                     priceModifier: {
                       currency: "USD",
                       valueDecimal: "12.987654321",
@@ -102,8 +101,7 @@ let value: UpdateScheduleRequest = {
             dynamicDescriptor: "WhlBdy *Yoga 11-12",
           },
         },
-        description:
-          "among supposing futon contrast or absolve geez haul unit deceivingly",
+        description: "however jubilantly oof yum",
         lineItems: {
           items: [
             {
@@ -112,11 +110,11 @@ let value: UpdateScheduleRequest = {
                 currency: "USD",
                 valueDecimal: "12.987654321",
               },
-              quantity: 988494,
+              quantity: 974634,
               options: [
                 {
                   name: "<value>",
-                  quantity: 556915,
+                  quantity: 907065,
                   priceModifier: {
                     currency: "USD",
                     valueDecimal: "12.987654321",

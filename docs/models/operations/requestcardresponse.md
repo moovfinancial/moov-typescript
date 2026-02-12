@@ -6,9 +6,17 @@
 import { RequestCardResponse } from "@moovio/sdk/models/operations";
 
 let value: RequestCardResponse = {
-  headers: {},
+  headers: {
+    "key": [],
+    "key1": [],
+    "key2": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
   result: {
-    issuedCardID: "cc6efc33-f787-4d9c-bebd-2d8d7b936ce1",
+    issuedCardID: "<id>",
     brand: "Visa",
     lastFourCardNumber: "<value>",
     expiration: {
@@ -16,8 +24,8 @@ let value: RequestCardResponse = {
       year: "21",
     },
     authorizedUser: {
-      firstName: "Vincenzo",
-      lastName: "Lesch",
+      firstName: "Oswald",
+      lastName: "Jacobs",
     },
     fundingWalletID: "<id>",
     state: "closed",
@@ -30,7 +38,7 @@ let value: RequestCardResponse = {
         },
       ],
     },
-    createdOn: new Date("2024-04-02T15:42:33.406Z"),
+    createdOn: new Date("2026-10-26T17:51:41.813Z"),
   },
 };
 ```

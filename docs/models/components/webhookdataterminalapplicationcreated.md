@@ -6,7 +6,7 @@
 import { WebhookDataTerminalApplicationCreated } from "@moovio/sdk/models/components";
 
 let value: WebhookDataTerminalApplicationCreated = {
-  terminalApplicationID: "e793d220-7c40-44e4-b552-e98c281a4bce",
+  terminalApplicationID: "<id>",
   status: "enabled",
 };
 ```

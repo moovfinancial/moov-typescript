@@ -6,13 +6,7 @@
 import { ListResidualsResponse } from "@moovio/sdk/models/operations";
 
 let value: ListResidualsResponse = {
-  headers: {
-    "key": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-  },
+  headers: {},
   result: [],
 };
 ```

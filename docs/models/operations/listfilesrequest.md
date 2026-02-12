@@ -6,7 +6,7 @@
 import { ListFilesRequest } from "@moovio/sdk/models/operations";
 
 let value: ListFilesRequest = {
-  accountID: "9911baed-38e4-45fa-bcd5-db5f17473657",
+  accountID: "<id>",
 };
 ```
 

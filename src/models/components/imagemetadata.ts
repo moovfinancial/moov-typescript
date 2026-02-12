@@ -11,6 +11,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * Metadata about an uploaded image.
  */
 export type ImageMetadata = {
+  /**
+   * Unique identifier for a image resource.
+   */
   imageID: string;
   /**
    * The ID used to get an image with the public endpoint.

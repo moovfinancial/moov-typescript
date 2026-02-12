@@ -8,11 +8,11 @@ import { UpdateImageMetadataResponse } from "@moovio/sdk/models/operations";
 let value: UpdateImageMetadataResponse = {
   headers: {},
   result: {
-    imageID: "0db47ebc-da83-4b98-8003-f792a94dbfcb",
+    imageID: "<id>",
     publicID: "<id>",
     link: "https://api.moov.io/images/qJRAaAwwF5hmfeAFdHjIb",
-    createdOn: new Date("2026-10-16T02:50:36.741Z"),
-    updatedOn: new Date("2025-03-21T12:40:16.181Z"),
+    createdOn: new Date("2024-01-06T01:03:27.293Z"),
+    updatedOn: new Date("2026-07-11T08:19:34.577Z"),
   },
 };
 ```

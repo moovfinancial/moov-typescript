@@ -6,7 +6,7 @@
 import { ListIssuedCardTransactionsRequest } from "@moovio/sdk/models/operations";
 
 let value: ListIssuedCardTransactionsRequest = {
-  accountID: "62068322-c9e9-4464-a716-3256bb161360",
+  accountID: "<id>",
   skip: 60,
   count: 20,
 };

@@ -10,16 +10,18 @@ let value: GetAdjustmentResponse = {
     "key": [
       "<value 1>",
       "<value 2>",
+      "<value 3>",
     ],
+    "key1": [],
   },
   result: {
-    adjustmentID: "2ad327bb-5bd9-4105-b285-3592495818c0",
-    walletID: "911d7e60-ed9c-4f00-a8ae-4c79a36f9d63",
+    adjustmentID: "<id>",
+    walletID: "<id>",
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
-    createdOn: new Date("2025-03-01T09:23:37.713Z"),
+    createdOn: new Date("2024-06-26T00:18:45.111Z"),
   },
 };
 ```

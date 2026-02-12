@@ -6,7 +6,7 @@
 import { CreateWalletRequest } from "@moovio/sdk/models/operations";
 
 let value: CreateWalletRequest = {
-  accountID: "c48259de-093b-44ab-a043-8fe5e17f62ef",
+  accountID: "<id>",
   createWallet: {
     name: "My wallet",
     description: "A general wallet used for my payments",

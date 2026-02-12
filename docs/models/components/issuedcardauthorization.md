@@ -6,12 +6,12 @@
 import { IssuedCardAuthorization } from "@moovio/sdk/models/components";
 
 let value: IssuedCardAuthorization = {
-  authorizationID: "d4318ddc-48aa-4c33-908b-40230c065489",
-  issuedCardID: "9b304939-a328-4b01-a54a-f38be9eb3e2b",
-  fundingWalletID: "4cc6eb6f-2f44-4ecb-982f-b7ba90d92ece",
-  network: "discover",
+  authorizationID: "<id>",
+  issuedCardID: "<id>",
+  fundingWalletID: "<id>",
+  network: "visa",
   authorizedAmount: "-14.89",
-  status: "canceled",
+  status: "declined",
   merchantData: {
     networkID: "<id>",
     name: "Whole Body Fitness",
@@ -21,7 +21,7 @@ let value: IssuedCardAuthorization = {
     state: "CA",
     mcc: "7298",
   },
-  createdOn: new Date("2025-09-14T05:26:38.382Z"),
+  createdOn: new Date("2024-09-16T17:47:59.058Z"),
 };
 ```
 
