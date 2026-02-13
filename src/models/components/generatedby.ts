@@ -16,6 +16,7 @@ export type GeneratedBy = {
   disputeID?: string | undefined;
   accountID?: string | undefined;
   bankAccountID?: string | undefined;
+  invoiceID?: string | undefined;
 };
 
 /** @internal */
@@ -29,6 +30,7 @@ export const GeneratedBy$inboundSchema: z.ZodType<
   disputeID: z.string().optional(),
   accountID: z.string().optional(),
   bankAccountID: z.string().optional(),
+  invoiceID: z.string().optional(),
 });
 /** @internal */
 export type GeneratedBy$Outbound = {
@@ -37,6 +39,7 @@ export type GeneratedBy$Outbound = {
   disputeID?: string | undefined;
   accountID?: string | undefined;
   bankAccountID?: string | undefined;
+  invoiceID?: string | undefined;
 };
 
 /** @internal */
@@ -50,6 +53,7 @@ export const GeneratedBy$outboundSchema: z.ZodType<
   disputeID: z.string().optional(),
   accountID: z.string().optional(),
   bankAccountID: z.string().optional(),
+  invoiceID: z.string().optional(),
 });
 
 export function generatedByToJSON(generatedBy: GeneratedBy): string {
