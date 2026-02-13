@@ -19,3 +19,4 @@ let value: GeneratedBy = {};
 | `disputeID`        | *string*           | :heavy_minus_sign: | N/A                |
 | `accountID`        | *string*           | :heavy_minus_sign: | N/A                |
 | `bankAccountID`    | *string*           | :heavy_minus_sign: | N/A                |
+| `invoiceID`        | *string*           | :heavy_minus_sign: | N/A                |
