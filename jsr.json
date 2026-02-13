@@ -2,7 +2,7 @@
 
 {
   "name": "@moovio/sdk",
-  "version": "26.4.0-dev.3",
+  "version": "26.4.0-dev.4",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    
