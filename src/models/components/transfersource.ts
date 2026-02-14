@@ -25,34 +25,34 @@ import {
   CardTransactionDetails$outboundSchema,
 } from "./cardtransactiondetails.js";
 import {
-  PaymentMethodsBankAccount,
-  PaymentMethodsBankAccount$inboundSchema,
-  PaymentMethodsBankAccount$Outbound,
-  PaymentMethodsBankAccount$outboundSchema,
-} from "./paymentmethodsbankaccount.js";
-import {
-  PaymentMethodsCard,
-  PaymentMethodsCard$inboundSchema,
-  PaymentMethodsCard$Outbound,
-  PaymentMethodsCard$outboundSchema,
-} from "./paymentmethodscard.js";
-import {
-  PaymentMethodsWallet,
-  PaymentMethodsWallet$inboundSchema,
-  PaymentMethodsWallet$Outbound,
-  PaymentMethodsWallet$outboundSchema,
-} from "./paymentmethodswallet.js";
-import {
-  PaymentMethodType,
-  PaymentMethodType$inboundSchema,
-  PaymentMethodType$outboundSchema,
-} from "./paymentmethodtype.js";
-import {
   TransferAccount,
   TransferAccount$inboundSchema,
   TransferAccount$Outbound,
   TransferAccount$outboundSchema,
 } from "./transferaccount.js";
+import {
+  TransferPaymentMethodsBankAccount,
+  TransferPaymentMethodsBankAccount$inboundSchema,
+  TransferPaymentMethodsBankAccount$Outbound,
+  TransferPaymentMethodsBankAccount$outboundSchema,
+} from "./transferpaymentmethodsbankaccount.js";
+import {
+  TransferPaymentMethodsCard,
+  TransferPaymentMethodsCard$inboundSchema,
+  TransferPaymentMethodsCard$Outbound,
+  TransferPaymentMethodsCard$outboundSchema,
+} from "./transferpaymentmethodscard.js";
+import {
+  TransferPaymentMethodsWallet,
+  TransferPaymentMethodsWallet$inboundSchema,
+  TransferPaymentMethodsWallet$Outbound,
+  TransferPaymentMethodsWallet$outboundSchema,
+} from "./transferpaymentmethodswallet.js";
+import {
+  TransferPaymentMethodType,
+  TransferPaymentMethodType$inboundSchema,
+  TransferPaymentMethodType$outboundSchema,
+} from "./transferpaymentmethodtype.js";
 
 export type TransferSource = {
   /**
@@ -63,17 +63,17 @@ export type TransferSource = {
   /**
    * The payment method type that represents a payment rail and directionality
    */
-  paymentMethodType: PaymentMethodType;
+  paymentMethodType: TransferPaymentMethodType;
   account: TransferAccount;
   /**
    * A bank account as contained within a payment method.
    */
-  bankAccount?: PaymentMethodsBankAccount | undefined;
-  wallet?: PaymentMethodsWallet | undefined;
+  bankAccount?: TransferPaymentMethodsBankAccount | undefined;
+  wallet?: TransferPaymentMethodsWallet | undefined;
   /**
    * A card as contained within a payment method.
    */
-  card?: PaymentMethodsCard | undefined;
+  card?: TransferPaymentMethodsCard | undefined;
   /**
    * Describes an Apple Pay token on a Moov account.
    */
@@ -96,11 +96,11 @@ export const TransferSource$inboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string().optional(),
   paymentMethodID: z.string(),
-  paymentMethodType: PaymentMethodType$inboundSchema,
+  paymentMethodType: TransferPaymentMethodType$inboundSchema,
   account: TransferAccount$inboundSchema,
-  bankAccount: PaymentMethodsBankAccount$inboundSchema.optional(),
-  wallet: PaymentMethodsWallet$inboundSchema.optional(),
-  card: PaymentMethodsCard$inboundSchema.optional(),
+  bankAccount: TransferPaymentMethodsBankAccount$inboundSchema.optional(),
+  wallet: TransferPaymentMethodsWallet$inboundSchema.optional(),
+  card: TransferPaymentMethodsCard$inboundSchema.optional(),
   applePay: ApplePayResponse$inboundSchema.optional(),
   cardDetails: CardTransactionDetails$inboundSchema.optional(),
   achDetails: ACHTransactionDetails$inboundSchema.optional(),
@@ -111,9 +111,9 @@ export type TransferSource$Outbound = {
   paymentMethodID: string;
   paymentMethodType: string;
   account: TransferAccount$Outbound;
-  bankAccount?: PaymentMethodsBankAccount$Outbound | undefined;
-  wallet?: PaymentMethodsWallet$Outbound | undefined;
-  card?: PaymentMethodsCard$Outbound | undefined;
+  bankAccount?: TransferPaymentMethodsBankAccount$Outbound | undefined;
+  wallet?: TransferPaymentMethodsWallet$Outbound | undefined;
+  card?: TransferPaymentMethodsCard$Outbound | undefined;
   applePay?: ApplePayResponse$Outbound | undefined;
   cardDetails?: CardTransactionDetails$Outbound | undefined;
   achDetails?: ACHTransactionDetails$Outbound | undefined;
@@ -127,11 +127,11 @@ export const TransferSource$outboundSchema: z.ZodType<
 > = z.object({
   transferID: z.string().optional(),
   paymentMethodID: z.string(),
-  paymentMethodType: PaymentMethodType$outboundSchema,
+  paymentMethodType: TransferPaymentMethodType$outboundSchema,
   account: TransferAccount$outboundSchema,
-  bankAccount: PaymentMethodsBankAccount$outboundSchema.optional(),
-  wallet: PaymentMethodsWallet$outboundSchema.optional(),
-  card: PaymentMethodsCard$outboundSchema.optional(),
+  bankAccount: TransferPaymentMethodsBankAccount$outboundSchema.optional(),
+  wallet: TransferPaymentMethodsWallet$outboundSchema.optional(),
+  card: TransferPaymentMethodsCard$outboundSchema.optional(),
   applePay: ApplePayResponse$outboundSchema.optional(),
   cardDetails: CardTransactionDetails$outboundSchema.optional(),
   achDetails: ACHTransactionDetails$outboundSchema.optional(),
