@@ -7,15 +7,15 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  PaymentMethod,
-  PaymentMethod$inboundSchema,
-  PaymentMethod$Outbound,
-  PaymentMethod$outboundSchema,
-} from "./paymentmethod.js";
+  TransferPaymentMethod,
+  TransferPaymentMethod$inboundSchema,
+  TransferPaymentMethod$Outbound,
+  TransferPaymentMethod$outboundSchema,
+} from "./transferpaymentmethod.js";
 
 export type TransferOptions = {
-  sourceOptions?: Array<PaymentMethod> | undefined;
-  destinationOptions?: Array<PaymentMethod> | undefined;
+  sourceOptions?: Array<TransferPaymentMethod> | undefined;
+  destinationOptions?: Array<TransferPaymentMethod> | undefined;
 };
 
 /** @internal */
@@ -24,13 +24,13 @@ export const TransferOptions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sourceOptions: z.array(PaymentMethod$inboundSchema).optional(),
-  destinationOptions: z.array(PaymentMethod$inboundSchema).optional(),
+  sourceOptions: z.array(TransferPaymentMethod$inboundSchema).optional(),
+  destinationOptions: z.array(TransferPaymentMethod$inboundSchema).optional(),
 });
 /** @internal */
 export type TransferOptions$Outbound = {
-  sourceOptions?: Array<PaymentMethod$Outbound> | undefined;
-  destinationOptions?: Array<PaymentMethod$Outbound> | undefined;
+  sourceOptions?: Array<TransferPaymentMethod$Outbound> | undefined;
+  destinationOptions?: Array<TransferPaymentMethod$Outbound> | undefined;
 };
 
 /** @internal */
@@ -39,8 +39,8 @@ export const TransferOptions$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TransferOptions
 > = z.object({
-  sourceOptions: z.array(PaymentMethod$outboundSchema).optional(),
-  destinationOptions: z.array(PaymentMethod$outboundSchema).optional(),
+  sourceOptions: z.array(TransferPaymentMethod$outboundSchema).optional(),
+  destinationOptions: z.array(TransferPaymentMethod$outboundSchema).optional(),
 });
 
 export function transferOptionsToJSON(
