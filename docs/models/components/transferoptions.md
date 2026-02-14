@@ -8,26 +8,26 @@ import { TransferOptions } from "@moovio/sdk/models/components";
 let value: TransferOptions = {
   sourceOptions: [
     {
-      paymentMethodID: "<id>",
+      paymentMethodID: "880c87e7-4097-4416-b32b-61024b85211e",
       paymentMethodType: "instant-bank-credit",
       bankAccount: {
         bankAccountID: "<id>",
         fingerprint: "<value>",
-        status: "verified",
+        status: "verificationFailed",
         holderName: "<value>",
-        holderType: "business",
+        holderType: "individual",
         bankName: "<value>",
-        bankAccountType: "checking",
+        bankAccountType: "savings",
         routingNumber: "<value>",
         lastFourAccountNumber: "<value>",
-        updatedOn: new Date("2024-09-12T06:36:19.592Z"),
+        updatedOn: new Date("2026-11-26T20:14:56.616Z"),
       },
     },
   ],
   destinationOptions: [
     {
-      paymentMethodID: "<id>",
-      paymentMethodType: "card-payment",
+      paymentMethodID: "e75eaa04-98d0-4f99-856f-912ec1ae4c0b",
+      paymentMethodType: "push-to-card",
       card: {
         cardID: "01234567-89ab-cdef-0123-456789abcdef",
         fingerprint:
@@ -73,7 +73,7 @@ let value: TransferOptions = {
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `sourceOptions`              | *components.PaymentMethod*[] | :heavy_minus_sign:           | N/A                          |
-| `destinationOptions`         | *components.PaymentMethod*[] | :heavy_minus_sign:           | N/A                          |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `sourceOptions`                      | *components.TransferPaymentMethod*[] | :heavy_minus_sign:                   | N/A                                  |
+| `destinationOptions`                 | *components.TransferPaymentMethod*[] | :heavy_minus_sign:                   | N/A                                  |
