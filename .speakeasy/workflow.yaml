@@ -15,7 +15,7 @@ targets:
                 token: $npm_token
         codeSamples:
             registry:
-                location: registry.speakeasyapi.dev/moov/moov/v2025.04.00-ts-typescript-code-samples
+                location: registry.speakeasyapi.dev/moov/moov/v2025.04.00-typescript-code-samples
             labelOverride:
                 fixedValue: Typescript (SDK)
             blocking: false
