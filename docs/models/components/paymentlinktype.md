@@ -5,11 +5,11 @@
 ```typescript
 import { PaymentLinkType } from "@moovio/sdk/models/components";
 
-let value: PaymentLinkType = "payment";
+let value: PaymentLinkType = "payout";
 ```
 
 ## Values
 
 ```typescript
-"payment" | "payout"
+"payment" | "payout" | "invoice-payment"
 ```

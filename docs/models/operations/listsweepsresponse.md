@@ -16,7 +16,7 @@ let value: ListSweepsResponse = {
       accrualStartedOn: new Date("2024-05-29T23:23:30.304Z"),
       subtotals: [
         {
-          type: "moov-fee",
+          type: "payment",
           count: 782798,
           amount: {
             currency: "USD",

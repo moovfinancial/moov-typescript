@@ -16,6 +16,7 @@ export * from "./createpaymentlinkerror.js";
 export * from "./createsweepconfigerror.js";
 export * from "./createwalletvalidationerror.js";
 export * from "./createwebhookvalidationerror.js";
+export * from "./duplicatecarderror.js";
 export * from "./feeplanagreementerror.js";
 export * from "./fileuploadvalidationerror.js";
 export * from "./filevalidationerror.js";
