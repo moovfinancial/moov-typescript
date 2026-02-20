@@ -1,20 +1,20 @@
-speakeasyVersion: 1.719.0
+speakeasyVersion: 1.722.7
 sources:
     latest:
         sourceNamespace: api-dev
-        sourceRevisionDigest: sha256:cb3ffaa6f1b9f8e14a957975e87485f3d19523f4741acd93db17167ba8a8c60c
-        sourceBlobDigest: sha256:8c39d80d1787a7982a83065237d315eda8e4cd66968b9f6a061be458d7cd5743
+        sourceRevisionDigest: sha256:98d3769e95e1c41ddbecffe9eb07db842377f2c7064fd031629041676a13eff1
+        sourceBlobDigest: sha256:6b4dfc9368b1d9a57038cf7dbc9b85cb186ceb9096cd45cedcb6be46c87ffe18
         tags:
             - latest
-            - speakeasy-sdk-regen-1771280143
+            - speakeasy-sdk-regen-1771546639
 targets:
     latest:
         source: latest
         sourceNamespace: api-dev
-        sourceRevisionDigest: sha256:cb3ffaa6f1b9f8e14a957975e87485f3d19523f4741acd93db17167ba8a8c60c
-        sourceBlobDigest: sha256:8c39d80d1787a7982a83065237d315eda8e4cd66968b9f6a061be458d7cd5743
-        codeSamplesNamespace: dev-ts-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:f8451b797f4025a4d8d1aa2b507ccb035959575c1d695030429c8d1d8cbdd195
+        sourceRevisionDigest: sha256:98d3769e95e1c41ddbecffe9eb07db842377f2c7064fd031629041676a13eff1
+        sourceBlobDigest: sha256:6b4dfc9368b1d9a57038cf7dbc9b85cb186ceb9096cd45cedcb6be46c87ffe18
+        codeSamplesNamespace: dev-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:b234c58f1f460017882b1139d9fc28fadd3d42d31f7ac0cf96565334aae80aa6
     moov:
         source: latest
         sourceNamespace: api-latest
@@ -40,7 +40,7 @@ workflow:
                     token: $npm_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/moov/moov/dev-ts-typescript-code-samples
+                    location: registry.speakeasyapi.dev/moov/moov/dev-typescript-code-samples
                 labelOverride:
                     fixedValue: Typescript (SDK)
                 blocking: false

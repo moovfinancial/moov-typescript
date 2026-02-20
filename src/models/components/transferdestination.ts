@@ -25,6 +25,12 @@ import {
   CardTransactionDetails$outboundSchema,
 } from "./cardtransactiondetails.js";
 import {
+  InstantBankTransactionDetails,
+  InstantBankTransactionDetails$inboundSchema,
+  InstantBankTransactionDetails$Outbound,
+  InstantBankTransactionDetails$outboundSchema,
+} from "./instantbanktransactiondetails.js";
+import {
   RTPTransactionDetails,
   RTPTransactionDetails$inboundSchema,
   RTPTransactionDetails$Outbound,
@@ -92,6 +98,10 @@ export type TransferDestination = {
    * RTP specific details about the transaction.
    */
   rtpDetails?: RTPTransactionDetails | undefined;
+  /**
+   * Instant-bank specific details about the transaction.
+   */
+  instantBankDetails?: InstantBankTransactionDetails | undefined;
 };
 
 /** @internal */
@@ -110,6 +120,7 @@ export const TransferDestination$inboundSchema: z.ZodType<
   applePay: ApplePayResponse$inboundSchema.optional(),
   cardDetails: CardTransactionDetails$inboundSchema.optional(),
   rtpDetails: RTPTransactionDetails$inboundSchema.optional(),
+  instantBankDetails: InstantBankTransactionDetails$inboundSchema.optional(),
 });
 /** @internal */
 export type TransferDestination$Outbound = {
@@ -123,6 +134,7 @@ export type TransferDestination$Outbound = {
   applePay?: ApplePayResponse$Outbound | undefined;
   cardDetails?: CardTransactionDetails$Outbound | undefined;
   rtpDetails?: RTPTransactionDetails$Outbound | undefined;
+  instantBankDetails?: InstantBankTransactionDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -141,6 +153,7 @@ export const TransferDestination$outboundSchema: z.ZodType<
   applePay: ApplePayResponse$outboundSchema.optional(),
   cardDetails: CardTransactionDetails$outboundSchema.optional(),
   rtpDetails: RTPTransactionDetails$outboundSchema.optional(),
+  instantBankDetails: InstantBankTransactionDetails$outboundSchema.optional(),
 });
 
 export function transferDestinationToJSON(

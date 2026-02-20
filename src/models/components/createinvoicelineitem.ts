@@ -13,12 +13,6 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 import {
-  CreateInvoiceLineItemImage,
-  CreateInvoiceLineItemImage$inboundSchema,
-  CreateInvoiceLineItemImage$Outbound,
-  CreateInvoiceLineItemImage$outboundSchema,
-} from "./createinvoicelineitemimage.js";
-import {
   CreateInvoiceLineItemOption,
   CreateInvoiceLineItemOption$inboundSchema,
   CreateInvoiceLineItemOption$Outbound,
@@ -52,10 +46,6 @@ export type CreateInvoiceLineItem = {
    * Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).
    */
   options?: Array<CreateInvoiceLineItemOption> | undefined;
-  /**
-   * Optional list of images associated with this line item.
-   */
-  images?: Array<CreateInvoiceLineItemImage> | undefined;
 };
 
 /** @internal */
@@ -69,7 +59,6 @@ export const CreateInvoiceLineItem$inboundSchema: z.ZodType<
   quantity: z.number().int(),
   productID: z.string().optional(),
   options: z.array(CreateInvoiceLineItemOption$inboundSchema).optional(),
-  images: z.array(CreateInvoiceLineItemImage$inboundSchema).optional(),
 });
 /** @internal */
 export type CreateInvoiceLineItem$Outbound = {
@@ -78,7 +67,6 @@ export type CreateInvoiceLineItem$Outbound = {
   quantity: number;
   productID?: string | undefined;
   options?: Array<CreateInvoiceLineItemOption$Outbound> | undefined;
-  images?: Array<CreateInvoiceLineItemImage$Outbound> | undefined;
 };
 
 /** @internal */
@@ -92,7 +80,6 @@ export const CreateInvoiceLineItem$outboundSchema: z.ZodType<
   quantity: z.number().int(),
   productID: z.string().optional(),
   options: z.array(CreateInvoiceLineItemOption$outboundSchema).optional(),
-  images: z.array(CreateInvoiceLineItemImage$outboundSchema).optional(),
 });
 
 export function createInvoiceLineItemToJSON(
