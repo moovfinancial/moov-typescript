@@ -2225,7 +2225,7 @@ run();
 **Primary error:**
 * [`MoovError`](./src/models/errors/mooverror.ts): The base class for HTTP error responses.
 
-<details><summary>Less common errors (52)</summary>
+<details><summary>Less common errors (53)</summary>
 
 <br />
 
@@ -2244,6 +2244,7 @@ run();
 * [`ProductRequestValidationError`](./src/models/errors/productrequestvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 165 methods.*
 * [`ScheduleValidationError`](./src/models/errors/schedulevalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 165 methods.*
 * [`TerminalApplicationError`](./src/models/errors/terminalapplicationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 165 methods.*
+* [`DuplicateCardError`](./src/models/errors/duplicatecarderror.ts): Attempted to link card that already exists on the account. Status code `409`. Applicable to 1 of 165 methods.*
 * [`Transfer`](./src/models/errors/transfer.ts): Details of a Transfer. Status code `409`. Applicable to 1 of 165 methods.*
 * [`CardAcquiringRefund`](./src/models/errors/cardacquiringrefund.ts): Details of a card refund. Status code `409`. Applicable to 1 of 165 methods.*
 * [`CreateAccountError`](./src/models/errors/createaccounterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 165 methods.*
