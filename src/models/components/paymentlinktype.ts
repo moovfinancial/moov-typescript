@@ -8,6 +8,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const PaymentLinkType = {
   Payment: "payment",
   Payout: "payout",
+  InvoicePayment: "invoice-payment",
 } as const;
 export type PaymentLinkType = ClosedEnum<typeof PaymentLinkType>;
 
