@@ -21,7 +21,7 @@ export type ListPaymentLinksGlobals = {
    *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
    *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
    *
-   * The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
    * When no version is specified, the API defaults to `v2024.01.00`.
    */
   xMoovVersion?: string | undefined;
@@ -30,8 +30,10 @@ export type ListPaymentLinksGlobals = {
 export type ListPaymentLinksRequest = {
   skip?: number | undefined;
   count?: number | undefined;
-  type?: components.PaymentLinkType | undefined;
-  status?: components.PaymentLinkStatus | undefined;
+  /**
+   * A comma-separated list of payment link types to filter results.
+   */
+  types?: Array<components.PaymentLinkType> | undefined;
   /**
    * The merchant account ID.
    */
@@ -98,16 +100,14 @@ export const ListPaymentLinksRequest$inboundSchema: z.ZodType<
 > = z.object({
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
-  type: components.PaymentLinkType$inboundSchema.optional(),
-  status: components.PaymentLinkStatus$inboundSchema.optional(),
+  types: z.array(components.PaymentLinkType$inboundSchema).optional(),
   accountID: z.string(),
 });
 /** @internal */
 export type ListPaymentLinksRequest$Outbound = {
   skip?: number | undefined;
   count?: number | undefined;
-  type?: string | undefined;
-  status?: string | undefined;
+  types?: Array<string> | undefined;
   accountID: string;
 };
 
@@ -119,8 +119,7 @@ export const ListPaymentLinksRequest$outboundSchema: z.ZodType<
 > = z.object({
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
-  type: components.PaymentLinkType$outboundSchema.optional(),
-  status: components.PaymentLinkStatus$outboundSchema.optional(),
+  types: z.array(components.PaymentLinkType$outboundSchema).optional(),
   accountID: z.string(),
 });
 

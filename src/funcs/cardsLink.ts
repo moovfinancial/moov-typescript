@@ -53,6 +53,7 @@ export function cardsLink(
   Result<
     operations.LinkCardResponse,
     | errors.GenericError
+    | errors.DuplicateCardError
     | errors.LinkCardError
     | MoovError
     | ResponseValidationError
@@ -80,6 +81,7 @@ async function $do(
     Result<
       operations.LinkCardResponse,
       | errors.GenericError
+      | errors.DuplicateCardError
       | errors.LinkCardError
       | MoovError
       | ResponseValidationError
@@ -190,6 +192,7 @@ async function $do(
   const [result] = await M.match<
     operations.LinkCardResponse,
     | errors.GenericError
+    | errors.DuplicateCardError
     | errors.LinkCardError
     | MoovError
     | ResponseValidationError
@@ -205,8 +208,9 @@ async function $do(
       key: "Result",
     }),
     M.jsonErr(400, errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr(409, errors.DuplicateCardError$inboundSchema, { hdrs: true }),
     M.jsonErr(422, errors.LinkCardError$inboundSchema, { hdrs: true }),
-    M.fail([401, 403, 404, 409, 429]),
+    M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),

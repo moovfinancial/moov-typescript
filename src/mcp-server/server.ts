@@ -102,6 +102,12 @@ import { tool$imagesUpload } from "./tools/imagesUpload.js";
 import { tool$industriesList } from "./tools/industriesList.js";
 import { tool$institutionsSearch } from "./tools/institutionsSearch.js";
 import { tool$institutionsSearchInstitutions } from "./tools/institutionsSearchInstitutions.js";
+import { tool$invoicesCreateInvoice } from "./tools/invoicesCreateInvoice.js";
+import { tool$invoicesCreateInvoicePayment } from "./tools/invoicesCreateInvoicePayment.js";
+import { tool$invoicesGetInvoice } from "./tools/invoicesGetInvoice.js";
+import { tool$invoicesListInvoicePayments } from "./tools/invoicesListInvoicePayments.js";
+import { tool$invoicesListInvoices } from "./tools/invoicesListInvoices.js";
+import { tool$invoicesUpdateInvoice } from "./tools/invoicesUpdateInvoice.js";
 import { tool$issuingTransactionsGet } from "./tools/issuingTransactionsGet.js";
 import { tool$issuingTransactionsGetAuthorization } from "./tools/issuingTransactionsGetAuthorization.js";
 import { tool$issuingTransactionsList } from "./tools/issuingTransactionsList.js";
@@ -196,7 +202,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "26.4.0-dev.6",
+    version: "26.4.0-dev.7",
   });
 
   const client = new MoovCore({
@@ -297,6 +303,12 @@ export function createMCPServer(deps: {
   tool(tool$imagesDelete);
   tool(tool$imagesUpdateMetadata);
   tool(tool$imagesGetPublic);
+  tool(tool$invoicesCreateInvoice);
+  tool(tool$invoicesListInvoices);
+  tool(tool$invoicesGetInvoice);
+  tool(tool$invoicesUpdateInvoice);
+  tool(tool$invoicesCreateInvoicePayment);
+  tool(tool$invoicesListInvoicePayments);
   tool(tool$paymentLinksCreate);
   tool(tool$paymentLinksList);
   tool(tool$paymentLinksGet);

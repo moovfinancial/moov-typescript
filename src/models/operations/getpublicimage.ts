@@ -30,10 +30,11 @@ export type GetPublicImageResponseResult =
 
 export type GetPublicImageResponse = {
   headers: { [k: string]: Array<string> };
-  result:
+  result?:
     | ReadableStream<Uint8Array>
     | ReadableStream<Uint8Array>
-    | ReadableStream<Uint8Array>;
+    | ReadableStream<Uint8Array>
+    | undefined;
 };
 
 /** @internal */
@@ -146,7 +147,7 @@ export const GetPublicImageResponse$inboundSchema: z.ZodType<
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
-  ]),
+  ]).optional(),
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -156,10 +157,11 @@ export const GetPublicImageResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type GetPublicImageResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result:
+  Result?:
     | ReadableStream<Uint8Array>
     | ReadableStream<Uint8Array>
-    | ReadableStream<Uint8Array>;
+    | ReadableStream<Uint8Array>
+    | undefined;
 };
 
 /** @internal */
@@ -173,7 +175,7 @@ export const GetPublicImageResponse$outboundSchema: z.ZodType<
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(ReadableStream<Uint8Array>),
-  ]),
+  ]).optional(),
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

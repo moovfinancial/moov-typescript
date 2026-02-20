@@ -80,6 +80,10 @@ export type TransferData = {
    * When line items are provided, their total plus sales tax must equal the transfer amount.
    */
   lineItems?: components.TransferLineItems | undefined;
+  /**
+   * ID of the invoice that the transfer is associated with.
+   */
+  invoiceID?: string | undefined;
 };
 
 /**
@@ -156,6 +160,10 @@ export class Transfer extends MoovError {
    * When line items are provided, their total plus sales tax must equal the transfer amount.
    */
   lineItems?: components.TransferLineItems | undefined;
+  /**
+   * ID of the invoice that the transfer is associated with.
+   */
+  invoiceID?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferData;
@@ -197,6 +205,7 @@ export class Transfer extends MoovError {
     if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.lineItems != null) this.lineItems = err.lineItems;
+    if (err.invoiceID != null) this.invoiceID = err.invoiceID;
 
     this.name = "Transfer";
   }
@@ -237,6 +246,7 @@ export const Transfer$inboundSchema: z.ZodType<
   salesTaxAmount: components.Amount$inboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: components.TransferLineItems$inboundSchema.optional(),
+  invoiceID: z.string().optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -279,6 +289,7 @@ export type Transfer$Outbound = {
   salesTaxAmount?: components.Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: components.TransferLineItems$Outbound | undefined;
+  invoiceID?: string | undefined;
 };
 
 /** @internal */
@@ -318,4 +329,5 @@ export const Transfer$outboundSchema: z.ZodType<
     salesTaxAmount: components.Amount$outboundSchema.optional(),
     foreignID: z.string().optional(),
     lineItems: components.TransferLineItems$outboundSchema.optional(),
+    invoiceID: z.string().optional(),
   }));
