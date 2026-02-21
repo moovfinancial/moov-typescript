@@ -644,6 +644,10 @@ let value: Statement = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
+    invoicePaymentFee: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
     kybFee: {
       currency: "USD",
       valueDecimal: "12.987654321",
