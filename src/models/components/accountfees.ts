@@ -26,6 +26,10 @@ export type AccountFees = {
    */
   merchantPCIFee: AmountDecimal;
   /**
+   * Fees for invoice payments.
+   */
+  invoicePaymentFee: AmountDecimal;
+  /**
    * Fees for business verification.
    */
   kybFee?: AmountDecimal | undefined;
@@ -51,6 +55,7 @@ export const AccountFees$inboundSchema: z.ZodType<
 > = z.object({
   walletFee: AmountDecimal$inboundSchema,
   merchantPCIFee: AmountDecimal$inboundSchema,
+  invoicePaymentFee: AmountDecimal$inboundSchema,
   kybFee: AmountDecimal$inboundSchema.optional(),
   kycFee: AmountDecimal$inboundSchema.optional(),
   transactionMonitoringFee: AmountDecimal$inboundSchema.optional(),
@@ -60,6 +65,7 @@ export const AccountFees$inboundSchema: z.ZodType<
 export type AccountFees$Outbound = {
   walletFee: AmountDecimal$Outbound;
   merchantPCIFee: AmountDecimal$Outbound;
+  invoicePaymentFee: AmountDecimal$Outbound;
   kybFee?: AmountDecimal$Outbound | undefined;
   kycFee?: AmountDecimal$Outbound | undefined;
   transactionMonitoringFee?: AmountDecimal$Outbound | undefined;
@@ -74,6 +80,7 @@ export const AccountFees$outboundSchema: z.ZodType<
 > = z.object({
   walletFee: AmountDecimal$outboundSchema,
   merchantPCIFee: AmountDecimal$outboundSchema,
+  invoicePaymentFee: AmountDecimal$outboundSchema,
   kybFee: AmountDecimal$outboundSchema.optional(),
   kycFee: AmountDecimal$outboundSchema.optional(),
   transactionMonitoringFee: AmountDecimal$outboundSchema.optional(),
