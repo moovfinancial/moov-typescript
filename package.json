@@ -30,7 +30,7 @@
     "express": "^4.21.2",
     "globals": "^15.14.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.26.0"
+    "typescript-eslint": "^8.39.0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.26.0",
