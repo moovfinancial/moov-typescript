@@ -6,10 +6,16 @@ import * as z from "zod/v3";
 import { MoovError } from "./mooverror.js";
 
 export type FeePlanAgreementErrorData = {
+  /**
+   * A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
+   */
   planID?: string | undefined;
 };
 
 export class FeePlanAgreementError extends MoovError {
+  /**
+   * A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
+   */
   planID?: string | undefined;
 
   /** The original data that was passed to this error instance. */
