@@ -33,7 +33,6 @@ export const WalletTransactionType = {
   Adjustment: "adjustment",
   FeeRevenue: "fee-revenue",
   Residual: "residual",
-  InstantBankFailure: "instant-bank-failure",
 } as const;
 export type WalletTransactionType = ClosedEnum<typeof WalletTransactionType>;
 
