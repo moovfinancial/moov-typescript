@@ -24,6 +24,9 @@ import {
 } from "./feeproperties.js";
 
 export type BillableFee = {
+  /**
+   * A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
+   */
   billableFeeID?: string | undefined;
   /**
    * A unique code identifying a charge.

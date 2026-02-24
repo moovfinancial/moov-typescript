@@ -23,6 +23,9 @@ import {
  * A fee incurred by a user.
  */
 export type IncurredFee = {
+  /**
+   * A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
+   */
   feeID?: string | undefined;
   /**
    * Account ID the fee belongs to.
