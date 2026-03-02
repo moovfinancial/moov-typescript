@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: e777abbe5f5b478cbf6b7f1bcf3a9956
+  docChecksum: 1c5059ba15f9ba17e7120c6104b717dd
   docVersion: dev
-  speakeasyVersion: 1.725.0
-  generationVersion: 2.836.5
-  releaseVersion: 0.0.0-dev.4
-  configChecksum: fa0dfa09ca23658f9280b6d680d2a61f
+  speakeasyVersion: 1.736.3
+  generationVersion: 2.845.15
+  releaseVersion: 0.0.0-dev.5
+  configChecksum: 5338c7df49049575139f33ab4306c097
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 28d93db8-98d8-4519-81ed-05a2571ad040
-  pristine_commit_hash: 88e1c22b526d2a2dcc8f5fb24baa754bb39c4c1b
-  pristine_tree_hash: 4b7c9aad8dbc2df852adce0d9eecee4b2a3b5dd5
+  generation_id: 28aaaeca-cd6b-4774-a1c6-a068af69e07b
+  pristine_commit_hash: fcfced9900fbe7742e891af3c6b2977457623ccb
+  pristine_tree_hash: 15d119847501b89310bd365148d93798c10a3cc5
 features:
   typescript:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.13
-    core: 3.26.31
+    constsAndDefaults: 0.1.14
+    core: 3.26.38
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -28,7 +28,7 @@ features:
     envVarSecurityUsage: 0.1.2
     globalSecurity: 2.82.15
     globalSecurityCallbacks: 0.1.0
-    globalServerURLs: 2.83.0
+    globalServerURLs: 2.83.1
     globals: 2.82.2
     hiddenGlobals: 0.1.0
     includes: 2.81.1
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: 113eead5093c17d43a46159132885318f281a68a
   .npmignore:
     id: aa70c1f807c3
-    last_write_checksum: sha1:3d5eb92f81539175db1ff0280e0aefbdd701f200
-    pristine_git_object: cf98a6bf092538eb10ff0edc915102682ce9a6e6
+    last_write_checksum: sha1:425e91786e3b6cddd2b364bf3f9f9cd38e3c3e1a
+    pristine_git_object: 134e78a629b846b88e408199011801852bacc600
   FUNCTIONS.md:
     id: 21b9df02aaeb
     last_write_checksum: sha1:b38ed00c18e40f782d44df87630520585090fe87
@@ -1051,8 +1051,8 @@ trackedFiles:
     pristine_git_object: a20d1a951d2a927136659a69e0dc4664c3a62774
   docs/models/components/feecategory.md:
     id: cc3f00345b26
-    last_write_checksum: sha1:2b0261a97fe5e94757b1d15eded1d5a50f0b5229
-    pristine_git_object: 50fd74daf2fe597a66ccbd6a2c35b99402fb8bc0
+    last_write_checksum: sha1:598516bca74b20da1e0796f7b066b266da6da87a
+    pristine_git_object: 4cd762dce0946bc58828e84b010310569899ce5b
   docs/models/components/feemodel.md:
     id: 5d1f839fff02
     last_write_checksum: sha1:232eb64415d2086125db009fb8c67bdcd1c12c89
@@ -5067,12 +5067,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:cdcf76fd9a06d009c38228f7b49de75abfdbfc91
-    pristine_git_object: a8dac94aab6af2f3390d967341e2cbf55ccd8016
+    last_write_checksum: sha1:00e294578b5307b70984e79da828cbcc9c8878a8
+    pristine_git_object: a9157fed815cbca6f7fe755c37529b67e2fd30c2
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:702d935f0bd891cdf8eae00d192529b3579bdbce
-    pristine_git_object: 956433948a3ef065b5d78b81595d909e97f8f42a
+    last_write_checksum: sha1:75eed2c384dc83bb4823f514ddc906210cf6c9f4
+    pristine_git_object: c449e918d9a2046d8a4a25e5e6267a285e77ad70
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5807,8 +5807,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:65a1ca419d371680a1f2463ef26bc18c2e17db92
-    pristine_git_object: c29242cf3167ec0fc9c4d37caa90761641f0c438
+    last_write_checksum: sha1:29a85f0d8958e7494e5b3941d1e5e6fc1de235af
+    pristine_git_object: 15b57fdf91fb8475653afc7c27163266acd727ec
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5887,8 +5887,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:e2a4f23541e7f0191be47d69a32ce8c6a024ad1c
-    pristine_git_object: c3b1fd57b2330ae22b86cf91d40e37251588f442
+    last_write_checksum: sha1:6e366275d3ba4ed99ce2f54115e5d1ecb99e7e89
+    pristine_git_object: 4a988d7a12f3c91c0b7a9972b59024d69a4e9fc1
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5903,8 +5903,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:5f8e1a086ecf3b3f0b9cd0ed75fbc2e105c9f917
-    pristine_git_object: 10c7d2b5ab8e6791abed9e5c673b429b7bbaf883
+    last_write_checksum: sha1:d1717c0c919e2330440cf8342c566791874be5cb
+    pristine_git_object: ca3b559be5f5cf873ff6f8206935f32e7c289b18
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:56c73d4429691516e35541825e759a0285747a2b
@@ -7543,8 +7543,8 @@ trackedFiles:
     pristine_git_object: 3537fd58f29a94e406d30e57369d75a79c5ecaf7
   src/models/components/feecategory.ts:
     id: 05689d0c222b
-    last_write_checksum: sha1:6b76cf51c2c924580c43f367158b146537b1e40e
-    pristine_git_object: 069f4d38a803a149a517c04e0083920aea31bf52
+    last_write_checksum: sha1:54d3ca3f52b04c67be4d30c9895607a8678b4215
+    pristine_git_object: 624f71df069da2f9a3f7c8b69fe8e7b5874a861b
   src/models/components/feemodel.ts:
     id: 647180d53dff
     last_write_checksum: sha1:47731a41910f4044729475f6e78e84585713c52f
@@ -12853,6 +12853,12 @@ examples:
           application/json: {"secret": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `moov.feePlans.listFeePlanAgreements()`:  `response.[].billableFees[].feeCategory.enum(instantBank)` **Added** (Breaking ⚠️)
+  * `moov.feePlans.createFeePlanAgreements()`:  `response.billableFees[].feeCategory.enum(instantBank)` **Added** (Breaking ⚠️)
+  * `moov.feePlans.listFeePlans()`:  `response.[].billableFees[].feeCategory.enum(instantBank)` **Added** (Breaking ⚠️)
+  * `moov.feePlans.listPartnerPricingAgreements()`:  `response.[].billableFees[].feeCategory.enum(instantBank)` **Added** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - .npmignore

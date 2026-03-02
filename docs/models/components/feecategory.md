@@ -11,5 +11,5 @@ let value: FeeCategory = "monthly-platform";
 ## Values
 
 ```typescript
-"ach" | "card-acquiring" | "card-other" | "card-pull" | "card-push" | "monthly-platform" | "network-passthrough" | "other" | "rtp"
+"ach" | "card-acquiring" | "card-other" | "card-pull" | "card-push" | "instant-bank" | "monthly-platform" | "network-passthrough" | "other" | "rtp"
 ```
