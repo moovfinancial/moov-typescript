@@ -25,11 +25,11 @@ import {
   CardTransactionDetails$outboundSchema,
 } from "./cardtransactiondetails.js";
 import {
-  RTPTransactionDetails,
-  RTPTransactionDetails$inboundSchema,
-  RTPTransactionDetails$Outbound,
-  RTPTransactionDetails$outboundSchema,
-} from "./rtptransactiondetails.js";
+  InstantBankTransactionDetails,
+  InstantBankTransactionDetails$inboundSchema,
+  InstantBankTransactionDetails$Outbound,
+  InstantBankTransactionDetails$outboundSchema,
+} from "./instantbanktransactiondetails.js";
 import {
   TransferAccount,
   TransferAccount$inboundSchema,
@@ -89,9 +89,9 @@ export type TransferDestination = {
    */
   cardDetails?: CardTransactionDetails | undefined;
   /**
-   * RTP specific details about the transaction.
+   * Instant-bank specific details about the transaction.
    */
-  rtpDetails?: RTPTransactionDetails | undefined;
+  instantBankDetails?: InstantBankTransactionDetails | undefined;
 };
 
 /** @internal */
@@ -109,7 +109,7 @@ export const TransferDestination$inboundSchema: z.ZodType<
   achDetails: ACHTransactionDetails$inboundSchema.optional(),
   applePay: ApplePayResponse$inboundSchema.optional(),
   cardDetails: CardTransactionDetails$inboundSchema.optional(),
-  rtpDetails: RTPTransactionDetails$inboundSchema.optional(),
+  instantBankDetails: InstantBankTransactionDetails$inboundSchema.optional(),
 });
 /** @internal */
 export type TransferDestination$Outbound = {
@@ -122,7 +122,7 @@ export type TransferDestination$Outbound = {
   achDetails?: ACHTransactionDetails$Outbound | undefined;
   applePay?: ApplePayResponse$Outbound | undefined;
   cardDetails?: CardTransactionDetails$Outbound | undefined;
-  rtpDetails?: RTPTransactionDetails$Outbound | undefined;
+  instantBankDetails?: InstantBankTransactionDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -140,7 +140,7 @@ export const TransferDestination$outboundSchema: z.ZodType<
   achDetails: ACHTransactionDetails$outboundSchema.optional(),
   applePay: ApplePayResponse$outboundSchema.optional(),
   cardDetails: CardTransactionDetails$outboundSchema.optional(),
-  rtpDetails: RTPTransactionDetails$outboundSchema.optional(),
+  instantBankDetails: InstantBankTransactionDetails$outboundSchema.optional(),
 });
 
 export function transferDestinationToJSON(

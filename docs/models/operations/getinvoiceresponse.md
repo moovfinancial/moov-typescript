@@ -25,6 +25,8 @@ let value: GetInvoiceResponse = {
     invoiceID: "<id>",
     invoiceNumber: "INV-1001",
     customerAccountID: "<id>",
+    customerDisplayName: "<value>",
+    customerEmail: "jordan.lee@classbooker.dev",
     partnerAccountID: "<id>",
     status: "overdue",
     lineItems: {

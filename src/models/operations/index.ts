@@ -33,6 +33,7 @@ export * from "./createwallet.js";
 export * from "./createwebhook.js";
 export * from "./deletedisputeevidencefile.js";
 export * from "./deleteimage.js";
+export * from "./deleteinvoice.js";
 export * from "./deleterepresentative.js";
 export * from "./deleteterminalapplication.js";
 export * from "./disablebankaccount.js";

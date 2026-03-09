@@ -6,9 +6,9 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * Status codes for RTP failures.
+ * Status codes for instant-bank failures.
  */
-export const RTPFailureCode = {
+export const InstantBankFailureCode = {
   ProcessingError: "processing-error",
   InvalidAccount: "invalid-account",
   AccountClosed: "account-closed",
@@ -18,18 +18,19 @@ export const RTPFailureCode = {
   LimitExceeded: "limit-exceeded",
   InvalidAmount: "invalid-amount",
   CustomerDeceased: "customer-deceased",
+  ParticipantNotAvailable: "participant-not-available",
   Other: "other",
 } as const;
 /**
- * Status codes for RTP failures.
+ * Status codes for instant-bank failures.
  */
-export type RTPFailureCode = ClosedEnum<typeof RTPFailureCode>;
+export type InstantBankFailureCode = ClosedEnum<typeof InstantBankFailureCode>;
 
 /** @internal */
-export const RTPFailureCode$inboundSchema: z.ZodNativeEnum<
-  typeof RTPFailureCode
-> = z.nativeEnum(RTPFailureCode);
+export const InstantBankFailureCode$inboundSchema: z.ZodNativeEnum<
+  typeof InstantBankFailureCode
+> = z.nativeEnum(InstantBankFailureCode);
 /** @internal */
-export const RTPFailureCode$outboundSchema: z.ZodNativeEnum<
-  typeof RTPFailureCode
-> = RTPFailureCode$inboundSchema;
+export const InstantBankFailureCode$outboundSchema: z.ZodNativeEnum<
+  typeof InstantBankFailureCode
+> = InstantBankFailureCode$inboundSchema;

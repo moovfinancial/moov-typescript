@@ -3,11 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { appendForm, encodeSimple } from "../lib/encodings.js";
-import {
-  getContentTypeFromFileName,
-  readableStreamToArrayBuffer,
-} from "../lib/files.js";
+import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -27,27 +23,28 @@ import { ResponseValidationError } from "../models/errors/responsevalidationerro
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
-import { isBlobLike } from "../types/blobs.js";
 import { Result } from "../types/fp.js";
-import { isReadableStream } from "../types/streams.js";
 
 /**
- * Uploads a file as evidence for a dispute.
+ * Delete an invoice. Only invoices in `draft` status can be deleted.
  *
- * Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
+ * Deleting an invoice indicates it was created by mistake and should be completely disregarded.
+ * Deleted invoices are hidden from list results by default, but can still be retrieved
+ * individually through the get invoice endpoint. If you need to void an invoice that was
+ * already sent or is otherwise part of the invoice history, cancel it instead by updating
+ * its status to `canceled`.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
+ * you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
  */
-export function disputesUploadEvidenceFile(
+export function invoicesDelete(
   client: MoovCore,
-  request: operations.UploadDisputeEvidenceFileRequest,
+  request: operations.DeleteInvoiceRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.UploadDisputeEvidenceFileResponse,
+    operations.DeleteInvoiceResponse | undefined,
     | errors.GenericError
-    | errors.FileUploadValidationError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -67,14 +64,13 @@ export function disputesUploadEvidenceFile(
 
 async function $do(
   client: MoovCore,
-  request: operations.UploadDisputeEvidenceFileRequest,
+  request: operations.DeleteInvoiceRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.UploadDisputeEvidenceFileResponse,
+      operations.DeleteInvoiceResponse | undefined,
       | errors.GenericError
-      | errors.FileUploadValidationError
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -89,84 +85,29 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.UploadDisputeEvidenceFileRequest$outboundSchema.parse(value),
+    (value) => operations.DeleteInvoiceRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = new FormData();
-
-  appendForm(
-    body,
-    "evidenceType",
-    payload.CreateEvidenceFileMultiPart.evidenceType,
-  );
-  if (isBlobLike(payload.CreateEvidenceFileMultiPart.file)) {
-    appendForm(body, "file", payload.CreateEvidenceFileMultiPart.file);
-  } else if (
-    isReadableStream(payload.CreateEvidenceFileMultiPart.file.content)
-  ) {
-    const buffer = await readableStreamToArrayBuffer(
-      payload.CreateEvidenceFileMultiPart.file.content,
-    );
-    const contentType =
-      getContentTypeFromFileName(
-        payload.CreateEvidenceFileMultiPart.file.fileName,
-      ) || "application/octet-stream";
-    const blob = new Blob([buffer], { type: contentType });
-    appendForm(
-      body,
-      "file",
-      blob,
-      payload.CreateEvidenceFileMultiPart.file.fileName,
-    );
-  } else if (
-    payload.CreateEvidenceFileMultiPart.file.content instanceof Uint8Array
-  ) {
-    const contentType =
-      getContentTypeFromFileName(
-        payload.CreateEvidenceFileMultiPart.file.fileName,
-      ) || "application/octet-stream";
-    appendForm(
-      body,
-      "file",
-      new Blob([
-        new Uint8Array(payload.CreateEvidenceFileMultiPart.file.content).buffer,
-      ], { type: contentType }),
-      payload.CreateEvidenceFileMultiPart.file.fileName,
-    );
-  } else {
-    const contentType =
-      getContentTypeFromFileName(
-        payload.CreateEvidenceFileMultiPart.file.fileName,
-      ) || "application/octet-stream";
-    appendForm(
-      body,
-      "file",
-      new Blob([payload.CreateEvidenceFileMultiPart.file.content], {
-        type: contentType,
-      }),
-      payload.CreateEvidenceFileMultiPart.file.fileName,
-    );
-  }
+  const body = null;
 
   const pathParams = {
     accountID: encodeSimple("accountID", payload.accountID, {
       explode: false,
       charEncoding: "percent",
     }),
-    disputeID: encodeSimple("disputeID", payload.disputeID, {
+    invoiceID: encodeSimple("invoiceID", payload.invoiceID, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path = pathToFunc(
-    "/accounts/{accountID}/disputes/{disputeID}/evidence-file",
-  )(pathParams);
+  const path = pathToFunc("/accounts/{accountID}/invoices/{invoiceID}")(
+    pathParams,
+  );
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -183,7 +124,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "uploadDisputeEvidenceFile",
+    operationID: "deleteInvoice",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -197,7 +138,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "DELETE",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -218,7 +159,6 @@ async function $do(
       "403",
       "404",
       "409",
-      "422",
       "429",
       "4XX",
       "500",
@@ -238,9 +178,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.UploadDisputeEvidenceFileResponse,
+    operations.DeleteInvoiceResponse | undefined,
     | errors.GenericError
-    | errors.FileUploadValidationError
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -250,14 +189,10 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, operations.UploadDisputeEvidenceFileResponse$inboundSchema, {
+    M.nil(204, operations.DeleteInvoiceResponse$inboundSchema.optional(), {
       hdrs: true,
-      key: "Result",
     }),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
-    M.jsonErr(422, errors.FileUploadValidationError$inboundSchema, {
-      hdrs: true,
-    }),
     M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
