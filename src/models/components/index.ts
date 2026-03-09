@@ -398,7 +398,6 @@ export * from "./rtpfailurecode.js";
 export * from "./rtpinstitution.js";
 export * from "./rtprejectioncode.js";
 export * from "./rtpservices.js";
-export * from "./rtptransactiondetails.js";
 export * from "./rtptransactionstatus.js";
 export * from "./runtransfer.js";
 export * from "./scheduledtransferimagemetadata.js";
