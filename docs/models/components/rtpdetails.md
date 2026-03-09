@@ -1,13 +1,15 @@
-# RTPTransactionDetails
+# ~~RtpDetails~~
 
-RTP specific details about the transaction.
+DEPRECATED: use `InstantBankTransactionDetails` instead (v2026.04.00 or later). RTP specific details about the transaction.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ## Example Usage
 
 ```typescript
-import { RTPTransactionDetails } from "@moovio/sdk/models/components";
+import { RtpDetails } from "@moovio/sdk/models/components";
 
-let value: RTPTransactionDetails = {};
+let value: RtpDetails = {};
 ```
 
 ## Fields
