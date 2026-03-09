@@ -113,6 +113,22 @@ async function $do(
       blob,
       payload.ImageUploadRequestMultiPart.image.fileName,
     );
+  } else if (
+    payload.ImageUploadRequestMultiPart.image.content instanceof Uint8Array
+  ) {
+    const contentType =
+      getContentTypeFromFileName(
+        payload.ImageUploadRequestMultiPart.image.fileName,
+      ) || "application/octet-stream";
+    appendForm(
+      body,
+      "image",
+      new Blob([
+        new Uint8Array(payload.ImageUploadRequestMultiPart.image.content)
+          .buffer,
+      ], { type: contentType }),
+      payload.ImageUploadRequestMultiPart.image.fileName,
+    );
   } else {
     const contentType =
       getContentTypeFromFileName(
