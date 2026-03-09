@@ -25,11 +25,15 @@ import {
   CardTransactionDetails$outboundSchema,
 } from "./cardtransactiondetails.js";
 import {
-  RTPTransactionDetails,
-  RTPTransactionDetails$inboundSchema,
-  RTPTransactionDetails$Outbound,
-  RTPTransactionDetails$outboundSchema,
-} from "./rtptransactiondetails.js";
+  RTPFailureCode,
+  RTPFailureCode$inboundSchema,
+  RTPFailureCode$outboundSchema,
+} from "./rtpfailurecode.js";
+import {
+  RTPTransactionStatus,
+  RTPTransactionStatus$inboundSchema,
+  RTPTransactionStatus$outboundSchema,
+} from "./rtptransactionstatus.js";
 import {
   TransferAccount,
   TransferAccount$inboundSchema,
@@ -60,6 +64,30 @@ import {
   TransferPaymentMethodType$outboundSchema,
 } from "./transferpaymentmethodtype.js";
 
+/**
+ * DEPRECATED: use `InstantBankTransactionDetails` instead (v2026.04.00 or later). RTP specific details about the transaction.
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+ */
+export type RtpDetails = {
+  /**
+   * Status of a transaction within the RTP lifecycle.
+   */
+  status?: RTPTransactionStatus | undefined;
+  /**
+   * Response code returned by network on failure.
+   */
+  networkResponseCode?: string | undefined;
+  /**
+   * Status codes for RTP failures.
+   */
+  failureCode?: RTPFailureCode | undefined;
+  initiatedOn?: Date | undefined;
+  completedOn?: Date | undefined;
+  failedOn?: Date | undefined;
+  acceptedWithoutPostingOn?: Date | undefined;
+};
+
 export type TransferDestination = {
   paymentMethodID: string;
   /**
@@ -89,10 +117,68 @@ export type TransferDestination = {
    */
   cardDetails?: CardTransactionDetails | undefined;
   /**
-   * RTP specific details about the transaction.
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  rtpDetails?: RTPTransactionDetails | undefined;
+  rtpDetails?: RtpDetails | undefined;
 };
+
+/** @internal */
+export const RtpDetails$inboundSchema: z.ZodType<
+  RtpDetails,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  status: RTPTransactionStatus$inboundSchema.optional(),
+  networkResponseCode: z.string().optional(),
+  failureCode: RTPFailureCode$inboundSchema.optional(),
+  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  acceptedWithoutPostingOn: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
+});
+/** @internal */
+export type RtpDetails$Outbound = {
+  status?: string | undefined;
+  networkResponseCode?: string | undefined;
+  failureCode?: string | undefined;
+  initiatedOn?: string | undefined;
+  completedOn?: string | undefined;
+  failedOn?: string | undefined;
+  acceptedWithoutPostingOn?: string | undefined;
+};
+
+/** @internal */
+export const RtpDetails$outboundSchema: z.ZodType<
+  RtpDetails$Outbound,
+  z.ZodTypeDef,
+  RtpDetails
+> = z.object({
+  status: RTPTransactionStatus$outboundSchema.optional(),
+  networkResponseCode: z.string().optional(),
+  failureCode: RTPFailureCode$outboundSchema.optional(),
+  initiatedOn: z.date().transform(v => v.toISOString()).optional(),
+  completedOn: z.date().transform(v => v.toISOString()).optional(),
+  failedOn: z.date().transform(v => v.toISOString()).optional(),
+  acceptedWithoutPostingOn: z.date().transform(v => v.toISOString()).optional(),
+});
+
+export function rtpDetailsToJSON(rtpDetails: RtpDetails): string {
+  return JSON.stringify(RtpDetails$outboundSchema.parse(rtpDetails));
+}
+export function rtpDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<RtpDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RtpDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RtpDetails' from JSON`,
+  );
+}
 
 /** @internal */
 export const TransferDestination$inboundSchema: z.ZodType<
@@ -109,7 +195,7 @@ export const TransferDestination$inboundSchema: z.ZodType<
   achDetails: ACHTransactionDetails$inboundSchema.optional(),
   applePay: ApplePayResponse$inboundSchema.optional(),
   cardDetails: CardTransactionDetails$inboundSchema.optional(),
-  rtpDetails: RTPTransactionDetails$inboundSchema.optional(),
+  rtpDetails: z.lazy(() => RtpDetails$inboundSchema).optional(),
 });
 /** @internal */
 export type TransferDestination$Outbound = {
@@ -122,7 +208,7 @@ export type TransferDestination$Outbound = {
   achDetails?: ACHTransactionDetails$Outbound | undefined;
   applePay?: ApplePayResponse$Outbound | undefined;
   cardDetails?: CardTransactionDetails$Outbound | undefined;
-  rtpDetails?: RTPTransactionDetails$Outbound | undefined;
+  rtpDetails?: RtpDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -140,7 +226,7 @@ export const TransferDestination$outboundSchema: z.ZodType<
   achDetails: ACHTransactionDetails$outboundSchema.optional(),
   applePay: ApplePayResponse$outboundSchema.optional(),
   cardDetails: CardTransactionDetails$outboundSchema.optional(),
-  rtpDetails: RTPTransactionDetails$outboundSchema.optional(),
+  rtpDetails: z.lazy(() => RtpDetails$outboundSchema).optional(),
 });
 
 export function transferDestinationToJSON(

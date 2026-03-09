@@ -123,6 +123,21 @@ async function $do(
       blob,
       payload.CreateEvidenceFileMultiPart.file.fileName,
     );
+  } else if (
+    payload.CreateEvidenceFileMultiPart.file.content instanceof Uint8Array
+  ) {
+    const contentType =
+      getContentTypeFromFileName(
+        payload.CreateEvidenceFileMultiPart.file.fileName,
+      ) || "application/octet-stream";
+    appendForm(
+      body,
+      "file",
+      new Blob([
+        new Uint8Array(payload.CreateEvidenceFileMultiPart.file.content).buffer,
+      ], { type: contentType }),
+      payload.CreateEvidenceFileMultiPart.file.fileName,
+    );
   } else {
     const contentType =
       getContentTypeFromFileName(
