@@ -13,5 +13,5 @@ export function initHooks(hooks: Hooks) {
   // Hooks are registered per SDK instance, and are valid for the lifetime of the SDK instance
 
   const versionHook = new MoovVersionHook();
-  hooks.registerSDKInitHook(versionHook);
+  hooks.registerBeforeRequestHook(versionHook);
 }
