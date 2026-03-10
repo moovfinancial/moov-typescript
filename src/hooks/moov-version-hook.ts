@@ -1,9 +1,13 @@
-import { SDK_METADATA, SDKOptions } from "../lib/config";
-import { SDKInitHook } from "./types";
+import { SDK_METADATA } from "../lib/config.js";
+import { BeforeRequestContext, BeforeRequestHook } from "./types.js";
 
-export class MoovVersionHook implements SDKInitHook {
-  sdkInit(opts: SDKOptions): SDKOptions {
-    opts.xMoovVersion = SDK_METADATA.openapiDocVersion;
-    return opts;
+export class MoovVersionHook implements BeforeRequestHook {
+  beforeRequest(
+    _hookCtx: BeforeRequestContext,
+    request: Request,
+  ): Request {
+    const newRequest = new Request(request);
+    newRequest.headers.set("X-Moov-Version", SDK_METADATA.openapiDocVersion);
+    return newRequest;
   }
 }
