@@ -20,6 +20,16 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+* [delete](#delete) - Delete an invoice. Only invoices in `draft` status can be deleted.
+
+Deleting an invoice indicates it was created by mistake and should be completely disregarded.
+Deleted invoices are hidden from list results by default, but can still be retrieved
+individually through the get invoice endpoint. If you need to void an invoice that was
+already sent or is otherwise part of the invoice history, cancel it instead by updating
+its status to `canceled`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 * [createInvoicePayment](#createinvoicepayment) - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
 If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
 
@@ -456,6 +466,99 @@ run();
 | errors.GenericError       | 400, 409                  | application/json          |
 | errors.UpdateInvoiceError | 422                       | application/json          |
 | errors.APIError           | 4XX, 5XX                  | \*/\*                     |
+
+## delete
+
+Delete an invoice. Only invoices in `draft` status can be deleted.
+
+Deleting an invoice indicates it was created by mistake and should be completely disregarded.
+Deleted invoices are hidden from list results by default, but can still be retrieved
+individually through the get invoice endpoint. If you need to void an invoice that was
+already sent or is otherwise part of the invoice history, cancel it instead by updating
+its status to `canceled`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="deleteInvoice" method="delete" path="/accounts/{accountID}/invoices/{invoiceID}" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  xMoovVersion: "<value>",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.invoices.delete({
+    accountID: "<id>",
+    invoiceID: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { invoicesDelete } from "@moovio/sdk/funcs/invoicesDelete.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  xMoovVersion: "<value>",
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await invoicesDelete(moov, {
+    accountID: "<id>",
+    invoiceID: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("invoicesDelete failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteInvoiceRequest](../../models/operations/deleteinvoicerequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.DeleteInvoiceResponse](../../models/operations/deleteinvoiceresponse.md)\>**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.GenericError | 400, 409            | application/json    |
+| errors.APIError     | 4XX, 5XX            | \*/\*               |
 
 ## createInvoicePayment
 

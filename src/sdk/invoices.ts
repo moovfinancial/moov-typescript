@@ -4,6 +4,7 @@
 
 import { invoicesCreateInvoice } from "../funcs/invoicesCreateInvoice.js";
 import { invoicesCreateInvoicePayment } from "../funcs/invoicesCreateInvoicePayment.js";
+import { invoicesDelete } from "../funcs/invoicesDelete.js";
 import { invoicesGetInvoice } from "../funcs/invoicesGetInvoice.js";
 import { invoicesListInvoicePayments } from "../funcs/invoicesListInvoicePayments.js";
 import { invoicesListInvoices } from "../funcs/invoicesListInvoices.js";
@@ -75,6 +76,29 @@ export class Invoices extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateInvoiceResponse> {
     return unwrapAsync(invoicesUpdateInvoice(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete an invoice. Only invoices in `draft` status can be deleted.
+   *
+   * Deleting an invoice indicates it was created by mistake and should be completely disregarded.
+   * Deleted invoices are hidden from list results by default, but can still be retrieved
+   * individually through the get invoice endpoint. If you need to void an invoice that was
+   * already sent or is otherwise part of the invoice history, cancel it instead by updating
+   * its status to `canceled`.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+   */
+  async delete(
+    request: operations.DeleteInvoiceRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteInvoiceResponse | undefined> {
+    return unwrapAsync(invoicesDelete(
       this,
       request,
       options,

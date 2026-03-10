@@ -39,7 +39,8 @@ export type CreateInvoiceLineItem = {
    *   Optional unique identifier associating the line item with a product.
    *
    * @remarks
-   *   This is for reporting or tracking purposes, and does not populate other details of the line item.
+   *   When provided, images associated with the product will be included on the line item.
+   *   This does not populate other details of the line item.
    */
   productID?: string | undefined;
   /**

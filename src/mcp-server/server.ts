@@ -104,6 +104,7 @@ import { tool$institutionsSearch } from "./tools/institutionsSearch.js";
 import { tool$institutionsSearchInstitutions } from "./tools/institutionsSearchInstitutions.js";
 import { tool$invoicesCreateInvoice } from "./tools/invoicesCreateInvoice.js";
 import { tool$invoicesCreateInvoicePayment } from "./tools/invoicesCreateInvoicePayment.js";
+import { tool$invoicesDelete } from "./tools/invoicesDelete.js";
 import { tool$invoicesGetInvoice } from "./tools/invoicesGetInvoice.js";
 import { tool$invoicesListInvoicePayments } from "./tools/invoicesListInvoicePayments.js";
 import { tool$invoicesListInvoices } from "./tools/invoicesListInvoices.js";
@@ -202,7 +203,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.0.0-dev.5",
+    version: "0.0.0-dev.6",
   });
 
   const client = new MoovCore({
@@ -307,6 +308,7 @@ export function createMCPServer(deps: {
   tool(tool$invoicesListInvoices);
   tool(tool$invoicesGetInvoice);
   tool(tool$invoicesUpdateInvoice);
+  tool(tool$invoicesDelete);
   tool(tool$invoicesCreateInvoicePayment);
   tool(tool$invoicesListInvoicePayments);
   tool(tool$paymentLinksCreate);

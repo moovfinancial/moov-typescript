@@ -42,6 +42,14 @@ export type Invoice = {
    */
   customerAccountID: string;
   /**
+   * Display name of the customer account.
+   */
+  customerDisplayName: string;
+  /**
+   * Email address of the customer account.
+   */
+  customerEmail: string;
+  /**
    * A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
    */
   partnerAccountID: string;
@@ -83,6 +91,7 @@ export type Invoice = {
   sentOn?: Date | undefined;
   paidOn?: Date | undefined;
   canceledOn?: Date | undefined;
+  disabledOn?: Date | undefined;
 };
 
 /** @internal */
@@ -92,6 +101,8 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
     invoiceNumber: z.string(),
     description: z.string().optional(),
     customerAccountID: z.string(),
+    customerDisplayName: z.string(),
+    customerEmail: z.string(),
     partnerAccountID: z.string(),
     status: InvoiceStatus$inboundSchema,
     lineItems: InvoiceLineItems$inboundSchema,
@@ -119,6 +130,9 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
     canceledOn: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ).optional(),
+    disabledOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
   });
 /** @internal */
 export type Invoice$Outbound = {
@@ -126,6 +140,8 @@ export type Invoice$Outbound = {
   invoiceNumber: string;
   description?: string | undefined;
   customerAccountID: string;
+  customerDisplayName: string;
+  customerEmail: string;
   partnerAccountID: string;
   status: string;
   lineItems: InvoiceLineItems$Outbound;
@@ -144,6 +160,7 @@ export type Invoice$Outbound = {
   sentOn?: string | undefined;
   paidOn?: string | undefined;
   canceledOn?: string | undefined;
+  disabledOn?: string | undefined;
 };
 
 /** @internal */
@@ -156,6 +173,8 @@ export const Invoice$outboundSchema: z.ZodType<
   invoiceNumber: z.string(),
   description: z.string().optional(),
   customerAccountID: z.string(),
+  customerDisplayName: z.string(),
+  customerEmail: z.string(),
   partnerAccountID: z.string(),
   status: InvoiceStatus$outboundSchema,
   lineItems: InvoiceLineItems$outboundSchema,
@@ -174,6 +193,7 @@ export const Invoice$outboundSchema: z.ZodType<
   sentOn: z.date().transform(v => v.toISOString()).optional(),
   paidOn: z.date().transform(v => v.toISOString()).optional(),
   canceledOn: z.date().transform(v => v.toISOString()).optional(),
+  disabledOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
 export function invoiceToJSON(invoice: Invoice): string {
