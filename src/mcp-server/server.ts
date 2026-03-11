@@ -139,6 +139,10 @@ import { tool$representativesDelete } from "./tools/representativesDelete.js";
 import { tool$representativesGet } from "./tools/representativesGet.js";
 import { tool$representativesList } from "./tools/representativesList.js";
 import { tool$representativesUpdate } from "./tools/representativesUpdate.js";
+import { tool$resolutionLinksCreate } from "./tools/resolutionLinksCreate.js";
+import { tool$resolutionLinksDisable } from "./tools/resolutionLinksDisable.js";
+import { tool$resolutionLinksGet } from "./tools/resolutionLinksGet.js";
+import { tool$resolutionLinksList } from "./tools/resolutionLinksList.js";
 import { tool$schedulingCancel } from "./tools/schedulingCancel.js";
 import { tool$schedulingCreate } from "./tools/schedulingCreate.js";
 import { tool$schedulingGet } from "./tools/schedulingGet.js";
@@ -203,7 +207,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "26.4.0-dev.10",
+    version: "26.4.0-dev.11",
   });
 
   const client = new MoovCore({
@@ -329,6 +333,10 @@ export function createMCPServer(deps: {
   tool(tool$representativesDelete);
   tool(tool$representativesGet);
   tool(tool$representativesUpdate);
+  tool(tool$resolutionLinksCreate);
+  tool(tool$resolutionLinksList);
+  tool(tool$resolutionLinksGet);
+  tool(tool$resolutionLinksDisable);
   tool(tool$schedulingCreate);
   tool(tool$schedulingList);
   tool(tool$schedulingUpdate);

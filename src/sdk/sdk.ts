@@ -32,6 +32,7 @@ import { Ping } from "./ping.js";
 import { Products } from "./products.js";
 import { Receipts } from "./receipts.js";
 import { Representatives } from "./representatives.js";
+import { ResolutionLinks } from "./resolutionlinks.js";
 import { Scheduling } from "./scheduling.js";
 import { Statements } from "./statements.js";
 import { Support } from "./support.js";
@@ -122,6 +123,11 @@ export class Moov extends ClientSDK {
   private _representatives?: Representatives;
   get representatives(): Representatives {
     return (this._representatives ??= new Representatives(this._options));
+  }
+
+  private _resolutionLinks?: ResolutionLinks;
+  get resolutionLinks(): ResolutionLinks {
+    return (this._resolutionLinks ??= new ResolutionLinks(this._options));
   }
 
   private _scheduling?: Scheduling;

@@ -15,6 +15,7 @@ export * from "./createaccounterror.js";
 export * from "./createinvoiceerror.js";
 export * from "./createinvoicepaymenterror.js";
 export * from "./createpaymentlinkerror.js";
+export * from "./createresolutionlinkerror.js";
 export * from "./createsweepconfigerror.js";
 export * from "./createticketerror.js";
 export * from "./createwalletvalidationerror.js";
