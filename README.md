@@ -994,6 +994,27 @@ If you need to update information in a locked state, please contact Moov support
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 
+### [ResolutionLinks](docs/sdks/resolutionlinks/README.md)
+
+* [create](docs/sdks/resolutionlinks/README.md#create) - Create a resolution link for the specified account. Resolution links are temporary, secure links
+sent to merchants to resolve account requirements such as KYC verification or document uploads.  Only one active resolution link
+is allowed per connected account. 
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/profile.write`, `/accounts/{accountID}/representatives.write` and `/accounts/{accountID}/files.write` scopes.
+* [list](docs/sdks/resolutionlinks/README.md#list) - List resolution links for the specified account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+* [get](docs/sdks/resolutionlinks/README.md#get) - Get a resolution link by code.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+* [disable](docs/sdks/resolutionlinks/README.md#disable) - Disable a resolution link. Disabled resolution links can no longer be used by merchants.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/profile.write` scope.
+
 ### [Scheduling](docs/sdks/scheduling/README.md)
 
 * [create](docs/sdks/scheduling/README.md#create) - Describes the schedule to create or modify.
@@ -1938,6 +1959,24 @@ If you need to update information in a locked state, please contact Moov support
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
+- [`resolutionLinksCreate`](docs/sdks/resolutionlinks/README.md#create) - Create a resolution link for the specified account. Resolution links are temporary, secure links
+sent to merchants to resolve account requirements such as KYC verification or document uploads.  Only one active resolution link
+is allowed per connected account. 
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/profile.write`, `/accounts/{accountID}/representatives.write` and `/accounts/{accountID}/files.write` scopes.
+- [`resolutionLinksDisable`](docs/sdks/resolutionlinks/README.md#disable) - Disable a resolution link. Disabled resolution links can no longer be used by merchants.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/profile.write` scope.
+- [`resolutionLinksGet`](docs/sdks/resolutionlinks/README.md#get) - Get a resolution link by code.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+- [`resolutionLinksList`](docs/sdks/resolutionlinks/README.md#list) - List resolution links for the specified account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 - [`schedulingCancel`](docs/sdks/scheduling/README.md#cancel) - Describes the schedule to cancel.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -2383,7 +2422,7 @@ run();
 **Primary error:**
 * [`MoovError`](./src/models/errors/mooverror.ts): The base class for HTTP error responses.
 
-<details><summary>Less common errors (60)</summary>
+<details><summary>Less common errors (61)</summary>
 
 <br />
 
@@ -2396,60 +2435,61 @@ run();
 
 
 **Inherit from [`MoovError`](./src/models/errors/mooverror.ts)**:
-* [`GenericError`](./src/models/errors/genericerror.ts): Applicable to 79 of 178 methods.*
-* [`BrandValidationError`](./src/models/errors/brandvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 178 methods.*
-* [`ImageRequestValidationError`](./src/models/errors/imagerequestvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 178 methods.*
-* [`ProductRequestValidationError`](./src/models/errors/productrequestvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 178 methods.*
-* [`ScheduleValidationError`](./src/models/errors/schedulevalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 178 methods.*
-* [`TerminalApplicationError`](./src/models/errors/terminalapplicationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 178 methods.*
-* [`DuplicateCardError`](./src/models/errors/duplicatecarderror.ts): Attempted to link card that already exists on the account. Status code `409`. Applicable to 1 of 178 methods.*
-* [`Transfer`](./src/models/errors/transfer.ts): Details of a Transfer. Status code `409`. Applicable to 1 of 178 methods.*
-* [`CardAcquiringRefund`](./src/models/errors/cardacquiringrefund.ts): Details of a card refund. Status code `409`. Applicable to 1 of 178 methods.*
-* [`CreateAccountError`](./src/models/errors/createaccounterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`PatchAccountError`](./src/models/errors/patchaccounterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`ConnectAccountRequestValidationError`](./src/models/errors/connectaccountrequestvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`AssignCountriesError`](./src/models/errors/assigncountrieserror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`LinkApplePayError`](./src/models/errors/linkapplepayerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`BankAccountValidationError`](./src/models/errors/bankaccountvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`MicroDepositValidationError`](./src/models/errors/microdepositvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`AddCapabilitiesError`](./src/models/errors/addcapabilitieserror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`LinkCardError`](./src/models/errors/linkcarderror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`UpdateCardError`](./src/models/errors/updatecarderror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`FileUploadValidationError`](./src/models/errors/fileuploadvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`FeePlanAgreementError`](./src/models/errors/feeplanagreementerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`FileValidationError`](./src/models/errors/filevalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`ImageMetadataValidationError`](./src/models/errors/imagemetadatavalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`CreateInvoiceError`](./src/models/errors/createinvoiceerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`ListInvoicesValidationError`](./src/models/errors/listinvoicesvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`UpdateInvoiceError`](./src/models/errors/updateinvoiceerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`CreateInvoicePaymentError`](./src/models/errors/createinvoicepaymenterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`CreatePaymentLinkError`](./src/models/errors/createpaymentlinkerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`UpdatePaymentLinkError`](./src/models/errors/updatepaymentlinkerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`RepresentativeValidationError`](./src/models/errors/representativevalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`CreateSweepConfigError`](./src/models/errors/createsweepconfigerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`PatchSweepConfigError`](./src/models/errors/patchsweepconfigerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`AccountTerminalApplicationError`](./src/models/errors/accountterminalapplicationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`CreateTicketError`](./src/models/errors/createticketerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`UpdateTicketError`](./src/models/errors/updateticketerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`TransferOptionsValidationError`](./src/models/errors/transferoptionsvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`TransferValidationError`](./src/models/errors/transfervalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`ListTransfersValidationError`](./src/models/errors/listtransfersvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`PatchTransferValidationError`](./src/models/errors/patchtransfervalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`RefundValidationError`](./src/models/errors/refundvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`ReversalValidationError`](./src/models/errors/reversalvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`UpsertUnderwritingError`](./src/models/errors/upsertunderwritingerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`UpdateUnderwritingError`](./src/models/errors/updateunderwritingerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`CreateWalletValidationError`](./src/models/errors/createwalletvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`ListWalletsValidationError`](./src/models/errors/listwalletsvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`PatchWalletValidationError`](./src/models/errors/patchwalletvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`ListWalletTransactionsValidationError`](./src/models/errors/listwallettransactionsvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`CreateWebhookValidationError`](./src/models/errors/createwebhookvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`UpdateWebhookValidationError`](./src/models/errors/updatewebhookvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`RequestCardError`](./src/models/errors/requestcarderror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`UpdateIssuedCardError`](./src/models/errors/updateissuedcarderror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`RevokeTokenRequestError`](./src/models/errors/revoketokenrequesterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`AuthTokenRequestError`](./src/models/errors/authtokenrequesterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
-* [`OnboardingInviteError`](./src/models/errors/onboardinginviteerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 178 methods.*
+* [`GenericError`](./src/models/errors/genericerror.ts): Applicable to 81 of 182 methods.*
+* [`BrandValidationError`](./src/models/errors/brandvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 182 methods.*
+* [`ImageRequestValidationError`](./src/models/errors/imagerequestvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 182 methods.*
+* [`ProductRequestValidationError`](./src/models/errors/productrequestvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 182 methods.*
+* [`ScheduleValidationError`](./src/models/errors/schedulevalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 182 methods.*
+* [`TerminalApplicationError`](./src/models/errors/terminalapplicationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 2 of 182 methods.*
+* [`DuplicateCardError`](./src/models/errors/duplicatecarderror.ts): Attempted to link card that already exists on the account. Status code `409`. Applicable to 1 of 182 methods.*
+* [`Transfer`](./src/models/errors/transfer.ts): Details of a Transfer. Status code `409`. Applicable to 1 of 182 methods.*
+* [`CardAcquiringRefund`](./src/models/errors/cardacquiringrefund.ts): Details of a card refund. Status code `409`. Applicable to 1 of 182 methods.*
+* [`CreateAccountError`](./src/models/errors/createaccounterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`PatchAccountError`](./src/models/errors/patchaccounterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`ConnectAccountRequestValidationError`](./src/models/errors/connectaccountrequestvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`AssignCountriesError`](./src/models/errors/assigncountrieserror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`LinkApplePayError`](./src/models/errors/linkapplepayerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`BankAccountValidationError`](./src/models/errors/bankaccountvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`MicroDepositValidationError`](./src/models/errors/microdepositvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`AddCapabilitiesError`](./src/models/errors/addcapabilitieserror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`LinkCardError`](./src/models/errors/linkcarderror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`UpdateCardError`](./src/models/errors/updatecarderror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`FileUploadValidationError`](./src/models/errors/fileuploadvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`FeePlanAgreementError`](./src/models/errors/feeplanagreementerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`FileValidationError`](./src/models/errors/filevalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`ImageMetadataValidationError`](./src/models/errors/imagemetadatavalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`CreateInvoiceError`](./src/models/errors/createinvoiceerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`ListInvoicesValidationError`](./src/models/errors/listinvoicesvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`UpdateInvoiceError`](./src/models/errors/updateinvoiceerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`CreateInvoicePaymentError`](./src/models/errors/createinvoicepaymenterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`CreatePaymentLinkError`](./src/models/errors/createpaymentlinkerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`UpdatePaymentLinkError`](./src/models/errors/updatepaymentlinkerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`RepresentativeValidationError`](./src/models/errors/representativevalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`CreateResolutionLinkError`](./src/models/errors/createresolutionlinkerror.ts): Describes validation errors for the create resolution link request. Status code `422`. Applicable to 1 of 182 methods.*
+* [`CreateSweepConfigError`](./src/models/errors/createsweepconfigerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`PatchSweepConfigError`](./src/models/errors/patchsweepconfigerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`AccountTerminalApplicationError`](./src/models/errors/accountterminalapplicationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`CreateTicketError`](./src/models/errors/createticketerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`UpdateTicketError`](./src/models/errors/updateticketerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`TransferOptionsValidationError`](./src/models/errors/transferoptionsvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`TransferValidationError`](./src/models/errors/transfervalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`ListTransfersValidationError`](./src/models/errors/listtransfersvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`PatchTransferValidationError`](./src/models/errors/patchtransfervalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`RefundValidationError`](./src/models/errors/refundvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`ReversalValidationError`](./src/models/errors/reversalvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`UpsertUnderwritingError`](./src/models/errors/upsertunderwritingerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`UpdateUnderwritingError`](./src/models/errors/updateunderwritingerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`CreateWalletValidationError`](./src/models/errors/createwalletvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`ListWalletsValidationError`](./src/models/errors/listwalletsvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`PatchWalletValidationError`](./src/models/errors/patchwalletvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`ListWalletTransactionsValidationError`](./src/models/errors/listwallettransactionsvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`CreateWebhookValidationError`](./src/models/errors/createwebhookvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`UpdateWebhookValidationError`](./src/models/errors/updatewebhookvalidationerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`RequestCardError`](./src/models/errors/requestcarderror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`UpdateIssuedCardError`](./src/models/errors/updateissuedcarderror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`RevokeTokenRequestError`](./src/models/errors/revoketokenrequesterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`AuthTokenRequestError`](./src/models/errors/authtokenrequesterror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
+* [`OnboardingInviteError`](./src/models/errors/onboardinginviteerror.ts): The request was well-formed, but the contents failed validation. Check the request for missing or invalid fields. Status code `422`. Applicable to 1 of 182 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
