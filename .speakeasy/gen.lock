@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 7ede35287ac0cf4b08e9a94104403f4f
+  docChecksum: 6094500425cc8ec72b9ef7cb84bf3bb7
   docVersion: dev
   speakeasyVersion: 1.755.0
   generationVersion: 2.865.2
-  releaseVersion: 0.0.0-dev.8
-  configChecksum: 18157721edd173a8c510d84fcbe94783
+  releaseVersion: 0.0.0-dev.9
+  configChecksum: 9f45e6848720a429884cdcc3b80868f9
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 75dce882-a833-461c-a5b9-5606611f089c
-  pristine_commit_hash: 43337b9ad8a7644d8da73071a665a098e697a38c
-  pristine_tree_hash: 3cf6790a001cfd360ab4ff3f8dd4455c9225b4c7
+  generation_id: a3578847-1686-418b-8917-17944c54b5c8
+  pristine_commit_hash: a123526c97ef9ae82f4ab9d8b1a9f046f34d4a52
+  pristine_tree_hash: 224d83462a70d1de3c3e276c430e4b88247548a6
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -4382,12 +4382,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:0a8d5465324ae266ff54a95fc6dc2045b3f16414
-    pristine_git_object: e591cac2940dd7caf45eaabf3fdd4ac410e55d2c
+    last_write_checksum: sha1:17cf339a310d91a7695d3901571b884da66409f9
+    pristine_git_object: f2903451321d5face68eefd9cbaef53fd1d349a5
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:3956e7c7606caa56b15fbc498a8dcc09e3638509
-    pristine_git_object: e7f8e4bf5d8d92105e9519913d9fd6b95d46cbdc
+    last_write_checksum: sha1:75c245b2bf866658a96c2565955fe014f42af3df
+    pristine_git_object: 202b316fd8065bc9516acf84f002d726216bf8e9
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5142,8 +5142,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:8c04e2ad5a15b1b63866695d6d349e280c6aefa1
-    pristine_git_object: 68165a5fa62b06f241e26c7013ffd39c8295d3b8
+    last_write_checksum: sha1:a65859278576112580b7e58c654c1d1fd1b9d94b
+    pristine_git_object: f32b75da580fc459c95521cde09b5dd6be4d83e2
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5222,8 +5222,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:427f4d472e886507cb828c6997d9f1056dc049b0
-    pristine_git_object: b58c1062649f7f269b9907917167d04951eb7e72
+    last_write_checksum: sha1:d457005dbc30f758c2766c40391787ee265b2402
+    pristine_git_object: a6f1278559417b90e29956963a0846e61fb8f9e0
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5238,8 +5238,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:ddc9ee02518e4a2a12cfd8bafa8577bff264349f
-    pristine_git_object: 4e9a8c12e12818e12c54e55c9ef6de105e4981f7
+    last_write_checksum: sha1:a44afc70750daeb809d0066489c9d755c953e2bf
+    pristine_git_object: b4c707f8642667d1a4cd4e6ca6cf927ace54ee6f
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -12285,15 +12285,6 @@ examples:
           application/json: {"error": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes:
-  * `moov.endToEndEncryption.generateKey()`:  `request` **Removed** (Breaking ⚠️)
-  * `moov.webhooks.listEventTypes()`:  `request` **Removed** (Breaking ⚠️)
-  * `moov.webhooks.list()`:  `request` **Removed** (Breaking ⚠️)
-  * `moov.industries.list()`:  `request` **Removed** (Breaking ⚠️)
-  * `moov.onboarding.listInvites()`:  `request` **Removed** (Breaking ⚠️)
-  * `moov.ping.ping()`:  `request` **Removed** (Breaking ⚠️)
-  * `moov.terminalApplications.list()`:  `request` **Removed** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - .npmignore
