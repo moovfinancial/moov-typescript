@@ -41,7 +41,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -95,7 +94,6 @@ import { cardIssuingRequest } from "@moovio/sdk/funcs/cardIssuingRequest.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -177,7 +175,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -208,7 +205,6 @@ import { cardIssuingList } from "@moovio/sdk/funcs/cardIssuingList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -265,7 +261,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -295,7 +290,6 @@ import { cardIssuingGet } from "@moovio/sdk/funcs/cardIssuingGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -351,7 +345,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -390,7 +383,6 @@ import { cardIssuingUpdate } from "@moovio/sdk/funcs/cardIssuingUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -459,7 +451,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read-secure` scop
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -489,7 +480,6 @@ import { cardIssuingGetFull } from "@moovio/sdk/funcs/cardIssuingGetFull.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

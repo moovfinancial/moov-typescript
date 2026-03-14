@@ -29,7 +29,6 @@ you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -58,7 +57,6 @@ import { paymentMethodsList } from "@moovio/sdk/funcs/paymentMethodsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -113,7 +111,6 @@ you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -143,7 +140,6 @@ import { paymentMethodsGet } from "@moovio/sdk/funcs/paymentMethodsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

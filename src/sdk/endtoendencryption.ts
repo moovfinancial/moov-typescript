@@ -31,12 +31,10 @@ export class EndToEndEncryption extends ClientSDK {
    * Generates a public key used to create a JWE token for passing secure authentication data through non-PCI compliant intermediaries.
    */
   async generateKey(
-    request: operations.GenerateEndToEndKeyRequest,
     options?: RequestOptions,
   ): Promise<operations.GenerateEndToEndKeyResponse> {
     return unwrapAsync(endToEndEncryptionGenerateKey(
       this,
-      request,
       options,
     ));
   }

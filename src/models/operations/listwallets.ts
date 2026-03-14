@@ -9,24 +9,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListWalletsGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type ListWalletsRequest = {
   /**
    * Optional parameter for filtering wallets by status.
@@ -45,53 +27,6 @@ export type ListWalletsResponse = {
   headers: { [k: string]: Array<string> };
   result: Array<components.Wallet>;
 };
-
-/** @internal */
-export const ListWalletsGlobals$inboundSchema: z.ZodType<
-  ListWalletsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type ListWalletsGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const ListWalletsGlobals$outboundSchema: z.ZodType<
-  ListWalletsGlobals$Outbound,
-  z.ZodTypeDef,
-  ListWalletsGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function listWalletsGlobalsToJSON(
-  listWalletsGlobals: ListWalletsGlobals,
-): string {
-  return JSON.stringify(
-    ListWalletsGlobals$outboundSchema.parse(listWalletsGlobals),
-  );
-}
-export function listWalletsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListWalletsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListWalletsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListWalletsGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListWalletsRequest$inboundSchema: z.ZodType<

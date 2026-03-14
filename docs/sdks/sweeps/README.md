@@ -43,7 +43,6 @@ you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -78,7 +77,6 @@ import { sweepsCreateConfig } from "@moovio/sdk/funcs/sweepsCreateConfig.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -141,7 +139,6 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -170,7 +167,6 @@ import { sweepsListConfigs } from "@moovio/sdk/funcs/sweepsListConfigs.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -225,7 +221,6 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -255,7 +250,6 @@ import { sweepsGetConfig } from "@moovio/sdk/funcs/sweepsGetConfig.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -311,7 +305,6 @@ you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -344,7 +337,6 @@ import { sweepsUpdateConfig } from "@moovio/sdk/funcs/sweepsUpdateConfig.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -405,7 +397,6 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -437,7 +428,6 @@ import { sweepsList } from "@moovio/sdk/funcs/sweepsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -495,7 +485,6 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -526,7 +515,6 @@ import { sweepsGet } from "@moovio/sdk/funcs/sweepsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -556,7 +544,6 @@ run();
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -587,7 +574,6 @@ import { sweepsGet } from "@moovio/sdk/funcs/sweepsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

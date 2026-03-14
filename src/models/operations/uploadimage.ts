@@ -9,24 +9,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type UploadImageGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type UploadImageRequest = {
   accountID: string;
   imageUploadRequestMultiPart: components.ImageUploadRequestMultiPart;
@@ -36,53 +18,6 @@ export type UploadImageResponse = {
   headers: { [k: string]: Array<string> };
   result: components.ImageMetadata;
 };
-
-/** @internal */
-export const UploadImageGlobals$inboundSchema: z.ZodType<
-  UploadImageGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type UploadImageGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const UploadImageGlobals$outboundSchema: z.ZodType<
-  UploadImageGlobals$Outbound,
-  z.ZodTypeDef,
-  UploadImageGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function uploadImageGlobalsToJSON(
-  uploadImageGlobals: UploadImageGlobals,
-): string {
-  return JSON.stringify(
-    UploadImageGlobals$outboundSchema.parse(uploadImageGlobals),
-  );
-}
-export function uploadImageGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadImageGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadImageGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadImageGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const UploadImageRequest$inboundSchema: z.ZodType<

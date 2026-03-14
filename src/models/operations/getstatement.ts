@@ -9,24 +9,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetStatementGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type GetStatementRequest = {
   accountID: string;
   statementID: string;
@@ -40,53 +22,6 @@ export type GetStatementResponse = {
   headers: { [k: string]: Array<string> };
   result: components.Statement | ReadableStream<Uint8Array>;
 };
-
-/** @internal */
-export const GetStatementGlobals$inboundSchema: z.ZodType<
-  GetStatementGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type GetStatementGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const GetStatementGlobals$outboundSchema: z.ZodType<
-  GetStatementGlobals$Outbound,
-  z.ZodTypeDef,
-  GetStatementGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function getStatementGlobalsToJSON(
-  getStatementGlobals: GetStatementGlobals,
-): string {
-  return JSON.stringify(
-    GetStatementGlobals$outboundSchema.parse(getStatementGlobals),
-  );
-}
-export function getStatementGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetStatementGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetStatementGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetStatementGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetStatementRequest$inboundSchema: z.ZodType<

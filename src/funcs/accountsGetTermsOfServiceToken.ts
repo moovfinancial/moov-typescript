@@ -91,11 +91,6 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
-    "X-Moov-Version": encodeSimple(
-      "X-Moov-Version",
-      client._options.xMoovVersion,
-      { explode: false, charEncoding: "none" },
-    ),
     "origin": encodeSimple("origin", payload.origin, {
       explode: false,
       charEncoding: "none",

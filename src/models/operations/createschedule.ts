@@ -9,24 +9,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CreateScheduleGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type CreateScheduleRequest = {
   /**
    * Account ID of the account that will run the transfer.
@@ -39,53 +21,6 @@ export type CreateScheduleResponse = {
   headers: { [k: string]: Array<string> };
   result: components.ScheduleResponse;
 };
-
-/** @internal */
-export const CreateScheduleGlobals$inboundSchema: z.ZodType<
-  CreateScheduleGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type CreateScheduleGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const CreateScheduleGlobals$outboundSchema: z.ZodType<
-  CreateScheduleGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateScheduleGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function createScheduleGlobalsToJSON(
-  createScheduleGlobals: CreateScheduleGlobals,
-): string {
-  return JSON.stringify(
-    CreateScheduleGlobals$outboundSchema.parse(createScheduleGlobals),
-  );
-}
-export function createScheduleGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateScheduleGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateScheduleGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateScheduleGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateScheduleRequest$inboundSchema: z.ZodType<

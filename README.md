@@ -95,8 +95,7 @@ Add the following server definition to your `claude_desktop_config.json` file:
         "--",
         "mcp", "start",
         "--username", "...",
-        "--password", "...",
-        "--x-moov-version", "..."
+        "--password", "..."
       ]
     }
   }
@@ -120,8 +119,7 @@ Create a `.cursor/mcp.json` file in your project root with the following content
         "--",
         "mcp", "start",
         "--username", "...",
-        "--password", "...",
-        "--x-moov-version", "..."
+        "--password", "..."
       ]
     }
   }
@@ -176,7 +174,6 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -221,7 +218,6 @@ const moov = new Moov({
     username: "",
     password: "",
   },
-  xMoovVersion: "v2024.01.00",
 });
 
 async function run() {
@@ -2249,7 +2245,6 @@ import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -2284,7 +2279,6 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -2334,7 +2328,6 @@ const moov = new Moov({
     },
     retryConnectionErrors: false,
   },
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -2379,7 +2372,6 @@ import { Moov } from "@moovio/sdk";
 import * as errors from "@moovio/sdk/models/errors";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -2508,7 +2500,6 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   serverURL: "https://api.moov.io",
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

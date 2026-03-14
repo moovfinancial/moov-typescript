@@ -37,12 +37,10 @@ export class TerminalApplications extends ClientSDK {
    * you'll need to specify the `/terminal-applications.read` scope.
    */
   async list(
-    request: operations.ListTerminalApplicationsRequest,
     options?: RequestOptions,
   ): Promise<operations.ListTerminalApplicationsResponse> {
     return unwrapAsync(terminalApplicationsList(
       this,
-      request,
       options,
     ));
   }

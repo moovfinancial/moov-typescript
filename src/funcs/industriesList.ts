@@ -3,7 +3,6 @@
  */
 
 import { MoovCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -31,7 +30,6 @@ import { Result } from "../types/fp.js";
  */
 export function industriesList(
   client: MoovCore,
-  _request: operations.ListIndustriesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -48,14 +46,12 @@ export function industriesList(
 > {
   return new APIPromise($do(
     client,
-    _request,
     options,
   ));
 }
 
 async function $do(
   client: MoovCore,
-  _request: operations.ListIndustriesRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,11 +73,6 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
-    "X-Moov-Version": encodeSimple(
-      "X-Moov-Version",
-      client._options.xMoovVersion,
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);

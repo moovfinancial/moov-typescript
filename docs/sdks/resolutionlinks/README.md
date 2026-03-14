@@ -39,7 +39,6 @@ you'll need to specify the `/accounts/{accountID}/profile.write`, `/accounts/{ac
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -76,7 +75,6 @@ import { resolutionLinksCreate } from "@moovio/sdk/funcs/resolutionLinksCreate.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -141,7 +139,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -170,7 +167,6 @@ import { resolutionLinksList } from "@moovio/sdk/funcs/resolutionLinksList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -225,7 +221,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -255,7 +250,6 @@ import { resolutionLinksGet } from "@moovio/sdk/funcs/resolutionLinksGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -311,7 +305,6 @@ you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -341,7 +334,6 @@ import { resolutionLinksDisable } from "@moovio/sdk/funcs/resolutionLinksDisable
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",

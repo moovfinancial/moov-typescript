@@ -118,11 +118,6 @@ async function $do(
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "X-Moov-Version": encodeSimple(
-      "X-Moov-Version",
-      client._options.xMoovVersion,
-      { explode: false, charEncoding: "none" },
-    ),
     "x-wait-for": encodeSimple("x-wait-for", payload["x-wait-for"], {
       explode: false,
       charEncoding: "none",
