@@ -9,24 +9,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListIssuedCardAuthorizationsGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type ListIssuedCardAuthorizationsRequest = {
   /**
    * The Moov business account for which cards have been issued.
@@ -56,56 +38,6 @@ export type ListIssuedCardAuthorizationsResponse = {
   headers: { [k: string]: Array<string> };
   result: Array<components.IssuedCardAuthorization>;
 };
-
-/** @internal */
-export const ListIssuedCardAuthorizationsGlobals$inboundSchema: z.ZodType<
-  ListIssuedCardAuthorizationsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type ListIssuedCardAuthorizationsGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const ListIssuedCardAuthorizationsGlobals$outboundSchema: z.ZodType<
-  ListIssuedCardAuthorizationsGlobals$Outbound,
-  z.ZodTypeDef,
-  ListIssuedCardAuthorizationsGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function listIssuedCardAuthorizationsGlobalsToJSON(
-  listIssuedCardAuthorizationsGlobals: ListIssuedCardAuthorizationsGlobals,
-): string {
-  return JSON.stringify(
-    ListIssuedCardAuthorizationsGlobals$outboundSchema.parse(
-      listIssuedCardAuthorizationsGlobals,
-    ),
-  );
-}
-export function listIssuedCardAuthorizationsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListIssuedCardAuthorizationsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ListIssuedCardAuthorizationsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListIssuedCardAuthorizationsGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListIssuedCardAuthorizationsRequest$inboundSchema: z.ZodType<

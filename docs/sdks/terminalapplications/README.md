@@ -39,7 +39,6 @@ you'll need to specify the `/terminal-applications.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -71,7 +70,6 @@ import { terminalApplicationsCreate } from "@moovio/sdk/funcs/terminalApplicatio
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -131,7 +129,6 @@ you'll need to specify the `/terminal-applications.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -139,7 +136,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.terminalApplications.list({});
+  const result = await moov.terminalApplications.list();
 
   console.log(result);
 }
@@ -158,7 +155,6 @@ import { terminalApplicationsList } from "@moovio/sdk/funcs/terminalApplications
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -166,7 +162,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await terminalApplicationsList(moov, {});
+  const res = await terminalApplicationsList(moov);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -182,7 +178,6 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListTerminalApplicationsRequest](../../models/operations/listterminalapplicationsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -211,7 +206,6 @@ you'll need to specify the `/terminal-applications.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -240,7 +234,6 @@ import { terminalApplicationsGet } from "@moovio/sdk/funcs/terminalApplicationsG
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -295,7 +288,6 @@ you'll need to specify the `/terminal-applications.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -324,7 +316,6 @@ import { terminalApplicationsDelete } from "@moovio/sdk/funcs/terminalApplicatio
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -380,7 +371,6 @@ you'll need to specify the `/terminal-applications.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -412,7 +402,6 @@ import { terminalApplicationsCreateVersion } from "@moovio/sdk/funcs/terminalApp
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

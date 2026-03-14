@@ -9,75 +9,10 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CreateWebhookGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type CreateWebhookResponse = {
   headers: { [k: string]: Array<string> };
   result: components.Webhook;
 };
-
-/** @internal */
-export const CreateWebhookGlobals$inboundSchema: z.ZodType<
-  CreateWebhookGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type CreateWebhookGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const CreateWebhookGlobals$outboundSchema: z.ZodType<
-  CreateWebhookGlobals$Outbound,
-  z.ZodTypeDef,
-  CreateWebhookGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function createWebhookGlobalsToJSON(
-  createWebhookGlobals: CreateWebhookGlobals,
-): string {
-  return JSON.stringify(
-    CreateWebhookGlobals$outboundSchema.parse(createWebhookGlobals),
-  );
-}
-export function createWebhookGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateWebhookGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateWebhookGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateWebhookGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateWebhookResponse$inboundSchema: z.ZodType<

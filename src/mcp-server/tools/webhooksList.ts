@@ -3,21 +3,14 @@
  */
 
 import { webhooksList } from "../../funcs/webhooksList.js";
-import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
-const args = {
-  request: operations.ListWebhooksRequest$inboundSchema,
-};
-
-export const tool$webhooksList: ToolDefinition<typeof args> = {
+export const tool$webhooksList: ToolDefinition = {
   name: "webhooks-list",
   description: `List all webhooks configured for the account.`,
-  args,
-  tool: async (client, args, ctx) => {
+  tool: async (client, ctx) => {
     const [result, apiCall] = await webhooksList(
       client,
-      args.request,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 

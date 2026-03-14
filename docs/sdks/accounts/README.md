@@ -104,7 +104,6 @@ to specify the `/accounts.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -138,7 +137,6 @@ import { accountsCreate } from "@moovio/sdk/funcs/accountsCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -204,7 +202,6 @@ to specify the `/accounts.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -235,7 +232,6 @@ import { accountsList } from "@moovio/sdk/funcs/accountsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -292,7 +288,6 @@ to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -321,7 +316,6 @@ import { accountsGet } from "@moovio/sdk/funcs/accountsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -384,7 +378,6 @@ to specify the `/accounts/{accountID}/profile.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -494,7 +487,6 @@ import { accountsUpdate } from "@moovio/sdk/funcs/accountsUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -634,7 +626,6 @@ you'll need to specify the `/accounts/{accountID}/profile.disconnect` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -663,7 +654,6 @@ import { accountsDisconnect } from "@moovio/sdk/funcs/accountsDisconnect.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -723,7 +713,6 @@ to specify the `/accounts.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -754,7 +743,6 @@ import { accountsListConnected } from "@moovio/sdk/funcs/accountsListConnected.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -809,7 +797,6 @@ between the two accounts with the specified permissions.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -845,7 +832,6 @@ import { accountsConnect } from "@moovio/sdk/funcs/accountsConnect.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -909,7 +895,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -938,7 +923,6 @@ import { accountsGetCountries } from "@moovio/sdk/funcs/accountsGetCountries.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -995,7 +979,6 @@ you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1029,7 +1012,6 @@ import { accountsAssignCountries } from "@moovio/sdk/funcs/accountsAssignCountri
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1091,7 +1073,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1120,7 +1101,6 @@ import { accountsGetMerchantProcessingAgreement } from "@moovio/sdk/funcs/accoun
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1176,7 +1156,6 @@ token patched to the account. Read more in our [documentation](https://docs.moov
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -1203,7 +1182,6 @@ import { accountsGetTermsOfServiceToken } from "@moovio/sdk/funcs/accountsGetTer
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

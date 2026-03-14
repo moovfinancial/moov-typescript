@@ -36,12 +36,10 @@ export class Onboarding extends ClientSDK {
    * you'll need to specify the `/accounts.read` scope.
    */
   async listInvites(
-    request: operations.ListOnboardingInvitesRequest,
     options?: RequestOptions,
   ): Promise<operations.ListOnboardingInvitesResponse> {
     return unwrapAsync(onboardingListInvites(
       this,
-      request,
       options,
     ));
   }

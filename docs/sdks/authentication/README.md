@@ -22,7 +22,6 @@ Allows clients to notify the authorization server that a previously obtained ref
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -53,7 +52,6 @@ import { authenticationRevokeAccessToken } from "@moovio/sdk/funcs/authenticatio
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -109,7 +107,6 @@ Create or refresh an access token.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -142,7 +139,6 @@ import { authenticationCreateAccessToken } from "@moovio/sdk/funcs/authenticatio
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

@@ -111,11 +111,6 @@ async function $do(
   const headers = new Headers(compactMap({
     Accept: options?.acceptHeaderOverride
       || "application/json;q=1, image/png;q=0",
-    "X-Moov-Version": encodeSimple(
-      "X-Moov-Version",
-      client._options.xMoovVersion,
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);

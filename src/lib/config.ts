@@ -27,11 +27,6 @@ export type SDKOptions = {
     | (() => Promise<components.Security>)
     | undefined;
 
-  /**
-   * Allows setting the xMoovVersion parameter for all supported operations
-   */
-  xMoovVersion?: string | undefined;
-
   httpClient?: HTTPClient;
   /**
    * Allows overriding the default server used by the SDK
@@ -73,7 +68,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "dev",
-  sdkVersion: "0.0.0-dev.7",
-  genVersion: "2.859.2",
-  userAgent: "speakeasy-sdk/typescript 0.0.0-dev.7 2.859.2 dev @moovio/sdk",
+  sdkVersion: "0.0.0-dev.8",
+  genVersion: "2.865.2",
+  userAgent: "speakeasy-sdk/typescript 0.0.0-dev.8 2.865.2 dev @moovio/sdk",
 } as const;

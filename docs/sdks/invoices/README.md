@@ -54,7 +54,6 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -105,7 +104,6 @@ import { invoicesCreateInvoice } from "@moovio/sdk/funcs/invoicesCreateInvoice.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -184,7 +182,6 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -215,7 +212,6 @@ import { invoicesListInvoices } from "@moovio/sdk/funcs/invoicesListInvoices.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -273,7 +269,6 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -303,7 +298,6 @@ import { invoicesGetInvoice } from "@moovio/sdk/funcs/invoicesGetInvoice.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -359,7 +353,6 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -406,7 +399,6 @@ import { invoicesUpdateInvoice } from "@moovio/sdk/funcs/invoicesUpdateInvoice.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -487,7 +479,6 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -517,7 +508,6 @@ import { invoicesDelete } from "@moovio/sdk/funcs/invoicesDelete.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -575,7 +565,6 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -614,7 +603,6 @@ import { invoicesCreateInvoicePayment } from "@moovio/sdk/funcs/invoicesCreateIn
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -681,7 +669,6 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -711,7 +698,6 @@ import { invoicesListInvoicePayments } from "@moovio/sdk/funcs/invoicesListInvoi
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",

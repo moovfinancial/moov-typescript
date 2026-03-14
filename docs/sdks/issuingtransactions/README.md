@@ -39,7 +39,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -70,7 +69,6 @@ import { issuingTransactionsListAuthorizations } from "@moovio/sdk/funcs/issuing
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -127,7 +125,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -157,7 +154,6 @@ import { issuingTransactionsGetAuthorization } from "@moovio/sdk/funcs/issuingTr
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -213,7 +209,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -245,7 +240,6 @@ import { issuingTransactionsListAuthorizationEvents } from "@moovio/sdk/funcs/is
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -303,7 +297,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -334,7 +327,6 @@ import { issuingTransactionsList } from "@moovio/sdk/funcs/issuingTransactionsLi
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -391,7 +383,6 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -421,7 +412,6 @@ import { issuingTransactionsGet } from "@moovio/sdk/funcs/issuingTransactionsGet
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

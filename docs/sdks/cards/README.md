@@ -80,7 +80,6 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -122,7 +121,6 @@ import { cardsLink } from "@moovio/sdk/funcs/cardsLink.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -195,7 +193,6 @@ you'll need to specify the `/accounts/{accountID}/cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -224,7 +221,6 @@ import { cardsList } from "@moovio/sdk/funcs/cardsList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -281,7 +277,6 @@ you'll need to specify the `/accounts/{accountID}/cards.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -311,7 +306,6 @@ import { cardsGet } from "@moovio/sdk/funcs/cardsGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -376,7 +370,6 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -409,7 +402,6 @@ import { cardsUpdate } from "@moovio/sdk/funcs/cardsUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -470,7 +462,6 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -500,7 +491,6 @@ import { cardsDisable } from "@moovio/sdk/funcs/cardsDisable.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

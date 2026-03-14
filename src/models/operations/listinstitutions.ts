@@ -9,24 +9,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ListInstitutionsGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type ListInstitutionsRequest = {
   /**
    * Name of the financial institution. Either `name` or `routingNumber` is required.
@@ -50,53 +32,6 @@ export type ListInstitutionsResponse = {
   headers: { [k: string]: Array<string> };
   result: components.FinancialInstitutions;
 };
-
-/** @internal */
-export const ListInstitutionsGlobals$inboundSchema: z.ZodType<
-  ListInstitutionsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type ListInstitutionsGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const ListInstitutionsGlobals$outboundSchema: z.ZodType<
-  ListInstitutionsGlobals$Outbound,
-  z.ZodTypeDef,
-  ListInstitutionsGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function listInstitutionsGlobalsToJSON(
-  listInstitutionsGlobals: ListInstitutionsGlobals,
-): string {
-  return JSON.stringify(
-    ListInstitutionsGlobals$outboundSchema.parse(listInstitutionsGlobals),
-  );
-}
-export function listInstitutionsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListInstitutionsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListInstitutionsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListInstitutionsGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const ListInstitutionsRequest$inboundSchema: z.ZodType<

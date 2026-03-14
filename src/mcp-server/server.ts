@@ -202,17 +202,15 @@ export function createMCPServer(deps: {
   scopes?: MCPScope[] | undefined;
   serverURL?: string | undefined;
   security?: SDKOptions["security"] | undefined;
-  xMoovVersion?: SDKOptions["xMoovVersion"] | undefined;
   serverIdx?: SDKOptions["serverIdx"] | undefined;
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.0.0-dev.7",
+    version: "0.0.0-dev.8",
   });
 
   const client = new MoovCore({
     security: deps.security,
-    xMoovVersion: deps.xMoovVersion,
     serverURL: deps.serverURL,
     serverIdx: deps.serverIdx,
   });
