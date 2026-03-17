@@ -11,7 +11,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * The expiration date of the card or token.
  */
 export type CardExpiration = {
+  /**
+   * Two-digit month the card expires.
+   */
   month: string;
+  /**
+   * Two-digit year the card expires.
+   */
   year: string;
 };
 
