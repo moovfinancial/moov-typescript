@@ -5,6 +5,7 @@
 import { MoovCore } from "../core.js";
 import { appendForm, encodeJSON, encodeSimple } from "../lib/encodings.js";
 import {
+  bytesToBlob,
   getContentTypeFromFileName,
   readableStreamToArrayBuffer,
 } from "../lib/files.js";
@@ -106,27 +107,10 @@ async function $do(
       getContentTypeFromFileName(
         payload.ImageUploadRequestMultiPart.image.fileName,
       ) || "application/octet-stream";
-    const blob = new Blob([buffer], { type: contentType });
     appendForm(
       body,
       "image",
-      blob,
-      payload.ImageUploadRequestMultiPart.image.fileName,
-    );
-  } else if (
-    payload.ImageUploadRequestMultiPart.image.content instanceof Uint8Array
-  ) {
-    const contentType =
-      getContentTypeFromFileName(
-        payload.ImageUploadRequestMultiPart.image.fileName,
-      ) || "application/octet-stream";
-    appendForm(
-      body,
-      "image",
-      new Blob([
-        new Uint8Array(payload.ImageUploadRequestMultiPart.image.content)
-          .buffer,
-      ], { type: contentType }),
+      bytesToBlob(buffer, contentType),
       payload.ImageUploadRequestMultiPart.image.fileName,
     );
   } else {
@@ -137,9 +121,10 @@ async function $do(
     appendForm(
       body,
       "image",
-      new Blob([payload.ImageUploadRequestMultiPart.image.content], {
-        type: contentType,
-      }),
+      bytesToBlob(
+        payload.ImageUploadRequestMultiPart.image.content,
+        contentType,
+      ),
       payload.ImageUploadRequestMultiPart.image.fileName,
     );
   }
@@ -159,16 +144,10 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/accounts/{accountID}/images")(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
-    "X-Moov-Version": encodeSimple(
-      "X-Moov-Version",
-      client._options.xMoovVersion,
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);

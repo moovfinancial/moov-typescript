@@ -24,7 +24,6 @@ you'll need to specify the `/ping.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -53,7 +52,6 @@ import { endToEndEncryptionTestEncryptedToken } from "@moovio/sdk/funcs/endToEnd
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -106,7 +104,6 @@ Generates a public key used to create a JWE token for passing secure authenticat
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -114,7 +111,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.endToEndEncryption.generateKey({});
+  const result = await moov.endToEndEncryption.generateKey();
 
   console.log(result);
 }
@@ -133,7 +130,6 @@ import { endToEndEncryptionGenerateKey } from "@moovio/sdk/funcs/endToEndEncrypt
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -141,7 +137,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await endToEndEncryptionGenerateKey(moov, {});
+  const res = await endToEndEncryptionGenerateKey(moov);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -157,7 +153,6 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GenerateEndToEndKeyRequest](../../models/operations/generateendtoendkeyrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

@@ -9,24 +9,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetSweepGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type GetSweepRequest = {
   accountID: string;
   walletID: string;
@@ -37,51 +19,6 @@ export type GetSweepResponse = {
   headers: { [k: string]: Array<string> };
   result: components.Sweep;
 };
-
-/** @internal */
-export const GetSweepGlobals$inboundSchema: z.ZodType<
-  GetSweepGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type GetSweepGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const GetSweepGlobals$outboundSchema: z.ZodType<
-  GetSweepGlobals$Outbound,
-  z.ZodTypeDef,
-  GetSweepGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function getSweepGlobalsToJSON(
-  getSweepGlobals: GetSweepGlobals,
-): string {
-  return JSON.stringify(GetSweepGlobals$outboundSchema.parse(getSweepGlobals));
-}
-export function getSweepGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetSweepGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetSweepGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSweepGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetSweepRequest$inboundSchema: z.ZodType<

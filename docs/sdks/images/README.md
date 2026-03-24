@@ -30,7 +30,6 @@ List metadata for all images in the specified account.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -61,7 +60,6 @@ import { imagesList } from "@moovio/sdk/funcs/imagesList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -117,7 +115,6 @@ import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -150,7 +147,6 @@ import { openAsBlob } from "node:fs";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -207,7 +203,6 @@ Retrieve metadata for a specific image by its ID.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -237,7 +232,6 @@ import { imagesGetMetadata } from "@moovio/sdk/funcs/imagesGetMetadata.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -294,7 +288,6 @@ import { Moov } from "@moovio/sdk";
 import { openAsBlob } from "node:fs";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -328,7 +321,6 @@ import { openAsBlob } from "node:fs";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -389,7 +381,6 @@ run();
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -419,7 +410,6 @@ import { imagesDelete } from "@moovio/sdk/funcs/imagesDelete.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -473,7 +463,6 @@ Replace the metadata for an existing image.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -504,7 +493,6 @@ import { imagesUpdateMetadata } from "@moovio/sdk/funcs/imagesUpdateMetadata.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

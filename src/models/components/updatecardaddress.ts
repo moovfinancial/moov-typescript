@@ -8,11 +8,29 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateCardAddress = {
+  /**
+   * Street address line 1.
+   */
   addressLine1?: string | undefined;
+  /**
+   * Street address line 2 (e.g., apartment or suite number).
+   */
   addressLine2?: string | undefined;
+  /**
+   * City name.
+   */
   city?: string | undefined;
+  /**
+   * Two-letter state or province code.
+   */
   stateOrProvince?: string | undefined;
+  /**
+   * Postal or ZIP code.
+   */
   postalCode?: string | undefined;
+  /**
+   * Two-letter ISO 3166-1 country code.
+   */
   country?: string | undefined;
 };
 

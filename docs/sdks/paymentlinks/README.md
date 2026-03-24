@@ -45,7 +45,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -96,7 +95,6 @@ import { paymentLinksCreate } from "@moovio/sdk/funcs/paymentLinksCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -175,7 +173,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -206,7 +203,6 @@ import { paymentLinksList } from "@moovio/sdk/funcs/paymentLinksList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -263,7 +259,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -293,7 +288,6 @@ import { paymentLinksGet } from "@moovio/sdk/funcs/paymentLinksGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -349,7 +343,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -389,7 +382,6 @@ import { paymentLinksUpdate } from "@moovio/sdk/funcs/paymentLinksUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -457,7 +449,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -487,7 +478,6 @@ import { paymentLinksDisable } from "@moovio/sdk/funcs/paymentLinksDisable.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -545,7 +535,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -575,7 +564,6 @@ import { paymentLinksGetQRCode } from "@moovio/sdk/funcs/paymentLinksGetQRCode.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
