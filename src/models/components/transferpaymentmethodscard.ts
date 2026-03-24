@@ -91,6 +91,9 @@ export type TransferPaymentMethodsCard = {
    * The name of the cardholder as it appears on the card.
    */
   holderName?: string | undefined;
+  /**
+   * The billing address associated with the card.
+   */
   billingAddress: CardAddress;
   /**
    * The results of submitting cardholder data to a card network for verification.
@@ -108,6 +111,12 @@ export type TransferPaymentMethodsCard = {
    * Indicates cardholder has authorized card to be stored for future payments.
    */
   cardOnFile?: boolean | undefined;
+  /**
+   * Merchant account whose details (statement descriptor, address, etc.) are used for the card verification authorization.
+   *
+   * @remarks
+   * If omitted, the partner account's details are used instead.
+   */
   merchantAccountID?: string | undefined;
   /**
    * The results of the most recent card update request.

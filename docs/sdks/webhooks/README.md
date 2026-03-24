@@ -24,7 +24,6 @@ List all available event types that can be subscribed to.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -32,7 +31,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.webhooks.listEventTypes({});
+  const result = await moov.webhooks.listEventTypes();
 
   console.log(result);
 }
@@ -51,7 +50,6 @@ import { webhooksListEventTypes } from "@moovio/sdk/funcs/webhooksListEventTypes
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -59,7 +57,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await webhooksListEventTypes(moov, {});
+  const res = await webhooksListEventTypes(moov);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -75,7 +73,6 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListEventTypesRequest](../../models/operations/listeventtypesrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -101,7 +98,6 @@ List all webhooks configured for the account.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -109,7 +105,7 @@ const moov = new Moov({
 });
 
 async function run() {
-  const result = await moov.webhooks.list({});
+  const result = await moov.webhooks.list();
 
   console.log(result);
 }
@@ -128,7 +124,6 @@ import { webhooksList } from "@moovio/sdk/funcs/webhooksList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -136,7 +131,7 @@ const moov = new MoovCore({
 });
 
 async function run() {
-  const res = await webhooksList(moov, {});
+  const res = await webhooksList(moov);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -152,7 +147,6 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListWebhooksRequest](../../models/operations/listwebhooksrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -178,7 +172,6 @@ Create a new webhook for the account.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -210,7 +203,6 @@ import { webhooksCreate } from "@moovio/sdk/funcs/webhooksCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -267,7 +259,6 @@ Get details of a specific webhook.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -296,7 +287,6 @@ import { webhooksGet } from "@moovio/sdk/funcs/webhooksGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -348,7 +338,6 @@ Update an existing webhook.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -383,7 +372,6 @@ import { webhooksUpdate } from "@moovio/sdk/funcs/webhooksUpdate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -443,7 +431,6 @@ Disable a webhook. Disabled webhooks will no longer receive events.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -472,7 +459,6 @@ import { webhooksDisable } from "@moovio/sdk/funcs/webhooksDisable.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -525,7 +511,6 @@ Send a test ping to a webhook to verify it is configured correctly.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -554,7 +539,6 @@ import { webhooksPing } from "@moovio/sdk/funcs/webhooksPing.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -606,7 +590,6 @@ Get the secret key for verifying webhook payloads.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -635,7 +618,6 @@ import { webhooksGetSecret } from "@moovio/sdk/funcs/webhooksGetSecret.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",

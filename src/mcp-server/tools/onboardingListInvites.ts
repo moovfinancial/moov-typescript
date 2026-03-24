@@ -3,24 +3,17 @@
  */
 
 import { onboardingListInvites } from "../../funcs/onboardingListInvites.js";
-import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
-const args = {
-  request: operations.ListOnboardingInvitesRequest$inboundSchema,
-};
-
-export const tool$onboardingListInvites: ToolDefinition<typeof args> = {
+export const tool$onboardingListInvites: ToolDefinition = {
   name: "onboarding-list-invites",
   description: `List all the onboarding invites created by the caller's account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the \`/accounts.read\` scope.`,
-  args,
-  tool: async (client, args, ctx) => {
+  tool: async (client, ctx) => {
     const [result, apiCall] = await onboardingListInvites(
       client,
-      args.request,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 

@@ -25,7 +25,6 @@ import { accountsCreate } from "@moovio/sdk/funcs/accountsCreate.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
