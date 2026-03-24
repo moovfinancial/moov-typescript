@@ -3,24 +3,17 @@
  */
 
 import { terminalApplicationsList } from "../../funcs/terminalApplicationsList.js";
-import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
-const args = {
-  request: operations.ListTerminalApplicationsRequest$inboundSchema,
-};
-
-export const tool$terminalApplicationsList: ToolDefinition<typeof args> = {
+export const tool$terminalApplicationsList: ToolDefinition = {
   name: "terminal-applications-list",
   description: `List all the terminal applications for a Moov Account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the \`/terminal-applications.read\` scope.`,
-  args,
-  tool: async (client, args, ctx) => {
+  tool: async (client, ctx) => {
     const [result, apiCall] = await terminalApplicationsList(
       client,
-      args.request,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 

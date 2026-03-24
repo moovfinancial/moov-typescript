@@ -5,6 +5,9 @@
 import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * The result of a card verification check.
+ */
 export const CardVerificationResult = {
   NoMatch: "noMatch",
   Match: "match",
@@ -12,6 +15,9 @@ export const CardVerificationResult = {
   Unavailable: "unavailable",
   PartialMatch: "partialMatch",
 } as const;
+/**
+ * The result of a card verification check.
+ */
 export type CardVerificationResult = ClosedEnum<typeof CardVerificationResult>;
 
 /** @internal */

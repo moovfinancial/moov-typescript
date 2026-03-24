@@ -8,24 +8,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetDisputeEvidenceDataGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type GetDisputeEvidenceDataRequest = {
   accountID: string;
   disputeID: string;
@@ -44,55 +26,6 @@ export type GetDisputeEvidenceDataResponse = {
     | ReadableStream<Uint8Array>
     | ReadableStream<Uint8Array>;
 };
-
-/** @internal */
-export const GetDisputeEvidenceDataGlobals$inboundSchema: z.ZodType<
-  GetDisputeEvidenceDataGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type GetDisputeEvidenceDataGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const GetDisputeEvidenceDataGlobals$outboundSchema: z.ZodType<
-  GetDisputeEvidenceDataGlobals$Outbound,
-  z.ZodTypeDef,
-  GetDisputeEvidenceDataGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function getDisputeEvidenceDataGlobalsToJSON(
-  getDisputeEvidenceDataGlobals: GetDisputeEvidenceDataGlobals,
-): string {
-  return JSON.stringify(
-    GetDisputeEvidenceDataGlobals$outboundSchema.parse(
-      getDisputeEvidenceDataGlobals,
-    ),
-  );
-}
-export function getDisputeEvidenceDataGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDisputeEvidenceDataGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDisputeEvidenceDataGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDisputeEvidenceDataGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetDisputeEvidenceDataRequest$inboundSchema: z.ZodType<

@@ -16,9 +16,21 @@ import {
  * The results of submitting cardholder name to a card network for verification.
  */
 export type AccountNameVerification = {
+  /**
+   * Verification result of the cardholder's first name.
+   */
   firstName?: CardVerificationResult | undefined;
+  /**
+   * Verification result of the cardholder's last name.
+   */
   lastName?: CardVerificationResult | undefined;
+  /**
+   * Verification result of the cardholder's middle name.
+   */
   middleName?: CardVerificationResult | undefined;
+  /**
+   * Verification result of the cardholder's full name.
+   */
   fullName?: CardVerificationResult | undefined;
 };
 

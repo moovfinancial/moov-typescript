@@ -112,7 +112,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/accounts/{accountID}/disputes/{disputeID}/evidence/{evidenceID}/data",
   )(pathParams);
@@ -120,11 +119,6 @@ async function $do(
   const headers = new Headers(compactMap({
     Accept: options?.acceptHeaderOverride
       || "application/pdf;q=1, image/jpeg;q=0.7, image/tiff;q=0",
-    "X-Moov-Version": encodeSimple(
-      "X-Moov-Version",
-      client._options.xMoovVersion,
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);

@@ -59,7 +59,6 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -118,7 +117,6 @@ import { representativesCreate } from "@moovio/sdk/funcs/representativesCreate.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -208,7 +206,6 @@ you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -237,7 +234,6 @@ import { representativesList } from "@moovio/sdk/funcs/representativesList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -292,7 +288,6 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -322,7 +317,6 @@ import { representativesDelete } from "@moovio/sdk/funcs/representativesDelete.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -379,7 +373,6 @@ you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -409,7 +402,6 @@ import { representativesGet } from "@moovio/sdk/funcs/representativesGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -478,7 +470,6 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -534,7 +525,6 @@ import { representativesUpdate } from "@moovio/sdk/funcs/representativesUpdate.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

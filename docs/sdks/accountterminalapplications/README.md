@@ -35,7 +35,6 @@ you'll need to specify the `/accounts/{accountID}/terminal-applications.write` s
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -67,7 +66,6 @@ import { accountTerminalApplicationsLink } from "@moovio/sdk/funcs/accountTermin
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -127,7 +125,6 @@ you'll need to specify the `/accounts/{accountID}/terminal-applications.read` sc
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -156,7 +153,6 @@ import { accountTerminalApplicationsList } from "@moovio/sdk/funcs/accountTermin
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -211,7 +207,6 @@ you'll need to specify the `/accounts/{accountID}/terminal-applications.read` sc
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -241,7 +236,6 @@ import { accountTerminalApplicationsGet } from "@moovio/sdk/funcs/accountTermina
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -297,7 +291,6 @@ you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` s
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -327,7 +320,6 @@ import { accountTerminalApplicationsGetConfiguration } from "@moovio/sdk/funcs/a
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

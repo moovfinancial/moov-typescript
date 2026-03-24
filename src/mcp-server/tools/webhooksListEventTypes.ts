@@ -3,21 +3,14 @@
  */
 
 import { webhooksListEventTypes } from "../../funcs/webhooksListEventTypes.js";
-import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
-const args = {
-  request: operations.ListEventTypesRequest$inboundSchema,
-};
-
-export const tool$webhooksListEventTypes: ToolDefinition<typeof args> = {
+export const tool$webhooksListEventTypes: ToolDefinition = {
   name: "webhooks-list-event-types",
   description: `List all available event types that can be subscribed to.`,
-  args,
-  tool: async (client, args, ctx) => {
+  tool: async (client, ctx) => {
     const [result, apiCall] = await webhooksListEventTypes(
       client,
-      args.request,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 

@@ -15,12 +15,10 @@ export class Ping extends ClientSDK {
    * you'll need to specify the `/ping.read` scope.
    */
   async ping(
-    request: operations.PingRequest,
     options?: RequestOptions,
   ): Promise<operations.PingResponse | undefined> {
     return unwrapAsync(pingPing(
       this,
-      request,
       options,
     ));
   }
