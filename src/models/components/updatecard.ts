@@ -34,12 +34,39 @@ export type UpdateCard = {
    * [GitHub repository](https://github.com/moovfinancial/moov-go/blob/main/examples/e2ee/e2ee_test.go).
    */
   e2ee?: E2EETokenUpdate | undefined;
+  /**
+   * Updated billing address to store on file for the card.
+   */
   billingAddress?: UpdateCardAddress | undefined;
   expiration?: UpdateCardExpiration | undefined;
+  /**
+   * The card's 3- or 4-digit card verification value. Providing this triggers a new $0 verification authorization, which performs both CVV and address verification.
+   */
   cardCvv?: string | undefined;
+  /**
+   * Indicates cardholder has authorized card to be stored for future payments (e.g., recurring payments).
+   *
+   * @remarks
+   * If true and no `merchantAccountID` is provided, the partner account's ID is automatically used as the merchant account for verification.
+   */
   cardOnFile?: boolean | undefined;
+  /**
+   * Merchant account whose details (statement descriptor, address, etc.) are used for the card verification authorization.
+   *
+   * @remarks
+   * If omitted, the partner account's details are used instead.
+   */
   merchantAccountID?: string | undefined;
+  /**
+   * If true, submits the cardholder's name to the card network for verification as part of the $0 authorization.
+   *
+   * @remarks
+   * Only supported for Visa and Mastercard; requesting name verification for American Express or Discover will return an error.
+   */
   verifyName?: boolean | undefined;
+  /**
+   * Updated name of the cardholder as it appears on the card.
+   */
   holderName?: string | undefined;
 };
 

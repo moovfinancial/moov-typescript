@@ -39,7 +39,6 @@ you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -68,7 +67,6 @@ import { capabilitiesList } from "@moovio/sdk/funcs/capabilitiesList.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -123,7 +121,6 @@ you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -157,7 +154,6 @@ import { capabilitiesRequest } from "@moovio/sdk/funcs/capabilitiesRequest.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -219,7 +215,6 @@ you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -249,7 +244,6 @@ import { capabilitiesGet } from "@moovio/sdk/funcs/capabilitiesGet.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -305,7 +299,6 @@ you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -335,7 +328,6 @@ import { capabilitiesDisable } from "@moovio/sdk/funcs/capabilitiesDisable.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

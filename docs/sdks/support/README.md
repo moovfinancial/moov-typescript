@@ -57,7 +57,6 @@ specify the `/accounts/{partnerAccountID}/tickets.write` and `/accounts/{account
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -93,7 +92,6 @@ import { supportCreateTicket } from "@moovio/sdk/funcs/supportCreateTicket.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -160,7 +158,6 @@ specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountI
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -190,7 +187,6 @@ import { supportListTickets } from "@moovio/sdk/funcs/supportListTickets.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -249,7 +245,6 @@ specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountI
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -279,7 +274,6 @@ import { supportGetTicket } from "@moovio/sdk/funcs/supportGetTicket.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -338,7 +332,6 @@ specify the `/accounts/{partnerAccountID}/tickets.write` and `/accounts/{account
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -369,7 +362,6 @@ import { supportUpdateTicket } from "@moovio/sdk/funcs/supportUpdateTicket.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -431,7 +423,6 @@ specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountI
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -461,7 +452,6 @@ import { supportListTicketMessages } from "@moovio/sdk/funcs/supportListTicketMe
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

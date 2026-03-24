@@ -16,6 +16,9 @@ import {
  * The results of the most recent card update request.
  */
 export type CardAccountUpdater = {
+  /**
+   * Timestamp from the card network indicating when the card update was processed.
+   */
   updatedOn?: Date | undefined;
   /**
    * The results of the card update request.

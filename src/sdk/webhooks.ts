@@ -20,12 +20,10 @@ export class Webhooks extends ClientSDK {
    * List all available event types that can be subscribed to.
    */
   async listEventTypes(
-    request: operations.ListEventTypesRequest,
     options?: RequestOptions,
   ): Promise<operations.ListEventTypesResponse> {
     return unwrapAsync(webhooksListEventTypes(
       this,
-      request,
       options,
     ));
   }
@@ -34,12 +32,10 @@ export class Webhooks extends ClientSDK {
    * List all webhooks configured for the account.
    */
   async list(
-    request: operations.ListWebhooksRequest,
     options?: RequestOptions,
   ): Promise<operations.ListWebhooksResponse> {
     return unwrapAsync(webhooksList(
       this,
-      request,
       options,
     ));
   }
