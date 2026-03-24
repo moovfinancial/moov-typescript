@@ -56,7 +56,6 @@ you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -90,7 +89,6 @@ import { applePayRegisterMerchantDomains } from "@moovio/sdk/funcs/applePayRegis
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -154,7 +152,6 @@ you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -191,7 +188,6 @@ import { applePayUpdateMerchantDomains } from "@moovio/sdk/funcs/applePayUpdateM
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -257,7 +253,6 @@ you'll need to specify the `/accounts/{accountID}/apple-pay.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -286,7 +281,6 @@ import { applePayGetMerchantDomains } from "@moovio/sdk/funcs/applePayGetMerchan
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -344,7 +338,6 @@ you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -377,7 +370,6 @@ import { applePayCreateSession } from "@moovio/sdk/funcs/applePayCreateSession.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -440,7 +432,6 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -498,7 +489,6 @@ import { applePayLinkToken } from "@moovio/sdk/funcs/applePayLinkToken.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",

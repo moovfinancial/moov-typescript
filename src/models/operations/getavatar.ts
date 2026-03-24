@@ -8,24 +8,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetAvatarGlobals = {
-  /**
-   * Specify an API version.
-   *
-   * @remarks
-   *
-   * API versioning follows the format `vYYYY.QQ.BB`, where
-   *   - `YYYY` is the year
-   *   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-   *   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter.
-   *     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-   *
-   * The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-   * When no version is specified, the API defaults to `v2024.01.00`.
-   */
-  xMoovVersion?: string | undefined;
-};
-
 export type GetAvatarRequest = {
   /**
    * Any unique ID associated with an account such as accountID, representativeID, routing number, or userID.
@@ -37,53 +19,6 @@ export type GetAvatarResponse = {
   headers: { [k: string]: Array<string> };
   result: ReadableStream<Uint8Array>;
 };
-
-/** @internal */
-export const GetAvatarGlobals$inboundSchema: z.ZodType<
-  GetAvatarGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "X-Moov-Version": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Moov-Version": "xMoovVersion",
-  });
-});
-/** @internal */
-export type GetAvatarGlobals$Outbound = {
-  "X-Moov-Version"?: string | undefined;
-};
-
-/** @internal */
-export const GetAvatarGlobals$outboundSchema: z.ZodType<
-  GetAvatarGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAvatarGlobals
-> = z.object({
-  xMoovVersion: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xMoovVersion: "X-Moov-Version",
-  });
-});
-
-export function getAvatarGlobalsToJSON(
-  getAvatarGlobals: GetAvatarGlobals,
-): string {
-  return JSON.stringify(
-    GetAvatarGlobals$outboundSchema.parse(getAvatarGlobals),
-  );
-}
-export function getAvatarGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAvatarGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAvatarGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAvatarGlobals' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetAvatarRequest$inboundSchema: z.ZodType<

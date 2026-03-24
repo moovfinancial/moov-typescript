@@ -15,12 +15,10 @@ export class Industries extends ClientSDK {
    * you'll need to specify the `/profile-enrichment.read` scope.
    */
   async list(
-    request: operations.ListIndustriesRequest,
     options?: RequestOptions,
   ): Promise<operations.ListIndustriesResponse> {
     return unwrapAsync(industriesList(
       this,
-      request,
       options,
     ));
   }

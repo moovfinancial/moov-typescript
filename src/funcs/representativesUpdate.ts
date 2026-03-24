@@ -115,7 +115,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc(
     "/accounts/{accountID}/representatives/{representativeID}",
   )(pathParams);
@@ -123,11 +122,6 @@ async function $do(
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "X-Moov-Version": encodeSimple(
-      "X-Moov-Version",
-      client._options.xMoovVersion,
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);

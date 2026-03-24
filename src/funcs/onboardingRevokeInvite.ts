@@ -92,16 +92,10 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/onboarding-invites/{code}")(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "*/*",
-    "X-Moov-Version": encodeSimple(
-      "X-Moov-Version",
-      client._options.xMoovVersion,
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);

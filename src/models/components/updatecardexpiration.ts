@@ -8,7 +8,13 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdateCardExpiration = {
+  /**
+   * Two-digit month the card expires.
+   */
   month?: string | undefined;
+  /**
+   * Two-digit year the card expires.
+   */
   year?: string | undefined;
 };
 

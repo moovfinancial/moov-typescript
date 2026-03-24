@@ -3,25 +3,18 @@
  */
 
 import { industriesList } from "../../funcs/industriesList.js";
-import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
-const args = {
-  request: operations.ListIndustriesRequest$inboundSchema,
-};
-
-export const tool$industriesList: ToolDefinition<typeof args> = {
+export const tool$industriesList: ToolDefinition = {
   name: "industries-list",
   description:
     `Returns a list of industries relevant to merchant profile enrichment.  Results are ordered by industry name.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
 you'll need to specify the \`/profile-enrichment.read\` scope.`,
-  args,
-  tool: async (client, args, ctx) => {
+  tool: async (client, ctx) => {
     const [result, apiCall] = await industriesList(
       client,
-      args.request,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 
