@@ -97,7 +97,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc(
     "/issuing/{accountID}/card-transactions/{cardTransactionID}",
   )(pathParams);

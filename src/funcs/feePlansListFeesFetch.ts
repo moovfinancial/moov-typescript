@@ -93,7 +93,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/accounts/{accountID}/fees/.fetch")(pathParams);
 
   const headers = new Headers(compactMap({

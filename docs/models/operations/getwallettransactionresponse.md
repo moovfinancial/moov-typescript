@@ -22,7 +22,7 @@ let value: GetWalletTransactionResponse = {
   result: {
     walletID: "<id>",
     transactionID: "<id>",
-    transactionType: "moov-fee",
+    transactionType: "payment",
     sourceType: "adjustment",
     sourceID: "<id>",
     status: "completed",

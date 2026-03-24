@@ -95,7 +95,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/accounts/{accountID}/files/{fileID}")(pathParams);
 
   const headers = new Headers(compactMap({

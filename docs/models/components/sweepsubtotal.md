@@ -6,7 +6,7 @@
 import { SweepSubtotal } from "@moovio/sdk/models/components";
 
 let value: SweepSubtotal = {
-  type: "top-up",
+  type: "wallet-transfer",
   count: 486428,
   amount: {
     currency: "USD",

@@ -25,7 +25,7 @@ let value: GetSweepResponse = {
     accrualStartedOn: new Date("2026-08-09T15:26:11.381Z"),
     subtotals: [
       {
-        type: "moov-fee",
+        type: "payment",
         count: 782798,
         amount: {
           currency: "USD",

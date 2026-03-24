@@ -5,6 +5,7 @@
 import { MoovCore } from "../core.js";
 import { appendForm, encodeSimple } from "../lib/encodings.js";
 import {
+  bytesToBlob,
   getContentTypeFromFileName,
   readableStreamToArrayBuffer,
 } from "../lib/files.js";
@@ -116,26 +117,10 @@ async function $do(
       getContentTypeFromFileName(
         payload.CreateEvidenceFileMultiPart.file.fileName,
       ) || "application/octet-stream";
-    const blob = new Blob([buffer], { type: contentType });
     appendForm(
       body,
       "file",
-      blob,
-      payload.CreateEvidenceFileMultiPart.file.fileName,
-    );
-  } else if (
-    payload.CreateEvidenceFileMultiPart.file.content instanceof Uint8Array
-  ) {
-    const contentType =
-      getContentTypeFromFileName(
-        payload.CreateEvidenceFileMultiPart.file.fileName,
-      ) || "application/octet-stream";
-    appendForm(
-      body,
-      "file",
-      new Blob([
-        new Uint8Array(payload.CreateEvidenceFileMultiPart.file.content).buffer,
-      ], { type: contentType }),
+      bytesToBlob(buffer, contentType),
       payload.CreateEvidenceFileMultiPart.file.fileName,
     );
   } else {
@@ -146,9 +131,10 @@ async function $do(
     appendForm(
       body,
       "file",
-      new Blob([payload.CreateEvidenceFileMultiPart.file.content], {
-        type: contentType,
-      }),
+      bytesToBlob(
+        payload.CreateEvidenceFileMultiPart.file.content,
+        contentType,
+      ),
       payload.CreateEvidenceFileMultiPart.file.fileName,
     );
   }
@@ -163,7 +149,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/accounts/{accountID}/disputes/{disputeID}/evidence-file",
   )(pathParams);

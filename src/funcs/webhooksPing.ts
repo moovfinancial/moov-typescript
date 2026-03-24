@@ -88,7 +88,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/webhooks/{webhookID}/ping")(pathParams);
 
   const headers = new Headers(compactMap({

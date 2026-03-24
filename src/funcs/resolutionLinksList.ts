@@ -92,7 +92,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/accounts/{accountID}/resolution-links")(pathParams);
 
   const headers = new Headers(compactMap({

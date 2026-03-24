@@ -13,7 +13,7 @@ let value: Sweep = {
   accrualStartedOn: new Date("2026-06-07T03:04:47.826Z"),
   subtotals: [
     {
-      type: "moov-fee",
+      type: "payment",
       count: 782798,
       amount: {
         currency: "USD",
