@@ -34,16 +34,46 @@ export type LinkCard = {
    * [GitHub repository](https://github.com/moovfinancial/moov-go/blob/main/examples/e2ee/e2ee_test.go).
    */
   e2ee?: E2EEToken | undefined;
+  /**
+   * The full card number (PAN).
+   */
   cardNumber: string;
+  /**
+   * The card's 3- or 4-digit card verification value.
+   */
   cardCvv: string;
   /**
    * The expiration date of the card or token.
    */
   expiration: CardExpiration;
+  /**
+   * The name of the cardholder as it appears on the card.
+   */
   holderName?: string | undefined;
+  /**
+   * The billing address associated with the card.
+   */
   billingAddress: CardAddress;
+  /**
+   * Indicates cardholder has authorized card to be stored for future payments. (e.g., recurring payments).
+   *
+   * @remarks
+   * If true and no `merchantAccountID` is provided, the partner account's ID is used as the merchant account for verification.
+   */
   cardOnFile?: boolean | undefined;
+  /**
+   * Merchant account whose details (statement descriptor, address, etc.) are used for the card verification authorization.
+   *
+   * @remarks
+   * If omitted, the partner account's details are used instead.
+   */
   merchantAccountID?: string | undefined;
+  /**
+   * If true, submits the cardholder's name to the card network for verification as part of the $0 authorization.
+   *
+   * @remarks
+   * Only supported for Visa and Mastercard; requesting name verification for American Express or Discover will return an error.
+   */
   verifyName?: boolean | undefined;
 };
 

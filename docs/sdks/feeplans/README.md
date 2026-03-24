@@ -60,7 +60,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -91,7 +90,6 @@ import { feePlansListFeePlanAgreements } from "@moovio/sdk/funcs/feePlansListFee
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -148,7 +146,6 @@ you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -180,7 +177,6 @@ import { feePlansCreateFeePlanAgreements } from "@moovio/sdk/funcs/feePlansCreat
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -241,7 +237,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -270,7 +265,6 @@ import { feePlansListFeePlans } from "@moovio/sdk/funcs/feePlansListFeePlans.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -325,7 +319,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -356,7 +349,6 @@ import { feePlansListFeeRevenue } from "@moovio/sdk/funcs/feePlansListFeeRevenue
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "<value>",
   security: {
     username: "",
     password: "",
@@ -413,7 +405,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -444,7 +435,6 @@ import { feePlansRetrieveFees } from "@moovio/sdk/funcs/feePlansRetrieveFees.js"
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -501,7 +491,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -530,7 +519,6 @@ import { feePlansListFeesFetch } from "@moovio/sdk/funcs/feePlansListFeesFetch.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -585,7 +573,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -616,7 +603,6 @@ import { feePlansListPartnerPricingAgreements } from "@moovio/sdk/funcs/feePlans
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -673,7 +659,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -704,7 +689,6 @@ import { feePlansListResiduals } from "@moovio/sdk/funcs/feePlansListResiduals.j
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -761,7 +745,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -791,7 +774,6 @@ import { feePlansGetResidual } from "@moovio/sdk/funcs/feePlansGetResidual.js";
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -847,7 +829,6 @@ you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
@@ -879,7 +860,6 @@ import { feePlansListResidualFees } from "@moovio/sdk/funcs/feePlansListResidual
 // Use `MoovCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
-  xMoovVersion: "v2024.01.00",
   security: {
     username: "",
     password: "",
