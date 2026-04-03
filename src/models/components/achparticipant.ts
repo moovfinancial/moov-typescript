@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AchLocation,
@@ -37,8 +38,8 @@ export type AchParticipant = {
 /** @internal */
 export const Logo$inboundSchema: z.ZodType<Logo, z.ZodTypeDef, unknown> = z
   .object({
-    name: z.string(),
-    url: z.string(),
+    name: types.string(),
+    url: types.string(),
   });
 /** @internal */
 export type Logo$Outbound = {
@@ -73,18 +74,18 @@ export const AchParticipant$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   achLocation: AchLocation$inboundSchema,
-  customerName: z.string(),
-  newRoutingNumber: z.string(),
-  officeCode: z.string(),
-  phoneNumber: z.string(),
-  recordTypeCode: z.string(),
-  revised: z.string(),
-  routingNumber: z.string(),
-  servicingFRBNumber: z.string(),
-  statusCode: z.string(),
-  viewCode: z.string(),
-  cleanName: z.string(),
-  logo: z.nullable(z.lazy(() => Logo$inboundSchema)),
+  customerName: types.string(),
+  newRoutingNumber: types.string(),
+  officeCode: types.string(),
+  phoneNumber: types.string(),
+  recordTypeCode: types.string(),
+  revised: types.string(),
+  routingNumber: types.string(),
+  servicingFRBNumber: types.string(),
+  statusCode: types.string(),
+  viewCode: types.string(),
+  cleanName: types.string(),
+  logo: types.nullable(z.lazy(() => Logo$inboundSchema)),
 });
 /** @internal */
 export type AchParticipant$Outbound = {

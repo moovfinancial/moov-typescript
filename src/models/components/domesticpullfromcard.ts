@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Indicates if the card supports domestic pull-from-card transfer.
@@ -16,13 +17,17 @@ export const DomesticPullFromCard = {
 /**
  * Indicates if the card supports domestic pull-from-card transfer.
  */
-export type DomesticPullFromCard = ClosedEnum<typeof DomesticPullFromCard>;
+export type DomesticPullFromCard = OpenEnum<typeof DomesticPullFromCard>;
 
 /** @internal */
-export const DomesticPullFromCard$inboundSchema: z.ZodNativeEnum<
-  typeof DomesticPullFromCard
-> = z.nativeEnum(DomesticPullFromCard);
+export const DomesticPullFromCard$inboundSchema: z.ZodType<
+  DomesticPullFromCard,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DomesticPullFromCard);
 /** @internal */
-export const DomesticPullFromCard$outboundSchema: z.ZodNativeEnum<
-  typeof DomesticPullFromCard
-> = DomesticPullFromCard$inboundSchema;
+export const DomesticPullFromCard$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DomesticPullFromCard
+> = openEnums.outboundSchema(DomesticPullFromCard);

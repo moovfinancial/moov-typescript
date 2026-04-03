@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TransferPaymentMethodsBankAccount,
@@ -34,8 +35,8 @@ export const InstantBankCreditTransferPaymentMethod$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("instant-bank-credit"),
+  paymentMethodID: types.string(),
+  paymentMethodType: types.literal("instant-bank-credit"),
   bankAccount: TransferPaymentMethodsBankAccount$inboundSchema,
 });
 /** @internal */

@@ -11,10 +11,12 @@ If set to "auto" the UI will automatically select between
 import { CallToAction } from "@moovio/sdk/models/components";
 
 let value: CallToAction = "book";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"pay" | "book" | "subscribe" | "donate" | "confirm" | "auto"
+"pay" | "book" | "subscribe" | "donate" | "confirm" | "auto" | Unrecognized<string>
 ```

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -42,10 +43,10 @@ export const FacilitatorFee$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  total: z.number().int().optional(),
-  totalDecimal: z.string().optional(),
-  markup: z.number().int().optional(),
-  markupDecimal: z.string().optional(),
+  total: types.optional(types.number()),
+  totalDecimal: types.optional(types.string()),
+  markup: types.optional(types.number()),
+  markupDecimal: types.optional(types.string()),
 });
 /** @internal */
 export type FacilitatorFee$Outbound = {

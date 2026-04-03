@@ -3,20 +3,25 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const TransferParty = {
   Source: "source",
   Destination: "destination",
   Partner: "partner",
 } as const;
-export type TransferParty = ClosedEnum<typeof TransferParty>;
+export type TransferParty = OpenEnum<typeof TransferParty>;
 
 /** @internal */
-export const TransferParty$inboundSchema: z.ZodNativeEnum<
-  typeof TransferParty
-> = z.nativeEnum(TransferParty);
+export const TransferParty$inboundSchema: z.ZodType<
+  TransferParty,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(TransferParty);
 /** @internal */
-export const TransferParty$outboundSchema: z.ZodNativeEnum<
-  typeof TransferParty
-> = TransferParty$inboundSchema;
+export const TransferParty$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  TransferParty
+> = openEnums.outboundSchema(TransferParty);

@@ -8,10 +8,12 @@ Specifies the pricing model used for the calculation of the final fee.
 import { FeeModel } from "@moovio/sdk/models/components";
 
 let value: FeeModel = "variable";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"fixed" | "blended" | "variable"
+"fixed" | "blended" | "variable" | Unrecognized<string>
 ```

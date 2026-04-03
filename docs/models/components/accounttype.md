@@ -8,10 +8,12 @@ The type of entity represented by this account.
 import { AccountType } from "@moovio/sdk/models/components";
 
 let value: AccountType = "business";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"individual" | "business" | "guest"
+"individual" | "business" | "guest" | Unrecognized<string>
 ```

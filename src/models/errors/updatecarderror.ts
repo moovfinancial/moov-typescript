@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -60,14 +61,14 @@ export const UpdateCardError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  e2ee: components.End2EndEncryptionError$inboundSchema.optional(),
-  billingAddress: z.string().optional(),
-  expiration: z.string().optional(),
-  cardCvv: z.string().optional(),
-  cardOnFile: z.string().optional(),
-  merchantAccountID: z.string().optional(),
-  verifyName: z.string().optional(),
-  holderName: z.string().optional(),
+  e2ee: types.optional(components.End2EndEncryptionError$inboundSchema),
+  billingAddress: types.optional(types.string()),
+  expiration: types.optional(types.string()),
+  cardCvv: types.optional(types.string()),
+  cardOnFile: types.optional(types.string()),
+  merchantAccountID: types.optional(types.string()),
+  verifyName: types.optional(types.string()),
+  holderName: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

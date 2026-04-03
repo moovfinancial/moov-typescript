@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Status of a transaction within the instant-bank lifecycle.
@@ -17,15 +18,19 @@ export const InstantBankTransactionStatus = {
 /**
  * Status of a transaction within the instant-bank lifecycle.
  */
-export type InstantBankTransactionStatus = ClosedEnum<
+export type InstantBankTransactionStatus = OpenEnum<
   typeof InstantBankTransactionStatus
 >;
 
 /** @internal */
-export const InstantBankTransactionStatus$inboundSchema: z.ZodNativeEnum<
-  typeof InstantBankTransactionStatus
-> = z.nativeEnum(InstantBankTransactionStatus);
+export const InstantBankTransactionStatus$inboundSchema: z.ZodType<
+  InstantBankTransactionStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(InstantBankTransactionStatus);
 /** @internal */
-export const InstantBankTransactionStatus$outboundSchema: z.ZodNativeEnum<
-  typeof InstantBankTransactionStatus
-> = InstantBankTransactionStatus$inboundSchema;
+export const InstantBankTransactionStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  InstantBankTransactionStatus
+> = openEnums.outboundSchema(InstantBankTransactionStatus);

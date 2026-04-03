@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The payment method type that represents a payment rail and directionality
@@ -25,15 +26,19 @@ export const TransferPaymentMethodType = {
 /**
  * The payment method type that represents a payment rail and directionality
  */
-export type TransferPaymentMethodType = ClosedEnum<
+export type TransferPaymentMethodType = OpenEnum<
   typeof TransferPaymentMethodType
 >;
 
 /** @internal */
-export const TransferPaymentMethodType$inboundSchema: z.ZodNativeEnum<
-  typeof TransferPaymentMethodType
-> = z.nativeEnum(TransferPaymentMethodType);
+export const TransferPaymentMethodType$inboundSchema: z.ZodType<
+  TransferPaymentMethodType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(TransferPaymentMethodType);
 /** @internal */
-export const TransferPaymentMethodType$outboundSchema: z.ZodNativeEnum<
-  typeof TransferPaymentMethodType
-> = TransferPaymentMethodType$inboundSchema;
+export const TransferPaymentMethodType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  TransferPaymentMethodType
+> = openEnums.outboundSchema(TransferPaymentMethodType);

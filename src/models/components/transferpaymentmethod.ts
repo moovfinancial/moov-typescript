@@ -4,6 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
+import * as discriminatedUnionTypes from "../../types/discriminatedUnion.js";
+import { discriminatedUnion } from "../../types/discriminatedUnion.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -94,27 +96,29 @@ export type TransferPaymentMethod =
   | PullFromCardTransferPaymentMethod
   | ApplePayTransferPaymentMethod
   | CardPresentPaymentTransferPaymentMethod
-  | InstantBankCreditTransferPaymentMethod;
+  | InstantBankCreditTransferPaymentMethod
+  | discriminatedUnionTypes.Unknown<"paymentMethodType">;
 
 /** @internal */
 export const TransferPaymentMethod$inboundSchema: z.ZodType<
   TransferPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  MoovWalletTransferPaymentMethod$inboundSchema,
-  AchDebitFundTransferPaymentMethod$inboundSchema,
-  AchDebitCollectTransferPaymentMethod$inboundSchema,
-  AchCreditStandardTransferPaymentMethod$inboundSchema,
-  AchCreditSameDayTransferPaymentMethod$inboundSchema,
-  RtpCreditTransferPaymentMethod$inboundSchema,
-  CardPaymentTransferPaymentMethod$inboundSchema,
-  PushToCardTransferPaymentMethod$inboundSchema,
-  PullFromCardTransferPaymentMethod$inboundSchema,
-  ApplePayTransferPaymentMethod$inboundSchema,
-  CardPresentPaymentTransferPaymentMethod$inboundSchema,
-  InstantBankCreditTransferPaymentMethod$inboundSchema,
-]);
+> = discriminatedUnion("paymentMethodType", {
+  ["moov-wallet"]: MoovWalletTransferPaymentMethod$inboundSchema,
+  ["ach-debit-fund"]: AchDebitFundTransferPaymentMethod$inboundSchema,
+  ["ach-debit-collect"]: AchDebitCollectTransferPaymentMethod$inboundSchema,
+  ["ach-credit-standard"]: AchCreditStandardTransferPaymentMethod$inboundSchema,
+  ["ach-credit-same-day"]: AchCreditSameDayTransferPaymentMethod$inboundSchema,
+  ["rtp-credit"]: RtpCreditTransferPaymentMethod$inboundSchema,
+  ["card-payment"]: CardPaymentTransferPaymentMethod$inboundSchema,
+  ["push-to-card"]: PushToCardTransferPaymentMethod$inboundSchema,
+  ["pull-from-card"]: PullFromCardTransferPaymentMethod$inboundSchema,
+  ["apple-pay"]: ApplePayTransferPaymentMethod$inboundSchema,
+  ["card-present-payment"]:
+    CardPresentPaymentTransferPaymentMethod$inboundSchema,
+  ["instant-bank-credit"]: InstantBankCreditTransferPaymentMethod$inboundSchema,
+});
 /** @internal */
 export type TransferPaymentMethod$Outbound =
   | MoovWalletTransferPaymentMethod$Outbound

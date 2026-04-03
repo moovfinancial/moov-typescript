@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -34,11 +35,13 @@ export const ListPartnerPricingAgreementsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  accountID: z.string(),
-  agreementID: z.array(z.string()).optional(),
-  status: z.array(components.FeePlanAgreementStatus$inboundSchema).optional(),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  accountID: types.string(),
+  agreementID: types.optional(z.array(types.string())),
+  status: types.optional(
+    z.array(components.FeePlanAgreementStatus$inboundSchema),
+  ),
 });
 /** @internal */
 export type ListPartnerPricingAgreementsRequest$Outbound = {

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   MonthlyVolumeRange,
@@ -27,9 +28,9 @@ export const EstimatedActivity$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  averageTransactionAmount: z.number().int().optional(),
-  maximumTransactionAmount: z.number().int().optional(),
-  monthlyVolumeRange: MonthlyVolumeRange$inboundSchema.optional(),
+  averageTransactionAmount: types.optional(types.number()),
+  maximumTransactionAmount: types.optional(types.number()),
+  monthlyVolumeRange: types.optional(MonthlyVolumeRange$inboundSchema),
 });
 /** @internal */
 export type EstimatedActivity$Outbound = {

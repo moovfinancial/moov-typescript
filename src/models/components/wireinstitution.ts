@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Address,
@@ -35,9 +36,9 @@ export const WireInstitution$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  routingNumber: z.string(),
-  address: Address$inboundSchema.optional(),
+  name: types.string(),
+  routingNumber: types.string(),
+  address: types.optional(Address$inboundSchema),
   services: WireServices$inboundSchema,
 });
 /** @internal */

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type UpdateWebhookValidationErrorData = {
@@ -69,10 +70,10 @@ export const UpdateWebhookValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  url: z.string().optional(),
-  status: z.string().optional(),
-  eventTypes: z.string().optional(),
-  description: z.string().optional(),
+  url: types.optional(types.string()),
+  status: types.optional(types.string()),
+  eventTypes: types.optional(types.string()),
+  description: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

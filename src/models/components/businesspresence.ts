@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const BusinessPresence = {
   CommercialOffice: "commercial-office",
@@ -13,13 +14,17 @@ export const BusinessPresence = {
   OnlineOnly: "online-only",
   RetailStorefront: "retail-storefront",
 } as const;
-export type BusinessPresence = ClosedEnum<typeof BusinessPresence>;
+export type BusinessPresence = OpenEnum<typeof BusinessPresence>;
 
 /** @internal */
-export const BusinessPresence$inboundSchema: z.ZodNativeEnum<
-  typeof BusinessPresence
-> = z.nativeEnum(BusinessPresence);
+export const BusinessPresence$inboundSchema: z.ZodType<
+  BusinessPresence,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(BusinessPresence);
 /** @internal */
-export const BusinessPresence$outboundSchema: z.ZodNativeEnum<
-  typeof BusinessPresence
-> = BusinessPresence$inboundSchema;
+export const BusinessPresence$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  BusinessPresence
+> = openEnums.outboundSchema(BusinessPresence);

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InstantBankFailureCode,
@@ -57,18 +58,13 @@ export const InstantBankTransactionDetails$inboundSchema: z.ZodType<
 > = z.object({
   network: InstantBankNetwork$inboundSchema,
   status: InstantBankTransactionStatus$inboundSchema,
-  networkResponseCode: z.string().optional(),
-  failureCode: InstantBankFailureCode$inboundSchema.optional(),
-  endToEndID: z.string().optional(),
-  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  acceptedWithoutPostingOn: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
+  networkResponseCode: types.optional(types.string()),
+  failureCode: types.optional(InstantBankFailureCode$inboundSchema),
+  endToEndID: types.optional(types.string()),
+  initiatedOn: types.optional(types.date()),
+  completedOn: types.optional(types.date()),
+  failedOn: types.optional(types.date()),
+  acceptedWithoutPostingOn: types.optional(types.date()),
 });
 /** @internal */
 export type InstantBankTransactionDetails$Outbound = {

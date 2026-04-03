@@ -10,10 +10,12 @@ Additional detail for a verification status.
 import { VerificationStatusDetail } from "@moovio/sdk/models/components";
 
 let value: VerificationStatusDetail = "docAddressMismatch";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"failedAutoVerify" | "docDobMismatch" | "docNameMismatch" | "docAddressMismatch" | "docNumberMismatch" | "docIncomplete" | "docFailedRisk" | "potentialAccountSanctionsMatch" | "potentialRepresentativeSanctionsMatch" | "failedOther"
+"failedAutoVerify" | "docDobMismatch" | "docNameMismatch" | "docAddressMismatch" | "docNumberMismatch" | "docIncomplete" | "docFailedRisk" | "potentialAccountSanctionsMatch" | "potentialRepresentativeSanctionsMatch" | "failedOther" | Unrecognized<string>
 ```

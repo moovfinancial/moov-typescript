@@ -8,10 +8,12 @@ Platform of the terminal application.
 import { TerminalApplicationPlatform } from "@moovio/sdk/models/components";
 
 let value: TerminalApplicationPlatform = "ios";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"undefined" | "ios" | "android"
+"undefined" | "ios" | "android" | Unrecognized<string>
 ```

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ReversedWithCancellation,
@@ -29,7 +30,7 @@ export const Reversal$inboundSchema: z.ZodType<
   Reversal,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   ReversedWithCancellation$inboundSchema,
   ReversedWithRefund$inboundSchema,
 ]);
@@ -43,7 +44,7 @@ export const Reversal$outboundSchema: z.ZodType<
   Reversal$Outbound,
   z.ZodTypeDef,
   Reversal
-> = z.union([
+> = smartUnion([
   ReversedWithCancellation$outboundSchema,
   ReversedWithRefund$outboundSchema,
 ]);

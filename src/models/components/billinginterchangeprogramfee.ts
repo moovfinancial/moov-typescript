@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Decimal as Decimal$ } from "../../types/decimal.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -50,8 +51,8 @@ export const BillingInterchangeProgramFee$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  programName: z.string(),
-  count: z.number().int(),
+  programName: types.string(),
+  count: types.number(),
   percentageRate: z.number().transform(v => new Decimal$(v)),
   perItemRate: AmountDecimal$inboundSchema,
   total: AmountDecimal$inboundSchema,

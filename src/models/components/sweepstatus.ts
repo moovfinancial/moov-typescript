@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const SweepStatus = {
   Accruing: "accruing",
@@ -13,11 +14,17 @@ export const SweepStatus = {
   Failed: "failed",
   Paid: "paid",
 } as const;
-export type SweepStatus = ClosedEnum<typeof SweepStatus>;
+export type SweepStatus = OpenEnum<typeof SweepStatus>;
 
 /** @internal */
-export const SweepStatus$inboundSchema: z.ZodNativeEnum<typeof SweepStatus> = z
-  .nativeEnum(SweepStatus);
+export const SweepStatus$inboundSchema: z.ZodType<
+  SweepStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(SweepStatus);
 /** @internal */
-export const SweepStatus$outboundSchema: z.ZodNativeEnum<typeof SweepStatus> =
-  SweepStatus$inboundSchema;
+export const SweepStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  SweepStatus
+> = openEnums.outboundSchema(SweepStatus);

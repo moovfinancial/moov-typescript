@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Status codes for instant-bank failures.
@@ -24,13 +25,17 @@ export const InstantBankFailureCode = {
 /**
  * Status codes for instant-bank failures.
  */
-export type InstantBankFailureCode = ClosedEnum<typeof InstantBankFailureCode>;
+export type InstantBankFailureCode = OpenEnum<typeof InstantBankFailureCode>;
 
 /** @internal */
-export const InstantBankFailureCode$inboundSchema: z.ZodNativeEnum<
-  typeof InstantBankFailureCode
-> = z.nativeEnum(InstantBankFailureCode);
+export const InstantBankFailureCode$inboundSchema: z.ZodType<
+  InstantBankFailureCode,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(InstantBankFailureCode);
 /** @internal */
-export const InstantBankFailureCode$outboundSchema: z.ZodNativeEnum<
-  typeof InstantBankFailureCode
-> = InstantBankFailureCode$inboundSchema;
+export const InstantBankFailureCode$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  InstantBankFailureCode
+> = openEnums.outboundSchema(InstantBankFailureCode);

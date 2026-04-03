@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -55,16 +56,15 @@ export const ResolutionLink$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
-  accountID: z.string(),
-  partnerAccountID: z.string(),
-  recipient: z.string(),
-  url: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  expiresOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  code: types.string(),
+  accountID: types.string(),
+  partnerAccountID: types.string(),
+  recipient: types.string(),
+  url: types.string(),
+  createdOn: types.date(),
+  updatedOn: types.date(),
+  disabledOn: types.optional(types.date()),
+  expiresOn: types.date(),
 });
 /** @internal */
 export type ResolutionLink$Outbound = {

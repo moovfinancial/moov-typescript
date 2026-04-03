@@ -8,10 +8,12 @@ The type of holder on a funding source.
 import { BankAccountHolderType } from "@moovio/sdk/models/components";
 
 let value: BankAccountHolderType = "business";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"individual" | "business" | "guest"
+"individual" | "business" | "guest" | Unrecognized<string>
 ```

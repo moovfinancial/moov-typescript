@@ -11,10 +11,12 @@ Omit for customer-initiated e-commerce transactions.
 import { TransactionSource } from "@moovio/sdk/models/components";
 
 let value: TransactionSource = "recurring";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"first-recurring" | "recurring" | "unscheduled"
+"first-recurring" | "recurring" | "unscheduled" | Unrecognized<string>
 ```

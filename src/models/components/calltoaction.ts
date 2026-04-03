@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The text to be displayed on web form's submit button.
@@ -29,11 +30,17 @@ export const CallToAction = {
  * If set to "auto" the UI will automatically select between
  * "pay" and "confirm" for payments and payouts respectively.
  */
-export type CallToAction = ClosedEnum<typeof CallToAction>;
+export type CallToAction = OpenEnum<typeof CallToAction>;
 
 /** @internal */
-export const CallToAction$inboundSchema: z.ZodNativeEnum<typeof CallToAction> =
-  z.nativeEnum(CallToAction);
+export const CallToAction$inboundSchema: z.ZodType<
+  CallToAction,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CallToAction);
 /** @internal */
-export const CallToAction$outboundSchema: z.ZodNativeEnum<typeof CallToAction> =
-  CallToAction$inboundSchema;
+export const CallToAction$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CallToAction
+> = openEnums.outboundSchema(CallToAction);

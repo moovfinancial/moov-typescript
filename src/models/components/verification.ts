@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountVerificationStatus,
@@ -59,10 +60,10 @@ export const Verification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  verificationStatus: AccountVerificationStatus$inboundSchema.optional(),
+  verificationStatus: types.optional(AccountVerificationStatus$inboundSchema),
   status: VerificationStatus$inboundSchema,
-  details: VerificationStatusDetail$inboundSchema.optional(),
-  documents: z.array(Document$inboundSchema).optional(),
+  details: types.optional(VerificationStatusDetail$inboundSchema),
+  documents: types.optional(z.array(Document$inboundSchema)),
 });
 /** @internal */
 export type Verification$Outbound = {

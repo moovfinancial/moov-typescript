@@ -3,19 +3,24 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const SweepConfigStatus = {
   Enabled: "enabled",
   Disabled: "disabled",
 } as const;
-export type SweepConfigStatus = ClosedEnum<typeof SweepConfigStatus>;
+export type SweepConfigStatus = OpenEnum<typeof SweepConfigStatus>;
 
 /** @internal */
-export const SweepConfigStatus$inboundSchema: z.ZodNativeEnum<
-  typeof SweepConfigStatus
-> = z.nativeEnum(SweepConfigStatus);
+export const SweepConfigStatus$inboundSchema: z.ZodType<
+  SweepConfigStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(SweepConfigStatus);
 /** @internal */
-export const SweepConfigStatus$outboundSchema: z.ZodNativeEnum<
-  typeof SweepConfigStatus
-> = SweepConfigStatus$inboundSchema;
+export const SweepConfigStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  SweepConfigStatus
+> = openEnums.outboundSchema(SweepConfigStatus);

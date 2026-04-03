@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ReceiptKind,
@@ -82,17 +83,16 @@ export const ReceiptResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  receiptID: z.string(),
-  createdBy: z.string(),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  receiptID: types.string(),
+  createdBy: types.string(),
+  disabledOn: types.optional(types.date()),
   kind: ReceiptKind$inboundSchema,
-  email: z.string().optional(),
-  emailAccountID: z.string().optional(),
-  forTransferID: z.string().optional(),
-  forScheduleID: z.string().optional(),
-  forOccurrenceID: z.string().optional(),
-  sentFor: z.array(SentReceipt$inboundSchema).optional(),
+  email: types.optional(types.string()),
+  emailAccountID: types.optional(types.string()),
+  forTransferID: types.optional(types.string()),
+  forScheduleID: types.optional(types.string()),
+  forOccurrenceID: types.optional(types.string()),
+  sentFor: types.optional(z.array(SentReceipt$inboundSchema)),
 });
 /** @internal */
 export type ReceiptResponse$Outbound = {

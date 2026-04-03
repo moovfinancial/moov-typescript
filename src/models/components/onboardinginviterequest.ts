@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationScope,
@@ -69,13 +70,13 @@ export const OnboardingInviteRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  returnURL: z.string().optional(),
-  termsOfServiceURL: z.string().optional(),
+  returnURL: types.optional(types.string()),
+  termsOfServiceURL: types.optional(types.string()),
   scopes: z.array(ApplicationScope$inboundSchema),
-  grantScopes: z.array(ApplicationScope$inboundSchema).optional(),
+  grantScopes: types.optional(z.array(ApplicationScope$inboundSchema)),
   capabilities: z.array(CapabilityID$inboundSchema),
-  feePlanCodes: z.array(z.string()),
-  prefill: CreateAccount$inboundSchema.optional(),
+  feePlanCodes: z.array(types.string()),
+  prefill: types.optional(CreateAccount$inboundSchema),
 });
 /** @internal */
 export type OnboardingInviteRequest$Outbound = {

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The phase of a dispute within the dispute lifecycle.
@@ -17,11 +18,17 @@ export const DisputePhase = {
 /**
  * The phase of a dispute within the dispute lifecycle.
  */
-export type DisputePhase = ClosedEnum<typeof DisputePhase>;
+export type DisputePhase = OpenEnum<typeof DisputePhase>;
 
 /** @internal */
-export const DisputePhase$inboundSchema: z.ZodNativeEnum<typeof DisputePhase> =
-  z.nativeEnum(DisputePhase);
+export const DisputePhase$inboundSchema: z.ZodType<
+  DisputePhase,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DisputePhase);
 /** @internal */
-export const DisputePhase$outboundSchema: z.ZodNativeEnum<typeof DisputePhase> =
-  DisputePhase$inboundSchema;
+export const DisputePhase$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DisputePhase
+> = openEnums.outboundSchema(DisputePhase);

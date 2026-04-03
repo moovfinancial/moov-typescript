@@ -10,10 +10,12 @@ Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-paym
 import { DisputeStatus } from "@moovio/sdk/models/components";
 
 let value: DisputeStatus = "under-review";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"response-needed" | "resolved" | "under-review" | "closed" | "accepted" | "expired" | "won" | "lost"
+"response-needed" | "resolved" | "under-review" | "closed" | "accepted" | "expired" | "won" | "lost" | Unrecognized<string>
 ```

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -56,9 +57,9 @@ export const AccountFees$inboundSchema: z.ZodType<
   walletFee: AmountDecimal$inboundSchema,
   merchantPCIFee: AmountDecimal$inboundSchema,
   invoicePaymentFee: AmountDecimal$inboundSchema,
-  kybFee: AmountDecimal$inboundSchema.optional(),
-  kycFee: AmountDecimal$inboundSchema.optional(),
-  transactionMonitoringFee: AmountDecimal$inboundSchema.optional(),
+  kybFee: types.optional(AmountDecimal$inboundSchema),
+  kycFee: types.optional(AmountDecimal$inboundSchema),
+  transactionMonitoringFee: types.optional(AmountDecimal$inboundSchema),
   total: AmountDecimal$inboundSchema,
 });
 /** @internal */

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CapabilityID,
@@ -31,8 +32,8 @@ export const WebhookDataCapabilityRequested$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  foreignID: z.string().optional(),
+  accountID: types.string(),
+  foreignID: types.optional(types.string()),
   capabilityID: CapabilityID$inboundSchema,
 });
 /** @internal */

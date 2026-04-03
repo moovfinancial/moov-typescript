@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchLocation = {
@@ -21,11 +22,11 @@ export const AchLocation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  address: z.string(),
-  city: z.string(),
-  postalCode: z.string(),
-  postalCodeExtension: z.string(),
-  state: z.string(),
+  address: types.string(),
+  city: types.string(),
+  postalCode: types.string(),
+  postalCodeExtension: types.string(),
+  state: types.string(),
 });
 /** @internal */
 export type AchLocation$Outbound = {

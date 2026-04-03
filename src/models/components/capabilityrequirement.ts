@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RequirementError,
@@ -32,8 +33,8 @@ export const CapabilityRequirement$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentlyDue: z.array(RequirementID$inboundSchema).optional(),
-  errors: z.array(RequirementError$inboundSchema).optional(),
+  currentlyDue: types.optional(z.array(RequirementID$inboundSchema)),
+  errors: types.optional(z.array(RequirementError$inboundSchema)),
 });
 /** @internal */
 export type CapabilityRequirement$Outbound = {

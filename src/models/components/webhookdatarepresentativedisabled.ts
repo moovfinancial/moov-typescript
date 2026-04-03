@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WebhookDataRepresentativeDisabled = {
@@ -18,8 +19,8 @@ export const WebhookDataRepresentativeDisabled$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  representativeID: z.string(),
+  accountID: types.string(),
+  representativeID: types.string(),
 });
 /** @internal */
 export type WebhookDataRepresentativeDisabled$Outbound = {

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -39,11 +40,11 @@ export const IndustryTaxonomy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  industry: z.string(),
-  displayName: z.string(),
-  category: z.string(),
-  categoryDisplayName: z.string(),
-  defaultMcc: z.string(),
+  industry: types.string(),
+  displayName: types.string(),
+  category: types.string(),
+  categoryDisplayName: types.string(),
+  defaultMcc: types.string(),
 });
 /** @internal */
 export type IndustryTaxonomy$Outbound = {

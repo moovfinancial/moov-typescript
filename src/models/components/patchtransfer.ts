@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PatchTransfer = {
@@ -21,8 +22,8 @@ export const PatchTransfer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  metadata: z.nullable(z.record(z.string())).optional(),
-  foreignID: z.string().optional(),
+  metadata: z.nullable(z.record(types.string())).optional(),
+  foreignID: types.optional(types.string()),
 });
 /** @internal */
 export type PatchTransfer$Outbound = {

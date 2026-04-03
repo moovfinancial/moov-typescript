@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type BankAccountValidationErrorData = {
@@ -48,11 +49,11 @@ export const BankAccountValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  account: z.string().optional(),
-  plaid: z.string().optional(),
-  plaidLink: z.string().optional(),
-  mx: z.string().optional(),
-  error: z.string().optional(),
+  account: types.optional(types.string()),
+  plaid: types.optional(types.string()),
+  plaidLink: types.optional(types.string()),
+  mx: types.optional(types.string()),
+  error: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

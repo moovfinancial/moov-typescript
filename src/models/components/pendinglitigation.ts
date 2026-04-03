@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const PendingLitigation = {
   BankruptcyOrInsolvency: "bankruptcy-or-insolvency",
@@ -18,13 +19,17 @@ export const PendingLitigation = {
   Other: "other",
   PersonalInjuryOrMedical: "personal-injury-or-medical",
 } as const;
-export type PendingLitigation = ClosedEnum<typeof PendingLitigation>;
+export type PendingLitigation = OpenEnum<typeof PendingLitigation>;
 
 /** @internal */
-export const PendingLitigation$inboundSchema: z.ZodNativeEnum<
-  typeof PendingLitigation
-> = z.nativeEnum(PendingLitigation);
+export const PendingLitigation$inboundSchema: z.ZodType<
+  PendingLitigation,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(PendingLitigation);
 /** @internal */
-export const PendingLitigation$outboundSchema: z.ZodNativeEnum<
-  typeof PendingLitigation
-> = PendingLitigation$inboundSchema;
+export const PendingLitigation$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  PendingLitigation
+> = openEnums.outboundSchema(PendingLitigation);

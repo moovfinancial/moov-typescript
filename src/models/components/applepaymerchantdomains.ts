@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ApplePayMerchantDomains = {
@@ -27,11 +28,11 @@ export const ApplePayMerchantDomains$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  displayName: z.string(),
-  domains: z.array(z.string()),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  accountID: types.string(),
+  displayName: types.string(),
+  domains: z.array(types.string()),
+  createdOn: types.date(),
+  updatedOn: types.date(),
 });
 /** @internal */
 export type ApplePayMerchantDomains$Outbound = {

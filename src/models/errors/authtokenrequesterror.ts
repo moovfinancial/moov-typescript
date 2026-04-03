@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type AuthTokenRequestErrorData = {
@@ -40,8 +41,8 @@ export const AuthTokenRequestError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scope: z.string().optional(),
-  refresh_token: z.string().optional(),
+  scope: types.optional(types.string()),
+  refresh_token: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

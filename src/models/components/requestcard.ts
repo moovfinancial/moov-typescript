@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardExpiration,
@@ -57,12 +58,12 @@ export const RequestCard$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fundingWalletID: z.string(),
+  fundingWalletID: types.string(),
   authorizedUser: CreateAuthorizedUser$inboundSchema,
   formFactor: IssuedCardFormFactor$inboundSchema,
-  memo: z.string().optional(),
-  expiration: CardExpiration$inboundSchema.optional(),
-  controls: IssuingControls$inboundSchema.optional(),
+  memo: types.optional(types.string()),
+  expiration: types.optional(CardExpiration$inboundSchema),
+  controls: types.optional(IssuingControls$inboundSchema),
 });
 /** @internal */
 export type RequestCard$Outbound = {

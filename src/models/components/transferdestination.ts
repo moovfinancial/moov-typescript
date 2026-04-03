@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ACHTransactionDetails,
@@ -100,16 +101,18 @@ export const TransferDestination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paymentMethodID: z.string(),
+  paymentMethodID: types.string(),
   paymentMethodType: TransferPaymentMethodType$inboundSchema,
   account: TransferAccount$inboundSchema,
-  bankAccount: TransferPaymentMethodsBankAccount$inboundSchema.optional(),
-  wallet: TransferPaymentMethodsWallet$inboundSchema.optional(),
-  card: TransferPaymentMethodsCard$inboundSchema.optional(),
-  achDetails: ACHTransactionDetails$inboundSchema.optional(),
-  applePay: ApplePayResponse$inboundSchema.optional(),
-  cardDetails: CardTransactionDetails$inboundSchema.optional(),
-  instantBankDetails: InstantBankTransactionDetails$inboundSchema.optional(),
+  bankAccount: types.optional(TransferPaymentMethodsBankAccount$inboundSchema),
+  wallet: types.optional(TransferPaymentMethodsWallet$inboundSchema),
+  card: types.optional(TransferPaymentMethodsCard$inboundSchema),
+  achDetails: types.optional(ACHTransactionDetails$inboundSchema),
+  applePay: types.optional(ApplePayResponse$inboundSchema),
+  cardDetails: types.optional(CardTransactionDetails$inboundSchema),
+  instantBankDetails: types.optional(
+    InstantBankTransactionDetails$inboundSchema,
+  ),
 });
 /** @internal */
 export type TransferDestination$Outbound = {

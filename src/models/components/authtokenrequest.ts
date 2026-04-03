@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   GrantType,
@@ -48,10 +49,10 @@ export const AuthTokenRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   grant_type: GrantType$inboundSchema,
-  client_id: z.string().optional(),
-  client_secret: z.string().optional(),
-  scope: z.string().optional(),
-  refresh_token: z.string().optional(),
+  client_id: types.optional(types.string()),
+  client_secret: types.optional(types.string()),
+  scope: types.optional(types.string()),
+  refresh_token: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "grant_type": "grantType",

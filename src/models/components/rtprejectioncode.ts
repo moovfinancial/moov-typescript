@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The rejection code of an RTP transaction that caused the bank account status to change.
@@ -40,13 +41,17 @@ export const RTPRejectionCode = {
  * - AG03: Transaction Type Not Supported
  * - MD07: Customer Deceased
  */
-export type RTPRejectionCode = ClosedEnum<typeof RTPRejectionCode>;
+export type RTPRejectionCode = OpenEnum<typeof RTPRejectionCode>;
 
 /** @internal */
-export const RTPRejectionCode$inboundSchema: z.ZodNativeEnum<
-  typeof RTPRejectionCode
-> = z.nativeEnum(RTPRejectionCode);
+export const RTPRejectionCode$inboundSchema: z.ZodType<
+  RTPRejectionCode,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(RTPRejectionCode);
 /** @internal */
-export const RTPRejectionCode$outboundSchema: z.ZodNativeEnum<
-  typeof RTPRejectionCode
-> = RTPRejectionCode$inboundSchema;
+export const RTPRejectionCode$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  RTPRejectionCode
+> = openEnums.outboundSchema(RTPRejectionCode);

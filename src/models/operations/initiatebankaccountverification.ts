@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -33,9 +34,9 @@ export const InitiateBankAccountVerificationRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-wait-for": components.BankAccountWaitFor$inboundSchema.optional(),
-  accountID: z.string(),
-  bankAccountID: z.string(),
+  "x-wait-for": types.optional(components.BankAccountWaitFor$inboundSchema),
+  accountID: types.string(),
+  bankAccountID: types.string(),
 }).transform((v) => {
   return remap$(v, {
     "x-wait-for": "xWaitFor",

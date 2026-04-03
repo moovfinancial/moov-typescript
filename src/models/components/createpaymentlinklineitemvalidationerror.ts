@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimalValidationError,
@@ -35,13 +36,13 @@ export const CreatePaymentLinkLineItemValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  productID: z.string().optional(),
-  name: z.string().optional(),
-  basePrice: AmountDecimalValidationError$inboundSchema.optional(),
-  options: z.record(
-    CreatePaymentLinkLineItemOptionValidationError$inboundSchema,
-  ).optional(),
-  quantity: z.string().optional(),
+  productID: types.optional(types.string()),
+  name: types.optional(types.string()),
+  basePrice: types.optional(AmountDecimalValidationError$inboundSchema),
+  options: types.optional(
+    z.record(CreatePaymentLinkLineItemOptionValidationError$inboundSchema),
+  ),
+  quantity: types.optional(types.string()),
 });
 /** @internal */
 export type CreatePaymentLinkLineItemValidationError$Outbound = {

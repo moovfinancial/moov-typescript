@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Possible states an account verification can be in.
@@ -23,15 +24,19 @@ export const AccountVerificationStatus = {
  *
  * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export type AccountVerificationStatus = ClosedEnum<
+export type AccountVerificationStatus = OpenEnum<
   typeof AccountVerificationStatus
 >;
 
 /** @internal */
-export const AccountVerificationStatus$inboundSchema: z.ZodNativeEnum<
-  typeof AccountVerificationStatus
-> = z.nativeEnum(AccountVerificationStatus);
+export const AccountVerificationStatus$inboundSchema: z.ZodType<
+  AccountVerificationStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AccountVerificationStatus);
 /** @internal */
-export const AccountVerificationStatus$outboundSchema: z.ZodNativeEnum<
-  typeof AccountVerificationStatus
-> = AccountVerificationStatus$inboundSchema;
+export const AccountVerificationStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  AccountVerificationStatus
+> = openEnums.outboundSchema(AccountVerificationStatus);

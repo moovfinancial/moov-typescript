@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   WebhookEventType,
@@ -45,10 +46,10 @@ export const UpdateWebhook$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  url: z.string(),
+  url: types.string(),
   status: WebhookStatus$inboundSchema,
   eventTypes: z.array(WebhookEventType$inboundSchema),
-  description: z.string(),
+  description: types.string(),
 });
 /** @internal */
 export type UpdateWebhook$Outbound = {

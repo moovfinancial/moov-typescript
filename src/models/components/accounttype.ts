@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The type of entity represented by this account.
@@ -16,11 +17,17 @@ export const AccountType = {
 /**
  * The type of entity represented by this account.
  */
-export type AccountType = ClosedEnum<typeof AccountType>;
+export type AccountType = OpenEnum<typeof AccountType>;
 
 /** @internal */
-export const AccountType$inboundSchema: z.ZodNativeEnum<typeof AccountType> = z
-  .nativeEnum(AccountType);
+export const AccountType$inboundSchema: z.ZodType<
+  AccountType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AccountType);
 /** @internal */
-export const AccountType$outboundSchema: z.ZodNativeEnum<typeof AccountType> =
-  AccountType$inboundSchema;
+export const AccountType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  AccountType
+> = openEnums.outboundSchema(AccountType);

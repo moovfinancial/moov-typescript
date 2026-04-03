@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateTransferACHAddendaRecord,
@@ -49,11 +50,13 @@ export const CreateTransferSourceACH$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  companyEntryDescription: z.string().optional(),
-  originatingCompanyName: z.string().optional(),
-  debitHoldPeriod: DebitHoldPeriod$inboundSchema.optional(),
-  secCode: SECCode$inboundSchema.optional(),
-  addenda: z.array(CreateTransferACHAddendaRecord$inboundSchema).optional(),
+  companyEntryDescription: types.optional(types.string()),
+  originatingCompanyName: types.optional(types.string()),
+  debitHoldPeriod: types.optional(DebitHoldPeriod$inboundSchema),
+  secCode: types.optional(SECCode$inboundSchema),
+  addenda: types.optional(
+    z.array(CreateTransferACHAddendaRecord$inboundSchema),
+  ),
 });
 /** @internal */
 export type CreateTransferSourceACH$Outbound = {

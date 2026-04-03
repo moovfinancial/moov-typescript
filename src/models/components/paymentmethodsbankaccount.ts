@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BankAccountHolderType,
@@ -57,16 +58,16 @@ export const PaymentMethodsBankAccount$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bankAccountID: z.string(),
-  fingerprint: z.string(),
+  bankAccountID: types.string(),
+  fingerprint: types.string(),
   status: BankAccountStatus$inboundSchema,
-  holderName: z.string(),
+  holderName: types.string(),
   holderType: BankAccountHolderType$inboundSchema,
-  bankName: z.string(),
+  bankName: types.string(),
   bankAccountType: BankAccountType$inboundSchema,
-  routingNumber: z.string(),
-  lastFourAccountNumber: z.string(),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  routingNumber: types.string(),
+  lastFourAccountNumber: types.string(),
+  updatedOn: types.date(),
 });
 /** @internal */
 export type PaymentMethodsBankAccount$Outbound = {

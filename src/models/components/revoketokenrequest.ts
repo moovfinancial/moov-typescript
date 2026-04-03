@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -55,10 +56,10 @@ export const RevokeTokenRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string(),
-  token_type_hint: TokenTypeHint$inboundSchema.optional(),
-  client_id: z.string().optional(),
-  client_secret: z.string().optional(),
+  token: types.string(),
+  token_type_hint: types.optional(TokenTypeHint$inboundSchema),
+  client_id: types.optional(types.string()),
+  client_secret: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "token_type_hint": "tokenTypeHint",

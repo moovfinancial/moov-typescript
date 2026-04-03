@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -18,13 +19,17 @@ export const UnderwritingStatus = {
 /**
  * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export type UnderwritingStatus = ClosedEnum<typeof UnderwritingStatus>;
+export type UnderwritingStatus = OpenEnum<typeof UnderwritingStatus>;
 
 /** @internal */
-export const UnderwritingStatus$inboundSchema: z.ZodNativeEnum<
-  typeof UnderwritingStatus
-> = z.nativeEnum(UnderwritingStatus);
+export const UnderwritingStatus$inboundSchema: z.ZodType<
+  UnderwritingStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(UnderwritingStatus);
 /** @internal */
-export const UnderwritingStatus$outboundSchema: z.ZodNativeEnum<
-  typeof UnderwritingStatus
-> = UnderwritingStatus$inboundSchema;
+export const UnderwritingStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  UnderwritingStatus
+> = openEnums.outboundSchema(UnderwritingStatus);

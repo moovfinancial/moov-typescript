@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -51,11 +52,13 @@ export const PaymentLinkLineItemOption$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  quantity: z.number().int(),
-  priceModifier: AmountDecimal$inboundSchema.optional(),
-  images: z.array(PaymentLinkLineItemImageMetadata$inboundSchema).optional(),
-  group: z.string().optional(),
+  name: types.string(),
+  quantity: types.number(),
+  priceModifier: types.optional(AmountDecimal$inboundSchema),
+  images: types.optional(
+    z.array(PaymentLinkLineItemImageMetadata$inboundSchema),
+  ),
+  group: types.optional(types.string()),
 });
 /** @internal */
 export type PaymentLinkLineItemOption$Outbound = {

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The results of the card update request.
@@ -20,13 +21,17 @@ export const CardUpdateReason = {
 /**
  * The results of the card update request.
  */
-export type CardUpdateReason = ClosedEnum<typeof CardUpdateReason>;
+export type CardUpdateReason = OpenEnum<typeof CardUpdateReason>;
 
 /** @internal */
-export const CardUpdateReason$inboundSchema: z.ZodNativeEnum<
-  typeof CardUpdateReason
-> = z.nativeEnum(CardUpdateReason);
+export const CardUpdateReason$inboundSchema: z.ZodType<
+  CardUpdateReason,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CardUpdateReason);
 /** @internal */
-export const CardUpdateReason$outboundSchema: z.ZodNativeEnum<
-  typeof CardUpdateReason
-> = CardUpdateReason$inboundSchema;
+export const CardUpdateReason$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CardUpdateReason
+> = openEnums.outboundSchema(CardUpdateReason);

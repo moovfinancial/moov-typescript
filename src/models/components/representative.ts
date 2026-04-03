@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Address,
@@ -66,18 +67,19 @@ export const Representative$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  representativeID: z.string(),
+  representativeID: types.string(),
   name: IndividualName$inboundSchema,
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$inboundSchema.optional(),
-  birthDateProvided: z.boolean().optional(),
-  governmentIDProvided: z.boolean().optional(),
-  responsibilities: RepresentativeResponsibilities$inboundSchema.optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  phone: types.optional(PhoneNumber$inboundSchema),
+  email: types.optional(types.string()),
+  address: types.optional(Address$inboundSchema),
+  birthDateProvided: types.optional(types.boolean()),
+  governmentIDProvided: types.optional(types.boolean()),
+  responsibilities: types.optional(
+    RepresentativeResponsibilities$inboundSchema,
+  ),
+  createdOn: types.date(),
+  updatedOn: types.date(),
+  disabledOn: types.optional(types.date()),
 });
 /** @internal */
 export type Representative$Outbound = {

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const TicketStatus = {
   New: "new",
@@ -11,11 +12,17 @@ export const TicketStatus = {
   OnHold: "on-hold",
   Closed: "closed",
 } as const;
-export type TicketStatus = ClosedEnum<typeof TicketStatus>;
+export type TicketStatus = OpenEnum<typeof TicketStatus>;
 
 /** @internal */
-export const TicketStatus$inboundSchema: z.ZodNativeEnum<typeof TicketStatus> =
-  z.nativeEnum(TicketStatus);
+export const TicketStatus$inboundSchema: z.ZodType<
+  TicketStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(TicketStatus);
 /** @internal */
-export const TicketStatus$outboundSchema: z.ZodNativeEnum<typeof TicketStatus> =
-  TicketStatus$inboundSchema;
+export const TicketStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  TicketStatus
+> = openEnums.outboundSchema(TicketStatus);

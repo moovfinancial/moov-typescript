@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const RefundPolicy = {
   ConditionalRefund: "conditional-refund",
@@ -16,11 +17,17 @@ export const RefundPolicy = {
   ProratedRefund: "prorated-refund",
   StoreCreditOnly: "store-credit-only",
 } as const;
-export type RefundPolicy = ClosedEnum<typeof RefundPolicy>;
+export type RefundPolicy = OpenEnum<typeof RefundPolicy>;
 
 /** @internal */
-export const RefundPolicy$inboundSchema: z.ZodNativeEnum<typeof RefundPolicy> =
-  z.nativeEnum(RefundPolicy);
+export const RefundPolicy$inboundSchema: z.ZodType<
+  RefundPolicy,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(RefundPolicy);
 /** @internal */
-export const RefundPolicy$outboundSchema: z.ZodNativeEnum<typeof RefundPolicy> =
-  RefundPolicy$inboundSchema;
+export const RefundPolicy$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  RefundPolicy
+> = openEnums.outboundSchema(RefundPolicy);

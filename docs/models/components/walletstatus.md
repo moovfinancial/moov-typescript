@@ -10,10 +10,12 @@ Status of a wallet.
 import { WalletStatus } from "@moovio/sdk/models/components";
 
 let value: WalletStatus = "active";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"active" | "closed"
+"active" | "closed" | Unrecognized<string>
 ```

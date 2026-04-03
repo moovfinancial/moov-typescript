@@ -16,10 +16,12 @@ The rejection code of an RTP transaction that caused the bank account status to 
 import { RTPRejectionCode } from "@moovio/sdk/models/components";
 
 let value: RTPRejectionCode = "AG01";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"AC03" | "AC04" | "AC06" | "AC14" | "AG01" | "AG03" | "MD07"
+"AC03" | "AC04" | "AC06" | "AC14" | "AG01" | "AG03" | "MD07" | Unrecognized<string>
 ```

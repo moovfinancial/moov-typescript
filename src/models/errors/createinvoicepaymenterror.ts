@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -46,10 +47,10 @@ export const CreateInvoicePaymentError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  amount: components.AmountDecimalValidationError$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  description: z.string().optional(),
-  paymentDate: z.string().optional(),
+  amount: types.optional(components.AmountDecimalValidationError$inboundSchema),
+  foreignID: types.optional(types.string()),
+  description: types.optional(types.string()),
+  paymentDate: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

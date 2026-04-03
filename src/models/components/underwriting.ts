@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BusinessPresence,
@@ -98,20 +99,22 @@ export const Underwriting$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  averageTransactionSize: z.number().int().optional(),
-  maxTransactionSize: z.number().int().optional(),
-  averageMonthlyTransactionVolume: z.number().int().optional(),
-  status: UnderwritingStatus$inboundSchema.optional(),
-  volumeByCustomerType: VolumeByCustomerType$inboundSchema.optional(),
-  cardVolumeDistribution: CardVolumeDistribution$inboundSchema.optional(),
-  fulfillment: FulfillmentDetails$inboundSchema.optional(),
-  geographicReach: GeographicReach$inboundSchema.optional(),
-  businessPresence: BusinessPresence$inboundSchema.optional(),
-  pendingLitigation: PendingLitigation$inboundSchema.optional(),
-  volumeShareByCustomerType: VolumeShareByCustomerType$inboundSchema.optional(),
-  collectFunds: CollectFunds$inboundSchema.optional(),
-  moneyTransfer: MoneyTransfer$inboundSchema.optional(),
-  sendFunds: SendFunds$inboundSchema.optional(),
+  averageTransactionSize: types.optional(types.number()),
+  maxTransactionSize: types.optional(types.number()),
+  averageMonthlyTransactionVolume: types.optional(types.number()),
+  status: types.optional(UnderwritingStatus$inboundSchema),
+  volumeByCustomerType: types.optional(VolumeByCustomerType$inboundSchema),
+  cardVolumeDistribution: types.optional(CardVolumeDistribution$inboundSchema),
+  fulfillment: types.optional(FulfillmentDetails$inboundSchema),
+  geographicReach: types.optional(GeographicReach$inboundSchema),
+  businessPresence: types.optional(BusinessPresence$inboundSchema),
+  pendingLitigation: types.optional(PendingLitigation$inboundSchema),
+  volumeShareByCustomerType: types.optional(
+    VolumeShareByCustomerType$inboundSchema,
+  ),
+  collectFunds: types.optional(CollectFunds$inboundSchema),
+  moneyTransfer: types.optional(MoneyTransfer$inboundSchema),
+  sendFunds: types.optional(SendFunds$inboundSchema),
 });
 /** @internal */
 export type Underwriting$Outbound = {

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardTransactionFailureCode,
@@ -34,17 +35,12 @@ export const RefundCardDetails$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   status: RefundCardStatus$inboundSchema,
-  failureCode: CardTransactionFailureCode$inboundSchema.optional(),
-  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  confirmedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  settledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
+  initiatedOn: types.optional(types.date()),
+  confirmedOn: types.optional(types.date()),
+  settledOn: types.optional(types.date()),
+  failedOn: types.optional(types.date()),
+  completedOn: types.optional(types.date()),
 });
 /** @internal */
 export type RefundCardDetails$Outbound = {

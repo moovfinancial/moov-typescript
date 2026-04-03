@@ -8,10 +8,12 @@ The file's status.
 import { FileStatus } from "@moovio/sdk/models/components";
 
 let value: FileStatus = "pending";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"pending" | "approved" | "rejected"
+"pending" | "approved" | "rejected" | Unrecognized<string>
 ```

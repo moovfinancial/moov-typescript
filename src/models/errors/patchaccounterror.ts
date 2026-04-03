@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -55,13 +56,15 @@ export const PatchAccountError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  profile: components.CreateProfileError$inboundSchema.optional(),
-  metadata: z.string().optional(),
-  termsOfService: components.TermsOfServiceError$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  customerSupport: components.CustomerSupportError$inboundSchema.optional(),
-  settings: components.CreateAccountSettings$inboundSchema.optional(),
-  error: z.string().optional(),
+  profile: types.optional(components.CreateProfileError$inboundSchema),
+  metadata: types.optional(types.string()),
+  termsOfService: types.optional(components.TermsOfServiceError$inboundSchema),
+  foreignID: types.optional(types.string()),
+  customerSupport: types.optional(
+    components.CustomerSupportError$inboundSchema,
+  ),
+  settings: types.optional(components.CreateAccountSettings$inboundSchema),
+  error: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

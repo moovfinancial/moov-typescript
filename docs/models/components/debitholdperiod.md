@@ -8,10 +8,12 @@ An optional override of your default ACH hold period in banking days. The hold p
 import { DebitHoldPeriod } from "@moovio/sdk/models/components";
 
 let value: DebitHoldPeriod = "2-days";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"no-hold" | "1-day" | "2-days"
+"no-hold" | "1-day" | "2-days" | Unrecognized<string>
 ```

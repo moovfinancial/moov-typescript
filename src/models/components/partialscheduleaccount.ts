@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PartialScheduleAccount = {
@@ -19,9 +20,9 @@ export const PartialScheduleAccount$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  displayName: z.string(),
-  email: z.string().optional(),
+  accountID: types.string(),
+  displayName: types.string(),
+  email: types.optional(types.string()),
 });
 /** @internal */
 export type PartialScheduleAccount$Outbound = {

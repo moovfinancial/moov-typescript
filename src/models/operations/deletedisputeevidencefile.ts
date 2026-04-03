@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteDisputeEvidenceFileRequest = {
@@ -24,9 +25,9 @@ export const DeleteDisputeEvidenceFileRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  evidenceID: z.string(),
+  accountID: types.string(),
+  disputeID: types.string(),
+  evidenceID: types.string(),
 });
 /** @internal */
 export type DeleteDisputeEvidenceFileRequest$Outbound = {

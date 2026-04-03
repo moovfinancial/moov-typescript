@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Mode, Mode$inboundSchema, Mode$outboundSchema } from "./mode.js";
 import {
@@ -56,22 +57,21 @@ export const ScheduleListResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  description: z.string().optional(),
-  destinationAccountID: z.string(),
+  description: types.optional(types.string()),
+  destinationAccountID: types.string(),
   mode: Mode$inboundSchema,
-  occurrences: z.array(OccurrencesResponse$inboundSchema).optional(),
-  ownerAccountID: z.string(),
-  partnerAccountID: z.string(),
-  recur: RecurResponse$inboundSchema.optional(),
-  scheduleID: z.string(),
-  sourceAccountID: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  sourceAccount: PartialScheduleAccount$inboundSchema.optional(),
-  destinationAccount: PartialScheduleAccount$inboundSchema.optional(),
-  partnerAccount: PartialScheduleAccount$inboundSchema.optional(),
+  occurrences: types.optional(z.array(OccurrencesResponse$inboundSchema)),
+  ownerAccountID: types.string(),
+  partnerAccountID: types.string(),
+  recur: types.optional(RecurResponse$inboundSchema),
+  scheduleID: types.string(),
+  sourceAccountID: types.string(),
+  createdOn: types.date(),
+  updatedOn: types.date(),
+  disabledOn: types.optional(types.date()),
+  sourceAccount: types.optional(PartialScheduleAccount$inboundSchema),
+  destinationAccount: types.optional(PartialScheduleAccount$inboundSchema),
+  partnerAccount: types.optional(PartialScheduleAccount$inboundSchema),
 });
 /** @internal */
 export type ScheduleListResponse$Outbound = {

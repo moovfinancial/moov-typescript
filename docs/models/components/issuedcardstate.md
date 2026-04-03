@@ -13,10 +13,12 @@ The `state` represents the operational status of an issued card. A card can only
 import { IssuedCardState } from "@moovio/sdk/models/components";
 
 let value: IssuedCardState = "inactive";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"active" | "inactive" | "pending-verification" | "closed"
+"active" | "inactive" | "pending-verification" | "closed" | Unrecognized<string>
 ```

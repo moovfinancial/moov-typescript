@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -55,14 +56,17 @@ export const UpdatePaymentLinkError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  amount: components.AmountValidationError$inboundSchema.optional(),
-  salesTaxAmount: components.AmountValidationError$inboundSchema.optional(),
-  expiresOn: z.string().optional(),
-  display: components.DisplayOptionsError$inboundSchema.optional(),
-  payment: components.PaymentDetailsError$inboundSchema.optional(),
-  payout: components.PayoutDetailsError$inboundSchema.optional(),
-  lineItems: components.CreatePaymentLinkLineItemsValidationError$inboundSchema
-    .optional(),
+  amount: types.optional(components.AmountValidationError$inboundSchema),
+  salesTaxAmount: types.optional(
+    components.AmountValidationError$inboundSchema,
+  ),
+  expiresOn: types.optional(types.string()),
+  display: types.optional(components.DisplayOptionsError$inboundSchema),
+  payment: types.optional(components.PaymentDetailsError$inboundSchema),
+  payout: types.optional(components.PayoutDetailsError$inboundSchema),
+  lineItems: types.optional(
+    components.CreatePaymentLinkLineItemsValidationError$inboundSchema,
+  ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

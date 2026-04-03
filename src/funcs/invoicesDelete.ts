@@ -24,6 +24,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Delete an invoice. Only invoices in `draft` status can be deleted.
@@ -184,9 +185,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(204, operations.DeleteInvoiceResponse$inboundSchema.optional(), {
-      hdrs: true,
-    }),
+    M.nil(
+      204,
+      types$.optional(operations.DeleteInvoiceResponse$inboundSchema),
+      { hdrs: true },
+    ),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
     M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),

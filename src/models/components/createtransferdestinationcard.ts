@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateTransferDestinationCard = {
@@ -20,7 +21,7 @@ export const CreateTransferDestinationCard$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  dynamicDescriptor: z.string().optional(),
+  dynamicDescriptor: types.optional(types.string()),
 });
 /** @internal */
 export type CreateTransferDestinationCard$Outbound = {

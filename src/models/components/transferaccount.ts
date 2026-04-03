@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TransferAccount = {
@@ -19,9 +20,9 @@ export const TransferAccount$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  email: z.string(),
-  displayName: z.string(),
+  accountID: types.string(),
+  email: types.string(),
+  displayName: types.string(),
 });
 /** @internal */
 export type TransferAccount$Outbound = {

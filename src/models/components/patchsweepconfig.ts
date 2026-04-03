@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const Status = {
@@ -36,10 +37,10 @@ export const PatchSweepConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   status: z.nullable(Status$inboundSchema).optional(),
-  pushPaymentMethodID: z.nullable(z.string()).optional(),
-  pullPaymentMethodID: z.nullable(z.string()).optional(),
-  statementDescriptor: z.nullable(z.string()).optional(),
-  minimumBalance: z.nullable(z.string()).optional(),
+  pushPaymentMethodID: z.nullable(types.string()).optional(),
+  pullPaymentMethodID: z.nullable(types.string()).optional(),
+  statementDescriptor: z.nullable(types.string()).optional(),
+  minimumBalance: z.nullable(types.string()).optional(),
 });
 /** @internal */
 export type PatchSweepConfig$Outbound = {

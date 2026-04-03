@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -76,11 +77,11 @@ export const ReceiptRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   kind: Kind$inboundSchema,
-  email: z.string().optional(),
-  emailAccountID: z.string().optional(),
-  forTransferID: z.string().optional(),
-  forScheduleID: z.string().optional(),
-  forOccurrenceID: z.string().optional(),
+  email: types.optional(types.string()),
+  emailAccountID: types.optional(types.string()),
+  forTransferID: types.optional(types.string()),
+  forScheduleID: types.optional(types.string()),
+  forOccurrenceID: types.optional(types.string()),
 });
 /** @internal */
 export type ReceiptRequest$Outbound = {

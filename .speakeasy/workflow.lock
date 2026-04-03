@@ -13,7 +13,7 @@ targets:
         sourceRevisionDigest: sha256:e230fa134ff6c90cb47529869e68fe37a80a08c2549b13035175334155bacc49
         sourceBlobDigest: sha256:9b3c8c480d45d48756d13f880b07b66b7b3f501a9040ec754c5a3ef0a608a754
         codeSamplesNamespace: dev-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:76987e095abddd5daa875d622d400d12a10987a0821337e883871fa3f9380985
+        codeSamplesRevisionDigest: sha256:2ef0c5cfa773efefa56cb980138b13ee2a72440cec606a322477022aaec6e829
     moov:
         source: latest
         sourceNamespace: api-latest
@@ -23,7 +23,7 @@ targets:
         codeSamplesRevisionDigest: sha256:ce8578d88acae9ed8fc14a26945108f0d76303614d2a2888419ca595953747ef
 workflow:
     workflowVersion: 1.0.0
-    speakeasyVersion: latest
+    speakeasyVersion: 1.757.0
     sources:
         latest:
             inputs:

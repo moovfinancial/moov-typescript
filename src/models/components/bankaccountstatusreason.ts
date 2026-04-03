@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The reason the bank account status changed to the current value.
@@ -28,15 +29,17 @@ export const BankAccountStatusReason = {
 /**
  * The reason the bank account status changed to the current value.
  */
-export type BankAccountStatusReason = ClosedEnum<
-  typeof BankAccountStatusReason
->;
+export type BankAccountStatusReason = OpenEnum<typeof BankAccountStatusReason>;
 
 /** @internal */
-export const BankAccountStatusReason$inboundSchema: z.ZodNativeEnum<
-  typeof BankAccountStatusReason
-> = z.nativeEnum(BankAccountStatusReason);
+export const BankAccountStatusReason$inboundSchema: z.ZodType<
+  BankAccountStatusReason,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(BankAccountStatusReason);
 /** @internal */
-export const BankAccountStatusReason$outboundSchema: z.ZodNativeEnum<
-  typeof BankAccountStatusReason
-> = BankAccountStatusReason$inboundSchema;
+export const BankAccountStatusReason$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  BankAccountStatusReason
+> = openEnums.outboundSchema(BankAccountStatusReason);

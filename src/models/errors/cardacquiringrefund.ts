@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -64,12 +65,12 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  refundID: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  refundID: types.string(),
+  createdOn: types.date(),
+  updatedOn: types.date(),
   status: components.RefundStatus$inboundSchema,
   amount: components.Amount$inboundSchema,
-  cardDetails: components.RefundCardDetails$inboundSchema.optional(),
+  cardDetails: types.optional(components.RefundCardDetails$inboundSchema),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

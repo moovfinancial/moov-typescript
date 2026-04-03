@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CapabilityID,
@@ -54,14 +55,13 @@ export const Capability$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   capability: CapabilityID$inboundSchema,
-  accountID: z.string(),
+  accountID: types.string(),
   status: CapabilityStatus$inboundSchema,
-  requirements: CapabilityRequirement$inboundSchema.optional(),
-  disabledReason: z.string().optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  requirements: types.optional(CapabilityRequirement$inboundSchema),
+  disabledReason: types.optional(types.string()),
+  createdOn: types.date(),
+  updatedOn: types.date(),
+  disabledOn: types.optional(types.date()),
 });
 /** @internal */
 export type Capability$Outbound = {

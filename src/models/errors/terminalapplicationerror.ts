@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type TerminalApplicationErrorData = {
@@ -48,11 +49,11 @@ export const TerminalApplicationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  platform: z.string().optional(),
-  appBundleID: z.string().optional(),
-  packageName: z.string().optional(),
-  sha256Digest: z.string().optional(),
-  versionCode: z.string().optional(),
+  platform: types.optional(types.string()),
+  appBundleID: types.optional(types.string()),
+  packageName: types.optional(types.string()),
+  sha256Digest: types.optional(types.string()),
+  versionCode: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
