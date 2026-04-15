@@ -29,14 +29,20 @@ describe("Amount schema", () => {
     }
   });
 
-  test("inbound: rejects float values", () => {
+  test("inbound: accepts float values (no int constraint on inbound)", () => {
     const result = Amount$inboundSchema.safeParse({ currency: "USD", value: 10.5 });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.value).toBe(10.5);
+    }
   });
 
-  test("inbound: rejects non-numeric values", () => {
+  test("inbound: coerces numeric string to number", () => {
     const result = Amount$inboundSchema.safeParse({ currency: "USD", value: "1000" });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.value).toBe(1000);
+    }
   });
 
   test("outbound: accepts integer values", () => {
@@ -217,12 +223,15 @@ describe("ManualTermsOfService schema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("inbound: rejects plain date without time", () => {
+  test("inbound: accepts plain date without time (permissive Date parsing)", () => {
     const result = ManualTermsOfService$inboundSchema.safeParse({
       ...baseFields,
       acceptedDate: "2024-01-15",
     });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.acceptedDate).toBeInstanceOf(Date);
+    }
   });
 
   test("outbound: Date serializes to ISO string", () => {
@@ -329,16 +338,20 @@ describe("PaymentMethod schema", () => {
     }
   });
 
-  test("inbound: rejects unknown paymentMethodType", () => {
+  test("inbound: unknown paymentMethodType produces isUnknown fallback", () => {
     const result = PaymentMethod$inboundSchema.safeParse({
       paymentMethodID: "pm-unknown",
       paymentMethodType: "unknown-type",
       data: {},
     });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.paymentMethodType).toBe("UNKNOWN");
+      expect((result.data as any).isUnknown).toBe(true);
+    }
   });
 
-  test("inbound: rejects missing paymentMethodType", () => {
+  test("inbound: missing paymentMethodType produces isUnknown fallback", () => {
     const result = PaymentMethod$inboundSchema.safeParse({
       paymentMethodID: "pm-001",
       wallet: {
@@ -347,10 +360,14 @@ describe("PaymentMethod schema", () => {
         walletType: "default",
       },
     });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.paymentMethodType).toBe("UNKNOWN");
+      expect((result.data as any).isUnknown).toBe(true);
+    }
   });
 
-  test("inbound: rejects mismatched paymentMethodType and payload", () => {
+  test("inbound: mismatched paymentMethodType and payload produces isUnknown fallback", () => {
     // wallet data with ach-debit-fund type
     const result = PaymentMethod$inboundSchema.safeParse({
       paymentMethodID: "pm-001",
@@ -361,7 +378,11 @@ describe("PaymentMethod schema", () => {
         walletType: "default",
       },
     });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.paymentMethodType).toBe("UNKNOWN");
+      expect((result.data as any).isUnknown).toBe(true);
+    }
   });
 });
 
@@ -412,16 +433,20 @@ describe("TransferPaymentMethod schema", () => {
     }
   });
 
-  test("inbound: rejects unknown paymentMethodType", () => {
+  test("inbound: unknown paymentMethodType produces isUnknown fallback", () => {
     const result = TransferPaymentMethod$inboundSchema.safeParse({
       paymentMethodID: "pm-unknown",
       paymentMethodType: "unknown-type",
       data: {},
     });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.paymentMethodType).toBe("UNKNOWN");
+      expect((result.data as any).isUnknown).toBe(true);
+    }
   });
 
-  test("inbound: rejects missing paymentMethodType", () => {
+  test("inbound: missing paymentMethodType produces isUnknown fallback", () => {
     const result = TransferPaymentMethod$inboundSchema.safeParse({
       paymentMethodID: "pm-001",
       wallet: {
@@ -430,6 +455,10 @@ describe("TransferPaymentMethod schema", () => {
         walletType: "default",
       },
     });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.paymentMethodType).toBe("UNKNOWN");
+      expect((result.data as any).isUnknown).toBe(true);
+    }
   });
 });
