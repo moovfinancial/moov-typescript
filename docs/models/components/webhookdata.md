@@ -369,6 +369,7 @@ const value: components.WebhookDataWalletTransactionUpdated = {
 
 ```typescript
 const value: components.WebhookBillingStatementCreated = {
+  accountID: "<id>",
   statementID: "<id>",
 };
 ```

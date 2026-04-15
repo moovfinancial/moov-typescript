@@ -37,7 +37,7 @@ export function cardIssuingUpdate(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.UpdateIssuedCardResponse | undefined,
+    operations.UpdateIssuedCardResponse,
     | errors.GenericError
     | errors.UpdateIssuedCardError
     | MoovError
@@ -64,7 +64,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateIssuedCardResponse | undefined,
+      operations.UpdateIssuedCardResponse,
       | errors.GenericError
       | errors.UpdateIssuedCardError
       | MoovError
@@ -170,7 +170,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.UpdateIssuedCardResponse | undefined,
+    operations.UpdateIssuedCardResponse,
     | errors.GenericError
     | errors.UpdateIssuedCardError
     | MoovError
@@ -182,8 +182,9 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(204, operations.UpdateIssuedCardResponse$inboundSchema.optional(), {
+    M.json(200, operations.UpdateIssuedCardResponse$inboundSchema, {
       hdrs: true,
+      key: "Result",
     }),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
     M.jsonErr(422, errors.UpdateIssuedCardError$inboundSchema, { hdrs: true }),
