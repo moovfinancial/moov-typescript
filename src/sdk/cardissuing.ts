@@ -72,7 +72,7 @@ export class CardIssuing extends ClientSDK {
   async update(
     request: operations.UpdateIssuedCardRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateIssuedCardResponse | undefined> {
+  ): Promise<operations.UpdateIssuedCardResponse> {
     return unwrapAsync(cardIssuingUpdate(
       this,
       request,
