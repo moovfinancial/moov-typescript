@@ -3,12 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { appendForm, encodeSimple, normalizeBlob } from "../lib/encodings.js";
-import {
-  bytesToBlob,
-  getContentTypeFromFileName,
-  readableStreamToArrayBuffer,
-} from "../lib/files.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,33 +17,30 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { MoovError } from "../models/errors/mooverror.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
-import { isBlobLike } from "../types/blobs.js";
 import { Result } from "../types/fp.js";
-import { isReadableStream } from "../types/streams.js";
 
 /**
- * Uploads a file as evidence for a dispute.
+ * Retrieve transfer details for multiple transfers in one request. The response is a map from each
+ * requested transfer ID to its full transfer details when available; IDs that are not found or not
+ * accessible under this account are omitted from the map.
  *
- * Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
+ * Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
+ * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
  */
-export function disputesUploadEvidenceFile(
+export function transfersBatchGetTransfers(
   client: MoovCore,
-  request: operations.UploadDisputeEvidenceFileRequest,
+  request: operations.BatchGetTransfersRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.UploadDisputeEvidenceFileResponse,
-    | errors.GenericError
-    | errors.FileUploadValidationError
+    operations.BatchGetTransfersResponse,
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -68,14 +60,12 @@ export function disputesUploadEvidenceFile(
 
 async function $do(
   client: MoovCore,
-  request: operations.UploadDisputeEvidenceFileRequest,
+  request: operations.BatchGetTransfersRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.UploadDisputeEvidenceFileResponse,
-      | errors.GenericError
-      | errors.FileUploadValidationError
+      operations.BatchGetTransfersResponse,
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -90,73 +80,27 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.UploadDisputeEvidenceFileRequest$outboundSchema.parse(value),
+    (value) => operations.BatchGetTransfersRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = new FormData();
-
-  appendForm(
-    body,
-    "evidenceType",
-    payload.CreateEvidenceFileMultiPart.evidenceType,
-  );
-  if (isBlobLike(payload.CreateEvidenceFileMultiPart.file)) {
-    const file = payload.CreateEvidenceFileMultiPart.file;
-    const blob = await normalizeBlob(file);
-    const name = "name" in file ? (file.name as string) : undefined;
-    appendForm(body, "file", blob, name);
-  } else if (
-    isReadableStream(payload.CreateEvidenceFileMultiPart.file.content)
-  ) {
-    const buffer = await readableStreamToArrayBuffer(
-      payload.CreateEvidenceFileMultiPart.file.content,
-    );
-    const contentType =
-      getContentTypeFromFileName(
-        payload.CreateEvidenceFileMultiPart.file.fileName,
-      ) || "application/octet-stream";
-    appendForm(
-      body,
-      "file",
-      bytesToBlob(buffer, contentType),
-      payload.CreateEvidenceFileMultiPart.file.fileName,
-    );
-  } else {
-    const contentType =
-      getContentTypeFromFileName(
-        payload.CreateEvidenceFileMultiPart.file.fileName,
-      ) || "application/octet-stream";
-    appendForm(
-      body,
-      "file",
-      bytesToBlob(
-        payload.CreateEvidenceFileMultiPart.file.content,
-        contentType,
-      ),
-      payload.CreateEvidenceFileMultiPart.file.fileName,
-    );
-  }
+  const body = encodeJSON("body", payload.BatchGetTransfersRequest, {
+    explode: true,
+  });
 
   const pathParams = {
     accountID: encodeSimple("accountID", payload.accountID, {
       explode: false,
       charEncoding: "percent",
     }),
-    disputeID: encodeSimple("disputeID", payload.disputeID, {
-      explode: false,
-      charEncoding: "percent",
-    }),
   };
-  const path = pathToFunc(
-    "/accounts/{accountID}/disputes/{disputeID}/evidence-file",
-  )(pathParams);
+  const path = pathToFunc("/accounts/{accountID}/transfers/.fetch")(pathParams);
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -166,7 +110,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "uploadDisputeEvidenceFile",
+    operationID: "batchGetTransfers",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -195,19 +139,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: [
-      "400",
-      "401",
-      "403",
-      "404",
-      "409",
-      "422",
-      "429",
-      "4XX",
-      "500",
-      "504",
-      "5XX",
-    ],
+    errorCodes: ["401", "403", "429", "4XX", "500", "504", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -221,9 +153,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.UploadDisputeEvidenceFileResponse,
-    | errors.GenericError
-    | errors.FileUploadValidationError
+    operations.BatchGetTransfersResponse,
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -233,15 +163,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, operations.UploadDisputeEvidenceFileResponse$inboundSchema, {
+    M.json(200, operations.BatchGetTransfersResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
-    M.jsonErr(422, errors.FileUploadValidationError$inboundSchema, {
-      hdrs: true,
-    }),
-    M.fail([401, 403, 404, 429]),
+    M.fail([401, 403, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),

@@ -8,6 +8,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WebhookBillingStatementCreated = {
+  accountID: string;
   statementID: string;
 };
 
@@ -17,10 +18,12 @@ export const WebhookBillingStatementCreated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  accountID: z.string(),
   statementID: z.string(),
 });
 /** @internal */
 export type WebhookBillingStatementCreated$Outbound = {
+  accountID: string;
   statementID: string;
 };
 
@@ -30,6 +33,7 @@ export const WebhookBillingStatementCreated$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WebhookBillingStatementCreated
 > = z.object({
+  accountID: z.string(),
   statementID: z.string(),
 });
 
