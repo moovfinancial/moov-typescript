@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BankAccountHolderType,
@@ -37,11 +38,11 @@ export const BankAccountIntegration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  holderName: z.string(),
+  holderName: types.string(),
   holderType: BankAccountHolderType$inboundSchema,
-  accountNumber: z.string(),
+  accountNumber: types.string(),
   bankAccountType: BankAccountType$inboundSchema,
-  routingNumber: z.string(),
+  routingNumber: types.string(),
 });
 /** @internal */
 export type BankAccountIntegration$Outbound = {

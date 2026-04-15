@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The bank account type.
@@ -17,13 +18,17 @@ export const BankAccountType = {
 /**
  * The bank account type.
  */
-export type BankAccountType = ClosedEnum<typeof BankAccountType>;
+export type BankAccountType = OpenEnum<typeof BankAccountType>;
 
 /** @internal */
-export const BankAccountType$inboundSchema: z.ZodNativeEnum<
-  typeof BankAccountType
-> = z.nativeEnum(BankAccountType);
+export const BankAccountType$inboundSchema: z.ZodType<
+  BankAccountType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(BankAccountType);
 /** @internal */
-export const BankAccountType$outboundSchema: z.ZodNativeEnum<
-  typeof BankAccountType
-> = BankAccountType$inboundSchema;
+export const BankAccountType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  BankAccountType
+> = openEnums.outboundSchema(BankAccountType);

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BillingCountAndAmount,
@@ -62,12 +63,12 @@ export const InstantPaymentFees$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   rtpCreditTransaction: BillingCountAndAmount$inboundSchema,
-  rtpDecline: BillingCountAndAmount$inboundSchema.optional(),
+  rtpDecline: types.optional(BillingCountAndAmount$inboundSchema),
   pushToCardTransaction: BillingCountAndAmount$inboundSchema,
-  pushToCardDecline: BillingCountAndAmount$inboundSchema.optional(),
+  pushToCardDecline: types.optional(BillingCountAndAmount$inboundSchema),
   pullFromCardTransaction: BillingCountAndAmount$inboundSchema,
-  pullFromCardDecline: BillingCountAndAmount$inboundSchema.optional(),
-  pullFromCardRefund: BillingCountAndAmount$inboundSchema.optional(),
+  pullFromCardDecline: types.optional(BillingCountAndAmount$inboundSchema),
+  pullFromCardRefund: types.optional(BillingCountAndAmount$inboundSchema),
   instantVerification: BillingCountAndAmount$inboundSchema,
   total: BillingCountAndAmount$inboundSchema,
 });

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FedNowServices,
@@ -28,8 +29,8 @@ export const FedNowInstitution$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  routingNumber: z.string(),
+  name: types.string(),
+  routingNumber: types.string(),
   services: FedNowServices$inboundSchema,
 });
 /** @internal */

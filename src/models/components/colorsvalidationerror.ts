@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BrandColorValidationError,
@@ -24,8 +25,8 @@ export const ColorsValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  light: BrandColorValidationError$inboundSchema.optional(),
-  dark: BrandColorValidationError$inboundSchema.optional(),
+  light: types.optional(BrandColorValidationError$inboundSchema),
+  dark: types.optional(BrandColorValidationError$inboundSchema),
 });
 /** @internal */
 export type ColorsValidationError$Outbound = {

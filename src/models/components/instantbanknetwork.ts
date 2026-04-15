@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The network that the transaction was processed on.
@@ -15,13 +16,17 @@ export const InstantBankNetwork = {
 /**
  * The network that the transaction was processed on.
  */
-export type InstantBankNetwork = ClosedEnum<typeof InstantBankNetwork>;
+export type InstantBankNetwork = OpenEnum<typeof InstantBankNetwork>;
 
 /** @internal */
-export const InstantBankNetwork$inboundSchema: z.ZodNativeEnum<
-  typeof InstantBankNetwork
-> = z.nativeEnum(InstantBankNetwork);
+export const InstantBankNetwork$inboundSchema: z.ZodType<
+  InstantBankNetwork,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(InstantBankNetwork);
 /** @internal */
-export const InstantBankNetwork$outboundSchema: z.ZodNativeEnum<
-  typeof InstantBankNetwork
-> = InstantBankNetwork$inboundSchema;
+export const InstantBankNetwork$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  InstantBankNetwork
+> = openEnums.outboundSchema(InstantBankNetwork);

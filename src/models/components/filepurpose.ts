@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The file's purpose.
@@ -19,11 +20,17 @@ export const FilePurpose = {
 /**
  * The file's purpose.
  */
-export type FilePurpose = ClosedEnum<typeof FilePurpose>;
+export type FilePurpose = OpenEnum<typeof FilePurpose>;
 
 /** @internal */
-export const FilePurpose$inboundSchema: z.ZodNativeEnum<typeof FilePurpose> = z
-  .nativeEnum(FilePurpose);
+export const FilePurpose$inboundSchema: z.ZodType<
+  FilePurpose,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(FilePurpose);
 /** @internal */
-export const FilePurpose$outboundSchema: z.ZodNativeEnum<typeof FilePurpose> =
-  FilePurpose$inboundSchema;
+export const FilePurpose$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  FilePurpose
+> = openEnums.outboundSchema(FilePurpose);

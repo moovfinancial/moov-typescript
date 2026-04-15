@@ -8,10 +8,12 @@ Status of a transaction within the instant-bank lifecycle.
 import { InstantBankTransactionStatus } from "@moovio/sdk/models/components";
 
 let value: InstantBankTransactionStatus = "initiated";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"initiated" | "completed" | "failed" | "accepted-without-posting"
+"initiated" | "completed" | "failed" | "accepted-without-posting" | Unrecognized<string>
 ```

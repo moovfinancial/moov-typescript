@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Status of the completed occurrence.
@@ -16,13 +17,17 @@ export const OccurrenceStatus = {
 /**
  * Status of the completed occurrence.
  */
-export type OccurrenceStatus = ClosedEnum<typeof OccurrenceStatus>;
+export type OccurrenceStatus = OpenEnum<typeof OccurrenceStatus>;
 
 /** @internal */
-export const OccurrenceStatus$inboundSchema: z.ZodNativeEnum<
-  typeof OccurrenceStatus
-> = z.nativeEnum(OccurrenceStatus);
+export const OccurrenceStatus$inboundSchema: z.ZodType<
+  OccurrenceStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(OccurrenceStatus);
 /** @internal */
-export const OccurrenceStatus$outboundSchema: z.ZodNativeEnum<
-  typeof OccurrenceStatus
-> = OccurrenceStatus$inboundSchema;
+export const OccurrenceStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  OccurrenceStatus
+> = openEnums.outboundSchema(OccurrenceStatus);

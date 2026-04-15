@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type VolumeShareByCustomerType = {
@@ -19,9 +20,9 @@ export const VolumeShareByCustomerType$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  business: z.number().int().optional(),
-  consumer: z.number().int().optional(),
-  p2p: z.number().int().optional(),
+  business: types.optional(types.number()),
+  consumer: types.optional(types.number()),
+  p2p: types.optional(types.number()),
 });
 /** @internal */
 export type VolumeShareByCustomerType$Outbound = {

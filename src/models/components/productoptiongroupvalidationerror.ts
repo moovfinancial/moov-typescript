@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ProductOptionValidationError,
@@ -27,11 +28,11 @@ export const ProductOptionGroupValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  minSelect: z.string().optional(),
-  maxSelect: z.string().optional(),
-  options: z.record(ProductOptionValidationError$inboundSchema).optional(),
+  name: types.optional(types.string()),
+  description: types.optional(types.string()),
+  minSelect: types.optional(types.string()),
+  maxSelect: types.optional(types.string()),
+  options: types.optional(z.record(ProductOptionValidationError$inboundSchema)),
 });
 /** @internal */
 export type ProductOptionGroupValidationError$Outbound = {

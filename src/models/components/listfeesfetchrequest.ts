@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -20,7 +21,7 @@ export const ListFeesFetchRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  feeIDs: z.array(z.string()).optional(),
+  feeIDs: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type ListFeesFetchRequest$Outbound = {

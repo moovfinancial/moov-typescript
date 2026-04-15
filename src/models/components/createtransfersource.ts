@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateTransferSourceACH,
@@ -42,11 +43,11 @@ export const CreateTransferSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  transferID: z.string().optional(),
-  paymentMethodID: z.string().optional(),
-  paymentToken: z.string().optional(),
-  cardDetails: CreateTransferSourceCard$inboundSchema.optional(),
-  achDetails: CreateTransferSourceACH$inboundSchema.optional(),
+  transferID: types.optional(types.string()),
+  paymentMethodID: types.optional(types.string()),
+  paymentToken: types.optional(types.string()),
+  cardDetails: types.optional(CreateTransferSourceCard$inboundSchema),
+  achDetails: types.optional(CreateTransferSourceACH$inboundSchema),
 });
 /** @internal */
 export type CreateTransferSource$Outbound = {

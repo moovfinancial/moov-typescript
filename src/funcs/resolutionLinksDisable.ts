@@ -24,6 +24,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Disable a resolution link. Disabled resolution links can no longer be used by merchants.
@@ -182,7 +183,7 @@ async function $do(
   >(
     M.nil(
       204,
-      operations.DisableResolutionLinkResponse$inboundSchema.optional(),
+      types$.optional(operations.DisableResolutionLinkResponse$inboundSchema),
       { hdrs: true },
     ),
     M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),

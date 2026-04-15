@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Payment methods allowed for collecting a payment.
@@ -16,15 +17,19 @@ export const CollectionPaymentMethodType = {
 /**
  * Payment methods allowed for collecting a payment.
  */
-export type CollectionPaymentMethodType = ClosedEnum<
+export type CollectionPaymentMethodType = OpenEnum<
   typeof CollectionPaymentMethodType
 >;
 
 /** @internal */
-export const CollectionPaymentMethodType$inboundSchema: z.ZodNativeEnum<
-  typeof CollectionPaymentMethodType
-> = z.nativeEnum(CollectionPaymentMethodType);
+export const CollectionPaymentMethodType$inboundSchema: z.ZodType<
+  CollectionPaymentMethodType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CollectionPaymentMethodType);
 /** @internal */
-export const CollectionPaymentMethodType$outboundSchema: z.ZodNativeEnum<
-  typeof CollectionPaymentMethodType
-> = CollectionPaymentMethodType$inboundSchema;
+export const CollectionPaymentMethodType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CollectionPaymentMethodType
+> = openEnums.outboundSchema(CollectionPaymentMethodType);

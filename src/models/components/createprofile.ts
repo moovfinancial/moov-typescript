@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateBusinessProfile,
@@ -30,8 +31,8 @@ export const CreateProfile$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  individual: CreateIndividualProfile$inboundSchema.optional(),
-  business: CreateBusinessProfile$inboundSchema.optional(),
+  individual: types.optional(CreateIndividualProfile$inboundSchema),
+  business: types.optional(CreateBusinessProfile$inboundSchema),
 });
 /** @internal */
 export type CreateProfile$Outbound = {

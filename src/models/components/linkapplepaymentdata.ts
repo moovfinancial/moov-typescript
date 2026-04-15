@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplePayHeader,
@@ -51,9 +52,9 @@ export const LinkApplePaymentData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  version: z.string(),
-  data: z.string(),
-  signature: z.string(),
+  version: types.string(),
+  data: types.string(),
+  signature: types.string(),
   header: ApplePayHeader$inboundSchema,
 });
 /** @internal */

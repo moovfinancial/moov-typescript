@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CollectFundsAch,
@@ -30,8 +31,8 @@ export const CollectFunds$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ach: CollectFundsAch$inboundSchema.optional(),
-  cardPayments: CollectFundsCardPayments$inboundSchema.optional(),
+  ach: types.optional(CollectFundsAch$inboundSchema),
+  cardPayments: types.optional(CollectFundsCardPayments$inboundSchema),
 });
 /** @internal */
 export type CollectFunds$Outbound = {

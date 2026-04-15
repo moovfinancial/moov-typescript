@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The type of event that occurred on the card.
@@ -19,13 +20,17 @@ export const IssuedCardEventType = {
 /**
  * The type of event that occurred on the card.
  */
-export type IssuedCardEventType = ClosedEnum<typeof IssuedCardEventType>;
+export type IssuedCardEventType = OpenEnum<typeof IssuedCardEventType>;
 
 /** @internal */
-export const IssuedCardEventType$inboundSchema: z.ZodNativeEnum<
-  typeof IssuedCardEventType
-> = z.nativeEnum(IssuedCardEventType);
+export const IssuedCardEventType$inboundSchema: z.ZodType<
+  IssuedCardEventType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(IssuedCardEventType);
 /** @internal */
-export const IssuedCardEventType$outboundSchema: z.ZodNativeEnum<
-  typeof IssuedCardEventType
-> = IssuedCardEventType$inboundSchema;
+export const IssuedCardEventType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  IssuedCardEventType
+> = openEnums.outboundSchema(IssuedCardEventType);

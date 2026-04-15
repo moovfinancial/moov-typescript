@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -223,8 +224,8 @@ export const BillingSummaryVolumeAmount$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
+  currency: types.string(),
+  valueDecimal: types.string(),
 });
 /** @internal */
 export type BillingSummaryVolumeAmount$Outbound = {
@@ -265,14 +266,15 @@ export const CardAcquiring$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  volumeAmount: z.lazy(() => BillingSummaryVolumeAmount$inboundSchema)
-    .optional(),
-  volumeCount: z.number().int().optional(),
-  feeAmount: AmountDecimal$inboundSchema.optional(),
-  merchantFeesCollected: AmountDecimal$inboundSchema.optional(),
-  partnerFeesAssessed: AmountDecimal$inboundSchema.optional(),
-  netIncome: AmountDecimal$inboundSchema.optional(),
-  interchangeFees: BillingSummaryInterchange$inboundSchema.optional(),
+  volumeAmount: types.optional(
+    z.lazy(() => BillingSummaryVolumeAmount$inboundSchema),
+  ),
+  volumeCount: types.optional(types.number()),
+  feeAmount: types.optional(AmountDecimal$inboundSchema),
+  merchantFeesCollected: types.optional(AmountDecimal$inboundSchema),
+  partnerFeesAssessed: types.optional(AmountDecimal$inboundSchema),
+  netIncome: types.optional(AmountDecimal$inboundSchema),
+  interchangeFees: types.optional(BillingSummaryInterchange$inboundSchema),
 });
 /** @internal */
 export type CardAcquiring$Outbound = {
@@ -320,8 +322,8 @@ export const BillingSummaryPlatformFees$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
+  currency: types.string(),
+  valueDecimal: types.string(),
 });
 /** @internal */
 export type BillingSummaryPlatformFees$Outbound = {
@@ -362,8 +364,8 @@ export const AdjustmentFees$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
+  currency: types.string(),
+  valueDecimal: types.string(),
 });
 /** @internal */
 export type AdjustmentFees$Outbound = {
@@ -400,8 +402,8 @@ export const OtherFees$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
+  currency: types.string(),
+  valueDecimal: types.string(),
 });
 /** @internal */
 export type OtherFees$Outbound = {
@@ -438,21 +440,22 @@ export const BillingSummary$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cardAcquiring: z.lazy(() => CardAcquiring$inboundSchema).optional(),
-  ach: BillingSummaryDetails$inboundSchema.optional(),
-  instantPayments: BillingSummaryDetails$inboundSchema.optional(),
-  platformFees: z.lazy(() => BillingSummaryPlatformFees$inboundSchema)
-    .optional(),
-  accountFees: BillingSummaryDetails$inboundSchema.optional(),
-  adjustmentFees: z.lazy(() => AdjustmentFees$inboundSchema).optional(),
-  otherFees: z.lazy(() => OtherFees$inboundSchema).optional(),
-  otherCardFees: BillingSummaryDetails$inboundSchema.optional(),
-  total: AmountDecimal$inboundSchema.optional(),
-  netIncomeSubtotal: BillingSummaryDetails$inboundSchema.optional(),
-  revenueShare: z.string().optional(),
-  residualSubtotal: AmountDecimal$inboundSchema.optional(),
-  monthlyPartnerCosts: PartnerFees$inboundSchema.optional(),
-  netPartnerPayment: AmountDecimal$inboundSchema.optional(),
+  cardAcquiring: types.optional(z.lazy(() => CardAcquiring$inboundSchema)),
+  ach: types.optional(BillingSummaryDetails$inboundSchema),
+  instantPayments: types.optional(BillingSummaryDetails$inboundSchema),
+  platformFees: types.optional(
+    z.lazy(() => BillingSummaryPlatformFees$inboundSchema),
+  ),
+  accountFees: types.optional(BillingSummaryDetails$inboundSchema),
+  adjustmentFees: types.optional(z.lazy(() => AdjustmentFees$inboundSchema)),
+  otherFees: types.optional(z.lazy(() => OtherFees$inboundSchema)),
+  otherCardFees: types.optional(BillingSummaryDetails$inboundSchema),
+  total: types.optional(AmountDecimal$inboundSchema),
+  netIncomeSubtotal: types.optional(BillingSummaryDetails$inboundSchema),
+  revenueShare: types.optional(types.string()),
+  residualSubtotal: types.optional(AmountDecimal$inboundSchema),
+  monthlyPartnerCosts: types.optional(PartnerFees$inboundSchema),
+  netPartnerPayment: types.optional(AmountDecimal$inboundSchema),
 });
 /** @internal */
 export type BillingSummary$Outbound = {

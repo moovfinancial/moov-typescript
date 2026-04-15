@@ -10,10 +10,12 @@ Type of a wallet.
 import { WalletType } from "@moovio/sdk/models/components";
 
 let value: WalletType = "default";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"default" | "general"
+"default" | "general" | Unrecognized<string>
 ```

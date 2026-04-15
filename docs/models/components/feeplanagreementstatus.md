@@ -6,10 +6,12 @@
 import { FeePlanAgreementStatus } from "@moovio/sdk/models/components";
 
 let value: FeePlanAgreementStatus = "active";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"active" | "terminated"
+"active" | "terminated" | Unrecognized<string>
 ```

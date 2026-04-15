@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   WebhookEventType,
@@ -58,20 +59,14 @@ export type Webhook = {
 /** @internal */
 export const Webhook$inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, unknown> =
   z.object({
-    webhookID: z.string(),
-    url: z.string(),
+    webhookID: types.string(),
+    url: types.string(),
     status: WebhookStatus$inboundSchema,
     eventTypes: z.array(WebhookEventType$inboundSchema),
-    description: z.string(),
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    updatedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    lastUsedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
+    description: types.string(),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+    lastUsedOn: types.optional(types.date()),
   });
 /** @internal */
 export type Webhook$Outbound = {

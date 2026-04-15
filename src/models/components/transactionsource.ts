@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Specifies the nature and initiator of a transaction.
@@ -26,13 +27,17 @@ export const TransactionSource = {
  * Crucial for recurring and merchant-initiated transactions as per card scheme rules.
  * Omit for customer-initiated e-commerce transactions.
  */
-export type TransactionSource = ClosedEnum<typeof TransactionSource>;
+export type TransactionSource = OpenEnum<typeof TransactionSource>;
 
 /** @internal */
-export const TransactionSource$inboundSchema: z.ZodNativeEnum<
-  typeof TransactionSource
-> = z.nativeEnum(TransactionSource);
+export const TransactionSource$inboundSchema: z.ZodType<
+  TransactionSource,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(TransactionSource);
 /** @internal */
-export const TransactionSource$outboundSchema: z.ZodNativeEnum<
-  typeof TransactionSource
-> = TransactionSource$inboundSchema;
+export const TransactionSource$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  TransactionSource
+> = openEnums.outboundSchema(TransactionSource);

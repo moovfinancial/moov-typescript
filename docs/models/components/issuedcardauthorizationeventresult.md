@@ -8,10 +8,12 @@ The result of an event.
 import { IssuedCardAuthorizationEventResult } from "@moovio/sdk/models/components";
 
 let value: IssuedCardAuthorizationEventResult = "declined";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"approved" | "declined" | "processed"
+"approved" | "declined" | "processed" | Unrecognized<string>
 ```

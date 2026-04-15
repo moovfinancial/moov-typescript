@@ -8,10 +8,12 @@ The status of a webhook.
 import { WebhookStatus } from "@moovio/sdk/models/components";
 
 let value: WebhookStatus = "enabled";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"enabled" | "disabled"
+"enabled" | "disabled" | Unrecognized<string>
 ```

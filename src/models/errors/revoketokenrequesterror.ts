@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type RevokeTokenRequestErrorData = {
@@ -40,8 +41,8 @@ export const RevokeTokenRequestError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  token_type_hint: z.string().optional(),
+  token: types.optional(types.string()),
+  token_type_hint: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

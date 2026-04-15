@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CardAcceptanceMethodsError = {
@@ -19,9 +20,9 @@ export const CardAcceptanceMethodsError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  inPersonPercentage: z.string().optional(),
-  mailOrPhonePercentage: z.string().optional(),
-  onlinePercentage: z.string().optional(),
+  inPersonPercentage: types.optional(types.string()),
+  mailOrPhonePercentage: types.optional(types.string()),
+  onlinePercentage: types.optional(types.string()),
 });
 /** @internal */
 export type CardAcceptanceMethodsError$Outbound = {

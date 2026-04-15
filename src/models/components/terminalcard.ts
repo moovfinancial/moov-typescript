@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardBrand,
@@ -89,18 +90,18 @@ export const TerminalCard$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entryMode: EntryMode$inboundSchema.optional(),
-  brand: CardBrand$inboundSchema.optional(),
-  bin: z.string().optional(),
-  cardType: CardType$inboundSchema.optional(),
-  expiration: CardExpiration$inboundSchema.optional(),
-  fingerprint: z.string().optional(),
-  holderName: z.string().optional(),
-  issuer: z.string().optional(),
-  issuerCountry: z.string().optional(),
-  lastFourCardNumber: z.string().optional(),
-  applicationID: z.string().optional(),
-  applicationName: z.string().optional(),
+  entryMode: types.optional(EntryMode$inboundSchema),
+  brand: types.optional(CardBrand$inboundSchema),
+  bin: types.optional(types.string()),
+  cardType: types.optional(CardType$inboundSchema),
+  expiration: types.optional(CardExpiration$inboundSchema),
+  fingerprint: types.optional(types.string()),
+  holderName: types.optional(types.string()),
+  issuer: types.optional(types.string()),
+  issuerCountry: types.optional(types.string()),
+  lastFourCardNumber: types.optional(types.string()),
+  applicationID: types.optional(types.string()),
+  applicationName: types.optional(types.string()),
 });
 /** @internal */
 export type TerminalCard$Outbound = {

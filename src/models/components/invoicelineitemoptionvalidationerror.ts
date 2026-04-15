@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimalValidationError,
@@ -26,10 +27,10 @@ export const InvoiceLineItemOptionValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  group: z.string().optional(),
-  priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
-  quantity: z.string().optional(),
+  name: types.optional(types.string()),
+  group: types.optional(types.string()),
+  priceModifier: types.optional(AmountDecimalValidationError$inboundSchema),
+  quantity: types.optional(types.string()),
 });
 /** @internal */
 export type InvoiceLineItemOptionValidationError$Outbound = {

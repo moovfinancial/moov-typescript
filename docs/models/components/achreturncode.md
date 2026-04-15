@@ -29,10 +29,12 @@ The return code of an ACH transaction that caused the bank account status to cha
 import { ACHReturnCode } from "@moovio/sdk/models/components";
 
 let value: ACHReturnCode = "R08";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"R02" | "R03" | "R04" | "R05" | "R07" | "R08" | "R10" | "R11" | "R12" | "R13" | "R14" | "R15" | "R16" | "R17" | "R20" | "R23" | "R29" | "R34" | "R38" | "R39"
+"R02" | "R03" | "R04" | "R05" | "R07" | "R08" | "R10" | "R11" | "R12" | "R13" | "R14" | "R15" | "R16" | "R17" | "R20" | "R23" | "R29" | "R34" | "R38" | "R39" | Unrecognized<string>
 ```

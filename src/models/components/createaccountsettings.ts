@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CardPayment = {
@@ -26,7 +27,7 @@ export const CardPayment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  statementDescriptor: z.string().optional(),
+  statementDescriptor: types.optional(types.string()),
 });
 /** @internal */
 export type CardPayment$Outbound = {
@@ -61,7 +62,7 @@ export const AchPayment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  companyName: z.string().optional(),
+  companyName: types.optional(types.string()),
 });
 /** @internal */
 export type AchPayment$Outbound = {
@@ -96,8 +97,8 @@ export const CreateAccountSettings$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cardPayment: z.lazy(() => CardPayment$inboundSchema).optional(),
-  achPayment: z.lazy(() => AchPayment$inboundSchema).optional(),
+  cardPayment: types.optional(z.lazy(() => CardPayment$inboundSchema)),
+  achPayment: types.optional(z.lazy(() => AchPayment$inboundSchema)),
 });
 /** @internal */
 export type CreateAccountSettings$Outbound = {

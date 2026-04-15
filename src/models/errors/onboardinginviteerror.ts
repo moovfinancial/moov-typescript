@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type OnboardingInviteErrorData = {
@@ -50,11 +51,11 @@ export const OnboardingInviteError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  returnURL: z.string().optional(),
-  termsOfServiceURL: z.string().optional(),
-  scopes: z.record(z.string()).optional(),
-  capabilities: z.record(z.string()).optional(),
-  feePlanCodes: z.record(z.string()).optional(),
+  returnURL: types.optional(types.string()),
+  termsOfServiceURL: types.optional(types.string()),
+  scopes: types.optional(z.record(types.string())),
+  capabilities: types.optional(z.record(types.string())),
+  feePlanCodes: types.optional(z.record(types.string())),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

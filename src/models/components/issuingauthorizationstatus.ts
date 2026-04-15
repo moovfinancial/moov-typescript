@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Status of a card issuing authorization.
@@ -18,15 +19,19 @@ export const IssuingAuthorizationStatus = {
 /**
  * Status of a card issuing authorization.
  */
-export type IssuingAuthorizationStatus = ClosedEnum<
+export type IssuingAuthorizationStatus = OpenEnum<
   typeof IssuingAuthorizationStatus
 >;
 
 /** @internal */
-export const IssuingAuthorizationStatus$inboundSchema: z.ZodNativeEnum<
-  typeof IssuingAuthorizationStatus
-> = z.nativeEnum(IssuingAuthorizationStatus);
+export const IssuingAuthorizationStatus$inboundSchema: z.ZodType<
+  IssuingAuthorizationStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(IssuingAuthorizationStatus);
 /** @internal */
-export const IssuingAuthorizationStatus$outboundSchema: z.ZodNativeEnum<
-  typeof IssuingAuthorizationStatus
-> = IssuingAuthorizationStatus$inboundSchema;
+export const IssuingAuthorizationStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  IssuingAuthorizationStatus
+> = openEnums.outboundSchema(IssuingAuthorizationStatus);

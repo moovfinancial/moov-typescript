@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentType,
@@ -35,11 +36,11 @@ export const Document$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  documentID: z.string(),
+  documentID: types.string(),
   type: DocumentType$inboundSchema,
-  contentType: z.string(),
-  parseErrors: z.array(z.string()).optional(),
-  uploadedAt: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  contentType: types.string(),
+  parseErrors: types.optional(z.array(types.string())),
+  uploadedAt: types.date(),
 });
 /** @internal */
 export type Document$Outbound = {

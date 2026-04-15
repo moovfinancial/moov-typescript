@@ -3,19 +3,24 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const CreateAccountType = {
   Individual: "individual",
   Business: "business",
 } as const;
-export type CreateAccountType = ClosedEnum<typeof CreateAccountType>;
+export type CreateAccountType = OpenEnum<typeof CreateAccountType>;
 
 /** @internal */
-export const CreateAccountType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateAccountType
-> = z.nativeEnum(CreateAccountType);
+export const CreateAccountType$inboundSchema: z.ZodType<
+  CreateAccountType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CreateAccountType);
 /** @internal */
-export const CreateAccountType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateAccountType
-> = CreateAccountType$inboundSchema;
+export const CreateAccountType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CreateAccountType
+> = openEnums.outboundSchema(CreateAccountType);

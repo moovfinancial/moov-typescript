@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BirthDateUpdate = {
@@ -19,9 +20,9 @@ export const BirthDateUpdate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
+  day: types.optional(types.number()),
+  month: types.optional(types.number()),
+  year: types.optional(types.number()),
 });
 /** @internal */
 export type BirthDateUpdate$Outbound = {

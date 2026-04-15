@@ -10,10 +10,12 @@ Possible states an account verification can be in.
 import { AccountVerificationStatus } from "@moovio/sdk/models/components";
 
 let value: AccountVerificationStatus = "unverified";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"unverified" | "pending" | "resubmit" | "review" | "verified" | "failed"
+"unverified" | "pending" | "resubmit" | "review" | "verified" | "failed" | Unrecognized<string>
 ```

@@ -8,10 +8,12 @@ Payment methods allowed for collecting a payment.
 import { CollectionPaymentMethodType } from "@moovio/sdk/models/components";
 
 let value: CollectionPaymentMethodType = "card-payment";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"apple-pay" | "card-payment" | "ach-debit-collect"
+"apple-pay" | "card-payment" | "ach-debit-collect" | Unrecognized<string>
 ```

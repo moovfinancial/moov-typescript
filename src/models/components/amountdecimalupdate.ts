@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AmountDecimalUpdate = {
@@ -28,8 +29,8 @@ export const AmountDecimalUpdate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currency: z.string().optional(),
-  valueDecimal: z.string().optional(),
+  currency: types.optional(types.string()),
+  valueDecimal: types.optional(types.string()),
 });
 /** @internal */
 export type AmountDecimalUpdate$Outbound = {

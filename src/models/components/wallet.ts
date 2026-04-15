@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   WalletAvailableBalance,
@@ -65,19 +66,16 @@ export type Wallet = {
 /** @internal */
 export const Wallet$inboundSchema: z.ZodType<Wallet, z.ZodTypeDef, unknown> = z
   .object({
-    walletID: z.string(),
+    walletID: types.string(),
     availableBalance: WalletAvailableBalance$inboundSchema,
-    partnerAccountID: z.string(),
-    name: z.string(),
+    partnerAccountID: types.string(),
+    name: types.string(),
     status: WalletStatus$inboundSchema,
     walletType: WalletType$inboundSchema,
-    description: z.string(),
-    metadata: z.record(z.string()).optional(),
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    closedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
+    description: types.string(),
+    metadata: types.optional(z.record(types.string())),
+    createdOn: types.date(),
+    closedOn: types.optional(types.date()),
   });
 /** @internal */
 export type Wallet$Outbound = {

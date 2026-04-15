@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Code used to identify the ACH authorization method.
@@ -17,11 +18,11 @@ export const SECCode = {
 /**
  * Code used to identify the ACH authorization method.
  */
-export type SECCode = ClosedEnum<typeof SECCode>;
+export type SECCode = OpenEnum<typeof SECCode>;
 
 /** @internal */
-export const SECCode$inboundSchema: z.ZodNativeEnum<typeof SECCode> = z
-  .nativeEnum(SECCode);
+export const SECCode$inboundSchema: z.ZodType<SECCode, z.ZodTypeDef, unknown> =
+  openEnums.inboundSchema(SECCode);
 /** @internal */
-export const SECCode$outboundSchema: z.ZodNativeEnum<typeof SECCode> =
-  SECCode$inboundSchema;
+export const SECCode$outboundSchema: z.ZodType<string, z.ZodTypeDef, SECCode> =
+  openEnums.outboundSchema(SECCode);

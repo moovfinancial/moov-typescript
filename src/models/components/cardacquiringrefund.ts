@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Amount,
@@ -45,12 +46,12 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  refundID: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  refundID: types.string(),
+  createdOn: types.date(),
+  updatedOn: types.date(),
   status: RefundStatus$inboundSchema,
   amount: Amount$inboundSchema,
-  cardDetails: RefundCardDetails$inboundSchema.optional(),
+  cardDetails: types.optional(RefundCardDetails$inboundSchema),
 });
 /** @internal */
 export type CardAcquiringRefund$Outbound = {

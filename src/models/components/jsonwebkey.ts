@@ -5,8 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -19,7 +21,7 @@ export const Use = {
 /**
  * The intended use of the key. 'sig' for signature, 'enc' for encryption.
  */
-export type Use = ClosedEnum<typeof Use>;
+export type Use = OpenEnum<typeof Use>;
 
 /**
  * Describes an [RFC7517](https://datatracker.ietf.org/doc/html/rfc7517) web key.
@@ -88,10 +90,11 @@ export type JSONWebKey = {
 };
 
 /** @internal */
-export const Use$inboundSchema: z.ZodNativeEnum<typeof Use> = z.nativeEnum(Use);
+export const Use$inboundSchema: z.ZodType<Use, z.ZodTypeDef, unknown> =
+  openEnums.inboundSchema(Use);
 /** @internal */
-export const Use$outboundSchema: z.ZodNativeEnum<typeof Use> =
-  Use$inboundSchema;
+export const Use$outboundSchema: z.ZodType<string, z.ZodTypeDef, Use> =
+  openEnums.outboundSchema(Use);
 
 /** @internal */
 export const JSONWebKey$inboundSchema: z.ZodType<
@@ -99,16 +102,16 @@ export const JSONWebKey$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kty: z.string(),
-  use: Use$inboundSchema.optional(),
-  key_ops: z.array(z.string()).optional(),
-  alg: z.string().optional(),
-  kid: z.string().optional(),
-  crv: z.string().optional(),
-  x: z.string().optional(),
-  y: z.string().optional(),
-  n: z.string().optional(),
-  e: z.string().optional(),
+  kty: types.string(),
+  use: types.optional(Use$inboundSchema),
+  key_ops: types.optional(z.array(types.string())),
+  alg: types.optional(types.string()),
+  kid: types.optional(types.string()),
+  crv: types.optional(types.string()),
+  x: types.optional(types.string()),
+  y: types.optional(types.string()),
+  n: types.optional(types.string()),
+  e: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "key_ops": "keyOps",

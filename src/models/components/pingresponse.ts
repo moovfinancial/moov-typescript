@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Webhook,
@@ -39,7 +40,7 @@ export const PingResponse$inboundSchema: z.ZodType<
 > = z.object({
   webhook: Webhook$inboundSchema,
   requestBodySent: z.record(z.any()),
-  responseStatusCode: z.number().int(),
+  responseStatusCode: types.number(),
 });
 /** @internal */
 export type PingResponse$Outbound = {

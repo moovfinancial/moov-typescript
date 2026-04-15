@@ -8,10 +8,12 @@
 import { UnderwritingStatus } from "@moovio/sdk/models/components";
 
 let value: UnderwritingStatus = "pendingReview";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"approved" | "rejected" | "pendingReview" | "pending" | "notRequested"
+"approved" | "rejected" | "pendingReview" | "pending" | "notRequested" | Unrecognized<string>
 ```

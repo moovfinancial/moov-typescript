@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GovernmentIDErrorSsn = {
@@ -28,8 +29,8 @@ export const GovernmentIDErrorSsn$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
+  full: types.optional(types.string()),
+  lastFour: types.optional(types.string()),
 });
 /** @internal */
 export type GovernmentIDErrorSsn$Outbound = {
@@ -70,8 +71,8 @@ export const GovernmentIDErrorItin$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
+  full: types.optional(types.string()),
+  lastFour: types.optional(types.string()),
 });
 /** @internal */
 export type GovernmentIDErrorItin$Outbound = {
@@ -112,8 +113,8 @@ export const GovernmentIDError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ssn: z.lazy(() => GovernmentIDErrorSsn$inboundSchema).optional(),
-  itin: z.lazy(() => GovernmentIDErrorItin$inboundSchema).optional(),
+  ssn: types.optional(z.lazy(() => GovernmentIDErrorSsn$inboundSchema)),
+  itin: types.optional(z.lazy(() => GovernmentIDErrorItin$inboundSchema)),
 });
 /** @internal */
 export type GovernmentIDError$Outbound = {

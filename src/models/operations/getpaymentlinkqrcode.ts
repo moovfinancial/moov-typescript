@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -32,8 +34,8 @@ export const GetPaymentLinkQRCodeRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  paymentLinkCode: z.string(),
+  accountID: types.string(),
+  paymentLinkCode: types.string(),
 });
 /** @internal */
 export type GetPaymentLinkQRCodeRequest$Outbound = {
@@ -75,7 +77,7 @@ export const GetPaymentLinkQRCodeResponseResult$inboundSchema: z.ZodType<
   GetPaymentLinkQRCodeResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   components.QRCode$inboundSchema,
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
@@ -89,7 +91,7 @@ export const GetPaymentLinkQRCodeResponseResult$outboundSchema: z.ZodType<
   GetPaymentLinkQRCodeResponseResult$Outbound,
   z.ZodTypeDef,
   GetPaymentLinkQRCodeResponseResult
-> = z.union([
+> = smartUnion([
   components.QRCode$outboundSchema,
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
@@ -121,7 +123,7 @@ export const GetPaymentLinkQRCodeResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
+  Result: smartUnion([
     components.QRCode$inboundSchema,
     z.instanceof(ReadableStream<Uint8Array>),
   ]),
@@ -144,7 +146,7 @@ export const GetPaymentLinkQRCodeResponse$outboundSchema: z.ZodType<
   GetPaymentLinkQRCodeResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.union([
+  result: smartUnion([
     components.QRCode$outboundSchema,
     z.instanceof(ReadableStream<Uint8Array>),
   ]),

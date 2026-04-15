@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WireServices = {
@@ -28,9 +29,9 @@ export const WireServices$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fundsTransferStatus: z.boolean(),
-  fundsSettlementOnlyStatus: z.boolean(),
-  bookEntrySecuritiesTransferStatus: z.boolean(),
+  fundsTransferStatus: types.boolean(),
+  fundsSettlementOnlyStatus: types.boolean(),
+  bookEntrySecuritiesTransferStatus: types.boolean(),
 });
 /** @internal */
 export type WireServices$Outbound = {

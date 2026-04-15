@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CapabilityID,
@@ -80,13 +81,13 @@ export const CreateAccount$inboundSchema: z.ZodType<
 > = z.object({
   accountType: CreateAccountType$inboundSchema,
   profile: CreateProfile$inboundSchema,
-  metadata: z.record(z.string()).optional(),
-  termsOfService: TermsOfServicePayload$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  customerSupport: CustomerSupport$inboundSchema.optional(),
-  settings: Settings$inboundSchema.optional(),
-  capabilities: z.array(CapabilityID$inboundSchema).optional(),
-  mode: Mode$inboundSchema.optional(),
+  metadata: types.optional(z.record(types.string())),
+  termsOfService: types.optional(TermsOfServicePayload$inboundSchema),
+  foreignID: types.optional(types.string()),
+  customerSupport: types.optional(CustomerSupport$inboundSchema),
+  settings: types.optional(Settings$inboundSchema),
+  capabilities: types.optional(z.array(CapabilityID$inboundSchema)),
+  mode: types.optional(Mode$inboundSchema),
 });
 /** @internal */
 export type CreateAccount$Outbound = {

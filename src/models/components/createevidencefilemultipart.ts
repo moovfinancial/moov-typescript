@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EvidenceType,
@@ -36,7 +37,7 @@ export type CreateEvidenceFileMultiPart = {
 /** @internal */
 export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
   .object({
-    fileName: z.string(),
+    fileName: types.string(),
     content: z.union([
       z.instanceof(ReadableStream<Uint8Array>),
       z.instanceof(Blob),

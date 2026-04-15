@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IndividualNameUpdate,
@@ -83,8 +84,8 @@ export type UpdateRepresentative = {
 /** @internal */
 export const Phone$inboundSchema: z.ZodType<Phone, z.ZodTypeDef, unknown> = z
   .object({
-    number: z.string().optional(),
-    countryCode: z.string().optional(),
+    number: types.optional(types.string()),
+    countryCode: types.optional(types.string()),
   });
 /** @internal */
 export type Phone$Outbound = {
@@ -121,12 +122,12 @@ export const UpdateRepresentativeAddress$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  stateOrProvince: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
+  addressLine1: types.optional(types.string()),
+  addressLine2: types.optional(types.string()),
+  city: types.optional(types.string()),
+  stateOrProvince: types.optional(types.string()),
+  postalCode: types.optional(types.string()),
+  country: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateRepresentativeAddress$Outbound = {
@@ -177,9 +178,9 @@ export const UpdateRepresentativeBirthDate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
+  day: types.optional(types.number()),
+  month: types.optional(types.number()),
+  year: types.optional(types.number()),
 });
 /** @internal */
 export type UpdateRepresentativeBirthDate$Outbound = {
@@ -224,8 +225,8 @@ export const UpdateRepresentativeSsn$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
+  full: types.optional(types.string()),
+  lastFour: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateRepresentativeSsn$Outbound = {
@@ -266,8 +267,8 @@ export const UpdateRepresentativeItin$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
+  full: types.optional(types.string()),
+  lastFour: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateRepresentativeItin$Outbound = {
@@ -308,8 +309,8 @@ export const UpdateRepresentativeGovernmentID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ssn: z.lazy(() => UpdateRepresentativeSsn$inboundSchema).optional(),
-  itin: z.lazy(() => UpdateRepresentativeItin$inboundSchema).optional(),
+  ssn: types.optional(z.lazy(() => UpdateRepresentativeSsn$inboundSchema)),
+  itin: types.optional(z.lazy(() => UpdateRepresentativeItin$inboundSchema)),
 });
 /** @internal */
 export type UpdateRepresentativeGovernmentID$Outbound = {
@@ -352,10 +353,10 @@ export const Responsibilities$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isController: z.boolean().optional(),
-  isOwner: z.boolean().optional(),
-  ownershipPercentage: z.number().int().optional(),
-  jobTitle: z.string().optional(),
+  isController: types.optional(types.boolean()),
+  isOwner: types.optional(types.boolean()),
+  ownershipPercentage: types.optional(types.number()),
+  jobTitle: types.optional(types.string()),
 });
 /** @internal */
 export type Responsibilities$Outbound = {
@@ -400,9 +401,9 @@ export const UpdateRepresentative$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: IndividualNameUpdate$inboundSchema.optional(),
+  name: types.optional(IndividualNameUpdate$inboundSchema),
   phone: z.nullable(z.lazy(() => Phone$inboundSchema)).optional(),
-  email: z.nullable(z.string()).optional(),
+  email: z.nullable(types.string()).optional(),
   address: z.nullable(z.lazy(() => UpdateRepresentativeAddress$inboundSchema))
     .optional(),
   birthDate: z.nullable(

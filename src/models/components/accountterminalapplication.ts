@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -27,8 +28,8 @@ export const AccountTerminalApplication$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  terminalApplicationID: z.string(),
+  accountID: types.string(),
+  terminalApplicationID: types.string(),
 });
 /** @internal */
 export type AccountTerminalApplication$Outbound = {

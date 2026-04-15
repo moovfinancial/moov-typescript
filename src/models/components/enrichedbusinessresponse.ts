@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EnrichedBusinessProfile,
@@ -23,7 +24,7 @@ export const EnrichedBusinessResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  business: EnrichedBusinessProfile$inboundSchema.optional(),
+  business: types.optional(EnrichedBusinessProfile$inboundSchema),
 });
 /** @internal */
 export type EnrichedBusinessResponse$Outbound = {

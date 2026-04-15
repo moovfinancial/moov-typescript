@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const EvidenceType = {
   Receipt: "receipt",
@@ -15,11 +16,17 @@ export const EvidenceType = {
   CoverLetter: "cover-letter",
   Other: "other",
 } as const;
-export type EvidenceType = ClosedEnum<typeof EvidenceType>;
+export type EvidenceType = OpenEnum<typeof EvidenceType>;
 
 /** @internal */
-export const EvidenceType$inboundSchema: z.ZodNativeEnum<typeof EvidenceType> =
-  z.nativeEnum(EvidenceType);
+export const EvidenceType$inboundSchema: z.ZodType<
+  EvidenceType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(EvidenceType);
 /** @internal */
-export const EvidenceType$outboundSchema: z.ZodNativeEnum<typeof EvidenceType> =
-  EvidenceType$inboundSchema;
+export const EvidenceType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  EvidenceType
+> = openEnums.outboundSchema(EvidenceType);

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateRunTransfer,
@@ -44,11 +45,10 @@ export const Occurrence$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  canceled: z.boolean().optional(),
-  occurrenceID: z.string().optional(),
-  runOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  runTransfer: CreateRunTransfer$inboundSchema.optional(),
+  canceled: types.optional(types.boolean()),
+  occurrenceID: types.optional(types.string()),
+  runOn: types.optional(types.date()),
+  runTransfer: types.optional(CreateRunTransfer$inboundSchema),
 });
 /** @internal */
 export type Occurrence$Outbound = {

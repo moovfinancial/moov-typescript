@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BusinessPresence,
@@ -68,14 +69,16 @@ export const UpsertUnderwriting$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  geographicReach: GeographicReach$inboundSchema.optional(),
-  businessPresence: BusinessPresence$inboundSchema.optional(),
-  pendingLitigation: PendingLitigation$inboundSchema.optional(),
-  volumeShareByCustomerType: VolumeShareByCustomerType$inboundSchema.optional(),
-  collectFunds: CollectFunds$inboundSchema.optional(),
-  moneyTransfer: MoneyTransfer$inboundSchema.optional(),
-  sendFunds: SendFunds$inboundSchema.optional(),
-  submissionIntent: SubmissionIntent$inboundSchema.optional(),
+  geographicReach: types.optional(GeographicReach$inboundSchema),
+  businessPresence: types.optional(BusinessPresence$inboundSchema),
+  pendingLitigation: types.optional(PendingLitigation$inboundSchema),
+  volumeShareByCustomerType: types.optional(
+    VolumeShareByCustomerType$inboundSchema,
+  ),
+  collectFunds: types.optional(CollectFunds$inboundSchema),
+  moneyTransfer: types.optional(MoneyTransfer$inboundSchema),
+  sendFunds: types.optional(SendFunds$inboundSchema),
+  submissionIntent: types.optional(SubmissionIntent$inboundSchema),
 });
 /** @internal */
 export type UpsertUnderwriting$Outbound = {

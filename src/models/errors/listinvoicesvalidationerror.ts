@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type ListInvoicesValidationErrorData = {
@@ -65,14 +66,14 @@ export const ListInvoicesValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.string().optional(),
-  customerAccountID: z.string().optional(),
-  createdStartDateTime: z.string().optional(),
-  createdEndDateTime: z.string().optional(),
-  dueStartDateTime: z.string().optional(),
-  dueEndDateTime: z.string().optional(),
-  skip: z.string().optional(),
-  count: z.string().optional(),
+  status: types.optional(types.string()),
+  customerAccountID: types.optional(types.string()),
+  createdStartDateTime: types.optional(types.string()),
+  createdEndDateTime: types.optional(types.string()),
+  dueStartDateTime: types.optional(types.string()),
+  dueEndDateTime: types.optional(types.string()),
+  skip: types.optional(types.string()),
+  count: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

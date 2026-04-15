@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IndividualName = {
@@ -32,10 +33,10 @@ export const IndividualName$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  firstName: z.string(),
-  middleName: z.string().optional(),
-  lastName: z.string(),
-  suffix: z.string().optional(),
+  firstName: types.string(),
+  middleName: types.optional(types.string()),
+  lastName: types.string(),
+  suffix: types.optional(types.string()),
 });
 /** @internal */
 export type IndividualName$Outbound = {

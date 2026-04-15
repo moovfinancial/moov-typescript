@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Mode, Mode$inboundSchema, Mode$outboundSchema } from "./mode.js";
 import {
@@ -59,7 +60,7 @@ export type OccurrencesResponse = {
 /** @internal */
 export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
   .object({
-    message: z.string().optional(),
+    message: types.optional(types.string()),
   });
 /** @internal */
 export type ErrorT$Outbound = {
@@ -94,20 +95,18 @@ export const OccurrencesResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scheduleID: z.string().optional(),
-  occurrenceID: z.string().optional(),
-  mode: Mode$inboundSchema.optional(),
-  generated: z.boolean().optional(),
-  indefinite: z.boolean().optional(),
-  canceledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  runOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  scheduleID: types.optional(types.string()),
+  occurrenceID: types.optional(types.string()),
+  mode: types.optional(Mode$inboundSchema),
+  generated: types.optional(types.boolean()),
+  indefinite: types.optional(types.boolean()),
+  canceledOn: types.optional(types.date()),
+  runOn: types.date(),
   runTransfer: RunTransfer$inboundSchema,
-  ranOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  ranTransferID: z.string().optional(),
-  status: OccurrenceStatus$inboundSchema.optional(),
-  error: z.lazy(() => ErrorT$inboundSchema).optional(),
+  ranOn: types.optional(types.date()),
+  ranTransferID: types.optional(types.string()),
+  status: types.optional(OccurrenceStatus$inboundSchema),
+  error: types.optional(z.lazy(() => ErrorT$inboundSchema)),
 });
 /** @internal */
 export type OccurrencesResponse$Outbound = {

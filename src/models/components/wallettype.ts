@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Type of a wallet.
@@ -23,11 +24,17 @@ export const WalletType = {
  *   - `default`: The system-generated wallet automatically created when an account is granted the wallet capability.
  *   - `general`: An additional, user-defined wallet created via API or Dashboard.
  */
-export type WalletType = ClosedEnum<typeof WalletType>;
+export type WalletType = OpenEnum<typeof WalletType>;
 
 /** @internal */
-export const WalletType$inboundSchema: z.ZodNativeEnum<typeof WalletType> = z
-  .nativeEnum(WalletType);
+export const WalletType$inboundSchema: z.ZodType<
+  WalletType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(WalletType);
 /** @internal */
-export const WalletType$outboundSchema: z.ZodNativeEnum<typeof WalletType> =
-  WalletType$inboundSchema;
+export const WalletType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  WalletType
+> = openEnums.outboundSchema(WalletType);

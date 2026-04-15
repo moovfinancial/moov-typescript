@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardAcceptanceMethods,
@@ -47,11 +48,11 @@ export const CollectFundsCardPayments$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cardAcceptanceMethods: CardAcceptanceMethods$inboundSchema.optional(),
-  currentlyAcceptsCards: z.boolean().optional(),
-  estimatedActivity: EstimatedActivity$inboundSchema.optional(),
-  fulfillment: Fulfillment$inboundSchema.optional(),
-  refundPolicy: RefundPolicy$inboundSchema.optional(),
+  cardAcceptanceMethods: types.optional(CardAcceptanceMethods$inboundSchema),
+  currentlyAcceptsCards: types.optional(types.boolean()),
+  estimatedActivity: types.optional(EstimatedActivity$inboundSchema),
+  fulfillment: types.optional(Fulfillment$inboundSchema),
+  refundPolicy: types.optional(RefundPolicy$inboundSchema),
 });
 /** @internal */
 export type CollectFundsCardPayments$Outbound = {

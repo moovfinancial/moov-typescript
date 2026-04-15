@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CardBrand,
@@ -74,11 +75,11 @@ export const ApplePayResponse$inboundSchema: z.ZodType<
 > = z.object({
   brand: CardBrand$inboundSchema,
   cardType: CardType$inboundSchema,
-  cardDisplayName: z.string(),
-  fingerprint: z.string(),
+  cardDisplayName: types.string(),
+  fingerprint: types.string(),
   expiration: CardExpiration$inboundSchema,
-  dynamicLastFour: z.string(),
-  issuerCountry: z.string().optional(),
+  dynamicLastFour: types.string(),
+  issuerCountry: types.optional(types.string()),
 });
 /** @internal */
 export type ApplePayResponse$Outbound = {

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AddressUpdate,
@@ -74,10 +75,10 @@ export const PatchAccountCustomerSupport$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: AddressUpdate$inboundSchema.optional(),
-  website: z.string().optional(),
+  phone: types.optional(PhoneNumber$inboundSchema),
+  email: types.optional(types.string()),
+  address: types.optional(AddressUpdate$inboundSchema),
+  website: types.optional(types.string()),
 });
 /** @internal */
 export type PatchAccountCustomerSupport$Outbound = {
@@ -124,14 +125,14 @@ export const PatchAccount$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  profile: PatchProfile$inboundSchema.optional(),
-  metadata: z.nullable(z.record(z.string())).optional(),
-  termsOfService: TermsOfServicePayloadUpdate$inboundSchema.optional(),
-  foreignID: z.string().optional(),
+  profile: types.optional(PatchProfile$inboundSchema),
+  metadata: z.nullable(z.record(types.string())).optional(),
+  termsOfService: types.optional(TermsOfServicePayloadUpdate$inboundSchema),
+  foreignID: types.optional(types.string()),
   customerSupport: z.nullable(
     z.lazy(() => PatchAccountCustomerSupport$inboundSchema),
   ).optional(),
-  settings: CreateAccountSettings$inboundSchema.optional(),
+  settings: types.optional(CreateAccountSettings$inboundSchema),
 });
 /** @internal */
 export type PatchAccount$Outbound = {

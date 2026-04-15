@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AddressError = {
@@ -22,12 +23,12 @@ export const AddressError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  stateOrProvince: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
+  addressLine1: types.optional(types.string()),
+  addressLine2: types.optional(types.string()),
+  city: types.optional(types.string()),
+  stateOrProvince: types.optional(types.string()),
+  postalCode: types.optional(types.string()),
+  country: types.optional(types.string()),
 });
 /** @internal */
 export type AddressError$Outbound = {

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AddressUpdate,
@@ -55,12 +56,12 @@ export const PatchIndividual$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: IndividualNameUpdate$inboundSchema.optional(),
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: AddressUpdate$inboundSchema.optional(),
-  birthDate: BirthDateUpdate$inboundSchema.optional(),
-  governmentID: GovernmentID$inboundSchema.optional(),
+  name: types.optional(IndividualNameUpdate$inboundSchema),
+  phone: types.optional(PhoneNumber$inboundSchema),
+  email: types.optional(types.string()),
+  address: types.optional(AddressUpdate$inboundSchema),
+  birthDate: types.optional(BirthDateUpdate$inboundSchema),
+  governmentID: types.optional(GovernmentID$inboundSchema),
 });
 /** @internal */
 export type PatchIndividual$Outbound = {

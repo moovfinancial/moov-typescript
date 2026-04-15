@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CancellationStatus,
@@ -24,8 +25,8 @@ export const WebhookDataCancellationCreated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cancellationID: z.string(),
-  transferID: z.string(),
+  cancellationID: types.string(),
+  transferID: types.string(),
   status: CancellationStatus$inboundSchema,
 });
 /** @internal */

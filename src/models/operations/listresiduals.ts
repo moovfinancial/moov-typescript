@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -34,11 +35,11 @@ export const ListResidualsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  accountID: z.string(),
-  startDateTime: z.string().optional(),
-  endDateTime: z.string().optional(),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  accountID: types.string(),
+  startDateTime: types.optional(types.string()),
+  endDateTime: types.optional(types.string()),
 });
 /** @internal */
 export type ListResidualsRequest$Outbound = {

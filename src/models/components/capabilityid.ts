@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Moov account capabilities.
@@ -38,11 +39,17 @@ export const CapabilityID = {
  *
  * The `production-app`, `platform.production-app`, and / or `platform.wallet-transfers` capabilities might appear in your list. These are read-only capabilities that Moov requests and uses for account verification purposes. These capabilities remains active with your account and require no additional action.
  */
-export type CapabilityID = ClosedEnum<typeof CapabilityID>;
+export type CapabilityID = OpenEnum<typeof CapabilityID>;
 
 /** @internal */
-export const CapabilityID$inboundSchema: z.ZodNativeEnum<typeof CapabilityID> =
-  z.nativeEnum(CapabilityID);
+export const CapabilityID$inboundSchema: z.ZodType<
+  CapabilityID,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CapabilityID);
 /** @internal */
-export const CapabilityID$outboundSchema: z.ZodNativeEnum<typeof CapabilityID> =
-  CapabilityID$inboundSchema;
+export const CapabilityID$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CapabilityID
+> = openEnums.outboundSchema(CapabilityID);

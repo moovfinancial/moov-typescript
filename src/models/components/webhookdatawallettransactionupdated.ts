@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   WalletAvailableBalance,
@@ -32,11 +33,11 @@ export const WebhookDataWalletTransactionUpdated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  transactionID: z.string(),
+  accountID: types.string(),
+  walletID: types.string(),
+  transactionID: types.string(),
   status: WalletTransactionStatus$inboundSchema,
-  availableBalance: WalletAvailableBalance$inboundSchema.optional(),
+  availableBalance: types.optional(WalletAvailableBalance$inboundSchema),
 });
 /** @internal */
 export type WebhookDataWalletTransactionUpdated$Outbound = {

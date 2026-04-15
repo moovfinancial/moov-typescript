@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const FulfillmentTimeframe = {
   Immediate: "immediate",
@@ -15,13 +16,17 @@ export const FulfillmentTimeframe = {
   Within30Days: "within-30-days",
   Within7Days: "within-7-days",
 } as const;
-export type FulfillmentTimeframe = ClosedEnum<typeof FulfillmentTimeframe>;
+export type FulfillmentTimeframe = OpenEnum<typeof FulfillmentTimeframe>;
 
 /** @internal */
-export const FulfillmentTimeframe$inboundSchema: z.ZodNativeEnum<
-  typeof FulfillmentTimeframe
-> = z.nativeEnum(FulfillmentTimeframe);
+export const FulfillmentTimeframe$inboundSchema: z.ZodType<
+  FulfillmentTimeframe,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(FulfillmentTimeframe);
 /** @internal */
-export const FulfillmentTimeframe$outboundSchema: z.ZodNativeEnum<
-  typeof FulfillmentTimeframe
-> = FulfillmentTimeframe$inboundSchema;
+export const FulfillmentTimeframe$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  FulfillmentTimeframe
+> = openEnums.outboundSchema(FulfillmentTimeframe);

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CallToAction,
@@ -41,9 +42,9 @@ export const PaymentLinkDisplayOptionsUpdate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
-  callToAction: CallToAction$inboundSchema.optional(),
+  title: types.optional(types.string()),
+  description: types.optional(types.string()),
+  callToAction: types.optional(CallToAction$inboundSchema),
 });
 /** @internal */
 export type PaymentLinkDisplayOptionsUpdate$Outbound = {

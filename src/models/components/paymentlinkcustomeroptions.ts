@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PaymentLinkCustomerOptions = {
@@ -28,9 +29,9 @@ export const PaymentLinkCustomerOptions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  requireAddress: z.boolean().optional(),
-  requirePhone: z.boolean().optional(),
-  metadata: z.record(z.string()).optional(),
+  requireAddress: types.optional(types.boolean()),
+  requirePhone: types.optional(types.boolean()),
+  metadata: types.optional(z.record(types.string())),
 });
 /** @internal */
 export type PaymentLinkCustomerOptions$Outbound = {

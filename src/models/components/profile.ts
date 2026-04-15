@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BusinessProfile,
@@ -46,9 +47,9 @@ export type Profile = {
 /** @internal */
 export const Profile$inboundSchema: z.ZodType<Profile, z.ZodTypeDef, unknown> =
   z.object({
-    individual: IndividualProfile$inboundSchema.optional(),
-    business: BusinessProfile$inboundSchema.optional(),
-    guest: GuestProfile$inboundSchema.optional(),
+    individual: types.optional(IndividualProfile$inboundSchema),
+    business: types.optional(BusinessProfile$inboundSchema),
+    guest: types.optional(GuestProfile$inboundSchema),
   });
 /** @internal */
 export type Profile$Outbound = {

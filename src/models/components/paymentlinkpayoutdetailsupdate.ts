@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DisbursementPaymentMethodType,
@@ -44,10 +45,11 @@ export const PaymentLinkPayoutDetailsUpdate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  allowedMethods: z.array(DisbursementPaymentMethodType$inboundSchema)
-    .optional(),
-  recipient: PayoutRecipient$inboundSchema.optional(),
-  metadata: z.record(z.string()).optional(),
+  allowedMethods: types.optional(
+    z.array(DisbursementPaymentMethodType$inboundSchema),
+  ),
+  recipient: types.optional(PayoutRecipient$inboundSchema),
+  metadata: types.optional(z.record(types.string())),
 });
 /** @internal */
 export type PaymentLinkPayoutDetailsUpdate$Outbound = {

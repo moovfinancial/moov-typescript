@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   WebhookBillingStatementCreated,
@@ -276,7 +277,7 @@ export const WebhookData$inboundSchema: z.ZodType<
   WebhookData,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   WebhookDataDisputeCreated$inboundSchema,
   WebhookDataDisputeUpdated$inboundSchema,
   WebhookDataTransferUpdated$inboundSchema,
@@ -360,7 +361,7 @@ export const WebhookData$outboundSchema: z.ZodType<
   WebhookData$Outbound,
   z.ZodTypeDef,
   WebhookData
-> = z.union([
+> = smartUnion([
   WebhookDataDisputeCreated$outboundSchema,
   WebhookDataDisputeUpdated$outboundSchema,
   WebhookDataTransferUpdated$outboundSchema,

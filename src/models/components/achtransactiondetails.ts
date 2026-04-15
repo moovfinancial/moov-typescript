@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ACHException,
@@ -77,30 +78,22 @@ export const ACHTransactionDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: ACHTransactionStatus$inboundSchema.optional(),
-  traceNumber: z.string().optional(),
-  return: ACHException$inboundSchema.optional(),
-  correction: ACHException$inboundSchema.optional(),
-  companyEntryDescription: z.string().optional(),
-  originatingCompanyName: z.string().optional(),
-  secCode: SECCode$inboundSchema.optional(),
-  canceledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  originatedOn: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  correctedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  returnedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  debitHoldPeriod: DebitHoldPeriod$inboundSchema.optional(),
-  addenda: z.array(TransferACHAddendaRecord$inboundSchema).optional(),
+  status: types.optional(ACHTransactionStatus$inboundSchema),
+  traceNumber: types.optional(types.string()),
+  return: types.optional(ACHException$inboundSchema),
+  correction: types.optional(ACHException$inboundSchema),
+  companyEntryDescription: types.optional(types.string()),
+  originatingCompanyName: types.optional(types.string()),
+  secCode: types.optional(SECCode$inboundSchema),
+  canceledOn: types.optional(types.date()),
+  initiatedOn: types.optional(types.date()),
+  originatedOn: types.optional(types.date()),
+  correctedOn: types.optional(types.date()),
+  returnedOn: types.optional(types.date()),
+  failedOn: types.optional(types.date()),
+  completedOn: types.optional(types.date()),
+  debitHoldPeriod: types.optional(DebitHoldPeriod$inboundSchema),
+  addenda: types.optional(z.array(TransferACHAddendaRecord$inboundSchema)),
 });
 /** @internal */
 export type ACHTransactionDetails$Outbound = {

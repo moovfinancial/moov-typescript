@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Amount,
@@ -85,12 +86,12 @@ export const CreateTransfer$inboundSchema: z.ZodType<
   source: CreateTransferSource$inboundSchema,
   destination: CreateTransferDestination$inboundSchema,
   amount: Amount$inboundSchema,
-  facilitatorFee: FacilitatorFee$inboundSchema.optional(),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  salesTaxAmount: Amount$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  lineItems: CreateTransferLineItems$inboundSchema.optional(),
+  facilitatorFee: types.optional(FacilitatorFee$inboundSchema),
+  description: types.optional(types.string()),
+  metadata: types.optional(z.record(types.string())),
+  salesTaxAmount: types.optional(Amount$inboundSchema),
+  foreignID: types.optional(types.string()),
+  lineItems: types.optional(CreateTransferLineItems$inboundSchema),
 });
 /** @internal */
 export type CreateTransfer$Outbound = {

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The low value in each range is included. The high value in each range is excluded.
@@ -21,13 +22,17 @@ export const MonthlyVolumeRange = {
 /**
  * The low value in each range is included. The high value in each range is excluded.
  */
-export type MonthlyVolumeRange = ClosedEnum<typeof MonthlyVolumeRange>;
+export type MonthlyVolumeRange = OpenEnum<typeof MonthlyVolumeRange>;
 
 /** @internal */
-export const MonthlyVolumeRange$inboundSchema: z.ZodNativeEnum<
-  typeof MonthlyVolumeRange
-> = z.nativeEnum(MonthlyVolumeRange);
+export const MonthlyVolumeRange$inboundSchema: z.ZodType<
+  MonthlyVolumeRange,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(MonthlyVolumeRange);
 /** @internal */
-export const MonthlyVolumeRange$outboundSchema: z.ZodNativeEnum<
-  typeof MonthlyVolumeRange
-> = MonthlyVolumeRange$inboundSchema;
+export const MonthlyVolumeRange$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  MonthlyVolumeRange
+> = openEnums.outboundSchema(MonthlyVolumeRange);

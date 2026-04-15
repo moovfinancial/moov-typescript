@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const WalletTransactionStatus = {
   Pending: "pending",
@@ -11,15 +12,17 @@ export const WalletTransactionStatus = {
   Canceled: "canceled",
   Failed: "failed",
 } as const;
-export type WalletTransactionStatus = ClosedEnum<
-  typeof WalletTransactionStatus
->;
+export type WalletTransactionStatus = OpenEnum<typeof WalletTransactionStatus>;
 
 /** @internal */
-export const WalletTransactionStatus$inboundSchema: z.ZodNativeEnum<
-  typeof WalletTransactionStatus
-> = z.nativeEnum(WalletTransactionStatus);
+export const WalletTransactionStatus$inboundSchema: z.ZodType<
+  WalletTransactionStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(WalletTransactionStatus);
 /** @internal */
-export const WalletTransactionStatus$outboundSchema: z.ZodNativeEnum<
-  typeof WalletTransactionStatus
-> = WalletTransactionStatus$inboundSchema;
+export const WalletTransactionStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  WalletTransactionStatus
+> = openEnums.outboundSchema(WalletTransactionStatus);

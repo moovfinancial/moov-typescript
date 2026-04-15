@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Address,
@@ -85,20 +86,20 @@ export const BusinessProfile$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  legalBusinessName: z.string(),
-  doingBusinessAs: z.string().optional(),
-  businessType: BusinessType$inboundSchema.optional(),
-  address: Address$inboundSchema.optional(),
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  website: z.string().optional(),
-  description: z.string().optional(),
-  taxIDProvided: z.boolean().optional(),
-  representatives: z.array(Representative$inboundSchema).optional(),
-  ownersProvided: z.boolean(),
-  industryCodes: IndustryCodes$inboundSchema.optional(),
-  industry: z.string().optional(),
-  primaryRegulator: PrimaryRegulator$inboundSchema.optional(),
+  legalBusinessName: types.string(),
+  doingBusinessAs: types.optional(types.string()),
+  businessType: types.optional(BusinessType$inboundSchema),
+  address: types.optional(Address$inboundSchema),
+  phone: types.optional(PhoneNumber$inboundSchema),
+  email: types.optional(types.string()),
+  website: types.optional(types.string()),
+  description: types.optional(types.string()),
+  taxIDProvided: types.optional(types.boolean()),
+  representatives: types.optional(z.array(Representative$inboundSchema)),
+  ownersProvided: types.boolean(),
+  industryCodes: types.optional(IndustryCodes$inboundSchema),
+  industry: types.optional(types.string()),
+  primaryRegulator: types.optional(PrimaryRegulator$inboundSchema),
 });
 /** @internal */
 export type BusinessProfile$Outbound = {

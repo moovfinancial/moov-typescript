@@ -3,19 +3,24 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const FeePlanAgreementStatus = {
   Active: "active",
   Terminated: "terminated",
 } as const;
-export type FeePlanAgreementStatus = ClosedEnum<typeof FeePlanAgreementStatus>;
+export type FeePlanAgreementStatus = OpenEnum<typeof FeePlanAgreementStatus>;
 
 /** @internal */
-export const FeePlanAgreementStatus$inboundSchema: z.ZodNativeEnum<
-  typeof FeePlanAgreementStatus
-> = z.nativeEnum(FeePlanAgreementStatus);
+export const FeePlanAgreementStatus$inboundSchema: z.ZodType<
+  FeePlanAgreementStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(FeePlanAgreementStatus);
 /** @internal */
-export const FeePlanAgreementStatus$outboundSchema: z.ZodNativeEnum<
-  typeof FeePlanAgreementStatus
-> = FeePlanAgreementStatus$inboundSchema;
+export const FeePlanAgreementStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  FeePlanAgreementStatus
+> = openEnums.outboundSchema(FeePlanAgreementStatus);

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountFees,
@@ -137,27 +138,23 @@ export const Statement$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  statementID: z.string(),
-  statementName: z.string(),
-  fileName: z.string(),
-  fileSize: z.number().int(),
-  billingPeriodStartDateTime: z.string().datetime({ offset: true }).transform(
-    v => new Date(v)
-  ),
-  billingPeriodEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  subscriptionIDs: z.array(z.string()),
+  statementID: types.string(),
+  statementName: types.string(),
+  fileName: types.string(),
+  fileSize: types.number(),
+  billingPeriodStartDateTime: types.date(),
+  billingPeriodEndDateTime: types.date(),
+  subscriptionIDs: z.array(types.string()),
   summary: BillingSummary$inboundSchema,
-  cardAcquiringFees: CardAcquiringFees$inboundSchema.optional(),
-  achFees: ACHFees$inboundSchema.optional(),
-  instantPaymentFees: InstantPaymentFees$inboundSchema.optional(),
-  platformFees: PlatformFees$inboundSchema.optional(),
-  accountFees: AccountFees$inboundSchema.optional(),
-  otherCardFees: OtherCardFees$inboundSchema.optional(),
-  partnerFees: PartnerFees$inboundSchema.optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  cardAcquiringFees: types.optional(CardAcquiringFees$inboundSchema),
+  achFees: types.optional(ACHFees$inboundSchema),
+  instantPaymentFees: types.optional(InstantPaymentFees$inboundSchema),
+  platformFees: types.optional(PlatformFees$inboundSchema),
+  accountFees: types.optional(AccountFees$inboundSchema),
+  otherCardFees: types.optional(OtherCardFees$inboundSchema),
+  partnerFees: types.optional(PartnerFees$inboundSchema),
+  createdOn: types.date(),
+  updatedOn: types.date(),
 });
 /** @internal */
 export type Statement$Outbound = {

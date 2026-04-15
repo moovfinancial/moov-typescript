@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Ssn = {
@@ -25,8 +26,8 @@ export type GovernmentID = {
 /** @internal */
 export const Ssn$inboundSchema: z.ZodType<Ssn, z.ZodTypeDef, unknown> = z
   .object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
+    full: types.optional(types.string()),
+    lastFour: types.optional(types.string()),
   });
 /** @internal */
 export type Ssn$Outbound = {
@@ -57,8 +58,8 @@ export function ssnFromJSON(
 /** @internal */
 export const Itin$inboundSchema: z.ZodType<Itin, z.ZodTypeDef, unknown> = z
   .object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
+    full: types.optional(types.string()),
+    lastFour: types.optional(types.string()),
   });
 /** @internal */
 export type Itin$Outbound = {
@@ -92,8 +93,8 @@ export const GovernmentID$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ssn: z.lazy(() => Ssn$inboundSchema).optional(),
-  itin: z.lazy(() => Itin$inboundSchema).optional(),
+  ssn: types.optional(z.lazy(() => Ssn$inboundSchema)),
+  itin: types.optional(z.lazy(() => Itin$inboundSchema)),
 });
 /** @internal */
 export type GovernmentID$Outbound = {

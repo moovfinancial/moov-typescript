@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -35,12 +36,12 @@ export const ListSweepsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  status: components.SweepStatus$inboundSchema.optional(),
-  statementDescriptor: z.string().optional(),
+  accountID: types.string(),
+  walletID: types.string(),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  status: types.optional(components.SweepStatus$inboundSchema),
+  statementDescriptor: types.optional(types.string()),
 });
 /** @internal */
 export type ListSweepsRequest$Outbound = {

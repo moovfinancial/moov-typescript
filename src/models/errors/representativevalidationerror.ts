@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -47,14 +48,17 @@ export class RepresentativeValidationError extends MoovError {
 /** @internal */
 export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
   .object({
-    name: components.IndividualNameError$inboundSchema.optional(),
-    phone: components.PhoneNumberError$inboundSchema.optional(),
-    email: z.string().optional(),
-    address: components.AddressError$inboundSchema.optional(),
-    birthDate: components.BirthDateValidationError$inboundSchema.optional(),
-    governmentID: components.GovernmentIDError$inboundSchema.optional(),
-    responsibilities: components
-      .RepresentativeResponsibilitiesError$inboundSchema.optional(),
+    name: types.optional(components.IndividualNameError$inboundSchema),
+    phone: types.optional(components.PhoneNumberError$inboundSchema),
+    email: types.optional(types.string()),
+    address: types.optional(components.AddressError$inboundSchema),
+    birthDate: types.optional(
+      components.BirthDateValidationError$inboundSchema,
+    ),
+    governmentID: types.optional(components.GovernmentIDError$inboundSchema),
+    responsibilities: types.optional(
+      components.RepresentativeResponsibilitiesError$inboundSchema,
+    ),
   });
 /** @internal */
 export type ErrorT$Outbound = {

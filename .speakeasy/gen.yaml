@@ -30,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.0.0-dev.12
+  version: 0.0.0-dev.13
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -53,8 +53,8 @@ typescript:
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
   formStringArrayEncodeMode: encoded-string
-  forwardCompatibleEnumsByDefault: false
-  forwardCompatibleUnionsByDefault: "false"
+  forwardCompatibleEnumsByDefault: true
+  forwardCompatibleUnionsByDefault: tagged-only
   generateExamples: true
   imports:
     option: openapi
@@ -67,7 +67,7 @@ typescript:
   inferUnionDiscriminators: true
   inputModelSuffix: input
   jsonpath: legacy
-  laxMode: strict
+  laxMode: lax
   legacyFileNaming: true
   maxMethodParams: 0
   methodArguments: require-security-and-request
@@ -81,7 +81,7 @@ typescript:
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
-  unionStrategy: left-to-right
+  unionStrategy: populated-fields
   usageSDKInitImports: []
   useIndexModules: true
   useOxlint: false

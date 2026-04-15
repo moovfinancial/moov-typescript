@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
+import { smartUnion } from "../../types/smartUnion.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -29,8 +31,8 @@ export const GetStatementRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  statementID: z.string(),
+  accountID: types.string(),
+  statementID: types.string(),
 });
 /** @internal */
 export type GetStatementRequest$Outbound = {
@@ -70,7 +72,7 @@ export const GetStatementResponseResult$inboundSchema: z.ZodType<
   GetStatementResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   components.Statement$inboundSchema,
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
@@ -84,7 +86,7 @@ export const GetStatementResponseResult$outboundSchema: z.ZodType<
   GetStatementResponseResult$Outbound,
   z.ZodTypeDef,
   GetStatementResponseResult
-> = z.union([
+> = smartUnion([
   components.Statement$outboundSchema,
   z.instanceof(ReadableStream<Uint8Array>),
 ]);
@@ -113,7 +115,7 @@ export const GetStatementResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
+  Result: smartUnion([
     components.Statement$inboundSchema,
     z.instanceof(ReadableStream<Uint8Array>),
   ]),
@@ -136,7 +138,7 @@ export const GetStatementResponse$outboundSchema: z.ZodType<
   GetStatementResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: z.union([
+  result: smartUnion([
     components.Statement$outboundSchema,
     z.instanceof(ReadableStream<Uint8Array>),
   ]),

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type FileValidationErrorData = {
@@ -49,11 +50,11 @@ export const FileValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  error: z.string().optional(),
-  file: z.string().optional(),
-  FileName: z.string().optional(),
-  filePurpose: z.string().optional(),
-  metadata: z.string().optional(),
+  error: types.optional(types.string()),
+  file: types.optional(types.string()),
+  FileName: types.optional(types.string()),
+  filePurpose: types.optional(types.string()),
+  metadata: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

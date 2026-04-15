@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -33,10 +34,10 @@ export const ListPaymentLinksRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  types: z.array(components.PaymentLinkType$inboundSchema).optional(),
-  accountID: z.string(),
+  skip: types.optional(types.number()),
+  count: types.optional(types.number()),
+  types: types.optional(z.array(components.PaymentLinkType$inboundSchema)),
+  accountID: types.string(),
 });
 /** @internal */
 export type ListPaymentLinksRequest$Outbound = {

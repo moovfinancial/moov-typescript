@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -21,8 +22,8 @@ export const AccountCapability$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  capability: z.string(),
-  status: z.string(),
+  capability: types.string(),
+  status: types.string(),
 });
 /** @internal */
 export type AccountCapability$Outbound = {

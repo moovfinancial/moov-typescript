@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EvidenceType,
@@ -46,17 +47,16 @@ export const DisputeEvidenceResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  evidenceID: z.string(),
-  disputeID: z.string(),
+  evidenceID: types.string(),
+  disputeID: types.string(),
   evidenceType: EvidenceType$inboundSchema,
-  text: z.string().optional(),
-  mimeType: z.string().optional(),
-  filename: z.string().optional(),
-  size: z.number().int().optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  submittedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  text: types.optional(types.string()),
+  mimeType: types.optional(types.string()),
+  filename: types.optional(types.string()),
+  size: types.optional(types.number()),
+  createdOn: types.date(),
+  updatedOn: types.date(),
+  submittedOn: types.optional(types.date()),
 });
 /** @internal */
 export type DisputeEvidenceResponse$Outbound = {

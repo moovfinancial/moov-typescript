@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DisputePhase,
@@ -42,10 +43,10 @@ export const WebhookDataDisputeCreated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-  transactionID: z.string(),
-  disputeID: z.string(),
+  accountID: types.string(),
+  transferID: types.string(),
+  transactionID: types.string(),
+  disputeID: types.string(),
   status: DisputeStatus$inboundSchema,
   phase: DisputePhase$inboundSchema,
 });
