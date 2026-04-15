@@ -11,14 +11,14 @@ let value: AchDebitFundPaymentMethod = {
   bankAccount: {
     bankAccountID: "<id>",
     fingerprint: "<value>",
-    status: "verified",
+    status: "pending",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "guest",
     bankName: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-09-12T06:36:19.592Z"),
+    updatedOn: new Date("2026-04-28T07:47:07.806Z"),
   },
 };
 ```

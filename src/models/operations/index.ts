@@ -4,6 +4,7 @@
 
 export * from "./acceptdispute.js";
 export * from "./assignaccountcountries.js";
+export * from "./batchgettransfers.js";
 export * from "./cancelschedule.js";
 export * from "./completebankaccountverification.js";
 export * from "./completemicrodeposits.js";

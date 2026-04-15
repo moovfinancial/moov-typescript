@@ -6,12 +6,21 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  CardPayoutType,
+  CardPayoutType$inboundSchema,
+  CardPayoutType$outboundSchema,
+} from "./cardpayouttype.js";
 
 export type CreateTransferDestinationCard = {
   /**
    * An optional override of the default card statement descriptor for a transfer. Accounts must be enabled by Moov to set this field.
    */
   dynamicDescriptor?: string | undefined;
+  /**
+   * An optional field to specify the type of card payout, used to route the transfer with the appropriate business application identifier (BAI).
+   */
+  payoutType?: CardPayoutType | undefined;
 };
 
 /** @internal */
@@ -21,10 +30,12 @@ export const CreateTransferDestinationCard$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   dynamicDescriptor: z.string().optional(),
+  payoutType: CardPayoutType$inboundSchema.optional(),
 });
 /** @internal */
 export type CreateTransferDestinationCard$Outbound = {
   dynamicDescriptor?: string | undefined;
+  payoutType?: string | undefined;
 };
 
 /** @internal */
@@ -34,6 +45,7 @@ export const CreateTransferDestinationCard$outboundSchema: z.ZodType<
   CreateTransferDestinationCard
 > = z.object({
   dynamicDescriptor: z.string().optional(),
+  payoutType: CardPayoutType$outboundSchema.optional(),
 });
 
 export function createTransferDestinationCardToJSON(

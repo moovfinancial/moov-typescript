@@ -3,7 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { appendForm, encodeSimple } from "../lib/encodings.js";
+import { appendForm, encodeSimple, normalizeBlob } from "../lib/encodings.js";
 import {
   bytesToBlob,
   getContentTypeFromFileName,
@@ -106,7 +106,10 @@ async function $do(
     payload.CreateEvidenceFileMultiPart.evidenceType,
   );
   if (isBlobLike(payload.CreateEvidenceFileMultiPart.file)) {
-    appendForm(body, "file", payload.CreateEvidenceFileMultiPart.file);
+    const file = payload.CreateEvidenceFileMultiPart.file;
+    const blob = await normalizeBlob(file);
+    const name = "name" in file ? (file.name as string) : undefined;
+    appendForm(body, "file", blob, name);
   } else if (
     isReadableStream(payload.CreateEvidenceFileMultiPart.file.content)
   ) {

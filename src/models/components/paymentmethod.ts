@@ -61,11 +61,23 @@ import {
   MoovWalletPaymentMethod$outboundSchema,
 } from "./moovwalletpaymentmethod.js";
 import {
+  PullFromApplePayPaymentMethod,
+  PullFromApplePayPaymentMethod$inboundSchema,
+  PullFromApplePayPaymentMethod$Outbound,
+  PullFromApplePayPaymentMethod$outboundSchema,
+} from "./pullfromapplepaypaymentmethod.js";
+import {
   PullFromCardPaymentMethod,
   PullFromCardPaymentMethod$inboundSchema,
   PullFromCardPaymentMethod$Outbound,
   PullFromCardPaymentMethod$outboundSchema,
 } from "./pullfromcardpaymentmethod.js";
+import {
+  PushToApplePayPaymentMethod,
+  PushToApplePayPaymentMethod$inboundSchema,
+  PushToApplePayPaymentMethod$Outbound,
+  PushToApplePayPaymentMethod$outboundSchema,
+} from "./pushtoapplepaypaymentmethod.js";
 import {
   PushToCardPaymentMethod,
   PushToCardPaymentMethod$inboundSchema,
@@ -94,7 +106,9 @@ export type PaymentMethod =
   | PullFromCardPaymentMethod
   | ApplePayPaymentMethod
   | CardPresentPaymentPaymentMethod
-  | InstantBankCreditPaymentMethod;
+  | InstantBankCreditPaymentMethod
+  | PushToApplePayPaymentMethod
+  | PullFromApplePayPaymentMethod;
 
 /** @internal */
 export const PaymentMethod$inboundSchema: z.ZodType<
@@ -114,6 +128,8 @@ export const PaymentMethod$inboundSchema: z.ZodType<
   ApplePayPaymentMethod$inboundSchema,
   CardPresentPaymentPaymentMethod$inboundSchema,
   InstantBankCreditPaymentMethod$inboundSchema,
+  PushToApplePayPaymentMethod$inboundSchema,
+  PullFromApplePayPaymentMethod$inboundSchema,
 ]);
 /** @internal */
 export type PaymentMethod$Outbound =
@@ -128,7 +144,9 @@ export type PaymentMethod$Outbound =
   | PullFromCardPaymentMethod$Outbound
   | ApplePayPaymentMethod$Outbound
   | CardPresentPaymentPaymentMethod$Outbound
-  | InstantBankCreditPaymentMethod$Outbound;
+  | InstantBankCreditPaymentMethod$Outbound
+  | PushToApplePayPaymentMethod$Outbound
+  | PullFromApplePayPaymentMethod$Outbound;
 
 /** @internal */
 export const PaymentMethod$outboundSchema: z.ZodType<
@@ -148,6 +166,8 @@ export const PaymentMethod$outboundSchema: z.ZodType<
   ApplePayPaymentMethod$outboundSchema,
   CardPresentPaymentPaymentMethod$outboundSchema,
   InstantBankCreditPaymentMethod$outboundSchema,
+  PushToApplePayPaymentMethod$outboundSchema,
+  PullFromApplePayPaymentMethod$outboundSchema,
 ]);
 
 export function paymentMethodToJSON(paymentMethod: PaymentMethod): string {

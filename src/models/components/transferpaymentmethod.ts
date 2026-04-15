@@ -61,11 +61,23 @@ import {
   MoovWalletTransferPaymentMethod$outboundSchema,
 } from "./moovwallettransferpaymentmethod.js";
 import {
+  PullFromApplePayTransferPaymentMethod,
+  PullFromApplePayTransferPaymentMethod$inboundSchema,
+  PullFromApplePayTransferPaymentMethod$Outbound,
+  PullFromApplePayTransferPaymentMethod$outboundSchema,
+} from "./pullfromapplepaytransferpaymentmethod.js";
+import {
   PullFromCardTransferPaymentMethod,
   PullFromCardTransferPaymentMethod$inboundSchema,
   PullFromCardTransferPaymentMethod$Outbound,
   PullFromCardTransferPaymentMethod$outboundSchema,
 } from "./pullfromcardtransferpaymentmethod.js";
+import {
+  PushToApplePayTransferPaymentMethod,
+  PushToApplePayTransferPaymentMethod$inboundSchema,
+  PushToApplePayTransferPaymentMethod$Outbound,
+  PushToApplePayTransferPaymentMethod$outboundSchema,
+} from "./pushtoapplepaytransferpaymentmethod.js";
 import {
   PushToCardTransferPaymentMethod,
   PushToCardTransferPaymentMethod$inboundSchema,
@@ -94,7 +106,9 @@ export type TransferPaymentMethod =
   | PullFromCardTransferPaymentMethod
   | ApplePayTransferPaymentMethod
   | CardPresentPaymentTransferPaymentMethod
-  | InstantBankCreditTransferPaymentMethod;
+  | InstantBankCreditTransferPaymentMethod
+  | PushToApplePayTransferPaymentMethod
+  | PullFromApplePayTransferPaymentMethod;
 
 /** @internal */
 export const TransferPaymentMethod$inboundSchema: z.ZodType<
@@ -114,6 +128,8 @@ export const TransferPaymentMethod$inboundSchema: z.ZodType<
   ApplePayTransferPaymentMethod$inboundSchema,
   CardPresentPaymentTransferPaymentMethod$inboundSchema,
   InstantBankCreditTransferPaymentMethod$inboundSchema,
+  PushToApplePayTransferPaymentMethod$inboundSchema,
+  PullFromApplePayTransferPaymentMethod$inboundSchema,
 ]);
 /** @internal */
 export type TransferPaymentMethod$Outbound =
@@ -128,7 +144,9 @@ export type TransferPaymentMethod$Outbound =
   | PullFromCardTransferPaymentMethod$Outbound
   | ApplePayTransferPaymentMethod$Outbound
   | CardPresentPaymentTransferPaymentMethod$Outbound
-  | InstantBankCreditTransferPaymentMethod$Outbound;
+  | InstantBankCreditTransferPaymentMethod$Outbound
+  | PushToApplePayTransferPaymentMethod$Outbound
+  | PullFromApplePayTransferPaymentMethod$Outbound;
 
 /** @internal */
 export const TransferPaymentMethod$outboundSchema: z.ZodType<
@@ -148,6 +166,8 @@ export const TransferPaymentMethod$outboundSchema: z.ZodType<
   ApplePayTransferPaymentMethod$outboundSchema,
   CardPresentPaymentTransferPaymentMethod$outboundSchema,
   InstantBankCreditTransferPaymentMethod$outboundSchema,
+  PushToApplePayTransferPaymentMethod$outboundSchema,
+  PullFromApplePayTransferPaymentMethod$outboundSchema,
 ]);
 
 export function transferPaymentMethodToJSON(

@@ -28,14 +28,14 @@ const value: components.AchDebitFundPaymentMethod = {
   bankAccount: {
     bankAccountID: "<id>",
     fingerprint: "<value>",
-    status: "verified",
+    status: "pending",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "guest",
     bankName: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-09-12T06:36:19.592Z"),
+    updatedOn: new Date("2026-04-28T07:47:07.806Z"),
   },
 };
 ```
@@ -49,14 +49,14 @@ const value: components.AchDebitCollectPaymentMethod = {
   bankAccount: {
     bankAccountID: "<id>",
     fingerprint: "<value>",
-    status: "verified",
+    status: "pending",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "guest",
     bankName: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-09-12T06:36:19.592Z"),
+    updatedOn: new Date("2026-04-28T07:47:07.806Z"),
   },
 };
 ```
@@ -70,14 +70,14 @@ const value: components.AchCreditStandardPaymentMethod = {
   bankAccount: {
     bankAccountID: "<id>",
     fingerprint: "<value>",
-    status: "verified",
+    status: "pending",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "guest",
     bankName: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-09-12T06:36:19.592Z"),
+    updatedOn: new Date("2026-04-28T07:47:07.806Z"),
   },
 };
 ```
@@ -91,14 +91,14 @@ const value: components.AchCreditSameDayPaymentMethod = {
   bankAccount: {
     bankAccountID: "<id>",
     fingerprint: "<value>",
-    status: "verified",
+    status: "pending",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "guest",
     bankName: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-09-12T06:36:19.592Z"),
+    updatedOn: new Date("2026-04-28T07:47:07.806Z"),
   },
 };
 ```
@@ -112,14 +112,14 @@ const value: components.RtpCreditPaymentMethod = {
   bankAccount: {
     bankAccountID: "<id>",
     fingerprint: "<value>",
-    status: "verified",
+    status: "pending",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "guest",
     bankName: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-09-12T06:36:19.592Z"),
+    updatedOn: new Date("2026-04-28T07:47:07.806Z"),
   },
 };
 ```
@@ -321,14 +321,58 @@ const value: components.InstantBankCreditPaymentMethod = {
   bankAccount: {
     bankAccountID: "<id>",
     fingerprint: "<value>",
-    status: "verified",
+    status: "pending",
     holderName: "<value>",
-    holderType: "business",
+    holderType: "guest",
     bankName: "<value>",
     bankAccountType: "checking",
     routingNumber: "<value>",
     lastFourAccountNumber: "<value>",
-    updatedOn: new Date("2024-09-12T06:36:19.592Z"),
+    updatedOn: new Date("2026-04-28T07:47:07.806Z"),
+  },
+};
+```
+
+### `components.PushToApplePayPaymentMethod`
+
+```typescript
+const value: components.PushToApplePayPaymentMethod = {
+  paymentMethodID: "<id>",
+  paymentMethodType: "push-to-apple-pay",
+  applePay: {
+    brand: "Visa",
+    cardType: "credit",
+    cardDisplayName: "Visa 1256",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    dynamicLastFour: "<value>",
+    issuerCountry: "US",
+  },
+};
+```
+
+### `components.PullFromApplePayPaymentMethod`
+
+```typescript
+const value: components.PullFromApplePayPaymentMethod = {
+  paymentMethodID: "<id>",
+  paymentMethodType: "pull-from-apple-pay",
+  applePay: {
+    brand: "Visa",
+    cardType: "credit",
+    cardDisplayName: "Visa 1256",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    dynamicLastFour: "<value>",
+    issuerCountry: "US",
   },
 };
 ```

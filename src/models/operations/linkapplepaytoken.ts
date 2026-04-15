@@ -19,7 +19,7 @@ export type LinkApplePayTokenRequest = {
 
 export type LinkApplePayTokenResponse = {
   headers: { [k: string]: Array<string> };
-  result: components.LinkedApplePayPaymentMethod;
+  result: Array<components.LinkedApplePayPaymentMethod>;
 };
 
 /** @internal */
@@ -79,7 +79,7 @@ export const LinkApplePayTokenResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())).default({}),
-  Result: components.LinkedApplePayPaymentMethod$inboundSchema,
+  Result: z.array(components.LinkedApplePayPaymentMethod$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
@@ -89,7 +89,7 @@ export const LinkApplePayTokenResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type LinkApplePayTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: components.LinkedApplePayPaymentMethod$Outbound;
+  Result: Array<components.LinkedApplePayPaymentMethod$Outbound>;
 };
 
 /** @internal */
@@ -99,7 +99,7 @@ export const LinkApplePayTokenResponse$outboundSchema: z.ZodType<
   LinkApplePayTokenResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
-  result: components.LinkedApplePayPaymentMethod$outboundSchema,
+  result: z.array(components.LinkedApplePayPaymentMethod$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",

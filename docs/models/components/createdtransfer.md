@@ -10,7 +10,7 @@ let value: CreatedTransfer = {
   createdOn: new Date("2025-06-12T12:10:37.812Z"),
   source: {
     paymentMethodID: "<id>",
-    paymentMethodType: "rtp-credit",
+    paymentMethodType: "card-payment",
     account: {
       accountID: "<id>",
       email: "Jaeden92@yahoo.com",
@@ -97,7 +97,7 @@ let value: CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "card-payment",
+    paymentMethodType: "push-to-card",
     account: {
       accountID: "<id>",
       email: "Jaeden92@yahoo.com",
