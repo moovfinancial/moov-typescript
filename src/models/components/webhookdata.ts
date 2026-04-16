@@ -266,11 +266,11 @@ export type WebhookData =
   | WebhookDataTicketCreated
   | WebhookDataTicketMessageAdded
   | WebhookDataWalletCreated
+  | WebhookBillingStatementCreated
   | WebhookDataAccountCreated
   | WebhookDataAccountUpdated
   | WebhookDataAccountDisconnected
-  | WebhookDataNetworkIDUpdated
-  | WebhookBillingStatementCreated;
+  | WebhookDataNetworkIDUpdated;
 
 /** @internal */
 export const WebhookData$inboundSchema: z.ZodType<
@@ -310,11 +310,11 @@ export const WebhookData$inboundSchema: z.ZodType<
   WebhookDataTicketCreated$inboundSchema,
   WebhookDataTicketMessageAdded$inboundSchema,
   WebhookDataWalletCreated$inboundSchema,
+  WebhookBillingStatementCreated$inboundSchema,
   WebhookDataAccountCreated$inboundSchema,
   WebhookDataAccountUpdated$inboundSchema,
   WebhookDataAccountDisconnected$inboundSchema,
   WebhookDataNetworkIDUpdated$inboundSchema,
-  WebhookBillingStatementCreated$inboundSchema,
 ]);
 /** @internal */
 export type WebhookData$Outbound =
@@ -350,11 +350,11 @@ export type WebhookData$Outbound =
   | WebhookDataTicketCreated$Outbound
   | WebhookDataTicketMessageAdded$Outbound
   | WebhookDataWalletCreated$Outbound
+  | WebhookBillingStatementCreated$Outbound
   | WebhookDataAccountCreated$Outbound
   | WebhookDataAccountUpdated$Outbound
   | WebhookDataAccountDisconnected$Outbound
-  | WebhookDataNetworkIDUpdated$Outbound
-  | WebhookBillingStatementCreated$Outbound;
+  | WebhookDataNetworkIDUpdated$Outbound;
 
 /** @internal */
 export const WebhookData$outboundSchema: z.ZodType<
@@ -394,11 +394,11 @@ export const WebhookData$outboundSchema: z.ZodType<
   WebhookDataTicketCreated$outboundSchema,
   WebhookDataTicketMessageAdded$outboundSchema,
   WebhookDataWalletCreated$outboundSchema,
+  WebhookBillingStatementCreated$outboundSchema,
   WebhookDataAccountCreated$outboundSchema,
   WebhookDataAccountUpdated$outboundSchema,
   WebhookDataAccountDisconnected$outboundSchema,
   WebhookDataNetworkIDUpdated$outboundSchema,
-  WebhookBillingStatementCreated$outboundSchema,
 ]);
 
 export function webhookDataToJSON(webhookData: WebhookData): string {

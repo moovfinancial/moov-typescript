@@ -31,6 +31,8 @@ you'll need to specify the \`/accounts/{accountID}/issued-cards.write\` scope.`,
       };
     }
 
-    return formatResult(void 0, apiCall);
+    const value = result.value.result;
+
+    return formatResult(value, apiCall);
   },
 };

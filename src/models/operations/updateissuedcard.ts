@@ -21,6 +21,7 @@ export type UpdateIssuedCardRequest = {
 
 export type UpdateIssuedCardResponse = {
   headers: { [k: string]: Array<string> };
+  result: components.IssuedCard;
 };
 
 /** @internal */
@@ -83,14 +84,17 @@ export const UpdateIssuedCardResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   Headers: z.record(z.array(z.string())).default({}),
+  Result: components.IssuedCard$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Headers": "headers",
+    "Result": "result",
   });
 });
 /** @internal */
 export type UpdateIssuedCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
+  Result: components.IssuedCard$Outbound;
 };
 
 /** @internal */
@@ -100,9 +104,11 @@ export const UpdateIssuedCardResponse$outboundSchema: z.ZodType<
   UpdateIssuedCardResponse
 > = z.object({
   headers: z.record(z.array(z.string())),
+  result: components.IssuedCard$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     headers: "Headers",
+    result: "Result",
   });
 });
 

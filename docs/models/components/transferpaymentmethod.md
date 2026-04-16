@@ -333,3 +333,47 @@ const value: components.InstantBankCreditTransferPaymentMethod = {
 };
 ```
 
+### `components.PushToApplePayTransferPaymentMethod`
+
+```typescript
+const value: components.PushToApplePayTransferPaymentMethod = {
+  paymentMethodID: "ac329481-6863-48e9-8b68-334bac8eb6d8",
+  paymentMethodType: "push-to-apple-pay",
+  applePay: {
+    brand: "Visa",
+    cardType: "credit",
+    cardDisplayName: "Visa 1256",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    dynamicLastFour: "<value>",
+    issuerCountry: "US",
+  },
+};
+```
+
+### `components.PullFromApplePayTransferPaymentMethod`
+
+```typescript
+const value: components.PullFromApplePayTransferPaymentMethod = {
+  paymentMethodID: "52751029-f4d6-456d-a1cf-8cd116ebdfdd",
+  paymentMethodType: "pull-from-apple-pay",
+  applePay: {
+    brand: "Visa",
+    cardType: "credit",
+    cardDisplayName: "Visa 1256",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    dynamicLastFour: "<value>",
+    issuerCountry: "US",
+  },
+};
+```
+

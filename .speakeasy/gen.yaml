@@ -30,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.0.0-dev.13
+  version: 0.0.0-dev.14
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -49,6 +49,7 @@ typescript:
   enableReactQuery: false
   enumFormat: union
   exportZodModelNamespace: false
+  fixEnumNameSanitization: false
   flatAdditionalProperties: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first

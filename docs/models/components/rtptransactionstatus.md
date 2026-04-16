@@ -1,0 +1,19 @@
+# RTPTransactionStatus
+
+Status of a transaction within the RTP lifecycle.
+
+## Example Usage
+
+```typescript
+import { RTPTransactionStatus } from "@moovio/sdk/models/components";
+
+let value: RTPTransactionStatus = "accepted-without-posting";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
+```
+
+## Values
+
+```typescript
+"initiated" | "completed" | "failed" | "accepted-without-posting" | Unrecognized<string>
+```

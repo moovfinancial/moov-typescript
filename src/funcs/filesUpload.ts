@@ -3,8 +3,9 @@
  */
 
 import { MoovCore } from "../core.js";
-import { appendForm, encodeSimple } from "../lib/encodings.js";
+import { appendForm, encodeSimple, normalizeBlob } from "../lib/encodings.js";
 import {
+  bytesToBlob,
   getContentTypeFromFileName,
   readableStreamToArrayBuffer,
 } from "../lib/files.js";
@@ -100,7 +101,10 @@ async function $do(
   const body = new FormData();
 
   if (isBlobLike(payload.FileUploadRequestMultiPart.file)) {
-    appendForm(body, "file", payload.FileUploadRequestMultiPart.file);
+    const file = payload.FileUploadRequestMultiPart.file;
+    const blob = await normalizeBlob(file);
+    const name = "name" in file ? (file.name as string) : undefined;
+    appendForm(body, "file", blob, name);
   } else if (
     isReadableStream(payload.FileUploadRequestMultiPart.file.content)
   ) {
@@ -111,26 +115,10 @@ async function $do(
       getContentTypeFromFileName(
         payload.FileUploadRequestMultiPart.file.fileName,
       ) || "application/octet-stream";
-    const blob = new Blob([buffer], { type: contentType });
     appendForm(
       body,
       "file",
-      blob,
-      payload.FileUploadRequestMultiPart.file.fileName,
-    );
-  } else if (
-    payload.FileUploadRequestMultiPart.file.content instanceof Uint8Array
-  ) {
-    const contentType =
-      getContentTypeFromFileName(
-        payload.FileUploadRequestMultiPart.file.fileName,
-      ) || "application/octet-stream";
-    appendForm(
-      body,
-      "file",
-      new Blob([
-        new Uint8Array(payload.FileUploadRequestMultiPart.file.content).buffer,
-      ], { type: contentType }),
+      bytesToBlob(buffer, contentType),
       payload.FileUploadRequestMultiPart.file.fileName,
     );
   } else {
@@ -141,9 +129,7 @@ async function $do(
     appendForm(
       body,
       "file",
-      new Blob([payload.FileUploadRequestMultiPart.file.content], {
-        type: contentType,
-      }),
+      bytesToBlob(payload.FileUploadRequestMultiPart.file.content, contentType),
       payload.FileUploadRequestMultiPart.file.fileName,
     );
   }
@@ -162,7 +148,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/accounts/{accountID}/files")(pathParams);
 
   const headers = new Headers(compactMap({

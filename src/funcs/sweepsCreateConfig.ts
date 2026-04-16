@@ -96,7 +96,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/accounts/{accountID}/sweep-configs")(pathParams);
 
   const headers = new Headers(compactMap({

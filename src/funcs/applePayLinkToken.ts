@@ -99,7 +99,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/accounts/{accountID}/apple-pay/tokens")(pathParams);
 
   const headers = new Headers(compactMap({

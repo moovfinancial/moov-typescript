@@ -93,7 +93,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/onboarding-invites/{code}")(pathParams);
 
   const headers = new Headers(compactMap({

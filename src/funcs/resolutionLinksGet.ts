@@ -96,7 +96,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc(
     "/accounts/{accountID}/resolution-links/{resolutionLinkCode}",
   )(pathParams);
