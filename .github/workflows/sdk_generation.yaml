@@ -17,6 +17,8 @@ permissions:
         type: string
   schedule:
     - cron: 0 0 * * *
+env:
+  SPEAKEASY_BUMP_OVERRIDE: patch
 jobs:
   get-npm-tag:
     runs-on: ubuntu-latest
