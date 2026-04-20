@@ -30,6 +30,7 @@ export * from "./imagemetadatavalidationerror.js";
 export * from "./imagerequestvalidationerror.js";
 export * from "./linkapplepayerror.js";
 export * from "./linkcarderror.js";
+export * from "./linkgooglepayerror.js";
 export * from "./listinvoicesvalidationerror.js";
 export * from "./listtransfersvalidationerror.js";
 export * from "./listwalletsvalidationerror.js";

@@ -13,6 +13,7 @@ let value: ResolutionLink = {
   partnerAccountID: "0d8e0d6e-e4a2-4f1b-8c3d-1b9e0f5a7c2d",
   recipient: "15555555555",
   url: "https://moov.link/r/bwebMOhZ85",
+  status: "active",
   createdOn: new Date("2026-07-01T12:00:00Z"),
   updatedOn: new Date("2026-07-01T12:00:00Z"),
   expiresOn: new Date("2026-07-08T12:00:00Z"),
@@ -28,6 +29,7 @@ let value: ResolutionLink = {
 | `partnerAccountID`                                                                            | *string*                                                                                      | :heavy_check_mark:                                                                            | The ID of the partner account this resolution link is associated with.                        |
 | `recipient`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | The recipient contact information for the resolution link.                                    |
 | `url`                                                                                         | *string*                                                                                      | :heavy_check_mark:                                                                            | The URL of the resolution link.                                                               |
+| `status`                                                                                      | [components.ResolutionLinkStatus](../../models/components/resolutionlinkstatus.md)            | :heavy_check_mark:                                                                            | The current status of the resolution link.                                                    |
 | `createdOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | The date and time the resolution link was created.                                            |
 | `updatedOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | The date and time the resolution link was last updated.                                       |
 | `disabledOn`                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The date and time the resolution link was disabled, if applicable.                            |

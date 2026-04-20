@@ -6,6 +6,11 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  ResolutionLinkStatus,
+  ResolutionLinkStatus$inboundSchema,
+  ResolutionLinkStatus$outboundSchema,
+} from "./resolutionlinkstatus.js";
 
 /**
  * A temporary, secure link sent to a merchant to resolve account requirements such as KYC verification or document uploads.
@@ -31,6 +36,10 @@ export type ResolutionLink = {
    * The URL of the resolution link.
    */
   url: string;
+  /**
+   * The current status of the resolution link.
+   */
+  status: ResolutionLinkStatus;
   /**
    * The date and time the resolution link was created.
    */
@@ -60,6 +69,7 @@ export const ResolutionLink$inboundSchema: z.ZodType<
   partnerAccountID: z.string(),
   recipient: z.string(),
   url: z.string(),
+  status: ResolutionLinkStatus$inboundSchema,
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -73,6 +83,7 @@ export type ResolutionLink$Outbound = {
   partnerAccountID: string;
   recipient: string;
   url: string;
+  status: string;
   createdOn: string;
   updatedOn: string;
   disabledOn?: string | undefined;
@@ -90,6 +101,7 @@ export const ResolutionLink$outboundSchema: z.ZodType<
   partnerAccountID: z.string(),
   recipient: z.string(),
   url: z.string(),
+  status: ResolutionLinkStatus$outboundSchema,
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
   disabledOn: z.date().transform(v => v.toISOString()).optional(),

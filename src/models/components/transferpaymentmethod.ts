@@ -49,6 +49,12 @@ import {
   CardPresentPaymentTransferPaymentMethod$outboundSchema,
 } from "./cardpresentpaymenttransferpaymentmethod.js";
 import {
+  GooglePayTransferPaymentMethod,
+  GooglePayTransferPaymentMethod$inboundSchema,
+  GooglePayTransferPaymentMethod$Outbound,
+  GooglePayTransferPaymentMethod$outboundSchema,
+} from "./googlepaytransferpaymentmethod.js";
+import {
   InstantBankCreditTransferPaymentMethod,
   InstantBankCreditTransferPaymentMethod$inboundSchema,
   InstantBankCreditTransferPaymentMethod$Outbound,
@@ -73,6 +79,12 @@ import {
   PullFromCardTransferPaymentMethod$outboundSchema,
 } from "./pullfromcardtransferpaymentmethod.js";
 import {
+  PullFromGooglePayTransferPaymentMethod,
+  PullFromGooglePayTransferPaymentMethod$inboundSchema,
+  PullFromGooglePayTransferPaymentMethod$Outbound,
+  PullFromGooglePayTransferPaymentMethod$outboundSchema,
+} from "./pullfromgooglepaytransferpaymentmethod.js";
+import {
   PushToApplePayTransferPaymentMethod,
   PushToApplePayTransferPaymentMethod$inboundSchema,
   PushToApplePayTransferPaymentMethod$Outbound,
@@ -84,6 +96,12 @@ import {
   PushToCardTransferPaymentMethod$Outbound,
   PushToCardTransferPaymentMethod$outboundSchema,
 } from "./pushtocardtransferpaymentmethod.js";
+import {
+  PushToGooglePayTransferPaymentMethod,
+  PushToGooglePayTransferPaymentMethod$inboundSchema,
+  PushToGooglePayTransferPaymentMethod$Outbound,
+  PushToGooglePayTransferPaymentMethod$outboundSchema,
+} from "./pushtogooglepaytransferpaymentmethod.js";
 import {
   RtpCreditTransferPaymentMethod,
   RtpCreditTransferPaymentMethod$inboundSchema,
@@ -108,7 +126,10 @@ export type TransferPaymentMethod =
   | CardPresentPaymentTransferPaymentMethod
   | InstantBankCreditTransferPaymentMethod
   | PushToApplePayTransferPaymentMethod
-  | PullFromApplePayTransferPaymentMethod;
+  | PullFromApplePayTransferPaymentMethod
+  | GooglePayTransferPaymentMethod
+  | PushToGooglePayTransferPaymentMethod
+  | PullFromGooglePayTransferPaymentMethod;
 
 /** @internal */
 export const TransferPaymentMethod$inboundSchema: z.ZodType<
@@ -130,6 +151,9 @@ export const TransferPaymentMethod$inboundSchema: z.ZodType<
   InstantBankCreditTransferPaymentMethod$inboundSchema,
   PushToApplePayTransferPaymentMethod$inboundSchema,
   PullFromApplePayTransferPaymentMethod$inboundSchema,
+  GooglePayTransferPaymentMethod$inboundSchema,
+  PushToGooglePayTransferPaymentMethod$inboundSchema,
+  PullFromGooglePayTransferPaymentMethod$inboundSchema,
 ]);
 /** @internal */
 export type TransferPaymentMethod$Outbound =
@@ -146,7 +170,10 @@ export type TransferPaymentMethod$Outbound =
   | CardPresentPaymentTransferPaymentMethod$Outbound
   | InstantBankCreditTransferPaymentMethod$Outbound
   | PushToApplePayTransferPaymentMethod$Outbound
-  | PullFromApplePayTransferPaymentMethod$Outbound;
+  | PullFromApplePayTransferPaymentMethod$Outbound
+  | GooglePayTransferPaymentMethod$Outbound
+  | PushToGooglePayTransferPaymentMethod$Outbound
+  | PullFromGooglePayTransferPaymentMethod$Outbound;
 
 /** @internal */
 export const TransferPaymentMethod$outboundSchema: z.ZodType<
@@ -168,6 +195,9 @@ export const TransferPaymentMethod$outboundSchema: z.ZodType<
   InstantBankCreditTransferPaymentMethod$outboundSchema,
   PushToApplePayTransferPaymentMethod$outboundSchema,
   PullFromApplePayTransferPaymentMethod$outboundSchema,
+  GooglePayTransferPaymentMethod$outboundSchema,
+  PushToGooglePayTransferPaymentMethod$outboundSchema,
+  PullFromGooglePayTransferPaymentMethod$outboundSchema,
 ]);
 
 export function transferPaymentMethodToJSON(

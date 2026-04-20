@@ -377,3 +377,63 @@ const value: components.PullFromApplePayPaymentMethod = {
 };
 ```
 
+### `components.GooglePayPaymentMethod`
+
+```typescript
+const value: components.GooglePayPaymentMethod = {
+  paymentMethodID: "<id>",
+  paymentMethodType: "google-pay",
+  googlePay: {
+    brand: "Visa",
+    cardDetails: "1234",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    issuerCountry: "US",
+  },
+};
+```
+
+### `components.PushToGooglePayPaymentMethod`
+
+```typescript
+const value: components.PushToGooglePayPaymentMethod = {
+  paymentMethodID: "<id>",
+  paymentMethodType: "push-to-google-pay",
+  googlePay: {
+    brand: "Visa",
+    cardDetails: "1234",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    issuerCountry: "US",
+  },
+};
+```
+
+### `components.PullFromGooglePayPaymentMethod`
+
+```typescript
+const value: components.PullFromGooglePayPaymentMethod = {
+  paymentMethodID: "<id>",
+  paymentMethodType: "pull-from-google-pay",
+  googlePay: {
+    brand: "Visa",
+    cardDetails: "1234",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    issuerCountry: "US",
+  },
+};
+```
+
