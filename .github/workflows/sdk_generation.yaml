@@ -17,6 +17,8 @@ permissions:
         type: string
   schedule:
     - cron: 0 0 * * *
+env:
+  SPEAKEASY_BUMP_OVERRIDE: patch
 jobs:
   # we run this only for version branches, where we set tag to the YYYY.MM value,
   # for main brach we do not use it as it's always a pre-release version like 0.0.0-dev
