@@ -13,7 +13,7 @@ targets:
         sourceRevisionDigest: sha256:4c9c70b29778495c772b441f235be5da47677649a83b3e14eb399cf0030f6cb3
         sourceBlobDigest: sha256:a4aa59e694f6a4fb1b764788a12b048ee95c3d932a00098a816d8cbd0849cd00
         codeSamplesNamespace: v2026.04.00-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:4a5e6edba4f45f0d120bf3ece9291d7708b99906a0bfdbc9c00284ed30cca77a
+        codeSamplesRevisionDigest: sha256:1fa03d3ef3781c7c30c187f236fa4abd2cd6780e26e7d08a6bd87a16c46e53df
     moov:
         source: latest
         sourceNamespace: api-latest
