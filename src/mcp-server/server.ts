@@ -92,6 +92,7 @@ import { tool$feePlansRetrieveFees } from "./tools/feePlansRetrieveFees.js";
 import { tool$filesGet } from "./tools/filesGet.js";
 import { tool$filesList } from "./tools/filesList.js";
 import { tool$filesUpload } from "./tools/filesUpload.js";
+import { tool$googlePayLinkToken } from "./tools/googlePayLinkToken.js";
 import { tool$imagesDelete } from "./tools/imagesDelete.js";
 import { tool$imagesGetMetadata } from "./tools/imagesGetMetadata.js";
 import { tool$imagesGetPublic } from "./tools/imagesGetPublic.js";
@@ -207,7 +208,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.0.0-dev.14",
+    version: "0.0.0-dev.15",
   });
 
   const client = new MoovCore({
@@ -300,6 +301,7 @@ export function createMCPServer(deps: {
   tool(tool$filesUpload);
   tool(tool$filesList);
   tool(tool$filesGet);
+  tool(tool$googlePayLinkToken);
   tool(tool$imagesList);
   tool(tool$imagesUpload);
   tool(tool$imagesGetMetadata);

@@ -11,7 +11,7 @@ const value: components.CreatedTransfer = {
   createdOn: new Date("2025-06-12T12:10:37.812Z"),
   source: {
     paymentMethodID: "<id>",
-    paymentMethodType: "card-payment",
+    paymentMethodType: "pull-from-card",
     account: {
       accountID: "<id>",
       email: "Jaeden92@yahoo.com",
@@ -98,7 +98,7 @@ const value: components.CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "push-to-card",
+    paymentMethodType: "apple-pay",
     account: {
       accountID: "<id>",
       email: "Jaeden92@yahoo.com",

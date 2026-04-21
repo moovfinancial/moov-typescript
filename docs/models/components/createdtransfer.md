@@ -10,7 +10,7 @@ let value: CreatedTransfer = {
   createdOn: new Date("2025-06-12T12:10:37.812Z"),
   source: {
     paymentMethodID: "<id>",
-    paymentMethodType: "card-payment",
+    paymentMethodType: "pull-from-card",
     account: {
       accountID: "<id>",
       email: "Jaeden92@yahoo.com",
@@ -97,7 +97,7 @@ let value: CreatedTransfer = {
   },
   destination: {
     paymentMethodID: "<id>",
-    paymentMethodType: "push-to-card",
+    paymentMethodType: "apple-pay",
     account: {
       accountID: "<id>",
       email: "Jaeden92@yahoo.com",
@@ -249,3 +249,4 @@ let value: CreatedTransfer = {
 | `salesTaxAmount`                                                                                                                              | [components.Amount](../../models/components/amount.md)                                                                                        | :heavy_minus_sign:                                                                                                                            | Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.              |                                                                                                                                               |
 | `foreignID`                                                                                                                                   | *string*                                                                                                                                      | :heavy_minus_sign:                                                                                                                            | Optional alias from a foreign/external system which can be used to reference this resource.                                                   |                                                                                                                                               |
 | `lineItems`                                                                                                                                   | [components.TransferLineItems](../../models/components/transferlineitems.md)                                                                  | :heavy_minus_sign:                                                                                                                            | An optional collection of line items for a transfer.<br/>When line items are provided, their total plus sales tax must equal the transfer amount. |                                                                                                                                               |
+| `capture`                                                                                                                                     | [components.TransferCapture](../../models/components/transfercapture.md)                                                                      | :heavy_minus_sign:                                                                                                                            | The card authorization and capture IDs associated with a transfer.                                                                            |                                                                                                                                               |

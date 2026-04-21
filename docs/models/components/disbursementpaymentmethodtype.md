@@ -7,7 +7,7 @@ Payment methods allowed for disbursing funds.
 ```typescript
 import { DisbursementPaymentMethodType } from "@moovio/sdk/models/components";
 
-let value: DisbursementPaymentMethodType = "rtp-credit";
+let value: DisbursementPaymentMethodType = "ach-credit-same-day";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```
@@ -15,5 +15,5 @@ let value: DisbursementPaymentMethodType = "rtp-credit";
 ## Values
 
 ```typescript
-"push-to-card" | "rtp-credit" | "ach-credit-same-day" | "ach-credit-standard" | Unrecognized<string>
+"push-to-card" | "rtp-credit" | "ach-credit-same-day" | "ach-credit-standard" | "push-to-apple-pay" | "push-to-google-pay" | Unrecognized<string>
 ```

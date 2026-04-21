@@ -28,6 +28,7 @@ let value: ListResolutionLinksResponse = {
       partnerAccountID: "0d8e0d6e-e4a2-4f1b-8c3d-1b9e0f5a7c2d",
       recipient: "15555555555",
       url: "https://moov.link/r/bwebMOhZ85",
+      status: "active",
       createdOn: new Date("2026-07-01T12:00:00Z"),
       updatedOn: new Date("2026-07-01T12:00:00Z"),
       expiresOn: new Date("2026-07-08T12:00:00Z"),

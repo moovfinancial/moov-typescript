@@ -16,18 +16,16 @@ let value: ListPaymentMethodsResponse = {
   result: [
     {
       paymentMethodID: "<id>",
-      paymentMethodType: "push-to-apple-pay",
-      applePay: {
+      paymentMethodType: "push-to-google-pay",
+      googlePay: {
         brand: "Visa",
-        cardType: "credit",
-        cardDisplayName: "Visa 1256",
+        cardDetails: "1234",
         fingerprint:
           "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
         expiration: {
           month: "01",
           year: "21",
         },
-        dynamicLastFour: "<value>",
         issuerCountry: "US",
       },
     },

@@ -51,6 +51,12 @@ import {
   CardPresentPaymentPaymentMethod$outboundSchema,
 } from "./cardpresentpaymentpaymentmethod.js";
 import {
+  GooglePayPaymentMethod,
+  GooglePayPaymentMethod$inboundSchema,
+  GooglePayPaymentMethod$Outbound,
+  GooglePayPaymentMethod$outboundSchema,
+} from "./googlepaypaymentmethod.js";
+import {
   InstantBankCreditPaymentMethod,
   InstantBankCreditPaymentMethod$inboundSchema,
   InstantBankCreditPaymentMethod$Outbound,
@@ -75,6 +81,12 @@ import {
   PullFromCardPaymentMethod$outboundSchema,
 } from "./pullfromcardpaymentmethod.js";
 import {
+  PullFromGooglePayPaymentMethod,
+  PullFromGooglePayPaymentMethod$inboundSchema,
+  PullFromGooglePayPaymentMethod$Outbound,
+  PullFromGooglePayPaymentMethod$outboundSchema,
+} from "./pullfromgooglepaypaymentmethod.js";
+import {
   PushToApplePayPaymentMethod,
   PushToApplePayPaymentMethod$inboundSchema,
   PushToApplePayPaymentMethod$Outbound,
@@ -86,6 +98,12 @@ import {
   PushToCardPaymentMethod$Outbound,
   PushToCardPaymentMethod$outboundSchema,
 } from "./pushtocardpaymentmethod.js";
+import {
+  PushToGooglePayPaymentMethod,
+  PushToGooglePayPaymentMethod$inboundSchema,
+  PushToGooglePayPaymentMethod$Outbound,
+  PushToGooglePayPaymentMethod$outboundSchema,
+} from "./pushtogooglepaypaymentmethod.js";
 import {
   RtpCreditPaymentMethod,
   RtpCreditPaymentMethod$inboundSchema,
@@ -111,6 +129,9 @@ export type PaymentMethod =
   | InstantBankCreditPaymentMethod
   | PushToApplePayPaymentMethod
   | PullFromApplePayPaymentMethod
+  | GooglePayPaymentMethod
+  | PushToGooglePayPaymentMethod
+  | PullFromGooglePayPaymentMethod
   | discriminatedUnionTypes.Unknown<"paymentMethodType">;
 
 /** @internal */
@@ -133,6 +154,9 @@ export const PaymentMethod$inboundSchema: z.ZodType<
   ["instant-bank-credit"]: InstantBankCreditPaymentMethod$inboundSchema,
   ["push-to-apple-pay"]: PushToApplePayPaymentMethod$inboundSchema,
   ["pull-from-apple-pay"]: PullFromApplePayPaymentMethod$inboundSchema,
+  ["google-pay"]: GooglePayPaymentMethod$inboundSchema,
+  ["push-to-google-pay"]: PushToGooglePayPaymentMethod$inboundSchema,
+  ["pull-from-google-pay"]: PullFromGooglePayPaymentMethod$inboundSchema,
 });
 /** @internal */
 export type PaymentMethod$Outbound =
@@ -149,7 +173,10 @@ export type PaymentMethod$Outbound =
   | CardPresentPaymentPaymentMethod$Outbound
   | InstantBankCreditPaymentMethod$Outbound
   | PushToApplePayPaymentMethod$Outbound
-  | PullFromApplePayPaymentMethod$Outbound;
+  | PullFromApplePayPaymentMethod$Outbound
+  | GooglePayPaymentMethod$Outbound
+  | PushToGooglePayPaymentMethod$Outbound
+  | PullFromGooglePayPaymentMethod$Outbound;
 
 /** @internal */
 export const PaymentMethod$outboundSchema: z.ZodType<
@@ -171,6 +198,9 @@ export const PaymentMethod$outboundSchema: z.ZodType<
   InstantBankCreditPaymentMethod$outboundSchema,
   PushToApplePayPaymentMethod$outboundSchema,
   PullFromApplePayPaymentMethod$outboundSchema,
+  GooglePayPaymentMethod$outboundSchema,
+  PushToGooglePayPaymentMethod$outboundSchema,
+  PullFromGooglePayPaymentMethod$outboundSchema,
 ]);
 
 export function paymentMethodToJSON(paymentMethod: PaymentMethod): string {

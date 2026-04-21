@@ -7,7 +7,7 @@ import { TransferSource } from "@moovio/sdk/models/components";
 
 let value: TransferSource = {
   paymentMethodID: "<id>",
-  paymentMethodType: "moov-wallet",
+  paymentMethodType: "ach-debit-fund",
   account: {
     accountID: "<id>",
     email: "Jaeden92@yahoo.com",

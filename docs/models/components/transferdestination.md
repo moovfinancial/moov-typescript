@@ -7,7 +7,7 @@ import { TransferDestination } from "@moovio/sdk/models/components";
 
 let value: TransferDestination = {
   paymentMethodID: "<id>",
-  paymentMethodType: "card-payment",
+  paymentMethodType: "push-to-card",
   account: {
     accountID: "<id>",
     email: "Jaeden92@yahoo.com",

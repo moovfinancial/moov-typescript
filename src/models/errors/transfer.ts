@@ -85,6 +85,10 @@ export type TransferData = {
    * ID of the invoice that the transfer is associated with.
    */
   invoiceID?: string | undefined;
+  /**
+   * The card authorization and capture IDs associated with a transfer.
+   */
+  capture?: components.TransferCapture | undefined;
 };
 
 /**
@@ -165,6 +169,10 @@ export class Transfer extends MoovError {
    * ID of the invoice that the transfer is associated with.
    */
   invoiceID?: string | undefined;
+  /**
+   * The card authorization and capture IDs associated with a transfer.
+   */
+  capture?: components.TransferCapture | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferData;
@@ -207,6 +215,7 @@ export class Transfer extends MoovError {
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.invoiceID != null) this.invoiceID = err.invoiceID;
+    if (err.capture != null) this.capture = err.capture;
 
     this.name = "Transfer";
   }
@@ -251,6 +260,7 @@ export const Transfer$inboundSchema: z.ZodType<
   foreignID: types.optional(types.string()),
   lineItems: types.optional(components.TransferLineItems$inboundSchema),
   invoiceID: types.optional(types.string()),
+  capture: types.optional(components.TransferCapture$inboundSchema),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -294,6 +304,7 @@ export type Transfer$Outbound = {
   foreignID?: string | undefined;
   lineItems?: components.TransferLineItems$Outbound | undefined;
   invoiceID?: string | undefined;
+  capture?: components.TransferCapture$Outbound | undefined;
 };
 
 /** @internal */
@@ -334,4 +345,5 @@ export const Transfer$outboundSchema: z.ZodType<
     foreignID: z.string().optional(),
     lineItems: components.TransferLineItems$outboundSchema.optional(),
     invoiceID: z.string().optional(),
+    capture: components.TransferCapture$outboundSchema.optional(),
   }));

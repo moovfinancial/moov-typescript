@@ -104,6 +104,7 @@ export * from "./linkaccountterminalapplication.js";
 export * from "./linkapplepaytoken.js";
 export * from "./linkbankaccount.js";
 export * from "./linkcard.js";
+export * from "./linkgooglepaytoken.js";
 export * from "./listaccounts.js";
 export * from "./listaccountterminalapplications.js";
 export * from "./listadjustments.js";

@@ -21,7 +21,7 @@ let value: CreateTransferOptionsResponse = {
     sourceOptions: [
       {
         paymentMethodID: "8a0652ec-9a9f-4a34-85b0-3c2d5c8eaf23",
-        paymentMethodType: "ach-credit-standard",
+        paymentMethodType: "ach-credit-same-day",
         bankAccount: {
           bankAccountID: "<id>",
           fingerprint: "<value>",

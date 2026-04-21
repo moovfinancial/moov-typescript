@@ -50,6 +50,12 @@ import {
   MoovFeeDetails$outboundSchema,
 } from "./moovfeedetails.js";
 import {
+  TransferCapture,
+  TransferCapture$inboundSchema,
+  TransferCapture$Outbound,
+  TransferCapture$outboundSchema,
+} from "./transfercapture.js";
+import {
   TransferDestination,
   TransferDestination$inboundSchema,
   TransferDestination$Outbound,
@@ -156,6 +162,10 @@ export type Transfer = {
    * ID of the invoice that the transfer is associated with.
    */
   invoiceID?: string | undefined;
+  /**
+   * The card authorization and capture IDs associated with a transfer.
+   */
+  capture?: TransferCapture | undefined;
 };
 
 /** @internal */
@@ -193,6 +203,7 @@ export const Transfer$inboundSchema: z.ZodType<
   foreignID: types.optional(types.string()),
   lineItems: types.optional(TransferLineItems$inboundSchema),
   invoiceID: types.optional(types.string()),
+  capture: types.optional(TransferCapture$inboundSchema),
 });
 /** @internal */
 export type Transfer$Outbound = {
@@ -225,6 +236,7 @@ export type Transfer$Outbound = {
   foreignID?: string | undefined;
   lineItems?: TransferLineItems$Outbound | undefined;
   invoiceID?: string | undefined;
+  capture?: TransferCapture$Outbound | undefined;
 };
 
 /** @internal */
@@ -262,6 +274,7 @@ export const Transfer$outboundSchema: z.ZodType<
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$outboundSchema.optional(),
   invoiceID: z.string().optional(),
+  capture: TransferCapture$outboundSchema.optional(),
 });
 
 export function transferToJSON(transfer: Transfer): string {

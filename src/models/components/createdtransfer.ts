@@ -44,6 +44,12 @@ import {
   MoovFeeDetails$outboundSchema,
 } from "./moovfeedetails.js";
 import {
+  TransferCapture,
+  TransferCapture$inboundSchema,
+  TransferCapture$Outbound,
+  TransferCapture$outboundSchema,
+} from "./transfercapture.js";
+import {
   TransferDestination,
   TransferDestination$inboundSchema,
   TransferDestination$Outbound,
@@ -136,6 +142,10 @@ export type CreatedTransfer = {
    * When line items are provided, their total plus sales tax must equal the transfer amount.
    */
   lineItems?: TransferLineItems | undefined;
+  /**
+   * The card authorization and capture IDs associated with a transfer.
+   */
+  capture?: TransferCapture | undefined;
 };
 
 /** @internal */
@@ -171,6 +181,7 @@ export const CreatedTransfer$inboundSchema: z.ZodType<
   salesTaxAmount: types.optional(Amount$inboundSchema),
   foreignID: types.optional(types.string()),
   lineItems: types.optional(TransferLineItems$inboundSchema),
+  capture: types.optional(TransferCapture$inboundSchema),
 });
 /** @internal */
 export type CreatedTransfer$Outbound = {
@@ -201,6 +212,7 @@ export type CreatedTransfer$Outbound = {
   salesTaxAmount?: Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: TransferLineItems$Outbound | undefined;
+  capture?: TransferCapture$Outbound | undefined;
 };
 
 /** @internal */
@@ -236,6 +248,7 @@ export const CreatedTransfer$outboundSchema: z.ZodType<
   salesTaxAmount: Amount$outboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$outboundSchema.optional(),
+  capture: TransferCapture$outboundSchema.optional(),
 });
 
 export function createdTransferToJSON(
