@@ -43,6 +43,12 @@ import {
   MoovFeeDetails$outboundSchema,
 } from "./moovfeedetails.js";
 import {
+  TransferAmountDetails,
+  TransferAmountDetails$inboundSchema,
+  TransferAmountDetails$Outbound,
+  TransferAmountDetails$outboundSchema,
+} from "./transferamountdetails.js";
+import {
   TransferDestination,
   TransferDestination$inboundSchema,
   TransferDestination$Outbound,
@@ -121,7 +127,7 @@ export type CreatedTransfer = {
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
   /**
-   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
+   * Optional sales tax amount.
    */
   salesTaxAmount?: Amount | undefined;
   /**
@@ -135,6 +141,7 @@ export type CreatedTransfer = {
    * When line items are provided, their total plus sales tax must equal the transfer amount.
    */
   lineItems?: TransferLineItems | undefined;
+  amountDetails?: TransferAmountDetails | undefined;
 };
 
 /** @internal */
@@ -171,6 +178,7 @@ export const CreatedTransfer$inboundSchema: z.ZodType<
   salesTaxAmount: Amount$inboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$inboundSchema.optional(),
+  amountDetails: TransferAmountDetails$inboundSchema.optional(),
 });
 /** @internal */
 export type CreatedTransfer$Outbound = {
@@ -201,6 +209,7 @@ export type CreatedTransfer$Outbound = {
   salesTaxAmount?: Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: TransferLineItems$Outbound | undefined;
+  amountDetails?: TransferAmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -236,6 +245,7 @@ export const CreatedTransfer$outboundSchema: z.ZodType<
   salesTaxAmount: Amount$outboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$outboundSchema.optional(),
+  amountDetails: TransferAmountDetails$outboundSchema.optional(),
 });
 
 export function createdTransferToJSON(

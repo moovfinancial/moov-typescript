@@ -53,6 +53,7 @@ export * from "./schedulevalidationerror.js";
 export * from "./sdkvalidationerror.js";
 export * from "./terminalapplicationerror.js";
 export * from "./transfer.js";
+export * from "./transferconfigvalidationerror.js";
 export * from "./transferoptionsvalidationerror.js";
 export * from "./transfervalidationerror.js";
 export * from "./updatecarderror.js";

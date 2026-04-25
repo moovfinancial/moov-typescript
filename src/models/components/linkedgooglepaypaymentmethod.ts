@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -13,34 +12,26 @@ import {
   GooglePayResponse$Outbound,
   GooglePayResponse$outboundSchema,
 } from "./googlepayresponse.js";
-
-export const LinkedGooglePayPaymentMethodPaymentMethodType = {
-  GooglePay: "google-pay",
-} as const;
-export type LinkedGooglePayPaymentMethodPaymentMethodType = ClosedEnum<
-  typeof LinkedGooglePayPaymentMethodPaymentMethodType
->;
+import {
+  PaymentMethodType,
+  PaymentMethodType$inboundSchema,
+  PaymentMethodType$outboundSchema,
+} from "./paymentmethodtype.js";
 
 export type LinkedGooglePayPaymentMethod = {
   /**
    * The new payment method's ID.
    */
   paymentMethodID: string;
-  paymentMethodType: LinkedGooglePayPaymentMethodPaymentMethodType;
+  /**
+   * The payment method type that represents a payment rail and directionality
+   */
+  paymentMethodType: PaymentMethodType;
   /**
    * Describes a Google Pay token on a Moov account.
    */
   googlePay: GooglePayResponse;
 };
-
-/** @internal */
-export const LinkedGooglePayPaymentMethodPaymentMethodType$inboundSchema:
-  z.ZodNativeEnum<typeof LinkedGooglePayPaymentMethodPaymentMethodType> = z
-    .nativeEnum(LinkedGooglePayPaymentMethodPaymentMethodType);
-/** @internal */
-export const LinkedGooglePayPaymentMethodPaymentMethodType$outboundSchema:
-  z.ZodNativeEnum<typeof LinkedGooglePayPaymentMethodPaymentMethodType> =
-    LinkedGooglePayPaymentMethodPaymentMethodType$inboundSchema;
 
 /** @internal */
 export const LinkedGooglePayPaymentMethod$inboundSchema: z.ZodType<
@@ -49,8 +40,7 @@ export const LinkedGooglePayPaymentMethod$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType:
-    LinkedGooglePayPaymentMethodPaymentMethodType$inboundSchema,
+  paymentMethodType: PaymentMethodType$inboundSchema,
   googlePay: GooglePayResponse$inboundSchema,
 });
 /** @internal */
@@ -67,8 +57,7 @@ export const LinkedGooglePayPaymentMethod$outboundSchema: z.ZodType<
   LinkedGooglePayPaymentMethod
 > = z.object({
   paymentMethodID: z.string(),
-  paymentMethodType:
-    LinkedGooglePayPaymentMethodPaymentMethodType$outboundSchema,
+  paymentMethodType: PaymentMethodType$outboundSchema,
   googlePay: GooglePayResponse$outboundSchema,
 });
 

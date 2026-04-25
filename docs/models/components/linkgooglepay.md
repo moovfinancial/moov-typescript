@@ -1,9 +1,10 @@
 # LinkGooglePay
 
-  The encrypted Google Pay payment token (ECv2 format).
+  Links a Google Pay token to a Moov account.
 
-  Refer to [Google's documentation](https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography#payment-method-token-structure)
-  for more information.
+  The `paymentMethodData` field should contain the `paymentMethodData` property from the
+  [PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response
+  returned by Google Pay's client SDK. Pass it through unmodified.
 
 ## Example Usage
 
@@ -11,24 +12,28 @@
 import { LinkGooglePay } from "@moovio/sdk/models/components";
 
 let value: LinkGooglePay = {
-  token: {
-    protocolVersion: "ECv2",
-    signature: "<value>",
-    intermediateSigningKey: {
-      signedKey: "<value>",
-      signatures: [
-        "<value 1>",
-        "<value 2>",
-        "<value 3>",
-      ],
+  merchantAccountID: "c5f78a7e-2fb0-4e4a-bcf0-9e1f8b0e5c7a",
+  paymentMethodData: {
+    type: "CARD",
+    info: {
+      cardNetwork: "VISA",
+      cardDetails: "1234",
+      cardFundingSource: "DEBIT",
+      billingAddress: {
+        countryCode: "US",
+      },
     },
-    signedMessage: "<value>",
+    tokenizationData: {
+      type: "PAYMENT_GATEWAY",
+      token: "<value>",
+    },
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                           |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `token`                                                                                                                                                                                                                                               | [components.GooglePayToken](../../models/components/googlepaytoken.md)                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                    |   Contains the encrypted payment token as returned from Google Pay.<br/><br/>  Refer to [Google's documentation](https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography#payment-method-token-structure)<br/>  for more information. |
+| Field                                                                                                                                                                                                                                             | Type                                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                                       | Example                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `merchantAccountID`                                                                                                                                                                                                                               | *string*                                                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                |   The merchant accountID this token was minted for. Must match the `gatewayMerchantId`<br/>  value passed to Google Pay when constructing the PaymentDataRequest. card-gateway validates<br/>  that the decrypted `gatewayMerchantId` matches this value. | c5f78a7e-2fb0-4e4a-bcf0-9e1f8b0e5c7a                                                                                                                                                                                                              |
+| `paymentMethodData`                                                                                                                                                                                                                               | [components.GooglePayPaymentMethodData](../../models/components/googlepaypaymentmethoddata.md)                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                                                |   The `paymentMethodData` object from Google Pay's<br/>  [PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response.                                                                                |                                                                                                                                                                                                                                                   |

@@ -11,9 +11,13 @@ export type LinkGooglePayErrorData = {
    */
   error?: string | undefined;
   /**
-   * Describes an error within the `token` request field.
+   * Describes an error within the `merchantAccountID` request field.
    */
-  token?: string | undefined;
+  merchantAccountID?: string | undefined;
+  /**
+   * Describes an error within the `paymentMethodData` request field.
+   */
+  paymentMethodData?: string | undefined;
 };
 
 export class LinkGooglePayError extends MoovError {
@@ -22,9 +26,13 @@ export class LinkGooglePayError extends MoovError {
    */
   error?: string | undefined;
   /**
-   * Describes an error within the `token` request field.
+   * Describes an error within the `merchantAccountID` request field.
    */
-  token?: string | undefined;
+  merchantAccountID?: string | undefined;
+  /**
+   * Describes an error within the `paymentMethodData` request field.
+   */
+  paymentMethodData?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: LinkGooglePayErrorData;
@@ -39,7 +47,12 @@ export class LinkGooglePayError extends MoovError {
     super(message, httpMeta);
     this.data$ = err;
     if (err.error != null) this.error = err.error;
-    if (err.token != null) this.token = err.token;
+    if (err.merchantAccountID != null) {
+      this.merchantAccountID = err.merchantAccountID;
+    }
+    if (err.paymentMethodData != null) {
+      this.paymentMethodData = err.paymentMethodData;
+    }
 
     this.name = "LinkGooglePayError";
   }
@@ -52,7 +65,8 @@ export const LinkGooglePayError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.string().optional(),
-  token: z.string().optional(),
+  merchantAccountID: z.string().optional(),
+  paymentMethodData: z.string().optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -68,7 +82,8 @@ export const LinkGooglePayError$inboundSchema: z.ZodType<
 /** @internal */
 export type LinkGooglePayError$Outbound = {
   error?: string | undefined;
-  token?: string | undefined;
+  merchantAccountID?: string | undefined;
+  paymentMethodData?: string | undefined;
 };
 
 /** @internal */
@@ -80,5 +95,6 @@ export const LinkGooglePayError$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     error: z.string().optional(),
-    token: z.string().optional(),
+    merchantAccountID: z.string().optional(),
+    paymentMethodData: z.string().optional(),
   }));

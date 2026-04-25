@@ -19,6 +19,9 @@ export type TransferValidationErrorData = {
   salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
   lineItems?: components.CreateTransferLineItemsValidationError | undefined;
+  amountDetails?:
+    | components.CreateTransferAmountDetailsValidationError
+    | undefined;
 };
 
 export class TransferValidationError extends MoovError {
@@ -33,6 +36,9 @@ export class TransferValidationError extends MoovError {
   salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
   lineItems?: components.CreateTransferLineItemsValidationError | undefined;
+  amountDetails?:
+    | components.CreateTransferAmountDetailsValidationError
+    | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferValidationErrorData;
@@ -65,6 +71,7 @@ export class TransferValidationError extends MoovError {
     if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.lineItems != null) this.lineItems = err.lineItems;
+    if (err.amountDetails != null) this.amountDetails = err.amountDetails;
 
     this.name = "TransferValidationError";
   }
@@ -88,6 +95,8 @@ export const TransferValidationError$inboundSchema: z.ZodType<
   foreignID: z.string().optional(),
   lineItems: components.CreateTransferLineItemsValidationError$inboundSchema
     .optional(),
+  amountDetails: components
+    .CreateTransferAmountDetailsValidationError$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -120,6 +129,9 @@ export type TransferValidationError$Outbound = {
   lineItems?:
     | components.CreateTransferLineItemsValidationError$Outbound
     | undefined;
+  amountDetails?:
+    | components.CreateTransferAmountDetailsValidationError$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -143,6 +155,8 @@ export const TransferValidationError$outboundSchema: z.ZodType<
       foreignID: z.string().optional(),
       lineItems: components
         .CreateTransferLineItemsValidationError$outboundSchema.optional(),
+      amountDetails: components
+        .CreateTransferAmountDetailsValidationError$outboundSchema.optional(),
     }).transform((v) => {
       return remap$(v, {
         facilitatorFeeTotalDecimal: "FacilitatorFee.TotalDecimal",

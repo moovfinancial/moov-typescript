@@ -30,6 +30,7 @@ let value: ListPaymentLinksResponse = {
       },
       customer: {
         requirePhone: true,
+        tippingEnabled: true,
       },
       payment: {
         allowedMethods: [

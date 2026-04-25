@@ -17,6 +17,10 @@ export type PaymentLinkCustomerOptions = {
    */
   requirePhone?: boolean | undefined;
   /**
+   * If true, tipping is enabled on the payment form. Defaults to false.
+   */
+  tippingEnabled?: boolean | undefined;
+  /**
    * Optional free-form metadata for the Moov account that will represent this customer.
    */
   metadata?: { [k: string]: string } | undefined;
@@ -30,12 +34,14 @@ export const PaymentLinkCustomerOptions$inboundSchema: z.ZodType<
 > = z.object({
   requireAddress: z.boolean().optional(),
   requirePhone: z.boolean().optional(),
+  tippingEnabled: z.boolean().optional(),
   metadata: z.record(z.string()).optional(),
 });
 /** @internal */
 export type PaymentLinkCustomerOptions$Outbound = {
   requireAddress?: boolean | undefined;
   requirePhone?: boolean | undefined;
+  tippingEnabled?: boolean | undefined;
   metadata?: { [k: string]: string } | undefined;
 };
 
@@ -47,6 +53,7 @@ export const PaymentLinkCustomerOptions$outboundSchema: z.ZodType<
 > = z.object({
   requireAddress: z.boolean().optional(),
   requirePhone: z.boolean().optional(),
+  tippingEnabled: z.boolean().optional(),
   metadata: z.record(z.string()).optional(),
 });
 

@@ -25,6 +25,12 @@ import {
   CardTransactionDetails$outboundSchema,
 } from "./cardtransactiondetails.js";
 import {
+  GooglePayResponse,
+  GooglePayResponse$inboundSchema,
+  GooglePayResponse$Outbound,
+  GooglePayResponse$outboundSchema,
+} from "./googlepayresponse.js";
+import {
   TransferAccount,
   TransferAccount$inboundSchema,
   TransferAccount$Outbound,
@@ -85,6 +91,10 @@ export type TransferSource = {
    */
   applePay?: ApplePayResponse | undefined;
   /**
+   * Describes a Google Pay token on a Moov account.
+   */
+  googlePay?: GooglePayResponse | undefined;
+  /**
    * Describes payment card details captured with tap or in-person payment.
    */
   terminalCard?: TransferTerminalCard | undefined;
@@ -112,6 +122,7 @@ export const TransferSource$inboundSchema: z.ZodType<
   wallet: TransferPaymentMethodsWallet$inboundSchema.optional(),
   card: TransferPaymentMethodsCard$inboundSchema.optional(),
   applePay: ApplePayResponse$inboundSchema.optional(),
+  googlePay: GooglePayResponse$inboundSchema.optional(),
   terminalCard: TransferTerminalCard$inboundSchema.optional(),
   cardDetails: CardTransactionDetails$inboundSchema.optional(),
   achDetails: ACHTransactionDetails$inboundSchema.optional(),
@@ -126,6 +137,7 @@ export type TransferSource$Outbound = {
   wallet?: TransferPaymentMethodsWallet$Outbound | undefined;
   card?: TransferPaymentMethodsCard$Outbound | undefined;
   applePay?: ApplePayResponse$Outbound | undefined;
+  googlePay?: GooglePayResponse$Outbound | undefined;
   terminalCard?: TransferTerminalCard$Outbound | undefined;
   cardDetails?: CardTransactionDetails$Outbound | undefined;
   achDetails?: ACHTransactionDetails$Outbound | undefined;
@@ -145,6 +157,7 @@ export const TransferSource$outboundSchema: z.ZodType<
   wallet: TransferPaymentMethodsWallet$outboundSchema.optional(),
   card: TransferPaymentMethodsCard$outboundSchema.optional(),
   applePay: ApplePayResponse$outboundSchema.optional(),
+  googlePay: GooglePayResponse$outboundSchema.optional(),
   terminalCard: TransferTerminalCard$outboundSchema.optional(),
   cardDetails: CardTransactionDetails$outboundSchema.optional(),
   achDetails: ACHTransactionDetails$outboundSchema.optional(),

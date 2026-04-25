@@ -49,6 +49,12 @@ import {
   MoovFeeDetails$outboundSchema,
 } from "./moovfeedetails.js";
 import {
+  TransferAmountDetails,
+  TransferAmountDetails$inboundSchema,
+  TransferAmountDetails$Outbound,
+  TransferAmountDetails$outboundSchema,
+} from "./transferamountdetails.js";
+import {
   TransferDestination,
   TransferDestination$inboundSchema,
   TransferDestination$Outbound,
@@ -136,9 +142,6 @@ export type Transfer = {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
-  /**
-   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
-   */
   salesTaxAmount?: Amount | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
@@ -155,6 +158,7 @@ export type Transfer = {
    * ID of the invoice that the transfer is associated with.
    */
   invoiceID?: string | undefined;
+  amountDetails?: TransferAmountDetails | undefined;
 };
 
 /** @internal */
@@ -193,6 +197,7 @@ export const Transfer$inboundSchema: z.ZodType<
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$inboundSchema.optional(),
   invoiceID: z.string().optional(),
+  amountDetails: TransferAmountDetails$inboundSchema.optional(),
 });
 /** @internal */
 export type Transfer$Outbound = {
@@ -225,6 +230,7 @@ export type Transfer$Outbound = {
   foreignID?: string | undefined;
   lineItems?: TransferLineItems$Outbound | undefined;
   invoiceID?: string | undefined;
+  amountDetails?: TransferAmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -262,6 +268,7 @@ export const Transfer$outboundSchema: z.ZodType<
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$outboundSchema.optional(),
   invoiceID: z.string().optional(),
+  amountDetails: TransferAmountDetails$outboundSchema.optional(),
 });
 
 export function transferToJSON(transfer: Transfer): string {

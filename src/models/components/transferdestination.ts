@@ -25,6 +25,12 @@ import {
   CardTransactionDetails$outboundSchema,
 } from "./cardtransactiondetails.js";
 import {
+  GooglePayResponse,
+  GooglePayResponse$inboundSchema,
+  GooglePayResponse$Outbound,
+  GooglePayResponse$outboundSchema,
+} from "./googlepayresponse.js";
+import {
   InstantBankTransactionDetails,
   InstantBankTransactionDetails$inboundSchema,
   InstantBankTransactionDetails$Outbound,
@@ -119,6 +125,10 @@ export type TransferDestination = {
    */
   applePay?: ApplePayResponse | undefined;
   /**
+   * Describes a Google Pay token on a Moov account.
+   */
+  googlePay?: GooglePayResponse | undefined;
+  /**
    * Card-specific details about the transaction.
    */
   cardDetails?: CardTransactionDetails | undefined;
@@ -204,6 +214,7 @@ export const TransferDestination$inboundSchema: z.ZodType<
   card: TransferPaymentMethodsCard$inboundSchema.optional(),
   achDetails: ACHTransactionDetails$inboundSchema.optional(),
   applePay: ApplePayResponse$inboundSchema.optional(),
+  googlePay: GooglePayResponse$inboundSchema.optional(),
   cardDetails: CardTransactionDetails$inboundSchema.optional(),
   rtpDetails: z.lazy(() => RtpDetails$inboundSchema).optional(),
   instantBankDetails: InstantBankTransactionDetails$inboundSchema.optional(),
@@ -218,6 +229,7 @@ export type TransferDestination$Outbound = {
   card?: TransferPaymentMethodsCard$Outbound | undefined;
   achDetails?: ACHTransactionDetails$Outbound | undefined;
   applePay?: ApplePayResponse$Outbound | undefined;
+  googlePay?: GooglePayResponse$Outbound | undefined;
   cardDetails?: CardTransactionDetails$Outbound | undefined;
   rtpDetails?: RtpDetails$Outbound | undefined;
   instantBankDetails?: InstantBankTransactionDetails$Outbound | undefined;
@@ -237,6 +249,7 @@ export const TransferDestination$outboundSchema: z.ZodType<
   card: TransferPaymentMethodsCard$outboundSchema.optional(),
   achDetails: ACHTransactionDetails$outboundSchema.optional(),
   applePay: ApplePayResponse$outboundSchema.optional(),
+  googlePay: GooglePayResponse$outboundSchema.optional(),
   cardDetails: CardTransactionDetails$outboundSchema.optional(),
   rtpDetails: z.lazy(() => RtpDetails$outboundSchema).optional(),
   instantBankDetails: InstantBankTransactionDetails$outboundSchema.optional(),

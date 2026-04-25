@@ -70,6 +70,17 @@ let value: TransferDestination = {
     dynamicLastFour: "<value>",
     issuerCountry: "US",
   },
+  googlePay: {
+    brand: "Visa",
+    cardDetails: "1234",
+    fingerprint:
+      "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+    expiration: {
+      month: "01",
+      year: "21",
+    },
+    issuerCountry: "US",
+  },
   cardDetails: {
     dynamicDescriptor: "WhlBdy *Yoga 11-12",
     feeProgram:
@@ -90,6 +101,7 @@ let value: TransferDestination = {
 | `card`                                                                                                                  | [components.TransferPaymentMethodsCard](../../models/components/transferpaymentmethodscard.md)                          | :heavy_minus_sign:                                                                                                      | A card as contained within a payment method.                                                                            |
 | `achDetails`                                                                                                            | [components.ACHTransactionDetails](../../models/components/achtransactiondetails.md)                                    | :heavy_minus_sign:                                                                                                      | ACH specific details about the transaction.                                                                             |
 | `applePay`                                                                                                              | [components.ApplePayResponse](../../models/components/applepayresponse.md)                                              | :heavy_minus_sign:                                                                                                      | Describes an Apple Pay token on a Moov account.                                                                         |
+| `googlePay`                                                                                                             | [components.GooglePayResponse](../../models/components/googlepayresponse.md)                                            | :heavy_minus_sign:                                                                                                      | Describes a Google Pay token on a Moov account.                                                                         |
 | `cardDetails`                                                                                                           | [components.CardTransactionDetails](../../models/components/cardtransactiondetails.md)                                  | :heavy_minus_sign:                                                                                                      | Card-specific details about the transaction.                                                                            |
 | ~~`rtpDetails`~~                                                                                                        | [components.RtpDetails](../../models/components/rtpdetails.md)                                                          | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
 | `instantBankDetails`                                                                                                    | [components.InstantBankTransactionDetails](../../models/components/instantbanktransactiondetails.md)                    | :heavy_minus_sign:                                                                                                      | Instant-bank specific details about the transaction.                                                                    |

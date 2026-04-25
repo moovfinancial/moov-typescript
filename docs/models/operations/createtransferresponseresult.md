@@ -68,6 +68,17 @@ const value: components.CreatedTransfer = {
       dynamicLastFour: "<value>",
       issuerCountry: "US",
     },
+    googlePay: {
+      brand: "Visa",
+      cardDetails: "1234",
+      fingerprint:
+        "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+      expiration: {
+        month: "01",
+        year: "21",
+      },
+      issuerCountry: "US",
+    },
     terminalCard: {
       entryMode: "contactless",
       brand: "Visa",
@@ -161,6 +172,17 @@ const value: components.CreatedTransfer = {
       dynamicLastFour: "<value>",
       issuerCountry: "US",
     },
+    googlePay: {
+      brand: "Visa",
+      cardDetails: "1234",
+      fingerprint:
+        "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+      expiration: {
+        month: "01",
+        year: "21",
+      },
+      issuerCountry: "US",
+    },
     cardDetails: {
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
       feeProgram:
@@ -215,6 +237,12 @@ const value: components.CreatedTransfer = {
   },
   lineItems: {
     items: [],
+  },
+  amountDetails: {
+    tip: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
   },
 };
 ```

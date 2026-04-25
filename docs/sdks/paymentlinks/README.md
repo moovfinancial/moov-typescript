@@ -68,6 +68,7 @@ async function run() {
       },
       customer: {
         requirePhone: true,
+        tippingEnabled: true,
       },
       payment: {
         allowedMethods: [
@@ -118,6 +119,7 @@ async function run() {
       },
       customer: {
         requirePhone: true,
+        tippingEnabled: true,
       },
       payment: {
         allowedMethods: [

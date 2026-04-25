@@ -13,6 +13,12 @@ import {
   Amount$outboundSchema,
 } from "./amount.js";
 import {
+  CreateTransferAmountDetails,
+  CreateTransferAmountDetails$inboundSchema,
+  CreateTransferAmountDetails$Outbound,
+  CreateTransferAmountDetails$outboundSchema,
+} from "./createtransferamountdetails.js";
+import {
   CreateTransferDestination,
   CreateTransferDestination$inboundSchema,
   CreateTransferDestination$Outbound,
@@ -59,9 +65,6 @@ export type CreateTransfer = {
    * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
    */
   metadata?: { [k: string]: string } | undefined;
-  /**
-   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
-   */
   salesTaxAmount?: Amount | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
@@ -74,6 +77,7 @@ export type CreateTransfer = {
    * When line items are provided, their total plus sales tax must equal the transfer amount.
    */
   lineItems?: CreateTransferLineItems | undefined;
+  amountDetails?: CreateTransferAmountDetails | undefined;
 };
 
 /** @internal */
@@ -91,6 +95,7 @@ export const CreateTransfer$inboundSchema: z.ZodType<
   salesTaxAmount: Amount$inboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: CreateTransferLineItems$inboundSchema.optional(),
+  amountDetails: CreateTransferAmountDetails$inboundSchema.optional(),
 });
 /** @internal */
 export type CreateTransfer$Outbound = {
@@ -103,6 +108,7 @@ export type CreateTransfer$Outbound = {
   salesTaxAmount?: Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: CreateTransferLineItems$Outbound | undefined;
+  amountDetails?: CreateTransferAmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -120,6 +126,7 @@ export const CreateTransfer$outboundSchema: z.ZodType<
   salesTaxAmount: Amount$outboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: CreateTransferLineItems$outboundSchema.optional(),
+  amountDetails: CreateTransferAmountDetails$outboundSchema.optional(),
 });
 
 export function createTransferToJSON(createTransfer: CreateTransfer): string {
