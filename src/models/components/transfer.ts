@@ -136,9 +136,6 @@ export type Transfer = {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
-  /**
-   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
-   */
   salesTaxAmount?: Amount | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.

@@ -59,9 +59,6 @@ export type CreateTransfer = {
    * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
    */
   metadata?: { [k: string]: string } | undefined;
-  /**
-   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
-   */
   salesTaxAmount?: Amount | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.

@@ -61,7 +61,20 @@ export type CreatePaymentLink = {
    * The merchant's preferred payment method ID. Must be a wallet payment method.
    */
   merchantPaymentMethodID: string;
+  /**
+   * The fixed amount of the payment link.
+   *
+   * @remarks
+   *
+   * In API versions before `2026.07.00`, this was a required field.
+   *
+   * In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted
+   * for `open` payment amount types.
+   */
   amount: Amount;
+  /**
+   * Optional sales tax amount.
+   */
   salesTaxAmount?: Amount | undefined;
   /**
    * An optional limit on the number of times this payment link can be used.
