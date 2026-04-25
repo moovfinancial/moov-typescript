@@ -85,6 +85,16 @@ export type PaymentLink = {
    * Link to the payment landing page for this payment link.
    */
   link: string;
+  /**
+   * The fixed amount of the payment link.
+   *
+   * @remarks
+   *
+   * In API versions before `2026.07.00`, this was a required field.
+   *
+   * In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted
+   * for `open` payment amount types.
+   */
   amount: Amount;
   /**
    * Optional sales tax amount.

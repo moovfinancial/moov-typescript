@@ -121,7 +121,7 @@ export type CreatedTransfer = {
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
   /**
-   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
+   * Optional sales tax amount.
    */
   salesTaxAmount?: Amount | undefined;
   /**
