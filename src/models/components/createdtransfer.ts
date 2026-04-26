@@ -44,6 +44,12 @@ import {
   MoovFeeDetails$outboundSchema,
 } from "./moovfeedetails.js";
 import {
+  TransferAmountDetails,
+  TransferAmountDetails$inboundSchema,
+  TransferAmountDetails$Outbound,
+  TransferAmountDetails$outboundSchema,
+} from "./transferamountdetails.js";
+import {
   TransferCapture,
   TransferCapture$inboundSchema,
   TransferCapture$Outbound,
@@ -128,7 +134,7 @@ export type CreatedTransfer = {
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
   /**
-   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
+   * Optional sales tax amount.
    */
   salesTaxAmount?: Amount | undefined;
   /**
@@ -142,6 +148,7 @@ export type CreatedTransfer = {
    * When line items are provided, their total plus sales tax must equal the transfer amount.
    */
   lineItems?: TransferLineItems | undefined;
+  amountDetails?: TransferAmountDetails | undefined;
   /**
    * The card authorization and capture IDs associated with a transfer.
    */
@@ -181,6 +188,7 @@ export const CreatedTransfer$inboundSchema: z.ZodType<
   salesTaxAmount: types.optional(Amount$inboundSchema),
   foreignID: types.optional(types.string()),
   lineItems: types.optional(TransferLineItems$inboundSchema),
+  amountDetails: types.optional(TransferAmountDetails$inboundSchema),
   capture: types.optional(TransferCapture$inboundSchema),
 });
 /** @internal */
@@ -212,6 +220,7 @@ export type CreatedTransfer$Outbound = {
   salesTaxAmount?: Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: TransferLineItems$Outbound | undefined;
+  amountDetails?: TransferAmountDetails$Outbound | undefined;
   capture?: TransferCapture$Outbound | undefined;
 };
 
@@ -248,6 +257,7 @@ export const CreatedTransfer$outboundSchema: z.ZodType<
   salesTaxAmount: Amount$outboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$outboundSchema.optional(),
+  amountDetails: TransferAmountDetails$outboundSchema.optional(),
   capture: TransferCapture$outboundSchema.optional(),
 });
 

@@ -6,7 +6,9 @@
 
 * [linkToken](#linktoken) - Connect a Google Pay token to the specified account.
 
-The `token` data is defined by Google Pay and should be passed through from Google Pay's response unmodified.
+The `paymentMethodData` field should contain the `paymentMethodData` property from Google Pay's
+[PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response,
+passed through unmodified.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
@@ -15,7 +17,9 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
 Connect a Google Pay token to the specified account.
 
-The `token` data is defined by Google Pay and should be passed through from Google Pay's response unmodified.
+The `paymentMethodData` field should contain the `paymentMethodData` property from Google Pay's
+[PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response,
+passed through unmodified.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
@@ -37,18 +41,21 @@ async function run() {
   const result = await moov.googlePay.linkToken({
     accountID: "<id>",
     linkGooglePay: {
-      token: {
-        protocolVersion: "ECv2",
-        signature: "<value>",
-        intermediateSigningKey: {
-          signedKey: "<value>",
-          signatures: [
-            "<value 1>",
-            "<value 2>",
-            "<value 3>",
-          ],
+      merchantAccountID: "c5f78a7e-2fb0-4e4a-bcf0-9e1f8b0e5c7a",
+      paymentMethodData: {
+        type: "CARD",
+        info: {
+          cardNetwork: "VISA",
+          cardDetails: "1234",
+          cardFundingSource: "DEBIT",
+          billingAddress: {
+            countryCode: "US",
+          },
         },
-        signedMessage: "<value>",
+        tokenizationData: {
+          type: "PAYMENT_GATEWAY",
+          token: "<value>",
+        },
       },
     },
   });
@@ -80,18 +87,21 @@ async function run() {
   const res = await googlePayLinkToken(moov, {
     accountID: "<id>",
     linkGooglePay: {
-      token: {
-        protocolVersion: "ECv2",
-        signature: "<value>",
-        intermediateSigningKey: {
-          signedKey: "<value>",
-          signatures: [
-            "<value 1>",
-            "<value 2>",
-            "<value 3>",
-          ],
+      merchantAccountID: "c5f78a7e-2fb0-4e4a-bcf0-9e1f8b0e5c7a",
+      paymentMethodData: {
+        type: "CARD",
+        info: {
+          cardNetwork: "VISA",
+          cardDetails: "1234",
+          cardFundingSource: "DEBIT",
+          billingAddress: {
+            countryCode: "US",
+          },
         },
-        signedMessage: "<value>",
+        tokenizationData: {
+          type: "PAYMENT_GATEWAY",
+          token: "<value>",
+        },
       },
     },
   });

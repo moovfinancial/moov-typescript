@@ -5,32 +5,40 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  GooglePayToken,
-  GooglePayToken$inboundSchema,
-  GooglePayToken$Outbound,
-  GooglePayToken$outboundSchema,
-} from "./googlepaytoken.js";
+  GooglePayPaymentMethodData,
+  GooglePayPaymentMethodData$inboundSchema,
+  GooglePayPaymentMethodData$Outbound,
+  GooglePayPaymentMethodData$outboundSchema,
+} from "./googlepaypaymentmethoddata.js";
 
 /**
- *   The encrypted Google Pay payment token (ECv2 format).
+ *   Links a Google Pay token to a Moov account.
  *
  * @remarks
  *
- *   Refer to [Google's documentation](https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography#payment-method-token-structure)
- *   for more information.
+ *   The `paymentMethodData` field should contain the `paymentMethodData` property from the
+ *   [PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response
+ *   returned by Google Pay's client SDK. Pass it through unmodified.
  */
 export type LinkGooglePay = {
   /**
-   *   Contains the encrypted payment token as returned from Google Pay.
+   *   The merchant accountID this token was minted for. Must match the `gatewayMerchantId`
    *
    * @remarks
-   *
-   *   Refer to [Google's documentation](https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography#payment-method-token-structure)
-   *   for more information.
+   *   value passed to Google Pay when constructing the PaymentDataRequest. card-gateway validates
+   *   that the decrypted `gatewayMerchantId` matches this value.
    */
-  token: GooglePayToken;
+  merchantAccountID: string;
+  /**
+   *   The `paymentMethodData` object from Google Pay's
+   *
+   * @remarks
+   *   [PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response.
+   */
+  paymentMethodData: GooglePayPaymentMethodData;
 };
 
 /** @internal */
@@ -39,11 +47,13 @@ export const LinkGooglePay$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: GooglePayToken$inboundSchema,
+  merchantAccountID: types.string(),
+  paymentMethodData: GooglePayPaymentMethodData$inboundSchema,
 });
 /** @internal */
 export type LinkGooglePay$Outbound = {
-  token: GooglePayToken$Outbound;
+  merchantAccountID: string;
+  paymentMethodData: GooglePayPaymentMethodData$Outbound;
 };
 
 /** @internal */
@@ -52,7 +62,8 @@ export const LinkGooglePay$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LinkGooglePay
 > = z.object({
-  token: GooglePayToken$outboundSchema,
+  merchantAccountID: z.string(),
+  paymentMethodData: GooglePayPaymentMethodData$outboundSchema,
 });
 
 export function linkGooglePayToJSON(linkGooglePay: LinkGooglePay): string {

@@ -14,6 +14,12 @@ import {
   Amount$outboundSchema,
 } from "./amount.js";
 import {
+  CreatePaymentLinkAmountDetails,
+  CreatePaymentLinkAmountDetails$inboundSchema,
+  CreatePaymentLinkAmountDetails$Outbound,
+  CreatePaymentLinkAmountDetails$outboundSchema,
+} from "./createpaymentlinkamountdetails.js";
+import {
   CreatePaymentLinkLineItems,
   CreatePaymentLinkLineItems$inboundSchema,
   CreatePaymentLinkLineItems$Outbound,
@@ -62,7 +68,20 @@ export type CreatePaymentLink = {
    * The merchant's preferred payment method ID. Must be a wallet payment method.
    */
   merchantPaymentMethodID: string;
-  amount: Amount;
+  /**
+   * The fixed amount of the payment link.
+   *
+   * @remarks
+   *
+   * In API versions before `2026.07.00`, this was a required field.
+   *
+   * In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted
+   * for `open` payment amount types.
+   */
+  amount?: Amount | undefined;
+  /**
+   * Optional sales tax amount.
+   */
   salesTaxAmount?: Amount | undefined;
   /**
    * An optional limit on the number of times this payment link can be used.
@@ -93,6 +112,7 @@ export type CreatePaymentLink = {
    * When line items are provided, their total plus sales tax must equal the payment link amount.
    */
   lineItems?: CreatePaymentLinkLineItems | undefined;
+  amountDetails?: CreatePaymentLinkAmountDetails | undefined;
 };
 
 /** @internal */
@@ -103,7 +123,7 @@ export const CreatePaymentLink$inboundSchema: z.ZodType<
 > = z.object({
   partnerAccountID: types.string(),
   merchantPaymentMethodID: types.string(),
-  amount: Amount$inboundSchema,
+  amount: types.optional(Amount$inboundSchema),
   salesTaxAmount: types.optional(Amount$inboundSchema),
   maxUses: types.optional(types.number()),
   expiresOn: types.optional(types.date()),
@@ -112,12 +132,13 @@ export const CreatePaymentLink$inboundSchema: z.ZodType<
   payment: types.optional(PaymentLinkPaymentDetails$inboundSchema),
   payout: types.optional(PaymentLinkPayoutDetails$inboundSchema),
   lineItems: types.optional(CreatePaymentLinkLineItems$inboundSchema),
+  amountDetails: types.optional(CreatePaymentLinkAmountDetails$inboundSchema),
 });
 /** @internal */
 export type CreatePaymentLink$Outbound = {
   partnerAccountID: string;
   merchantPaymentMethodID: string;
-  amount: Amount$Outbound;
+  amount?: Amount$Outbound | undefined;
   salesTaxAmount?: Amount$Outbound | undefined;
   maxUses?: number | undefined;
   expiresOn?: string | undefined;
@@ -126,6 +147,7 @@ export type CreatePaymentLink$Outbound = {
   payment?: PaymentLinkPaymentDetails$Outbound | undefined;
   payout?: PaymentLinkPayoutDetails$Outbound | undefined;
   lineItems?: CreatePaymentLinkLineItems$Outbound | undefined;
+  amountDetails?: CreatePaymentLinkAmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -136,7 +158,7 @@ export const CreatePaymentLink$outboundSchema: z.ZodType<
 > = z.object({
   partnerAccountID: z.string(),
   merchantPaymentMethodID: z.string(),
-  amount: Amount$outboundSchema,
+  amount: Amount$outboundSchema.optional(),
   salesTaxAmount: Amount$outboundSchema.optional(),
   maxUses: z.number().int().optional(),
   expiresOn: z.date().transform(v => v.toISOString()).optional(),
@@ -145,6 +167,7 @@ export const CreatePaymentLink$outboundSchema: z.ZodType<
   payment: PaymentLinkPaymentDetails$outboundSchema.optional(),
   payout: PaymentLinkPayoutDetails$outboundSchema.optional(),
   lineItems: CreatePaymentLinkLineItems$outboundSchema.optional(),
+  amountDetails: CreatePaymentLinkAmountDetails$outboundSchema.optional(),
 });
 
 export function createPaymentLinkToJSON(

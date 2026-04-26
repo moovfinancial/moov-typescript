@@ -15,6 +15,12 @@ import {
 } from "./amount.js";
 import { Mode, Mode$inboundSchema, Mode$outboundSchema } from "./mode.js";
 import {
+  PaymentLinkAmountDetails,
+  PaymentLinkAmountDetails$inboundSchema,
+  PaymentLinkAmountDetails$Outbound,
+  PaymentLinkAmountDetails$outboundSchema,
+} from "./paymentlinkamountdetails.js";
+import {
   PaymentLinkCustomerOptions,
   PaymentLinkCustomerOptions$inboundSchema,
   PaymentLinkCustomerOptions$Outbound,
@@ -86,7 +92,17 @@ export type PaymentLink = {
    * Link to the payment landing page for this payment link.
    */
   link: string;
-  amount: Amount;
+  /**
+   * The fixed amount of the payment link.
+   *
+   * @remarks
+   *
+   * In API versions before `2026.07.00`, this was a required field.
+   *
+   * In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted
+   * for `open` payment amount types.
+   */
+  amount?: Amount | undefined;
   /**
    * Optional sales tax amount.
    */
@@ -131,6 +147,7 @@ export type PaymentLink = {
   createdOn: Date;
   updatedOn: Date;
   disabledOn?: Date | undefined;
+  amountDetails?: PaymentLinkAmountDetails | undefined;
 };
 
 /** @internal */
@@ -148,7 +165,7 @@ export const PaymentLink$inboundSchema: z.ZodType<
   ownerAccountID: types.string(),
   merchantPaymentMethodID: types.string(),
   link: types.string(),
-  amount: Amount$inboundSchema,
+  amount: types.optional(Amount$inboundSchema),
   salesTaxAmount: types.optional(Amount$inboundSchema),
   uses: types.number(),
   maxUses: types.optional(types.number()),
@@ -162,6 +179,7 @@ export const PaymentLink$inboundSchema: z.ZodType<
   createdOn: types.date(),
   updatedOn: types.date(),
   disabledOn: types.optional(types.date()),
+  amountDetails: types.optional(PaymentLinkAmountDetails$inboundSchema),
 });
 /** @internal */
 export type PaymentLink$Outbound = {
@@ -174,7 +192,7 @@ export type PaymentLink$Outbound = {
   ownerAccountID: string;
   merchantPaymentMethodID: string;
   link: string;
-  amount: Amount$Outbound;
+  amount?: Amount$Outbound | undefined;
   salesTaxAmount?: Amount$Outbound | undefined;
   uses: number;
   maxUses?: number | undefined;
@@ -188,6 +206,7 @@ export type PaymentLink$Outbound = {
   createdOn: string;
   updatedOn: string;
   disabledOn?: string | undefined;
+  amountDetails?: PaymentLinkAmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -205,7 +224,7 @@ export const PaymentLink$outboundSchema: z.ZodType<
   ownerAccountID: z.string(),
   merchantPaymentMethodID: z.string(),
   link: z.string(),
-  amount: Amount$outboundSchema,
+  amount: Amount$outboundSchema.optional(),
   salesTaxAmount: Amount$outboundSchema.optional(),
   uses: z.number().int(),
   maxUses: z.number().int().optional(),
@@ -219,6 +238,7 @@ export const PaymentLink$outboundSchema: z.ZodType<
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
   disabledOn: z.date().transform(v => v.toISOString()).optional(),
+  amountDetails: PaymentLinkAmountDetails$outboundSchema.optional(),
 });
 
 export function paymentLinkToJSON(paymentLink: PaymentLink): string {

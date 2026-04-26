@@ -66,9 +66,6 @@ export type TransferData = {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
-  /**
-   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
-   */
   salesTaxAmount?: components.Amount | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
@@ -85,6 +82,7 @@ export type TransferData = {
    * ID of the invoice that the transfer is associated with.
    */
   invoiceID?: string | undefined;
+  amountDetails?: components.TransferAmountDetails | undefined;
   /**
    * The card authorization and capture IDs associated with a transfer.
    */
@@ -150,9 +148,6 @@ export class Transfer extends MoovError {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
-  /**
-   * Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
-   */
   salesTaxAmount?: components.Amount | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
@@ -169,6 +164,7 @@ export class Transfer extends MoovError {
    * ID of the invoice that the transfer is associated with.
    */
   invoiceID?: string | undefined;
+  amountDetails?: components.TransferAmountDetails | undefined;
   /**
    * The card authorization and capture IDs associated with a transfer.
    */
@@ -215,6 +211,7 @@ export class Transfer extends MoovError {
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.invoiceID != null) this.invoiceID = err.invoiceID;
+    if (err.amountDetails != null) this.amountDetails = err.amountDetails;
     if (err.capture != null) this.capture = err.capture;
 
     this.name = "Transfer";
@@ -260,6 +257,7 @@ export const Transfer$inboundSchema: z.ZodType<
   foreignID: types.optional(types.string()),
   lineItems: types.optional(components.TransferLineItems$inboundSchema),
   invoiceID: types.optional(types.string()),
+  amountDetails: types.optional(components.TransferAmountDetails$inboundSchema),
   capture: types.optional(components.TransferCapture$inboundSchema),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -304,6 +302,7 @@ export type Transfer$Outbound = {
   foreignID?: string | undefined;
   lineItems?: components.TransferLineItems$Outbound | undefined;
   invoiceID?: string | undefined;
+  amountDetails?: components.TransferAmountDetails$Outbound | undefined;
   capture?: components.TransferCapture$Outbound | undefined;
 };
 
@@ -345,5 +344,6 @@ export const Transfer$outboundSchema: z.ZodType<
     foreignID: z.string().optional(),
     lineItems: components.TransferLineItems$outboundSchema.optional(),
     invoiceID: z.string().optional(),
+    amountDetails: components.TransferAmountDetails$outboundSchema.optional(),
     capture: components.TransferCapture$outboundSchema.optional(),
   }));

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -13,6 +14,18 @@ import {
   ACHPaymentDetails$Outbound,
   ACHPaymentDetails$outboundSchema,
 } from "./achpaymentdetails.js";
+import {
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
+import {
+  AmountDecimalRangeUpdate,
+  AmountDecimalRangeUpdate$inboundSchema,
+  AmountDecimalRangeUpdate$Outbound,
+  AmountDecimalRangeUpdate$outboundSchema,
+} from "./amountdecimalrangeupdate.js";
 import {
   CardPaymentDetails,
   CardPaymentDetails$inboundSchema,
@@ -26,6 +39,20 @@ import {
 } from "./collectionpaymentmethodtype.js";
 
 /**
+ * Indicates whether the payment amount is fixed by the merchant or open for the buyer to choose.
+ */
+export const PaymentLinkPaymentDetailsUpdateAmountType = {
+  Fixed: "fixed",
+  Open: "open",
+} as const;
+/**
+ * Indicates whether the payment amount is fixed by the merchant or open for the buyer to choose.
+ */
+export type PaymentLinkPaymentDetailsUpdateAmountType = ClosedEnum<
+  typeof PaymentLinkPaymentDetailsUpdateAmountType
+>;
+
+/**
  * Options for payment links used to collect payment.
  */
 export type PaymentLinkPaymentDetailsUpdate = {
@@ -33,6 +60,18 @@ export type PaymentLinkPaymentDetailsUpdate = {
    * A list of payment methods that should be supported for this payment link.
    */
   allowedMethods?: Array<CollectionPaymentMethodType> | undefined;
+  /**
+   * Indicates whether the payment amount is fixed by the merchant or open for the buyer to choose.
+   */
+  amountType?: PaymentLinkPaymentDetailsUpdateAmountType | undefined;
+  /**
+   * The minimum and maximum amounts the buyer can specify when `amountType` is `open`.
+   */
+  amountRange?: AmountDecimalRangeUpdate | undefined;
+  /**
+   * Optional preset amounts displayed to the buyer when `amountType` is `open`.
+   */
+  suggestedAmounts?: Array<AmountDecimal> | undefined;
   /**
    * Options for payment links used to collect a card payment.
    */
@@ -48,6 +87,15 @@ export type PaymentLinkPaymentDetailsUpdate = {
 };
 
 /** @internal */
+export const PaymentLinkPaymentDetailsUpdateAmountType$inboundSchema:
+  z.ZodNativeEnum<typeof PaymentLinkPaymentDetailsUpdateAmountType> = z
+    .nativeEnum(PaymentLinkPaymentDetailsUpdateAmountType);
+/** @internal */
+export const PaymentLinkPaymentDetailsUpdateAmountType$outboundSchema:
+  z.ZodNativeEnum<typeof PaymentLinkPaymentDetailsUpdateAmountType> =
+    PaymentLinkPaymentDetailsUpdateAmountType$inboundSchema;
+
+/** @internal */
 export const PaymentLinkPaymentDetailsUpdate$inboundSchema: z.ZodType<
   PaymentLinkPaymentDetailsUpdate,
   z.ZodTypeDef,
@@ -56,6 +104,11 @@ export const PaymentLinkPaymentDetailsUpdate$inboundSchema: z.ZodType<
   allowedMethods: types.optional(
     z.array(CollectionPaymentMethodType$inboundSchema),
   ),
+  amountType: PaymentLinkPaymentDetailsUpdateAmountType$inboundSchema.default(
+    "fixed",
+  ),
+  amountRange: types.optional(AmountDecimalRangeUpdate$inboundSchema),
+  suggestedAmounts: types.optional(z.array(AmountDecimal$inboundSchema)),
   cardDetails: types.optional(CardPaymentDetails$inboundSchema),
   achDetails: types.optional(ACHPaymentDetails$inboundSchema),
   metadata: types.optional(z.record(types.string())),
@@ -63,6 +116,9 @@ export const PaymentLinkPaymentDetailsUpdate$inboundSchema: z.ZodType<
 /** @internal */
 export type PaymentLinkPaymentDetailsUpdate$Outbound = {
   allowedMethods?: Array<string> | undefined;
+  amountType: string;
+  amountRange?: AmountDecimalRangeUpdate$Outbound | undefined;
+  suggestedAmounts?: Array<AmountDecimal$Outbound> | undefined;
   cardDetails?: CardPaymentDetails$Outbound | undefined;
   achDetails?: ACHPaymentDetails$Outbound | undefined;
   metadata?: { [k: string]: string } | undefined;
@@ -76,6 +132,11 @@ export const PaymentLinkPaymentDetailsUpdate$outboundSchema: z.ZodType<
 > = z.object({
   allowedMethods: z.array(CollectionPaymentMethodType$outboundSchema)
     .optional(),
+  amountType: PaymentLinkPaymentDetailsUpdateAmountType$outboundSchema.default(
+    "fixed",
+  ),
+  amountRange: AmountDecimalRangeUpdate$outboundSchema.optional(),
+  suggestedAmounts: z.array(AmountDecimal$outboundSchema).optional(),
   cardDetails: CardPaymentDetails$outboundSchema.optional(),
   achDetails: ACHPaymentDetails$outboundSchema.optional(),
   metadata: z.record(z.string()).optional(),

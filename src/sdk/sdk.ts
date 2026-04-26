@@ -39,6 +39,7 @@ import { Statements } from "./statements.js";
 import { Support } from "./support.js";
 import { Sweeps } from "./sweeps.js";
 import { TerminalApplications } from "./terminalapplications.js";
+import { TransferConfig } from "./transferconfig.js";
 import { Transfers } from "./transfers.js";
 import { Underwriting } from "./underwriting.js";
 import { Wallets } from "./wallets.js";
@@ -160,6 +161,11 @@ export class Moov extends ClientSDK {
   private _support?: Support;
   get support(): Support {
     return (this._support ??= new Support(this._options));
+  }
+
+  private _transferConfig?: TransferConfig;
+  get transferConfig(): TransferConfig {
+    return (this._transferConfig ??= new TransferConfig(this._options));
   }
 
   private _transfers?: Transfers;

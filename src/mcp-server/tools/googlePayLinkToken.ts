@@ -14,7 +14,9 @@ export const tool$googlePayLinkToken: ToolDefinition<typeof args> = {
   name: "google-pay-link-token",
   description: `Connect a Google Pay token to the specified account.
 
-The \`token\` data is defined by Google Pay and should be passed through from Google Pay's response unmodified.
+The \`paymentMethodData\` field should contain the \`paymentMethodData\` property from Google Pay's
+[PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response,
+passed through unmodified.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/accounts/{accountID}/cards.write\` scope.`,

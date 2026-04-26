@@ -15,6 +15,9 @@ export type UpdatePaymentLinkErrorData = {
   payment?: components.PaymentDetailsError | undefined;
   payout?: components.PayoutDetailsError | undefined;
   lineItems?: components.CreatePaymentLinkLineItemsValidationError | undefined;
+  amountDetails?:
+    | components.UpdatePaymentLinkAmountDetailsValidationError
+    | undefined;
 };
 
 export class UpdatePaymentLinkError extends MoovError {
@@ -25,6 +28,9 @@ export class UpdatePaymentLinkError extends MoovError {
   payment?: components.PaymentDetailsError | undefined;
   payout?: components.PayoutDetailsError | undefined;
   lineItems?: components.CreatePaymentLinkLineItemsValidationError | undefined;
+  amountDetails?:
+    | components.UpdatePaymentLinkAmountDetailsValidationError
+    | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: UpdatePaymentLinkErrorData;
@@ -45,6 +51,7 @@ export class UpdatePaymentLinkError extends MoovError {
     if (err.payment != null) this.payment = err.payment;
     if (err.payout != null) this.payout = err.payout;
     if (err.lineItems != null) this.lineItems = err.lineItems;
+    if (err.amountDetails != null) this.amountDetails = err.amountDetails;
 
     this.name = "UpdatePaymentLinkError";
   }
@@ -66,6 +73,9 @@ export const UpdatePaymentLinkError$inboundSchema: z.ZodType<
   payout: types.optional(components.PayoutDetailsError$inboundSchema),
   lineItems: types.optional(
     components.CreatePaymentLinkLineItemsValidationError$inboundSchema,
+  ),
+  amountDetails: types.optional(
+    components.UpdatePaymentLinkAmountDetailsValidationError$inboundSchema,
   ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -90,6 +100,9 @@ export type UpdatePaymentLinkError$Outbound = {
   lineItems?:
     | components.CreatePaymentLinkLineItemsValidationError$Outbound
     | undefined;
+  amountDetails?:
+    | components.UpdatePaymentLinkAmountDetailsValidationError$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -108,4 +121,6 @@ export const UpdatePaymentLinkError$outboundSchema: z.ZodType<
     payout: components.PayoutDetailsError$outboundSchema.optional(),
     lineItems: components
       .CreatePaymentLinkLineItemsValidationError$outboundSchema.optional(),
+    amountDetails: components
+      .UpdatePaymentLinkAmountDetailsValidationError$outboundSchema.optional(),
   }));

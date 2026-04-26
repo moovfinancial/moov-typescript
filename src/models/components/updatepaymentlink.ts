@@ -43,6 +43,12 @@ import {
   PaymentLinkPayoutDetailsUpdate$Outbound,
   PaymentLinkPayoutDetailsUpdate$outboundSchema,
 } from "./paymentlinkpayoutdetailsupdate.js";
+import {
+  UpdatePaymentLinkAmountDetails,
+  UpdatePaymentLinkAmountDetails$inboundSchema,
+  UpdatePaymentLinkAmountDetails$Outbound,
+  UpdatePaymentLinkAmountDetails$outboundSchema,
+} from "./updatepaymentlinkamountdetails.js";
 
 export type UpdatePaymentLink = {
   amount?: AmountUpdate | undefined;
@@ -65,6 +71,7 @@ export type UpdatePaymentLink = {
    * When line items are provided, their total plus sales tax must equal the payment link amount.
    */
   lineItems?: CreatePaymentLinkLineItemsUpdate | undefined;
+  amountDetails?: UpdatePaymentLinkAmountDetails | undefined;
 };
 
 /** @internal */
@@ -81,6 +88,7 @@ export const UpdatePaymentLink$inboundSchema: z.ZodType<
   payment: types.optional(PaymentLinkPaymentDetailsUpdate$inboundSchema),
   payout: types.optional(PaymentLinkPayoutDetailsUpdate$inboundSchema),
   lineItems: types.optional(CreatePaymentLinkLineItemsUpdate$inboundSchema),
+  amountDetails: types.optional(UpdatePaymentLinkAmountDetails$inboundSchema),
 });
 /** @internal */
 export type UpdatePaymentLink$Outbound = {
@@ -92,6 +100,7 @@ export type UpdatePaymentLink$Outbound = {
   payment?: PaymentLinkPaymentDetailsUpdate$Outbound | undefined;
   payout?: PaymentLinkPayoutDetailsUpdate$Outbound | undefined;
   lineItems?: CreatePaymentLinkLineItemsUpdate$Outbound | undefined;
+  amountDetails?: UpdatePaymentLinkAmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -108,6 +117,7 @@ export const UpdatePaymentLink$outboundSchema: z.ZodType<
   payment: PaymentLinkPaymentDetailsUpdate$outboundSchema.optional(),
   payout: PaymentLinkPayoutDetailsUpdate$outboundSchema.optional(),
   lineItems: CreatePaymentLinkLineItemsUpdate$outboundSchema.optional(),
+  amountDetails: UpdatePaymentLinkAmountDetails$outboundSchema.optional(),
 });
 
 export function updatePaymentLinkToJSON(

@@ -67,6 +67,17 @@ let value: CreatedTransfer = {
       dynamicLastFour: "<value>",
       issuerCountry: "US",
     },
+    googlePay: {
+      brand: "Visa",
+      cardDetails: "1234",
+      fingerprint:
+        "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+      expiration: {
+        month: "01",
+        year: "21",
+      },
+      issuerCountry: "US",
+    },
     terminalCard: {
       entryMode: "contactless",
       brand: "Visa",
@@ -160,6 +171,17 @@ let value: CreatedTransfer = {
       dynamicLastFour: "<value>",
       issuerCountry: "US",
     },
+    googlePay: {
+      brand: "Visa",
+      cardDetails: "1234",
+      fingerprint:
+        "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
+      expiration: {
+        month: "01",
+        year: "21",
+      },
+      issuerCountry: "US",
+    },
     cardDetails: {
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
       feeProgram:
@@ -192,6 +214,12 @@ let value: CreatedTransfer = {
         currency: "USD",
         value: 1204,
       },
+      amountDetails: {
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   ],
   disputedAmount: {
@@ -214,6 +242,16 @@ let value: CreatedTransfer = {
   },
   lineItems: {
     items: [],
+  },
+  amountDetails: {
+    tip: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    surcharge: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
   },
 };
 ```
@@ -246,7 +284,8 @@ let value: CreatedTransfer = {
 | `scheduleID`                                                                                                                                  | *string*                                                                                                                                      | :heavy_minus_sign:                                                                                                                            | N/A                                                                                                                                           |                                                                                                                                               |
 | `occurrenceID`                                                                                                                                | *string*                                                                                                                                      | :heavy_minus_sign:                                                                                                                            | N/A                                                                                                                                           |                                                                                                                                               |
 | `paymentLinkCode`                                                                                                                             | *string*                                                                                                                                      | :heavy_minus_sign:                                                                                                                            | N/A                                                                                                                                           |                                                                                                                                               |
-| `salesTaxAmount`                                                                                                                              | [components.Amount](../../models/components/amount.md)                                                                                        | :heavy_minus_sign:                                                                                                                            | Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.              |                                                                                                                                               |
+| `salesTaxAmount`                                                                                                                              | [components.Amount](../../models/components/amount.md)                                                                                        | :heavy_minus_sign:                                                                                                                            | Optional sales tax amount.                                                                                                                    |                                                                                                                                               |
 | `foreignID`                                                                                                                                   | *string*                                                                                                                                      | :heavy_minus_sign:                                                                                                                            | Optional alias from a foreign/external system which can be used to reference this resource.                                                   |                                                                                                                                               |
 | `lineItems`                                                                                                                                   | [components.TransferLineItems](../../models/components/transferlineitems.md)                                                                  | :heavy_minus_sign:                                                                                                                            | An optional collection of line items for a transfer.<br/>When line items are provided, their total plus sales tax must equal the transfer amount. |                                                                                                                                               |
+| `amountDetails`                                                                                                                               | [components.TransferAmountDetails](../../models/components/transferamountdetails.md)                                                          | :heavy_minus_sign:                                                                                                                            | N/A                                                                                                                                           |                                                                                                                                               |
 | `capture`                                                                                                                                     | [components.TransferCapture](../../models/components/transfercapture.md)                                                                      | :heavy_minus_sign:                                                                                                                            | The card authorization and capture IDs associated with a transfer.                                                                            |                                                                                                                                               |
