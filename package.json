@@ -29,7 +29,7 @@
     "eslint": "^9.26.0",
     "express": "^5.0.0",
     "globals": "^17.0.0",
-    "typescript": "~5.9.0",
+    "typescript": "~6.0.0",
     "typescript-eslint": "^8.39.0"
   },
   "dependencies": {
