@@ -62,8 +62,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -94,8 +95,9 @@ import { feePlansListFeePlanAgreements } from "@moovio/sdk/funcs/feePlansListFee
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -152,8 +154,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -185,8 +188,9 @@ import { feePlansCreateFeePlanAgreements } from "@moovio/sdk/funcs/feePlansCreat
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -247,8 +251,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -277,8 +282,9 @@ import { feePlansListFeePlans } from "@moovio/sdk/funcs/feePlansListFeePlans.js"
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -333,8 +339,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -365,8 +372,9 @@ import { feePlansListFeeRevenue } from "@moovio/sdk/funcs/feePlansListFeeRevenue
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -423,8 +431,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -455,8 +464,9 @@ import { feePlansRetrieveFees } from "@moovio/sdk/funcs/feePlansRetrieveFees.js"
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -513,8 +523,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -543,8 +554,9 @@ import { feePlansListFeesFetch } from "@moovio/sdk/funcs/feePlansListFeesFetch.j
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -599,8 +611,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -631,8 +644,9 @@ import { feePlansListPartnerPricingAgreements } from "@moovio/sdk/funcs/feePlans
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -689,8 +703,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -721,8 +736,9 @@ import { feePlansListResiduals } from "@moovio/sdk/funcs/feePlansListResiduals.j
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -779,8 +795,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -810,8 +827,9 @@ import { feePlansGetResidual } from "@moovio/sdk/funcs/feePlansGetResidual.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -867,8 +885,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -900,8 +919,9 @@ import { feePlansListResidualFees } from "@moovio/sdk/funcs/feePlansListResidual
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });

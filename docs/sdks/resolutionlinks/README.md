@@ -41,8 +41,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -79,8 +80,9 @@ import { resolutionLinksCreate } from "@moovio/sdk/funcs/resolutionLinksCreate.j
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -145,8 +147,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -175,8 +178,9 @@ import { resolutionLinksList } from "@moovio/sdk/funcs/resolutionLinksList.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -231,8 +235,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -262,8 +267,9 @@ import { resolutionLinksGet } from "@moovio/sdk/funcs/resolutionLinksGet.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -319,8 +325,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -350,8 +357,9 @@ import { resolutionLinksDisable } from "@moovio/sdk/funcs/resolutionLinksDisable
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });

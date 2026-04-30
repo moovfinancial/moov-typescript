@@ -26,8 +26,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -56,8 +57,9 @@ import { endToEndEncryptionTestEncryptedToken } from "@moovio/sdk/funcs/endToEnd
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -110,8 +112,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -138,8 +141,9 @@ import { endToEndEncryptionGenerateKey } from "@moovio/sdk/funcs/endToEndEncrypt
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });

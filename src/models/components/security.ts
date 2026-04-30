@@ -18,7 +18,6 @@ import {
 export type Security = {
   basicAuth?: SchemeBasicAuth | undefined;
   basicAuth1?: SchemeBasicAuth | undefined;
-  accessToken?: string | undefined;
 };
 
 /** @internal */
@@ -29,13 +28,11 @@ export const Security$inboundSchema: z.ZodType<
 > = z.object({
   basicAuth: types.optional(SchemeBasicAuth$inboundSchema),
   basicAuth1: types.optional(SchemeBasicAuth$inboundSchema),
-  accessToken: types.optional(types.string()),
 });
 /** @internal */
 export type Security$Outbound = {
   basicAuth?: SchemeBasicAuth$Outbound | undefined;
   basicAuth1?: SchemeBasicAuth$Outbound | undefined;
-  accessToken?: string | undefined;
 };
 
 /** @internal */
@@ -46,7 +43,6 @@ export const Security$outboundSchema: z.ZodType<
 > = z.object({
   basicAuth: SchemeBasicAuth$outboundSchema.optional(),
   basicAuth1: SchemeBasicAuth$outboundSchema.optional(),
-  accessToken: z.string().optional(),
 });
 
 export function securityToJSON(security: Security): string {

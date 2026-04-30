@@ -102,8 +102,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -140,8 +141,9 @@ import { transfersGenerateOptions } from "@moovio/sdk/funcs/transfersGenerateOpt
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -208,8 +210,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -255,8 +258,9 @@ import { transfersCreate } from "@moovio/sdk/funcs/transfersCreate.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -301,8 +305,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -348,8 +353,9 @@ import { transfersCreate } from "@moovio/sdk/funcs/transfersCreate.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -431,8 +437,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -463,8 +470,9 @@ import { transfersList } from "@moovio/sdk/funcs/transfersList.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -526,8 +534,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -562,8 +571,9 @@ import { transfersBatchGetTransfers } from "@moovio/sdk/funcs/transfersBatchGetT
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -627,8 +637,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -658,8 +669,9 @@ import { transfersGet } from "@moovio/sdk/funcs/transfersGet.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -717,8 +729,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -753,8 +766,9 @@ import { transfersUpdate } from "@moovio/sdk/funcs/transfersUpdate.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -816,8 +830,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -847,8 +862,9 @@ import { transfersCreateCancellation } from "@moovio/sdk/funcs/transfersCreateCa
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -905,8 +921,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -937,8 +954,9 @@ import { transfersGetCancellation } from "@moovio/sdk/funcs/transfersGetCancella
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -968,8 +986,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1000,8 +1019,9 @@ import { transfersGetCancellation } from "@moovio/sdk/funcs/transfersGetCancella
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1061,8 +1081,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1102,8 +1123,9 @@ import { transfersInitiateRefund } from "@moovio/sdk/funcs/transfersInitiateRefu
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1142,8 +1164,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1183,8 +1206,9 @@ import { transfersInitiateRefund } from "@moovio/sdk/funcs/transfersInitiateRefu
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1253,8 +1277,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1284,8 +1309,9 @@ import { transfersListRefunds } from "@moovio/sdk/funcs/transfersListRefunds.js"
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1341,8 +1367,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1373,8 +1400,9 @@ import { transfersGetRefund } from "@moovio/sdk/funcs/transfersGetRefund.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1433,8 +1461,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1468,8 +1497,9 @@ import { transfersCreateReversal } from "@moovio/sdk/funcs/transfersCreateRevers
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1502,8 +1532,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -1537,8 +1568,9 @@ import { transfersCreateReversal } from "@moovio/sdk/funcs/transfersCreateRevers
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });

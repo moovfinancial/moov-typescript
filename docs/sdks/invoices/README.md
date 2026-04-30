@@ -56,8 +56,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -108,8 +109,9 @@ import { invoicesCreateInvoice } from "@moovio/sdk/funcs/invoicesCreateInvoice.j
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -188,8 +190,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -220,8 +223,9 @@ import { invoicesListInvoices } from "@moovio/sdk/funcs/invoicesListInvoices.js"
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -279,8 +283,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -310,8 +315,9 @@ import { invoicesGetInvoice } from "@moovio/sdk/funcs/invoicesGetInvoice.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -367,8 +373,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -415,8 +422,9 @@ import { invoicesUpdateInvoice } from "@moovio/sdk/funcs/invoicesUpdateInvoice.j
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -497,8 +505,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -528,8 +537,9 @@ import { invoicesDelete } from "@moovio/sdk/funcs/invoicesDelete.js";
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -587,8 +597,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -627,8 +638,9 @@ import { invoicesCreateInvoicePayment } from "@moovio/sdk/funcs/invoicesCreateIn
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -695,8 +707,9 @@ import { Moov } from "@moovio/sdk";
 const moov = new Moov({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });
@@ -726,8 +739,9 @@ import { invoicesListInvoicePayments } from "@moovio/sdk/funcs/invoicesListInvoi
 const moov = new MoovCore({
   security: {
     basicAuth: {
-      username: "",
-      password: "",
+      username: "<YOUR_USERNAME_HERE>",
+      password: "<YOUR_PASSWORD_HERE>",
+      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
     },
   },
 });

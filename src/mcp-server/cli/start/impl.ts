@@ -51,13 +51,24 @@ async function startStdio(flags: StartCommandFlags) {
     logger,
     allowedTools: flags.tool,
     security: {
-      basicAuth: flags.username != null && flags.password != null
-        ? { username: flags.username, password: flags.password }
-        : void 0,
-      basicAuth1: flags.username != null && flags.password != null
-        ? { username: flags.username, password: flags.password }
-        : void 0,
-      accessToken: flags["access-token"] ?? "",
+      basicAuth:
+        flags.username != null && flags.password != null
+          && flags["access-token"] != null
+          ? {
+            username: flags.username,
+            password: flags.password,
+            accessToken: flags["access-token"],
+          }
+          : void 0,
+      basicAuth1:
+        flags.username != null && flags.password != null
+          && flags["access-token"] != null
+          ? {
+            username: flags.username,
+            password: flags.password,
+            accessToken: flags["access-token"],
+          }
+          : void 0,
     },
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
@@ -79,13 +90,24 @@ async function startSSE(flags: StartCommandFlags) {
     logger,
     allowedTools: flags.tool,
     security: {
-      basicAuth: flags.username != null && flags.password != null
-        ? { username: flags.username, password: flags.password }
-        : void 0,
-      basicAuth1: flags.username != null && flags.password != null
-        ? { username: flags.username, password: flags.password }
-        : void 0,
-      accessToken: flags["access-token"] ?? "",
+      basicAuth:
+        flags.username != null && flags.password != null
+          && flags["access-token"] != null
+          ? {
+            username: flags.username,
+            password: flags.password,
+            accessToken: flags["access-token"],
+          }
+          : void 0,
+      basicAuth1:
+        flags.username != null && flags.password != null
+          && flags["access-token"] != null
+          ? {
+            username: flags.username,
+            password: flags.password,
+            accessToken: flags["access-token"],
+          }
+          : void 0,
     },
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],

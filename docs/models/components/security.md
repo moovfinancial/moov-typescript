@@ -5,12 +5,7 @@
 ```typescript
 import { Security } from "@moovio/sdk/models/components";
 
-let value: Security = {
-  basicAuth: {
-    username: "",
-    password: "",
-  },
-};
+let value: Security = {};
 ```
 
 ## Fields
@@ -19,4 +14,3 @@ let value: Security = {
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `basicAuth`                                                              | [components.SchemeBasicAuth](../../models/components/schemebasicauth.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `basicAuth1`                                                             | [components.SchemeBasicAuth](../../models/components/schemebasicauth.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `accessToken`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

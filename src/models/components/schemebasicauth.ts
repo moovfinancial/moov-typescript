@@ -10,8 +10,28 @@ import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SchemeBasicAuth = {
-  username: string;
-  password: string;
+  /**
+   * Public API key. Use together with `password` for HTTP Basic
+   *
+   * @remarks
+   * authentication. Server-side use only.
+   */
+  username?: string | undefined;
+  /**
+   * Secret API key. Use together with `username` for HTTP Basic
+   *
+   * @remarks
+   * authentication. Server-side use only.
+   */
+  password?: string | undefined;
+  /**
+   * Short-lived OAuth2 access token. Use for client-side
+   *
+   * @remarks
+   * authentication. Mint server-side with appropriate scopes
+   * and pass to the browser.
+   */
+  accessToken?: string | undefined;
 };
 
 /** @internal */
@@ -20,13 +40,15 @@ export const SchemeBasicAuth$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: types.string(),
-  password: types.string(),
+  username: types.optional(types.string()),
+  password: types.optional(types.string()),
+  accessToken: types.optional(types.string()),
 });
 /** @internal */
 export type SchemeBasicAuth$Outbound = {
-  username: string;
-  password: string;
+  username?: string | undefined;
+  password?: string | undefined;
+  accessToken?: string | undefined;
 };
 
 /** @internal */
@@ -35,8 +57,9 @@ export const SchemeBasicAuth$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SchemeBasicAuth
 > = z.object({
-  username: z.string(),
-  password: z.string(),
+  username: z.string().optional(),
+  password: z.string().optional(),
+  accessToken: z.string().optional(),
 });
 
 export function schemeBasicAuthToJSON(
