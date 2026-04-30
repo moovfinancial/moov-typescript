@@ -1,0 +1,25 @@
+# UpdateTransferRequest
+
+## Example Usage
+
+```typescript
+import { UpdateTransferRequest } from "@moovio/sdk/models/operations";
+
+let value: UpdateTransferRequest = {
+  transferID: "<id>",
+  accountID: "<id>",
+  patchTransfer: {
+    metadata: {
+      "optional": "metadata",
+    },
+  },
+};
+```
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `transferID`                                                         | *string*                                                             | :heavy_check_mark:                                                   | Identifier for the transfer.                                         |
+| `accountID`                                                          | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `patchTransfer`                                                      | [components.PatchTransfer](../../models/components/patchtransfer.md) | :heavy_check_mark:                                                   | N/A                                                                  |

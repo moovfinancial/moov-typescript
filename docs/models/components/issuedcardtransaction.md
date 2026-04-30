@@ -1,0 +1,38 @@
+# IssuedCardTransaction
+
+## Example Usage
+
+```typescript
+import { IssuedCardTransaction } from "@moovio/sdk/models/components";
+
+let value: IssuedCardTransaction = {
+  cardTransactionID: "<id>",
+  issuedCardID: "<id>",
+  fundingWalletID: "<id>",
+  amount: "-14.89",
+  authorizedOn: new Date("2025-05-05T02:33:49.501Z"),
+  merchantData: {
+    networkID: "<id>",
+    name: "Whole Body Fitness",
+    city: "San Francisco",
+    country: "US",
+    postalCode: "94107",
+    state: "CA",
+    mcc: "7298",
+  },
+  createdOn: new Date("2024-05-23T02:42:03.351Z"),
+};
+```
+
+## Fields
+
+| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  | Example                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cardTransactionID`                                                                                                                          | *string*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |                                                                                                                                              |
+| `issuedCardID`                                                                                                                               | *string*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |                                                                                                                                              |
+| `fundingWalletID`                                                                                                                            | *string*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |                                                                                                                                              |
+| `amount`                                                                                                                                     | *string*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99. | -14.89                                                                                                                                       |
+| `authorizationID`                                                                                                                            | *string*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |                                                                                                                                              |
+| `authorizedOn`                                                                                                                               | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |                                                                                                                                              |
+| `merchantData`                                                                                                                               | [components.IssuingMerchantData](../../models/components/issuingmerchantdata.md)                                                             | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |                                                                                                                                              |
+| `createdOn`                                                                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |                                                                                                                                              |

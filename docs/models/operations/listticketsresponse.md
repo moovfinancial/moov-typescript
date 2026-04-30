@@ -1,0 +1,43 @@
+# ListTicketsResponse
+
+## Example Usage
+
+```typescript
+import { ListTicketsResponse } from "@moovio/sdk/models/operations";
+
+let value: ListTicketsResponse = {
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  result: {
+    items: [
+      {
+        ticketID: "<id>",
+        number: 100774,
+        title: "<value>",
+        contact: {
+          email: "Icie46@gmail.com",
+        },
+        status: "new",
+        createdOn: new Date("2026-01-23T03:56:46.678Z"),
+        updatedOn: new Date("2024-10-05T19:06:14.147Z"),
+      },
+    ],
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `headers`                                                                                | Record<string, *string*[]>                                                               | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `result`                                                                                 | [operations.ListTicketsResponseBody](../../models/operations/listticketsresponsebody.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |

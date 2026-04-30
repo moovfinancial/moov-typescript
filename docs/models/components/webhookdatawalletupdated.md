@@ -1,0 +1,21 @@
+# WebhookDataWalletUpdated
+
+## Example Usage
+
+```typescript
+import { WebhookDataWalletUpdated } from "@moovio/sdk/models/components";
+
+let value: WebhookDataWalletUpdated = {
+  accountID: "<id>",
+  walletID: "<id>",
+  status: "closed",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                     | Type                                                                                                                                                                                                      | Required                                                                                                                                                                                                  | Description                                                                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accountID`                                                                                                                                                                                               | *string*                                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                        | N/A                                                                                                                                                                                                       |
+| `walletID`                                                                                                                                                                                                | *string*                                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                        | N/A                                                                                                                                                                                                       |
+| `status`                                                                                                                                                                                                  | [components.WalletStatus](../../models/components/walletstatus.md)                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                        | Status of a wallet.<br/>  - `active`: The wallet is available for use and has an enabled payment method.<br/>  - `closed`: The wallet is no longer active and the corresponding payment method has been disabled. |

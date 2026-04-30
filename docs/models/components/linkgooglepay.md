@@ -1,0 +1,39 @@
+# LinkGooglePay
+
+  Links a Google Pay token to a Moov account.
+
+  The `paymentMethodData` field should contain the `paymentMethodData` property from the
+  [PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response
+  returned by Google Pay's client SDK. Pass it through unmodified.
+
+## Example Usage
+
+```typescript
+import { LinkGooglePay } from "@moovio/sdk/models/components";
+
+let value: LinkGooglePay = {
+  merchantAccountID: "c5f78a7e-2fb0-4e4a-bcf0-9e1f8b0e5c7a",
+  paymentMethodData: {
+    type: "CARD",
+    info: {
+      cardNetwork: "VISA",
+      cardDetails: "1234",
+      cardFundingSource: "DEBIT",
+      billingAddress: {
+        countryCode: "US",
+      },
+    },
+    tokenizationData: {
+      type: "PAYMENT_GATEWAY",
+      token: "<value>",
+    },
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                                             | Type                                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                                       | Example                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `merchantAccountID`                                                                                                                                                                                                                               | *string*                                                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                |   The merchant accountID this token was minted for. Must match the `gatewayMerchantId`<br/>  value passed to Google Pay when constructing the PaymentDataRequest. card-gateway validates<br/>  that the decrypted `gatewayMerchantId` matches this value. | c5f78a7e-2fb0-4e4a-bcf0-9e1f8b0e5c7a                                                                                                                                                                                                              |
+| `paymentMethodData`                                                                                                                                                                                                                               | [components.GooglePayPaymentMethodData](../../models/components/googlepaypaymentmethoddata.md)                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                                                |   The `paymentMethodData` object from Google Pay's<br/>  [PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response.                                                                                |                                                                                                                                                                                                                                                   |

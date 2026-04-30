@@ -1,0 +1,24 @@
+# CreateProductOptionGroup
+
+## Example Usage
+
+```typescript
+import { CreateProductOptionGroup } from "@moovio/sdk/models/components";
+
+let value: CreateProductOptionGroup = {
+  name: "<value>",
+  minSelect: 749866,
+  maxSelect: 812415,
+  options: [],
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                   | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                                                                                                                                                  | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
+| `description`                                                                                                                                           | *string*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                      | A detailed description of the option group.<br/><br/>- Must be valid UTF-8 text<br/>- Supports Markdown for formatting<br/>- HTML is not permitted and will be rejected |
+| `minSelect`                                                                                                                                             | *number*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | The minimum number of options that must be selected from this group.<br/><br/>A value of 0 indicates that no selection from this group is required.     |
+| `maxSelect`                                                                                                                                             | *number*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | The maximum number of options that can be selected from this group.                                                                                     |
+| `options`                                                                                                                                               | [components.CreateProductOption](../../models/components/createproductoption.md)[]                                                                      | :heavy_check_mark:                                                                                                                                      | The options available within this group.                                                                                                                |
