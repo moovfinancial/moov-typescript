@@ -34,8 +34,7 @@ const isBrowserLike = webWorkerLike
  */
 export class AccessTokenHook implements SDKInitHook, BeforeRequestHook {
   sdkInit(opts: SDKOptions): SDKOptions {
-    // @ts-expect-error - accessToken will be available after sdk generation
-    const token = opts.accessToken;
+    const token = (opts as SDKOptions & { accessToken: string }).accessToken;
     const hasToken = typeof token === "string" && token.length > 0;
 
     if (hasToken && opts.security != null) {
