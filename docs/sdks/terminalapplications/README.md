@@ -40,11 +40,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -74,11 +71,8 @@ import { terminalApplicationsCreate } from "@moovio/sdk/funcs/terminalApplicatio
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -136,11 +130,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -165,11 +156,8 @@ import { terminalApplicationsList } from "@moovio/sdk/funcs/terminalApplications
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -219,11 +207,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -250,11 +235,8 @@ import { terminalApplicationsGet } from "@moovio/sdk/funcs/terminalApplicationsG
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -307,11 +289,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -338,11 +317,8 @@ import { terminalApplicationsDelete } from "@moovio/sdk/funcs/terminalApplicatio
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -396,11 +372,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -430,11 +403,8 @@ import { terminalApplicationsCreateVersion } from "@moovio/sdk/funcs/terminalApp
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 

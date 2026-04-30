@@ -28,11 +28,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -57,11 +54,8 @@ import { receiptsCreate } from "@moovio/sdk/funcs/receiptsCreate.js";
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -113,11 +107,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -144,11 +135,8 @@ import { receiptsList } from "@moovio/sdk/funcs/receiptsList.js";
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 

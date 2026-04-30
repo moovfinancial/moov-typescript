@@ -8,16 +8,10 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  SchemeBasicAuth,
-  SchemeBasicAuth$inboundSchema,
-  SchemeBasicAuth$Outbound,
-  SchemeBasicAuth$outboundSchema,
-} from "./schemebasicauth.js";
 
 export type Security = {
-  basicAuth?: SchemeBasicAuth | undefined;
-  basicAuth1?: SchemeBasicAuth | undefined;
+  username?: string | undefined;
+  password?: string | undefined;
 };
 
 /** @internal */
@@ -26,13 +20,13 @@ export const Security$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  basicAuth: types.optional(SchemeBasicAuth$inboundSchema),
-  basicAuth1: types.optional(SchemeBasicAuth$inboundSchema),
+  username: types.optional(types.string()),
+  password: types.optional(types.string()),
 });
 /** @internal */
 export type Security$Outbound = {
-  basicAuth?: SchemeBasicAuth$Outbound | undefined;
-  basicAuth1?: SchemeBasicAuth$Outbound | undefined;
+  username?: string | undefined;
+  password?: string | undefined;
 };
 
 /** @internal */
@@ -41,8 +35,8 @@ export const Security$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Security
 > = z.object({
-  basicAuth: SchemeBasicAuth$outboundSchema.optional(),
-  basicAuth1: SchemeBasicAuth$outboundSchema.optional(),
+  username: z.string().optional(),
+  password: z.string().optional(),
 });
 
 export function securityToJSON(security: Security): string {

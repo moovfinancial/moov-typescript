@@ -112,11 +112,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -148,11 +145,8 @@ import { bankAccountsLink } from "@moovio/sdk/funcs/bankAccountsLink.js";
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -214,11 +208,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -245,11 +236,8 @@ import { bankAccountsList } from "@moovio/sdk/funcs/bankAccountsList.js";
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -304,11 +292,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -336,11 +321,8 @@ import { bankAccountsGet } from "@moovio/sdk/funcs/bankAccountsGet.js";
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -394,11 +376,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -426,11 +405,8 @@ import { bankAccountsDisable } from "@moovio/sdk/funcs/bankAccountsDisable.js";
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -496,11 +472,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -528,11 +501,8 @@ import { bankAccountsInitiateMicroDeposits } from "@moovio/sdk/funcs/bankAccount
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -587,11 +557,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -625,11 +592,8 @@ import { bankAccountsCompleteMicroDeposits } from "@moovio/sdk/funcs/bankAccount
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -700,11 +664,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -732,11 +693,8 @@ import { bankAccountsGetVerification } from "@moovio/sdk/funcs/bankAccountsGetVe
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -805,11 +763,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -837,11 +792,8 @@ import { bankAccountsInitiateVerification } from "@moovio/sdk/funcs/bankAccounts
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -903,11 +855,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -938,11 +887,8 @@ import { bankAccountsCompleteVerification } from "@moovio/sdk/funcs/bankAccounts
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 

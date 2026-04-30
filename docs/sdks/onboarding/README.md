@@ -36,11 +36,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -86,11 +83,8 @@ import { onboardingCreateInvite } from "@moovio/sdk/funcs/onboardingCreateInvite
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -164,11 +158,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -193,11 +184,8 @@ import { onboardingListInvites } from "@moovio/sdk/funcs/onboardingListInvites.j
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -247,11 +235,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -278,11 +263,8 @@ import { onboardingGetInvite } from "@moovio/sdk/funcs/onboardingGetInvite.js";
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -335,11 +317,8 @@ import { Moov } from "@moovio/sdk";
 
 const moov = new Moov({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 
@@ -366,11 +345,8 @@ import { onboardingRevokeInvite } from "@moovio/sdk/funcs/onboardingRevokeInvite
 // You can create one instance of it to use across an application.
 const moov = new MoovCore({
   security: {
-    basicAuth: {
-      username: "<YOUR_USERNAME_HERE>",
-      password: "<YOUR_PASSWORD_HERE>",
-      accessToken: "<YOUR_ACCESS_TOKEN_HERE>",
-    },
+    username: "",
+    password: "",
   },
 });
 

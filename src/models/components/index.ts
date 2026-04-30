@@ -473,7 +473,6 @@ export * from "./scheduledtransferlineitems.js";
 export * from "./schedulelistresponse.js";
 export * from "./schedulepaymentmethod.js";
 export * from "./scheduleresponse.js";
-export * from "./schemebasicauth.js";
 export * from "./seccode.js";
 export * from "./security.js";
 export * from "./sendfunds.js";

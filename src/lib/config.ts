@@ -28,6 +28,11 @@ export type SDKOptions = {
     | (() => Promise<components.Security>)
     | undefined;
 
+  /**
+   * Allows setting the accessToken parameter for all supported operations
+   */
+  accessToken?: string | undefined;
+
   httpClient?: HTTPClient;
   /**
    * Allows overriding the default server used by the SDK

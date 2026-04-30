@@ -208,6 +208,7 @@ export function createMCPServer(deps: {
   scopes?: MCPScope[] | undefined;
   serverURL?: string | undefined;
   security?: SDKOptions["security"] | undefined;
+  accessToken?: SDKOptions["accessToken"] | undefined;
   serverIdx?: SDKOptions["serverIdx"] | undefined;
 }) {
   const server = new McpServer({
@@ -217,6 +218,7 @@ export function createMCPServer(deps: {
 
   const client = new MoovCore({
     security: deps.security,
+    accessToken: deps.accessToken,
     serverURL: deps.serverURL,
     serverIdx: deps.serverIdx,
   });

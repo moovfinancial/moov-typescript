@@ -245,22 +245,8 @@ export function resolveGlobalSecurity(
   let inputs: SecurityInput[][] = [
     [
       {
-        type: "http:custom",
-        value: {
-          username: security?.basicAuth?.username,
-          password: security?.basicAuth?.password,
-          accessToken: security?.basicAuth?.accessToken,
-        },
-      },
-    ],
-    [
-      {
-        type: "http:custom",
-        value: {
-          username: security?.basicAuth1?.username,
-          password: security?.basicAuth1?.password,
-          accessToken: security?.basicAuth1?.accessToken,
-        },
+        type: "http:basic",
+        value: { username: security?.username, password: security?.password },
       },
     ],
   ];

@@ -54,7 +54,8 @@ export const startCommand = buildCommand({
       },
       "access-token": {
         kind: "parsed",
-        brief: "Sets the accessToken auth field for the API",
+        brief:
+          "Allows setting the accessToken parameter for all supported operations",
         optional: true,
         parse: (value) => {
           return z.string().parse(value);

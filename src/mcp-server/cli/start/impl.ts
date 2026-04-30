@@ -7,6 +7,7 @@ import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import express from "express";
 import { SDKOptions } from "../../../lib/config.js";
+import { allRequired } from "../../../lib/primitives.js";
 import { LocalContext } from "../../cli.js";
 import {
   ConsoleLoggerLevel,
@@ -20,7 +21,7 @@ interface StartCommandFlags {
   readonly tool?: string[];
   readonly username?: string | undefined;
   readonly password?: string | undefined;
-  readonly "access-token"?: string | undefined;
+  readonly "access-token"?: SDKOptions["accessToken"] | undefined;
   readonly "server-url"?: string;
   readonly "server-index"?: SDKOptions["serverIdx"];
   readonly "log-level": ConsoleLoggerLevel;
@@ -50,26 +51,11 @@ async function startStdio(flags: StartCommandFlags) {
   const server = createMCPServer({
     logger,
     allowedTools: flags.tool,
-    security: {
-      basicAuth:
-        flags.username != null && flags.password != null
-          && flags["access-token"] != null
-          ? {
-            username: flags.username,
-            password: flags.password,
-            accessToken: flags["access-token"],
-          }
-          : void 0,
-      basicAuth1:
-        flags.username != null && flags.password != null
-          && flags["access-token"] != null
-          ? {
-            username: flags.username,
-            password: flags.password,
-            accessToken: flags["access-token"],
-          }
-          : void 0,
-    },
+    security: allRequired({
+      username: flags.username ?? "",
+      password: flags.password ?? "",
+    }),
+    accessToken: flags["access-token"],
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
   });
@@ -89,26 +75,11 @@ async function startSSE(flags: StartCommandFlags) {
   const mcpServer = createMCPServer({
     logger,
     allowedTools: flags.tool,
-    security: {
-      basicAuth:
-        flags.username != null && flags.password != null
-          && flags["access-token"] != null
-          ? {
-            username: flags.username,
-            password: flags.password,
-            accessToken: flags["access-token"],
-          }
-          : void 0,
-      basicAuth1:
-        flags.username != null && flags.password != null
-          && flags["access-token"] != null
-          ? {
-            username: flags.username,
-            password: flags.password,
-            accessToken: flags["access-token"],
-          }
-          : void 0,
-    },
+    security: allRequired({
+      username: flags.username ?? "",
+      password: flags.password ?? "",
+    }),
+    accessToken: flags["access-token"],
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
   });
