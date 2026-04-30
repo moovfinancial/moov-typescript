@@ -1,3 +1,4 @@
+import { AccessTokenHook } from "./access-token-hook.js";
 import { MoovVersionHook } from "./moov-version-hook.js";
 import { Hooks } from "./types.js";
 
@@ -14,4 +15,7 @@ export function initHooks(hooks: Hooks) {
 
   const versionHook = new MoovVersionHook();
   hooks.registerBeforeRequestHook(versionHook);
+
+  const accessTokenHook = new AccessTokenHook();
+  hooks.registerSDKInitHook(accessTokenHook);
 }

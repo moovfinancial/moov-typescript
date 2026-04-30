@@ -1,0 +1,26 @@
+overlay: 1.0.0
+info:
+  title: Add OAuth2 bearer access token alongside HTTP Basic
+  version: 0.0.1
+actions:
+  # Declare a new bearer-token security scheme. Naming the scheme
+  # `accessToken` causes Speakeasy to surface it as `Security.accessToken`
+  # (a string) in the generated TypeScript SDK.
+  - target: $.components.securitySchemes
+    description: Add a bearer-token security scheme named accessToken
+    update:
+      accessToken:
+        type: http
+        scheme: bearer
+
+  # Allow either Basic auth (existing API-key flow, server-side) or the
+  # new bearer token (short-lived OAuth2 access token, client-side) to
+  # satisfy the global security requirement. `resolveSecurity` in
+  # src/lib/security.ts picks the first option whose inputs are all
+  # populated, so callers select the auth mode by which field they set.
+  - target: $
+    description: Offer bearer auth as an alternative to BasicAuth globally
+    update:
+      security:
+        - BasicAuth: []
+        - accessToken: []
