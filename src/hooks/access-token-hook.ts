@@ -14,10 +14,6 @@ const isBrowserLike = webWorkerLike
   || (typeof navigator !== "undefined" && "serviceWorker" in navigator)
   || (typeof window === "object" && typeof window.document !== "undefined");
 
-function readAccessToken(opts: SDKOptions): string | undefined {
-  return (opts as SDKOptions).accessToken;
-}
-
 /**
  * Applies bearer-token authentication and validates auth-related SDK
  * options at construction time.
@@ -38,10 +34,10 @@ function readAccessToken(opts: SDKOptions): string | undefined {
  */
 export class AccessTokenHook implements SDKInitHook, BeforeRequestHook {
   sdkInit(opts: SDKOptions): SDKOptions {
-    const token = readAccessToken(opts);
+    const token = opts.accessToken;
     const hasToken = typeof token === "string" && token.length > 0;
 
-    if (hasToken && opts) {
+    if (hasToken && opts.security != null) {
       throw new Error(
         "Moov SDK: `accessToken` and `security.username`/`password` cannot "
           + "both be set. Use `accessToken` for OAuth2 bearer auth "
@@ -63,7 +59,7 @@ export class AccessTokenHook implements SDKInitHook, BeforeRequestHook {
   }
 
   beforeRequest(ctx: BeforeRequestContext, request: Request): Request {
-    const token = readAccessToken(ctx.options);
+    const token = ctx.options.accessToken;
 
     // Bail early if there's no token or the request already has an Authorization header.
     if (!token || request.headers.has("Authorization")) {
