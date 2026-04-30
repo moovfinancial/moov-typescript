@@ -1,26 +1,35 @@
 overlay: 1.0.0
 info:
-  title: Add OAuth2 bearer access token alongside HTTP Basic
-  version: 0.0.1
+  title: Add a typed accessToken SDK option for client-side bearer auth
+  version: 0.0.3
 actions:
-  # Declare a new bearer-token security scheme. Naming the scheme
-  # `accessToken` causes Speakeasy to surface it as `Security.accessToken`
-  # (a string) in the generated TypeScript SDK.
-  - target: $.components.securitySchemes
-    description: Add a bearer-token security scheme named accessToken
-    update:
-      accessToken:
-        type: http
-        scheme: bearer
-
-  # Allow either Basic auth (existing API-key flow, server-side) or the
-  # new bearer token (short-lived OAuth2 access token, client-side) to
-  # satisfy the global security requirement. `resolveSecurity` in
-  # src/lib/security.ts picks the first option whose inputs are all
-  # populated, so callers select the auth mode by which field they set.
+  # Hoist `accessToken` as a top-level option on the generated SDK.
+  #
+  # `x-speakeasy-globals-hidden: true` hides it from per-operation method
+  # signatures so it's only set once at SDK construction. Because no
+  # operation declares an `accessToken` header parameter that matches this
+  # global, Speakeasy does NOT auto-inject it onto outgoing requests.
+  # `AccessTokenHook` (src/hooks/access-token-hook.ts) reads this option
+  # and sets `Authorization: Bearer <accessToken>` at request time.
+  #
+  # The upstream `BasicAuth` security scheme and its global `security`
+  # entry are intentionally untouched, so existing server-side callers
+  # using `security: { username, password }` continue to work unchanged.
   - target: $
-    description: Offer bearer auth as an alternative to BasicAuth globally
+    description: Add accessToken as a hidden global SDK option
     update:
-      security:
-        - BasicAuth: []
-        - accessToken: []
+      x-speakeasy-globals:
+        parameters:
+          - name: accessToken
+            in: header
+            x-speakeasy-globals-hidden: true
+            schema:
+              type: string
+              description: |
+                Short-lived OAuth2 access token used for client-side
+                (browser) authentication. When set, the SDK sends
+                `Authorization: Bearer <accessToken>` on every request.
+
+                Mint server-side with the appropriate scopes and pass to
+                the browser. Cannot be combined with
+                `security.username`/`security.password`.

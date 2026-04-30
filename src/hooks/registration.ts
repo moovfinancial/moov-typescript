@@ -18,4 +18,5 @@ export function initHooks(hooks: Hooks) {
 
   const accessTokenHook = new AccessTokenHook();
   hooks.registerSDKInitHook(accessTokenHook);
+  hooks.registerBeforeRequestHook(accessTokenHook);
 }
