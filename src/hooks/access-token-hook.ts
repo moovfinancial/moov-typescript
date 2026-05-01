@@ -59,7 +59,7 @@ export class AccessTokenHook implements SDKInitHook, BeforeRequestHook {
   }
 
   beforeRequest(ctx: BeforeRequestContext, request: Request): Request {
-    const token = ctx.options.accessToken;
+    const token = (ctx.options as SDKOptions & { accessToken: string }).accessToken;
 
     // Bail early if there's no token or the request already has an Authorization header.
     if (!token || request.headers.has("Authorization")) {
