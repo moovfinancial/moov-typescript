@@ -216,6 +216,7 @@ export * from "./feeproperties.js";
 export * from "./filedetails.js";
 export * from "./filepurpose.js";
 export * from "./filestatus.js";
+export * from "./fileuploadmetadata.js";
 export * from "./fileuploadrequestmultipart.js";
 export * from "./financialinstitutions.js";
 export * from "./fulfillmentdetails.js";

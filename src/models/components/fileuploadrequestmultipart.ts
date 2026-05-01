@@ -12,6 +12,12 @@ import {
   FilePurpose$inboundSchema,
   FilePurpose$outboundSchema,
 } from "./filepurpose.js";
+import {
+  FileUploadMetadata,
+  FileUploadMetadata$inboundSchema,
+  FileUploadMetadata$Outbound,
+  FileUploadMetadata$outboundSchema,
+} from "./fileuploadmetadata.js";
 
 export type FileUploadRequestMultiPartFile = {
   fileName: string;
@@ -20,7 +26,7 @@ export type FileUploadRequestMultiPartFile = {
 
 export type FileUploadRequestMultiPart = {
   /**
-   * The file to be added. Valid types are `csv`, `png`, `jpeg`, `pdf`.
+   * The file to upload. Valid types are `csv`, `png`, `jpeg`, `pdf`.
    */
   file: FileUploadRequestMultiPartFile | Blob;
   /**
@@ -28,13 +34,9 @@ export type FileUploadRequestMultiPart = {
    */
   filePurpose: FilePurpose;
   /**
-   * Additional metadata to be stored with the file, formatted as a JSON string.
-   *
-   * @remarks
-   *
-   * Valid keys are `representative_id`, `comment`, `requirement_id`, `error_code`.
+   * Additional metadata to be stored with the file.
    */
-  metadata?: string | undefined;
+  metadata?: FileUploadMetadata | undefined;
 };
 
 /** @internal */
@@ -99,13 +101,13 @@ export const FileUploadRequestMultiPart$inboundSchema: z.ZodType<
 > = z.object({
   file: z.lazy(() => FileUploadRequestMultiPartFile$inboundSchema),
   filePurpose: FilePurpose$inboundSchema,
-  metadata: z.string().optional(),
+  metadata: FileUploadMetadata$inboundSchema.optional(),
 });
 /** @internal */
 export type FileUploadRequestMultiPart$Outbound = {
   file: FileUploadRequestMultiPartFile$Outbound | Blob;
   filePurpose: string;
-  metadata?: string | undefined;
+  metadata?: FileUploadMetadata$Outbound | undefined;
 };
 
 /** @internal */
@@ -118,7 +120,7 @@ export const FileUploadRequestMultiPart$outboundSchema: z.ZodType<
     blobLikeSchema,
   ),
   filePurpose: FilePurpose$outboundSchema,
-  metadata: z.string().optional(),
+  metadata: FileUploadMetadata$outboundSchema.optional(),
 });
 
 export function fileUploadRequestMultiPartToJSON(
