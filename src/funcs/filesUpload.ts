@@ -3,7 +3,12 @@
  */
 
 import { MoovCore } from "../core.js";
-import { appendForm, encodeSimple, normalizeBlob } from "../lib/encodings.js";
+import {
+  appendForm,
+  encodeJSON,
+  encodeSimple,
+  normalizeBlob,
+} from "../lib/encodings.js";
 import {
   bytesToBlob,
   getContentTypeFromFileName,
@@ -140,7 +145,13 @@ async function $do(
     payload.FileUploadRequestMultiPart.filePurpose,
   );
   if (payload.FileUploadRequestMultiPart.metadata !== undefined) {
-    appendForm(body, "metadata", payload.FileUploadRequestMultiPart.metadata);
+    appendForm(
+      body,
+      "metadata",
+      encodeJSON("metadata", payload.FileUploadRequestMultiPart.metadata, {
+        explode: true,
+      }),
+    );
   }
 
   const pathParams = {
