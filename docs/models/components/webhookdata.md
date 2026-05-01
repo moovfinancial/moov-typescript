@@ -44,6 +44,7 @@ const value: components.WebhookDataBalanceUpdated = {
 const value: components.WebhookDataBankAccountCreated = {
   bankAccountID: "<id>",
   accountID: "<id>",
+  status: "verificationFailed",
 };
 ```
 
