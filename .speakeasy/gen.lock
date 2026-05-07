@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: da6a6f38dbded5f83dcc4c7881d71307
+  docChecksum: b52ca137dea3791c0e2d0a889c39b40e
   docVersion: v2026.04.00
-  speakeasyVersion: 1.761.11
-  generationVersion: 2.881.17
-  releaseVersion: 26.4.2
-  configChecksum: 1477d22a2b2bbfc542b8ca27bb34e778
+  speakeasyVersion: 1.762.0
+  generationVersion: 2.882.0
+  releaseVersion: 26.4.3
+  configChecksum: ec8fea88670914e2dbb7fb97df981710
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 59dc106b-b367-49a9-850a-0a7811c84b63
-  pristine_commit_hash: 030c8a8abf76291e311e61f8b7b40185934b7676
-  pristine_tree_hash: 7c4882b9cb27a1c6338299f218d270074c1c5b3f
+  generation_id: 597f1e1d-733e-4e04-a93e-d12f4421c44c
+  pristine_commit_hash: bdcc9fdb96ddcb9d1053f57263ff01d592fb2ebb
+  pristine_tree_hash: 9278c23a3825396bf67e00f923875f6434e1cf43
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -622,8 +622,8 @@ trackedFiles:
     pristine_git_object: 8e08f919162c932363ca38180ac2df366073947b
   docs/models/components/collectionpaymentmethodtype.md:
     id: cbe8cc7ebbae
-    last_write_checksum: sha1:50a74dd4601fc89b4343801269fcbe1ed67c7aae
-    pristine_git_object: 9c60ac526c2c7054c79758de9ca0f668afc619f4
+    last_write_checksum: sha1:5ce215fd35c61f40f0f479f2f0d1a98e14065895
+    pristine_git_object: d4a902c0d3a91a88b42e1d6da45fc25de83f277f
   docs/models/components/colorsvalidationerror.md:
     id: 5b3bd235d674
     last_write_checksum: sha1:597e767c52337658d4e71c564702f9ce7e7cfabe
@@ -4594,12 +4594,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:f02c4a0b42e5bead00674701269d83df55c6fe17
-    pristine_git_object: a4e21cec6959fe12b9a98b35cdeaeffeaa64cb58
+    last_write_checksum: sha1:b57a7ba1a4934e9c323d3325ccc3f2c52bf6d490
+    pristine_git_object: e1c8c47b3c86f3df27ff710d735cdbb8bf9c15c3
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:9a05c72c5b76d2fde30f0624083d4dd38eb7530d
-    pristine_git_object: 8e636da2f759b4a8aa238f63e96e3a4fbd470063
+    last_write_checksum: sha1:4a4346b81ec008295507ebec4f5da5d8fe8abbcd
+    pristine_git_object: 1b90b6c251d3171e52ec1f610d263e9b7276d56a
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5374,8 +5374,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:c5591a2e565592205b2495ced1903ce8d1da5df3
-    pristine_git_object: 18480de82270adc363d3b2ddc0085eafe69922df
+    last_write_checksum: sha1:b4e8308fb9ddda2c157c709d4ca225f3dca673a5
+    pristine_git_object: d082d1830427785b89321e8261234772fb5a3958
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5454,8 +5454,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:f3633a7c5e1cc245a4fa57c3682075d2c760fc6f
-    pristine_git_object: 36f7f4a9a759f6a9dc794c84c5fffeead78e98f6
+    last_write_checksum: sha1:4a1f21003338ffd3cf6ddb7d0945e57e64a30f0f
+    pristine_git_object: 6f6872b42a2c0d626800bb4c00f085d1de33c767
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5470,8 +5470,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:9396c5d47614e9baf367c9610c6a28e78fd0e2c2
-    pristine_git_object: 4750382b51562c9f23030a1a53954f542ac1d70d
+    last_write_checksum: sha1:1699c365965ccad25c3fb9add652deac7b70d4f7
+    pristine_git_object: e3d6e95526e2e803bd266f041d7f28158b74297e
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -6746,8 +6746,8 @@ trackedFiles:
     pristine_git_object: e5fc05afa4e54a553c571815a72e5619eb4ef3bf
   src/models/components/collectionpaymentmethodtype.ts:
     id: 8d5c784e3b69
-    last_write_checksum: sha1:1cf623247c137bbf03f019d33cdbfc4b1e7bbefe
-    pristine_git_object: 026741ee767c8a410a343a67c5a75973e26666aa
+    last_write_checksum: sha1:26f7eba710461d5547a10843a2899330de3e6937
+    pristine_git_object: 8b14a7338da2ded3e1363c39f3518174050b51b0
   src/models/components/colorsvalidationerror.ts:
     id: 75d30ad03cd5
     last_write_checksum: sha1:cd06b0e2f0acd455c146c4536739b0a64a0aeb63
@@ -12788,7 +12788,7 @@ examples:
           application/json: {"tipPresets": {"calculationBasis": "pre-tax", "percentageOptions": [10, 15, 20]}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `moov.files.upload()`: \n  *  `request.fileUploadRequestMultiPart.metadata` **Changed** (Breaking ⚠️)\n"
+releaseNotes: "## Typescript SDK Changes:\n* `moov.paymentLinks.create()`: \n  *  `request.createPaymentLink.payment.allowedMethods[].enum(googlePay)` **Added**\n  *  `response.payment.allowedMethods[].enum(googlePay)` **Added** (Breaking ⚠️)\n* `moov.paymentLinks.list()`:  `response.[].payment.allowedMethods[].enum(googlePay)` **Added** (Breaking ⚠️)\n* `moov.paymentLinks.get()`:  `response.payment.allowedMethods[].enum(googlePay)` **Added** (Breaking ⚠️)\n* `moov.paymentLinks.update()`: \n  *  `request.updatePaymentLink.payment.allowedMethods[].enum(googlePay)` **Added**\n  *  `response.payment.allowedMethods[].enum(googlePay)` **Added** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
