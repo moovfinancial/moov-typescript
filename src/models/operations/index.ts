@@ -60,6 +60,7 @@ export * from "./getbrand.js";
 export * from "./getcancellation.js";
 export * from "./getcapability.js";
 export * from "./getcard.js";
+export * from "./getcardmetadata.js";
 export * from "./getdispute.js";
 export * from "./getdisputeevidence.js";
 export * from "./getdisputeevidencedata.js";

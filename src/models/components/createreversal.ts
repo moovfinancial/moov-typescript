@@ -7,12 +7,22 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  ReversalAmountDetails,
+  ReversalAmountDetails$inboundSchema,
+  ReversalAmountDetails$Outbound,
+  ReversalAmountDetails$outboundSchema,
+} from "./reversalamountdetails.js";
 
 export type CreateReversal = {
   /**
    * Amount to reverse in cents. Partial amounts will automatically trigger a refund instead of a cancellation.
    */
   amount: number;
+  /**
+   * Breakdown of the reversed amount.
+   */
+  amountDetails?: ReversalAmountDetails | undefined;
 };
 
 /** @internal */
@@ -22,10 +32,12 @@ export const CreateReversal$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: types.number(),
+  amountDetails: types.optional(ReversalAmountDetails$inboundSchema),
 });
 /** @internal */
 export type CreateReversal$Outbound = {
   amount: number;
+  amountDetails?: ReversalAmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -35,6 +47,7 @@ export const CreateReversal$outboundSchema: z.ZodType<
   CreateReversal
 > = z.object({
   amount: z.number().int(),
+  amountDetails: ReversalAmountDetails$outboundSchema.optional(),
 });
 
 export function createReversalToJSON(createReversal: CreateReversal): string {

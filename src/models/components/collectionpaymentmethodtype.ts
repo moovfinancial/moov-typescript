@@ -13,6 +13,7 @@ export const CollectionPaymentMethodType = {
   ApplePay: "apple-pay",
   CardPayment: "card-payment",
   AchDebitCollect: "ach-debit-collect",
+  GooglePay: "google-pay",
 } as const;
 /**
  * Payment methods allowed for collecting a payment.

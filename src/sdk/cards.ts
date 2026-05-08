@@ -4,10 +4,12 @@
 
 import { cardsDisable } from "../funcs/cardsDisable.js";
 import { cardsGet } from "../funcs/cardsGet.js";
+import { cardsGetMetadata } from "../funcs/cardsGetMetadata.js";
 import { cardsLink } from "../funcs/cardsLink.js";
 import { cardsList } from "../funcs/cardsList.js";
 import { cardsUpdate } from "../funcs/cardsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -118,6 +120,25 @@ export class Cards extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.DisableCardResponse | undefined> {
     return unwrapAsync(cardsDisable(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Look up metadata for a card without linking it to a Moov account.
+   *
+   * Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/card-metadata.read` scope.
+   */
+  async getMetadata(
+    request: components.CardMetadataRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetCardMetadataResponse> {
+    return unwrapAsync(cardsGetMetadata(
       this,
       request,
       options,

@@ -15,5 +15,5 @@ let value: CollectionPaymentMethodType = "card-payment";
 ## Values
 
 ```typescript
-"apple-pay" | "card-payment" | "ach-debit-collect" | Unrecognized<string>
+"apple-pay" | "card-payment" | "ach-debit-collect" | "google-pay" | Unrecognized<string>
 ```

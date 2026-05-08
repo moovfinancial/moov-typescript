@@ -61,6 +61,7 @@ import { tool$cardIssuingRequest } from "./tools/cardIssuingRequest.js";
 import { tool$cardIssuingUpdate } from "./tools/cardIssuingUpdate.js";
 import { tool$cardsDisable } from "./tools/cardsDisable.js";
 import { tool$cardsGet } from "./tools/cardsGet.js";
+import { tool$cardsGetMetadata } from "./tools/cardsGetMetadata.js";
 import { tool$cardsLink } from "./tools/cardsLink.js";
 import { tool$cardsList } from "./tools/cardsList.js";
 import { tool$cardsUpdate } from "./tools/cardsUpdate.js";
@@ -212,7 +213,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.0.0-dev.18",
+    version: "0.0.0-dev.19",
   });
 
   const client = new MoovCore({
@@ -282,6 +283,7 @@ export function createMCPServer(deps: {
   tool(tool$cardsGet);
   tool(tool$cardsUpdate);
   tool(tool$cardsDisable);
+  tool(tool$cardsGetMetadata);
   tool(tool$disputesList);
   tool(tool$disputesGet);
   tool(tool$disputesAccept);
