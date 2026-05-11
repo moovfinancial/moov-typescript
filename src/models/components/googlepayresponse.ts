@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -17,19 +18,49 @@ import {
   CardExpiration$Outbound,
   CardExpiration$outboundSchema,
 } from "./cardexpiration.js";
+import {
+  CardType,
+  CardType$inboundSchema,
+  CardType$outboundSchema,
+} from "./cardtype.js";
+
+/**
+ * The authentication method used for the Google Pay token.
+ */
+export const AuthMethod = {
+  PanOnly: "PAN_ONLY",
+  Cryptogram3Ds: "CRYPTOGRAM_3DS",
+} as const;
+/**
+ * The authentication method used for the Google Pay token.
+ */
+export type AuthMethod = ClosedEnum<typeof AuthMethod>;
 
 /**
  * Describes a Google Pay token on a Moov account.
  */
 export type GooglePayResponse = {
   /**
+   * The unique identifier of the Google Pay token.
+   */
+  tokenID: string;
+  /**
    * The card brand.
    */
   brand: CardBrand;
   /**
-   * The last four digits of the underlying card number.
+   * The type of the card.
    */
-  cardDetails: string;
+  cardType: CardType;
+  /**
+   *   User-friendly name of the tokenized card returned by Google Pay.
+   *
+   * @remarks
+   *
+   *   It usually contains the last four digits of the underlying card.
+   *   There is no standard format.
+   */
+  cardDisplayName: string;
   /**
    * Uniquely identifies a linked payment card or token.
    *
@@ -43,10 +74,25 @@ export type GooglePayResponse = {
    */
   expiration: CardExpiration;
   /**
+   * The last four digits of the Google Pay token, which may differ from the tokenized card's last four digits.
+   */
+  dynamicLastFour: string;
+  /**
    * Country where the underlying card was issued.
    */
   issuerCountry?: string | undefined;
+  /**
+   * The authentication method used for the Google Pay token.
+   */
+  authMethod?: AuthMethod | undefined;
 };
+
+/** @internal */
+export const AuthMethod$inboundSchema: z.ZodNativeEnum<typeof AuthMethod> = z
+  .nativeEnum(AuthMethod);
+/** @internal */
+export const AuthMethod$outboundSchema: z.ZodNativeEnum<typeof AuthMethod> =
+  AuthMethod$inboundSchema;
 
 /** @internal */
 export const GooglePayResponse$inboundSchema: z.ZodType<
@@ -54,19 +100,27 @@ export const GooglePayResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  tokenID: z.string(),
   brand: CardBrand$inboundSchema,
-  cardDetails: z.string(),
+  cardType: CardType$inboundSchema,
+  cardDisplayName: z.string(),
   fingerprint: z.string(),
   expiration: CardExpiration$inboundSchema,
+  dynamicLastFour: z.string(),
   issuerCountry: z.string().optional(),
+  authMethod: AuthMethod$inboundSchema.optional(),
 });
 /** @internal */
 export type GooglePayResponse$Outbound = {
+  tokenID: string;
   brand: string;
-  cardDetails: string;
+  cardType: string;
+  cardDisplayName: string;
   fingerprint: string;
   expiration: CardExpiration$Outbound;
+  dynamicLastFour: string;
   issuerCountry?: string | undefined;
+  authMethod?: string | undefined;
 };
 
 /** @internal */
@@ -75,11 +129,15 @@ export const GooglePayResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GooglePayResponse
 > = z.object({
+  tokenID: z.string(),
   brand: CardBrand$outboundSchema,
-  cardDetails: z.string(),
+  cardType: CardType$outboundSchema,
+  cardDisplayName: z.string(),
   fingerprint: z.string(),
   expiration: CardExpiration$outboundSchema,
+  dynamicLastFour: z.string(),
   issuerCountry: z.string().optional(),
+  authMethod: AuthMethod$outboundSchema.optional(),
 });
 
 export function googlePayResponseToJSON(

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: b52ca137dea3791c0e2d0a889c39b40e
+  docChecksum: f045b1350796e6b14eccda14d0a6f086
   docVersion: v2026.04.00
   speakeasyVersion: 1.762.0
   generationVersion: 2.882.0
-  releaseVersion: 26.4.3
-  configChecksum: ec8fea88670914e2dbb7fb97df981710
+  releaseVersion: 26.4.4
+  configChecksum: a484dd23c490724eb36907894627e155
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 597f1e1d-733e-4e04-a93e-d12f4421c44c
-  pristine_commit_hash: bdcc9fdb96ddcb9d1053f57263ff01d592fb2ebb
-  pristine_tree_hash: 9278c23a3825396bf67e00f923875f6434e1cf43
+  generation_id: 36f47fa5-68bc-4659-b160-9d7bf89eff79
+  pristine_commit_hash: e9feba755cc6d97b7ab04d61071b9402ab710a7c
+  pristine_tree_hash: 4243887e8edec97d4a35c167306eac96a4359f3f
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -276,6 +276,10 @@ trackedFiles:
     id: b5be08583a2e
     last_write_checksum: sha1:e988e4a162bd9f8d6be518eb17d18d52e430d535
     pristine_git_object: 61422816916dcbfd1c770fab92b9b87456012742
+  docs/models/components/authmethod.md:
+    id: 7cae628da9eb
+    last_write_checksum: sha1:e997a5bdff953d847485451b763c48e9c17a238a
+    pristine_git_object: d0415239ed883bc5fad4b209239c9d201e17a0f2
   docs/models/components/authorizeduser.md:
     id: e3f3d90910a8
     last_write_checksum: sha1:e3beffc48696ea3e15c831da8d216b5b40660ef5
@@ -694,8 +698,8 @@ trackedFiles:
     pristine_git_object: 46592fddebae442bf01354a3d605061647c6d32f
   docs/models/components/createdtransfer.md:
     id: 0e06d3f12277
-    last_write_checksum: sha1:6a2eaed6a45522ba51107d68da00b38cb9da560d
-    pristine_git_object: c0cdb602a68558ba724137903dfc08d3a09fb9cd
+    last_write_checksum: sha1:116a1faa1dbc01560ac6541e54a57a3ac2989820
+    pristine_git_object: d22edc3870504a419fe5d87fa98b81e6125617a0
   docs/models/components/createevidencefilemultipart.md:
     id: bc79f9b6c1d9
     last_write_checksum: sha1:381f2a40cf37a5a12dc1a65255ee27a0fd3d1904
@@ -1190,16 +1194,16 @@ trackedFiles:
     pristine_git_object: 104bc04e73ae14f21a2dbd1f2482662c5d7dca23
   docs/models/components/googlepaypaymentmethod.md:
     id: 6a11a3db7275
-    last_write_checksum: sha1:85dcc8838fb5712a9f4f556588aae0cd561669f5
-    pristine_git_object: 0a40e2c0b91abf156cda07e0f39c1fec36b4f2de
+    last_write_checksum: sha1:57a7b3b47c29d736b2b31434bc41a5f7b30287bb
+    pristine_git_object: 0e8e82e996804f9f4f836e2a64ed9f038cc9a0cc
   docs/models/components/googlepaypaymentmethoddata.md:
     id: f83f17193f64
     last_write_checksum: sha1:3347f2b2ab9258dcb1b51f7cd147aa7089619272
     pristine_git_object: 3281f45ddefe1bec9e92243d92bb03787181ad8a
   docs/models/components/googlepayresponse.md:
     id: a983aa4a6967
-    last_write_checksum: sha1:0fdba288bf18f5a649ad52cd8a55bcaab4cf7b91
-    pristine_git_object: f39072da124b1e27a5c1746804a97c997d9328b2
+    last_write_checksum: sha1:bef8bf1718de38057d917b2949990de90204d765
+    pristine_git_object: 45b4c9214f894283a9ef5da216c48a26dabe3d83
   docs/models/components/googlepaytokenizationdata.md:
     id: 224643ba4bc0
     last_write_checksum: sha1:14760af11281e48750c853526bec84434000a8a0
@@ -1210,8 +1214,8 @@ trackedFiles:
     pristine_git_object: 480b39277974f1cd5875eca62288ddca07075873
   docs/models/components/googlepaytransferpaymentmethod.md:
     id: 21e4a045861f
-    last_write_checksum: sha1:e2fe263edd8e295e303ea05e7ec47b131b3fe8f1
-    pristine_git_object: 93aaff13f8d65c2c174276109cb9a734bb381fdb
+    last_write_checksum: sha1:3987cd211d74804709d7581d859bd3997379debb
+    pristine_git_object: a586a35daa50228a7e194cfcb78081cd90e74b1e
   docs/models/components/governmentid.md:
     id: 4ada6c4fdaef
     last_write_checksum: sha1:1fcc463ed00df98167b56538ebff8813a28bd4a0
@@ -1482,8 +1486,8 @@ trackedFiles:
     pristine_git_object: c77d5a4e48c621611a004260db21cb82cecdb71d
   docs/models/components/linkedgooglepaypaymentmethod.md:
     id: 39b78ab19d9c
-    last_write_checksum: sha1:9fb29adc0ab36d469bd9d6b02f01fccb0ff4e0da
-    pristine_git_object: 98be2bc148b2c5b9e3cd856b4dd2cf270a5f552a
+    last_write_checksum: sha1:5c2714989e40b06b84f429ad829c7b213c89730e
+    pristine_git_object: 6f1e84cd52da9f9d2162411405795f96230120ae
   docs/models/components/linkgooglepay.md:
     id: dca2dc046871
     last_write_checksum: sha1:2fe3e7b8562c80ea00c207bd63410886368b7df1
@@ -1714,8 +1718,8 @@ trackedFiles:
     pristine_git_object: 8e8161b7c1c2d12e86ca0abc85f73caf4cfb9458
   docs/models/components/paymentmethod.md:
     id: 722f86eed889
-    last_write_checksum: sha1:6daece18356974b43666e9226e857309619789fe
-    pristine_git_object: d5af882637b184332adda04eb847413f5a463532
+    last_write_checksum: sha1:7df81ee1647b53bcfa3a031fe9c380537769684a
+    pristine_git_object: 58e56c36db3df9fcccdfe012c56bee5b95b20179
   docs/models/components/paymentmethodsbankaccount.md:
     id: 4efa9f1ba695
     last_write_checksum: sha1:ba6fcb4ae0a559d41224cc934bb172f236af019c
@@ -1838,12 +1842,12 @@ trackedFiles:
     pristine_git_object: 06db815070792b3b538a5392c535e1dfe491d619
   docs/models/components/pullfromgooglepaypaymentmethod.md:
     id: 02b08bc006dc
-    last_write_checksum: sha1:e60396410e0e86bdfe834593c11290de21f9fc5e
-    pristine_git_object: 9406ea5a4ed2a33db18766448f63b201c881ff5c
+    last_write_checksum: sha1:70fa2a9481cadbededb8250cafd5d0f1f2e66958
+    pristine_git_object: c6701867d3f9e25b28a3420a2e0912e723abbb3c
   docs/models/components/pullfromgooglepaytransferpaymentmethod.md:
     id: 1b956ec76a66
-    last_write_checksum: sha1:09b497946df4b89e976ca62bfee47562393bc052
-    pristine_git_object: e7c637ecbadd231f73a9fd3a66fa9d84a13ee5b0
+    last_write_checksum: sha1:bdb79fff075126a1a4f8bbbd5287c4faae5c19a6
+    pristine_git_object: ab7d0e5c1b7070733a10b394ef40962cea940aea
   docs/models/components/pushtoapplepaypaymentmethod.md:
     id: 63fc18b15224
     last_write_checksum: sha1:cb116edf0419f57e67c6532e52668b31ef144737
@@ -1862,12 +1866,12 @@ trackedFiles:
     pristine_git_object: a37875287271172af44a15f020e761f4a786ff10
   docs/models/components/pushtogooglepaypaymentmethod.md:
     id: 780f4ad214b9
-    last_write_checksum: sha1:259e250aa7c5d8fede8c09c62e96a06b50fd11ba
-    pristine_git_object: d442f81b727b93be4c44ea115f982e6bd4c7e84d
+    last_write_checksum: sha1:9b1b7a9829c66d1f0be2d0f4890b3bd860dd6152
+    pristine_git_object: 52aa219ebfb16973db0499f5b50fcf354ce68f3c
   docs/models/components/pushtogooglepaytransferpaymentmethod.md:
     id: b6779090b709
-    last_write_checksum: sha1:49a76f498ed95cb9d6640f68dc1f462970e93641
-    pristine_git_object: 22817214afe490b203d109c206cb959aee67803c
+    last_write_checksum: sha1:771b3e270b261faab1fa9931cb65acd877bf9298
+    pristine_git_object: da4264770714c126697b92fb2ba5f6bfe9a64e0d
   docs/models/components/puttippresets.md:
     id: 037f1e28b34f
     last_write_checksum: sha1:18ed7fbec4eec99fb50641fb11e3cc6c026efac7
@@ -1996,10 +2000,6 @@ trackedFiles:
     id: 306c339291ca
     last_write_checksum: sha1:d3531d1a6bb9cf4deec257ade7f52a8ef8215f3d
     pristine_git_object: b67d3bf7a5268ede5a9910e11908218388d3182f
-  docs/models/components/rtpdetails.md:
-    id: 3fee186d7976
-    last_write_checksum: sha1:21955b7574e05d0adb5582ae3e3cdbffcefd135b
-    pristine_git_object: ca516dafc3e41c1a7f7961241d12478d69c6ccd4
   docs/models/components/rtpfailurecode.md:
     id: 18e1b8c85134
     last_write_checksum: sha1:983e7cb63da3234f4c4cba7dee9295e0e9f71c08
@@ -2016,6 +2016,10 @@ trackedFiles:
     id: b8c13123ae09
     last_write_checksum: sha1:c2d61496cefe0aa42d64993474bc524b49452405
     pristine_git_object: fa81a66b3d726b1e3ff3410f763722816ea71076
+  docs/models/components/rtptransactiondetails.md:
+    id: 676b4e3a8b41
+    last_write_checksum: sha1:bd3f3f2308fc99b9ef05d4ff55dac3ab08440792
+    pristine_git_object: f06f8de5fc6ab8ac8e53e3d05ef0f5886a7622a9
   docs/models/components/rtptransactionstatus.md:
     id: 402ec993bf7b
     last_write_checksum: sha1:30e4cd3d4c3d545ffec6a6dac41fa2b39fed0228
@@ -2270,8 +2274,8 @@ trackedFiles:
     pristine_git_object: 288a330957084f7d5f5cbfa45795a6cb7d038c68
   docs/models/components/transferdestination.md:
     id: f96e60ad1910
-    last_write_checksum: sha1:9615e3ba7c38e0724721bb7acd5088af49b0bcb9
-    pristine_git_object: bc1080181673c24b42ce6dc2dcb38f75874a713c
+    last_write_checksum: sha1:388ca96d232f47b22e7feb58be19fbf9cdefb8c2
+    pristine_git_object: 31f2ff7077f15f0973ef3c16e3512d783ed57f56
   docs/models/components/transferentrymode.md:
     id: 243cf6304fec
     last_write_checksum: sha1:fb1810a8d76247cc3ba470901b318b4bc0578d46
@@ -2298,16 +2302,16 @@ trackedFiles:
     pristine_git_object: 0d00185a95053646541f0d40bfdaeb4cc9e4fd89
   docs/models/components/transferoptions.md:
     id: 93d468993f25
-    last_write_checksum: sha1:7ba64044c4926f00255e474efc9411e1a5d29523
-    pristine_git_object: 0f8de48b5388fe923f8ae9b983c3184554f1a527
+    last_write_checksum: sha1:d77a693afeff19f46aa864fbb7c666126db5ea61
+    pristine_git_object: dd2f535691ba737ab39ff3b5edca52c75bd5dba1
   docs/models/components/transferparty.md:
     id: aaeeaf9186e1
     last_write_checksum: sha1:293bcda8aeee1d99d7cf5865faffcbca6809b743
     pristine_git_object: 0136499e2055c9fe6885b1b8b4a6e3591e1c9e8b
   docs/models/components/transferpaymentmethod.md:
     id: c620ed487c4a
-    last_write_checksum: sha1:24e67c58088f2776e84c20b77f0bdb59e49c86fa
-    pristine_git_object: 0eefd34cb3cf93e179c7679e2b96b3b79b01adf2
+    last_write_checksum: sha1:29341f85144748f71b2e7d2d1c46544c44504e47
+    pristine_git_object: 6d4d239b99c0a32de51ca49407b2afa6db09be6e
   docs/models/components/transferpaymentmethodsbankaccount.md:
     id: 053a1de9dea8
     last_write_checksum: sha1:c97928a0b4cc5b0f97c9216199754c6eeb208c08
@@ -2326,8 +2330,8 @@ trackedFiles:
     pristine_git_object: 5aec31a0379d24d0457cd6acb4af14c0a5d48aa3
   docs/models/components/transfersource.md:
     id: a8c582a18706
-    last_write_checksum: sha1:c90b6fd1b07cd8451b768845d3d9864ece540460
-    pristine_git_object: 9a952624a96b6ee8a843115b6864bb3f781cffd1
+    last_write_checksum: sha1:864042dd7e42cc6707946e40c3128bdd9fcf6fd8
+    pristine_git_object: 368fc8c8c2e52fd4abc64b490bd73862f33c9d81
   docs/models/components/transferstatus.md:
     id: c6dbadd109e3
     last_write_checksum: sha1:2aa37d250ebe88dd6c8c474ca2b0a0ed5f3002c9
@@ -3158,8 +3162,8 @@ trackedFiles:
     pristine_git_object: a1681d596d145e7d8833b43665a1f38538f7587f
   docs/models/operations/createtransferresponseresult.md:
     id: 6f5d35d91093
-    last_write_checksum: sha1:689583e34292b24dfa89aa08202c8d6af959e4f0
-    pristine_git_object: 2294dad3a382f80d5e781f855cd3a0dfa5a5890a
+    last_write_checksum: sha1:848803ba3db2e35636f73e607cf6abb1e4a64a59
+    pristine_git_object: c063ef8c4dc4b304c07abe0035ffadc299882779
   docs/models/operations/createwalletrequest.md:
     id: 824f56156739
     last_write_checksum: sha1:8cba6b077bfb2a3bb9cbef79e15e1393d5750f07
@@ -3986,8 +3990,8 @@ trackedFiles:
     pristine_git_object: 06036a0a99710662bf30856133e563bcf8256691
   docs/models/operations/listpaymentmethodsresponse.md:
     id: 72c870af99e9
-    last_write_checksum: sha1:c2b5a2350ce917dee435b679b901256fb7ad7825
-    pristine_git_object: 1acf02c5163fb1a5696fd4f230e0ebcf5ca04bbf
+    last_write_checksum: sha1:cf4019ae3c85fd8d090e31514dc20f35c94906e6
+    pristine_git_object: 7a2b2c7b12e1ec58caedf7c8a9e87b0fea4662d7
   docs/models/operations/listproductsrequest.md:
     id: e447b353c37d
     last_write_checksum: sha1:bf633634599d70ab2d0a9f310c6858d19103c622
@@ -4594,12 +4598,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:b57a7ba1a4934e9c323d3325ccc3f2c52bf6d490
-    pristine_git_object: e1c8c47b3c86f3df27ff710d735cdbb8bf9c15c3
+    last_write_checksum: sha1:50f52915ea584a72ab849449d7086b8036ca7bb9
+    pristine_git_object: 1528de6793cbfd4f7f1413d0a6bb641da2b5d9c4
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:4a4346b81ec008295507ebec4f5da5d8fe8abbcd
-    pristine_git_object: 1b90b6c251d3171e52ec1f610d263e9b7276d56a
+    last_write_checksum: sha1:a2bb76ff93b92880ed98ce4ee314c70d7abde781
+    pristine_git_object: a7418f9c4bf4d5bb6f4ced08d3190f69fa006d53
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5374,8 +5378,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:b4e8308fb9ddda2c157c709d4ca225f3dca673a5
-    pristine_git_object: d082d1830427785b89321e8261234772fb5a3958
+    last_write_checksum: sha1:028d73b9b67c3cf4fe22a71eb8125e1bb622f4ff
+    pristine_git_object: 74a0903b37ac97306a4b1ffae1716b39eefd270a
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5454,8 +5458,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:4a1f21003338ffd3cf6ddb7d0945e57e64a30f0f
-    pristine_git_object: 6f6872b42a2c0d626800bb4c00f085d1de33c767
+    last_write_checksum: sha1:1436563cb9d4e6c1085c8be99615552559ca8b6e
+    pristine_git_object: def3189cef7fea62e4ca6242b8115e114e3f65ca
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5470,8 +5474,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:1699c365965ccad25c3fb9add652deac7b70d4f7
-    pristine_git_object: e3d6e95526e2e803bd266f041d7f28158b74297e
+    last_write_checksum: sha1:bd5a20f1a8d9a0de6a28e94b2732edb5f497519d
+    pristine_git_object: 8a4696a9b8769c4d4ab27ab506c406445abf1fa2
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7282,8 +7286,8 @@ trackedFiles:
     pristine_git_object: e830e2db93408ce071d9cf22ba3cb0479c977a34
   src/models/components/googlepayresponse.ts:
     id: eb1bbe261fd1
-    last_write_checksum: sha1:2e25eecdb400404c5dfccd99ed04534e1294616e
-    pristine_git_object: 86354562c8b83649ea99f6e051c6d1ec67fe5756
+    last_write_checksum: sha1:f6e0b296f8ebcf5f4899d102f87d92775aabac9f
+    pristine_git_object: 555e64d9ae3342b2411e30ad53c4f8004d85c40d
   src/models/components/googlepaytokenizationdata.ts:
     id: 9b3701acfcbf
     last_write_checksum: sha1:86617c36ebf18dc5142bdf8c46fe95cb5faea205
@@ -7330,8 +7334,8 @@ trackedFiles:
     pristine_git_object: 0b259f70e79d0e5ecd5615db06ca143029306f82
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:1bfbc848d7cc38c42296967abd06a132981d168f
-    pristine_git_object: f3080ef20c92effac6709100473202f0fd74f56a
+    last_write_checksum: sha1:bdb6a0fd971cdbf443addc81370ae6c5cb189a2b
+    pristine_git_object: f529ce3da4caf9b072227480947b9040973477e3
   src/models/components/individualname.ts:
     id: 8d95da45fb10
     last_write_checksum: sha1:d1c9cbb70b2a5df18194b95c9ae05fbb73979788
@@ -8052,6 +8056,10 @@ trackedFiles:
     id: 105a0199b5d4
     last_write_checksum: sha1:221429a163af276c578af7168cbfe446933167d6
     pristine_git_object: e04f251343706db1478aa885a4368d515d6395fa
+  src/models/components/rtptransactiondetails.ts:
+    id: de6a7ca8e0c8
+    last_write_checksum: sha1:7be6b7c81b77a04afd7275f586232104c6e7669c
+    pristine_git_object: 705e7fe6c3a2d74cccf61b648ab2abb1bd01fbfe
   src/models/components/rtptransactionstatus.ts:
     id: 29cf5c6be2e8
     last_write_checksum: sha1:50ebf3352276e41823ffb3eb212ea3daa075990b
@@ -8290,8 +8298,8 @@ trackedFiles:
     pristine_git_object: f0594cf837be7a15c1287366d3c4284d5c6ca5de
   src/models/components/transferdestination.ts:
     id: 333752d7b73b
-    last_write_checksum: sha1:dc0eca8b994410ef8891b0969bad93614c0fa9e3
-    pristine_git_object: 52dc6d691a5840ccf2b886c068260de0cbe1c9df
+    last_write_checksum: sha1:7646cbe3151f93d8042da411b854b66f3b9fe57c
+    pristine_git_object: 638928c93bfe26de6d9bc6e46031fee57142b30e
   src/models/components/transferentrymode.ts:
     id: ccacff44b6b3
     last_write_checksum: sha1:a71742cc2a3ad7e3860fcf962a7b005d13e73533
@@ -12728,7 +12736,7 @@ examples:
         application/json: {"merchantAccountID": "c5f78a7e-2fb0-4e4a-bcf0-9e1f8b0e5c7a", "paymentMethodData": {"type": "CARD", "info": {"cardNetwork": "VISA", "cardDetails": "1234", "cardFundingSource": "DEBIT", "billingAddress": {"countryCode": "US"}}, "tokenizationData": {"type": "PAYMENT_GATEWAY", "token": "<value>"}}}
       responses:
         "200":
-          application/json: [{"paymentMethodID": "<id>", "paymentMethodType": "google-pay", "googlePay": {"brand": "Visa", "cardDetails": "1234", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "expiration": {"month": "01", "year": "21"}, "issuerCountry": "US"}}]
+          application/json: [{"paymentMethodID": "<id>", "paymentMethodType": "google-pay", "googlePay": {"tokenID": "dcd471ec-7d5c-4016-865c-1e78c733bea2", "brand": "Visa", "cardType": "credit", "cardDisplayName": "7419", "fingerprint": "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3", "expiration": {"month": "01", "year": "21"}, "dynamicLastFour": "7419", "issuerCountry": "US"}}]
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -12788,7 +12796,7 @@ examples:
           application/json: {"tipPresets": {"calculationBasis": "pre-tax", "percentageOptions": [10, 15, 20]}}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `moov.paymentLinks.create()`: \n  *  `request.createPaymentLink.payment.allowedMethods[].enum(googlePay)` **Added**\n  *  `response.payment.allowedMethods[].enum(googlePay)` **Added** (Breaking ⚠️)\n* `moov.paymentLinks.list()`:  `response.[].payment.allowedMethods[].enum(googlePay)` **Added** (Breaking ⚠️)\n* `moov.paymentLinks.get()`:  `response.payment.allowedMethods[].enum(googlePay)` **Added** (Breaking ⚠️)\n* `moov.paymentLinks.update()`: \n  *  `request.updatePaymentLink.payment.allowedMethods[].enum(googlePay)` **Added**\n  *  `response.payment.allowedMethods[].enum(googlePay)` **Added** (Breaking ⚠️)\n"
+releaseNotes: "## Typescript SDK Changes:\n* `moov.googlePay.linkToken()`:  `response.[].googlePay` **Changed** (Breaking ⚠️)\n* `moov.paymentMethods.list()`:  `response.[].union(push-to-google-pay).googlePay` **Changed** (Breaking ⚠️)\n* `moov.paymentMethods.get()`:  `response.union(pull-from-google-pay).googlePay` **Changed** (Breaking ⚠️)\n* `moov.transfers.generateOptions()`:  `response.sourceOptions[].union(google-pay).googlePay` **Changed** (Breaking ⚠️)\n* `moov.transfers.create()`: \n  *  `response.source.googlePay` **Changed** (Breaking ⚠️)\n  *  `error.source.googlePay` **Changed** (Breaking ⚠️)\n* `moov.transfers.list()`:  `response.[].source.googlePay` **Changed** (Breaking ⚠️)\n* `moov.transfers.batchGetTransfers()`:  `response.Map<Transfer>.source.googlePay` **Changed** (Breaking ⚠️)\n* `moov.transfers.get()`:  `response.source.googlePay` **Changed** (Breaking ⚠️)\n* `moov.transfers.update()`:  `response.source.googlePay` **Changed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
