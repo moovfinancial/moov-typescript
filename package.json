@@ -1,6 +1,6 @@
 {
   "name": "@moovio/sdk",
-  "version": "25.5.4",
+  "version": "25.5.5",
   "author": "Moov",
   "bin": {
     "mcp": "bin/mcp-server.js"
