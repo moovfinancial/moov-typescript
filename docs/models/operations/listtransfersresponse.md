@@ -95,6 +95,12 @@ let value: ListTransfersResponse = {
           ],
         },
       ],
+      amountDetails: {
+        tip: {
+          currency: "USD",
+          valueDecimal: "3.50",
+        },
+      },
     },
   ],
 };

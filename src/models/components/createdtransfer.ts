@@ -138,7 +138,7 @@ export type CreatedTransfer = {
    * An optional collection of line items for a transfer.
    *
    * @remarks
-   * When line items are provided, their total plus sales tax must equal the transfer amount.
+   * When line items are provided, their total plus tax must equal the transfer amount.
    */
   lineItems?: TransferLineItems | undefined;
   amountDetails?: TransferAmountDetails | undefined;

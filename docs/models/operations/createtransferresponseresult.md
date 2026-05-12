@@ -349,6 +349,12 @@ const value: components.Transfer = {
       ],
     },
   ],
+  amountDetails: {
+    tip: {
+      currency: "USD",
+      valueDecimal: "3.50",
+    },
+  },
 };
 ```
 

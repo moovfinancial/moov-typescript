@@ -96,6 +96,12 @@ let value: BatchGetTransfersResponse = {
           ],
         },
       ],
+      amountDetails: {
+        tip: {
+          currency: "USD",
+          valueDecimal: "3.50",
+        },
+      },
     },
   },
 };
