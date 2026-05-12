@@ -38,16 +38,6 @@ import {
   InstantBankTransactionDetails$outboundSchema,
 } from "./instantbanktransactiondetails.js";
 import {
-  RTPFailureCode,
-  RTPFailureCode$inboundSchema,
-  RTPFailureCode$outboundSchema,
-} from "./rtpfailurecode.js";
-import {
-  RTPTransactionStatus,
-  RTPTransactionStatus$inboundSchema,
-  RTPTransactionStatus$outboundSchema,
-} from "./rtptransactionstatus.js";
-import {
   TransferAccount,
   TransferAccount$inboundSchema,
   TransferAccount$Outbound,
@@ -76,30 +66,6 @@ import {
   TransferPaymentMethodType$inboundSchema,
   TransferPaymentMethodType$outboundSchema,
 } from "./transferpaymentmethodtype.js";
-
-/**
- * DEPRECATED: use `InstantBankTransactionDetails` instead (v2026.04.00 or later). RTP specific details about the transaction.
- *
- * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
- */
-export type RtpDetails = {
-  /**
-   * Status of a transaction within the RTP lifecycle.
-   */
-  status?: RTPTransactionStatus | undefined;
-  /**
-   * Response code returned by network on failure.
-   */
-  networkResponseCode?: string | undefined;
-  /**
-   * Status codes for RTP failures.
-   */
-  failureCode?: RTPFailureCode | undefined;
-  initiatedOn?: Date | undefined;
-  completedOn?: Date | undefined;
-  failedOn?: Date | undefined;
-  acceptedWithoutPostingOn?: Date | undefined;
-};
 
 export type TransferDestination = {
   paymentMethodID: string;
@@ -134,67 +100,10 @@ export type TransferDestination = {
    */
   cardDetails?: CardTransactionDetails | undefined;
   /**
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  rtpDetails?: RtpDetails | undefined;
-  /**
    * Instant-bank specific details about the transaction.
    */
   instantBankDetails?: InstantBankTransactionDetails | undefined;
 };
-
-/** @internal */
-export const RtpDetails$inboundSchema: z.ZodType<
-  RtpDetails,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  status: types.optional(RTPTransactionStatus$inboundSchema),
-  networkResponseCode: types.optional(types.string()),
-  failureCode: types.optional(RTPFailureCode$inboundSchema),
-  initiatedOn: types.optional(types.date()),
-  completedOn: types.optional(types.date()),
-  failedOn: types.optional(types.date()),
-  acceptedWithoutPostingOn: types.optional(types.date()),
-});
-/** @internal */
-export type RtpDetails$Outbound = {
-  status?: string | undefined;
-  networkResponseCode?: string | undefined;
-  failureCode?: string | undefined;
-  initiatedOn?: string | undefined;
-  completedOn?: string | undefined;
-  failedOn?: string | undefined;
-  acceptedWithoutPostingOn?: string | undefined;
-};
-
-/** @internal */
-export const RtpDetails$outboundSchema: z.ZodType<
-  RtpDetails$Outbound,
-  z.ZodTypeDef,
-  RtpDetails
-> = z.object({
-  status: RTPTransactionStatus$outboundSchema.optional(),
-  networkResponseCode: z.string().optional(),
-  failureCode: RTPFailureCode$outboundSchema.optional(),
-  initiatedOn: z.date().transform(v => v.toISOString()).optional(),
-  completedOn: z.date().transform(v => v.toISOString()).optional(),
-  failedOn: z.date().transform(v => v.toISOString()).optional(),
-  acceptedWithoutPostingOn: z.date().transform(v => v.toISOString()).optional(),
-});
-
-export function rtpDetailsToJSON(rtpDetails: RtpDetails): string {
-  return JSON.stringify(RtpDetails$outboundSchema.parse(rtpDetails));
-}
-export function rtpDetailsFromJSON(
-  jsonString: string,
-): SafeParseResult<RtpDetails, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RtpDetails$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RtpDetails' from JSON`,
-  );
-}
 
 /** @internal */
 export const TransferDestination$inboundSchema: z.ZodType<
@@ -212,7 +121,6 @@ export const TransferDestination$inboundSchema: z.ZodType<
   applePay: types.optional(ApplePayResponse$inboundSchema),
   googlePay: types.optional(GooglePayResponse$inboundSchema),
   cardDetails: types.optional(CardTransactionDetails$inboundSchema),
-  rtpDetails: types.optional(z.lazy(() => RtpDetails$inboundSchema)),
   instantBankDetails: types.optional(
     InstantBankTransactionDetails$inboundSchema,
   ),
@@ -229,7 +137,6 @@ export type TransferDestination$Outbound = {
   applePay?: ApplePayResponse$Outbound | undefined;
   googlePay?: GooglePayResponse$Outbound | undefined;
   cardDetails?: CardTransactionDetails$Outbound | undefined;
-  rtpDetails?: RtpDetails$Outbound | undefined;
   instantBankDetails?: InstantBankTransactionDetails$Outbound | undefined;
 };
 
@@ -249,7 +156,6 @@ export const TransferDestination$outboundSchema: z.ZodType<
   applePay: ApplePayResponse$outboundSchema.optional(),
   googlePay: GooglePayResponse$outboundSchema.optional(),
   cardDetails: CardTransactionDetails$outboundSchema.optional(),
-  rtpDetails: z.lazy(() => RtpDetails$outboundSchema).optional(),
   instantBankDetails: InstantBankTransactionDetails$outboundSchema.optional(),
 });
 
