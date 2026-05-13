@@ -190,7 +190,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "24.2.6",
+    version: "24.2.7",
   });
 
   const client = new MoovCore({

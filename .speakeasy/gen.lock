@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: fff64b44493c310fe1fd2160b15fd8a0
+  docChecksum: 25a94de3b536e68f734fef721e6e7219
   docVersion: v2024.01.00
-  speakeasyVersion: 1.762.0
-  generationVersion: 2.882.0
-  releaseVersion: 24.2.6
-  configChecksum: a675e962bb1d7d723925d2a37afaceae
+  speakeasyVersion: 1.763.0
+  generationVersion: 2.884.0
+  releaseVersion: 24.2.7
+  configChecksum: ded09c232b3a4e2849137eb293167791
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: b0974423-1295-405a-9475-b9930dd984a9
-  pristine_commit_hash: 8bc451b826f6eaefa6022d49c965ef2f86d3e229
-  pristine_tree_hash: 4a000c84ae5377fd2b1ddbc51a0ef05910869b7e
+  generation_id: 2f52aaab-0135-419c-9a09-c73809d1b6f6
+  pristine_commit_hash: 36e34c7f3ed8db35868082840b5d65d856b19faf
+  pristine_tree_hash: 428ba9da976e52b54f3ca61a55ae996f8ebb654c
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -2050,8 +2050,8 @@ trackedFiles:
     pristine_git_object: e431833bad1712f2a7914439184ae3bbf2549a12
   docs/models/components/webhookdata.md:
     id: cdd32b2e1274
-    last_write_checksum: sha1:f5f0f866b60dc6deec9d21ca1f1dbc231db594b7
-    pristine_git_object: 335c6dcd7a47e683aa9cfb092be2ee74333b2fd8
+    last_write_checksum: sha1:219bd33182c6fad1ca26aaeb6e5be02abe53c4e6
+    pristine_git_object: 71a2e86691745464e8358ce221e705a6d64e7225
   docs/models/components/webhookdataaccountcreated.md:
     id: 3ba84feecfc5
     last_write_checksum: sha1:41e37b9c8e3c6ebe94eff5b2b6dfdec1f732feb2
@@ -2074,8 +2074,8 @@ trackedFiles:
     pristine_git_object: a9a357dbebdcad56e8b40086643aff1f255e0c6f
   docs/models/components/webhookdatabankaccountdeleted.md:
     id: 378f3904e661
-    last_write_checksum: sha1:4fc3889bcf022169c7f8ff6d1ed70ce56e477e0b
-    pristine_git_object: 80d3c7ee954cbd35533f0ea0f59593cafdc93108
+    last_write_checksum: sha1:4b2a4537b0a71710da51dfbf3a41c22ba6184838
+    pristine_git_object: e3677ca66e4064fcc3eff246c8f4d97738c61ceb
   docs/models/components/webhookdatabankaccountupdated.md:
     id: e1488aacc065
     last_write_checksum: sha1:1740140c2bd24947318f38adc91c2a3193d54324
@@ -3894,12 +3894,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:072039175355f6a93bfc4dc89aad66c82733e503
-    pristine_git_object: 08b95f69fdc9230321eef3b07dc612b59b3e4003
+    last_write_checksum: sha1:5facd68f637bdc8c4ac31212cf998a7b7c0bffbb
+    pristine_git_object: 0f190def68d53ebb19fe8170c069e26154ed1f00
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:17df1bf339b0d90fc111c1f3b515e429560be856
-    pristine_git_object: 20f63bd79cd404cc41b409c170254a0fd086d0e2
+    last_write_checksum: sha1:14d3407c8e6eb4fa1c38c9fb411a477e01ebd915
+    pristine_git_object: 69b620523331b286106c1e0c12486aba5b3137ce
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -4590,8 +4590,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:6a2e803e565cd1c1eb33a2e1e9064383474f6040
-    pristine_git_object: fba6ba92d541cfca48260c0a31f68c997a11c085
+    last_write_checksum: sha1:6ff494585cc9e1229246435d6ca5ae713dbfacf8
+    pristine_git_object: 8d412fb4b37a40e47415133030d20ee98e08a7ea
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -4670,8 +4670,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:ea2f46fbe7c37bab4cb4d299bdf7ab71ac2602df
-    pristine_git_object: 15f225cbf49cdc49fc03c7305cba5f28b25b3359
+    last_write_checksum: sha1:06e031687b93624f2c8b6e41bd656e428c905806
+    pristine_git_object: 0e946d5845ed4a3d249d86f3514fb7db918c909e
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -4686,8 +4686,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:9227f467b9cfb5a2cbe019c28cc1560c2623c1c0
-    pristine_git_object: 936299fce665fcd861519ac75eef1d7674f9e2a2
+    last_write_checksum: sha1:921d58d8e2cad3275ba38f37bee41fdf08450b63
+    pristine_git_object: 7d7b72b55adb2f05a48851c96b14b23264f82900
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7190,8 +7190,8 @@ trackedFiles:
     pristine_git_object: 00b6f730dbdec20b19dd97db3f00615b42d2eea0
   src/models/components/webhookdata.ts:
     id: 4c87d1a4eae1
-    last_write_checksum: sha1:bfc57ef015dbd0e3ed9d2aec6fefb0c0f16de99a
-    pristine_git_object: bede38350ad69b7388182fc16af1bbe60fa7568d
+    last_write_checksum: sha1:c93e574d161923c04ea6f5aba2b07ad8c1095391
+    pristine_git_object: 0e5e9ffda7bf200f4da3011fcb0dd7355d9aab13
   src/models/components/webhookdataaccountcreated.ts:
     id: 99fe517cd2ac
     last_write_checksum: sha1:7dead87044fa173d975a86d8da6d8dd4c5e5deb3
@@ -7214,8 +7214,8 @@ trackedFiles:
     pristine_git_object: 0ca3d5a174191d96a46fe2776828f00ce87df294
   src/models/components/webhookdatabankaccountdeleted.ts:
     id: 44dd666f767b
-    last_write_checksum: sha1:a21f27cf94744d6df72e184fba1bc2b7c7c2b051
-    pristine_git_object: 96d9447b04b5445e3409132e8d14bcacb3bdf63a
+    last_write_checksum: sha1:28926c2010a1869a99e4ffc9fadb43945107e3e4
+    pristine_git_object: 365fa0622979922c637cc0a7418bedf5d035ed59
   src/models/components/webhookdatabankaccountupdated.ts:
     id: d234bca4d1a1
     last_write_checksum: sha1:fa3419ffd06f6291ba44ef8c5e1449d6b7130aad
