@@ -4,6 +4,8 @@ sources:
     latest:
         inputs:
             - location: registry.speakeasyapi.dev/moov/moov/api-v2024.01.00
+        overlays:
+            - location: ./.speakeasy/overlays/access-token.yaml
         registry:
             location: registry.speakeasyapi.dev/moov/moov/typescript-v2024.01.00
 targets:
