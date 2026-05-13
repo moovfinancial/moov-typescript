@@ -1,19 +1,19 @@
-speakeasyVersion: 1.762.0
+speakeasyVersion: 1.763.0
 sources:
     latest:
         sourceNamespace: api-v2026.01.00
-        sourceRevisionDigest: sha256:eeebd70c83ddd7d3d3ef25949d0972a2d8e7fc698d1913e65f4e7b85a5ebcb54
-        sourceBlobDigest: sha256:0f61111a5915ca235534e36f2e5990e81bae8bf179abd6946d664a06c2953b53
+        sourceRevisionDigest: sha256:0c2ef0cb24543cc811520727fd59446de50bfcca6c6b20f5fd11562028acdc90
+        sourceBlobDigest: sha256:184827aab97d5de6ab7073ee29b345ad186cb6b4e1cee04bc429722692adf88f
         tags:
             - latest
 targets:
     latest:
         source: latest
         sourceNamespace: api-v2026.01.00
-        sourceRevisionDigest: sha256:eeebd70c83ddd7d3d3ef25949d0972a2d8e7fc698d1913e65f4e7b85a5ebcb54
-        sourceBlobDigest: sha256:0f61111a5915ca235534e36f2e5990e81bae8bf179abd6946d664a06c2953b53
+        sourceRevisionDigest: sha256:0c2ef0cb24543cc811520727fd59446de50bfcca6c6b20f5fd11562028acdc90
+        sourceBlobDigest: sha256:184827aab97d5de6ab7073ee29b345ad186cb6b4e1cee04bc429722692adf88f
         codeSamplesNamespace: v2026.01.00-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:59dd0f82021f66766460b1b7ee3856fdbc735619e06b72dd30da7383f0d32d78
+        codeSamplesRevisionDigest: sha256:a5ce1854b58458a00fe98d4cf1ced34522504c67e80981b48c0a1873b75e0a68
     moov:
         source: latest
         sourceNamespace: api-latest
