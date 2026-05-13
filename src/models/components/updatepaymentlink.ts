@@ -52,7 +52,6 @@ import {
 
 export type UpdatePaymentLink = {
   amount?: AmountUpdate | undefined;
-  salesTaxAmount?: AmountUpdate | undefined;
   expiresOn?: Date | null | undefined;
   /**
    * Customizable display options for a payment link.
@@ -68,7 +67,7 @@ export type UpdatePaymentLink = {
    * An optional collection of line items for a payment link.
    *
    * @remarks
-   * When line items are provided, their total plus sales tax must equal the payment link amount.
+   * When line items are provided, their total plus tax must equal the payment link amount.
    */
   lineItems?: CreatePaymentLinkLineItemsUpdate | undefined;
   amountDetails?: UpdatePaymentLinkAmountDetails | undefined;
@@ -81,7 +80,6 @@ export const UpdatePaymentLink$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: types.optional(AmountUpdate$inboundSchema),
-  salesTaxAmount: types.optional(AmountUpdate$inboundSchema),
   expiresOn: z.nullable(types.date()).optional(),
   display: types.optional(PaymentLinkDisplayOptionsUpdate$inboundSchema),
   customer: types.optional(PaymentLinkCustomerOptions$inboundSchema),
@@ -93,7 +91,6 @@ export const UpdatePaymentLink$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdatePaymentLink$Outbound = {
   amount?: AmountUpdate$Outbound | undefined;
-  salesTaxAmount?: AmountUpdate$Outbound | undefined;
   expiresOn?: string | null | undefined;
   display?: PaymentLinkDisplayOptionsUpdate$Outbound | undefined;
   customer?: PaymentLinkCustomerOptions$Outbound | undefined;
@@ -110,7 +107,6 @@ export const UpdatePaymentLink$outboundSchema: z.ZodType<
   UpdatePaymentLink
 > = z.object({
   amount: AmountUpdate$outboundSchema.optional(),
-  salesTaxAmount: AmountUpdate$outboundSchema.optional(),
   expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   display: PaymentLinkDisplayOptionsUpdate$outboundSchema.optional(),
   customer: PaymentLinkCustomerOptions$outboundSchema.optional(),

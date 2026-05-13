@@ -40,6 +40,12 @@ let value: ListPaymentLinksResponse = {
       },
       createdOn: new Date("2025-01-09T17:09:13.33Z"),
       updatedOn: new Date("2025-01-09T17:09:13.33Z"),
+      amountDetails: {
+        tax: {
+          currency: "USD",
+          valueDecimal: "8.25",
+        },
+      },
     },
   ],
 };

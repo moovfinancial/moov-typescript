@@ -9,6 +9,7 @@ import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdatePaymentLinkAmountDetailsValidationError = {
+  tax?: string | undefined;
   surcharge?: string | undefined;
 };
 
@@ -19,10 +20,12 @@ export const UpdatePaymentLinkAmountDetailsValidationError$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    tax: types.optional(types.string()),
     surcharge: types.optional(types.string()),
   });
 /** @internal */
 export type UpdatePaymentLinkAmountDetailsValidationError$Outbound = {
+  tax?: string | undefined;
   surcharge?: string | undefined;
 };
 
@@ -33,6 +36,7 @@ export const UpdatePaymentLinkAmountDetailsValidationError$outboundSchema:
     z.ZodTypeDef,
     UpdatePaymentLinkAmountDetailsValidationError
   > = z.object({
+    tax: z.string().optional(),
     surcharge: z.string().optional(),
   });
 

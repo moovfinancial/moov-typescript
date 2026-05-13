@@ -66,7 +66,6 @@ export type TransferData = {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
-  salesTaxAmount?: components.Amount | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
@@ -75,7 +74,7 @@ export type TransferData = {
    * An optional collection of line items for a transfer.
    *
    * @remarks
-   * When line items are provided, their total plus sales tax must equal the transfer amount.
+   * When line items are provided, their total plus tax must equal the transfer amount.
    */
   lineItems?: components.TransferLineItems | undefined;
   /**
@@ -148,7 +147,6 @@ export class Transfer extends MoovError {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
-  salesTaxAmount?: components.Amount | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
@@ -157,7 +155,7 @@ export class Transfer extends MoovError {
    * An optional collection of line items for a transfer.
    *
    * @remarks
-   * When line items are provided, their total plus sales tax must equal the transfer amount.
+   * When line items are provided, their total plus tax must equal the transfer amount.
    */
   lineItems?: components.TransferLineItems | undefined;
   /**
@@ -207,7 +205,6 @@ export class Transfer extends MoovError {
     if (err.scheduleID != null) this.scheduleID = err.scheduleID;
     if (err.occurrenceID != null) this.occurrenceID = err.occurrenceID;
     if (err.paymentLinkCode != null) this.paymentLinkCode = err.paymentLinkCode;
-    if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.invoiceID != null) this.invoiceID = err.invoiceID;
@@ -253,7 +250,6 @@ export const Transfer$inboundSchema: z.ZodType<
   scheduleID: types.optional(types.string()),
   occurrenceID: types.optional(types.string()),
   paymentLinkCode: types.optional(types.string()),
-  salesTaxAmount: types.optional(components.Amount$inboundSchema),
   foreignID: types.optional(types.string()),
   lineItems: types.optional(components.TransferLineItems$inboundSchema),
   invoiceID: types.optional(types.string()),
@@ -298,7 +294,6 @@ export type Transfer$Outbound = {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
-  salesTaxAmount?: components.Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: components.TransferLineItems$Outbound | undefined;
   invoiceID?: string | undefined;
@@ -340,7 +335,6 @@ export const Transfer$outboundSchema: z.ZodType<
     scheduleID: z.string().optional(),
     occurrenceID: z.string().optional(),
     paymentLinkCode: z.string().optional(),
-    salesTaxAmount: components.Amount$outboundSchema.optional(),
     foreignID: z.string().optional(),
     lineItems: components.TransferLineItems$outboundSchema.optional(),
     invoiceID: z.string().optional(),

@@ -17,7 +17,6 @@ export type TransferValidationErrorData = {
   facilitatorFeeTotalDecimal?: string | undefined;
   facilitatorFeeMarkupDecimal?: string | undefined;
   metadata?: string | undefined;
-  salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
   lineItems?: components.CreateTransferLineItemsValidationError | undefined;
   amountDetails?:
@@ -34,7 +33,6 @@ export class TransferValidationError extends MoovError {
   facilitatorFeeTotalDecimal?: string | undefined;
   facilitatorFeeMarkupDecimal?: string | undefined;
   metadata?: string | undefined;
-  salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
   lineItems?: components.CreateTransferLineItemsValidationError | undefined;
   amountDetails?:
@@ -69,7 +67,6 @@ export class TransferValidationError extends MoovError {
       this.facilitatorFeeMarkupDecimal = err.facilitatorFeeMarkupDecimal;
     }
     if (err.metadata != null) this.metadata = err.metadata;
-    if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.amountDetails != null) this.amountDetails = err.amountDetails;
@@ -92,7 +89,6 @@ export const TransferValidationError$inboundSchema: z.ZodType<
   "FacilitatorFee.TotalDecimal": types.optional(types.string()),
   "FacilitatorFee.MarkupDecimal": types.optional(types.string()),
   metadata: types.optional(types.string()),
-  salesTaxAmount: types.optional(types.string()),
   foreignID: types.optional(types.string()),
   lineItems: types.optional(
     components.CreateTransferLineItemsValidationError$inboundSchema,
@@ -127,7 +123,6 @@ export type TransferValidationError$Outbound = {
   "FacilitatorFee.TotalDecimal"?: string | undefined;
   "FacilitatorFee.MarkupDecimal"?: string | undefined;
   metadata?: string | undefined;
-  salesTaxAmount?: string | undefined;
   foreignID?: string | undefined;
   lineItems?:
     | components.CreateTransferLineItemsValidationError$Outbound
@@ -154,7 +149,6 @@ export const TransferValidationError$outboundSchema: z.ZodType<
       facilitatorFeeTotalDecimal: z.string().optional(),
       facilitatorFeeMarkupDecimal: z.string().optional(),
       metadata: z.string().optional(),
-      salesTaxAmount: z.string().optional(),
       foreignID: z.string().optional(),
       lineItems: components
         .CreateTransferLineItemsValidationError$outboundSchema.optional(),

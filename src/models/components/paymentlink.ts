@@ -104,10 +104,6 @@ export type PaymentLink = {
    */
   amount?: Amount | undefined;
   /**
-   * Optional sales tax amount.
-   */
-  salesTaxAmount?: Amount | undefined;
-  /**
    * The number of times this payment link has been used.
    */
   uses: number;
@@ -141,7 +137,7 @@ export type PaymentLink = {
    * An optional collection of line items for a payment link.
    *
    * @remarks
-   * When line items are provided, their total plus sales tax must equal the payment link amount.
+   * When line items are provided, their total plus tax must equal the payment link amount.
    */
   lineItems?: PaymentLinkLineItems | undefined;
   createdOn: Date;
@@ -166,7 +162,6 @@ export const PaymentLink$inboundSchema: z.ZodType<
   merchantPaymentMethodID: types.string(),
   link: types.string(),
   amount: types.optional(Amount$inboundSchema),
-  salesTaxAmount: types.optional(Amount$inboundSchema),
   uses: types.number(),
   maxUses: types.optional(types.number()),
   lastUsedOn: types.optional(types.date()),
@@ -193,7 +188,6 @@ export type PaymentLink$Outbound = {
   merchantPaymentMethodID: string;
   link: string;
   amount?: Amount$Outbound | undefined;
-  salesTaxAmount?: Amount$Outbound | undefined;
   uses: number;
   maxUses?: number | undefined;
   lastUsedOn?: string | undefined;
@@ -225,7 +219,6 @@ export const PaymentLink$outboundSchema: z.ZodType<
   merchantPaymentMethodID: z.string(),
   link: z.string(),
   amount: Amount$outboundSchema.optional(),
-  salesTaxAmount: Amount$outboundSchema.optional(),
   uses: z.number().int(),
   maxUses: z.number().int().optional(),
   lastUsedOn: z.date().transform(v => v.toISOString()).optional(),

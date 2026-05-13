@@ -9,7 +9,6 @@ import { MoovError } from "./mooverror.js";
 
 export type UpdatePaymentLinkErrorData = {
   amount?: components.AmountValidationError | undefined;
-  salesTaxAmount?: components.AmountValidationError | undefined;
   expiresOn?: string | undefined;
   display?: components.DisplayOptionsError | undefined;
   payment?: components.PaymentDetailsError | undefined;
@@ -22,7 +21,6 @@ export type UpdatePaymentLinkErrorData = {
 
 export class UpdatePaymentLinkError extends MoovError {
   amount?: components.AmountValidationError | undefined;
-  salesTaxAmount?: components.AmountValidationError | undefined;
   expiresOn?: string | undefined;
   display?: components.DisplayOptionsError | undefined;
   payment?: components.PaymentDetailsError | undefined;
@@ -45,7 +43,6 @@ export class UpdatePaymentLinkError extends MoovError {
     super(message, httpMeta);
     this.data$ = err;
     if (err.amount != null) this.amount = err.amount;
-    if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
     if (err.expiresOn != null) this.expiresOn = err.expiresOn;
     if (err.display != null) this.display = err.display;
     if (err.payment != null) this.payment = err.payment;
@@ -64,9 +61,6 @@ export const UpdatePaymentLinkError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: types.optional(components.AmountValidationError$inboundSchema),
-  salesTaxAmount: types.optional(
-    components.AmountValidationError$inboundSchema,
-  ),
   expiresOn: types.optional(types.string()),
   display: types.optional(components.DisplayOptionsError$inboundSchema),
   payment: types.optional(components.PaymentDetailsError$inboundSchema),
@@ -92,7 +86,6 @@ export const UpdatePaymentLinkError$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdatePaymentLinkError$Outbound = {
   amount?: components.AmountValidationError$Outbound | undefined;
-  salesTaxAmount?: components.AmountValidationError$Outbound | undefined;
   expiresOn?: string | undefined;
   display?: components.DisplayOptionsError$Outbound | undefined;
   payment?: components.PaymentDetailsError$Outbound | undefined;
@@ -114,7 +107,6 @@ export const UpdatePaymentLinkError$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     amount: components.AmountValidationError$outboundSchema.optional(),
-    salesTaxAmount: components.AmountValidationError$outboundSchema.optional(),
     expiresOn: z.string().optional(),
     display: components.DisplayOptionsError$outboundSchema.optional(),
     payment: components.PaymentDetailsError$outboundSchema.optional(),

@@ -20,6 +20,10 @@ export type CreateTransferAmountDetails = {
    */
   tip?: AmountDecimal | undefined;
   /**
+   * The amount of tax applied to the transfer.
+   */
+  tax?: AmountDecimal | undefined;
+  /**
    * The amount of surcharge applied to the transfer.
    */
   surcharge?: AmountDecimal | undefined;
@@ -32,11 +36,13 @@ export const CreateTransferAmountDetails$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   tip: types.optional(AmountDecimal$inboundSchema),
+  tax: types.optional(AmountDecimal$inboundSchema),
   surcharge: types.optional(AmountDecimal$inboundSchema),
 });
 /** @internal */
 export type CreateTransferAmountDetails$Outbound = {
   tip?: AmountDecimal$Outbound | undefined;
+  tax?: AmountDecimal$Outbound | undefined;
   surcharge?: AmountDecimal$Outbound | undefined;
 };
 
@@ -47,6 +53,7 @@ export const CreateTransferAmountDetails$outboundSchema: z.ZodType<
   CreateTransferAmountDetails
 > = z.object({
   tip: AmountDecimal$outboundSchema.optional(),
+  tax: AmountDecimal$outboundSchema.optional(),
   surcharge: AmountDecimal$outboundSchema.optional(),
 });
 

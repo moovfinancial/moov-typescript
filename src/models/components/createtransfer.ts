@@ -66,7 +66,6 @@ export type CreateTransfer = {
    * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
    */
   metadata?: { [k: string]: string } | undefined;
-  salesTaxAmount?: Amount | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
@@ -75,7 +74,7 @@ export type CreateTransfer = {
    * An optional collection of line items for a transfer.
    *
    * @remarks
-   * When line items are provided, their total plus sales tax must equal the transfer amount.
+   * When line items are provided, their total plus tax must equal the transfer amount.
    */
   lineItems?: CreateTransferLineItems | undefined;
   amountDetails?: CreateTransferAmountDetails | undefined;
@@ -93,7 +92,6 @@ export const CreateTransfer$inboundSchema: z.ZodType<
   facilitatorFee: types.optional(FacilitatorFee$inboundSchema),
   description: types.optional(types.string()),
   metadata: types.optional(z.record(types.string())),
-  salesTaxAmount: types.optional(Amount$inboundSchema),
   foreignID: types.optional(types.string()),
   lineItems: types.optional(CreateTransferLineItems$inboundSchema),
   amountDetails: types.optional(CreateTransferAmountDetails$inboundSchema),
@@ -106,7 +104,6 @@ export type CreateTransfer$Outbound = {
   facilitatorFee?: FacilitatorFee$Outbound | undefined;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
-  salesTaxAmount?: Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: CreateTransferLineItems$Outbound | undefined;
   amountDetails?: CreateTransferAmountDetails$Outbound | undefined;
@@ -124,7 +121,6 @@ export const CreateTransfer$outboundSchema: z.ZodType<
   facilitatorFee: FacilitatorFee$outboundSchema.optional(),
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
-  salesTaxAmount: Amount$outboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: CreateTransferLineItems$outboundSchema.optional(),
   amountDetails: CreateTransferAmountDetails$outboundSchema.optional(),

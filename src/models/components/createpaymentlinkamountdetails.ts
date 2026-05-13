@@ -16,6 +16,10 @@ import {
 
 export type CreatePaymentLinkAmountDetails = {
   /**
+   * The amount of tax applied to the payment link.
+   */
+  tax?: AmountDecimal | undefined;
+  /**
    * The amount of surcharge applied to the payment link.
    */
   surcharge?: AmountDecimal | undefined;
@@ -27,10 +31,12 @@ export const CreatePaymentLinkAmountDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  tax: types.optional(AmountDecimal$inboundSchema),
   surcharge: types.optional(AmountDecimal$inboundSchema),
 });
 /** @internal */
 export type CreatePaymentLinkAmountDetails$Outbound = {
+  tax?: AmountDecimal$Outbound | undefined;
   surcharge?: AmountDecimal$Outbound | undefined;
 };
 
@@ -40,6 +46,7 @@ export const CreatePaymentLinkAmountDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreatePaymentLinkAmountDetails
 > = z.object({
+  tax: AmountDecimal$outboundSchema.optional(),
   surcharge: AmountDecimal$outboundSchema.optional(),
 });
 

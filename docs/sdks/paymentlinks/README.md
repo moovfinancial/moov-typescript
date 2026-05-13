@@ -76,6 +76,12 @@ async function run() {
           "ach-debit-collect",
         ],
       },
+      amountDetails: {
+        tax: {
+          currency: "USD",
+          valueDecimal: "8.25",
+        },
+      },
     },
   });
 
@@ -126,6 +132,12 @@ async function run() {
           "card-payment",
           "ach-debit-collect",
         ],
+      },
+      amountDetails: {
+        tax: {
+          currency: "USD",
+          valueDecimal: "8.25",
+        },
       },
     },
   });
@@ -364,6 +376,12 @@ async function run() {
         requireAddress: true,
         requirePhone: true,
       },
+      amountDetails: {
+        tax: {
+          currency: "USD",
+          valueDecimal: "9.25",
+        },
+      },
     },
   });
 
@@ -402,6 +420,12 @@ async function run() {
       customer: {
         requireAddress: true,
         requirePhone: true,
+      },
+      amountDetails: {
+        tax: {
+          currency: "USD",
+          valueDecimal: "9.25",
+        },
       },
     },
   });

@@ -227,6 +227,16 @@ async function run() {
       metadata: {
         "optional": "metadata",
       },
+      amountDetails: {
+        tip: {
+          currency: "USD",
+          valueDecimal: "3.50",
+        },
+        tax: {
+          currency: "USD",
+          valueDecimal: "8.25",
+        },
+      },
     },
   });
 
@@ -272,6 +282,16 @@ async function run() {
       metadata: {
         "optional": "metadata",
       },
+      amountDetails: {
+        tip: {
+          currency: "USD",
+          valueDecimal: "3.50",
+        },
+        tax: {
+          currency: "USD",
+          valueDecimal: "8.25",
+        },
+      },
     },
   });
   if (res.ok) {
@@ -315,6 +335,16 @@ async function run() {
       description: "Transfer from card to wallet",
       metadata: {
         "optional": "metadata",
+      },
+      amountDetails: {
+        tip: {
+          currency: "USD",
+          valueDecimal: "3.50",
+        },
+        tax: {
+          currency: "USD",
+          valueDecimal: "8.25",
+        },
       },
     },
   });
@@ -360,6 +390,16 @@ async function run() {
       description: "Transfer from card to wallet",
       metadata: {
         "optional": "metadata",
+      },
+      amountDetails: {
+        tip: {
+          currency: "USD",
+          valueDecimal: "3.50",
+        },
+        tax: {
+          currency: "USD",
+          valueDecimal: "8.25",
+        },
       },
     },
   });

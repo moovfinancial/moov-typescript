@@ -134,10 +134,6 @@ export type CreatedTransfer = {
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
   /**
-   * Optional sales tax amount.
-   */
-  salesTaxAmount?: Amount | undefined;
-  /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
   foreignID?: string | undefined;
@@ -145,7 +141,7 @@ export type CreatedTransfer = {
    * An optional collection of line items for a transfer.
    *
    * @remarks
-   * When line items are provided, their total plus sales tax must equal the transfer amount.
+   * When line items are provided, their total plus tax must equal the transfer amount.
    */
   lineItems?: TransferLineItems | undefined;
   amountDetails?: TransferAmountDetails | undefined;
@@ -185,7 +181,6 @@ export const CreatedTransfer$inboundSchema: z.ZodType<
   scheduleID: types.optional(types.string()),
   occurrenceID: types.optional(types.string()),
   paymentLinkCode: types.optional(types.string()),
-  salesTaxAmount: types.optional(Amount$inboundSchema),
   foreignID: types.optional(types.string()),
   lineItems: types.optional(TransferLineItems$inboundSchema),
   amountDetails: types.optional(TransferAmountDetails$inboundSchema),
@@ -217,7 +212,6 @@ export type CreatedTransfer$Outbound = {
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
   paymentLinkCode?: string | undefined;
-  salesTaxAmount?: Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: TransferLineItems$Outbound | undefined;
   amountDetails?: TransferAmountDetails$Outbound | undefined;
@@ -254,7 +248,6 @@ export const CreatedTransfer$outboundSchema: z.ZodType<
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
   paymentLinkCode: z.string().optional(),
-  salesTaxAmount: Amount$outboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: TransferLineItems$outboundSchema.optional(),
   amountDetails: TransferAmountDetails$outboundSchema.optional(),

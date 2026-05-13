@@ -245,15 +245,15 @@ const value: components.CreatedTransfer = {
       },
     },
   ],
-  salesTaxAmount: {
-    currency: "USD",
-    value: 1204,
-  },
   lineItems: {
     items: [],
   },
   amountDetails: {
     tip: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    tax: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
@@ -359,6 +359,16 @@ const value: components.Transfer = {
       ],
     },
   ],
+  amountDetails: {
+    tip: {
+      currency: "USD",
+      valueDecimal: "3.50",
+    },
+    tax: {
+      currency: "USD",
+      valueDecimal: "8.25",
+    },
+  },
 };
 ```
 
