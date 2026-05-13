@@ -238,6 +238,33 @@ async function run() {
 run();
 
 ```
+
+Client-side authentication is supported through the `accessToken` parameter. For example:
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  accessToken: "",
+});
+
+async function run() {
+  const result = await moov.accounts.create({
+    accountType: "business",
+    profile: {
+      business: {
+        legalBusinessName: "Whole Body Fitness LLC",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+See the [Moov authentication docs](https://docs.moov.io/api/authentication/api-authentication/) for more information.
+
 <!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
