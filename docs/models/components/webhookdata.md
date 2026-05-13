@@ -65,6 +65,7 @@ const value: components.WebhookDataBankAccountUpdated = {
 const value: components.WebhookDataBankAccountDeleted = {
   bankAccountID: "<id>",
   accountID: "<id>",
+  status: "errored",
 };
 ```
 

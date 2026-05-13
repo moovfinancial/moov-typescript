@@ -6,10 +6,16 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  BankAccountStatus,
+  BankAccountStatus$inboundSchema,
+  BankAccountStatus$outboundSchema,
+} from "./bankaccountstatus.js";
 
 export type WebhookDataBankAccountDeleted = {
   bankAccountID: string;
   accountID: string;
+  status: BankAccountStatus;
 };
 
 /** @internal */
@@ -20,11 +26,13 @@ export const WebhookDataBankAccountDeleted$inboundSchema: z.ZodType<
 > = z.object({
   bankAccountID: z.string(),
   accountID: z.string(),
+  status: BankAccountStatus$inboundSchema,
 });
 /** @internal */
 export type WebhookDataBankAccountDeleted$Outbound = {
   bankAccountID: string;
   accountID: string;
+  status: string;
 };
 
 /** @internal */
@@ -35,6 +43,7 @@ export const WebhookDataBankAccountDeleted$outboundSchema: z.ZodType<
 > = z.object({
   bankAccountID: z.string(),
   accountID: z.string(),
+  status: BankAccountStatus$outboundSchema,
 });
 
 export function webhookDataBankAccountDeletedToJSON(
