@@ -13,12 +13,6 @@ import {
   Amount$Outbound,
   Amount$outboundSchema,
 } from "./amount.js";
-import {
-  RefundAmountDetails,
-  RefundAmountDetails$inboundSchema,
-  RefundAmountDetails$Outbound,
-  RefundAmountDetails$outboundSchema,
-} from "./refundamountdetails.js";
 
 /**
  * Asynchronous refund response
@@ -27,7 +21,6 @@ export type AsyncCreatedRefund = {
   refundID: string;
   createdOn: Date;
   amount: Amount;
-  amountDetails?: RefundAmountDetails | undefined;
 };
 
 /** @internal */
@@ -39,14 +32,12 @@ export const AsyncCreatedRefund$inboundSchema: z.ZodType<
   refundID: types.string(),
   createdOn: types.date(),
   amount: Amount$inboundSchema,
-  amountDetails: types.optional(RefundAmountDetails$inboundSchema),
 });
 /** @internal */
 export type AsyncCreatedRefund$Outbound = {
   refundID: string;
   createdOn: string;
   amount: Amount$Outbound;
-  amountDetails?: RefundAmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -58,7 +49,6 @@ export const AsyncCreatedRefund$outboundSchema: z.ZodType<
   refundID: z.string(),
   createdOn: z.date().transform(v => v.toISOString()),
   amount: Amount$outboundSchema,
-  amountDetails: RefundAmountDetails$outboundSchema.optional(),
 });
 
 export function asyncCreatedRefundToJSON(

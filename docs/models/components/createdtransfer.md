@@ -222,12 +222,6 @@ let value: CreatedTransfer = {
         currency: "USD",
         value: 1204,
       },
-      amountDetails: {
-        surcharge: {
-          currency: "USD",
-          valueDecimal: "12.987654321",
-        },
-      },
     },
   ],
   disputedAmount: {
@@ -253,10 +247,6 @@ let value: CreatedTransfer = {
       valueDecimal: "12.987654321",
     },
     tax: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
-    },
-    surcharge: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
@@ -295,4 +285,3 @@ let value: CreatedTransfer = {
 | `foreignID`                                                                                                                             | *string*                                                                                                                                | :heavy_minus_sign:                                                                                                                      | Optional alias from a foreign/external system which can be used to reference this resource.                                             |                                                                                                                                         |
 | `lineItems`                                                                                                                             | [components.TransferLineItems](../../models/components/transferlineitems.md)                                                            | :heavy_minus_sign:                                                                                                                      | An optional collection of line items for a transfer.<br/>When line items are provided, their total plus tax must equal the transfer amount. |                                                                                                                                         |
 | `amountDetails`                                                                                                                         | [components.TransferAmountDetails](../../models/components/transferamountdetails.md)                                                    | :heavy_minus_sign:                                                                                                                      | N/A                                                                                                                                     |                                                                                                                                         |
-| `capture`                                                                                                                               | [components.TransferCapture](../../models/components/transfercapture.md)                                                                | :heavy_minus_sign:                                                                                                                      | The card authorization and capture IDs associated with a transfer.                                                                      |                                                                                                                                         |

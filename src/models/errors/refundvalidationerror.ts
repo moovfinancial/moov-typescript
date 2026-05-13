@@ -4,12 +4,10 @@
 
 import * as z from "zod/v3";
 import * as types from "../../types/primitives.js";
-import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
 export type RefundValidationErrorData = {
   amount?: string | undefined;
-  amountDetails?: components.RefundAmountDetailsValidationError | undefined;
   /**
    * Used for generic errors when invalid request data isn't attributed to a single request field.
    */
@@ -18,7 +16,6 @@ export type RefundValidationErrorData = {
 
 export class RefundValidationError extends MoovError {
   amount?: string | undefined;
-  amountDetails?: components.RefundAmountDetailsValidationError | undefined;
   /**
    * Used for generic errors when invalid request data isn't attributed to a single request field.
    */
@@ -37,7 +34,6 @@ export class RefundValidationError extends MoovError {
     super(message, httpMeta);
     this.data$ = err;
     if (err.amount != null) this.amount = err.amount;
-    if (err.amountDetails != null) this.amountDetails = err.amountDetails;
     if (err.error != null) this.error = err.error;
 
     this.name = "RefundValidationError";
@@ -51,9 +47,6 @@ export const RefundValidationError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: types.optional(types.string()),
-  amountDetails: types.optional(
-    components.RefundAmountDetailsValidationError$inboundSchema,
-  ),
   error: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -70,9 +63,6 @@ export const RefundValidationError$inboundSchema: z.ZodType<
 /** @internal */
 export type RefundValidationError$Outbound = {
   amount?: string | undefined;
-  amountDetails?:
-    | components.RefundAmountDetailsValidationError$Outbound
-    | undefined;
   error?: string | undefined;
 };
 
@@ -85,7 +75,5 @@ export const RefundValidationError$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     amount: z.string().optional(),
-    amountDetails: components.RefundAmountDetailsValidationError$outboundSchema
-      .optional(),
     error: z.string().optional(),
   }));

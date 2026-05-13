@@ -30,12 +30,6 @@ const value: components.ReversedWithRefund = {
       currency: "USD",
       value: 1204,
     },
-    amountDetails: {
-      surcharge: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-    },
   },
 };
 ```

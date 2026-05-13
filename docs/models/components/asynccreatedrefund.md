@@ -14,12 +14,6 @@ let value: AsyncCreatedRefund = {
     currency: "USD",
     value: 1204,
   },
-  amountDetails: {
-    surcharge: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
-    },
-  },
 };
 ```
 
@@ -30,4 +24,3 @@ let value: AsyncCreatedRefund = {
 | `refundID`                                                                                    | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `createdOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `amount`                                                                                      | [components.Amount](../../models/components/amount.md)                                        | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `amountDetails`                                                                               | [components.RefundAmountDetails](../../models/components/refundamountdetails.md)              | :heavy_minus_sign:                                                                            | N/A                                                                                           |

@@ -106,8 +106,6 @@ async function $do(
 
   const query = encodeFormQuery({
     "accountIDs": payload.accountIDs,
-    "authorizationIDs": payload.authorizationIDs,
-    "captureIDs": payload.captureIDs,
     "count": payload.count,
     "disputed": payload.disputed,
     "endDateTime": payload.endDateTime,

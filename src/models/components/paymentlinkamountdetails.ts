@@ -19,10 +19,6 @@ export type PaymentLinkAmountDetails = {
    * The amount of tax applied to the payment link.
    */
   tax?: AmountDecimal | undefined;
-  /**
-   * The amount of surcharge applied to the payment link.
-   */
-  surcharge?: AmountDecimal | undefined;
 };
 
 /** @internal */
@@ -32,12 +28,10 @@ export const PaymentLinkAmountDetails$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   tax: types.optional(AmountDecimal$inboundSchema),
-  surcharge: types.optional(AmountDecimal$inboundSchema),
 });
 /** @internal */
 export type PaymentLinkAmountDetails$Outbound = {
   tax?: AmountDecimal$Outbound | undefined;
-  surcharge?: AmountDecimal$Outbound | undefined;
 };
 
 /** @internal */
@@ -47,7 +41,6 @@ export const PaymentLinkAmountDetails$outboundSchema: z.ZodType<
   PaymentLinkAmountDetails
 > = z.object({
   tax: AmountDecimal$outboundSchema.optional(),
-  surcharge: AmountDecimal$outboundSchema.optional(),
 });
 
 export function paymentLinkAmountDetailsToJSON(

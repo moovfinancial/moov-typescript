@@ -14,12 +14,6 @@ import {
   Amount$outboundSchema,
 } from "./amount.js";
 import {
-  RefundAmountDetails,
-  RefundAmountDetails$inboundSchema,
-  RefundAmountDetails$Outbound,
-  RefundAmountDetails$outboundSchema,
-} from "./refundamountdetails.js";
-import {
   RefundCardDetails,
   RefundCardDetails$inboundSchema,
   RefundCardDetails$Outbound,
@@ -43,7 +37,6 @@ export type CardAcquiringRefund = {
   updatedOn: Date;
   status: RefundStatus;
   amount: Amount;
-  amountDetails?: RefundAmountDetails | undefined;
   cardDetails?: RefundCardDetails | undefined;
 };
 
@@ -58,7 +51,6 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   updatedOn: types.date(),
   status: RefundStatus$inboundSchema,
   amount: Amount$inboundSchema,
-  amountDetails: types.optional(RefundAmountDetails$inboundSchema),
   cardDetails: types.optional(RefundCardDetails$inboundSchema),
 });
 /** @internal */
@@ -68,7 +60,6 @@ export type CardAcquiringRefund$Outbound = {
   updatedOn: string;
   status: string;
   amount: Amount$Outbound;
-  amountDetails?: RefundAmountDetails$Outbound | undefined;
   cardDetails?: RefundCardDetails$Outbound | undefined;
 };
 
@@ -83,7 +74,6 @@ export const CardAcquiringRefund$outboundSchema: z.ZodType<
   updatedOn: z.date().transform(v => v.toISOString()),
   status: RefundStatus$outboundSchema,
   amount: Amount$outboundSchema,
-  amountDetails: RefundAmountDetails$outboundSchema.optional(),
   cardDetails: RefundCardDetails$outboundSchema.optional(),
 });
 

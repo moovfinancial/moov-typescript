@@ -223,12 +223,6 @@ const value: components.CreatedTransfer = {
         currency: "USD",
         value: 1204,
       },
-      amountDetails: {
-        surcharge: {
-          currency: "USD",
-          valueDecimal: "12.987654321",
-        },
-      },
     },
   ],
   disputedAmount: {
@@ -254,10 +248,6 @@ const value: components.CreatedTransfer = {
       valueDecimal: "12.987654321",
     },
     tax: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
-    },
-    surcharge: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },

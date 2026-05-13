@@ -14,4 +14,3 @@ let value: CreateTransferAmountDetailsValidationError = {};
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `tip`              | *string*           | :heavy_minus_sign: | N/A                |
 | `tax`              | *string*           | :heavy_minus_sign: | N/A                |
-| `surcharge`        | *string*           | :heavy_minus_sign: | N/A                |

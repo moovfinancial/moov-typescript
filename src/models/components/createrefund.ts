@@ -7,12 +7,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RefundAmountDetails,
-  RefundAmountDetails$inboundSchema,
-  RefundAmountDetails$Outbound,
-  RefundAmountDetails$outboundSchema,
-} from "./refundamountdetails.js";
 
 /**
  * Specifies a partial amount to refund.
@@ -26,10 +20,6 @@ export type CreateRefund = {
    * Amount to refund in cents. If null, the original transfer's full amount will be refunded.
    */
   amount?: number | undefined;
-  /**
-   * Breakdown of the refunded amount.
-   */
-  amountDetails?: RefundAmountDetails | undefined;
 };
 
 /** @internal */
@@ -39,12 +29,10 @@ export const CreateRefund$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: types.optional(types.number()),
-  amountDetails: types.optional(RefundAmountDetails$inboundSchema),
 });
 /** @internal */
 export type CreateRefund$Outbound = {
   amount?: number | undefined;
-  amountDetails?: RefundAmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -54,7 +42,6 @@ export const CreateRefund$outboundSchema: z.ZodType<
   CreateRefund
 > = z.object({
   amount: z.number().int().optional(),
-  amountDetails: RefundAmountDetails$outboundSchema.optional(),
 });
 
 export function createRefundToJSON(createRefund: CreateRefund): string {

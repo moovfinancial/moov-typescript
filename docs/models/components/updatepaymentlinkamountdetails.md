@@ -10,10 +10,6 @@ let value: UpdatePaymentLinkAmountDetails = {
     currency: "USD",
     valueDecimal: "12.987654321",
   },
-  surcharge: {
-    currency: "USD",
-    valueDecimal: "12.987654321",
-  },
 };
 ```
 
@@ -22,4 +18,3 @@ let value: UpdatePaymentLinkAmountDetails = {
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | `tax`                                                                            | [components.AmountDecimalUpdate](../../models/components/amountdecimalupdate.md) | :heavy_minus_sign:                                                               | The amount of tax applied to the payment link.                                   |
-| `surcharge`                                                                      | [components.AmountDecimalUpdate](../../models/components/amountdecimalupdate.md) | :heavy_minus_sign:                                                               | The amount of surcharge applied to the payment link.                             |
