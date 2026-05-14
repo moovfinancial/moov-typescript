@@ -241,6 +241,7 @@ export type WebhookData =
   | WebhookDataRefundUpdated
   | WebhookDataWalletTransactionUpdated
   | WebhookDataBankAccountCreated
+  | WebhookDataBankAccountDeleted
   | WebhookDataCancellationCreated
   | WebhookDataCancellationUpdated
   | WebhookDataCardAutoUpdated
@@ -254,7 +255,6 @@ export type WebhookData =
   | WebhookDataTransferCreated
   | WebhookDataWalletUpdated
   | WebhookDataBalanceUpdated
-  | WebhookDataBankAccountDeleted
   | WebhookDataCapabilityRequested
   | WebhookDataInvoiceCreated
   | WebhookDataRepresentativeCreated
@@ -285,6 +285,7 @@ export const WebhookData$inboundSchema: z.ZodType<
   WebhookDataRefundUpdated$inboundSchema,
   WebhookDataWalletTransactionUpdated$inboundSchema,
   WebhookDataBankAccountCreated$inboundSchema,
+  WebhookDataBankAccountDeleted$inboundSchema,
   WebhookDataCancellationCreated$inboundSchema,
   WebhookDataCancellationUpdated$inboundSchema,
   WebhookDataCardAutoUpdated$inboundSchema,
@@ -298,7 +299,6 @@ export const WebhookData$inboundSchema: z.ZodType<
   WebhookDataTransferCreated$inboundSchema,
   WebhookDataWalletUpdated$inboundSchema,
   WebhookDataBalanceUpdated$inboundSchema,
-  WebhookDataBankAccountDeleted$inboundSchema,
   WebhookDataCapabilityRequested$inboundSchema,
   WebhookDataInvoiceCreated$inboundSchema,
   WebhookDataRepresentativeCreated$inboundSchema,
@@ -325,6 +325,7 @@ export type WebhookData$Outbound =
   | WebhookDataRefundUpdated$Outbound
   | WebhookDataWalletTransactionUpdated$Outbound
   | WebhookDataBankAccountCreated$Outbound
+  | WebhookDataBankAccountDeleted$Outbound
   | WebhookDataCancellationCreated$Outbound
   | WebhookDataCancellationUpdated$Outbound
   | WebhookDataCardAutoUpdated$Outbound
@@ -338,7 +339,6 @@ export type WebhookData$Outbound =
   | WebhookDataTransferCreated$Outbound
   | WebhookDataWalletUpdated$Outbound
   | WebhookDataBalanceUpdated$Outbound
-  | WebhookDataBankAccountDeleted$Outbound
   | WebhookDataCapabilityRequested$Outbound
   | WebhookDataInvoiceCreated$Outbound
   | WebhookDataRepresentativeCreated$Outbound
@@ -369,6 +369,7 @@ export const WebhookData$outboundSchema: z.ZodType<
   WebhookDataRefundUpdated$outboundSchema,
   WebhookDataWalletTransactionUpdated$outboundSchema,
   WebhookDataBankAccountCreated$outboundSchema,
+  WebhookDataBankAccountDeleted$outboundSchema,
   WebhookDataCancellationCreated$outboundSchema,
   WebhookDataCancellationUpdated$outboundSchema,
   WebhookDataCardAutoUpdated$outboundSchema,
@@ -382,7 +383,6 @@ export const WebhookData$outboundSchema: z.ZodType<
   WebhookDataTransferCreated$outboundSchema,
   WebhookDataWalletUpdated$outboundSchema,
   WebhookDataBalanceUpdated$outboundSchema,
-  WebhookDataBankAccountDeleted$outboundSchema,
   WebhookDataCapabilityRequested$outboundSchema,
   WebhookDataInvoiceCreated$outboundSchema,
   WebhookDataRepresentativeCreated$outboundSchema,
