@@ -238,6 +238,7 @@ async function run() {
 run();
 
 ```
+<!-- End Authentication [security] -->
 
 Client-side authentication is supported through the `accessToken` parameter. For example:
 ```typescript
@@ -264,8 +265,6 @@ run();
 
 ```
 See the [Moov authentication docs](https://docs.moov.io/api/authentication/api-authentication/) for more information.
-
-<!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
