@@ -27,6 +27,11 @@ export type SDKOptions = {
     | (() => Promise<components.Security>)
     | undefined;
 
+  /**
+   * Allows setting the accessToken parameter for all supported operations
+   */
+  accessToken?: string | undefined;
+
   httpClient?: HTTPClient;
   /**
    * Allows overriding the default server used by the SDK
@@ -68,7 +73,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "v2025.04.00",
-  sdkVersion: "25.5.7",
-  genVersion: "2.884.0",
-  userAgent: "speakeasy-sdk/typescript 25.5.7 2.884.0 v2025.04.00 @moovio/sdk",
+  sdkVersion: "25.6.0",
+  genVersion: "2.884.4",
+  userAgent: "speakeasy-sdk/typescript 25.6.0 2.884.4 v2025.04.00 @moovio/sdk",
 } as const;
