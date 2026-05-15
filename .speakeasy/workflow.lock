@@ -1,4 +1,4 @@
-speakeasyVersion: 1.763.0
+speakeasyVersion: 1.763.1
 sources:
     latest:
         sourceNamespace: typescript-v2026.07.00
@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:8a941b1354824a126d78cb5e0ad5c228a5ba4e4ec836ced69df70b2b6d9db69a
         sourceBlobDigest: sha256:4575d8e60a52390589dd31aae314eb7676f5e72ba7f3b8d05a185fe63d34e473
         codeSamplesNamespace: v2026.07.00-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:22b7dc9e7078539a0c319075556d2d34f2bdca6ef1b2c1d06179abe40c44fcc0
+        codeSamplesRevisionDigest: sha256:5c47042c6e10b3b3ffefc721352bc308f2cf68ad6b665bf765d9e29ad93f7232
     moov:
         source: latest
         sourceNamespace: api-latest
