@@ -95,7 +95,8 @@ Add the following server definition to your `claude_desktop_config.json` file:
         "--",
         "mcp", "start",
         "--username", "...",
-        "--password", "..."
+        "--password", "...",
+        "--access-token", "..."
       ]
     }
   }
@@ -119,7 +120,8 @@ Create a `.cursor/mcp.json` file in your project root with the following content
         "--",
         "mcp", "start",
         "--username", "...",
-        "--password", "..."
+        "--password", "...",
+        "--access-token", "..."
       ]
     }
   }
