@@ -51,6 +51,15 @@ export const startCommand = buildCommand({
           return z.string().parse(value);
         },
       },
+      "access-token": {
+        kind: "parsed",
+        brief:
+          "Allows setting the accessToken parameter for all supported operations",
+        optional: true,
+        parse: (value) => {
+          return z.string().parse(value);
+        },
+      },
       "server-url": {
         kind: "parsed",
         brief: "Overrides the default server URL used by the SDK",
