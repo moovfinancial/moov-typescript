@@ -1,19 +1,20 @@
-speakeasyVersion: 1.763.0
+speakeasyVersion: 1.763.1
 sources:
     latest:
-        sourceNamespace: api-v2025.01.00
-        sourceRevisionDigest: sha256:25526ff9f7460c2ce494fcaa0bfe7cb523bd3f66367ceacb4d99310d8470d4b1
-        sourceBlobDigest: sha256:af54ef7a69403ec01d39ab2d02edd3c2ad7c887b0b8b01f500201cd350c4406a
+        sourceNamespace: typescript-v2025.01.00
+        sourceRevisionDigest: sha256:e3dbe9325987d8b8b67cfa11d64e6528d1e19084638084463cee3fb2d133a8d2
+        sourceBlobDigest: sha256:1845379a605915143a78fee8afbabe89bb188f9305c1c2fb9bc81a0a89d436c7
         tags:
             - latest
+            - v2025.01.00
 targets:
     latest:
         source: latest
-        sourceNamespace: api-v2025.01.00
-        sourceRevisionDigest: sha256:25526ff9f7460c2ce494fcaa0bfe7cb523bd3f66367ceacb4d99310d8470d4b1
-        sourceBlobDigest: sha256:af54ef7a69403ec01d39ab2d02edd3c2ad7c887b0b8b01f500201cd350c4406a
+        sourceNamespace: typescript-v2025.01.00
+        sourceRevisionDigest: sha256:e3dbe9325987d8b8b67cfa11d64e6528d1e19084638084463cee3fb2d133a8d2
+        sourceBlobDigest: sha256:1845379a605915143a78fee8afbabe89bb188f9305c1c2fb9bc81a0a89d436c7
         codeSamplesNamespace: v2025.01.00-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:ce6b341a1d114a72c0dc2f56ccd8e80254fcfbd763b1e931b05ac89df1201964
+        codeSamplesRevisionDigest: sha256:ce4d6cdf3a4b4807ae74c95777f3fde284fc050cb155f36c0beb3de8bbefb7a8
     moov:
         source: latest
         sourceNamespace: api-latest
@@ -28,6 +29,8 @@ workflow:
         latest:
             inputs:
                 - location: registry.speakeasyapi.dev/moov/moov/api-v2025.01.00
+            overlays:
+                - location: ./.speakeasy/overlays/access-token.yaml
             registry:
                 location: registry.speakeasyapi.dev/moov/moov/typescript-v2025.01.00
     targets:

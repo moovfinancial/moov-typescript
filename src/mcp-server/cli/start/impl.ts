@@ -20,6 +20,7 @@ interface StartCommandFlags {
   readonly tool?: string[];
   readonly username?: string | undefined;
   readonly password?: string | undefined;
+  readonly "access-token"?: SDKOptions["accessToken"] | undefined;
   readonly "server-url"?: string;
   readonly "server-index"?: SDKOptions["serverIdx"];
   readonly "log-level": ConsoleLoggerLevel;
@@ -53,6 +54,7 @@ async function startStdio(flags: StartCommandFlags) {
       username: flags.username ?? "",
       password: flags.password ?? "",
     }),
+    accessToken: flags["access-token"],
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
   });
@@ -76,6 +78,7 @@ async function startSSE(flags: StartCommandFlags) {
       username: flags.username ?? "",
       password: flags.password ?? "",
     }),
+    accessToken: flags["access-token"],
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
   });
