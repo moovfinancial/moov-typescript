@@ -46,6 +46,8 @@ jobs:
       mode: direct
       set_version: ${{ github.event.inputs.set_version }}
       npm_tag: ${{ needs.get-npm-tag.outputs.npm_tag }}
+      environment: |
+        SPEAKEASY_BUMP_OVERRIDE=patch
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
