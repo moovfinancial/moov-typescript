@@ -30,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 26.7.0-dev.2
+  version: 26.7.0-dev.3
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -79,6 +79,7 @@ typescript:
   packageName: '@moovio/sdk'
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
+  privateIdentifierPrefix: '#'
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

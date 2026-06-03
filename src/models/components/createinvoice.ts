@@ -8,11 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  AmountDecimal,
-  AmountDecimal$inboundSchema,
-  AmountDecimal$Outbound,
-  AmountDecimal$outboundSchema,
-} from "./amountdecimal.js";
+  AmountDetails,
+  AmountDetails$inboundSchema,
+  AmountDetails$Outbound,
+  AmountDetails$outboundSchema,
+} from "./amountdetails.js";
 import {
   CreateInvoiceLineItems,
   CreateInvoiceLineItems$inboundSchema,
@@ -32,7 +32,7 @@ export type CreateInvoice = {
   lineItems: CreateInvoiceLineItems;
   invoiceDate?: Date | undefined;
   dueDate?: Date | undefined;
-  taxAmount?: AmountDecimal | undefined;
+  amountDetails?: AmountDetails | undefined;
 };
 
 /** @internal */
@@ -46,7 +46,7 @@ export const CreateInvoice$inboundSchema: z.ZodType<
   lineItems: CreateInvoiceLineItems$inboundSchema,
   invoiceDate: types.optional(types.date()),
   dueDate: types.optional(types.date()),
-  taxAmount: types.optional(AmountDecimal$inboundSchema),
+  amountDetails: types.optional(AmountDetails$inboundSchema),
 });
 /** @internal */
 export type CreateInvoice$Outbound = {
@@ -55,7 +55,7 @@ export type CreateInvoice$Outbound = {
   lineItems: CreateInvoiceLineItems$Outbound;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
-  taxAmount?: AmountDecimal$Outbound | undefined;
+  amountDetails?: AmountDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -69,7 +69,7 @@ export const CreateInvoice$outboundSchema: z.ZodType<
   lineItems: CreateInvoiceLineItems$outboundSchema,
   invoiceDate: z.date().transform(v => v.toISOString()).optional(),
   dueDate: z.date().transform(v => v.toISOString()).optional(),
-  taxAmount: AmountDecimal$outboundSchema.optional(),
+  amountDetails: AmountDetails$outboundSchema.optional(),
 });
 
 export function createInvoiceToJSON(createInvoice: CreateInvoice): string {

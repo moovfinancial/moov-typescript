@@ -1072,6 +1072,12 @@ async function run() {
     transferID: "04022119-95be-4ef4-9dd4-b3782f6aa7b9",
     createRefund: {
       amount: 1000,
+      amountDetails: {
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   });
 
@@ -1105,6 +1111,12 @@ async function run() {
     transferID: "04022119-95be-4ef4-9dd4-b3782f6aa7b9",
     createRefund: {
       amount: 1000,
+      amountDetails: {
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   });
   if (res.ok) {
@@ -1137,6 +1149,12 @@ async function run() {
     transferID: "d73be489-9da4-4be7-bc04-147d8552279d",
     createRefund: {
       amount: 1000,
+      amountDetails: {
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   });
 
@@ -1170,6 +1188,12 @@ async function run() {
     transferID: "d73be489-9da4-4be7-bc04-147d8552279d",
     createRefund: {
       amount: 1000,
+      amountDetails: {
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   });
   if (res.ok) {
@@ -1404,6 +1428,12 @@ async function run() {
     transferID: "82c6eae7-b7e5-4b20-b24e-5116a4d70bde",
     createReversal: {
       amount: 1000,
+      amountDetails: {
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   });
 
@@ -1437,6 +1467,12 @@ async function run() {
     transferID: "82c6eae7-b7e5-4b20-b24e-5116a4d70bde",
     createReversal: {
       amount: 1000,
+      amountDetails: {
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   });
   if (res.ok) {
@@ -1469,6 +1505,12 @@ async function run() {
     transferID: "a17b29e2-4af6-4c9d-ad3a-dd0ded2966ad",
     createReversal: {
       amount: 1000,
+      amountDetails: {
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   });
 
@@ -1502,6 +1544,12 @@ async function run() {
     transferID: "a17b29e2-4af6-4c9d-ad3a-dd0ded2966ad",
     createReversal: {
       amount: 1000,
+      amountDetails: {
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
     },
   });
   if (res.ok) {

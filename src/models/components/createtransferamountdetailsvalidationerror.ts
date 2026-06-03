@@ -11,6 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CreateTransferAmountDetailsValidationError = {
   tip?: string | undefined;
   tax?: string | undefined;
+  surcharge?: string | undefined;
 };
 
 /** @internal */
@@ -19,11 +20,13 @@ export const CreateTransferAmountDetailsValidationError$inboundSchema:
     z.object({
       tip: types.optional(types.string()),
       tax: types.optional(types.string()),
+      surcharge: types.optional(types.string()),
     });
 /** @internal */
 export type CreateTransferAmountDetailsValidationError$Outbound = {
   tip?: string | undefined;
   tax?: string | undefined;
+  surcharge?: string | undefined;
 };
 
 /** @internal */
@@ -35,6 +38,7 @@ export const CreateTransferAmountDetailsValidationError$outboundSchema:
   > = z.object({
     tip: z.string().optional(),
     tax: z.string().optional(),
+    surcharge: z.string().optional(),
   });
 
 export function createTransferAmountDetailsValidationErrorToJSON(

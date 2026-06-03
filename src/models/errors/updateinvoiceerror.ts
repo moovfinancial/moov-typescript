@@ -13,7 +13,7 @@ export type UpdateInvoiceErrorData = {
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
   status?: string | undefined;
-  taxAmount?: components.AmountDecimalValidationError | undefined;
+  amountDetails?: components.AmountDetailsValidationError | undefined;
 };
 
 export class UpdateInvoiceError extends MoovError {
@@ -22,7 +22,7 @@ export class UpdateInvoiceError extends MoovError {
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
   status?: string | undefined;
-  taxAmount?: components.AmountDecimalValidationError | undefined;
+  amountDetails?: components.AmountDetailsValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: UpdateInvoiceErrorData;
@@ -41,7 +41,7 @@ export class UpdateInvoiceError extends MoovError {
     if (err.invoiceDate != null) this.invoiceDate = err.invoiceDate;
     if (err.dueDate != null) this.dueDate = err.dueDate;
     if (err.status != null) this.status = err.status;
-    if (err.taxAmount != null) this.taxAmount = err.taxAmount;
+    if (err.amountDetails != null) this.amountDetails = err.amountDetails;
 
     this.name = "UpdateInvoiceError";
   }
@@ -60,8 +60,8 @@ export const UpdateInvoiceError$inboundSchema: z.ZodType<
   invoiceDate: types.optional(types.string()),
   dueDate: types.optional(types.string()),
   status: types.optional(types.string()),
-  taxAmount: types.optional(
-    components.AmountDecimalValidationError$inboundSchema,
+  amountDetails: types.optional(
+    components.AmountDetailsValidationError$inboundSchema,
   ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -82,7 +82,7 @@ export type UpdateInvoiceError$Outbound = {
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
   status?: string | undefined;
-  taxAmount?: components.AmountDecimalValidationError$Outbound | undefined;
+  amountDetails?: components.AmountDetailsValidationError$Outbound | undefined;
 };
 
 /** @internal */
@@ -99,6 +99,6 @@ export const UpdateInvoiceError$outboundSchema: z.ZodType<
     invoiceDate: z.string().optional(),
     dueDate: z.string().optional(),
     status: z.string().optional(),
-    taxAmount: components.AmountDecimalValidationError$outboundSchema
+    amountDetails: components.AmountDetailsValidationError$outboundSchema
       .optional(),
   }));

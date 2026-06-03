@@ -4,14 +4,17 @@
 
 import * as z from "zod/v3";
 import * as types from "../../types/primitives.js";
+import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
 export type ReversalValidationErrorData = {
   amount?: string | undefined;
+  amountDetails?: components.ReversalAmountDetailsValidationError | undefined;
 };
 
 export class ReversalValidationError extends MoovError {
   amount?: string | undefined;
+  amountDetails?: components.ReversalAmountDetailsValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: ReversalValidationErrorData;
@@ -26,6 +29,7 @@ export class ReversalValidationError extends MoovError {
     super(message, httpMeta);
     this.data$ = err;
     if (err.amount != null) this.amount = err.amount;
+    if (err.amountDetails != null) this.amountDetails = err.amountDetails;
 
     this.name = "ReversalValidationError";
   }
@@ -38,6 +42,9 @@ export const ReversalValidationError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: types.optional(types.string()),
+  amountDetails: types.optional(
+    components.ReversalAmountDetailsValidationError$inboundSchema,
+  ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -53,6 +60,9 @@ export const ReversalValidationError$inboundSchema: z.ZodType<
 /** @internal */
 export type ReversalValidationError$Outbound = {
   amount?: string | undefined;
+  amountDetails?:
+    | components.ReversalAmountDetailsValidationError$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -64,4 +74,6 @@ export const ReversalValidationError$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     amount: z.string().optional(),
+    amountDetails: components
+      .ReversalAmountDetailsValidationError$outboundSchema.optional(),
   }));

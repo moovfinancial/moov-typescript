@@ -19,6 +19,7 @@ export type CardAcquiringRefundData = {
   updatedOn: Date;
   status: components.RefundStatus;
   amount: components.Amount;
+  amountDetails?: components.RefundAmountDetails | undefined;
   cardDetails?: components.RefundCardDetails | undefined;
 };
 
@@ -34,6 +35,7 @@ export class CardAcquiringRefund extends MoovError {
   updatedOn: Date;
   status: components.RefundStatus;
   amount: components.Amount;
+  amountDetails?: components.RefundAmountDetails | undefined;
   cardDetails?: components.RefundCardDetails | undefined;
 
   /** The original data that was passed to this error instance. */
@@ -53,6 +55,7 @@ export class CardAcquiringRefund extends MoovError {
     this.updatedOn = err.updatedOn;
     this.status = err.status;
     this.amount = err.amount;
+    if (err.amountDetails != null) this.amountDetails = err.amountDetails;
     if (err.cardDetails != null) this.cardDetails = err.cardDetails;
 
     this.name = "CardAcquiringRefund";
@@ -70,6 +73,7 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   updatedOn: types.date(),
   status: components.RefundStatus$inboundSchema,
   amount: components.Amount$inboundSchema,
+  amountDetails: types.optional(components.RefundAmountDetails$inboundSchema),
   cardDetails: types.optional(components.RefundCardDetails$inboundSchema),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -90,6 +94,7 @@ export type CardAcquiringRefund$Outbound = {
   updatedOn: string;
   status: string;
   amount: components.Amount$Outbound;
+  amountDetails?: components.RefundAmountDetails$Outbound | undefined;
   cardDetails?: components.RefundCardDetails$Outbound | undefined;
 };
 
@@ -106,5 +111,6 @@ export const CardAcquiringRefund$outboundSchema: z.ZodType<
     updatedOn: z.date().transform(v => v.toISOString()),
     status: components.RefundStatus$outboundSchema,
     amount: components.Amount$outboundSchema,
+    amountDetails: components.RefundAmountDetails$outboundSchema.optional(),
     cardDetails: components.RefundCardDetails$outboundSchema.optional(),
   }));

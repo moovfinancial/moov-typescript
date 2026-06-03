@@ -13,7 +13,7 @@ export type CreateInvoiceErrorData = {
   lineItems?: components.CreateInvoiceLineItemsValidationError | undefined;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
-  taxAmount?: components.AmountDecimalValidationError | undefined;
+  amountDetails?: components.AmountDetailsValidationError | undefined;
 };
 
 export class CreateInvoiceError extends MoovError {
@@ -22,7 +22,7 @@ export class CreateInvoiceError extends MoovError {
   lineItems?: components.CreateInvoiceLineItemsValidationError | undefined;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
-  taxAmount?: components.AmountDecimalValidationError | undefined;
+  amountDetails?: components.AmountDetailsValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: CreateInvoiceErrorData;
@@ -43,7 +43,7 @@ export class CreateInvoiceError extends MoovError {
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.invoiceDate != null) this.invoiceDate = err.invoiceDate;
     if (err.dueDate != null) this.dueDate = err.dueDate;
-    if (err.taxAmount != null) this.taxAmount = err.taxAmount;
+    if (err.amountDetails != null) this.amountDetails = err.amountDetails;
 
     this.name = "CreateInvoiceError";
   }
@@ -62,8 +62,8 @@ export const CreateInvoiceError$inboundSchema: z.ZodType<
   ),
   invoiceDate: types.optional(types.string()),
   dueDate: types.optional(types.string()),
-  taxAmount: types.optional(
-    components.AmountDecimalValidationError$inboundSchema,
+  amountDetails: types.optional(
+    components.AmountDetailsValidationError$inboundSchema,
   ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -86,7 +86,7 @@ export type CreateInvoiceError$Outbound = {
     | undefined;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
-  taxAmount?: components.AmountDecimalValidationError$Outbound | undefined;
+  amountDetails?: components.AmountDetailsValidationError$Outbound | undefined;
 };
 
 /** @internal */
@@ -103,6 +103,6 @@ export const CreateInvoiceError$outboundSchema: z.ZodType<
       .optional(),
     invoiceDate: z.string().optional(),
     dueDate: z.string().optional(),
-    taxAmount: components.AmountDecimalValidationError$outboundSchema
+    amountDetails: components.AmountDetailsValidationError$outboundSchema
       .optional(),
   }));

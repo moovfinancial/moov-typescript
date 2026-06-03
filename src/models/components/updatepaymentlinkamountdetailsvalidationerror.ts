@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdatePaymentLinkAmountDetailsValidationError = {
   tax?: string | undefined;
+  surcharge?: string | undefined;
 };
 
 /** @internal */
@@ -20,10 +21,12 @@ export const UpdatePaymentLinkAmountDetailsValidationError$inboundSchema:
     unknown
   > = z.object({
     tax: types.optional(types.string()),
+    surcharge: types.optional(types.string()),
   });
 /** @internal */
 export type UpdatePaymentLinkAmountDetailsValidationError$Outbound = {
   tax?: string | undefined;
+  surcharge?: string | undefined;
 };
 
 /** @internal */
@@ -34,6 +37,7 @@ export const UpdatePaymentLinkAmountDetailsValidationError$outboundSchema:
     UpdatePaymentLinkAmountDetailsValidationError
   > = z.object({
     tax: z.string().optional(),
+    surcharge: z.string().optional(),
   });
 
 export function updatePaymentLinkAmountDetailsValidationErrorToJSON(
