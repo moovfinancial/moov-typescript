@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 74fe38b1df8f1fe7e13059d66f61e86e
+  docChecksum: e885bbb8407b2866408589fc4099f5e7
   docVersion: v2026.04.00
-  speakeasyVersion: 1.763.1
-  generationVersion: 2.884.4
-  releaseVersion: 26.5.0
-  configChecksum: aee3f887ee78cfee9708b35a81370831
+  speakeasyVersion: 1.770.0
+  generationVersion: 2.893.0
+  releaseVersion: 26.5.1
+  configChecksum: 6a8e3e3ae47c445402fa9db198fb02e0
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: c5326b99-f197-4d55-b95e-88cb0c9908ee
-  pristine_commit_hash: 1d249f3d4b94d801c3c9260609dd2c2284c33dc4
-  pristine_tree_hash: 1c3c67d0b0612196c8bbfd4d0a6bb17611bfa164
+  generation_id: fb7fdaa7-9d88-4b2f-b1a6-96f1246eb4a0
+  pristine_commit_hash: 4a0d2e376d938853edb2655a9d5cff5447c77c94
+  pristine_tree_hash: 0bb1c675b4806b41377a311190467e9644c183cf
 features:
   typescript:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.14
-    core: 3.26.50
+    core: 3.27.0
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -1323,8 +1323,8 @@ trackedFiles:
     pristine_git_object: 8da2f938416c43b70cf03712461febe4fe35bcef
   docs/models/components/invoice.md:
     id: dfe36624d47f
-    last_write_checksum: sha1:35800289662e5b202a6ae0416964efc85f494387
-    pristine_git_object: 51c721c6340ec72266a49e59b5482428e090d5e3
+    last_write_checksum: sha1:2bfa74aba7e408c580450d1971d2f40be306fd32
+    pristine_git_object: a7183fd6c9b69c8763f5d4c56a37e308a099b5cc
   docs/models/components/invoiceexternalpayment.md:
     id: 813d9c5f0cf4
     last_write_checksum: sha1:0c2bce273bf13e8576c4dfa95d3ca91fb4fe31f2
@@ -2271,8 +2271,12 @@ trackedFiles:
     pristine_git_object: 77f5bf4a6bc7391ce183e17702a5f1ef85c06953
   docs/models/components/transferconfig.md:
     id: 4fcd0d6d38b7
-    last_write_checksum: sha1:24d496815bd6517ce394906c9d8c6c2fbe313bed
-    pristine_git_object: 288a330957084f7d5f5cbfa45795a6cb7d038c68
+    last_write_checksum: sha1:3f03135d8e59f16ad787e9dd136d9067cf9ab571
+    pristine_git_object: 64203013b3c5590d11caca415a7b07b4dc7356ca
+  docs/models/components/transfercontrols.md:
+    id: e5af89049fbd
+    last_write_checksum: sha1:d364f9404dc5e5d7a7ecaf8dc862ae9291876ff1
+    pristine_git_object: ba7a573f044caf7b201a646b9db1eaf9c23fe816
   docs/models/components/transferdestination.md:
     id: f96e60ad1910
     last_write_checksum: sha1:388ca96d232f47b22e7feb58be19fbf9cdefb8c2
@@ -2379,8 +2383,8 @@ trackedFiles:
     pristine_git_object: d55f20f814f16781789f13b0a756123601452ffb
   docs/models/components/updateinvoice.md:
     id: 4057275c6de5
-    last_write_checksum: sha1:0701bef39bb4bfa536b870f3d909f3180be2c7df
-    pristine_git_object: fb75b8ca8e765d0243d6b297b833f7b755f3baa7
+    last_write_checksum: sha1:0b7bd7baa6d26474a77e5959dc5905e33ccb93a6
+    pristine_git_object: 1574493891cbcaed8304e8365672c68dfd0f88df
   docs/models/components/updateissuedcard.md:
     id: 24534f50fa1f
     last_write_checksum: sha1:ee2421e75d2ad289c69e647d248a2a92d6b5c00c
@@ -4599,12 +4603,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:ecd0d6bc6e103c00d56b0fbc648d0e22c1254ac3
-    pristine_git_object: 00690a32e725f450735806fe326840532127fbff
+    last_write_checksum: sha1:37b4876fb5889b4c2f26dc2f6f886c0988a3efe1
+    pristine_git_object: ee5e5b6666f60b044e09ac5457c892c7ea9cfb9a
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:89a4217de38c935add07269384dc6af47337f2fa
-    pristine_git_object: 84ae355e4fa9c3253bbad3618f2f41b44e6b84be
+    last_write_checksum: sha1:bf093659c2121730b1c4c80acb9c0eee67df6653
+    pristine_git_object: cb0d8433c70857692036187b08c268f20d54b3a3
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5379,8 +5383,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:e3eb6448329e21fb48d09c0f8fd7c0a0f88d10c6
-    pristine_git_object: 141998c58a91adecadc36bae96b524ca3162dbc2
+    last_write_checksum: sha1:f3bd9457dbae474d109145e8520f9234745a2533
+    pristine_git_object: d87a71a81368e4345d3cdc726e3afd112e7c92ba
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5459,8 +5463,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:a446b0d02c9989a40809598e583c09a790058fef
-    pristine_git_object: c7e73c7dd7a1a4ce0ec17036367120cdec059698
+    last_write_checksum: sha1:41c7cd1a94145d748afda1a88ed828d5d58e7af8
+    pristine_git_object: 04ece3a5ece52d5c147afb13b1232e675bfb69a8
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5475,8 +5479,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:9ffa9c5058018d72ead40c22b91ea77a99cae5ab
-    pristine_git_object: 00e5c2c3dd5cf4640cb586ef428b9bc48dcfdf50
+    last_write_checksum: sha1:1a863a314743fc476b3711541b8f8a055d3001da
+    pristine_git_object: 190f516f9a940736491264cceebfd264f08139ed
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7335,8 +7339,8 @@ trackedFiles:
     pristine_git_object: 0b259f70e79d0e5ecd5615db06ca143029306f82
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:bdb6a0fd971cdbf443addc81370ae6c5cb189a2b
-    pristine_git_object: f529ce3da4caf9b072227480947b9040973477e3
+    last_write_checksum: sha1:20c8f9fd40f09a0be3a3a4b568ac7a8cc1333e9d
+    pristine_git_object: c0230897ea063ee9bd3d54e4adf32980c4635fec
   src/models/components/individualname.ts:
     id: 8d95da45fb10
     last_write_checksum: sha1:d1c9cbb70b2a5df18194b95c9ae05fbb73979788
@@ -7395,8 +7399,8 @@ trackedFiles:
     pristine_git_object: 47bbe9e7a45f7e2254ef5014451fcd2ffe3ef0f3
   src/models/components/invoice.ts:
     id: 0f5b51ded838
-    last_write_checksum: sha1:c715c32e30544fc5b7321a200c1722b321c2576e
-    pristine_git_object: 8d3205b774bcb23a52646878e333b8a5174d2dd8
+    last_write_checksum: sha1:f2b0cfec8a8c23b01f2883452f74c6b178d354a2
+    pristine_git_object: c076fa7693f1a921d54039b9d5feb17677f61856
   src/models/components/invoiceexternalpayment.ts:
     id: 6fd40b0d76e9
     last_write_checksum: sha1:0164901ed109f4d7c40123b1682bd471628645a0
@@ -8295,8 +8299,12 @@ trackedFiles:
     pristine_git_object: 350a5dbdd45ebd831dbe97b5028df846cb6ad501
   src/models/components/transferconfig.ts:
     id: 858251d33abe
-    last_write_checksum: sha1:edbb032857cafd73188cf1f68d170ca204ae3aa9
-    pristine_git_object: f0594cf837be7a15c1287366d3c4284d5c6ca5de
+    last_write_checksum: sha1:9a319983b4bb2e13856e64243dc5c71fd42d9770
+    pristine_git_object: e2c194ee9cd3cd03b35099677ce09751ff61263b
+  src/models/components/transfercontrols.ts:
+    id: 14c007483b38
+    last_write_checksum: sha1:2b35911a5a6021bf711665f5f536635fda46b1a4
+    pristine_git_object: d45b76493173049a98de098e82082cbde5b93091
   src/models/components/transferdestination.ts:
     id: 333752d7b73b
     last_write_checksum: sha1:7646cbe3151f93d8042da411b854b66f3b9fe57c
@@ -8399,8 +8407,8 @@ trackedFiles:
     pristine_git_object: d67db93487f83eb047e583622630bb9844b614cd
   src/models/components/updateinvoice.ts:
     id: 6744b48d170e
-    last_write_checksum: sha1:cc57a5ff75b663fa53ef27cac1f9d926cdce1ca9
-    pristine_git_object: 9494bd4ea583f0ed8ceafed7fa398020e1927f12
+    last_write_checksum: sha1:bd445f0afb9bbf396c7c541f93608107ed58488a
+    pristine_git_object: 211919ec954550da83a0ccea8ee0069a41cd8df2
   src/models/components/updateissuedcard.ts:
     id: 7c5328763ed1
     last_write_checksum: sha1:eba35fa38bd6cfb3291691403d5df1ac45ab8cde
@@ -9875,8 +9883,8 @@ trackedFiles:
     pristine_git_object: 24e3f7c7b2e6fdfd2a88cd856b384edcbb5adad6
   src/types/async.ts:
     id: fac8da972f86
-    last_write_checksum: sha1:3ff07b3feaf390ec1aeb18ff938e139c6c4a9585
-    pristine_git_object: 689dba5de50e8769e5f3bb913e3f42a146d15bc1
+    last_write_checksum: sha1:675d04bb4b4081dc3482f18de98674f9b446e7b4
+    pristine_git_object: 1543b95cf7be9b5a871d7395f259dbd65331dc21
   src/types/blobs.ts:
     id: f8ab9b326c86
     last_write_checksum: sha1:cf45d78916671cb6345a11c97c633c64402bc27c
@@ -12760,7 +12768,7 @@ examples:
         application/json: {"tipPresets": {"fixedAmountOptions": [{"currency": "USD", "valueDecimal": "12.987654321"}]}}
       responses:
         "201":
-          application/json: {"tipPresets": {"calculationBasis": "pre-tax", "percentageOptions": [10, 15, 20]}}
+          application/json: {"tipPresets": {"calculationBasis": "pre-tax", "percentageOptions": [10, 15, 20]}, "transferControls": [{"accountID": "01234567-89ab-cdef-0123-456789abcdef", "partnerAccountID": "01234567-89ab-cdef-0123-456789abcdef", "debtRepayment": false, "allowDynamicDescriptor": true, "allowSurcharge": true}]}
   getTransferConfig:
     Fixed amount tip config:
       parameters:
@@ -12775,7 +12783,7 @@ examples:
           accountID: "<id>"
       responses:
         "200":
-          application/json: {"tipPresets": {"calculationBasis": "pre-tax", "percentageOptions": [10, 15, 20]}}
+          application/json: {"tipPresets": {"calculationBasis": "pre-tax", "percentageOptions": [10, 15, 20]}, "transferControls": [{"accountID": "01234567-89ab-cdef-0123-456789abcdef", "partnerAccountID": "01234567-89ab-cdef-0123-456789abcdef", "debtRepayment": false, "allowDynamicDescriptor": true, "allowSurcharge": true}]}
   updateTransferConfig:
     Updated fixed amount tip config:
       parameters:
@@ -12794,9 +12802,14 @@ examples:
         application/json: {"tipPresets": {"fixedAmountOptions": [{"currency": "USD", "valueDecimal": "12.987654321"}]}}
       responses:
         "200":
-          application/json: {"tipPresets": {"calculationBasis": "pre-tax", "percentageOptions": [10, 15, 20]}}
+          application/json: {"tipPresets": {"calculationBasis": "pre-tax", "percentageOptions": [10, 15, 20]}, "transferControls": [{"accountID": "01234567-89ab-cdef-0123-456789abcdef", "partnerAccountID": "01234567-89ab-cdef-0123-456789abcdef", "debtRepayment": false, "allowDynamicDescriptor": true, "allowSurcharge": true}]}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `moov.transferConfig.create()`:  `response.transferControls` **Added**
+  * `moov.transferConfig.get()`:  `response.transferControls` **Added**
+  * `moov.transferConfig.update()`:  `response.transferControls` **Added**
 generatedFiles:
   - .gitattributes
   - .npmignore

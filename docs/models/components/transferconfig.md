@@ -21,6 +21,7 @@ let value: TransferConfig = {
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `tipPresets`                                                   | [components.TipPresets](../../models/components/tippresets.md) | :heavy_minus_sign:                                             | Tip presets when calculating tips for a transfer.              |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `tipPresets`                                                                 | [components.TipPresets](../../models/components/tippresets.md)               | :heavy_minus_sign:                                                           | Tip presets when calculating tips for a transfer.                            |
+| `transferControls`                                                           | [components.TransferControls](../../models/components/transfercontrols.md)[] | :heavy_minus_sign:                                                           | N/A                                                                          |

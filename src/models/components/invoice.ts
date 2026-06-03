@@ -61,7 +61,7 @@ export type Invoice = {
   subtotalAmount: AmountDecimal;
   taxAmount: AmountDecimal;
   /**
-   * Total amount of the invoice, sum of subTotalAmount and taxAmount
+   * Total amount of the invoice, including subtotal, tax, and surcharge amounts.
    */
   totalAmount: AmountDecimal;
   /**

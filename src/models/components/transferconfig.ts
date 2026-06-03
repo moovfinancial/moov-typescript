@@ -12,6 +12,12 @@ import {
   TipPresets$Outbound,
   TipPresets$outboundSchema,
 } from "./tippresets.js";
+import {
+  TransferControls,
+  TransferControls$inboundSchema,
+  TransferControls$Outbound,
+  TransferControls$outboundSchema,
+} from "./transfercontrols.js";
 
 /**
  * Configurable options for a transfer.
@@ -21,6 +27,7 @@ export type TransferConfig = {
    * Tip presets when calculating tips for a transfer.
    */
   tipPresets?: TipPresets | undefined;
+  transferControls?: Array<TransferControls> | undefined;
 };
 
 /** @internal */
@@ -30,10 +37,12 @@ export const TransferConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   tipPresets: TipPresets$inboundSchema.optional(),
+  transferControls: z.array(TransferControls$inboundSchema).optional(),
 });
 /** @internal */
 export type TransferConfig$Outbound = {
   tipPresets?: TipPresets$Outbound | undefined;
+  transferControls?: Array<TransferControls$Outbound> | undefined;
 };
 
 /** @internal */
@@ -43,6 +52,7 @@ export const TransferConfig$outboundSchema: z.ZodType<
   TransferConfig
 > = z.object({
   tipPresets: TipPresets$outboundSchema.optional(),
+  transferControls: z.array(TransferControls$outboundSchema).optional(),
 });
 
 export function transferConfigToJSON(transferConfig: TransferConfig): string {

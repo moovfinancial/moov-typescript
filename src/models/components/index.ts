@@ -517,6 +517,7 @@ export * from "./transferaccount.js";
 export * from "./transferachaddendarecord.js";
 export * from "./transferamountdetails.js";
 export * from "./transferconfig.js";
+export * from "./transfercontrols.js";
 export * from "./transferdestination.js";
 export * from "./transferentrymode.js";
 export * from "./transferfailurereason.js";
