@@ -29,9 +29,15 @@ let value: CreateInvoice = {
       },
     ],
   },
-  taxAmount: {
-    currency: "USD",
-    valueDecimal: "12.987654321",
+  amountDetails: {
+    tax: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    surcharge: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
   },
 };
 ```
@@ -45,4 +51,4 @@ let value: CreateInvoice = {
 | `lineItems`                                                                                                                                                                                            | [components.CreateInvoiceLineItems](../../models/components/createinvoicelineitems.md)                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                     | A collection of line items for an invoice.                                                                                                                                                             |
 | `invoiceDate`                                                                                                                                                                                          | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                     | N/A                                                                                                                                                                                                    |
 | `dueDate`                                                                                                                                                                                              | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                     | N/A                                                                                                                                                                                                    |
-| `taxAmount`                                                                                                                                                                                            | [components.AmountDecimal](../../models/components/amountdecimal.md)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                     | N/A                                                                                                                                                                                                    |
+| `amountDetails`                                                                                                                                                                                        | [components.AmountDetails](../../models/components/amountdetails.md)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                     | N/A                                                                                                                                                                                                    |

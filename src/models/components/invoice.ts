@@ -14,6 +14,12 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 import {
+  AmountDetails,
+  AmountDetails$inboundSchema,
+  AmountDetails$Outbound,
+  AmountDetails$outboundSchema,
+} from "./amountdetails.js";
+import {
   InvoiceLineItems,
   InvoiceLineItems$inboundSchema,
   InvoiceLineItems$Outbound,
@@ -60,9 +66,9 @@ export type Invoice = {
    */
   lineItems: InvoiceLineItems;
   subtotalAmount: AmountDecimal;
-  taxAmount: AmountDecimal;
+  amountDetails?: AmountDetails | undefined;
   /**
-   * Total amount of the invoice, sum of subTotalAmount and taxAmount
+   * Total amount of the invoice, including subtotal, tax, and surcharge amounts.
    */
   totalAmount: AmountDecimal;
   /**
@@ -108,7 +114,7 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
     status: InvoiceStatus$inboundSchema,
     lineItems: InvoiceLineItems$inboundSchema,
     subtotalAmount: AmountDecimal$inboundSchema,
-    taxAmount: AmountDecimal$inboundSchema,
+    amountDetails: types.optional(AmountDetails$inboundSchema),
     totalAmount: AmountDecimal$inboundSchema,
     pendingAmount: AmountDecimal$inboundSchema,
     paidAmount: AmountDecimal$inboundSchema,
@@ -136,7 +142,7 @@ export type Invoice$Outbound = {
   status: string;
   lineItems: InvoiceLineItems$Outbound;
   subtotalAmount: AmountDecimal$Outbound;
-  taxAmount: AmountDecimal$Outbound;
+  amountDetails?: AmountDetails$Outbound | undefined;
   totalAmount: AmountDecimal$Outbound;
   pendingAmount: AmountDecimal$Outbound;
   paidAmount: AmountDecimal$Outbound;
@@ -169,7 +175,7 @@ export const Invoice$outboundSchema: z.ZodType<
   status: InvoiceStatus$outboundSchema,
   lineItems: InvoiceLineItems$outboundSchema,
   subtotalAmount: AmountDecimal$outboundSchema,
-  taxAmount: AmountDecimal$outboundSchema,
+  amountDetails: AmountDetails$outboundSchema.optional(),
   totalAmount: AmountDecimal$outboundSchema,
   pendingAmount: AmountDecimal$outboundSchema,
   paidAmount: AmountDecimal$outboundSchema,

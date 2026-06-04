@@ -8,11 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  AmountDecimalUpdate,
-  AmountDecimalUpdate$inboundSchema,
-  AmountDecimalUpdate$Outbound,
-  AmountDecimalUpdate$outboundSchema,
-} from "./amountdecimalupdate.js";
+  AmountDetailsUpdate,
+  AmountDetailsUpdate$inboundSchema,
+  AmountDetailsUpdate$Outbound,
+  AmountDetailsUpdate$outboundSchema,
+} from "./amountdetailsupdate.js";
 import {
   CreateInvoiceLineItemsUpdate,
   CreateInvoiceLineItemsUpdate$inboundSchema,
@@ -34,17 +34,17 @@ export type UpdateInvoice = {
   invoiceDate?: Date | null | undefined;
   dueDate?: Date | null | undefined;
   /**
-   * The status can be updated to one of the following values under specific conditions:
+   *   The status can be updated to one of the following values under specific conditions:
    *
    * @remarks
-   * - `canceled`: Can only be set if the current status is `draft`, `unpaid`, or `overdue`. Canceling an invoice
-   *   indicates the invoice is no longer expected to be paid (e.g., the charge was waived or terms changed).
-   *   Canceled invoices still appear in list results by default and remain part of the invoice history.
-   *   To completely discard an invoice created by mistake, use the delete endpoint instead.
-   * - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
+   *   - `canceled`: Can only be set if the current status is `draft`, `unpaid`, or `overdue`. Canceling an invoice
+   *     indicates the invoice is no longer expected to be paid (e.g., the charge was waived or terms changed).
+   *     Canceled invoices still appear in list results by default and remain part of the invoice history.
+   *     To completely discard an invoice created by mistake, use the delete endpoint instead.
+   *   - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
    */
   status?: InvoiceStatus | undefined;
-  taxAmount?: AmountDecimalUpdate | undefined;
+  amountDetails?: AmountDetailsUpdate | undefined;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const UpdateInvoice$inboundSchema: z.ZodType<
   invoiceDate: z.nullable(types.date()).optional(),
   dueDate: z.nullable(types.date()).optional(),
   status: types.optional(InvoiceStatus$inboundSchema),
-  taxAmount: types.optional(AmountDecimalUpdate$inboundSchema),
+  amountDetails: types.optional(AmountDetailsUpdate$inboundSchema),
 });
 /** @internal */
 export type UpdateInvoice$Outbound = {
@@ -67,7 +67,7 @@ export type UpdateInvoice$Outbound = {
   invoiceDate?: string | null | undefined;
   dueDate?: string | null | undefined;
   status?: string | undefined;
-  taxAmount?: AmountDecimalUpdate$Outbound | undefined;
+  amountDetails?: AmountDetailsUpdate$Outbound | undefined;
 };
 
 /** @internal */
@@ -81,7 +81,7 @@ export const UpdateInvoice$outboundSchema: z.ZodType<
   invoiceDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: InvoiceStatus$outboundSchema.optional(),
-  taxAmount: AmountDecimalUpdate$outboundSchema.optional(),
+  amountDetails: AmountDetailsUpdate$outboundSchema.optional(),
 });
 
 export function updateInvoiceToJSON(updateInvoice: UpdateInvoice): string {

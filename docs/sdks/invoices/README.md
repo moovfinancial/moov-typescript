@@ -80,10 +80,6 @@ async function run() {
       },
       invoiceDate: new Date("2026-01-15T00:00:00Z"),
       dueDate: new Date("2026-02-15T00:00:00Z"),
-      taxAmount: {
-        currency: "USD",
-        valueDecimal: "80.00",
-      },
     },
   });
 
@@ -130,10 +126,6 @@ async function run() {
       },
       invoiceDate: new Date("2026-01-15T00:00:00Z"),
       dueDate: new Date("2026-02-15T00:00:00Z"),
-      taxAmount: {
-        currency: "USD",
-        valueDecimal: "80.00",
-      },
     },
   });
   if (res.ok) {

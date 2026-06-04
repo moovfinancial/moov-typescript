@@ -65,9 +65,15 @@ let value: CreateInvoiceResponse = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
-    taxAmount: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
+    amountDetails: {
+      tax: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+      surcharge: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
     },
     totalAmount: {
       currency: "USD",
