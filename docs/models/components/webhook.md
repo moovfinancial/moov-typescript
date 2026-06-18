@@ -12,7 +12,7 @@ let value: Webhook = {
   url: "https://sad-outlaw.org",
   status: "disabled",
   eventTypes: [
-    "bankAccount.updated",
+    "bankAccount.deleted",
   ],
   description: "overcook as loosely total gosh absent hmph for",
   createdOn: new Date("2026-01-29T16:35:26.923Z"),

@@ -7,16 +7,19 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  CreateAuthorizedUserUpdate,
-  CreateAuthorizedUserUpdate$inboundSchema,
-  CreateAuthorizedUserUpdate$Outbound,
-  CreateAuthorizedUserUpdate$outboundSchema,
-} from "./createauthorizeduserupdate.js";
-import {
   UpdateIssuedCardState,
   UpdateIssuedCardState$inboundSchema,
   UpdateIssuedCardState$outboundSchema,
 } from "./updateissuedcardstate.js";
+
+export type BillingAddress = {
+  addressLine1?: string | undefined;
+  addressLine2?: string | undefined;
+  city?: string | undefined;
+  stateOrProvince?: string | undefined;
+  postalCode?: string | undefined;
+  country?: string | undefined;
+};
 
 export type UpdateIssuedCard = {
   /**
@@ -26,12 +29,60 @@ export type UpdateIssuedCard = {
    * - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
    */
   state?: UpdateIssuedCardState | undefined;
-  memo?: string | undefined;
-  /**
-   * Fields for identifying an authorized individual.
-   */
-  authorizedUser?: CreateAuthorizedUserUpdate | undefined;
+  nickname?: string | null | undefined;
+  metadata?: { [k: string]: string } | null | undefined;
+  billingAddress?: BillingAddress | null | undefined;
 };
+
+/** @internal */
+export const BillingAddress$inboundSchema: z.ZodType<
+  BillingAddress,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  addressLine1: z.string().optional(),
+  addressLine2: z.string().optional(),
+  city: z.string().optional(),
+  stateOrProvince: z.string().optional(),
+  postalCode: z.string().optional(),
+  country: z.string().optional(),
+});
+/** @internal */
+export type BillingAddress$Outbound = {
+  addressLine1?: string | undefined;
+  addressLine2?: string | undefined;
+  city?: string | undefined;
+  stateOrProvince?: string | undefined;
+  postalCode?: string | undefined;
+  country?: string | undefined;
+};
+
+/** @internal */
+export const BillingAddress$outboundSchema: z.ZodType<
+  BillingAddress$Outbound,
+  z.ZodTypeDef,
+  BillingAddress
+> = z.object({
+  addressLine1: z.string().optional(),
+  addressLine2: z.string().optional(),
+  city: z.string().optional(),
+  stateOrProvince: z.string().optional(),
+  postalCode: z.string().optional(),
+  country: z.string().optional(),
+});
+
+export function billingAddressToJSON(billingAddress: BillingAddress): string {
+  return JSON.stringify(BillingAddress$outboundSchema.parse(billingAddress));
+}
+export function billingAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<BillingAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BillingAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BillingAddress' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateIssuedCard$inboundSchema: z.ZodType<
@@ -40,14 +91,17 @@ export const UpdateIssuedCard$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   state: UpdateIssuedCardState$inboundSchema.optional(),
-  memo: z.string().optional(),
-  authorizedUser: CreateAuthorizedUserUpdate$inboundSchema.optional(),
+  nickname: z.nullable(z.string()).optional(),
+  metadata: z.nullable(z.record(z.string())).optional(),
+  billingAddress: z.nullable(z.lazy(() => BillingAddress$inboundSchema))
+    .optional(),
 });
 /** @internal */
 export type UpdateIssuedCard$Outbound = {
   state?: string | undefined;
-  memo?: string | undefined;
-  authorizedUser?: CreateAuthorizedUserUpdate$Outbound | undefined;
+  nickname?: string | null | undefined;
+  metadata?: { [k: string]: string } | null | undefined;
+  billingAddress?: BillingAddress$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -57,8 +111,10 @@ export const UpdateIssuedCard$outboundSchema: z.ZodType<
   UpdateIssuedCard
 > = z.object({
   state: UpdateIssuedCardState$outboundSchema.optional(),
-  memo: z.string().optional(),
-  authorizedUser: CreateAuthorizedUserUpdate$outboundSchema.optional(),
+  nickname: z.nullable(z.string()).optional(),
+  metadata: z.nullable(z.record(z.string())).optional(),
+  billingAddress: z.nullable(z.lazy(() => BillingAddress$outboundSchema))
+    .optional(),
 });
 
 export function updateIssuedCardToJSON(

@@ -26,18 +26,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Retrieve a single issued card associated with a Moov account.
+ *   Get a list of cancellations for a transfer.
  *
- * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
- * you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
+ *   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
+ *   to specify the `/accounts/{accountID}/transfers.read` scope.
  */
-export function cardIssuingGet(
+export function transfersListCancellations(
   client: MoovCore,
-  request: operations.GetIssuedCardRequest,
+  request: operations.ListCancellationsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetIssuedCardResponse,
+    operations.ListCancellationsResponse,
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -57,12 +57,12 @@ export function cardIssuingGet(
 
 async function $do(
   client: MoovCore,
-  request: operations.GetIssuedCardRequest,
+  request: operations.ListCancellationsRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetIssuedCardResponse,
+      operations.ListCancellationsResponse,
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetIssuedCardRequest$outboundSchema.parse(value),
+    (value) => operations.ListCancellationsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -91,14 +91,14 @@ async function $do(
       explode: false,
       charEncoding: "percent",
     }),
-    issuedCardID: encodeSimple("issuedCardID", payload.issuedCardID, {
+    transferID: encodeSimple("transferID", payload.transferID, {
       explode: false,
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/issuing/{accountID}/cards/{issuedCardID}")(
-    pathParams,
-  );
+  const path = pathToFunc(
+    "/accounts/{accountID}/transfers/{transferID}/cancellations",
+  )(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -110,7 +110,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "getIssuedCard",
+    operationID: "listCancellations",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -154,7 +154,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetIssuedCardResponse,
+    operations.ListCancellationsResponse,
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -164,11 +164,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.GetIssuedCardResponse$inboundSchema, {
+    M.json(200, operations.ListCancellationsResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),
-    M.fail([401, 403, 404, 429]),
+    M.fail([401, 403, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),
