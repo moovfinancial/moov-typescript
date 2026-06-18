@@ -9,12 +9,16 @@ let value: UpdateIssuedCardRequest = {
   accountID: "<id>",
   issuedCardID: "<id>",
   updateIssuedCard: {
-    authorizedUser: {
-      birthDate: {
-        day: 9,
-        month: 11,
-        year: 1989,
-      },
+    metadata: {
+      "optional": "metadata",
+    },
+    billingAddress: {
+      addressLine1: "123 Main Street",
+      addressLine2: "Apt 302",
+      city: "Boulder",
+      stateOrProvince: "CO",
+      postalCode: "80301",
+      country: "US",
     },
   },
 };

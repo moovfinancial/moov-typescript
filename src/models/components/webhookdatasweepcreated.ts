@@ -8,6 +8,10 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WebhookDataSweepCreated = {
+  /**
+   * The accountID associated with the wallet being swept.
+   */
+  accountID: string;
   walletID: string;
   sweepID: string;
 };
@@ -18,11 +22,13 @@ export const WebhookDataSweepCreated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  accountID: z.string(),
   walletID: z.string(),
   sweepID: z.string(),
 });
 /** @internal */
 export type WebhookDataSweepCreated$Outbound = {
+  accountID: string;
   walletID: string;
   sweepID: string;
 };
@@ -33,6 +39,7 @@ export const WebhookDataSweepCreated$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WebhookDataSweepCreated
 > = z.object({
+  accountID: z.string(),
   walletID: z.string(),
   sweepID: z.string(),
 });

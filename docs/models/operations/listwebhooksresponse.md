@@ -22,7 +22,7 @@ let value: ListWebhooksResponse = {
       url: "https://colorful-pulse.biz",
       status: "enabled",
       eventTypes: [
-        "invoice.updated",
+        "networkID.updated",
       ],
       description: "kettledrum posh ha dissemble place stealthily",
       createdOn: new Date("2025-08-26T21:02:35.181Z"),

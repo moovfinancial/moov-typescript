@@ -8,14 +8,16 @@ import { MoovError } from "./mooverror.js";
 
 export type UpdateIssuedCardErrorData = {
   state?: string | undefined;
-  memo?: string | undefined;
-  authorizedUser?: components.CreateAuthorizedUserError | undefined;
+  nickname?: string | undefined;
+  metadata?: string | undefined;
+  billingAddress?: components.AddressError | undefined;
 };
 
 export class UpdateIssuedCardError extends MoovError {
   state?: string | undefined;
-  memo?: string | undefined;
-  authorizedUser?: components.CreateAuthorizedUserError | undefined;
+  nickname?: string | undefined;
+  metadata?: string | undefined;
+  billingAddress?: components.AddressError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: UpdateIssuedCardErrorData;
@@ -30,8 +32,9 @@ export class UpdateIssuedCardError extends MoovError {
     super(message, httpMeta);
     this.data$ = err;
     if (err.state != null) this.state = err.state;
-    if (err.memo != null) this.memo = err.memo;
-    if (err.authorizedUser != null) this.authorizedUser = err.authorizedUser;
+    if (err.nickname != null) this.nickname = err.nickname;
+    if (err.metadata != null) this.metadata = err.metadata;
+    if (err.billingAddress != null) this.billingAddress = err.billingAddress;
 
     this.name = "UpdateIssuedCardError";
   }
@@ -44,8 +47,9 @@ export const UpdateIssuedCardError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   state: z.string().optional(),
-  memo: z.string().optional(),
-  authorizedUser: components.CreateAuthorizedUserError$inboundSchema.optional(),
+  nickname: z.string().optional(),
+  metadata: z.string().optional(),
+  billingAddress: components.AddressError$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -61,8 +65,9 @@ export const UpdateIssuedCardError$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateIssuedCardError$Outbound = {
   state?: string | undefined;
-  memo?: string | undefined;
-  authorizedUser?: components.CreateAuthorizedUserError$Outbound | undefined;
+  nickname?: string | undefined;
+  metadata?: string | undefined;
+  billingAddress?: components.AddressError$Outbound | undefined;
 };
 
 /** @internal */
@@ -74,7 +79,7 @@ export const UpdateIssuedCardError$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     state: z.string().optional(),
-    memo: z.string().optional(),
-    authorizedUser: components.CreateAuthorizedUserError$outboundSchema
-      .optional(),
+    nickname: z.string().optional(),
+    metadata: z.string().optional(),
+    billingAddress: components.AddressError$outboundSchema.optional(),
   }));

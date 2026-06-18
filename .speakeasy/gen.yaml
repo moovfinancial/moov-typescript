@@ -30,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 25.6.0
+  version: 25.6.1
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -39,6 +39,7 @@ typescript:
   additionalPackageJSON: {}
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: Moov
   baseErrorName: MoovError
   clientServerStatusCodesAsErrors: true
@@ -48,6 +49,7 @@ typescript:
   enableMCPServer: true
   enableReactQuery: false
   enumFormat: union
+  eventStreamClassName: EventStream
   exportZodModelNamespace: false
   fixEnumNameSanitization: false
   flatAdditionalProperties: false
@@ -79,6 +81,8 @@ typescript:
   packageName: '@moovio/sdk'
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
+  privateIdentifierPrefix: '#'
+  requestExtras: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

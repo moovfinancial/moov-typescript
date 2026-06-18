@@ -17,7 +17,8 @@ let value: GetOnboardingInviteResponse = {
       "transfers.write",
     ],
     capabilities: [
-      "transfers",
+      "card-issuing",
+      "collect-funds",
     ],
     feePlanCodes: [
       "merchant-direct",
@@ -35,7 +36,7 @@ let value: GetOnboardingInviteResponse = {
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2026-04-10T10:25:23.393Z"),
+    createdOn: new Date("2025-08-13T19:11:59.862Z"),
   },
 };
 ```
