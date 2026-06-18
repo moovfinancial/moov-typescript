@@ -7,19 +7,19 @@ import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
 export type RequestCardErrorData = {
-  fundingWalletID?: string | undefined;
-  formFactor?: string | undefined;
-  authorizedUser?: components.CreateAuthorizedUserError | undefined;
-  memo?: string | undefined;
+  authorizedUserAccountID?: string | undefined;
+  nickname?: string | undefined;
+  metadata?: string | undefined;
+  billingAddress?: components.AddressError | undefined;
   expiration?: components.CardExpirationError | undefined;
   controls?: components.IssuingControlsError | undefined;
 };
 
 export class RequestCardError extends MoovError {
-  fundingWalletID?: string | undefined;
-  formFactor?: string | undefined;
-  authorizedUser?: components.CreateAuthorizedUserError | undefined;
-  memo?: string | undefined;
+  authorizedUserAccountID?: string | undefined;
+  nickname?: string | undefined;
+  metadata?: string | undefined;
+  billingAddress?: components.AddressError | undefined;
   expiration?: components.CardExpirationError | undefined;
   controls?: components.IssuingControlsError | undefined;
 
@@ -35,10 +35,12 @@ export class RequestCardError extends MoovError {
       : `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
-    if (err.fundingWalletID != null) this.fundingWalletID = err.fundingWalletID;
-    if (err.formFactor != null) this.formFactor = err.formFactor;
-    if (err.authorizedUser != null) this.authorizedUser = err.authorizedUser;
-    if (err.memo != null) this.memo = err.memo;
+    if (err.authorizedUserAccountID != null) {
+      this.authorizedUserAccountID = err.authorizedUserAccountID;
+    }
+    if (err.nickname != null) this.nickname = err.nickname;
+    if (err.metadata != null) this.metadata = err.metadata;
+    if (err.billingAddress != null) this.billingAddress = err.billingAddress;
     if (err.expiration != null) this.expiration = err.expiration;
     if (err.controls != null) this.controls = err.controls;
 
@@ -52,10 +54,10 @@ export const RequestCardError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fundingWalletID: z.string().optional(),
-  formFactor: z.string().optional(),
-  authorizedUser: components.CreateAuthorizedUserError$inboundSchema.optional(),
-  memo: z.string().optional(),
+  authorizedUserAccountID: z.string().optional(),
+  nickname: z.string().optional(),
+  metadata: z.string().optional(),
+  billingAddress: components.AddressError$inboundSchema.optional(),
   expiration: components.CardExpirationError$inboundSchema.optional(),
   controls: components.IssuingControlsError$inboundSchema.optional(),
   request$: z.instanceof(Request),
@@ -72,10 +74,10 @@ export const RequestCardError$inboundSchema: z.ZodType<
 
 /** @internal */
 export type RequestCardError$Outbound = {
-  fundingWalletID?: string | undefined;
-  formFactor?: string | undefined;
-  authorizedUser?: components.CreateAuthorizedUserError$Outbound | undefined;
-  memo?: string | undefined;
+  authorizedUserAccountID?: string | undefined;
+  nickname?: string | undefined;
+  metadata?: string | undefined;
+  billingAddress?: components.AddressError$Outbound | undefined;
   expiration?: components.CardExpirationError$Outbound | undefined;
   controls?: components.IssuingControlsError$Outbound | undefined;
 };
@@ -88,11 +90,10 @@ export const RequestCardError$outboundSchema: z.ZodType<
 > = z.instanceof(RequestCardError)
   .transform(v => v.data$)
   .pipe(z.object({
-    fundingWalletID: z.string().optional(),
-    formFactor: z.string().optional(),
-    authorizedUser: components.CreateAuthorizedUserError$outboundSchema
-      .optional(),
-    memo: z.string().optional(),
+    authorizedUserAccountID: z.string().optional(),
+    nickname: z.string().optional(),
+    metadata: z.string().optional(),
+    billingAddress: components.AddressError$outboundSchema.optional(),
     expiration: components.CardExpirationError$outboundSchema.optional(),
     controls: components.IssuingControlsError$outboundSchema.optional(),
   }));
