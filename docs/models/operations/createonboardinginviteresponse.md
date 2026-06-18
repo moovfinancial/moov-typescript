@@ -6,12 +6,7 @@
 import { CreateOnboardingInviteResponse } from "@moovio/sdk/models/operations";
 
 let value: CreateOnboardingInviteResponse = {
-  headers: {
-    "key": [
-      "<value 1>",
-      "<value 2>",
-    ],
-  },
+  headers: {},
   result: {
     code: "N1IA5eWYNh",
     link: "https://decisive-disk.net/",
@@ -22,7 +17,8 @@ let value: CreateOnboardingInviteResponse = {
       "transfers.write",
     ],
     capabilities: [
-      "transfers",
+      "card-issuing",
+      "collect-funds",
     ],
     feePlanCodes: [
       "merchant-direct",
@@ -40,7 +36,7 @@ let value: CreateOnboardingInviteResponse = {
       accountMode: "production",
       displayName: "Bob's Widgets",
     },
-    createdOn: new Date("2026-04-10T10:25:23.393Z"),
+    createdOn: new Date("2025-08-13T19:11:59.862Z"),
   },
 };
 ```

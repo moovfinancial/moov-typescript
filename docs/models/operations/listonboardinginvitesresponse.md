@@ -6,47 +6,8 @@
 import { ListOnboardingInvitesResponse } from "@moovio/sdk/models/operations";
 
 let value: ListOnboardingInvitesResponse = {
-  headers: {
-    "key": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-    "key1": [],
-    "key2": [],
-  },
-  result: [
-    {
-      code: "N1IA5eWYNh",
-      link: "https://gaseous-depot.net",
-      scopes: [
-        "accounts.read",
-      ],
-      grantScopes: [
-        "transfers.write",
-      ],
-      capabilities: [
-        "transfers",
-      ],
-      feePlanCodes: [
-        "merchant-direct",
-      ],
-      prefill: {
-        accountType: "business",
-        profile: {
-          business: {
-            legalBusinessName: "Whole Body Fitness LLC",
-          },
-        },
-      },
-      partner: {
-        accountID: "<id>",
-        accountMode: "production",
-        displayName: "Bob's Widgets",
-      },
-      createdOn: new Date("2025-12-23T04:04:56.474Z"),
-    },
-  ],
+  headers: {},
+  result: [],
 };
 ```
 
