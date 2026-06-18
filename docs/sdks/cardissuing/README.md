@@ -36,7 +36,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="requestCard" method="post" path="/issuing/{accountID}/issued-cards" -->
+<!-- UsageSnippet language="typescript" operationID="requestCard" method="post" path="/issuing/{accountID}/cards" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -51,17 +51,17 @@ async function run() {
   const result = await moov.cardIssuing.request({
     accountID: "d9ac71ae-fccb-4dfc-9fed-710ca654e3ed",
     requestCard: {
-      fundingWalletID: "fd98e3b2-696f-4f67-9250-17b3474ababf",
-      authorizedUser: {
-        firstName: "Milton",
-        lastName: "Stiedemann",
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
+      metadata: {
+        "optional": "metadata",
       },
-      formFactor: "virtual",
+      billingAddress: {
+        addressLine1: "123 Main Street",
+        addressLine2: "Apt 302",
+        city: "Boulder",
+        stateOrProvince: "CO",
+        postalCode: "80301",
+        country: "US",
+      },
       expiration: {
         month: "01",
         year: "21",
@@ -104,17 +104,17 @@ async function run() {
   const res = await cardIssuingRequest(moov, {
     accountID: "d9ac71ae-fccb-4dfc-9fed-710ca654e3ed",
     requestCard: {
-      fundingWalletID: "fd98e3b2-696f-4f67-9250-17b3474ababf",
-      authorizedUser: {
-        firstName: "Milton",
-        lastName: "Stiedemann",
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
+      metadata: {
+        "optional": "metadata",
       },
-      formFactor: "virtual",
+      billingAddress: {
+        addressLine1: "123 Main Street",
+        addressLine2: "Apt 302",
+        city: "Boulder",
+        stateOrProvince: "CO",
+        postalCode: "80301",
+        country: "US",
+      },
       expiration: {
         month: "01",
         year: "21",
@@ -170,7 +170,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="listIssuedCards" method="get" path="/issuing/{accountID}/issued-cards" -->
+<!-- UsageSnippet language="typescript" operationID="listIssuedCards" method="get" path="/issuing/{accountID}/cards" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -256,7 +256,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getIssuedCard" method="get" path="/issuing/{accountID}/issued-cards/{issuedCardID}" -->
+<!-- UsageSnippet language="typescript" operationID="getIssuedCard" method="get" path="/issuing/{accountID}/cards/{issuedCardID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -340,7 +340,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="updateIssuedCard" method="patch" path="/issuing/{accountID}/issued-cards/{issuedCardID}" -->
+<!-- UsageSnippet language="typescript" operationID="updateIssuedCard" method="patch" path="/issuing/{accountID}/cards/{issuedCardID}" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -356,12 +356,16 @@ async function run() {
     accountID: "44db31bc-2813-424b-9b8c-2d3f5f1300e3",
     issuedCardID: "69ca2a7e-7bbc-4176-9d0c-2a1aa7143006",
     updateIssuedCard: {
-      authorizedUser: {
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
+      metadata: {
+        "optional": "metadata",
+      },
+      billingAddress: {
+        addressLine1: "123 Main Street",
+        addressLine2: "Apt 302",
+        city: "Boulder",
+        stateOrProvince: "CO",
+        postalCode: "80301",
+        country: "US",
       },
     },
   });
@@ -394,12 +398,16 @@ async function run() {
     accountID: "44db31bc-2813-424b-9b8c-2d3f5f1300e3",
     issuedCardID: "69ca2a7e-7bbc-4176-9d0c-2a1aa7143006",
     updateIssuedCard: {
-      authorizedUser: {
-        birthDate: {
-          day: 9,
-          month: 11,
-          year: 1989,
-        },
+      metadata: {
+        "optional": "metadata",
+      },
+      billingAddress: {
+        addressLine1: "123 Main Street",
+        addressLine2: "Apt 302",
+        city: "Boulder",
+        stateOrProvince: "CO",
+        postalCode: "80301",
+        country: "US",
       },
     },
   });
@@ -446,7 +454,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read-secure` scop
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getFullIssuedCard" method="get" path="/issuing/{accountID}/issued-cards/{issuedCardID}/details" -->
+<!-- UsageSnippet language="typescript" operationID="getFullIssuedCard" method="get" path="/issuing/{accountID}/cards/{issuedCardID}/details" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 

@@ -26,7 +26,8 @@ let value: ListOnboardingInvitesResponse = {
         "transfers.write",
       ],
       capabilities: [
-        "transfers",
+        "collect-funds.card-payments",
+        "send-funds.ach",
       ],
       feePlanCodes: [
         "merchant-direct",

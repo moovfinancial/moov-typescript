@@ -8,17 +8,17 @@ import { RequestCardRequest } from "@moovio/sdk/models/operations";
 let value: RequestCardRequest = {
   accountID: "<id>",
   requestCard: {
-    fundingWalletID: "<id>",
-    authorizedUser: {
-      firstName: "Davonte",
-      lastName: "Schamberger",
-      birthDate: {
-        day: 9,
-        month: 11,
-        year: 1989,
-      },
+    metadata: {
+      "optional": "metadata",
     },
-    formFactor: "virtual",
+    billingAddress: {
+      addressLine1: "123 Main Street",
+      addressLine2: "Apt 302",
+      city: "Boulder",
+      stateOrProvince: "CO",
+      postalCode: "80301",
+      country: "US",
+    },
     expiration: {
       month: "01",
       year: "21",

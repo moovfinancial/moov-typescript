@@ -7,13 +7,17 @@ import { RequestCardResponse } from "@moovio/sdk/models/operations";
 
 let value: RequestCardResponse = {
   headers: {
-    "key": [],
-    "key1": [],
-    "key2": [
+    "key": [
       "<value 1>",
       "<value 2>",
       "<value 3>",
     ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key2": [],
   },
   result: {
     issuedCardID: "<id>",
@@ -23,11 +27,18 @@ let value: RequestCardResponse = {
       month: "01",
       year: "21",
     },
-    authorizedUser: {
-      firstName: "Oswald",
-      lastName: "Jacobs",
-    },
     fundingWalletID: "<id>",
+    metadata: {
+      "optional": "metadata",
+    },
+    billingAddress: {
+      addressLine1: "123 Main Street",
+      addressLine2: "Apt 302",
+      city: "Boulder",
+      stateOrProvince: "CO",
+      postalCode: "80301",
+      country: "US",
+    },
     state: "closed",
     formFactor: "virtual",
     controls: {
@@ -38,7 +49,8 @@ let value: RequestCardResponse = {
         },
       ],
     },
-    createdOn: new Date("2026-10-26T17:51:41.813Z"),
+    createdOn: new Date("2026-04-12T06:36:51.704Z"),
+    updatedOn: new Date("2025-03-14T17:50:56.897Z"),
   },
 };
 ```

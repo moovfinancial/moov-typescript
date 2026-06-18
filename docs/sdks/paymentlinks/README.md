@@ -62,18 +62,12 @@ async function run() {
         value: 10000,
       },
       display: {
-        title: "Example Payment Link",
-        description: "This is an example payment link.",
-        callToAction: "pay",
+        title: "Support our cause",
+        description: "Choose an amount to contribute.",
+        callToAction: "donate",
       },
       customer: {
         requirePhone: true,
-      },
-      payment: {
-        allowedMethods: [
-          "card-payment",
-          "ach-debit-collect",
-        ],
       },
     },
   });
@@ -112,18 +106,12 @@ async function run() {
         value: 10000,
       },
       display: {
-        title: "Example Payment Link",
-        description: "This is an example payment link.",
-        callToAction: "pay",
+        title: "Support our cause",
+        description: "Choose an amount to contribute.",
+        callToAction: "donate",
       },
       customer: {
         requirePhone: true,
-      },
-      payment: {
-        allowedMethods: [
-          "card-payment",
-          "ach-debit-collect",
-        ],
       },
     },
   });
