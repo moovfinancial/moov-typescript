@@ -111,6 +111,7 @@ export * from "./listaccounts.js";
 export * from "./listaccountterminalapplications.js";
 export * from "./listadjustments.js";
 export * from "./listbankaccounts.js";
+export * from "./listcancellations.js";
 export * from "./listcapabilities.js";
 export * from "./listcards.js";
 export * from "./listconnectedaccountsforaccount.js";

@@ -65,6 +65,15 @@ export type CreateAccount = {
    * User provided settings to manage an account.
    */
   settings?: Settings | undefined;
+  /**
+   * Capabilities to request when the account is created. Request granular capability IDs that match your use case.
+   *
+   * @remarks
+   *
+   * Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to choose the right capabilities for your integration.
+   *
+   * The `send-funds`, `collect-funds`, and `wallet` capability IDs are deprecated. Use granular values such as `send-funds.ach`, `collect-funds.card-payments`, or `wallet.balance` instead.
+   */
   capabilities?: Array<CapabilityID> | undefined;
   /**
    * The operating mode for an account.
