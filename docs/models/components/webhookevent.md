@@ -9,7 +9,7 @@ import { WebhookEvent } from "@moovio/sdk/models/components";
 
 let value: WebhookEvent = {
   eventID: "<id>",
-  type: "walletTransaction.updated",
+  type: "billingStatement.created",
   data: {
     accountID: "<id>",
   },

@@ -12,6 +12,7 @@ import { transfersGetCancellation } from "../funcs/transfersGetCancellation.js";
 import { transfersGetRefund } from "../funcs/transfersGetRefund.js";
 import { transfersInitiateRefund } from "../funcs/transfersInitiateRefund.js";
 import { transfersList } from "../funcs/transfersList.js";
+import { transfersListCancellations } from "../funcs/transfersListCancellations.js";
 import { transfersListRefunds } from "../funcs/transfersListRefunds.js";
 import { transfersUpdate } from "../funcs/transfersUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -155,6 +156,23 @@ export class Transfers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreateCancellationResponse> {
     return unwrapAsync(transfersCreateCancellation(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   *   Get a list of cancellations for a transfer.
+   *
+   *   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
+   *   to specify the `/accounts/{accountID}/transfers.read` scope.
+   */
+  async listCancellations(
+    request: operations.ListCancellationsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ListCancellationsResponse> {
+    return unwrapAsync(transfersListCancellations(
       this,
       request,
       options,

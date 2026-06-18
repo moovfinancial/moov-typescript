@@ -98,9 +98,9 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc(
-    "/issuing/{accountID}/issued-cards/{issuedCardID}/details",
-  )(pathParams);
+  const path = pathToFunc("/issuing/{accountID}/cards/{issuedCardID}/details")(
+    pathParams,
+  );
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
