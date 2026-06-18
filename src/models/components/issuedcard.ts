@@ -8,11 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  AuthorizedUser,
-  AuthorizedUser$inboundSchema,
-  AuthorizedUser$Outbound,
-  AuthorizedUser$outboundSchema,
-} from "./authorizeduser.js";
+  Address,
+  Address$inboundSchema,
+  Address$Outbound,
+  Address$outboundSchema,
+} from "./address.js";
 import {
   CardBrand,
   CardBrand$inboundSchema,
@@ -53,17 +53,25 @@ export type IssuedCard = {
    */
   expiration: CardExpiration;
   /**
-   * Fields for identifying an authorized individual.
-   */
-  authorizedUser: AuthorizedUser;
-  /**
-   * Optional descriptor for the card.
-   */
-  memo?: string | undefined;
-  /**
    * Unique identifier for the wallet funding the card.
    */
   fundingWalletID: string;
+  /**
+   * Identifier for the account of the card's authorized user.
+   */
+  authorizedUserAccountID?: string | undefined;
+  /**
+   * An optional descriptive name for the card.
+   */
+  nickname?: string | undefined;
+  /**
+   * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
+   */
+  metadata?: { [k: string]: string } | undefined;
+  /**
+   * Billing address associated with the card.
+   */
+  billingAddress?: Address | undefined;
   /**
    * The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
    *
@@ -81,6 +89,7 @@ export type IssuedCard = {
   formFactor: IssuedCardFormFactor;
   controls?: IssuingControls | undefined;
   createdOn: Date;
+  updatedOn: Date;
 };
 
 /** @internal */
@@ -93,13 +102,16 @@ export const IssuedCard$inboundSchema: z.ZodType<
   brand: CardBrand$inboundSchema,
   lastFourCardNumber: types.string(),
   expiration: CardExpiration$inboundSchema,
-  authorizedUser: AuthorizedUser$inboundSchema,
-  memo: types.optional(types.string()),
   fundingWalletID: types.string(),
+  authorizedUserAccountID: types.optional(types.string()),
+  nickname: types.optional(types.string()),
+  metadata: types.optional(z.record(types.string())),
+  billingAddress: types.optional(Address$inboundSchema),
   state: IssuedCardState$inboundSchema,
   formFactor: IssuedCardFormFactor$inboundSchema,
   controls: types.optional(IssuingControls$inboundSchema),
   createdOn: types.date(),
+  updatedOn: types.date(),
 });
 /** @internal */
 export type IssuedCard$Outbound = {
@@ -107,13 +119,16 @@ export type IssuedCard$Outbound = {
   brand: string;
   lastFourCardNumber: string;
   expiration: CardExpiration$Outbound;
-  authorizedUser: AuthorizedUser$Outbound;
-  memo?: string | undefined;
   fundingWalletID: string;
+  authorizedUserAccountID?: string | undefined;
+  nickname?: string | undefined;
+  metadata?: { [k: string]: string } | undefined;
+  billingAddress?: Address$Outbound | undefined;
   state: string;
   formFactor: string;
   controls?: IssuingControls$Outbound | undefined;
   createdOn: string;
+  updatedOn: string;
 };
 
 /** @internal */
@@ -126,13 +141,16 @@ export const IssuedCard$outboundSchema: z.ZodType<
   brand: CardBrand$outboundSchema,
   lastFourCardNumber: z.string(),
   expiration: CardExpiration$outboundSchema,
-  authorizedUser: AuthorizedUser$outboundSchema,
-  memo: z.string().optional(),
   fundingWalletID: z.string(),
+  authorizedUserAccountID: z.string().optional(),
+  nickname: z.string().optional(),
+  metadata: z.record(z.string()).optional(),
+  billingAddress: Address$outboundSchema.optional(),
   state: IssuedCardState$outboundSchema,
   formFactor: IssuedCardFormFactor$outboundSchema,
   controls: IssuingControls$outboundSchema.optional(),
   createdOn: z.date().transform(v => v.toISOString()),
+  updatedOn: z.date().transform(v => v.toISOString()),
 });
 
 export function issuedCardToJSON(issuedCard: IssuedCard): string {

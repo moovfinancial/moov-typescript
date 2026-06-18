@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AmountDecimal,
@@ -13,15 +14,26 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 
+/**
+ * A range of values that an AmountDecimal can take.
+ *
+ * @remarks
+ *
+ * If either `minimum` or `maximum` is omitted, the range is "open" on that end:
+ *
+ * `minimum` specified: `amt >= minimum`
+ * `maximum` specified: `amt <= maximum`
+ * both specified: `minimum <= amt <= maximum`
+ */
 export type AmountDecimalRange = {
   /**
    * Minimum amount allowed in the range
    */
-  minimum: AmountDecimal;
+  minimum?: AmountDecimal | undefined;
   /**
    * Maximum amount allowed in the range
    */
-  maximum: AmountDecimal;
+  maximum?: AmountDecimal | undefined;
 };
 
 /** @internal */
@@ -30,13 +42,13 @@ export const AmountDecimalRange$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  minimum: AmountDecimal$inboundSchema,
-  maximum: AmountDecimal$inboundSchema,
+  minimum: types.optional(AmountDecimal$inboundSchema),
+  maximum: types.optional(AmountDecimal$inboundSchema),
 });
 /** @internal */
 export type AmountDecimalRange$Outbound = {
-  minimum: AmountDecimal$Outbound;
-  maximum: AmountDecimal$Outbound;
+  minimum?: AmountDecimal$Outbound | undefined;
+  maximum?: AmountDecimal$Outbound | undefined;
 };
 
 /** @internal */
@@ -45,8 +57,8 @@ export const AmountDecimalRange$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AmountDecimalRange
 > = z.object({
-  minimum: AmountDecimal$outboundSchema,
-  maximum: AmountDecimal$outboundSchema,
+  minimum: AmountDecimal$outboundSchema.optional(),
+  maximum: AmountDecimal$outboundSchema.optional(),
 });
 
 export function amountDecimalRangeToJSON(

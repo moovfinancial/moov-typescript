@@ -10,6 +10,7 @@ export const PaymentLinkType = {
   Payment: "payment",
   Payout: "payout",
   InvoicePayment: "invoice-payment",
+  CustomAmountPayment: "custom-amount-payment",
 } as const;
 export type PaymentLinkType = OpenEnum<typeof PaymentLinkType>;
 
