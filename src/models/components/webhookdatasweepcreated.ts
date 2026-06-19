@@ -9,6 +9,10 @@ import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WebhookDataSweepCreated = {
+  /**
+   * The accountID associated with the wallet being swept.
+   */
+  accountID: string;
   walletID: string;
   sweepID: string;
 };
@@ -19,11 +23,13 @@ export const WebhookDataSweepCreated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  accountID: types.string(),
   walletID: types.string(),
   sweepID: types.string(),
 });
 /** @internal */
 export type WebhookDataSweepCreated$Outbound = {
+  accountID: string;
   walletID: string;
   sweepID: string;
 };
@@ -34,6 +40,7 @@ export const WebhookDataSweepCreated$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WebhookDataSweepCreated
 > = z.object({
+  accountID: z.string(),
   walletID: z.string(),
   sweepID: z.string(),
 });

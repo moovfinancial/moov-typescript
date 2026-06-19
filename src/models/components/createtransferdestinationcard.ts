@@ -19,6 +19,10 @@ export type CreateTransferDestinationCard = {
    */
   dynamicDescriptor?: string | undefined;
   /**
+   * The scheduled date and time for the transfer to be delivered. This field is only valid for push-to-card transfers. Must be between 24 and 48 hours in the future.
+   */
+  scheduledDeliveryOn?: Date | undefined;
+  /**
    * An optional field to specify the type of card payout, used to route the transfer with the appropriate business application identifier (BAI).
    */
   payoutType?: CardPayoutType | undefined;
@@ -31,11 +35,13 @@ export const CreateTransferDestinationCard$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   dynamicDescriptor: types.optional(types.string()),
+  scheduledDeliveryOn: types.optional(types.date()),
   payoutType: types.optional(CardPayoutType$inboundSchema),
 });
 /** @internal */
 export type CreateTransferDestinationCard$Outbound = {
   dynamicDescriptor?: string | undefined;
+  scheduledDeliveryOn?: string | undefined;
   payoutType?: string | undefined;
 };
 
@@ -46,6 +52,7 @@ export const CreateTransferDestinationCard$outboundSchema: z.ZodType<
   CreateTransferDestinationCard
 > = z.object({
   dynamicDescriptor: z.string().optional(),
+  scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
   payoutType: CardPayoutType$outboundSchema.optional(),
 });
 

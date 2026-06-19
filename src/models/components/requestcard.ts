@@ -8,22 +8,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  Address,
+  Address$inboundSchema,
+  Address$Outbound,
+  Address$outboundSchema,
+} from "./address.js";
+import {
   CardExpiration,
   CardExpiration$inboundSchema,
   CardExpiration$Outbound,
   CardExpiration$outboundSchema,
 } from "./cardexpiration.js";
-import {
-  CreateAuthorizedUser,
-  CreateAuthorizedUser$inboundSchema,
-  CreateAuthorizedUser$Outbound,
-  CreateAuthorizedUser$outboundSchema,
-} from "./createauthorizeduser.js";
-import {
-  IssuedCardFormFactor,
-  IssuedCardFormFactor$inboundSchema,
-  IssuedCardFormFactor$outboundSchema,
-} from "./issuedcardformfactor.js";
 import {
   IssuingControls,
   IssuingControls$inboundSchema,
@@ -32,19 +27,13 @@ import {
 } from "./issuingcontrols.js";
 
 export type RequestCard = {
-  fundingWalletID: string;
+  authorizedUserAccountID?: string | undefined;
+  nickname?: string | undefined;
   /**
-   * Fields for identifying an authorized individual.
+   * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
    */
-  authorizedUser: CreateAuthorizedUser;
-  /**
-   * Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
-   */
-  formFactor: IssuedCardFormFactor;
-  /**
-   * An optional descriptive name for the card.
-   */
-  memo?: string | undefined;
+  metadata?: { [k: string]: string } | undefined;
+  billingAddress?: Address | undefined;
   /**
    * The expiration date of the card or token.
    */
@@ -58,19 +47,19 @@ export const RequestCard$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fundingWalletID: types.string(),
-  authorizedUser: CreateAuthorizedUser$inboundSchema,
-  formFactor: IssuedCardFormFactor$inboundSchema,
-  memo: types.optional(types.string()),
+  authorizedUserAccountID: types.optional(types.string()),
+  nickname: types.optional(types.string()),
+  metadata: types.optional(z.record(types.string())),
+  billingAddress: types.optional(Address$inboundSchema),
   expiration: types.optional(CardExpiration$inboundSchema),
   controls: types.optional(IssuingControls$inboundSchema),
 });
 /** @internal */
 export type RequestCard$Outbound = {
-  fundingWalletID: string;
-  authorizedUser: CreateAuthorizedUser$Outbound;
-  formFactor: string;
-  memo?: string | undefined;
+  authorizedUserAccountID?: string | undefined;
+  nickname?: string | undefined;
+  metadata?: { [k: string]: string } | undefined;
+  billingAddress?: Address$Outbound | undefined;
   expiration?: CardExpiration$Outbound | undefined;
   controls?: IssuingControls$Outbound | undefined;
 };
@@ -81,10 +70,10 @@ export const RequestCard$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RequestCard
 > = z.object({
-  fundingWalletID: z.string(),
-  authorizedUser: CreateAuthorizedUser$outboundSchema,
-  formFactor: IssuedCardFormFactor$outboundSchema,
-  memo: z.string().optional(),
+  authorizedUserAccountID: z.string().optional(),
+  nickname: z.string().optional(),
+  metadata: z.record(z.string()).optional(),
+  billingAddress: Address$outboundSchema.optional(),
   expiration: CardExpiration$outboundSchema.optional(),
   controls: IssuingControls$outboundSchema.optional(),
 });

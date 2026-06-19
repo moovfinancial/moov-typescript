@@ -21,6 +21,12 @@ import {
   PaymentLinkAmountDetails$outboundSchema,
 } from "./paymentlinkamountdetails.js";
 import {
+  PaymentLinkCustomAmountPaymentDetails,
+  PaymentLinkCustomAmountPaymentDetails$inboundSchema,
+  PaymentLinkCustomAmountPaymentDetails$Outbound,
+  PaymentLinkCustomAmountPaymentDetails$outboundSchema,
+} from "./paymentlinkcustomamountpaymentdetails.js";
+import {
   PaymentLinkCustomerOptions,
   PaymentLinkCustomerOptions$inboundSchema,
   PaymentLinkCustomerOptions$Outbound,
@@ -99,8 +105,8 @@ export type PaymentLink = {
    *
    * In API versions before `2026.07.00`, this was a required field.
    *
-   * In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted
-   * for `open` payment amount types.
+   * In API version `2026.07.00` and beyond, this field is present for `payment` and `payout` links and omitted
+   * for `customAmountPayment` links, where the payor chooses the amount.
    */
   amount?: Amount | undefined;
   /**
@@ -133,6 +139,15 @@ export type PaymentLink = {
    */
   payment?: PaymentLinkPaymentDetails | undefined;
   payout?: PaymentLinkPayoutDetails | undefined;
+  /**
+   * Options for custom amount payment links.
+   *
+   * @remarks
+   *
+   * A custom amount payment link shares all the options of a `payment` link, but the payor chooses how much to
+   * pay rather than the merchant fixing the amount. The amount may optionally be constrained to a range.
+   */
+  customAmountPayment?: PaymentLinkCustomAmountPaymentDetails | undefined;
   /**
    * An optional collection of line items for a payment link.
    *
@@ -170,6 +185,9 @@ export const PaymentLink$inboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$inboundSchema,
   payment: types.optional(PaymentLinkPaymentDetails$inboundSchema),
   payout: types.optional(PaymentLinkPayoutDetails$inboundSchema),
+  customAmountPayment: types.optional(
+    PaymentLinkCustomAmountPaymentDetails$inboundSchema,
+  ),
   lineItems: types.optional(PaymentLinkLineItems$inboundSchema),
   createdOn: types.date(),
   updatedOn: types.date(),
@@ -196,6 +214,9 @@ export type PaymentLink$Outbound = {
   customer: PaymentLinkCustomerOptions$Outbound;
   payment?: PaymentLinkPaymentDetails$Outbound | undefined;
   payout?: PaymentLinkPayoutDetails$Outbound | undefined;
+  customAmountPayment?:
+    | PaymentLinkCustomAmountPaymentDetails$Outbound
+    | undefined;
   lineItems?: PaymentLinkLineItems$Outbound | undefined;
   createdOn: string;
   updatedOn: string;
@@ -227,6 +248,8 @@ export const PaymentLink$outboundSchema: z.ZodType<
   customer: PaymentLinkCustomerOptions$outboundSchema,
   payment: PaymentLinkPaymentDetails$outboundSchema.optional(),
   payout: PaymentLinkPayoutDetails$outboundSchema.optional(),
+  customAmountPayment: PaymentLinkCustomAmountPaymentDetails$outboundSchema
+    .optional(),
   lineItems: PaymentLinkLineItems$outboundSchema.optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),

@@ -51,7 +51,7 @@ export type OnboardingInviteRequest = {
    */
   grantScopes?: Array<ApplicationScope> | undefined;
   /**
-   *   List of [capabilities](https://docs.moov.io/guides/accounts/capabilities/) you intend to request for this
+   *   List of [capabilities](https://docs.moov.io/guides/accounts/capabilities/reference/) you intend to request for this
    *
    * @remarks
    *   account. These values are used to determine what information to collect from the user during onboarding.

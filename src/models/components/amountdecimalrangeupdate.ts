@@ -14,6 +14,17 @@ import {
   AmountDecimalUpdate$outboundSchema,
 } from "./amountdecimalupdate.js";
 
+/**
+ * A range of values that an AmountDecimal can take.
+ *
+ * @remarks
+ *
+ * If either `minimum` or `maximum` is omitted, the range is "open" on that end:
+ *
+ * `minimum` specified: `amt >= minimum`
+ * `maximum` specified: `amt <= maximum`
+ * both specified: `minimum <= amt <= maximum`
+ */
 export type AmountDecimalRangeUpdate = {
   /**
    * Minimum amount allowed in the range

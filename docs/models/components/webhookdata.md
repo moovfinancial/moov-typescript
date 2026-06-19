@@ -243,6 +243,7 @@ const value: components.WebhookDataRepresentativeDisabled = {
 
 ```typescript
 const value: components.WebhookDataSweepCreated = {
+  accountID: "<id>",
   walletID: "<id>",
   sweepID: "<id>",
 };
@@ -252,6 +253,7 @@ const value: components.WebhookDataSweepCreated = {
 
 ```typescript
 const value: components.WebhookDataSweepUpdated = {
+  accountID: "<id>",
   walletID: "<id>",
   sweepID: "<id>",
   status: "canceled",
@@ -373,6 +375,17 @@ const value: components.WebhookDataWalletTransactionUpdated = {
 const value: components.WebhookBillingStatementCreated = {
   accountID: "<id>",
   statementID: "<id>",
+};
+```
+
+### `components.WebhookDataAuthorizationExpiring`
+
+```typescript
+const value: components.WebhookDataAuthorizationExpiring = {
+  merchantAccountID: "<id>",
+  partnerAccountID: "<id>",
+  authorizationID: "<id>",
+  expiresOn: new Date("2026-07-21T20:32:06.125Z"),
 };
 ```
 

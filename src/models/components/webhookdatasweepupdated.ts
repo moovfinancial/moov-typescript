@@ -14,6 +14,10 @@ import {
 } from "./sweepstatus.js";
 
 export type WebhookDataSweepUpdated = {
+  /**
+   * The accountID associated with the wallet being swept.
+   */
+  accountID: string;
   walletID: string;
   sweepID: string;
   transferID?: string | undefined;
@@ -26,6 +30,7 @@ export const WebhookDataSweepUpdated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  accountID: types.string(),
   walletID: types.string(),
   sweepID: types.string(),
   transferID: types.optional(types.string()),
@@ -33,6 +38,7 @@ export const WebhookDataSweepUpdated$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type WebhookDataSweepUpdated$Outbound = {
+  accountID: string;
   walletID: string;
   sweepID: string;
   transferID?: string | undefined;
@@ -45,6 +51,7 @@ export const WebhookDataSweepUpdated$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WebhookDataSweepUpdated
 > = z.object({
+  accountID: z.string(),
   walletID: z.string(),
   sweepID: z.string(),
   transferID: z.string().optional(),

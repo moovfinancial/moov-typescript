@@ -57,30 +57,47 @@ async function run() {
     createPaymentLink: {
       partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
       merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
-      amount: {
-        currency: "USD",
-        value: 10000,
-      },
       display: {
-        title: "Example Payment Link",
-        description: "This is an example payment link.",
-        callToAction: "pay",
+        title: "Support our cause",
+        description: "Choose an amount to contribute.",
+        callToAction: "donate",
       },
       customer: {
         requirePhone: true,
-        tippingEnabled: true,
       },
-      payment: {
+      customAmountPayment: {
         allowedMethods: [
           "card-payment",
           "ach-debit-collect",
         ],
-      },
-      amountDetails: {
-        tax: {
-          currency: "USD",
-          valueDecimal: "8.25",
+        amountRange: {
+          minimum: {
+            currency: "USD",
+            valueDecimal: "0.00",
+          },
+          maximum: {
+            currency: "USD",
+            valueDecimal: "1000.00",
+          },
         },
+        suggestedAmounts: [
+          {
+            currency: "USD",
+            valueDecimal: "50.00",
+          },
+          {
+            currency: "USD",
+            valueDecimal: "100.00",
+          },
+          {
+            currency: "USD",
+            valueDecimal: "500.00",
+          },
+          {
+            currency: "USD",
+            valueDecimal: "1000.00",
+          },
+        ],
       },
     },
   });
@@ -114,30 +131,47 @@ async function run() {
     createPaymentLink: {
       partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
       merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
-      amount: {
-        currency: "USD",
-        value: 10000,
-      },
       display: {
-        title: "Example Payment Link",
-        description: "This is an example payment link.",
-        callToAction: "pay",
+        title: "Support our cause",
+        description: "Choose an amount to contribute.",
+        callToAction: "donate",
       },
       customer: {
         requirePhone: true,
-        tippingEnabled: true,
       },
-      payment: {
+      customAmountPayment: {
         allowedMethods: [
           "card-payment",
           "ach-debit-collect",
         ],
-      },
-      amountDetails: {
-        tax: {
-          currency: "USD",
-          valueDecimal: "8.25",
+        amountRange: {
+          minimum: {
+            currency: "USD",
+            valueDecimal: "0.00",
+          },
+          maximum: {
+            currency: "USD",
+            valueDecimal: "1000.00",
+          },
         },
+        suggestedAmounts: [
+          {
+            currency: "USD",
+            valueDecimal: "50.00",
+          },
+          {
+            currency: "USD",
+            valueDecimal: "100.00",
+          },
+          {
+            currency: "USD",
+            valueDecimal: "500.00",
+          },
+          {
+            currency: "USD",
+            valueDecimal: "1000.00",
+          },
+        ],
       },
     },
   });

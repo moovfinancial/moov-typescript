@@ -13,5 +13,5 @@ let value: PaymentLinkType = "payout";
 ## Values
 
 ```typescript
-"payment" | "payout" | "invoice-payment" | Unrecognized<string>
+"payment" | "payout" | "invoice-payment" | "custom-amount-payment" | Unrecognized<string>
 ```

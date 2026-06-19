@@ -16,6 +16,7 @@ export type CreatePaymentLinkErrorData = {
   display?: components.DisplayOptionsError | undefined;
   payment?: components.PaymentDetailsError | undefined;
   payout?: components.PayoutDetailsError | undefined;
+  customAmountPayment?: components.CustomAmountPaymentDetailsError | undefined;
   lineItems?: components.CreatePaymentLinkLineItemsValidationError | undefined;
   amountDetails?:
     | components.CreatePaymentLinkAmountDetailsValidationError
@@ -31,6 +32,7 @@ export class CreatePaymentLinkError extends MoovError {
   display?: components.DisplayOptionsError | undefined;
   payment?: components.PaymentDetailsError | undefined;
   payout?: components.PayoutDetailsError | undefined;
+  customAmountPayment?: components.CustomAmountPaymentDetailsError | undefined;
   lineItems?: components.CreatePaymentLinkLineItemsValidationError | undefined;
   amountDetails?:
     | components.CreatePaymentLinkAmountDetailsValidationError
@@ -60,6 +62,9 @@ export class CreatePaymentLinkError extends MoovError {
     if (err.display != null) this.display = err.display;
     if (err.payment != null) this.payment = err.payment;
     if (err.payout != null) this.payout = err.payout;
+    if (err.customAmountPayment != null) {
+      this.customAmountPayment = err.customAmountPayment;
+    }
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.amountDetails != null) this.amountDetails = err.amountDetails;
 
@@ -81,6 +86,9 @@ export const CreatePaymentLinkError$inboundSchema: z.ZodType<
   display: types.optional(components.DisplayOptionsError$inboundSchema),
   payment: types.optional(components.PaymentDetailsError$inboundSchema),
   payout: types.optional(components.PayoutDetailsError$inboundSchema),
+  customAmountPayment: types.optional(
+    components.CustomAmountPaymentDetailsError$inboundSchema,
+  ),
   lineItems: types.optional(
     components.CreatePaymentLinkLineItemsValidationError$inboundSchema,
   ),
@@ -109,6 +117,9 @@ export type CreatePaymentLinkError$Outbound = {
   display?: components.DisplayOptionsError$Outbound | undefined;
   payment?: components.PaymentDetailsError$Outbound | undefined;
   payout?: components.PayoutDetailsError$Outbound | undefined;
+  customAmountPayment?:
+    | components.CustomAmountPaymentDetailsError$Outbound
+    | undefined;
   lineItems?:
     | components.CreatePaymentLinkLineItemsValidationError$Outbound
     | undefined;
@@ -133,6 +144,8 @@ export const CreatePaymentLinkError$outboundSchema: z.ZodType<
     display: components.DisplayOptionsError$outboundSchema.optional(),
     payment: components.PaymentDetailsError$outboundSchema.optional(),
     payout: components.PayoutDetailsError$outboundSchema.optional(),
+    customAmountPayment: components
+      .CustomAmountPaymentDetailsError$outboundSchema.optional(),
     lineItems: components
       .CreatePaymentLinkLineItemsValidationError$outboundSchema.optional(),
     amountDetails: components

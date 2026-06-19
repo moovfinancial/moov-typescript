@@ -37,6 +37,10 @@ export type CardTransactionDetails = {
    */
   dynamicDescriptor?: string | undefined;
   /**
+   * The scheduled date and time for the transfer to be delivered. This field is only valid for push-to-card transfers. Must be between 24 and 48 hours in the future.
+   */
+  scheduledDeliveryOn?: Date | undefined;
+  /**
    * Specifies the nature and initiator of a transaction.
    *
    * @remarks
@@ -76,6 +80,7 @@ export const CardTransactionDetails$inboundSchema: z.ZodType<
   status: types.optional(CardTransactionStatus$inboundSchema),
   failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
   dynamicDescriptor: types.optional(types.string()),
+  scheduledDeliveryOn: types.optional(types.date()),
   transactionSource: types.optional(TransactionSource$inboundSchema),
   initiatedOn: types.optional(types.date()),
   confirmedOn: types.optional(types.date()),
@@ -92,6 +97,7 @@ export type CardTransactionDetails$Outbound = {
   status?: string | undefined;
   failureCode?: string | undefined;
   dynamicDescriptor?: string | undefined;
+  scheduledDeliveryOn?: string | undefined;
   transactionSource?: string | undefined;
   initiatedOn?: string | undefined;
   confirmedOn?: string | undefined;
@@ -113,6 +119,7 @@ export const CardTransactionDetails$outboundSchema: z.ZodType<
   status: CardTransactionStatus$outboundSchema.optional(),
   failureCode: CardTransactionFailureCode$outboundSchema.optional(),
   dynamicDescriptor: z.string().optional(),
+  scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
   transactionSource: TransactionSource$outboundSchema.optional(),
   initiatedOn: z.date().transform(v => v.toISOString()).optional(),
   confirmedOn: z.date().transform(v => v.toISOString()).optional(),
