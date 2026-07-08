@@ -9,7 +9,7 @@ let value: RequestCapabilitiesRequest = {
   accountID: "<id>",
   addCapabilities: {
     capabilities: [
-      "collect-funds",
+      "wallet",
     ],
   },
 };
