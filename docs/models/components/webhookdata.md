@@ -104,7 +104,7 @@ const value: components.WebhookDataCardAutoUpdated = {
 ```typescript
 const value: components.WebhookDataCapabilityRequested = {
   accountID: "<id>",
-  capabilityID: "wallet.balance",
+  capabilityID: "card-issuing",
 };
 ```
 

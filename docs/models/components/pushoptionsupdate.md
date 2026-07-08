@@ -1,0 +1,18 @@
+# PushOptionsUpdate
+
+Delivery options for push-to-card payouts.
+
+## Example Usage
+
+```typescript
+import { PushOptionsUpdate } from "@moovio/sdk/models/components";
+
+let value: PushOptionsUpdate = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                   | Type                                                                                                                                                                                                    | Required                                                                                                                                                                                                | Description                                                                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `allowedSpeeds`                                                                                                                                                                                         | [components.PushDeliverySpeed](../../models/components/pushdeliveryspeed.md)[]                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                      | Delivery speeds the recipient may choose from for `push-to-card`. Include `instant` to allow immediate<br/>delivery, `deferred` to allow delayed delivery, or both to let the recipient choose at checkout. |
+| `deferredBy`                                                                                                                                                                                            | *string*                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                      | Delay before delivering a deferred `push-to-card` payout. Required when `allowedSpeeds` includes `deferred`.<br/>Accepted values are `24h` or `48h`.                                                    |

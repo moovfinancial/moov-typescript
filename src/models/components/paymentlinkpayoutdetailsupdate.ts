@@ -17,6 +17,12 @@ import {
   PayoutRecipient$Outbound,
   PayoutRecipient$outboundSchema,
 } from "./payoutrecipient.js";
+import {
+  PushOptionsUpdate,
+  PushOptionsUpdate$inboundSchema,
+  PushOptionsUpdate$Outbound,
+  PushOptionsUpdate$outboundSchema,
+} from "./pushoptionsupdate.js";
 
 export type PaymentLinkPayoutDetailsUpdate = {
   /**
@@ -36,6 +42,15 @@ export type PaymentLinkPayoutDetailsUpdate = {
    * Optional free-form metadata for the transfer.
    */
   metadata?: { [k: string]: string } | undefined;
+  /**
+   * Delivery options for push-to-card payouts. Only applies when `allowedMethods` includes `push-to-card`.
+   *
+   * @remarks
+   *
+   * The `deferred` speed and `deferredBy` apply to `push-to-card` only. Other push methods
+   * (`push-to-apple-pay`, `push-to-google-pay`) are always delivered instantly regardless of these options.
+   */
+  pushOptions?: PushOptionsUpdate | undefined;
 };
 
 /** @internal */
@@ -48,12 +63,14 @@ export const PaymentLinkPayoutDetailsUpdate$inboundSchema: z.ZodType<
     .optional(),
   recipient: PayoutRecipient$inboundSchema.optional(),
   metadata: z.record(z.string()).optional(),
+  pushOptions: PushOptionsUpdate$inboundSchema.optional(),
 });
 /** @internal */
 export type PaymentLinkPayoutDetailsUpdate$Outbound = {
   allowedMethods?: Array<string> | undefined;
   recipient?: PayoutRecipient$Outbound | undefined;
   metadata?: { [k: string]: string } | undefined;
+  pushOptions?: PushOptionsUpdate$Outbound | undefined;
 };
 
 /** @internal */
@@ -66,6 +83,7 @@ export const PaymentLinkPayoutDetailsUpdate$outboundSchema: z.ZodType<
     .optional(),
   recipient: PayoutRecipient$outboundSchema.optional(),
   metadata: z.record(z.string()).optional(),
+  pushOptions: PushOptionsUpdate$outboundSchema.optional(),
 });
 
 export function paymentLinkPayoutDetailsUpdateToJSON(
