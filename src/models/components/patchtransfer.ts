@@ -9,11 +9,14 @@ import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PatchTransfer = {
+  /**
+   * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
+   */
   metadata?: { [k: string]: string } | null | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
-  foreignID?: string | undefined;
+  foreignID?: string | null | undefined;
 };
 
 /** @internal */
@@ -23,12 +26,12 @@ export const PatchTransfer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   metadata: z.nullable(z.record(types.string())).optional(),
-  foreignID: types.optional(types.string()),
+  foreignID: z.nullable(types.string()).optional(),
 });
 /** @internal */
 export type PatchTransfer$Outbound = {
   metadata?: { [k: string]: string } | null | undefined;
-  foreignID?: string | undefined;
+  foreignID?: string | null | undefined;
 };
 
 /** @internal */
@@ -38,7 +41,7 @@ export const PatchTransfer$outboundSchema: z.ZodType<
   PatchTransfer
 > = z.object({
   metadata: z.nullable(z.record(z.string())).optional(),
-  foreignID: z.string().optional(),
+  foreignID: z.nullable(z.string()).optional(),
 });
 
 export function patchTransferToJSON(patchTransfer: PatchTransfer): string {

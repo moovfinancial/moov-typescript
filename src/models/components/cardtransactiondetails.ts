@@ -37,6 +37,10 @@ export type CardTransactionDetails = {
    */
   dynamicDescriptor?: string | undefined;
   /**
+   * The scheduled date and time for the transfer to be delivered. This field is only valid for push-to-card transfers. Must be between 24 and 48 hours in the future in production. In sandbox mode, any future time up to 48 hours is accepted so integrations can test deferred delivery using the sandbox test cards with relaxed wait times.
+   */
+  scheduledDeliveryOn?: Date | undefined;
+  /**
    * Specifies the nature and initiator of a transaction.
    *
    * @remarks
@@ -51,6 +55,7 @@ export type CardTransactionDetails = {
   failedOn?: Date | undefined;
   canceledOn?: Date | undefined;
   completedOn?: Date | undefined;
+  deferredOn?: Date | undefined;
   /**
    * The program assigned by the card network that determines the interchange rate for the transfer.
    *
@@ -76,6 +81,7 @@ export const CardTransactionDetails$inboundSchema: z.ZodType<
   status: types.optional(CardTransactionStatus$inboundSchema),
   failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
   dynamicDescriptor: types.optional(types.string()),
+  scheduledDeliveryOn: types.optional(types.date()),
   transactionSource: types.optional(TransactionSource$inboundSchema),
   initiatedOn: types.optional(types.date()),
   confirmedOn: types.optional(types.date()),
@@ -83,6 +89,7 @@ export const CardTransactionDetails$inboundSchema: z.ZodType<
   failedOn: types.optional(types.date()),
   canceledOn: types.optional(types.date()),
   completedOn: types.optional(types.date()),
+  deferredOn: types.optional(types.date()),
   interchangeQualification: types.optional(types.string()),
   feeProgram: types.optional(types.string()),
   authorizationCode: types.optional(types.string()),
@@ -92,6 +99,7 @@ export type CardTransactionDetails$Outbound = {
   status?: string | undefined;
   failureCode?: string | undefined;
   dynamicDescriptor?: string | undefined;
+  scheduledDeliveryOn?: string | undefined;
   transactionSource?: string | undefined;
   initiatedOn?: string | undefined;
   confirmedOn?: string | undefined;
@@ -99,6 +107,7 @@ export type CardTransactionDetails$Outbound = {
   failedOn?: string | undefined;
   canceledOn?: string | undefined;
   completedOn?: string | undefined;
+  deferredOn?: string | undefined;
   interchangeQualification?: string | undefined;
   feeProgram?: string | undefined;
   authorizationCode?: string | undefined;
@@ -113,6 +122,7 @@ export const CardTransactionDetails$outboundSchema: z.ZodType<
   status: CardTransactionStatus$outboundSchema.optional(),
   failureCode: CardTransactionFailureCode$outboundSchema.optional(),
   dynamicDescriptor: z.string().optional(),
+  scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
   transactionSource: TransactionSource$outboundSchema.optional(),
   initiatedOn: z.date().transform(v => v.toISOString()).optional(),
   confirmedOn: z.date().transform(v => v.toISOString()).optional(),
@@ -120,6 +130,7 @@ export const CardTransactionDetails$outboundSchema: z.ZodType<
   failedOn: z.date().transform(v => v.toISOString()).optional(),
   canceledOn: z.date().transform(v => v.toISOString()).optional(),
   completedOn: z.date().transform(v => v.toISOString()).optional(),
+  deferredOn: z.date().transform(v => v.toISOString()).optional(),
   interchangeQualification: z.string().optional(),
   feeProgram: z.string().optional(),
   authorizationCode: z.string().optional(),

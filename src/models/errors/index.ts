@@ -21,6 +21,7 @@ export * from "./createsweepconfigerror.js";
 export * from "./createticketerror.js";
 export * from "./createwalletvalidationerror.js";
 export * from "./createwebhookvalidationerror.js";
+export * from "./depositaccountvalidationerror.js";
 export * from "./duplicatecarderror.js";
 export * from "./feeplanagreementerror.js";
 export * from "./fileuploadvalidationerror.js";

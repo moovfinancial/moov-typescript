@@ -17,7 +17,7 @@ export type LinkBankAccountRequest = {
    * @remarks
    *
    * When this header is set to `payment-method`, the response will include any payment methods that were created for the newly
-   * linked card in the `paymentMethods` field. Otherwise, the `paymentMethods` field will be omitted from the response.
+   * linked bank account in the `paymentMethods` field. Otherwise, the `paymentMethods` field will be omitted from the response.
    */
   xWaitFor?: components.BankAccountWaitFor | undefined;
   accountID: string;

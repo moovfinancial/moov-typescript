@@ -89,6 +89,10 @@ export type Invoice = {
   disputedAmount: AmountDecimal;
   paymentLinkCode?: string | undefined;
   /**
+   * URL to the hosted payment link for the invoice.
+   */
+  paymentLinkURL?: string | undefined;
+  /**
    * Payment made towards an invoice, will be either a transfer or an external payment.
    */
   invoicePayments?: Array<InvoicePayment> | undefined;
@@ -121,6 +125,7 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
     refundedAmount: AmountDecimal$inboundSchema,
     disputedAmount: AmountDecimal$inboundSchema,
     paymentLinkCode: types.optional(types.string()),
+    paymentLinkURL: types.optional(types.string()),
     invoicePayments: types.optional(z.array(InvoicePayment$inboundSchema)),
     createdOn: types.date(),
     invoiceDate: types.optional(types.date()),
@@ -149,6 +154,7 @@ export type Invoice$Outbound = {
   refundedAmount: AmountDecimal$Outbound;
   disputedAmount: AmountDecimal$Outbound;
   paymentLinkCode?: string | undefined;
+  paymentLinkURL?: string | undefined;
   invoicePayments?: Array<InvoicePayment$Outbound> | undefined;
   createdOn: string;
   invoiceDate?: string | undefined;
@@ -182,6 +188,7 @@ export const Invoice$outboundSchema: z.ZodType<
   refundedAmount: AmountDecimal$outboundSchema,
   disputedAmount: AmountDecimal$outboundSchema,
   paymentLinkCode: z.string().optional(),
+  paymentLinkURL: z.string().optional(),
   invoicePayments: z.array(InvoicePayment$outboundSchema).optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   invoiceDate: z.date().transform(v => v.toISOString()).optional(),

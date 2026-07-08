@@ -23,11 +23,8 @@ export type PatchWallet = {
    *   - `closed`: The wallet is no longer active and the corresponding payment method has been disabled.
    */
   status?: WalletStatus | undefined;
-  description?: string | undefined;
-  /**
-   * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-   */
-  metadata?: { [k: string]: string } | undefined;
+  description?: string | null | undefined;
+  metadata?: { [k: string]: string } | null | undefined;
 };
 
 /** @internal */
@@ -38,15 +35,15 @@ export const PatchWallet$inboundSchema: z.ZodType<
 > = z.object({
   name: types.optional(types.string()),
   status: types.optional(WalletStatus$inboundSchema),
-  description: types.optional(types.string()),
-  metadata: types.optional(z.record(types.string())),
+  description: z.nullable(types.string()).optional(),
+  metadata: z.nullable(z.record(types.string())).optional(),
 });
 /** @internal */
 export type PatchWallet$Outbound = {
   name?: string | undefined;
   status?: string | undefined;
-  description?: string | undefined;
-  metadata?: { [k: string]: string } | undefined;
+  description?: string | null | undefined;
+  metadata?: { [k: string]: string } | null | undefined;
 };
 
 /** @internal */
@@ -57,8 +54,8 @@ export const PatchWallet$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   status: WalletStatus$outboundSchema.optional(),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
+  description: z.nullable(z.string()).optional(),
+  metadata: z.nullable(z.record(z.string())).optional(),
 });
 
 export function patchWalletToJSON(patchWallet: PatchWallet): string {
