@@ -21,5 +21,5 @@ let value: CapabilityID = "platform.wallet-transfers";
 ## Values
 
 ```typescript
-"transfers" | "send-funds" | "send-funds.push-to-card" | "money-transfer.push-to-card" | "send-funds.ach" | "send-funds.rtp" | "send-funds.instant-bank" | "collect-funds" | "collect-funds.card-payments" | "money-transfer.pull-from-card" | "collect-funds.ach" | "wallet" | "wallet.balance" | "card-issuing" | "production-app" | "platform.production-app" | "platform.wallet-transfers"
+"transfers" | "send-funds" | "send-funds.push-to-card" | "money-transfer.push-to-card" | "send-funds.ach" | "send-funds.rtp" | "send-funds.instant-bank" | "collect-funds" | "collect-funds.card-payments" | "money-transfer.pull-from-card" | "collect-funds.ach" | "wallet" | "wallet.balance" | "card-issuing" | "issuing.cardholder" | "production-app" | "platform.production-app" | "platform.wallet-transfers"
 ```
