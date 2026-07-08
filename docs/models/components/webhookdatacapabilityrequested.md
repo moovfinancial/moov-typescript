@@ -7,7 +7,7 @@ import { WebhookDataCapabilityRequested } from "@moovio/sdk/models/components";
 
 let value: WebhookDataCapabilityRequested = {
   accountID: "<id>",
-  capabilityID: "wallet.balance",
+  capabilityID: "card-issuing",
 };
 ```
 
