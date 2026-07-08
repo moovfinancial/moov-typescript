@@ -17,7 +17,7 @@ let value: GetOnboardingInviteResponse = {
       "transfers.write",
     ],
     capabilities: [
-      "card-issuing",
+      "issuing.cardholder",
       "collect-funds",
     ],
     feePlanCodes: [

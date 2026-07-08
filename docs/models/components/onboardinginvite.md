@@ -16,7 +16,7 @@ let value: OnboardingInvite = {
   ],
   capabilities: [
     "collect-funds",
-    "collect-funds",
+    "wallet",
   ],
   feePlanCodes: [
     "merchant-direct",

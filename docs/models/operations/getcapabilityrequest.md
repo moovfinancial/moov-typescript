@@ -7,7 +7,7 @@ import { GetCapabilityRequest } from "@moovio/sdk/models/operations";
 
 let value: GetCapabilityRequest = {
   accountID: "<id>",
-  capabilityID: "card-issuing",
+  capabilityID: "issuing.cardholder",
 };
 ```
 
