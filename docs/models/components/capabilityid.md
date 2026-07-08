@@ -21,5 +21,5 @@ let value: CapabilityID = "production-app";
 ## Values
 
 ```typescript
-"transfers" | "send-funds" | "collect-funds" | "wallet" | "card-issuing" | "production-app"
+"transfers" | "send-funds" | "collect-funds" | "wallet" | "card-issuing" | "issuing.cardholder" | "production-app"
 ```

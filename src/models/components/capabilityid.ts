@@ -24,6 +24,7 @@ export const CapabilityID = {
   CollectFunds: "collect-funds",
   Wallet: "wallet",
   CardIssuing: "card-issuing",
+  IssuingCardholder: "issuing.cardholder",
   ProductionApp: "production-app",
 } as const;
 /**
