@@ -8,6 +8,9 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PatchTransfer = {
+  /**
+   * Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
+   */
   metadata?: { [k: string]: string } | null | undefined;
   /**
    * Optional alias from a foreign/external system which can be used to reference this resource.
