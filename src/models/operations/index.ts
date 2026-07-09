@@ -14,6 +14,7 @@ export * from "./createaccount.js";
 export * from "./createapplepaysession.js";
 export * from "./createbrand.js";
 export * from "./createcancellation.js";
+export * from "./createdepositaccount.js";
 export * from "./createfeeplanagreements.js";
 export * from "./createinvoice.js";
 export * from "./createinvoicepayment.js";

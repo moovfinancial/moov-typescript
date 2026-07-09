@@ -13,11 +13,18 @@ import {
   PayoutRecipientError$Outbound,
   PayoutRecipientError$outboundSchema,
 } from "./payoutrecipienterror.js";
+import {
+  PushOptionsError,
+  PushOptionsError$inboundSchema,
+  PushOptionsError$Outbound,
+  PushOptionsError$outboundSchema,
+} from "./pushoptionserror.js";
 
 export type PayoutDetailsError = {
   allowedMethods?: string | undefined;
   recipient?: PayoutRecipientError | undefined;
   metadata?: string | undefined;
+  pushOptions?: PushOptionsError | undefined;
 };
 
 /** @internal */
@@ -29,12 +36,14 @@ export const PayoutDetailsError$inboundSchema: z.ZodType<
   allowedMethods: types.optional(types.string()),
   recipient: types.optional(PayoutRecipientError$inboundSchema),
   metadata: types.optional(types.string()),
+  pushOptions: types.optional(PushOptionsError$inboundSchema),
 });
 /** @internal */
 export type PayoutDetailsError$Outbound = {
   allowedMethods?: string | undefined;
   recipient?: PayoutRecipientError$Outbound | undefined;
   metadata?: string | undefined;
+  pushOptions?: PushOptionsError$Outbound | undefined;
 };
 
 /** @internal */
@@ -46,6 +55,7 @@ export const PayoutDetailsError$outboundSchema: z.ZodType<
   allowedMethods: z.string().optional(),
   recipient: PayoutRecipientError$outboundSchema.optional(),
   metadata: z.string().optional(),
+  pushOptions: PushOptionsError$outboundSchema.optional(),
 });
 
 export function payoutDetailsErrorToJSON(

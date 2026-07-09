@@ -7,23 +7,123 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  AmountDecimalUpdate,
-  AmountDecimalUpdate$inboundSchema,
-  AmountDecimalUpdate$Outbound,
-  AmountDecimalUpdate$outboundSchema,
-} from "./amountdecimalupdate.js";
+
+/**
+ * The amount of tax applied to the payment link.
+ */
+export type Tax = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency?: string | undefined;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal?: string | undefined;
+};
+
+/**
+ * The amount of surcharge applied to the payment link.
+ */
+export type Surcharge = {
+  /**
+   * A 3-letter ISO 4217 currency code.
+   */
+  currency?: string | undefined;
+  /**
+   * A decimal-formatted numerical string that represents up to 9 decimal place precision.
+   *
+   * @remarks
+   *
+   * For example, $12.987654321 is '12.987654321'.
+   */
+  valueDecimal?: string | undefined;
+};
 
 export type UpdatePaymentLinkAmountDetails = {
   /**
    * The amount of tax applied to the payment link.
    */
-  tax?: AmountDecimalUpdate | undefined;
+  tax?: Tax | null | undefined;
   /**
    * The amount of surcharge applied to the payment link.
    */
-  surcharge?: AmountDecimalUpdate | undefined;
+  surcharge?: Surcharge | null | undefined;
 };
+
+/** @internal */
+export const Tax$inboundSchema: z.ZodType<Tax, z.ZodTypeDef, unknown> = z
+  .object({
+    currency: types.optional(types.string()),
+    valueDecimal: types.optional(types.string()),
+  });
+/** @internal */
+export type Tax$Outbound = {
+  currency?: string | undefined;
+  valueDecimal?: string | undefined;
+};
+
+/** @internal */
+export const Tax$outboundSchema: z.ZodType<Tax$Outbound, z.ZodTypeDef, Tax> = z
+  .object({
+    currency: z.string().optional(),
+    valueDecimal: z.string().optional(),
+  });
+
+export function taxToJSON(tax: Tax): string {
+  return JSON.stringify(Tax$outboundSchema.parse(tax));
+}
+export function taxFromJSON(
+  jsonString: string,
+): SafeParseResult<Tax, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Tax$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Tax' from JSON`,
+  );
+}
+
+/** @internal */
+export const Surcharge$inboundSchema: z.ZodType<
+  Surcharge,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: types.optional(types.string()),
+  valueDecimal: types.optional(types.string()),
+});
+/** @internal */
+export type Surcharge$Outbound = {
+  currency?: string | undefined;
+  valueDecimal?: string | undefined;
+};
+
+/** @internal */
+export const Surcharge$outboundSchema: z.ZodType<
+  Surcharge$Outbound,
+  z.ZodTypeDef,
+  Surcharge
+> = z.object({
+  currency: z.string().optional(),
+  valueDecimal: z.string().optional(),
+});
+
+export function surchargeToJSON(surcharge: Surcharge): string {
+  return JSON.stringify(Surcharge$outboundSchema.parse(surcharge));
+}
+export function surchargeFromJSON(
+  jsonString: string,
+): SafeParseResult<Surcharge, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Surcharge$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Surcharge' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdatePaymentLinkAmountDetails$inboundSchema: z.ZodType<
@@ -31,13 +131,13 @@ export const UpdatePaymentLinkAmountDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tax: types.optional(AmountDecimalUpdate$inboundSchema),
-  surcharge: types.optional(AmountDecimalUpdate$inboundSchema),
+  tax: z.nullable(z.lazy(() => Tax$inboundSchema)).optional(),
+  surcharge: z.nullable(z.lazy(() => Surcharge$inboundSchema)).optional(),
 });
 /** @internal */
 export type UpdatePaymentLinkAmountDetails$Outbound = {
-  tax?: AmountDecimalUpdate$Outbound | undefined;
-  surcharge?: AmountDecimalUpdate$Outbound | undefined;
+  tax?: Tax$Outbound | null | undefined;
+  surcharge?: Surcharge$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -46,8 +146,8 @@ export const UpdatePaymentLinkAmountDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdatePaymentLinkAmountDetails
 > = z.object({
-  tax: AmountDecimalUpdate$outboundSchema.optional(),
-  surcharge: AmountDecimalUpdate$outboundSchema.optional(),
+  tax: z.nullable(z.lazy(() => Tax$outboundSchema)).optional(),
+  surcharge: z.nullable(z.lazy(() => Surcharge$outboundSchema)).optional(),
 });
 
 export function updatePaymentLinkAmountDetailsToJSON(

@@ -17,7 +17,7 @@ export type ManualTermsOfServiceUpdate = {
    */
   acceptedDate?: Date | undefined;
   /**
-   * The IP address from which the terms of service were accepted.
+   * The IP address (IPv4 or IPv6) from which the terms of service were accepted.
    */
   acceptedIP?: string | undefined;
   /**

@@ -18,7 +18,7 @@ export type ListIssuedCardsRequest = {
   skip?: number | undefined;
   count?: number | undefined;
   /**
-   * Optional, comma-separated states to filter the Moov list issued cards response. For example `active,pending-verification`
+   * Optional, comma-separated states to filter the Moov list issued cards response. For example `active,closed`
    */
   states?: Array<components.IssuedCardState> | undefined;
 };

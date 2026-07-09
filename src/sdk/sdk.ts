@@ -14,6 +14,7 @@ import { Branding } from "./branding.js";
 import { Capabilities } from "./capabilities.js";
 import { CardIssuing } from "./cardissuing.js";
 import { Cards } from "./cards.js";
+import { DepositView } from "./depositview.js";
 import { Disputes } from "./disputes.js";
 import { EndToEndEncryption } from "./endtoendencryption.js";
 import { EnrichedAddress } from "./enrichedaddress.js";
@@ -260,5 +261,10 @@ export class Moov extends ClientSDK {
     return (this._terminalApplications ??= new TerminalApplications(
       this._options,
     ));
+  }
+
+  private _depositView?: DepositView;
+  get depositView(): DepositView {
+    return (this._depositView ??= new DepositView(this._options));
   }
 }

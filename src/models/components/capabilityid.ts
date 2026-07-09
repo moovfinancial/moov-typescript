@@ -34,6 +34,7 @@ export const CapabilityID = {
   Wallet: "wallet",
   WalletBalance: "wallet.balance",
   CardIssuing: "card-issuing",
+  IssuingCardholder: "issuing.cardholder",
   ProductionApp: "production-app",
   PlatformProductionApp: "platform.production-app",
   PlatformWalletTransfers: "platform.wallet-transfers",

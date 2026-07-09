@@ -2,17 +2,15 @@
 
 The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
 
-- `active`: The card is operational and approves authorizations. Generally becomes active shortly after card creation.
-- `inactive`: The card cannot approve authorizations. This is currently a temporary state assigned post-creation during the activation process.
+- `active`: The card is operational and can approve authorizations.
 - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
-- `pending-verification`: Awaiting additional authorized user verification before the card can be activated.
 
 ## Example Usage
 
 ```typescript
 import { IssuedCardState } from "@moovio/sdk/models/components";
 
-let value: IssuedCardState = "inactive";
+let value: IssuedCardState = "active";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```
@@ -20,5 +18,5 @@ let value: IssuedCardState = "inactive";
 ## Values
 
 ```typescript
-"active" | "inactive" | "pending-verification" | "closed" | Unrecognized<string>
+"active" | "closed" | Unrecognized<string>
 ```

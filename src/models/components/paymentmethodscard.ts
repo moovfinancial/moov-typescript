@@ -131,6 +131,13 @@ export type PaymentMethodsCard = {
    * Indicates if the card supports domestic pull-from-card transfer.
    */
   domesticPullFromCard?: DomesticPullFromCard | undefined;
+  /**
+   * The category or level of the card defined by the issuer.
+   *
+   * @remarks
+   * Examples include, but not limited to, "REWARDS", "TRADITIONAL REWARDS", "CLASSIC", and "CORPORATE PURCHASING".
+   */
+  cardCategory?: string | undefined;
 };
 
 /** @internal */
@@ -156,6 +163,7 @@ export const PaymentMethodsCard$inboundSchema: z.ZodType<
   cardAccountUpdater: types.optional(CardAccountUpdater$inboundSchema),
   domesticPushToCard: types.optional(DomesticPushToCard$inboundSchema),
   domesticPullFromCard: types.optional(DomesticPullFromCard$inboundSchema),
+  cardCategory: types.optional(types.string()),
 });
 /** @internal */
 export type PaymentMethodsCard$Outbound = {
@@ -176,6 +184,7 @@ export type PaymentMethodsCard$Outbound = {
   cardAccountUpdater?: CardAccountUpdater$Outbound | undefined;
   domesticPushToCard?: string | undefined;
   domesticPullFromCard?: string | undefined;
+  cardCategory?: string | undefined;
 };
 
 /** @internal */
@@ -201,6 +210,7 @@ export const PaymentMethodsCard$outboundSchema: z.ZodType<
   cardAccountUpdater: CardAccountUpdater$outboundSchema.optional(),
   domesticPushToCard: DomesticPushToCard$outboundSchema.optional(),
   domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
+  cardCategory: z.string().optional(),
 });
 
 export function paymentMethodsCardToJSON(
