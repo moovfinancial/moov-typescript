@@ -82,10 +82,6 @@ export type TransferData = {
    */
   invoiceID?: string | undefined;
   amountDetails?: components.TransferAmountDetails | undefined;
-  /**
-   * The card authorization and capture IDs associated with a transfer.
-   */
-  capture?: components.TransferCapture | undefined;
 };
 
 /**
@@ -163,10 +159,6 @@ export class Transfer extends MoovError {
    */
   invoiceID?: string | undefined;
   amountDetails?: components.TransferAmountDetails | undefined;
-  /**
-   * The card authorization and capture IDs associated with a transfer.
-   */
-  capture?: components.TransferCapture | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferData;
@@ -209,7 +201,6 @@ export class Transfer extends MoovError {
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.invoiceID != null) this.invoiceID = err.invoiceID;
     if (err.amountDetails != null) this.amountDetails = err.amountDetails;
-    if (err.capture != null) this.capture = err.capture;
 
     this.name = "Transfer";
   }
@@ -254,7 +245,6 @@ export const Transfer$inboundSchema: z.ZodType<
   lineItems: types.optional(components.TransferLineItems$inboundSchema),
   invoiceID: types.optional(types.string()),
   amountDetails: types.optional(components.TransferAmountDetails$inboundSchema),
-  capture: types.optional(components.TransferCapture$inboundSchema),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -298,7 +288,6 @@ export type Transfer$Outbound = {
   lineItems?: components.TransferLineItems$Outbound | undefined;
   invoiceID?: string | undefined;
   amountDetails?: components.TransferAmountDetails$Outbound | undefined;
-  capture?: components.TransferCapture$Outbound | undefined;
 };
 
 /** @internal */
@@ -339,5 +328,4 @@ export const Transfer$outboundSchema: z.ZodType<
     lineItems: components.TransferLineItems$outboundSchema.optional(),
     invoiceID: z.string().optional(),
     amountDetails: components.TransferAmountDetails$outboundSchema.optional(),
-    capture: components.TransferCapture$outboundSchema.optional(),
   }));

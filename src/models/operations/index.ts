@@ -96,6 +96,7 @@ export * from "./gettermsofservicetoken.js";
 export * from "./getticket.js";
 export * from "./gettransfer.js";
 export * from "./gettransferconfig.js";
+export * from "./gettransferriskoutcomes.js";
 export * from "./getunderwriting.js";
 export * from "./getwallet.js";
 export * from "./getwallettransaction.js";

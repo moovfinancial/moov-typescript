@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: bed2e402b47a266acca1851796986db6
-  docVersion: dev
-  speakeasyVersion: 1.789.0
-  generationVersion: 2.916.2
-  releaseVersion: 0.0.0-dev.26
-  configChecksum: cd329094efe0c59c6a98ed5d6534fae9
+  docChecksum: 21e10e488f421d3a318ee4aff8572afa
+  docVersion: v2026.10.00
+  speakeasyVersion: 1.790.0
+  generationVersion: 2.917.0
+  releaseVersion: 26.10.0-dev.0
+  configChecksum: 96be1c6569fc928c980fc00d6e15579d
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: deeb7343-217c-4e80-a940-c84cbceaf6f4
-  pristine_commit_hash: 383c203884acde2f4f475c2e62011869d5d2a949
-  pristine_tree_hash: 4b2d59c6817e40d37d21d850269d633410cb2066
+  generation_id: e4899ee7-ef7a-4280-81b4-e3168f744952
+  pristine_commit_hash: 1ae33b68dbadb9dc57302b8f91c89e8099426a37
+  pristine_tree_hash: d988fc387b16bbe0a996699714d9e87b5c7415c0
 features:
   typescript:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.14
-    core: 3.31.3
+    core: 3.31.4
     decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -139,8 +139,8 @@ trackedFiles:
     pristine_git_object: df6610c5ada11d3e78c8efb2960e3910f32ab904
   docs/models/components/achfees.md:
     id: 6042c5c6e4dc
-    last_write_checksum: sha1:20de03dd80d6185f4f692fec159f6d939b18327c
-    pristine_git_object: 78ea86733476ce636fd57a15a47c8160ab7e63f6
+    last_write_checksum: sha1:5d6a27ee89557fd9120f525d52431565f19096f7
+    pristine_git_object: 124efa955fc15b1360154301019356d3e5201fa7
   docs/models/components/achinstitution.md:
     id: 519849e67b56
     last_write_checksum: sha1:048cf2fee08c6eda70f9265c07fd31daec265079
@@ -503,8 +503,8 @@ trackedFiles:
     pristine_git_object: 1818e8fa7940de7d6136e9071a8d7e6f4828b0dc
   docs/models/components/cardacquiringfees.md:
     id: 12aca074682f
-    last_write_checksum: sha1:5aec6c5da049ed063cbc4e29ec1328a0710a66b6
-    pristine_git_object: bb2ad7a9f4a98a6b292fdba4bbd633cb8c2c5576
+    last_write_checksum: sha1:ca4ff3637c3e733aae0e16564e7833421e57b962
+    pristine_git_object: 2a0443a22dfab9c5c8bc6cd404af5b222425b390
   docs/models/components/cardacquiringmodel.md:
     id: fc8e063b3165
     last_write_checksum: sha1:70e2d33bc3e96300e8dfa78ea9524cb08b4f9c5e
@@ -523,8 +523,8 @@ trackedFiles:
     pristine_git_object: 46cae6ff9707f56a9a00120ced5ad5d5d803d5c8
   docs/models/components/cardbrandfees.md:
     id: 64a6013dfe95
-    last_write_checksum: sha1:6b798b71c0ce17b5a568d0b5297966a349792403
-    pristine_git_object: 3f10019808dd3b3a036a4bacec7fbdbee8db684c
+    last_write_checksum: sha1:66d22fc87eff4ee79fdec9297bf5540fd15163ce
+    pristine_git_object: 9431541c0b78e685a4ca781ae035ef7edb98b179
   docs/models/components/carddetails.md:
     id: 3a4cb4a3b313
     last_write_checksum: sha1:262bc5041dd4967f38ea3046e9abb128ffb1dd0c
@@ -677,6 +677,10 @@ trackedFiles:
     id: 135136c1868a
     last_write_checksum: sha1:8a52069d29761a9f0f16ab9e67fb163ecea52ad0
     pristine_git_object: 7b8ed6c525368be807a19469e5307db12f3e8d4f
+  docs/models/components/contributingrule.md:
+    id: c0a34294737a
+    last_write_checksum: sha1:a8f549e7c703c871f553eea0525723ffd0933acb
+    pristine_git_object: 03054ffe33a6b1532406bfde258eb2e80d8ce374
   docs/models/components/createaccount.md:
     id: b0cd2f825a8b
     last_write_checksum: sha1:aa7fe7b8eb230a55af38bde10384c86a1ddf546b
@@ -715,8 +719,8 @@ trackedFiles:
     pristine_git_object: 46592fddebae442bf01354a3d605061647c6d32f
   docs/models/components/createdtransfer.md:
     id: 0e06d3f12277
-    last_write_checksum: sha1:afd803eb2df3d711c0a8498b273f702795669a71
-    pristine_git_object: 85b2f1691225fe0095d298bc209030724b595e00
+    last_write_checksum: sha1:30786dcc13a884d5cbf3dc4320ce7c8ca96f146e
+    pristine_git_object: 4d8dd18bbd8baa86b7893d3483dd9eb33f28b3e4
   docs/models/components/createevidencefilemultipart.md:
     id: bc79f9b6c1d9
     last_write_checksum: sha1:381f2a40cf37a5a12dc1a65255ee27a0fd3d1904
@@ -1147,12 +1151,12 @@ trackedFiles:
     pristine_git_object: 578228e8b1ad40d0ad78d8c1f461903c2f2e93db
   docs/models/components/filedetails.md:
     id: 30d6ca3df594
-    last_write_checksum: sha1:62f3d8e18ab7fa721cbc12fe82eb7818fe0ce464
-    pristine_git_object: 89ef3d92dafaca14f66f6ee3b94d249433b5902e
+    last_write_checksum: sha1:c2ce805fd6399fad04e61256f25abdb202690c55
+    pristine_git_object: 5d8e3ea1edbb426701cb0319c949043fb2242d4f
   docs/models/components/filepurpose.md:
     id: 348d3736e64d
-    last_write_checksum: sha1:1c427b8a5d4f5c2c0e972204116936b7a8b9a262
-    pristine_git_object: 6a03a6394db86b95b33cbde2a2f9febed131d682
+    last_write_checksum: sha1:3e2c3be921b04df43a0e694fcc78dc99bc0abdc5
+    pristine_git_object: d380863f4cfbf2d6abb8a6633b79445e703cf26e
   docs/models/components/filestatus.md:
     id: 60bd56b1bb8c
     last_write_checksum: sha1:dfb0d706e3903605de050501ba20befe967aa6d6
@@ -1347,8 +1351,8 @@ trackedFiles:
     pristine_git_object: 0d6199179a5dc8824c3488204ed91724ee3def58
   docs/models/components/instantpaymentfees.md:
     id: dc6d9fd6dd13
-    last_write_checksum: sha1:eef2f82c66a252dccc3f21c58b1cc3738ce7ba9f
-    pristine_git_object: f82e2274f25b28077f0fce9bfb3a10dc2bfe6df5
+    last_write_checksum: sha1:d500925918a59a492e61715a1101feb0bd3c2749
+    pristine_git_object: 8876c8c7064ee92bb7562cc38a1f1791f3971b46
   docs/models/components/institutionssearchresponse.md:
     id: d7215aa3d8d5
     last_write_checksum: sha1:1c3309e9a67b16ecd65da6b2f2089fb8046455e3
@@ -1627,8 +1631,8 @@ trackedFiles:
     pristine_git_object: e57ad9f57f5d5d9109e8843b5a30020e46303fe3
   docs/models/components/onboardinginvite.md:
     id: 8357af2b90ac
-    last_write_checksum: sha1:56cfcd1e940344712cf0b3ab320ecd190f79b9a2
-    pristine_git_object: f8964237f93e92a9e4abdbbcef6fd682557329f9
+    last_write_checksum: sha1:ced8df442eb14d5fa0abac2bd7b12740a12e1b32
+    pristine_git_object: cd5ccccdde118cce1170b0fdb3719a43247a1271
   docs/models/components/onboardinginviterequest.md:
     id: 8df4c9e0b9c5
     last_write_checksum: sha1:0e642ca9740223ad4cf0b06b153f3242d30846dd
@@ -1639,8 +1643,8 @@ trackedFiles:
     pristine_git_object: f0ad3582e6a477e0fb720acf7f07f1b7cbf4819f
   docs/models/components/othercardfees.md:
     id: a3d642744608
-    last_write_checksum: sha1:6839438ee67ac368d20ed296df7d6ddf7e92241a
-    pristine_git_object: 00bf03640f1e3d6311f0db1c2c810098c55ca2aa
+    last_write_checksum: sha1:8ae5a5d7ea4b59e63490517598fbfa9c4dadd0de
+    pristine_git_object: 8d45203f93d702e2eb06cfbc3c3a06d86afe6d63
   docs/models/components/otherfees.md:
     id: e8979d3b4ef3
     last_write_checksum: sha1:6a294d22870b18a613884ab120e9ff175a3b2589
@@ -1657,6 +1661,10 @@ trackedFiles:
     id: 5b470fa1ff8d
     last_write_checksum: sha1:20acefc004818d10504639bd7bc29d5174e547ae
     pristine_git_object: 3a25c2ccec4a24546e79915d7f3d1c9946fad0b2
+  docs/models/components/partnerriskoutcomesresponse.md:
+    id: b98bfaeef501
+    last_write_checksum: sha1:584a37ca3c7e6cb6df0190eb9249e2dc741badaa
+    pristine_git_object: 205e1625099528676d9e6cc4bc30b1653fa707f5
   docs/models/components/patchaccount.md:
     id: a895f4fa22d7
     last_write_checksum: sha1:787f156784f25cab5765092e19cb1ba8469c45e8
@@ -2195,8 +2203,8 @@ trackedFiles:
     pristine_git_object: c30bf759246452dc760f1efb0626e172b236c7e8
   docs/models/components/statement.md:
     id: 99cf56fa439b
-    last_write_checksum: sha1:f1b315f19432febade33e668bc51094e9e7ea753
-    pristine_git_object: 36e2065ea34c0d9e9312c359baae513e29845db9
+    last_write_checksum: sha1:45044f970586a145ab5abc1e23bbe1d745b7362a
+    pristine_git_object: c8151912aa5ef5fadfba8559a356dd8517bc3054
   docs/models/components/status.md:
     id: e26b2fe7f53e
     last_write_checksum: sha1:fc71780f44d2703d54cc9d82d5bd86bdf77f68c1
@@ -2331,8 +2339,8 @@ trackedFiles:
     pristine_git_object: 6401401ec8db2dbb8490154baf85b2df063e6a9a
   docs/models/components/transfer.md:
     id: cd78ef5dd646
-    last_write_checksum: sha1:a47bdf85a837865f90c3b886c94cbcdb03253359
-    pristine_git_object: fba45463bec0e5fd49a76ee3c240c759816cdaae
+    last_write_checksum: sha1:dfb0f44b819a9ecbb11eb770dd281ac4beef1726
+    pristine_git_object: b89e094b38203934aee50a5591de8bf1d53c5c0b
   docs/models/components/transferaccount.md:
     id: d5f29242bb2e
     last_write_checksum: sha1:09274316e273f248a884d22f136afc1b311f7cf0
@@ -2345,10 +2353,6 @@ trackedFiles:
     id: 2dc29e72828f
     last_write_checksum: sha1:17f7d0dae0138957fe8c21ce71601d0b7978357f
     pristine_git_object: be119cae9fe96ebeec7381b994bcd93aab18c1ed
-  docs/models/components/transfercapture.md:
-    id: b0938caf29bb
-    last_write_checksum: sha1:e8e512afc773341acdf4bba5d40f82014ad47c48
-    pristine_git_object: 16913b4082f0a9c3c6b1faf6f2d35b4ed0fd854c
   docs/models/components/transferconfig.md:
     id: 4fcd0d6d38b7
     last_write_checksum: sha1:3f03135d8e59f16ad787e9dd136d9067cf9ab571
@@ -2995,8 +2999,8 @@ trackedFiles:
     pristine_git_object: 817258f509504f6072c54855a1e7305587e11d0b
   docs/models/errors/transfer.md:
     id: e3e4168d043d
-    last_write_checksum: sha1:7818483c70e924b20474b40917abb9e1b2d1473f
-    pristine_git_object: 352746eca0985aeb2f734cebf0dcd3a48a062661
+    last_write_checksum: sha1:d05a088c18d7e27882f11eed58b6fe85bfc8f902
+    pristine_git_object: 35a6c2e32230571f357c5f843b22e70a25de5dfa
   docs/models/errors/transferconfigvalidationerror.md:
     id: 9323d3df4589
     last_write_checksum: sha1:e960e39fa98f8b77ccbac80941e68f75ab69af4b
@@ -3719,8 +3723,8 @@ trackedFiles:
     pristine_git_object: bc50ea91d4fe6a2715680d12d532cdbb9f629a56
   docs/models/operations/getstatementresponseresult.md:
     id: 36e7876eb1da
-    last_write_checksum: sha1:8c6fea641d305be435c1ebca5a74a02a3844ce38
-    pristine_git_object: f117807c33a0f710a14484008e80e9f3c6cae4af
+    last_write_checksum: sha1:fe45a79d2989574ce71f503fa7cead7a8ac49d64
+    pristine_git_object: 1ee4ea93591beae45e5bd4ba6046ff0845039eb1
   docs/models/operations/getsweepconfigrequest.md:
     id: 69db53a379da
     last_write_checksum: sha1:bf009e523e170e03a56e2db589a727960c87e822
@@ -3785,6 +3789,14 @@ trackedFiles:
     id: 3b2f9fee9c5e
     last_write_checksum: sha1:bedc7ff73af113e5acba7d13b342dbae7c1b4baf
     pristine_git_object: ff019b5520865280afe65339e11937f8bc749cc6
+  docs/models/operations/gettransferriskoutcomesrequest.md:
+    id: 0796659942b8
+    last_write_checksum: sha1:ada36cdcb7cceaa79f4adbcc9c343a71ab17041c
+    pristine_git_object: 8ce7dafe3d64ccccd9815c0c7823daa42e9f8438
+  docs/models/operations/gettransferriskoutcomesresponse.md:
+    id: e71b49a2a49b
+    last_write_checksum: sha1:5910b962adb13dadc8663208b0e2d7261eb1567b
+    pristine_git_object: 647e003f1f40def0225a0124908104d1a28917ea
   docs/models/operations/getunderwritingrequest.md:
     id: 8bcecc247dcd
     last_write_checksum: sha1:ebfd4752611752a446b40bec49eb07542fdba4f1
@@ -4231,8 +4243,8 @@ trackedFiles:
     pristine_git_object: 3829884fc3d6bd9f892bfe173ad271f1c8ea415c
   docs/models/operations/listtransfersrequest.md:
     id: 4c25992bb06a
-    last_write_checksum: sha1:f96f80d9726b22fece8d5607bcabe834e7268fa9
-    pristine_git_object: 3796aa440faa3c258d1ee81f4987c6d8b517a6f4
+    last_write_checksum: sha1:084efcc8bf5b062f114d8f1d120890f50f4dc8b6
+    pristine_git_object: e8775910fd7c230eb19c59496d3a3a592c128ef3
   docs/models/operations/listtransfersresponse.md:
     id: ea85d18650ae
     last_write_checksum: sha1:8e054b6de62d7e281bfc9d5964ee34bfa72c0966
@@ -4687,8 +4699,8 @@ trackedFiles:
     pristine_git_object: 52500a7efad95a354a76ef136893bbdb8c6cfccf
   docs/sdks/transfers/README.md:
     id: f56918861798
-    last_write_checksum: sha1:b60992a8d8acdea7c1cd8c8d1a53abf9bc6591c3
-    pristine_git_object: 10678f93f9959779e81a7e280f18c3c8e63166b2
+    last_write_checksum: sha1:9b29fc53b704ecd24330e03d5f10bf9a228147eb
+    pristine_git_object: ad246f0dc226db773599ddf08599c3aea0ef3fa3
   docs/sdks/underwriting/README.md:
     id: ef972250826e
     last_write_checksum: sha1:d74416fdd89db17f99ca3cd0616372c2e273ac07
@@ -4727,12 +4739,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:a1ea7b5bba1e58b6743ef1be592b22d7f51539ef
-    pristine_git_object: 5277d0fa0a519a2e311b0a43d209907e0decf98e
+    last_write_checksum: sha1:3f8a9579e7047e81208b623332ff7c24e0c3dba6
+    pristine_git_object: 75ee177e53ac3f7e55301f23aed69400c46a25e2
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:c1bb86674144e8023b0b3a1ec08574b5bd82ce49
-    pristine_git_object: 5be86be8460ad2138ff29d9c18bd530a7986b1bd
+    last_write_checksum: sha1:e11127b92736c56925f344d8ec43a0591eb53ca3
+    pristine_git_object: bcc11440b37e02db15d7ea47f38fc05783ad1a32
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5409,14 +5421,18 @@ trackedFiles:
     id: e48472f50473
     last_write_checksum: sha1:987df1db8ef13033eeadebf64a31eb0bc8f30635
     pristine_git_object: 6ce6b785f4b102d44e49a2701d62a48931a41747
+  src/funcs/transfersGetRiskOutcomes.ts:
+    id: f4194ddf3d0b
+    last_write_checksum: sha1:217fadf5008e86c8e7f35ad01e60c465618e6977
+    pristine_git_object: 3740d3d13ee616cbe0304bf1756227ab36bc075c
   src/funcs/transfersInitiateRefund.ts:
     id: b4f8be77b80c
     last_write_checksum: sha1:f7f1190da1f69a817d61ab0e92fb47a11b8c992a
     pristine_git_object: e7353bb18103991f01a43559d4b3ed8b6a88910c
   src/funcs/transfersList.ts:
     id: 639282c52e90
-    last_write_checksum: sha1:b51790da3841b4d42b7b4459b04bec0dea0d0914
-    pristine_git_object: 4b64e316c4d437b20e2efa335b703072345297fd
+    last_write_checksum: sha1:42a8448407320b9428719462816670b8be6d9f0e
+    pristine_git_object: acfc40e1371a06336ce2ea5ec50a4f562098c3a7
   src/funcs/transfersListCancellations.ts:
     id: 61f88c736d63
     last_write_checksum: sha1:7bc80249124bef714086bddd4471d9683553bde4
@@ -5519,8 +5535,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:cf59d55f11f4f38d9a3bc6e859f7377e36db54df
-    pristine_git_object: 10ee7c94e164d4deda6fc74c45cdacf9e4573229
+    last_write_checksum: sha1:60cb4102630695b21121b741a77a8879fad56953
+    pristine_git_object: 80de88d189902a1cb5f81a1fa29de356115b967b
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -5531,8 +5547,8 @@ trackedFiles:
     pristine_git_object: 6ca6b37d35a12448da176ee2517cc036db12c81c
   src/lib/http.ts:
     id: 63a80782d37e
-    last_write_checksum: sha1:797cbf16d3c7c4d62d3ba0eedb08617524938457
-    pristine_git_object: 13cf1fd7894a89f727b8d2db2ad24313a94f68c7
+    last_write_checksum: sha1:a56435907625a816051aa2131d60909c59f1da27
+    pristine_git_object: 6b7a6cf3e281cae246708b1aca4a27730e08fe61
   src/lib/logger.ts:
     id: 7ee7741a02bf
     last_write_checksum: sha1:0ec9d3a2a34c362746b767e4f9a746c055d57a7b
@@ -5559,8 +5575,8 @@ trackedFiles:
     pristine_git_object: 77025bf1202abddbae3a14962b1860ab59129b7c
   src/lib/security.ts:
     id: 0502afa7922e
-    last_write_checksum: sha1:c83b559b8ad21481510e49d74f343bf44429f854
-    pristine_git_object: 7e93175613d130695934ce96c4bcf49ee65c5869
+    last_write_checksum: sha1:30edeec86df598851ebe57c70b0b322ac7091c12
+    pristine_git_object: edaaa175be87729086e4f63d65cac34e7ff5be87
   src/lib/url.ts:
     id: b0057e24ed76
     last_write_checksum: sha1:3bceadd74bf0b31adf13eb06b7531077c3e07d65
@@ -5591,8 +5607,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:6ad61cad9b2d5ad3de5bdf9e8a5a37a6745bdbbb
-    pristine_git_object: a8ba7ed003557ce36e59c0e786c23283b6883e3f
+    last_write_checksum: sha1:62eff0a5e0a5fae5486efff229351da69268f93b
+    pristine_git_object: 8c5af0f181592a40dee6c878b3469284a75235a4
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5607,8 +5623,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:0bbd9a597ba87ebb1084970f86f3672f913757c9
-    pristine_git_object: 7b2302f807cca4c37b9b3edbd43cc880f0734489
+    last_write_checksum: sha1:6fec1cbac4a3b124fd1f7be8025b5b9b193550f9
+    pristine_git_object: 83c9f97fee3a7e81649b158d8ee05ba5a3ea7822
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -6289,6 +6305,10 @@ trackedFiles:
     id: 8f8f2a57bca0
     last_write_checksum: sha1:7b5d7341bd01b905e3c0d4be58719ee3058c21f8
     pristine_git_object: 9aeebaf75511a6e0c707eb7e337ee8878e7048d0
+  src/mcp-server/tools/transfersGetRiskOutcomes.ts:
+    id: f107cbff096a
+    last_write_checksum: sha1:4adafcb87e70b02e45e9b4245ae1bf02c2c3c69e
+    pristine_git_object: b18e0238e71554fd53a69644173544bfa594efbb
   src/mcp-server/tools/transfersInitiateRefund.ts:
     id: f313f167f3ae
     last_write_checksum: sha1:08539b7a011a8167a521bad20a2f40c987ce61fd
@@ -6803,8 +6823,8 @@ trackedFiles:
     pristine_git_object: 683d89d20fdcc85aa518f857dda5c6a0a6fc1189
   src/models/components/cardbrandfees.ts:
     id: c9c3556ab6f0
-    last_write_checksum: sha1:8da9204cb40834a75e30e20dcef80f1487b917e5
-    pristine_git_object: c3e91e6255480b9c816c73a46bb34c23a4f0bda9
+    last_write_checksum: sha1:393884de8333cb9e1ab259bebb3cad2f51490bfa
+    pristine_git_object: 0edca294ac3cd667837f957c7e4e2c9342b1934f
   src/models/components/cardexpiration.ts:
     id: e0d2f5969936
     last_write_checksum: sha1:64106b587ac985088ef9499485a7f66bc20afa5b
@@ -6941,6 +6961,10 @@ trackedFiles:
     id: 19bfcf8e79b6
     last_write_checksum: sha1:8e1debd921440ab523fe8b4f80ed084ffb4f2d52
     pristine_git_object: a7d3ad1ff6bedeafb577b029964cd8fe59cf3f7d
+  src/models/components/contributingrule.ts:
+    id: c419010397a6
+    last_write_checksum: sha1:34c0c7043ba4ff0f38b2511434e9ec648e96cf79
+    pristine_git_object: ff519a11418f2582f9a80c5227375d1f90824aa2
   src/models/components/createaccount.ts:
     id: 36d4b5a9fbfd
     last_write_checksum: sha1:22133686db9cad644f57ff80fbfc944089715c17
@@ -6967,8 +6991,8 @@ trackedFiles:
     pristine_git_object: 180de00a87933f46344d11823d09dbef64618590
   src/models/components/createdtransfer.ts:
     id: a6314a23559a
-    last_write_checksum: sha1:8ee46701ec7f952eac2fe09308a96b674bebdcd0
-    pristine_git_object: 4d900d356b16f715bf28a456d54cd49268ab61c6
+    last_write_checksum: sha1:a872e3288cd44e4614ab7c358190a485c5ba9de8
+    pristine_git_object: 477e6a096d69444a6e8b6d30b49eec6824e733f8
   src/models/components/createevidencefilemultipart.ts:
     id: c3055925be45
     last_write_checksum: sha1:fa20fe73c5f9d1f9e3318ad033b9897889ad1f85
@@ -7379,12 +7403,12 @@ trackedFiles:
     pristine_git_object: 115f4bc526c9eda9dc6fbbd1332609538151ce4a
   src/models/components/filedetails.ts:
     id: 67ea0d21716e
-    last_write_checksum: sha1:69193dd80f57f7c2eb32e88ad2ce7a1e15df9358
-    pristine_git_object: 4d96e0d0765b0d69f0e90201e21d3c4def17fd7f
+    last_write_checksum: sha1:3add642ea65debe86dde026ca9c4a6a8e6c46113
+    pristine_git_object: ea92b3a3b38da02ed6b18cace438c74292ddb76a
   src/models/components/filepurpose.ts:
     id: 3ab1f5dd8c62
-    last_write_checksum: sha1:7be97651193b0f0648f233e691e8949c635056fc
-    pristine_git_object: 2677d15282e011879fbac8efc622cafed9dece7d
+    last_write_checksum: sha1:741467872ee03c10305470162a4eb8adbef8cb2f
+    pristine_git_object: 7c44c4a302ecd686511ebd8a566a18e7232cd83e
   src/models/components/filestatus.ts:
     id: 830c87682b87
     last_write_checksum: sha1:ee50b42b6b5e358b7fa265fb808f4b854886ae2c
@@ -7507,8 +7531,8 @@ trackedFiles:
     pristine_git_object: 2625ed33aaa24524779ae02e7a3b85588c460ca2
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:e3de3a371c81803b38c546e03c39be37cd85f4f4
-    pristine_git_object: 0d91b5beb501844a252028062e735a53383ef150
+    last_write_checksum: sha1:5e1b84d5a6f9808d0d9f9124fbdb732b525b516b
+    pristine_git_object: 67b0df9c3b0d5e61a048fc752eb78c9203788caf
   src/models/components/individualname.ts:
     id: 8d95da45fb10
     last_write_checksum: sha1:4f53431a53d4e420d648e6fda8a73be4344f8162
@@ -7823,8 +7847,8 @@ trackedFiles:
     pristine_git_object: 193cf2a42e74afc74b3d2ec4746a4144f0192911
   src/models/components/onboardinginvite.ts:
     id: 2b8c9b3102ae
-    last_write_checksum: sha1:b49e88d45cc3e2cf6e09f065afddc2d5a1b72c11
-    pristine_git_object: 8d8f6eebc4b40354cc3f6bae9c1bb963e4e3ddab
+    last_write_checksum: sha1:f6898b01b6f3ab84eab1ffbee84a45cffd0afe02
+    pristine_git_object: 1fe98d37a3fee12eb30594ff3bcfa2f6b18d3e9b
   src/models/components/onboardinginviterequest.ts:
     id: e503dbfb05e2
     last_write_checksum: sha1:258535af6a1eb08554d3d6787f865261080a0628
@@ -7849,6 +7873,10 @@ trackedFiles:
     id: 32fe872d8ff8
     last_write_checksum: sha1:5f2c3726bca42c906f5df6654af26268b33d2caf
     pristine_git_object: 9d4c8fbc8826a2bc43a063a89d8f3a394605ba24
+  src/models/components/partnerriskoutcomesresponse.ts:
+    id: 2d9ae7c6ab26
+    last_write_checksum: sha1:2025af7d1ca119ed895a3ad2394af857589ba423
+    pristine_git_object: d74199d156d0ff79df83e254897df618275801e8
   src/models/components/patchaccount.ts:
     id: 5876df4369b7
     last_write_checksum: sha1:085379bfa139db971f9060795a6e1332309468ff
@@ -8487,8 +8515,8 @@ trackedFiles:
     pristine_git_object: bf42ed45521604b43052f8e94d39eed652daae19
   src/models/components/transfer.ts:
     id: d9fa200f1b69
-    last_write_checksum: sha1:48086f93c3cd1509622b8a0323cb4cff4275bd13
-    pristine_git_object: cba3516bfe9d72fdbcda047ba20ba1e5e7474b3c
+    last_write_checksum: sha1:9d99f45c2ac00117d64cb7b323149002c1a8f75b
+    pristine_git_object: 2dadef75bfd60ae00c984669b34219fcc3efb7bb
   src/models/components/transferaccount.ts:
     id: c8d1f4e6e5c1
     last_write_checksum: sha1:5a1c0ddd5ab334a12482732658909de11bc83d32
@@ -8501,10 +8529,6 @@ trackedFiles:
     id: 3ea9dfaccfa7
     last_write_checksum: sha1:8715dc37ec0a0c029e1815834e1e5807053a6fc6
     pristine_git_object: 7774796ddfa2c8a05f801774ba190c5bf15c2447
-  src/models/components/transfercapture.ts:
-    id: ad837467c629
-    last_write_checksum: sha1:f48c556bec512761813e1b95dafc269586db125e
-    pristine_git_object: 7c3c7abb010aff3c20a7f6908a16da97d6dbec51
   src/models/components/transferconfig.ts:
     id: 858251d33abe
     last_write_checksum: sha1:12ac5c7b8b3fdf87738ddc0cf006903844046a74
@@ -9135,8 +9159,8 @@ trackedFiles:
     pristine_git_object: 3bbabda6dacd54f1919da52bfd30cfdacdb5abf7
   src/models/errors/transfer.ts:
     id: f06582c078d2
-    last_write_checksum: sha1:62ada81f4ade732c6994330c97fc1a38316bf183
-    pristine_git_object: 21beddcb02177ebf59d9c3269173e4d9f3360542
+    last_write_checksum: sha1:26969e0d02ba169053d4013d0e6a72a5b397b786
+    pristine_git_object: 665130801b1837c00a99ece6a0589661e3020a6b
   src/models/errors/transferconfigvalidationerror.ts:
     id: cc9d29d7c8ea
     last_write_checksum: sha1:d4773781d570249bf28e1504bd30867b15f68fd5
@@ -9557,6 +9581,10 @@ trackedFiles:
     id: c3dd375fd206
     last_write_checksum: sha1:ab88061b2b1547a3fa040d3b3fd778d1d19d6fd4
     pristine_git_object: c074a1e43e0d3a1c4f2b7bced812cffac481ded3
+  src/models/operations/gettransferriskoutcomes.ts:
+    id: 25eafba89aff
+    last_write_checksum: sha1:8826f108e7d9fba61e990d4dce3457157310b962
+    pristine_git_object: bb615931911983506b603eefa7fc233ea964c46e
   src/models/operations/getunderwriting.ts:
     id: ebe537e62d8f
     last_write_checksum: sha1:1f26ca97beec079ea7835a344cb74a8c0a97800b
@@ -9579,8 +9607,8 @@ trackedFiles:
     pristine_git_object: 257377f3aa9bb768d89b6300fec4ee675c5e910b
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:f694153b6c39d8e5fa7c76009d806bf0c2e74c14
-    pristine_git_object: 6ba8b65d637e70baf8b2faffe35ebca526fd14e8
+    last_write_checksum: sha1:4c45dd02d2ff4618bd3c489d6280f3062ccdc39b
+    pristine_git_object: c4843ea0528f71cae57ff98e534e8e1fd3d9043f
   src/models/operations/initiatebankaccountverification.ts:
     id: bcef2668b107
     last_write_checksum: sha1:fb07a21346b9587cdd80629e7933194fe0f38142
@@ -9787,8 +9815,8 @@ trackedFiles:
     pristine_git_object: 4bcd9d08d453c73213618b367b39a51afc97efe8
   src/models/operations/listtransfers.ts:
     id: e6ebe9991e1f
-    last_write_checksum: sha1:fb0cc84ce93248b102a1f6380a88dbe6ceb0f89a
-    pristine_git_object: f82a014d343d75acc20a5823f14e88fecbd80f25
+    last_write_checksum: sha1:a91e2b91b45943f1a297a9902478f7b5192a6481
+    pristine_git_object: b77a642fbc796a0cfb8993cdc456322a43eaeadf
   src/models/operations/listwallets.ts:
     id: 90867965d446
     last_write_checksum: sha1:a7dc67312b6de566a3701dc8abc9f1b1eb1453ea
@@ -10107,8 +10135,8 @@ trackedFiles:
     pristine_git_object: d08285bad25c49abde6b905ca34411e1d9473e3d
   src/sdk/transfers.ts:
     id: 1e842c518280
-    last_write_checksum: sha1:de48081ef5b5699b6175cebe27d1060c4d06ec7c
-    pristine_git_object: 7d66b8803abb44ab56f13a6a7ca9e8f703f300a7
+    last_write_checksum: sha1:a4c5489b89475ae9d1c8a7054f711fc0b5302499
+    pristine_git_object: 68de61c2d94a4a802fc58837e1489ff190aaadf0
   src/sdk/underwriting.ts:
     id: 6f59ff9f1b71
     last_write_checksum: sha1:be98d828d30418ed7cbc3776fd8beaee1c15d792
@@ -12476,7 +12504,7 @@ examples:
           X-Moov-Version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"statementID": "6fcce0d9-75c1-4c2f-b04e-ce0f1cecf736", "statementName": "<value>", "fileName": "example.file", "fileSize": 491710, "billingPeriodStartDateTime": "2025-01-30T13:15:52.427Z", "billingPeriodEndDateTime": "2024-03-15T11:54:00.098Z", "subscriptionIDs": ["<value 1>", "<value 2>", "<value 3>"], "summary": {"cardAcquiring": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}, "interchangeFees": {"visa": {"currency": "USD", "valueDecimal": "12.987654321"}, "mastercard": {"currency": "USD", "valueDecimal": "12.987654321"}, "discover": {"currency": "USD", "valueDecimal": "12.987654321"}, "americanExpress": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "ach": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "instantPayments": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "accountFees": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "otherCardFees": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncomeSubtotal": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "residualSubtotal": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPartnerCosts": {"minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatform": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}}, "netPartnerPayment": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardAcquiringFees": {"visa": {"interchange": {"count": 566266, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "interchangePrograms": [{"programName": "<value>", "count": 311812, "percentageRate": 1208.53, "perItemRate": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "transferVolume": {"currency": "USD", "valueDecimal": "12.987654321"}}], "networkPassthrough": {"count": 314153, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticOnline": {"count": 830656, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticInPerson": {"count": 767457, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalOnline": {"count": 687826, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalInPerson": {"count": 141784, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "declines": {"count": 6447, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "refunds": {"count": 510292, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "mastercard": {"interchange": {"count": 566266, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "interchangePrograms": [{"programName": "<value>", "count": 311812, "percentageRate": 1208.53, "perItemRate": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "transferVolume": {"currency": "USD", "valueDecimal": "12.987654321"}}], "networkPassthrough": {"count": 314153, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticOnline": {"count": 830656, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticInPerson": {"count": 767457, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalOnline": {"count": 687826, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalInPerson": {"count": 141784, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "declines": {"count": 6447, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "refunds": {"count": 510292, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "discover": {"interchange": {"count": 566266, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "interchangePrograms": [{"programName": "<value>", "count": 311812, "percentageRate": 1208.53, "perItemRate": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "transferVolume": {"currency": "USD", "valueDecimal": "12.987654321"}}], "networkPassthrough": {"count": 314153, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticOnline": {"count": 830656, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticInPerson": {"count": 767457, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalOnline": {"count": 687826, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalInPerson": {"count": 141784, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "declines": {"count": 6447, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "refunds": {"count": 510292, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "americanExpress": {"interchange": {"count": 566266, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "interchangePrograms": [{"programName": "<value>", "count": 311812, "percentageRate": 1208.53, "perItemRate": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "transferVolume": {"currency": "USD", "valueDecimal": "12.987654321"}}], "networkPassthrough": {"count": 314153, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticOnline": {"count": 830656, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticInPerson": {"count": 767457, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalOnline": {"count": 687826, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalInPerson": {"count": 141784, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "declines": {"count": 6447, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "refunds": {"count": 510292, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}}, "achFees": {"standardCredit": {"count": 178500, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "sameDayCredit": {"count": 231593, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "debits": {"count": 940652, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "return": {"count": 437920, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "unauthorizedReturn": {"count": 476712, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "noticeOfChange": {"count": 950531, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "bankAccountVerification": {"count": 336705, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "instantPaymentFees": {"rtpCreditTransaction": {"count": 497959, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "rtpDecline": {"count": 84081, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pushToCardTransaction": {"count": 933887, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pushToCardDecline": {"count": 148596, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pullFromCardTransaction": {"count": 186879, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pullFromCardDecline": {"count": 32245, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pullFromCardRefund": {"count": 815075, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "instantVerification": {"count": 336705, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "accountFees": {"walletFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantPCIFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "invoicePaymentFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "kybFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "kycFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "transactionMonitoringFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}}, "otherCardFees": {"disputes": {"count": 979998, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardAccountUpdater": {"count": 589185, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardVerification": {"count": 477464, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "nameVerification": {"count": 854516, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "partnerFees": {"minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatform": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}}, "createdOn": "2023-03-21T23:03:13.806Z", "updatedOn": "2025-12-26T06:16:23.912Z"}
+          application/json: {"statementID": "6fcce0d9-75c1-4c2f-b04e-ce0f1cecf736", "statementName": "<value>", "fileName": "example.file", "fileSize": 491710, "billingPeriodStartDateTime": "2025-01-30T13:15:52.427Z", "billingPeriodEndDateTime": "2024-03-15T11:54:00.098Z", "subscriptionIDs": ["<value 1>", "<value 2>", "<value 3>"], "summary": {"cardAcquiring": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}, "interchangeFees": {"visa": {"currency": "USD", "valueDecimal": "12.987654321"}, "mastercard": {"currency": "USD", "valueDecimal": "12.987654321"}, "discover": {"currency": "USD", "valueDecimal": "12.987654321"}, "americanExpress": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "ach": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "instantPayments": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "accountFees": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "otherCardFees": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncomeSubtotal": {"feeAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantFeesCollected": {"currency": "USD", "valueDecimal": "12.987654321"}, "partnerFeesAssessed": {"currency": "USD", "valueDecimal": "12.987654321"}, "netIncome": {"currency": "USD", "valueDecimal": "12.987654321"}}, "residualSubtotal": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPartnerCosts": {"minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatform": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}}, "netPartnerPayment": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardAcquiringFees": {"visa": {"interchange": {"count": 566266, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "interchangePrograms": [{"programName": "<value>", "count": 311812, "percentageRate": 1208.53, "perItemRate": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "transferVolume": {"currency": "USD", "valueDecimal": "12.987654321"}}], "networkPassthrough": {"count": 314153, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticOnline": {"count": 830656, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticInPerson": {"count": 767457, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalOnline": {"count": 687826, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalInPerson": {"count": 141784, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "declines": {"count": 6447, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "refunds": {"count": 510292, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardCancellations": {"count": 336705, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "mastercard": {"interchange": {"count": 566266, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "interchangePrograms": [{"programName": "<value>", "count": 311812, "percentageRate": 1208.53, "perItemRate": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "transferVolume": {"currency": "USD", "valueDecimal": "12.987654321"}}], "networkPassthrough": {"count": 314153, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticOnline": {"count": 830656, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticInPerson": {"count": 767457, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalOnline": {"count": 687826, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalInPerson": {"count": 141784, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "declines": {"count": 6447, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "refunds": {"count": 510292, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardCancellations": {"count": 336705, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "discover": {"interchange": {"count": 566266, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "interchangePrograms": [{"programName": "<value>", "count": 311812, "percentageRate": 1208.53, "perItemRate": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "transferVolume": {"currency": "USD", "valueDecimal": "12.987654321"}}], "networkPassthrough": {"count": 314153, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticOnline": {"count": 830656, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticInPerson": {"count": 767457, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalOnline": {"count": 687826, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalInPerson": {"count": 141784, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "declines": {"count": 6447, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "refunds": {"count": 510292, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardCancellations": {"count": 336705, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "americanExpress": {"interchange": {"count": 566266, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "interchangePrograms": [{"programName": "<value>", "count": 311812, "percentageRate": 1208.53, "perItemRate": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}, "transferVolume": {"currency": "USD", "valueDecimal": "12.987654321"}}], "networkPassthrough": {"count": 314153, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticOnline": {"count": 830656, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedDomesticInPerson": {"count": 767457, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalOnline": {"count": 687826, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "completedInternationalInPerson": {"count": 141784, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "declines": {"count": 6447, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "refunds": {"count": 510292, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardCancellations": {"count": 336705, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}}, "achFees": {"standardCredit": {"count": 178500, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "sameDayCredit": {"count": 231593, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "debits": {"count": 940652, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "return": {"count": 437920, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "unauthorizedReturn": {"count": 476712, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "noticeOfChange": {"count": 950531, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "bankAccountVerification": {"count": 336705, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "instantPaymentFees": {"rtpCreditTransaction": {"count": 497959, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "rtpDecline": {"count": 84081, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pushToCardTransaction": {"count": 933887, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pushToCardDecline": {"count": 148596, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pullFromCardTransaction": {"count": 186879, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pullFromCardDecline": {"count": 32245, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "pullFromCardRefund": {"count": 815075, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "instantVerification": {"count": 336705, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "accountFees": {"walletFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "merchantPCIFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "invoicePaymentFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "kybFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "kycFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "transactionMonitoringFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}}, "otherCardFees": {"disputes": {"count": 979998, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardAccountUpdater": {"count": 589185, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "cardVerification": {"count": 477464, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "nameVerification": {"count": 854516, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}, "total": {"count": 179729, "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}}, "partnerFees": {"minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatform": {"currency": "USD", "valueDecimal": "12.987654321"}, "total": {"currency": "USD", "valueDecimal": "12.987654321"}}, "createdOn": "2023-03-21T23:03:13.806Z", "updatedOn": "2025-12-26T06:16:23.912Z"}
           application/pdf: "x-file: example.file"
   listImageMetadata:
     speakeasy-default-list-image-metadata:
@@ -13099,9 +13127,17 @@ examples:
           application/json: {"error": "<value>"}
         "422":
           application/json: {}
+  getTransferRiskOutcomes:
+    speakeasy-default-get-transfer-risk-outcomes:
+      parameters:
+        path:
+          transferID: "<id>"
+      responses:
+        "200":
+          application/json: {"transferID": "d09a94b6-cb1f-4d3f-a34a-a0f56b7b8b2a", "contributingRules": [{"name": "Velocity"}, {"name": "Device"}]}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `moov.cardIssuing.request()`:  `response.state` **Changed** (Breaking ⚠️)\n* `moov.cardIssuing.getFull()`:  `response.state` **Changed** (Breaking ⚠️)\n* `moov.cardIssuing.update()`:  `response.state` **Changed** (Breaking ⚠️)\n* `moov.cardIssuing.get()`:  `response.state` **Changed** (Breaking ⚠️)\n* `moov.cardIssuing.list()`: \n  *  `request.states` **Changed** (Breaking ⚠️)\n  *  `response.[].state` **Changed** (Breaking ⚠️)\n* `moov.invoices.createInvoice()`:  `response.paymentLinkUrl` **Added**\n* `moov.transfers.create()`: \n  *  `response.source.cardDetails.deferredOn` **Added**\n  *  `error.source.cardDetails.deferredOn` **Added**\n* `moov.capabilities.disable()`: \n  *  `request.capabilityId` **Changed**\n* `moov.depositView.create()`: **Added**\n* `moov.invoices.listInvoices()`:  `response.[].paymentLinkUrl` **Added**\n* `moov.invoices.getInvoice()`:  `response.paymentLinkUrl` **Added**\n* `moov.invoices.updateInvoice()`:  `response.paymentLinkUrl` **Added**\n* `moov.paymentLinks.create()`: \n  *  `request.createPaymentLink.payout.pushOptions` **Added**\n  *  `response.payout.pushOptions` **Added**\n  *  `error.payout.pushOptions` **Added**\n* `moov.paymentLinks.list()`:  `response.[].payout.pushOptions` **Added**\n* `moov.paymentLinks.get()`:  `response.payout.pushOptions` **Added**\n* `moov.paymentLinks.update()`: \n  *  `request.updatePaymentLink` **Changed**\n  *  `response.payout.pushOptions` **Added**\n  *  `error.payout.pushOptions` **Added**\n* `moov.paymentMethods.list()`:  `response.[].union(card-payment).card.cardCategory` **Added**\n* `moov.paymentMethods.get()`:  `response.union(card-payment).card.cardCategory` **Added**\n* `moov.capabilities.get()`: \n  *  `request.capabilityId` **Changed**\n  *  `response.capability.enum(issuing.cardholder)` **Added**\n* `moov.transfers.list()`:  `response.[].source.cardDetails.deferredOn` **Added**\n* `moov.transfers.batchGetTransfers()`:  `response.Map<Transfer>.source.cardDetails.deferredOn` **Added**\n* `moov.transfers.get()`:  `response.source.cardDetails.deferredOn` **Added**\n* `moov.transfers.update()`: \n  *  `request.patchTransfer.foreignId` **Changed**\n  *  `response.source.cardDetails.deferredOn` **Added**\n* `moov.wallets.update()`: \n  *  `request.patchWallet` **Changed**\n* `moov.capabilities.request()`: \n  *  `request.addCapabilities.capabilities[].enum(issuing.cardholder)` **Added**\n  *  `response.[].capability.enum(issuing.cardholder)` **Added**\n* `moov.capabilities.list()`:  `response.[].capability.enum(issuing.cardholder)` **Added**\n* `moov.accounts.listConnected()`: \n  *  `request.capability` **Changed**\n* `moov.accounts.list()`: \n  *  `request.capability` **Changed**\n* `moov.accounts.create()`: \n  *  `request.capabilities[].enum(issuing.cardholder)` **Added**\n* `moov.onboarding.createInvite()`: \n  *  `request.capabilities[].enum(issuing.cardholder)` **Added**\n  *  `response.capabilities[].enum(issuing.cardholder)` **Added**\n* `moov.onboarding.listInvites()`:  `response.[].capabilities[].enum(issuing.cardholder)` **Added**\n* `moov.onboarding.getInvite()`:  `response.capabilities[].enum(issuing.cardholder)` **Added**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `moov.transfers.create()`: \n  *  `response.capture` **Removed** (Breaking ⚠️)\n  *  `error.capture` **Removed** (Breaking ⚠️)\n* `moov.transfers.list()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response.[].capture` **Removed** (Breaking ⚠️)\n* `moov.transfers.batchGetTransfers()`:  `response.Map<Transfer>.capture` **Removed** (Breaking ⚠️)\n* `moov.transfers.get()`:  `response.capture` **Removed** (Breaking ⚠️)\n* `moov.transfers.update()`:  `response.capture` **Removed** (Breaking ⚠️)\n* `moov.transfers.getRiskOutcomes()`: **Added**\n* `moov.statements.list()`:  `response.[].cardAcquiringFees.visa.cardCancellations` **Added**\n* `moov.statements.get()`:  `response.cardAcquiringFees.visa.cardCancellations` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore

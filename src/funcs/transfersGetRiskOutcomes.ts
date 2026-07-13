@@ -3,7 +3,7 @@
  */
 
 import { MoovCore } from "../core.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -18,7 +18,6 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { MoovError } from "../models/errors/mooverror.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
@@ -27,26 +26,20 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List all the transfers associated with a particular Moov account.
+ * Retrieve the risk rules that contributed to a transfer's risk decision.
  *
- * Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
- *
- * When you run this request, you retrieve 200 transfers at a time. You can advance past a results set of 200 transfers by using the `skip` parameter (for example,
- * if you set `skip`= 10, you will see a results set of 200 transfers after the first 10). If you are searching a high volume of transfers, the request will likely
- * process very slowly. To achieve faster performance, restrict the data as much as you can by using the `StartDateTime` and `EndDateTime` parameters for a limited
- * period of time. You can run multiple requests in smaller time window increments until you've retrieved all the transfers you need.
+ * This endpoint has limited availability and must be enabled for your account by Moov.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
  */
-export function transfersList(
+export function transfersGetRiskOutcomes(
   client: MoovCore,
-  request: operations.ListTransfersRequest,
+  request: operations.GetTransferRiskOutcomesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.ListTransfersResponse,
-    | errors.ListTransfersValidationError
+    operations.GetTransferRiskOutcomesResponse,
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -66,13 +59,12 @@ export function transfersList(
 
 async function $do(
   client: MoovCore,
-  request: operations.ListTransfersRequest,
+  request: operations.GetTransferRiskOutcomesRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.ListTransfersResponse,
-      | errors.ListTransfersValidationError
+      operations.GetTransferRiskOutcomesResponse,
       | MoovError
       | ResponseValidationError
       | ConnectionError
@@ -87,7 +79,8 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.ListTransfersRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.GetTransferRiskOutcomesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -97,30 +90,19 @@ async function $do(
   const body = null;
 
   const pathParams = {
-    accountID: encodeSimple("accountID", payload.accountID, {
+    transferID: encodeSimple("transferID", payload.transferID, {
       explode: false,
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/accounts/{accountID}/transfers")(pathParams);
-
-  const query = encodeFormQuery({
-    "accountIDs": payload.accountIDs,
-    "count": payload.count,
-    "disputed": payload.disputed,
-    "endDateTime": payload.endDateTime,
-    "foreignID": payload.foreignID,
-    "groupID": payload.groupID,
-    "paymentLinkCode": payload.paymentLinkCode,
-    "refunded": payload.refunded,
-    "scheduleID": payload.scheduleID,
-    "skip": payload.skip,
-    "startDateTime": payload.startDateTime,
-    "status": payload.status,
-  }, { explode: false });
+  const path = pathToFunc("/transfers/{transferID}/risk-outcomes")(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
+    "X-Account-ID": encodeSimple("X-Account-ID", payload["X-Account-ID"], {
+      explode: false,
+      charEncoding: "none",
+    }),
   }));
 
   const securityInput = await extractSecurity(client._options.security);
@@ -129,7 +111,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "listTransfers",
+    operationID: "getTransferRiskOutcomes",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -147,7 +129,6 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -174,8 +155,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.ListTransfersResponse,
-    | errors.ListTransfersValidationError
+    operations.GetTransferRiskOutcomesResponse,
     | MoovError
     | ResponseValidationError
     | ConnectionError
@@ -185,14 +165,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.ListTransfersResponse$inboundSchema, {
+    M.json(200, operations.GetTransferRiskOutcomesResponse$inboundSchema, {
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr(422, errors.ListTransfersValidationError$inboundSchema, {
-      hdrs: true,
-    }),
-    M.fail([401, 403, 429]),
+    M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),

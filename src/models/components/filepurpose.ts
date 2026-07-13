@@ -7,7 +7,7 @@ import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
 /**
- * The file's purpose.
+ * The purpose of the file being uploaded.
  */
 export const FilePurpose = {
   BusinessVerification: "business_verification",
@@ -18,7 +18,7 @@ export const FilePurpose = {
   IdentityVerification: "identity_verification",
 } as const;
 /**
- * The file's purpose.
+ * The purpose of the file being uploaded.
  */
 export type FilePurpose = OpenEnum<typeof FilePurpose>;
 

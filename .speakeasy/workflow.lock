@@ -1,20 +1,20 @@
-speakeasyVersion: 1.789.0
+speakeasyVersion: 1.790.0
 sources:
     latest:
-        sourceNamespace: typescript-dev
-        sourceRevisionDigest: sha256:2e210f85f0f167f3bf56bf2005cb860ec28b0d80fbd2a7ed65b550ef533bc3ff
-        sourceBlobDigest: sha256:6a3b0e8cfa3c7a6c69ec6514b16e5d3bf0b611e739b0d38ccf53fbe32156c302
+        sourceNamespace: typescript-v2026.10.00
+        sourceRevisionDigest: sha256:c575fc05117a1c08593c2ad60f6e743a5f9757ed6e35a33b2185283e494bae15
+        sourceBlobDigest: sha256:0b2ea88c10abceea50bc9a30192114c1e1020d4ea5a24a6b6ed03396d3f322f1
         tags:
             - latest
-            - dev
+            - v2026.10.00
 targets:
     latest:
         source: latest
-        sourceNamespace: typescript-dev
-        sourceRevisionDigest: sha256:2e210f85f0f167f3bf56bf2005cb860ec28b0d80fbd2a7ed65b550ef533bc3ff
-        sourceBlobDigest: sha256:6a3b0e8cfa3c7a6c69ec6514b16e5d3bf0b611e739b0d38ccf53fbe32156c302
-        codeSamplesNamespace: dev-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:0d3013b2c110dafa10949a502b4cf2fd8d2bdfc9a4889b48c039c56318f632f5
+        sourceNamespace: typescript-v2026.10.00
+        sourceRevisionDigest: sha256:c575fc05117a1c08593c2ad60f6e743a5f9757ed6e35a33b2185283e494bae15
+        sourceBlobDigest: sha256:0b2ea88c10abceea50bc9a30192114c1e1020d4ea5a24a6b6ed03396d3f322f1
+        codeSamplesNamespace: v2026.10.00-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:7f11630106a45aab0ba1618d34b7a6470db60063b48046dc2f162108948c79a0
     moov:
         source: latest
         sourceNamespace: api-latest
@@ -28,11 +28,11 @@ workflow:
     sources:
         latest:
             inputs:
-                - location: registry.speakeasyapi.dev/moov/moov/api-dev
+                - location: registry.speakeasyapi.dev/moov/moov/api-v2026.10.00
             overlays:
                 - location: ./.speakeasy/overlays/access-token.yaml
             registry:
-                location: registry.speakeasyapi.dev/moov/moov/typescript-dev
+                location: registry.speakeasyapi.dev/moov/moov/typescript-v2026.10.00
     targets:
         latest:
             target: typescript
@@ -42,7 +42,7 @@ workflow:
                     token: $npm_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/moov/moov/dev-typescript-code-samples
+                    location: registry.speakeasyapi.dev/moov/moov/v2026.10.00-typescript-code-samples
                 labelOverride:
                     fixedValue: Typescript (SDK)
                 blocking: false
