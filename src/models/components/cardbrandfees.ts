@@ -57,6 +57,10 @@ export type CardBrandFees = {
    */
   refunds?: BillingCountAndAmount | undefined;
   /**
+   * Details of card cancellations.
+   */
+  cardCancellations?: BillingCountAndAmount | undefined;
+  /**
    * Total fees for this card brand.
    */
   total: BillingCountAndAmount;
@@ -79,6 +83,7 @@ export const CardBrandFees$inboundSchema: z.ZodType<
     .optional(),
   declines: BillingCountAndAmount$inboundSchema.optional(),
   refunds: BillingCountAndAmount$inboundSchema.optional(),
+  cardCancellations: BillingCountAndAmount$inboundSchema.optional(),
   total: BillingCountAndAmount$inboundSchema,
 });
 /** @internal */
@@ -94,6 +99,7 @@ export type CardBrandFees$Outbound = {
   completedInternationalInPerson?: BillingCountAndAmount$Outbound | undefined;
   declines?: BillingCountAndAmount$Outbound | undefined;
   refunds?: BillingCountAndAmount$Outbound | undefined;
+  cardCancellations?: BillingCountAndAmount$Outbound | undefined;
   total: BillingCountAndAmount$Outbound;
 };
 
@@ -114,6 +120,7 @@ export const CardBrandFees$outboundSchema: z.ZodType<
     .optional(),
   declines: BillingCountAndAmount$outboundSchema.optional(),
   refunds: BillingCountAndAmount$outboundSchema.optional(),
+  cardCancellations: BillingCountAndAmount$outboundSchema.optional(),
   total: BillingCountAndAmount$outboundSchema,
 });
 
