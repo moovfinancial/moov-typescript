@@ -82,8 +82,15 @@ let value: CardBrandFees = {
       valueDecimal: "12.987654321",
     },
   },
-  total: {
+  cardCancellations: {
     count: 172473,
+    amount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
+  total: {
+    count: 429311,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
@@ -105,4 +112,5 @@ let value: CardBrandFees = {
 | `completedInternationalInPerson`                                                                     | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md)                 | :heavy_minus_sign:                                                                                   | Details of completed international in-person transactions.                                           |
 | `declines`                                                                                           | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md)                 | :heavy_minus_sign:                                                                                   | Details of declined transactions.                                                                    |
 | `refunds`                                                                                            | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md)                 | :heavy_minus_sign:                                                                                   | Details of refunded transactions.                                                                    |
+| `cardCancellations`                                                                                  | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md)                 | :heavy_minus_sign:                                                                                   | Details of card cancellations.                                                                       |
 | `total`                                                                                              | [components.BillingCountAndAmount](../../models/components/billingcountandamount.md)                 | :heavy_check_mark:                                                                                   | Total fees for this card brand.                                                                      |
