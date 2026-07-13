@@ -6,7 +6,7 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * The file's purpose.
+ * The purpose of the file being uploaded.
  */
 export const FilePurpose = {
   BusinessVerification: "business_verification",
@@ -17,7 +17,7 @@ export const FilePurpose = {
   IdentityVerification: "identity_verification",
 } as const;
 /**
- * The file's purpose.
+ * The purpose of the file being uploaded.
  */
 export type FilePurpose = ClosedEnum<typeof FilePurpose>;
 
