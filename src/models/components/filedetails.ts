@@ -26,7 +26,7 @@ export type FileDetails = {
   fileName: string;
   accountID: string;
   /**
-   * The file's purpose.
+   * The purpose of the file being uploaded.
    */
   filePurpose: FilePurpose;
   /**
