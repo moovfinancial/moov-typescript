@@ -85,8 +85,15 @@ let value: CardAcquiringFees = {
         valueDecimal: "12.987654321",
       },
     },
-    total: {
+    cardCancellations: {
       count: 172473,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+    total: {
+      count: 429311,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -169,8 +176,15 @@ let value: CardAcquiringFees = {
         valueDecimal: "12.987654321",
       },
     },
-    total: {
+    cardCancellations: {
       count: 172473,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+    total: {
+      count: 429311,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -253,8 +267,15 @@ let value: CardAcquiringFees = {
         valueDecimal: "12.987654321",
       },
     },
-    total: {
+    cardCancellations: {
       count: 172473,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+    total: {
+      count: 429311,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -337,8 +358,15 @@ let value: CardAcquiringFees = {
         valueDecimal: "12.987654321",
       },
     },
-    total: {
+    cardCancellations: {
       count: 172473,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+    total: {
+      count: 429311,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
