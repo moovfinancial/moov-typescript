@@ -10,6 +10,7 @@ import { transfersGenerateOptions } from "../funcs/transfersGenerateOptions.js";
 import { transfersGet } from "../funcs/transfersGet.js";
 import { transfersGetCancellation } from "../funcs/transfersGetCancellation.js";
 import { transfersGetRefund } from "../funcs/transfersGetRefund.js";
+import { transfersGetRiskOutcomes } from "../funcs/transfersGetRiskOutcomes.js";
 import { transfersInitiateRefund } from "../funcs/transfersInitiateRefund.js";
 import { transfersList } from "../funcs/transfersList.js";
 import { transfersListCancellations } from "../funcs/transfersListCancellations.js";
@@ -263,6 +264,25 @@ export class Transfers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreateReversalResponse> {
     return unwrapAsync(transfersCreateReversal(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Retrieve the risk rules that contributed to a transfer's risk decision.
+   *
+   * This endpoint has limited availability and must be enabled for your account by Moov.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+   */
+  async getRiskOutcomes(
+    request: operations.GetTransferRiskOutcomesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetTransferRiskOutcomesResponse> {
+    return unwrapAsync(transfersGetRiskOutcomes(
       this,
       request,
       options,

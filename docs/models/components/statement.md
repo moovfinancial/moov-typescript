@@ -251,8 +251,15 @@ let value: Statement = {
           valueDecimal: "12.987654321",
         },
       },
-      total: {
+      cardCancellations: {
         count: 172473,
+        amount: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
+      total: {
+        count: 429311,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -335,8 +342,15 @@ let value: Statement = {
           valueDecimal: "12.987654321",
         },
       },
-      total: {
+      cardCancellations: {
         count: 172473,
+        amount: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
+      total: {
+        count: 429311,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -419,8 +433,15 @@ let value: Statement = {
           valueDecimal: "12.987654321",
         },
       },
-      total: {
+      cardCancellations: {
         count: 172473,
+        amount: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
+      total: {
+        count: 429311,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -503,8 +524,15 @@ let value: Statement = {
           valueDecimal: "12.987654321",
         },
       },
-      total: {
+      cardCancellations: {
         count: 172473,
+        amount: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
+      total: {
+        count: 429311,
         amount: {
           currency: "USD",
           valueDecimal: "12.987654321",
@@ -514,56 +542,56 @@ let value: Statement = {
   },
   achFees: {
     standardCredit: {
-      count: 429311,
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-    },
-    sameDayCredit: {
       count: 641426,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    debits: {
+    sameDayCredit: {
       count: 243742,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    return: {
+    debits: {
       count: 174053,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    unauthorizedReturn: {
+    return: {
       count: 532273,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    noticeOfChange: {
+    unauthorizedReturn: {
       count: 360465,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    bankAccountVerification: {
+    noticeOfChange: {
       count: 975255,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
+    bankAccountVerification: {
+      count: 163873,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
     total: {
-      count: 172473,
+      count: 429311,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -572,63 +600,63 @@ let value: Statement = {
   },
   instantPaymentFees: {
     rtpCreditTransaction: {
-      count: 163873,
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-    },
-    rtpDecline: {
       count: 519146,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pushToCardTransaction: {
+    rtpDecline: {
       count: 200161,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pushToCardDecline: {
+    pushToCardTransaction: {
       count: 269601,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pullFromCardTransaction: {
+    pushToCardDecline: {
       count: 899791,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pullFromCardDecline: {
+    pullFromCardTransaction: {
       count: 808278,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    pullFromCardRefund: {
+    pullFromCardDecline: {
       count: 487513,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    instantVerification: {
+    pullFromCardRefund: {
       count: 553308,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
+    instantVerification: {
+      count: 14483,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
     total: {
-      count: 172473,
+      count: 429311,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -667,35 +695,35 @@ let value: Statement = {
   },
   otherCardFees: {
     disputes: {
-      count: 14483,
-      amount: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-    },
-    cardAccountUpdater: {
       count: 788385,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    cardVerification: {
+    cardAccountUpdater: {
       count: 558564,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
-    nameVerification: {
+    cardVerification: {
       count: 423830,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
     },
+    nameVerification: {
+      count: 320188,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
     total: {
-      count: 172473,
+      count: 429311,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",
@@ -716,8 +744,8 @@ let value: Statement = {
       valueDecimal: "12.987654321",
     },
   },
-  createdOn: new Date("2024-12-16T22:14:29.585Z"),
-  updatedOn: new Date("2026-08-11T11:14:26.652Z"),
+  createdOn: new Date("2026-08-11T11:14:26.652Z"),
+  updatedOn: new Date("2025-06-04T06:47:17.396Z"),
 };
 ```
 

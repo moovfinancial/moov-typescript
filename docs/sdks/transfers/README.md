@@ -84,6 +84,12 @@ to learn more.
 
 To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
 to specify the `/accounts/{accountID}/transfers.write` scope.
+* [getRiskOutcomes](#getriskoutcomes) - Retrieve the risk rules that contributed to a transfer's risk decision.
+
+This endpoint has limited availability and must be enabled for your account by Moov.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ## generateOptions
 
@@ -1671,3 +1677,87 @@ run();
 | errors.GenericError            | 400, 409                       | application/json               |
 | errors.ReversalValidationError | 422                            | application/json               |
 | errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+
+## getRiskOutcomes
+
+Retrieve the risk rules that contributed to a transfer's risk decision.
+
+This endpoint has limited availability and must be enabled for your account by Moov.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getTransferRiskOutcomes" method="get" path="/transfers/{transferID}/risk-outcomes" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.transfers.getRiskOutcomes({
+    transferID: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersGetRiskOutcomes } from "@moovio/sdk/funcs/transfersGetRiskOutcomes.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await transfersGetRiskOutcomes(moov, {
+    transferID: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersGetRiskOutcomes failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetTransferRiskOutcomesRequest](../../models/operations/gettransferriskoutcomesrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetTransferRiskOutcomesResponse](../../models/operations/gettransferriskoutcomesresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.APIError | 4XX, 5XX        | \*/\*           |
