@@ -2,6 +2,7 @@
   "name": "@moovio/sdk",
   "version": "0.0.0-dev.27",
   "author": "Moov",
+  "license": "Apache-2.0",
   "bin": {
     "mcp": "bin/mcp-server.js"
   },
