@@ -6,13 +6,13 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * Specifies the time frame for the velocity limit. Currently supports only per-transaction limits.
+ * Specifies the time frame for a velocity limit. `per-transaction` applies to each individual authorization and never resets. Time-based intervals (where supported) reset at midnight ET.
  */
 export const IssuingIntervalLimit = {
   PerTransaction: "per-transaction",
 } as const;
 /**
- * Specifies the time frame for the velocity limit. Currently supports only per-transaction limits.
+ * Specifies the time frame for a velocity limit. `per-transaction` applies to each individual authorization and never resets. Time-based intervals (where supported) reset at midnight ET.
  */
 export type IssuingIntervalLimit = ClosedEnum<typeof IssuingIntervalLimit>;
 
