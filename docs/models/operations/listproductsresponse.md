@@ -45,6 +45,12 @@ let value: ListProductsResponse = {
           publicID: "q7lKWleAy9fUNhEGezQ1g",
         },
       ],
+      category: {
+        categoryID: "<id>",
+        name: "Beverages",
+        fullName: "Food, Beverages & Tobacco > Beverages",
+        level: 2,
+      },
       createdOn: new Date("2024-09-17T22:55:29.103Z"),
       updatedOn: new Date("2025-06-29T21:11:27.020Z"),
     },

@@ -13,6 +13,11 @@ import {
   DisbursementPaymentMethodType$outboundSchema,
 } from "./disbursementpaymentmethodtype.js";
 import {
+  FeePaidBy,
+  FeePaidBy$inboundSchema,
+  FeePaidBy$outboundSchema,
+} from "./feepaidby.js";
+import {
   PayoutRecipient,
   PayoutRecipient$inboundSchema,
   PayoutRecipient$Outbound,
@@ -52,6 +57,14 @@ export type PaymentLinkPayoutDetails = {
    * (`push-to-apple-pay`, `push-to-google-pay`) are always delivered instantly regardless of these options.
    */
   pushOptions?: PushOptions | undefined;
+  /**
+   * Indicates which party bears the fee, keyed by disbursement payment method (`DisbursementPaymentMethodType`).
+   *
+   * @remarks
+   *
+   * Sparse — include only the methods you want to attribute. Any method left unset defaults to `source`.
+   */
+  feePaidBy?: { [k: string]: FeePaidBy } | undefined;
 };
 
 /** @internal */
@@ -64,6 +77,7 @@ export const PaymentLinkPayoutDetails$inboundSchema: z.ZodType<
   recipient: PayoutRecipient$inboundSchema,
   metadata: types.optional(z.record(types.string())),
   pushOptions: types.optional(PushOptions$inboundSchema),
+  feePaidBy: types.optional(z.record(FeePaidBy$inboundSchema)),
 });
 /** @internal */
 export type PaymentLinkPayoutDetails$Outbound = {
@@ -71,6 +85,7 @@ export type PaymentLinkPayoutDetails$Outbound = {
   recipient: PayoutRecipient$Outbound;
   metadata?: { [k: string]: string } | undefined;
   pushOptions?: PushOptions$Outbound | undefined;
+  feePaidBy?: { [k: string]: string } | undefined;
 };
 
 /** @internal */
@@ -83,6 +98,7 @@ export const PaymentLinkPayoutDetails$outboundSchema: z.ZodType<
   recipient: PayoutRecipient$outboundSchema,
   metadata: z.record(z.string()).optional(),
   pushOptions: PushOptions$outboundSchema.optional(),
+  feePaidBy: z.record(FeePaidBy$outboundSchema).optional(),
 });
 
 export function paymentLinkPayoutDetailsToJSON(

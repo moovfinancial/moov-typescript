@@ -43,6 +43,12 @@ import {
   FacilitatorFee$Outbound,
   FacilitatorFee$outboundSchema,
 } from "./facilitatorfee.js";
+import {
+  TransferFeePaidBy,
+  TransferFeePaidBy$inboundSchema,
+  TransferFeePaidBy$Outbound,
+  TransferFeePaidBy$outboundSchema,
+} from "./transferfeepaidby.js";
 
 export type CreateTransfer = {
   /**
@@ -78,6 +84,10 @@ export type CreateTransfer = {
    */
   lineItems?: CreateTransferLineItems | undefined;
   amountDetails?: CreateTransferAmountDetails | undefined;
+  /**
+   * Indicates which party bears fees for the transfer, keyed by fee type.
+   */
+  feePaidBy?: TransferFeePaidBy | undefined;
 };
 
 /** @internal */
@@ -95,6 +105,7 @@ export const CreateTransfer$inboundSchema: z.ZodType<
   foreignID: types.optional(types.string()),
   lineItems: types.optional(CreateTransferLineItems$inboundSchema),
   amountDetails: types.optional(CreateTransferAmountDetails$inboundSchema),
+  feePaidBy: types.optional(TransferFeePaidBy$inboundSchema),
 });
 /** @internal */
 export type CreateTransfer$Outbound = {
@@ -107,6 +118,7 @@ export type CreateTransfer$Outbound = {
   foreignID?: string | undefined;
   lineItems?: CreateTransferLineItems$Outbound | undefined;
   amountDetails?: CreateTransferAmountDetails$Outbound | undefined;
+  feePaidBy?: TransferFeePaidBy$Outbound | undefined;
 };
 
 /** @internal */
@@ -124,6 +136,7 @@ export const CreateTransfer$outboundSchema: z.ZodType<
   foreignID: z.string().optional(),
   lineItems: CreateTransferLineItems$outboundSchema.optional(),
   amountDetails: CreateTransferAmountDetails$outboundSchema.optional(),
+  feePaidBy: TransferFeePaidBy$outboundSchema.optional(),
 });
 
 export function createTransferToJSON(createTransfer: CreateTransfer): string {
