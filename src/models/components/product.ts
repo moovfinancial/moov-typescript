@@ -14,6 +14,12 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 import {
+  ProductCategory,
+  ProductCategory$inboundSchema,
+  ProductCategory$Outbound,
+  ProductCategory$outboundSchema,
+} from "./productcategory.js";
+import {
   ProductImageMetadata,
   ProductImageMetadata$inboundSchema,
   ProductImageMetadata$Outbound,
@@ -58,6 +64,10 @@ export type Product = {
    */
   images?: Array<ProductImageMetadata> | undefined;
   /**
+   * The product taxonomy category associated with the product, if any.
+   */
+  category?: ProductCategory | undefined;
+  /**
    * The date and time when the product was added.
    */
   createdOn: Date;
@@ -80,6 +90,7 @@ export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
     basePrice: AmountDecimal$inboundSchema,
     optionGroups: types.optional(z.array(ProductOptionGroup$inboundSchema)),
     images: types.optional(z.array(ProductImageMetadata$inboundSchema)),
+    category: types.optional(ProductCategory$inboundSchema),
     createdOn: types.date(),
     updatedOn: types.date(),
     disabledOn: types.optional(types.date()),
@@ -92,6 +103,7 @@ export type Product$Outbound = {
   basePrice: AmountDecimal$Outbound;
   optionGroups?: Array<ProductOptionGroup$Outbound> | undefined;
   images?: Array<ProductImageMetadata$Outbound> | undefined;
+  category?: ProductCategory$Outbound | undefined;
   createdOn: string;
   updatedOn: string;
   disabledOn?: string | undefined;
@@ -109,6 +121,7 @@ export const Product$outboundSchema: z.ZodType<
   basePrice: AmountDecimal$outboundSchema,
   optionGroups: z.array(ProductOptionGroup$outboundSchema).optional(),
   images: z.array(ProductImageMetadata$outboundSchema).optional(),
+  category: ProductCategory$outboundSchema.optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
   disabledOn: z.date().transform(v => v.toISOString()).optional(),

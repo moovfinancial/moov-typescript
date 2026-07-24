@@ -6,7 +6,7 @@
 import { Capability } from "@moovio/sdk/models/components";
 
 let value: Capability = {
-  capability: "transfers",
+  capability: "send-funds",
   accountID: "<id>",
   status: "enabled",
   createdOn: new Date("2026-07-31T05:36:44.653Z"),

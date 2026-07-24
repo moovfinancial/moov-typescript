@@ -134,6 +134,7 @@ import { tool$productsCreate } from "./tools/productsCreate.js";
 import { tool$productsDisable } from "./tools/productsDisable.js";
 import { tool$productsGet } from "./tools/productsGet.js";
 import { tool$productsList } from "./tools/productsList.js";
+import { tool$productsListCategories } from "./tools/productsListCategories.js";
 import { tool$productsUpdate } from "./tools/productsUpdate.js";
 import { tool$receiptsCreate } from "./tools/receiptsCreate.js";
 import { tool$receiptsList } from "./tools/receiptsList.js";
@@ -215,7 +216,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "26.7.0-dev.7",
+    version: "26.7.0",
   });
 
   const client = new MoovCore({
@@ -338,6 +339,7 @@ export function createMCPServer(deps: {
   tool(tool$productsGet);
   tool(tool$productsUpdate);
   tool(tool$productsDisable);
+  tool(tool$productsListCategories);
   tool(tool$representativesCreate);
   tool(tool$representativesList);
   tool(tool$representativesDelete);

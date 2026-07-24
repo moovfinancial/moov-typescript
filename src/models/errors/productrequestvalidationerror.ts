@@ -17,6 +17,7 @@ export type ProductRequestValidationErrorData = {
   optionGroups?:
     | { [k: string]: components.ProductOptionGroupValidationError }
     | undefined;
+  categoryID?: string | undefined;
 };
 
 export class ProductRequestValidationError extends MoovError {
@@ -29,6 +30,7 @@ export class ProductRequestValidationError extends MoovError {
   optionGroups?:
     | { [k: string]: components.ProductOptionGroupValidationError }
     | undefined;
+  categoryID?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: ProductRequestValidationErrorData;
@@ -47,6 +49,7 @@ export class ProductRequestValidationError extends MoovError {
     if (err.basePrice != null) this.basePrice = err.basePrice;
     if (err.images != null) this.images = err.images;
     if (err.optionGroups != null) this.optionGroups = err.optionGroups;
+    if (err.categoryID != null) this.categoryID = err.categoryID;
 
     this.name = "ProductRequestValidationError";
   }
@@ -69,6 +72,7 @@ export const ProductRequestValidationError$inboundSchema: z.ZodType<
   optionGroups: types.optional(
     z.record(components.ProductOptionGroupValidationError$inboundSchema),
   ),
+  categoryID: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -92,6 +96,7 @@ export type ProductRequestValidationError$Outbound = {
   optionGroups?: {
     [k: string]: components.ProductOptionGroupValidationError$Outbound;
   } | undefined;
+  categoryID?: string | undefined;
 };
 
 /** @internal */
@@ -112,4 +117,5 @@ export const ProductRequestValidationError$outboundSchema: z.ZodType<
     optionGroups: z.record(
       components.ProductOptionGroupValidationError$outboundSchema,
     ).optional(),
+    categoryID: z.string().optional(),
   }));
