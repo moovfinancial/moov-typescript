@@ -16,6 +16,14 @@ export type ListProductsRequest = {
    * Allows filtering products by title. This supports partial matches and is case-insensitive
    */
   title?: string | undefined;
+  /**
+   * Filter products by category. Accepts a category ID at any level of the taxonomy;
+   *
+   * @remarks
+   * a product matches when the given category is anywhere in its category's breadcrumb
+   * (i.e. filtering by a top-level category returns products in any of its descendants).
+   */
+  category?: string | undefined;
   skip?: number | undefined;
   count?: number | undefined;
 };
@@ -33,6 +41,7 @@ export const ListProductsRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: types.string(),
   title: types.optional(types.string()),
+  category: types.optional(types.string()),
   skip: types.optional(types.number()),
   count: types.optional(types.number()),
 });
@@ -40,6 +49,7 @@ export const ListProductsRequest$inboundSchema: z.ZodType<
 export type ListProductsRequest$Outbound = {
   accountID: string;
   title?: string | undefined;
+  category?: string | undefined;
   skip?: number | undefined;
   count?: number | undefined;
 };
@@ -52,6 +62,7 @@ export const ListProductsRequest$outboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   title: z.string().optional(),
+  category: z.string().optional(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
 });

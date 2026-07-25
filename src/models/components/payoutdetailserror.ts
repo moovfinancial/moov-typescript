@@ -25,6 +25,7 @@ export type PayoutDetailsError = {
   recipient?: PayoutRecipientError | undefined;
   metadata?: string | undefined;
   pushOptions?: PushOptionsError | undefined;
+  feePaidBy?: string | undefined;
 };
 
 /** @internal */
@@ -37,6 +38,7 @@ export const PayoutDetailsError$inboundSchema: z.ZodType<
   recipient: types.optional(PayoutRecipientError$inboundSchema),
   metadata: types.optional(types.string()),
   pushOptions: types.optional(PushOptionsError$inboundSchema),
+  feePaidBy: types.optional(types.string()),
 });
 /** @internal */
 export type PayoutDetailsError$Outbound = {
@@ -44,6 +46,7 @@ export type PayoutDetailsError$Outbound = {
   recipient?: PayoutRecipientError$Outbound | undefined;
   metadata?: string | undefined;
   pushOptions?: PushOptionsError$Outbound | undefined;
+  feePaidBy?: string | undefined;
 };
 
 /** @internal */
@@ -56,6 +59,7 @@ export const PayoutDetailsError$outboundSchema: z.ZodType<
   recipient: PayoutRecipientError$outboundSchema.optional(),
   metadata: z.string().optional(),
   pushOptions: PushOptionsError$outboundSchema.optional(),
+  feePaidBy: z.string().optional(),
 });
 
 export function payoutDetailsErrorToJSON(

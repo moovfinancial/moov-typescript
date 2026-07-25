@@ -92,6 +92,7 @@ async function $do(
   const path = pathToFunc("/accounts/{accountID}/products")(pathParams);
 
   const query = encodeFormQuery({
+    "category": payload.category,
     "count": payload.count,
     "skip": payload.skip,
     "title": payload.title,

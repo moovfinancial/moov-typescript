@@ -17,9 +17,13 @@ export type IssuingVelocityLimit = {
   /**
    * The maximum amount in cents that can be spent in a given interval.
    */
-  amount: number;
+  amount?: number | undefined;
   /**
-   * Specifies the time frame for the velocity limit. Currently supports only per-transaction limits.
+   * The maximum number of transactions allowed in the given interval. At least one of `amount` or `count` must be set.
+   */
+  count?: number | undefined;
+  /**
+   * Specifies the time frame for a velocity limit. `per-transaction` applies to each individual authorization and never resets. Time-based intervals (where supported) reset at midnight ET.
    */
   interval: IssuingIntervalLimit;
 };
@@ -30,12 +34,14 @@ export const IssuingVelocityLimit$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  amount: types.number(),
+  amount: types.optional(types.number()),
+  count: types.optional(types.number()),
   interval: IssuingIntervalLimit$inboundSchema,
 });
 /** @internal */
 export type IssuingVelocityLimit$Outbound = {
-  amount: number;
+  amount?: number | undefined;
+  count?: number | undefined;
   interval: string;
 };
 
@@ -45,7 +51,8 @@ export const IssuingVelocityLimit$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IssuingVelocityLimit
 > = z.object({
-  amount: z.number().int(),
+  amount: z.number().int().optional(),
+  count: z.number().int().optional(),
   interval: IssuingIntervalLimit$outboundSchema,
 });
 

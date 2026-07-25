@@ -14,6 +14,11 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 import {
+  FeePaidBy,
+  FeePaidBy$inboundSchema,
+  FeePaidBy$outboundSchema,
+} from "./feepaidby.js";
+import {
   GeneratedBy,
   GeneratedBy$inboundSchema,
   GeneratedBy$Outbound,
@@ -60,6 +65,10 @@ export type IncurredFee = {
    * Unique identifier for this residual payment calculation.
    */
   residualID?: string | undefined;
+  /**
+   * Indicates which party to the money movement bore this fee.
+   */
+  feePaidBy?: FeePaidBy | undefined;
 };
 
 /** @internal */
@@ -77,6 +86,7 @@ export const IncurredFee$inboundSchema: z.ZodType<
   generatedBy: types.optional(GeneratedBy$inboundSchema),
   feeGroup: types.optional(types.string()),
   residualID: types.optional(types.string()),
+  feePaidBy: types.optional(FeePaidBy$inboundSchema),
 });
 /** @internal */
 export type IncurredFee$Outbound = {
@@ -89,6 +99,7 @@ export type IncurredFee$Outbound = {
   generatedBy?: GeneratedBy$Outbound | undefined;
   feeGroup?: string | undefined;
   residualID?: string | undefined;
+  feePaidBy?: string | undefined;
 };
 
 /** @internal */
@@ -106,6 +117,7 @@ export const IncurredFee$outboundSchema: z.ZodType<
   generatedBy: GeneratedBy$outboundSchema.optional(),
   feeGroup: z.string().optional(),
   residualID: z.string().optional(),
+  feePaidBy: FeePaidBy$outboundSchema.optional(),
 });
 
 export function incurredFeeToJSON(incurredFee: IncurredFee): string {

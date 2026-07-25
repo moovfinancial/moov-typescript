@@ -3,24 +3,32 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
- * Specifies the time frame for the velocity limit. Currently supports only per-transaction limits.
+ * Specifies the time frame for a velocity limit. `per-transaction` applies to each individual authorization and never resets. Time-based intervals (where supported) reset at midnight ET.
  */
 export const IssuingIntervalLimit = {
   PerTransaction: "per-transaction",
+  Daily: "daily",
+  Weekly: "weekly",
+  Monthly: "monthly",
 } as const;
 /**
- * Specifies the time frame for the velocity limit. Currently supports only per-transaction limits.
+ * Specifies the time frame for a velocity limit. `per-transaction` applies to each individual authorization and never resets. Time-based intervals (where supported) reset at midnight ET.
  */
-export type IssuingIntervalLimit = ClosedEnum<typeof IssuingIntervalLimit>;
+export type IssuingIntervalLimit = OpenEnum<typeof IssuingIntervalLimit>;
 
 /** @internal */
-export const IssuingIntervalLimit$inboundSchema: z.ZodNativeEnum<
-  typeof IssuingIntervalLimit
-> = z.nativeEnum(IssuingIntervalLimit);
+export const IssuingIntervalLimit$inboundSchema: z.ZodType<
+  IssuingIntervalLimit,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(IssuingIntervalLimit);
 /** @internal */
-export const IssuingIntervalLimit$outboundSchema: z.ZodNativeEnum<
-  typeof IssuingIntervalLimit
-> = IssuingIntervalLimit$inboundSchema;
+export const IssuingIntervalLimit$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  IssuingIntervalLimit
+> = openEnums.outboundSchema(IssuingIntervalLimit);

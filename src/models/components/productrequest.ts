@@ -53,6 +53,10 @@ export type ProductRequest = {
    * Optional configuration options for a product, such as size or color.
    */
   optionGroups?: Array<CreateProductOptionGroup> | undefined;
+  /**
+   * The ID of a product taxonomy category to associate with the product.
+   */
+  categoryID?: string | undefined;
 };
 
 /** @internal */
@@ -66,6 +70,7 @@ export const ProductRequest$inboundSchema: z.ZodType<
   basePrice: AmountDecimal$inboundSchema,
   images: types.optional(z.array(AssignProductImage$inboundSchema)),
   optionGroups: types.optional(z.array(CreateProductOptionGroup$inboundSchema)),
+  categoryID: types.optional(types.string()),
 });
 /** @internal */
 export type ProductRequest$Outbound = {
@@ -74,6 +79,7 @@ export type ProductRequest$Outbound = {
   basePrice: AmountDecimal$Outbound;
   images?: Array<AssignProductImage$Outbound> | undefined;
   optionGroups?: Array<CreateProductOptionGroup$Outbound> | undefined;
+  categoryID?: string | undefined;
 };
 
 /** @internal */
@@ -87,6 +93,7 @@ export const ProductRequest$outboundSchema: z.ZodType<
   basePrice: AmountDecimal$outboundSchema,
   images: z.array(AssignProductImage$outboundSchema).optional(),
   optionGroups: z.array(CreateProductOptionGroup$outboundSchema).optional(),
+  categoryID: z.string().optional(),
 });
 
 export function productRequestToJSON(productRequest: ProductRequest): string {

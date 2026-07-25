@@ -17,6 +17,14 @@ let value: UpdateIssuedCard = {
     postalCode: "80301",
     country: "US",
   },
+  controls: {
+    velocityLimits: [
+      {
+        amount: 10000,
+        interval: "per-transaction",
+      },
+    ],
+  },
 };
 ```
 
@@ -28,3 +36,4 @@ let value: UpdateIssuedCard = {
 | `nickname`                                                                                                                                                                      | *string*                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                              | N/A                                                                                                                                                                             |                                                                                                                                                                                 |
 | `metadata`                                                                                                                                                                      | Record<string, *string*>                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                              | N/A                                                                                                                                                                             | {<br/>"optional": "metadata"<br/>}                                                                                                                                              |
 | `billingAddress`                                                                                                                                                                | [components.BillingAddress](../../models/components/billingaddress.md)                                                                                                          | :heavy_minus_sign:                                                                                                                                                              | N/A                                                                                                                                                                             |                                                                                                                                                                                 |
+| `controls`                                                                                                                                                                      | [components.UpdateIssuingControls](../../models/components/updateissuingcontrols.md)                                                                                            | :heavy_minus_sign:                                                                                                                                                              | Mutable spend controls for the card.                                                                                                                                            |                                                                                                                                                                                 |

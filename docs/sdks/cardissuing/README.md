@@ -367,6 +367,14 @@ async function run() {
         postalCode: "80301",
         country: "US",
       },
+      controls: {
+        velocityLimits: [
+          {
+            amount: 10000,
+            interval: "daily",
+          },
+        ],
+      },
     },
   });
 
@@ -408,6 +416,14 @@ async function run() {
         stateOrProvince: "CO",
         postalCode: "80301",
         country: "US",
+      },
+      controls: {
+        velocityLimits: [
+          {
+            amount: 10000,
+            interval: "daily",
+          },
+        ],
       },
     },
   });

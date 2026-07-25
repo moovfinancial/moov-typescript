@@ -6,6 +6,7 @@ import { productsCreate } from "../funcs/productsCreate.js";
 import { productsDisable } from "../funcs/productsDisable.js";
 import { productsGet } from "../funcs/productsGet.js";
 import { productsList } from "../funcs/productsList.js";
+import { productsListCategories } from "../funcs/productsListCategories.js";
 import { productsUpdate } from "../funcs/productsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
@@ -80,6 +81,18 @@ export class Products extends ClientSDK {
     return unwrapAsync(productsDisable(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Returns the full, read-only list of product categories from the product taxonomy.
+   */
+  async listCategories(
+    options?: RequestOptions,
+  ): Promise<operations.ListProductCategoriesResponse> {
+    return unwrapAsync(productsListCategories(
+      this,
       options,
     ));
   }

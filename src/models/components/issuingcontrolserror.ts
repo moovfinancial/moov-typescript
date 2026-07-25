@@ -8,14 +8,36 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AllowedScheduleError,
+  AllowedScheduleError$inboundSchema,
+  AllowedScheduleError$Outbound,
+  AllowedScheduleError$outboundSchema,
+} from "./allowedscheduleerror.js";
+import {
   IssuingVelocityLimitError,
   IssuingVelocityLimitError$inboundSchema,
   IssuingVelocityLimitError$Outbound,
   IssuingVelocityLimitError$outboundSchema,
 } from "./issuingvelocitylimiterror.js";
+import {
+  MerchantCategoryRestrictionsError,
+  MerchantCategoryRestrictionsError$inboundSchema,
+  MerchantCategoryRestrictionsError$Outbound,
+  MerchantCategoryRestrictionsError$outboundSchema,
+} from "./merchantcategoryrestrictionserror.js";
+import {
+  MerchantRestrictionsError,
+  MerchantRestrictionsError$inboundSchema,
+  MerchantRestrictionsError$Outbound,
+  MerchantRestrictionsError$outboundSchema,
+} from "./merchantrestrictionserror.js";
 
 export type IssuingControlsError = {
   velocityLimits?: { [k: string]: IssuingVelocityLimitError } | undefined;
+  merchantCategoryRestrictions?: MerchantCategoryRestrictionsError | undefined;
+  merchantRestrictions?: MerchantRestrictionsError | undefined;
+  allowedSchedule?: AllowedScheduleError | undefined;
+  expiresOn?: string | undefined;
 };
 
 /** @internal */
@@ -27,12 +49,24 @@ export const IssuingControlsError$inboundSchema: z.ZodType<
   velocityLimits: types.optional(
     z.record(IssuingVelocityLimitError$inboundSchema),
   ),
+  merchantCategoryRestrictions: types.optional(
+    MerchantCategoryRestrictionsError$inboundSchema,
+  ),
+  merchantRestrictions: types.optional(MerchantRestrictionsError$inboundSchema),
+  allowedSchedule: types.optional(AllowedScheduleError$inboundSchema),
+  expiresOn: types.optional(types.string()),
 });
 /** @internal */
 export type IssuingControlsError$Outbound = {
   velocityLimits?:
     | { [k: string]: IssuingVelocityLimitError$Outbound }
     | undefined;
+  merchantCategoryRestrictions?:
+    | MerchantCategoryRestrictionsError$Outbound
+    | undefined;
+  merchantRestrictions?: MerchantRestrictionsError$Outbound | undefined;
+  allowedSchedule?: AllowedScheduleError$Outbound | undefined;
+  expiresOn?: string | undefined;
 };
 
 /** @internal */
@@ -42,6 +76,11 @@ export const IssuingControlsError$outboundSchema: z.ZodType<
   IssuingControlsError
 > = z.object({
   velocityLimits: z.record(IssuingVelocityLimitError$outboundSchema).optional(),
+  merchantCategoryRestrictions: MerchantCategoryRestrictionsError$outboundSchema
+    .optional(),
+  merchantRestrictions: MerchantRestrictionsError$outboundSchema.optional(),
+  allowedSchedule: AllowedScheduleError$outboundSchema.optional(),
+  expiresOn: z.string().optional(),
 });
 
 export function issuingControlsErrorToJSON(

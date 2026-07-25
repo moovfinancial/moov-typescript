@@ -27,6 +27,7 @@ export const CapabilityID = {
   SendFundsAch: "send-funds.ach",
   SendFundsRtp: "send-funds.rtp",
   SendFundsInstantBank: "send-funds.instant-bank",
+  SendFundsWire: "send-funds.wire",
   CollectFunds: "collect-funds",
   CollectFundsCardPayments: "collect-funds.card-payments",
   MoneyTransferPullFromCard: "money-transfer.pull-from-card",

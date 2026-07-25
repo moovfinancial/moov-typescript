@@ -12,6 +12,12 @@ import {
   UpdateIssuedCardState$inboundSchema,
   UpdateIssuedCardState$outboundSchema,
 } from "./updateissuedcardstate.js";
+import {
+  UpdateIssuingControls,
+  UpdateIssuingControls$inboundSchema,
+  UpdateIssuingControls$Outbound,
+  UpdateIssuingControls$outboundSchema,
+} from "./updateissuingcontrols.js";
 
 export type BillingAddress = {
   addressLine1?: string | undefined;
@@ -33,6 +39,10 @@ export type UpdateIssuedCard = {
   nickname?: string | null | undefined;
   metadata?: { [k: string]: string } | null | undefined;
   billingAddress?: BillingAddress | null | undefined;
+  /**
+   * Mutable spend controls for the card.
+   */
+  controls?: UpdateIssuingControls | undefined;
 };
 
 /** @internal */
@@ -96,6 +106,7 @@ export const UpdateIssuedCard$inboundSchema: z.ZodType<
   metadata: z.nullable(z.record(types.string())).optional(),
   billingAddress: z.nullable(z.lazy(() => BillingAddress$inboundSchema))
     .optional(),
+  controls: types.optional(UpdateIssuingControls$inboundSchema),
 });
 /** @internal */
 export type UpdateIssuedCard$Outbound = {
@@ -103,6 +114,7 @@ export type UpdateIssuedCard$Outbound = {
   nickname?: string | null | undefined;
   metadata?: { [k: string]: string } | null | undefined;
   billingAddress?: BillingAddress$Outbound | null | undefined;
+  controls?: UpdateIssuingControls$Outbound | undefined;
 };
 
 /** @internal */
@@ -116,6 +128,7 @@ export const UpdateIssuedCard$outboundSchema: z.ZodType<
   metadata: z.nullable(z.record(z.string())).optional(),
   billingAddress: z.nullable(z.lazy(() => BillingAddress$outboundSchema))
     .optional(),
+  controls: UpdateIssuingControls$outboundSchema.optional(),
 });
 
 export function updateIssuedCardToJSON(
