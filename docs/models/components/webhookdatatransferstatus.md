@@ -11,5 +11,5 @@ let value: WebhookDataTransferStatus = "canceled";
 ## Values
 
 ```typescript
-"created" | "pending" | "completed" | "failed" | "reversed" | "queued" | "canceled" | "source.completed" | "source.corrected" | "source.initiated" | "source.returned" | "source.originated" | "source.confirmed" | "source.settled" | "source.failed" | "source.canceled" | "destination.completed" | "destination.corrected" | "destination.initiated" | "destination.returned" | "destination.originated" | "destination.confirmed" | "destination.failed" | "destination.accepted-without-posting"
+"created" | "pending" | "completed" | "failed" | "reversed" | "queued" | "canceled" | "source.completed" | "source.corrected" | "source.initiated" | "source.returned" | "source.originated" | "source.confirmed" | "source.settled" | "source.failed" | "source.canceled" | "destination.completed" | "destination.corrected" | "destination.initiated" | "destination.returned" | "destination.originated" | "destination.confirmed" | "destination.settled" | "destination.failed" | "destination.canceled" | "destination.accepted-without-posting" | "destination.deferred"
 ```

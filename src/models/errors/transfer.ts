@@ -77,6 +77,10 @@ export type TransferData = {
    * When line items are provided, their total plus tax must equal the transfer amount.
    */
   lineItems?: components.TransferLineItems | undefined;
+  /**
+   * The card authorization and capture IDs associated with a transfer.
+   */
+  capture?: components.TransferCapture | undefined;
 };
 
 /**
@@ -150,6 +154,10 @@ export class Transfer extends MoovError {
    * When line items are provided, their total plus tax must equal the transfer amount.
    */
   lineItems?: components.TransferLineItems | undefined;
+  /**
+   * The card authorization and capture IDs associated with a transfer.
+   */
+  capture?: components.TransferCapture | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: TransferData;
@@ -191,6 +199,7 @@ export class Transfer extends MoovError {
     if (err.salesTaxAmount != null) this.salesTaxAmount = err.salesTaxAmount;
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.lineItems != null) this.lineItems = err.lineItems;
+    if (err.capture != null) this.capture = err.capture;
 
     this.name = "Transfer";
   }
@@ -231,6 +240,7 @@ export const Transfer$inboundSchema: z.ZodType<
   salesTaxAmount: components.Amount$inboundSchema.optional(),
   foreignID: z.string().optional(),
   lineItems: components.TransferLineItems$inboundSchema.optional(),
+  capture: components.TransferCapture$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -273,6 +283,7 @@ export type Transfer$Outbound = {
   salesTaxAmount?: components.Amount$Outbound | undefined;
   foreignID?: string | undefined;
   lineItems?: components.TransferLineItems$Outbound | undefined;
+  capture?: components.TransferCapture$Outbound | undefined;
 };
 
 /** @internal */
@@ -312,4 +323,5 @@ export const Transfer$outboundSchema: z.ZodType<
     salesTaxAmount: components.Amount$outboundSchema.optional(),
     foreignID: z.string().optional(),
     lineItems: components.TransferLineItems$outboundSchema.optional(),
+    capture: components.TransferCapture$outboundSchema.optional(),
   }));

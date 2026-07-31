@@ -14,7 +14,7 @@ let value: CreateTransfer = {
   },
   amount: {
     currency: "USD",
-    value: 32945,
+    value: 1204,
   },
   description: "Transfer from card to wallet",
   metadata: {
