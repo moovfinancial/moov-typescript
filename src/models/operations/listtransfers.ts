@@ -50,6 +50,14 @@ export type ListTransfersRequest = {
    * Optional alias from a foreign/external system which can be used to reference this resource.
    */
   foreignID?: string | undefined;
+  /**
+   * Optional comma-separated IDs to filter for transfers associated with specific card authorizations.
+   */
+  authorizationIDs?: Array<string> | undefined;
+  /**
+   * Optional comma-separated IDs to filter for transfers associated with specific card captures.
+   */
+  captureIDs?: Array<string> | undefined;
   skip?: number | undefined;
   count?: number | undefined;
   accountID: string;
@@ -79,6 +87,8 @@ export const ListTransfersRequest$inboundSchema: z.ZodType<
   refunded: z.boolean().optional(),
   disputed: z.boolean().optional(),
   foreignID: z.string().optional(),
+  authorizationIDs: z.array(z.string()).optional(),
+  captureIDs: z.array(z.string()).optional(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
@@ -95,6 +105,8 @@ export type ListTransfersRequest$Outbound = {
   refunded?: boolean | undefined;
   disputed?: boolean | undefined;
   foreignID?: string | undefined;
+  authorizationIDs?: Array<string> | undefined;
+  captureIDs?: Array<string> | undefined;
   skip?: number | undefined;
   count?: number | undefined;
   accountID: string;
@@ -116,6 +128,8 @@ export const ListTransfersRequest$outboundSchema: z.ZodType<
   refunded: z.boolean().optional(),
   disputed: z.boolean().optional(),
   foreignID: z.string().optional(),
+  authorizationIDs: z.array(z.string()).optional(),
+  captureIDs: z.array(z.string()).optional(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   accountID: z.string(),
