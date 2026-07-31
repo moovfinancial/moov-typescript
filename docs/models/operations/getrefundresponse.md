@@ -23,7 +23,7 @@ let value: GetRefundResponse = {
     status: "failed",
     amount: {
       currency: "USD",
-      value: 1204,
+      valueDecimal: "12.987654321",
     },
     amountDetails: {
       surcharge: {
@@ -31,6 +31,7 @@ let value: GetRefundResponse = {
         valueDecimal: "12.987654321",
       },
     },
+    processingDetails: {},
   },
 };
 ```

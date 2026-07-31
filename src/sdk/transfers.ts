@@ -5,15 +5,18 @@
 import { transfersBatchGetTransfers } from "../funcs/transfersBatchGetTransfers.js";
 import { transfersCreate } from "../funcs/transfersCreate.js";
 import { transfersCreateCancellation } from "../funcs/transfersCreateCancellation.js";
+import { transfersCreateCapture } from "../funcs/transfersCreateCapture.js";
 import { transfersCreateReversal } from "../funcs/transfersCreateReversal.js";
 import { transfersGenerateOptions } from "../funcs/transfersGenerateOptions.js";
 import { transfersGet } from "../funcs/transfersGet.js";
 import { transfersGetCancellation } from "../funcs/transfersGetCancellation.js";
+import { transfersGetCapture } from "../funcs/transfersGetCapture.js";
 import { transfersGetRefund } from "../funcs/transfersGetRefund.js";
 import { transfersGetRiskOutcomes } from "../funcs/transfersGetRiskOutcomes.js";
 import { transfersInitiateRefund } from "../funcs/transfersInitiateRefund.js";
 import { transfersList } from "../funcs/transfersList.js";
 import { transfersListCancellations } from "../funcs/transfersListCancellations.js";
+import { transfersListCaptures } from "../funcs/transfersListCaptures.js";
 import { transfersListRefunds } from "../funcs/transfersListRefunds.js";
 import { transfersUpdate } from "../funcs/transfersUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -191,6 +194,57 @@ export class Transfers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetCancellationResponse> {
     return unwrapAsync(transfersGetCancellation(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create a capture against an authorized transfer.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
+   */
+  async createCapture(
+    request: operations.CreateCaptureRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateCaptureResponse> {
+    return unwrapAsync(transfersCreateCapture(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get a list of captures for a transfer.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+   */
+  async listCaptures(
+    request: operations.ListCapturesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ListCapturesResponse> {
+    return unwrapAsync(transfersListCaptures(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get details of a capture for a transfer.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+   */
+  async getCapture(
+    request: operations.GetCaptureRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetCaptureResponse> {
+    return unwrapAsync(transfersGetCapture(
       this,
       request,
       options,

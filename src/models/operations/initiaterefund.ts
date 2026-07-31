@@ -31,7 +31,7 @@ export type InitiateRefundRequest = {
    * Identifier for the transfer.
    */
   transferID: string;
-  createRefund?: components.CreateRefund | undefined;
+  createRefund: components.CreateRefund;
 };
 
 export type InitiateRefundResponseResult =
@@ -53,7 +53,7 @@ export const InitiateRefundRequest$inboundSchema: z.ZodType<
   "x-wait-for": types.optional(components.TransferWaitFor$inboundSchema),
   accountID: types.string(),
   transferID: types.string(),
-  CreateRefund: types.optional(components.CreateRefund$inboundSchema),
+  CreateRefund: components.CreateRefund$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "x-idempotency-key": "xIdempotencyKey",
@@ -67,7 +67,7 @@ export type InitiateRefundRequest$Outbound = {
   "x-wait-for"?: string | undefined;
   accountID: string;
   transferID: string;
-  CreateRefund?: components.CreateRefund$Outbound | undefined;
+  CreateRefund: components.CreateRefund$Outbound;
 };
 
 /** @internal */
@@ -80,7 +80,7 @@ export const InitiateRefundRequest$outboundSchema: z.ZodType<
   xWaitFor: components.TransferWaitFor$outboundSchema.optional(),
   accountID: z.string(),
   transferID: z.string(),
-  createRefund: components.CreateRefund$outboundSchema.optional(),
+  createRefund: components.CreateRefund$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     xIdempotencyKey: "x-idempotency-key",

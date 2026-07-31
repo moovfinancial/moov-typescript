@@ -31,12 +31,19 @@ import {
   SendFundsRtp$Outbound,
   SendFundsRtp$outboundSchema,
 } from "./sendfundsrtp.js";
+import {
+  SendFundsWire,
+  SendFundsWire$inboundSchema,
+  SendFundsWire$Outbound,
+  SendFundsWire$outboundSchema,
+} from "./sendfundswire.js";
 
 export type SendFunds = {
   ach?: SendFundsAch | undefined;
   pushToCard?: SendFundsPushToCard | undefined;
   rtp?: SendFundsRtp | undefined;
   instantBank?: SendFundsInstantBank | undefined;
+  wire?: SendFundsWire | undefined;
 };
 
 /** @internal */
@@ -49,6 +56,7 @@ export const SendFunds$inboundSchema: z.ZodType<
   pushToCard: types.optional(SendFundsPushToCard$inboundSchema),
   rtp: types.optional(SendFundsRtp$inboundSchema),
   instantBank: types.optional(SendFundsInstantBank$inboundSchema),
+  wire: types.optional(SendFundsWire$inboundSchema),
 });
 /** @internal */
 export type SendFunds$Outbound = {
@@ -56,6 +64,7 @@ export type SendFunds$Outbound = {
   pushToCard?: SendFundsPushToCard$Outbound | undefined;
   rtp?: SendFundsRtp$Outbound | undefined;
   instantBank?: SendFundsInstantBank$Outbound | undefined;
+  wire?: SendFundsWire$Outbound | undefined;
 };
 
 /** @internal */
@@ -68,6 +77,7 @@ export const SendFunds$outboundSchema: z.ZodType<
   pushToCard: SendFundsPushToCard$outboundSchema.optional(),
   rtp: SendFundsRtp$outboundSchema.optional(),
   instantBank: SendFundsInstantBank$outboundSchema.optional(),
+  wire: SendFundsWire$outboundSchema.optional(),
 });
 
 export function sendFundsToJSON(sendFunds: SendFunds): string {

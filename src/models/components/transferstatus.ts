@@ -16,6 +16,7 @@ export const TransferStatus = {
   Failed: "failed",
   Reversed: "reversed",
   Queued: "queued",
+  AwaitingCapture: "awaiting-capture",
   Canceled: "canceled",
 } as const;
 /**

@@ -8,11 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Amount,
-  Amount$inboundSchema,
-  Amount$Outbound,
-  Amount$outboundSchema,
-} from "./amount.js";
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
 import {
   RefundAmountDetails,
   RefundAmountDetails$inboundSchema,
@@ -26,7 +26,11 @@ import {
 export type AsyncCreatedRefund = {
   refundID: string;
   createdOn: Date;
-  amount: Amount;
+  amount: AmountDecimal;
+  /**
+   * ID of the capture this refund applies to, when applicable.
+   */
+  captureID?: string | undefined;
   amountDetails?: RefundAmountDetails | undefined;
 };
 
@@ -38,14 +42,16 @@ export const AsyncCreatedRefund$inboundSchema: z.ZodType<
 > = z.object({
   refundID: types.string(),
   createdOn: types.date(),
-  amount: Amount$inboundSchema,
+  amount: AmountDecimal$inboundSchema,
+  captureID: types.optional(types.string()),
   amountDetails: types.optional(RefundAmountDetails$inboundSchema),
 });
 /** @internal */
 export type AsyncCreatedRefund$Outbound = {
   refundID: string;
   createdOn: string;
-  amount: Amount$Outbound;
+  amount: AmountDecimal$Outbound;
+  captureID?: string | undefined;
   amountDetails?: RefundAmountDetails$Outbound | undefined;
 };
 
@@ -57,7 +63,8 @@ export const AsyncCreatedRefund$outboundSchema: z.ZodType<
 > = z.object({
   refundID: z.string(),
   createdOn: z.date().transform(v => v.toISOString()),
-  amount: Amount$outboundSchema,
+  amount: AmountDecimal$outboundSchema,
+  captureID: z.string().optional(),
   amountDetails: RefundAmountDetails$outboundSchema.optional(),
 });
 

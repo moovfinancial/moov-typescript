@@ -19,6 +19,7 @@ export type CreateCancellationRequest = {
    * The transfer ID to cancel.
    */
   transferID: string;
+  createCancellation: components.CreateCancellation;
 };
 
 export type CreateCancellationResponse = {
@@ -34,11 +35,17 @@ export const CreateCancellationRequest$inboundSchema: z.ZodType<
 > = z.object({
   accountID: types.string(),
   transferID: types.string(),
+  CreateCancellation: components.CreateCancellation$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "CreateCancellation": "createCancellation",
+  });
 });
 /** @internal */
 export type CreateCancellationRequest$Outbound = {
   accountID: string;
   transferID: string;
+  CreateCancellation: components.CreateCancellation$Outbound;
 };
 
 /** @internal */
@@ -49,6 +56,11 @@ export const CreateCancellationRequest$outboundSchema: z.ZodType<
 > = z.object({
   accountID: z.string(),
   transferID: z.string(),
+  createCancellation: components.CreateCancellation$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    createCancellation: "CreateCancellation",
+  });
 });
 
 export function createCancellationRequestToJSON(

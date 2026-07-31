@@ -8,11 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Amount,
-  Amount$inboundSchema,
-  Amount$Outbound,
-  Amount$outboundSchema,
-} from "./amount.js";
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
 import {
   CreateTransferAmountDetails,
   CreateTransferAmountDetails$inboundSchema,
@@ -26,6 +26,12 @@ import {
   CreateTransferDestination$outboundSchema,
 } from "./createtransferdestination.js";
 import {
+  CreateTransferFacilitatorFee,
+  CreateTransferFacilitatorFee$inboundSchema,
+  CreateTransferFacilitatorFee$Outbound,
+  CreateTransferFacilitatorFee$outboundSchema,
+} from "./createtransferfacilitatorfee.js";
+import {
   CreateTransferLineItems,
   CreateTransferLineItems$inboundSchema,
   CreateTransferLineItems$Outbound,
@@ -37,12 +43,6 @@ import {
   CreateTransferSource$Outbound,
   CreateTransferSource$outboundSchema,
 } from "./createtransfersource.js";
-import {
-  FacilitatorFee,
-  FacilitatorFee$inboundSchema,
-  FacilitatorFee$Outbound,
-  FacilitatorFee$outboundSchema,
-} from "./facilitatorfee.js";
 import {
   TransferFeePaidBy,
   TransferFeePaidBy$inboundSchema,
@@ -59,11 +59,11 @@ export type CreateTransfer = {
    * The final stage of a transfer and the ultimate recipient of the funds.
    */
   destination: CreateTransferDestination;
-  amount: Amount;
+  amount: AmountDecimal;
   /**
-   * Total or markup fee.
+   * Total or markup fee to apply when creating a transfer.
    */
-  facilitatorFee?: FacilitatorFee | undefined;
+  facilitatorFee?: CreateTransferFacilitatorFee | undefined;
   /**
    * An optional description of the transfer that is used on receipts and for your own internal use.
    */
@@ -98,8 +98,8 @@ export const CreateTransfer$inboundSchema: z.ZodType<
 > = z.object({
   source: CreateTransferSource$inboundSchema,
   destination: CreateTransferDestination$inboundSchema,
-  amount: Amount$inboundSchema,
-  facilitatorFee: types.optional(FacilitatorFee$inboundSchema),
+  amount: AmountDecimal$inboundSchema,
+  facilitatorFee: types.optional(CreateTransferFacilitatorFee$inboundSchema),
   description: types.optional(types.string()),
   metadata: types.optional(z.record(types.string())),
   foreignID: types.optional(types.string()),
@@ -111,8 +111,8 @@ export const CreateTransfer$inboundSchema: z.ZodType<
 export type CreateTransfer$Outbound = {
   source: CreateTransferSource$Outbound;
   destination: CreateTransferDestination$Outbound;
-  amount: Amount$Outbound;
-  facilitatorFee?: FacilitatorFee$Outbound | undefined;
+  amount: AmountDecimal$Outbound;
+  facilitatorFee?: CreateTransferFacilitatorFee$Outbound | undefined;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   foreignID?: string | undefined;
@@ -129,8 +129,8 @@ export const CreateTransfer$outboundSchema: z.ZodType<
 > = z.object({
   source: CreateTransferSource$outboundSchema,
   destination: CreateTransferDestination$outboundSchema,
-  amount: Amount$outboundSchema,
-  facilitatorFee: FacilitatorFee$outboundSchema.optional(),
+  amount: AmountDecimal$outboundSchema,
+  facilitatorFee: CreateTransferFacilitatorFee$outboundSchema.optional(),
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   foreignID: z.string().optional(),

@@ -7,11 +7,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Amount,
-  Amount$inboundSchema,
-  Amount$Outbound,
-  Amount$outboundSchema,
-} from "./amount.js";
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
 import {
   SourceDestinationOptions,
   SourceDestinationOptions$inboundSchema,
@@ -22,7 +22,7 @@ import {
 export type CreateTransferOptions = {
   source: SourceDestinationOptions;
   destination: SourceDestinationOptions;
-  amount: Amount;
+  amount: AmountDecimal;
 };
 
 /** @internal */
@@ -33,13 +33,13 @@ export const CreateTransferOptions$inboundSchema: z.ZodType<
 > = z.object({
   source: SourceDestinationOptions$inboundSchema,
   destination: SourceDestinationOptions$inboundSchema,
-  amount: Amount$inboundSchema,
+  amount: AmountDecimal$inboundSchema,
 });
 /** @internal */
 export type CreateTransferOptions$Outbound = {
   source: SourceDestinationOptions$Outbound;
   destination: SourceDestinationOptions$Outbound;
-  amount: Amount$Outbound;
+  amount: AmountDecimal$Outbound;
 };
 
 /** @internal */
@@ -50,7 +50,7 @@ export const CreateTransferOptions$outboundSchema: z.ZodType<
 > = z.object({
   source: SourceDestinationOptions$outboundSchema,
   destination: SourceDestinationOptions$outboundSchema,
-  amount: Amount$outboundSchema,
+  amount: AmountDecimal$outboundSchema,
 });
 
 export function createTransferOptionsToJSON(

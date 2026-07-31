@@ -8,15 +8,9 @@
 ```typescript
 const value: components.CreatedTransfer = {
   transferID: "<id>",
-  createdOn: new Date("2025-06-12T12:10:37.812Z"),
+  transferType: "ach-debit",
+  createdOn: new Date("2025-06-14T12:45:31.209Z"),
   source: {
-    paymentMethodID: "<id>",
-    paymentMethodType: "pull-from-card",
-    account: {
-      accountID: "<id>",
-      email: "Jaeden92@yahoo.com",
-      displayName: "Pearlie_Tromp70",
-    },
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
       fingerprint:
@@ -99,26 +93,8 @@ const value: components.CreatedTransfer = {
       issuerCountry: "US",
       lastFourCardNumber: "1234",
     },
-    cardDetails: {
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      feeProgram:
-        "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
-    },
-    achDetails: {
-      traceNumber: "124782618117",
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-      debitHoldPeriod: "2-days",
-    },
   },
   destination: {
-    paymentMethodID: "<id>",
-    paymentMethodType: "apple-pay",
-    account: {
-      accountID: "<id>",
-      email: "Jaeden92@yahoo.com",
-      displayName: "Pearlie_Tromp70",
-    },
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
       fingerprint:
@@ -157,12 +133,6 @@ const value: components.CreatedTransfer = {
       domesticPushToCard: "standard",
       domesticPullFromCard: "supported",
     },
-    achDetails: {
-      traceNumber: "124782618117",
-      companyEntryDescription: "Gym dues",
-      originatingCompanyName: "Whole Body Fit",
-      debitHoldPeriod: "2-days",
-    },
     applePay: {
       brand: "Visa",
       cardType: "credit",
@@ -191,15 +161,10 @@ const value: components.CreatedTransfer = {
       issuerCountry: "US",
       authMethod: "PAN_ONLY",
     },
-    cardDetails: {
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      feeProgram:
-        "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
-    },
   },
   amount: {
     currency: "USD",
-    value: 1204,
+    valueDecimal: "12.987654321",
   },
   description: "Pay Instructor for May 15 Class",
   metadata: {
@@ -209,44 +174,71 @@ const value: components.CreatedTransfer = {
     totalDecimal: "12.987654321",
     markupDecimal: "0.987654321",
   },
+  moovFee: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  moovFeeDetails: {
+    cardScheme: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    interchange: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    discount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    moovProcessing: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
   refundedAmount: {
     currency: "USD",
-    value: 1204,
+    valueDecimal: "12.987654321",
   },
-  refunds: [
-    {
-      refundID: "<id>",
-      createdOn: new Date("2025-03-17T07:10:51.141Z"),
-      updatedOn: new Date("2025-03-19T15:39:17.424Z"),
-      status: "created",
-      amount: {
-        currency: "USD",
-        value: 1204,
-      },
-      amountDetails: {
-        surcharge: {
+  disputedAmount: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  lineItems: {
+    items: [
+      {
+        name: "<value>",
+        basePrice: {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
+        quantity: 459250,
+        options: [
+          {
+            name: "<value>",
+            quantity: 129124,
+            priceModifier: {
+              currency: "USD",
+              valueDecimal: "12.987654321",
+            },
+            images: [
+              {
+                imageID: "<id>",
+                link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                publicID: "<id>",
+              },
+            ],
+          },
+        ],
+        images: [
+          {
+            imageID: "<id>",
+            link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+            publicID: "<id>",
+          },
+        ],
       },
-    },
-  ],
-  disputedAmount: {
-    currency: "USD",
-    value: 1204,
-  },
-  disputes: [
-    {
-      disputeID: "<id>",
-      createdOn: new Date("2024-01-18T18:20:12.179Z"),
-      amount: {
-        currency: "USD",
-        value: 1204,
-      },
-    },
-  ],
-  lineItems: {
-    items: [],
+    ],
   },
   amountDetails: {
     tip: {
@@ -260,6 +252,53 @@ const value: components.CreatedTransfer = {
     surcharge: {
       currency: "USD",
       valueDecimal: "12.987654321",
+    },
+  },
+  authorization: {
+    authorizationID: "<id>",
+    requestedAmount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    authorizedAmount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    capturedAmount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    capturableAmount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
+  options: {
+    cardPayment: {
+      dynamicDescriptor: "WhlBdy *Yoga 11-12",
+    },
+    pushToCard: {
+      dynamicDescriptor: "WhlBdy *Yoga 11-12",
+    },
+    pullFromCard: {
+      dynamicDescriptor: "WhlBdy *Yoga 11-12",
+    },
+    achDebit: {
+      companyEntryDescription: "Gym dues",
+      originatingCompanyName: "Whole Body Fit",
+      debitHoldPeriod: "2-days",
+    },
+    achCredit: {
+      companyEntryDescription: "Gym dues",
+      originatingCompanyName: "Whole Body Fit",
+    },
+  },
+  processingDetails: {
+    achDebit: {
+      traceNumber: "124782618117",
+    },
+    achCredit: {
+      traceNumber: "124782618117",
     },
   },
 };
@@ -279,6 +318,7 @@ const value: components.AsyncTransfer = {
 ```typescript
 const value: components.Transfer = {
   transferID: "d835gf30-4b19-4850-a9b2-c0624c41ecb3",
+  transferType: "card-payment",
   createdOn: new Date("2025-01-21T21:32:16Z"),
   source: {
     paymentMethodID: "9506dbf6-4208-44c3-ad8a-e4431660e1f2",
@@ -320,11 +360,6 @@ const value: components.Transfer = {
       domesticPushToCard: "standard",
       domesticPullFromCard: "supported",
     },
-    cardDetails: {
-      status: "confirmed",
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      confirmedOn: new Date("2025-01-21T21:32:16.799681237Z"),
-    },
   },
   destination: {
     paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
@@ -343,7 +378,7 @@ const value: components.Transfer = {
   status: "pending",
   amount: {
     currency: "USD",
-    value: 32945,
+    valueDecimal: "329.45",
   },
   description: "Transfer from card to wallet",
   moovFees: [
@@ -352,7 +387,7 @@ const value: components.Transfer = {
       transferParty: "source",
       totalAmount: {
         currency: "USD",
-        valueDecimal: "0.1",
+        valueDecimal: "0.10",
       },
       feeIDs: [
         "9d957d33-1a9a-47aa-9460-fe1a90f003dd",
@@ -367,6 +402,18 @@ const value: components.Transfer = {
     tax: {
       currency: "USD",
       valueDecimal: "8.25",
+    },
+  },
+  options: {
+    cardPayment: {
+      dynamicDescriptor: "WhlBdy *Yoga 11-12",
+    },
+  },
+  processingDetails: {
+    cardPayment: {
+      authorizationCode: "A1B2C3",
+      networkTransactionID: "123456789012345",
+      networkResponseCode: "00",
     },
   },
 };

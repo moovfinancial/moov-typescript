@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
 
 /**
  * Processing and pass-through costs that add up to the moovFee.
@@ -15,19 +21,19 @@ export type MoovFeeDetails = {
   /**
    * Card scheme fees accrued during authorization and settlement. String type represents dollars with up to 9 decimal place precision.
    */
-  cardScheme?: string | undefined;
+  cardScheme?: AmountDecimal | undefined;
   /**
    * Network interchange fee for Visa, Mastercard, or Discover. String type represents dollars with up to 9 decimal place precision.
    */
-  interchange?: string | undefined;
+  interchange?: AmountDecimal | undefined;
   /**
    * Network discount fee for American Express. String type represents dollars with up to 9 decimal place precision.
    */
-  discount?: string | undefined;
+  discount?: AmountDecimal | undefined;
   /**
    * Moov processing fee. String type represents dollars with up to 9 decimal place precision.
    */
-  moovProcessing: string;
+  moovProcessing: AmountDecimal;
 };
 
 /** @internal */
@@ -36,17 +42,17 @@ export const MoovFeeDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cardScheme: types.optional(types.string()),
-  interchange: types.optional(types.string()),
-  discount: types.optional(types.string()),
-  moovProcessing: types.string(),
+  cardScheme: types.optional(AmountDecimal$inboundSchema),
+  interchange: types.optional(AmountDecimal$inboundSchema),
+  discount: types.optional(AmountDecimal$inboundSchema),
+  moovProcessing: AmountDecimal$inboundSchema,
 });
 /** @internal */
 export type MoovFeeDetails$Outbound = {
-  cardScheme?: string | undefined;
-  interchange?: string | undefined;
-  discount?: string | undefined;
-  moovProcessing: string;
+  cardScheme?: AmountDecimal$Outbound | undefined;
+  interchange?: AmountDecimal$Outbound | undefined;
+  discount?: AmountDecimal$Outbound | undefined;
+  moovProcessing: AmountDecimal$Outbound;
 };
 
 /** @internal */
@@ -55,10 +61,10 @@ export const MoovFeeDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MoovFeeDetails
 > = z.object({
-  cardScheme: z.string().optional(),
-  interchange: z.string().optional(),
-  discount: z.string().optional(),
-  moovProcessing: z.string(),
+  cardScheme: AmountDecimal$outboundSchema.optional(),
+  interchange: AmountDecimal$outboundSchema.optional(),
+  discount: AmountDecimal$outboundSchema.optional(),
+  moovProcessing: AmountDecimal$outboundSchema,
 });
 
 export function moovFeeDetailsToJSON(moovFeeDetails: MoovFeeDetails): string {

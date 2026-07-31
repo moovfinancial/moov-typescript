@@ -63,6 +63,18 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
   
   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
   to specify the `/accounts/{accountID}/transfers.read` scope.
+* [createCapture](#createcapture) - Create a capture against an authorized transfer.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
+* [listCaptures](#listcaptures) - Get a list of captures for a transfer.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+* [getCapture](#getcapture) - Get details of a capture for a transfer.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 * [initiateRefund](#initiaterefund) - Initiate a refund for a card transfer.
 
 **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
@@ -124,7 +136,7 @@ async function run() {
       destination: {},
       amount: {
         currency: "USD",
-        value: 1204,
+        valueDecimal: "12.987654321",
       },
     },
   });
@@ -160,7 +172,7 @@ async function run() {
       destination: {},
       amount: {
         currency: "USD",
-        value: 1204,
+        valueDecimal: "12.987654321",
       },
     },
   });
@@ -231,7 +243,7 @@ async function run() {
       },
       amount: {
         currency: "USD",
-        value: 32945,
+        valueDecimal: "329.45",
       },
       description: "Transfer from card to wallet",
       metadata: {
@@ -286,7 +298,7 @@ async function run() {
       },
       amount: {
         currency: "USD",
-        value: 32945,
+        valueDecimal: "329.45",
       },
       description: "Transfer from card to wallet",
       metadata: {
@@ -340,7 +352,7 @@ async function run() {
       },
       amount: {
         currency: "USD",
-        value: 32945,
+        valueDecimal: "329.45",
       },
       description: "Transfer from card to wallet",
       metadata: {
@@ -395,7 +407,7 @@ async function run() {
       },
       amount: {
         currency: "USD",
-        value: 32945,
+        valueDecimal: "329.45",
       },
       description: "Transfer from card to wallet",
       metadata: {
@@ -650,7 +662,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getTransfer" method="get" path="/accounts/{accountID}/transfers/{transferID}" -->
+<!-- UsageSnippet language="typescript" operationID="getTransfer" method="get" path="/accounts/{accountID}/transfers/{transferID}" example="Awaiting capture card authorization transfer" -->
 ```typescript
 import { Moov } from "@moovio/sdk";
 
@@ -663,8 +675,8 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.transfers.get({
-    transferID: "960cf5a2-50a3-4914-ad86-d54c022bf5df",
-    accountID: "31113f7b-9f68-44e9-9338-6d8e655c7c96",
+    transferID: "<id>",
+    accountID: "<id>",
   });
 
   console.log(result);
@@ -692,8 +704,8 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await transfersGet(moov, {
-    transferID: "960cf5a2-50a3-4914-ad86-d54c022bf5df",
-    accountID: "31113f7b-9f68-44e9-9338-6d8e655c7c96",
+    transferID: "<id>",
+    accountID: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -846,6 +858,12 @@ async function run() {
   const result = await moov.transfers.createCancellation({
     accountID: "10ae862c-6658-4f87-967d-46e995737204",
     transferID: "36c80a6c-ceb2-4e5d-a437-8a39afdfdc58",
+    createCancellation: {
+      amount: {
+        currency: "USD",
+        valueDecimal: "25.00",
+      },
+    },
   });
 
   console.log(result);
@@ -875,6 +893,12 @@ async function run() {
   const res = await transfersCreateCancellation(moov, {
     accountID: "10ae862c-6658-4f87-967d-46e995737204",
     transferID: "36c80a6c-ceb2-4e5d-a437-8a39afdfdc58",
+    createCancellation: {
+      amount: {
+        currency: "USD",
+        valueDecimal: "25.00",
+      },
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -1136,6 +1160,328 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
+## createCapture
+
+Create a capture against an authorized transfer.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="createCapture" method="post" path="/accounts/{accountID}/transfers/{transferID}/captures" example="Created capture" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.transfers.createCapture({
+    xIdempotencyKey: "<value>",
+    accountID: "<id>",
+    transferID: "<id>",
+    createCapture: {
+      destinationPaymentMethodID: "<id>",
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+      description: "Pay Instructor for May 15 Class",
+      metadata: {
+        "optional": "metadata",
+      },
+      lineItems: {
+        items: [],
+      },
+      amountDetails: {
+        tip: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+        tax: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
+      facilitatorFeeAmount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersCreateCapture } from "@moovio/sdk/funcs/transfersCreateCapture.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await transfersCreateCapture(moov, {
+    xIdempotencyKey: "<value>",
+    accountID: "<id>",
+    transferID: "<id>",
+    createCapture: {
+      destinationPaymentMethodID: "<id>",
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+      description: "Pay Instructor for May 15 Class",
+      metadata: {
+        "optional": "metadata",
+      },
+      lineItems: {
+        items: [],
+      },
+      amountDetails: {
+        tip: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+        tax: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+        surcharge: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
+      facilitatorFeeAmount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersCreateCapture failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreateCaptureRequest](../../models/operations/createcapturerequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.CreateCaptureResponse](../../models/operations/createcaptureresponse.md)\>**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.GenericError           | 400, 409                      | application/json              |
+| errors.CaptureValidationError | 422                           | application/json              |
+| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## listCaptures
+
+Get a list of captures for a transfer.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listCaptures" method="get" path="/accounts/{accountID}/transfers/{transferID}/captures" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.transfers.listCaptures({
+    accountID: "<id>",
+    transferID: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersListCaptures } from "@moovio/sdk/funcs/transfersListCaptures.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await transfersListCaptures(moov, {
+    accountID: "<id>",
+    transferID: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersListCaptures failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListCapturesRequest](../../models/operations/listcapturesrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ListCapturesResponse](../../models/operations/listcapturesresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.APIError | 4XX, 5XX        | \*/\*           |
+
+## getCapture
+
+Get details of a capture for a transfer.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getCapture" method="get" path="/accounts/{accountID}/transfers/{transferID}/captures/{captureID}" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.transfers.getCapture({
+    accountID: "<id>",
+    transferID: "<id>",
+    captureID: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { transfersGetCapture } from "@moovio/sdk/funcs/transfersGetCapture.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await transfersGetCapture(moov, {
+    accountID: "<id>",
+    transferID: "<id>",
+    captureID: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("transfersGetCapture failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetCaptureRequest](../../models/operations/getcapturerequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetCaptureResponse](../../models/operations/getcaptureresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.APIError | 4XX, 5XX        | \*/\*           |
+
 ## initiateRefund
 
 Initiate a refund for a card transfer.
@@ -1165,7 +1511,10 @@ async function run() {
     accountID: "cb6ae9f9-afab-4f06-9eb0-8abf54a3ada2",
     transferID: "04022119-95be-4ef4-9dd4-b3782f6aa7b9",
     createRefund: {
-      amount: 1000,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1204,7 +1553,10 @@ async function run() {
     accountID: "cb6ae9f9-afab-4f06-9eb0-8abf54a3ada2",
     transferID: "04022119-95be-4ef4-9dd4-b3782f6aa7b9",
     createRefund: {
-      amount: 1000,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1242,7 +1594,10 @@ async function run() {
     accountID: "d12ddb6e-0ed9-44e8-92a7-1716ae7cc759",
     transferID: "d73be489-9da4-4be7-bc04-147d8552279d",
     createRefund: {
-      amount: 1000,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1281,7 +1636,10 @@ async function run() {
     accountID: "d12ddb6e-0ed9-44e8-92a7-1716ae7cc759",
     transferID: "d73be489-9da4-4be7-bc04-147d8552279d",
     createRefund: {
-      amount: 1000,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1521,7 +1879,10 @@ async function run() {
     accountID: "c5fade57-7e5a-4380-ac7b-4abf8b3c24cf",
     transferID: "82c6eae7-b7e5-4b20-b24e-5116a4d70bde",
     createReversal: {
-      amount: 1000,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1560,7 +1921,10 @@ async function run() {
     accountID: "c5fade57-7e5a-4380-ac7b-4abf8b3c24cf",
     transferID: "82c6eae7-b7e5-4b20-b24e-5116a4d70bde",
     createReversal: {
-      amount: 1000,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1598,7 +1962,10 @@ async function run() {
     accountID: "f225b49d-911b-440b-baed-6065968b69cb",
     transferID: "a17b29e2-4af6-4c9d-ad3a-dd0ded2966ad",
     createReversal: {
-      amount: 1000,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1637,7 +2004,10 @@ async function run() {
     accountID: "f225b49d-911b-440b-baed-6065968b69cb",
     transferID: "a17b29e2-4af6-4c9d-ad3a-dd0ded2966ad",
     createReversal: {
-      amount: 1000,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
       amountDetails: {
         surcharge: {
           currency: "USD",

@@ -8,23 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  ACHTransactionDetails,
-  ACHTransactionDetails$inboundSchema,
-  ACHTransactionDetails$Outbound,
-  ACHTransactionDetails$outboundSchema,
-} from "./achtransactiondetails.js";
-import {
   ApplePayResponse,
   ApplePayResponse$inboundSchema,
   ApplePayResponse$Outbound,
   ApplePayResponse$outboundSchema,
 } from "./applepayresponse.js";
-import {
-  CardTransactionDetails,
-  CardTransactionDetails$inboundSchema,
-  CardTransactionDetails$Outbound,
-  CardTransactionDetails$outboundSchema,
-} from "./cardtransactiondetails.js";
 import {
   GooglePayResponse,
   GooglePayResponse$inboundSchema,
@@ -72,12 +60,12 @@ export type TransferSource = {
    * String present only if the transfer is part of a transfer group.
    */
   transferID?: string | undefined;
-  paymentMethodID: string;
+  paymentMethodID?: string | undefined;
   /**
    * The payment method type that represents a payment rail and directionality
    */
-  paymentMethodType: TransferPaymentMethodType;
-  account: TransferAccount;
+  paymentMethodType?: TransferPaymentMethodType | undefined;
+  account?: TransferAccount | undefined;
   /**
    * A bank account as contained within a payment method.
    */
@@ -99,14 +87,6 @@ export type TransferSource = {
    * Describes payment card details captured with tap or in-person payment.
    */
   terminalCard?: TransferTerminalCard | undefined;
-  /**
-   * Card-specific details about the transaction.
-   */
-  cardDetails?: CardTransactionDetails | undefined;
-  /**
-   * ACH specific details about the transaction.
-   */
-  achDetails?: ACHTransactionDetails | undefined;
 };
 
 /** @internal */
@@ -116,32 +96,28 @@ export const TransferSource$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   transferID: types.optional(types.string()),
-  paymentMethodID: types.string(),
-  paymentMethodType: TransferPaymentMethodType$inboundSchema,
-  account: TransferAccount$inboundSchema,
+  paymentMethodID: types.optional(types.string()),
+  paymentMethodType: types.optional(TransferPaymentMethodType$inboundSchema),
+  account: types.optional(TransferAccount$inboundSchema),
   bankAccount: types.optional(TransferPaymentMethodsBankAccount$inboundSchema),
   wallet: types.optional(TransferPaymentMethodsWallet$inboundSchema),
   card: types.optional(TransferPaymentMethodsCard$inboundSchema),
   applePay: types.optional(ApplePayResponse$inboundSchema),
   googlePay: types.optional(GooglePayResponse$inboundSchema),
   terminalCard: types.optional(TransferTerminalCard$inboundSchema),
-  cardDetails: types.optional(CardTransactionDetails$inboundSchema),
-  achDetails: types.optional(ACHTransactionDetails$inboundSchema),
 });
 /** @internal */
 export type TransferSource$Outbound = {
   transferID?: string | undefined;
-  paymentMethodID: string;
-  paymentMethodType: string;
-  account: TransferAccount$Outbound;
+  paymentMethodID?: string | undefined;
+  paymentMethodType?: string | undefined;
+  account?: TransferAccount$Outbound | undefined;
   bankAccount?: TransferPaymentMethodsBankAccount$Outbound | undefined;
   wallet?: TransferPaymentMethodsWallet$Outbound | undefined;
   card?: TransferPaymentMethodsCard$Outbound | undefined;
   applePay?: ApplePayResponse$Outbound | undefined;
   googlePay?: GooglePayResponse$Outbound | undefined;
   terminalCard?: TransferTerminalCard$Outbound | undefined;
-  cardDetails?: CardTransactionDetails$Outbound | undefined;
-  achDetails?: ACHTransactionDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -151,17 +127,15 @@ export const TransferSource$outboundSchema: z.ZodType<
   TransferSource
 > = z.object({
   transferID: z.string().optional(),
-  paymentMethodID: z.string(),
-  paymentMethodType: TransferPaymentMethodType$outboundSchema,
-  account: TransferAccount$outboundSchema,
+  paymentMethodID: z.string().optional(),
+  paymentMethodType: TransferPaymentMethodType$outboundSchema.optional(),
+  account: TransferAccount$outboundSchema.optional(),
   bankAccount: TransferPaymentMethodsBankAccount$outboundSchema.optional(),
   wallet: TransferPaymentMethodsWallet$outboundSchema.optional(),
   card: TransferPaymentMethodsCard$outboundSchema.optional(),
   applePay: ApplePayResponse$outboundSchema.optional(),
   googlePay: GooglePayResponse$outboundSchema.optional(),
   terminalCard: TransferTerminalCard$outboundSchema.optional(),
-  cardDetails: CardTransactionDetails$outboundSchema.optional(),
-  achDetails: ACHTransactionDetails$outboundSchema.optional(),
 });
 
 export function transferSourceToJSON(transferSource: TransferSource): string {

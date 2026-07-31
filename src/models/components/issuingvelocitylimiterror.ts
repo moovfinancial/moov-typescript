@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IssuingVelocityLimitError = {
   amount?: string | undefined;
+  count?: string | undefined;
   interval?: string | undefined;
 };
 
@@ -20,11 +21,13 @@ export const IssuingVelocityLimitError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: types.optional(types.string()),
+  count: types.optional(types.string()),
   interval: types.optional(types.string()),
 });
 /** @internal */
 export type IssuingVelocityLimitError$Outbound = {
   amount?: string | undefined;
+  count?: string | undefined;
   interval?: string | undefined;
 };
 
@@ -35,6 +38,7 @@ export const IssuingVelocityLimitError$outboundSchema: z.ZodType<
   IssuingVelocityLimitError
 > = z.object({
   amount: z.string().optional(),
+  count: z.string().optional(),
   interval: z.string().optional(),
 });
 

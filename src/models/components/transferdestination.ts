@@ -8,35 +8,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  ACHTransactionDetails,
-  ACHTransactionDetails$inboundSchema,
-  ACHTransactionDetails$Outbound,
-  ACHTransactionDetails$outboundSchema,
-} from "./achtransactiondetails.js";
-import {
   ApplePayResponse,
   ApplePayResponse$inboundSchema,
   ApplePayResponse$Outbound,
   ApplePayResponse$outboundSchema,
 } from "./applepayresponse.js";
 import {
-  CardTransactionDetails,
-  CardTransactionDetails$inboundSchema,
-  CardTransactionDetails$Outbound,
-  CardTransactionDetails$outboundSchema,
-} from "./cardtransactiondetails.js";
-import {
   GooglePayResponse,
   GooglePayResponse$inboundSchema,
   GooglePayResponse$Outbound,
   GooglePayResponse$outboundSchema,
 } from "./googlepayresponse.js";
-import {
-  InstantBankTransactionDetails,
-  InstantBankTransactionDetails$inboundSchema,
-  InstantBankTransactionDetails$Outbound,
-  InstantBankTransactionDetails$outboundSchema,
-} from "./instantbanktransactiondetails.js";
 import {
   TransferAccount,
   TransferAccount$inboundSchema,
@@ -68,12 +50,12 @@ import {
 } from "./transferpaymentmethodtype.js";
 
 export type TransferDestination = {
-  paymentMethodID: string;
+  paymentMethodID?: string | undefined;
   /**
    * The payment method type that represents a payment rail and directionality
    */
-  paymentMethodType: TransferPaymentMethodType;
-  account: TransferAccount;
+  paymentMethodType?: TransferPaymentMethodType | undefined;
+  account?: TransferAccount | undefined;
   /**
    * A bank account as contained within a payment method.
    */
@@ -84,10 +66,6 @@ export type TransferDestination = {
    */
   card?: TransferPaymentMethodsCard | undefined;
   /**
-   * ACH specific details about the transaction.
-   */
-  achDetails?: ACHTransactionDetails | undefined;
-  /**
    * Describes an Apple Pay token on a Moov account.
    */
   applePay?: ApplePayResponse | undefined;
@@ -95,14 +73,6 @@ export type TransferDestination = {
    * Describes a Google Pay token on a Moov account.
    */
   googlePay?: GooglePayResponse | undefined;
-  /**
-   * Card-specific details about the transaction.
-   */
-  cardDetails?: CardTransactionDetails | undefined;
-  /**
-   * Instant-bank specific details about the transaction.
-   */
-  instantBankDetails?: InstantBankTransactionDetails | undefined;
 };
 
 /** @internal */
@@ -111,33 +81,25 @@ export const TransferDestination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paymentMethodID: types.string(),
-  paymentMethodType: TransferPaymentMethodType$inboundSchema,
-  account: TransferAccount$inboundSchema,
+  paymentMethodID: types.optional(types.string()),
+  paymentMethodType: types.optional(TransferPaymentMethodType$inboundSchema),
+  account: types.optional(TransferAccount$inboundSchema),
   bankAccount: types.optional(TransferPaymentMethodsBankAccount$inboundSchema),
   wallet: types.optional(TransferPaymentMethodsWallet$inboundSchema),
   card: types.optional(TransferPaymentMethodsCard$inboundSchema),
-  achDetails: types.optional(ACHTransactionDetails$inboundSchema),
   applePay: types.optional(ApplePayResponse$inboundSchema),
   googlePay: types.optional(GooglePayResponse$inboundSchema),
-  cardDetails: types.optional(CardTransactionDetails$inboundSchema),
-  instantBankDetails: types.optional(
-    InstantBankTransactionDetails$inboundSchema,
-  ),
 });
 /** @internal */
 export type TransferDestination$Outbound = {
-  paymentMethodID: string;
-  paymentMethodType: string;
-  account: TransferAccount$Outbound;
+  paymentMethodID?: string | undefined;
+  paymentMethodType?: string | undefined;
+  account?: TransferAccount$Outbound | undefined;
   bankAccount?: TransferPaymentMethodsBankAccount$Outbound | undefined;
   wallet?: TransferPaymentMethodsWallet$Outbound | undefined;
   card?: TransferPaymentMethodsCard$Outbound | undefined;
-  achDetails?: ACHTransactionDetails$Outbound | undefined;
   applePay?: ApplePayResponse$Outbound | undefined;
   googlePay?: GooglePayResponse$Outbound | undefined;
-  cardDetails?: CardTransactionDetails$Outbound | undefined;
-  instantBankDetails?: InstantBankTransactionDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -146,17 +108,14 @@ export const TransferDestination$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TransferDestination
 > = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: TransferPaymentMethodType$outboundSchema,
-  account: TransferAccount$outboundSchema,
+  paymentMethodID: z.string().optional(),
+  paymentMethodType: TransferPaymentMethodType$outboundSchema.optional(),
+  account: TransferAccount$outboundSchema.optional(),
   bankAccount: TransferPaymentMethodsBankAccount$outboundSchema.optional(),
   wallet: TransferPaymentMethodsWallet$outboundSchema.optional(),
   card: TransferPaymentMethodsCard$outboundSchema.optional(),
-  achDetails: ACHTransactionDetails$outboundSchema.optional(),
   applePay: ApplePayResponse$outboundSchema.optional(),
   googlePay: GooglePayResponse$outboundSchema.optional(),
-  cardDetails: CardTransactionDetails$outboundSchema.optional(),
-  instantBankDetails: InstantBankTransactionDetails$outboundSchema.optional(),
 });
 
 export function transferDestinationToJSON(

@@ -13,6 +13,38 @@ import {
   IssuingVelocityLimit$Outbound,
   IssuingVelocityLimit$outboundSchema,
 } from "./issuingvelocitylimit.js";
+import {
+  MerchantCategoryRestrictions,
+  MerchantCategoryRestrictions$inboundSchema,
+  MerchantCategoryRestrictions$Outbound,
+  MerchantCategoryRestrictions$outboundSchema,
+} from "./merchantcategoryrestrictions.js";
+import {
+  MerchantRestrictions,
+  MerchantRestrictions$inboundSchema,
+  MerchantRestrictions$Outbound,
+  MerchantRestrictions$outboundSchema,
+} from "./merchantrestrictions.js";
+import {
+  ScheduleWindow,
+  ScheduleWindow$inboundSchema,
+  ScheduleWindow$Outbound,
+  ScheduleWindow$outboundSchema,
+} from "./schedulewindow.js";
+
+/**
+ * Limits card usage to specific days and times. Set to `null` to remove all schedule restrictions.
+ */
+export type AllowedSchedule = {
+  /**
+   * IANA timezone string used to evaluate window boundaries against the authorization time.
+   */
+  timezone: string;
+  /**
+   * Time windows during which the card may authorize. Any matching window allows the transaction.
+   */
+  windows: Array<ScheduleWindow>;
+};
 
 export type IssuingControls = {
   /**
@@ -23,7 +55,63 @@ export type IssuingControls = {
    * Sets the spending limit per time interval. Only one limit per interval is supported.
    */
   velocityLimits?: Array<IssuingVelocityLimit> | undefined;
+  /**
+   * Restricts card usage by merchant category. When not set, all categories are allowed.
+   */
+  merchantCategoryRestrictions?: MerchantCategoryRestrictions | undefined;
+  /**
+   * Restricts card usage to specific merchants, or blocks specific merchants.
+   */
+  merchantRestrictions?: MerchantRestrictions | undefined;
+  /**
+   * Limits card usage to specific days and times. Set to `null` to remove all schedule restrictions.
+   */
+  allowedSchedule?: AllowedSchedule | null | undefined;
+  /**
+   * A spend cutoff date and time. When set, all authorizations after this datetime are declined regardless of other controls. Set to `null` for no cutoff.
+   */
+  expiresOn?: Date | null | undefined;
 };
+
+/** @internal */
+export const AllowedSchedule$inboundSchema: z.ZodType<
+  AllowedSchedule,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  timezone: types.string(),
+  windows: z.array(ScheduleWindow$inboundSchema),
+});
+/** @internal */
+export type AllowedSchedule$Outbound = {
+  timezone: string;
+  windows: Array<ScheduleWindow$Outbound>;
+};
+
+/** @internal */
+export const AllowedSchedule$outboundSchema: z.ZodType<
+  AllowedSchedule$Outbound,
+  z.ZodTypeDef,
+  AllowedSchedule
+> = z.object({
+  timezone: z.string(),
+  windows: z.array(ScheduleWindow$outboundSchema),
+});
+
+export function allowedScheduleToJSON(
+  allowedSchedule: AllowedSchedule,
+): string {
+  return JSON.stringify(AllowedSchedule$outboundSchema.parse(allowedSchedule));
+}
+export function allowedScheduleFromJSON(
+  jsonString: string,
+): SafeParseResult<AllowedSchedule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AllowedSchedule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AllowedSchedule' from JSON`,
+  );
+}
 
 /** @internal */
 export const IssuingControls$inboundSchema: z.ZodType<
@@ -33,11 +121,24 @@ export const IssuingControls$inboundSchema: z.ZodType<
 > = z.object({
   singleUse: types.optional(types.boolean()),
   velocityLimits: types.optional(z.array(IssuingVelocityLimit$inboundSchema)),
+  merchantCategoryRestrictions: types.optional(
+    MerchantCategoryRestrictions$inboundSchema,
+  ),
+  merchantRestrictions: types.optional(MerchantRestrictions$inboundSchema),
+  allowedSchedule: z.nullable(z.lazy(() => AllowedSchedule$inboundSchema))
+    .optional(),
+  expiresOn: z.nullable(types.date()).optional(),
 });
 /** @internal */
 export type IssuingControls$Outbound = {
   singleUse?: boolean | undefined;
   velocityLimits?: Array<IssuingVelocityLimit$Outbound> | undefined;
+  merchantCategoryRestrictions?:
+    | MerchantCategoryRestrictions$Outbound
+    | undefined;
+  merchantRestrictions?: MerchantRestrictions$Outbound | undefined;
+  allowedSchedule?: AllowedSchedule$Outbound | null | undefined;
+  expiresOn?: string | null | undefined;
 };
 
 /** @internal */
@@ -48,6 +149,12 @@ export const IssuingControls$outboundSchema: z.ZodType<
 > = z.object({
   singleUse: z.boolean().optional(),
   velocityLimits: z.array(IssuingVelocityLimit$outboundSchema).optional(),
+  merchantCategoryRestrictions: MerchantCategoryRestrictions$outboundSchema
+    .optional(),
+  merchantRestrictions: MerchantRestrictions$outboundSchema.optional(),
+  allowedSchedule: z.nullable(z.lazy(() => AllowedSchedule$outboundSchema))
+    .optional(),
+  expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 });
 
 export function issuingControlsToJSON(

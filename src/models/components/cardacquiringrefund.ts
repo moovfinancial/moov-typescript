@@ -8,11 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Amount,
-  Amount$inboundSchema,
-  Amount$Outbound,
-  Amount$outboundSchema,
-} from "./amount.js";
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
 import {
   RefundAmountDetails,
   RefundAmountDetails$inboundSchema,
@@ -20,11 +20,11 @@ import {
   RefundAmountDetails$outboundSchema,
 } from "./refundamountdetails.js";
 import {
-  RefundCardDetails,
-  RefundCardDetails$inboundSchema,
-  RefundCardDetails$Outbound,
-  RefundCardDetails$outboundSchema,
-} from "./refundcarddetails.js";
+  RefundProcessingDetails,
+  RefundProcessingDetails$inboundSchema,
+  RefundProcessingDetails$Outbound,
+  RefundProcessingDetails$outboundSchema,
+} from "./refundprocessingdetails.js";
 import {
   RefundStatus,
   RefundStatus$inboundSchema,
@@ -42,9 +42,13 @@ export type CardAcquiringRefund = {
   createdOn: Date;
   updatedOn: Date;
   status: RefundStatus;
-  amount: Amount;
+  amount: AmountDecimal;
+  /**
+   * ID of the capture this refund applies to, when applicable.
+   */
+  captureID?: string | undefined;
   amountDetails?: RefundAmountDetails | undefined;
-  cardDetails?: RefundCardDetails | undefined;
+  processingDetails: RefundProcessingDetails;
 };
 
 /** @internal */
@@ -57,9 +61,10 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   createdOn: types.date(),
   updatedOn: types.date(),
   status: RefundStatus$inboundSchema,
-  amount: Amount$inboundSchema,
+  amount: AmountDecimal$inboundSchema,
+  captureID: types.optional(types.string()),
   amountDetails: types.optional(RefundAmountDetails$inboundSchema),
-  cardDetails: types.optional(RefundCardDetails$inboundSchema),
+  processingDetails: RefundProcessingDetails$inboundSchema,
 });
 /** @internal */
 export type CardAcquiringRefund$Outbound = {
@@ -67,9 +72,10 @@ export type CardAcquiringRefund$Outbound = {
   createdOn: string;
   updatedOn: string;
   status: string;
-  amount: Amount$Outbound;
+  amount: AmountDecimal$Outbound;
+  captureID?: string | undefined;
   amountDetails?: RefundAmountDetails$Outbound | undefined;
-  cardDetails?: RefundCardDetails$Outbound | undefined;
+  processingDetails: RefundProcessingDetails$Outbound;
 };
 
 /** @internal */
@@ -82,9 +88,10 @@ export const CardAcquiringRefund$outboundSchema: z.ZodType<
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
   status: RefundStatus$outboundSchema,
-  amount: Amount$outboundSchema,
+  amount: AmountDecimal$outboundSchema,
+  captureID: z.string().optional(),
   amountDetails: RefundAmountDetails$outboundSchema.optional(),
-  cardDetails: RefundCardDetails$outboundSchema.optional(),
+  processingDetails: RefundProcessingDetails$outboundSchema,
 });
 
 export function cardAcquiringRefundToJSON(

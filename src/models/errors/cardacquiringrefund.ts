@@ -18,9 +18,13 @@ export type CardAcquiringRefundData = {
   createdOn: Date;
   updatedOn: Date;
   status: components.RefundStatus;
-  amount: components.Amount;
+  amount: components.AmountDecimal;
+  /**
+   * ID of the capture this refund applies to, when applicable.
+   */
+  captureID?: string | undefined;
   amountDetails?: components.RefundAmountDetails | undefined;
-  cardDetails?: components.RefundCardDetails | undefined;
+  processingDetails: components.RefundProcessingDetails;
 };
 
 /**
@@ -34,9 +38,13 @@ export class CardAcquiringRefund extends MoovError {
   createdOn: Date;
   updatedOn: Date;
   status: components.RefundStatus;
-  amount: components.Amount;
+  amount: components.AmountDecimal;
+  /**
+   * ID of the capture this refund applies to, when applicable.
+   */
+  captureID?: string | undefined;
   amountDetails?: components.RefundAmountDetails | undefined;
-  cardDetails?: components.RefundCardDetails | undefined;
+  processingDetails: components.RefundProcessingDetails;
 
   /** The original data that was passed to this error instance. */
   data$: CardAcquiringRefundData;
@@ -55,8 +63,9 @@ export class CardAcquiringRefund extends MoovError {
     this.updatedOn = err.updatedOn;
     this.status = err.status;
     this.amount = err.amount;
+    if (err.captureID != null) this.captureID = err.captureID;
     if (err.amountDetails != null) this.amountDetails = err.amountDetails;
-    if (err.cardDetails != null) this.cardDetails = err.cardDetails;
+    this.processingDetails = err.processingDetails;
 
     this.name = "CardAcquiringRefund";
   }
@@ -72,9 +81,10 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   createdOn: types.date(),
   updatedOn: types.date(),
   status: components.RefundStatus$inboundSchema,
-  amount: components.Amount$inboundSchema,
+  amount: components.AmountDecimal$inboundSchema,
+  captureID: types.optional(types.string()),
   amountDetails: types.optional(components.RefundAmountDetails$inboundSchema),
-  cardDetails: types.optional(components.RefundCardDetails$inboundSchema),
+  processingDetails: components.RefundProcessingDetails$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -93,9 +103,10 @@ export type CardAcquiringRefund$Outbound = {
   createdOn: string;
   updatedOn: string;
   status: string;
-  amount: components.Amount$Outbound;
+  amount: components.AmountDecimal$Outbound;
+  captureID?: string | undefined;
   amountDetails?: components.RefundAmountDetails$Outbound | undefined;
-  cardDetails?: components.RefundCardDetails$Outbound | undefined;
+  processingDetails: components.RefundProcessingDetails$Outbound;
 };
 
 /** @internal */
@@ -110,7 +121,8 @@ export const CardAcquiringRefund$outboundSchema: z.ZodType<
     createdOn: z.date().transform(v => v.toISOString()),
     updatedOn: z.date().transform(v => v.toISOString()),
     status: components.RefundStatus$outboundSchema,
-    amount: components.Amount$outboundSchema,
+    amount: components.AmountDecimal$outboundSchema,
+    captureID: z.string().optional(),
     amountDetails: components.RefundAmountDetails$outboundSchema.optional(),
-    cardDetails: components.RefundCardDetails$outboundSchema.optional(),
+    processingDetails: components.RefundProcessingDetails$outboundSchema,
   }));

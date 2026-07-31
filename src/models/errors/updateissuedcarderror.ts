@@ -12,6 +12,7 @@ export type UpdateIssuedCardErrorData = {
   nickname?: string | undefined;
   metadata?: string | undefined;
   billingAddress?: components.AddressError | undefined;
+  controls?: components.UpdateIssuingControlsError | undefined;
 };
 
 export class UpdateIssuedCardError extends MoovError {
@@ -19,6 +20,7 @@ export class UpdateIssuedCardError extends MoovError {
   nickname?: string | undefined;
   metadata?: string | undefined;
   billingAddress?: components.AddressError | undefined;
+  controls?: components.UpdateIssuingControlsError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: UpdateIssuedCardErrorData;
@@ -36,6 +38,7 @@ export class UpdateIssuedCardError extends MoovError {
     if (err.nickname != null) this.nickname = err.nickname;
     if (err.metadata != null) this.metadata = err.metadata;
     if (err.billingAddress != null) this.billingAddress = err.billingAddress;
+    if (err.controls != null) this.controls = err.controls;
 
     this.name = "UpdateIssuedCardError";
   }
@@ -51,6 +54,7 @@ export const UpdateIssuedCardError$inboundSchema: z.ZodType<
   nickname: types.optional(types.string()),
   metadata: types.optional(types.string()),
   billingAddress: types.optional(components.AddressError$inboundSchema),
+  controls: types.optional(components.UpdateIssuingControlsError$inboundSchema),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -69,6 +73,7 @@ export type UpdateIssuedCardError$Outbound = {
   nickname?: string | undefined;
   metadata?: string | undefined;
   billingAddress?: components.AddressError$Outbound | undefined;
+  controls?: components.UpdateIssuingControlsError$Outbound | undefined;
 };
 
 /** @internal */
@@ -83,4 +88,5 @@ export const UpdateIssuedCardError$outboundSchema: z.ZodType<
     nickname: z.string().optional(),
     metadata: z.string().optional(),
     billingAddress: components.AddressError$outboundSchema.optional(),
+    controls: components.UpdateIssuingControlsError$outboundSchema.optional(),
   }));

@@ -8,6 +8,12 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
+import {
   RefundAmountDetails,
   RefundAmountDetails$inboundSchema,
   RefundAmountDetails$Outbound,
@@ -19,13 +25,17 @@ import {
  *
  * @remarks
  *
- * This request body is optional, an empty body will issue a refund for the full amount of the original transfer.
+ * Before v2026.10, this request body may be omitted. In v2026.10 and later, send an empty object to refund the full amount of the original transfer.
  */
 export type CreateRefund = {
   /**
-   * Amount to refund in cents. If null, the original transfer's full amount will be refunded.
+   * Amount to refund. Before v2026.10, specify the amount in integer cents. If omitted, the original transfer's full amount will be refunded.
    */
-  amount?: number | undefined;
+  amount?: AmountDecimal | undefined;
+  /**
+   * ID of the capture to refund. Required for multi-capture card payment transfers.
+   */
+  captureID?: string | undefined;
   /**
    * Breakdown of the refunded amount.
    */
@@ -38,12 +48,14 @@ export const CreateRefund$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  amount: types.optional(types.number()),
+  amount: types.optional(AmountDecimal$inboundSchema),
+  captureID: types.optional(types.string()),
   amountDetails: types.optional(RefundAmountDetails$inboundSchema),
 });
 /** @internal */
 export type CreateRefund$Outbound = {
-  amount?: number | undefined;
+  amount?: AmountDecimal$Outbound | undefined;
+  captureID?: string | undefined;
   amountDetails?: RefundAmountDetails$Outbound | undefined;
 };
 
@@ -53,7 +65,8 @@ export const CreateRefund$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateRefund
 > = z.object({
-  amount: z.number().int().optional(),
+  amount: AmountDecimal$outboundSchema.optional(),
+  captureID: z.string().optional(),
   amountDetails: RefundAmountDetails$outboundSchema.optional(),
 });
 
