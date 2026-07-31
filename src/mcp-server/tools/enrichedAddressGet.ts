@@ -14,7 +14,7 @@ export const tool$enrichedAddressGet: ToolDefinition<typeof args> = {
   name: "enriched-address-get",
   description: `Fetch enriched address suggestions. Requires a partial address. 
   
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the \`/profile-enrichment.read\` scope.`,
   args,
   tool: async (client, args, ctx) => {

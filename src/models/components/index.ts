@@ -516,6 +516,7 @@ export * from "./transfer.js";
 export * from "./transferaccount.js";
 export * from "./transferachaddendarecord.js";
 export * from "./transferamountdetails.js";
+export * from "./transfercapture.js";
 export * from "./transferconfig.js";
 export * from "./transfercontrols.js";
 export * from "./transferdestination.js";

@@ -50,11 +50,6 @@ let value: Transfer = {
       domesticPushToCard: "standard",
       domesticPullFromCard: "supported",
     },
-    cardDetails: {
-      status: "confirmed",
-      dynamicDescriptor: "WhlBdy *Yoga 11-12",
-      confirmedOn: new Date("2025-01-21T21:32:16.799681237Z"),
-    },
   },
   destination: {
     paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
@@ -73,7 +68,7 @@ let value: Transfer = {
   status: "pending",
   amount: {
     currency: "USD",
-    value: 32945,
+    value: 1204,
   },
   description: "Transfer from card to wallet",
   moovFees: [
@@ -82,7 +77,7 @@ let value: Transfer = {
       transferParty: "source",
       totalAmount: {
         currency: "USD",
-        valueDecimal: "0.1",
+        valueDecimal: "0.10",
       },
       feeIDs: [
         "9d957d33-1a9a-47aa-9460-fe1a90f003dd",
@@ -132,3 +127,4 @@ let value: Transfer = {
 | `lineItems`                                                                                                                             | [components.TransferLineItems](../../models/components/transferlineitems.md)                                                            | :heavy_minus_sign:                                                                                                                      | An optional collection of line items for a transfer.<br/>When line items are provided, their total plus tax must equal the transfer amount. |                                                                                                                                         |
 | `invoiceID`                                                                                                                             | *string*                                                                                                                                | :heavy_minus_sign:                                                                                                                      | ID of the invoice that the transfer is associated with.                                                                                 |                                                                                                                                         |
 | `amountDetails`                                                                                                                         | [components.TransferAmountDetails](../../models/components/transferamountdetails.md)                                                    | :heavy_minus_sign:                                                                                                                      | N/A                                                                                                                                     |                                                                                                                                         |
+| `capture`                                                                                                                               | [components.TransferCapture](../../models/components/transfercapture.md)                                                                | :heavy_minus_sign:                                                                                                                      | The card authorization and capture IDs associated with a transfer.                                                                      |                                                                                                                                         |
