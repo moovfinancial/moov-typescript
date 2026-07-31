@@ -312,7 +312,7 @@ const value: components.WebhookDataTicketMessageAdded = {
 const value: components.WebhookDataTransferCreated = {
   accountID: "<id>",
   transferID: "<id>",
-  status: "source.corrected",
+  status: "source.initiated",
 };
 ```
 
@@ -322,7 +322,7 @@ const value: components.WebhookDataTransferCreated = {
 const value: components.WebhookDataTransferUpdated = {
   accountID: "<id>",
   transferID: "<id>",
-  status: "source.returned",
+  status: "source.originated",
   source: {
     accountID: "<id>",
     paymentMethodID: "<id>",
