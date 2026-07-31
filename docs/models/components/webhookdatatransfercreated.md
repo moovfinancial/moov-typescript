@@ -8,7 +8,7 @@ import { WebhookDataTransferCreated } from "@moovio/sdk/models/components";
 let value: WebhookDataTransferCreated = {
   accountID: "<id>",
   transferID: "<id>",
-  status: "source.corrected",
+  status: "source.initiated",
 };
 ```
 
