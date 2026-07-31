@@ -408,6 +408,7 @@ export * from "./transactionsource.js";
 export * from "./transfer.js";
 export * from "./transferaccount.js";
 export * from "./transferachaddendarecord.js";
+export * from "./transfercapture.js";
 export * from "./transferdestination.js";
 export * from "./transferfailurereason.js";
 export * from "./transferlineitem.js";

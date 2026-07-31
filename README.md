@@ -425,7 +425,7 @@ Allows clients to notify the authorization server that a previously obtained ref
 
 * [get](docs/sdks/avatars/README.md#get) - Get avatar image for an account using a unique ID.    
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/profile-enrichment.read` scope.
 
 ### [BankAccounts](docs/sdks/bankaccounts/README.md)
@@ -713,14 +713,14 @@ you'll need to specify the `/ping.read` scope.
 
 * [get](docs/sdks/enrichedaddress/README.md#get) - Fetch enriched address suggestions. Requires a partial address. 
   
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/profile-enrichment.read` scope.
 
 ### [EnrichedProfile](docs/sdks/enrichedprofile/README.md)
 
 * [get](docs/sdks/enrichedprofile/README.md#get) - Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/profile-enrichment.read` scope.
 
 ### [FeePlans](docs/sdks/feeplans/README.md)
@@ -823,7 +823,7 @@ you'll need to specify the `/institutions.read` scope.
 
 Search for institutions by either their name or routing number.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/fed.read` scope. :warning: **Deprecated**
 
 ### [IssuingTransactions](docs/sdks/issuingtransactions/README.md)
@@ -1373,7 +1373,7 @@ you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
 Allows clients to notify the authorization server that a previously obtained refresh or access token is no longer needed.
 - [`avatarsGet`](docs/sdks/avatars/README.md#get) - Get avatar image for an account using a unique ID.    
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/profile-enrichment.read` scope.
 - [`bankAccountsCompleteMicroDeposits`](docs/sdks/bankaccounts/README.md#completemicrodeposits) - Complete the micro-deposit validation process by passing the amounts of the two transfers within three tries.
 
@@ -1637,11 +1637,11 @@ To access this endpoint using an [access token](https://docs.moov.io/api/authent
 you'll need to specify the `/ping.read` scope.
 - [`enrichedAddressGet`](docs/sdks/enrichedaddress/README.md#get) - Fetch enriched address suggestions. Requires a partial address. 
   
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/profile-enrichment.read` scope.
 - [`enrichedProfileGet`](docs/sdks/enrichedprofile/README.md#get) - Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/profile-enrichment.read` scope.
 - [`feePlansCreateFeePlanAgreements`](docs/sdks/feeplans/README.md#createfeeplanagreements) - Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
 
@@ -2071,7 +2071,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 Search for institutions by either their name or routing number.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/fed.read` scope. :warning: **Deprecated**
 
 </details>
