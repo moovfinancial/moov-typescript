@@ -12,11 +12,7 @@ let value: RequestCardResponse = {
       "<value 2>",
       "<value 3>",
     ],
-    "key1": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
+    "key1": [],
     "key2": [],
   },
   result: {
@@ -45,12 +41,12 @@ let value: RequestCardResponse = {
       velocityLimits: [
         {
           amount: 10000,
-          interval: "per-transaction",
+          interval: "monthly",
         },
       ],
     },
-    createdOn: new Date("2026-04-12T06:36:51.704Z"),
-    updatedOn: new Date("2025-03-14T17:50:56.897Z"),
+    createdOn: new Date("2025-03-14T17:50:56.897Z"),
+    updatedOn: new Date("2026-08-27T12:03:48.707Z"),
   },
 };
 ```

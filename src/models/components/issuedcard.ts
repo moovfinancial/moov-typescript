@@ -35,11 +35,11 @@ import {
   IssuedCardState$outboundSchema,
 } from "./issuedcardstate.js";
 import {
-  IssuingControls,
-  IssuingControls$inboundSchema,
-  IssuingControls$Outbound,
-  IssuingControls$outboundSchema,
-} from "./issuingcontrols.js";
+  IssuedControls,
+  IssuedControls$inboundSchema,
+  IssuedControls$Outbound,
+  IssuedControls$outboundSchema,
+} from "./issuedcontrols.js";
 
 export type IssuedCard = {
   issuedCardID: string;
@@ -85,7 +85,10 @@ export type IssuedCard = {
    * Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
    */
   formFactor: IssuedCardFormFactor;
-  controls?: IssuingControls | undefined;
+  /**
+   * Spend controls applied to an issued card, including velocity runtime state.
+   */
+  controls?: IssuedControls | undefined;
   createdOn: Date;
   updatedOn: Date;
 };
@@ -107,7 +110,7 @@ export const IssuedCard$inboundSchema: z.ZodType<
   billingAddress: types.optional(Address$inboundSchema),
   state: IssuedCardState$inboundSchema,
   formFactor: IssuedCardFormFactor$inboundSchema,
-  controls: types.optional(IssuingControls$inboundSchema),
+  controls: types.optional(IssuedControls$inboundSchema),
   createdOn: types.date(),
   updatedOn: types.date(),
 });
@@ -124,7 +127,7 @@ export type IssuedCard$Outbound = {
   billingAddress?: Address$Outbound | undefined;
   state: string;
   formFactor: string;
-  controls?: IssuingControls$Outbound | undefined;
+  controls?: IssuedControls$Outbound | undefined;
   createdOn: string;
   updatedOn: string;
 };
@@ -146,7 +149,7 @@ export const IssuedCard$outboundSchema: z.ZodType<
   billingAddress: Address$outboundSchema.optional(),
   state: IssuedCardState$outboundSchema,
   formFactor: IssuedCardFormFactor$outboundSchema,
-  controls: IssuingControls$outboundSchema.optional(),
+  controls: IssuedControls$outboundSchema.optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
 });

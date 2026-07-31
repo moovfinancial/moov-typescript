@@ -20,6 +20,14 @@ let value: UpdateIssuedCardRequest = {
       postalCode: "80301",
       country: "US",
     },
+    controls: {
+      velocityLimits: [
+        {
+          amount: 10000,
+          interval: "per-transaction",
+        },
+      ],
+    },
   },
 };
 ```

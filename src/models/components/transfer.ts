@@ -56,6 +56,12 @@ import {
   TransferAmountDetails$outboundSchema,
 } from "./transferamountdetails.js";
 import {
+  TransferCapture,
+  TransferCapture$inboundSchema,
+  TransferCapture$Outbound,
+  TransferCapture$outboundSchema,
+} from "./transfercapture.js";
+import {
   TransferDestination,
   TransferDestination$inboundSchema,
   TransferDestination$Outbound,
@@ -159,6 +165,10 @@ export type Transfer = {
    */
   invoiceID?: string | undefined;
   amountDetails?: TransferAmountDetails | undefined;
+  /**
+   * The card authorization and capture IDs associated with a transfer.
+   */
+  capture?: TransferCapture | undefined;
 };
 
 /** @internal */
@@ -196,6 +206,7 @@ export const Transfer$inboundSchema: z.ZodType<
   lineItems: types.optional(TransferLineItems$inboundSchema),
   invoiceID: types.optional(types.string()),
   amountDetails: types.optional(TransferAmountDetails$inboundSchema),
+  capture: types.optional(TransferCapture$inboundSchema),
 });
 /** @internal */
 export type Transfer$Outbound = {
@@ -228,6 +239,7 @@ export type Transfer$Outbound = {
   lineItems?: TransferLineItems$Outbound | undefined;
   invoiceID?: string | undefined;
   amountDetails?: TransferAmountDetails$Outbound | undefined;
+  capture?: TransferCapture$Outbound | undefined;
 };
 
 /** @internal */
@@ -265,6 +277,7 @@ export const Transfer$outboundSchema: z.ZodType<
   lineItems: TransferLineItems$outboundSchema.optional(),
   invoiceID: z.string().optional(),
   amountDetails: TransferAmountDetails$outboundSchema.optional(),
+  capture: TransferCapture$outboundSchema.optional(),
 });
 
 export function transferToJSON(transfer: Transfer): string {

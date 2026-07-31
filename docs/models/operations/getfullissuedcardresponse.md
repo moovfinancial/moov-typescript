@@ -44,7 +44,7 @@ let value: GetFullIssuedCardResponse = {
       velocityLimits: [
         {
           amount: 10000,
-          interval: "per-transaction",
+          interval: "monthly",
         },
       ],
     },

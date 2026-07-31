@@ -5,6 +5,7 @@
 import { cardIssuingGet } from "../funcs/cardIssuingGet.js";
 import { cardIssuingGetFull } from "../funcs/cardIssuingGetFull.js";
 import { cardIssuingList } from "../funcs/cardIssuingList.js";
+import { cardIssuingListMerchantCategories } from "../funcs/cardIssuingListMerchantCategories.js";
 import { cardIssuingRequest } from "../funcs/cardIssuingRequest.js";
 import { cardIssuingUpdate } from "../funcs/cardIssuingUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -12,6 +13,23 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class CardIssuing extends ClientSDK {
+  /**
+   * List the predefined merchant category groups available for issued card spend controls, along with
+   * the merchant category codes (MCCs) each group covers. Use these category names in an issued card's
+   * `merchantCategoryRestrictions`.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
+   * you'll need to specify the `/issued-cards.read` scope.
+   */
+  async listMerchantCategories(
+    options?: RequestOptions,
+  ): Promise<operations.ListIssuingMerchantCategoriesResponse> {
+    return unwrapAsync(cardIssuingListMerchantCategories(
+      this,
+      options,
+    ));
+  }
+
   /**
    * Request a virtual card be issued.
    *

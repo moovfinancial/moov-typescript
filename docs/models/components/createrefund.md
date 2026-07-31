@@ -2,7 +2,7 @@
 
 Specifies a partial amount to refund. 
 
-This request body is optional, an empty body will issue a refund for the full amount of the original transfer.
+Before v2026.10, this request body may be omitted. In v2026.10 and later, send an empty object to refund the full amount of the original transfer.
 
 ## Example Usage
 
@@ -10,7 +10,6 @@ This request body is optional, an empty body will issue a refund for the full am
 import { CreateRefund } from "@moovio/sdk/models/components";
 
 let value: CreateRefund = {
-  amount: 1000,
   amountDetails: {
     surcharge: {
       currency: "USD",
@@ -22,7 +21,7 @@ let value: CreateRefund = {
 
 ## Fields
 
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `amount`                                                                                  | *number*                                                                                  | :heavy_minus_sign:                                                                        | Amount to refund in cents. If null, the original transfer's full amount will be refunded. | 1000                                                                                      |
-| `amountDetails`                                                                           | [components.RefundAmountDetails](../../models/components/refundamountdetails.md)          | :heavy_minus_sign:                                                                        | Breakdown of the refunded amount.                                                         |                                                                                           |
+| Field                                                                                                                                     | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `amount`                                                                                                                                  | *number*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Amount to refund. Before v2026.10, specify the amount in integer cents. If omitted, the original transfer's full amount will be refunded. |
+| `amountDetails`                                                                                                                           | [components.RefundAmountDetails](../../models/components/refundamountdetails.md)                                                          | :heavy_minus_sign:                                                                                                                        | Breakdown of the refunded amount.                                                                                                         |

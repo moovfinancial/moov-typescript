@@ -135,6 +135,7 @@ export * from "./listissuedcardauthorizationevents.js";
 export * from "./listissuedcardauthorizations.js";
 export * from "./listissuedcards.js";
 export * from "./listissuedcardtransactions.js";
+export * from "./listissuingmerchantcategories.js";
 export * from "./listonboardinginvites.js";
 export * from "./listpartnerpricingagreements.js";
 export * from "./listpaymentlinks.js";

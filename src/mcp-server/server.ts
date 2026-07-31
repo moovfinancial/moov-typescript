@@ -57,6 +57,7 @@ import { tool$capabilitiesRequest } from "./tools/capabilitiesRequest.js";
 import { tool$cardIssuingGet } from "./tools/cardIssuingGet.js";
 import { tool$cardIssuingGetFull } from "./tools/cardIssuingGetFull.js";
 import { tool$cardIssuingList } from "./tools/cardIssuingList.js";
+import { tool$cardIssuingListMerchantCategories } from "./tools/cardIssuingListMerchantCategories.js";
 import { tool$cardIssuingRequest } from "./tools/cardIssuingRequest.js";
 import { tool$cardIssuingUpdate } from "./tools/cardIssuingUpdate.js";
 import { tool$cardsDisable } from "./tools/cardsDisable.js";
@@ -216,7 +217,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "26.7.0",
+    version: "26.7.1",
   });
 
   const client = new MoovCore({
@@ -413,16 +414,17 @@ export function createMCPServer(deps: {
   tool(tool$industriesList);
   tool(tool$institutionsSearchInstitutions);
   tool(tool$institutionsSearch);
-  tool(tool$issuingTransactionsListAuthorizations);
-  tool(tool$issuingTransactionsGetAuthorization);
-  tool(tool$issuingTransactionsListAuthorizationEvents);
-  tool(tool$issuingTransactionsList);
-  tool(tool$issuingTransactionsGet);
+  tool(tool$cardIssuingListMerchantCategories);
   tool(tool$cardIssuingRequest);
   tool(tool$cardIssuingList);
   tool(tool$cardIssuingGet);
   tool(tool$cardIssuingUpdate);
   tool(tool$cardIssuingGetFull);
+  tool(tool$issuingTransactionsListAuthorizations);
+  tool(tool$issuingTransactionsGetAuthorization);
+  tool(tool$issuingTransactionsListAuthorizationEvents);
+  tool(tool$issuingTransactionsList);
+  tool(tool$issuingTransactionsGet);
   tool(tool$authenticationRevokeAccessToken);
   tool(tool$authenticationCreateAccessToken);
   tool(tool$onboardingCreateInvite);

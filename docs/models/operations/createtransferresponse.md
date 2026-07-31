@@ -6,9 +6,7 @@
 import { CreateTransferResponse } from "@moovio/sdk/models/operations";
 
 let value: CreateTransferResponse = {
-  headers: {
-    "key": [],
-  },
+  headers: {},
   result: {
     transferID: "d835gf30-4b19-4850-a9b2-c0624c41ecb3",
     createdOn: new Date("2025-01-21T21:32:16Z"),
@@ -52,11 +50,6 @@ let value: CreateTransferResponse = {
         domesticPushToCard: "standard",
         domesticPullFromCard: "supported",
       },
-      cardDetails: {
-        status: "confirmed",
-        dynamicDescriptor: "WhlBdy *Yoga 11-12",
-        confirmedOn: new Date("2025-01-21T21:32:16.799681237Z"),
-      },
     },
     destination: {
       paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
@@ -75,7 +68,7 @@ let value: CreateTransferResponse = {
     status: "pending",
     amount: {
       currency: "USD",
-      value: 32945,
+      value: 1204,
     },
     description: "Transfer from card to wallet",
     moovFees: [
@@ -84,7 +77,7 @@ let value: CreateTransferResponse = {
         transferParty: "source",
         totalAmount: {
           currency: "USD",
-          valueDecimal: "0.1",
+          valueDecimal: "0.10",
         },
         feeIDs: [
           "9d957d33-1a9a-47aa-9460-fe1a90f003dd",

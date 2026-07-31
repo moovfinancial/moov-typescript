@@ -7,11 +7,13 @@ Specifies the time frame for a velocity limit. `per-transaction` applies to each
 ```typescript
 import { IssuingIntervalLimit } from "@moovio/sdk/models/components";
 
-let value: IssuingIntervalLimit = "per-transaction";
+let value: IssuingIntervalLimit = "weekly";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"per-transaction"
+"per-transaction" | "daily" | "weekly" | "monthly" | Unrecognized<string>
 ```

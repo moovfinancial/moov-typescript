@@ -224,16 +224,16 @@ export class Moov extends ClientSDK {
     return (this._institutions ??= new Institutions(this._options));
   }
 
+  private _cardIssuing?: CardIssuing;
+  get cardIssuing(): CardIssuing {
+    return (this._cardIssuing ??= new CardIssuing(this._options));
+  }
+
   private _issuingTransactions?: IssuingTransactions;
   get issuingTransactions(): IssuingTransactions {
     return (this._issuingTransactions ??= new IssuingTransactions(
       this._options,
     ));
-  }
-
-  private _cardIssuing?: CardIssuing;
-  get cardIssuing(): CardIssuing {
-    return (this._cardIssuing ??= new CardIssuing(this._options));
   }
 
   private _authentication?: Authentication;

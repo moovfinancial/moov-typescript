@@ -1159,7 +1159,6 @@ async function run() {
     accountID: "cb6ae9f9-afab-4f06-9eb0-8abf54a3ada2",
     transferID: "04022119-95be-4ef4-9dd4-b3782f6aa7b9",
     createRefund: {
-      amount: 1000,
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1198,7 +1197,6 @@ async function run() {
     accountID: "cb6ae9f9-afab-4f06-9eb0-8abf54a3ada2",
     transferID: "04022119-95be-4ef4-9dd4-b3782f6aa7b9",
     createRefund: {
-      amount: 1000,
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1236,7 +1234,6 @@ async function run() {
     accountID: "d12ddb6e-0ed9-44e8-92a7-1716ae7cc759",
     transferID: "d73be489-9da4-4be7-bc04-147d8552279d",
     createRefund: {
-      amount: 1000,
       amountDetails: {
         surcharge: {
           currency: "USD",
@@ -1275,7 +1272,6 @@ async function run() {
     accountID: "d12ddb6e-0ed9-44e8-92a7-1716ae7cc759",
     transferID: "d73be489-9da4-4be7-bc04-147d8552279d",
     createRefund: {
-      amount: 1000,
       amountDetails: {
         surcharge: {
           currency: "USD",

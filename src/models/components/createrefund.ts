@@ -19,11 +19,11 @@ import {
  *
  * @remarks
  *
- * This request body is optional, an empty body will issue a refund for the full amount of the original transfer.
+ * Before v2026.10, this request body may be omitted. In v2026.10 and later, send an empty object to refund the full amount of the original transfer.
  */
 export type CreateRefund = {
   /**
-   * Amount to refund in cents. If null, the original transfer's full amount will be refunded.
+   * Amount to refund. Before v2026.10, specify the amount in integer cents. If omitted, the original transfer's full amount will be refunded.
    */
   amount?: number | undefined;
   /**
