@@ -10,7 +10,7 @@ let value: CreateTransferOptions = {
   destination: {},
   amount: {
     currency: "USD",
-    value: 1204,
+    valueDecimal: "12.987654321",
   },
 };
 ```
@@ -21,4 +21,4 @@ let value: CreateTransferOptions = {
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `source`                                                                                   | [components.SourceDestinationOptions](../../models/components/sourcedestinationoptions.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `destination`                                                                              | [components.SourceDestinationOptions](../../models/components/sourcedestinationoptions.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `amount`                                                                                   | [components.Amount](../../models/components/amount.md)                                     | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `amount`                                                                                   | [components.AmountDecimal](../../models/components/amountdecimal.md)                       | :heavy_check_mark:                                                                         | N/A                                                                                        |

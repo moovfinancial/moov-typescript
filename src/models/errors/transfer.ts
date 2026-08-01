@@ -12,6 +12,10 @@ import { MoovError } from "./mooverror.js";
  */
 export type TransferData = {
   transferID: string;
+  /**
+   * The rail and direction used to move funds for a transfer.
+   */
+  transferType: components.TransferType;
   createdOn: Date;
   source: components.TransferSource;
   destination: components.TransferDestination;
@@ -24,7 +28,7 @@ export type TransferData = {
    * Reason for a transfer's failure.
    */
   failureReason?: components.TransferFailureReason | undefined;
-  amount: components.Amount;
+  amount: components.AmountDecimal;
   /**
    * An optional description of the transfer that is used on receipts and for your own internal use.
    */
@@ -40,11 +44,7 @@ export type TransferData = {
   /**
    * Fees charged to your platform account for transfers.
    */
-  moovFee?: number | undefined;
-  /**
-   * Same as `moovFee`, but a decimal-formatted numerical string that represents up to 9 decimal place precision.
-   */
-  moovFeeDecimal?: string | undefined;
+  moovFee?: components.AmountDecimal | undefined;
   /**
    * Processing and pass-through costs that add up to the moovFee.
    */
@@ -54,11 +54,8 @@ export type TransferData = {
    */
   moovFees?: Array<components.MoovFee> | undefined;
   groupID?: string | undefined;
-  cancellations?: Array<components.Cancellation> | undefined;
-  refundedAmount?: components.Amount | undefined;
-  refunds?: Array<components.CardAcquiringRefund> | undefined;
-  disputedAmount?: components.Amount | undefined;
-  disputes?: Array<components.CardAcquiringDispute> | undefined;
+  refundedAmount?: components.AmountDecimal | undefined;
+  disputedAmount?: components.AmountDecimal | undefined;
   /**
    * ID of the sweep that created this transfer.
    */
@@ -82,10 +79,9 @@ export type TransferData = {
    */
   invoiceID?: string | undefined;
   amountDetails?: components.TransferAmountDetails | undefined;
-  /**
-   * The card authorization and capture IDs associated with a transfer.
-   */
-  capture?: components.TransferCapture | undefined;
+  authorization?: components.TransferAuthorization | undefined;
+  options: components.TransferRailOptions;
+  processingDetails: components.TransferProcessingDetails;
 };
 
 /**
@@ -93,6 +89,10 @@ export type TransferData = {
  */
 export class Transfer extends MoovError {
   transferID: string;
+  /**
+   * The rail and direction used to move funds for a transfer.
+   */
+  transferType: components.TransferType;
   createdOn: Date;
   source: components.TransferSource;
   destination: components.TransferDestination;
@@ -105,7 +105,7 @@ export class Transfer extends MoovError {
    * Reason for a transfer's failure.
    */
   failureReason?: components.TransferFailureReason | undefined;
-  amount: components.Amount;
+  amount: components.AmountDecimal;
   /**
    * An optional description of the transfer that is used on receipts and for your own internal use.
    */
@@ -121,11 +121,7 @@ export class Transfer extends MoovError {
   /**
    * Fees charged to your platform account for transfers.
    */
-  moovFee?: number | undefined;
-  /**
-   * Same as `moovFee`, but a decimal-formatted numerical string that represents up to 9 decimal place precision.
-   */
-  moovFeeDecimal?: string | undefined;
+  moovFee?: components.AmountDecimal | undefined;
   /**
    * Processing and pass-through costs that add up to the moovFee.
    */
@@ -135,11 +131,8 @@ export class Transfer extends MoovError {
    */
   moovFees?: Array<components.MoovFee> | undefined;
   groupID?: string | undefined;
-  cancellations?: Array<components.Cancellation> | undefined;
-  refundedAmount?: components.Amount | undefined;
-  refunds?: Array<components.CardAcquiringRefund> | undefined;
-  disputedAmount?: components.Amount | undefined;
-  disputes?: Array<components.CardAcquiringDispute> | undefined;
+  refundedAmount?: components.AmountDecimal | undefined;
+  disputedAmount?: components.AmountDecimal | undefined;
   /**
    * ID of the sweep that created this transfer.
    */
@@ -163,10 +156,9 @@ export class Transfer extends MoovError {
    */
   invoiceID?: string | undefined;
   amountDetails?: components.TransferAmountDetails | undefined;
-  /**
-   * The card authorization and capture IDs associated with a transfer.
-   */
-  capture?: components.TransferCapture | undefined;
+  authorization?: components.TransferAuthorization | undefined;
+  options: components.TransferRailOptions;
+  processingDetails: components.TransferProcessingDetails;
 
   /** The original data that was passed to this error instance. */
   data$: TransferData;
@@ -181,6 +173,7 @@ export class Transfer extends MoovError {
     super(message, httpMeta);
     this.data$ = err;
     this.transferID = err.transferID;
+    this.transferType = err.transferType;
     this.createdOn = err.createdOn;
     this.source = err.source;
     this.destination = err.destination;
@@ -192,15 +185,11 @@ export class Transfer extends MoovError {
     if (err.metadata != null) this.metadata = err.metadata;
     if (err.facilitatorFee != null) this.facilitatorFee = err.facilitatorFee;
     if (err.moovFee != null) this.moovFee = err.moovFee;
-    if (err.moovFeeDecimal != null) this.moovFeeDecimal = err.moovFeeDecimal;
     if (err.moovFeeDetails != null) this.moovFeeDetails = err.moovFeeDetails;
     if (err.moovFees != null) this.moovFees = err.moovFees;
     if (err.groupID != null) this.groupID = err.groupID;
-    if (err.cancellations != null) this.cancellations = err.cancellations;
     if (err.refundedAmount != null) this.refundedAmount = err.refundedAmount;
-    if (err.refunds != null) this.refunds = err.refunds;
     if (err.disputedAmount != null) this.disputedAmount = err.disputedAmount;
-    if (err.disputes != null) this.disputes = err.disputes;
     if (err.sweepID != null) this.sweepID = err.sweepID;
     if (err.scheduleID != null) this.scheduleID = err.scheduleID;
     if (err.occurrenceID != null) this.occurrenceID = err.occurrenceID;
@@ -209,7 +198,9 @@ export class Transfer extends MoovError {
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.invoiceID != null) this.invoiceID = err.invoiceID;
     if (err.amountDetails != null) this.amountDetails = err.amountDetails;
-    if (err.capture != null) this.capture = err.capture;
+    if (err.authorization != null) this.authorization = err.authorization;
+    this.options = err.options;
+    this.processingDetails = err.processingDetails;
 
     this.name = "Transfer";
   }
@@ -222,30 +213,23 @@ export const Transfer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   transferID: types.string(),
+  transferType: components.TransferType$inboundSchema,
   createdOn: types.date(),
   source: components.TransferSource$inboundSchema,
   destination: components.TransferDestination$inboundSchema,
   completedOn: types.optional(types.date()),
   status: components.TransferStatus$inboundSchema,
   failureReason: types.optional(components.TransferFailureReason$inboundSchema),
-  amount: components.Amount$inboundSchema,
+  amount: components.AmountDecimal$inboundSchema,
   description: types.optional(types.string()),
   metadata: types.optional(z.record(types.string())),
   facilitatorFee: types.optional(components.FacilitatorFee$inboundSchema),
-  moovFee: types.optional(types.number()),
-  moovFeeDecimal: types.optional(types.string()),
+  moovFee: types.optional(components.AmountDecimal$inboundSchema),
   moovFeeDetails: types.optional(components.MoovFeeDetails$inboundSchema),
   moovFees: types.optional(z.array(components.MoovFee$inboundSchema)),
   groupID: types.optional(types.string()),
-  cancellations: types.optional(z.array(components.Cancellation$inboundSchema)),
-  refundedAmount: types.optional(components.Amount$inboundSchema),
-  refunds: types.optional(
-    z.array(components.CardAcquiringRefund$inboundSchema),
-  ),
-  disputedAmount: types.optional(components.Amount$inboundSchema),
-  disputes: types.optional(
-    z.array(components.CardAcquiringDispute$inboundSchema),
-  ),
+  refundedAmount: types.optional(components.AmountDecimal$inboundSchema),
+  disputedAmount: types.optional(components.AmountDecimal$inboundSchema),
   sweepID: types.optional(types.string()),
   scheduleID: types.optional(types.string()),
   occurrenceID: types.optional(types.string()),
@@ -254,7 +238,9 @@ export const Transfer$inboundSchema: z.ZodType<
   lineItems: types.optional(components.TransferLineItems$inboundSchema),
   invoiceID: types.optional(types.string()),
   amountDetails: types.optional(components.TransferAmountDetails$inboundSchema),
-  capture: types.optional(components.TransferCapture$inboundSchema),
+  authorization: types.optional(components.TransferAuthorization$inboundSchema),
+  options: components.TransferRailOptions$inboundSchema,
+  processingDetails: components.TransferProcessingDetails$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -270,26 +256,23 @@ export const Transfer$inboundSchema: z.ZodType<
 /** @internal */
 export type Transfer$Outbound = {
   transferID: string;
+  transferType: string;
   createdOn: string;
   source: components.TransferSource$Outbound;
   destination: components.TransferDestination$Outbound;
   completedOn?: string | undefined;
   status: string;
   failureReason?: string | undefined;
-  amount: components.Amount$Outbound;
+  amount: components.AmountDecimal$Outbound;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   facilitatorFee?: components.FacilitatorFee$Outbound | undefined;
-  moovFee?: number | undefined;
-  moovFeeDecimal?: string | undefined;
+  moovFee?: components.AmountDecimal$Outbound | undefined;
   moovFeeDetails?: components.MoovFeeDetails$Outbound | undefined;
   moovFees?: Array<components.MoovFee$Outbound> | undefined;
   groupID?: string | undefined;
-  cancellations?: Array<components.Cancellation$Outbound> | undefined;
-  refundedAmount?: components.Amount$Outbound | undefined;
-  refunds?: Array<components.CardAcquiringRefund$Outbound> | undefined;
-  disputedAmount?: components.Amount$Outbound | undefined;
-  disputes?: Array<components.CardAcquiringDispute$Outbound> | undefined;
+  refundedAmount?: components.AmountDecimal$Outbound | undefined;
+  disputedAmount?: components.AmountDecimal$Outbound | undefined;
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
@@ -298,7 +281,9 @@ export type Transfer$Outbound = {
   lineItems?: components.TransferLineItems$Outbound | undefined;
   invoiceID?: string | undefined;
   amountDetails?: components.TransferAmountDetails$Outbound | undefined;
-  capture?: components.TransferCapture$Outbound | undefined;
+  authorization?: components.TransferAuthorization$Outbound | undefined;
+  options: components.TransferRailOptions$Outbound;
+  processingDetails: components.TransferProcessingDetails$Outbound;
 };
 
 /** @internal */
@@ -310,27 +295,23 @@ export const Transfer$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     transferID: z.string(),
+    transferType: components.TransferType$outboundSchema,
     createdOn: z.date().transform(v => v.toISOString()),
     source: components.TransferSource$outboundSchema,
     destination: components.TransferDestination$outboundSchema,
     completedOn: z.date().transform(v => v.toISOString()).optional(),
     status: components.TransferStatus$outboundSchema,
     failureReason: components.TransferFailureReason$outboundSchema.optional(),
-    amount: components.Amount$outboundSchema,
+    amount: components.AmountDecimal$outboundSchema,
     description: z.string().optional(),
     metadata: z.record(z.string()).optional(),
     facilitatorFee: components.FacilitatorFee$outboundSchema.optional(),
-    moovFee: z.number().int().optional(),
-    moovFeeDecimal: z.string().optional(),
+    moovFee: components.AmountDecimal$outboundSchema.optional(),
     moovFeeDetails: components.MoovFeeDetails$outboundSchema.optional(),
     moovFees: z.array(components.MoovFee$outboundSchema).optional(),
     groupID: z.string().optional(),
-    cancellations: z.array(components.Cancellation$outboundSchema).optional(),
-    refundedAmount: components.Amount$outboundSchema.optional(),
-    refunds: z.array(components.CardAcquiringRefund$outboundSchema).optional(),
-    disputedAmount: components.Amount$outboundSchema.optional(),
-    disputes: z.array(components.CardAcquiringDispute$outboundSchema)
-      .optional(),
+    refundedAmount: components.AmountDecimal$outboundSchema.optional(),
+    disputedAmount: components.AmountDecimal$outboundSchema.optional(),
     sweepID: z.string().optional(),
     scheduleID: z.string().optional(),
     occurrenceID: z.string().optional(),
@@ -339,5 +320,7 @@ export const Transfer$outboundSchema: z.ZodType<
     lineItems: components.TransferLineItems$outboundSchema.optional(),
     invoiceID: z.string().optional(),
     amountDetails: components.TransferAmountDetails$outboundSchema.optional(),
-    capture: components.TransferCapture$outboundSchema.optional(),
+    authorization: components.TransferAuthorization$outboundSchema.optional(),
+    options: components.TransferRailOptions$outboundSchema,
+    processingDetails: components.TransferProcessingDetails$outboundSchema,
   }));

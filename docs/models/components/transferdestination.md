@@ -6,13 +6,6 @@
 import { TransferDestination } from "@moovio/sdk/models/components";
 
 let value: TransferDestination = {
-  paymentMethodID: "<id>",
-  paymentMethodType: "push-to-card",
-  account: {
-    accountID: "<id>",
-    email: "Jaeden92@yahoo.com",
-    displayName: "Pearlie_Tromp70",
-  },
   card: {
     cardID: "01234567-89ab-cdef-0123-456789abcdef",
     fingerprint:
@@ -51,12 +44,6 @@ let value: TransferDestination = {
     domesticPushToCard: "standard",
     domesticPullFromCard: "supported",
   },
-  achDetails: {
-    traceNumber: "124782618117",
-    companyEntryDescription: "Gym dues",
-    originatingCompanyName: "Whole Body Fit",
-    debitHoldPeriod: "2-days",
-  },
   applePay: {
     brand: "Visa",
     cardType: "credit",
@@ -85,11 +72,6 @@ let value: TransferDestination = {
     issuerCountry: "US",
     authMethod: "PAN_ONLY",
   },
-  cardDetails: {
-    dynamicDescriptor: "WhlBdy *Yoga 11-12",
-    feeProgram:
-      "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
-  },
 };
 ```
 
@@ -97,14 +79,11 @@ let value: TransferDestination = {
 
 | Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `paymentMethodID`                                                                                            | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
-| `paymentMethodType`                                                                                          | [components.TransferPaymentMethodType](../../models/components/transferpaymentmethodtype.md)                 | :heavy_check_mark:                                                                                           | The payment method type that represents a payment rail and directionality                                    |
-| `account`                                                                                                    | [components.TransferAccount](../../models/components/transferaccount.md)                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `paymentMethodID`                                                                                            | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `paymentMethodType`                                                                                          | [components.TransferPaymentMethodType](../../models/components/transferpaymentmethodtype.md)                 | :heavy_minus_sign:                                                                                           | The payment method type that represents a payment rail and directionality                                    |
+| `account`                                                                                                    | [components.TransferAccount](../../models/components/transferaccount.md)                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `bankAccount`                                                                                                | [components.TransferPaymentMethodsBankAccount](../../models/components/transferpaymentmethodsbankaccount.md) | :heavy_minus_sign:                                                                                           | A bank account as contained within a payment method.                                                         |
 | `wallet`                                                                                                     | [components.TransferPaymentMethodsWallet](../../models/components/transferpaymentmethodswallet.md)           | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `card`                                                                                                       | [components.TransferPaymentMethodsCard](../../models/components/transferpaymentmethodscard.md)               | :heavy_minus_sign:                                                                                           | A card as contained within a payment method.                                                                 |
-| `achDetails`                                                                                                 | [components.ACHTransactionDetails](../../models/components/achtransactiondetails.md)                         | :heavy_minus_sign:                                                                                           | ACH specific details about the transaction.                                                                  |
 | `applePay`                                                                                                   | [components.ApplePayResponse](../../models/components/applepayresponse.md)                                   | :heavy_minus_sign:                                                                                           | Describes an Apple Pay token on a Moov account.                                                              |
 | `googlePay`                                                                                                  | [components.GooglePayResponse](../../models/components/googlepayresponse.md)                                 | :heavy_minus_sign:                                                                                           | Describes a Google Pay token on a Moov account.                                                              |
-| `cardDetails`                                                                                                | [components.CardTransactionDetails](../../models/components/cardtransactiondetails.md)                       | :heavy_minus_sign:                                                                                           | Card-specific details about the transaction.                                                                 |
-| `instantBankDetails`                                                                                         | [components.InstantBankTransactionDetails](../../models/components/instantbanktransactiondetails.md)         | :heavy_minus_sign:                                                                                           | Instant-bank specific details about the transaction.                                                         |

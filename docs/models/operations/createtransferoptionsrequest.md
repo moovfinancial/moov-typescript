@@ -12,7 +12,7 @@ let value: CreateTransferOptionsRequest = {
     destination: {},
     amount: {
       currency: "USD",
-      value: 1204,
+      valueDecimal: "12.987654321",
     },
   },
 };

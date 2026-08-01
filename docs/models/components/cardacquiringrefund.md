@@ -14,7 +14,7 @@ let value: CardAcquiringRefund = {
   status: "created",
   amount: {
     currency: "USD",
-    value: 1204,
+    valueDecimal: "12.987654321",
   },
   amountDetails: {
     surcharge: {
@@ -22,6 +22,7 @@ let value: CardAcquiringRefund = {
       valueDecimal: "12.987654321",
     },
   },
+  processingDetails: {},
 };
 ```
 
@@ -33,6 +34,7 @@ let value: CardAcquiringRefund = {
 | `createdOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `updatedOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `status`                                                                                      | [components.RefundStatus](../../models/components/refundstatus.md)                            | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `amount`                                                                                      | [components.Amount](../../models/components/amount.md)                                        | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `amount`                                                                                      | [components.AmountDecimal](../../models/components/amountdecimal.md)                          | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `captureID`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | ID of the capture this refund applies to, when applicable.                                    |
 | `amountDetails`                                                                               | [components.RefundAmountDetails](../../models/components/refundamountdetails.md)              | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `cardDetails`                                                                                 | [components.RefundCardDetails](../../models/components/refundcarddetails.md)                  | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `processingDetails`                                                                           | [components.RefundProcessingDetails](../../models/components/refundprocessingdetails.md)      | :heavy_check_mark:                                                                            | N/A                                                                                           |

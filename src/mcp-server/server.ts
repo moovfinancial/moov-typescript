@@ -57,6 +57,7 @@ import { tool$capabilitiesRequest } from "./tools/capabilitiesRequest.js";
 import { tool$cardIssuingGet } from "./tools/cardIssuingGet.js";
 import { tool$cardIssuingGetFull } from "./tools/cardIssuingGetFull.js";
 import { tool$cardIssuingList } from "./tools/cardIssuingList.js";
+import { tool$cardIssuingListMerchantCategories } from "./tools/cardIssuingListMerchantCategories.js";
 import { tool$cardIssuingRequest } from "./tools/cardIssuingRequest.js";
 import { tool$cardIssuingUpdate } from "./tools/cardIssuingUpdate.js";
 import { tool$cardsDisable } from "./tools/cardsDisable.js";
@@ -177,15 +178,18 @@ import { tool$transferConfigUpdate } from "./tools/transferConfigUpdate.js";
 import { tool$transfersBatchGetTransfers } from "./tools/transfersBatchGetTransfers.js";
 import { tool$transfersCreate } from "./tools/transfersCreate.js";
 import { tool$transfersCreateCancellation } from "./tools/transfersCreateCancellation.js";
+import { tool$transfersCreateCapture } from "./tools/transfersCreateCapture.js";
 import { tool$transfersCreateReversal } from "./tools/transfersCreateReversal.js";
 import { tool$transfersGenerateOptions } from "./tools/transfersGenerateOptions.js";
 import { tool$transfersGet } from "./tools/transfersGet.js";
 import { tool$transfersGetCancellation } from "./tools/transfersGetCancellation.js";
+import { tool$transfersGetCapture } from "./tools/transfersGetCapture.js";
 import { tool$transfersGetRefund } from "./tools/transfersGetRefund.js";
 import { tool$transfersGetRiskOutcomes } from "./tools/transfersGetRiskOutcomes.js";
 import { tool$transfersInitiateRefund } from "./tools/transfersInitiateRefund.js";
 import { tool$transfersList } from "./tools/transfersList.js";
 import { tool$transfersListCancellations } from "./tools/transfersListCancellations.js";
+import { tool$transfersListCaptures } from "./tools/transfersListCaptures.js";
 import { tool$transfersListRefunds } from "./tools/transfersListRefunds.js";
 import { tool$transfersUpdate } from "./tools/transfersUpdate.js";
 import { tool$underwritingGet } from "./tools/underwritingGet.js";
@@ -217,7 +221,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.0.0-dev.28",
+    version: "0.0.0-dev.29",
   });
 
   const client = new MoovCore({
@@ -385,6 +389,9 @@ export function createMCPServer(deps: {
   tool(tool$transfersCreateCancellation);
   tool(tool$transfersListCancellations);
   tool(tool$transfersGetCancellation);
+  tool(tool$transfersCreateCapture);
+  tool(tool$transfersListCaptures);
+  tool(tool$transfersGetCapture);
   tool(tool$transfersInitiateRefund);
   tool(tool$transfersListRefunds);
   tool(tool$transfersGetRefund);
@@ -415,16 +422,17 @@ export function createMCPServer(deps: {
   tool(tool$industriesList);
   tool(tool$institutionsSearchInstitutions);
   tool(tool$institutionsSearch);
-  tool(tool$issuingTransactionsListAuthorizations);
-  tool(tool$issuingTransactionsGetAuthorization);
-  tool(tool$issuingTransactionsListAuthorizationEvents);
-  tool(tool$issuingTransactionsList);
-  tool(tool$issuingTransactionsGet);
+  tool(tool$cardIssuingListMerchantCategories);
   tool(tool$cardIssuingRequest);
   tool(tool$cardIssuingList);
   tool(tool$cardIssuingGet);
   tool(tool$cardIssuingUpdate);
   tool(tool$cardIssuingGetFull);
+  tool(tool$issuingTransactionsListAuthorizations);
+  tool(tool$issuingTransactionsGetAuthorization);
+  tool(tool$issuingTransactionsListAuthorizationEvents);
+  tool(tool$issuingTransactionsList);
+  tool(tool$issuingTransactionsGet);
   tool(tool$authenticationRevokeAccessToken);
   tool(tool$authenticationCreateAccessToken);
   tool(tool$onboardingCreateInvite);

@@ -8,29 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Amount,
-  Amount$inboundSchema,
-  Amount$Outbound,
-  Amount$outboundSchema,
-} from "./amount.js";
-import {
-  Cancellation,
-  Cancellation$inboundSchema,
-  Cancellation$Outbound,
-  Cancellation$outboundSchema,
-} from "./cancellation.js";
-import {
-  CardAcquiringDispute,
-  CardAcquiringDispute$inboundSchema,
-  CardAcquiringDispute$Outbound,
-  CardAcquiringDispute$outboundSchema,
-} from "./cardacquiringdispute.js";
-import {
-  CardAcquiringRefund,
-  CardAcquiringRefund$inboundSchema,
-  CardAcquiringRefund$Outbound,
-  CardAcquiringRefund$outboundSchema,
-} from "./cardacquiringrefund.js";
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
 import {
   FacilitatorFee,
   FacilitatorFee$inboundSchema,
@@ -56,11 +38,11 @@ import {
   TransferAmountDetails$outboundSchema,
 } from "./transferamountdetails.js";
 import {
-  TransferCapture,
-  TransferCapture$inboundSchema,
-  TransferCapture$Outbound,
-  TransferCapture$outboundSchema,
-} from "./transfercapture.js";
+  TransferAuthorization,
+  TransferAuthorization$inboundSchema,
+  TransferAuthorization$Outbound,
+  TransferAuthorization$outboundSchema,
+} from "./transferauthorization.js";
 import {
   TransferDestination,
   TransferDestination$inboundSchema,
@@ -79,6 +61,18 @@ import {
   TransferLineItems$outboundSchema,
 } from "./transferlineitems.js";
 import {
+  TransferProcessingDetails,
+  TransferProcessingDetails$inboundSchema,
+  TransferProcessingDetails$Outbound,
+  TransferProcessingDetails$outboundSchema,
+} from "./transferprocessingdetails.js";
+import {
+  TransferRailOptions,
+  TransferRailOptions$inboundSchema,
+  TransferRailOptions$Outbound,
+  TransferRailOptions$outboundSchema,
+} from "./transferrailoptions.js";
+import {
   TransferSource,
   TransferSource$inboundSchema,
   TransferSource$Outbound,
@@ -89,12 +83,21 @@ import {
   TransferStatus$inboundSchema,
   TransferStatus$outboundSchema,
 } from "./transferstatus.js";
+import {
+  TransferType,
+  TransferType$inboundSchema,
+  TransferType$outboundSchema,
+} from "./transfertype.js";
 
 /**
  * Details of a Transfer.
  */
 export type Transfer = {
   transferID: string;
+  /**
+   * The rail and direction used to move funds for a transfer.
+   */
+  transferType: TransferType;
   createdOn: Date;
   source: TransferSource;
   destination: TransferDestination;
@@ -107,7 +110,7 @@ export type Transfer = {
    * Reason for a transfer's failure.
    */
   failureReason?: TransferFailureReason | undefined;
-  amount: Amount;
+  amount: AmountDecimal;
   /**
    * An optional description of the transfer that is used on receipts and for your own internal use.
    */
@@ -123,11 +126,7 @@ export type Transfer = {
   /**
    * Fees charged to your platform account for transfers.
    */
-  moovFee?: number | undefined;
-  /**
-   * Same as `moovFee`, but a decimal-formatted numerical string that represents up to 9 decimal place precision.
-   */
-  moovFeeDecimal?: string | undefined;
+  moovFee?: AmountDecimal | undefined;
   /**
    * Processing and pass-through costs that add up to the moovFee.
    */
@@ -137,11 +136,8 @@ export type Transfer = {
    */
   moovFees?: Array<MoovFee> | undefined;
   groupID?: string | undefined;
-  cancellations?: Array<Cancellation> | undefined;
-  refundedAmount?: Amount | undefined;
-  refunds?: Array<CardAcquiringRefund> | undefined;
-  disputedAmount?: Amount | undefined;
-  disputes?: Array<CardAcquiringDispute> | undefined;
+  refundedAmount?: AmountDecimal | undefined;
+  disputedAmount?: AmountDecimal | undefined;
   /**
    * ID of the sweep that created this transfer.
    */
@@ -165,10 +161,9 @@ export type Transfer = {
    */
   invoiceID?: string | undefined;
   amountDetails?: TransferAmountDetails | undefined;
-  /**
-   * The card authorization and capture IDs associated with a transfer.
-   */
-  capture?: TransferCapture | undefined;
+  authorization?: TransferAuthorization | undefined;
+  options: TransferRailOptions;
+  processingDetails: TransferProcessingDetails;
 };
 
 /** @internal */
@@ -178,26 +173,23 @@ export const Transfer$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   transferID: types.string(),
+  transferType: TransferType$inboundSchema,
   createdOn: types.date(),
   source: TransferSource$inboundSchema,
   destination: TransferDestination$inboundSchema,
   completedOn: types.optional(types.date()),
   status: TransferStatus$inboundSchema,
   failureReason: types.optional(TransferFailureReason$inboundSchema),
-  amount: Amount$inboundSchema,
+  amount: AmountDecimal$inboundSchema,
   description: types.optional(types.string()),
   metadata: types.optional(z.record(types.string())),
   facilitatorFee: types.optional(FacilitatorFee$inboundSchema),
-  moovFee: types.optional(types.number()),
-  moovFeeDecimal: types.optional(types.string()),
+  moovFee: types.optional(AmountDecimal$inboundSchema),
   moovFeeDetails: types.optional(MoovFeeDetails$inboundSchema),
   moovFees: types.optional(z.array(MoovFee$inboundSchema)),
   groupID: types.optional(types.string()),
-  cancellations: types.optional(z.array(Cancellation$inboundSchema)),
-  refundedAmount: types.optional(Amount$inboundSchema),
-  refunds: types.optional(z.array(CardAcquiringRefund$inboundSchema)),
-  disputedAmount: types.optional(Amount$inboundSchema),
-  disputes: types.optional(z.array(CardAcquiringDispute$inboundSchema)),
+  refundedAmount: types.optional(AmountDecimal$inboundSchema),
+  disputedAmount: types.optional(AmountDecimal$inboundSchema),
   sweepID: types.optional(types.string()),
   scheduleID: types.optional(types.string()),
   occurrenceID: types.optional(types.string()),
@@ -206,31 +198,30 @@ export const Transfer$inboundSchema: z.ZodType<
   lineItems: types.optional(TransferLineItems$inboundSchema),
   invoiceID: types.optional(types.string()),
   amountDetails: types.optional(TransferAmountDetails$inboundSchema),
-  capture: types.optional(TransferCapture$inboundSchema),
+  authorization: types.optional(TransferAuthorization$inboundSchema),
+  options: TransferRailOptions$inboundSchema,
+  processingDetails: TransferProcessingDetails$inboundSchema,
 });
 /** @internal */
 export type Transfer$Outbound = {
   transferID: string;
+  transferType: string;
   createdOn: string;
   source: TransferSource$Outbound;
   destination: TransferDestination$Outbound;
   completedOn?: string | undefined;
   status: string;
   failureReason?: string | undefined;
-  amount: Amount$Outbound;
+  amount: AmountDecimal$Outbound;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   facilitatorFee?: FacilitatorFee$Outbound | undefined;
-  moovFee?: number | undefined;
-  moovFeeDecimal?: string | undefined;
+  moovFee?: AmountDecimal$Outbound | undefined;
   moovFeeDetails?: MoovFeeDetails$Outbound | undefined;
   moovFees?: Array<MoovFee$Outbound> | undefined;
   groupID?: string | undefined;
-  cancellations?: Array<Cancellation$Outbound> | undefined;
-  refundedAmount?: Amount$Outbound | undefined;
-  refunds?: Array<CardAcquiringRefund$Outbound> | undefined;
-  disputedAmount?: Amount$Outbound | undefined;
-  disputes?: Array<CardAcquiringDispute$Outbound> | undefined;
+  refundedAmount?: AmountDecimal$Outbound | undefined;
+  disputedAmount?: AmountDecimal$Outbound | undefined;
   sweepID?: string | undefined;
   scheduleID?: string | undefined;
   occurrenceID?: string | undefined;
@@ -239,7 +230,9 @@ export type Transfer$Outbound = {
   lineItems?: TransferLineItems$Outbound | undefined;
   invoiceID?: string | undefined;
   amountDetails?: TransferAmountDetails$Outbound | undefined;
-  capture?: TransferCapture$Outbound | undefined;
+  authorization?: TransferAuthorization$Outbound | undefined;
+  options: TransferRailOptions$Outbound;
+  processingDetails: TransferProcessingDetails$Outbound;
 };
 
 /** @internal */
@@ -249,26 +242,23 @@ export const Transfer$outboundSchema: z.ZodType<
   Transfer
 > = z.object({
   transferID: z.string(),
+  transferType: TransferType$outboundSchema,
   createdOn: z.date().transform(v => v.toISOString()),
   source: TransferSource$outboundSchema,
   destination: TransferDestination$outboundSchema,
   completedOn: z.date().transform(v => v.toISOString()).optional(),
   status: TransferStatus$outboundSchema,
   failureReason: TransferFailureReason$outboundSchema.optional(),
-  amount: Amount$outboundSchema,
+  amount: AmountDecimal$outboundSchema,
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   facilitatorFee: FacilitatorFee$outboundSchema.optional(),
-  moovFee: z.number().int().optional(),
-  moovFeeDecimal: z.string().optional(),
+  moovFee: AmountDecimal$outboundSchema.optional(),
   moovFeeDetails: MoovFeeDetails$outboundSchema.optional(),
   moovFees: z.array(MoovFee$outboundSchema).optional(),
   groupID: z.string().optional(),
-  cancellations: z.array(Cancellation$outboundSchema).optional(),
-  refundedAmount: Amount$outboundSchema.optional(),
-  refunds: z.array(CardAcquiringRefund$outboundSchema).optional(),
-  disputedAmount: Amount$outboundSchema.optional(),
-  disputes: z.array(CardAcquiringDispute$outboundSchema).optional(),
+  refundedAmount: AmountDecimal$outboundSchema.optional(),
+  disputedAmount: AmountDecimal$outboundSchema.optional(),
   sweepID: z.string().optional(),
   scheduleID: z.string().optional(),
   occurrenceID: z.string().optional(),
@@ -277,7 +267,9 @@ export const Transfer$outboundSchema: z.ZodType<
   lineItems: TransferLineItems$outboundSchema.optional(),
   invoiceID: z.string().optional(),
   amountDetails: TransferAmountDetails$outboundSchema.optional(),
-  capture: TransferCapture$outboundSchema.optional(),
+  authorization: TransferAuthorization$outboundSchema.optional(),
+  options: TransferRailOptions$outboundSchema,
+  processingDetails: TransferProcessingDetails$outboundSchema,
 });
 
 export function transferToJSON(transfer: Transfer): string {

@@ -11,7 +11,7 @@ const value: components.CreateRefundResponse = {
   createdOn: new Date("2024-08-18T01:29:15.184Z"),
   amount: {
     currency: "USD",
-    value: 1204,
+    valueDecimal: "12.987654321",
   },
   amountDetails: {
     surcharge: {
@@ -32,7 +32,7 @@ const value: components.CardAcquiringRefund = {
   status: "created",
   amount: {
     currency: "USD",
-    value: 1204,
+    valueDecimal: "12.987654321",
   },
   amountDetails: {
     surcharge: {
@@ -40,6 +40,7 @@ const value: components.CardAcquiringRefund = {
       valueDecimal: "12.987654321",
     },
   },
+  processingDetails: {},
 };
 ```
 

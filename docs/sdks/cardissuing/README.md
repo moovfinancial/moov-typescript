@@ -4,6 +4,12 @@
 
 ### Available Operations
 
+* [listMerchantCategories](#listmerchantcategories) - List the predefined merchant category groups available for issued card spend controls, along with
+the merchant category codes (MCCs) each group covers. Use these category names in an issued card's
+`merchantCategoryRestrictions`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
+you'll need to specify the `/issued-cards.read` scope.
 * [request](#request) - Request a virtual card be issued.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -26,6 +32,85 @@ Only use this endpoint if you have provided Moov with a copy of your PCI attesta
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/issued-cards.read-secure` scope.
+
+## listMerchantCategories
+
+List the predefined merchant category groups available for issued card spend controls, along with
+the merchant category codes (MCCs) each group covers. Use these category names in an issued card's
+`merchantCategoryRestrictions`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
+you'll need to specify the `/issued-cards.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listIssuingMerchantCategories" method="get" path="/issuing/merchant-categories" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.cardIssuing.listMerchantCategories();
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardIssuingListMerchantCategories } from "@moovio/sdk/funcs/cardIssuingListMerchantCategories.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await cardIssuingListMerchantCategories(moov);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("cardIssuingListMerchantCategories failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ListIssuingMerchantCategoriesResponse](../../models/operations/listissuingmerchantcategoriesresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.APIError | 4XX, 5XX        | \*/\*           |
 
 ## request
 

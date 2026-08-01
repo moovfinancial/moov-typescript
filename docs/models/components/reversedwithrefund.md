@@ -13,7 +13,7 @@ let value: ReversedWithRefund = {
     status: "created",
     amount: {
       currency: "USD",
-      value: 1204,
+      valueDecimal: "12.987654321",
     },
     amountDetails: {
       surcharge: {
@@ -21,6 +21,7 @@ let value: ReversedWithRefund = {
         valueDecimal: "12.987654321",
       },
     },
+    processingDetails: {},
   },
 };
 ```

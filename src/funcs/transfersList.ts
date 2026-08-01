@@ -119,6 +119,7 @@ async function $do(
     "skip": payload.skip,
     "startDateTime": payload.startDateTime,
     "status": payload.status,
+    "transferTypes": payload.transferTypes,
   }, { explode: false });
 
   const headers = new Headers(compactMap({

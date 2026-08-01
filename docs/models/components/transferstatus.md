@@ -15,5 +15,5 @@ let value: TransferStatus = "queued";
 ## Values
 
 ```typescript
-"created" | "pending" | "completed" | "failed" | "reversed" | "queued" | "canceled" | Unrecognized<string>
+"created" | "pending" | "completed" | "failed" | "reversed" | "queued" | "awaiting-capture" | "canceled" | Unrecognized<string>
 ```

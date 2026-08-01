@@ -23,7 +23,7 @@ export type CreateReversalRequest = {
    * The transfer ID to reverse.
    */
   transferID: string;
-  createReversal?: components.CreateReversal | undefined;
+  createReversal: components.CreateReversal;
 };
 
 export type CreateReversalResponse = {
@@ -40,7 +40,7 @@ export const CreateReversalRequest$inboundSchema: z.ZodType<
   "x-idempotency-key": types.string(),
   accountID: types.string(),
   transferID: types.string(),
-  CreateReversal: types.optional(components.CreateReversal$inboundSchema),
+  CreateReversal: components.CreateReversal$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "x-idempotency-key": "xIdempotencyKey",
@@ -52,7 +52,7 @@ export type CreateReversalRequest$Outbound = {
   "x-idempotency-key": string;
   accountID: string;
   transferID: string;
-  CreateReversal?: components.CreateReversal$Outbound | undefined;
+  CreateReversal: components.CreateReversal$Outbound;
 };
 
 /** @internal */
@@ -64,7 +64,7 @@ export const CreateReversalRequest$outboundSchema: z.ZodType<
   xIdempotencyKey: z.string(),
   accountID: z.string(),
   transferID: z.string(),
-  createReversal: components.CreateReversal$outboundSchema.optional(),
+  createReversal: components.CreateReversal$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     xIdempotencyKey: "x-idempotency-key",
