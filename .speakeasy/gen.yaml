@@ -36,7 +36,27 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON: {}
+  additionalPackageJSON:
+    files:
+      - bin
+      - funcs
+      - hooks
+      - lib
+      - mcp-server
+      - models
+      - sdk
+      - types
+      - index.js
+      - index.d.ts
+      - index.js.map
+      - index.d.ts.map
+      - core.js
+      - core.d.ts
+      - core.js.map
+      - core.d.ts.map
+      - FUNCTIONS.md
+      - RUNTIMES.md
+      - USAGE.md
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
   apiPromiseHelpers: false
