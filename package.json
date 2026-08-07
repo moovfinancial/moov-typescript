@@ -7,6 +7,27 @@
   },
   "main": "./index.js",
   "sideEffects": false,
+  "engines": {
+    "node": ">=22.12"
+  },
+  "files": [
+    "bin",
+    "funcs",
+    "hooks",
+    "lib",
+    "mcp-server",
+    "models",
+    "sdk",
+    "types",
+    "index.js",
+    "index.d.ts",
+    "core.js",
+    "core.d.ts",
+    "FUNCTIONS.md",
+    "RUNTIMES.md",
+    "USAGE.md",
+    "!**/*.map"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/moovfinancial/moov-typescript.git"

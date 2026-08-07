@@ -36,7 +36,29 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON: {}
+  additionalPackageJSON:
+    # MCP bin is an ESM bundle in a CJS package; Node needs syntax detection
+    # (default since 22.12) for `npx ... mcp start` to work.
+    engines:
+      node: ">=22.12"
+    files:
+      - bin
+      - funcs
+      - hooks
+      - lib
+      - mcp-server
+      - models
+      - sdk
+      - types
+      - index.js
+      - index.d.ts
+      - core.js
+      - core.d.ts
+      - FUNCTIONS.md
+      - RUNTIMES.md
+      - USAGE.md
+      # Maps point at src/ which is not published; exclude to avoid broken maps.
+      - "!**/*.map"
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
   apiPromiseHelpers: false
