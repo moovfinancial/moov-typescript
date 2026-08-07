@@ -52,15 +52,13 @@ typescript:
       - types
       - index.js
       - index.d.ts
-      - index.js.map
-      - index.d.ts.map
       - core.js
       - core.d.ts
-      - core.js.map
-      - core.d.ts.map
       - FUNCTIONS.md
       - RUNTIMES.md
       - USAGE.md
+      # Maps point at src/ which is not published; exclude to avoid broken maps.
+      - "!**/*.map"
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
   apiPromiseHelpers: false

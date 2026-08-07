@@ -21,15 +21,12 @@
     "types",
     "index.js",
     "index.d.ts",
-    "index.js.map",
-    "index.d.ts.map",
     "core.js",
     "core.d.ts",
-    "core.js.map",
-    "core.d.ts.map",
     "FUNCTIONS.md",
     "RUNTIMES.md",
-    "USAGE.md"
+    "USAGE.md",
+    "!**/*.map"
   ],
   "repository": {
     "type": "git",
