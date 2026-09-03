@@ -14,7 +14,17 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 
+/**
+ * Cancellation request.
+ */
 export type CreateCancellation = {
+  /**
+   * Amount to void. This field can only be set for an auth-capture `card-payment` transfer.
+   *
+   * @remarks
+   * This cannot exceed `capturableAmount`.
+   * Omit this field to void the entire `capturableAmount`.
+   */
   amount?: AmountDecimal | undefined;
 };
 

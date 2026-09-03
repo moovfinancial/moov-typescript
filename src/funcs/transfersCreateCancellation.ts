@@ -29,6 +29,9 @@ import { Result } from "../types/fp.js";
 /**
  *   Initiate a cancellation for a card, ACH, or queued transfer.
  *
+ *   In v2026.10 and later, an auth-capture `card-payment` transfer can be canceled before any captures exist.
+ *   For these transfers, a successful cancellation reduces `capturableAmount` without changing `authorizedAmount`.
+ *   For these transfers, a partial cancellation leaves the remaining `capturableAmount` available for capture.
  *   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
  *   to specify the `/accounts/{accountID}/transfers.write` scope.
  */
@@ -175,7 +178,9 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr(400, errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr([400, 409, 422], errors.GenericError$inboundSchema, {
+      hdrs: true,
+    }),
     M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),

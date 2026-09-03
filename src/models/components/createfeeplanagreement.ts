@@ -10,9 +10,23 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateFeePlanAgreement = {
   /**
-   * A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
+   * A unique identifier for a fee plan: the pricing terms, such as flat-rate or cost-plus, that an account
+   *
+   * @remarks
+   * is charged under its fee plan agreement. Use GET /accounts/{accountID}/fee-plans to list the fee plans
+   * available to assign to a given account.
    */
   planID: string;
+  /**
+   * The account's active fee plan agreement to supersede. When set, that agreement is terminated and
+   *
+   * @remarks
+   * the new one takes its place in a single operation, so the account is never without an active fee
+   * plan agreement. This new agreement always receives a newly issued agreementID.
+   *
+   * Omit it if the account doesn't already have an active fee plan agreement.
+   */
+  priorAgreementID?: string | undefined;
 };
 
 /** @internal */
@@ -22,10 +36,12 @@ export const CreateFeePlanAgreement$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   planID: types.string(),
+  priorAgreementID: types.optional(types.string()),
 });
 /** @internal */
 export type CreateFeePlanAgreement$Outbound = {
   planID: string;
+  priorAgreementID?: string | undefined;
 };
 
 /** @internal */
@@ -35,6 +51,7 @@ export const CreateFeePlanAgreement$outboundSchema: z.ZodType<
   CreateFeePlanAgreement
 > = z.object({
   planID: z.string(),
+  priorAgreementID: z.string().optional(),
 });
 
 export function createFeePlanAgreementToJSON(

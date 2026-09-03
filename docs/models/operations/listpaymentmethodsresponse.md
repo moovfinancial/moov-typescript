@@ -16,7 +16,7 @@ let value: ListPaymentMethodsResponse = {
   result: [
     {
       paymentMethodID: "<id>",
-      paymentMethodType: "push-to-google-pay",
+      paymentMethodType: "pull-from-google-pay",
       googlePay: {
         tokenID: "dcd471ec-7d5c-4016-865c-1e78c733bea2",
         brand: "Visa",

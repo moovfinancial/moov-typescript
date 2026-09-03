@@ -69,6 +69,17 @@ const value: components.WebhookDataBankAccountDeleted = {
 };
 ```
 
+### `components.WebhookDataCaptureUpdated`
+
+```typescript
+const value: components.WebhookDataCaptureUpdated = {
+  accountID: "<id>",
+  transferID: "<id>",
+  captureID: "<id>",
+  status: "pending",
+};
+```
+
 ### `components.WebhookDataCancellationCreated`
 
 ```typescript
@@ -312,7 +323,7 @@ const value: components.WebhookDataTicketMessageAdded = {
 const value: components.WebhookDataTransferCreated = {
   accountID: "<id>",
   transferID: "<id>",
-  status: "source.initiated",
+  status: "source.corrected",
 };
 ```
 

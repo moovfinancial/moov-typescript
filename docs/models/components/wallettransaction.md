@@ -10,7 +10,7 @@ import { WalletTransaction } from "@moovio/sdk/models/components";
 let value: WalletTransaction = {
   walletID: "<id>",
   transactionID: "<id>",
-  transactionType: "issuing-decline",
+  transactionType: "moov-fee",
   sourceType: "dispute",
   sourceID: "<id>",
   status: "failed",

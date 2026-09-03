@@ -13,8 +13,17 @@ import {
   ACHException$Outbound,
   ACHException$outboundSchema,
 } from "./achexception.js";
+import {
+  ACHTransactionStatus,
+  ACHTransactionStatus$inboundSchema,
+  ACHTransactionStatus$outboundSchema,
+} from "./achtransactionstatus.js";
 
 export type ACHDebitTransferProcessingDetails = {
+  /**
+   * Status of a transaction within the ACH lifecycle.
+   */
+  status: ACHTransactionStatus;
   traceNumber: string;
   return?: ACHException | undefined;
   correction?: ACHException | undefined;
@@ -26,12 +35,14 @@ export const ACHDebitTransferProcessingDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  status: ACHTransactionStatus$inboundSchema,
   traceNumber: types.string(),
   return: types.optional(ACHException$inboundSchema),
   correction: types.optional(ACHException$inboundSchema),
 });
 /** @internal */
 export type ACHDebitTransferProcessingDetails$Outbound = {
+  status: string;
   traceNumber: string;
   return?: ACHException$Outbound | undefined;
   correction?: ACHException$Outbound | undefined;
@@ -43,6 +54,7 @@ export const ACHDebitTransferProcessingDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ACHDebitTransferProcessingDetails
 > = z.object({
+  status: ACHTransactionStatus$outboundSchema,
   traceNumber: z.string(),
   return: ACHException$outboundSchema.optional(),
   correction: ACHException$outboundSchema.optional(),

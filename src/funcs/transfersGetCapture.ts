@@ -26,7 +26,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get details of a capture for a transfer.
+ * Get details of a capture for an auth-capture `card-payment` transfer.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.

@@ -16,6 +16,9 @@ let value: CreateTransferDestination = {
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
   },
+  wireDetails: {
+    beneficiaryReference: "INV-2026-001",
+  },
 };
 ```
 
@@ -26,3 +29,4 @@ let value: CreateTransferDestination = {
 | `paymentMethodID`                                                                                    | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `cardDetails`                                                                                        | [components.CreateTransferDestinationCard](../../models/components/createtransferdestinationcard.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `achDetails`                                                                                         | [components.CreateTransferDestinationACH](../../models/components/createtransferdestinationach.md)   | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `wireDetails`                                                                                        | [components.CreateTransferDestinationWire](../../models/components/createtransferdestinationwire.md) | :heavy_minus_sign:                                                                                   | Wire-specific options supplied when creating a transfer.                                             |

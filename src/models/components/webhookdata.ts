@@ -86,6 +86,12 @@ import {
   WebhookDataCapabilityUpdated$outboundSchema,
 } from "./webhookdatacapabilityupdated.js";
 import {
+  WebhookDataCaptureUpdated,
+  WebhookDataCaptureUpdated$inboundSchema,
+  WebhookDataCaptureUpdated$Outbound,
+  WebhookDataCaptureUpdated$outboundSchema,
+} from "./webhookdatacaptureupdated.js";
+import {
   WebhookDataCardAutoUpdated,
   WebhookDataCardAutoUpdated$inboundSchema,
   WebhookDataCardAutoUpdated$Outbound,
@@ -244,6 +250,7 @@ export type WebhookData =
   | WebhookDataDisputeUpdated
   | WebhookDataTransferUpdated
   | WebhookDataBankAccountUpdated
+  | WebhookDataCaptureUpdated
   | WebhookDataRefundUpdated
   | WebhookDataSweepUpdated
   | WebhookDataWalletTransactionUpdated
@@ -289,6 +296,7 @@ export const WebhookData$inboundSchema: z.ZodType<
   WebhookDataDisputeUpdated$inboundSchema,
   WebhookDataTransferUpdated$inboundSchema,
   WebhookDataBankAccountUpdated$inboundSchema,
+  WebhookDataCaptureUpdated$inboundSchema,
   WebhookDataRefundUpdated$inboundSchema,
   WebhookDataSweepUpdated$inboundSchema,
   WebhookDataWalletTransactionUpdated$inboundSchema,
@@ -330,6 +338,7 @@ export type WebhookData$Outbound =
   | WebhookDataDisputeUpdated$Outbound
   | WebhookDataTransferUpdated$Outbound
   | WebhookDataBankAccountUpdated$Outbound
+  | WebhookDataCaptureUpdated$Outbound
   | WebhookDataRefundUpdated$Outbound
   | WebhookDataSweepUpdated$Outbound
   | WebhookDataWalletTransactionUpdated$Outbound
@@ -375,6 +384,7 @@ export const WebhookData$outboundSchema: z.ZodType<
   WebhookDataDisputeUpdated$outboundSchema,
   WebhookDataTransferUpdated$outboundSchema,
   WebhookDataBankAccountUpdated$outboundSchema,
+  WebhookDataCaptureUpdated$outboundSchema,
   WebhookDataRefundUpdated$outboundSchema,
   WebhookDataSweepUpdated$outboundSchema,
   WebhookDataWalletTransactionUpdated$outboundSchema,

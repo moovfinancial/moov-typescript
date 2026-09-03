@@ -16,6 +16,9 @@ export type ListIssuedCardAuthorizationsRequest = {
    */
   accountID: string;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   /**
    * Optional ID of the issued card to filter results.

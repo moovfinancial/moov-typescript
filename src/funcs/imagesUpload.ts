@@ -40,7 +40,7 @@ import { isReadableStream } from "../types/streams.js";
 
 /**
  *   Upload a new PNG, JPEG, or WebP image with optional metadata.
- *   Duplicate images, and requests larger than 16MB will be rejected.
+ *   Duplicate images return the existing image's metadata with a 409 status. Requests larger than 16MB will be rejected.
  */
 export function imagesUpload(
   client: MoovCore,
@@ -50,6 +50,7 @@ export function imagesUpload(
   Result<
     operations.UploadImageResponse,
     | errors.GenericError
+    | errors.ImageMetadata
     | errors.ImageRequestValidationError
     | MoovError
     | ResponseValidationError
@@ -77,6 +78,7 @@ async function $do(
     Result<
       operations.UploadImageResponse,
       | errors.GenericError
+      | errors.ImageMetadata
       | errors.ImageRequestValidationError
       | MoovError
       | ResponseValidationError
@@ -211,6 +213,7 @@ async function $do(
   const [result] = await M.match<
     operations.UploadImageResponse,
     | errors.GenericError
+    | errors.ImageMetadata
     | errors.ImageRequestValidationError
     | MoovError
     | ResponseValidationError
@@ -225,7 +228,8 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr([400, 409], errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr(400, errors.GenericError$inboundSchema, { hdrs: true }),
+    M.jsonErr(409, errors.ImageMetadata$inboundSchema, { hdrs: true }),
     M.jsonErr(422, errors.ImageRequestValidationError$inboundSchema, {
       hdrs: true,
     }),

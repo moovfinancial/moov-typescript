@@ -27,7 +27,7 @@ import {
 } from "./createtransferlineitems.js";
 
 /**
- * Request to capture funds against an authorized transfer.
+ * Request to capture funds against an authorization.
  */
 export type CreateCapture = {
   /**
@@ -35,11 +35,17 @@ export type CreateCapture = {
    */
   destinationPaymentMethodID: string;
   /**
-   * Amount to capture. If omitted, the remaining authorized amount is captured.
+   * Amount to capture.
+   *
+   * @remarks
+   * If omitted, the remaining capturable amount is captured.
    */
   amount?: AmountDecimal | undefined;
   /**
-   * Indicates whether this is the final capture against the authorization. When `true`, any remaining authorized amount is voided.
+   * Indicates whether this is intended to be the final capture.
+   *
+   * @remarks
+   * When `true`, any remaining capturable amount is voided.
    */
   isFinal?: boolean | undefined;
   /**
@@ -63,7 +69,10 @@ export type CreateCapture = {
   lineItems?: CreateTransferLineItems | undefined;
   amountDetails?: CreateTransferAmountDetails | undefined;
   /**
-   * The facilitator fee amount applied to the capture.
+   * The facilitator fee applied to this capture.
+   *
+   * @remarks
+   * The transfer's facilitator fee is the sum of its capture fees.
    */
   facilitatorFeeAmount?: AmountDecimal | undefined;
 };

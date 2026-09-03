@@ -11,7 +11,7 @@ let value: GetPaymentMethodResponse = {
   },
   result: {
     paymentMethodID: "<id>",
-    paymentMethodType: "push-to-card",
+    paymentMethodType: "pull-from-card",
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
       fingerprint:

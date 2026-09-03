@@ -18,6 +18,7 @@ export const TransferType = {
   AchDebitToAchCredit: "ach-debit-to-ach-credit",
   InstantBankCredit: "instant-bank-credit",
   Wallet: "wallet",
+  WireCredit: "wire-credit",
 } as const;
 /**
  * The rail and direction used to move funds for a transfer.

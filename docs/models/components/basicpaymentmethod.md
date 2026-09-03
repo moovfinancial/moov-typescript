@@ -7,7 +7,7 @@ import { BasicPaymentMethod } from "@moovio/sdk/models/components";
 
 let value: BasicPaymentMethod = {
   paymentMethodID: "<id>",
-  paymentMethodType: "instant-bank-credit",
+  paymentMethodType: "push-to-apple-pay",
 };
 ```
 

@@ -7,34 +7,25 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  AmountDecimal,
+  AmountDecimal$inboundSchema,
+  AmountDecimal$Outbound,
+  AmountDecimal$outboundSchema,
+} from "./amountdecimal.js";
 
 /**
  * Total or markup fee.
  */
 export type FacilitatorFee = {
   /**
-   * Total facilitator fee in cents. Only either `total` or `totalDecimal` can be set.
+   * Total facilitator fee.
    */
-  total?: number | undefined;
+  total?: AmountDecimal | undefined;
   /**
-   * Same as `total`, but a decimal-formatted numerical string that represents up to 9 decimal place precision.
-   *
-   * @remarks
-   *
-   * Only either `total` or `totalDecimal` can be set. Set this field if you expect the fee to be in fractions of a cent.
+   * Markup facilitator fee.
    */
-  totalDecimal?: string | undefined;
-  /**
-   * Markup facilitator fee in cents. Only either `markup` or `markupDecimal` can be set.
-   */
-  markup?: number | undefined;
-  /**
-   * Same as `markup`, but a decimal-formatted numerical string that represents up to 9 decimal place precision.
-   *
-   * @remarks
-   * Only either `markup` or `markupDecimal` can be set. Set this field if you expect the fee to be in fractions of a cent.
-   */
-  markupDecimal?: string | undefined;
+  markup?: AmountDecimal | undefined;
 };
 
 /** @internal */
@@ -43,17 +34,13 @@ export const FacilitatorFee$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  total: types.optional(types.number()),
-  totalDecimal: types.optional(types.string()),
-  markup: types.optional(types.number()),
-  markupDecimal: types.optional(types.string()),
+  total: types.optional(AmountDecimal$inboundSchema),
+  markup: types.optional(AmountDecimal$inboundSchema),
 });
 /** @internal */
 export type FacilitatorFee$Outbound = {
-  total?: number | undefined;
-  totalDecimal?: string | undefined;
-  markup?: number | undefined;
-  markupDecimal?: string | undefined;
+  total?: AmountDecimal$Outbound | undefined;
+  markup?: AmountDecimal$Outbound | undefined;
 };
 
 /** @internal */
@@ -62,10 +49,8 @@ export const FacilitatorFee$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FacilitatorFee
 > = z.object({
-  total: z.number().int().optional(),
-  totalDecimal: z.string().optional(),
-  markup: z.number().int().optional(),
-  markupDecimal: z.string().optional(),
+  total: AmountDecimal$outboundSchema.optional(),
+  markup: AmountDecimal$outboundSchema.optional(),
 });
 
 export function facilitatorFeeToJSON(facilitatorFee: FacilitatorFee): string {

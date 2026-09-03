@@ -20,7 +20,7 @@ let value: LinkApplePayTokenResponse = {
   result: [
     {
       paymentMethodID: "<id>",
-      paymentMethodType: "card-payment",
+      paymentMethodType: "push-to-card",
       applePay: {
         brand: "Visa",
         cardType: "credit",

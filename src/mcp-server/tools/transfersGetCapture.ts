@@ -12,7 +12,8 @@ const args = {
 
 export const tool$transfersGetCapture: ToolDefinition<typeof args> = {
   name: "transfers-get-capture",
-  description: `Get details of a capture for a transfer.
+  description:
+    `Get details of a capture for an auth-capture \`card-payment\` transfer.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the \`/accounts/{accountID}/transfers.read\` scope.`,

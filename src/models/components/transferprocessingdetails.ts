@@ -43,6 +43,12 @@ import {
   PushToCardTransferProcessingDetails$Outbound,
   PushToCardTransferProcessingDetails$outboundSchema,
 } from "./pushtocardtransferprocessingdetails.js";
+import {
+  WireTransferProcessingDetails,
+  WireTransferProcessingDetails$inboundSchema,
+  WireTransferProcessingDetails$Outbound,
+  WireTransferProcessingDetails$outboundSchema,
+} from "./wiretransferprocessingdetails.js";
 
 export type TransferProcessingDetails = {
   cardPayment?: CardPaymentTransferProcessingDetails | undefined;
@@ -51,6 +57,10 @@ export type TransferProcessingDetails = {
   achDebit?: ACHDebitTransferProcessingDetails | undefined;
   achCredit?: ACHCreditTransferProcessingDetails | undefined;
   instantBankCredit?: InstantBankCreditTransferProcessingDetails | undefined;
+  /**
+   * Wire-specific processing details returned on a transfer.
+   */
+  wire?: WireTransferProcessingDetails | undefined;
 };
 
 /** @internal */
@@ -71,6 +81,7 @@ export const TransferProcessingDetails$inboundSchema: z.ZodType<
   instantBankCredit: types.optional(
     InstantBankCreditTransferProcessingDetails$inboundSchema,
   ),
+  wire: types.optional(WireTransferProcessingDetails$inboundSchema),
 });
 /** @internal */
 export type TransferProcessingDetails$Outbound = {
@@ -82,6 +93,7 @@ export type TransferProcessingDetails$Outbound = {
   instantBankCredit?:
     | InstantBankCreditTransferProcessingDetails$Outbound
     | undefined;
+  wire?: WireTransferProcessingDetails$Outbound | undefined;
 };
 
 /** @internal */
@@ -97,6 +109,7 @@ export const TransferProcessingDetails$outboundSchema: z.ZodType<
   achCredit: ACHCreditTransferProcessingDetails$outboundSchema.optional(),
   instantBankCredit: InstantBankCreditTransferProcessingDetails$outboundSchema
     .optional(),
+  wire: WireTransferProcessingDetails$outboundSchema.optional(),
 });
 
 export function transferProcessingDetailsToJSON(

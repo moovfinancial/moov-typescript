@@ -14,12 +14,33 @@ import {
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
 
+/**
+ * Authorization and capture amounts for an auth-capture `card-payment` transfer.
+ */
 export type TransferAuthorization = {
+  /**
+   * Identifier for the authorization.
+   */
   authorizationID: string;
+  /**
+   * Amount submitted for authorization.
+   */
   requestedAmount: AmountDecimal;
+  /**
+   * Hold approved by the issuer.
+   */
   authorizedAmount: AmountDecimal;
+  /**
+   * Cumulative amount of captures that have not failed or been canceled.
+   */
   capturedAmount: AmountDecimal;
+  /**
+   * Amount of the authorization still available after captures and authorization cancellations.
+   */
   capturableAmount: AmountDecimal;
+  /**
+   * Expiration time for the approved authorization, when available.
+   */
   expiresOn?: Date | undefined;
 };
 

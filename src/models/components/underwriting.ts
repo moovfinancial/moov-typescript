@@ -13,6 +13,12 @@ import {
   BusinessPresence$outboundSchema,
 } from "./businesspresence.js";
 import {
+  CardIssuing,
+  CardIssuing$inboundSchema,
+  CardIssuing$Outbound,
+  CardIssuing$outboundSchema,
+} from "./cardissuing.js";
+import {
   CardVolumeDistribution,
   CardVolumeDistribution$inboundSchema,
   CardVolumeDistribution$Outbound,
@@ -91,6 +97,14 @@ export type Underwriting = {
   collectFunds?: CollectFunds | undefined;
   moneyTransfer?: MoneyTransfer | undefined;
   sendFunds?: SendFunds | undefined;
+  /**
+   * Underwriting data for the `card-issuing` capability.
+   *
+   * @remarks
+   *
+   * Issued cards are funded from the account's card-issuing wallet before they can be spent, so estimated activity is the only data collected.
+   */
+  cardIssuing?: CardIssuing | undefined;
 };
 
 /** @internal */
@@ -115,6 +129,7 @@ export const Underwriting$inboundSchema: z.ZodType<
   collectFunds: types.optional(CollectFunds$inboundSchema),
   moneyTransfer: types.optional(MoneyTransfer$inboundSchema),
   sendFunds: types.optional(SendFunds$inboundSchema),
+  cardIssuing: types.optional(CardIssuing$inboundSchema),
 });
 /** @internal */
 export type Underwriting$Outbound = {
@@ -132,6 +147,7 @@ export type Underwriting$Outbound = {
   collectFunds?: CollectFunds$Outbound | undefined;
   moneyTransfer?: MoneyTransfer$Outbound | undefined;
   sendFunds?: SendFunds$Outbound | undefined;
+  cardIssuing?: CardIssuing$Outbound | undefined;
 };
 
 /** @internal */
@@ -155,6 +171,7 @@ export const Underwriting$outboundSchema: z.ZodType<
   collectFunds: CollectFunds$outboundSchema.optional(),
   moneyTransfer: MoneyTransfer$outboundSchema.optional(),
   sendFunds: SendFunds$outboundSchema.optional(),
+  cardIssuing: CardIssuing$outboundSchema.optional(),
 });
 
 export function underwritingToJSON(underwriting: Underwriting): string {

@@ -19,6 +19,11 @@ import {
   CaptureStatus$outboundSchema,
 } from "./capturestatus.js";
 import {
+  CardTransactionFailureCode,
+  CardTransactionFailureCode$inboundSchema,
+  CardTransactionFailureCode$outboundSchema,
+} from "./cardtransactionfailurecode.js";
+import {
   TransferAmountDetails,
   TransferAmountDetails$inboundSchema,
   TransferAmountDetails$Outbound,
@@ -32,7 +37,7 @@ import {
 } from "./transferlineitems.js";
 
 /**
- * Details of a capture against an authorized transfer.
+ * Details of a capture against an authorization.
  */
 export type Capture = {
   /**
@@ -41,7 +46,7 @@ export type Capture = {
   captureID: string;
   amount: AmountDecimal;
   /**
-   * Indicates whether this is the final capture against the authorization. When `true`, no further captures can be made.
+   * Indicates whether this is intended to be the final capture.
    */
   isFinal: boolean;
   status: CaptureStatus;
@@ -71,9 +76,13 @@ export type Capture = {
   lineItems?: TransferLineItems | undefined;
   amountDetails?: TransferAmountDetails | undefined;
   /**
-   * The facilitator fee amount applied to the capture.
+   * The facilitator fee applied to this capture.
+   *
+   * @remarks
+   * The transfer's facilitator fee is the sum of its capture fees.
    */
   facilitatorFeeAmount?: AmountDecimal | undefined;
+  failureCode?: CardTransactionFailureCode | undefined;
 };
 
 /** @internal */
@@ -91,6 +100,7 @@ export const Capture$inboundSchema: z.ZodType<Capture, z.ZodTypeDef, unknown> =
     lineItems: types.optional(TransferLineItems$inboundSchema),
     amountDetails: types.optional(TransferAmountDetails$inboundSchema),
     facilitatorFeeAmount: types.optional(AmountDecimal$inboundSchema),
+    failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
   });
 /** @internal */
 export type Capture$Outbound = {
@@ -106,6 +116,7 @@ export type Capture$Outbound = {
   lineItems?: TransferLineItems$Outbound | undefined;
   amountDetails?: TransferAmountDetails$Outbound | undefined;
   facilitatorFeeAmount?: AmountDecimal$Outbound | undefined;
+  failureCode?: string | undefined;
 };
 
 /** @internal */
@@ -126,6 +137,7 @@ export const Capture$outboundSchema: z.ZodType<
   lineItems: TransferLineItems$outboundSchema.optional(),
   amountDetails: TransferAmountDetails$outboundSchema.optional(),
   facilitatorFeeAmount: AmountDecimal$outboundSchema.optional(),
+  failureCode: CardTransactionFailureCode$outboundSchema.optional(),
 });
 
 export function captureToJSON(capture: Capture): string {

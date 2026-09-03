@@ -15,5 +15,5 @@ let value: TransferType = "push-to-card";
 ## Values
 
 ```typescript
-"card-payment" | "push-to-card" | "pull-from-card" | "ach-debit" | "ach-credit" | "ach-debit-to-ach-credit" | "instant-bank-credit" | "wallet" | Unrecognized<string>
+"card-payment" | "push-to-card" | "pull-from-card" | "ach-debit" | "ach-credit" | "ach-debit-to-ach-credit" | "instant-bank-credit" | "wallet" | "wire-credit" | Unrecognized<string>
 ```

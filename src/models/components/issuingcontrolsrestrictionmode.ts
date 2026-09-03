@@ -7,14 +7,14 @@ import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
 /**
- * Whether the listed items are the only ones allowed (`allow`) or the ones to block (`block`).
+ * Whether the listed items should be allowed (`allow`) or blocked (`block`).
  */
 export const IssuingControlsRestrictionMode = {
   Allow: "allow",
   Block: "block",
 } as const;
 /**
- * Whether the listed items are the only ones allowed (`allow`) or the ones to block (`block`).
+ * Whether the listed items should be allowed (`allow`) or blocked (`block`).
  */
 export type IssuingControlsRestrictionMode = OpenEnum<
   typeof IssuingControlsRestrictionMode

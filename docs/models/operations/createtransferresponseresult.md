@@ -8,7 +8,7 @@
 ```typescript
 const value: components.CreatedTransfer = {
   transferID: "<id>",
-  transferType: "ach-debit",
+  transferType: "ach-credit",
   createdOn: new Date("2025-06-14T12:45:31.209Z"),
   source: {
     card: {
@@ -171,8 +171,14 @@ const value: components.CreatedTransfer = {
     "optional": "metadata",
   },
   facilitatorFee: {
-    totalDecimal: "12.987654321",
-    markupDecimal: "0.987654321",
+    total: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    markup: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
   },
   moovFee: {
     currency: "USD",
@@ -292,12 +298,17 @@ const value: components.CreatedTransfer = {
       companyEntryDescription: "Gym dues",
       originatingCompanyName: "Whole Body Fit",
     },
+    wire: {
+      beneficiaryReference: "INV-2026-001",
+    },
   },
   processingDetails: {
     achDebit: {
+      status: "",
       traceNumber: "124782618117",
     },
     achCredit: {
+      status: "corrected",
       traceNumber: "124782618117",
     },
   },
@@ -411,9 +422,9 @@ const value: components.Transfer = {
   },
   processingDetails: {
     cardPayment: {
+      status: "confirmed",
       authorizationCode: "A1B2C3",
       networkTransactionID: "123456789012345",
-      networkResponseCode: "00",
     },
   },
 };

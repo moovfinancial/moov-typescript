@@ -449,3 +449,24 @@ const value: components.PullFromGooglePayPaymentMethod = {
 };
 ```
 
+### `components.WireCreditPaymentMethod`
+
+```typescript
+const value: components.WireCreditPaymentMethod = {
+  paymentMethodID: "<id>",
+  paymentMethodType: "wire-credit",
+  bankAccount: {
+    bankAccountID: "<id>",
+    fingerprint: "<value>",
+    status: "pending",
+    holderName: "<value>",
+    holderType: "guest",
+    bankName: "<value>",
+    bankAccountType: "checking",
+    routingNumber: "<value>",
+    lastFourAccountNumber: "<value>",
+    updatedOn: new Date("2026-04-28T07:47:07.806Z"),
+  },
+};
+```
+

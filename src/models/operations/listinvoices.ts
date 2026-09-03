@@ -12,6 +12,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListInvoicesRequest = {
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   status?: components.InvoiceStatus | undefined;
   customerAccountID?: string | undefined;

@@ -28,7 +28,7 @@ export type AsyncCreatedRefund = {
   createdOn: Date;
   amount: AmountDecimal;
   /**
-   * ID of the capture this refund applies to, when applicable.
+   * ID of the capture refunded for an auth-capture `card-payment` transfer.
    */
   captureID?: string | undefined;
   amountDetails?: RefundAmountDetails | undefined;

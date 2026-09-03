@@ -26,7 +26,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get a list of captures for a transfer.
+ * Get a list of captures for an auth-capture `card-payment` transfer.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
@@ -168,7 +168,7 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
-    M.fail([401, 403, 429]),
+    M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),

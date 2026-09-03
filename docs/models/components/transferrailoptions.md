@@ -24,6 +24,9 @@ let value: TransferRailOptions = {
     companyEntryDescription: "Gym dues",
     originatingCompanyName: "Whole Body Fit",
   },
+  wire: {
+    beneficiaryReference: "INV-2026-001",
+  },
 };
 ```
 
@@ -36,3 +39,4 @@ let value: TransferRailOptions = {
 | `pullFromCard`                                                                   | [components.PullFromCardOptions](../../models/components/pullfromcardoptions.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `achDebit`                                                                       | [components.ACHDebitOptions](../../models/components/achdebitoptions.md)         | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `achCredit`                                                                      | [components.ACHCreditOptions](../../models/components/achcreditoptions.md)       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `wire`                                                                           | [components.WireOptions](../../models/components/wireoptions.md)                 | :heavy_minus_sign:                                                               | Wire-specific options returned on a transfer.                                    |
