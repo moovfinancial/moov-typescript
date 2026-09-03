@@ -24,6 +24,9 @@ import {
   PushOptionsUpdate$outboundSchema,
 } from "./pushoptionsupdate.js";
 
+/**
+ * Options for payout links used to send a payout.
+ */
 export type PaymentLinkPayoutDetailsUpdate = {
   /**
    * A list of payment methods that should be supported for this payment link.
@@ -43,12 +46,7 @@ export type PaymentLinkPayoutDetailsUpdate = {
    */
   metadata?: { [k: string]: string } | undefined;
   /**
-   * Delivery options for push-to-card payouts. Only applies when `allowedMethods` includes `push-to-card`.
-   *
-   * @remarks
-   *
-   * The `deferred` speed and `deferredBy` apply to `push-to-card` only. Other push methods
-   * (`push-to-apple-pay`, `push-to-google-pay`) are always delivered instantly regardless of these options.
+   * Delivery options for `push-to-card` and `push-to-apple-pay` payouts.
    */
   pushOptions?: PushOptionsUpdate | undefined;
 };

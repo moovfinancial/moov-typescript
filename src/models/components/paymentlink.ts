@@ -129,6 +129,9 @@ export type PaymentLink = {
    * Options for payment links used to collect payment.
    */
   payment?: PaymentLinkPaymentDetails | undefined;
+  /**
+   * Options for payout links used to send a payout.
+   */
   payout?: PaymentLinkPayoutDetails | undefined;
   /**
    * An optional collection of line items for a payment link.

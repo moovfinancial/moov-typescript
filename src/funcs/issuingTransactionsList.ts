@@ -99,6 +99,7 @@ async function $do(
     "count": payload.count,
     "endDateTime": payload.endDateTime,
     "issuedCardID": payload.issuedCardID,
+    "merchantName": payload.merchantName,
     "skip": payload.skip,
     "startDateTime": payload.startDateTime,
   }, { explode: false });
