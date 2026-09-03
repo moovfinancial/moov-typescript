@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type FacilitatorFee = {
   /**
-   * Total facilitator fee in cents. Only either `total` or `totalDecimal` can be set.
+   * Total facilitator fee.
    */
   total?: number | undefined;
   /**
@@ -24,7 +24,7 @@ export type FacilitatorFee = {
    */
   totalDecimal?: string | undefined;
   /**
-   * Markup facilitator fee in cents. Only either `markup` or `markupDecimal` can be set.
+   * Markup facilitator fee.
    */
   markup?: number | undefined;
   /**

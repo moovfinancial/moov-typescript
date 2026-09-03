@@ -14,6 +14,9 @@ export const tool$transfersCreateCancellation: ToolDefinition<typeof args> = {
   name: "transfers-create-cancellation",
   description: `  Initiate a cancellation for a card, ACH, or queued transfer.
   
+  In v2026.10 and later, an auth-capture \`card-payment\` transfer can be canceled before any captures exist.
+  For these transfers, a successful cancellation reduces \`capturableAmount\` without changing \`authorizedAmount\`.
+  For these transfers, a partial cancellation leaves the remaining \`capturableAmount\` available for capture.
   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
   to specify the \`/accounts/{accountID}/transfers.write\` scope.`,
   args,

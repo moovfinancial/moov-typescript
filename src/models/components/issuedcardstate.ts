@@ -11,10 +11,12 @@ import { ClosedEnum } from "../../types/enums.js";
  * @remarks
  *
  * - `active`: The card is operational and can approve authorizations.
+ * - `frozen`: The card is temporarily suspended and cannot approve authorizations. A frozen card can be reactivated by setting its state back to `active`.
  * - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
  */
 export const IssuedCardState = {
   Active: "active",
+  Frozen: "frozen",
   Closed: "closed",
 } as const;
 /**
@@ -23,6 +25,7 @@ export const IssuedCardState = {
  * @remarks
  *
  * - `active`: The card is operational and can approve authorizations.
+ * - `frozen`: The card is temporarily suspended and cannot approve authorizations. A frozen card can be reactivated by setting its state back to `active`.
  * - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
  */
 export type IssuedCardState = ClosedEnum<typeof IssuedCardState>;

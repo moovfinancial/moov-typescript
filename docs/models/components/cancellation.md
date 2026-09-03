@@ -1,5 +1,7 @@
 # Cancellation
 
+Cancellation of a transfer.
+
 ## Example Usage
 
 ```typescript

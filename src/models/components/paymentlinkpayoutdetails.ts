@@ -18,6 +18,9 @@ import {
   PayoutRecipient$outboundSchema,
 } from "./payoutrecipient.js";
 
+/**
+ * Options for payout links used to send a payout.
+ */
 export type PaymentLinkPayoutDetails = {
   /**
    * A list of payment methods that should be supported for this payment link.
