@@ -71,6 +71,14 @@ export type FeePlanAgreement = {
    * Fixed recurring amount paid in the billing period regardless of usage.
    */
   monthlyPlatformFee: MonthlyPlatformFee;
+  /**
+   * The agreement this one replaced. Only set when the agreement was created by replacing another.
+   */
+  priorAgreementID?: string | undefined;
+  /**
+   * The date and time the prior agreement was terminated.
+   */
+  priorAgreementTerminatedOn?: Date | undefined;
 };
 
 /** @internal */
@@ -90,6 +98,10 @@ export const FeePlanAgreement$inboundSchema: z.ZodType<
   billableFees: z.array(BillableFee$inboundSchema),
   minimumCommitment: MinimumCommitment$inboundSchema,
   monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
+  priorAgreementID: z.string().optional(),
+  priorAgreementTerminatedOn: z.string().datetime({ offset: true }).transform(
+    v => new Date(v)
+  ).optional(),
 });
 /** @internal */
 export type FeePlanAgreement$Outbound = {
@@ -104,6 +116,8 @@ export type FeePlanAgreement$Outbound = {
   billableFees: Array<BillableFee$Outbound>;
   minimumCommitment: MinimumCommitment$Outbound;
   monthlyPlatformFee: MonthlyPlatformFee$Outbound;
+  priorAgreementID?: string | undefined;
+  priorAgreementTerminatedOn?: string | undefined;
 };
 
 /** @internal */
@@ -123,6 +137,9 @@ export const FeePlanAgreement$outboundSchema: z.ZodType<
   billableFees: z.array(BillableFee$outboundSchema),
   minimumCommitment: MinimumCommitment$outboundSchema,
   monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
+  priorAgreementID: z.string().optional(),
+  priorAgreementTerminatedOn: z.date().transform(v => v.toISOString())
+    .optional(),
 });
 
 export function feePlanAgreementToJSON(

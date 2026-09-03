@@ -59,15 +59,23 @@ async function run() {
       merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
       amount: {
         currency: "USD",
-        value: 10000,
+        value: 2500,
       },
       display: {
-        title: "Support our cause",
-        description: "Choose an amount to contribute.",
-        callToAction: "donate",
+        title: "Claim your payout",
+        description: "Q3 rebate payout.",
+        callToAction: "confirm",
       },
-      customer: {
-        requirePhone: true,
+      payout: {
+        allowedMethods: [
+          "push-to-card",
+          "push-to-apple-pay",
+          "rtp-credit",
+          "ach-credit-standard",
+        ],
+        recipient: {
+          email: "jordan@example.com",
+        },
       },
     },
   });
@@ -103,15 +111,23 @@ async function run() {
       merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
       amount: {
         currency: "USD",
-        value: 10000,
+        value: 2500,
       },
       display: {
-        title: "Support our cause",
-        description: "Choose an amount to contribute.",
-        callToAction: "donate",
+        title: "Claim your payout",
+        description: "Q3 rebate payout.",
+        callToAction: "confirm",
       },
-      customer: {
-        requirePhone: true,
+      payout: {
+        allowedMethods: [
+          "push-to-card",
+          "push-to-apple-pay",
+          "rtp-credit",
+          "ach-credit-standard",
+        ],
+        recipient: {
+          email: "jordan@example.com",
+        },
       },
     },
   });
@@ -346,9 +362,14 @@ async function run() {
         currency: "USD",
         value: 12099,
       },
-      customer: {
-        requireAddress: true,
-        requirePhone: true,
+      payout: {
+        allowedMethods: [
+          "push-to-card",
+          "rtp-credit",
+        ],
+        recipient: {
+          email: "jordan@example.com",
+        },
       },
     },
   });
@@ -385,9 +406,14 @@ async function run() {
         currency: "USD",
         value: 12099,
       },
-      customer: {
-        requireAddress: true,
-        requirePhone: true,
+      payout: {
+        allowedMethods: [
+          "push-to-card",
+          "rtp-credit",
+        ],
+        recipient: {
+          email: "jordan@example.com",
+        },
       },
     },
   });

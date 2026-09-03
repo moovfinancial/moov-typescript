@@ -11,6 +11,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListFeePlanAgreementsRequest = {
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   accountID: string;
   /**

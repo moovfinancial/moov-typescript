@@ -29,7 +29,7 @@ export const ApplicationScope = {
   FilesWrite: "files.write",
   IssuedCardsRead: "issued-cards.read",
   IssuedCardsWrite: "issued-cards.write",
-  IssuedCardsReadSecure: "issued-cards.read-secure",
+  IssuedCardsReadPrivate: "issued-cards.read-private",
   PaymentMethodsRead: "payment-methods.read",
   PingRead: "ping.read",
   ProfileEnrichmentRead: "profile-enrichment.read",

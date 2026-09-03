@@ -110,11 +110,11 @@ export type BillingSummaryPlatformFees = {
 };
 
 /**
- * The total amount of adjustment fees. This field is deprecated and will be removed in a future release.
+ * The total amount of adjustment fees. This field is deprecated and will be removed in a future release. Use adjustments.total.
  *
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export type AdjustmentFees = {
+export type BillingSummaryAdjustmentFees = {
   /**
    * A 3-letter ISO 4217 currency code.
    */
@@ -176,11 +176,11 @@ export type BillingSummary = {
    */
   accountFees?: BillingSummaryDetails | undefined;
   /**
-   * The total amount of adjustment fees. This field is deprecated and will be removed in a future release.
+   * The total amount of adjustment fees. This field is deprecated and will be removed in a future release. Use adjustments.total.
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  adjustmentFees?: AdjustmentFees | undefined;
+  adjustmentFees?: BillingSummaryAdjustmentFees | undefined;
   /**
    * The total amount of other card fees. This field is deprecated and will be removed in a future release. Use summary.otherCardFees.
    *
@@ -215,6 +215,10 @@ export type BillingSummary = {
    * Final partner payment after deducting monthlyPartnerCosts.
    */
   netPartnerPayment?: AmountDecimal | undefined;
+  /**
+   * Final partner payment after deducting monthlyPartnerCosts and any adjustments.
+   */
+  totalNetPartnerPayment?: AmountDecimal | undefined;
 };
 
 /** @internal */
@@ -357,8 +361,8 @@ export function billingSummaryPlatformFeesFromJSON(
 }
 
 /** @internal */
-export const AdjustmentFees$inboundSchema: z.ZodType<
-  AdjustmentFees,
+export const BillingSummaryAdjustmentFees$inboundSchema: z.ZodType<
+  BillingSummaryAdjustmentFees,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -366,31 +370,37 @@ export const AdjustmentFees$inboundSchema: z.ZodType<
   valueDecimal: z.string(),
 });
 /** @internal */
-export type AdjustmentFees$Outbound = {
+export type BillingSummaryAdjustmentFees$Outbound = {
   currency: string;
   valueDecimal: string;
 };
 
 /** @internal */
-export const AdjustmentFees$outboundSchema: z.ZodType<
-  AdjustmentFees$Outbound,
+export const BillingSummaryAdjustmentFees$outboundSchema: z.ZodType<
+  BillingSummaryAdjustmentFees$Outbound,
   z.ZodTypeDef,
-  AdjustmentFees
+  BillingSummaryAdjustmentFees
 > = z.object({
   currency: z.string(),
   valueDecimal: z.string(),
 });
 
-export function adjustmentFeesToJSON(adjustmentFees: AdjustmentFees): string {
-  return JSON.stringify(AdjustmentFees$outboundSchema.parse(adjustmentFees));
+export function billingSummaryAdjustmentFeesToJSON(
+  billingSummaryAdjustmentFees: BillingSummaryAdjustmentFees,
+): string {
+  return JSON.stringify(
+    BillingSummaryAdjustmentFees$outboundSchema.parse(
+      billingSummaryAdjustmentFees,
+    ),
+  );
 }
-export function adjustmentFeesFromJSON(
+export function billingSummaryAdjustmentFeesFromJSON(
   jsonString: string,
-): SafeParseResult<AdjustmentFees, SDKValidationError> {
+): SafeParseResult<BillingSummaryAdjustmentFees, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AdjustmentFees$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AdjustmentFees' from JSON`,
+    (x) => BillingSummaryAdjustmentFees$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BillingSummaryAdjustmentFees' from JSON`,
   );
 }
 
@@ -444,7 +454,8 @@ export const BillingSummary$inboundSchema: z.ZodType<
   platformFees: z.lazy(() => BillingSummaryPlatformFees$inboundSchema)
     .optional(),
   accountFees: BillingSummaryDetails$inboundSchema.optional(),
-  adjustmentFees: z.lazy(() => AdjustmentFees$inboundSchema).optional(),
+  adjustmentFees: z.lazy(() => BillingSummaryAdjustmentFees$inboundSchema)
+    .optional(),
   otherFees: z.lazy(() => OtherFees$inboundSchema).optional(),
   otherCardFees: BillingSummaryDetails$inboundSchema.optional(),
   total: AmountDecimal$inboundSchema.optional(),
@@ -453,6 +464,7 @@ export const BillingSummary$inboundSchema: z.ZodType<
   residualSubtotal: AmountDecimal$inboundSchema.optional(),
   monthlyPartnerCosts: PartnerFees$inboundSchema.optional(),
   netPartnerPayment: AmountDecimal$inboundSchema.optional(),
+  totalNetPartnerPayment: AmountDecimal$inboundSchema.optional(),
 });
 /** @internal */
 export type BillingSummary$Outbound = {
@@ -461,7 +473,7 @@ export type BillingSummary$Outbound = {
   instantPayments?: BillingSummaryDetails$Outbound | undefined;
   platformFees?: BillingSummaryPlatformFees$Outbound | undefined;
   accountFees?: BillingSummaryDetails$Outbound | undefined;
-  adjustmentFees?: AdjustmentFees$Outbound | undefined;
+  adjustmentFees?: BillingSummaryAdjustmentFees$Outbound | undefined;
   otherFees?: OtherFees$Outbound | undefined;
   otherCardFees?: BillingSummaryDetails$Outbound | undefined;
   total?: AmountDecimal$Outbound | undefined;
@@ -470,6 +482,7 @@ export type BillingSummary$Outbound = {
   residualSubtotal?: AmountDecimal$Outbound | undefined;
   monthlyPartnerCosts?: PartnerFees$Outbound | undefined;
   netPartnerPayment?: AmountDecimal$Outbound | undefined;
+  totalNetPartnerPayment?: AmountDecimal$Outbound | undefined;
 };
 
 /** @internal */
@@ -484,7 +497,8 @@ export const BillingSummary$outboundSchema: z.ZodType<
   platformFees: z.lazy(() => BillingSummaryPlatformFees$outboundSchema)
     .optional(),
   accountFees: BillingSummaryDetails$outboundSchema.optional(),
-  adjustmentFees: z.lazy(() => AdjustmentFees$outboundSchema).optional(),
+  adjustmentFees: z.lazy(() => BillingSummaryAdjustmentFees$outboundSchema)
+    .optional(),
   otherFees: z.lazy(() => OtherFees$outboundSchema).optional(),
   otherCardFees: BillingSummaryDetails$outboundSchema.optional(),
   total: AmountDecimal$outboundSchema.optional(),
@@ -493,6 +507,7 @@ export const BillingSummary$outboundSchema: z.ZodType<
   residualSubtotal: AmountDecimal$outboundSchema.optional(),
   monthlyPartnerCosts: PartnerFees$outboundSchema.optional(),
   netPartnerPayment: AmountDecimal$outboundSchema.optional(),
+  totalNetPartnerPayment: AmountDecimal$outboundSchema.optional(),
 });
 
 export function billingSummaryToJSON(billingSummary: BillingSummary): string {
