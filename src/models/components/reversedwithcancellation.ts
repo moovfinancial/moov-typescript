@@ -14,6 +14,9 @@ import {
 } from "./cancellation.js";
 
 export type ReversedWithCancellation = {
+  /**
+   * Cancellation of a transfer.
+   */
   cancellation: Cancellation;
 };
 

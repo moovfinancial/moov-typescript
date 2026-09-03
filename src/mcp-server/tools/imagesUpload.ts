@@ -13,7 +13,7 @@ const args = {
 export const tool$imagesUpload: ToolDefinition<typeof args> = {
   name: "images-upload",
   description: `  Upload a new PNG, JPEG, or WebP image with optional metadata. 
-  Duplicate images, and requests larger than 16MB will be rejected.`,
+  Duplicate images return the existing image's metadata with a 409 status. Requests larger than 16MB will be rejected.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await imagesUpload(
