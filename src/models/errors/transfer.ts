@@ -23,6 +23,14 @@ export type TransferData = {
    * Reason for a transfer's failure.
    */
   failureReason?: components.TransferFailureReason | undefined;
+  /**
+   * Amount associated with this transfer.
+   *
+   * @remarks
+   * In v2026.10 and later, an auth-capture `card-payment` transfer reports the approved authorization amount until a final capture is created.
+   * For these transfers, when a final capture is created, this is updated to the cumulative captured amount.
+   * For other transfer types, this is the transfer amount.
+   */
   amount: components.Amount;
   /**
    * An optional description of the transfer that is used on receipts and for your own internal use.
@@ -100,6 +108,14 @@ export class Transfer extends MoovError {
    * Reason for a transfer's failure.
    */
   failureReason?: components.TransferFailureReason | undefined;
+  /**
+   * Amount associated with this transfer.
+   *
+   * @remarks
+   * In v2026.10 and later, an auth-capture `card-payment` transfer reports the approved authorization amount until a final capture is created.
+   * For these transfers, when a final capture is created, this is updated to the cumulative captured amount.
+   * For other transfer types, this is the transfer amount.
+   */
   amount: components.Amount;
   /**
    * An optional description of the transfer that is used on receipts and for your own internal use.

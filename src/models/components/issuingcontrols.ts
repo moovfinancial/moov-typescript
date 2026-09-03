@@ -13,6 +13,9 @@ import {
   IssuingVelocityLimit$outboundSchema,
 } from "./issuingvelocitylimit.js";
 
+/**
+ * Mutable spend controls for the card.
+ */
 export type IssuingControls = {
   /**
    * Indicates if the card is single-use. If true, the card closes after the first authorization.

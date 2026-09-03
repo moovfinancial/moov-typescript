@@ -173,6 +173,10 @@ let value: Statement = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
+    totalNetPartnerPayment: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
   },
   cardAcquiringFees: {
     visa: {
@@ -744,8 +748,27 @@ let value: Statement = {
       valueDecimal: "12.987654321",
     },
   },
-  createdOn: new Date("2026-08-11T11:14:26.652Z"),
-  updatedOn: new Date("2025-06-04T06:47:17.396Z"),
+  adjustments: {
+    items: [
+      {
+        feeName: "<value>",
+        count: 474711,
+        amount: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
+    ],
+    total: {
+      count: 429311,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+  },
+  createdOn: new Date("2026-07-12T04:30:34.060Z"),
+  updatedOn: new Date("2024-03-08T14:45:40.171Z"),
 };
 ```
 
@@ -768,5 +791,6 @@ let value: Statement = {
 | `accountFees`                                                                                                                                                                                                                                      | [components.AccountFees](../../models/components/accountfees.md)                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                 | A detailed breakdown of account fees.                                                                                                                                                                                                              |
 | `otherCardFees`                                                                                                                                                                                                                                    | [components.OtherCardFees](../../models/components/othercardfees.md)                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                                 | A detailed breakdown of other card-related fees.                                                                                                                                                                                                   |
 | `partnerFees`                                                                                                                                                                                                                                      | [components.PartnerFees](../../models/components/partnerfees.md)                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                 | Monthly partner costs that are charged separately and not included in residual subtotal (e.g. platform fees, minimums).                                                                                                                            |
+| `adjustments`                                                                                                                                                                                                                                      | [components.AdjustmentFees](../../models/components/adjustmentfees.md)                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                 | A detailed breakdown of adjustment (correction) fees by fee name.                                                                                                                                                                                  |
 | `createdOn`                                                                                                                                                                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                                                 | The date and time the statement was created.                                                                                                                                                                                                       |
 | `updatedOn`                                                                                                                                                                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                                                 | The date and time the statement was last updated.                                                                                                                                                                                                  |

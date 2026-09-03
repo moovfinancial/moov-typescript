@@ -13,7 +13,7 @@ const args = {
 export const tool$transfersListCancellations: ToolDefinition<typeof args> = {
   name: "transfers-list-cancellations",
   description: `  Get a list of cancellations for a transfer.
-  
+
   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
   to specify the \`/accounts/{accountID}/transfers.read\` scope.`,
   args,
