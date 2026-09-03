@@ -13,6 +13,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type ListDisputesRequest = {
   accountID: string;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   /**
    * Optional date-time parameter to filter all disputes created on and after the provided date and time.

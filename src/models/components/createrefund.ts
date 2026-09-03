@@ -23,7 +23,7 @@ import {
  */
 export type CreateRefund = {
   /**
-   * Amount to refund. Before v2026.10, specify the amount in integer cents. If omitted, the original transfer's full amount will be refunded.
+   * Amount to refund. If omitted, the original transfer's full amount will be refunded.
    */
   amount?: number | undefined;
   /**

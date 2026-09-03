@@ -20,6 +20,9 @@ export type ListStatementsRequest = {
    */
   billingPeriodEndDateTime?: Date | undefined;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   accountID: string;
 };

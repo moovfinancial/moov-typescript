@@ -17,7 +17,7 @@ export const tool$cardIssuingGetFull: ToolDefinition<typeof args> = {
 Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the \`/accounts/{accountID}/issued-cards.read-secure\` scope.`,
+you'll need to specify the \`/accounts/{accountID}/issued-cards.read-private\` scope.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await cardIssuingGetFull(

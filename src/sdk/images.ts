@@ -35,7 +35,7 @@ export class Images extends ClientSDK {
 
   /**
    *   Upload a new PNG, JPEG, or WebP image with optional metadata.
-   *   Duplicate images, and requests larger than 16MB will be rejected.
+   *   Duplicate images return the existing image's metadata with a 409 status. Requests larger than 16MB will be rejected.
    */
   async upload(
     request: operations.UploadImageRequest,

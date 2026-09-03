@@ -25,11 +25,11 @@ import {
 } from "./merchantentry.js";
 
 /**
- * Restricts card usage by merchant category.
+ * Restricts card usage by merchant category. When not set, all categories are allowed.
  */
 export type MerchantCategoryRestrictions = {
   /**
-   * Whether the listed categories are the only ones allowed, or the ones to block.
+   * Whether the listed items should be allowed (`allow`) or blocked (`block`).
    */
   mode: IssuingControlsRestrictionMode;
   /**

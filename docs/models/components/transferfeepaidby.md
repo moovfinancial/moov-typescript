@@ -12,6 +12,6 @@ let value: TransferFeePaidBy = {};
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `payout`                                                                | [components.FeePaidBy](../../models/components/feepaidby.md)            | :heavy_minus_sign:                                                      | For payouts, indicates which party bears the fee. Defaults to `source`. |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `payout`                                                     | [components.FeePaidBy](../../models/components/feepaidby.md) | :heavy_minus_sign:                                           | Defaults to `source`.                                        |

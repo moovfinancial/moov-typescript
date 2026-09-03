@@ -73,11 +73,19 @@ export type PartnerPricingAgreement = {
    */
   monthlyPlatformFee: MonthlyPlatformFee;
   /**
-   *   The decimal-formatted numerical string of the revenue split for partner.
+   * The agreement this one replaced. Only set when the agreement was created by replacing another.
+   */
+  priorAgreementID?: string | undefined;
+  /**
+   * The date and time the prior agreement was terminated.
+   */
+  priorAgreementTerminatedOn?: Date | undefined;
+  /**
+   * The decimal-formatted numerical string of the revenue split for partner.
    *
    * @remarks
    *
-   *   For example, 2.25% is '2.25'.
+   * For example, 2.25% is '2.25'.
    */
   revenueShare: string;
 };
@@ -99,6 +107,8 @@ export const PartnerPricingAgreement$inboundSchema: z.ZodType<
   billableFees: z.array(BillableFee$inboundSchema),
   minimumCommitment: MinimumCommitment$inboundSchema,
   monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
+  priorAgreementID: types.optional(types.string()),
+  priorAgreementTerminatedOn: types.optional(types.date()),
   revenueShare: types.string(),
 });
 /** @internal */
@@ -114,6 +124,8 @@ export type PartnerPricingAgreement$Outbound = {
   billableFees: Array<BillableFee$Outbound>;
   minimumCommitment: MinimumCommitment$Outbound;
   monthlyPlatformFee: MonthlyPlatformFee$Outbound;
+  priorAgreementID?: string | undefined;
+  priorAgreementTerminatedOn?: string | undefined;
   revenueShare: string;
 };
 
@@ -134,6 +146,9 @@ export const PartnerPricingAgreement$outboundSchema: z.ZodType<
   billableFees: z.array(BillableFee$outboundSchema),
   minimumCommitment: MinimumCommitment$outboundSchema,
   monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
+  priorAgreementID: z.string().optional(),
+  priorAgreementTerminatedOn: z.date().transform(v => v.toISOString())
+    .optional(),
   revenueShare: z.string(),
 });
 

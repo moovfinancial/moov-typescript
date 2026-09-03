@@ -171,6 +171,10 @@ const value: components.Statement = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
+    totalNetPartnerPayment: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
   },
   cardAcquiringFees: {
     visa: {
@@ -742,8 +746,27 @@ const value: components.Statement = {
       valueDecimal: "12.987654321",
     },
   },
-  createdOn: new Date("2026-08-11T11:14:26.652Z"),
-  updatedOn: new Date("2025-06-04T06:47:17.396Z"),
+  adjustments: {
+    items: [
+      {
+        feeName: "<value>",
+        count: 474711,
+        amount: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+      },
+    ],
+    total: {
+      count: 429311,
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+  },
+  createdOn: new Date("2026-07-12T04:30:34.060Z"),
+  updatedOn: new Date("2024-03-08T14:45:40.171Z"),
 };
 ```
 

@@ -57,47 +57,38 @@ async function run() {
     createPaymentLink: {
       partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
       merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
+      amount: {
+        currency: "USD",
+        value: 2500,
+      },
       display: {
-        title: "Support our cause",
-        description: "Choose an amount to contribute.",
-        callToAction: "donate",
+        title: "Claim your payout",
+        description: "Q3 rebate payout.",
+        callToAction: "confirm",
       },
-      customer: {
-        requirePhone: true,
-      },
-      customAmountPayment: {
+      payout: {
         allowedMethods: [
-          "card-payment",
-          "ach-debit-collect",
+          "push-to-card",
+          "push-to-apple-pay",
+          "rtp-credit",
+          "ach-credit-standard",
         ],
-        amountRange: {
-          minimum: {
-            currency: "USD",
-            valueDecimal: "0.00",
-          },
-          maximum: {
-            currency: "USD",
-            valueDecimal: "1000.00",
-          },
+        recipient: {
+          email: "jordan@example.com",
         },
-        suggestedAmounts: [
-          {
-            currency: "USD",
-            valueDecimal: "50.00",
-          },
-          {
-            currency: "USD",
-            valueDecimal: "100.00",
-          },
-          {
-            currency: "USD",
-            valueDecimal: "500.00",
-          },
-          {
-            currency: "USD",
-            valueDecimal: "1000.00",
-          },
-        ],
+        pushOptions: {
+          allowedSpeeds: [
+            "instant",
+            "deferred",
+          ],
+          deferredBy: "24h",
+        },
+        feePaidBy: {
+          "instant-push-to-card": "destination",
+          "deferred-push-to-card": "source",
+          "instant-push-to-apple-pay": "destination",
+          "rtp-credit": "destination",
+        },
       },
     },
   });
@@ -131,47 +122,38 @@ async function run() {
     createPaymentLink: {
       partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
       merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
+      amount: {
+        currency: "USD",
+        value: 2500,
+      },
       display: {
-        title: "Support our cause",
-        description: "Choose an amount to contribute.",
-        callToAction: "donate",
+        title: "Claim your payout",
+        description: "Q3 rebate payout.",
+        callToAction: "confirm",
       },
-      customer: {
-        requirePhone: true,
-      },
-      customAmountPayment: {
+      payout: {
         allowedMethods: [
-          "card-payment",
-          "ach-debit-collect",
+          "push-to-card",
+          "push-to-apple-pay",
+          "rtp-credit",
+          "ach-credit-standard",
         ],
-        amountRange: {
-          minimum: {
-            currency: "USD",
-            valueDecimal: "0.00",
-          },
-          maximum: {
-            currency: "USD",
-            valueDecimal: "1000.00",
-          },
+        recipient: {
+          email: "jordan@example.com",
         },
-        suggestedAmounts: [
-          {
-            currency: "USD",
-            valueDecimal: "50.00",
-          },
-          {
-            currency: "USD",
-            valueDecimal: "100.00",
-          },
-          {
-            currency: "USD",
-            valueDecimal: "500.00",
-          },
-          {
-            currency: "USD",
-            valueDecimal: "1000.00",
-          },
-        ],
+        pushOptions: {
+          allowedSpeeds: [
+            "instant",
+            "deferred",
+          ],
+          deferredBy: "24h",
+        },
+        feePaidBy: {
+          "instant-push-to-card": "destination",
+          "deferred-push-to-card": "source",
+          "instant-push-to-apple-pay": "destination",
+          "rtp-credit": "destination",
+        },
       },
     },
   });
@@ -406,14 +388,18 @@ async function run() {
         currency: "USD",
         value: 12099,
       },
-      customer: {
-        requireAddress: true,
-        requirePhone: true,
-      },
-      amountDetails: {
-        tax: {
-          currency: "USD",
-          valueDecimal: "9.25",
+      payout: {
+        allowedMethods: [
+          "push-to-card",
+          "rtp-credit",
+        ],
+        recipient: {
+          email: "jordan@example.com",
+        },
+        feePaidBy: {
+          "instant-push-to-card": "destination",
+          "deferred-push-to-card": "source",
+          "rtp-credit": "destination",
         },
       },
     },
@@ -451,14 +437,18 @@ async function run() {
         currency: "USD",
         value: 12099,
       },
-      customer: {
-        requireAddress: true,
-        requirePhone: true,
-      },
-      amountDetails: {
-        tax: {
-          currency: "USD",
-          valueDecimal: "9.25",
+      payout: {
+        allowedMethods: [
+          "push-to-card",
+          "rtp-credit",
+        ],
+        recipient: {
+          email: "jordan@example.com",
+        },
+        feePaidBy: {
+          "instant-push-to-card": "destination",
+          "deferred-push-to-card": "source",
+          "rtp-credit": "destination",
         },
       },
     },

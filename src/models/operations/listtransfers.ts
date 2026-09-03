@@ -52,7 +52,7 @@ export type ListTransfersRequest = {
    */
   foreignID?: string | undefined;
   /**
-   * Optional comma-separated IDs to filter for transfers associated with specific card authorizations.
+   * Optional comma-separated authorization IDs.
    */
   authorizationIDs?: Array<string> | undefined;
   /**
@@ -60,6 +60,9 @@ export type ListTransfersRequest = {
    */
   captureIDs?: Array<string> | undefined;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   accountID: string;
 };

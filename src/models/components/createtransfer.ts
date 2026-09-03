@@ -85,7 +85,7 @@ export type CreateTransfer = {
   lineItems?: CreateTransferLineItems | undefined;
   amountDetails?: CreateTransferAmountDetails | undefined;
   /**
-   * Indicates which party bears fees for the transfer, keyed by fee type.
+   * Indicates which party bears fees for a transfer, keyed by fee type.
    */
   feePaidBy?: TransferFeePaidBy | undefined;
 };

@@ -12,6 +12,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListTicketsRequest = {
   cursor?: string | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   status?: components.TicketStatus | undefined;
   foreignID?: string | undefined;

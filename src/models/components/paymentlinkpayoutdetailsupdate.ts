@@ -30,6 +30,9 @@ import {
   PushOptionsUpdate$outboundSchema,
 } from "./pushoptionsupdate.js";
 
+/**
+ * Options for payout links used to send a payout.
+ */
 export type PaymentLinkPayoutDetailsUpdate = {
   /**
    * A list of payment methods that should be supported for this payment link.
@@ -49,20 +52,16 @@ export type PaymentLinkPayoutDetailsUpdate = {
    */
   metadata?: { [k: string]: string } | undefined;
   /**
-   * Delivery options for push-to-card payouts. Only applies when `allowedMethods` includes `push-to-card`.
-   *
-   * @remarks
-   *
-   * The `deferred` speed and `deferredBy` apply to `push-to-card` only. Other push methods
-   * (`push-to-apple-pay`, `push-to-google-pay`) are always delivered instantly regardless of these options.
+   * Delivery options for `push-to-card` and `push-to-apple-pay` payouts.
    */
   pushOptions?: PushOptionsUpdate | undefined;
   /**
-   * Indicates which party bears the fee, keyed by disbursement payment method (`DisbursementPaymentMethodType`).
+   * Indicates which party pays the fee, keyed by `PayoutFeePaidByKey`. If keys are not set,
    *
    * @remarks
+   * the default is `source`.
    *
-   * Sparse — include only the methods you want to attribute. Any method left unset defaults to `source`.
+   * Possible `PayoutFeePaidByKey` keys: `instant-push-to-card`, `deferred-push-to-card`, `instant-push-to-apple-pay`, `deferred-push-to-apple-pay`, `rtp-credit`, `ach-credit-same-day`, `ach-credit-standard`, `push-to-google-pay`
    */
   feePaidBy?: { [k: string]: FeePaidBy } | undefined;
 };

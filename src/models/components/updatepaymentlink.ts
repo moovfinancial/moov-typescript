@@ -68,6 +68,9 @@ export type UpdatePaymentLink = {
    * Options for payment links used to collect payment.
    */
   payment?: PaymentLinkPaymentDetailsUpdate | undefined;
+  /**
+   * Options for payout links used to send a payout.
+   */
   payout?: PaymentLinkPayoutDetailsUpdate | undefined;
   /**
    * Options for a custom amount payment link. A payment link's type cannot be changed after creation.

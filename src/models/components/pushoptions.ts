@@ -13,19 +13,17 @@ import {
   PushDeliverySpeed$outboundSchema,
 } from "./pushdeliveryspeed.js";
 
-/**
- * Delivery options for push-to-card payouts.
- */
 export type PushOptions = {
   /**
-   * Delivery speeds the recipient may choose from for `push-to-card`. Include `instant` to allow immediate
+   * Delivery speeds the recipient may choose from for `push-to-card` and `push-to-apple-pay`.
    *
    * @remarks
-   * delivery, `deferred` to allow delayed delivery, or both to let the recipient choose at checkout.
+   * Include `instant` to allow immediate delivery, `deferred` to allow delayed delivery, or both
+   * to let the recipient choose at checkout.
    */
   allowedSpeeds: Array<PushDeliverySpeed>;
   /**
-   * Delay before delivering a deferred `push-to-card` payout. Required when `allowedSpeeds` includes `deferred`.
+   * Delay before delivering a deferred payout. Required when `allowedSpeeds` includes `deferred`.
    *
    * @remarks
    * Accepted values are `24h` or `48h`.

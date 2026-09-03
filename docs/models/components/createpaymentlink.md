@@ -15,47 +15,38 @@ import { CreatePaymentLink } from "@moovio/sdk/models/components";
 let value: CreatePaymentLink = {
   partnerAccountID: "d290f1ee-6c54-4b01-90e6-d701748f0851",
   merchantPaymentMethodID: "4c4e7f8e-81f4-4f3d-8f6f-6f6e7f8e4c4e",
+  amount: {
+    currency: "USD",
+    value: 2500,
+  },
   display: {
-    title: "Support our cause",
-    description: "Choose an amount to contribute.",
-    callToAction: "donate",
+    title: "Claim your payout",
+    description: "Q3 rebate payout.",
+    callToAction: "confirm",
   },
-  customer: {
-    requirePhone: true,
-  },
-  customAmountPayment: {
+  payout: {
     allowedMethods: [
-      "card-payment",
-      "ach-debit-collect",
+      "push-to-card",
+      "push-to-apple-pay",
+      "rtp-credit",
+      "ach-credit-standard",
     ],
-    amountRange: {
-      minimum: {
-        currency: "USD",
-        valueDecimal: "0.00",
-      },
-      maximum: {
-        currency: "USD",
-        valueDecimal: "1000.00",
-      },
+    recipient: {
+      email: "jordan@example.com",
     },
-    suggestedAmounts: [
-      {
-        currency: "USD",
-        valueDecimal: "50.00",
-      },
-      {
-        currency: "USD",
-        valueDecimal: "100.00",
-      },
-      {
-        currency: "USD",
-        valueDecimal: "500.00",
-      },
-      {
-        currency: "USD",
-        valueDecimal: "1000.00",
-      },
-    ],
+    pushOptions: {
+      allowedSpeeds: [
+        "instant",
+        "deferred",
+      ],
+      deferredBy: "24h",
+    },
+    feePaidBy: {
+      "instant-push-to-card": "destination",
+      "deferred-push-to-card": "source",
+      "instant-push-to-apple-pay": "destination",
+      "rtp-credit": "destination",
+    },
   },
 };
 ```
@@ -72,7 +63,7 @@ let value: CreatePaymentLink = {
 | `display`                                                                                                                                                                                                                                                                                        | [components.PaymentLinkDisplayOptions](../../models/components/paymentlinkdisplayoptions.md)                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                                                                                               | Customizable display options for a payment link.                                                                                                                                                                                                                                                 |
 | `customer`                                                                                                                                                                                                                                                                                       | [components.PaymentLinkCustomerOptions](../../models/components/paymentlinkcustomeroptions.md)                                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                                                               | N/A                                                                                                                                                                                                                                                                                              |
 | `payment`                                                                                                                                                                                                                                                                                        | [components.PaymentLinkPaymentDetails](../../models/components/paymentlinkpaymentdetails.md)                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                               | Options for payment links used to collect payment.                                                                                                                                                                                                                                               |
-| `payout`                                                                                                                                                                                                                                                                                         | [components.PaymentLinkPayoutDetails](../../models/components/paymentlinkpayoutdetails.md)                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                                                                               | N/A                                                                                                                                                                                                                                                                                              |
+| `payout`                                                                                                                                                                                                                                                                                         | [components.PaymentLinkPayoutDetails](../../models/components/paymentlinkpayoutdetails.md)                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                                                                               | Options for payout links used to send a payout.                                                                                                                                                                                                                                                  |
 | `customAmountPayment`                                                                                                                                                                                                                                                                            | [components.PaymentLinkCustomAmountPaymentDetails](../../models/components/paymentlinkcustomamountpaymentdetails.md)                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                               | Options for a custom amount payment link. Mutually exclusive with `payment` and `payout`.                                                                                                                                                                                                        |
 | `lineItems`                                                                                                                                                                                                                                                                                      | [components.CreatePaymentLinkLineItems](../../models/components/createpaymentlinklineitems.md)                                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                                                               | An optional collection of line items for a payment link.<br/>When line items are provided, their total plus tax must equal the payment link amount.                                                                                                                                              |
 | `amountDetails`                                                                                                                                                                                                                                                                                  | [components.CreatePaymentLinkAmountDetails](../../models/components/createpaymentlinkamountdetails.md)                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                                                               | N/A                                                                                                                                                                                                                                                                                              |

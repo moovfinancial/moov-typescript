@@ -6,16 +6,10 @@ import * as z from "zod/v3";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
-/**
- * Indicates which party to a money movement bears an incurred fee.
- */
 export const FeePaidBy = {
   Source: "source",
   Destination: "destination",
 } as const;
-/**
- * Indicates which party to a money movement bears an incurred fee.
- */
 export type FeePaidBy = OpenEnum<typeof FeePaidBy>;
 
 /** @internal */

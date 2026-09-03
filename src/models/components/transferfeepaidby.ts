@@ -18,7 +18,7 @@ import {
  */
 export type TransferFeePaidBy = {
   /**
-   * For payouts, indicates which party bears the fee. Defaults to `source`.
+   * Defaults to `source`.
    */
   payout?: FeePaidBy | undefined;
 };
