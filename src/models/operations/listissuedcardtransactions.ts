@@ -15,11 +15,18 @@ export type ListIssuedCardTransactionsRequest = {
    */
   accountID: string;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   /**
    * Optional ID of the issued card to filter results.
    */
   issuedCardID?: string | undefined;
+  /**
+   * Optional case-insensitive substring match on the merchant name to filter results.
+   */
+  merchantName?: string | undefined;
   /**
    * Optional date-time which inclusively filters all card transactions created after this date-time.
    */
@@ -45,6 +52,7 @@ export const ListIssuedCardTransactionsRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   issuedCardID: z.string().optional(),
+  merchantName: z.string().optional(),
   startDateTime: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ).optional(),
@@ -57,6 +65,7 @@ export type ListIssuedCardTransactionsRequest$Outbound = {
   skip?: number | undefined;
   count?: number | undefined;
   issuedCardID?: string | undefined;
+  merchantName?: string | undefined;
   startDateTime?: string | undefined;
   endDateTime?: string | undefined;
 };
@@ -71,6 +80,7 @@ export const ListIssuedCardTransactionsRequest$outboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   issuedCardID: z.string().optional(),
+  merchantName: z.string().optional(),
   startDateTime: z.date().transform(v => v.toISOString()).optional(),
   endDateTime: z.date().transform(v => v.toISOString()).optional(),
 });

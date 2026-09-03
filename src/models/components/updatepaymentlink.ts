@@ -56,6 +56,9 @@ export type UpdatePaymentLink = {
    * Options for payment links used to collect payment.
    */
   payment?: PaymentLinkPaymentDetailsUpdate | undefined;
+  /**
+   * Options for payout links used to send a payout.
+   */
   payout?: PaymentLinkPayoutDetailsUpdate | undefined;
   /**
    * An optional collection of line items for a payment link.

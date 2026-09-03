@@ -37,6 +37,9 @@ export type RequestCard = {
    * The expiration date of the card or token.
    */
   expiration?: CardExpiration | undefined;
+  /**
+   * Mutable spend controls for the card.
+   */
   controls?: IssuingControls | undefined;
 };
 
