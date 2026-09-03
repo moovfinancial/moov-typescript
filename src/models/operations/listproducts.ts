@@ -16,6 +16,9 @@ export type ListProductsRequest = {
    */
   title?: string | undefined;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
 };
 

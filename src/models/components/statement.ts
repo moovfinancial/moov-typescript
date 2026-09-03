@@ -19,6 +19,12 @@ import {
   ACHFees$outboundSchema,
 } from "./achfees.js";
 import {
+  AdjustmentFees,
+  AdjustmentFees$inboundSchema,
+  AdjustmentFees$Outbound,
+  AdjustmentFees$outboundSchema,
+} from "./adjustmentfees.js";
+import {
   BillingSummary,
   BillingSummary$inboundSchema,
   BillingSummary$Outbound,
@@ -122,6 +128,10 @@ export type Statement = {
    */
   partnerFees?: PartnerFees | undefined;
   /**
+   * A detailed breakdown of adjustment (correction) fees by fee name.
+   */
+  adjustments?: AdjustmentFees | undefined;
+  /**
    * The date and time the statement was created.
    */
   createdOn: Date;
@@ -156,6 +166,7 @@ export const Statement$inboundSchema: z.ZodType<
   accountFees: AccountFees$inboundSchema.optional(),
   otherCardFees: OtherCardFees$inboundSchema.optional(),
   partnerFees: PartnerFees$inboundSchema.optional(),
+  adjustments: AdjustmentFees$inboundSchema.optional(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
@@ -176,6 +187,7 @@ export type Statement$Outbound = {
   accountFees?: AccountFees$Outbound | undefined;
   otherCardFees?: OtherCardFees$Outbound | undefined;
   partnerFees?: PartnerFees$Outbound | undefined;
+  adjustments?: AdjustmentFees$Outbound | undefined;
   createdOn: string;
   updatedOn: string;
 };
@@ -201,6 +213,7 @@ export const Statement$outboundSchema: z.ZodType<
   accountFees: AccountFees$outboundSchema.optional(),
   otherCardFees: OtherCardFees$outboundSchema.optional(),
   partnerFees: PartnerFees$outboundSchema.optional(),
+  adjustments: AdjustmentFees$outboundSchema.optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
 });
