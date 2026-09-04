@@ -10,14 +10,18 @@ let value: UpdatePaymentLink = {
     currency: "USD",
     value: 12099,
   },
-  customer: {
-    requireAddress: true,
-    requirePhone: true,
-  },
-  amountDetails: {
-    tax: {
-      currency: "USD",
-      valueDecimal: "9.25",
+  payout: {
+    allowedMethods: [
+      "push-to-card",
+      "rtp-credit",
+    ],
+    recipient: {
+      email: "jordan@example.com",
+    },
+    feePaidBy: {
+      "instant-push-to-card": "destination",
+      "deferred-push-to-card": "source",
+      "rtp-credit": "destination",
     },
   },
 };
@@ -32,7 +36,7 @@ let value: UpdatePaymentLink = {
 | `display`                                                                                                                                       | [components.PaymentLinkDisplayOptionsUpdate](../../models/components/paymentlinkdisplayoptionsupdate.md)                                        | :heavy_minus_sign:                                                                                                                              | Customizable display options for a payment link.                                                                                                |
 | `customer`                                                                                                                                      | [components.PaymentLinkCustomerOptions](../../models/components/paymentlinkcustomeroptions.md)                                                  | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |
 | `payment`                                                                                                                                       | [components.PaymentLinkPaymentDetailsUpdate](../../models/components/paymentlinkpaymentdetailsupdate.md)                                        | :heavy_minus_sign:                                                                                                                              | Options for payment links used to collect payment.                                                                                              |
-| `payout`                                                                                                                                        | [components.PaymentLinkPayoutDetailsUpdate](../../models/components/paymentlinkpayoutdetailsupdate.md)                                          | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |
+| `payout`                                                                                                                                        | [components.PaymentLinkPayoutDetailsUpdate](../../models/components/paymentlinkpayoutdetailsupdate.md)                                          | :heavy_minus_sign:                                                                                                                              | Options for payout links used to send a payout.                                                                                                 |
 | `customAmountPayment`                                                                                                                           | [components.PaymentLinkCustomAmountPaymentDetailsUpdate](../../models/components/paymentlinkcustomamountpaymentdetailsupdate.md)                | :heavy_minus_sign:                                                                                                                              | Options for a custom amount payment link. A payment link's type cannot be changed after creation.                                               |
 | `lineItems`                                                                                                                                     | [components.CreatePaymentLinkLineItemsUpdate](../../models/components/createpaymentlinklineitemsupdate.md)                                      | :heavy_minus_sign:                                                                                                                              | An optional collection of line items for a payment link.<br/>When line items are provided, their total plus tax must equal the payment link amount. |
 | `amountDetails`                                                                                                                                 | [components.UpdatePaymentLinkAmountDetails](../../models/components/updatepaymentlinkamountdetails.md)                                          | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |

@@ -17,8 +17,17 @@ import {
   InstantBankNetwork$inboundSchema,
   InstantBankNetwork$outboundSchema,
 } from "./instantbanknetwork.js";
+import {
+  InstantBankTransactionStatus,
+  InstantBankTransactionStatus$inboundSchema,
+  InstantBankTransactionStatus$outboundSchema,
+} from "./instantbanktransactionstatus.js";
 
 export type InstantBankCreditTransferProcessingDetails = {
+  /**
+   * Status of a transaction within the instant-bank lifecycle.
+   */
+  status: InstantBankTransactionStatus;
   /**
    * The network that the transaction was processed on.
    */
@@ -35,6 +44,7 @@ export type InstantBankCreditTransferProcessingDetails = {
 export const InstantBankCreditTransferProcessingDetails$inboundSchema:
   z.ZodType<InstantBankCreditTransferProcessingDetails, z.ZodTypeDef, unknown> =
     z.object({
+      status: InstantBankTransactionStatus$inboundSchema,
       network: InstantBankNetwork$inboundSchema,
       networkResponseCode: types.optional(types.string()),
       failureCode: types.optional(InstantBankFailureCode$inboundSchema),
@@ -42,6 +52,7 @@ export const InstantBankCreditTransferProcessingDetails$inboundSchema:
     });
 /** @internal */
 export type InstantBankCreditTransferProcessingDetails$Outbound = {
+  status: string;
   network: string;
   networkResponseCode?: string | undefined;
   failureCode?: string | undefined;
@@ -55,6 +66,7 @@ export const InstantBankCreditTransferProcessingDetails$outboundSchema:
     z.ZodTypeDef,
     InstantBankCreditTransferProcessingDetails
   > = z.object({
+    status: InstantBankTransactionStatus$outboundSchema,
     network: InstantBankNetwork$outboundSchema,
     networkResponseCode: z.string().optional(),
     failureCode: InstantBankFailureCode$outboundSchema.optional(),

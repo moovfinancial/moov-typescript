@@ -13,6 +13,12 @@ import {
   BusinessPresence$outboundSchema,
 } from "./businesspresence.js";
 import {
+  CardIssuing,
+  CardIssuing$inboundSchema,
+  CardIssuing$Outbound,
+  CardIssuing$outboundSchema,
+} from "./cardissuing.js";
+import {
   CollectFunds,
   CollectFunds$inboundSchema,
   CollectFunds$Outbound,
@@ -60,6 +66,14 @@ export type UpsertUnderwriting = {
   collectFunds?: CollectFunds | undefined;
   moneyTransfer?: MoneyTransfer | undefined;
   sendFunds?: SendFunds | undefined;
+  /**
+   * Underwriting data for the `card-issuing` capability.
+   *
+   * @remarks
+   *
+   * Issued cards are funded from the account's card-issuing wallet before they can be spent, so estimated activity is the only data collected.
+   */
+  cardIssuing?: CardIssuing | undefined;
   submissionIntent?: SubmissionIntent | undefined;
 };
 
@@ -78,6 +92,7 @@ export const UpsertUnderwriting$inboundSchema: z.ZodType<
   collectFunds: types.optional(CollectFunds$inboundSchema),
   moneyTransfer: types.optional(MoneyTransfer$inboundSchema),
   sendFunds: types.optional(SendFunds$inboundSchema),
+  cardIssuing: types.optional(CardIssuing$inboundSchema),
   submissionIntent: types.optional(SubmissionIntent$inboundSchema),
 });
 /** @internal */
@@ -89,6 +104,7 @@ export type UpsertUnderwriting$Outbound = {
   collectFunds?: CollectFunds$Outbound | undefined;
   moneyTransfer?: MoneyTransfer$Outbound | undefined;
   sendFunds?: SendFunds$Outbound | undefined;
+  cardIssuing?: CardIssuing$Outbound | undefined;
   submissionIntent?: string | undefined;
 };
 
@@ -106,6 +122,7 @@ export const UpsertUnderwriting$outboundSchema: z.ZodType<
   collectFunds: CollectFunds$outboundSchema.optional(),
   moneyTransfer: MoneyTransfer$outboundSchema.optional(),
   sendFunds: SendFunds$outboundSchema.optional(),
+  cardIssuing: CardIssuing$outboundSchema.optional(),
   submissionIntent: SubmissionIntent$outboundSchema.optional(),
 });
 

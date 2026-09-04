@@ -9,7 +9,7 @@ let value: TransferOptions = {
   sourceOptions: [
     {
       paymentMethodID: "880c87e7-4097-4416-b32b-61024b85211e",
-      paymentMethodType: "push-to-google-pay",
+      paymentMethodType: "pull-from-google-pay",
       googlePay: {
         tokenID: "dcd471ec-7d5c-4016-865c-1e78c733bea2",
         brand: "Visa",

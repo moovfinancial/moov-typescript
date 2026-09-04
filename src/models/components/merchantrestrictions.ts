@@ -23,7 +23,7 @@ import {
  */
 export type MerchantRestrictions = {
   /**
-   * Whether the listed merchants are the only ones allowed, or the ones to block.
+   * Whether the listed items should be allowed (`allow`) or blocked (`block`).
    */
   mode: IssuingControlsRestrictionMode;
   /**

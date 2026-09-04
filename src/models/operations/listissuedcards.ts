@@ -16,6 +16,9 @@ export type ListIssuedCardsRequest = {
    */
   accountID: string;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   /**
    * Optional, comma-separated states to filter the Moov list issued cards response. For example `active,closed`

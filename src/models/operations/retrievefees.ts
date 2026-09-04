@@ -33,6 +33,9 @@ export type RetrieveFeesRequest = {
    */
   endDateTime?: string | undefined;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
 };
 

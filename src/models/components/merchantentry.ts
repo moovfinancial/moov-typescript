@@ -9,13 +9,13 @@ import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Identifies a merchant by ID, descriptor pattern, or both. At least one of `mid` or `descriptorPattern` must be set.
+ * Identifies a merchant by ID, descriptor pattern, or both. At least one of `networkID` or `descriptorPattern` must be set.
  */
 export type MerchantEntry = {
   /**
    * The merchant's unique identifier (ISO 8583 DE42), matched exactly.
    */
-  mid?: string | undefined;
+  networkID?: string | undefined;
   /**
    * A case-insensitive RE2 regular expression matched against the merchant descriptor (ISO 8583 DE43).
    */
@@ -32,13 +32,13 @@ export const MerchantEntry$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mid: types.optional(types.string()),
+  networkID: types.optional(types.string()),
   descriptorPattern: types.optional(types.string()),
   name: types.optional(types.string()),
 });
 /** @internal */
 export type MerchantEntry$Outbound = {
-  mid?: string | undefined;
+  networkID?: string | undefined;
   descriptorPattern?: string | undefined;
   name?: string | undefined;
 };
@@ -49,7 +49,7 @@ export const MerchantEntry$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MerchantEntry
 > = z.object({
-  mid: z.string().optional(),
+  networkID: z.string().optional(),
   descriptorPattern: z.string().optional(),
   name: z.string().optional(),
 });

@@ -1,13 +1,7 @@
 {
   "name": "@moovio/sdk",
-  "version": "0.0.0-dev.29",
+  "version": "0.0.0-dev.30",
   "author": "Moov",
-  "license": "Apache-2.0",
-  "bin": {
-    "mcp": "bin/mcp-server.js"
-  },
-  "main": "./index.js",
-  "sideEffects": false,
   "engines": {
     "node": ">=22.12"
   },
@@ -29,6 +23,11 @@
     "USAGE.md",
     "!**/*.map"
   ],
+  "bin": {
+    "mcp": "bin/mcp-server.js"
+  },
+  "main": "./index.js",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/moovfinancial/moov-typescript.git"
@@ -49,7 +48,7 @@
     "bun": "1.2.17",
     "bun-types": "1.2.17",
     "eslint": "^9.26.0",
-    "express": "^4.22.1",
+    "express": "^4.21.2",
     "globals": "^15.14.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.26.0"

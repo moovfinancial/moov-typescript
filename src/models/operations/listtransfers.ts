@@ -52,18 +52,17 @@ export type ListTransfersRequest = {
    */
   foreignID?: string | undefined;
   /**
-   * Optional comma-separated IDs to filter for transfers associated with specific card authorizations.
+   * Optional comma-separated authorization IDs.
    */
   authorizationIDs?: Array<string> | undefined;
-  /**
-   * Optional comma-separated IDs to filter for transfers associated with specific card captures.
-   */
-  captureIDs?: Array<string> | undefined;
   /**
    * Optional, comma-separated transfer types by which the response is filtered.
    */
   transferTypes?: Array<components.TransferType> | undefined;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   accountID: string;
 };
@@ -90,7 +89,6 @@ export const ListTransfersRequest$inboundSchema: z.ZodType<
   disputed: types.optional(types.boolean()),
   foreignID: types.optional(types.string()),
   authorizationIDs: types.optional(z.array(types.string())),
-  captureIDs: types.optional(z.array(types.string())),
   transferTypes: types.optional(z.array(components.TransferType$inboundSchema)),
   skip: types.optional(types.number()),
   count: types.optional(types.number()),
@@ -109,7 +107,6 @@ export type ListTransfersRequest$Outbound = {
   disputed?: boolean | undefined;
   foreignID?: string | undefined;
   authorizationIDs?: Array<string> | undefined;
-  captureIDs?: Array<string> | undefined;
   transferTypes?: Array<string> | undefined;
   skip?: number | undefined;
   count?: number | undefined;
@@ -133,7 +130,6 @@ export const ListTransfersRequest$outboundSchema: z.ZodType<
   disputed: z.boolean().optional(),
   foreignID: z.string().optional(),
   authorizationIDs: z.array(z.string()).optional(),
-  captureIDs: z.array(z.string()).optional(),
   transferTypes: z.array(components.TransferType$outboundSchema).optional(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),

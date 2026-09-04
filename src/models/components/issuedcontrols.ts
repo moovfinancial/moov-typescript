@@ -63,12 +63,9 @@ export type IssuedControls = {
    */
   merchantCategoryRestrictions?: MerchantCategoryRestrictions | undefined;
   /**
-   * Restricts card usage to specific merchants, or blocks specific merchants.
+   * Restricts card usage to specific merchants, independent of merchant category.
    */
   merchantRestrictions?: MerchantRestrictions | undefined;
-  /**
-   * Limits card usage to specific days and times.
-   */
   allowedSchedule?: IssuedControlsAllowedSchedule | null | undefined;
   /**
    * A spend cutoff date and time. When set, all authorizations after this datetime are declined regardless of other controls.

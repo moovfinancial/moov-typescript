@@ -12,8 +12,17 @@ import {
   CardTransactionFailureCode$inboundSchema,
   CardTransactionFailureCode$outboundSchema,
 } from "./cardtransactionfailurecode.js";
+import {
+  PullFromCardTransactionStatus,
+  PullFromCardTransactionStatus$inboundSchema,
+  PullFromCardTransactionStatus$outboundSchema,
+} from "./pullfromcardtransactionstatus.js";
 
 export type PullFromCardTransferProcessingDetails = {
+  /**
+   * Status of a pull-from-card transaction.
+   */
+  status: PullFromCardTransactionStatus;
   authorizationCode?: string | undefined;
   networkTransactionID?: string | undefined;
   networkResponseCode?: string | undefined;
@@ -26,6 +35,7 @@ export const PullFromCardTransferProcessingDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  status: PullFromCardTransactionStatus$inboundSchema,
   authorizationCode: types.optional(types.string()),
   networkTransactionID: types.optional(types.string()),
   networkResponseCode: types.optional(types.string()),
@@ -33,6 +43,7 @@ export const PullFromCardTransferProcessingDetails$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type PullFromCardTransferProcessingDetails$Outbound = {
+  status: string;
   authorizationCode?: string | undefined;
   networkTransactionID?: string | undefined;
   networkResponseCode?: string | undefined;
@@ -45,6 +56,7 @@ export const PullFromCardTransferProcessingDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PullFromCardTransferProcessingDetails
 > = z.object({
+  status: PullFromCardTransactionStatus$outboundSchema,
   authorizationCode: z.string().optional(),
   networkTransactionID: z.string().optional(),
   networkResponseCode: z.string().optional(),

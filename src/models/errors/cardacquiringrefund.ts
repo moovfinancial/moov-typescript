@@ -20,7 +20,7 @@ export type CardAcquiringRefundData = {
   status: components.RefundStatus;
   amount: components.AmountDecimal;
   /**
-   * ID of the capture this refund applies to, when applicable.
+   * ID of the capture refunded for an auth-capture `card-payment` transfer.
    */
   captureID?: string | undefined;
   amountDetails?: components.RefundAmountDetails | undefined;
@@ -40,7 +40,7 @@ export class CardAcquiringRefund extends MoovError {
   status: components.RefundStatus;
   amount: components.AmountDecimal;
   /**
-   * ID of the capture this refund applies to, when applicable.
+   * ID of the capture refunded for an auth-capture `card-payment` transfer.
    */
   captureID?: string | undefined;
   amountDetails?: components.RefundAmountDetails | undefined;

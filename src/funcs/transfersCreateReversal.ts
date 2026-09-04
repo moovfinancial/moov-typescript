@@ -28,6 +28,9 @@ import { Result } from "../types/fp.js";
 
 /**
  * Reverses a card transfer by initiating a cancellation or refund depending on the transaction status.
+ * In v2026.10 and later, reversing an auth-capture `card-payment` transfer with no captures cancels the entire `capturableAmount`.
+ * In those API versions, an auth-capture `card-payment` transfer with one final capture is canceled or refunded depending on its processing state.
+ * Auth-capture `card-payment` transfers with a non-final capture or multiple captures are not supported in those API versions.
  * Read our [reversals guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/)
  * to learn more.
  *

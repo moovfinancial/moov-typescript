@@ -12,6 +12,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListPaymentLinksRequest = {
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   /**
    * A comma-separated list of payment link types to filter results.

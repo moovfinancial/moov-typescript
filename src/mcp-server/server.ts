@@ -40,13 +40,16 @@ import { tool$authenticationRevokeAccessToken } from "./tools/authenticationRevo
 import { tool$avatarsGet } from "./tools/avatarsGet.js";
 import { tool$bankAccountsCompleteMicroDeposits } from "./tools/bankAccountsCompleteMicroDeposits.js";
 import { tool$bankAccountsCompleteVerification } from "./tools/bankAccountsCompleteVerification.js";
+import { tool$bankAccountsCreateAttestation } from "./tools/bankAccountsCreateAttestation.js";
 import { tool$bankAccountsDisable } from "./tools/bankAccountsDisable.js";
 import { tool$bankAccountsGet } from "./tools/bankAccountsGet.js";
+import { tool$bankAccountsGetAttestationEligibility } from "./tools/bankAccountsGetAttestationEligibility.js";
 import { tool$bankAccountsGetVerification } from "./tools/bankAccountsGetVerification.js";
 import { tool$bankAccountsInitiateMicroDeposits } from "./tools/bankAccountsInitiateMicroDeposits.js";
 import { tool$bankAccountsInitiateVerification } from "./tools/bankAccountsInitiateVerification.js";
 import { tool$bankAccountsLink } from "./tools/bankAccountsLink.js";
 import { tool$bankAccountsList } from "./tools/bankAccountsList.js";
+import { tool$bankAccountsListAttestations } from "./tools/bankAccountsListAttestations.js";
 import { tool$brandingCreate } from "./tools/brandingCreate.js";
 import { tool$brandingGet } from "./tools/brandingGet.js";
 import { tool$brandingUpsert } from "./tools/brandingUpsert.js";
@@ -221,7 +224,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "0.0.0-dev.29",
+    version: "0.0.0-dev.30",
   });
 
   const client = new MoovCore({
@@ -274,6 +277,9 @@ export function createMCPServer(deps: {
   tool(tool$bankAccountsList);
   tool(tool$bankAccountsGet);
   tool(tool$bankAccountsDisable);
+  tool(tool$bankAccountsCreateAttestation);
+  tool(tool$bankAccountsListAttestations);
+  tool(tool$bankAccountsGetAttestationEligibility);
   tool(tool$bankAccountsInitiateMicroDeposits);
   tool(tool$bankAccountsCompleteMicroDeposits);
   tool(tool$bankAccountsGetVerification);

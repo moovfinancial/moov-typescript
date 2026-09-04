@@ -449,3 +449,24 @@ const value: components.PullFromGooglePayTransferPaymentMethod = {
 };
 ```
 
+### `components.WireCreditTransferPaymentMethod`
+
+```typescript
+const value: components.WireCreditTransferPaymentMethod = {
+  paymentMethodID: "e1ab1505-21ae-4af7-a01f-19a58ff58605",
+  paymentMethodType: "wire-credit",
+  bankAccount: {
+    bankAccountID: "<id>",
+    fingerprint: "<value>",
+    status: "verificationFailed",
+    holderName: "<value>",
+    holderType: "individual",
+    bankName: "<value>",
+    bankAccountType: "savings",
+    routingNumber: "<value>",
+    lastFourAccountNumber: "<value>",
+    updatedOn: new Date("2026-11-26T20:14:56.616Z"),
+  },
+};
+```
+

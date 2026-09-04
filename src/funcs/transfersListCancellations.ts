@@ -168,7 +168,7 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
-    M.fail([401, 403, 429]),
+    M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),
     M.fail("5XX"),

@@ -35,6 +35,7 @@ export const WalletTransactionType = {
   FeeRevenue: "fee-revenue",
   Residual: "residual",
   InstantBankFailure: "instant-bank-failure",
+  WireFailure: "wire-failure",
 } as const;
 export type WalletTransactionType = OpenEnum<typeof WalletTransactionType>;
 

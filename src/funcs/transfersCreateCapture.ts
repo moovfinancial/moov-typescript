@@ -27,7 +27,8 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create a capture against an authorized transfer.
+ * Create a capture against an auth-capture `card-payment` transfer.
+ * The `accountID` must identify the partner account for the transfer.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/transfers.write` scope.

@@ -12,11 +12,11 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetCaptureRequest = {
   /**
-   * The merchant's Moov account ID.
+   * Moov account ID of an authorized partner or the transfer's source or destination.
    */
   accountID: string;
   /**
-   * Identifier for the transfer.
+   * Identifier for the auth-capture `card-payment` transfer.
    */
   transferID: string;
   /**

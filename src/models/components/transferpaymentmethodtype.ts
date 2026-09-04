@@ -27,6 +27,7 @@ export const TransferPaymentMethodType = {
   GooglePay: "google-pay",
   PushToGooglePay: "push-to-google-pay",
   PullFromGooglePay: "pull-from-google-pay",
+  WireCredit: "wire-credit",
 } as const;
 /**
  * The payment method type that represents a payment rail and directionality

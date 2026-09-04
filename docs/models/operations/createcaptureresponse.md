@@ -19,7 +19,7 @@ let value: CreateCaptureResponse = {
       valueDecimal: "12.987654321",
     },
     isFinal: true,
-    status: "submitted",
+    status: "completed",
     createdOn: new Date("2024-02-18T07:44:09.783Z"),
     destinationPaymentMethodID: "<id>",
     description: "Pay Instructor for May 15 Class",

@@ -13,6 +13,9 @@ import {
   CancellationStatus$outboundSchema,
 } from "./cancellationstatus.js";
 
+/**
+ * Cancellation of a transfer.
+ */
 export type Cancellation = {
   cancellationID: string;
   status: CancellationStatus;

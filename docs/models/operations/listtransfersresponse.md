@@ -108,9 +108,9 @@ let value: ListTransfersResponse = {
       },
       processingDetails: {
         cardPayment: {
+          status: "confirmed",
           authorizationCode: "A1B2C3",
           networkTransactionID: "123456789012345",
-          networkResponseCode: "00",
         },
       },
     },

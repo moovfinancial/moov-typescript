@@ -37,6 +37,12 @@ import {
   PushToCardOptions$Outbound,
   PushToCardOptions$outboundSchema,
 } from "./pushtocardoptions.js";
+import {
+  WireOptions,
+  WireOptions$inboundSchema,
+  WireOptions$Outbound,
+  WireOptions$outboundSchema,
+} from "./wireoptions.js";
 
 export type TransferRailOptions = {
   cardPayment?: CardPaymentOptions | undefined;
@@ -44,6 +50,10 @@ export type TransferRailOptions = {
   pullFromCard?: PullFromCardOptions | undefined;
   achDebit?: ACHDebitOptions | undefined;
   achCredit?: ACHCreditOptions | undefined;
+  /**
+   * Wire-specific options returned on a transfer.
+   */
+  wire?: WireOptions | undefined;
 };
 
 /** @internal */
@@ -57,6 +67,7 @@ export const TransferRailOptions$inboundSchema: z.ZodType<
   pullFromCard: types.optional(PullFromCardOptions$inboundSchema),
   achDebit: types.optional(ACHDebitOptions$inboundSchema),
   achCredit: types.optional(ACHCreditOptions$inboundSchema),
+  wire: types.optional(WireOptions$inboundSchema),
 });
 /** @internal */
 export type TransferRailOptions$Outbound = {
@@ -65,6 +76,7 @@ export type TransferRailOptions$Outbound = {
   pullFromCard?: PullFromCardOptions$Outbound | undefined;
   achDebit?: ACHDebitOptions$Outbound | undefined;
   achCredit?: ACHCreditOptions$Outbound | undefined;
+  wire?: WireOptions$Outbound | undefined;
 };
 
 /** @internal */
@@ -78,6 +90,7 @@ export const TransferRailOptions$outboundSchema: z.ZodType<
   pullFromCard: PullFromCardOptions$outboundSchema.optional(),
   achDebit: ACHDebitOptions$outboundSchema.optional(),
   achCredit: ACHCreditOptions$outboundSchema.optional(),
+  wire: WireOptions$outboundSchema.optional(),
 });
 
 export function transferRailOptionsToJSON(

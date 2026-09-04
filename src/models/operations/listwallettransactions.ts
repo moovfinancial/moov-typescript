@@ -13,6 +13,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type ListWalletTransactionsRequest = {
   accountID: string;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
   walletID: string;
   /**

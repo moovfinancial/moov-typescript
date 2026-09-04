@@ -37,11 +37,11 @@ import {
 } from "./schedulewindow.js";
 
 /**
- * Replaces the merchant category restrictions. Set to `null` to remove.
+ * Restricts card usage by merchant category. Set to `null` to remove all category restrictions.
  */
 export type UpdateIssuingControlsMerchantCategoryRestrictions = {
   /**
-   * Whether the listed categories are the only ones allowed, or the ones to block.
+   * Whether the listed items should be allowed (`allow`) or blocked (`block`).
    */
   mode?: IssuingControlsRestrictionMode | undefined;
   /**
@@ -59,11 +59,11 @@ export type UpdateIssuingControlsMerchantCategoryRestrictions = {
 };
 
 /**
- * Replaces the merchant restrictions. Set to `null` to remove.
+ * Restricts card usage to specific merchants, independent of merchant category. Set to `null` to remove merchant restrictions.
  */
 export type UpdateIssuingControlsMerchantRestrictions = {
   /**
-   * Whether the listed merchants are the only ones allowed, or the ones to block.
+   * Whether the listed items should be allowed (`allow`) or blocked (`block`).
    */
   mode?: IssuingControlsRestrictionMode | undefined;
   /**
@@ -73,7 +73,7 @@ export type UpdateIssuingControlsMerchantRestrictions = {
 };
 
 /**
- * Replaces the allowed schedule. Set to `null` to remove all schedule restrictions.
+ * Limits card usage to specific days and times. Set to `null` to remove all schedule restrictions.
  */
 export type UpdateIssuingControlsAllowedSchedule = {
   /**
@@ -87,7 +87,7 @@ export type UpdateIssuingControlsAllowedSchedule = {
 };
 
 /**
- * Mutable spend controls. Each field replaces the entire corresponding value.
+ * Each field replaces the entire corresponding value.
  */
 export type UpdateIssuingControls = {
   /**
@@ -95,25 +95,25 @@ export type UpdateIssuingControls = {
    */
   velocityLimits?: Array<IssuingVelocityLimit> | undefined;
   /**
-   * Replaces the merchant category restrictions. Set to `null` to remove.
+   * Restricts card usage by merchant category. Set to `null` to remove all category restrictions.
    */
   merchantCategoryRestrictions?:
     | UpdateIssuingControlsMerchantCategoryRestrictions
     | null
     | undefined;
   /**
-   * Replaces the merchant restrictions. Set to `null` to remove.
+   * Restricts card usage to specific merchants, independent of merchant category. Set to `null` to remove merchant restrictions.
    */
   merchantRestrictions?:
     | UpdateIssuingControlsMerchantRestrictions
     | null
     | undefined;
   /**
-   * Replaces the allowed schedule. Set to `null` to remove all schedule restrictions.
+   * Limits card usage to specific days and times. Set to `null` to remove all schedule restrictions.
    */
   allowedSchedule?: UpdateIssuingControlsAllowedSchedule | null | undefined;
   /**
-   * A spend cutoff date and time. Set to `null` to remove the cutoff.
+   * A spend cutoff date and time. Set to `null` to remove the spend cutoff.
    */
   expiresOn?: Date | null | undefined;
 };

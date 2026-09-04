@@ -17,6 +17,9 @@ export type ListIssuedCardAuthorizationEventsRequest = {
   accountID: string;
   authorizationID: string;
   skip?: number | undefined;
+  /**
+   * Page size. When omitted, the server defaults to `200`.
+   */
   count?: number | undefined;
 };
 

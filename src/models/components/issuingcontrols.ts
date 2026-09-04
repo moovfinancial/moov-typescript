@@ -33,7 +33,7 @@ import {
 } from "./schedulewindow.js";
 
 /**
- * Limits card usage to specific days and times. Set to `null` to remove all schedule restrictions.
+ * Limits card usage to specific days and times.
  */
 export type AllowedSchedule = {
   /**
@@ -46,6 +46,9 @@ export type AllowedSchedule = {
   windows: Array<ScheduleWindow>;
 };
 
+/**
+ * Mutable spend controls for the card.
+ */
 export type IssuingControls = {
   /**
    * Indicates if the card is single-use. If true, the card closes after the first authorization.
@@ -60,12 +63,9 @@ export type IssuingControls = {
    */
   merchantCategoryRestrictions?: MerchantCategoryRestrictions | undefined;
   /**
-   * Restricts card usage to specific merchants, or blocks specific merchants.
+   * Restricts card usage to specific merchants, independent of merchant category.
    */
   merchantRestrictions?: MerchantRestrictions | undefined;
-  /**
-   * Limits card usage to specific days and times. Set to `null` to remove all schedule restrictions.
-   */
   allowedSchedule?: AllowedSchedule | null | undefined;
   /**
    * A spend cutoff date and time. When set, all authorizations after this datetime are declined regardless of other controls. Set to `null` for no cutoff.

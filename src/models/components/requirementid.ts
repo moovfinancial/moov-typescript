@@ -144,6 +144,34 @@ export const RequirementID = {
     "underwriting.sendFunds.pushToCard.fulfillment",
   UnderwritingSendFundsPushToCardRefundPolicy:
     "underwriting.sendFunds.pushToCard.refundPolicy",
+  UnderwritingSendFundsInstantBankCardAcceptanceMethods:
+    "underwriting.sendFunds.instantBank.cardAcceptanceMethods",
+  UnderwritingSendFundsInstantBankCurrentlyAcceptsCards:
+    "underwriting.sendFunds.instantBank.currentlyAcceptsCards",
+  UnderwritingSendFundsInstantBankEstimatedActivityAverageTransactionAmount:
+    "underwriting.sendFunds.instantBank.estimatedActivity.averageTransactionAmount",
+  UnderwritingSendFundsInstantBankEstimatedActivityMaximumTransactionAmount:
+    "underwriting.sendFunds.instantBank.estimatedActivity.maximumTransactionAmount",
+  UnderwritingSendFundsInstantBankEstimatedActivityMonthlyVolumeRange:
+    "underwriting.sendFunds.instantBank.estimatedActivity.monthlyVolumeRange",
+  UnderwritingSendFundsInstantBankFulfillment:
+    "underwriting.sendFunds.instantBank.fulfillment",
+  UnderwritingSendFundsInstantBankRefundPolicy:
+    "underwriting.sendFunds.instantBank.refundPolicy",
+  UnderwritingSendFundsWireCardAcceptanceMethods:
+    "underwriting.sendFunds.wire.cardAcceptanceMethods",
+  UnderwritingSendFundsWireCurrentlyAcceptsCards:
+    "underwriting.sendFunds.wire.currentlyAcceptsCards",
+  UnderwritingSendFundsWireEstimatedActivityAverageTransactionAmount:
+    "underwriting.sendFunds.wire.estimatedActivity.averageTransactionAmount",
+  UnderwritingSendFundsWireEstimatedActivityMaximumTransactionAmount:
+    "underwriting.sendFunds.wire.estimatedActivity.maximumTransactionAmount",
+  UnderwritingSendFundsWireEstimatedActivityMonthlyVolumeRange:
+    "underwriting.sendFunds.wire.estimatedActivity.monthlyVolumeRange",
+  UnderwritingSendFundsWireFulfillment:
+    "underwriting.sendFunds.wire.fulfillment",
+  UnderwritingSendFundsWireRefundPolicy:
+    "underwriting.sendFunds.wire.refundPolicy",
   UnderwritingMoneyTransferPullFromCardCardAcceptanceMethods:
     "underwriting.moneyTransfer.pullFromCard.cardAcceptanceMethods",
   UnderwritingMoneyTransferPullFromCardCurrentlyAcceptsCards:
@@ -172,6 +200,8 @@ export const RequirementID = {
     "underwriting.moneyTransfer.pushToCard.fulfillment",
   UnderwritingMoneyTransferPushToCardRefundPolicy:
     "underwriting.moneyTransfer.pushToCard.refundPolicy",
+  UnderwritingCardIssuingEstimatedActivityMonthlyVolumeRange:
+    "underwriting.cardIssuing.estimatedActivity.monthlyVolumeRange",
 } as const;
 /**
  * The unique ID of what the requirement is asking to be filled out.

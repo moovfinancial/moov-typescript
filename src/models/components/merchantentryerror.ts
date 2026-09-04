@@ -9,7 +9,7 @@ import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type MerchantEntryError = {
-  mid?: string | undefined;
+  networkID?: string | undefined;
   descriptorPattern?: string | undefined;
 };
 
@@ -19,12 +19,12 @@ export const MerchantEntryError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mid: types.optional(types.string()),
+  networkID: types.optional(types.string()),
   descriptorPattern: types.optional(types.string()),
 });
 /** @internal */
 export type MerchantEntryError$Outbound = {
-  mid?: string | undefined;
+  networkID?: string | undefined;
   descriptorPattern?: string | undefined;
 };
 
@@ -34,7 +34,7 @@ export const MerchantEntryError$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MerchantEntryError
 > = z.object({
-  mid: z.string().optional(),
+  networkID: z.string().optional(),
   descriptorPattern: z.string().optional(),
 });
 

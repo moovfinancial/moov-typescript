@@ -16,11 +16,11 @@ export type CreateCaptureRequest = {
    */
   xIdempotencyKey: string;
   /**
-   * The merchant's Moov account ID.
+   * Moov account ID of the partner for the transfer.
    */
   accountID: string;
   /**
-   * Identifier for the transfer.
+   * Identifier for the auth-capture `card-payment` transfer.
    */
   transferID: string;
   createCapture: components.CreateCapture;

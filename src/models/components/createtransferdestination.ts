@@ -19,6 +19,12 @@ import {
   CreateTransferDestinationCard$Outbound,
   CreateTransferDestinationCard$outboundSchema,
 } from "./createtransferdestinationcard.js";
+import {
+  CreateTransferDestinationWire,
+  CreateTransferDestinationWire$inboundSchema,
+  CreateTransferDestinationWire$Outbound,
+  CreateTransferDestinationWire$outboundSchema,
+} from "./createtransferdestinationwire.js";
 
 /**
  * The final stage of a transfer and the ultimate recipient of the funds.
@@ -27,6 +33,10 @@ export type CreateTransferDestination = {
   paymentMethodID: string;
   cardDetails?: CreateTransferDestinationCard | undefined;
   achDetails?: CreateTransferDestinationACH | undefined;
+  /**
+   * Wire-specific options supplied when creating a transfer.
+   */
+  wireDetails?: CreateTransferDestinationWire | undefined;
 };
 
 /** @internal */
@@ -38,12 +48,14 @@ export const CreateTransferDestination$inboundSchema: z.ZodType<
   paymentMethodID: types.string(),
   cardDetails: types.optional(CreateTransferDestinationCard$inboundSchema),
   achDetails: types.optional(CreateTransferDestinationACH$inboundSchema),
+  wireDetails: types.optional(CreateTransferDestinationWire$inboundSchema),
 });
 /** @internal */
 export type CreateTransferDestination$Outbound = {
   paymentMethodID: string;
   cardDetails?: CreateTransferDestinationCard$Outbound | undefined;
   achDetails?: CreateTransferDestinationACH$Outbound | undefined;
+  wireDetails?: CreateTransferDestinationWire$Outbound | undefined;
 };
 
 /** @internal */
@@ -55,6 +67,7 @@ export const CreateTransferDestination$outboundSchema: z.ZodType<
   paymentMethodID: z.string(),
   cardDetails: CreateTransferDestinationCard$outboundSchema.optional(),
   achDetails: CreateTransferDestinationACH$outboundSchema.optional(),
+  wireDetails: CreateTransferDestinationWire$outboundSchema.optional(),
 });
 
 export function createTransferDestinationToJSON(

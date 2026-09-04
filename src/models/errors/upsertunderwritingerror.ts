@@ -17,6 +17,7 @@ export type UpsertUnderwritingErrorData = {
   collectFunds?: components.CollectFundsError | undefined;
   moneyTransfer?: components.MoneyTransferError | undefined;
   sendFunds?: components.SendFundsError | undefined;
+  cardIssuing?: components.CardIssuingError | undefined;
   averageMonthlyTransactionVolume?: string | undefined;
   error?: string | undefined;
   averageTransactionSize?: string | undefined;
@@ -36,6 +37,7 @@ export class UpsertUnderwritingError extends MoovError {
   collectFunds?: components.CollectFundsError | undefined;
   moneyTransfer?: components.MoneyTransferError | undefined;
   sendFunds?: components.SendFundsError | undefined;
+  cardIssuing?: components.CardIssuingError | undefined;
   averageMonthlyTransactionVolume?: string | undefined;
   error?: string | undefined;
   averageTransactionSize?: string | undefined;
@@ -69,6 +71,7 @@ export class UpsertUnderwritingError extends MoovError {
     if (err.collectFunds != null) this.collectFunds = err.collectFunds;
     if (err.moneyTransfer != null) this.moneyTransfer = err.moneyTransfer;
     if (err.sendFunds != null) this.sendFunds = err.sendFunds;
+    if (err.cardIssuing != null) this.cardIssuing = err.cardIssuing;
     if (err.averageMonthlyTransactionVolume != null) {
       this.averageMonthlyTransactionVolume =
         err.averageMonthlyTransactionVolume;
@@ -107,6 +110,7 @@ export const UpsertUnderwritingError$inboundSchema: z.ZodType<
   collectFunds: types.optional(components.CollectFundsError$inboundSchema),
   moneyTransfer: types.optional(components.MoneyTransferError$inboundSchema),
   sendFunds: types.optional(components.SendFundsError$inboundSchema),
+  cardIssuing: types.optional(components.CardIssuingError$inboundSchema),
   averageMonthlyTransactionVolume: types.optional(types.string()),
   error: types.optional(types.string()),
   averageTransactionSize: types.optional(types.string()),
@@ -141,6 +145,7 @@ export type UpsertUnderwritingError$Outbound = {
   collectFunds?: components.CollectFundsError$Outbound | undefined;
   moneyTransfer?: components.MoneyTransferError$Outbound | undefined;
   sendFunds?: components.SendFundsError$Outbound | undefined;
+  cardIssuing?: components.CardIssuingError$Outbound | undefined;
   averageMonthlyTransactionVolume?: string | undefined;
   error?: string | undefined;
   averageTransactionSize?: string | undefined;
@@ -170,6 +175,7 @@ export const UpsertUnderwritingError$outboundSchema: z.ZodType<
     collectFunds: components.CollectFundsError$outboundSchema.optional(),
     moneyTransfer: components.MoneyTransferError$outboundSchema.optional(),
     sendFunds: components.SendFundsError$outboundSchema.optional(),
+    cardIssuing: components.CardIssuingError$outboundSchema.optional(),
     averageMonthlyTransactionVolume: z.string().optional(),
     error: z.string().optional(),
     averageTransactionSize: z.string().optional(),

@@ -8,8 +8,6 @@ import { OpenEnum } from "../../types/enums.js";
 
 export const CaptureStatus = {
   Pending: "pending",
-  Submitted: "submitted",
-  Settled: "settled",
   Completed: "completed",
   Failed: "failed",
   Canceled: "canceled",
