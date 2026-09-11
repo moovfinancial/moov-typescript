@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: a09f02991c2316e59aa41e9646f3447d
+  docChecksum: 5be06eb2dc7a9cb90de8ffd4f656a87d
   docVersion: v2026.01.00
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 26.3.7
-  configChecksum: 668e886ddf72d0c2ea243827108c50f6
+  releaseVersion: 26.3.8
+  configChecksum: 2552064fb4a375a68b0a5deb5a21ff1c
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 245eabc4-5f15-49e9-b087-1940fec6291f
-  pristine_commit_hash: 2101a4691be995b1b9fedfd59679f9e098dc9f38
-  pristine_tree_hash: 45edaacd00ea1dfa9a1709f2a08735dc986ff689
+  generation_id: e282e129-436d-4c85-ac07-d97b23bcfe0d
+  pristine_commit_hash: b8a109f7c25b05e01c8bdda7b921a4eff94ea5b6
+  pristine_tree_hash: a434d6cc326dceceeb92e06d18c81da9f80289e4
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -1215,8 +1215,8 @@ trackedFiles:
     pristine_git_object: 1cde8db2884874bd9b15c46aa7376831bb86345a
   docs/models/components/issuedcardauthorization.md:
     id: d913c34f1f6a
-    last_write_checksum: sha1:3a19233d1513a60c5aeae80c8b137a0b7cf4a97c
-    pristine_git_object: 0c4895fd377c0e0cc8022a18e6a66567d26f4b1c
+    last_write_checksum: sha1:2ed0f79994ad25c1ba3ff928e8dcf661ad92f4ac
+    pristine_git_object: 34c2382da5ebaee6f3341356cfca9da98ca1146b
   docs/models/components/issuedcardauthorizationevent.md:
     id: 952265d2029b
     last_write_checksum: sha1:f46a8376996b2126504ce8a9d28e8728f46b8b03
@@ -1239,8 +1239,8 @@ trackedFiles:
     pristine_git_object: 4fc78c63ab79725088c1a04bcf5ae60c116db2fe
   docs/models/components/issuedcardtransaction.md:
     id: b70dc0bffe21
-    last_write_checksum: sha1:d3660eca5388a14feaa3dd6ce257dcf83441eeca
-    pristine_git_object: 964e9205171056a91150b22b6ae63644c506a5a1
+    last_write_checksum: sha1:3c828efa0ab6cef5dfd2973a204b7c9310a95098
+    pristine_git_object: 57224b0e31527e97dd0cbaa44054e6e59eb7e670
   docs/models/components/issuingauthorizationstatus.md:
     id: 20a875115a0a
     last_write_checksum: sha1:5ac85030c7556af2c3f780dac660294750ca9c43
@@ -2187,8 +2187,8 @@ trackedFiles:
     pristine_git_object: c2534dc8ecc3117d5813c784ac274774b324dc91
   docs/models/components/updatewebhook.md:
     id: ca4c1f3d76e5
-    last_write_checksum: sha1:cd4158f05b9cd9109dd494bdaa76ad4ee21139eb
-    pristine_git_object: a8ca0a51e351b3849652c0d3e0ac1b197db2b7a5
+    last_write_checksum: sha1:7a8a784f75bba5d1a24ee07c272ab40a67d35561
+    pristine_git_object: b81e54f994a83182b1e61c6e4aa5d74d61397c07
   docs/models/components/upsertschedule.md:
     id: 7b0867ee9e19
     last_write_checksum: sha1:91d17bdde56034b63331fa8b2bde204cba321a45
@@ -2279,8 +2279,8 @@ trackedFiles:
     pristine_git_object: e431833bad1712f2a7914439184ae3bbf2549a12
   docs/models/components/webhookdata.md:
     id: cdd32b2e1274
-    last_write_checksum: sha1:ff25d87219117ae4076544b5425067d02ed23561
-    pristine_git_object: 943d36e0b13ac6370b903ff61240287351f607a0
+    last_write_checksum: sha1:29c95e7947dec03a014fa4d7c6447633cda7cec2
+    pristine_git_object: 6433fe8d5529bdfb05d1691ba61cca620bfd3178
   docs/models/components/webhookdataaccountcreated.md:
     id: 3ba84feecfc5
     last_write_checksum: sha1:41e37b9c8e3c6ebe94eff5b2b6dfdec1f732feb2
@@ -2341,6 +2341,10 @@ trackedFiles:
     id: 45c6c503c906
     last_write_checksum: sha1:1279570a3e35ad240d9330beed20f9387e4c6f72
     pristine_git_object: 66778b21e2d96c6b578703bc7cc5d92ff8246b5b
+  docs/models/components/webhookdataeventtest.md:
+    id: 1538ea70238c
+    last_write_checksum: sha1:4d8b71185ca3d64b169af02baa934190ccf94d2c
+    pristine_git_object: 6fa2cac449affe50cbc71a0ddefa08279a462ab6
   docs/models/components/webhookdatainvoicecreated.md:
     id: 55c78db5f50b
     last_write_checksum: sha1:2f0ed275f3adacc60f1d3f22dc5545dd812e4ef3
@@ -2435,12 +2439,12 @@ trackedFiles:
     pristine_git_object: ee1ffd27449e39cf67c3eb882495be1d6394e582
   docs/models/components/webhookevent.md:
     id: d393cc753930
-    last_write_checksum: sha1:62407892780cd2b4a7291d4350d3b0e1e8302882
-    pristine_git_object: faad72e68496a9f5441071ed8bb464637adaa972
+    last_write_checksum: sha1:539706508268287afef6ba08e9de05c072230dc5
+    pristine_git_object: a6412faa3f5b01eac19c7e055e2d7c005165781c
   docs/models/components/webhookeventtype.md:
     id: b979b3765280
-    last_write_checksum: sha1:384a06d638ab5912e747cddc68b3147b05718c9e
-    pristine_git_object: 6a63364d35e4c5389e8a90dfc9dcbc6d51c05f08
+    last_write_checksum: sha1:b408a4413ebc24f25f063858000d57bc61bb24f1
+    pristine_git_object: f5f9f58232b6a2c77e001e77996797df4829ab64
   docs/models/components/webhooksecret.md:
     id: c665cd7bb04f
     last_write_checksum: sha1:7791fc15feef34efbafbca1f2061eea3d98725b9
@@ -3975,8 +3979,8 @@ trackedFiles:
     pristine_git_object: 94bcb3e3faaceab1b44222491ef2756096c1577b
   docs/models/operations/updatewebhookrequest.md:
     id: b50a4ad64339
-    last_write_checksum: sha1:7fd84d5879a9f070ea691c19d3012913a7909026
-    pristine_git_object: bbcd99639f4948867e57b399385c3512a433bcfa
+    last_write_checksum: sha1:0f7c6302e512f982646d7fb9e57afdd3cdc97b6f
+    pristine_git_object: 981f19e13fbd3b762790d0dc55871d9a74266831
   docs/models/operations/updatewebhookresponse.md:
     id: 725afed91c1b
     last_write_checksum: sha1:27597ba037d0331dbc4d4c92a38f94ada4206c92
@@ -4203,12 +4207,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:e9746f075274335f6ed6d7cbbe8dad228f946e8f
-    pristine_git_object: 1f9ad3b87d64de51d087f401583d358dd2ea27b7
+    last_write_checksum: sha1:020f0b6b40545834ed577138cc3950cf73b64c79
+    pristine_git_object: ecdb02578db03accf87b5dcf725c32f7e87a5d89
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:79c1ffee5d519eb9f3fe049f14941b786e095cc3
-    pristine_git_object: 142d9a8c7a7090d55696e2701b27996ae3fcbb34
+    last_write_checksum: sha1:8906ec88f795033f7fa33a8f06f4233e7d887e05
+    pristine_git_object: d33aeebbd6ee2bf99ca8c12d2b07ab4cb24a1b2b
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -4927,8 +4931,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:589c508172b5f66ed6f37b9fad3cd76195971a8f
-    pristine_git_object: 9a0b0420a4cb919888aad62dacc322d14abe2410
+    last_write_checksum: sha1:06a17c30a2b93609e820981f0289578efb79e6c6
+    pristine_git_object: bd7262098c37d88584b86af917ab616d6eb848fb
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -4999,8 +5003,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:7ed0cc3329e74649ccf64f4c35782d7ba69395b0
-    pristine_git_object: 399c56043c6a60a1e5a9a232636535cf3b70daba
+    last_write_checksum: sha1:b136ca24aef761099f49b858b2978ae8c8b49dc8
+    pristine_git_object: 8b88844bd463a34de336b38c92225642a855213b
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5015,8 +5019,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:3717b3c808337a5c746c9db4ad24b386ec01a67b
-    pristine_git_object: 7f8236acca312138505337ab0b77294c772462ab
+    last_write_checksum: sha1:2f9390d4e3ddf91e1f8d36c14d790d3b2d26a731
+    pristine_git_object: 96c6d85b6348736fc1b138cb27219158a35554d5
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -6715,8 +6719,8 @@ trackedFiles:
     pristine_git_object: 0b259f70e79d0e5ecd5615db06ca143029306f82
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:bbdff1ad5c7bfdb174f4e5651839b2d27c116fcf
-    pristine_git_object: 3af282cc8305fb2e43d49e0943d5364a472d4810
+    last_write_checksum: sha1:2d06bc6f4d6c5de7866bfe6a4477d50e87514c7e
+    pristine_git_object: 9cec2208d023c9d0c5607999e78ef9041a855a6b
   src/models/components/individualname.ts:
     id: 8d95da45fb10
     last_write_checksum: sha1:d1c9cbb70b2a5df18194b95c9ae05fbb73979788
@@ -6783,8 +6787,8 @@ trackedFiles:
     pristine_git_object: 7f8ff15fb71d7fd356eb27779e6c10b3d3824080
   src/models/components/issuedcardauthorization.ts:
     id: c6bd5a0cb8aa
-    last_write_checksum: sha1:08048089d517527a680dd71963d5b46f92ad1825
-    pristine_git_object: e945df9d448bee9307d78ee75ea5c1424c7f45e1
+    last_write_checksum: sha1:7c99b2ff88532279d526b5929a5c13e49459c3fb
+    pristine_git_object: 4a122b1855e0c69c4696b5c10f1e72e751f0ab2b
   src/models/components/issuedcardauthorizationevent.ts:
     id: 83e3c9feb336
     last_write_checksum: sha1:1d1e0aa0395c86e3e437dd039a5ccf622167a683
@@ -6807,8 +6811,8 @@ trackedFiles:
     pristine_git_object: d825f2c395c6c733592dfa7023485ce94b59edfa
   src/models/components/issuedcardtransaction.ts:
     id: 62dfebb5d38a
-    last_write_checksum: sha1:9fc5b178859f58103f8f59b767f01ac9fedfe703
-    pristine_git_object: 74341d0dd27e0e612d0b1ec133c8de8cf8817233
+    last_write_checksum: sha1:97e167e1da3dafedfc76f2604ffc530f0d14f5c1
+    pristine_git_object: 6789ab38c84c666e66f0e5bdf001853393912bae
   src/models/components/issuingauthorizationstatus.ts:
     id: c66ac72b595a
     last_write_checksum: sha1:067549f2741fd2c2146344acc4dbd6d777ad73b2
@@ -7771,8 +7775,8 @@ trackedFiles:
     pristine_git_object: 00b6f730dbdec20b19dd97db3f00615b42d2eea0
   src/models/components/webhookdata.ts:
     id: 4c87d1a4eae1
-    last_write_checksum: sha1:16190a86152feb25cdf06820e976e419a743df12
-    pristine_git_object: 52bc457251a7a24cec1d3602bfd207c96f05d14a
+    last_write_checksum: sha1:7b3343381320c7b80f120a99db369f0f11c3d07c
+    pristine_git_object: a521407f5b8cf9dcee92960e337c3a710f3a8d33
   src/models/components/webhookdataaccountcreated.ts:
     id: 99fe517cd2ac
     last_write_checksum: sha1:7dead87044fa173d975a86d8da6d8dd4c5e5deb3
@@ -7833,6 +7837,10 @@ trackedFiles:
     id: 91b59f9db8d1
     last_write_checksum: sha1:605f3312be1259ce555140e93387932aecfea5ab
     pristine_git_object: 53c0fbb22cca170daee1af98f0fd5f61a57055a0
+  src/models/components/webhookdataeventtest.ts:
+    id: 6435e01ea702
+    last_write_checksum: sha1:26ed02b250d39526e69ab9d01233ba1c7fa9ff04
+    pristine_git_object: f400808354017641132a6742137d60bd71f03925
   src/models/components/webhookdatainvoicecreated.ts:
     id: 31f8634ce7b2
     last_write_checksum: sha1:a648dec310736b5d7cb7f2964755d67e51cc96f6
@@ -7931,8 +7939,8 @@ trackedFiles:
     pristine_git_object: b1e3dc330805c8c8bde963f2627dd8aa54b58492
   src/models/components/webhookeventtype.ts:
     id: 403cfdafa866
-    last_write_checksum: sha1:cfe7863bc7a4b0ab632bfdc912fd67db8cf6b823
-    pristine_git_object: e2200ed166597f8c70715b63f7e409fed321a4c3
+    last_write_checksum: sha1:cccb63c958a5d337d334fa855ae2e56c9d304c15
+    pristine_git_object: e81ad651f684881f91215dda60d509f5bcb4d016
   src/models/components/webhooksecret.ts:
     id: ce9de8ce0e58
     last_write_checksum: sha1:aa91be411e5040bc62d01e53b277aae365e36377
@@ -11850,7 +11858,7 @@ examples:
           application/json: [{"cancellationID": "89ca7f54-13ba-4714-b9af-17163eae2057", "status": "completed", "createdOn": "2025-01-19T03:02:43.255309588Z"}]
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `moov.cardIssuing.request()`:  `response.state.enum(frozen)` **Added** (Breaking ⚠️)\n* `moov.capabilities.list()`:  `response.[].requirements.currentlyDue[]` **Changed** (Breaking ⚠️)\n* `moov.capabilities.request()`:  `response.[].requirements.currentlyDue[]` **Changed** (Breaking ⚠️)\n* `moov.capabilities.get()`:  `response.requirements.currentlyDue[]` **Changed** (Breaking ⚠️)\n* `moov.onboarding.getInvite()`:  `response.scopes[]` **Changed** (Breaking ⚠️)\n* `moov.accounts.connect()`: \n  *  `request.shareScopes.allowScopes[]` **Changed** (Breaking ⚠️)\n* `moov.onboarding.listInvites()`:  `response.[].scopes[]` **Changed** (Breaking ⚠️)\n* `moov.onboarding.createInvite()`: \n  *  `request.scopes[]` **Changed** (Breaking ⚠️)\n  *  `response.scopes[]` **Changed** (Breaking ⚠️)\n* `moov.cardIssuing.getFull()`:  `response.state.enum(frozen)` **Added** (Breaking ⚠️)\n* `moov.cardIssuing.update()`: \n  *  `request.updateIssuedCard.state` **Changed**\n  *  `response.state.enum(frozen)` **Added** (Breaking ⚠️)\n* `moov.cardIssuing.get()`:  `response.state.enum(frozen)` **Added** (Breaking ⚠️)\n* `moov.cardIssuing.list()`: \n  *  `request.states` **Changed**\n  *  `response.[].state.enum(frozen)` **Added** (Breaking ⚠️)\n* `moov.feePlans.createFeePlanAgreements()`: \n  *  `request.createFeePlanAgreement.priorAgreementId` **Added**\n  *  `response` **Changed**\n* `moov.issuingTransactions.list()`: \n  *  `request.merchantName` **Added**\n* `moov.transfers.listRefunds()`:  `error.status[404]` **Added**\n* `moov.transfers.listCancellations()`:  `error.status[404]` **Added**\n* `moov.transfers.createCancellation()`:  `error` **Changed**\n* `moov.statements.get()`:  `response` **Changed**\n* `moov.statements.list()`:  `response.[]` **Changed**\n* `moov.feePlans.listPartnerPricingAgreements()`:  `response.[]` **Changed**\n* `moov.feePlans.listFeePlanAgreements()`:  `response.[]` **Changed**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `moov.webhooks.list()`:  `response.[].eventTypes[].enum(event.test)` **Added** (Breaking ⚠️)\n* `moov.webhooks.create()`: \n  *  `request.eventTypes[].enum(event.test)` **Added**\n  *  `response.eventTypes[].enum(event.test)` **Added** (Breaking ⚠️)\n* `moov.webhooks.get()`:  `response.eventTypes[].enum(event.test)` **Added** (Breaking ⚠️)\n* `moov.webhooks.update()`: \n  *  `request.updateWebhook.eventTypes[].enum(event.test)` **Added**\n  *  `response.eventTypes[].enum(event.test)` **Added** (Breaking ⚠️)\n* `moov.webhooks.ping()`:  `response.webhook.eventTypes[].enum(event.test)` **Added** (Breaking ⚠️)\n* `moov.issuingTransactions.listAuthorizations()`:  `response.[].lastFourCardNumber` **Added**\n* `moov.issuingTransactions.getAuthorization()`:  `response.lastFourCardNumber` **Added**\n* `moov.issuingTransactions.list()`:  `response.[].lastFourCardNumber` **Added**\n* `moov.issuingTransactions.get()`:  `response.lastFourCardNumber` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore

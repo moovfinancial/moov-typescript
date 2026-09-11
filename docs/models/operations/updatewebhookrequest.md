@@ -11,7 +11,7 @@ let value: UpdateWebhookRequest = {
     url: "https://gripping-outlaw.name",
     status: "disabled",
     eventTypes: [
-      "refund.updated",
+      "representative.created",
     ],
     description:
       "plump furthermore knitting institutionalize past although mockingly ashamed gee",

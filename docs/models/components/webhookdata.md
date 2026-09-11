@@ -389,3 +389,11 @@ const value: components.WebhookDataAuthorizationExpiring = {
 };
 ```
 
+### `components.WebhookDataEventTest`
+
+```typescript
+const value: components.WebhookDataEventTest = {
+  ping: true,
+};
+```
+
