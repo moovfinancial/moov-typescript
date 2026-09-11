@@ -11,7 +11,7 @@ let value: UpdateWebhook = {
   url: "https://pretty-battle.info/",
   status: "enabled",
   eventTypes: [
-    "networkID.updated",
+    "paymentMethod.enabled",
   ],
   description: "the gee athwart catalyze",
 };
