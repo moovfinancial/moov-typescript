@@ -9,7 +9,7 @@ import { WebhookEvent } from "@moovio/sdk/models/components";
 
 let value: WebhookEvent = {
   eventID: "<id>",
-  type: "billingStatement.created",
+  type: "authorization.expiring",
   data: {
     accountID: "<id>",
   },

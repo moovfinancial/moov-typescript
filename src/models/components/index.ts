@@ -661,6 +661,7 @@ export * from "./webhookdatacaptureupdated.js";
 export * from "./webhookdatacardautoupdated.js";
 export * from "./webhookdatadisputecreated.js";
 export * from "./webhookdatadisputeupdated.js";
+export * from "./webhookdataeventtest.js";
 export * from "./webhookdatainvoicecreated.js";
 export * from "./webhookdatainvoiceupdated.js";
 export * from "./webhookdatanetworkidupdated.js";
