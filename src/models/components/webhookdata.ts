@@ -110,6 +110,12 @@ import {
   WebhookDataDisputeUpdated$outboundSchema,
 } from "./webhookdatadisputeupdated.js";
 import {
+  WebhookDataEventTest,
+  WebhookDataEventTest$inboundSchema,
+  WebhookDataEventTest$Outbound,
+  WebhookDataEventTest$outboundSchema,
+} from "./webhookdataeventtest.js";
+import {
   WebhookDataInvoiceCreated,
   WebhookDataInvoiceCreated$inboundSchema,
   WebhookDataInvoiceCreated$Outbound,
@@ -284,7 +290,8 @@ export type WebhookData =
   | WebhookDataAccountCreated
   | WebhookDataAccountUpdated
   | WebhookDataAccountDisconnected
-  | WebhookDataNetworkIDUpdated;
+  | WebhookDataNetworkIDUpdated
+  | WebhookDataEventTest;
 
 /** @internal */
 export const WebhookData$inboundSchema: z.ZodType<
@@ -331,6 +338,7 @@ export const WebhookData$inboundSchema: z.ZodType<
   WebhookDataAccountUpdated$inboundSchema,
   WebhookDataAccountDisconnected$inboundSchema,
   WebhookDataNetworkIDUpdated$inboundSchema,
+  WebhookDataEventTest$inboundSchema,
 ]);
 /** @internal */
 export type WebhookData$Outbound =
@@ -372,7 +380,8 @@ export type WebhookData$Outbound =
   | WebhookDataAccountCreated$Outbound
   | WebhookDataAccountUpdated$Outbound
   | WebhookDataAccountDisconnected$Outbound
-  | WebhookDataNetworkIDUpdated$Outbound;
+  | WebhookDataNetworkIDUpdated$Outbound
+  | WebhookDataEventTest$Outbound;
 
 /** @internal */
 export const WebhookData$outboundSchema: z.ZodType<
@@ -419,6 +428,7 @@ export const WebhookData$outboundSchema: z.ZodType<
   WebhookDataAccountUpdated$outboundSchema,
   WebhookDataAccountDisconnected$outboundSchema,
   WebhookDataNetworkIDUpdated$outboundSchema,
+  WebhookDataEventTest$outboundSchema,
 ]);
 
 export function webhookDataToJSON(webhookData: WebhookData): string {
