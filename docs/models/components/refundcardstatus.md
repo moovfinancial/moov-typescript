@@ -5,11 +5,11 @@
 ```typescript
 import { RefundCardStatus } from "@moovio/sdk/models/components";
 
-let value: RefundCardStatus = "settled";
+let value: RefundCardStatus = "failed";
 ```
 
 ## Values
 
 ```typescript
-"initiated" | "confirmed" | "settled" | "failed" | "completed"
+"initiated" | "confirmed" | "settled" | "failed" | "completed" | "cleared-external"
 ```
