@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 163c7569a87d934a0f28511be641bc82
+  docChecksum: 4e125710237384f8e27b07b0eb364dd9
   docVersion: v2026.07.00
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 26.7.3
-  configChecksum: d863f6263f361d7fa71dcb749f2f8fb0
+  releaseVersion: 26.7.4
+  configChecksum: 875f92168a033a9572da41d1f2067518
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: c63bb396-f2f4-4b3f-8fad-2f1e12685d30
-  pristine_commit_hash: 5b6a8ac2e0a24bbdbd0c90ffda6fc20d356498d8
-  pristine_tree_hash: 13174c4401826429cb61f494ec4f2b6c0d03cdf0
+  generation_id: c0a86f3a-8434-4ec0-a717-b8b151ceeebc
+  pristine_commit_hash: a27eb372f01ef33e8a9becc580a818bc3dab90b1
+  pristine_tree_hash: 141fe63ecc94cd0a043138de3c67eaa3cf74a8d9
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -628,8 +628,8 @@ trackedFiles:
     pristine_git_object: d043bfece12e3449f655bc275d3f7231f38e9824
   docs/models/components/cardtransactionstatus.md:
     id: d2b3505b2c6f
-    last_write_checksum: sha1:7c0e4cfd5010b14f4f8b92448d7b51058488b584
-    pristine_git_object: e39a6aed03a73d633f653e895e07f877ba540313
+    last_write_checksum: sha1:c0c38834d0f967b151014025f75d910bbd52cc20
+    pristine_git_object: 8be1e9d0871c40bb4c4a732887e14f8ad0833cfa
   docs/models/components/cardtype.md:
     id: 860aefe792e5
     last_write_checksum: sha1:4f78c3d483e7ec8388fb55eb7a45d2887ea7006b
@@ -2072,8 +2072,8 @@ trackedFiles:
     pristine_git_object: 90c19425b425961de8379f641085090501bdc770
   docs/models/components/refundcardstatus.md:
     id: 5cc6cea25dad
-    last_write_checksum: sha1:56c51de16aecf7ae9ce8517b147119ed7c8ebd03
-    pristine_git_object: a7097d75390add4f2d95457204abea2ffb199fc2
+    last_write_checksum: sha1:47ee241a850bcdd607b1bbcf363e26c097e91a69
+    pristine_git_object: 0e82c12fad709459dc459de6db73d417d4fde6d3
   docs/models/components/refundpolicy.md:
     id: 92440f3d972f
     last_write_checksum: sha1:99025f96018f5c0fffa7dc20ab29fd2da61d01bd
@@ -4896,12 +4896,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:fd8891879372948490c55b3c036f4bbea93f50d7
-    pristine_git_object: 7170b2d90c6ca23398536b775d6bd939f2134554
+    last_write_checksum: sha1:16b7cc474f203eaacca67fca2e6beac9a170c858
+    pristine_git_object: 4a6922d2f53e262e6a5b80bbd4c7bc7f974bb079
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:a3e3efdcb3fe85c8bf23cb624ccd62a057ab088a
-    pristine_git_object: b7985ebc9d3422a744c3ca7f7835b4e9dd4846c6
+    last_write_checksum: sha1:dc693241f3221abbe13112bdd0ded274b13f70bc
+    pristine_git_object: 09c11d536e1cb9c9e854b969ff5703a11f534069
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5708,8 +5708,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:6c16808370dcf497947cf5e14599a0eb68e53b49
-    pristine_git_object: 02fc221bfea05989c68397cfb48de9162aa20c88
+    last_write_checksum: sha1:0fc0d7bb2d63492be9372614503c51a3e148825f
+    pristine_git_object: 08edc77591911fcb6e50f57e057520c19a3860a0
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -5780,8 +5780,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:975fff2c5b0c7fb42f528175eb8db077102c51b9
-    pristine_git_object: 4682de0edbaf98e7e21597f9a0031520c2ad8acd
+    last_write_checksum: sha1:b64407d6e26819aa982ac64a1e16971393307d6e
+    pristine_git_object: 2d0bf54951e1f254547168d0e8eca1341eb3db04
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5796,8 +5796,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:cec88c16f18e74e6deaa52b43be550b9bab3ff43
-    pristine_git_object: 5ea9b126e33d0a35b57c4f065ceea230044f96f5
+    last_write_checksum: sha1:39cb0a7eecae6312788330d0702e118294b4fe3f
+    pristine_git_object: e63d38cb4c0cfa087c94378ff8714be026462f5b
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7080,8 +7080,8 @@ trackedFiles:
     pristine_git_object: 46d132e0200b11d884d6027f17ac3de88e4199d7
   src/models/components/cardtransactionstatus.ts:
     id: 2dc542dc9acd
-    last_write_checksum: sha1:0197974b87480d75fb0378bba26274124ecbceec
-    pristine_git_object: 544d9a1033dc28a06f11abbfefc65033322d64f6
+    last_write_checksum: sha1:090859ddbb5656e5653fdd929251224689274f8a
+    pristine_git_object: ee94640abecf560c39c4270d32ec44a7dbfcf83f
   src/models/components/cardtype.ts:
     id: 8d834d7c1ae1
     last_write_checksum: sha1:082f3d2664770698caab7775d3a2ebb85287ebfe
@@ -8440,8 +8440,8 @@ trackedFiles:
     pristine_git_object: 977ac08ee108362d53c9f3cf6ade8b218b14065a
   src/models/components/refundcardstatus.ts:
     id: 777b73b5b89c
-    last_write_checksum: sha1:5074563bc745e6380f028c3414aa9ed96f91a85a
-    pristine_git_object: 2d1097599299d0d0f93da9365b3f8b0115243e08
+    last_write_checksum: sha1:ac0343db95bea37f70fc57f9b8d57c69e99b46cd
+    pristine_git_object: fa68944bf9b81185985015bea7f8c6965895be91
   src/models/components/refundpolicy.ts:
     id: f8a8ff16c71c
     last_write_checksum: sha1:7e622f3839a1727245a1888457f3cb5e53a0fabc
@@ -13454,7 +13454,7 @@ examples:
           application/json: {"merchantCategories": []}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `moov.webhooks.list()`:  `response.[].eventTypes[].enum(event.test)` **Added**\n* `moov.webhooks.create()`: \n  *  `request.eventTypes[].enum(event.test)` **Added**\n  *  `response.eventTypes[].enum(event.test)` **Added**\n* `moov.webhooks.get()`:  `response.eventTypes[].enum(event.test)` **Added**\n* `moov.webhooks.update()`: \n  *  `request.updateWebhook.eventTypes[].enum(event.test)` **Added**\n  *  `response.eventTypes[].enum(event.test)` **Added**\n* `moov.webhooks.ping()`:  `response.webhook.eventTypes[].enum(event.test)` **Added**\n* `moov.issuingTransactions.listAuthorizations()`:  `response.[].lastFourCardNumber` **Added**\n* `moov.issuingTransactions.getAuthorization()`:  `response.lastFourCardNumber` **Added**\n* `moov.issuingTransactions.list()`:  `response.[].lastFourCardNumber` **Added**\n* `moov.issuingTransactions.get()`:  `response.lastFourCardNumber` **Added**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `moov.transfers.create()`: \n  *  `response` **Changed**\n  *  `error` **Changed**\n* `moov.transfers.list()`:  `response.[]` **Changed**\n* `moov.transfers.batchGetTransfers()`:  `response.Map<Transfer>` **Changed**\n* `moov.transfers.get()`:  `response` **Changed**\n* `moov.transfers.update()`:  `response` **Changed**\n* `moov.transfers.initiateRefund()`: \n  *  `response` **Changed**\n  *  `error.cardDetails.status.enum(clearedExternal)` **Added**\n* `moov.transfers.listRefunds()`:  `response.[].cardDetails.status.enum(clearedExternal)` **Added**\n* `moov.transfers.getRefund()`:  `response.cardDetails.status.enum(clearedExternal)` **Added**\n* `moov.transfers.createReversal()`:  `response.union(ReversedWithRefund).refund.cardDetails.status.enum(clearedExternal)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore

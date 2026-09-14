@@ -5,7 +5,7 @@
 ```typescript
 import { RefundCardStatus } from "@moovio/sdk/models/components";
 
-let value: RefundCardStatus = "settled";
+let value: RefundCardStatus = "failed";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```
@@ -13,5 +13,5 @@ let value: RefundCardStatus = "settled";
 ## Values
 
 ```typescript
-"initiated" | "confirmed" | "settled" | "failed" | "completed" | Unrecognized<string>
+"initiated" | "confirmed" | "settled" | "failed" | "completed" | "cleared-external" | Unrecognized<string>
 ```

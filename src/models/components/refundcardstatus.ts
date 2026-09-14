@@ -12,6 +12,7 @@ export const RefundCardStatus = {
   Settled: "settled",
   Failed: "failed",
   Completed: "completed",
+  ClearedExternal: "cleared-external",
 } as const;
 export type RefundCardStatus = OpenEnum<typeof RefundCardStatus>;
 
