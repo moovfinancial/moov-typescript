@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 8482c7efa612273152266986c0f3b31f
+  docChecksum: 7ac1043e5de2cb90f865454967017170
   docVersion: v2026.10.00
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 26.10.0-dev.4
-  configChecksum: fe196b10a6c6b62dc03b7c26f980a3dc
+  releaseVersion: 26.10.0-dev.5
+  configChecksum: fd6a0d3d4f68ddb103a1952bbe51572b
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 66dbbc11-bfab-4448-b0c8-793ce8134418
-  pristine_commit_hash: 20017809e98ecb9b8675ad95a7080e3cddad94b8
-  pristine_tree_hash: 73d5c2c270bf2f0ff0bfbdac63ae5b19fae34612
+  generation_id: 7d4d884d-4f73-4739-bdf6-f4b4e823bd8b
+  pristine_commit_hash: 92f837e3080014c589761390e18c53e821fbb84c
+  pristine_tree_hash: 532056c8d370b021e71cfee22f73680c63b473cd
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -648,8 +648,8 @@ trackedFiles:
     pristine_git_object: e6ab8cbed646827123844602cbc2b7d059ff1464
   docs/models/components/cardpaymenttransactionstatus.md:
     id: 2b0d85bf8eb7
-    last_write_checksum: sha1:3cc8fd1790ed278fba818b811d0f53d857a045f0
-    pristine_git_object: 21faad15cefebba4e17392a0252ee045d9056370
+    last_write_checksum: sha1:84b227e1f6db607ddeab7f70d15422e6a30ce15e
+    pristine_git_object: b2dd6073c98ab4c7912ce5b8aa531cdebc42940e
   docs/models/components/cardpaymenttransferpaymentmethod.md:
     id: fe12b19a70d2
     last_write_checksum: sha1:6d6ea872241b41ead1c3690d28d56523e47d1c64
@@ -5100,12 +5100,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:2c45a4eeef36d5fb8580c2d2bfff222bb9c289d1
-    pristine_git_object: f351b85d689b5d6e18be7c494c6533681225aa59
+    last_write_checksum: sha1:d4463309af9f11a006067edb44b6e63f30d6f154
+    pristine_git_object: 46c4efcb0ae8945b46cb39f5e0513c5544b5b6b7
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:7a825cc34e0c872d4891f0767df47c44a0fd6e3b
-    pristine_git_object: dd42aeebe107583cbfb976c9fad68c3cd98d70cf
+    last_write_checksum: sha1:aa1706edbf642dce7455a5371ab1787161eea58f
+    pristine_git_object: ac7439d5f234c3fe00d501cbb0aa12f1077b2084
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -5940,8 +5940,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:118c7c749b68a5da36ee4da5ee8749858f3609a7
-    pristine_git_object: af327786ef77d3cdbaab396916809e548a8a555a
+    last_write_checksum: sha1:e1ecd9129b59ebd74da3160e84133ca28fba6912
+    pristine_git_object: 5353e00f39cd5147d96d5f40afed541a2b02df6e
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -6012,8 +6012,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:4a0f96f5a6dd8f863a98c9dcc6052debb8d4996b
-    pristine_git_object: f520d7ce3f9d1cc215feadb6fd574a39c9a34a39
+    last_write_checksum: sha1:1864c1a06de0f70acd5ef4106d5c1c86e9e574cf
+    pristine_git_object: ae9d11535cc3e467f46962fe67df103b0f2cfcef
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -6028,8 +6028,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:e0d15710bec14cb8132023418e3221da2b1670f0
-    pristine_git_object: e0bfc5270b2af0a2508f5495fb6935e388ba349a
+    last_write_checksum: sha1:8744958210ddad76a679a7c7aef6a823d17a5d2e
+    pristine_git_object: 1ae179091d8fd5d3b0c82f5d2e3a10bec774209a
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7360,8 +7360,8 @@ trackedFiles:
     pristine_git_object: 6561fbb9b4f408d748c5c4206e82dc929a1c51a1
   src/models/components/cardpaymenttransactionstatus.ts:
     id: 30a9dee7f8a5
-    last_write_checksum: sha1:ad2ee40f710ad7fd4c14404d6f48d0eb01096ab1
-    pristine_git_object: 3bfa8209c6179124757d78e185afc9a7ad0cc1f4
+    last_write_checksum: sha1:0ebd832119cab864729e162e4914095522aea404
+    pristine_git_object: 8237490c1ee57e73663ad993e2ea1857daaae61d
   src/models/components/cardpaymenttransferpaymentmethod.ts:
     id: 2c69a61b8f69
     last_write_checksum: sha1:3807ad515db4e58ce55241904b73697fa0124ac6
@@ -13981,7 +13981,7 @@ examples:
           application/json: {"error": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `moov.webhooks.list()`:  `response.[].eventTypes[].enum(event.test)` **Added**\n* `moov.webhooks.create()`: \n  *  `request.eventTypes[].enum(event.test)` **Added**\n  *  `response.eventTypes[].enum(event.test)` **Added**\n* `moov.webhooks.get()`:  `response.eventTypes[].enum(event.test)` **Added**\n* `moov.webhooks.update()`: \n  *  `request.updateWebhook.eventTypes[].enum(event.test)` **Added**\n  *  `response.eventTypes[].enum(event.test)` **Added**\n* `moov.webhooks.ping()`:  `response.webhook.eventTypes[].enum(event.test)` **Added**\n* `moov.issuingTransactions.listAuthorizations()`:  `response.[].lastFourCardNumber` **Added**\n* `moov.issuingTransactions.getAuthorization()`:  `response.lastFourCardNumber` **Added**\n* `moov.issuingTransactions.list()`:  `response.[].lastFourCardNumber` **Added**\n* `moov.issuingTransactions.get()`:  `response.lastFourCardNumber` **Added**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `moov.transfers.create()`: \n  *  `response.processingDetails.cardPayment.status.enum(clearedExternal)` **Added**\n  *  `error.processingDetails.cardPayment.status.enum(clearedExternal)` **Added**\n* `moov.transfers.list()`:  `response.[].processingDetails.cardPayment.status.enum(clearedExternal)` **Added**\n* `moov.transfers.batchGetTransfers()`:  `response.Map<Transfer>.processingDetails.cardPayment.status.enum(clearedExternal)` **Added**\n* `moov.transfers.get()`:  `response.processingDetails.cardPayment.status.enum(clearedExternal)` **Added**\n* `moov.transfers.update()`:  `response.processingDetails.cardPayment.status.enum(clearedExternal)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore

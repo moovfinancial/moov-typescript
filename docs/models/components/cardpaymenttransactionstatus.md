@@ -7,7 +7,7 @@ Status of a card payment transaction.
 ```typescript
 import { CardPaymentTransactionStatus } from "@moovio/sdk/models/components";
 
-let value: CardPaymentTransactionStatus = "failed";
+let value: CardPaymentTransactionStatus = "completed";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```
@@ -15,5 +15,5 @@ let value: CardPaymentTransactionStatus = "failed";
 ## Values
 
 ```typescript
-"initiated" | "confirmed" | "canceled" | "settled" | "failed" | "completed" | Unrecognized<string>
+"initiated" | "confirmed" | "canceled" | "settled" | "failed" | "completed" | "cleared-external" | Unrecognized<string>
 ```
