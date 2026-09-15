@@ -15,7 +15,7 @@ export const CardTransactionStatus = {
   Settled: "settled",
   Failed: "failed",
   Completed: "completed",
-  ClearedExternal: "cleared-external",
+  ClearedExternally: "cleared-externally",
 } as const;
 /**
  * Status of a transaction within the card payment lifecycle.
