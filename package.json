@@ -1,6 +1,6 @@
 {
   "name": "@moovio/sdk",
-  "version": "0.0.0-dev.31",
+  "version": "0.0.0-dev.32",
   "author": "Moov",
   "engines": {
     "node": ">=22.12"
