@@ -11,5 +11,5 @@ let value: RefundCardStatus = "failed";
 ## Values
 
 ```typescript
-"initiated" | "confirmed" | "settled" | "failed" | "completed" | "cleared-external"
+"initiated" | "confirmed" | "settled" | "failed" | "completed" | "cleared-externally"
 ```
