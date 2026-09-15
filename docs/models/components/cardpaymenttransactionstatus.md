@@ -15,5 +15,5 @@ let value: CardPaymentTransactionStatus = "completed";
 ## Values
 
 ```typescript
-"initiated" | "confirmed" | "canceled" | "settled" | "failed" | "completed" | "cleared-external" | Unrecognized<string>
+"initiated" | "confirmed" | "canceled" | "settled" | "failed" | "completed" | "cleared-externally" | Unrecognized<string>
 ```
