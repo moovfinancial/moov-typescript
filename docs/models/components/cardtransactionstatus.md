@@ -13,5 +13,5 @@ let value: CardTransactionStatus = "confirmed";
 ## Values
 
 ```typescript
-"initiated" | "confirmed" | "canceled" | "settled" | "failed" | "completed" | "cleared-external" | "deferred"
+"initiated" | "confirmed" | "canceled" | "settled" | "failed" | "completed" | "cleared-externally" | "deferred"
 ```

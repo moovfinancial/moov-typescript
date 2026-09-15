@@ -15,7 +15,7 @@ export const CardTransactionStatus = {
   Settled: "settled",
   Failed: "failed",
   Completed: "completed",
-  ClearedExternal: "cleared-external",
+  ClearedExternally: "cleared-externally",
   Deferred: "deferred",
 } as const;
 /**
