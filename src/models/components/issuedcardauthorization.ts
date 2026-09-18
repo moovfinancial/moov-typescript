@@ -17,6 +17,11 @@ import {
   IssuingAuthorizationStatus$outboundSchema,
 } from "./issuingauthorizationstatus.js";
 import {
+  IssuingDeclineReason,
+  IssuingDeclineReason$inboundSchema,
+  IssuingDeclineReason$outboundSchema,
+} from "./issuingdeclinereason.js";
+import {
   IssuingMerchantData,
   IssuingMerchantData$inboundSchema,
   IssuingMerchantData$Outbound,
@@ -49,6 +54,13 @@ export type IssuedCardAuthorization = {
    * List of card transaction IDs associated with this authorization.
    */
   cardTransactions?: Array<string> | undefined;
+  /**
+   * The reason an authorization or authorization event was declined. Only present if the
+   *
+   * @remarks
+   * authorization or event has been declined.
+   */
+  declineReason?: IssuingDeclineReason | undefined;
 };
 
 /** @internal */
@@ -67,6 +79,7 @@ export const IssuedCardAuthorization$inboundSchema: z.ZodType<
   merchantData: IssuingMerchantData$inboundSchema,
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   cardTransactions: z.array(z.string()).optional(),
+  declineReason: IssuingDeclineReason$inboundSchema.optional(),
 });
 /** @internal */
 export type IssuedCardAuthorization$Outbound = {
@@ -80,6 +93,7 @@ export type IssuedCardAuthorization$Outbound = {
   merchantData: IssuingMerchantData$Outbound;
   createdOn: string;
   cardTransactions?: Array<string> | undefined;
+  declineReason?: string | undefined;
 };
 
 /** @internal */
@@ -98,6 +112,7 @@ export const IssuedCardAuthorization$outboundSchema: z.ZodType<
   merchantData: IssuingMerchantData$outboundSchema,
   createdOn: z.date().transform(v => v.toISOString()),
   cardTransactions: z.array(z.string()).optional(),
+  declineReason: IssuingDeclineReason$outboundSchema.optional(),
 });
 
 export function issuedCardAuthorizationToJSON(
