@@ -17,6 +17,11 @@ import {
   IssuedCardEventType$inboundSchema,
   IssuedCardEventType$outboundSchema,
 } from "./issuedcardeventtype.js";
+import {
+  IssuingDeclineReason,
+  IssuingDeclineReason$inboundSchema,
+  IssuingDeclineReason$outboundSchema,
+} from "./issuingdeclinereason.js";
 
 export type IssuedCardAuthorizationEvent = {
   /**
@@ -36,6 +41,13 @@ export type IssuedCardAuthorizationEvent = {
    */
   result: IssuedCardAuthorizationEventResult;
   createdOn: Date;
+  /**
+   * The reason an authorization or authorization event was declined. Only present if the
+   *
+   * @remarks
+   * authorization or event has been declined.
+   */
+  declineReason?: IssuingDeclineReason | undefined;
 };
 
 /** @internal */
@@ -49,6 +61,7 @@ export const IssuedCardAuthorizationEvent$inboundSchema: z.ZodType<
   amount: types.string(),
   result: IssuedCardAuthorizationEventResult$inboundSchema,
   createdOn: types.date(),
+  declineReason: types.optional(IssuingDeclineReason$inboundSchema),
 });
 /** @internal */
 export type IssuedCardAuthorizationEvent$Outbound = {
@@ -57,6 +70,7 @@ export type IssuedCardAuthorizationEvent$Outbound = {
   amount: string;
   result: string;
   createdOn: string;
+  declineReason?: string | undefined;
 };
 
 /** @internal */
@@ -70,6 +84,7 @@ export const IssuedCardAuthorizationEvent$outboundSchema: z.ZodType<
   amount: z.string(),
   result: IssuedCardAuthorizationEventResult$outboundSchema,
   createdOn: z.date().transform(v => v.toISOString()),
+  declineReason: IssuingDeclineReason$outboundSchema.optional(),
 });
 
 export function issuedCardAuthorizationEventToJSON(
