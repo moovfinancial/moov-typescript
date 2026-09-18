@@ -56,6 +56,10 @@ export type Product = {
    */
   basePrice: AmountDecimal;
   /**
+   * Whether applicable tax rules may be applied to this product. True does not guarantee tax is charged; false excludes the product from tax calculation. This setting does not determine jurisdiction-specific taxability.
+   */
+  isTaxable: boolean;
+  /**
    * Optional configuration options for a product, such as size or color.
    */
   optionGroups?: Array<ProductOptionGroup> | undefined;
@@ -88,6 +92,7 @@ export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
     title: types.string(),
     description: types.optional(types.string()),
     basePrice: AmountDecimal$inboundSchema,
+    isTaxable: types.boolean(),
     optionGroups: types.optional(z.array(ProductOptionGroup$inboundSchema)),
     images: types.optional(z.array(ProductImageMetadata$inboundSchema)),
     category: types.optional(ProductCategory$inboundSchema),
@@ -101,6 +106,7 @@ export type Product$Outbound = {
   title: string;
   description?: string | undefined;
   basePrice: AmountDecimal$Outbound;
+  isTaxable: boolean;
   optionGroups?: Array<ProductOptionGroup$Outbound> | undefined;
   images?: Array<ProductImageMetadata$Outbound> | undefined;
   category?: ProductCategory$Outbound | undefined;
@@ -119,6 +125,7 @@ export const Product$outboundSchema: z.ZodType<
   title: z.string(),
   description: z.string().optional(),
   basePrice: AmountDecimal$outboundSchema,
+  isTaxable: z.boolean(),
   optionGroups: z.array(ProductOptionGroup$outboundSchema).optional(),
   images: z.array(ProductImageMetadata$outboundSchema).optional(),
   category: ProductCategory$outboundSchema.optional(),

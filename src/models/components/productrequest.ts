@@ -46,6 +46,10 @@ export type ProductRequest = {
    */
   basePrice: AmountDecimal;
   /**
+   * Whether applicable tax rules may be applied to this product. True does not guarantee tax is charged; false excludes the product from tax calculation. Omitted values default to true on creation and preserve the existing setting on update.
+   */
+  isTaxable?: boolean | undefined;
+  /**
    * Assign previously uploaded images to a product or option.
    */
   images?: Array<AssignProductImage> | undefined;
@@ -68,6 +72,7 @@ export const ProductRequest$inboundSchema: z.ZodType<
   title: types.string(),
   description: types.optional(types.string()),
   basePrice: AmountDecimal$inboundSchema,
+  isTaxable: types.optional(types.boolean()),
   images: types.optional(z.array(AssignProductImage$inboundSchema)),
   optionGroups: types.optional(z.array(CreateProductOptionGroup$inboundSchema)),
   categoryID: types.optional(types.string()),
@@ -77,6 +82,7 @@ export type ProductRequest$Outbound = {
   title: string;
   description?: string | undefined;
   basePrice: AmountDecimal$Outbound;
+  isTaxable?: boolean | undefined;
   images?: Array<AssignProductImage$Outbound> | undefined;
   optionGroups?: Array<CreateProductOptionGroup$Outbound> | undefined;
   categoryID?: string | undefined;
@@ -91,6 +97,7 @@ export const ProductRequest$outboundSchema: z.ZodType<
   title: z.string(),
   description: z.string().optional(),
   basePrice: AmountDecimal$outboundSchema,
+  isTaxable: z.boolean().optional(),
   images: z.array(AssignProductImage$outboundSchema).optional(),
   optionGroups: z.array(CreateProductOptionGroup$outboundSchema).optional(),
   categoryID: z.string().optional(),
