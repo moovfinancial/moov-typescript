@@ -6,55 +6,16 @@
 import { ListProductsResponse } from "@moovio/sdk/models/operations";
 
 let value: ListProductsResponse = {
-  headers: {},
-  result: [
-    {
-      productID: "<id>",
-      title: "<value>",
-      basePrice: {
-        currency: "USD",
-        valueDecimal: "12.987654321",
-      },
-      optionGroups: [
-        {
-          name: "<value>",
-          minSelect: 225596,
-          maxSelect: 59952,
-          options: [
-            {
-              name: "<value>",
-              priceModifier: {
-                currency: "USD",
-                valueDecimal: "12.987654321",
-              },
-              images: [
-                {
-                  imageID: "<id>",
-                  link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
-                  publicID: "q7lKWleAy9fUNhEGezQ1g",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-      images: [
-        {
-          imageID: "<id>",
-          link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
-          publicID: "q7lKWleAy9fUNhEGezQ1g",
-        },
-      ],
-      category: {
-        categoryID: "<id>",
-        name: "Beverages",
-        fullName: "Food, Beverages & Tobacco > Beverages",
-        level: 2,
-      },
-      createdOn: new Date("2024-09-17T22:55:29.103Z"),
-      updatedOn: new Date("2025-06-29T21:11:27.020Z"),
-    },
-  ],
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  result: [],
 };
 ```
 

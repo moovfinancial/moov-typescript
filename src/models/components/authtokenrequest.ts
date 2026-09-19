@@ -13,6 +13,11 @@ import {
   GrantType$inboundSchema,
   GrantType$outboundSchema,
 } from "./granttype.js";
+import {
+  OAuth2ClientType,
+  OAuth2ClientType$inboundSchema,
+  OAuth2ClientType$outboundSchema,
+} from "./oauth2clienttype.js";
 
 export type AuthTokenRequest = {
   /**
@@ -40,6 +45,10 @@ export type AuthTokenRequest = {
    * The refresh_token returned alongside the access token being refreshed. Required when `grant_type` is `refresh_token`.
    */
   refreshToken?: string | undefined;
+  /**
+   * The client type requesting a token. `device` and `service` clients do not require browser origin binding. Defaults to `web` when omitted. This field applies to the `client_credentials` grant; refreshed tokens keep the original client type.
+   */
+  clientType?: OAuth2ClientType | undefined;
 };
 
 /** @internal */
@@ -53,12 +62,14 @@ export const AuthTokenRequest$inboundSchema: z.ZodType<
   client_secret: types.optional(types.string()),
   scope: types.optional(types.string()),
   refresh_token: types.optional(types.string()),
+  client_type: types.optional(OAuth2ClientType$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "grant_type": "grantType",
     "client_id": "clientId",
     "client_secret": "clientSecret",
     "refresh_token": "refreshToken",
+    "client_type": "clientType",
   });
 });
 /** @internal */
@@ -68,6 +79,7 @@ export type AuthTokenRequest$Outbound = {
   client_secret?: string | undefined;
   scope?: string | undefined;
   refresh_token?: string | undefined;
+  client_type?: string | undefined;
 };
 
 /** @internal */
@@ -81,12 +93,14 @@ export const AuthTokenRequest$outboundSchema: z.ZodType<
   clientSecret: z.string().optional(),
   scope: z.string().optional(),
   refreshToken: z.string().optional(),
+  clientType: OAuth2ClientType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     grantType: "grant_type",
     clientId: "client_id",
     clientSecret: "client_secret",
     refreshToken: "refresh_token",
+    clientType: "client_type",
   });
 });
 

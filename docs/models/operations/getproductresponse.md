@@ -16,27 +16,13 @@ let value: GetProductResponse = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
+    isTaxable: true,
     optionGroups: [
       {
         name: "<value>",
-        minSelect: 225596,
-        maxSelect: 59952,
-        options: [
-          {
-            name: "<value>",
-            priceModifier: {
-              currency: "USD",
-              valueDecimal: "12.987654321",
-            },
-            images: [
-              {
-                imageID: "<id>",
-                link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
-                publicID: "q7lKWleAy9fUNhEGezQ1g",
-              },
-            ],
-          },
-        ],
+        minSelect: 59952,
+        maxSelect: 887012,
+        options: [],
       },
     ],
     images: [
@@ -52,8 +38,8 @@ let value: GetProductResponse = {
       fullName: "Food, Beverages & Tobacco > Beverages",
       level: 2,
     },
-    createdOn: new Date("2025-06-12T00:16:40.280Z"),
-    updatedOn: new Date("2026-03-01T18:29:56.552Z"),
+    createdOn: new Date("2026-03-01T18:29:56.552Z"),
+    updatedOn: new Date("2026-06-08T19:52:23.368Z"),
   },
 };
 ```
