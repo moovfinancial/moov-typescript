@@ -24,6 +24,10 @@ export type CreateInvoice = {
    * A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
    */
   customerAccountID: string;
+  /**
+   * Email address to use for invoice checkout OTP verification instead of the customer account email.
+   */
+  customerEmail?: string | undefined;
   description?: string | undefined;
   /**
    * A collection of line items for an invoice.
@@ -41,6 +45,7 @@ export const CreateInvoice$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   customerAccountID: z.string(),
+  customerEmail: z.string().optional(),
   description: z.string().optional(),
   lineItems: CreateInvoiceLineItems$inboundSchema,
   invoiceDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -52,6 +57,7 @@ export const CreateInvoice$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateInvoice$Outbound = {
   customerAccountID: string;
+  customerEmail?: string | undefined;
   description?: string | undefined;
   lineItems: CreateInvoiceLineItems$Outbound;
   invoiceDate?: string | undefined;
@@ -66,6 +72,7 @@ export const CreateInvoice$outboundSchema: z.ZodType<
   CreateInvoice
 > = z.object({
   customerAccountID: z.string(),
+  customerEmail: z.string().optional(),
   description: z.string().optional(),
   lineItems: CreateInvoiceLineItems$outboundSchema,
   invoiceDate: z.date().transform(v => v.toISOString()).optional(),

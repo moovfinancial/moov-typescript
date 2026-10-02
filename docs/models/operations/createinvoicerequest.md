@@ -9,6 +9,7 @@ let value: CreateInvoiceRequest = {
   accountID: "<id>",
   createInvoice: {
     customerAccountID: "<id>",
+    customerEmail: "jordan.lee@classbooker.dev",
     lineItems: {
       items: [
         {

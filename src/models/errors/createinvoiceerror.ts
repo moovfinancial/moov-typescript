@@ -8,6 +8,7 @@ import { MoovError } from "./mooverror.js";
 
 export type CreateInvoiceErrorData = {
   customerAccountID?: string | undefined;
+  customerEmail?: string | undefined;
   description?: string | undefined;
   lineItems?: components.CreateInvoiceLineItemsValidationError | undefined;
   invoiceDate?: string | undefined;
@@ -17,6 +18,7 @@ export type CreateInvoiceErrorData = {
 
 export class CreateInvoiceError extends MoovError {
   customerAccountID?: string | undefined;
+  customerEmail?: string | undefined;
   description?: string | undefined;
   lineItems?: components.CreateInvoiceLineItemsValidationError | undefined;
   invoiceDate?: string | undefined;
@@ -38,6 +40,7 @@ export class CreateInvoiceError extends MoovError {
     if (err.customerAccountID != null) {
       this.customerAccountID = err.customerAccountID;
     }
+    if (err.customerEmail != null) this.customerEmail = err.customerEmail;
     if (err.description != null) this.description = err.description;
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.invoiceDate != null) this.invoiceDate = err.invoiceDate;
@@ -55,6 +58,7 @@ export const CreateInvoiceError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   customerAccountID: z.string().optional(),
+  customerEmail: z.string().optional(),
   description: z.string().optional(),
   lineItems: components.CreateInvoiceLineItemsValidationError$inboundSchema
     .optional(),
@@ -76,6 +80,7 @@ export const CreateInvoiceError$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateInvoiceError$Outbound = {
   customerAccountID?: string | undefined;
+  customerEmail?: string | undefined;
   description?: string | undefined;
   lineItems?:
     | components.CreateInvoiceLineItemsValidationError$Outbound
@@ -94,6 +99,7 @@ export const CreateInvoiceError$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     customerAccountID: z.string().optional(),
+    customerEmail: z.string().optional(),
     description: z.string().optional(),
     lineItems: components.CreateInvoiceLineItemsValidationError$outboundSchema
       .optional(),

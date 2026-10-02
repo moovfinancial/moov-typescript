@@ -172,6 +172,12 @@ export type Transfer = {
    * ID of the invoice that the transfer is associated with.
    */
   invoiceID?: string | undefined;
+  /**
+   * The tip, tax, and surcharge portion of the transfer amount.
+   *
+   * @remarks
+   * For an auth-capture `card-payment` transfer, this is the aggregate of all captures' `amountDetails`.
+   */
   amountDetails?: TransferAmountDetails | undefined;
   /**
    * The card authorization and capture IDs associated with a transfer.
