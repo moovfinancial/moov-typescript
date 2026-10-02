@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BankAccountIntegration,
@@ -18,6 +19,13 @@ import {
  */
 export type BankAccountPayload = {
   account: BankAccountIntegration;
+  /**
+   * Requests a synchronous risk-verification attempt on create or re-link. Only honored for
+   *
+   * @remarks
+   * allowlisted calling accounts; ignored otherwise.
+   */
+  requestRiskVerification?: boolean | undefined;
 };
 
 /** @internal */
@@ -27,10 +35,12 @@ export const BankAccountPayload$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   account: BankAccountIntegration$inboundSchema,
+  requestRiskVerification: types.optional(types.boolean()),
 });
 /** @internal */
 export type BankAccountPayload$Outbound = {
   account: BankAccountIntegration$Outbound;
+  requestRiskVerification?: boolean | undefined;
 };
 
 /** @internal */
@@ -40,6 +50,7 @@ export const BankAccountPayload$outboundSchema: z.ZodType<
   BankAccountPayload
 > = z.object({
   account: BankAccountIntegration$outboundSchema,
+  requestRiskVerification: z.boolean().optional(),
 });
 
 export function bankAccountPayloadToJSON(

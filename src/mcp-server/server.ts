@@ -95,6 +95,7 @@ import { tool$feePlansListPartnerPricingAgreements } from "./tools/feePlansListP
 import { tool$feePlansListResidualFees } from "./tools/feePlansListResidualFees.js";
 import { tool$feePlansListResiduals } from "./tools/feePlansListResiduals.js";
 import { tool$feePlansRetrieveFees } from "./tools/feePlansRetrieveFees.js";
+import { tool$filesDownload } from "./tools/filesDownload.js";
 import { tool$filesGet } from "./tools/filesGet.js";
 import { tool$filesList } from "./tools/filesList.js";
 import { tool$filesUpload } from "./tools/filesUpload.js";
@@ -119,6 +120,7 @@ import { tool$invoicesUpdateInvoice } from "./tools/invoicesUpdateInvoice.js";
 import { tool$issuingTransactionsGet } from "./tools/issuingTransactionsGet.js";
 import { tool$issuingTransactionsGetAuthorization } from "./tools/issuingTransactionsGetAuthorization.js";
 import { tool$issuingTransactionsList } from "./tools/issuingTransactionsList.js";
+import { tool$issuingTransactionsListActivity } from "./tools/issuingTransactionsListActivity.js";
 import { tool$issuingTransactionsListAuthorizationEvents } from "./tools/issuingTransactionsListAuthorizationEvents.js";
 import { tool$issuingTransactionsListAuthorizations } from "./tools/issuingTransactionsListAuthorizations.js";
 import { tool$onboardingCreateInvite } from "./tools/onboardingCreateInvite.js";
@@ -224,7 +226,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Moov",
-    version: "26.10.0-dev.7",
+    version: "26.10.0-dev.8",
   });
 
   const client = new MoovCore({
@@ -322,6 +324,7 @@ export function createMCPServer(deps: {
   tool(tool$filesUpload);
   tool(tool$filesList);
   tool(tool$filesGet);
+  tool(tool$filesDownload);
   tool(tool$googlePayLinkToken);
   tool(tool$imagesList);
   tool(tool$imagesUpload);
@@ -434,6 +437,7 @@ export function createMCPServer(deps: {
   tool(tool$cardIssuingGet);
   tool(tool$cardIssuingUpdate);
   tool(tool$cardIssuingGetFull);
+  tool(tool$issuingTransactionsListActivity);
   tool(tool$issuingTransactionsListAuthorizations);
   tool(tool$issuingTransactionsGetAuthorization);
   tool(tool$issuingTransactionsListAuthorizationEvents);

@@ -15,5 +15,5 @@ let value: DisbursementPaymentMethodType = "ach-credit-same-day";
 ## Values
 
 ```typescript
-"push-to-card" | "rtp-credit" | "ach-credit-same-day" | "ach-credit-standard" | "push-to-apple-pay" | "push-to-google-pay" | Unrecognized<string>
+"push-to-card" | "rtp-credit" | "ach-credit-same-day" | "ach-credit-standard" | "push-to-apple-pay" | "push-to-google-pay" | "instant-bank-credit" | Unrecognized<string>
 ```

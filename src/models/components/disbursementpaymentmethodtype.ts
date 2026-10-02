@@ -16,6 +16,7 @@ export const DisbursementPaymentMethodType = {
   AchCreditStandard: "ach-credit-standard",
   PushToApplePay: "push-to-apple-pay",
   PushToGooglePay: "push-to-google-pay",
+  InstantBankCredit: "instant-bank-credit",
 } as const;
 /**
  * Payment methods allowed for disbursing funds.

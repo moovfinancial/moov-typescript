@@ -5,6 +5,7 @@
 import { issuingTransactionsGet } from "../funcs/issuingTransactionsGet.js";
 import { issuingTransactionsGetAuthorization } from "../funcs/issuingTransactionsGetAuthorization.js";
 import { issuingTransactionsList } from "../funcs/issuingTransactionsList.js";
+import { issuingTransactionsListActivity } from "../funcs/issuingTransactionsListActivity.js";
 import { issuingTransactionsListAuthorizationEvents } from "../funcs/issuingTransactionsListAuthorizationEvents.js";
 import { issuingTransactionsListAuthorizations } from "../funcs/issuingTransactionsListAuthorizations.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -12,6 +13,25 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class IssuingTransactions extends ClientSDK {
+  /**
+   * List issued card activity associated with a Moov account.
+   *
+   * Activity includes authorizations and settlements in a single list.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
+   */
+  async listActivity(
+    request: operations.ListIssuedCardActivityRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ListIssuedCardActivityResponse> {
+    return unwrapAsync(issuingTransactionsListActivity(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * List issued card authorizations associated with a Moov account.
    *

@@ -8,7 +8,7 @@
 ```typescript
 const value: components.CreatedTransfer = {
   transferID: "<id>",
-  transferType: "ach-credit",
+  transferType: "ach-debit",
   createdOn: new Date("2025-06-14T12:45:31.209Z"),
   source: {
     card: {
@@ -278,6 +278,20 @@ const value: components.CreatedTransfer = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
+    amountDetails: {
+      tip: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+      tax: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+      surcharge: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
   },
   options: {
     cardPayment: {
@@ -297,9 +311,6 @@ const value: components.CreatedTransfer = {
     achCredit: {
       companyEntryDescription: "Gym dues",
       originatingCompanyName: "Whole Body Fit",
-    },
-    wire: {
-      beneficiaryReference: "INV-2026-001",
     },
   },
   processingDetails: {

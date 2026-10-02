@@ -39,6 +39,11 @@ import {
   BasicPaymentMethod$Outbound,
   BasicPaymentMethod$outboundSchema,
 } from "./basicpaymentmethod.js";
+import {
+  RiskVerificationOutcome,
+  RiskVerificationOutcome$inboundSchema,
+  RiskVerificationOutcome$outboundSchema,
+} from "./riskverificationoutcome.js";
 
 /**
  * Describes a bank account linked to a Moov account.
@@ -84,6 +89,13 @@ export type BankAccount = {
    * **NOTE: This field is only populated for Create BankAccount requests made with the `X-Wait-For` header.**
    */
   paymentMethods?: Array<BasicPaymentMethod> | undefined;
+  /**
+   * The outcome of a requested risk-verification attempt. `notAttempted` when
+   *
+   * @remarks
+   * `requestRiskVerification` was not set, or the calling account was not allowlisted.
+   */
+  riskVerificationOutcome?: RiskVerificationOutcome | undefined;
 };
 
 /** @internal */
@@ -105,6 +117,9 @@ export const BankAccount$inboundSchema: z.ZodType<
   statusReason: types.optional(BankAccountStatusReason$inboundSchema),
   exceptionDetails: types.optional(BankAccountException$inboundSchema),
   paymentMethods: types.optional(z.array(BasicPaymentMethod$inboundSchema)),
+  riskVerificationOutcome: types.optional(
+    RiskVerificationOutcome$inboundSchema,
+  ),
 });
 /** @internal */
 export type BankAccount$Outbound = {
@@ -121,6 +136,7 @@ export type BankAccount$Outbound = {
   statusReason?: string | undefined;
   exceptionDetails?: BankAccountException$Outbound | undefined;
   paymentMethods?: Array<BasicPaymentMethod$Outbound> | undefined;
+  riskVerificationOutcome?: string | undefined;
 };
 
 /** @internal */
@@ -142,6 +158,7 @@ export const BankAccount$outboundSchema: z.ZodType<
   statusReason: BankAccountStatusReason$outboundSchema.optional(),
   exceptionDetails: BankAccountException$outboundSchema.optional(),
   paymentMethods: z.array(BasicPaymentMethod$outboundSchema).optional(),
+  riskVerificationOutcome: RiskVerificationOutcome$outboundSchema.optional(),
 });
 
 export function bankAccountToJSON(bankAccount: BankAccount): string {

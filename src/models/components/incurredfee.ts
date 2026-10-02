@@ -62,6 +62,10 @@ export type IncurredFee = {
    */
   feeGroup?: string | undefined;
   /**
+   * The program assigned by the card network that determines the interchange rate for the fee. Present only for interchange or discount fees.
+   */
+  feeProgram?: string | undefined;
+  /**
    * Unique identifier for this residual payment calculation.
    */
   residualID?: string | undefined;
@@ -85,6 +89,7 @@ export const IncurredFee$inboundSchema: z.ZodType<
   amount: types.optional(AmountDecimal$inboundSchema),
   generatedBy: types.optional(GeneratedBy$inboundSchema),
   feeGroup: types.optional(types.string()),
+  feeProgram: types.optional(types.string()),
   residualID: types.optional(types.string()),
   feePaidBy: types.optional(FeePaidBy$inboundSchema),
 });
@@ -98,6 +103,7 @@ export type IncurredFee$Outbound = {
   amount?: AmountDecimal$Outbound | undefined;
   generatedBy?: GeneratedBy$Outbound | undefined;
   feeGroup?: string | undefined;
+  feeProgram?: string | undefined;
   residualID?: string | undefined;
   feePaidBy?: string | undefined;
 };
@@ -116,6 +122,7 @@ export const IncurredFee$outboundSchema: z.ZodType<
   amount: AmountDecimal$outboundSchema.optional(),
   generatedBy: GeneratedBy$outboundSchema.optional(),
   feeGroup: z.string().optional(),
+  feeProgram: z.string().optional(),
   residualID: z.string().optional(),
   feePaidBy: FeePaidBy$outboundSchema.optional(),
 });

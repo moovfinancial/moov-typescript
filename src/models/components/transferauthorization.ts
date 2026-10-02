@@ -13,6 +13,12 @@ import {
   AmountDecimal$Outbound,
   AmountDecimal$outboundSchema,
 } from "./amountdecimal.js";
+import {
+  TransferAmountDetails,
+  TransferAmountDetails$inboundSchema,
+  TransferAmountDetails$Outbound,
+  TransferAmountDetails$outboundSchema,
+} from "./transferamountdetails.js";
 
 /**
  * Authorization and capture amounts for an auth-capture `card-payment` transfer.
@@ -39,6 +45,15 @@ export type TransferAuthorization = {
    */
   capturableAmount: AmountDecimal;
   /**
+   * The tip, tax, and surcharge authorized by the card network.
+   *
+   * @remarks
+   *
+   * These describe the authorized amount and are fixed.
+   * They can differ from the transfer's `amountDetails`, which is the aggregate of all captures' `amountDetails`.
+   */
+  amountDetails?: TransferAmountDetails | undefined;
+  /**
    * Expiration time for the approved authorization, when available.
    */
   expiresOn?: Date | undefined;
@@ -55,6 +70,7 @@ export const TransferAuthorization$inboundSchema: z.ZodType<
   authorizedAmount: AmountDecimal$inboundSchema,
   capturedAmount: AmountDecimal$inboundSchema,
   capturableAmount: AmountDecimal$inboundSchema,
+  amountDetails: types.optional(TransferAmountDetails$inboundSchema),
   expiresOn: types.optional(types.date()),
 });
 /** @internal */
@@ -64,6 +80,7 @@ export type TransferAuthorization$Outbound = {
   authorizedAmount: AmountDecimal$Outbound;
   capturedAmount: AmountDecimal$Outbound;
   capturableAmount: AmountDecimal$Outbound;
+  amountDetails?: TransferAmountDetails$Outbound | undefined;
   expiresOn?: string | undefined;
 };
 
@@ -78,6 +95,7 @@ export const TransferAuthorization$outboundSchema: z.ZodType<
   authorizedAmount: AmountDecimal$outboundSchema,
   capturedAmount: AmountDecimal$outboundSchema,
   capturableAmount: AmountDecimal$outboundSchema,
+  amountDetails: TransferAmountDetails$outboundSchema.optional(),
   expiresOn: z.date().transform(v => v.toISOString()).optional(),
 });
 

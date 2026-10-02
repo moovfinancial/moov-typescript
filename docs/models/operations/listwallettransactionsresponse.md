@@ -11,7 +11,7 @@ let value: ListWalletTransactionsResponse = {
     {
       walletID: "<id>",
       transactionID: "<id>",
-      transactionType: "rtp-failure",
+      transactionType: "refund-failure",
       sourceType: "residual",
       sourceID: "<id>",
       status: "pending",

@@ -110,12 +110,6 @@ import {
   RtpCreditPaymentMethod$Outbound,
   RtpCreditPaymentMethod$outboundSchema,
 } from "./rtpcreditpaymentmethod.js";
-import {
-  WireCreditPaymentMethod,
-  WireCreditPaymentMethod$inboundSchema,
-  WireCreditPaymentMethod$Outbound,
-  WireCreditPaymentMethod$outboundSchema,
-} from "./wirecreditpaymentmethod.js";
 
 /**
  * A method of moving money
@@ -138,7 +132,6 @@ export type PaymentMethod =
   | GooglePayPaymentMethod
   | PushToGooglePayPaymentMethod
   | PullFromGooglePayPaymentMethod
-  | WireCreditPaymentMethod
   | discriminatedUnionTypes.Unknown<"paymentMethodType">;
 
 /** @internal */
@@ -164,7 +157,6 @@ export const PaymentMethod$inboundSchema: z.ZodType<
   ["google-pay"]: GooglePayPaymentMethod$inboundSchema,
   ["push-to-google-pay"]: PushToGooglePayPaymentMethod$inboundSchema,
   ["pull-from-google-pay"]: PullFromGooglePayPaymentMethod$inboundSchema,
-  ["wire-credit"]: WireCreditPaymentMethod$inboundSchema,
 });
 /** @internal */
 export type PaymentMethod$Outbound =
@@ -184,8 +176,7 @@ export type PaymentMethod$Outbound =
   | PullFromApplePayPaymentMethod$Outbound
   | GooglePayPaymentMethod$Outbound
   | PushToGooglePayPaymentMethod$Outbound
-  | PullFromGooglePayPaymentMethod$Outbound
-  | WireCreditPaymentMethod$Outbound;
+  | PullFromGooglePayPaymentMethod$Outbound;
 
 /** @internal */
 export const PaymentMethod$outboundSchema: z.ZodType<
@@ -210,7 +201,6 @@ export const PaymentMethod$outboundSchema: z.ZodType<
   GooglePayPaymentMethod$outboundSchema,
   PushToGooglePayPaymentMethod$outboundSchema,
   PullFromGooglePayPaymentMethod$outboundSchema,
-  WireCreditPaymentMethod$outboundSchema,
 ]);
 
 export function paymentMethodToJSON(paymentMethod: PaymentMethod): string {
