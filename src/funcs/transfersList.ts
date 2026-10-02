@@ -113,6 +113,7 @@ async function $do(
     "endDateTime": payload.endDateTime,
     "foreignID": payload.foreignID,
     "groupID": payload.groupID,
+    "invoiceIDs": payload.invoiceIDs,
     "paymentLinkCode": payload.paymentLinkCode,
     "refunded": payload.refunded,
     "scheduleID": payload.scheduleID,
