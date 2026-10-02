@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 14ab5d0c-dee4-4376-a445-53afe1ba3300
 management:
-  docChecksum: 7e5cd7c7815e6c4c88ee0c8e1f0f6b67
+  docChecksum: 15ce596bd5ef85d8ef9ae9a28857917d
   docVersion: v2026.01.00
-  speakeasyVersion: 1.798.0
-  generationVersion: 2.938.0
-  releaseVersion: 26.3.11
-  configChecksum: 28ad4039e233116f2dd46fdfbc0b2759
+  speakeasyVersion: 1.800.1
+  generationVersion: 2.943.0
+  releaseVersion: 26.3.12
+  configChecksum: 3a962a8d0de8bc2d830f311fe63893c8
   repoURL: https://github.com/moovfinancial/moov-typescript.git
   installationURL: https://github.com/moovfinancial/moov-typescript
   published: true
 persistentEdits:
-  generation_id: 69b3a346-eee2-40bb-ae6b-fe6e4bf99aae
-  pristine_commit_hash: 6fbdc164033e38f16b7dfd03102fd4cf7ff62a06
-  pristine_tree_hash: 3775510547a0ba7a3e6e9abd4f0eb71f18063a3b
+  generation_id: 29e685bb-c2a1-4c73-ad53-effb8b574d73
+  pristine_commit_hash: b50fafbfc23b0db575d324ed6b84a7fb50e1bd72
+  pristine_tree_hash: ecde46c7fb0f0ba232069e4b3efded8883443660
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -38,7 +38,7 @@ features:
     responseFormat: 0.3.0
     retries: 2.83.2
     sdkHooks: 0.4.0
-    unions: 2.86.5
+    unions: 2.86.7
     uploadStreams: 0.1.1
 trackedFiles:
   .gitattributes:
@@ -2287,8 +2287,8 @@ trackedFiles:
     pristine_git_object: e431833bad1712f2a7914439184ae3bbf2549a12
   docs/models/components/webhookdata.md:
     id: cdd32b2e1274
-    last_write_checksum: sha1:29c95e7947dec03a014fa4d7c6447633cda7cec2
-    pristine_git_object: 6433fe8d5529bdfb05d1691ba61cca620bfd3178
+    last_write_checksum: sha1:7e29a68b616b2d5d390838b215b73d2879e2cb15
+    pristine_git_object: 8b17aedd79027ac23525a9790412703693ebcf60
   docs/models/components/webhookdataaccountcreated.md:
     id: 3ba84feecfc5
     last_write_checksum: sha1:41e37b9c8e3c6ebe94eff5b2b6dfdec1f732feb2
@@ -2427,12 +2427,12 @@ trackedFiles:
     pristine_git_object: 0d68e4dbc9aaba9d66ed9275466ea63ecd720fa5
   docs/models/components/webhookdatatransferstatus.md:
     id: 65526610311a
-    last_write_checksum: sha1:76eb6dd4455640a034b7abc0bc35b62892fd80ab
-    pristine_git_object: 7436cdb7d436f9789a2fbe146c2944db04760e1a
+    last_write_checksum: sha1:11f2d5efb4334ac8e566b913a65e1982a0356044
+    pristine_git_object: 69cb3688762536cc83ff4b76b6a9fbff1941ca74
   docs/models/components/webhookdatatransferupdated.md:
     id: f361875ddb44
-    last_write_checksum: sha1:d9e5bf44d8f140af7bddab0adc2679ded2d71532
-    pristine_git_object: b8747509e9afd69998b8a0d0589d4da3481cefc1
+    last_write_checksum: sha1:3812a0543dae79504483fe9b6fa86d92db5089c6
+    pristine_git_object: c0c73de18514461aefc0e1bf21aaf5ed3f25f88a
   docs/models/components/webhookdatawalletcreated.md:
     id: 6d997ff00695
     last_write_checksum: sha1:741edc6a891326d30e76ab67113c9ef264c2e9e2
@@ -3755,8 +3755,8 @@ trackedFiles:
     pristine_git_object: 3829884fc3d6bd9f892bfe173ad271f1c8ea415c
   docs/models/operations/listtransfersrequest.md:
     id: 4c25992bb06a
-    last_write_checksum: sha1:c2720d87c3ac1380a5a10f3b75d05ca6b8ae3092
-    pristine_git_object: 219905e038ebf00530fa9034b23da975140c54c9
+    last_write_checksum: sha1:9c7fc04a86209e18d66cbe0bd1d57c8182d44039
+    pristine_git_object: 082719f20094fed0a7eabd658128d202c46bea2f
   docs/models/operations/listtransfersresponse.md:
     id: ea85d18650ae
     last_write_checksum: sha1:ac5de272754793fdff37db680e41a3fa4f0ac79e
@@ -4215,12 +4215,12 @@ trackedFiles:
     pristine_git_object: 77daecd56bbf85997f566635dde43f16bb41c3c5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:7a74c3b4cb21db96e84ee149159a4238b46840c1
-    pristine_git_object: 5d9e6cfcf78b7072c458249e36559aef681c83c8
+    last_write_checksum: sha1:09f549236da0520e1c5508ad3616d0645c353c73
+    pristine_git_object: 4fa14492f20e80e21df18a18c454391c45a091f1
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:5620a5f22713cde57692aaa4601d9521016b3ea0
-    pristine_git_object: c8b6273ec0dc123c57489bddc3623a1e2a2a61b9
+    last_write_checksum: sha1:c175843b582ca8cb95a9c2afadd24bb298bf42f6
+    pristine_git_object: 9dd0b25dea74f709ff7384025bb1c8ada975bc7f
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:f1a89ae47767866c800c98a98c1ab3ac06a9baf7
@@ -4835,8 +4835,8 @@ trackedFiles:
     pristine_git_object: e7353bb18103991f01a43559d4b3ed8b6a88910c
   src/funcs/transfersList.ts:
     id: 639282c52e90
-    last_write_checksum: sha1:b51790da3841b4d42b7b4459b04bec0dea0d0914
-    pristine_git_object: 4b64e316c4d437b20e2efa335b703072345297fd
+    last_write_checksum: sha1:04eda5668c050f3d9b579acdcd6283c6843c8c0f
+    pristine_git_object: 09817ef9d1adc14ef7ba245ec452190bb24f4a4c
   src/funcs/transfersListCancellations.ts:
     id: 61f88c736d63
     last_write_checksum: sha1:9d0e5cfd9161a626a724a95f9e97b9481f4fc332
@@ -4939,8 +4939,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:c350aca90e48933c2641fb076c6b007429625e06
-    pristine_git_object: 043883347745d6ad3878e2645feafc25687c1adc
+    last_write_checksum: sha1:e215bc81e13f24bd4c6f33082bcac99a7b657cdf
+    pristine_git_object: 0fe08ac68e903a8ecf63381b90d37b36b978406d
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -5011,8 +5011,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:f0e8298359423e44370a285417c7556806575cd1
-    pristine_git_object: 9062db6ca58c7d8c3062a80924290e0491a44eaf
+    last_write_checksum: sha1:9fe71c295ca2f47fd512cbd42972337f22dc8481
+    pristine_git_object: bfaad7b8f5197340caa8d9ea3fa283d1a2c8785c
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:826f59ab9ccc2acdb7737c5bfef6b5b0cb3b2a06
@@ -5027,8 +5027,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:aebabebf4e251712f6978e4ac3bfd02db921ab0c
-    pristine_git_object: 30431b129267bc8d639a115bfa8c68617429f768
+    last_write_checksum: sha1:c00475d669e66c44d8c2d6ae20dd0409f8f4ddbd
+    pristine_git_object: 0312960f449fcdc2c0398a66af0748916ca0a1bb
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7931,8 +7931,8 @@ trackedFiles:
     pristine_git_object: c11a2d03cb185dabb1c848edb3baf4384978cd15
   src/models/components/webhookdatatransferstatus.ts:
     id: a56464510c12
-    last_write_checksum: sha1:4c668275dd018a3bd6a88a6fe38e437d6fd7802b
-    pristine_git_object: 02766380cff49572d7012c88edc09580222e379b
+    last_write_checksum: sha1:2dd9fae5ffc1e095c974be438daa416b2e350c56
+    pristine_git_object: 40a374acd18f2546f81a18399236f410ac2cadc9
   src/models/components/webhookdatatransferupdated.ts:
     id: f0ac0db0e95c
     last_write_checksum: sha1:424549cac824d105b1bd1c79bf9abb8d4d43c1b7
@@ -8747,8 +8747,8 @@ trackedFiles:
     pristine_git_object: 0608955103735f2aa9aae51c0b2a331ee719f7ac
   src/models/operations/listtransfers.ts:
     id: e6ebe9991e1f
-    last_write_checksum: sha1:474b50f0cc27422dc7e9e131e4b2350a1508dd5c
-    pristine_git_object: ff5b8de1ffc6663b9c3779f7c5aed5746675c5b6
+    last_write_checksum: sha1:bad058cb0e6edf4db33cc3ef5f60a6e13a4ebe89
+    pristine_git_object: 94654c544c576424b58bc2d595564e68e455df79
   src/models/operations/listwallets.ts:
     id: 90867965d446
     last_write_checksum: sha1:ab997f72a4b7d9c678222cbcaacc06c754df2cdd
@@ -11874,7 +11874,7 @@ examples:
           application/json: [{"cancellationID": "89ca7f54-13ba-4714-b9af-17163eae2057", "status": "completed", "createdOn": "2025-01-19T03:02:43.255309588Z"}]
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `moov.issuingTransactions.listAuthorizations()`:  `response.[].declineReason` **Added**\n* `moov.issuingTransactions.getAuthorization()`:  `response.declineReason` **Added**\n* `moov.issuingTransactions.listAuthorizationEvents()`:  `response.[].declineReason` **Added**\n* `moov.authentication.createAccessToken()`: \n  *  `request.clientType` **Added**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `moov.transfers.list()`: \n  *  `request.invoiceIDs` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
