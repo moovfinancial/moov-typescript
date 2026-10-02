@@ -322,7 +322,7 @@ const value: components.WebhookDataTransferCreated = {
 const value: components.WebhookDataTransferUpdated = {
   accountID: "<id>",
   transferID: "<id>",
-  status: "source.originated",
+  status: "source.confirmed",
   source: {
     accountID: "<id>",
     paymentMethodID: "<id>",
