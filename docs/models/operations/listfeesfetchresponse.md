@@ -19,6 +19,8 @@ let value: ListFeesFetchResponse = {
         currency: "USD",
         valueDecimal: "12.987654321",
       },
+      feeProgram:
+        "Visa Signature and Visa Infinite (Spend not-qualified) Product 1",
     },
   ],
 };

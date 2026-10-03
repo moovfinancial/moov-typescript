@@ -14,6 +14,7 @@ import {
 } from "./cardtransactionfailurecode.js";
 
 export type CardPaymentRefundProcessingDetails = {
+  networkTransactionID?: string | undefined;
   failureCode?: CardTransactionFailureCode | undefined;
 };
 
@@ -23,10 +24,12 @@ export const CardPaymentRefundProcessingDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  networkTransactionID: types.optional(types.string()),
   failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
 });
 /** @internal */
 export type CardPaymentRefundProcessingDetails$Outbound = {
+  networkTransactionID?: string | undefined;
   failureCode?: string | undefined;
 };
 
@@ -36,6 +39,7 @@ export const CardPaymentRefundProcessingDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CardPaymentRefundProcessingDetails
 > = z.object({
+  networkTransactionID: z.string().optional(),
   failureCode: CardTransactionFailureCode$outboundSchema.optional(),
 });
 

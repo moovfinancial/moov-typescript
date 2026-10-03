@@ -278,6 +278,20 @@ const value: components.CreatedTransfer = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
+    amountDetails: {
+      tip: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+      tax: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+      surcharge: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
   },
   options: {
     cardPayment: {

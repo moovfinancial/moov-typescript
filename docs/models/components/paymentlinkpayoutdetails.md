@@ -9,7 +9,7 @@ import { PaymentLinkPayoutDetails } from "@moovio/sdk/models/components";
 
 let value: PaymentLinkPayoutDetails = {
   allowedMethods: [
-    "ach-credit-standard",
+    "push-to-apple-pay",
   ],
   recipient: {
     email: "jordan.lee@classbooker.dev",

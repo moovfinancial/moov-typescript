@@ -1,0 +1,30 @@
+# TransferEvent
+
+An event in a Transfer's ordered timeline. Amounts are positive display context and are not additive across events.
+
+## Example Usage
+
+```typescript
+import { TransferEvent } from "@moovio/sdk/models/components";
+
+let value: TransferEvent = {
+  eventID: "<id>",
+  eventType: "wallet-credit",
+  amount: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  details: {},
+  occurredOn: new Date("2025-05-23T19:22:44.927Z"),
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                  | Type                                                                                                                                                                                                   | Required                                                                                                                                                                                               | Description                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `eventID`                                                                                                                                                                                              | *string*                                                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                     | A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer). |
+| `eventType`                                                                                                                                                                                            | [components.TransferEventType](../../models/components/transfereventtype.md)                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                     | The event family.                                                                                                                                                                                      |
+| `amount`                                                                                                                                                                                               | [components.AmountDecimal](../../models/components/amountdecimal.md)                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                     | N/A                                                                                                                                                                                                    |
+| `details`                                                                                                                                                                                              | [components.TransferEventDetails](../../models/components/transfereventdetails.md)                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                     | Details for a Transfer timeline event. A valid event contains exactly one detail object matching its event type.                                                                                       |
+| `occurredOn`                                                                                                                                                                                           | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                          | :heavy_check_mark:                                                                                                                                                                                     | N/A                                                                                                                                                                                                    |

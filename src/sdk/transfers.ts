@@ -18,6 +18,7 @@ import { transfersList } from "../funcs/transfersList.js";
 import { transfersListCancellations } from "../funcs/transfersListCancellations.js";
 import { transfersListCaptures } from "../funcs/transfersListCaptures.js";
 import { transfersListRefunds } from "../funcs/transfersListRefunds.js";
+import { transfersListTransferEvents } from "../funcs/transfersListTransferEvents.js";
 import { transfersUpdate } from "../funcs/transfersUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
@@ -249,6 +250,25 @@ export class Transfers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetCaptureResponse> {
     return unwrapAsync(transfersGetCapture(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Retrieve the complete ordered event timeline for a Transfer.
+   *
+   * Events are returned oldest to newest by occurrence time, with deterministic ordering when multiple events have the same occurrence time. An existing Transfer with no stored events returns an empty list.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+   */
+  async listTransferEvents(
+    request: operations.ListTransferEventsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ListTransferEventsResponse> {
+    return unwrapAsync(transfersListTransferEvents(
       this,
       request,
       options,

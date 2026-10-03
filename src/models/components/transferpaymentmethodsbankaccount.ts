@@ -22,6 +22,11 @@ import {
   BankAccountType$inboundSchema,
   BankAccountType$outboundSchema,
 } from "./bankaccounttype.js";
+import {
+  RiskVerificationOutcome,
+  RiskVerificationOutcome$inboundSchema,
+  RiskVerificationOutcome$outboundSchema,
+} from "./riskverificationoutcome.js";
 
 /**
  * A bank account as contained within a payment method.
@@ -50,6 +55,13 @@ export type TransferPaymentMethodsBankAccount = {
   routingNumber: string;
   lastFourAccountNumber: string;
   updatedOn: Date;
+  /**
+   * The outcome of a requested risk-verification attempt. `notAttempted` when
+   *
+   * @remarks
+   * `requestRiskVerification` was not set, or the calling account was not allowlisted.
+   */
+  riskVerificationOutcome?: RiskVerificationOutcome | undefined;
 };
 
 /** @internal */
@@ -68,6 +80,9 @@ export const TransferPaymentMethodsBankAccount$inboundSchema: z.ZodType<
   routingNumber: types.string(),
   lastFourAccountNumber: types.string(),
   updatedOn: types.date(),
+  riskVerificationOutcome: types.optional(
+    RiskVerificationOutcome$inboundSchema,
+  ),
 });
 /** @internal */
 export type TransferPaymentMethodsBankAccount$Outbound = {
@@ -81,6 +96,7 @@ export type TransferPaymentMethodsBankAccount$Outbound = {
   routingNumber: string;
   lastFourAccountNumber: string;
   updatedOn: string;
+  riskVerificationOutcome?: string | undefined;
 };
 
 /** @internal */
@@ -99,6 +115,7 @@ export const TransferPaymentMethodsBankAccount$outboundSchema: z.ZodType<
   routingNumber: z.string(),
   lastFourAccountNumber: z.string(),
   updatedOn: z.date().transform(v => v.toISOString()),
+  riskVerificationOutcome: RiskVerificationOutcome$outboundSchema.optional(),
 });
 
 export function transferPaymentMethodsBankAccountToJSON(

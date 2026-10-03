@@ -148,6 +148,12 @@ export type CreatedTransfer = {
    * When line items are provided, their total plus tax must equal the transfer amount.
    */
   lineItems?: TransferLineItems | undefined;
+  /**
+   * The tip, tax, and surcharge portion of the transfer amount.
+   *
+   * @remarks
+   * For an auth-capture `card-payment` transfer, this is the aggregate of all captures' `amountDetails`.
+   */
   amountDetails?: TransferAmountDetails | undefined;
   /**
    * Authorization amounts.

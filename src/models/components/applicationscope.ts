@@ -26,6 +26,7 @@ export const ApplicationScope = {
   DocumentsRead: "documents.read",
   DocumentsWrite: "documents.write",
   FedRead: "fed.read",
+  FilesDownload: "files.download",
   FilesRead: "files.read",
   FilesWrite: "files.write",
   IssuedCardsRead: "issued-cards.read",

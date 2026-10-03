@@ -9,9 +9,9 @@ let value: IssuedCardAuthorization = {
   authorizationID: "<id>",
   issuedCardID: "<id>",
   fundingWalletID: "<id>",
-  network: "visa",
+  network: "shazam",
   authorizedAmount: "-14.89",
-  status: "declined",
+  status: "canceled",
   merchantData: {
     networkID: "<id>",
     name: "Whole Body Fitness",
@@ -21,7 +21,7 @@ let value: IssuedCardAuthorization = {
     state: "CA",
     mcc: "7298",
   },
-  createdOn: new Date("2024-09-16T17:47:59.058Z"),
+  createdOn: new Date("2024-03-29T08:26:55.869Z"),
 };
 ```
 
