@@ -23,7 +23,7 @@ you'll need to specify the \`/accounts/{accountID}/issued-cards.read-private\` s
     const [result, apiCall] = await cardIssuingGetFull(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

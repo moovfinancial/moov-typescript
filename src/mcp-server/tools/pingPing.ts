@@ -14,7 +14,7 @@ you'll need to specify the \`/ping.read\` scope.`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await pingPing(
       client,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

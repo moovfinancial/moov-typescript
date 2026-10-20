@@ -201,6 +201,7 @@ export class Transfers extends ClientSDK {
 
   /**
    * Initiate a refund for a card transfer.
+   * The `accountID` must identify the partner account for the transfer.
    *
    * **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**
    * See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) guide for more information.

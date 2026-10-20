@@ -17,6 +17,7 @@ export * from "./createcancellation.js";
 export * from "./createdepositaccount.js";
 export * from "./createfeeplanagreements.js";
 export * from "./createinvoice.js";
+export * from "./createinvoicenotification.js";
 export * from "./createinvoicepayment.js";
 export * from "./createonboardinginvite.js";
 export * from "./createpaymentlink.js";

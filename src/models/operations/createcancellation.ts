@@ -12,6 +12,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateCancellationRequest = {
   /**
+   * Prevents duplicate cancellations from being created.
+   *
+   * @remarks
+   * In v2026.10 and later, this header is required, and reusing a key returns a `409` response with the original cancellation.
+   */
+  xIdempotencyKey?: string | undefined;
+  /**
    * The partner's Moov account ID.
    */
   accountID: string;
@@ -32,11 +39,17 @@ export const CreateCancellationRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  "x-idempotency-key": types.optional(types.string()),
   accountID: types.string(),
   transferID: types.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "x-idempotency-key": "xIdempotencyKey",
+  });
 });
 /** @internal */
 export type CreateCancellationRequest$Outbound = {
+  "x-idempotency-key"?: string | undefined;
   accountID: string;
   transferID: string;
 };
@@ -47,8 +60,13 @@ export const CreateCancellationRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateCancellationRequest
 > = z.object({
+  xIdempotencyKey: z.string().optional(),
   accountID: z.string(),
   transferID: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    xIdempotencyKey: "x-idempotency-key",
+  });
 });
 
 export function createCancellationRequestToJSON(
