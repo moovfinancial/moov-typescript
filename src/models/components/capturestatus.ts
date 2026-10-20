@@ -7,6 +7,7 @@ import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
 export const CaptureStatus = {
+  Created: "created",
   Pending: "pending",
   Completed: "completed",
   Failed: "failed",

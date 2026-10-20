@@ -24,7 +24,7 @@ you'll need to specify the \`/accounts/{accountID}/representatives.write\` scope
     const [result, apiCall] = await representativesCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

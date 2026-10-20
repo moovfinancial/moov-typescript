@@ -6,7 +6,7 @@
 import { IssuingMerchantData } from "@moovio/sdk/models/components";
 
 let value: IssuingMerchantData = {
-  networkID: "<id>",
+  networkID: "111111111111111",
   name: "Whole Body Fitness",
   city: "San Francisco",
   country: "US",
@@ -20,7 +20,7 @@ let value: IssuingMerchantData = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `networkID`                                                            | *string*                                                               | :heavy_check_mark:                                                     | External identifier used to identify the merchant with the card brand. |                                                                        |
+| `networkID`                                                            | *string*                                                               | :heavy_check_mark:                                                     | External identifier used to identify the merchant with the card brand. | 111111111111111                                                        |
 | `name`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | Name of the merchant.                                                  | Whole Body Fitness                                                     |
 | `city`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | The merchant's location.                                               | San Francisco                                                          |
 | `country`                                                              | *string*                                                               | :heavy_check_mark:                                                     | Two-letter country code.                                               | US                                                                     |

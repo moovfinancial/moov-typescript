@@ -13,5 +13,5 @@ let value: CaptureStatus = "canceled";
 ## Values
 
 ```typescript
-"pending" | "completed" | "failed" | "canceled" | Unrecognized<string>
+"created" | "pending" | "completed" | "failed" | "canceled" | Unrecognized<string>
 ```

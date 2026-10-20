@@ -10,20 +10,24 @@ import { MoovError } from "./mooverror.js";
 export type CreateInvoiceErrorData = {
   customerAccountID?: string | undefined;
   customerEmail?: string | undefined;
+  invoiceNumber?: string | undefined;
   description?: string | undefined;
   lineItems?: components.CreateInvoiceLineItemsValidationError | undefined;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
+  payment?: components.InvoicePaymentOptionsError | undefined;
   amountDetails?: components.AmountDetailsValidationError | undefined;
 };
 
 export class CreateInvoiceError extends MoovError {
   customerAccountID?: string | undefined;
   customerEmail?: string | undefined;
+  invoiceNumber?: string | undefined;
   description?: string | undefined;
   lineItems?: components.CreateInvoiceLineItemsValidationError | undefined;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
+  payment?: components.InvoicePaymentOptionsError | undefined;
   amountDetails?: components.AmountDetailsValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
@@ -42,10 +46,12 @@ export class CreateInvoiceError extends MoovError {
       this.customerAccountID = err.customerAccountID;
     }
     if (err.customerEmail != null) this.customerEmail = err.customerEmail;
+    if (err.invoiceNumber != null) this.invoiceNumber = err.invoiceNumber;
     if (err.description != null) this.description = err.description;
     if (err.lineItems != null) this.lineItems = err.lineItems;
     if (err.invoiceDate != null) this.invoiceDate = err.invoiceDate;
     if (err.dueDate != null) this.dueDate = err.dueDate;
+    if (err.payment != null) this.payment = err.payment;
     if (err.amountDetails != null) this.amountDetails = err.amountDetails;
 
     this.name = "CreateInvoiceError";
@@ -60,12 +66,14 @@ export const CreateInvoiceError$inboundSchema: z.ZodType<
 > = z.object({
   customerAccountID: types.optional(types.string()),
   customerEmail: types.optional(types.string()),
+  invoiceNumber: types.optional(types.string()),
   description: types.optional(types.string()),
   lineItems: types.optional(
     components.CreateInvoiceLineItemsValidationError$inboundSchema,
   ),
   invoiceDate: types.optional(types.string()),
   dueDate: types.optional(types.string()),
+  payment: types.optional(components.InvoicePaymentOptionsError$inboundSchema),
   amountDetails: types.optional(
     components.AmountDetailsValidationError$inboundSchema,
   ),
@@ -85,12 +93,14 @@ export const CreateInvoiceError$inboundSchema: z.ZodType<
 export type CreateInvoiceError$Outbound = {
   customerAccountID?: string | undefined;
   customerEmail?: string | undefined;
+  invoiceNumber?: string | undefined;
   description?: string | undefined;
   lineItems?:
     | components.CreateInvoiceLineItemsValidationError$Outbound
     | undefined;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
+  payment?: components.InvoicePaymentOptionsError$Outbound | undefined;
   amountDetails?: components.AmountDetailsValidationError$Outbound | undefined;
 };
 
@@ -104,11 +114,13 @@ export const CreateInvoiceError$outboundSchema: z.ZodType<
   .pipe(z.object({
     customerAccountID: z.string().optional(),
     customerEmail: z.string().optional(),
+    invoiceNumber: z.string().optional(),
     description: z.string().optional(),
     lineItems: components.CreateInvoiceLineItemsValidationError$outboundSchema
       .optional(),
     invoiceDate: z.string().optional(),
     dueDate: z.string().optional(),
+    payment: components.InvoicePaymentOptionsError$outboundSchema.optional(),
     amountDetails: components.AmountDetailsValidationError$outboundSchema
       .optional(),
   }));

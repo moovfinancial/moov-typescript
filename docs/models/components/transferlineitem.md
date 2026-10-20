@@ -17,7 +17,7 @@ let value: TransferLineItem = {
   options: [
     {
       name: "<value>",
-      quantity: 129124,
+      quantity: 498160,
       priceModifier: {
         currency: "USD",
         valueDecimal: "12.987654321",

@@ -29,7 +29,7 @@ export const tool$bankAccountsCreateAttestation: ToolDefinition<typeof args> = {
     const [result, apiCall] = await bankAccountsCreateAttestation(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

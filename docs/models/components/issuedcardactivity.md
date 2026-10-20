@@ -19,7 +19,7 @@ let value: IssuedCardActivity = {
   clearedAmount: "-14.89",
   createdOn: new Date("2024-08-31T00:43:38.636Z"),
   merchantData: {
-    networkID: "<id>",
+    networkID: "111111111111111",
     name: "Whole Body Fitness",
     city: "San Francisco",
     country: "US",

@@ -7,11 +7,11 @@ import { TransferProcessingDetails } from "@moovio/sdk/models/components";
 
 let value: TransferProcessingDetails = {
   achDebit: {
-    status: "",
+    status: "returned",
     traceNumber: "124782618117",
   },
   achCredit: {
-    status: "corrected",
+    status: "canceled",
     traceNumber: "124782618117",
   },
 };

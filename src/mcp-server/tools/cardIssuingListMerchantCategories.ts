@@ -17,7 +17,7 @@ you'll need to specify the \`/issued-cards.read\` scope.`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await cardIssuingListMerchantCategories(
       client,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

@@ -3,13 +3,13 @@
 
 ## Supported Types
 
-### `components.CreatedTransfer`
+### `components.CreateTransferResponse`
 
 ```typescript
-const value: components.CreatedTransfer = {
+const value: components.CreateTransferResponse = {
   transferID: "<id>",
-  transferType: "ach-debit",
-  createdOn: new Date("2025-06-14T12:45:31.209Z"),
+  transferType: "ach-credit",
+  createdOn: new Date("2025-10-08T11:29:08.018Z"),
   source: {
     card: {
       cardID: "01234567-89ab-cdef-0123-456789abcdef",
@@ -218,11 +218,11 @@ const value: components.CreatedTransfer = {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
-        quantity: 459250,
+        quantity: 734465,
         options: [
           {
             name: "<value>",
-            quantity: 129124,
+            quantity: 498160,
             priceModifier: {
               currency: "USD",
               valueDecimal: "12.987654321",
@@ -315,11 +315,11 @@ const value: components.CreatedTransfer = {
   },
   processingDetails: {
     achDebit: {
-      status: "",
+      status: "returned",
       traceNumber: "124782618117",
     },
     achCredit: {
-      status: "corrected",
+      status: "canceled",
       traceNumber: "124782618117",
     },
   },

@@ -3,6 +3,7 @@
  */
 
 import { invoicesCreateInvoice } from "../funcs/invoicesCreateInvoice.js";
+import { invoicesCreateInvoiceNotification } from "../funcs/invoicesCreateInvoiceNotification.js";
 import { invoicesCreateInvoicePayment } from "../funcs/invoicesCreateInvoicePayment.js";
 import { invoicesDelete } from "../funcs/invoicesDelete.js";
 import { invoicesGetInvoice } from "../funcs/invoicesGetInvoice.js";
@@ -99,6 +100,31 @@ export class Invoices extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.DeleteInvoiceResponse | undefined> {
     return unwrapAsync(invoicesDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create a notification for an invoice, which resends the invoice email to the customer. The required
+   * `channels` body lists the channels to notify on; today only `email` is supported. Returns a 409
+   * if the invoice is not in `unpaid` or `overdue` status, or if the merchant or customer account has no
+   * email set.
+   *
+   * The request is all-or-nothing: if any requested channel is rate limited, nothing is sent. Each channel
+   * can be sent at most once every 24 hours, and not within 24 hours of the invoice being sent. A 429
+   * response lists the limited channels with `availableOn` and lists the `availableChannels` that can be
+   * sent in a new request.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+   */
+  async createInvoiceNotification(
+    request: operations.CreateInvoiceNotificationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateInvoiceNotificationResponse | undefined> {
+    return unwrapAsync(invoicesCreateInvoiceNotification(
       this,
       request,
       options,

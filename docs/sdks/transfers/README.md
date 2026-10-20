@@ -80,6 +80,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 * [initiateRefund](#initiaterefund) - Initiate a refund for a card transfer.
+The `accountID` must identify the partner account for the transfer.
 
 **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
 See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) guide for more information. 
@@ -248,6 +249,11 @@ async function run() {
       destination: {
         paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
       },
+      options: {
+        cardPayment: {
+          dynamicDescriptor: "WhlBdy *Yoga 11-12",
+        },
+      },
       amount: {
         currency: "USD",
         valueDecimal: "329.45",
@@ -303,6 +309,11 @@ async function run() {
       destination: {
         paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
       },
+      options: {
+        cardPayment: {
+          dynamicDescriptor: "WhlBdy *Yoga 11-12",
+        },
+      },
       amount: {
         currency: "USD",
         valueDecimal: "329.45",
@@ -356,6 +367,11 @@ async function run() {
       },
       destination: {
         paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
+      },
+      options: {
+        cardPayment: {
+          dynamicDescriptor: "WhlBdy *Yoga 11-12",
+        },
       },
       amount: {
         currency: "USD",
@@ -411,6 +427,11 @@ async function run() {
       },
       destination: {
         paymentMethodID: "3f9969cf-a1f3-4d83-8ddc-229a506651cf",
+      },
+      options: {
+        cardPayment: {
+          dynamicDescriptor: "WhlBdy *Yoga 11-12",
+        },
       },
       amount: {
         currency: "USD",
@@ -923,6 +944,7 @@ const moov = new Moov({
 
 async function run() {
   const result = await moov.transfers.createCancellation({
+    xIdempotencyKey: "<value>",
     accountID: "10ae862c-6658-4f87-967d-46e995737204",
     transferID: "36c80a6c-ceb2-4e5d-a437-8a39afdfdc58",
     createCancellation: {
@@ -958,6 +980,7 @@ const moov = new MoovCore({
 
 async function run() {
   const res = await transfersCreateCancellation(moov, {
+    xIdempotencyKey: "<value>",
     accountID: "10ae862c-6658-4f87-967d-46e995737204",
     transferID: "36c80a6c-ceb2-4e5d-a437-8a39afdfdc58",
     createCancellation: {
@@ -995,7 +1018,9 @@ run();
 
 | Error Type          | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
-| errors.GenericError | 400, 409, 422       | application/json    |
+| errors.GenericError | 409                 | application/json    |
+| errors.Cancellation | 409                 | application/json    |
+| errors.GenericError | 400, 422            | application/json    |
 | errors.APIError     | 4XX, 5XX            | \*/\*               |
 
 ## listCancellations
@@ -1553,6 +1578,7 @@ run();
 ## initiateRefund
 
 Initiate a refund for a card transfer.
+The `accountID` must identify the partner account for the transfer.
 
 **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
 See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) guide for more information. 

@@ -42,6 +42,7 @@ export function transfersCreateCancellation(
 ): APIPromise<
   Result<
     operations.CreateCancellationResponse,
+    | errors.CreateCancellationResponseBody
     | errors.GenericError
     | MoovError
     | ResponseValidationError
@@ -68,6 +69,7 @@ async function $do(
   [
     Result<
       operations.CreateCancellationResponse,
+      | errors.CreateCancellationResponseBody
       | errors.GenericError
       | MoovError
       | ResponseValidationError
@@ -111,6 +113,11 @@ async function $do(
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
+    "x-idempotency-key": encodeSimple(
+      "x-idempotency-key",
+      payload["x-idempotency-key"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);
@@ -164,6 +171,7 @@ async function $do(
 
   const [result] = await M.match<
     operations.CreateCancellationResponse,
+    | errors.CreateCancellationResponseBody
     | errors.GenericError
     | MoovError
     | ResponseValidationError
@@ -178,9 +186,10 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr([400, 409, 422], errors.GenericError$inboundSchema, {
+    M.jsonErr(409, errors.CreateCancellationResponseBody$inboundSchema, {
       hdrs: true,
     }),
+    M.jsonErr([400, 422], errors.GenericError$inboundSchema, { hdrs: true }),
     M.fail([401, 403, 404, 429]),
     M.fail([500, 504]),
     M.fail("4XX"),

@@ -21,7 +21,7 @@ Allows clients to notify the authorization server that a previously obtained ref
       const [result, apiCall] = await authenticationRevokeAccessToken(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
       if (!result.ok) {

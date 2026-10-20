@@ -32,6 +32,15 @@ let value: CreateInvoiceRequest = {
         },
       ],
     },
+    payment: {
+      cardDetails: {
+        dynamicDescriptor: "WhlBdy *Yoga 11-12",
+      },
+      achDetails: {
+        companyEntryDescription: "Gym dues",
+        originatingCompanyName: "Whole Body Fit",
+      },
+    },
     amountDetails: {
       tax: {
         currency: "USD",

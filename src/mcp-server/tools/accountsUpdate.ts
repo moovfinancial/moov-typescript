@@ -29,7 +29,7 @@ to specify the \`/accounts/{accountID}/profile.write\` scope.`,
     const [result, apiCall] = await accountsUpdate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {
