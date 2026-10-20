@@ -25,7 +25,7 @@ you'll need to specify the \`/accounts/{accountID}/apple-pay.write\` scope.`,
       const [result, apiCall] = await applePayRegisterMerchantDomains(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
       if (!result.ok) {
