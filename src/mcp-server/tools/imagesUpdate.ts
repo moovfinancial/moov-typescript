@@ -21,7 +21,7 @@ the metadata form section to keep existing metadata. Duplicate images, and reque
     const [result, apiCall] = await imagesUpdate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {
