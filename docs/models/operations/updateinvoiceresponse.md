@@ -93,6 +93,15 @@ let value: UpdateInvoiceResponse = {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
+    payment: {
+      cardDetails: {
+        dynamicDescriptor: "WhlBdy *Yoga 11-12",
+      },
+      achDetails: {
+        companyEntryDescription: "Gym dues",
+        originatingCompanyName: "Whole Body Fit",
+      },
+    },
     invoicePayments: [
       {
         invoicePaymentID: "<id>",

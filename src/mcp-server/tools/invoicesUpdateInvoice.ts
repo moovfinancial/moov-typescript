@@ -21,7 +21,7 @@ you'll need to specify the \`/accounts/{accountID}/invoices.write\` scope.`,
     const [result, apiCall] = await invoicesUpdateInvoice(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

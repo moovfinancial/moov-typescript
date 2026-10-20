@@ -25,6 +25,12 @@ import {
   InvoicePayment$outboundSchema,
 } from "./invoicepayment.js";
 import {
+  InvoicePaymentOptions,
+  InvoicePaymentOptions$inboundSchema,
+  InvoicePaymentOptions$Outbound,
+  InvoicePaymentOptions$outboundSchema,
+} from "./invoicepaymentoptions.js";
+import {
   InvoiceStatus,
   InvoiceStatus$inboundSchema,
   InvoiceStatus$outboundSchema,
@@ -86,6 +92,10 @@ export type Invoice = {
    */
   paymentLinkURL?: string | undefined;
   /**
+   * Payment options for the invoice.
+   */
+  payment?: InvoicePaymentOptions | undefined;
+  /**
    * Payment made towards an invoice, will be either a transfer or an external payment.
    */
   invoicePayments?: Array<InvoicePayment> | undefined;
@@ -119,6 +129,7 @@ export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
     disputedAmount: AmountDecimal$inboundSchema,
     paymentLinkCode: z.string().optional(),
     paymentLinkURL: z.string().optional(),
+    payment: InvoicePaymentOptions$inboundSchema.optional(),
     invoicePayments: z.array(InvoicePayment$inboundSchema).optional(),
     createdOn: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
@@ -159,6 +170,7 @@ export type Invoice$Outbound = {
   disputedAmount: AmountDecimal$Outbound;
   paymentLinkCode?: string | undefined;
   paymentLinkURL?: string | undefined;
+  payment?: InvoicePaymentOptions$Outbound | undefined;
   invoicePayments?: Array<InvoicePayment$Outbound> | undefined;
   createdOn: string;
   invoiceDate?: string | undefined;
@@ -193,6 +205,7 @@ export const Invoice$outboundSchema: z.ZodType<
   disputedAmount: AmountDecimal$outboundSchema,
   paymentLinkCode: z.string().optional(),
   paymentLinkURL: z.string().optional(),
+  payment: InvoicePaymentOptions$outboundSchema.optional(),
   invoicePayments: z.array(InvoicePayment$outboundSchema).optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   invoiceDate: z.date().transform(v => v.toISOString()).optional(),

@@ -12,6 +12,7 @@ export type UpdateInvoiceErrorData = {
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
   status?: string | undefined;
+  payment?: components.InvoicePaymentOptionsError | undefined;
   taxAmount?: components.AmountDecimalValidationError | undefined;
 };
 
@@ -21,6 +22,7 @@ export class UpdateInvoiceError extends MoovError {
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
   status?: string | undefined;
+  payment?: components.InvoicePaymentOptionsError | undefined;
   taxAmount?: components.AmountDecimalValidationError | undefined;
 
   /** The original data that was passed to this error instance. */
@@ -40,6 +42,7 @@ export class UpdateInvoiceError extends MoovError {
     if (err.invoiceDate != null) this.invoiceDate = err.invoiceDate;
     if (err.dueDate != null) this.dueDate = err.dueDate;
     if (err.status != null) this.status = err.status;
+    if (err.payment != null) this.payment = err.payment;
     if (err.taxAmount != null) this.taxAmount = err.taxAmount;
 
     this.name = "UpdateInvoiceError";
@@ -58,6 +61,7 @@ export const UpdateInvoiceError$inboundSchema: z.ZodType<
   invoiceDate: z.string().optional(),
   dueDate: z.string().optional(),
   status: z.string().optional(),
+  payment: components.InvoicePaymentOptionsError$inboundSchema.optional(),
   taxAmount: components.AmountDecimalValidationError$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -78,6 +82,7 @@ export type UpdateInvoiceError$Outbound = {
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
   status?: string | undefined;
+  payment?: components.InvoicePaymentOptionsError$Outbound | undefined;
   taxAmount?: components.AmountDecimalValidationError$Outbound | undefined;
 };
 
@@ -95,6 +100,7 @@ export const UpdateInvoiceError$outboundSchema: z.ZodType<
     invoiceDate: z.string().optional(),
     dueDate: z.string().optional(),
     status: z.string().optional(),
+    payment: components.InvoicePaymentOptionsError$outboundSchema.optional(),
     taxAmount: components.AmountDecimalValidationError$outboundSchema
       .optional(),
   }));

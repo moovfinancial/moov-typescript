@@ -31,7 +31,7 @@ To access this endpoint using an [access token](https://docs.moov.io/api/authent
     const [result, apiCall] = await accountsCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

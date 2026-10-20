@@ -28,6 +28,8 @@ export * from "./genericerror.js";
 export * from "./httpclienterrors.js";
 export * from "./imagemetadatavalidationerror.js";
 export * from "./imagerequestvalidationerror.js";
+export * from "./invoicenotificationerror.js";
+export * from "./invoicenotificationratelimitederror.js";
 export * from "./linkapplepayerror.js";
 export * from "./linkcarderror.js";
 export * from "./linkgooglepayerror.js";

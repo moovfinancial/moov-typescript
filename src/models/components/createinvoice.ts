@@ -18,6 +18,12 @@ import {
   CreateInvoiceLineItems$Outbound,
   CreateInvoiceLineItems$outboundSchema,
 } from "./createinvoicelineitems.js";
+import {
+  InvoicePaymentOptions,
+  InvoicePaymentOptions$inboundSchema,
+  InvoicePaymentOptions$Outbound,
+  InvoicePaymentOptions$outboundSchema,
+} from "./invoicepaymentoptions.js";
 
 export type CreateInvoice = {
   /**
@@ -28,6 +34,10 @@ export type CreateInvoice = {
    * Email address to use for invoice checkout OTP verification instead of the customer account email.
    */
   customerEmail?: string | undefined;
+  /**
+   * Optional merchant-defined invoice number, up to 64 characters. Must be unique for the account. If omitted, empty, or whitespace-only, the next number in the INV-<n> sequence is assigned automatically.
+   */
+  invoiceNumber?: string | undefined;
   description?: string | undefined;
   /**
    * A collection of line items for an invoice.
@@ -35,6 +45,10 @@ export type CreateInvoice = {
   lineItems: CreateInvoiceLineItems;
   invoiceDate?: Date | undefined;
   dueDate?: Date | undefined;
+  /**
+   * Payment options for the invoice.
+   */
+  payment?: InvoicePaymentOptions | undefined;
   taxAmount?: AmountDecimal | undefined;
 };
 
@@ -46,22 +60,26 @@ export const CreateInvoice$inboundSchema: z.ZodType<
 > = z.object({
   customerAccountID: z.string(),
   customerEmail: z.string().optional(),
+  invoiceNumber: z.string().optional(),
   description: z.string().optional(),
   lineItems: CreateInvoiceLineItems$inboundSchema,
   invoiceDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   dueDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  payment: InvoicePaymentOptions$inboundSchema.optional(),
   taxAmount: AmountDecimal$inboundSchema.optional(),
 });
 /** @internal */
 export type CreateInvoice$Outbound = {
   customerAccountID: string;
   customerEmail?: string | undefined;
+  invoiceNumber?: string | undefined;
   description?: string | undefined;
   lineItems: CreateInvoiceLineItems$Outbound;
   invoiceDate?: string | undefined;
   dueDate?: string | undefined;
+  payment?: InvoicePaymentOptions$Outbound | undefined;
   taxAmount?: AmountDecimal$Outbound | undefined;
 };
 
@@ -73,10 +91,12 @@ export const CreateInvoice$outboundSchema: z.ZodType<
 > = z.object({
   customerAccountID: z.string(),
   customerEmail: z.string().optional(),
+  invoiceNumber: z.string().optional(),
   description: z.string().optional(),
   lineItems: CreateInvoiceLineItems$outboundSchema,
   invoiceDate: z.date().transform(v => v.toISOString()).optional(),
   dueDate: z.date().transform(v => v.toISOString()).optional(),
+  payment: InvoicePaymentOptions$outboundSchema.optional(),
   taxAmount: AmountDecimal$outboundSchema.optional(),
 });
 
