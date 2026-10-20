@@ -24,7 +24,7 @@ specify the \`/accounts/{partnerAccountID}/tickets.write\` and \`/accounts/{acco
     const [result, apiCall] = await supportCreateTicket(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

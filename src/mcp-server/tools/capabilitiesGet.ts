@@ -22,7 +22,7 @@ you'll need to specify the \`/accounts/{accountID}/capabilities.read\` scope.`,
     const [result, apiCall] = await capabilitiesGet(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

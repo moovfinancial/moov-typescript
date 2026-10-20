@@ -24,7 +24,7 @@ you'll need to specify the \`/accounts/{accountID}/terminal-configuration.read\`
     const [result, apiCall] = await accountTerminalApplicationsGetConfiguration(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

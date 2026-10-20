@@ -23,7 +23,7 @@ you'll need to specify the \`/accounts/{accountID}/terminal-applications.read\` 
       const [result, apiCall] = await accountTerminalApplicationsGet(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
       if (!result.ok) {

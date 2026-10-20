@@ -13,6 +13,7 @@ const args = {
 export const tool$transfersInitiateRefund: ToolDefinition<typeof args> = {
   name: "transfers-initiate-refund",
   description: `Initiate a refund for a card transfer.
+The \`accountID\` must identify the partner account for the transfer.
 
 **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
 See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) guide for more information. 
@@ -24,7 +25,7 @@ you'll need to specify the \`/accounts/{accountID}/transfers.write\` scope.`,
     const [result, apiCall] = await transfersInitiateRefund(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

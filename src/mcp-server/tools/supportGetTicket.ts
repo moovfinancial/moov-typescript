@@ -24,7 +24,7 @@ specify the \`/accounts/{partnerAccountID}/tickets.read\` and \`/accounts/{accou
     const [result, apiCall] = await supportGetTicket(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

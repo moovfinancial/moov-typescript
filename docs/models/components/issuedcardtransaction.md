@@ -12,7 +12,7 @@ let value: IssuedCardTransaction = {
   amount: "-14.89",
   authorizedOn: new Date("2025-05-05T02:33:49.501Z"),
   merchantData: {
-    networkID: "<id>",
+    networkID: "111111111111111",
     name: "Whole Body Fitness",
     city: "San Francisco",
     country: "US",
