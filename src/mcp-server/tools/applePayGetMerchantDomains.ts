@@ -23,7 +23,7 @@ you'll need to specify the \`/accounts/{accountID}/apple-pay.read\` scope.`,
     const [result, apiCall] = await applePayGetMerchantDomains(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

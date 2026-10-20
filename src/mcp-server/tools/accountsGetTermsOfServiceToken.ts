@@ -24,7 +24,7 @@ token patched to the account. Read more in our [documentation](https://docs.moov
       const [result, apiCall] = await accountsGetTermsOfServiceToken(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
       if (!result.ok) {

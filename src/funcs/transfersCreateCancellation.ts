@@ -108,6 +108,11 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
+    "x-idempotency-key": encodeSimple(
+      "x-idempotency-key",
+      payload["x-idempotency-key"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);
