@@ -21,7 +21,7 @@ you'll need to specify the \`/profile-enrichment.read\` scope.`,
     const [result, apiCall] = await enrichedAddressGet(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {
