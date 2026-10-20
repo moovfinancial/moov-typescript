@@ -30,7 +30,7 @@ you'll need to specify the \`/accounts/{accountID}/cards.write\` scope.`,
     const [result, apiCall] = await cardsUpdate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

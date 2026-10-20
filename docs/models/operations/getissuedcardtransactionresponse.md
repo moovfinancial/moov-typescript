@@ -27,7 +27,7 @@ let value: GetIssuedCardTransactionResponse = {
     amount: "-14.89",
     authorizedOn: new Date("2026-10-19T15:16:59.378Z"),
     merchantData: {
-      networkID: "<id>",
+      networkID: "111111111111111",
       name: "Whole Body Fitness",
       city: "San Francisco",
       country: "US",

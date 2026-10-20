@@ -21,7 +21,7 @@ you'll need to specify the \`/accounts/{accountID}/branding.write\` scope.`,
     const [result, apiCall] = await brandingCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

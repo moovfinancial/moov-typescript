@@ -31,7 +31,7 @@ you'll need to specify the \`/accounts/{accountID}/bank-accounts.read\` scope.`,
     const [result, apiCall] = await bankAccountsGetVerification(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

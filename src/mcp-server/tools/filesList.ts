@@ -21,7 +21,7 @@ you'll need to specify the \`/accounts/{accountID}/files.read\` scope.`,
     const [result, apiCall] = await filesList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {
