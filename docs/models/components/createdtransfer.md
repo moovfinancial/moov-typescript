@@ -217,11 +217,11 @@ let value: CreatedTransfer = {
           currency: "USD",
           valueDecimal: "12.987654321",
         },
-        quantity: 459250,
+        quantity: 734465,
         options: [
           {
             name: "<value>",
-            quantity: 129124,
+            quantity: 498160,
             priceModifier: {
               currency: "USD",
               valueDecimal: "12.987654321",
@@ -317,11 +317,11 @@ let value: CreatedTransfer = {
   },
   processingDetails: {
     achDebit: {
-      status: "",
+      status: "returned",
       traceNumber: "124782618117",
     },
     achCredit: {
-      status: "corrected",
+      status: "canceled",
       traceNumber: "124782618117",
     },
   },

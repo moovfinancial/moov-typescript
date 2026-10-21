@@ -8,11 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  IssuingMerchantData,
-  IssuingMerchantData$inboundSchema,
-  IssuingMerchantData$Outbound,
-  IssuingMerchantData$outboundSchema,
-} from "./issuingmerchantdata.js";
+  SimulationIssuingMerchantData,
+  SimulationIssuingMerchantData$inboundSchema,
+  SimulationIssuingMerchantData$Outbound,
+  SimulationIssuingMerchantData$outboundSchema,
+} from "./simulationissuingmerchantdata.js";
 
 export type CreateAuthorizationSimulation = {
   issuedCardID: string;
@@ -20,7 +20,7 @@ export type CreateAuthorizationSimulation = {
    * A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
    */
   amount: string;
-  merchantData?: IssuingMerchantData | undefined;
+  merchantData?: SimulationIssuingMerchantData | undefined;
 };
 
 /** @internal */
@@ -31,13 +31,13 @@ export const CreateAuthorizationSimulation$inboundSchema: z.ZodType<
 > = z.object({
   issuedCardID: types.string(),
   amount: types.string(),
-  merchantData: types.optional(IssuingMerchantData$inboundSchema),
+  merchantData: types.optional(SimulationIssuingMerchantData$inboundSchema),
 });
 /** @internal */
 export type CreateAuthorizationSimulation$Outbound = {
   issuedCardID: string;
   amount: string;
-  merchantData?: IssuingMerchantData$Outbound | undefined;
+  merchantData?: SimulationIssuingMerchantData$Outbound | undefined;
 };
 
 /** @internal */
@@ -48,7 +48,7 @@ export const CreateAuthorizationSimulation$outboundSchema: z.ZodType<
 > = z.object({
   issuedCardID: z.string(),
   amount: z.string(),
-  merchantData: IssuingMerchantData$outboundSchema.optional(),
+  merchantData: SimulationIssuingMerchantData$outboundSchema.optional(),
 });
 
 export function createAuthorizationSimulationToJSON(

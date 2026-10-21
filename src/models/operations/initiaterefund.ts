@@ -24,7 +24,7 @@ export type InitiateRefundRequest = {
    */
   xWaitFor?: components.TransferWaitFor | undefined;
   /**
-   * The merchant's Moov account ID.
+   * Moov account ID of the partner for the transfer.
    */
   accountID: string;
   /**

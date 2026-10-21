@@ -3,6 +3,7 @@
  */
 
 import { issuingTransactionsGet } from "../funcs/issuingTransactionsGet.js";
+import { issuingTransactionsGetActivity } from "../funcs/issuingTransactionsGetActivity.js";
 import { issuingTransactionsGetAuthorization } from "../funcs/issuingTransactionsGetAuthorization.js";
 import { issuingTransactionsList } from "../funcs/issuingTransactionsList.js";
 import { issuingTransactionsListActivity } from "../funcs/issuingTransactionsListActivity.js";
@@ -26,6 +27,23 @@ export class IssuingTransactions extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.ListIssuedCardActivityResponse> {
     return unwrapAsync(issuingTransactionsListActivity(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Retrieve a single issued card activity associated with a Moov account.
+   *
+   * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+   * you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
+   */
+  async getActivity(
+    request: operations.GetIssuedCardActivityRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetIssuedCardActivityResponse> {
+    return unwrapAsync(issuingTransactionsGetActivity(
       this,
       request,
       options,

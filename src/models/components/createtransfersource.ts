@@ -7,18 +7,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CreateTransferSourceACH,
-  CreateTransferSourceACH$inboundSchema,
-  CreateTransferSourceACH$Outbound,
-  CreateTransferSourceACH$outboundSchema,
-} from "./createtransfersourceach.js";
-import {
-  CreateTransferSourceCard,
-  CreateTransferSourceCard$inboundSchema,
-  CreateTransferSourceCard$Outbound,
-  CreateTransferSourceCard$outboundSchema,
-} from "./createtransfersourcecard.js";
 
 /**
  * Where funds for a transfer originate. For the source, you must include either a `paymentMethodID` or a `transferID`.
@@ -33,8 +21,6 @@ export type CreateTransferSource = {
   transferID?: string | undefined;
   paymentMethodID?: string | undefined;
   paymentToken?: string | undefined;
-  cardDetails?: CreateTransferSourceCard | undefined;
-  achDetails?: CreateTransferSourceACH | undefined;
 };
 
 /** @internal */
@@ -46,16 +32,12 @@ export const CreateTransferSource$inboundSchema: z.ZodType<
   transferID: types.optional(types.string()),
   paymentMethodID: types.optional(types.string()),
   paymentToken: types.optional(types.string()),
-  cardDetails: types.optional(CreateTransferSourceCard$inboundSchema),
-  achDetails: types.optional(CreateTransferSourceACH$inboundSchema),
 });
 /** @internal */
 export type CreateTransferSource$Outbound = {
   transferID?: string | undefined;
   paymentMethodID?: string | undefined;
   paymentToken?: string | undefined;
-  cardDetails?: CreateTransferSourceCard$Outbound | undefined;
-  achDetails?: CreateTransferSourceACH$Outbound | undefined;
 };
 
 /** @internal */
@@ -67,8 +49,6 @@ export const CreateTransferSource$outboundSchema: z.ZodType<
   transferID: z.string().optional(),
   paymentMethodID: z.string().optional(),
   paymentToken: z.string().optional(),
-  cardDetails: CreateTransferSourceCard$outboundSchema.optional(),
-  achDetails: CreateTransferSourceACH$outboundSchema.optional(),
 });
 
 export function createTransferSourceToJSON(

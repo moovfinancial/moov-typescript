@@ -35,15 +35,15 @@ export type CreateTransferRequest = {
 
 export type CreateTransferResponseResult =
   | components.Transfer
-  | components.CreatedTransfer
-  | components.AsyncTransfer;
+  | components.AsyncTransfer
+  | components.CreateTransferResponse;
 
 export type CreateTransferResponse = {
   headers: { [k: string]: Array<string> };
   result:
     | components.Transfer
-    | components.CreatedTransfer
-    | components.AsyncTransfer;
+    | components.AsyncTransfer
+    | components.CreateTransferResponse;
 };
 
 /** @internal */
@@ -113,14 +113,14 @@ export const CreateTransferResponseResult$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   components.Transfer$inboundSchema,
-  components.CreatedTransfer$inboundSchema,
   components.AsyncTransfer$inboundSchema,
+  components.CreateTransferResponse$inboundSchema,
 ]);
 /** @internal */
 export type CreateTransferResponseResult$Outbound =
   | components.Transfer$Outbound
-  | components.CreatedTransfer$Outbound
-  | components.AsyncTransfer$Outbound;
+  | components.AsyncTransfer$Outbound
+  | components.CreateTransferResponse$Outbound;
 
 /** @internal */
 export const CreateTransferResponseResult$outboundSchema: z.ZodType<
@@ -129,8 +129,8 @@ export const CreateTransferResponseResult$outboundSchema: z.ZodType<
   CreateTransferResponseResult
 > = smartUnion([
   components.Transfer$outboundSchema,
-  components.CreatedTransfer$outboundSchema,
   components.AsyncTransfer$outboundSchema,
+  components.CreateTransferResponse$outboundSchema,
 ]);
 
 export function createTransferResponseResultToJSON(
@@ -161,8 +161,8 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
   Headers: z.record(z.array(z.string())).default({}),
   Result: smartUnion([
     components.Transfer$inboundSchema,
-    components.CreatedTransfer$inboundSchema,
     components.AsyncTransfer$inboundSchema,
+    components.CreateTransferResponse$inboundSchema,
   ]),
 }).transform((v) => {
   return remap$(v, {
@@ -175,8 +175,8 @@ export type CreateTransferResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
   Result:
     | components.Transfer$Outbound
-    | components.CreatedTransfer$Outbound
-    | components.AsyncTransfer$Outbound;
+    | components.AsyncTransfer$Outbound
+    | components.CreateTransferResponse$Outbound;
 };
 
 /** @internal */
@@ -188,8 +188,8 @@ export const CreateTransferResponse$outboundSchema: z.ZodType<
   headers: z.record(z.array(z.string())),
   result: smartUnion([
     components.Transfer$outboundSchema,
-    components.CreatedTransfer$outboundSchema,
     components.AsyncTransfer$outboundSchema,
+    components.CreateTransferResponse$outboundSchema,
   ]),
 }).transform((v) => {
   return remap$(v, {

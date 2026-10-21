@@ -11,7 +11,7 @@ let value: CreateAuthorizationSimulationRequest = {
     issuedCardID: "<id>",
     amount: "-14.89",
     merchantData: {
-      networkID: "<id>",
+      networkID: "111111111111111",
       name: "Whole Body Fitness",
       city: "San Francisco",
       country: "US",

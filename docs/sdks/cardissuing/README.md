@@ -452,10 +452,6 @@ async function run() {
         postalCode: "80301",
         country: "US",
       },
-      expiration: {
-        month: "01",
-        year: "21",
-      },
       controls: {
         velocityLimits: [
           {
@@ -504,10 +500,6 @@ async function run() {
         stateOrProvince: "CO",
         postalCode: "80301",
         country: "US",
-      },
-      expiration: {
-        month: "01",
-        year: "21",
       },
       controls: {
         velocityLimits: [

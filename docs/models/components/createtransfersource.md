@@ -7,16 +7,7 @@ Where funds for a transfer originate. For the source, you must include either a 
 ```typescript
 import { CreateTransferSource } from "@moovio/sdk/models/components";
 
-let value: CreateTransferSource = {
-  cardDetails: {
-    dynamicDescriptor: "WhlBdy *Yoga 11-12",
-  },
-  achDetails: {
-    companyEntryDescription: "Gym dues",
-    originatingCompanyName: "Whole Body Fit",
-    debitHoldPeriod: "2-days",
-  },
-};
+let value: CreateTransferSource = {};
 ```
 
 ## Fields
@@ -26,5 +17,3 @@ let value: CreateTransferSource = {
 | `transferID`                                                                                                                                                           | *string*                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                     | A `transferID` is used to create a [transfer group](https://docs.moov.io/guides/money-movement/transfer-groups/),<br/>associating the new transfer with a parent transfer. |
 | `paymentMethodID`                                                                                                                                                      | *string*                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                     | N/A                                                                                                                                                                    |
 | `paymentToken`                                                                                                                                                         | *string*                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                     | N/A                                                                                                                                                                    |
-| `cardDetails`                                                                                                                                                          | [components.CreateTransferSourceCard](../../models/components/createtransfersourcecard.md)                                                                             | :heavy_minus_sign:                                                                                                                                                     | N/A                                                                                                                                                                    |
-| `achDetails`                                                                                                                                                           | [components.CreateTransferSourceACH](../../models/components/createtransfersourceach.md)                                                                               | :heavy_minus_sign:                                                                                                                                                     | N/A                                                                                                                                                                    |

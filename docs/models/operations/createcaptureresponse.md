@@ -19,7 +19,7 @@ let value: CreateCaptureResponse = {
       valueDecimal: "12.987654321",
     },
     isFinal: true,
-    status: "completed",
+    status: "pending",
     createdOn: new Date("2024-02-18T07:44:09.783Z"),
     destinationPaymentMethodID: "<id>",
     description: "Pay Instructor for May 15 Class",
@@ -34,11 +34,11 @@ let value: CreateCaptureResponse = {
             currency: "USD",
             valueDecimal: "12.987654321",
           },
-          quantity: 459250,
+          quantity: 734465,
           options: [
             {
               name: "<value>",
-              quantity: 129124,
+              quantity: 498160,
               priceModifier: {
                 currency: "USD",
                 valueDecimal: "12.987654321",

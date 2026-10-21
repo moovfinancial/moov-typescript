@@ -12,7 +12,7 @@ export const tool$endToEndEncryptionGenerateKey: ToolDefinition = {
   tool: async (client, ctx) => {
     const [result, apiCall] = await endToEndEncryptionGenerateKey(
       client,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

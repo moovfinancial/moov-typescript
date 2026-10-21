@@ -12,7 +12,6 @@ export type RequestCardErrorData = {
   nickname?: string | undefined;
   metadata?: string | undefined;
   billingAddress?: components.AddressError | undefined;
-  expiration?: components.CardExpirationError | undefined;
   controls?: components.IssuingControlsError | undefined;
 };
 
@@ -21,7 +20,6 @@ export class RequestCardError extends MoovError {
   nickname?: string | undefined;
   metadata?: string | undefined;
   billingAddress?: components.AddressError | undefined;
-  expiration?: components.CardExpirationError | undefined;
   controls?: components.IssuingControlsError | undefined;
 
   /** The original data that was passed to this error instance. */
@@ -42,7 +40,6 @@ export class RequestCardError extends MoovError {
     if (err.nickname != null) this.nickname = err.nickname;
     if (err.metadata != null) this.metadata = err.metadata;
     if (err.billingAddress != null) this.billingAddress = err.billingAddress;
-    if (err.expiration != null) this.expiration = err.expiration;
     if (err.controls != null) this.controls = err.controls;
 
     this.name = "RequestCardError";
@@ -59,7 +56,6 @@ export const RequestCardError$inboundSchema: z.ZodType<
   nickname: types.optional(types.string()),
   metadata: types.optional(types.string()),
   billingAddress: types.optional(components.AddressError$inboundSchema),
-  expiration: types.optional(components.CardExpirationError$inboundSchema),
   controls: types.optional(components.IssuingControlsError$inboundSchema),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -79,7 +75,6 @@ export type RequestCardError$Outbound = {
   nickname?: string | undefined;
   metadata?: string | undefined;
   billingAddress?: components.AddressError$Outbound | undefined;
-  expiration?: components.CardExpirationError$Outbound | undefined;
   controls?: components.IssuingControlsError$Outbound | undefined;
 };
 
@@ -95,6 +90,5 @@ export const RequestCardError$outboundSchema: z.ZodType<
     nickname: z.string().optional(),
     metadata: z.string().optional(),
     billingAddress: components.AddressError$outboundSchema.optional(),
-    expiration: components.CardExpirationError$outboundSchema.optional(),
     controls: components.IssuingControlsError$outboundSchema.optional(),
   }));

@@ -13,6 +13,10 @@ export type PushToCardOptions = {
    * An optional override of the default card statement descriptor for a transfer. Accounts must be enabled by Moov to set this field.
    */
   dynamicDescriptor?: string | undefined;
+  /**
+   * The scheduled date and time for the push-to-card transfer to be delivered, as set when the transfer was created.
+   */
+  scheduledDeliveryOn?: Date | undefined;
 };
 
 /** @internal */
@@ -22,10 +26,12 @@ export const PushToCardOptions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   dynamicDescriptor: types.optional(types.string()),
+  scheduledDeliveryOn: types.optional(types.date()),
 });
 /** @internal */
 export type PushToCardOptions$Outbound = {
   dynamicDescriptor?: string | undefined;
+  scheduledDeliveryOn?: string | undefined;
 };
 
 /** @internal */
@@ -35,6 +41,7 @@ export const PushToCardOptions$outboundSchema: z.ZodType<
   PushToCardOptions
 > = z.object({
   dynamicDescriptor: z.string().optional(),
+  scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
 });
 
 export function pushToCardOptionsToJSON(

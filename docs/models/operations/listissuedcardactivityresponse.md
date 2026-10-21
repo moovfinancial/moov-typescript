@@ -20,7 +20,7 @@ let value: ListIssuedCardActivityResponse = {
       clearedAmount: "-14.89",
       createdOn: new Date("2026-10-22T07:16:04.694Z"),
       merchantData: {
-        networkID: "<id>",
+        networkID: "111111111111111",
         name: "Whole Body Fitness",
         city: "San Francisco",
         country: "US",

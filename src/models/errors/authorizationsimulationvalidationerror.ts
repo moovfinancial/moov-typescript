@@ -9,20 +9,18 @@ import { MoovError } from "./mooverror.js";
 
 export type AuthorizationSimulationValidationErrorData = {
   issuedCardID?: string | undefined;
-  /**
-   * A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
-   */
   amount?: string | undefined;
-  merchantData?: components.IssuingMerchantDataValidationError | undefined;
+  merchantData?:
+    | components.SimulationIssuingMerchantDataValidationError
+    | undefined;
 };
 
 export class AuthorizationSimulationValidationError extends MoovError {
   issuedCardID?: string | undefined;
-  /**
-   * A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
-   */
   amount?: string | undefined;
-  merchantData?: components.IssuingMerchantDataValidationError | undefined;
+  merchantData?:
+    | components.SimulationIssuingMerchantDataValidationError
+    | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: AuthorizationSimulationValidationErrorData;
@@ -53,7 +51,7 @@ export const AuthorizationSimulationValidationError$inboundSchema: z.ZodType<
   issuedCardID: types.optional(types.string()),
   amount: types.optional(types.string()),
   merchantData: types.optional(
-    components.IssuingMerchantDataValidationError$inboundSchema,
+    components.SimulationIssuingMerchantDataValidationError$inboundSchema,
   ),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -72,7 +70,7 @@ export type AuthorizationSimulationValidationError$Outbound = {
   issuedCardID?: string | undefined;
   amount?: string | undefined;
   merchantData?:
-    | components.IssuingMerchantDataValidationError$Outbound
+    | components.SimulationIssuingMerchantDataValidationError$Outbound
     | undefined;
 };
 
@@ -86,6 +84,6 @@ export const AuthorizationSimulationValidationError$outboundSchema: z.ZodType<
   .pipe(z.object({
     issuedCardID: z.string().optional(),
     amount: z.string().optional(),
-    merchantData: components.IssuingMerchantDataValidationError$outboundSchema
-      .optional(),
+    merchantData: components
+      .SimulationIssuingMerchantDataValidationError$outboundSchema.optional(),
   }));

@@ -7,16 +7,10 @@ import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
 export type ClearingSimulationValidationErrorData = {
-  /**
-   * A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
-   */
   amount?: string | undefined;
 };
 
 export class ClearingSimulationValidationError extends MoovError {
-  /**
-   * A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
-   */
   amount?: string | undefined;
 
   /** The original data that was passed to this error instance. */

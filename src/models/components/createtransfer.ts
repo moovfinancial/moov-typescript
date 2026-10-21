@@ -38,6 +38,12 @@ import {
   CreateTransferLineItems$outboundSchema,
 } from "./createtransferlineitems.js";
 import {
+  CreateTransferRailOptions,
+  CreateTransferRailOptions$inboundSchema,
+  CreateTransferRailOptions$Outbound,
+  CreateTransferRailOptions$outboundSchema,
+} from "./createtransferrailoptions.js";
+import {
   CreateTransferSource,
   CreateTransferSource$inboundSchema,
   CreateTransferSource$Outbound,
@@ -59,6 +65,10 @@ export type CreateTransfer = {
    * The final stage of a transfer and the ultimate recipient of the funds.
    */
   destination: CreateTransferDestination;
+  /**
+   * Rail-specific options for a new transfer. Set only the key that matches the transfer's rail.
+   */
+  options?: CreateTransferRailOptions | undefined;
   amount: AmountDecimal;
   /**
    * Total or markup fee to apply when creating a transfer.
@@ -98,6 +108,7 @@ export const CreateTransfer$inboundSchema: z.ZodType<
 > = z.object({
   source: CreateTransferSource$inboundSchema,
   destination: CreateTransferDestination$inboundSchema,
+  options: types.optional(CreateTransferRailOptions$inboundSchema),
   amount: AmountDecimal$inboundSchema,
   facilitatorFee: types.optional(CreateTransferFacilitatorFee$inboundSchema),
   description: types.optional(types.string()),
@@ -111,6 +122,7 @@ export const CreateTransfer$inboundSchema: z.ZodType<
 export type CreateTransfer$Outbound = {
   source: CreateTransferSource$Outbound;
   destination: CreateTransferDestination$Outbound;
+  options?: CreateTransferRailOptions$Outbound | undefined;
   amount: AmountDecimal$Outbound;
   facilitatorFee?: CreateTransferFacilitatorFee$Outbound | undefined;
   description?: string | undefined;
@@ -129,6 +141,7 @@ export const CreateTransfer$outboundSchema: z.ZodType<
 > = z.object({
   source: CreateTransferSource$outboundSchema,
   destination: CreateTransferDestination$outboundSchema,
+  options: CreateTransferRailOptions$outboundSchema.optional(),
   amount: AmountDecimal$outboundSchema,
   facilitatorFee: CreateTransferFacilitatorFee$outboundSchema.optional(),
   description: z.string().optional(),

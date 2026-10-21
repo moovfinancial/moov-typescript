@@ -14,12 +14,6 @@ import {
   Address$outboundSchema,
 } from "./address.js";
 import {
-  CardExpiration,
-  CardExpiration$inboundSchema,
-  CardExpiration$Outbound,
-  CardExpiration$outboundSchema,
-} from "./cardexpiration.js";
-import {
   IssuingControls,
   IssuingControls$inboundSchema,
   IssuingControls$Outbound,
@@ -34,10 +28,6 @@ export type RequestCard = {
    */
   metadata?: { [k: string]: string } | undefined;
   billingAddress?: Address | undefined;
-  /**
-   * The expiration date of the card or token.
-   */
-  expiration?: CardExpiration | undefined;
   /**
    * Mutable spend controls for the card.
    */
@@ -54,7 +44,6 @@ export const RequestCard$inboundSchema: z.ZodType<
   nickname: types.optional(types.string()),
   metadata: types.optional(z.record(types.string())),
   billingAddress: types.optional(Address$inboundSchema),
-  expiration: types.optional(CardExpiration$inboundSchema),
   controls: types.optional(IssuingControls$inboundSchema),
 });
 /** @internal */
@@ -63,7 +52,6 @@ export type RequestCard$Outbound = {
   nickname?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   billingAddress?: Address$Outbound | undefined;
-  expiration?: CardExpiration$Outbound | undefined;
   controls?: IssuingControls$Outbound | undefined;
 };
 
@@ -77,7 +65,6 @@ export const RequestCard$outboundSchema: z.ZodType<
   nickname: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   billingAddress: Address$outboundSchema.optional(),
-  expiration: CardExpiration$outboundSchema.optional(),
   controls: IssuingControls$outboundSchema.optional(),
 });
 

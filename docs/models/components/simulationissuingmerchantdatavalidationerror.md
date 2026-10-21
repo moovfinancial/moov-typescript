@@ -1,11 +1,11 @@
-# IssuingMerchantDataValidationError
+# SimulationIssuingMerchantDataValidationError
 
 ## Example Usage
 
 ```typescript
-import { IssuingMerchantDataValidationError } from "@moovio/sdk/models/components";
+import { SimulationIssuingMerchantDataValidationError } from "@moovio/sdk/models/components";
 
-let value: IssuingMerchantDataValidationError = {};
+let value: SimulationIssuingMerchantDataValidationError = {};
 ```
 
 ## Fields

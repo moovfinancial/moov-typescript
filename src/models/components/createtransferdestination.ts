@@ -7,36 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CreateTransferDestinationACH,
-  CreateTransferDestinationACH$inboundSchema,
-  CreateTransferDestinationACH$Outbound,
-  CreateTransferDestinationACH$outboundSchema,
-} from "./createtransferdestinationach.js";
-import {
-  CreateTransferDestinationCard,
-  CreateTransferDestinationCard$inboundSchema,
-  CreateTransferDestinationCard$Outbound,
-  CreateTransferDestinationCard$outboundSchema,
-} from "./createtransferdestinationcard.js";
-import {
-  CreateTransferDestinationWire,
-  CreateTransferDestinationWire$inboundSchema,
-  CreateTransferDestinationWire$Outbound,
-  CreateTransferDestinationWire$outboundSchema,
-} from "./createtransferdestinationwire.js";
 
 /**
  * The final stage of a transfer and the ultimate recipient of the funds.
  */
 export type CreateTransferDestination = {
   paymentMethodID: string;
-  cardDetails?: CreateTransferDestinationCard | undefined;
-  achDetails?: CreateTransferDestinationACH | undefined;
-  /**
-   * Wire-specific options supplied when creating a transfer.
-   */
-  wireDetails?: CreateTransferDestinationWire | undefined;
 };
 
 /** @internal */
@@ -46,16 +22,10 @@ export const CreateTransferDestination$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paymentMethodID: types.string(),
-  cardDetails: types.optional(CreateTransferDestinationCard$inboundSchema),
-  achDetails: types.optional(CreateTransferDestinationACH$inboundSchema),
-  wireDetails: types.optional(CreateTransferDestinationWire$inboundSchema),
 });
 /** @internal */
 export type CreateTransferDestination$Outbound = {
   paymentMethodID: string;
-  cardDetails?: CreateTransferDestinationCard$Outbound | undefined;
-  achDetails?: CreateTransferDestinationACH$Outbound | undefined;
-  wireDetails?: CreateTransferDestinationWire$Outbound | undefined;
 };
 
 /** @internal */
@@ -65,9 +35,6 @@ export const CreateTransferDestination$outboundSchema: z.ZodType<
   CreateTransferDestination
 > = z.object({
   paymentMethodID: z.string(),
-  cardDetails: CreateTransferDestinationCard$outboundSchema.optional(),
-  achDetails: CreateTransferDestinationACH$outboundSchema.optional(),
-  wireDetails: CreateTransferDestinationWire$outboundSchema.optional(),
 });
 
 export function createTransferDestinationToJSON(

@@ -8,19 +8,40 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type IssuingMerchantDataValidationError = {
+export type SimulationIssuingMerchantData = {
+  /**
+   * External identifier used to identify the merchant with the card brand.
+   */
   networkID?: string | undefined;
+  /**
+   * Name of the merchant.
+   */
   name?: string | undefined;
+  /**
+   * The merchant's location.
+   */
   city?: string | undefined;
+  /**
+   * Two-letter country code.
+   */
   country?: string | undefined;
+  /**
+   * The merchant's five-digit postal code.
+   */
   postalCode?: string | undefined;
+  /**
+   * The merchant's two-letter state abbreviation.
+   */
   state?: string | undefined;
+  /**
+   * The Merchant Category Code.
+   */
   mcc?: string | undefined;
 };
 
 /** @internal */
-export const IssuingMerchantDataValidationError$inboundSchema: z.ZodType<
-  IssuingMerchantDataValidationError,
+export const SimulationIssuingMerchantData$inboundSchema: z.ZodType<
+  SimulationIssuingMerchantData,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -33,7 +54,7 @@ export const IssuingMerchantDataValidationError$inboundSchema: z.ZodType<
   mcc: types.optional(types.string()),
 });
 /** @internal */
-export type IssuingMerchantDataValidationError$Outbound = {
+export type SimulationIssuingMerchantData$Outbound = {
   networkID?: string | undefined;
   name?: string | undefined;
   city?: string | undefined;
@@ -44,10 +65,10 @@ export type IssuingMerchantDataValidationError$Outbound = {
 };
 
 /** @internal */
-export const IssuingMerchantDataValidationError$outboundSchema: z.ZodType<
-  IssuingMerchantDataValidationError$Outbound,
+export const SimulationIssuingMerchantData$outboundSchema: z.ZodType<
+  SimulationIssuingMerchantData$Outbound,
   z.ZodTypeDef,
-  IssuingMerchantDataValidationError
+  SimulationIssuingMerchantData
 > = z.object({
   networkID: z.string().optional(),
   name: z.string().optional(),
@@ -58,22 +79,21 @@ export const IssuingMerchantDataValidationError$outboundSchema: z.ZodType<
   mcc: z.string().optional(),
 });
 
-export function issuingMerchantDataValidationErrorToJSON(
-  issuingMerchantDataValidationError: IssuingMerchantDataValidationError,
+export function simulationIssuingMerchantDataToJSON(
+  simulationIssuingMerchantData: SimulationIssuingMerchantData,
 ): string {
   return JSON.stringify(
-    IssuingMerchantDataValidationError$outboundSchema.parse(
-      issuingMerchantDataValidationError,
+    SimulationIssuingMerchantData$outboundSchema.parse(
+      simulationIssuingMerchantData,
     ),
   );
 }
-export function issuingMerchantDataValidationErrorFromJSON(
+export function simulationIssuingMerchantDataFromJSON(
   jsonString: string,
-): SafeParseResult<IssuingMerchantDataValidationError, SDKValidationError> {
+): SafeParseResult<SimulationIssuingMerchantData, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      IssuingMerchantDataValidationError$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IssuingMerchantDataValidationError' from JSON`,
+    (x) => SimulationIssuingMerchantData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SimulationIssuingMerchantData' from JSON`,
   );
 }

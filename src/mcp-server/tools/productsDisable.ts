@@ -20,7 +20,7 @@ The product will no longer be available, but will remain in the system for histo
     const [result, apiCall] = await productsDisable(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

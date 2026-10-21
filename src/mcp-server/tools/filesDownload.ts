@@ -23,7 +23,7 @@ you'll need to specify the \`/accounts/{accountID}/files.download\` scope.`,
     const [result, apiCall] = await filesDownload(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

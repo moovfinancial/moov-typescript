@@ -20,6 +20,12 @@ import {
   CreateInvoiceLineItemsUpdate$outboundSchema,
 } from "./createinvoicelineitemsupdate.js";
 import {
+  InvoicePaymentOptionsUpdate,
+  InvoicePaymentOptionsUpdate$inboundSchema,
+  InvoicePaymentOptionsUpdate$Outbound,
+  InvoicePaymentOptionsUpdate$outboundSchema,
+} from "./invoicepaymentoptionsupdate.js";
+import {
   InvoiceStatus,
   InvoiceStatus$inboundSchema,
   InvoiceStatus$outboundSchema,
@@ -44,6 +50,10 @@ export type UpdateInvoice = {
    *   - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
    */
   status?: InvoiceStatus | undefined;
+  /**
+   * Payment options to update on the invoice.
+   */
+  payment?: InvoicePaymentOptionsUpdate | undefined;
   amountDetails?: AmountDetailsUpdate | undefined;
 };
 
@@ -58,6 +68,7 @@ export const UpdateInvoice$inboundSchema: z.ZodType<
   invoiceDate: z.nullable(types.date()).optional(),
   dueDate: z.nullable(types.date()).optional(),
   status: types.optional(InvoiceStatus$inboundSchema),
+  payment: types.optional(InvoicePaymentOptionsUpdate$inboundSchema),
   amountDetails: types.optional(AmountDetailsUpdate$inboundSchema),
 });
 /** @internal */
@@ -67,6 +78,7 @@ export type UpdateInvoice$Outbound = {
   invoiceDate?: string | null | undefined;
   dueDate?: string | null | undefined;
   status?: string | undefined;
+  payment?: InvoicePaymentOptionsUpdate$Outbound | undefined;
   amountDetails?: AmountDetailsUpdate$Outbound | undefined;
 };
 
@@ -81,6 +93,7 @@ export const UpdateInvoice$outboundSchema: z.ZodType<
   invoiceDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: InvoiceStatus$outboundSchema.optional(),
+  payment: InvoicePaymentOptionsUpdate$outboundSchema.optional(),
   amountDetails: AmountDetailsUpdate$outboundSchema.optional(),
 });
 

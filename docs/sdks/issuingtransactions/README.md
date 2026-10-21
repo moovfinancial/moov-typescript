@@ -10,6 +10,10 @@ Activity includes authorizations and settlements in a single list.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
+* [getActivity](#getactivity) - Retrieve a single issued card activity associated with a Moov account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 * [listAuthorizations](#listauthorizations) - List issued card authorizations associated with a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -112,6 +116,90 @@ run();
 ### Response
 
 **Promise\<[operations.ListIssuedCardActivityResponse](../../models/operations/listissuedcardactivityresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.APIError | 4XX, 5XX        | \*/\*           |
+
+## getActivity
+
+Retrieve a single issued card activity associated with a Moov account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getIssuedCardActivity" method="get" path="/issuing/{accountID}/activity/{id}" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.issuingTransactions.getActivity({
+    accountID: "<id>",
+    id: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { issuingTransactionsGetActivity } from "@moovio/sdk/funcs/issuingTransactionsGetActivity.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await issuingTransactionsGetActivity(moov, {
+    accountID: "<id>",
+    id: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("issuingTransactionsGetActivity failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetIssuedCardActivityRequest](../../models/operations/getissuedcardactivityrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetIssuedCardActivityResponse](../../models/operations/getissuedcardactivityresponse.md)\>**
 
 ### Errors
 

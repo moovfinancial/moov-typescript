@@ -19,10 +19,6 @@ let value: RequestCardRequest = {
       postalCode: "80301",
       country: "US",
     },
-    expiration: {
-      month: "01",
-      year: "21",
-    },
     controls: {
       velocityLimits: [
         {
