@@ -59,6 +59,10 @@ jobs:
     needs: [get-npm-tag, generate]
     if: ${{ startsWith(github.ref_name, 'versions/') }}
     runs-on: ubuntu-latest
+    # Only what `npm dist-tag` over trusted publishing (OIDC) needs.
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Set up Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
@@ -93,7 +97,7 @@ jobs:
 
           # dist-tag over trusted publishing (OIDC) needs npm 11.21+ and
           # "Allow npm dist-tag" on the package's trusted publisher.
-          npm install -g "npm@>=11.21.0 <12"
+          npm install -g npm@11.21.1
           if npm dist-tag add "$PKG@$TARGET" latest; then
             echo "Moved 'latest' from $CURRENT to $TARGET"
           else
