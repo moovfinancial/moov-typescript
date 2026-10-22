@@ -64,6 +64,14 @@ jobs:
       contents: read
       id-token: write
     steps:
+      # generate pushes a version bump, so github.sha is stale; read the branch head.
+      - name: Check out package.json
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.ref_name }}
+          sparse-checkout: package.json
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
       - name: Set up Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
@@ -84,14 +92,11 @@ jobs:
             exit 0
           fi
 
-          TARGET=$(npm view "$PKG@$NPM_TAG" version || true)
-          CURRENT=$(npm view "$PKG" dist-tags.latest || true)
-          if [[ -z "$TARGET" ]]; then
-            echo "Nothing published under '$NPM_TAG' yet; leaving 'latest' alone"
-            exit 0
-          fi
-          if [[ "$TARGET" == "$CURRENT" ]]; then
-            echo "'latest' is already $TARGET"
+          # Read the version from the commit generate just published, not from
+          # npm: registry reads are CDN-cached for up to 5 minutes.
+          VERSION=$(jq -er .version package.json)
+          if [[ "$VERSION" == *-* ]]; then
+            echo "::warning::$LINE is stable but this branch is still on prerelease $VERSION; leaving 'latest' alone"
             exit 0
           fi
 
@@ -99,9 +104,9 @@ jobs:
           # "Allow npm dist-tag" on the package's trusted publisher.
           npm install -g npm@11.21.1
           # Fail loudly here: the package is already published, and a green
-          # run would hide that `latest` stopped moving.
-          if ! npm dist-tag add "$PKG@$TARGET" latest; then
-            echo "::error::Could not move 'latest' from $CURRENT to $TARGET. Check the npm trusted publisher allows dist-tag."
+          # run would hide that `latest` stopped moving. A no-op if `latest`
+          # is already $VERSION.
+          if ! npm dist-tag add "$PKG@$VERSION" latest; then
+            echo "::error::Could not point 'latest' at $VERSION. Check the npm trusted publisher allows dist-tag."
             exit 1
           fi
-          echo "Moved 'latest' from $CURRENT to $TARGET"
