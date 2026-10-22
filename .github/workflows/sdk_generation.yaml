@@ -20,6 +20,8 @@ permissions:
 env:
   SPEAKEASY_BUMP_OVERRIDE: patch
 jobs:
+  # we run this only for version branches, where we set tag to the YYYY.MM value,
+  # for main brach we do not use it as it's always a pre-release version like 0.0.0-dev
   get-npm-tag:
     runs-on: ubuntu-latest
     outputs:
@@ -29,14 +31,16 @@ jobs:
         id: extract
         run: |
           BRANCH="${{ github.ref_name }}"
-          if [[ "$BRANCH" == versions/* ]]; then
+          if [[ "$BRANCH" == "main" ]]; then
+            TAG="dev"
+          elif [[ "$BRANCH" == versions/* ]]; then
             TAG="${BRANCH#versions/}"
             TAG="${TAG//./-}"
-            echo "tag=${TAG}" >> $GITHUB_OUTPUT
           fi
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
   generate:
     needs: get-npm-tag
-    uses: moovfinancial/sdk-generation-action/.github/workflows/workflow-executor.yaml@main
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
     with:
       force: ${{ github.event.inputs.force }}
       mode: direct
@@ -48,3 +52,61 @@ jobs:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
       slack_webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+  # npm's `latest` tag follows the release line of the stable API version,
+  # as listed in docs.moov.io/api-versions.json. Only the stable line's
+  # branch moves it, so older lines can't take it over.
+  point-latest:
+    needs: [get-npm-tag, generate]
+    if: ${{ startsWith(github.ref_name, 'versions/') }}
+    runs-on: ubuntu-latest
+    # Only what `npm dist-tag` over trusted publishing (OIDC) needs.
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      # generate pushes a version bump, so github.sha is stale; read the branch head.
+      - name: Check out package.json
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.ref_name }}
+          sparse-checkout: package.json
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "24.x"
+          registry-url: "https://registry.npmjs.org"
+      - name: Point latest at the stable line
+        env:
+          NPM_TAG: ${{ needs.get-npm-tag.outputs.npm_tag }}
+        run: |
+          PKG="@moovio/sdk"
+          if ! STABLE=$(curl -fsSL https://docs.moov.io/api-versions.json | jq -er .stable); then
+            echo "::warning::Could not read 'stable' from docs.moov.io/api-versions.json; leaving 'latest' alone."
+            exit 0
+          fi
+          LINE="v${NPM_TAG/-/.}.00"
+          if [[ "$LINE" != "$STABLE" ]]; then
+            echo "$LINE is not the stable API version ($STABLE); leaving 'latest' alone"
+            exit 0
+          fi
+
+          # Read the version from the commit generate just published, not from
+          # npm: registry reads are CDN-cached for up to 5 minutes.
+          VERSION=$(jq -er .version package.json)
+          if [[ "$VERSION" == *-* ]]; then
+            echo "::warning::$LINE is stable but this branch is still on prerelease $VERSION; leaving 'latest' alone"
+            exit 0
+          fi
+
+          # dist-tag over trusted publishing (OIDC) needs npm 11.21+ and
+          # "Allow npm dist-tag" on the package's trusted publisher.
+          npm install -g npm@11.21.1
+          # Fail loudly here: the package is already published, and a green
+          # run would hide that `latest` stopped moving. A no-op if `latest`
+          # is already $VERSION.
+          if ! npm dist-tag add "$PKG@$VERSION" latest; then
+            echo "::error::Could not point 'latest' at $VERSION. Check the npm trusted publisher allows dist-tag."
+            exit 1
+          fi
