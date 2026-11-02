@@ -68,6 +68,13 @@ export type ListTransfersRequest = {
    * Page size. When omitted, the server defaults to `200`.
    */
   count?: number | undefined;
+  /**
+   * Opaque cursor from a previous response's `X-Next-Cursor` header. Reuse the same filters and `count` between pages.
+   *
+   * @remarks
+   * Cannot be combined with a nonzero `skip`.
+   */
+  cursor?: string | undefined;
   accountID: string;
 };
 
@@ -97,6 +104,7 @@ export const ListTransfersRequest$inboundSchema: z.ZodType<
   transferTypes: types.optional(z.array(components.TransferType$inboundSchema)),
   skip: types.optional(types.number()),
   count: types.optional(types.number()),
+  cursor: types.optional(types.string()),
   accountID: types.string(),
 });
 /** @internal */
@@ -116,6 +124,7 @@ export type ListTransfersRequest$Outbound = {
   transferTypes?: Array<string> | undefined;
   skip?: number | undefined;
   count?: number | undefined;
+  cursor?: string | undefined;
   accountID: string;
 };
 
@@ -140,6 +149,7 @@ export const ListTransfersRequest$outboundSchema: z.ZodType<
   transferTypes: z.array(components.TransferType$outboundSchema).optional(),
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
+  cursor: z.string().optional(),
   accountID: z.string(),
 });
 

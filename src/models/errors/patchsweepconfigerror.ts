@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import * as types from "../../types/primitives.js";
+import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
 export type PatchSweepConfigErrorData = {
@@ -12,6 +13,7 @@ export type PatchSweepConfigErrorData = {
   pullPaymentMethodID?: string | undefined;
   statementDescriptor?: string | undefined;
   minimumBalance?: string | undefined;
+  schedule?: components.SweepConfigScheduleError | undefined;
 };
 
 export class PatchSweepConfigError extends MoovError {
@@ -20,6 +22,7 @@ export class PatchSweepConfigError extends MoovError {
   pullPaymentMethodID?: string | undefined;
   statementDescriptor?: string | undefined;
   minimumBalance?: string | undefined;
+  schedule?: components.SweepConfigScheduleError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: PatchSweepConfigErrorData;
@@ -44,6 +47,7 @@ export class PatchSweepConfigError extends MoovError {
       this.statementDescriptor = err.statementDescriptor;
     }
     if (err.minimumBalance != null) this.minimumBalance = err.minimumBalance;
+    if (err.schedule != null) this.schedule = err.schedule;
 
     this.name = "PatchSweepConfigError";
   }
@@ -60,6 +64,7 @@ export const PatchSweepConfigError$inboundSchema: z.ZodType<
   pullPaymentMethodID: types.optional(types.string()),
   statementDescriptor: types.optional(types.string()),
   minimumBalance: types.optional(types.string()),
+  schedule: types.optional(components.SweepConfigScheduleError$inboundSchema),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -79,6 +84,7 @@ export type PatchSweepConfigError$Outbound = {
   pullPaymentMethodID?: string | undefined;
   statementDescriptor?: string | undefined;
   minimumBalance?: string | undefined;
+  schedule?: components.SweepConfigScheduleError$Outbound | undefined;
 };
 
 /** @internal */
@@ -94,4 +100,5 @@ export const PatchSweepConfigError$outboundSchema: z.ZodType<
     pullPaymentMethodID: z.string().optional(),
     statementDescriptor: z.string().optional(),
     minimumBalance: z.string().optional(),
+    schedule: components.SweepConfigScheduleError$outboundSchema.optional(),
   }));

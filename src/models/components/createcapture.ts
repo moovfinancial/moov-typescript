@@ -31,10 +31,6 @@ import {
  */
 export type CreateCapture = {
   /**
-   * Payment method of the merchant account to capture funds into. For card-acquiring transfers, this must be a moov-wallet payment method.
-   */
-  destinationPaymentMethodID: string;
-  /**
    * Amount to capture.
    *
    * @remarks
@@ -83,7 +79,6 @@ export const CreateCapture$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  destinationPaymentMethodID: types.string(),
   amount: types.optional(AmountDecimal$inboundSchema),
   isFinal: types.optional(types.boolean()),
   description: types.optional(types.string()),
@@ -95,7 +90,6 @@ export const CreateCapture$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CreateCapture$Outbound = {
-  destinationPaymentMethodID: string;
   amount?: AmountDecimal$Outbound | undefined;
   isFinal?: boolean | undefined;
   description?: string | undefined;
@@ -112,7 +106,6 @@ export const CreateCapture$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateCapture
 > = z.object({
-  destinationPaymentMethodID: z.string(),
   amount: AmountDecimal$outboundSchema.optional(),
   isFinal: z.boolean().optional(),
   description: z.string().optional(),

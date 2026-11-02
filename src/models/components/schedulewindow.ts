@@ -14,7 +14,7 @@ import {
 } from "./issuingscheduleday.js";
 
 /**
- * A window of time during which the card may authorize.
+ * A window of time during which authorizations on the card can be approved.
  */
 export type ScheduleWindow = {
   /**

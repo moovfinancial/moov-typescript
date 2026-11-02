@@ -10,7 +10,6 @@ let value: CreateCaptureRequest = {
   accountID: "<id>",
   transferID: "<id>",
   createCapture: {
-    destinationPaymentMethodID: "<id>",
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",

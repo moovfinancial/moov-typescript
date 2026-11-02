@@ -11,7 +11,6 @@ import { MoovError } from "./mooverror.js";
  * Descriptions of any field validations that failed on a capture request.
  */
 export type CaptureValidationErrorData = {
-  destinationPaymentMethodID?: string | undefined;
   amount?: components.AmountDecimalValidationError | undefined;
   isFinal?: string | undefined;
   description?: string | undefined;
@@ -28,7 +27,6 @@ export type CaptureValidationErrorData = {
  * Descriptions of any field validations that failed on a capture request.
  */
 export class CaptureValidationError extends MoovError {
-  destinationPaymentMethodID?: string | undefined;
   amount?: components.AmountDecimalValidationError | undefined;
   isFinal?: string | undefined;
   description?: string | undefined;
@@ -52,9 +50,6 @@ export class CaptureValidationError extends MoovError {
       : `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
-    if (err.destinationPaymentMethodID != null) {
-      this.destinationPaymentMethodID = err.destinationPaymentMethodID;
-    }
     if (err.amount != null) this.amount = err.amount;
     if (err.isFinal != null) this.isFinal = err.isFinal;
     if (err.description != null) this.description = err.description;
@@ -76,7 +71,6 @@ export const CaptureValidationError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  destinationPaymentMethodID: types.optional(types.string()),
   amount: types.optional(components.AmountDecimalValidationError$inboundSchema),
   isFinal: types.optional(types.string()),
   description: types.optional(types.string()),
@@ -105,7 +99,6 @@ export const CaptureValidationError$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CaptureValidationError$Outbound = {
-  destinationPaymentMethodID?: string | undefined;
   amount?: components.AmountDecimalValidationError$Outbound | undefined;
   isFinal?: string | undefined;
   description?: string | undefined;
@@ -130,7 +123,6 @@ export const CaptureValidationError$outboundSchema: z.ZodType<
 > = z.instanceof(CaptureValidationError)
   .transform(v => v.data$)
   .pipe(z.object({
-    destinationPaymentMethodID: z.string().optional(),
     amount: components.AmountDecimalValidationError$outboundSchema.optional(),
     isFinal: z.string().optional(),
     description: z.string().optional(),
