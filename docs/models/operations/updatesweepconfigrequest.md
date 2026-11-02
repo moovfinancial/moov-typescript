@@ -8,7 +8,12 @@ import { UpdateSweepConfigRequest } from "@moovio/sdk/models/operations";
 let value: UpdateSweepConfigRequest = {
   accountID: "<id>",
   sweepConfigID: "<id>",
-  patchSweepConfig: {},
+  patchSweepConfig: {
+    schedule: {
+      cutoffTime: "<value>",
+      timezone: "America/New_York",
+    },
+  },
 };
 ```
 

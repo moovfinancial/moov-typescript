@@ -24,6 +24,10 @@ export type ListIssuedCardTransactionsRequest = {
    */
   issuedCardID?: string | undefined;
   /**
+   * Optional identifier for the account of the card's authorized user.
+   */
+  authorizedUserAccountID?: string | undefined;
+  /**
    * Optional case-insensitive substring match on the merchant name to filter results.
    */
   merchantName?: string | undefined;
@@ -52,6 +56,7 @@ export const ListIssuedCardTransactionsRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   issuedCardID: z.string().optional(),
+  authorizedUserAccountID: z.string().optional(),
   merchantName: z.string().optional(),
   startDateTime: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
@@ -65,6 +70,7 @@ export type ListIssuedCardTransactionsRequest$Outbound = {
   skip?: number | undefined;
   count?: number | undefined;
   issuedCardID?: string | undefined;
+  authorizedUserAccountID?: string | undefined;
   merchantName?: string | undefined;
   startDateTime?: string | undefined;
   endDateTime?: string | undefined;
@@ -80,6 +86,7 @@ export const ListIssuedCardTransactionsRequest$outboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   issuedCardID: z.string().optional(),
+  authorizedUserAccountID: z.string().optional(),
   merchantName: z.string().optional(),
   startDateTime: z.date().transform(v => v.toISOString()).optional(),
   endDateTime: z.date().transform(v => v.toISOString()).optional(),

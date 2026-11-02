@@ -23,6 +23,10 @@ export type ListIssuedCardsRequest = {
    * Optional, comma-separated states to filter the Moov list issued cards response. For example `active,closed`
    */
   states?: Array<components.IssuedCardState> | undefined;
+  /**
+   * Optional identifier for the account of the card's authorized user.
+   */
+  authorizedUserAccountID?: string | undefined;
 };
 
 export type ListIssuedCardsResponse = {
@@ -40,6 +44,7 @@ export const ListIssuedCardsRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   states: z.array(components.IssuedCardState$inboundSchema).optional(),
+  authorizedUserAccountID: z.string().optional(),
 });
 /** @internal */
 export type ListIssuedCardsRequest$Outbound = {
@@ -47,6 +52,7 @@ export type ListIssuedCardsRequest$Outbound = {
   skip?: number | undefined;
   count?: number | undefined;
   states?: Array<string> | undefined;
+  authorizedUserAccountID?: string | undefined;
 };
 
 /** @internal */
@@ -59,6 +65,7 @@ export const ListIssuedCardsRequest$outboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   states: z.array(components.IssuedCardState$outboundSchema).optional(),
+  authorizedUserAccountID: z.string().optional(),
 });
 
 export function listIssuedCardsRequestToJSON(

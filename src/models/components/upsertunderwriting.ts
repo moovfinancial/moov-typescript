@@ -59,6 +59,9 @@ export type UpsertUnderwriting = {
   collectFunds?: CollectFunds | undefined;
   moneyTransfer?: MoneyTransfer | undefined;
   sendFunds?: SendFunds | undefined;
+  /**
+   * For most use cases, you can omit `submissionIntent`. Set it to `wait` to pause the account's underwriting approval process until you send a subsequent request with `submissionIntent` set to `submit`.
+   */
   submissionIntent?: SubmissionIntent | undefined;
 };
 
