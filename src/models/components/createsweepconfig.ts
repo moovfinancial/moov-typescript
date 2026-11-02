@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  SweepConfigSchedule,
+  SweepConfigSchedule$inboundSchema,
+  SweepConfigSchedule$Outbound,
+  SweepConfigSchedule$outboundSchema,
+} from "./sweepconfigschedule.js";
+import {
   SweepConfigStatus,
   SweepConfigStatus$inboundSchema,
   SweepConfigStatus$outboundSchema,
@@ -28,6 +34,10 @@ export type CreateSweepConfig = {
    */
   statementDescriptor?: string | undefined;
   minimumBalance?: string | undefined;
+  /**
+   * Overrides the time of day this wallet's sweep runs. Sweeps only run on US banking days.
+   */
+  schedule?: SweepConfigSchedule | undefined;
 };
 
 /** @internal */
@@ -42,6 +52,7 @@ export const CreateSweepConfig$inboundSchema: z.ZodType<
   pullPaymentMethodID: z.string(),
   statementDescriptor: z.string().optional(),
   minimumBalance: z.string().optional(),
+  schedule: SweepConfigSchedule$inboundSchema.optional(),
 });
 /** @internal */
 export type CreateSweepConfig$Outbound = {
@@ -51,6 +62,7 @@ export type CreateSweepConfig$Outbound = {
   pullPaymentMethodID: string;
   statementDescriptor?: string | undefined;
   minimumBalance?: string | undefined;
+  schedule?: SweepConfigSchedule$Outbound | undefined;
 };
 
 /** @internal */
@@ -65,6 +77,7 @@ export const CreateSweepConfig$outboundSchema: z.ZodType<
   pullPaymentMethodID: z.string(),
   statementDescriptor: z.string().optional(),
   minimumBalance: z.string().optional(),
+  schedule: SweepConfigSchedule$outboundSchema.optional(),
 });
 
 export function createSweepConfigToJSON(

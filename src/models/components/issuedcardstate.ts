@@ -6,13 +6,15 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
+ * The `state` represents the operational status of an issued card.
  *
  * @remarks
  *
- * - `active`: The card is operational and can approve authorizations.
- * - `frozen`: The card is temporarily suspended and cannot approve authorizations. A frozen card can be reactivated by setting its state back to `active`.
- * - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
+ * Authorizations can only be approved while the card is `active`:
+ *
+ * - `active`: The card is operational and authorizations can be approved.
+ * - `frozen`: The card is temporarily suspended and authorizations cannot be approved. Set the state back to `active` to reactivate it. A card can move between `frozen` and `active` as often as needed.
+ * - `closed`: The card is permanently deactivated. A card is closed by request or when it expires, and cannot be reopened.
  */
 export const IssuedCardState = {
   Active: "active",
@@ -20,13 +22,15 @@ export const IssuedCardState = {
   Closed: "closed",
 } as const;
 /**
- * The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
+ * The `state` represents the operational status of an issued card.
  *
  * @remarks
  *
- * - `active`: The card is operational and can approve authorizations.
- * - `frozen`: The card is temporarily suspended and cannot approve authorizations. A frozen card can be reactivated by setting its state back to `active`.
- * - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
+ * Authorizations can only be approved while the card is `active`:
+ *
+ * - `active`: The card is operational and authorizations can be approved.
+ * - `frozen`: The card is temporarily suspended and authorizations cannot be approved. Set the state back to `active` to reactivate it. A card can move between `frozen` and `active` as often as needed.
+ * - `closed`: The card is permanently deactivated. A card is closed by request or when it expires, and cannot be reopened.
  */
 export type IssuedCardState = ClosedEnum<typeof IssuedCardState>;
 

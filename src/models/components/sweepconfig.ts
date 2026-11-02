@@ -13,6 +13,12 @@ import {
   SweepConfigPaymentMethod$outboundSchema,
 } from "./sweepconfigpaymentmethod.js";
 import {
+  SweepConfigSchedule,
+  SweepConfigSchedule$inboundSchema,
+  SweepConfigSchedule$Outbound,
+  SweepConfigSchedule$outboundSchema,
+} from "./sweepconfigschedule.js";
+import {
   SweepConfigStatus,
   SweepConfigStatus$inboundSchema,
   SweepConfigStatus$outboundSchema,
@@ -45,6 +51,10 @@ export type SweepConfig = {
    */
   statementDescriptor?: string | undefined;
   /**
+   * A configured wallet-level override of the time of day the sweep runs.
+   */
+  schedule?: SweepConfigSchedule | undefined;
+  /**
    * An array of fields that are locked. To request updates, please contact Moov support.
    */
   lockedFields?: Array<string> | undefined;
@@ -65,6 +75,7 @@ export const SweepConfig$inboundSchema: z.ZodType<
   pullPaymentMethod: SweepConfigPaymentMethod$inboundSchema,
   minimumBalance: z.string().optional(),
   statementDescriptor: z.string().optional(),
+  schedule: SweepConfigSchedule$inboundSchema.optional(),
   lockedFields: z.array(z.string()).optional(),
   createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -78,6 +89,7 @@ export type SweepConfig$Outbound = {
   pullPaymentMethod: SweepConfigPaymentMethod$Outbound;
   minimumBalance?: string | undefined;
   statementDescriptor?: string | undefined;
+  schedule?: SweepConfigSchedule$Outbound | undefined;
   lockedFields?: Array<string> | undefined;
   createdOn: string;
   updatedOn: string;
@@ -96,6 +108,7 @@ export const SweepConfig$outboundSchema: z.ZodType<
   pullPaymentMethod: SweepConfigPaymentMethod$outboundSchema,
   minimumBalance: z.string().optional(),
   statementDescriptor: z.string().optional(),
+  schedule: SweepConfigSchedule$outboundSchema.optional(),
   lockedFields: z.array(z.string()).optional(),
   createdOn: z.date().transform(v => v.toISOString()),
   updatedOn: z.date().transform(v => v.toISOString()),
