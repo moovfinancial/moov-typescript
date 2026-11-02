@@ -36,6 +36,10 @@ export type IssuedCardAuthorization = {
    * Last four digits of the card number. Omitted for authorizations recorded before this was captured.
    */
   lastFourCardNumber?: string | undefined;
+  /**
+   * Identifier for the account of the card's authorized user.
+   */
+  authorizedUserAccountID?: string | undefined;
   fundingWalletID: string;
   /**
    * The name of the network a card transaction is routed through.
@@ -73,6 +77,7 @@ export const IssuedCardAuthorization$inboundSchema: z.ZodType<
   authorizationID: types.string(),
   issuedCardID: types.string(),
   lastFourCardNumber: types.optional(types.string()),
+  authorizedUserAccountID: types.optional(types.string()),
   fundingWalletID: types.string(),
   network: CardIssuingNetwork$inboundSchema,
   authorizedAmount: types.string(),
@@ -87,6 +92,7 @@ export type IssuedCardAuthorization$Outbound = {
   authorizationID: string;
   issuedCardID: string;
   lastFourCardNumber?: string | undefined;
+  authorizedUserAccountID?: string | undefined;
   fundingWalletID: string;
   network: string;
   authorizedAmount: string;
@@ -106,6 +112,7 @@ export const IssuedCardAuthorization$outboundSchema: z.ZodType<
   authorizationID: z.string(),
   issuedCardID: z.string(),
   lastFourCardNumber: z.string().optional(),
+  authorizedUserAccountID: z.string().optional(),
   fundingWalletID: z.string(),
   network: CardIssuingNetwork$outboundSchema,
   authorizedAmount: z.string(),

@@ -18,6 +18,7 @@ import { ListTransfersValidationError } from "@moovio/sdk/models/errors";
 | `endDateTime`      | *string*           | :heavy_minus_sign: | N/A                |
 | `skip`             | *string*           | :heavy_minus_sign: | N/A                |
 | `count`            | *string*           | :heavy_minus_sign: | N/A                |
+| `cursor`           | *string*           | :heavy_minus_sign: | N/A                |
 | `groupID`          | *string*           | :heavy_minus_sign: | N/A                |
 | `foreignID`        | *string*           | :heavy_minus_sign: | N/A                |
 | `scheduleID`       | *string*           | :heavy_minus_sign: | N/A                |
