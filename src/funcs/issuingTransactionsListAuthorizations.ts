@@ -98,6 +98,7 @@ async function $do(
   const path = pathToFunc("/issuing/{accountID}/authorizations")(pathParams);
 
   const query = encodeFormQuery({
+    "authorizedUserAccountID": payload.authorizedUserAccountID,
     "count": payload.count,
     "endDateTime": payload.endDateTime,
     "issuedCardID": payload.issuedCardID,

@@ -7,6 +7,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  SweepScheduleFrequency,
+  SweepScheduleFrequency$inboundSchema,
+  SweepScheduleFrequency$outboundSchema,
+} from "./sweepschedulefrequency.js";
 
 export const Status = {
   Enabled: "enabled",
@@ -14,12 +19,34 @@ export const Status = {
 } as const;
 export type Status = ClosedEnum<typeof Status>;
 
+/**
+ * Overrides the time of day this wallet's sweep runs. Sweeps only run on US banking days.
+ */
+export type Schedule = {
+  /**
+   * Time of day the sweep runs, in 24-hour `HH:mm` format. Must fall on a 15-minute mark (`:00`, `:15`, `:30`, `:45`).
+   */
+  cutoffTime: string;
+  /**
+   * IANA timezone for `cutoffTime`, such as `America/New_York` or `UTC`.
+   */
+  timezone: string;
+  /**
+   * How often the sweep runs. Defaults to `daily`.
+   */
+  frequency?: SweepScheduleFrequency | undefined;
+};
+
 export type PatchSweepConfig = {
   status?: Status | null | undefined;
   pushPaymentMethodID?: string | null | undefined;
   pullPaymentMethodID?: string | null | undefined;
   statementDescriptor?: string | null | undefined;
   minimumBalance?: string | null | undefined;
+  /**
+   * Overrides the time of day this wallet's sweep runs. Sweeps only run on US banking days.
+   */
+  schedule?: Schedule | null | undefined;
 };
 
 /** @internal */
@@ -28,6 +55,47 @@ export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
 /** @internal */
 export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
   Status$inboundSchema;
+
+/** @internal */
+export const Schedule$inboundSchema: z.ZodType<
+  Schedule,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cutoffTime: z.string(),
+  timezone: z.string(),
+  frequency: SweepScheduleFrequency$inboundSchema.optional(),
+});
+/** @internal */
+export type Schedule$Outbound = {
+  cutoffTime: string;
+  timezone: string;
+  frequency?: string | undefined;
+};
+
+/** @internal */
+export const Schedule$outboundSchema: z.ZodType<
+  Schedule$Outbound,
+  z.ZodTypeDef,
+  Schedule
+> = z.object({
+  cutoffTime: z.string(),
+  timezone: z.string(),
+  frequency: SweepScheduleFrequency$outboundSchema.optional(),
+});
+
+export function scheduleToJSON(schedule: Schedule): string {
+  return JSON.stringify(Schedule$outboundSchema.parse(schedule));
+}
+export function scheduleFromJSON(
+  jsonString: string,
+): SafeParseResult<Schedule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schedule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schedule' from JSON`,
+  );
+}
 
 /** @internal */
 export const PatchSweepConfig$inboundSchema: z.ZodType<
@@ -40,6 +108,7 @@ export const PatchSweepConfig$inboundSchema: z.ZodType<
   pullPaymentMethodID: z.nullable(z.string()).optional(),
   statementDescriptor: z.nullable(z.string()).optional(),
   minimumBalance: z.nullable(z.string()).optional(),
+  schedule: z.nullable(z.lazy(() => Schedule$inboundSchema)).optional(),
 });
 /** @internal */
 export type PatchSweepConfig$Outbound = {
@@ -48,6 +117,7 @@ export type PatchSweepConfig$Outbound = {
   pullPaymentMethodID?: string | null | undefined;
   statementDescriptor?: string | null | undefined;
   minimumBalance?: string | null | undefined;
+  schedule?: Schedule$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -61,6 +131,7 @@ export const PatchSweepConfig$outboundSchema: z.ZodType<
   pullPaymentMethodID: z.nullable(z.string()).optional(),
   statementDescriptor: z.nullable(z.string()).optional(),
   minimumBalance: z.nullable(z.string()).optional(),
+  schedule: z.nullable(z.lazy(() => Schedule$outboundSchema)).optional(),
 });
 
 export function patchSweepConfigToJSON(

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
 export type CreateSweepConfigErrorData = {
@@ -12,6 +13,7 @@ export type CreateSweepConfigErrorData = {
   pullPaymentMethodID?: string | undefined;
   statementDescriptor?: string | undefined;
   minimumBalance?: string | undefined;
+  schedule?: components.SweepConfigScheduleError | undefined;
 };
 
 export class CreateSweepConfigError extends MoovError {
@@ -21,6 +23,7 @@ export class CreateSweepConfigError extends MoovError {
   pullPaymentMethodID?: string | undefined;
   statementDescriptor?: string | undefined;
   minimumBalance?: string | undefined;
+  schedule?: components.SweepConfigScheduleError | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: CreateSweepConfigErrorData;
@@ -46,6 +49,7 @@ export class CreateSweepConfigError extends MoovError {
       this.statementDescriptor = err.statementDescriptor;
     }
     if (err.minimumBalance != null) this.minimumBalance = err.minimumBalance;
+    if (err.schedule != null) this.schedule = err.schedule;
 
     this.name = "CreateSweepConfigError";
   }
@@ -63,6 +67,7 @@ export const CreateSweepConfigError$inboundSchema: z.ZodType<
   pullPaymentMethodID: z.string().optional(),
   statementDescriptor: z.string().optional(),
   minimumBalance: z.string().optional(),
+  schedule: components.SweepConfigScheduleError$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -83,6 +88,7 @@ export type CreateSweepConfigError$Outbound = {
   pullPaymentMethodID?: string | undefined;
   statementDescriptor?: string | undefined;
   minimumBalance?: string | undefined;
+  schedule?: components.SweepConfigScheduleError$Outbound | undefined;
 };
 
 /** @internal */
@@ -99,4 +105,5 @@ export const CreateSweepConfigError$outboundSchema: z.ZodType<
     pullPaymentMethodID: z.string().optional(),
     statementDescriptor: z.string().optional(),
     minimumBalance: z.string().optional(),
+    schedule: components.SweepConfigScheduleError$outboundSchema.optional(),
   }));

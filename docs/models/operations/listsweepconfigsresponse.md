@@ -24,6 +24,10 @@ let value: ListSweepConfigsResponse = {
       pullPaymentMethod: {
         paymentMethodID: "<id>",
       },
+      schedule: {
+        cutoffTime: "<value>",
+        timezone: "America/New_York",
+      },
       createdOn: new Date("2026-03-06T11:27:32.268Z"),
       updatedOn: new Date("2025-01-15T06:29:08.249Z"),
     },
