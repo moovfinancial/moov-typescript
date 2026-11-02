@@ -10,6 +10,10 @@ let value: CreateSweepConfig = {
   status: "enabled",
   pushPaymentMethodID: "<id>",
   pullPaymentMethodID: "<id>",
+  schedule: {
+    cutoffTime: "<value>",
+    timezone: "America/New_York",
+  },
 };
 ```
 
@@ -23,3 +27,4 @@ let value: CreateSweepConfig = {
 | `pullPaymentMethodID`                                                                                                                                           | *string*                                                                                                                                                        | :heavy_check_mark:                                                                                                                                              | ID of the payment method.                                                                                                                                       |
 | `statementDescriptor`                                                                                                                                           | *string*                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                              | The text that appears on the banking statement. The default descriptor is a 10 character ID if an override is not set in the sweep configs statementDescriptor. |
 | `minimumBalance`                                                                                                                                                | *string*                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                              | N/A                                                                                                                                                             |
+| `schedule`                                                                                                                                                      | [components.SweepConfigSchedule](../../models/components/sweepconfigschedule.md)                                                                                | :heavy_minus_sign:                                                                                                                                              | Overrides the time of day this wallet's sweep runs. Sweeps only run on US banking days.                                                                         |
