@@ -24,6 +24,10 @@ export type ListIssuedCardAuthorizationsRequest = {
    */
   issuedCardID?: string | undefined;
   /**
+   * Optional identifier for the account of the card's authorized user.
+   */
+  authorizedUserAccountID?: string | undefined;
+  /**
    * Optional date-time which inclusively filters all authorizations created after this date-time.
    */
   startDateTime?: Date | undefined;
@@ -52,6 +56,7 @@ export const ListIssuedCardAuthorizationsRequest$inboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   issuedCardID: z.string().optional(),
+  authorizedUserAccountID: z.string().optional(),
   startDateTime: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ).optional(),
@@ -66,6 +71,7 @@ export type ListIssuedCardAuthorizationsRequest$Outbound = {
   skip?: number | undefined;
   count?: number | undefined;
   issuedCardID?: string | undefined;
+  authorizedUserAccountID?: string | undefined;
   startDateTime?: string | undefined;
   endDateTime?: string | undefined;
   statuses?: Array<string> | undefined;
@@ -81,6 +87,7 @@ export const ListIssuedCardAuthorizationsRequest$outboundSchema: z.ZodType<
   skip: z.number().int().optional(),
   count: z.number().int().optional(),
   issuedCardID: z.string().optional(),
+  authorizedUserAccountID: z.string().optional(),
   startDateTime: z.date().transform(v => v.toISOString()).optional(),
   endDateTime: z.date().transform(v => v.toISOString()).optional(),
   statuses: z.array(components.IssuingAuthorizationStatus$outboundSchema)
