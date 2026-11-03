@@ -16,7 +16,6 @@ let value: GetCaptureResponse = {
     isFinal: true,
     status: "pending",
     createdOn: new Date("2024-02-18T07:44:09.783Z"),
-    destinationPaymentMethodID: "<id>",
     description: "Pay Instructor for May 15 Class",
     metadata: {
       "optional": "metadata",

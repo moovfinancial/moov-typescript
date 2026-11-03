@@ -10,12 +10,14 @@ Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilit
 
 The `production-app`, `platform.production-app`, and / or `platform.wallet-transfers` capabilities might appear in the list for your Partner account. These are read-only capabilities that Moov requests. These capabilities remain active with your account and require no additional action.
 
+Starting in v2026.10.00, the `platform.moov-money` capability might appear in the list for accounts enrolled in Moov Money. This is a read-only capability that Moov requests. It requires no additional action.
+
 ## Example Usage
 
 ```typescript
 import { CapabilityID } from "@moovio/sdk/models/components";
 
-let value: CapabilityID = "platform.wallet-transfers";
+let value: CapabilityID = "platform.moov-money";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```
@@ -23,5 +25,5 @@ let value: CapabilityID = "platform.wallet-transfers";
 ## Values
 
 ```typescript
-"transfers" | "send-funds" | "send-funds.push-to-card" | "money-transfer.push-to-card" | "send-funds.ach" | "send-funds.rtp" | "send-funds.instant-bank" | "send-funds.wire" | "collect-funds" | "collect-funds.card-payments" | "money-transfer.pull-from-card" | "collect-funds.ach" | "wallet" | "wallet.balance" | "card-issuing" | "issuing.cardholder" | "production-app" | "platform.production-app" | "platform.wallet-transfers" | Unrecognized<string>
+"transfers" | "send-funds" | "send-funds.push-to-card" | "money-transfer.push-to-card" | "send-funds.ach" | "send-funds.rtp" | "send-funds.instant-bank" | "send-funds.wire" | "collect-funds" | "collect-funds.card-payments" | "money-transfer.pull-from-card" | "collect-funds.ach" | "wallet" | "wallet.balance" | "card-issuing" | "issuing.cardholder" | "production-app" | "platform.production-app" | "platform.wallet-transfers" | "platform.moov-money" | Unrecognized<string>
 ```

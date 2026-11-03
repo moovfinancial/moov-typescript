@@ -74,6 +74,9 @@ export type UpsertUnderwriting = {
    * Issued cards are funded from the account's card-issuing wallet before they can be spent, so estimated activity is the only data collected.
    */
   cardIssuing?: CardIssuing | undefined;
+  /**
+   * For most use cases, you can omit `submissionIntent`. Set it to `wait` to pause the account's underwriting approval process until you send a subsequent request with `submissionIntent` set to `submit`.
+   */
   submissionIntent?: SubmissionIntent | undefined;
 };
 

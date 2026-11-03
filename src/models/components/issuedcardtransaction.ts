@@ -21,6 +21,10 @@ export type IssuedCardTransaction = {
    * Last four digits of the card number. Omitted for transactions recorded before this was captured.
    */
   lastFourCardNumber?: string | undefined;
+  /**
+   * Identifier for the account of the card's authorized user.
+   */
+  authorizedUserAccountID?: string | undefined;
   fundingWalletID: string;
   /**
    * A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
@@ -41,6 +45,7 @@ export const IssuedCardTransaction$inboundSchema: z.ZodType<
   cardTransactionID: types.string(),
   issuedCardID: types.string(),
   lastFourCardNumber: types.optional(types.string()),
+  authorizedUserAccountID: types.optional(types.string()),
   fundingWalletID: types.string(),
   amount: types.string(),
   authorizationID: types.optional(types.string()),
@@ -53,6 +58,7 @@ export type IssuedCardTransaction$Outbound = {
   cardTransactionID: string;
   issuedCardID: string;
   lastFourCardNumber?: string | undefined;
+  authorizedUserAccountID?: string | undefined;
   fundingWalletID: string;
   amount: string;
   authorizationID?: string | undefined;
@@ -70,6 +76,7 @@ export const IssuedCardTransaction$outboundSchema: z.ZodType<
   cardTransactionID: z.string(),
   issuedCardID: z.string(),
   lastFourCardNumber: z.string().optional(),
+  authorizedUserAccountID: z.string().optional(),
   fundingWalletID: z.string(),
   amount: z.string(),
   authorizationID: z.string().optional(),

@@ -41,7 +41,7 @@ export type IssuedControlsAllowedSchedule = {
    */
   timezone: string;
   /**
-   * Time windows during which the card may authorize. Any matching window allows the transaction.
+   * Time windows during which authorizations on the card can be approved. Any matching window allows the transaction.
    */
   windows: Array<ScheduleWindow>;
 };

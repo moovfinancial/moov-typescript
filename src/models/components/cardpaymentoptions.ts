@@ -8,6 +8,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CaptureMethod,
+  CaptureMethod$inboundSchema,
+  CaptureMethod$outboundSchema,
+} from "./capturemethod.js";
+import {
   TransactionSource,
   TransactionSource$inboundSchema,
   TransactionSource$outboundSchema,
@@ -27,6 +32,18 @@ export type CardPaymentOptions = {
    * Omit for customer-initiated e-commerce transactions.
    */
   transactionSource?: TransactionSource | undefined;
+  /**
+   * When funds for a `card-payment` transfer are captured.
+   */
+  captureMethod?: CaptureMethod | undefined;
+  /**
+   * Whether an extended authorization hold was requested.
+   */
+  isExtendedAuthorizationRequested?: boolean | undefined;
+  /**
+   * Whether the authorization was flagged as an estimate.
+   */
+  isEstimatedAuthorization?: boolean | undefined;
 };
 
 /** @internal */
@@ -37,11 +54,17 @@ export const CardPaymentOptions$inboundSchema: z.ZodType<
 > = z.object({
   dynamicDescriptor: types.optional(types.string()),
   transactionSource: types.optional(TransactionSource$inboundSchema),
+  captureMethod: types.optional(CaptureMethod$inboundSchema),
+  isExtendedAuthorizationRequested: types.optional(types.boolean()),
+  isEstimatedAuthorization: types.optional(types.boolean()),
 });
 /** @internal */
 export type CardPaymentOptions$Outbound = {
   dynamicDescriptor?: string | undefined;
   transactionSource?: string | undefined;
+  captureMethod?: string | undefined;
+  isExtendedAuthorizationRequested?: boolean | undefined;
+  isEstimatedAuthorization?: boolean | undefined;
 };
 
 /** @internal */
@@ -52,6 +75,9 @@ export const CardPaymentOptions$outboundSchema: z.ZodType<
 > = z.object({
   dynamicDescriptor: z.string().optional(),
   transactionSource: TransactionSource$outboundSchema.optional(),
+  captureMethod: CaptureMethod$outboundSchema.optional(),
+  isExtendedAuthorizationRequested: z.boolean().optional(),
+  isEstimatedAuthorization: z.boolean().optional(),
 });
 
 export function cardPaymentOptionsToJSON(

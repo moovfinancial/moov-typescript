@@ -57,6 +57,10 @@ export type TransferAuthorization = {
    * Expiration time for the approved authorization, when available.
    */
   expiresOn?: Date | undefined;
+  /**
+   * Whether the card network granted the extended authorization hold. Returned only when `options.cardPayment.isExtendedAuthorizationRequested` is `true`.
+   */
+  isExtendedAuthorizationGranted?: boolean | undefined;
 };
 
 /** @internal */
@@ -72,6 +76,7 @@ export const TransferAuthorization$inboundSchema: z.ZodType<
   capturableAmount: AmountDecimal$inboundSchema,
   amountDetails: types.optional(TransferAmountDetails$inboundSchema),
   expiresOn: types.optional(types.date()),
+  isExtendedAuthorizationGranted: types.optional(types.boolean()),
 });
 /** @internal */
 export type TransferAuthorization$Outbound = {
@@ -82,6 +87,7 @@ export type TransferAuthorization$Outbound = {
   capturableAmount: AmountDecimal$Outbound;
   amountDetails?: TransferAmountDetails$Outbound | undefined;
   expiresOn?: string | undefined;
+  isExtendedAuthorizationGranted?: boolean | undefined;
 };
 
 /** @internal */
@@ -97,6 +103,7 @@ export const TransferAuthorization$outboundSchema: z.ZodType<
   capturableAmount: AmountDecimal$outboundSchema,
   amountDetails: TransferAmountDetails$outboundSchema.optional(),
   expiresOn: z.date().transform(v => v.toISOString()).optional(),
+  isExtendedAuthorizationGranted: z.boolean().optional(),
 });
 
 export function transferAuthorizationToJSON(

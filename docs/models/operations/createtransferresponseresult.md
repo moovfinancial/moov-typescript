@@ -432,6 +432,7 @@ const value: components.Transfer = {
   options: {
     cardPayment: {
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
+      captureMethod: "automatic",
     },
   },
   processingDetails: {

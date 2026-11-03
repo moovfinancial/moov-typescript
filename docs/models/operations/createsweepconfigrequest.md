@@ -12,6 +12,10 @@ let value: CreateSweepConfigRequest = {
     status: "enabled",
     pushPaymentMethodID: "<id>",
     pullPaymentMethodID: "<id>",
+    schedule: {
+      cutoffTime: "<value>",
+      timezone: "America/New_York",
+    },
   },
 };
 ```

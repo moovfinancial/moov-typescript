@@ -8,7 +8,7 @@ import { GetCapabilityResponse } from "@moovio/sdk/models/operations";
 let value: GetCapabilityResponse = {
   headers: {},
   result: {
-    capability: "issuing.cardholder",
+    capability: "production-app",
     accountID: "<id>",
     status: "in-review",
     createdOn: new Date("2026-10-28T06:12:31.429Z"),

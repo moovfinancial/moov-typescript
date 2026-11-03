@@ -13,6 +13,7 @@ export type ListTransfersValidationErrorData = {
   endDateTime?: string | undefined;
   skip?: string | undefined;
   count?: string | undefined;
+  cursor?: string | undefined;
   groupID?: string | undefined;
   foreignID?: string | undefined;
   scheduleID?: string | undefined;
@@ -28,6 +29,7 @@ export class ListTransfersValidationError extends MoovError {
   endDateTime?: string | undefined;
   skip?: string | undefined;
   count?: string | undefined;
+  cursor?: string | undefined;
   groupID?: string | undefined;
   foreignID?: string | undefined;
   scheduleID?: string | undefined;
@@ -53,6 +55,7 @@ export class ListTransfersValidationError extends MoovError {
     if (err.endDateTime != null) this.endDateTime = err.endDateTime;
     if (err.skip != null) this.skip = err.skip;
     if (err.count != null) this.count = err.count;
+    if (err.cursor != null) this.cursor = err.cursor;
     if (err.groupID != null) this.groupID = err.groupID;
     if (err.foreignID != null) this.foreignID = err.foreignID;
     if (err.scheduleID != null) this.scheduleID = err.scheduleID;
@@ -76,6 +79,7 @@ export const ListTransfersValidationError$inboundSchema: z.ZodType<
   endDateTime: types.optional(types.string()),
   skip: types.optional(types.string()),
   count: types.optional(types.string()),
+  cursor: types.optional(types.string()),
   groupID: types.optional(types.string()),
   foreignID: types.optional(types.string()),
   scheduleID: types.optional(types.string()),
@@ -102,6 +106,7 @@ export type ListTransfersValidationError$Outbound = {
   endDateTime?: string | undefined;
   skip?: string | undefined;
   count?: string | undefined;
+  cursor?: string | undefined;
   groupID?: string | undefined;
   foreignID?: string | undefined;
   scheduleID?: string | undefined;
@@ -124,6 +129,7 @@ export const ListTransfersValidationError$outboundSchema: z.ZodType<
     endDateTime: z.string().optional(),
     skip: z.string().optional(),
     count: z.string().optional(),
+    cursor: z.string().optional(),
     groupID: z.string().optional(),
     foreignID: z.string().optional(),
     scheduleID: z.string().optional(),

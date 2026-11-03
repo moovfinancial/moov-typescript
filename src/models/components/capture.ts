@@ -52,10 +52,6 @@ export type Capture = {
   status: CaptureStatus;
   createdOn: Date;
   /**
-   * Payment method of the merchant account the funds were captured into. For card-acquiring transfers, this must be a moov-wallet payment method.
-   */
-  destinationPaymentMethodID: string;
-  /**
    * An optional description of the capture that is used on receipts and for your own internal use.
    */
   description?: string | undefined;
@@ -93,7 +89,6 @@ export const Capture$inboundSchema: z.ZodType<Capture, z.ZodTypeDef, unknown> =
     isFinal: types.boolean(),
     status: CaptureStatus$inboundSchema,
     createdOn: types.date(),
-    destinationPaymentMethodID: types.string(),
     description: types.optional(types.string()),
     metadata: types.optional(z.record(types.string())),
     foreignID: types.optional(types.string()),
@@ -109,7 +104,6 @@ export type Capture$Outbound = {
   isFinal: boolean;
   status: string;
   createdOn: string;
-  destinationPaymentMethodID: string;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   foreignID?: string | undefined;
@@ -130,7 +124,6 @@ export const Capture$outboundSchema: z.ZodType<
   isFinal: z.boolean(),
   status: CaptureStatus$outboundSchema,
   createdOn: z.date().transform(v => v.toISOString()),
-  destinationPaymentMethodID: z.string(),
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   foreignID: z.string().optional(),
