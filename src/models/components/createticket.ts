@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -29,13 +29,15 @@ export const CreateTicket$inboundSchema: z.ZodType<
   CreateTicket,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: z.string(),
-  body: z.string(),
-  author: z.string().optional(),
-  contact: TicketContact$inboundSchema,
-  foreignID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string(),
+    body: z.string(),
+    author: z.string().optional(),
+    contact: TicketContact$inboundSchema,
+    foreignID: z.string().optional(),
+  })
+);
 /** @internal */
 export type CreateTicket$Outbound = {
   title: string;
@@ -50,13 +52,15 @@ export const CreateTicket$outboundSchema: z.ZodType<
   CreateTicket$Outbound,
   z.ZodTypeDef,
   CreateTicket
-> = z.object({
-  title: z.string(),
-  body: z.string(),
-  author: z.string().optional(),
-  contact: TicketContact$outboundSchema,
-  foreignID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string(),
+    body: z.string(),
+    author: z.string().optional(),
+    contact: TicketContact$outboundSchema,
+    foreignID: z.string().optional(),
+  })
+);
 
 export function createTicketToJSON(createTicket: CreateTicket): string {
   return JSON.stringify(CreateTicket$outboundSchema.parse(createTicket));

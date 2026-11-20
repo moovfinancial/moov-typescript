@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -16,9 +16,11 @@ export const CardPaymentDetailsError$inboundSchema: z.ZodType<
   CardPaymentDetailsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dynamicDescriptor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: z.string().optional(),
+  })
+);
 /** @internal */
 export type CardPaymentDetailsError$Outbound = {
   dynamicDescriptor?: string | undefined;
@@ -29,9 +31,11 @@ export const CardPaymentDetailsError$outboundSchema: z.ZodType<
   CardPaymentDetailsError$Outbound,
   z.ZodTypeDef,
   CardPaymentDetailsError
-> = z.object({
-  dynamicDescriptor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: z.string().optional(),
+  })
+);
 
 export function cardPaymentDetailsErrorToJSON(
   cardPaymentDetailsError: CardPaymentDetailsError,

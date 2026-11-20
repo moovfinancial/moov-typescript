@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -16,9 +16,11 @@ export const ImageMetadataValidationError$inboundSchema: z.ZodType<
   ImageMetadataValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  altText: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    altText: z.string().optional(),
+  })
+);
 /** @internal */
 export type ImageMetadataValidationError$Outbound = {
   altText?: string | undefined;
@@ -29,9 +31,11 @@ export const ImageMetadataValidationError$outboundSchema: z.ZodType<
   ImageMetadataValidationError$Outbound,
   z.ZodTypeDef,
   ImageMetadataValidationError
-> = z.object({
-  altText: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    altText: z.string().optional(),
+  })
+);
 
 export function imageMetadataValidationErrorToJSON(
   imageMetadataValidationError: ImageMetadataValidationError,

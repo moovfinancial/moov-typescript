@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,10 +25,12 @@ export const WebhookDataTerminalApplicationCreated$inboundSchema: z.ZodType<
   WebhookDataTerminalApplicationCreated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  terminalApplicationID: z.string(),
-  status: TerminalApplicationStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: z.string(),
+    status: TerminalApplicationStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataTerminalApplicationCreated$Outbound = {
   terminalApplicationID: string;
@@ -40,10 +42,12 @@ export const WebhookDataTerminalApplicationCreated$outboundSchema: z.ZodType<
   WebhookDataTerminalApplicationCreated$Outbound,
   z.ZodTypeDef,
   WebhookDataTerminalApplicationCreated
-> = z.object({
-  terminalApplicationID: z.string(),
-  status: TerminalApplicationStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: z.string(),
+    status: TerminalApplicationStatus$outboundSchema,
+  })
+);
 
 export function webhookDataTerminalApplicationCreatedToJSON(
   webhookDataTerminalApplicationCreated: WebhookDataTerminalApplicationCreated,

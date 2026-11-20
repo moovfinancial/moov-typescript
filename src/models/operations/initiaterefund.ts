@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -46,19 +46,21 @@ export const InitiateRefundRequest$inboundSchema: z.ZodType<
   InitiateRefundRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "x-idempotency-key": z.string(),
-  "x-wait-for": components.TransferWaitFor$inboundSchema.optional(),
-  accountID: z.string(),
-  transferID: z.string(),
-  CreateRefund: components.CreateRefund$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-idempotency-key": "xIdempotencyKey",
-    "x-wait-for": "xWaitFor",
-    "CreateRefund": "createRefund",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "x-idempotency-key": z.string(),
+    "x-wait-for": components.TransferWaitFor$inboundSchema.optional(),
+    accountID: z.string(),
+    transferID: z.string(),
+    CreateRefund: components.CreateRefund$inboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "x-idempotency-key": "xIdempotencyKey",
+      "x-wait-for": "xWaitFor",
+      "CreateRefund": "createRefund",
+    });
+  })
+);
 /** @internal */
 export type InitiateRefundRequest$Outbound = {
   "x-idempotency-key": string;
@@ -73,19 +75,21 @@ export const InitiateRefundRequest$outboundSchema: z.ZodType<
   InitiateRefundRequest$Outbound,
   z.ZodTypeDef,
   InitiateRefundRequest
-> = z.object({
-  xIdempotencyKey: z.string(),
-  xWaitFor: components.TransferWaitFor$outboundSchema.optional(),
-  accountID: z.string(),
-  transferID: z.string(),
-  createRefund: components.CreateRefund$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xIdempotencyKey: "x-idempotency-key",
-    xWaitFor: "x-wait-for",
-    createRefund: "CreateRefund",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xIdempotencyKey: z.string(),
+    xWaitFor: components.TransferWaitFor$outboundSchema.optional(),
+    accountID: z.string(),
+    transferID: z.string(),
+    createRefund: components.CreateRefund$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      xIdempotencyKey: "x-idempotency-key",
+      xWaitFor: "x-wait-for",
+      createRefund: "CreateRefund",
+    });
+  })
+);
 
 export function initiateRefundRequestToJSON(
   initiateRefundRequest: InitiateRefundRequest,
@@ -109,10 +113,12 @@ export const InitiateRefundResponseResult$inboundSchema: z.ZodType<
   InitiateRefundResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  components.CardAcquiringRefund$inboundSchema,
-  components.CreateRefundResponse$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.CardAcquiringRefund$inboundSchema,
+    components.CreateRefundResponse$inboundSchema,
+  ])
+);
 /** @internal */
 export type InitiateRefundResponseResult$Outbound =
   | components.CardAcquiringRefund$Outbound
@@ -123,10 +129,12 @@ export const InitiateRefundResponseResult$outboundSchema: z.ZodType<
   InitiateRefundResponseResult$Outbound,
   z.ZodTypeDef,
   InitiateRefundResponseResult
-> = z.union([
-  components.CardAcquiringRefund$outboundSchema,
-  components.CreateRefundResponse$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.CardAcquiringRefund$outboundSchema,
+    components.CreateRefundResponse$outboundSchema,
+  ])
+);
 
 export function initiateRefundResponseResultToJSON(
   initiateRefundResponseResult: InitiateRefundResponseResult,
@@ -152,18 +160,20 @@ export const InitiateRefundResponse$inboundSchema: z.ZodType<
   InitiateRefundResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
-    components.CardAcquiringRefund$inboundSchema,
-    components.CreateRefundResponse$inboundSchema,
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.union([
+      components.CardAcquiringRefund$inboundSchema,
+      components.CreateRefundResponse$inboundSchema,
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type InitiateRefundResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -177,18 +187,20 @@ export const InitiateRefundResponse$outboundSchema: z.ZodType<
   InitiateRefundResponse$Outbound,
   z.ZodTypeDef,
   InitiateRefundResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.union([
-    components.CardAcquiringRefund$outboundSchema,
-    components.CreateRefundResponse$outboundSchema,
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.union([
+      components.CardAcquiringRefund$outboundSchema,
+      components.CreateRefundResponse$outboundSchema,
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function initiateRefundResponseToJSON(
   initiateRefundResponse: InitiateRefundResponse,

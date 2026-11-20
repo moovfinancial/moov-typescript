@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,11 +30,13 @@ export const AchDebitFundPaymentMethod$inboundSchema: z.ZodType<
   AchDebitFundPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("ach-debit-fund"),
-  bankAccount: PaymentMethodsBankAccount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("ach-debit-fund"),
+    bankAccount: PaymentMethodsBankAccount$inboundSchema,
+  })
+);
 /** @internal */
 export type AchDebitFundPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -47,11 +49,13 @@ export const AchDebitFundPaymentMethod$outboundSchema: z.ZodType<
   AchDebitFundPaymentMethod$Outbound,
   z.ZodTypeDef,
   AchDebitFundPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("ach-debit-fund"),
-  bankAccount: PaymentMethodsBankAccount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("ach-debit-fund"),
+    bankAccount: PaymentMethodsBankAccount$outboundSchema,
+  })
+);
 
 export function achDebitFundPaymentMethodToJSON(
   achDebitFundPaymentMethod: AchDebitFundPaymentMethod,

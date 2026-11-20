@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,11 +25,13 @@ export const GetDisputeEvidenceRequest$inboundSchema: z.ZodType<
   GetDisputeEvidenceRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  evidenceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+    evidenceID: z.string(),
+  })
+);
 /** @internal */
 export type GetDisputeEvidenceRequest$Outbound = {
   accountID: string;
@@ -42,11 +44,13 @@ export const GetDisputeEvidenceRequest$outboundSchema: z.ZodType<
   GetDisputeEvidenceRequest$Outbound,
   z.ZodTypeDef,
   GetDisputeEvidenceRequest
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  evidenceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+    evidenceID: z.string(),
+  })
+);
 
 export function getDisputeEvidenceRequestToJSON(
   getDisputeEvidenceRequest: GetDisputeEvidenceRequest,
@@ -70,15 +74,17 @@ export const GetDisputeEvidenceResponse$inboundSchema: z.ZodType<
   GetDisputeEvidenceResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.DisputeEvidenceResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.DisputeEvidenceResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetDisputeEvidenceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -90,15 +96,17 @@ export const GetDisputeEvidenceResponse$outboundSchema: z.ZodType<
   GetDisputeEvidenceResponse$Outbound,
   z.ZodTypeDef,
   GetDisputeEvidenceResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.DisputeEvidenceResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.DisputeEvidenceResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getDisputeEvidenceResponseToJSON(
   getDisputeEvidenceResponse: GetDisputeEvidenceResponse,

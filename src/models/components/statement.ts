@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -146,30 +146,36 @@ export const Statement$inboundSchema: z.ZodType<
   Statement,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  statementID: z.string(),
-  statementName: z.string(),
-  fileName: z.string(),
-  fileSize: z.number().int(),
-  billingPeriodStartDateTime: z.string().datetime({ offset: true }).transform(
-    v => new Date(v)
-  ),
-  billingPeriodEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  subscriptionIDs: z.array(z.string()),
-  summary: BillingSummary$inboundSchema,
-  cardAcquiringFees: CardAcquiringFees$inboundSchema.optional(),
-  achFees: ACHFees$inboundSchema.optional(),
-  instantPaymentFees: InstantPaymentFees$inboundSchema.optional(),
-  platformFees: PlatformFees$inboundSchema.optional(),
-  accountFees: AccountFees$inboundSchema.optional(),
-  otherCardFees: OtherCardFees$inboundSchema.optional(),
-  partnerFees: PartnerFees$inboundSchema.optional(),
-  adjustments: AdjustmentFees$inboundSchema.optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    statementID: z.string(),
+    statementName: z.string(),
+    fileName: z.string(),
+    fileSize: z.number().int(),
+    billingPeriodStartDateTime: z.string().datetime({ offset: true }).transform(
+      v => new Date(v)
+    ),
+    billingPeriodEndDateTime: z.string().datetime({ offset: true }).transform(
+      v => new Date(v)
+    ),
+    subscriptionIDs: z.array(z.string()),
+    summary: BillingSummary$inboundSchema,
+    cardAcquiringFees: CardAcquiringFees$inboundSchema.optional(),
+    achFees: ACHFees$inboundSchema.optional(),
+    instantPaymentFees: InstantPaymentFees$inboundSchema.optional(),
+    platformFees: PlatformFees$inboundSchema.optional(),
+    accountFees: AccountFees$inboundSchema.optional(),
+    otherCardFees: OtherCardFees$inboundSchema.optional(),
+    partnerFees: PartnerFees$inboundSchema.optional(),
+    adjustments: AdjustmentFees$inboundSchema.optional(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 /** @internal */
 export type Statement$Outbound = {
   statementID: string;
@@ -197,26 +203,28 @@ export const Statement$outboundSchema: z.ZodType<
   Statement$Outbound,
   z.ZodTypeDef,
   Statement
-> = z.object({
-  statementID: z.string(),
-  statementName: z.string(),
-  fileName: z.string(),
-  fileSize: z.number().int(),
-  billingPeriodStartDateTime: z.date().transform(v => v.toISOString()),
-  billingPeriodEndDateTime: z.date().transform(v => v.toISOString()),
-  subscriptionIDs: z.array(z.string()),
-  summary: BillingSummary$outboundSchema,
-  cardAcquiringFees: CardAcquiringFees$outboundSchema.optional(),
-  achFees: ACHFees$outboundSchema.optional(),
-  instantPaymentFees: InstantPaymentFees$outboundSchema.optional(),
-  platformFees: PlatformFees$outboundSchema.optional(),
-  accountFees: AccountFees$outboundSchema.optional(),
-  otherCardFees: OtherCardFees$outboundSchema.optional(),
-  partnerFees: PartnerFees$outboundSchema.optional(),
-  adjustments: AdjustmentFees$outboundSchema.optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    statementID: z.string(),
+    statementName: z.string(),
+    fileName: z.string(),
+    fileSize: z.number().int(),
+    billingPeriodStartDateTime: z.date().transform(v => v.toISOString()),
+    billingPeriodEndDateTime: z.date().transform(v => v.toISOString()),
+    subscriptionIDs: z.array(z.string()),
+    summary: BillingSummary$outboundSchema,
+    cardAcquiringFees: CardAcquiringFees$outboundSchema.optional(),
+    achFees: ACHFees$outboundSchema.optional(),
+    instantPaymentFees: InstantPaymentFees$outboundSchema.optional(),
+    platformFees: PlatformFees$outboundSchema.optional(),
+    accountFees: AccountFees$outboundSchema.optional(),
+    otherCardFees: OtherCardFees$outboundSchema.optional(),
+    partnerFees: PartnerFees$outboundSchema.optional(),
+    adjustments: AdjustmentFees$outboundSchema.optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function statementToJSON(statement: Statement): string {
   return JSON.stringify(Statement$outboundSchema.parse(statement));

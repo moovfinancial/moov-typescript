@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,12 @@ export const AmountValidationError$inboundSchema: z.ZodType<
   AmountValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string().optional(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string().optional(),
+    value: z.string().optional(),
+  })
+);
 /** @internal */
 export type AmountValidationError$Outbound = {
   currency?: string | undefined;
@@ -32,10 +34,12 @@ export const AmountValidationError$outboundSchema: z.ZodType<
   AmountValidationError$Outbound,
   z.ZodTypeDef,
   AmountValidationError
-> = z.object({
-  currency: z.string().optional(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string().optional(),
+    value: z.string().optional(),
+  })
+);
 
 export function amountValidationErrorToJSON(
   amountValidationError: AmountValidationError,

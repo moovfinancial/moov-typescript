@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -98,12 +98,14 @@ export const BankAccountException$inboundSchema: z.ZodType<
   BankAccountException,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  achReturnCode: ACHReturnCode$inboundSchema.optional(),
-  rtpRejectionCode: RTPRejectionCode$inboundSchema.optional(),
-  fednowRejectionCode: z.string().optional(),
-  description: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    achReturnCode: ACHReturnCode$inboundSchema.optional(),
+    rtpRejectionCode: RTPRejectionCode$inboundSchema.optional(),
+    fednowRejectionCode: z.string().optional(),
+    description: z.string(),
+  })
+);
 /** @internal */
 export type BankAccountException$Outbound = {
   achReturnCode?: string | undefined;
@@ -117,12 +119,14 @@ export const BankAccountException$outboundSchema: z.ZodType<
   BankAccountException$Outbound,
   z.ZodTypeDef,
   BankAccountException
-> = z.object({
-  achReturnCode: ACHReturnCode$outboundSchema.optional(),
-  rtpRejectionCode: RTPRejectionCode$outboundSchema.optional(),
-  fednowRejectionCode: z.string().optional(),
-  description: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    achReturnCode: ACHReturnCode$outboundSchema.optional(),
+    rtpRejectionCode: RTPRejectionCode$outboundSchema.optional(),
+    fednowRejectionCode: z.string().optional(),
+    description: z.string(),
+  })
+);
 
 export function bankAccountExceptionToJSON(
   bankAccountException: BankAccountException,

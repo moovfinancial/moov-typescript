@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -23,11 +23,13 @@ export const WebhookDataBankAccountDeleted$inboundSchema: z.ZodType<
   WebhookDataBankAccountDeleted,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bankAccountID: z.string(),
-  accountID: z.string(),
-  status: BankAccountStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bankAccountID: z.string(),
+    accountID: z.string(),
+    status: BankAccountStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataBankAccountDeleted$Outbound = {
   bankAccountID: string;
@@ -40,11 +42,13 @@ export const WebhookDataBankAccountDeleted$outboundSchema: z.ZodType<
   WebhookDataBankAccountDeleted$Outbound,
   z.ZodTypeDef,
   WebhookDataBankAccountDeleted
-> = z.object({
-  bankAccountID: z.string(),
-  accountID: z.string(),
-  status: BankAccountStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bankAccountID: z.string(),
+    accountID: z.string(),
+    status: BankAccountStatus$outboundSchema,
+  })
+);
 
 export function webhookDataBankAccountDeletedToJSON(
   webhookDataBankAccountDeleted: WebhookDataBankAccountDeleted,

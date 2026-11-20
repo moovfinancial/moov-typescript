@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,12 @@ export const IssuingControlsError$inboundSchema: z.ZodType<
   IssuingControlsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  velocityLimits: z.record(IssuingVelocityLimitError$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    velocityLimits: z.record(IssuingVelocityLimitError$inboundSchema)
+      .optional(),
+  })
+);
 /** @internal */
 export type IssuingControlsError$Outbound = {
   velocityLimits?:
@@ -37,9 +40,12 @@ export const IssuingControlsError$outboundSchema: z.ZodType<
   IssuingControlsError$Outbound,
   z.ZodTypeDef,
   IssuingControlsError
-> = z.object({
-  velocityLimits: z.record(IssuingVelocityLimitError$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    velocityLimits: z.record(IssuingVelocityLimitError$outboundSchema)
+      .optional(),
+  })
+);
 
 export function issuingControlsErrorToJSON(
   issuingControlsError: IssuingControlsError,

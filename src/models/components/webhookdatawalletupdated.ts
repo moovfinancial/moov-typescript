@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,11 +30,13 @@ export const WebhookDataWalletUpdated$inboundSchema: z.ZodType<
   WebhookDataWalletUpdated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  status: WalletStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+    status: WalletStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataWalletUpdated$Outbound = {
   accountID: string;
@@ -47,11 +49,13 @@ export const WebhookDataWalletUpdated$outboundSchema: z.ZodType<
   WebhookDataWalletUpdated$Outbound,
   z.ZodTypeDef,
   WebhookDataWalletUpdated
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  status: WalletStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+    status: WalletStatus$outboundSchema,
+  })
+);
 
 export function webhookDataWalletUpdatedToJSON(
   webhookDataWalletUpdated: WebhookDataWalletUpdated,

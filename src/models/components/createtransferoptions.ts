@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,11 +30,13 @@ export const CreateTransferOptions$inboundSchema: z.ZodType<
   CreateTransferOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  source: SourceDestinationOptions$inboundSchema,
-  destination: SourceDestinationOptions$inboundSchema,
-  amount: Amount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source: SourceDestinationOptions$inboundSchema,
+    destination: SourceDestinationOptions$inboundSchema,
+    amount: Amount$inboundSchema,
+  })
+);
 /** @internal */
 export type CreateTransferOptions$Outbound = {
   source: SourceDestinationOptions$Outbound;
@@ -47,11 +49,13 @@ export const CreateTransferOptions$outboundSchema: z.ZodType<
   CreateTransferOptions$Outbound,
   z.ZodTypeDef,
   CreateTransferOptions
-> = z.object({
-  source: SourceDestinationOptions$outboundSchema,
-  destination: SourceDestinationOptions$outboundSchema,
-  amount: Amount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source: SourceDestinationOptions$outboundSchema,
+    destination: SourceDestinationOptions$outboundSchema,
+    amount: Amount$outboundSchema,
+  })
+);
 
 export function createTransferOptionsToJSON(
   createTransferOptions: CreateTransferOptions,

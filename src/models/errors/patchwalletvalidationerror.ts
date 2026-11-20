@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type PatchWalletValidationErrorData = {
@@ -42,22 +43,24 @@ export const PatchWalletValidationError$inboundSchema: z.ZodType<
   PatchWalletValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  status: z.string().optional(),
-  description: z.string().optional(),
-  metadata: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new PatchWalletValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    status: z.string().optional(),
+    description: z.string().optional(),
+    metadata: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new PatchWalletValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type PatchWalletValidationError$Outbound = {
@@ -72,11 +75,13 @@ export const PatchWalletValidationError$outboundSchema: z.ZodType<
   PatchWalletValidationError$Outbound,
   z.ZodTypeDef,
   PatchWalletValidationError
-> = z.instanceof(PatchWalletValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    name: z.string().optional(),
-    status: z.string().optional(),
-    description: z.string().optional(),
-    metadata: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(PatchWalletValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      name: z.string().optional(),
+      status: z.string().optional(),
+      description: z.string().optional(),
+      metadata: z.string().optional(),
+    }))
+);

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -46,13 +46,15 @@ export const CollectFundsCardPayments$inboundSchema: z.ZodType<
   CollectFundsCardPayments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardAcceptanceMethods: CardAcceptanceMethods$inboundSchema.optional(),
-  currentlyAcceptsCards: z.boolean().optional(),
-  estimatedActivity: EstimatedActivity$inboundSchema.optional(),
-  fulfillment: Fulfillment$inboundSchema.optional(),
-  refundPolicy: RefundPolicy$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardAcceptanceMethods: CardAcceptanceMethods$inboundSchema.optional(),
+    currentlyAcceptsCards: z.boolean().optional(),
+    estimatedActivity: EstimatedActivity$inboundSchema.optional(),
+    fulfillment: Fulfillment$inboundSchema.optional(),
+    refundPolicy: RefundPolicy$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CollectFundsCardPayments$Outbound = {
   cardAcceptanceMethods?: CardAcceptanceMethods$Outbound | undefined;
@@ -67,13 +69,15 @@ export const CollectFundsCardPayments$outboundSchema: z.ZodType<
   CollectFundsCardPayments$Outbound,
   z.ZodTypeDef,
   CollectFundsCardPayments
-> = z.object({
-  cardAcceptanceMethods: CardAcceptanceMethods$outboundSchema.optional(),
-  currentlyAcceptsCards: z.boolean().optional(),
-  estimatedActivity: EstimatedActivity$outboundSchema.optional(),
-  fulfillment: Fulfillment$outboundSchema.optional(),
-  refundPolicy: RefundPolicy$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardAcceptanceMethods: CardAcceptanceMethods$outboundSchema.optional(),
+    currentlyAcceptsCards: z.boolean().optional(),
+    estimatedActivity: EstimatedActivity$outboundSchema.optional(),
+    fulfillment: Fulfillment$outboundSchema.optional(),
+    refundPolicy: RefundPolicy$outboundSchema.optional(),
+  })
+);
 
 export function collectFundsCardPaymentsToJSON(
   collectFundsCardPayments: CollectFundsCardPayments,

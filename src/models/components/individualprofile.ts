@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -48,14 +48,16 @@ export const IndividualProfile$inboundSchema: z.ZodType<
   IndividualProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: IndividualName$inboundSchema,
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$inboundSchema.optional(),
-  birthDateProvided: z.boolean().optional(),
-  governmentIDProvided: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$inboundSchema,
+    phone: PhoneNumber$inboundSchema.optional(),
+    email: z.string().optional(),
+    address: Address$inboundSchema.optional(),
+    birthDateProvided: z.boolean().optional(),
+    governmentIDProvided: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type IndividualProfile$Outbound = {
   name: IndividualName$Outbound;
@@ -71,14 +73,16 @@ export const IndividualProfile$outboundSchema: z.ZodType<
   IndividualProfile$Outbound,
   z.ZodTypeDef,
   IndividualProfile
-> = z.object({
-  name: IndividualName$outboundSchema,
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$outboundSchema.optional(),
-  birthDateProvided: z.boolean().optional(),
-  governmentIDProvided: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$outboundSchema,
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: Address$outboundSchema.optional(),
+    birthDateProvided: z.boolean().optional(),
+    governmentIDProvided: z.boolean().optional(),
+  })
+);
 
 export function individualProfileToJSON(
   individualProfile: IndividualProfile,

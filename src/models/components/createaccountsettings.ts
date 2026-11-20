@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -25,9 +25,11 @@ export const CardPayment$inboundSchema: z.ZodType<
   CardPayment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  statementDescriptor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    statementDescriptor: z.string().optional(),
+  })
+);
 /** @internal */
 export type CardPayment$Outbound = {
   statementDescriptor?: string | undefined;
@@ -38,9 +40,11 @@ export const CardPayment$outboundSchema: z.ZodType<
   CardPayment$Outbound,
   z.ZodTypeDef,
   CardPayment
-> = z.object({
-  statementDescriptor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    statementDescriptor: z.string().optional(),
+  })
+);
 
 export function cardPaymentToJSON(cardPayment: CardPayment): string {
   return JSON.stringify(CardPayment$outboundSchema.parse(cardPayment));
@@ -60,9 +64,11 @@ export const AchPayment$inboundSchema: z.ZodType<
   AchPayment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  companyName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyName: z.string().optional(),
+  })
+);
 /** @internal */
 export type AchPayment$Outbound = {
   companyName?: string | undefined;
@@ -73,9 +79,11 @@ export const AchPayment$outboundSchema: z.ZodType<
   AchPayment$Outbound,
   z.ZodTypeDef,
   AchPayment
-> = z.object({
-  companyName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyName: z.string().optional(),
+  })
+);
 
 export function achPaymentToJSON(achPayment: AchPayment): string {
   return JSON.stringify(AchPayment$outboundSchema.parse(achPayment));
@@ -95,10 +103,12 @@ export const CreateAccountSettings$inboundSchema: z.ZodType<
   CreateAccountSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardPayment: z.lazy(() => CardPayment$inboundSchema).optional(),
-  achPayment: z.lazy(() => AchPayment$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: z.lazy(() => CardPayment$inboundSchema).optional(),
+    achPayment: z.lazy(() => AchPayment$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type CreateAccountSettings$Outbound = {
   cardPayment?: CardPayment$Outbound | undefined;
@@ -110,10 +120,12 @@ export const CreateAccountSettings$outboundSchema: z.ZodType<
   CreateAccountSettings$Outbound,
   z.ZodTypeDef,
   CreateAccountSettings
-> = z.object({
-  cardPayment: z.lazy(() => CardPayment$outboundSchema).optional(),
-  achPayment: z.lazy(() => AchPayment$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: z.lazy(() => CardPayment$outboundSchema).optional(),
+    achPayment: z.lazy(() => AchPayment$outboundSchema).optional(),
+  })
+);
 
 export function createAccountSettingsToJSON(
   createAccountSettings: CreateAccountSettings,

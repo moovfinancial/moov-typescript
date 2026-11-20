@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,11 +18,13 @@ export const BirthDateUpdate$inboundSchema: z.ZodType<
   BirthDateUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+  })
+);
 /** @internal */
 export type BirthDateUpdate$Outbound = {
   day?: number | undefined;
@@ -35,11 +37,13 @@ export const BirthDateUpdate$outboundSchema: z.ZodType<
   BirthDateUpdate$Outbound,
   z.ZodTypeDef,
   BirthDateUpdate
-> = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+  })
+);
 
 export function birthDateUpdateToJSON(
   birthDateUpdate: BirthDateUpdate,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,10 +27,12 @@ export const ListRefundsRequest$inboundSchema: z.ZodType<
   ListRefundsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+  })
+);
 /** @internal */
 export type ListRefundsRequest$Outbound = {
   accountID: string;
@@ -42,10 +44,12 @@ export const ListRefundsRequest$outboundSchema: z.ZodType<
   ListRefundsRequest$Outbound,
   z.ZodTypeDef,
   ListRefundsRequest
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+  })
+);
 
 export function listRefundsRequestToJSON(
   listRefundsRequest: ListRefundsRequest,
@@ -69,15 +73,17 @@ export const ListRefundsResponse$inboundSchema: z.ZodType<
   ListRefundsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.CardAcquiringRefund$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.CardAcquiringRefund$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListRefundsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -89,15 +95,17 @@ export const ListRefundsResponse$outboundSchema: z.ZodType<
   ListRefundsResponse$Outbound,
   z.ZodTypeDef,
   ListRefundsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.CardAcquiringRefund$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.CardAcquiringRefund$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listRefundsResponseToJSON(
   listRefundsResponse: ListRefundsResponse,

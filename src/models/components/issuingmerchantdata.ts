@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -43,15 +43,17 @@ export const IssuingMerchantData$inboundSchema: z.ZodType<
   IssuingMerchantData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  networkID: z.string(),
-  name: z.string().optional(),
-  city: z.string().optional(),
-  country: z.string(),
-  postalCode: z.string().optional(),
-  state: z.string().optional(),
-  mcc: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    networkID: z.string(),
+    name: z.string().optional(),
+    city: z.string().optional(),
+    country: z.string(),
+    postalCode: z.string().optional(),
+    state: z.string().optional(),
+    mcc: z.string(),
+  })
+);
 /** @internal */
 export type IssuingMerchantData$Outbound = {
   networkID: string;
@@ -68,15 +70,17 @@ export const IssuingMerchantData$outboundSchema: z.ZodType<
   IssuingMerchantData$Outbound,
   z.ZodTypeDef,
   IssuingMerchantData
-> = z.object({
-  networkID: z.string(),
-  name: z.string().optional(),
-  city: z.string().optional(),
-  country: z.string(),
-  postalCode: z.string().optional(),
-  state: z.string().optional(),
-  mcc: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    networkID: z.string(),
+    name: z.string().optional(),
+    city: z.string().optional(),
+    country: z.string(),
+    postalCode: z.string().optional(),
+    state: z.string().optional(),
+    mcc: z.string(),
+  })
+);
 
 export function issuingMerchantDataToJSON(
   issuingMerchantData: IssuingMerchantData,

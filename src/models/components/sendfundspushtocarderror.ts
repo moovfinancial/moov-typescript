@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const SendFundsPushToCardError$inboundSchema: z.ZodType<
   SendFundsPushToCardError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  estimatedActivity: EstimatedActivityError$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    estimatedActivity: EstimatedActivityError$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type SendFundsPushToCardError$Outbound = {
   estimatedActivity?: EstimatedActivityError$Outbound | undefined;
@@ -35,9 +37,11 @@ export const SendFundsPushToCardError$outboundSchema: z.ZodType<
   SendFundsPushToCardError$Outbound,
   z.ZodTypeDef,
   SendFundsPushToCardError
-> = z.object({
-  estimatedActivity: EstimatedActivityError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    estimatedActivity: EstimatedActivityError$outboundSchema.optional(),
+  })
+);
 
 export function sendFundsPushToCardErrorToJSON(
   sendFundsPushToCardError: SendFundsPushToCardError,

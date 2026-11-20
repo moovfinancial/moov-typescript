@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -43,7 +43,7 @@ export type RevokeTokenRequest = {
 /** @internal */
 export const TokenTypeHint$inboundSchema: z.ZodNativeEnum<
   typeof TokenTypeHint
-> = z.nativeEnum(TokenTypeHint);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TokenTypeHint));
 /** @internal */
 export const TokenTypeHint$outboundSchema: z.ZodNativeEnum<
   typeof TokenTypeHint
@@ -54,18 +54,20 @@ export const RevokeTokenRequest$inboundSchema: z.ZodType<
   RevokeTokenRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: z.string(),
-  token_type_hint: TokenTypeHint$inboundSchema.optional(),
-  client_id: z.string().optional(),
-  client_secret: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "token_type_hint": "tokenTypeHint",
-    "client_id": "clientId",
-    "client_secret": "clientSecret",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string(),
+    token_type_hint: TokenTypeHint$inboundSchema.optional(),
+    client_id: z.string().optional(),
+    client_secret: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "token_type_hint": "tokenTypeHint",
+      "client_id": "clientId",
+      "client_secret": "clientSecret",
+    });
+  })
+);
 /** @internal */
 export type RevokeTokenRequest$Outbound = {
   token: string;
@@ -79,18 +81,20 @@ export const RevokeTokenRequest$outboundSchema: z.ZodType<
   RevokeTokenRequest$Outbound,
   z.ZodTypeDef,
   RevokeTokenRequest
-> = z.object({
-  token: z.string(),
-  tokenTypeHint: TokenTypeHint$outboundSchema.optional(),
-  clientId: z.string().optional(),
-  clientSecret: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    tokenTypeHint: "token_type_hint",
-    clientId: "client_id",
-    clientSecret: "client_secret",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string(),
+    tokenTypeHint: TokenTypeHint$outboundSchema.optional(),
+    clientId: z.string().optional(),
+    clientSecret: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      tokenTypeHint: "token_type_hint",
+      clientId: "client_id",
+      clientSecret: "client_secret",
+    });
+  })
+);
 
 export function revokeTokenRequestToJSON(
   revokeTokenRequest: RevokeTokenRequest,

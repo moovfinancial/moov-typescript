@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,11 +38,13 @@ export const PlatformFees$inboundSchema: z.ZodType<
   PlatformFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  walletFee: AmountDecimal$inboundSchema,
-  merchantPCIFee: AmountDecimal$inboundSchema,
-  total: AmountDecimal$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletFee: AmountDecimal$inboundSchema,
+    merchantPCIFee: AmountDecimal$inboundSchema,
+    total: AmountDecimal$inboundSchema,
+  })
+);
 /** @internal */
 export type PlatformFees$Outbound = {
   walletFee: AmountDecimal$Outbound;
@@ -55,11 +57,13 @@ export const PlatformFees$outboundSchema: z.ZodType<
   PlatformFees$Outbound,
   z.ZodTypeDef,
   PlatformFees
-> = z.object({
-  walletFee: AmountDecimal$outboundSchema,
-  merchantPCIFee: AmountDecimal$outboundSchema,
-  total: AmountDecimal$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletFee: AmountDecimal$outboundSchema,
+    merchantPCIFee: AmountDecimal$outboundSchema,
+    total: AmountDecimal$outboundSchema,
+  })
+);
 
 export function platformFeesToJSON(platformFees: PlatformFees): string {
   return JSON.stringify(PlatformFees$outboundSchema.parse(platformFees));

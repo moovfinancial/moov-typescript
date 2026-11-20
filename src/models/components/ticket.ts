@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,26 +32,29 @@ export type Ticket = {
 };
 
 /** @internal */
-export const Ticket$inboundSchema: z.ZodType<Ticket, z.ZodTypeDef, unknown> = z
-  .object({
-    ticketID: z.string(),
-    number: z.number().int(),
-    title: z.string(),
-    contact: TicketContact$inboundSchema,
-    status: TicketStatus$inboundSchema,
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    updatedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    latestMessageOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    closedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    foreignID: z.string().optional(),
-  });
+export const Ticket$inboundSchema: z.ZodType<Ticket, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      ticketID: z.string(),
+      number: z.number().int(),
+      title: z.string(),
+      contact: TicketContact$inboundSchema,
+      status: TicketStatus$inboundSchema,
+      createdOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      updatedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      latestMessageOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      closedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      foreignID: z.string().optional(),
+    })
+  );
 /** @internal */
 export type Ticket$Outbound = {
   ticketID: string;
@@ -71,18 +74,20 @@ export const Ticket$outboundSchema: z.ZodType<
   Ticket$Outbound,
   z.ZodTypeDef,
   Ticket
-> = z.object({
-  ticketID: z.string(),
-  number: z.number().int(),
-  title: z.string(),
-  contact: TicketContact$outboundSchema,
-  status: TicketStatus$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  latestMessageOn: z.date().transform(v => v.toISOString()).optional(),
-  closedOn: z.date().transform(v => v.toISOString()).optional(),
-  foreignID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ticketID: z.string(),
+    number: z.number().int(),
+    title: z.string(),
+    contact: TicketContact$outboundSchema,
+    status: TicketStatus$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    latestMessageOn: z.date().transform(v => v.toISOString()).optional(),
+    closedOn: z.date().transform(v => v.toISOString()).optional(),
+    foreignID: z.string().optional(),
+  })
+);
 
 export function ticketToJSON(ticket: Ticket): string {
   return JSON.stringify(Ticket$outboundSchema.parse(ticket));

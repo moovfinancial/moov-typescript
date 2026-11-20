@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const EnrichedBusinessResponse$inboundSchema: z.ZodType<
   EnrichedBusinessResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  business: EnrichedBusinessProfile$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    business: EnrichedBusinessProfile$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type EnrichedBusinessResponse$Outbound = {
   business?: EnrichedBusinessProfile$Outbound | undefined;
@@ -35,9 +37,11 @@ export const EnrichedBusinessResponse$outboundSchema: z.ZodType<
   EnrichedBusinessResponse$Outbound,
   z.ZodTypeDef,
   EnrichedBusinessResponse
-> = z.object({
-  business: EnrichedBusinessProfile$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    business: EnrichedBusinessProfile$outboundSchema.optional(),
+  })
+);
 
 export function enrichedBusinessResponseToJSON(
   enrichedBusinessResponse: EnrichedBusinessResponse,

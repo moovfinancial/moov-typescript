@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,11 +27,13 @@ export const FedNowServices$inboundSchema: z.ZodType<
   FedNowServices,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  receivePayments: z.boolean(),
-  sendPayments: z.boolean(),
-  requestForPayment: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    receivePayments: z.boolean(),
+    sendPayments: z.boolean(),
+    requestForPayment: z.boolean(),
+  })
+);
 /** @internal */
 export type FedNowServices$Outbound = {
   receivePayments: boolean;
@@ -44,11 +46,13 @@ export const FedNowServices$outboundSchema: z.ZodType<
   FedNowServices$Outbound,
   z.ZodTypeDef,
   FedNowServices
-> = z.object({
-  receivePayments: z.boolean(),
-  sendPayments: z.boolean(),
-  requestForPayment: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    receivePayments: z.boolean(),
+    sendPayments: z.boolean(),
+    requestForPayment: z.boolean(),
+  })
+);
 
 export function fedNowServicesToJSON(fedNowServices: FedNowServices): string {
   return JSON.stringify(FedNowServices$outboundSchema.parse(fedNowServices));

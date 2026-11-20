@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,16 +25,18 @@ export const UploadDisputeEvidenceFileRequest$inboundSchema: z.ZodType<
   UploadDisputeEvidenceFileRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  CreateEvidenceFileMultiPart:
-    components.CreateEvidenceFileMultiPart$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateEvidenceFileMultiPart": "createEvidenceFileMultiPart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+    CreateEvidenceFileMultiPart:
+      components.CreateEvidenceFileMultiPart$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateEvidenceFileMultiPart": "createEvidenceFileMultiPart",
+    });
+  })
+);
 /** @internal */
 export type UploadDisputeEvidenceFileRequest$Outbound = {
   accountID: string;
@@ -47,16 +49,18 @@ export const UploadDisputeEvidenceFileRequest$outboundSchema: z.ZodType<
   UploadDisputeEvidenceFileRequest$Outbound,
   z.ZodTypeDef,
   UploadDisputeEvidenceFileRequest
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  createEvidenceFileMultiPart:
-    components.CreateEvidenceFileMultiPart$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createEvidenceFileMultiPart: "CreateEvidenceFileMultiPart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+    createEvidenceFileMultiPart:
+      components.CreateEvidenceFileMultiPart$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createEvidenceFileMultiPart: "CreateEvidenceFileMultiPart",
+    });
+  })
+);
 
 export function uploadDisputeEvidenceFileRequestToJSON(
   uploadDisputeEvidenceFileRequest: UploadDisputeEvidenceFileRequest,
@@ -82,15 +86,17 @@ export const UploadDisputeEvidenceFileResponse$inboundSchema: z.ZodType<
   UploadDisputeEvidenceFileResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.EvidenceUploadResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.EvidenceUploadResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UploadDisputeEvidenceFileResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -102,15 +108,17 @@ export const UploadDisputeEvidenceFileResponse$outboundSchema: z.ZodType<
   UploadDisputeEvidenceFileResponse$Outbound,
   z.ZodTypeDef,
   UploadDisputeEvidenceFileResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.EvidenceUploadResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.EvidenceUploadResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function uploadDisputeEvidenceFileResponseToJSON(
   uploadDisputeEvidenceFileResponse: UploadDisputeEvidenceFileResponse,

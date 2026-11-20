@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type MicroDepositValidationErrorData = {
@@ -35,19 +36,21 @@ export const MicroDepositValidationError$inboundSchema: z.ZodType<
   MicroDepositValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amounts: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new MicroDepositValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amounts: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new MicroDepositValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type MicroDepositValidationError$Outbound = {
@@ -59,8 +62,10 @@ export const MicroDepositValidationError$outboundSchema: z.ZodType<
   MicroDepositValidationError$Outbound,
   z.ZodTypeDef,
   MicroDepositValidationError
-> = z.instanceof(MicroDepositValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    amounts: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(MicroDepositValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      amounts: z.string().optional(),
+    }))
+);

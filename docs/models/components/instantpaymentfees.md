@@ -9,56 +9,56 @@ import { InstantPaymentFees } from "@moovio/sdk/models/components";
 
 let value: InstantPaymentFees = {
   rtpCreditTransaction: {
-    count: 519146,
-    amount: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
-    },
-  },
-  rtpDecline: {
     count: 200161,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  pushToCardTransaction: {
+  rtpDecline: {
     count: 269601,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  pushToCardDecline: {
+  pushToCardTransaction: {
     count: 899791,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  pullFromCardTransaction: {
+  pushToCardDecline: {
     count: 808278,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  pullFromCardDecline: {
+  pullFromCardTransaction: {
     count: 487513,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  pullFromCardRefund: {
+  pullFromCardDecline: {
     count: 553308,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  instantVerification: {
+  pullFromCardRefund: {
     count: 14483,
+    amount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
+  instantVerification: {
+    count: 788385,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",

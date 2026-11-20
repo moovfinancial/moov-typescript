@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -94,19 +94,21 @@ export const TransferPaymentMethod$inboundSchema: z.ZodType<
   TransferPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  MoovWalletTransferPaymentMethod$inboundSchema,
-  AchDebitFundTransferPaymentMethod$inboundSchema,
-  AchDebitCollectTransferPaymentMethod$inboundSchema,
-  AchCreditStandardTransferPaymentMethod$inboundSchema,
-  AchCreditSameDayTransferPaymentMethod$inboundSchema,
-  RtpCreditTransferPaymentMethod$inboundSchema,
-  CardPaymentTransferPaymentMethod$inboundSchema,
-  PushToCardTransferPaymentMethod$inboundSchema,
-  PullFromCardTransferPaymentMethod$inboundSchema,
-  ApplePayTransferPaymentMethod$inboundSchema,
-  CardPresentPaymentTransferPaymentMethod$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    MoovWalletTransferPaymentMethod$inboundSchema,
+    AchDebitFundTransferPaymentMethod$inboundSchema,
+    AchDebitCollectTransferPaymentMethod$inboundSchema,
+    AchCreditStandardTransferPaymentMethod$inboundSchema,
+    AchCreditSameDayTransferPaymentMethod$inboundSchema,
+    RtpCreditTransferPaymentMethod$inboundSchema,
+    CardPaymentTransferPaymentMethod$inboundSchema,
+    PushToCardTransferPaymentMethod$inboundSchema,
+    PullFromCardTransferPaymentMethod$inboundSchema,
+    ApplePayTransferPaymentMethod$inboundSchema,
+    CardPresentPaymentTransferPaymentMethod$inboundSchema,
+  ])
+);
 /** @internal */
 export type TransferPaymentMethod$Outbound =
   | MoovWalletTransferPaymentMethod$Outbound
@@ -126,19 +128,21 @@ export const TransferPaymentMethod$outboundSchema: z.ZodType<
   TransferPaymentMethod$Outbound,
   z.ZodTypeDef,
   TransferPaymentMethod
-> = z.union([
-  MoovWalletTransferPaymentMethod$outboundSchema,
-  AchDebitFundTransferPaymentMethod$outboundSchema,
-  AchDebitCollectTransferPaymentMethod$outboundSchema,
-  AchCreditStandardTransferPaymentMethod$outboundSchema,
-  AchCreditSameDayTransferPaymentMethod$outboundSchema,
-  RtpCreditTransferPaymentMethod$outboundSchema,
-  CardPaymentTransferPaymentMethod$outboundSchema,
-  PushToCardTransferPaymentMethod$outboundSchema,
-  PullFromCardTransferPaymentMethod$outboundSchema,
-  ApplePayTransferPaymentMethod$outboundSchema,
-  CardPresentPaymentTransferPaymentMethod$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    MoovWalletTransferPaymentMethod$outboundSchema,
+    AchDebitFundTransferPaymentMethod$outboundSchema,
+    AchDebitCollectTransferPaymentMethod$outboundSchema,
+    AchCreditStandardTransferPaymentMethod$outboundSchema,
+    AchCreditSameDayTransferPaymentMethod$outboundSchema,
+    RtpCreditTransferPaymentMethod$outboundSchema,
+    CardPaymentTransferPaymentMethod$outboundSchema,
+    PushToCardTransferPaymentMethod$outboundSchema,
+    PullFromCardTransferPaymentMethod$outboundSchema,
+    ApplePayTransferPaymentMethod$outboundSchema,
+    CardPresentPaymentTransferPaymentMethod$outboundSchema,
+  ])
+);
 
 export function transferPaymentMethodToJSON(
   transferPaymentMethod: TransferPaymentMethod,

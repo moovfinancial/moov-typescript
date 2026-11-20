@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,11 +38,13 @@ export const LinkedApplePayPaymentMethod$inboundSchema: z.ZodType<
   LinkedApplePayPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: PaymentMethodType$inboundSchema,
-  applePay: ApplePayResponse$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: PaymentMethodType$inboundSchema,
+    applePay: ApplePayResponse$inboundSchema,
+  })
+);
 /** @internal */
 export type LinkedApplePayPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -55,11 +57,13 @@ export const LinkedApplePayPaymentMethod$outboundSchema: z.ZodType<
   LinkedApplePayPaymentMethod$Outbound,
   z.ZodTypeDef,
   LinkedApplePayPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: PaymentMethodType$outboundSchema,
-  applePay: ApplePayResponse$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: PaymentMethodType$outboundSchema,
+    applePay: ApplePayResponse$outboundSchema,
+  })
+);
 
 export function linkedApplePayPaymentMethodToJSON(
   linkedApplePayPaymentMethod: LinkedApplePayPaymentMethod,

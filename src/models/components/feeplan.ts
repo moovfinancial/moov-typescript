@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -64,18 +64,20 @@ export type FeePlan = {
 
 /** @internal */
 export const FeePlan$inboundSchema: z.ZodType<FeePlan, z.ZodTypeDef, unknown> =
-  z.object({
-    planID: z.string(),
-    name: z.string(),
-    description: z.string().optional(),
-    cardAcquiringModel: CardAcquiringModel$inboundSchema,
-    billableFees: z.array(BillableFee$inboundSchema),
-    minimumCommitment: MinimumCommitment$inboundSchema,
-    monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
-    createdAt: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      planID: z.string(),
+      name: z.string(),
+      description: z.string().optional(),
+      cardAcquiringModel: CardAcquiringModel$inboundSchema,
+      billableFees: z.array(BillableFee$inboundSchema),
+      minimumCommitment: MinimumCommitment$inboundSchema,
+      monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
+      createdAt: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+    })
+  );
 /** @internal */
 export type FeePlan$Outbound = {
   planID: string;
@@ -93,16 +95,18 @@ export const FeePlan$outboundSchema: z.ZodType<
   FeePlan$Outbound,
   z.ZodTypeDef,
   FeePlan
-> = z.object({
-  planID: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  cardAcquiringModel: CardAcquiringModel$outboundSchema,
-  billableFees: z.array(BillableFee$outboundSchema),
-  minimumCommitment: MinimumCommitment$outboundSchema,
-  monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
-  createdAt: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    planID: z.string(),
+    name: z.string(),
+    description: z.string().optional(),
+    cardAcquiringModel: CardAcquiringModel$outboundSchema,
+    billableFees: z.array(BillableFee$outboundSchema),
+    minimumCommitment: MinimumCommitment$outboundSchema,
+    monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
+    createdAt: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function feePlanToJSON(feePlan: FeePlan): string {
   return JSON.stringify(FeePlan$outboundSchema.parse(feePlan));

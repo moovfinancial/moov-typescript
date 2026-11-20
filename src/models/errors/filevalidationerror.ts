@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type FileValidationErrorData = {
@@ -48,27 +49,29 @@ export const FileValidationError$inboundSchema: z.ZodType<
   FileValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.string().optional(),
-  file: z.string().optional(),
-  FileName: z.string().optional(),
-  filePurpose: z.string().optional(),
-  metadata: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    const remapped = remap$(v, {
-      "FileName": "fileName",
-    });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.string().optional(),
+    file: z.string().optional(),
+    FileName: z.string().optional(),
+    filePurpose: z.string().optional(),
+    metadata: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      const remapped = remap$(v, {
+        "FileName": "fileName",
+      });
 
-    return new FileValidationError(remapped, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+      return new FileValidationError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type FileValidationError$Outbound = {
@@ -84,18 +87,20 @@ export const FileValidationError$outboundSchema: z.ZodType<
   FileValidationError$Outbound,
   z.ZodTypeDef,
   FileValidationError
-> = z.instanceof(FileValidationError)
-  .transform(v => v.data$)
-  .pipe(
-    z.object({
-      error: z.string().optional(),
-      file: z.string().optional(),
-      fileName: z.string().optional(),
-      filePurpose: z.string().optional(),
-      metadata: z.string().optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        fileName: "FileName",
-      });
-    }),
-  );
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(FileValidationError)
+    .transform(v => v.data$)
+    .pipe(
+      z.object({
+        error: z.string().optional(),
+        file: z.string().optional(),
+        fileName: z.string().optional(),
+        filePurpose: z.string().optional(),
+        metadata: z.string().optional(),
+      }).transform((v) => {
+        return remap$(v, {
+          fileName: "FileName",
+        });
+      }),
+    )
+);

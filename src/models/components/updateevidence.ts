@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,10 +25,12 @@ export const UpdateEvidence$inboundSchema: z.ZodType<
   UpdateEvidence,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  evidenceType: EvidenceType$inboundSchema.optional(),
-  text: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evidenceType: EvidenceType$inboundSchema.optional(),
+    text: z.string().optional(),
+  })
+);
 /** @internal */
 export type UpdateEvidence$Outbound = {
   evidenceType?: string | undefined;
@@ -40,10 +42,12 @@ export const UpdateEvidence$outboundSchema: z.ZodType<
   UpdateEvidence$Outbound,
   z.ZodTypeDef,
   UpdateEvidence
-> = z.object({
-  evidenceType: EvidenceType$outboundSchema.optional(),
-  text: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evidenceType: EvidenceType$outboundSchema.optional(),
+    text: z.string().optional(),
+  })
+);
 
 export function updateEvidenceToJSON(updateEvidence: UpdateEvidence): string {
   return JSON.stringify(UpdateEvidence$outboundSchema.parse(updateEvidence));
