@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type OnboardingInviteErrorData = {
@@ -49,23 +50,25 @@ export const OnboardingInviteError$inboundSchema: z.ZodType<
   OnboardingInviteError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  returnURL: z.string().optional(),
-  termsOfServiceURL: z.string().optional(),
-  scopes: z.record(z.string()).optional(),
-  capabilities: z.record(z.string()).optional(),
-  feePlanCodes: z.record(z.string()).optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new OnboardingInviteError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    returnURL: z.string().optional(),
+    termsOfServiceURL: z.string().optional(),
+    scopes: z.record(z.string()).optional(),
+    capabilities: z.record(z.string()).optional(),
+    feePlanCodes: z.record(z.string()).optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new OnboardingInviteError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type OnboardingInviteError$Outbound = {
@@ -81,12 +84,14 @@ export const OnboardingInviteError$outboundSchema: z.ZodType<
   OnboardingInviteError$Outbound,
   z.ZodTypeDef,
   OnboardingInviteError
-> = z.instanceof(OnboardingInviteError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    returnURL: z.string().optional(),
-    termsOfServiceURL: z.string().optional(),
-    scopes: z.record(z.string()).optional(),
-    capabilities: z.record(z.string()).optional(),
-    feePlanCodes: z.record(z.string()).optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(OnboardingInviteError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      returnURL: z.string().optional(),
+      termsOfServiceURL: z.string().optional(),
+      scopes: z.record(z.string()).optional(),
+      capabilities: z.record(z.string()).optional(),
+      feePlanCodes: z.record(z.string()).optional(),
+    }))
+);

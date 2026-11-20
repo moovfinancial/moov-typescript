@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,14 +27,16 @@ export const FileUploadMetadata$inboundSchema: z.ZodType<
   FileUploadMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  representative_id: z.string().optional(),
-  comment: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "representative_id": "representativeId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    representative_id: z.string().optional(),
+    comment: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "representative_id": "representativeId",
+    });
+  })
+);
 /** @internal */
 export type FileUploadMetadata$Outbound = {
   representative_id?: string | undefined;
@@ -46,14 +48,16 @@ export const FileUploadMetadata$outboundSchema: z.ZodType<
   FileUploadMetadata$Outbound,
   z.ZodTypeDef,
   FileUploadMetadata
-> = z.object({
-  representativeId: z.string().optional(),
-  comment: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    representativeId: "representative_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    representativeId: z.string().optional(),
+    comment: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      representativeId: "representative_id",
+    });
+  })
+);
 
 export function fileUploadMetadataToJSON(
   fileUploadMetadata: FileUploadMetadata,

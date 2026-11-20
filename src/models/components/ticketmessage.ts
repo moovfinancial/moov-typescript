@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,11 +18,13 @@ export const TicketMessage$inboundSchema: z.ZodType<
   TicketMessage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  author: z.string(),
-  body: z.string(),
-  sentOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    author: z.string(),
+    body: z.string(),
+    sentOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  })
+);
 /** @internal */
 export type TicketMessage$Outbound = {
   author: string;
@@ -35,11 +37,13 @@ export const TicketMessage$outboundSchema: z.ZodType<
   TicketMessage$Outbound,
   z.ZodTypeDef,
   TicketMessage
-> = z.object({
-  author: z.string(),
-  body: z.string(),
-  sentOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    author: z.string(),
+    body: z.string(),
+    sentOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function ticketMessageToJSON(ticketMessage: TicketMessage): string {
   return JSON.stringify(TicketMessage$outboundSchema.parse(ticketMessage));

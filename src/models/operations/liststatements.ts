@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -36,17 +36,19 @@ export const ListStatementsRequest$inboundSchema: z.ZodType<
   ListStatementsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  billingPeriodStartDateTime: z.string().datetime({ offset: true }).transform(
-    v => new Date(v)
-  ).optional(),
-  billingPeriodEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    billingPeriodStartDateTime: z.string().datetime({ offset: true }).transform(
+      v => new Date(v)
+    ).optional(),
+    billingPeriodEndDateTime: z.string().datetime({ offset: true }).transform(
+      v => new Date(v)
+    ).optional(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    accountID: z.string(),
+  })
+);
 /** @internal */
 export type ListStatementsRequest$Outbound = {
   billingPeriodStartDateTime?: string | undefined;
@@ -61,14 +63,17 @@ export const ListStatementsRequest$outboundSchema: z.ZodType<
   ListStatementsRequest$Outbound,
   z.ZodTypeDef,
   ListStatementsRequest
-> = z.object({
-  billingPeriodStartDateTime: z.date().transform(v => v.toISOString())
-    .optional(),
-  billingPeriodEndDateTime: z.date().transform(v => v.toISOString()).optional(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    billingPeriodStartDateTime: z.date().transform(v => v.toISOString())
+      .optional(),
+    billingPeriodEndDateTime: z.date().transform(v => v.toISOString())
+      .optional(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    accountID: z.string(),
+  })
+);
 
 export function listStatementsRequestToJSON(
   listStatementsRequest: ListStatementsRequest,
@@ -92,15 +97,17 @@ export const ListStatementsResponse$inboundSchema: z.ZodType<
   ListStatementsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Statement$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Statement$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListStatementsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -112,15 +119,17 @@ export const ListStatementsResponse$outboundSchema: z.ZodType<
   ListStatementsResponse$Outbound,
   z.ZodTypeDef,
   ListStatementsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Statement$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Statement$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listStatementsResponseToJSON(
   listStatementsResponse: ListStatementsResponse,

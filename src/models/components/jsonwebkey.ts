@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -88,7 +88,8 @@ export type JSONWebKey = {
 };
 
 /** @internal */
-export const Use$inboundSchema: z.ZodNativeEnum<typeof Use> = z.nativeEnum(Use);
+export const Use$inboundSchema: z.ZodNativeEnum<typeof Use> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Use));
 /** @internal */
 export const Use$outboundSchema: z.ZodNativeEnum<typeof Use> =
   Use$inboundSchema;
@@ -98,22 +99,24 @@ export const JSONWebKey$inboundSchema: z.ZodType<
   JSONWebKey,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kty: z.string(),
-  use: Use$inboundSchema.optional(),
-  key_ops: z.array(z.string()).optional(),
-  alg: z.string().optional(),
-  kid: z.string().optional(),
-  crv: z.string().optional(),
-  x: z.string().optional(),
-  y: z.string().optional(),
-  n: z.string().optional(),
-  e: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "key_ops": "keyOps",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kty: z.string(),
+    use: Use$inboundSchema.optional(),
+    key_ops: z.array(z.string()).optional(),
+    alg: z.string().optional(),
+    kid: z.string().optional(),
+    crv: z.string().optional(),
+    x: z.string().optional(),
+    y: z.string().optional(),
+    n: z.string().optional(),
+    e: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "key_ops": "keyOps",
+    });
+  })
+);
 /** @internal */
 export type JSONWebKey$Outbound = {
   kty: string;
@@ -133,22 +136,24 @@ export const JSONWebKey$outboundSchema: z.ZodType<
   JSONWebKey$Outbound,
   z.ZodTypeDef,
   JSONWebKey
-> = z.object({
-  kty: z.string(),
-  use: Use$outboundSchema.optional(),
-  keyOps: z.array(z.string()).optional(),
-  alg: z.string().optional(),
-  kid: z.string().optional(),
-  crv: z.string().optional(),
-  x: z.string().optional(),
-  y: z.string().optional(),
-  n: z.string().optional(),
-  e: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    keyOps: "key_ops",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kty: z.string(),
+    use: Use$outboundSchema.optional(),
+    keyOps: z.array(z.string()).optional(),
+    alg: z.string().optional(),
+    kid: z.string().optional(),
+    crv: z.string().optional(),
+    x: z.string().optional(),
+    y: z.string().optional(),
+    n: z.string().optional(),
+    e: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      keyOps: "key_ops",
+    });
+  })
+);
 
 export function jsonWebKeyToJSON(jsonWebKey: JSONWebKey): string {
   return JSON.stringify(JSONWebKey$outboundSchema.parse(jsonWebKey));

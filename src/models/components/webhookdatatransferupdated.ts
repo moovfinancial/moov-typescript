@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -41,14 +41,16 @@ export const WebhookDataTransferUpdated$inboundSchema: z.ZodType<
   WebhookDataTransferUpdated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-  status: WebhookDataTransferStatus$inboundSchema,
-  source: WebhookTransferPaymentMethodDetails$inboundSchema,
-  destination: WebhookTransferPaymentMethodDetails$inboundSchema,
-  foreignID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+    status: WebhookDataTransferStatus$inboundSchema,
+    source: WebhookTransferPaymentMethodDetails$inboundSchema,
+    destination: WebhookTransferPaymentMethodDetails$inboundSchema,
+    foreignID: z.string().optional(),
+  })
+);
 /** @internal */
 export type WebhookDataTransferUpdated$Outbound = {
   accountID: string;
@@ -64,14 +66,16 @@ export const WebhookDataTransferUpdated$outboundSchema: z.ZodType<
   WebhookDataTransferUpdated$Outbound,
   z.ZodTypeDef,
   WebhookDataTransferUpdated
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-  status: WebhookDataTransferStatus$outboundSchema,
-  source: WebhookTransferPaymentMethodDetails$outboundSchema,
-  destination: WebhookTransferPaymentMethodDetails$outboundSchema,
-  foreignID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+    status: WebhookDataTransferStatus$outboundSchema,
+    source: WebhookTransferPaymentMethodDetails$outboundSchema,
+    destination: WebhookTransferPaymentMethodDetails$outboundSchema,
+    foreignID: z.string().optional(),
+  })
+);
 
 export function webhookDataTransferUpdatedToJSON(
   webhookDataTransferUpdated: WebhookDataTransferUpdated,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const FinancialInstitutions$inboundSchema: z.ZodType<
   FinancialInstitutions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  achParticipants: z.array(AchParticipant$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    achParticipants: z.array(AchParticipant$inboundSchema),
+  })
+);
 /** @internal */
 export type FinancialInstitutions$Outbound = {
   achParticipants: Array<AchParticipant$Outbound>;
@@ -35,9 +37,11 @@ export const FinancialInstitutions$outboundSchema: z.ZodType<
   FinancialInstitutions$Outbound,
   z.ZodTypeDef,
   FinancialInstitutions
-> = z.object({
-  achParticipants: z.array(AchParticipant$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    achParticipants: z.array(AchParticipant$outboundSchema),
+  })
+);
 
 export function financialInstitutionsToJSON(
   financialInstitutions: FinancialInstitutions,

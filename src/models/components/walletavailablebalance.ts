@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,11 +28,13 @@ export const WalletAvailableBalance$inboundSchema: z.ZodType<
   WalletAvailableBalance,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string(),
-  value: z.number().int(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    value: z.number().int(),
+    valueDecimal: z.string(),
+  })
+);
 /** @internal */
 export type WalletAvailableBalance$Outbound = {
   currency: string;
@@ -45,11 +47,13 @@ export const WalletAvailableBalance$outboundSchema: z.ZodType<
   WalletAvailableBalance$Outbound,
   z.ZodTypeDef,
   WalletAvailableBalance
-> = z.object({
-  currency: z.string(),
-  value: z.number().int(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    value: z.number().int(),
+    valueDecimal: z.string(),
+  })
+);
 
 export function walletAvailableBalanceToJSON(
   walletAvailableBalance: WalletAvailableBalance,

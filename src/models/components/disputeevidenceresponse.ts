@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -45,19 +45,26 @@ export const DisputeEvidenceResponse$inboundSchema: z.ZodType<
   DisputeEvidenceResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  evidenceID: z.string(),
-  disputeID: z.string(),
-  evidenceType: EvidenceType$inboundSchema,
-  text: z.string().optional(),
-  mimeType: z.string().optional(),
-  filename: z.string().optional(),
-  size: z.number().int().optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  submittedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evidenceID: z.string(),
+    disputeID: z.string(),
+    evidenceType: EvidenceType$inboundSchema,
+    text: z.string().optional(),
+    mimeType: z.string().optional(),
+    filename: z.string().optional(),
+    size: z.number().int().optional(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    submittedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type DisputeEvidenceResponse$Outbound = {
   evidenceID: string;
@@ -77,18 +84,20 @@ export const DisputeEvidenceResponse$outboundSchema: z.ZodType<
   DisputeEvidenceResponse$Outbound,
   z.ZodTypeDef,
   DisputeEvidenceResponse
-> = z.object({
-  evidenceID: z.string(),
-  disputeID: z.string(),
-  evidenceType: EvidenceType$outboundSchema,
-  text: z.string().optional(),
-  mimeType: z.string().optional(),
-  filename: z.string().optional(),
-  size: z.number().int().optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  submittedOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evidenceID: z.string(),
+    disputeID: z.string(),
+    evidenceType: EvidenceType$outboundSchema,
+    text: z.string().optional(),
+    mimeType: z.string().optional(),
+    filename: z.string().optional(),
+    size: z.number().int().optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    submittedOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function disputeEvidenceResponseToJSON(
   disputeEvidenceResponse: DisputeEvidenceResponse,

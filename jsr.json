@@ -2,11 +2,12 @@
 
 {
   "name": "@moovio/sdk",
-  "version": "25.12.14",
+  "version": "25.12.15",
   "exports": {
-    ".": "./src/index.ts",    
-    "./models/errors": "./src/models/errors/index.ts",    
-    "./models/components": "./src/models/components/index.ts",    
+    ".": "./src/index.ts",
+    "./node": "./src/node.ts",
+    "./models/errors": "./src/models/errors/index.ts",
+    "./models/components": "./src/models/components/index.ts",
     "./models/operations": "./src/models/operations/index.ts",
     "./lib/config": "./src/lib/config.ts",
     "./lib/http": "./src/lib/http.ts",

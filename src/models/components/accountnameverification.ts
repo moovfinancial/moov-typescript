@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -39,12 +39,14 @@ export const AccountNameVerification$inboundSchema: z.ZodType<
   AccountNameVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  firstName: CardVerificationResult$inboundSchema.optional(),
-  lastName: CardVerificationResult$inboundSchema.optional(),
-  middleName: CardVerificationResult$inboundSchema.optional(),
-  fullName: CardVerificationResult$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: CardVerificationResult$inboundSchema.optional(),
+    lastName: CardVerificationResult$inboundSchema.optional(),
+    middleName: CardVerificationResult$inboundSchema.optional(),
+    fullName: CardVerificationResult$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type AccountNameVerification$Outbound = {
   firstName?: string | undefined;
@@ -58,12 +60,14 @@ export const AccountNameVerification$outboundSchema: z.ZodType<
   AccountNameVerification$Outbound,
   z.ZodTypeDef,
   AccountNameVerification
-> = z.object({
-  firstName: CardVerificationResult$outboundSchema.optional(),
-  lastName: CardVerificationResult$outboundSchema.optional(),
-  middleName: CardVerificationResult$outboundSchema.optional(),
-  fullName: CardVerificationResult$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: CardVerificationResult$outboundSchema.optional(),
+    lastName: CardVerificationResult$outboundSchema.optional(),
+    middleName: CardVerificationResult$outboundSchema.optional(),
+    fullName: CardVerificationResult$outboundSchema.optional(),
+  })
+);
 
 export function accountNameVerificationToJSON(
   accountNameVerification: AccountNameVerification,

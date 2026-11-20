@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -82,17 +82,19 @@ export const LinkCard$inboundSchema: z.ZodType<
   LinkCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  e2ee: E2EEToken$inboundSchema.optional(),
-  cardNumber: z.string(),
-  cardCvv: z.string(),
-  expiration: CardExpiration$inboundSchema,
-  holderName: z.string().optional(),
-  billingAddress: CardAddress$inboundSchema,
-  cardOnFile: z.boolean().optional(),
-  merchantAccountID: z.string().optional(),
-  verifyName: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    e2ee: E2EEToken$inboundSchema.optional(),
+    cardNumber: z.string(),
+    cardCvv: z.string(),
+    expiration: CardExpiration$inboundSchema,
+    holderName: z.string().optional(),
+    billingAddress: CardAddress$inboundSchema,
+    cardOnFile: z.boolean().optional(),
+    merchantAccountID: z.string().optional(),
+    verifyName: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type LinkCard$Outbound = {
   e2ee?: E2EEToken$Outbound | undefined;
@@ -111,17 +113,19 @@ export const LinkCard$outboundSchema: z.ZodType<
   LinkCard$Outbound,
   z.ZodTypeDef,
   LinkCard
-> = z.object({
-  e2ee: E2EEToken$outboundSchema.optional(),
-  cardNumber: z.string(),
-  cardCvv: z.string(),
-  expiration: CardExpiration$outboundSchema,
-  holderName: z.string().optional(),
-  billingAddress: CardAddress$outboundSchema,
-  cardOnFile: z.boolean().optional(),
-  merchantAccountID: z.string().optional(),
-  verifyName: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    e2ee: E2EEToken$outboundSchema.optional(),
+    cardNumber: z.string(),
+    cardCvv: z.string(),
+    expiration: CardExpiration$outboundSchema,
+    holderName: z.string().optional(),
+    billingAddress: CardAddress$outboundSchema,
+    cardOnFile: z.boolean().optional(),
+    merchantAccountID: z.string().optional(),
+    verifyName: z.boolean().optional(),
+  })
+);
 
 export function linkCardToJSON(linkCard: LinkCard): string {
   return JSON.stringify(LinkCard$outboundSchema.parse(linkCard));

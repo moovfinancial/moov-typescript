@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -29,10 +29,12 @@ export const Reversal$inboundSchema: z.ZodType<
   Reversal,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  ReversedWithCancellation$inboundSchema,
-  ReversedWithRefund$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    ReversedWithCancellation$inboundSchema,
+    ReversedWithRefund$inboundSchema,
+  ])
+);
 /** @internal */
 export type Reversal$Outbound =
   | ReversedWithCancellation$Outbound
@@ -43,10 +45,12 @@ export const Reversal$outboundSchema: z.ZodType<
   Reversal$Outbound,
   z.ZodTypeDef,
   Reversal
-> = z.union([
-  ReversedWithCancellation$outboundSchema,
-  ReversedWithRefund$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    ReversedWithCancellation$outboundSchema,
+    ReversedWithRefund$outboundSchema,
+  ])
+);
 
 export function reversalToJSON(reversal: Reversal): string {
   return JSON.stringify(Reversal$outboundSchema.parse(reversal));

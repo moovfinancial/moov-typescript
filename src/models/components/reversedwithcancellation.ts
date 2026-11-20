@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,9 +25,11 @@ export const ReversedWithCancellation$inboundSchema: z.ZodType<
   ReversedWithCancellation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cancellation: Cancellation$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cancellation: Cancellation$inboundSchema,
+  })
+);
 /** @internal */
 export type ReversedWithCancellation$Outbound = {
   cancellation: Cancellation$Outbound;
@@ -38,9 +40,11 @@ export const ReversedWithCancellation$outboundSchema: z.ZodType<
   ReversedWithCancellation$Outbound,
   z.ZodTypeDef,
   ReversedWithCancellation
-> = z.object({
-  cancellation: Cancellation$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cancellation: Cancellation$outboundSchema,
+  })
+);
 
 export function reversedWithCancellationToJSON(
   reversedWithCancellation: ReversedWithCancellation,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,12 +28,16 @@ export const Adjustment$inboundSchema: z.ZodType<
   Adjustment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  adjustmentID: z.string(),
-  walletID: z.string(),
-  amount: AmountDecimal$inboundSchema,
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    adjustmentID: z.string(),
+    walletID: z.string(),
+    amount: AmountDecimal$inboundSchema,
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 /** @internal */
 export type Adjustment$Outbound = {
   adjustmentID: string;
@@ -47,12 +51,14 @@ export const Adjustment$outboundSchema: z.ZodType<
   Adjustment$Outbound,
   z.ZodTypeDef,
   Adjustment
-> = z.object({
-  adjustmentID: z.string(),
-  walletID: z.string(),
-  amount: AmountDecimal$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    adjustmentID: z.string(),
+    walletID: z.string(),
+    amount: AmountDecimal$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function adjustmentToJSON(adjustment: Adjustment): string {
   return JSON.stringify(Adjustment$outboundSchema.parse(adjustment));

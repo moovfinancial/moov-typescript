@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -33,16 +33,18 @@ export const LinkCardRequest$inboundSchema: z.ZodType<
   LinkCardRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "x-wait-for": components.LinkCardWaitFor$inboundSchema.optional(),
-  accountID: z.string(),
-  LinkCard: components.LinkCard$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "x-wait-for": "xWaitFor",
-    "LinkCard": "linkCard",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "x-wait-for": components.LinkCardWaitFor$inboundSchema.optional(),
+    accountID: z.string(),
+    LinkCard: components.LinkCard$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "x-wait-for": "xWaitFor",
+      "LinkCard": "linkCard",
+    });
+  })
+);
 /** @internal */
 export type LinkCardRequest$Outbound = {
   "x-wait-for"?: string | undefined;
@@ -55,16 +57,18 @@ export const LinkCardRequest$outboundSchema: z.ZodType<
   LinkCardRequest$Outbound,
   z.ZodTypeDef,
   LinkCardRequest
-> = z.object({
-  xWaitFor: components.LinkCardWaitFor$outboundSchema.optional(),
-  accountID: z.string(),
-  linkCard: components.LinkCard$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    xWaitFor: "x-wait-for",
-    linkCard: "LinkCard",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xWaitFor: components.LinkCardWaitFor$outboundSchema.optional(),
+    accountID: z.string(),
+    linkCard: components.LinkCard$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      xWaitFor: "x-wait-for",
+      linkCard: "LinkCard",
+    });
+  })
+);
 
 export function linkCardRequestToJSON(
   linkCardRequest: LinkCardRequest,
@@ -86,15 +90,17 @@ export const LinkCardResponse$inboundSchema: z.ZodType<
   LinkCardResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Card$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Card$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type LinkCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -106,15 +112,17 @@ export const LinkCardResponse$outboundSchema: z.ZodType<
   LinkCardResponse$Outbound,
   z.ZodTypeDef,
   LinkCardResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Card$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Card$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function linkCardResponseToJSON(
   linkCardResponse: LinkCardResponse,

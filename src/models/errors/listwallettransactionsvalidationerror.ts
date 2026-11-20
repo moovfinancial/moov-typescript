@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type ListWalletTransactionsValidationErrorData = {
@@ -83,31 +84,33 @@ export const ListWalletTransactionsValidationError$inboundSchema: z.ZodType<
   ListWalletTransactionsValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transactionType: z.string().optional(),
-  transactionTypes: z.string().optional(),
-  sourceType: z.string().optional(),
-  sourceID: z.string().optional(),
-  status: z.string().optional(),
-  sweepID: z.string().optional(),
-  createdStartDateTime: z.string().optional(),
-  createdEndDateTime: z.string().optional(),
-  completedStartDateTime: z.string().optional(),
-  completedEndDateTime: z.string().optional(),
-  statementDescriptor: z.string().optional(),
-  skip: z.string().optional(),
-  count: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ListWalletTransactionsValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transactionType: z.string().optional(),
+    transactionTypes: z.string().optional(),
+    sourceType: z.string().optional(),
+    sourceID: z.string().optional(),
+    status: z.string().optional(),
+    sweepID: z.string().optional(),
+    createdStartDateTime: z.string().optional(),
+    createdEndDateTime: z.string().optional(),
+    completedStartDateTime: z.string().optional(),
+    completedEndDateTime: z.string().optional(),
+    statementDescriptor: z.string().optional(),
+    skip: z.string().optional(),
+    count: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ListWalletTransactionsValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ListWalletTransactionsValidationError$Outbound = {
@@ -131,20 +134,22 @@ export const ListWalletTransactionsValidationError$outboundSchema: z.ZodType<
   ListWalletTransactionsValidationError$Outbound,
   z.ZodTypeDef,
   ListWalletTransactionsValidationError
-> = z.instanceof(ListWalletTransactionsValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    transactionType: z.string().optional(),
-    transactionTypes: z.string().optional(),
-    sourceType: z.string().optional(),
-    sourceID: z.string().optional(),
-    status: z.string().optional(),
-    sweepID: z.string().optional(),
-    createdStartDateTime: z.string().optional(),
-    createdEndDateTime: z.string().optional(),
-    completedStartDateTime: z.string().optional(),
-    completedEndDateTime: z.string().optional(),
-    statementDescriptor: z.string().optional(),
-    skip: z.string().optional(),
-    count: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ListWalletTransactionsValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      transactionType: z.string().optional(),
+      transactionTypes: z.string().optional(),
+      sourceType: z.string().optional(),
+      sourceID: z.string().optional(),
+      status: z.string().optional(),
+      sweepID: z.string().optional(),
+      createdStartDateTime: z.string().optional(),
+      createdEndDateTime: z.string().optional(),
+      completedStartDateTime: z.string().optional(),
+      completedEndDateTime: z.string().optional(),
+      statementDescriptor: z.string().optional(),
+      skip: z.string().optional(),
+      count: z.string().optional(),
+    }))
+);

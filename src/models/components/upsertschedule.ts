@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,11 +36,13 @@ export const UpsertSchedule$inboundSchema: z.ZodType<
   UpsertSchedule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: z.string().optional(),
-  occurrences: z.array(Occurrence$inboundSchema).optional(),
-  recur: Recur$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string().optional(),
+    occurrences: z.array(Occurrence$inboundSchema).optional(),
+    recur: Recur$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type UpsertSchedule$Outbound = {
   description?: string | undefined;
@@ -53,11 +55,13 @@ export const UpsertSchedule$outboundSchema: z.ZodType<
   UpsertSchedule$Outbound,
   z.ZodTypeDef,
   UpsertSchedule
-> = z.object({
-  description: z.string().optional(),
-  occurrences: z.array(Occurrence$outboundSchema).optional(),
-  recur: Recur$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string().optional(),
+    occurrences: z.array(Occurrence$outboundSchema).optional(),
+    recur: Recur$outboundSchema.optional(),
+  })
+);
 
 export function upsertScheduleToJSON(upsertSchedule: UpsertSchedule): string {
   return JSON.stringify(UpsertSchedule$outboundSchema.parse(upsertSchedule));

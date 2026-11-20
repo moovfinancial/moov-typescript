@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const CreateAccessTokenResponse$inboundSchema: z.ZodType<
   CreateAccessTokenResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.AuthToken$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.AuthToken$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateAccessTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -39,15 +41,17 @@ export const CreateAccessTokenResponse$outboundSchema: z.ZodType<
   CreateAccessTokenResponse$Outbound,
   z.ZodTypeDef,
   CreateAccessTokenResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.AuthToken$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.AuthToken$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createAccessTokenResponseToJSON(
   createAccessTokenResponse: CreateAccessTokenResponse,

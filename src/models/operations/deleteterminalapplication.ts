@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,9 +21,11 @@ export const DeleteTerminalApplicationRequest$inboundSchema: z.ZodType<
   DeleteTerminalApplicationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  terminalApplicationID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: z.string(),
+  })
+);
 /** @internal */
 export type DeleteTerminalApplicationRequest$Outbound = {
   terminalApplicationID: string;
@@ -34,9 +36,11 @@ export const DeleteTerminalApplicationRequest$outboundSchema: z.ZodType<
   DeleteTerminalApplicationRequest$Outbound,
   z.ZodTypeDef,
   DeleteTerminalApplicationRequest
-> = z.object({
-  terminalApplicationID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: z.string(),
+  })
+);
 
 export function deleteTerminalApplicationRequestToJSON(
   deleteTerminalApplicationRequest: DeleteTerminalApplicationRequest,
@@ -62,13 +66,15 @@ export const DeleteTerminalApplicationResponse$inboundSchema: z.ZodType<
   DeleteTerminalApplicationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DeleteTerminalApplicationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -79,13 +85,15 @@ export const DeleteTerminalApplicationResponse$outboundSchema: z.ZodType<
   DeleteTerminalApplicationResponse$Outbound,
   z.ZodTypeDef,
   DeleteTerminalApplicationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function deleteTerminalApplicationResponseToJSON(
   deleteTerminalApplicationResponse: DeleteTerminalApplicationResponse,

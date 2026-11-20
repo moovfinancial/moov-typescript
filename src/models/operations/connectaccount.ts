@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,14 +23,16 @@ export const ConnectAccountRequest$inboundSchema: z.ZodType<
   ConnectAccountRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  ShareScopes: components.ShareScopes$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "ShareScopes": "shareScopes",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    ShareScopes: components.ShareScopes$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "ShareScopes": "shareScopes",
+    });
+  })
+);
 /** @internal */
 export type ConnectAccountRequest$Outbound = {
   accountID: string;
@@ -42,14 +44,16 @@ export const ConnectAccountRequest$outboundSchema: z.ZodType<
   ConnectAccountRequest$Outbound,
   z.ZodTypeDef,
   ConnectAccountRequest
-> = z.object({
-  accountID: z.string(),
-  shareScopes: components.ShareScopes$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    shareScopes: "ShareScopes",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    shareScopes: components.ShareScopes$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      shareScopes: "ShareScopes",
+    });
+  })
+);
 
 export function connectAccountRequestToJSON(
   connectAccountRequest: ConnectAccountRequest,
@@ -73,13 +77,15 @@ export const ConnectAccountResponse$inboundSchema: z.ZodType<
   ConnectAccountResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type ConnectAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -90,13 +96,15 @@ export const ConnectAccountResponse$outboundSchema: z.ZodType<
   ConnectAccountResponse$Outbound,
   z.ZodTypeDef,
   ConnectAccountResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function connectAccountResponseToJSON(
   connectAccountResponse: ConnectAccountResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,12 +19,14 @@ export const CardVolumeDistribution$inboundSchema: z.ZodType<
   CardVolumeDistribution,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ecommercePercentage: z.number().int(),
-  cardPresentPercentage: z.number().int(),
-  mailOrPhonePercentage: z.number().int(),
-  debtRepaymentPercentage: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ecommercePercentage: z.number().int(),
+    cardPresentPercentage: z.number().int(),
+    mailOrPhonePercentage: z.number().int(),
+    debtRepaymentPercentage: z.number().int(),
+  })
+);
 /** @internal */
 export type CardVolumeDistribution$Outbound = {
   ecommercePercentage: number;
@@ -38,12 +40,14 @@ export const CardVolumeDistribution$outboundSchema: z.ZodType<
   CardVolumeDistribution$Outbound,
   z.ZodTypeDef,
   CardVolumeDistribution
-> = z.object({
-  ecommercePercentage: z.number().int(),
-  cardPresentPercentage: z.number().int(),
-  mailOrPhonePercentage: z.number().int(),
-  debtRepaymentPercentage: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ecommercePercentage: z.number().int(),
+    cardPresentPercentage: z.number().int(),
+    mailOrPhonePercentage: z.number().int(),
+    debtRepaymentPercentage: z.number().int(),
+  })
+);
 
 export function cardVolumeDistributionToJSON(
   cardVolumeDistribution: CardVolumeDistribution,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -115,20 +115,22 @@ export const CreatePaymentLink$inboundSchema: z.ZodType<
   CreatePaymentLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  partnerAccountID: z.string(),
-  merchantPaymentMethodID: z.string(),
-  amount: Amount$inboundSchema,
-  salesTaxAmount: Amount$inboundSchema.optional(),
-  maxUses: z.number().int().optional(),
-  expiresOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  display: PaymentLinkDisplayOptions$inboundSchema,
-  customer: PaymentLinkCustomerOptions$inboundSchema.optional(),
-  payment: PaymentLinkPaymentDetails$inboundSchema.optional(),
-  payout: PaymentLinkPayoutDetails$inboundSchema.optional(),
-  lineItems: CreatePaymentLinkLineItems$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerAccountID: z.string(),
+    merchantPaymentMethodID: z.string(),
+    amount: Amount$inboundSchema,
+    salesTaxAmount: Amount$inboundSchema.optional(),
+    maxUses: z.number().int().optional(),
+    expiresOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    display: PaymentLinkDisplayOptions$inboundSchema,
+    customer: PaymentLinkCustomerOptions$inboundSchema.optional(),
+    payment: PaymentLinkPaymentDetails$inboundSchema.optional(),
+    payout: PaymentLinkPayoutDetails$inboundSchema.optional(),
+    lineItems: CreatePaymentLinkLineItems$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CreatePaymentLink$Outbound = {
   partnerAccountID: string;
@@ -149,19 +151,21 @@ export const CreatePaymentLink$outboundSchema: z.ZodType<
   CreatePaymentLink$Outbound,
   z.ZodTypeDef,
   CreatePaymentLink
-> = z.object({
-  partnerAccountID: z.string(),
-  merchantPaymentMethodID: z.string(),
-  amount: Amount$outboundSchema,
-  salesTaxAmount: Amount$outboundSchema.optional(),
-  maxUses: z.number().int().optional(),
-  expiresOn: z.date().transform(v => v.toISOString()).optional(),
-  display: PaymentLinkDisplayOptions$outboundSchema,
-  customer: PaymentLinkCustomerOptions$outboundSchema.optional(),
-  payment: PaymentLinkPaymentDetails$outboundSchema.optional(),
-  payout: PaymentLinkPayoutDetails$outboundSchema.optional(),
-  lineItems: CreatePaymentLinkLineItems$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerAccountID: z.string(),
+    merchantPaymentMethodID: z.string(),
+    amount: Amount$outboundSchema,
+    salesTaxAmount: Amount$outboundSchema.optional(),
+    maxUses: z.number().int().optional(),
+    expiresOn: z.date().transform(v => v.toISOString()).optional(),
+    display: PaymentLinkDisplayOptions$outboundSchema,
+    customer: PaymentLinkCustomerOptions$outboundSchema.optional(),
+    payment: PaymentLinkPaymentDetails$outboundSchema.optional(),
+    payout: PaymentLinkPayoutDetails$outboundSchema.optional(),
+    lineItems: CreatePaymentLinkLineItems$outboundSchema.optional(),
+  })
+);
 
 export function createPaymentLinkToJSON(
   createPaymentLink: CreatePaymentLink,

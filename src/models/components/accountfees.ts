@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -52,15 +52,17 @@ export const AccountFees$inboundSchema: z.ZodType<
   AccountFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  walletFee: AmountDecimal$inboundSchema,
-  merchantPCIFee: AmountDecimal$inboundSchema,
-  invoicePaymentFee: AmountDecimal$inboundSchema,
-  kybFee: AmountDecimal$inboundSchema.optional(),
-  kycFee: AmountDecimal$inboundSchema.optional(),
-  transactionMonitoringFee: AmountDecimal$inboundSchema.optional(),
-  total: AmountDecimal$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletFee: AmountDecimal$inboundSchema,
+    merchantPCIFee: AmountDecimal$inboundSchema,
+    invoicePaymentFee: AmountDecimal$inboundSchema,
+    kybFee: AmountDecimal$inboundSchema.optional(),
+    kycFee: AmountDecimal$inboundSchema.optional(),
+    transactionMonitoringFee: AmountDecimal$inboundSchema.optional(),
+    total: AmountDecimal$inboundSchema,
+  })
+);
 /** @internal */
 export type AccountFees$Outbound = {
   walletFee: AmountDecimal$Outbound;
@@ -77,15 +79,17 @@ export const AccountFees$outboundSchema: z.ZodType<
   AccountFees$Outbound,
   z.ZodTypeDef,
   AccountFees
-> = z.object({
-  walletFee: AmountDecimal$outboundSchema,
-  merchantPCIFee: AmountDecimal$outboundSchema,
-  invoicePaymentFee: AmountDecimal$outboundSchema,
-  kybFee: AmountDecimal$outboundSchema.optional(),
-  kycFee: AmountDecimal$outboundSchema.optional(),
-  transactionMonitoringFee: AmountDecimal$outboundSchema.optional(),
-  total: AmountDecimal$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletFee: AmountDecimal$outboundSchema,
+    merchantPCIFee: AmountDecimal$outboundSchema,
+    invoicePaymentFee: AmountDecimal$outboundSchema,
+    kybFee: AmountDecimal$outboundSchema.optional(),
+    kycFee: AmountDecimal$outboundSchema.optional(),
+    transactionMonitoringFee: AmountDecimal$outboundSchema.optional(),
+    total: AmountDecimal$outboundSchema,
+  })
+);
 
 export function accountFeesToJSON(accountFees: AccountFees): string {
   return JSON.stringify(AccountFees$outboundSchema.parse(accountFees));

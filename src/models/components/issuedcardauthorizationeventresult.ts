@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -23,7 +24,9 @@ export type IssuedCardAuthorizationEventResult = ClosedEnum<
 /** @internal */
 export const IssuedCardAuthorizationEventResult$inboundSchema: z.ZodNativeEnum<
   typeof IssuedCardAuthorizationEventResult
-> = z.nativeEnum(IssuedCardAuthorizationEventResult);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(IssuedCardAuthorizationEventResult)
+);
 /** @internal */
 export const IssuedCardAuthorizationEventResult$outboundSchema: z.ZodNativeEnum<
   typeof IssuedCardAuthorizationEventResult

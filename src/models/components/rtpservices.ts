@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,10 +23,12 @@ export const RTPServices$inboundSchema: z.ZodType<
   RTPServices,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  receivePayments: z.boolean(),
-  receiveRequestForPayment: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    receivePayments: z.boolean(),
+    receiveRequestForPayment: z.boolean(),
+  })
+);
 /** @internal */
 export type RTPServices$Outbound = {
   receivePayments: boolean;
@@ -38,10 +40,12 @@ export const RTPServices$outboundSchema: z.ZodType<
   RTPServices$Outbound,
   z.ZodTypeDef,
   RTPServices
-> = z.object({
-  receivePayments: z.boolean(),
-  receiveRequestForPayment: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    receivePayments: z.boolean(),
+    receiveRequestForPayment: z.boolean(),
+  })
+);
 
 export function rtpServicesToJSON(rtpServices: RTPServices): string {
   return JSON.stringify(RTPServices$outboundSchema.parse(rtpServices));

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -23,7 +24,9 @@ export type TerminalApplicationPlatform = ClosedEnum<
 /** @internal */
 export const TerminalApplicationPlatform$inboundSchema: z.ZodNativeEnum<
   typeof TerminalApplicationPlatform
-> = z.nativeEnum(TerminalApplicationPlatform);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(TerminalApplicationPlatform)
+);
 /** @internal */
 export const TerminalApplicationPlatform$outboundSchema: z.ZodNativeEnum<
   typeof TerminalApplicationPlatform

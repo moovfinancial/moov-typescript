@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,14 +24,16 @@ export const AssignAccountCountriesRequest$inboundSchema: z.ZodType<
   AssignAccountCountriesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  AccountCountries: components.AccountCountries$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "AccountCountries": "accountCountries",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    AccountCountries: components.AccountCountries$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "AccountCountries": "accountCountries",
+    });
+  })
+);
 /** @internal */
 export type AssignAccountCountriesRequest$Outbound = {
   accountID: string;
@@ -43,14 +45,16 @@ export const AssignAccountCountriesRequest$outboundSchema: z.ZodType<
   AssignAccountCountriesRequest$Outbound,
   z.ZodTypeDef,
   AssignAccountCountriesRequest
-> = z.object({
-  accountID: z.string(),
-  accountCountries: components.AccountCountries$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    accountCountries: "AccountCountries",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    accountCountries: components.AccountCountries$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      accountCountries: "AccountCountries",
+    });
+  })
+);
 
 export function assignAccountCountriesRequestToJSON(
   assignAccountCountriesRequest: AssignAccountCountriesRequest,
@@ -76,15 +80,17 @@ export const AssignAccountCountriesResponse$inboundSchema: z.ZodType<
   AssignAccountCountriesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.AccountCountries$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.AccountCountries$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type AssignAccountCountriesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -96,15 +102,17 @@ export const AssignAccountCountriesResponse$outboundSchema: z.ZodType<
   AssignAccountCountriesResponse$Outbound,
   z.ZodTypeDef,
   AssignAccountCountriesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.AccountCountries$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.AccountCountries$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function assignAccountCountriesResponseToJSON(
   assignAccountCountriesResponse: AssignAccountCountriesResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,14 @@ export const AsyncTransfer$inboundSchema: z.ZodType<
   AsyncTransfer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 /** @internal */
 export type AsyncTransfer$Outbound = {
   transferID: string;
@@ -32,10 +36,12 @@ export const AsyncTransfer$outboundSchema: z.ZodType<
   AsyncTransfer$Outbound,
   z.ZodTypeDef,
   AsyncTransfer
-> = z.object({
-  transferID: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function asyncTransferToJSON(asyncTransfer: AsyncTransfer): string {
   return JSON.stringify(AsyncTransfer$outboundSchema.parse(asyncTransfer));

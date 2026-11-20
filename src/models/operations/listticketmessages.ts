@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const ListTicketMessagesRequest$inboundSchema: z.ZodType<
   ListTicketMessagesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  ticketID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    ticketID: z.string(),
+  })
+);
 /** @internal */
 export type ListTicketMessagesRequest$Outbound = {
   accountID: string;
@@ -39,10 +41,12 @@ export const ListTicketMessagesRequest$outboundSchema: z.ZodType<
   ListTicketMessagesRequest$Outbound,
   z.ZodTypeDef,
   ListTicketMessagesRequest
-> = z.object({
-  accountID: z.string(),
-  ticketID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    ticketID: z.string(),
+  })
+);
 
 export function listTicketMessagesRequestToJSON(
   listTicketMessagesRequest: ListTicketMessagesRequest,
@@ -66,15 +70,17 @@ export const ListTicketMessagesResponse$inboundSchema: z.ZodType<
   ListTicketMessagesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.TicketMessage$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.TicketMessage$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListTicketMessagesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -86,15 +92,17 @@ export const ListTicketMessagesResponse$outboundSchema: z.ZodType<
   ListTicketMessagesResponse$Outbound,
   z.ZodTypeDef,
   ListTicketMessagesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.TicketMessage$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.TicketMessage$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listTicketMessagesResponseToJSON(
   listTicketMessagesResponse: ListTicketMessagesResponse,

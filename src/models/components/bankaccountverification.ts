@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -37,11 +37,13 @@ export const BankAccountVerification$inboundSchema: z.ZodType<
   BankAccountVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  verificationMethod: BankAccountVerificationMethod$inboundSchema,
-  status: BankAccountVerificationStatus$inboundSchema,
-  exceptionDetails: BankAccountException$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    verificationMethod: BankAccountVerificationMethod$inboundSchema,
+    status: BankAccountVerificationStatus$inboundSchema,
+    exceptionDetails: BankAccountException$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type BankAccountVerification$Outbound = {
   verificationMethod: string;
@@ -54,11 +56,13 @@ export const BankAccountVerification$outboundSchema: z.ZodType<
   BankAccountVerification$Outbound,
   z.ZodTypeDef,
   BankAccountVerification
-> = z.object({
-  verificationMethod: BankAccountVerificationMethod$outboundSchema,
-  status: BankAccountVerificationStatus$outboundSchema,
-  exceptionDetails: BankAccountException$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    verificationMethod: BankAccountVerificationMethod$outboundSchema,
+    status: BankAccountVerificationStatus$outboundSchema,
+    exceptionDetails: BankAccountException$outboundSchema.optional(),
+  })
+);
 
 export function bankAccountVerificationToJSON(
   bankAccountVerification: BankAccountVerification,

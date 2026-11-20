@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,15 +25,17 @@ export const UploadDisputeEvidenceTextRequest$inboundSchema: z.ZodType<
   UploadDisputeEvidenceTextRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  CreateEvidenceText: components.CreateEvidenceText$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateEvidenceText": "createEvidenceText",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+    CreateEvidenceText: components.CreateEvidenceText$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateEvidenceText": "createEvidenceText",
+    });
+  })
+);
 /** @internal */
 export type UploadDisputeEvidenceTextRequest$Outbound = {
   accountID: string;
@@ -46,15 +48,17 @@ export const UploadDisputeEvidenceTextRequest$outboundSchema: z.ZodType<
   UploadDisputeEvidenceTextRequest$Outbound,
   z.ZodTypeDef,
   UploadDisputeEvidenceTextRequest
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  createEvidenceText: components.CreateEvidenceText$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createEvidenceText: "CreateEvidenceText",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+    createEvidenceText: components.CreateEvidenceText$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createEvidenceText: "CreateEvidenceText",
+    });
+  })
+);
 
 export function uploadDisputeEvidenceTextRequestToJSON(
   uploadDisputeEvidenceTextRequest: UploadDisputeEvidenceTextRequest,
@@ -80,15 +84,17 @@ export const UploadDisputeEvidenceTextResponse$inboundSchema: z.ZodType<
   UploadDisputeEvidenceTextResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.EvidenceTextResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.EvidenceTextResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UploadDisputeEvidenceTextResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -100,15 +106,17 @@ export const UploadDisputeEvidenceTextResponse$outboundSchema: z.ZodType<
   UploadDisputeEvidenceTextResponse$Outbound,
   z.ZodTypeDef,
   UploadDisputeEvidenceTextResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.EvidenceTextResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.EvidenceTextResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function uploadDisputeEvidenceTextResponseToJSON(
   uploadDisputeEvidenceTextResponse: UploadDisputeEvidenceTextResponse,

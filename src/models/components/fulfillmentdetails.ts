@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -24,12 +24,14 @@ export const FulfillmentDetails$inboundSchema: z.ZodType<
   FulfillmentDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  hasPhysicalGoods: z.boolean(),
-  isShippingProduct: z.boolean(),
-  shipmentDurationDays: z.number().int(),
-  returnPolicy: ReturnPolicyType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    hasPhysicalGoods: z.boolean(),
+    isShippingProduct: z.boolean(),
+    shipmentDurationDays: z.number().int(),
+    returnPolicy: ReturnPolicyType$inboundSchema,
+  })
+);
 /** @internal */
 export type FulfillmentDetails$Outbound = {
   hasPhysicalGoods: boolean;
@@ -43,12 +45,14 @@ export const FulfillmentDetails$outboundSchema: z.ZodType<
   FulfillmentDetails$Outbound,
   z.ZodTypeDef,
   FulfillmentDetails
-> = z.object({
-  hasPhysicalGoods: z.boolean(),
-  isShippingProduct: z.boolean(),
-  shipmentDurationDays: z.number().int(),
-  returnPolicy: ReturnPolicyType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    hasPhysicalGoods: z.boolean(),
+    isShippingProduct: z.boolean(),
+    shipmentDurationDays: z.number().int(),
+    returnPolicy: ReturnPolicyType$outboundSchema,
+  })
+);
 
 export function fulfillmentDetailsToJSON(
   fulfillmentDetails: FulfillmentDetails,

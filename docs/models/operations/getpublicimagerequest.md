@@ -6,7 +6,7 @@
 import { GetPublicImageRequest } from "@moovio/sdk/models/operations";
 
 let value: GetPublicImageRequest = {
-  publicID: "<id>",
+  publicID: "abcdefghijklmnopqrstu",
 };
 ```
 

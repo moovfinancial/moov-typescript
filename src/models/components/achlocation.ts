@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -20,13 +20,15 @@ export const AchLocation$inboundSchema: z.ZodType<
   AchLocation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  address: z.string(),
-  city: z.string(),
-  postalCode: z.string(),
-  postalCodeExtension: z.string(),
-  state: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    address: z.string(),
+    city: z.string(),
+    postalCode: z.string(),
+    postalCodeExtension: z.string(),
+    state: z.string(),
+  })
+);
 /** @internal */
 export type AchLocation$Outbound = {
   address: string;
@@ -41,13 +43,15 @@ export const AchLocation$outboundSchema: z.ZodType<
   AchLocation$Outbound,
   z.ZodTypeDef,
   AchLocation
-> = z.object({
-  address: z.string(),
-  city: z.string(),
-  postalCode: z.string(),
-  postalCodeExtension: z.string(),
-  state: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    address: z.string(),
+    city: z.string(),
+    postalCode: z.string(),
+    postalCodeExtension: z.string(),
+    state: z.string(),
+  })
+);
 
 export function achLocationToJSON(achLocation: AchLocation): string {
   return JSON.stringify(AchLocation$outboundSchema.parse(achLocation));

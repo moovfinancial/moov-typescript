@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type GenericErrorData = {
@@ -35,19 +36,21 @@ export const GenericError$inboundSchema: z.ZodType<
   GenericError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new GenericError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new GenericError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type GenericError$Outbound = {
@@ -59,8 +62,10 @@ export const GenericError$outboundSchema: z.ZodType<
   GenericError$Outbound,
   z.ZodTypeDef,
   GenericError
-> = z.instanceof(GenericError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.string(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(GenericError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      error: z.string(),
+    }))
+);

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,15 +34,17 @@ export const CreatePaymentLinkLineItemValidationError$inboundSchema: z.ZodType<
   CreatePaymentLinkLineItemValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  productID: z.string().optional(),
-  name: z.string().optional(),
-  basePrice: AmountDecimalValidationError$inboundSchema.optional(),
-  options: z.record(
-    CreatePaymentLinkLineItemOptionValidationError$inboundSchema,
-  ).optional(),
-  quantity: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    productID: z.string().optional(),
+    name: z.string().optional(),
+    basePrice: AmountDecimalValidationError$inboundSchema.optional(),
+    options: z.record(
+      CreatePaymentLinkLineItemOptionValidationError$inboundSchema,
+    ).optional(),
+    quantity: z.string().optional(),
+  })
+);
 /** @internal */
 export type CreatePaymentLinkLineItemValidationError$Outbound = {
   productID?: string | undefined;
@@ -59,15 +61,17 @@ export const CreatePaymentLinkLineItemValidationError$outboundSchema: z.ZodType<
   CreatePaymentLinkLineItemValidationError$Outbound,
   z.ZodTypeDef,
   CreatePaymentLinkLineItemValidationError
-> = z.object({
-  productID: z.string().optional(),
-  name: z.string().optional(),
-  basePrice: AmountDecimalValidationError$outboundSchema.optional(),
-  options: z.record(
-    CreatePaymentLinkLineItemOptionValidationError$outboundSchema,
-  ).optional(),
-  quantity: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    productID: z.string().optional(),
+    name: z.string().optional(),
+    basePrice: AmountDecimalValidationError$outboundSchema.optional(),
+    options: z.record(
+      CreatePaymentLinkLineItemOptionValidationError$outboundSchema,
+    ).optional(),
+    quantity: z.string().optional(),
+  })
+);
 
 export function createPaymentLinkLineItemValidationErrorToJSON(
   createPaymentLinkLineItemValidationError:

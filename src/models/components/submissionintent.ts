@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const SubmissionIntent = {
@@ -14,7 +15,7 @@ export type SubmissionIntent = ClosedEnum<typeof SubmissionIntent>;
 /** @internal */
 export const SubmissionIntent$inboundSchema: z.ZodNativeEnum<
   typeof SubmissionIntent
-> = z.nativeEnum(SubmissionIntent);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SubmissionIntent));
 /** @internal */
 export const SubmissionIntent$outboundSchema: z.ZodNativeEnum<
   typeof SubmissionIntent

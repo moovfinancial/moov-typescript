@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -40,16 +40,23 @@ export const ImageMetadata$inboundSchema: z.ZodType<
   ImageMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  imageID: z.string(),
-  publicID: z.string(),
-  altText: z.string().optional(),
-  link: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string(),
+    publicID: z.string(),
+    altText: z.string().optional(),
+    link: z.string(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    disabledOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type ImageMetadata$Outbound = {
   imageID: string;
@@ -66,15 +73,17 @@ export const ImageMetadata$outboundSchema: z.ZodType<
   ImageMetadata$Outbound,
   z.ZodTypeDef,
   ImageMetadata
-> = z.object({
-  imageID: z.string(),
-  publicID: z.string(),
-  altText: z.string().optional(),
-  link: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string(),
+    publicID: z.string(),
+    altText: z.string().optional(),
+    link: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function imageMetadataToJSON(imageMetadata: ImageMetadata): string {
   return JSON.stringify(ImageMetadata$outboundSchema.parse(imageMetadata));

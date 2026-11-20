@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -29,10 +29,12 @@ export const MoneyTransferError$inboundSchema: z.ZodType<
   MoneyTransferError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pullFromCard: MoneyTransferPullFromCardError$inboundSchema.optional(),
-  pushToCard: MoneyTransferPushToCardError$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pullFromCard: MoneyTransferPullFromCardError$inboundSchema.optional(),
+    pushToCard: MoneyTransferPushToCardError$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type MoneyTransferError$Outbound = {
   pullFromCard?: MoneyTransferPullFromCardError$Outbound | undefined;
@@ -44,10 +46,12 @@ export const MoneyTransferError$outboundSchema: z.ZodType<
   MoneyTransferError$Outbound,
   z.ZodTypeDef,
   MoneyTransferError
-> = z.object({
-  pullFromCard: MoneyTransferPullFromCardError$outboundSchema.optional(),
-  pushToCard: MoneyTransferPushToCardError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pullFromCard: MoneyTransferPullFromCardError$outboundSchema.optional(),
+    pushToCard: MoneyTransferPushToCardError$outboundSchema.optional(),
+  })
+);
 
 export function moneyTransferErrorToJSON(
   moneyTransferError: MoneyTransferError,

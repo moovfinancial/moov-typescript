@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,10 +23,12 @@ export const UpdateApplePayMerchantDomains$inboundSchema: z.ZodType<
   UpdateApplePayMerchantDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addDomains: z.array(z.string()).optional(),
-  removeDomains: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addDomains: z.array(z.string()).optional(),
+    removeDomains: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type UpdateApplePayMerchantDomains$Outbound = {
   addDomains?: Array<string> | undefined;
@@ -38,10 +40,12 @@ export const UpdateApplePayMerchantDomains$outboundSchema: z.ZodType<
   UpdateApplePayMerchantDomains$Outbound,
   z.ZodTypeDef,
   UpdateApplePayMerchantDomains
-> = z.object({
-  addDomains: z.array(z.string()).optional(),
-  removeDomains: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addDomains: z.array(z.string()).optional(),
+    removeDomains: z.array(z.string()).optional(),
+  })
+);
 
 export function updateApplePayMerchantDomainsToJSON(
   updateApplePayMerchantDomains: UpdateApplePayMerchantDomains,

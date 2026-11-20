@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -73,12 +73,14 @@ export const PatchAccountCustomerSupport$inboundSchema: z.ZodType<
   PatchAccountCustomerSupport,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: AddressUpdate$inboundSchema.optional(),
-  website: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phone: PhoneNumber$inboundSchema.optional(),
+    email: z.string().optional(),
+    address: AddressUpdate$inboundSchema.optional(),
+    website: z.string().optional(),
+  })
+);
 /** @internal */
 export type PatchAccountCustomerSupport$Outbound = {
   phone?: PhoneNumber$Outbound | undefined;
@@ -92,12 +94,14 @@ export const PatchAccountCustomerSupport$outboundSchema: z.ZodType<
   PatchAccountCustomerSupport$Outbound,
   z.ZodTypeDef,
   PatchAccountCustomerSupport
-> = z.object({
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: AddressUpdate$outboundSchema.optional(),
-  website: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: AddressUpdate$outboundSchema.optional(),
+    website: z.string().optional(),
+  })
+);
 
 export function patchAccountCustomerSupportToJSON(
   patchAccountCustomerSupport: PatchAccountCustomerSupport,
@@ -123,16 +127,18 @@ export const PatchAccount$inboundSchema: z.ZodType<
   PatchAccount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  profile: PatchProfile$inboundSchema.optional(),
-  metadata: z.nullable(z.record(z.string())).optional(),
-  termsOfService: TermsOfServicePayloadUpdate$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  customerSupport: z.nullable(
-    z.lazy(() => PatchAccountCustomerSupport$inboundSchema),
-  ).optional(),
-  settings: CreateAccountSettings$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    profile: PatchProfile$inboundSchema.optional(),
+    metadata: z.nullable(z.record(z.string())).optional(),
+    termsOfService: TermsOfServicePayloadUpdate$inboundSchema.optional(),
+    foreignID: z.string().optional(),
+    customerSupport: z.nullable(
+      z.lazy(() => PatchAccountCustomerSupport$inboundSchema),
+    ).optional(),
+    settings: CreateAccountSettings$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type PatchAccount$Outbound = {
   profile?: PatchProfile$Outbound | undefined;
@@ -148,16 +154,18 @@ export const PatchAccount$outboundSchema: z.ZodType<
   PatchAccount$Outbound,
   z.ZodTypeDef,
   PatchAccount
-> = z.object({
-  profile: PatchProfile$outboundSchema.optional(),
-  metadata: z.nullable(z.record(z.string())).optional(),
-  termsOfService: TermsOfServicePayloadUpdate$outboundSchema.optional(),
-  foreignID: z.string().optional(),
-  customerSupport: z.nullable(
-    z.lazy(() => PatchAccountCustomerSupport$outboundSchema),
-  ).optional(),
-  settings: CreateAccountSettings$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    profile: PatchProfile$outboundSchema.optional(),
+    metadata: z.nullable(z.record(z.string())).optional(),
+    termsOfService: TermsOfServicePayloadUpdate$outboundSchema.optional(),
+    foreignID: z.string().optional(),
+    customerSupport: z.nullable(
+      z.lazy(() => PatchAccountCustomerSupport$outboundSchema),
+    ).optional(),
+    settings: CreateAccountSettings$outboundSchema.optional(),
+  })
+);
 
 export function patchAccountToJSON(patchAccount: PatchAccount): string {
   return JSON.stringify(PatchAccount$outboundSchema.parse(patchAccount));

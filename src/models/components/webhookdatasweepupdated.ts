@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,13 +28,15 @@ export const WebhookDataSweepUpdated$inboundSchema: z.ZodType<
   WebhookDataSweepUpdated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  sweepID: z.string(),
-  transferID: z.string().optional(),
-  status: SweepStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+    sweepID: z.string(),
+    transferID: z.string().optional(),
+    status: SweepStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataSweepUpdated$Outbound = {
   accountID: string;
@@ -49,13 +51,15 @@ export const WebhookDataSweepUpdated$outboundSchema: z.ZodType<
   WebhookDataSweepUpdated$Outbound,
   z.ZodTypeDef,
   WebhookDataSweepUpdated
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  sweepID: z.string(),
-  transferID: z.string().optional(),
-  status: SweepStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+    sweepID: z.string(),
+    transferID: z.string().optional(),
+    status: SweepStatus$outboundSchema,
+  })
+);
 
 export function webhookDataSweepUpdatedToJSON(
   webhookDataSweepUpdated: WebhookDataSweepUpdated,

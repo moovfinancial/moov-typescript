@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,14 +24,16 @@ export const UpsertUnderwritingRequest$inboundSchema: z.ZodType<
   UpsertUnderwritingRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  UpdateUnderwriting: components.UpdateUnderwriting$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateUnderwriting": "updateUnderwriting",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    UpdateUnderwriting: components.UpdateUnderwriting$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "UpdateUnderwriting": "updateUnderwriting",
+    });
+  })
+);
 /** @internal */
 export type UpsertUnderwritingRequest$Outbound = {
   accountID: string;
@@ -43,14 +45,16 @@ export const UpsertUnderwritingRequest$outboundSchema: z.ZodType<
   UpsertUnderwritingRequest$Outbound,
   z.ZodTypeDef,
   UpsertUnderwritingRequest
-> = z.object({
-  accountID: z.string(),
-  updateUnderwriting: components.UpdateUnderwriting$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    updateUnderwriting: "UpdateUnderwriting",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    updateUnderwriting: components.UpdateUnderwriting$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      updateUnderwriting: "UpdateUnderwriting",
+    });
+  })
+);
 
 export function upsertUnderwritingRequestToJSON(
   upsertUnderwritingRequest: UpsertUnderwritingRequest,
@@ -74,15 +78,17 @@ export const UpsertUnderwritingResponse$inboundSchema: z.ZodType<
   UpsertUnderwritingResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Underwriting$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Underwriting$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpsertUnderwritingResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -94,15 +100,17 @@ export const UpsertUnderwritingResponse$outboundSchema: z.ZodType<
   UpsertUnderwritingResponse$Outbound,
   z.ZodTypeDef,
   UpsertUnderwritingResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Underwriting$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Underwriting$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function upsertUnderwritingResponseToJSON(
   upsertUnderwritingResponse: UpsertUnderwritingResponse,
