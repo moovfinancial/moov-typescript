@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -40,12 +40,14 @@ export const CardAcquiringFees$inboundSchema: z.ZodType<
   CardAcquiringFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  visa: CardBrandFees$inboundSchema,
-  mastercard: CardBrandFees$inboundSchema,
-  discover: CardBrandFees$inboundSchema,
-  americanExpress: CardBrandFees$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    visa: CardBrandFees$inboundSchema,
+    mastercard: CardBrandFees$inboundSchema,
+    discover: CardBrandFees$inboundSchema,
+    americanExpress: CardBrandFees$inboundSchema,
+  })
+);
 /** @internal */
 export type CardAcquiringFees$Outbound = {
   visa: CardBrandFees$Outbound;
@@ -59,12 +61,14 @@ export const CardAcquiringFees$outboundSchema: z.ZodType<
   CardAcquiringFees$Outbound,
   z.ZodTypeDef,
   CardAcquiringFees
-> = z.object({
-  visa: CardBrandFees$outboundSchema,
-  mastercard: CardBrandFees$outboundSchema,
-  discover: CardBrandFees$outboundSchema,
-  americanExpress: CardBrandFees$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    visa: CardBrandFees$outboundSchema,
+    mastercard: CardBrandFees$outboundSchema,
+    discover: CardBrandFees$outboundSchema,
+    americanExpress: CardBrandFees$outboundSchema,
+  })
+);
 
 export function cardAcquiringFeesToJSON(
   cardAcquiringFees: CardAcquiringFees,

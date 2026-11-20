@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -87,18 +87,20 @@ export const PaymentMethod$inboundSchema: z.ZodType<
   PaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  MoovWalletPaymentMethod$inboundSchema,
-  AchDebitFundPaymentMethod$inboundSchema,
-  AchDebitCollectPaymentMethod$inboundSchema,
-  AchCreditStandardPaymentMethod$inboundSchema,
-  AchCreditSameDayPaymentMethod$inboundSchema,
-  RtpCreditPaymentMethod$inboundSchema,
-  CardPaymentPaymentMethod$inboundSchema,
-  PushToCardPaymentMethod$inboundSchema,
-  PullFromCardPaymentMethod$inboundSchema,
-  ApplePayPaymentMethod$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    MoovWalletPaymentMethod$inboundSchema,
+    AchDebitFundPaymentMethod$inboundSchema,
+    AchDebitCollectPaymentMethod$inboundSchema,
+    AchCreditStandardPaymentMethod$inboundSchema,
+    AchCreditSameDayPaymentMethod$inboundSchema,
+    RtpCreditPaymentMethod$inboundSchema,
+    CardPaymentPaymentMethod$inboundSchema,
+    PushToCardPaymentMethod$inboundSchema,
+    PullFromCardPaymentMethod$inboundSchema,
+    ApplePayPaymentMethod$inboundSchema,
+  ])
+);
 /** @internal */
 export type PaymentMethod$Outbound =
   | MoovWalletPaymentMethod$Outbound
@@ -117,18 +119,20 @@ export const PaymentMethod$outboundSchema: z.ZodType<
   PaymentMethod$Outbound,
   z.ZodTypeDef,
   PaymentMethod
-> = z.union([
-  MoovWalletPaymentMethod$outboundSchema,
-  AchDebitFundPaymentMethod$outboundSchema,
-  AchDebitCollectPaymentMethod$outboundSchema,
-  AchCreditStandardPaymentMethod$outboundSchema,
-  AchCreditSameDayPaymentMethod$outboundSchema,
-  RtpCreditPaymentMethod$outboundSchema,
-  CardPaymentPaymentMethod$outboundSchema,
-  PushToCardPaymentMethod$outboundSchema,
-  PullFromCardPaymentMethod$outboundSchema,
-  ApplePayPaymentMethod$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    MoovWalletPaymentMethod$outboundSchema,
+    AchDebitFundPaymentMethod$outboundSchema,
+    AchDebitCollectPaymentMethod$outboundSchema,
+    AchCreditStandardPaymentMethod$outboundSchema,
+    AchCreditSameDayPaymentMethod$outboundSchema,
+    RtpCreditPaymentMethod$outboundSchema,
+    CardPaymentPaymentMethod$outboundSchema,
+    PushToCardPaymentMethod$outboundSchema,
+    PullFromCardPaymentMethod$outboundSchema,
+    ApplePayPaymentMethod$outboundSchema,
+  ])
+);
 
 export function paymentMethodToJSON(paymentMethod: PaymentMethod): string {
   return JSON.stringify(PaymentMethod$outboundSchema.parse(paymentMethod));

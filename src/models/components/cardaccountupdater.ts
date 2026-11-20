@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,11 +31,13 @@ export const CardAccountUpdater$inboundSchema: z.ZodType<
   CardAccountUpdater,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updateType: CardUpdateReason$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    updateType: CardUpdateReason$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CardAccountUpdater$Outbound = {
   updatedOn?: string | undefined;
@@ -47,10 +49,12 @@ export const CardAccountUpdater$outboundSchema: z.ZodType<
   CardAccountUpdater$Outbound,
   z.ZodTypeDef,
   CardAccountUpdater
-> = z.object({
-  updatedOn: z.date().transform(v => v.toISOString()).optional(),
-  updateType: CardUpdateReason$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    updatedOn: z.date().transform(v => v.toISOString()).optional(),
+    updateType: CardUpdateReason$outboundSchema.optional(),
+  })
+);
 
 export function cardAccountUpdaterToJSON(
   cardAccountUpdater: CardAccountUpdater,

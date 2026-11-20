@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,12 +31,15 @@ export const ProductOptionValidationError$inboundSchema: z.ZodType<
   ProductOptionValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
-  images: z.record(AssignProductImageValidationError$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
+    images: z.record(AssignProductImageValidationError$inboundSchema)
+      .optional(),
+  })
+);
 /** @internal */
 export type ProductOptionValidationError$Outbound = {
   name?: string | undefined;
@@ -52,12 +55,15 @@ export const ProductOptionValidationError$outboundSchema: z.ZodType<
   ProductOptionValidationError$Outbound,
   z.ZodTypeDef,
   ProductOptionValidationError
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  priceModifier: AmountDecimalValidationError$outboundSchema.optional(),
-  images: z.record(AssignProductImageValidationError$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    priceModifier: AmountDecimalValidationError$outboundSchema.optional(),
+    images: z.record(AssignProductImageValidationError$outboundSchema)
+      .optional(),
+  })
+);
 
 export function productOptionValidationErrorToJSON(
   productOptionValidationError: ProductOptionValidationError,

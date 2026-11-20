@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -49,18 +49,20 @@ export const CreateTransferRequest$inboundSchema: z.ZodType<
   CreateTransferRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "x-idempotency-key": z.string(),
-  "x-wait-for": components.TransferWaitFor$inboundSchema.optional(),
-  accountID: z.string(),
-  CreateTransfer: components.CreateTransfer$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "x-idempotency-key": "xIdempotencyKey",
-    "x-wait-for": "xWaitFor",
-    "CreateTransfer": "createTransfer",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "x-idempotency-key": z.string(),
+    "x-wait-for": components.TransferWaitFor$inboundSchema.optional(),
+    accountID: z.string(),
+    CreateTransfer: components.CreateTransfer$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "x-idempotency-key": "xIdempotencyKey",
+      "x-wait-for": "xWaitFor",
+      "CreateTransfer": "createTransfer",
+    });
+  })
+);
 /** @internal */
 export type CreateTransferRequest$Outbound = {
   "x-idempotency-key": string;
@@ -74,18 +76,20 @@ export const CreateTransferRequest$outboundSchema: z.ZodType<
   CreateTransferRequest$Outbound,
   z.ZodTypeDef,
   CreateTransferRequest
-> = z.object({
-  xIdempotencyKey: z.string(),
-  xWaitFor: components.TransferWaitFor$outboundSchema.optional(),
-  accountID: z.string(),
-  createTransfer: components.CreateTransfer$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    xIdempotencyKey: "x-idempotency-key",
-    xWaitFor: "x-wait-for",
-    createTransfer: "CreateTransfer",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xIdempotencyKey: z.string(),
+    xWaitFor: components.TransferWaitFor$outboundSchema.optional(),
+    accountID: z.string(),
+    createTransfer: components.CreateTransfer$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      xIdempotencyKey: "x-idempotency-key",
+      xWaitFor: "x-wait-for",
+      createTransfer: "CreateTransfer",
+    });
+  })
+);
 
 export function createTransferRequestToJSON(
   createTransferRequest: CreateTransferRequest,
@@ -109,11 +113,13 @@ export const CreateTransferResponseResult$inboundSchema: z.ZodType<
   CreateTransferResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  components.Transfer$inboundSchema,
-  components.CreatedTransfer$inboundSchema,
-  components.AsyncTransfer$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.Transfer$inboundSchema,
+    components.CreatedTransfer$inboundSchema,
+    components.AsyncTransfer$inboundSchema,
+  ])
+);
 /** @internal */
 export type CreateTransferResponseResult$Outbound =
   | components.Transfer$Outbound
@@ -125,11 +131,13 @@ export const CreateTransferResponseResult$outboundSchema: z.ZodType<
   CreateTransferResponseResult$Outbound,
   z.ZodTypeDef,
   CreateTransferResponseResult
-> = z.union([
-  components.Transfer$outboundSchema,
-  components.CreatedTransfer$outboundSchema,
-  components.AsyncTransfer$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.Transfer$outboundSchema,
+    components.CreatedTransfer$outboundSchema,
+    components.AsyncTransfer$outboundSchema,
+  ])
+);
 
 export function createTransferResponseResultToJSON(
   createTransferResponseResult: CreateTransferResponseResult,
@@ -155,19 +163,21 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
   CreateTransferResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
-    components.Transfer$inboundSchema,
-    components.CreatedTransfer$inboundSchema,
-    components.AsyncTransfer$inboundSchema,
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.union([
+      components.Transfer$inboundSchema,
+      components.CreatedTransfer$inboundSchema,
+      components.AsyncTransfer$inboundSchema,
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateTransferResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -182,19 +192,21 @@ export const CreateTransferResponse$outboundSchema: z.ZodType<
   CreateTransferResponse$Outbound,
   z.ZodTypeDef,
   CreateTransferResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.union([
-    components.Transfer$outboundSchema,
-    components.CreatedTransfer$outboundSchema,
-    components.AsyncTransfer$outboundSchema,
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.union([
+      components.Transfer$outboundSchema,
+      components.CreatedTransfer$outboundSchema,
+      components.AsyncTransfer$outboundSchema,
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createTransferResponseToJSON(
   createTransferResponse: CreateTransferResponse,

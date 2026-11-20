@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -19,7 +20,7 @@ export type IssuedCardFormFactor = ClosedEnum<typeof IssuedCardFormFactor>;
 /** @internal */
 export const IssuedCardFormFactor$inboundSchema: z.ZodNativeEnum<
   typeof IssuedCardFormFactor
-> = z.nativeEnum(IssuedCardFormFactor);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IssuedCardFormFactor));
 /** @internal */
 export const IssuedCardFormFactor$outboundSchema: z.ZodNativeEnum<
   typeof IssuedCardFormFactor

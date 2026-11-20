@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -37,12 +37,14 @@ export const CustomerSupport$inboundSchema: z.ZodType<
   CustomerSupport,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$inboundSchema.optional(),
-  website: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phone: PhoneNumber$inboundSchema.optional(),
+    email: z.string().optional(),
+    address: Address$inboundSchema.optional(),
+    website: z.string().optional(),
+  })
+);
 /** @internal */
 export type CustomerSupport$Outbound = {
   phone?: PhoneNumber$Outbound | undefined;
@@ -56,12 +58,14 @@ export const CustomerSupport$outboundSchema: z.ZodType<
   CustomerSupport$Outbound,
   z.ZodTypeDef,
   CustomerSupport
-> = z.object({
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$outboundSchema.optional(),
-  website: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: Address$outboundSchema.optional(),
+    website: z.string().optional(),
+  })
+);
 
 export function customerSupportToJSON(
   customerSupport: CustomerSupport,

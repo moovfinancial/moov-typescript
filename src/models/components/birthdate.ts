@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,11 +18,13 @@ export const BirthDate$inboundSchema: z.ZodType<
   BirthDate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  day: z.number().int(),
-  month: z.number().int(),
-  year: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    day: z.number().int(),
+    month: z.number().int(),
+    year: z.number().int(),
+  })
+);
 /** @internal */
 export type BirthDate$Outbound = {
   day: number;
@@ -35,11 +37,13 @@ export const BirthDate$outboundSchema: z.ZodType<
   BirthDate$Outbound,
   z.ZodTypeDef,
   BirthDate
-> = z.object({
-  day: z.number().int(),
-  month: z.number().int(),
-  year: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    day: z.number().int(),
+    month: z.number().int(),
+    year: z.number().int(),
+  })
+);
 
 export function birthDateToJSON(birthDate: BirthDate): string {
   return JSON.stringify(BirthDate$outboundSchema.parse(birthDate));

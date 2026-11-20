@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,10 +22,12 @@ export const DisableProductRequest$inboundSchema: z.ZodType<
   DisableProductRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  productID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    productID: z.string(),
+  })
+);
 /** @internal */
 export type DisableProductRequest$Outbound = {
   accountID: string;
@@ -37,10 +39,12 @@ export const DisableProductRequest$outboundSchema: z.ZodType<
   DisableProductRequest$Outbound,
   z.ZodTypeDef,
   DisableProductRequest
-> = z.object({
-  accountID: z.string(),
-  productID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    productID: z.string(),
+  })
+);
 
 export function disableProductRequestToJSON(
   disableProductRequest: DisableProductRequest,
@@ -64,13 +68,15 @@ export const DisableProductResponse$inboundSchema: z.ZodType<
   DisableProductResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DisableProductResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -81,13 +87,15 @@ export const DisableProductResponse$outboundSchema: z.ZodType<
   DisableProductResponse$Outbound,
   z.ZodTypeDef,
   DisableProductResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function disableProductResponseToJSON(
   disableProductResponse: DisableProductResponse,

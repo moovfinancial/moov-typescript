@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -111,24 +111,30 @@ export const FullIssuedCard$inboundSchema: z.ZodType<
   FullIssuedCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  issuedCardID: z.string(),
-  brand: CardBrand$inboundSchema,
-  lastFourCardNumber: z.string(),
-  expiration: CardExpiration$inboundSchema,
-  fundingWalletID: z.string(),
-  authorizedUserAccountID: z.string().optional(),
-  nickname: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  billingAddress: Address$inboundSchema.optional(),
-  state: IssuedCardState$inboundSchema,
-  formFactor: IssuedCardFormFactor$inboundSchema,
-  controls: IssuingControls$inboundSchema.optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  pan: z.string(),
-  cvv: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuedCardID: z.string(),
+    brand: CardBrand$inboundSchema,
+    lastFourCardNumber: z.string(),
+    expiration: CardExpiration$inboundSchema,
+    fundingWalletID: z.string(),
+    authorizedUserAccountID: z.string().optional(),
+    nickname: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+    billingAddress: Address$inboundSchema.optional(),
+    state: IssuedCardState$inboundSchema,
+    formFactor: IssuedCardFormFactor$inboundSchema,
+    controls: IssuingControls$inboundSchema.optional(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    pan: z.string(),
+    cvv: z.string(),
+  })
+);
 /** @internal */
 export type FullIssuedCard$Outbound = {
   issuedCardID: string;
@@ -154,24 +160,26 @@ export const FullIssuedCard$outboundSchema: z.ZodType<
   FullIssuedCard$Outbound,
   z.ZodTypeDef,
   FullIssuedCard
-> = z.object({
-  issuedCardID: z.string(),
-  brand: CardBrand$outboundSchema,
-  lastFourCardNumber: z.string(),
-  expiration: CardExpiration$outboundSchema,
-  fundingWalletID: z.string(),
-  authorizedUserAccountID: z.string().optional(),
-  nickname: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  billingAddress: Address$outboundSchema.optional(),
-  state: IssuedCardState$outboundSchema,
-  formFactor: IssuedCardFormFactor$outboundSchema,
-  controls: IssuingControls$outboundSchema.optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  pan: z.string(),
-  cvv: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuedCardID: z.string(),
+    brand: CardBrand$outboundSchema,
+    lastFourCardNumber: z.string(),
+    expiration: CardExpiration$outboundSchema,
+    fundingWalletID: z.string(),
+    authorizedUserAccountID: z.string().optional(),
+    nickname: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+    billingAddress: Address$outboundSchema.optional(),
+    state: IssuedCardState$outboundSchema,
+    formFactor: IssuedCardFormFactor$outboundSchema,
+    controls: IssuingControls$outboundSchema.optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    pan: z.string(),
+    cvv: z.string(),
+  })
+);
 
 export function fullIssuedCardToJSON(fullIssuedCard: FullIssuedCard): string {
   return JSON.stringify(FullIssuedCard$outboundSchema.parse(fullIssuedCard));

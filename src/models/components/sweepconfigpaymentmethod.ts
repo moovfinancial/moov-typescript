@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,11 +26,14 @@ export const SweepConfigPaymentMethod$inboundSchema: z.ZodType<
   SweepConfigPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: z.string(),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    disabledOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type SweepConfigPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -42,10 +45,12 @@ export const SweepConfigPaymentMethod$outboundSchema: z.ZodType<
   SweepConfigPaymentMethod$Outbound,
   z.ZodTypeDef,
   SweepConfigPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function sweepConfigPaymentMethodToJSON(
   sweepConfigPaymentMethod: SweepConfigPaymentMethod,

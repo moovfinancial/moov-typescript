@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -41,14 +41,16 @@ export const WebhookDataDisputeUpdated$inboundSchema: z.ZodType<
   WebhookDataDisputeUpdated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-  transactionID: z.string(),
-  disputeID: z.string(),
-  status: DisputeStatus$inboundSchema,
-  phase: DisputePhase$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+    transactionID: z.string(),
+    disputeID: z.string(),
+    status: DisputeStatus$inboundSchema,
+    phase: DisputePhase$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataDisputeUpdated$Outbound = {
   accountID: string;
@@ -64,14 +66,16 @@ export const WebhookDataDisputeUpdated$outboundSchema: z.ZodType<
   WebhookDataDisputeUpdated$Outbound,
   z.ZodTypeDef,
   WebhookDataDisputeUpdated
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-  transactionID: z.string(),
-  disputeID: z.string(),
-  status: DisputeStatus$outboundSchema,
-  phase: DisputePhase$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+    transactionID: z.string(),
+    disputeID: z.string(),
+    status: DisputeStatus$outboundSchema,
+    phase: DisputePhase$outboundSchema,
+  })
+);
 
 export function webhookDataDisputeUpdatedToJSON(
   webhookDataDisputeUpdated: WebhookDataDisputeUpdated,

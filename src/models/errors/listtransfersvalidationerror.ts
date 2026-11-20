@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type ListTransfersValidationErrorData = {
@@ -71,31 +72,33 @@ export const ListTransfersValidationError$inboundSchema: z.ZodType<
   ListTransfersValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountIDs: z.string().optional(),
-  status: z.string().optional(),
-  startDateTime: z.string().optional(),
-  endDateTime: z.string().optional(),
-  skip: z.string().optional(),
-  count: z.string().optional(),
-  cursor: z.string().optional(),
-  groupID: z.string().optional(),
-  foreignID: z.string().optional(),
-  scheduleID: z.string().optional(),
-  paymentLinkCode: z.string().optional(),
-  refunded: z.string().optional(),
-  disputed: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ListTransfersValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountIDs: z.string().optional(),
+    status: z.string().optional(),
+    startDateTime: z.string().optional(),
+    endDateTime: z.string().optional(),
+    skip: z.string().optional(),
+    count: z.string().optional(),
+    cursor: z.string().optional(),
+    groupID: z.string().optional(),
+    foreignID: z.string().optional(),
+    scheduleID: z.string().optional(),
+    paymentLinkCode: z.string().optional(),
+    refunded: z.string().optional(),
+    disputed: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ListTransfersValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ListTransfersValidationError$Outbound = {
@@ -119,20 +122,22 @@ export const ListTransfersValidationError$outboundSchema: z.ZodType<
   ListTransfersValidationError$Outbound,
   z.ZodTypeDef,
   ListTransfersValidationError
-> = z.instanceof(ListTransfersValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    accountIDs: z.string().optional(),
-    status: z.string().optional(),
-    startDateTime: z.string().optional(),
-    endDateTime: z.string().optional(),
-    skip: z.string().optional(),
-    count: z.string().optional(),
-    cursor: z.string().optional(),
-    groupID: z.string().optional(),
-    foreignID: z.string().optional(),
-    scheduleID: z.string().optional(),
-    paymentLinkCode: z.string().optional(),
-    refunded: z.string().optional(),
-    disputed: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ListTransfersValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      accountIDs: z.string().optional(),
+      status: z.string().optional(),
+      startDateTime: z.string().optional(),
+      endDateTime: z.string().optional(),
+      skip: z.string().optional(),
+      count: z.string().optional(),
+      cursor: z.string().optional(),
+      groupID: z.string().optional(),
+      foreignID: z.string().optional(),
+      scheduleID: z.string().optional(),
+      paymentLinkCode: z.string().optional(),
+      refunded: z.string().optional(),
+      disputed: z.string().optional(),
+    }))
+);

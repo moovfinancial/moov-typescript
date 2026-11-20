@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -41,20 +41,22 @@ export const AuthToken$inboundSchema: z.ZodType<
   AuthToken,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token_type: TokenType$inboundSchema,
-  access_token: z.string(),
-  refresh_token: z.string(),
-  expires_in: z.number().int(),
-  scope: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "token_type": "tokenType",
-    "access_token": "accessToken",
-    "refresh_token": "refreshToken",
-    "expires_in": "expiresIn",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token_type: TokenType$inboundSchema,
+    access_token: z.string(),
+    refresh_token: z.string(),
+    expires_in: z.number().int(),
+    scope: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "token_type": "tokenType",
+      "access_token": "accessToken",
+      "refresh_token": "refreshToken",
+      "expires_in": "expiresIn",
+    });
+  })
+);
 /** @internal */
 export type AuthToken$Outbound = {
   token_type: string;
@@ -69,20 +71,22 @@ export const AuthToken$outboundSchema: z.ZodType<
   AuthToken$Outbound,
   z.ZodTypeDef,
   AuthToken
-> = z.object({
-  tokenType: TokenType$outboundSchema,
-  accessToken: z.string(),
-  refreshToken: z.string(),
-  expiresIn: z.number().int(),
-  scope: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    tokenType: "token_type",
-    accessToken: "access_token",
-    refreshToken: "refresh_token",
-    expiresIn: "expires_in",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tokenType: TokenType$outboundSchema,
+    accessToken: z.string(),
+    refreshToken: z.string(),
+    expiresIn: z.number().int(),
+    scope: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      tokenType: "token_type",
+      accessToken: "access_token",
+      refreshToken: "refresh_token",
+      expiresIn: "expires_in",
+    });
+  })
+);
 
 export function authTokenToJSON(authToken: AuthToken): string {
   return JSON.stringify(AuthToken$outboundSchema.parse(authToken));

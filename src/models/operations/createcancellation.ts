@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -37,15 +37,17 @@ export const CreateCancellationRequest$inboundSchema: z.ZodType<
   CreateCancellationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "x-idempotency-key": z.string().optional(),
-  accountID: z.string(),
-  transferID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-idempotency-key": "xIdempotencyKey",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "x-idempotency-key": z.string().optional(),
+    accountID: z.string(),
+    transferID: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "x-idempotency-key": "xIdempotencyKey",
+    });
+  })
+);
 /** @internal */
 export type CreateCancellationRequest$Outbound = {
   "x-idempotency-key"?: string | undefined;
@@ -58,15 +60,17 @@ export const CreateCancellationRequest$outboundSchema: z.ZodType<
   CreateCancellationRequest$Outbound,
   z.ZodTypeDef,
   CreateCancellationRequest
-> = z.object({
-  xIdempotencyKey: z.string().optional(),
-  accountID: z.string(),
-  transferID: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    xIdempotencyKey: "x-idempotency-key",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xIdempotencyKey: z.string().optional(),
+    accountID: z.string(),
+    transferID: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      xIdempotencyKey: "x-idempotency-key",
+    });
+  })
+);
 
 export function createCancellationRequestToJSON(
   createCancellationRequest: CreateCancellationRequest,
@@ -90,15 +94,17 @@ export const CreateCancellationResponse$inboundSchema: z.ZodType<
   CreateCancellationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Cancellation$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Cancellation$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateCancellationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -110,15 +116,17 @@ export const CreateCancellationResponse$outboundSchema: z.ZodType<
   CreateCancellationResponse$Outbound,
   z.ZodTypeDef,
   CreateCancellationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Cancellation$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Cancellation$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createCancellationResponseToJSON(
   createCancellationResponse: CreateCancellationResponse,

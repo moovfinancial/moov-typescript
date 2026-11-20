@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,9 +19,11 @@ export const DisputeTransferDetails$inboundSchema: z.ZodType<
   DisputeTransferDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+  })
+);
 /** @internal */
 export type DisputeTransferDetails$Outbound = {
   transferID: string;
@@ -32,9 +34,11 @@ export const DisputeTransferDetails$outboundSchema: z.ZodType<
   DisputeTransferDetails$Outbound,
   z.ZodTypeDef,
   DisputeTransferDetails
-> = z.object({
-  transferID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+  })
+);
 
 export function disputeTransferDetailsToJSON(
   disputeTransferDetails: DisputeTransferDetails,

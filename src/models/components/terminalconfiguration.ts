@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,9 +19,11 @@ export const TerminalConfiguration$inboundSchema: z.ZodType<
   TerminalConfiguration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuration: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: z.string(),
+  })
+);
 /** @internal */
 export type TerminalConfiguration$Outbound = {
   configuration: string;
@@ -32,9 +34,11 @@ export const TerminalConfiguration$outboundSchema: z.ZodType<
   TerminalConfiguration$Outbound,
   z.ZodTypeDef,
   TerminalConfiguration
-> = z.object({
-  configuration: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: z.string(),
+  })
+);
 
 export function terminalConfigurationToJSON(
   terminalConfiguration: TerminalConfiguration,

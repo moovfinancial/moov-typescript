@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -102,29 +102,31 @@ export type Account = {
 
 /** @internal */
 export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
-  z.object({
-    accountID: z.string(),
-    mode: Mode$inboundSchema,
-    accountType: AccountType$inboundSchema,
-    displayName: z.string(),
-    profile: Profile$inboundSchema,
-    metadata: z.record(z.string()).optional(),
-    termsOfService: TermsOfService$inboundSchema.optional(),
-    capabilities: z.array(AccountCapability$inboundSchema).optional(),
-    verification: Verification$inboundSchema,
-    foreignID: z.string().optional(),
-    customerSupport: CustomerSupport$inboundSchema.optional(),
-    settings: Settings$inboundSchema.optional(),
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    updatedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    disconnectedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      accountID: z.string(),
+      mode: Mode$inboundSchema,
+      accountType: AccountType$inboundSchema,
+      displayName: z.string(),
+      profile: Profile$inboundSchema,
+      metadata: z.record(z.string()).optional(),
+      termsOfService: TermsOfService$inboundSchema.optional(),
+      capabilities: z.array(AccountCapability$inboundSchema).optional(),
+      verification: Verification$inboundSchema,
+      foreignID: z.string().optional(),
+      customerSupport: CustomerSupport$inboundSchema.optional(),
+      settings: Settings$inboundSchema.optional(),
+      createdOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      updatedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      disconnectedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+    })
+  );
 /** @internal */
 export type Account$Outbound = {
   accountID: string;
@@ -149,23 +151,25 @@ export const Account$outboundSchema: z.ZodType<
   Account$Outbound,
   z.ZodTypeDef,
   Account
-> = z.object({
-  accountID: z.string(),
-  mode: Mode$outboundSchema,
-  accountType: AccountType$outboundSchema,
-  displayName: z.string(),
-  profile: Profile$outboundSchema,
-  metadata: z.record(z.string()).optional(),
-  termsOfService: TermsOfService$outboundSchema.optional(),
-  capabilities: z.array(AccountCapability$outboundSchema).optional(),
-  verification: Verification$outboundSchema,
-  foreignID: z.string().optional(),
-  customerSupport: CustomerSupport$outboundSchema.optional(),
-  settings: Settings$outboundSchema.optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  disconnectedOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    mode: Mode$outboundSchema,
+    accountType: AccountType$outboundSchema,
+    displayName: z.string(),
+    profile: Profile$outboundSchema,
+    metadata: z.record(z.string()).optional(),
+    termsOfService: TermsOfService$outboundSchema.optional(),
+    capabilities: z.array(AccountCapability$outboundSchema).optional(),
+    verification: Verification$outboundSchema,
+    foreignID: z.string().optional(),
+    customerSupport: CustomerSupport$outboundSchema.optional(),
+    settings: Settings$outboundSchema.optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    disconnectedOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function accountToJSON(account: Account): string {
   return JSON.stringify(Account$outboundSchema.parse(account));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -23,10 +23,12 @@ export const PayoutRecipientError$inboundSchema: z.ZodType<
   PayoutRecipientError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string().optional(),
-  phone: PhoneNumberError$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string().optional(),
+    phone: PhoneNumberError$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type PayoutRecipientError$Outbound = {
   email?: string | undefined;
@@ -38,10 +40,12 @@ export const PayoutRecipientError$outboundSchema: z.ZodType<
   PayoutRecipientError$Outbound,
   z.ZodTypeDef,
   PayoutRecipientError
-> = z.object({
-  email: z.string().optional(),
-  phone: PhoneNumberError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string().optional(),
+    phone: PhoneNumberError$outboundSchema.optional(),
+  })
+);
 
 export function payoutRecipientErrorToJSON(
   payoutRecipientError: PayoutRecipientError,

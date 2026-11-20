@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -51,15 +51,17 @@ export const Underwriting$inboundSchema: z.ZodType<
   Underwriting,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  averageTransactionSize: z.number().int(),
-  maxTransactionSize: z.number().int(),
-  averageMonthlyTransactionVolume: z.number().int(),
-  status: UnderwritingStatus$inboundSchema,
-  volumeByCustomerType: VolumeByCustomerType$inboundSchema,
-  cardVolumeDistribution: CardVolumeDistribution$inboundSchema,
-  fulfillment: FulfillmentDetails$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    averageTransactionSize: z.number().int(),
+    maxTransactionSize: z.number().int(),
+    averageMonthlyTransactionVolume: z.number().int(),
+    status: UnderwritingStatus$inboundSchema,
+    volumeByCustomerType: VolumeByCustomerType$inboundSchema,
+    cardVolumeDistribution: CardVolumeDistribution$inboundSchema,
+    fulfillment: FulfillmentDetails$inboundSchema,
+  })
+);
 /** @internal */
 export type Underwriting$Outbound = {
   averageTransactionSize: number;
@@ -76,15 +78,17 @@ export const Underwriting$outboundSchema: z.ZodType<
   Underwriting$Outbound,
   z.ZodTypeDef,
   Underwriting
-> = z.object({
-  averageTransactionSize: z.number().int(),
-  maxTransactionSize: z.number().int(),
-  averageMonthlyTransactionVolume: z.number().int(),
-  status: UnderwritingStatus$outboundSchema,
-  volumeByCustomerType: VolumeByCustomerType$outboundSchema,
-  cardVolumeDistribution: CardVolumeDistribution$outboundSchema,
-  fulfillment: FulfillmentDetails$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    averageTransactionSize: z.number().int(),
+    maxTransactionSize: z.number().int(),
+    averageMonthlyTransactionVolume: z.number().int(),
+    status: UnderwritingStatus$outboundSchema,
+    volumeByCustomerType: VolumeByCustomerType$outboundSchema,
+    cardVolumeDistribution: CardVolumeDistribution$outboundSchema,
+    fulfillment: FulfillmentDetails$outboundSchema,
+  })
+);
 
 export function underwritingToJSON(underwriting: Underwriting): string {
   return JSON.stringify(Underwriting$outboundSchema.parse(underwriting));

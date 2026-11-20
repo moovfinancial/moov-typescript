@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -27,13 +27,15 @@ export const CreateTransferLineItemOptionValidationError$inboundSchema:
     CreateTransferLineItemOptionValidationError,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    name: z.string().optional(),
-    group: z.string().optional(),
-    priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
-    quantity: z.string().optional(),
-    imageIDs: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string().optional(),
+      group: z.string().optional(),
+      priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
+      quantity: z.string().optional(),
+      imageIDs: z.string().optional(),
+    })
+  );
 /** @internal */
 export type CreateTransferLineItemOptionValidationError$Outbound = {
   name?: string | undefined;
@@ -49,13 +51,15 @@ export const CreateTransferLineItemOptionValidationError$outboundSchema:
     CreateTransferLineItemOptionValidationError$Outbound,
     z.ZodTypeDef,
     CreateTransferLineItemOptionValidationError
-  > = z.object({
-    name: z.string().optional(),
-    group: z.string().optional(),
-    priceModifier: AmountDecimalValidationError$outboundSchema.optional(),
-    quantity: z.string().optional(),
-    imageIDs: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string().optional(),
+      group: z.string().optional(),
+      priceModifier: AmountDecimalValidationError$outboundSchema.optional(),
+      quantity: z.string().optional(),
+      imageIDs: z.string().optional(),
+    })
+  );
 
 export function createTransferLineItemOptionValidationErrorToJSON(
   createTransferLineItemOptionValidationError:

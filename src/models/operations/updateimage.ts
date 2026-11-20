@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,16 +25,18 @@ export const UpdateImageRequest$inboundSchema: z.ZodType<
   UpdateImageRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  imageID: z.string(),
-  ImageUploadRequestMultiPart:
-    components.ImageUploadRequestMultiPart$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "ImageUploadRequestMultiPart": "imageUploadRequestMultiPart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    imageID: z.string(),
+    ImageUploadRequestMultiPart:
+      components.ImageUploadRequestMultiPart$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "ImageUploadRequestMultiPart": "imageUploadRequestMultiPart",
+    });
+  })
+);
 /** @internal */
 export type UpdateImageRequest$Outbound = {
   accountID: string;
@@ -47,16 +49,18 @@ export const UpdateImageRequest$outboundSchema: z.ZodType<
   UpdateImageRequest$Outbound,
   z.ZodTypeDef,
   UpdateImageRequest
-> = z.object({
-  accountID: z.string(),
-  imageID: z.string(),
-  imageUploadRequestMultiPart:
-    components.ImageUploadRequestMultiPart$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    imageUploadRequestMultiPart: "ImageUploadRequestMultiPart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    imageID: z.string(),
+    imageUploadRequestMultiPart:
+      components.ImageUploadRequestMultiPart$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      imageUploadRequestMultiPart: "ImageUploadRequestMultiPart",
+    });
+  })
+);
 
 export function updateImageRequestToJSON(
   updateImageRequest: UpdateImageRequest,
@@ -80,15 +84,17 @@ export const UpdateImageResponse$inboundSchema: z.ZodType<
   UpdateImageResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.ImageMetadata$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.ImageMetadata$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpdateImageResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -100,15 +106,17 @@ export const UpdateImageResponse$outboundSchema: z.ZodType<
   UpdateImageResponse$Outbound,
   z.ZodTypeDef,
   UpdateImageResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.ImageMetadata$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.ImageMetadata$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function updateImageResponseToJSON(
   updateImageResponse: UpdateImageResponse,

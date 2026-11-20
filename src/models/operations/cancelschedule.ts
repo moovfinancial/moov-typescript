@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -25,10 +25,12 @@ export const CancelScheduleRequest$inboundSchema: z.ZodType<
   CancelScheduleRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  scheduleID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    scheduleID: z.string(),
+  })
+);
 /** @internal */
 export type CancelScheduleRequest$Outbound = {
   accountID: string;
@@ -40,10 +42,12 @@ export const CancelScheduleRequest$outboundSchema: z.ZodType<
   CancelScheduleRequest$Outbound,
   z.ZodTypeDef,
   CancelScheduleRequest
-> = z.object({
-  accountID: z.string(),
-  scheduleID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    scheduleID: z.string(),
+  })
+);
 
 export function cancelScheduleRequestToJSON(
   cancelScheduleRequest: CancelScheduleRequest,
@@ -67,13 +71,15 @@ export const CancelScheduleResponse$inboundSchema: z.ZodType<
   CancelScheduleResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type CancelScheduleResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -84,13 +90,15 @@ export const CancelScheduleResponse$outboundSchema: z.ZodType<
   CancelScheduleResponse$Outbound,
   z.ZodTypeDef,
   CancelScheduleResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function cancelScheduleResponseToJSON(
   cancelScheduleResponse: CancelScheduleResponse,

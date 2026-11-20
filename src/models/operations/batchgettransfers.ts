@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,14 +24,16 @@ export const BatchGetTransfersRequest$inboundSchema: z.ZodType<
   BatchGetTransfersRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  BatchGetTransfersRequest: components.BatchGetTransfersRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "BatchGetTransfersRequest": "batchGetTransfersRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    BatchGetTransfersRequest: components.BatchGetTransfersRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "BatchGetTransfersRequest": "batchGetTransfersRequest",
+    });
+  })
+);
 /** @internal */
 export type BatchGetTransfersRequest$Outbound = {
   accountID: string;
@@ -43,14 +45,17 @@ export const BatchGetTransfersRequest$outboundSchema: z.ZodType<
   BatchGetTransfersRequest$Outbound,
   z.ZodTypeDef,
   BatchGetTransfersRequest
-> = z.object({
-  accountID: z.string(),
-  batchGetTransfersRequest: components.BatchGetTransfersRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    batchGetTransfersRequest: "BatchGetTransfersRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    batchGetTransfersRequest:
+      components.BatchGetTransfersRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      batchGetTransfersRequest: "BatchGetTransfersRequest",
+    });
+  })
+);
 
 export function batchGetTransfersRequestToJSON(
   batchGetTransfersRequest: BatchGetTransfersRequest,
@@ -74,15 +79,17 @@ export const BatchGetTransfersResponse$inboundSchema: z.ZodType<
   BatchGetTransfersResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.record(components.Transfer$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.record(components.Transfer$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type BatchGetTransfersResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -94,15 +101,17 @@ export const BatchGetTransfersResponse$outboundSchema: z.ZodType<
   BatchGetTransfersResponse$Outbound,
   z.ZodTypeDef,
   BatchGetTransfersResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.record(components.Transfer$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.record(components.Transfer$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function batchGetTransfersResponseToJSON(
   batchGetTransfersResponse: BatchGetTransfersResponse,

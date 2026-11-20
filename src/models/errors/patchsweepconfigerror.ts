@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -57,24 +58,26 @@ export const PatchSweepConfigError$inboundSchema: z.ZodType<
   PatchSweepConfigError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.string().optional(),
-  pushPaymentMethodID: z.string().optional(),
-  pullPaymentMethodID: z.string().optional(),
-  statementDescriptor: z.string().optional(),
-  minimumBalance: z.string().optional(),
-  schedule: components.SweepConfigScheduleError$inboundSchema.optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new PatchSweepConfigError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.string().optional(),
+    pushPaymentMethodID: z.string().optional(),
+    pullPaymentMethodID: z.string().optional(),
+    statementDescriptor: z.string().optional(),
+    minimumBalance: z.string().optional(),
+    schedule: components.SweepConfigScheduleError$inboundSchema.optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new PatchSweepConfigError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type PatchSweepConfigError$Outbound = {
@@ -91,13 +94,15 @@ export const PatchSweepConfigError$outboundSchema: z.ZodType<
   PatchSweepConfigError$Outbound,
   z.ZodTypeDef,
   PatchSweepConfigError
-> = z.instanceof(PatchSweepConfigError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.string().optional(),
-    pushPaymentMethodID: z.string().optional(),
-    pullPaymentMethodID: z.string().optional(),
-    statementDescriptor: z.string().optional(),
-    minimumBalance: z.string().optional(),
-    schedule: components.SweepConfigScheduleError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(PatchSweepConfigError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      status: z.string().optional(),
+      pushPaymentMethodID: z.string().optional(),
+      pullPaymentMethodID: z.string().optional(),
+      statementDescriptor: z.string().optional(),
+      minimumBalance: z.string().optional(),
+      schedule: components.SweepConfigScheduleError$outboundSchema.optional(),
+    }))
+);

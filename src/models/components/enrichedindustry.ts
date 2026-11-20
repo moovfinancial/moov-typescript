@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -31,12 +31,14 @@ export const EnrichedIndustry$inboundSchema: z.ZodType<
   EnrichedIndustry,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: z.string(),
-  naics: z.string(),
-  sic: z.string(),
-  mcc: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string(),
+    naics: z.string(),
+    sic: z.string(),
+    mcc: z.string(),
+  })
+);
 /** @internal */
 export type EnrichedIndustry$Outbound = {
   title: string;
@@ -50,12 +52,14 @@ export const EnrichedIndustry$outboundSchema: z.ZodType<
   EnrichedIndustry$Outbound,
   z.ZodTypeDef,
   EnrichedIndustry
-> = z.object({
-  title: z.string(),
-  naics: z.string(),
-  sic: z.string(),
-  mcc: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string(),
+    naics: z.string(),
+    sic: z.string(),
+    mcc: z.string(),
+  })
+);
 
 export function enrichedIndustryToJSON(
   enrichedIndustry: EnrichedIndustry,

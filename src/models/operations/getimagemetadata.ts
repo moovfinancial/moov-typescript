@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const GetImageMetadataRequest$inboundSchema: z.ZodType<
   GetImageMetadataRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  imageID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    imageID: z.string(),
+  })
+);
 /** @internal */
 export type GetImageMetadataRequest$Outbound = {
   accountID: string;
@@ -39,10 +41,12 @@ export const GetImageMetadataRequest$outboundSchema: z.ZodType<
   GetImageMetadataRequest$Outbound,
   z.ZodTypeDef,
   GetImageMetadataRequest
-> = z.object({
-  accountID: z.string(),
-  imageID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    imageID: z.string(),
+  })
+);
 
 export function getImageMetadataRequestToJSON(
   getImageMetadataRequest: GetImageMetadataRequest,
@@ -66,15 +70,17 @@ export const GetImageMetadataResponse$inboundSchema: z.ZodType<
   GetImageMetadataResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.ImageMetadata$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.ImageMetadata$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetImageMetadataResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -86,15 +92,17 @@ export const GetImageMetadataResponse$outboundSchema: z.ZodType<
   GetImageMetadataResponse$Outbound,
   z.ZodTypeDef,
   GetImageMetadataResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.ImageMetadata$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.ImageMetadata$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getImageMetadataResponseToJSON(
   getImageMetadataResponse: GetImageMetadataResponse,

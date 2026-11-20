@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type ReversalValidationErrorData = {
@@ -35,19 +36,21 @@ export const ReversalValidationError$inboundSchema: z.ZodType<
   ReversalValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ReversalValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ReversalValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ReversalValidationError$Outbound = {
@@ -59,8 +62,10 @@ export const ReversalValidationError$outboundSchema: z.ZodType<
   ReversalValidationError$Outbound,
   z.ZodTypeDef,
   ReversalValidationError
-> = z.instanceof(ReversalValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    amount: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ReversalValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      amount: z.string().optional(),
+    }))
+);

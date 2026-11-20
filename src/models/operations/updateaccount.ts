@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,14 +24,16 @@ export const UpdateAccountRequest$inboundSchema: z.ZodType<
   UpdateAccountRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  PatchAccount: components.PatchAccount$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "PatchAccount": "patchAccount",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    PatchAccount: components.PatchAccount$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "PatchAccount": "patchAccount",
+    });
+  })
+);
 /** @internal */
 export type UpdateAccountRequest$Outbound = {
   accountID: string;
@@ -43,14 +45,16 @@ export const UpdateAccountRequest$outboundSchema: z.ZodType<
   UpdateAccountRequest$Outbound,
   z.ZodTypeDef,
   UpdateAccountRequest
-> = z.object({
-  accountID: z.string(),
-  patchAccount: components.PatchAccount$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    patchAccount: "PatchAccount",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    patchAccount: components.PatchAccount$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      patchAccount: "PatchAccount",
+    });
+  })
+);
 
 export function updateAccountRequestToJSON(
   updateAccountRequest: UpdateAccountRequest,
@@ -74,15 +78,17 @@ export const UpdateAccountResponse$inboundSchema: z.ZodType<
   UpdateAccountResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Account$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Account$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpdateAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -94,15 +100,17 @@ export const UpdateAccountResponse$outboundSchema: z.ZodType<
   UpdateAccountResponse$Outbound,
   z.ZodTypeDef,
   UpdateAccountResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Account$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Account$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function updateAccountResponseToJSON(
   updateAccountResponse: UpdateAccountResponse,

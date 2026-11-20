@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const EnrichedIndustries$inboundSchema: z.ZodType<
   EnrichedIndustries,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  industries: z.array(EnrichedIndustry$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    industries: z.array(EnrichedIndustry$inboundSchema),
+  })
+);
 /** @internal */
 export type EnrichedIndustries$Outbound = {
   industries: Array<EnrichedIndustry$Outbound>;
@@ -35,9 +37,11 @@ export const EnrichedIndustries$outboundSchema: z.ZodType<
   EnrichedIndustries$Outbound,
   z.ZodTypeDef,
   EnrichedIndustries
-> = z.object({
-  industries: z.array(EnrichedIndustry$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    industries: z.array(EnrichedIndustry$outboundSchema),
+  })
+);
 
 export function enrichedIndustriesToJSON(
   enrichedIndustries: EnrichedIndustries,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -42,12 +42,14 @@ export const LinkBankAccount$inboundSchema: z.ZodType<
   LinkBankAccount,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  BankAccountPayload$inboundSchema,
-  PlaidPayload$inboundSchema,
-  PlaidLinkPayload$inboundSchema,
-  MxPayload$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    BankAccountPayload$inboundSchema,
+    PlaidPayload$inboundSchema,
+    PlaidLinkPayload$inboundSchema,
+    MxPayload$inboundSchema,
+  ])
+);
 /** @internal */
 export type LinkBankAccount$Outbound =
   | BankAccountPayload$Outbound
@@ -60,12 +62,14 @@ export const LinkBankAccount$outboundSchema: z.ZodType<
   LinkBankAccount$Outbound,
   z.ZodTypeDef,
   LinkBankAccount
-> = z.union([
-  BankAccountPayload$outboundSchema,
-  PlaidPayload$outboundSchema,
-  PlaidLinkPayload$outboundSchema,
-  MxPayload$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    BankAccountPayload$outboundSchema,
+    PlaidPayload$outboundSchema,
+    PlaidLinkPayload$outboundSchema,
+    MxPayload$outboundSchema,
+  ])
+);
 
 export function linkBankAccountToJSON(
   linkBankAccount: LinkBankAccount,

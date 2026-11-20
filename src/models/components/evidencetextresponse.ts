@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,13 +25,17 @@ export const EvidenceTextResponse$inboundSchema: z.ZodType<
   EvidenceTextResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  evidenceID: z.string(),
-  disputeID: z.string(),
-  evidenceType: EvidenceType$inboundSchema,
-  text: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evidenceID: z.string(),
+    disputeID: z.string(),
+    evidenceType: EvidenceType$inboundSchema,
+    text: z.string(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 /** @internal */
 export type EvidenceTextResponse$Outbound = {
   evidenceID: string;
@@ -46,13 +50,15 @@ export const EvidenceTextResponse$outboundSchema: z.ZodType<
   EvidenceTextResponse$Outbound,
   z.ZodTypeDef,
   EvidenceTextResponse
-> = z.object({
-  evidenceID: z.string(),
-  disputeID: z.string(),
-  evidenceType: EvidenceType$outboundSchema,
-  text: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evidenceID: z.string(),
+    disputeID: z.string(),
+    evidenceType: EvidenceType$outboundSchema,
+    text: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function evidenceTextResponseToJSON(
   evidenceTextResponse: EvidenceTextResponse,

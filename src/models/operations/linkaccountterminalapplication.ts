@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,15 +24,17 @@ export const LinkAccountTerminalApplicationRequest$inboundSchema: z.ZodType<
   LinkAccountTerminalApplicationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  LinkAccountTerminalApplication:
-    components.LinkAccountTerminalApplication$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "LinkAccountTerminalApplication": "linkAccountTerminalApplication",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    LinkAccountTerminalApplication:
+      components.LinkAccountTerminalApplication$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "LinkAccountTerminalApplication": "linkAccountTerminalApplication",
+    });
+  })
+);
 /** @internal */
 export type LinkAccountTerminalApplicationRequest$Outbound = {
   accountID: string;
@@ -45,15 +47,17 @@ export const LinkAccountTerminalApplicationRequest$outboundSchema: z.ZodType<
   LinkAccountTerminalApplicationRequest$Outbound,
   z.ZodTypeDef,
   LinkAccountTerminalApplicationRequest
-> = z.object({
-  accountID: z.string(),
-  linkAccountTerminalApplication:
-    components.LinkAccountTerminalApplication$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    linkAccountTerminalApplication: "LinkAccountTerminalApplication",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    linkAccountTerminalApplication:
+      components.LinkAccountTerminalApplication$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      linkAccountTerminalApplication: "LinkAccountTerminalApplication",
+    });
+  })
+);
 
 export function linkAccountTerminalApplicationRequestToJSON(
   linkAccountTerminalApplicationRequest: LinkAccountTerminalApplicationRequest,
@@ -80,15 +84,17 @@ export const LinkAccountTerminalApplicationResponse$inboundSchema: z.ZodType<
   LinkAccountTerminalApplicationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.AccountTerminalApplication$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.AccountTerminalApplication$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type LinkAccountTerminalApplicationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -100,15 +106,17 @@ export const LinkAccountTerminalApplicationResponse$outboundSchema: z.ZodType<
   LinkAccountTerminalApplicationResponse$Outbound,
   z.ZodTypeDef,
   LinkAccountTerminalApplicationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.AccountTerminalApplication$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.AccountTerminalApplication$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function linkAccountTerminalApplicationResponseToJSON(
   linkAccountTerminalApplicationResponse:

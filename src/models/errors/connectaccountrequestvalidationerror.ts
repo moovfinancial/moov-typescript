@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type ConnectAccountRequestValidationErrorData = {
@@ -40,20 +41,22 @@ export const ConnectAccountRequestValidationError$inboundSchema: z.ZodType<
   ConnectAccountRequestValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  principalAccountID: z.string().optional(),
-  allowScopes: z.record(z.string()).optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ConnectAccountRequestValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    principalAccountID: z.string().optional(),
+    allowScopes: z.record(z.string()).optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ConnectAccountRequestValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ConnectAccountRequestValidationError$Outbound = {
@@ -66,9 +69,11 @@ export const ConnectAccountRequestValidationError$outboundSchema: z.ZodType<
   ConnectAccountRequestValidationError$Outbound,
   z.ZodTypeDef,
   ConnectAccountRequestValidationError
-> = z.instanceof(ConnectAccountRequestValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    principalAccountID: z.string().optional(),
-    allowScopes: z.record(z.string()).optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ConnectAccountRequestValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      principalAccountID: z.string().optional(),
+      allowScopes: z.record(z.string()).optional(),
+    }))
+);
