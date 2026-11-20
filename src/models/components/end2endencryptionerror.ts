@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -16,9 +16,11 @@ export const End2EndEncryptionError$inboundSchema: z.ZodType<
   End2EndEncryptionError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string().optional(),
+  })
+);
 /** @internal */
 export type End2EndEncryptionError$Outbound = {
   token?: string | undefined;
@@ -29,9 +31,11 @@ export const End2EndEncryptionError$outboundSchema: z.ZodType<
   End2EndEncryptionError$Outbound,
   z.ZodTypeDef,
   End2EndEncryptionError
-> = z.object({
-  token: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string().optional(),
+  })
+);
 
 export function end2EndEncryptionErrorToJSON(
   end2EndEncryptionError: End2EndEncryptionError,

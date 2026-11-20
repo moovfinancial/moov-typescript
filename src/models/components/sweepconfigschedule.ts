@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,11 +32,13 @@ export const SweepConfigSchedule$inboundSchema: z.ZodType<
   SweepConfigSchedule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cutoffTime: z.string(),
-  timezone: z.string(),
-  frequency: SweepScheduleFrequency$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cutoffTime: z.string(),
+    timezone: z.string(),
+    frequency: SweepScheduleFrequency$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type SweepConfigSchedule$Outbound = {
   cutoffTime: string;
@@ -49,11 +51,13 @@ export const SweepConfigSchedule$outboundSchema: z.ZodType<
   SweepConfigSchedule$Outbound,
   z.ZodTypeDef,
   SweepConfigSchedule
-> = z.object({
-  cutoffTime: z.string(),
-  timezone: z.string(),
-  frequency: SweepScheduleFrequency$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cutoffTime: z.string(),
+    timezone: z.string(),
+    frequency: SweepScheduleFrequency$outboundSchema.optional(),
+  })
+);
 
 export function sweepConfigScheduleToJSON(
   sweepConfigSchedule: SweepConfigSchedule,

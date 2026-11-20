@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const GetSchedulesRequest$inboundSchema: z.ZodType<
   GetSchedulesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  scheduleID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    scheduleID: z.string(),
+  })
+);
 /** @internal */
 export type GetSchedulesRequest$Outbound = {
   accountID: string;
@@ -39,10 +41,12 @@ export const GetSchedulesRequest$outboundSchema: z.ZodType<
   GetSchedulesRequest$Outbound,
   z.ZodTypeDef,
   GetSchedulesRequest
-> = z.object({
-  accountID: z.string(),
-  scheduleID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    scheduleID: z.string(),
+  })
+);
 
 export function getSchedulesRequestToJSON(
   getSchedulesRequest: GetSchedulesRequest,
@@ -66,15 +70,17 @@ export const GetSchedulesResponse$inboundSchema: z.ZodType<
   GetSchedulesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.ScheduleResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.ScheduleResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetSchedulesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -86,15 +92,17 @@ export const GetSchedulesResponse$outboundSchema: z.ZodType<
   GetSchedulesResponse$Outbound,
   z.ZodTypeDef,
   GetSchedulesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.ScheduleResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.ScheduleResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getSchedulesResponseToJSON(
   getSchedulesResponse: GetSchedulesResponse,

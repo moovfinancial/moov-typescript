@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const LinkCardWaitFor = {
@@ -13,7 +14,7 @@ export type LinkCardWaitFor = ClosedEnum<typeof LinkCardWaitFor>;
 /** @internal */
 export const LinkCardWaitFor$inboundSchema: z.ZodNativeEnum<
   typeof LinkCardWaitFor
-> = z.nativeEnum(LinkCardWaitFor);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(LinkCardWaitFor));
 /** @internal */
 export const LinkCardWaitFor$outboundSchema: z.ZodNativeEnum<
   typeof LinkCardWaitFor

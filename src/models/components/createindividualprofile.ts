@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -51,14 +51,16 @@ export const CreateIndividualProfile$inboundSchema: z.ZodType<
   CreateIndividualProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: IndividualName$inboundSchema,
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$inboundSchema.optional(),
-  birthDate: BirthDate$inboundSchema.optional(),
-  governmentID: GovernmentID$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$inboundSchema,
+    phone: PhoneNumber$inboundSchema.optional(),
+    email: z.string().optional(),
+    address: Address$inboundSchema.optional(),
+    birthDate: BirthDate$inboundSchema.optional(),
+    governmentID: GovernmentID$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CreateIndividualProfile$Outbound = {
   name: IndividualName$Outbound;
@@ -74,14 +76,16 @@ export const CreateIndividualProfile$outboundSchema: z.ZodType<
   CreateIndividualProfile$Outbound,
   z.ZodTypeDef,
   CreateIndividualProfile
-> = z.object({
-  name: IndividualName$outboundSchema,
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$outboundSchema.optional(),
-  birthDate: BirthDate$outboundSchema.optional(),
-  governmentID: GovernmentID$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$outboundSchema,
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: Address$outboundSchema.optional(),
+    birthDate: BirthDate$outboundSchema.optional(),
+    governmentID: GovernmentID$outboundSchema.optional(),
+  })
+);
 
 export function createIndividualProfileToJSON(
   createIndividualProfile: CreateIndividualProfile,

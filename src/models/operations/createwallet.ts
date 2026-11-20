@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,14 +27,16 @@ export const CreateWalletRequest$inboundSchema: z.ZodType<
   CreateWalletRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  CreateWallet: components.CreateWallet$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateWallet": "createWallet",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    CreateWallet: components.CreateWallet$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateWallet": "createWallet",
+    });
+  })
+);
 /** @internal */
 export type CreateWalletRequest$Outbound = {
   accountID: string;
@@ -46,14 +48,16 @@ export const CreateWalletRequest$outboundSchema: z.ZodType<
   CreateWalletRequest$Outbound,
   z.ZodTypeDef,
   CreateWalletRequest
-> = z.object({
-  accountID: z.string(),
-  createWallet: components.CreateWallet$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createWallet: "CreateWallet",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    createWallet: components.CreateWallet$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createWallet: "CreateWallet",
+    });
+  })
+);
 
 export function createWalletRequestToJSON(
   createWalletRequest: CreateWalletRequest,
@@ -77,15 +81,17 @@ export const CreateWalletResponse$inboundSchema: z.ZodType<
   CreateWalletResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Wallet$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Wallet$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateWalletResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -97,15 +103,17 @@ export const CreateWalletResponse$outboundSchema: z.ZodType<
   CreateWalletResponse$Outbound,
   z.ZodTypeDef,
   CreateWalletResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Wallet$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Wallet$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createWalletResponseToJSON(
   createWalletResponse: CreateWalletResponse,

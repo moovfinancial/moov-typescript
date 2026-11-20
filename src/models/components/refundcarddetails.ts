@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,20 +32,25 @@ export const RefundCardDetails$inboundSchema: z.ZodType<
   RefundCardDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: RefundCardStatus$inboundSchema,
-  failureCode: CardTransactionFailureCode$inboundSchema.optional(),
-  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  confirmedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  settledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: RefundCardStatus$inboundSchema,
+    failureCode: CardTransactionFailureCode$inboundSchema.optional(),
+    initiatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    confirmedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    settledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    completedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type RefundCardDetails$Outbound = {
   status: string;
@@ -62,15 +67,17 @@ export const RefundCardDetails$outboundSchema: z.ZodType<
   RefundCardDetails$Outbound,
   z.ZodTypeDef,
   RefundCardDetails
-> = z.object({
-  status: RefundCardStatus$outboundSchema,
-  failureCode: CardTransactionFailureCode$outboundSchema.optional(),
-  initiatedOn: z.date().transform(v => v.toISOString()).optional(),
-  confirmedOn: z.date().transform(v => v.toISOString()).optional(),
-  settledOn: z.date().transform(v => v.toISOString()).optional(),
-  failedOn: z.date().transform(v => v.toISOString()).optional(),
-  completedOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: RefundCardStatus$outboundSchema,
+    failureCode: CardTransactionFailureCode$outboundSchema.optional(),
+    initiatedOn: z.date().transform(v => v.toISOString()).optional(),
+    confirmedOn: z.date().transform(v => v.toISOString()).optional(),
+    settledOn: z.date().transform(v => v.toISOString()).optional(),
+    failedOn: z.date().transform(v => v.toISOString()).optional(),
+    completedOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function refundCardDetailsToJSON(
   refundCardDetails: RefundCardDetails,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type BankAccountValidationErrorData = {
@@ -47,23 +48,25 @@ export const BankAccountValidationError$inboundSchema: z.ZodType<
   BankAccountValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  account: z.string().optional(),
-  plaid: z.string().optional(),
-  plaidLink: z.string().optional(),
-  mx: z.string().optional(),
-  error: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new BankAccountValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    account: z.string().optional(),
+    plaid: z.string().optional(),
+    plaidLink: z.string().optional(),
+    mx: z.string().optional(),
+    error: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new BankAccountValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type BankAccountValidationError$Outbound = {
@@ -79,12 +82,14 @@ export const BankAccountValidationError$outboundSchema: z.ZodType<
   BankAccountValidationError$Outbound,
   z.ZodTypeDef,
   BankAccountValidationError
-> = z.instanceof(BankAccountValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    account: z.string().optional(),
-    plaid: z.string().optional(),
-    plaidLink: z.string().optional(),
-    mx: z.string().optional(),
-    error: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(BankAccountValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      account: z.string().optional(),
+      plaid: z.string().optional(),
+      plaidLink: z.string().optional(),
+      mx: z.string().optional(),
+      error: z.string().optional(),
+    }))
+);

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,17 +35,19 @@ export const CreateReversalRequest$inboundSchema: z.ZodType<
   CreateReversalRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "x-idempotency-key": z.string(),
-  accountID: z.string(),
-  transferID: z.string(),
-  CreateReversal: components.CreateReversal$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-idempotency-key": "xIdempotencyKey",
-    "CreateReversal": "createReversal",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "x-idempotency-key": z.string(),
+    accountID: z.string(),
+    transferID: z.string(),
+    CreateReversal: components.CreateReversal$inboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "x-idempotency-key": "xIdempotencyKey",
+      "CreateReversal": "createReversal",
+    });
+  })
+);
 /** @internal */
 export type CreateReversalRequest$Outbound = {
   "x-idempotency-key": string;
@@ -59,17 +61,19 @@ export const CreateReversalRequest$outboundSchema: z.ZodType<
   CreateReversalRequest$Outbound,
   z.ZodTypeDef,
   CreateReversalRequest
-> = z.object({
-  xIdempotencyKey: z.string(),
-  accountID: z.string(),
-  transferID: z.string(),
-  createReversal: components.CreateReversal$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xIdempotencyKey: "x-idempotency-key",
-    createReversal: "CreateReversal",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xIdempotencyKey: z.string(),
+    accountID: z.string(),
+    transferID: z.string(),
+    createReversal: components.CreateReversal$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      xIdempotencyKey: "x-idempotency-key",
+      createReversal: "CreateReversal",
+    });
+  })
+);
 
 export function createReversalRequestToJSON(
   createReversalRequest: CreateReversalRequest,
@@ -93,15 +97,17 @@ export const CreateReversalResponse$inboundSchema: z.ZodType<
   CreateReversalResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Reversal$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Reversal$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateReversalResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -113,15 +119,17 @@ export const CreateReversalResponse$outboundSchema: z.ZodType<
   CreateReversalResponse$Outbound,
   z.ZodTypeDef,
   CreateReversalResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Reversal$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Reversal$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createReversalResponseToJSON(
   createReversalResponse: CreateReversalResponse,

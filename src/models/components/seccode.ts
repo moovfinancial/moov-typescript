@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -20,8 +21,8 @@ export const SECCode = {
 export type SECCode = ClosedEnum<typeof SECCode>;
 
 /** @internal */
-export const SECCode$inboundSchema: z.ZodNativeEnum<typeof SECCode> = z
-  .nativeEnum(SECCode);
+export const SECCode$inboundSchema: z.ZodNativeEnum<typeof SECCode> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SECCode));
 /** @internal */
 export const SECCode$outboundSchema: z.ZodNativeEnum<typeof SECCode> =
   SECCode$inboundSchema;

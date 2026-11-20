@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -48,16 +48,18 @@ export const UpdateUnderwritingErrorError$inboundSchema: z.ZodType<
   UpdateUnderwritingErrorError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  averageMonthlyTransactionVolume: z.string().optional(),
-  averageTransactionSize: z.string().optional(),
-  maxTransactionSize: z.string().optional(),
-  volumeByCustomerType: components.VolumeByCustomerTypeError$inboundSchema
-    .optional(),
-  cardVolumeDistribution: components.CardVolumeDistributionError$inboundSchema
-    .optional(),
-  fulfillment: components.FulfillmentDetailsError$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    averageMonthlyTransactionVolume: z.string().optional(),
+    averageTransactionSize: z.string().optional(),
+    maxTransactionSize: z.string().optional(),
+    volumeByCustomerType: components.VolumeByCustomerTypeError$inboundSchema
+      .optional(),
+    cardVolumeDistribution: components.CardVolumeDistributionError$inboundSchema
+      .optional(),
+    fulfillment: components.FulfillmentDetailsError$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type UpdateUnderwritingErrorError$Outbound = {
   averageMonthlyTransactionVolume?: string | undefined;
@@ -77,16 +79,18 @@ export const UpdateUnderwritingErrorError$outboundSchema: z.ZodType<
   UpdateUnderwritingErrorError$Outbound,
   z.ZodTypeDef,
   UpdateUnderwritingErrorError
-> = z.object({
-  averageMonthlyTransactionVolume: z.string().optional(),
-  averageTransactionSize: z.string().optional(),
-  maxTransactionSize: z.string().optional(),
-  volumeByCustomerType: components.VolumeByCustomerTypeError$outboundSchema
-    .optional(),
-  cardVolumeDistribution: components.CardVolumeDistributionError$outboundSchema
-    .optional(),
-  fulfillment: components.FulfillmentDetailsError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    averageMonthlyTransactionVolume: z.string().optional(),
+    averageTransactionSize: z.string().optional(),
+    maxTransactionSize: z.string().optional(),
+    volumeByCustomerType: components.VolumeByCustomerTypeError$outboundSchema
+      .optional(),
+    cardVolumeDistribution: components
+      .CardVolumeDistributionError$outboundSchema.optional(),
+    fulfillment: components.FulfillmentDetailsError$outboundSchema.optional(),
+  })
+);
 
 export function updateUnderwritingErrorErrorToJSON(
   updateUnderwritingErrorError: UpdateUnderwritingErrorError,
@@ -112,19 +116,21 @@ export const UpdateUnderwritingError$inboundSchema: z.ZodType<
   UpdateUnderwritingError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => UpdateUnderwritingErrorError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new UpdateUnderwritingError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => UpdateUnderwritingErrorError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new UpdateUnderwritingError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type UpdateUnderwritingError$Outbound = {
@@ -136,8 +142,10 @@ export const UpdateUnderwritingError$outboundSchema: z.ZodType<
   UpdateUnderwritingError$Outbound,
   z.ZodTypeDef,
   UpdateUnderwritingError
-> = z.instanceof(UpdateUnderwritingError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.lazy(() => UpdateUnderwritingErrorError$outboundSchema),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(UpdateUnderwritingError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      error: z.lazy(() => UpdateUnderwritingErrorError$outboundSchema),
+    }))
+);

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,11 +38,13 @@ export const WebhookDataCapabilityRequested$inboundSchema: z.ZodType<
   WebhookDataCapabilityRequested,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  foreignID: z.string().optional(),
-  capabilityID: CapabilityID$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    foreignID: z.string().optional(),
+    capabilityID: CapabilityID$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataCapabilityRequested$Outbound = {
   accountID: string;
@@ -55,11 +57,13 @@ export const WebhookDataCapabilityRequested$outboundSchema: z.ZodType<
   WebhookDataCapabilityRequested$Outbound,
   z.ZodTypeDef,
   WebhookDataCapabilityRequested
-> = z.object({
-  accountID: z.string(),
-  foreignID: z.string().optional(),
-  capabilityID: CapabilityID$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    foreignID: z.string().optional(),
+    capabilityID: CapabilityID$outboundSchema,
+  })
+);
 
 export function webhookDataCapabilityRequestedToJSON(
   webhookDataCapabilityRequested: WebhookDataCapabilityRequested,

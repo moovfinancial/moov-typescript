@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -51,12 +51,14 @@ export const PaymentLinkPaymentDetails$inboundSchema: z.ZodType<
   PaymentLinkPaymentDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: z.array(CollectionPaymentMethodType$inboundSchema),
-  cardDetails: CardPaymentDetails$inboundSchema.optional(),
-  achDetails: ACHPaymentDetails$inboundSchema.optional(),
-  metadata: z.record(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(CollectionPaymentMethodType$inboundSchema),
+    cardDetails: CardPaymentDetails$inboundSchema.optional(),
+    achDetails: ACHPaymentDetails$inboundSchema.optional(),
+    metadata: z.record(z.string()).optional(),
+  })
+);
 /** @internal */
 export type PaymentLinkPaymentDetails$Outbound = {
   allowedMethods: Array<string>;
@@ -70,12 +72,14 @@ export const PaymentLinkPaymentDetails$outboundSchema: z.ZodType<
   PaymentLinkPaymentDetails$Outbound,
   z.ZodTypeDef,
   PaymentLinkPaymentDetails
-> = z.object({
-  allowedMethods: z.array(CollectionPaymentMethodType$outboundSchema),
-  cardDetails: CardPaymentDetails$outboundSchema.optional(),
-  achDetails: ACHPaymentDetails$outboundSchema.optional(),
-  metadata: z.record(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(CollectionPaymentMethodType$outboundSchema),
+    cardDetails: CardPaymentDetails$outboundSchema.optional(),
+    achDetails: ACHPaymentDetails$outboundSchema.optional(),
+    metadata: z.record(z.string()).optional(),
+  })
+);
 
 export function paymentLinkPaymentDetailsToJSON(
   paymentLinkPaymentDetails: PaymentLinkPaymentDetails,

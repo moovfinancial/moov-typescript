@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -32,11 +32,13 @@ export const GetDisputeEvidenceDataRequest$inboundSchema: z.ZodType<
   GetDisputeEvidenceDataRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  evidenceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+    evidenceID: z.string(),
+  })
+);
 /** @internal */
 export type GetDisputeEvidenceDataRequest$Outbound = {
   accountID: string;
@@ -49,11 +51,13 @@ export const GetDisputeEvidenceDataRequest$outboundSchema: z.ZodType<
   GetDisputeEvidenceDataRequest$Outbound,
   z.ZodTypeDef,
   GetDisputeEvidenceDataRequest
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  evidenceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+    evidenceID: z.string(),
+  })
+);
 
 export function getDisputeEvidenceDataRequestToJSON(
   getDisputeEvidenceDataRequest: GetDisputeEvidenceDataRequest,
@@ -79,11 +83,13 @@ export const GetDisputeEvidenceDataResponseResult$inboundSchema: z.ZodType<
   GetDisputeEvidenceDataResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 /** @internal */
 export type GetDisputeEvidenceDataResponseResult$Outbound =
   | ReadableStream<Uint8Array>
@@ -95,11 +101,13 @@ export const GetDisputeEvidenceDataResponseResult$outboundSchema: z.ZodType<
   GetDisputeEvidenceDataResponseResult$Outbound,
   z.ZodTypeDef,
   GetDisputeEvidenceDataResponseResult
-> = z.union([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 
 export function getDisputeEvidenceDataResponseResultToJSON(
   getDisputeEvidenceDataResponseResult: GetDisputeEvidenceDataResponseResult,
@@ -126,19 +134,21 @@ export const GetDisputeEvidenceDataResponse$inboundSchema: z.ZodType<
   GetDisputeEvidenceDataResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetDisputeEvidenceDataResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -153,19 +163,21 @@ export const GetDisputeEvidenceDataResponse$outboundSchema: z.ZodType<
   GetDisputeEvidenceDataResponse$Outbound,
   z.ZodTypeDef,
   GetDisputeEvidenceDataResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getDisputeEvidenceDataResponseToJSON(
   getDisputeEvidenceDataResponse: GetDisputeEvidenceDataResponse,

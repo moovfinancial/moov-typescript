@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,13 +26,15 @@ export const ProductOptionGroupValidationError$inboundSchema: z.ZodType<
   ProductOptionGroupValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  minSelect: z.string().optional(),
-  maxSelect: z.string().optional(),
-  options: z.record(ProductOptionValidationError$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    minSelect: z.string().optional(),
+    maxSelect: z.string().optional(),
+    options: z.record(ProductOptionValidationError$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type ProductOptionGroupValidationError$Outbound = {
   name?: string | undefined;
@@ -47,13 +49,15 @@ export const ProductOptionGroupValidationError$outboundSchema: z.ZodType<
   ProductOptionGroupValidationError$Outbound,
   z.ZodTypeDef,
   ProductOptionGroupValidationError
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  minSelect: z.string().optional(),
-  maxSelect: z.string().optional(),
-  options: z.record(ProductOptionValidationError$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    minSelect: z.string().optional(),
+    maxSelect: z.string().optional(),
+    options: z.record(ProductOptionValidationError$outboundSchema).optional(),
+  })
+);
 
 export function productOptionGroupValidationErrorToJSON(
   productOptionGroupValidationError: ProductOptionGroupValidationError,

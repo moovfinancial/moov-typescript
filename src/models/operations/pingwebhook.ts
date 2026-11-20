@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,9 +23,11 @@ export const PingWebhookRequest$inboundSchema: z.ZodType<
   PingWebhookRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  webhookID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: z.string(),
+  })
+);
 /** @internal */
 export type PingWebhookRequest$Outbound = {
   webhookID: string;
@@ -36,9 +38,11 @@ export const PingWebhookRequest$outboundSchema: z.ZodType<
   PingWebhookRequest$Outbound,
   z.ZodTypeDef,
   PingWebhookRequest
-> = z.object({
-  webhookID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: z.string(),
+  })
+);
 
 export function pingWebhookRequestToJSON(
   pingWebhookRequest: PingWebhookRequest,
@@ -62,15 +66,17 @@ export const PingWebhookResponse$inboundSchema: z.ZodType<
   PingWebhookResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.PingResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.PingResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type PingWebhookResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -82,15 +88,17 @@ export const PingWebhookResponse$outboundSchema: z.ZodType<
   PingWebhookResponse$Outbound,
   z.ZodTypeDef,
   PingWebhookResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.PingResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.PingResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function pingWebhookResponseToJSON(
   pingWebhookResponse: PingWebhookResponse,

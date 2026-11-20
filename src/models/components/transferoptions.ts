@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -23,10 +23,12 @@ export const TransferOptions$inboundSchema: z.ZodType<
   TransferOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sourceOptions: z.array(TransferPaymentMethod$inboundSchema).optional(),
-  destinationOptions: z.array(TransferPaymentMethod$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sourceOptions: z.array(TransferPaymentMethod$inboundSchema).optional(),
+    destinationOptions: z.array(TransferPaymentMethod$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type TransferOptions$Outbound = {
   sourceOptions?: Array<TransferPaymentMethod$Outbound> | undefined;
@@ -38,10 +40,13 @@ export const TransferOptions$outboundSchema: z.ZodType<
   TransferOptions$Outbound,
   z.ZodTypeDef,
   TransferOptions
-> = z.object({
-  sourceOptions: z.array(TransferPaymentMethod$outboundSchema).optional(),
-  destinationOptions: z.array(TransferPaymentMethod$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sourceOptions: z.array(TransferPaymentMethod$outboundSchema).optional(),
+    destinationOptions: z.array(TransferPaymentMethod$outboundSchema)
+      .optional(),
+  })
+);
 
 export function transferOptionsToJSON(
   transferOptions: TransferOptions,

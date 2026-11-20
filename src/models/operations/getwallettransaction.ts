@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,11 +25,13 @@ export const GetWalletTransactionRequest$inboundSchema: z.ZodType<
   GetWalletTransactionRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  transactionID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+    transactionID: z.string(),
+  })
+);
 /** @internal */
 export type GetWalletTransactionRequest$Outbound = {
   accountID: string;
@@ -42,11 +44,13 @@ export const GetWalletTransactionRequest$outboundSchema: z.ZodType<
   GetWalletTransactionRequest$Outbound,
   z.ZodTypeDef,
   GetWalletTransactionRequest
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  transactionID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+    transactionID: z.string(),
+  })
+);
 
 export function getWalletTransactionRequestToJSON(
   getWalletTransactionRequest: GetWalletTransactionRequest,
@@ -72,15 +76,17 @@ export const GetWalletTransactionResponse$inboundSchema: z.ZodType<
   GetWalletTransactionResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.WalletTransaction$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.WalletTransaction$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetWalletTransactionResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -92,15 +98,17 @@ export const GetWalletTransactionResponse$outboundSchema: z.ZodType<
   GetWalletTransactionResponse$Outbound,
   z.ZodTypeDef,
   GetWalletTransactionResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.WalletTransaction$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.WalletTransaction$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getWalletTransactionResponseToJSON(
   getWalletTransactionResponse: GetWalletTransactionResponse,

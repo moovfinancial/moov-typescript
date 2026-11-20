@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const CancellationStatus = {
@@ -15,7 +16,7 @@ export type CancellationStatus = ClosedEnum<typeof CancellationStatus>;
 /** @internal */
 export const CancellationStatus$inboundSchema: z.ZodNativeEnum<
   typeof CancellationStatus
-> = z.nativeEnum(CancellationStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CancellationStatus));
 /** @internal */
 export const CancellationStatus$outboundSchema: z.ZodNativeEnum<
   typeof CancellationStatus

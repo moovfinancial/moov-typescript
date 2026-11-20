@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -72,20 +72,24 @@ export const IssuedCardAuthorization$inboundSchema: z.ZodType<
   IssuedCardAuthorization,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authorizationID: z.string(),
-  issuedCardID: z.string(),
-  lastFourCardNumber: z.string().optional(),
-  authorizedUserAccountID: z.string().optional(),
-  fundingWalletID: z.string(),
-  network: CardIssuingNetwork$inboundSchema,
-  authorizedAmount: z.string(),
-  status: IssuingAuthorizationStatus$inboundSchema,
-  merchantData: IssuingMerchantData$inboundSchema,
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  cardTransactions: z.array(z.string()).optional(),
-  declineReason: IssuingDeclineReason$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: z.string(),
+    issuedCardID: z.string(),
+    lastFourCardNumber: z.string().optional(),
+    authorizedUserAccountID: z.string().optional(),
+    fundingWalletID: z.string(),
+    network: CardIssuingNetwork$inboundSchema,
+    authorizedAmount: z.string(),
+    status: IssuingAuthorizationStatus$inboundSchema,
+    merchantData: IssuingMerchantData$inboundSchema,
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    cardTransactions: z.array(z.string()).optional(),
+    declineReason: IssuingDeclineReason$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type IssuedCardAuthorization$Outbound = {
   authorizationID: string;
@@ -107,20 +111,22 @@ export const IssuedCardAuthorization$outboundSchema: z.ZodType<
   IssuedCardAuthorization$Outbound,
   z.ZodTypeDef,
   IssuedCardAuthorization
-> = z.object({
-  authorizationID: z.string(),
-  issuedCardID: z.string(),
-  lastFourCardNumber: z.string().optional(),
-  authorizedUserAccountID: z.string().optional(),
-  fundingWalletID: z.string(),
-  network: CardIssuingNetwork$outboundSchema,
-  authorizedAmount: z.string(),
-  status: IssuingAuthorizationStatus$outboundSchema,
-  merchantData: IssuingMerchantData$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-  cardTransactions: z.array(z.string()).optional(),
-  declineReason: IssuingDeclineReason$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: z.string(),
+    issuedCardID: z.string(),
+    lastFourCardNumber: z.string().optional(),
+    authorizedUserAccountID: z.string().optional(),
+    fundingWalletID: z.string(),
+    network: CardIssuingNetwork$outboundSchema,
+    authorizedAmount: z.string(),
+    status: IssuingAuthorizationStatus$outboundSchema,
+    merchantData: IssuingMerchantData$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+    cardTransactions: z.array(z.string()).optional(),
+    declineReason: IssuingDeclineReason$outboundSchema.optional(),
+  })
+);
 
 export function issuedCardAuthorizationToJSON(
   issuedCardAuthorization: IssuedCardAuthorization,

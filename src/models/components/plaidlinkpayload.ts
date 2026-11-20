@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -42,9 +42,11 @@ export const PlaidLinkPayload$inboundSchema: z.ZodType<
   PlaidLinkPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  plaidLink: PlaidLinkIntegration$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    plaidLink: PlaidLinkIntegration$inboundSchema,
+  })
+);
 /** @internal */
 export type PlaidLinkPayload$Outbound = {
   plaidLink: PlaidLinkIntegration$Outbound;
@@ -55,9 +57,11 @@ export const PlaidLinkPayload$outboundSchema: z.ZodType<
   PlaidLinkPayload$Outbound,
   z.ZodTypeDef,
   PlaidLinkPayload
-> = z.object({
-  plaidLink: PlaidLinkIntegration$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    plaidLink: PlaidLinkIntegration$outboundSchema,
+  })
+);
 
 export function plaidLinkPayloadToJSON(
   plaidLinkPayload: PlaidLinkPayload,

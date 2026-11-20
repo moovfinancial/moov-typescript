@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -67,29 +68,31 @@ export const CreatePaymentLinkError$inboundSchema: z.ZodType<
   CreatePaymentLinkError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  partnerAccountID: z.string().optional(),
-  merchantPaymentMethodID: z.string().optional(),
-  amount: components.AmountValidationError$inboundSchema.optional(),
-  salesTaxAmount: components.AmountValidationError$inboundSchema.optional(),
-  maxUses: z.string().optional(),
-  expiresOn: z.string().optional(),
-  display: components.DisplayOptionsError$inboundSchema.optional(),
-  payment: components.PaymentDetailsError$inboundSchema.optional(),
-  payout: components.PayoutDetailsError$inboundSchema.optional(),
-  lineItems: components.CreatePaymentLinkLineItemsValidationError$inboundSchema
-    .optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreatePaymentLinkError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerAccountID: z.string().optional(),
+    merchantPaymentMethodID: z.string().optional(),
+    amount: components.AmountValidationError$inboundSchema.optional(),
+    salesTaxAmount: components.AmountValidationError$inboundSchema.optional(),
+    maxUses: z.string().optional(),
+    expiresOn: z.string().optional(),
+    display: components.DisplayOptionsError$inboundSchema.optional(),
+    payment: components.PaymentDetailsError$inboundSchema.optional(),
+    payout: components.PayoutDetailsError$inboundSchema.optional(),
+    lineItems: components
+      .CreatePaymentLinkLineItemsValidationError$inboundSchema.optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreatePaymentLinkError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CreatePaymentLinkError$Outbound = {
@@ -112,18 +115,21 @@ export const CreatePaymentLinkError$outboundSchema: z.ZodType<
   CreatePaymentLinkError$Outbound,
   z.ZodTypeDef,
   CreatePaymentLinkError
-> = z.instanceof(CreatePaymentLinkError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    partnerAccountID: z.string().optional(),
-    merchantPaymentMethodID: z.string().optional(),
-    amount: components.AmountValidationError$outboundSchema.optional(),
-    salesTaxAmount: components.AmountValidationError$outboundSchema.optional(),
-    maxUses: z.string().optional(),
-    expiresOn: z.string().optional(),
-    display: components.DisplayOptionsError$outboundSchema.optional(),
-    payment: components.PaymentDetailsError$outboundSchema.optional(),
-    payout: components.PayoutDetailsError$outboundSchema.optional(),
-    lineItems: components
-      .CreatePaymentLinkLineItemsValidationError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CreatePaymentLinkError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      partnerAccountID: z.string().optional(),
+      merchantPaymentMethodID: z.string().optional(),
+      amount: components.AmountValidationError$outboundSchema.optional(),
+      salesTaxAmount: components.AmountValidationError$outboundSchema
+        .optional(),
+      maxUses: z.string().optional(),
+      expiresOn: z.string().optional(),
+      display: components.DisplayOptionsError$outboundSchema.optional(),
+      payment: components.PaymentDetailsError$outboundSchema.optional(),
+      payout: components.PayoutDetailsError$outboundSchema.optional(),
+      lineItems: components
+        .CreatePaymentLinkLineItemsValidationError$outboundSchema.optional(),
+    }))
+);

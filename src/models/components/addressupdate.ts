@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,14 +21,16 @@ export const AddressUpdate$inboundSchema: z.ZodType<
   AddressUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  stateOrProvince: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLine1: z.string().optional(),
+    addressLine2: z.string().optional(),
+    city: z.string().optional(),
+    stateOrProvince: z.string().optional(),
+    postalCode: z.string().optional(),
+    country: z.string().optional(),
+  })
+);
 /** @internal */
 export type AddressUpdate$Outbound = {
   addressLine1?: string | undefined;
@@ -44,14 +46,16 @@ export const AddressUpdate$outboundSchema: z.ZodType<
   AddressUpdate$Outbound,
   z.ZodTypeDef,
   AddressUpdate
-> = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  stateOrProvince: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLine1: z.string().optional(),
+    addressLine2: z.string().optional(),
+    city: z.string().optional(),
+    stateOrProvince: z.string().optional(),
+    postalCode: z.string().optional(),
+    country: z.string().optional(),
+  })
+);
 
 export function addressUpdateToJSON(addressUpdate: AddressUpdate): string {
   return JSON.stringify(AddressUpdate$outboundSchema.parse(addressUpdate));

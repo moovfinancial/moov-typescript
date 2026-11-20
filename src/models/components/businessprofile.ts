@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -84,22 +84,24 @@ export const BusinessProfile$inboundSchema: z.ZodType<
   BusinessProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  legalBusinessName: z.string(),
-  doingBusinessAs: z.string().optional(),
-  businessType: BusinessType$inboundSchema.optional(),
-  address: Address$inboundSchema.optional(),
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  website: z.string().optional(),
-  description: z.string().optional(),
-  taxIDProvided: z.boolean().optional(),
-  representatives: z.array(Representative$inboundSchema).optional(),
-  ownersProvided: z.boolean(),
-  industryCodes: IndustryCodes$inboundSchema.optional(),
-  industry: z.string().optional(),
-  primaryRegulator: PrimaryRegulator$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    legalBusinessName: z.string(),
+    doingBusinessAs: z.string().optional(),
+    businessType: BusinessType$inboundSchema.optional(),
+    address: Address$inboundSchema.optional(),
+    phone: PhoneNumber$inboundSchema.optional(),
+    email: z.string().optional(),
+    website: z.string().optional(),
+    description: z.string().optional(),
+    taxIDProvided: z.boolean().optional(),
+    representatives: z.array(Representative$inboundSchema).optional(),
+    ownersProvided: z.boolean(),
+    industryCodes: IndustryCodes$inboundSchema.optional(),
+    industry: z.string().optional(),
+    primaryRegulator: PrimaryRegulator$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type BusinessProfile$Outbound = {
   legalBusinessName: string;
@@ -123,22 +125,24 @@ export const BusinessProfile$outboundSchema: z.ZodType<
   BusinessProfile$Outbound,
   z.ZodTypeDef,
   BusinessProfile
-> = z.object({
-  legalBusinessName: z.string(),
-  doingBusinessAs: z.string().optional(),
-  businessType: BusinessType$outboundSchema.optional(),
-  address: Address$outboundSchema.optional(),
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  website: z.string().optional(),
-  description: z.string().optional(),
-  taxIDProvided: z.boolean().optional(),
-  representatives: z.array(Representative$outboundSchema).optional(),
-  ownersProvided: z.boolean(),
-  industryCodes: IndustryCodes$outboundSchema.optional(),
-  industry: z.string().optional(),
-  primaryRegulator: PrimaryRegulator$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    legalBusinessName: z.string(),
+    doingBusinessAs: z.string().optional(),
+    businessType: BusinessType$outboundSchema.optional(),
+    address: Address$outboundSchema.optional(),
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    website: z.string().optional(),
+    description: z.string().optional(),
+    taxIDProvided: z.boolean().optional(),
+    representatives: z.array(Representative$outboundSchema).optional(),
+    ownersProvided: z.boolean(),
+    industryCodes: IndustryCodes$outboundSchema.optional(),
+    industry: z.string().optional(),
+    primaryRegulator: PrimaryRegulator$outboundSchema.optional(),
+  })
+);
 
 export function businessProfileToJSON(
   businessProfile: BusinessProfile,

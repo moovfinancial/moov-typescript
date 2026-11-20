@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,10 +38,12 @@ export const PatchProfile$inboundSchema: z.ZodType<
   PatchProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  individual: PatchIndividual$inboundSchema.optional(),
-  business: PatchBusiness$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    individual: PatchIndividual$inboundSchema.optional(),
+    business: PatchBusiness$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type PatchProfile$Outbound = {
   individual?: PatchIndividual$Outbound | undefined;
@@ -53,10 +55,12 @@ export const PatchProfile$outboundSchema: z.ZodType<
   PatchProfile$Outbound,
   z.ZodTypeDef,
   PatchProfile
-> = z.object({
-  individual: PatchIndividual$outboundSchema.optional(),
-  business: PatchBusiness$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    individual: PatchIndividual$outboundSchema.optional(),
+    business: PatchBusiness$outboundSchema.optional(),
+  })
+);
 
 export function patchProfileToJSON(patchProfile: PatchProfile): string {
   return JSON.stringify(PatchProfile$outboundSchema.parse(patchProfile));

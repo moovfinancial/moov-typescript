@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -88,20 +88,22 @@ export const TransferTerminalCard$inboundSchema: z.ZodType<
   TransferTerminalCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entryMode: TransferEntryMode$inboundSchema.optional(),
-  brand: CardBrand$inboundSchema.optional(),
-  bin: z.string().optional(),
-  cardType: CardType$inboundSchema.optional(),
-  expiration: CardExpiration$inboundSchema.optional(),
-  fingerprint: z.string().optional(),
-  holderName: z.string().optional(),
-  issuer: z.string().optional(),
-  issuerCountry: z.string().optional(),
-  lastFourCardNumber: z.string().optional(),
-  applicationID: z.string().optional(),
-  applicationName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entryMode: TransferEntryMode$inboundSchema.optional(),
+    brand: CardBrand$inboundSchema.optional(),
+    bin: z.string().optional(),
+    cardType: CardType$inboundSchema.optional(),
+    expiration: CardExpiration$inboundSchema.optional(),
+    fingerprint: z.string().optional(),
+    holderName: z.string().optional(),
+    issuer: z.string().optional(),
+    issuerCountry: z.string().optional(),
+    lastFourCardNumber: z.string().optional(),
+    applicationID: z.string().optional(),
+    applicationName: z.string().optional(),
+  })
+);
 /** @internal */
 export type TransferTerminalCard$Outbound = {
   entryMode?: string | undefined;
@@ -123,20 +125,22 @@ export const TransferTerminalCard$outboundSchema: z.ZodType<
   TransferTerminalCard$Outbound,
   z.ZodTypeDef,
   TransferTerminalCard
-> = z.object({
-  entryMode: TransferEntryMode$outboundSchema.optional(),
-  brand: CardBrand$outboundSchema.optional(),
-  bin: z.string().optional(),
-  cardType: CardType$outboundSchema.optional(),
-  expiration: CardExpiration$outboundSchema.optional(),
-  fingerprint: z.string().optional(),
-  holderName: z.string().optional(),
-  issuer: z.string().optional(),
-  issuerCountry: z.string().optional(),
-  lastFourCardNumber: z.string().optional(),
-  applicationID: z.string().optional(),
-  applicationName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entryMode: TransferEntryMode$outboundSchema.optional(),
+    brand: CardBrand$outboundSchema.optional(),
+    bin: z.string().optional(),
+    cardType: CardType$outboundSchema.optional(),
+    expiration: CardExpiration$outboundSchema.optional(),
+    fingerprint: z.string().optional(),
+    holderName: z.string().optional(),
+    issuer: z.string().optional(),
+    issuerCountry: z.string().optional(),
+    lastFourCardNumber: z.string().optional(),
+    applicationID: z.string().optional(),
+    applicationName: z.string().optional(),
+  })
+);
 
 export function transferTerminalCardToJSON(
   transferTerminalCard: TransferTerminalCard,

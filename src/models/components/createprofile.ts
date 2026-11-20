@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -29,10 +29,12 @@ export const CreateProfile$inboundSchema: z.ZodType<
   CreateProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  individual: CreateIndividualProfile$inboundSchema.optional(),
-  business: CreateBusinessProfile$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    individual: CreateIndividualProfile$inboundSchema.optional(),
+    business: CreateBusinessProfile$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CreateProfile$Outbound = {
   individual?: CreateIndividualProfile$Outbound | undefined;
@@ -44,10 +46,12 @@ export const CreateProfile$outboundSchema: z.ZodType<
   CreateProfile$Outbound,
   z.ZodTypeDef,
   CreateProfile
-> = z.object({
-  individual: CreateIndividualProfile$outboundSchema.optional(),
-  business: CreateBusinessProfile$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    individual: CreateIndividualProfile$outboundSchema.optional(),
+    business: CreateBusinessProfile$outboundSchema.optional(),
+  })
+);
 
 export function createProfileToJSON(createProfile: CreateProfile): string {
   return JSON.stringify(CreateProfile$outboundSchema.parse(createProfile));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,10 +27,12 @@ export const GetResidualRequest$inboundSchema: z.ZodType<
   GetResidualRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  residualID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    residualID: z.string(),
+  })
+);
 /** @internal */
 export type GetResidualRequest$Outbound = {
   accountID: string;
@@ -42,10 +44,12 @@ export const GetResidualRequest$outboundSchema: z.ZodType<
   GetResidualRequest$Outbound,
   z.ZodTypeDef,
   GetResidualRequest
-> = z.object({
-  accountID: z.string(),
-  residualID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    residualID: z.string(),
+  })
+);
 
 export function getResidualRequestToJSON(
   getResidualRequest: GetResidualRequest,
@@ -69,15 +73,17 @@ export const GetResidualResponse$inboundSchema: z.ZodType<
   GetResidualResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Residual$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Residual$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetResidualResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -89,15 +95,17 @@ export const GetResidualResponse$outboundSchema: z.ZodType<
   GetResidualResponse$Outbound,
   z.ZodTypeDef,
   GetResidualResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Residual$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Residual$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getResidualResponseToJSON(
   getResidualResponse: GetResidualResponse,

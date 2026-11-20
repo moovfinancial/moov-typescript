@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,14 +27,16 @@ export const CreateTransferOptionsRequest$inboundSchema: z.ZodType<
   CreateTransferOptionsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  CreateTransferOptions: components.CreateTransferOptions$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateTransferOptions": "createTransferOptions",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    CreateTransferOptions: components.CreateTransferOptions$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateTransferOptions": "createTransferOptions",
+    });
+  })
+);
 /** @internal */
 export type CreateTransferOptionsRequest$Outbound = {
   accountID: string;
@@ -46,14 +48,16 @@ export const CreateTransferOptionsRequest$outboundSchema: z.ZodType<
   CreateTransferOptionsRequest$Outbound,
   z.ZodTypeDef,
   CreateTransferOptionsRequest
-> = z.object({
-  accountID: z.string(),
-  createTransferOptions: components.CreateTransferOptions$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createTransferOptions: "CreateTransferOptions",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    createTransferOptions: components.CreateTransferOptions$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createTransferOptions: "CreateTransferOptions",
+    });
+  })
+);
 
 export function createTransferOptionsRequestToJSON(
   createTransferOptionsRequest: CreateTransferOptionsRequest,
@@ -79,15 +83,17 @@ export const CreateTransferOptionsResponse$inboundSchema: z.ZodType<
   CreateTransferOptionsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.TransferOptions$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.TransferOptions$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateTransferOptionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -99,15 +105,17 @@ export const CreateTransferOptionsResponse$outboundSchema: z.ZodType<
   CreateTransferOptionsResponse$Outbound,
   z.ZodTypeDef,
   CreateTransferOptionsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.TransferOptions$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.TransferOptions$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createTransferOptionsResponseToJSON(
   createTransferOptionsResponse: CreateTransferOptionsResponse,

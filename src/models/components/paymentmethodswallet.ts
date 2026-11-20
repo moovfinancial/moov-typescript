@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,11 +31,13 @@ export const PaymentMethodsWallet$inboundSchema: z.ZodType<
   PaymentMethodsWallet,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  walletID: z.string(),
-  partnerAccountID: z.string(),
-  walletType: WalletType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletID: z.string(),
+    partnerAccountID: z.string(),
+    walletType: WalletType$inboundSchema,
+  })
+);
 /** @internal */
 export type PaymentMethodsWallet$Outbound = {
   walletID: string;
@@ -48,11 +50,13 @@ export const PaymentMethodsWallet$outboundSchema: z.ZodType<
   PaymentMethodsWallet$Outbound,
   z.ZodTypeDef,
   PaymentMethodsWallet
-> = z.object({
-  walletID: z.string(),
-  partnerAccountID: z.string(),
-  walletType: WalletType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletID: z.string(),
+    partnerAccountID: z.string(),
+    walletType: WalletType$outboundSchema,
+  })
+);
 
 export function paymentMethodsWalletToJSON(
   paymentMethodsWallet: PaymentMethodsWallet,

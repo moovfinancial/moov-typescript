@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,10 +22,12 @@ export const DisableBankAccountRequest$inboundSchema: z.ZodType<
   DisableBankAccountRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  bankAccountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    bankAccountID: z.string(),
+  })
+);
 /** @internal */
 export type DisableBankAccountRequest$Outbound = {
   accountID: string;
@@ -37,10 +39,12 @@ export const DisableBankAccountRequest$outboundSchema: z.ZodType<
   DisableBankAccountRequest$Outbound,
   z.ZodTypeDef,
   DisableBankAccountRequest
-> = z.object({
-  accountID: z.string(),
-  bankAccountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    bankAccountID: z.string(),
+  })
+);
 
 export function disableBankAccountRequestToJSON(
   disableBankAccountRequest: DisableBankAccountRequest,
@@ -64,13 +68,15 @@ export const DisableBankAccountResponse$inboundSchema: z.ZodType<
   DisableBankAccountResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DisableBankAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -81,13 +87,15 @@ export const DisableBankAccountResponse$outboundSchema: z.ZodType<
   DisableBankAccountResponse$Outbound,
   z.ZodTypeDef,
   DisableBankAccountResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function disableBankAccountResponseToJSON(
   disableBankAccountResponse: DisableBankAccountResponse,

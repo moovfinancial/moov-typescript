@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type AssignCountriesErrorData = {
@@ -35,19 +36,21 @@ export const AssignCountriesError$inboundSchema: z.ZodType<
   AssignCountriesError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  countries: z.record(z.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new AssignCountriesError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    countries: z.record(z.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new AssignCountriesError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type AssignCountriesError$Outbound = {
@@ -59,8 +62,10 @@ export const AssignCountriesError$outboundSchema: z.ZodType<
   AssignCountriesError$Outbound,
   z.ZodTypeDef,
   AssignCountriesError
-> = z.instanceof(AssignCountriesError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    countries: z.record(z.string()),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(AssignCountriesError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      countries: z.record(z.string()),
+    }))
+);

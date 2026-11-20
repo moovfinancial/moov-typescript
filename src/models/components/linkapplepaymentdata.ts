@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -50,12 +50,14 @@ export const LinkApplePaymentData$inboundSchema: z.ZodType<
   LinkApplePaymentData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  version: z.string(),
-  data: z.string(),
-  signature: z.string(),
-  header: ApplePayHeader$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.string(),
+    data: z.string(),
+    signature: z.string(),
+    header: ApplePayHeader$inboundSchema,
+  })
+);
 /** @internal */
 export type LinkApplePaymentData$Outbound = {
   version: string;
@@ -69,12 +71,14 @@ export const LinkApplePaymentData$outboundSchema: z.ZodType<
   LinkApplePaymentData$Outbound,
   z.ZodTypeDef,
   LinkApplePaymentData
-> = z.object({
-  version: z.string(),
-  data: z.string(),
-  signature: z.string(),
-  header: ApplePayHeader$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.string(),
+    data: z.string(),
+    signature: z.string(),
+    header: ApplePayHeader$outboundSchema,
+  })
+);
 
 export function linkApplePaymentDataToJSON(
   linkApplePaymentData: LinkApplePaymentData,
