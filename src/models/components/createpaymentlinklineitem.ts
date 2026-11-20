@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -64,16 +64,18 @@ export const CreatePaymentLinkLineItem$inboundSchema: z.ZodType<
   CreatePaymentLinkLineItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  basePrice: AmountDecimal$inboundSchema,
-  quantity: types.number(),
-  options: types.optional(
-    z.array(CreatePaymentLinkLineItemOption$inboundSchema),
-  ),
-  imageIDs: types.optional(z.array(types.string())),
-  productID: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    basePrice: AmountDecimal$inboundSchema,
+    quantity: types.number(),
+    options: types.optional(
+      z.array(CreatePaymentLinkLineItemOption$inboundSchema),
+    ),
+    imageIDs: types.optional(z.array(types.string())),
+    productID: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type CreatePaymentLinkLineItem$Outbound = {
   name: string;
@@ -89,14 +91,16 @@ export const CreatePaymentLinkLineItem$outboundSchema: z.ZodType<
   CreatePaymentLinkLineItem$Outbound,
   z.ZodTypeDef,
   CreatePaymentLinkLineItem
-> = z.object({
-  name: z.string(),
-  basePrice: AmountDecimal$outboundSchema,
-  quantity: z.number().int(),
-  options: z.array(CreatePaymentLinkLineItemOption$outboundSchema).optional(),
-  imageIDs: z.array(z.string()).optional(),
-  productID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    basePrice: AmountDecimal$outboundSchema,
+    quantity: z.number().int(),
+    options: z.array(CreatePaymentLinkLineItemOption$outboundSchema).optional(),
+    imageIDs: z.array(z.string()).optional(),
+    productID: z.string().optional(),
+  })
+);
 
 export function createPaymentLinkLineItemToJSON(
   createPaymentLinkLineItem: CreatePaymentLinkLineItem,

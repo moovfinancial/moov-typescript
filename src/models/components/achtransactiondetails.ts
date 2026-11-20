@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -77,24 +77,26 @@ export const ACHTransactionDetails$inboundSchema: z.ZodType<
   ACHTransactionDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.optional(ACHTransactionStatus$inboundSchema),
-  traceNumber: types.optional(types.string()),
-  return: types.optional(ACHException$inboundSchema),
-  correction: types.optional(ACHException$inboundSchema),
-  companyEntryDescription: types.optional(types.string()),
-  originatingCompanyName: types.optional(types.string()),
-  secCode: types.optional(SECCode$inboundSchema),
-  canceledOn: types.optional(types.date()),
-  initiatedOn: types.optional(types.date()),
-  originatedOn: types.optional(types.date()),
-  correctedOn: types.optional(types.date()),
-  returnedOn: types.optional(types.date()),
-  failedOn: types.optional(types.date()),
-  completedOn: types.optional(types.date()),
-  debitHoldPeriod: types.optional(DebitHoldPeriod$inboundSchema),
-  addenda: types.optional(z.array(TransferACHAddendaRecord$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.optional(ACHTransactionStatus$inboundSchema),
+    traceNumber: types.optional(types.string()),
+    return: types.optional(ACHException$inboundSchema),
+    correction: types.optional(ACHException$inboundSchema),
+    companyEntryDescription: types.optional(types.string()),
+    originatingCompanyName: types.optional(types.string()),
+    secCode: types.optional(SECCode$inboundSchema),
+    canceledOn: types.optional(types.date()),
+    initiatedOn: types.optional(types.date()),
+    originatedOn: types.optional(types.date()),
+    correctedOn: types.optional(types.date()),
+    returnedOn: types.optional(types.date()),
+    failedOn: types.optional(types.date()),
+    completedOn: types.optional(types.date()),
+    debitHoldPeriod: types.optional(DebitHoldPeriod$inboundSchema),
+    addenda: types.optional(z.array(TransferACHAddendaRecord$inboundSchema)),
+  })
+);
 /** @internal */
 export type ACHTransactionDetails$Outbound = {
   status?: string | undefined;
@@ -120,24 +122,26 @@ export const ACHTransactionDetails$outboundSchema: z.ZodType<
   ACHTransactionDetails$Outbound,
   z.ZodTypeDef,
   ACHTransactionDetails
-> = z.object({
-  status: ACHTransactionStatus$outboundSchema.optional(),
-  traceNumber: z.string().optional(),
-  return: ACHException$outboundSchema.optional(),
-  correction: ACHException$outboundSchema.optional(),
-  companyEntryDescription: z.string().optional(),
-  originatingCompanyName: z.string().optional(),
-  secCode: SECCode$outboundSchema.optional(),
-  canceledOn: z.date().transform(v => v.toISOString()).optional(),
-  initiatedOn: z.date().transform(v => v.toISOString()).optional(),
-  originatedOn: z.date().transform(v => v.toISOString()).optional(),
-  correctedOn: z.date().transform(v => v.toISOString()).optional(),
-  returnedOn: z.date().transform(v => v.toISOString()).optional(),
-  failedOn: z.date().transform(v => v.toISOString()).optional(),
-  completedOn: z.date().transform(v => v.toISOString()).optional(),
-  debitHoldPeriod: DebitHoldPeriod$outboundSchema.optional(),
-  addenda: z.array(TransferACHAddendaRecord$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: ACHTransactionStatus$outboundSchema.optional(),
+    traceNumber: z.string().optional(),
+    return: ACHException$outboundSchema.optional(),
+    correction: ACHException$outboundSchema.optional(),
+    companyEntryDescription: z.string().optional(),
+    originatingCompanyName: z.string().optional(),
+    secCode: SECCode$outboundSchema.optional(),
+    canceledOn: z.date().transform(v => v.toISOString()).optional(),
+    initiatedOn: z.date().transform(v => v.toISOString()).optional(),
+    originatedOn: z.date().transform(v => v.toISOString()).optional(),
+    correctedOn: z.date().transform(v => v.toISOString()).optional(),
+    returnedOn: z.date().transform(v => v.toISOString()).optional(),
+    failedOn: z.date().transform(v => v.toISOString()).optional(),
+    completedOn: z.date().transform(v => v.toISOString()).optional(),
+    debitHoldPeriod: DebitHoldPeriod$outboundSchema.optional(),
+    addenda: z.array(TransferACHAddendaRecord$outboundSchema).optional(),
+  })
+);
 
 export function achTransactionDetailsToJSON(
   achTransactionDetails: ACHTransactionDetails,

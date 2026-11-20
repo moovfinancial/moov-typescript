@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -56,15 +56,17 @@ export const CreateRunTransfer$inboundSchema: z.ZodType<
   CreateRunTransfer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: Amount$inboundSchema,
-  salesTaxAmount: types.optional(Amount$inboundSchema),
-  destination: SchedulePaymentMethod$inboundSchema,
-  partnerAccountID: types.string(),
-  source: SchedulePaymentMethod$inboundSchema,
-  description: types.string(),
-  lineItems: types.optional(CreateScheduledTransferLineItems$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: Amount$inboundSchema,
+    salesTaxAmount: types.optional(Amount$inboundSchema),
+    destination: SchedulePaymentMethod$inboundSchema,
+    partnerAccountID: types.string(),
+    source: SchedulePaymentMethod$inboundSchema,
+    description: types.string(),
+    lineItems: types.optional(CreateScheduledTransferLineItems$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateRunTransfer$Outbound = {
   amount: Amount$Outbound;
@@ -81,15 +83,17 @@ export const CreateRunTransfer$outboundSchema: z.ZodType<
   CreateRunTransfer$Outbound,
   z.ZodTypeDef,
   CreateRunTransfer
-> = z.object({
-  amount: Amount$outboundSchema,
-  salesTaxAmount: Amount$outboundSchema.optional(),
-  destination: SchedulePaymentMethod$outboundSchema,
-  partnerAccountID: z.string(),
-  source: SchedulePaymentMethod$outboundSchema,
-  description: z.string(),
-  lineItems: CreateScheduledTransferLineItems$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: Amount$outboundSchema,
+    salesTaxAmount: Amount$outboundSchema.optional(),
+    destination: SchedulePaymentMethod$outboundSchema,
+    partnerAccountID: z.string(),
+    source: SchedulePaymentMethod$outboundSchema,
+    description: z.string(),
+    lineItems: CreateScheduledTransferLineItems$outboundSchema.optional(),
+  })
+);
 
 export function createRunTransferToJSON(
   createRunTransfer: CreateRunTransfer,

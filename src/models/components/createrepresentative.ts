@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -65,17 +65,19 @@ export const CreateRepresentative$inboundSchema: z.ZodType<
   CreateRepresentative,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: IndividualName$inboundSchema,
-  phone: types.optional(PhoneNumber$inboundSchema),
-  email: types.optional(types.string()),
-  address: types.optional(Address$inboundSchema),
-  birthDate: types.optional(BirthDate$inboundSchema),
-  governmentID: types.optional(GovernmentID$inboundSchema),
-  responsibilities: types.optional(
-    RepresentativeResponsibilities$inboundSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$inboundSchema,
+    phone: types.optional(PhoneNumber$inboundSchema),
+    email: types.optional(types.string()),
+    address: types.optional(Address$inboundSchema),
+    birthDate: types.optional(BirthDate$inboundSchema),
+    governmentID: types.optional(GovernmentID$inboundSchema),
+    responsibilities: types.optional(
+      RepresentativeResponsibilities$inboundSchema,
+    ),
+  })
+);
 /** @internal */
 export type CreateRepresentative$Outbound = {
   name: IndividualName$Outbound;
@@ -92,15 +94,17 @@ export const CreateRepresentative$outboundSchema: z.ZodType<
   CreateRepresentative$Outbound,
   z.ZodTypeDef,
   CreateRepresentative
-> = z.object({
-  name: IndividualName$outboundSchema,
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$outboundSchema.optional(),
-  birthDate: BirthDate$outboundSchema.optional(),
-  governmentID: GovernmentID$outboundSchema.optional(),
-  responsibilities: RepresentativeResponsibilities$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$outboundSchema,
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: Address$outboundSchema.optional(),
+    birthDate: BirthDate$outboundSchema.optional(),
+    governmentID: GovernmentID$outboundSchema.optional(),
+    responsibilities: RepresentativeResponsibilities$outboundSchema.optional(),
+  })
+);
 
 export function createRepresentativeToJSON(
   createRepresentative: CreateRepresentative,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -30,10 +30,12 @@ export const BillingCountAndAmount$inboundSchema: z.ZodType<
   BillingCountAndAmount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  amount: AmountDecimal$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    amount: AmountDecimal$inboundSchema,
+  })
+);
 /** @internal */
 export type BillingCountAndAmount$Outbound = {
   count: number;
@@ -45,10 +47,12 @@ export const BillingCountAndAmount$outboundSchema: z.ZodType<
   BillingCountAndAmount$Outbound,
   z.ZodTypeDef,
   BillingCountAndAmount
-> = z.object({
-  count: z.number().int(),
-  amount: AmountDecimal$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: z.number().int(),
+    amount: AmountDecimal$outboundSchema,
+  })
+);
 
 export function billingCountAndAmountToJSON(
   billingCountAndAmount: BillingCountAndAmount,

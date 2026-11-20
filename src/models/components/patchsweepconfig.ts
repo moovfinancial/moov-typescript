@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
@@ -51,8 +51,8 @@ export type PatchSweepConfig = {
 };
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
-  .nativeEnum(Status);
+export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Status));
 /** @internal */
 export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
   Status$inboundSchema;
@@ -62,11 +62,13 @@ export const Schedule$inboundSchema: z.ZodType<
   Schedule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cutoffTime: types.string(),
-  timezone: types.string(),
-  frequency: types.optional(SweepScheduleFrequency$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cutoffTime: types.string(),
+    timezone: types.string(),
+    frequency: types.optional(SweepScheduleFrequency$inboundSchema),
+  })
+);
 /** @internal */
 export type Schedule$Outbound = {
   cutoffTime: string;
@@ -79,11 +81,13 @@ export const Schedule$outboundSchema: z.ZodType<
   Schedule$Outbound,
   z.ZodTypeDef,
   Schedule
-> = z.object({
-  cutoffTime: z.string(),
-  timezone: z.string(),
-  frequency: SweepScheduleFrequency$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cutoffTime: z.string(),
+    timezone: z.string(),
+    frequency: SweepScheduleFrequency$outboundSchema.optional(),
+  })
+);
 
 export function scheduleToJSON(schedule: Schedule): string {
   return JSON.stringify(Schedule$outboundSchema.parse(schedule));
@@ -103,14 +107,16 @@ export const PatchSweepConfig$inboundSchema: z.ZodType<
   PatchSweepConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.nullable(Status$inboundSchema).optional(),
-  pushPaymentMethodID: z.nullable(types.string()).optional(),
-  pullPaymentMethodID: z.nullable(types.string()).optional(),
-  statementDescriptor: z.nullable(types.string()).optional(),
-  minimumBalance: z.nullable(types.string()).optional(),
-  schedule: z.nullable(z.lazy(() => Schedule$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.nullable(Status$inboundSchema).optional(),
+    pushPaymentMethodID: z.nullable(types.string()).optional(),
+    pullPaymentMethodID: z.nullable(types.string()).optional(),
+    statementDescriptor: z.nullable(types.string()).optional(),
+    minimumBalance: z.nullable(types.string()).optional(),
+    schedule: z.nullable(z.lazy(() => Schedule$inboundSchema)).optional(),
+  })
+);
 /** @internal */
 export type PatchSweepConfig$Outbound = {
   status?: string | null | undefined;
@@ -126,14 +132,16 @@ export const PatchSweepConfig$outboundSchema: z.ZodType<
   PatchSweepConfig$Outbound,
   z.ZodTypeDef,
   PatchSweepConfig
-> = z.object({
-  status: z.nullable(Status$outboundSchema).optional(),
-  pushPaymentMethodID: z.nullable(z.string()).optional(),
-  pullPaymentMethodID: z.nullable(z.string()).optional(),
-  statementDescriptor: z.nullable(z.string()).optional(),
-  minimumBalance: z.nullable(z.string()).optional(),
-  schedule: z.nullable(z.lazy(() => Schedule$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.nullable(Status$outboundSchema).optional(),
+    pushPaymentMethodID: z.nullable(z.string()).optional(),
+    pullPaymentMethodID: z.nullable(z.string()).optional(),
+    statementDescriptor: z.nullable(z.string()).optional(),
+    minimumBalance: z.nullable(z.string()).optional(),
+    schedule: z.nullable(z.lazy(() => Schedule$outboundSchema)).optional(),
+  })
+);
 
 export function patchSweepConfigToJSON(
   patchSweepConfig: PatchSweepConfig,

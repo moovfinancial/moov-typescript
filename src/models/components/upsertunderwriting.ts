@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -71,18 +71,20 @@ export const UpsertUnderwriting$inboundSchema: z.ZodType<
   UpsertUnderwriting,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  geographicReach: types.optional(GeographicReach$inboundSchema),
-  businessPresence: types.optional(BusinessPresence$inboundSchema),
-  pendingLitigation: types.optional(PendingLitigation$inboundSchema),
-  volumeShareByCustomerType: types.optional(
-    VolumeShareByCustomerType$inboundSchema,
-  ),
-  collectFunds: types.optional(CollectFunds$inboundSchema),
-  moneyTransfer: types.optional(MoneyTransfer$inboundSchema),
-  sendFunds: types.optional(SendFunds$inboundSchema),
-  submissionIntent: types.optional(SubmissionIntent$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    geographicReach: types.optional(GeographicReach$inboundSchema),
+    businessPresence: types.optional(BusinessPresence$inboundSchema),
+    pendingLitigation: types.optional(PendingLitigation$inboundSchema),
+    volumeShareByCustomerType: types.optional(
+      VolumeShareByCustomerType$inboundSchema,
+    ),
+    collectFunds: types.optional(CollectFunds$inboundSchema),
+    moneyTransfer: types.optional(MoneyTransfer$inboundSchema),
+    sendFunds: types.optional(SendFunds$inboundSchema),
+    submissionIntent: types.optional(SubmissionIntent$inboundSchema),
+  })
+);
 /** @internal */
 export type UpsertUnderwriting$Outbound = {
   geographicReach?: string | undefined;
@@ -100,17 +102,19 @@ export const UpsertUnderwriting$outboundSchema: z.ZodType<
   UpsertUnderwriting$Outbound,
   z.ZodTypeDef,
   UpsertUnderwriting
-> = z.object({
-  geographicReach: GeographicReach$outboundSchema.optional(),
-  businessPresence: BusinessPresence$outboundSchema.optional(),
-  pendingLitigation: PendingLitigation$outboundSchema.optional(),
-  volumeShareByCustomerType: VolumeShareByCustomerType$outboundSchema
-    .optional(),
-  collectFunds: CollectFunds$outboundSchema.optional(),
-  moneyTransfer: MoneyTransfer$outboundSchema.optional(),
-  sendFunds: SendFunds$outboundSchema.optional(),
-  submissionIntent: SubmissionIntent$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    geographicReach: GeographicReach$outboundSchema.optional(),
+    businessPresence: BusinessPresence$outboundSchema.optional(),
+    pendingLitigation: PendingLitigation$outboundSchema.optional(),
+    volumeShareByCustomerType: VolumeShareByCustomerType$outboundSchema
+      .optional(),
+    collectFunds: CollectFunds$outboundSchema.optional(),
+    moneyTransfer: MoneyTransfer$outboundSchema.optional(),
+    sendFunds: SendFunds$outboundSchema.optional(),
+    submissionIntent: SubmissionIntent$outboundSchema.optional(),
+  })
+);
 
 export function upsertUnderwritingToJSON(
   upsertUnderwriting: UpsertUnderwriting,

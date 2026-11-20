@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -51,15 +51,17 @@ export const PaymentLinkLineItemOption$inboundSchema: z.ZodType<
   PaymentLinkLineItemOption,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  quantity: types.number(),
-  priceModifier: types.optional(AmountDecimal$inboundSchema),
-  images: types.optional(
-    z.array(PaymentLinkLineItemImageMetadata$inboundSchema),
-  ),
-  group: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    quantity: types.number(),
+    priceModifier: types.optional(AmountDecimal$inboundSchema),
+    images: types.optional(
+      z.array(PaymentLinkLineItemImageMetadata$inboundSchema),
+    ),
+    group: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type PaymentLinkLineItemOption$Outbound = {
   name: string;
@@ -74,13 +76,15 @@ export const PaymentLinkLineItemOption$outboundSchema: z.ZodType<
   PaymentLinkLineItemOption$Outbound,
   z.ZodTypeDef,
   PaymentLinkLineItemOption
-> = z.object({
-  name: z.string(),
-  quantity: z.number().int(),
-  priceModifier: AmountDecimal$outboundSchema.optional(),
-  images: z.array(PaymentLinkLineItemImageMetadata$outboundSchema).optional(),
-  group: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    quantity: z.number().int(),
+    priceModifier: AmountDecimal$outboundSchema.optional(),
+    images: z.array(PaymentLinkLineItemImageMetadata$outboundSchema).optional(),
+    group: z.string().optional(),
+  })
+);
 
 export function paymentLinkLineItemOptionToJSON(
   paymentLinkLineItemOption: PaymentLinkLineItemOption,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -55,13 +55,15 @@ export const FeeProperties$inboundSchema: z.ZodType<
   FeeProperties,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fixedAmount: types.optional(AmountDecimal$inboundSchema),
-  variableRate: types.optional(types.string()),
-  minPerTransaction: types.optional(AmountDecimal$inboundSchema),
-  maxPerTransaction: types.optional(AmountDecimal$inboundSchema),
-  volumeRanges: z.array(VolumeRange$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fixedAmount: types.optional(AmountDecimal$inboundSchema),
+    variableRate: types.optional(types.string()),
+    minPerTransaction: types.optional(AmountDecimal$inboundSchema),
+    maxPerTransaction: types.optional(AmountDecimal$inboundSchema),
+    volumeRanges: z.array(VolumeRange$inboundSchema),
+  })
+);
 /** @internal */
 export type FeeProperties$Outbound = {
   fixedAmount?: AmountDecimal$Outbound | undefined;
@@ -76,13 +78,15 @@ export const FeeProperties$outboundSchema: z.ZodType<
   FeeProperties$Outbound,
   z.ZodTypeDef,
   FeeProperties
-> = z.object({
-  fixedAmount: AmountDecimal$outboundSchema.optional(),
-  variableRate: z.string().optional(),
-  minPerTransaction: AmountDecimal$outboundSchema.optional(),
-  maxPerTransaction: AmountDecimal$outboundSchema.optional(),
-  volumeRanges: z.array(VolumeRange$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fixedAmount: AmountDecimal$outboundSchema.optional(),
+    variableRate: z.string().optional(),
+    minPerTransaction: AmountDecimal$outboundSchema.optional(),
+    maxPerTransaction: AmountDecimal$outboundSchema.optional(),
+    volumeRanges: z.array(VolumeRange$outboundSchema),
+  })
+);
 
 export function feePropertiesToJSON(feeProperties: FeeProperties): string {
   return JSON.stringify(FeeProperties$outboundSchema.parse(feeProperties));

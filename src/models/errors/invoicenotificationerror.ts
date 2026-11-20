@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -36,19 +37,21 @@ export const InvoiceNotificationError$inboundSchema: z.ZodType<
   InvoiceNotificationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channels: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new InvoiceNotificationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channels: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new InvoiceNotificationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type InvoiceNotificationError$Outbound = {
@@ -60,8 +63,10 @@ export const InvoiceNotificationError$outboundSchema: z.ZodType<
   InvoiceNotificationError$Outbound,
   z.ZodTypeDef,
   InvoiceNotificationError
-> = z.instanceof(InvoiceNotificationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    channels: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(InvoiceNotificationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      channels: z.string().optional(),
+    }))
+);

@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -83,17 +86,19 @@ export const ListAccountsRequest$inboundSchema: z.ZodType<
   ListAccountsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.optional(types.string()),
-  email: types.optional(types.string()),
-  type: types.optional(components.CreateAccountType$inboundSchema),
-  foreignID: types.optional(types.string()),
-  includeDisconnected: types.optional(types.boolean()),
-  capability: types.optional(components.CapabilityID$inboundSchema),
-  capabilityStatus: types.optional(components.CapabilityStatus$inboundSchema),
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.optional(types.string()),
+    email: types.optional(types.string()),
+    type: types.optional(components.CreateAccountType$inboundSchema),
+    foreignID: types.optional(types.string()),
+    includeDisconnected: types.optional(types.boolean()),
+    capability: types.optional(components.CapabilityID$inboundSchema),
+    capabilityStatus: types.optional(components.CapabilityStatus$inboundSchema),
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+  })
+);
 /** @internal */
 export type ListAccountsRequest$Outbound = {
   name?: string | undefined;
@@ -112,17 +117,25 @@ export const ListAccountsRequest$outboundSchema: z.ZodType<
   ListAccountsRequest$Outbound,
   z.ZodTypeDef,
   ListAccountsRequest
-> = z.object({
-  name: z.string().optional(),
-  email: z.string().optional(),
-  type: components.CreateAccountType$outboundSchema.optional(),
-  foreignID: z.string().optional(),
-  includeDisconnected: z.boolean().optional(),
-  capability: components.CapabilityID$outboundSchema.optional(),
-  capabilityStatus: components.CapabilityStatus$outboundSchema.optional(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    email: z.string().optional(),
+    type: components.CreateAccountType$outboundSchema.optional(),
+    foreignID: z.string().refine(
+      matchesPattern$("[a-zA-Z0-9,.\\/?:'\"|~!@#$%^&*()+_= -]+"),
+      {
+        message:
+          "Value must match pattern [a-zA-Z0-9,.\\/?:'\"|~!@#$%^&*()+_= -]+",
+      },
+    ).optional(),
+    includeDisconnected: z.boolean().optional(),
+    capability: components.CapabilityID$outboundSchema.optional(),
+    capabilityStatus: components.CapabilityStatus$outboundSchema.optional(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+  })
+);
 
 export function listAccountsRequestToJSON(
   listAccountsRequest: ListAccountsRequest,
@@ -146,15 +159,17 @@ export const ListAccountsResponse$inboundSchema: z.ZodType<
   ListAccountsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Account$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Account$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListAccountsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -166,15 +181,17 @@ export const ListAccountsResponse$outboundSchema: z.ZodType<
   ListAccountsResponse$Outbound,
   z.ZodTypeDef,
   ListAccountsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Account$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Account$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listAccountsResponseToJSON(
   listAccountsResponse: ListAccountsResponse,

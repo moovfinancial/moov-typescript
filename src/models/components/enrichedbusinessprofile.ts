@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -40,14 +40,16 @@ export const EnrichedBusinessProfile$inboundSchema: z.ZodType<
   EnrichedBusinessProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  address: types.optional(Address$inboundSchema),
-  email: types.optional(types.string()),
-  industryCodes: types.optional(EnrichedIndustryCodes$inboundSchema),
-  legalBusinessName: types.optional(types.string()),
-  phone: types.optional(PhoneNumber$inboundSchema),
-  website: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    address: types.optional(Address$inboundSchema),
+    email: types.optional(types.string()),
+    industryCodes: types.optional(EnrichedIndustryCodes$inboundSchema),
+    legalBusinessName: types.optional(types.string()),
+    phone: types.optional(PhoneNumber$inboundSchema),
+    website: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type EnrichedBusinessProfile$Outbound = {
   address?: Address$Outbound | undefined;
@@ -63,14 +65,16 @@ export const EnrichedBusinessProfile$outboundSchema: z.ZodType<
   EnrichedBusinessProfile$Outbound,
   z.ZodTypeDef,
   EnrichedBusinessProfile
-> = z.object({
-  address: Address$outboundSchema.optional(),
-  email: z.string().optional(),
-  industryCodes: EnrichedIndustryCodes$outboundSchema.optional(),
-  legalBusinessName: z.string().optional(),
-  phone: PhoneNumber$outboundSchema.optional(),
-  website: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    address: Address$outboundSchema.optional(),
+    email: z.string().optional(),
+    industryCodes: EnrichedIndustryCodes$outboundSchema.optional(),
+    legalBusinessName: z.string().optional(),
+    phone: PhoneNumber$outboundSchema.optional(),
+    website: z.string().optional(),
+  })
+);
 
 export function enrichedBusinessProfileToJSON(
   enrichedBusinessProfile: EnrichedBusinessProfile,

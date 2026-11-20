@@ -6,13 +6,18 @@ import { invoicesCreateInvoice } from "../funcs/invoicesCreateInvoice.js";
 import { invoicesCreateInvoiceNotification } from "../funcs/invoicesCreateInvoiceNotification.js";
 import { invoicesCreateInvoicePayment } from "../funcs/invoicesCreateInvoicePayment.js";
 import { invoicesDelete } from "../funcs/invoicesDelete.js";
-import { invoicesGetInvoice } from "../funcs/invoicesGetInvoice.js";
+import {
+  GetInvoiceAcceptEnum,
+  invoicesGetInvoice,
+} from "../funcs/invoicesGetInvoice.js";
 import { invoicesListInvoicePayments } from "../funcs/invoicesListInvoicePayments.js";
 import { invoicesListInvoices } from "../funcs/invoicesListInvoices.js";
 import { invoicesUpdateInvoice } from "../funcs/invoicesUpdateInvoice.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+
+export { GetInvoiceAcceptEnum } from "../funcs/invoicesGetInvoice.js";
 
 export class Invoices extends ClientSDK {
   /**
@@ -52,12 +57,14 @@ export class Invoices extends ClientSDK {
   /**
    * Retrieve an invoice by ID.
    *
+   * Use the `Accept` header to specify the format of the response. Supported formats are `application/json` and `application/pdf`. The PDF does not include the payment link or QR code.
+   *
    * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
    * you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
    */
   async getInvoice(
     request: operations.GetInvoiceRequest,
-    options?: RequestOptions,
+    options?: RequestOptions & { acceptHeaderOverride?: GetInvoiceAcceptEnum },
   ): Promise<operations.GetInvoiceResponse> {
     return unwrapAsync(invoicesGetInvoice(
       this,

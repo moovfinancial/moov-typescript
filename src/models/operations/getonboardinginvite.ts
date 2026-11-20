@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -24,9 +24,11 @@ export const GetOnboardingInviteRequest$inboundSchema: z.ZodType<
   GetOnboardingInviteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+  })
+);
 /** @internal */
 export type GetOnboardingInviteRequest$Outbound = {
   code: string;
@@ -37,9 +39,11 @@ export const GetOnboardingInviteRequest$outboundSchema: z.ZodType<
   GetOnboardingInviteRequest$Outbound,
   z.ZodTypeDef,
   GetOnboardingInviteRequest
-> = z.object({
-  code: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string(),
+  })
+);
 
 export function getOnboardingInviteRequestToJSON(
   getOnboardingInviteRequest: GetOnboardingInviteRequest,
@@ -63,15 +67,17 @@ export const GetOnboardingInviteResponse$inboundSchema: z.ZodType<
   GetOnboardingInviteResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.OnboardingInvite$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.OnboardingInvite$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetOnboardingInviteResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -83,15 +89,17 @@ export const GetOnboardingInviteResponse$outboundSchema: z.ZodType<
   GetOnboardingInviteResponse$Outbound,
   z.ZodTypeDef,
   GetOnboardingInviteResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.OnboardingInvite$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.OnboardingInvite$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getOnboardingInviteResponseToJSON(
   getOnboardingInviteResponse: GetOnboardingInviteResponse,

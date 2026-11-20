@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -33,15 +33,17 @@ export const RefundCardDetails$inboundSchema: z.ZodType<
   RefundCardDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: RefundCardStatus$inboundSchema,
-  failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
-  initiatedOn: types.optional(types.date()),
-  confirmedOn: types.optional(types.date()),
-  settledOn: types.optional(types.date()),
-  failedOn: types.optional(types.date()),
-  completedOn: types.optional(types.date()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: RefundCardStatus$inboundSchema,
+    failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
+    initiatedOn: types.optional(types.date()),
+    confirmedOn: types.optional(types.date()),
+    settledOn: types.optional(types.date()),
+    failedOn: types.optional(types.date()),
+    completedOn: types.optional(types.date()),
+  })
+);
 /** @internal */
 export type RefundCardDetails$Outbound = {
   status: string;
@@ -58,15 +60,17 @@ export const RefundCardDetails$outboundSchema: z.ZodType<
   RefundCardDetails$Outbound,
   z.ZodTypeDef,
   RefundCardDetails
-> = z.object({
-  status: RefundCardStatus$outboundSchema,
-  failureCode: CardTransactionFailureCode$outboundSchema.optional(),
-  initiatedOn: z.date().transform(v => v.toISOString()).optional(),
-  confirmedOn: z.date().transform(v => v.toISOString()).optional(),
-  settledOn: z.date().transform(v => v.toISOString()).optional(),
-  failedOn: z.date().transform(v => v.toISOString()).optional(),
-  completedOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: RefundCardStatus$outboundSchema,
+    failureCode: CardTransactionFailureCode$outboundSchema.optional(),
+    initiatedOn: z.date().transform(v => v.toISOString()).optional(),
+    confirmedOn: z.date().transform(v => v.toISOString()).optional(),
+    settledOn: z.date().transform(v => v.toISOString()).optional(),
+    failedOn: z.date().transform(v => v.toISOString()).optional(),
+    completedOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function refundCardDetailsToJSON(
   refundCardDetails: RefundCardDetails,

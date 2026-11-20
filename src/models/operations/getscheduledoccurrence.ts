@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -35,11 +35,13 @@ export const GetScheduledOccurrenceRequest$inboundSchema: z.ZodType<
   GetScheduledOccurrenceRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  scheduleID: types.string(),
-  occurrenceFilter: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    scheduleID: types.string(),
+    occurrenceFilter: types.string(),
+  })
+);
 /** @internal */
 export type GetScheduledOccurrenceRequest$Outbound = {
   accountID: string;
@@ -52,11 +54,13 @@ export const GetScheduledOccurrenceRequest$outboundSchema: z.ZodType<
   GetScheduledOccurrenceRequest$Outbound,
   z.ZodTypeDef,
   GetScheduledOccurrenceRequest
-> = z.object({
-  accountID: z.string(),
-  scheduleID: z.string(),
-  occurrenceFilter: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    scheduleID: z.string(),
+    occurrenceFilter: z.string(),
+  })
+);
 
 export function getScheduledOccurrenceRequestToJSON(
   getScheduledOccurrenceRequest: GetScheduledOccurrenceRequest,
@@ -82,15 +86,17 @@ export const GetScheduledOccurrenceResponse$inboundSchema: z.ZodType<
   GetScheduledOccurrenceResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.OccurrencesResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.OccurrencesResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetScheduledOccurrenceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -102,15 +108,17 @@ export const GetScheduledOccurrenceResponse$outboundSchema: z.ZodType<
   GetScheduledOccurrenceResponse$Outbound,
   z.ZodTypeDef,
   GetScheduledOccurrenceResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.OccurrencesResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.OccurrencesResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getScheduledOccurrenceResponseToJSON(
   getScheduledOccurrenceResponse: GetScheduledOccurrenceResponse,

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -54,29 +55,31 @@ export const TransferConfigValidationError$inboundSchema: z.ZodType<
   TransferConfigValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "TipPresets.CalculationBasis": types.optional(types.string()),
-  "TipPresets.PercentageOptions": types.optional(z.record(types.string())),
-  "TipPresets.FixedAmountOptions": types.optional(
-    z.record(components.AmountDecimalValidationError$inboundSchema),
-  ),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    const remapped = remap$(v, {
-      "TipPresets.CalculationBasis": "tipPresetsCalculationBasis",
-      "TipPresets.PercentageOptions": "tipPresetsPercentageOptions",
-      "TipPresets.FixedAmountOptions": "tipPresetsFixedAmountOptions",
-    });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "TipPresets.CalculationBasis": types.optional(types.string()),
+    "TipPresets.PercentageOptions": types.optional(z.record(types.string())),
+    "TipPresets.FixedAmountOptions": types.optional(
+      z.record(components.AmountDecimalValidationError$inboundSchema),
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      const remapped = remap$(v, {
+        "TipPresets.CalculationBasis": "tipPresetsCalculationBasis",
+        "TipPresets.PercentageOptions": "tipPresetsPercentageOptions",
+        "TipPresets.FixedAmountOptions": "tipPresetsFixedAmountOptions",
+      });
 
-    return new TransferConfigValidationError(remapped, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+      return new TransferConfigValidationError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type TransferConfigValidationError$Outbound = {
@@ -92,20 +95,22 @@ export const TransferConfigValidationError$outboundSchema: z.ZodType<
   TransferConfigValidationError$Outbound,
   z.ZodTypeDef,
   TransferConfigValidationError
-> = z.instanceof(TransferConfigValidationError)
-  .transform(v => v.data$)
-  .pipe(
-    z.object({
-      tipPresetsCalculationBasis: z.string().optional(),
-      tipPresetsPercentageOptions: z.record(z.string()).optional(),
-      tipPresetsFixedAmountOptions: z.record(
-        components.AmountDecimalValidationError$outboundSchema,
-      ).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        tipPresetsCalculationBasis: "TipPresets.CalculationBasis",
-        tipPresetsPercentageOptions: "TipPresets.PercentageOptions",
-        tipPresetsFixedAmountOptions: "TipPresets.FixedAmountOptions",
-      });
-    }),
-  );
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(TransferConfigValidationError)
+    .transform(v => v.data$)
+    .pipe(
+      z.object({
+        tipPresetsCalculationBasis: z.string().optional(),
+        tipPresetsPercentageOptions: z.record(z.string()).optional(),
+        tipPresetsFixedAmountOptions: z.record(
+          components.AmountDecimalValidationError$outboundSchema,
+        ).optional(),
+      }).transform((v) => {
+        return remap$(v, {
+          tipPresetsCalculationBasis: "TipPresets.CalculationBasis",
+          tipPresetsPercentageOptions: "TipPresets.PercentageOptions",
+          tipPresetsFixedAmountOptions: "TipPresets.FixedAmountOptions",
+        });
+      }),
+    )
+);

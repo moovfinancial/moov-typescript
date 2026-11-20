@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -39,13 +39,15 @@ export const TransferControls$inboundSchema: z.ZodType<
   TransferControls,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  partnerAccountID: types.string(),
-  debtRepayment: types.boolean(),
-  allowDynamicDescriptor: types.boolean(),
-  allowSurcharge: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    partnerAccountID: types.string(),
+    debtRepayment: types.boolean(),
+    allowDynamicDescriptor: types.boolean(),
+    allowSurcharge: types.boolean(),
+  })
+);
 /** @internal */
 export type TransferControls$Outbound = {
   accountID: string;
@@ -60,13 +62,15 @@ export const TransferControls$outboundSchema: z.ZodType<
   TransferControls$Outbound,
   z.ZodTypeDef,
   TransferControls
-> = z.object({
-  accountID: z.string(),
-  partnerAccountID: z.string(),
-  debtRepayment: z.boolean(),
-  allowDynamicDescriptor: z.boolean(),
-  allowSurcharge: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    partnerAccountID: z.string(),
+    debtRepayment: z.boolean(),
+    allowDynamicDescriptor: z.boolean(),
+    allowSurcharge: z.boolean(),
+  })
+);
 
 export function transferControlsToJSON(
   transferControls: TransferControls,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -26,15 +26,17 @@ export const UpdateTicketRequest$inboundSchema: z.ZodType<
   UpdateTicketRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  ticketID: types.string(),
-  UpdateTicket: components.UpdateTicket$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateTicket": "updateTicket",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    ticketID: types.string(),
+    UpdateTicket: components.UpdateTicket$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "UpdateTicket": "updateTicket",
+    });
+  })
+);
 /** @internal */
 export type UpdateTicketRequest$Outbound = {
   accountID: string;
@@ -47,15 +49,17 @@ export const UpdateTicketRequest$outboundSchema: z.ZodType<
   UpdateTicketRequest$Outbound,
   z.ZodTypeDef,
   UpdateTicketRequest
-> = z.object({
-  accountID: z.string(),
-  ticketID: z.string(),
-  updateTicket: components.UpdateTicket$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    updateTicket: "UpdateTicket",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    ticketID: z.string(),
+    updateTicket: components.UpdateTicket$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      updateTicket: "UpdateTicket",
+    });
+  })
+);
 
 export function updateTicketRequestToJSON(
   updateTicketRequest: UpdateTicketRequest,
@@ -79,15 +83,17 @@ export const UpdateTicketResponse$inboundSchema: z.ZodType<
   UpdateTicketResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Ticket$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Ticket$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpdateTicketResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -99,15 +105,17 @@ export const UpdateTicketResponse$outboundSchema: z.ZodType<
   UpdateTicketResponse$Outbound,
   z.ZodTypeDef,
   UpdateTicketResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Ticket$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Ticket$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function updateTicketResponseToJSON(
   updateTicketResponse: UpdateTicketResponse,

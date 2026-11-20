@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,10 +25,12 @@ export const GetTerminalConfigurationRequest$inboundSchema: z.ZodType<
   GetTerminalConfigurationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  terminalApplicationID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    terminalApplicationID: types.string(),
+  })
+);
 /** @internal */
 export type GetTerminalConfigurationRequest$Outbound = {
   accountID: string;
@@ -40,10 +42,12 @@ export const GetTerminalConfigurationRequest$outboundSchema: z.ZodType<
   GetTerminalConfigurationRequest$Outbound,
   z.ZodTypeDef,
   GetTerminalConfigurationRequest
-> = z.object({
-  accountID: z.string(),
-  terminalApplicationID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    terminalApplicationID: z.string(),
+  })
+);
 
 export function getTerminalConfigurationRequestToJSON(
   getTerminalConfigurationRequest: GetTerminalConfigurationRequest,
@@ -69,15 +73,17 @@ export const GetTerminalConfigurationResponse$inboundSchema: z.ZodType<
   GetTerminalConfigurationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.TerminalConfiguration$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.TerminalConfiguration$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetTerminalConfigurationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -89,15 +95,17 @@ export const GetTerminalConfigurationResponse$outboundSchema: z.ZodType<
   GetTerminalConfigurationResponse$Outbound,
   z.ZodTypeDef,
   GetTerminalConfigurationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.TerminalConfiguration$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.TerminalConfiguration$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getTerminalConfigurationResponseToJSON(
   getTerminalConfigurationResponse: GetTerminalConfigurationResponse,

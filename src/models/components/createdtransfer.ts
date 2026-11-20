@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -170,36 +170,38 @@ export const CreatedTransfer$inboundSchema: z.ZodType<
   CreatedTransfer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: types.string(),
-  createdOn: types.date(),
-  source: types.optional(TransferSource$inboundSchema),
-  destination: types.optional(TransferDestination$inboundSchema),
-  completedOn: types.optional(types.date()),
-  status: types.optional(TransferStatus$inboundSchema),
-  failureReason: types.optional(TransferFailureReason$inboundSchema),
-  amount: types.optional(Amount$inboundSchema),
-  description: types.optional(types.string()),
-  metadata: types.optional(z.record(types.string())),
-  facilitatorFee: types.optional(FacilitatorFee$inboundSchema),
-  moovFee: types.optional(types.number()),
-  moovFeeDecimal: types.optional(types.string()),
-  moovFeeDetails: types.optional(MoovFeeDetails$inboundSchema),
-  groupID: types.optional(types.string()),
-  cancellations: types.optional(z.array(Cancellation$inboundSchema)),
-  refundedAmount: types.optional(Amount$inboundSchema),
-  refunds: types.optional(z.array(CardAcquiringRefund$inboundSchema)),
-  disputedAmount: types.optional(Amount$inboundSchema),
-  disputes: types.optional(z.array(CardAcquiringDispute$inboundSchema)),
-  sweepID: types.optional(types.string()),
-  scheduleID: types.optional(types.string()),
-  occurrenceID: types.optional(types.string()),
-  paymentLinkCode: types.optional(types.string()),
-  foreignID: types.optional(types.string()),
-  lineItems: types.optional(TransferLineItems$inboundSchema),
-  amountDetails: types.optional(TransferAmountDetails$inboundSchema),
-  capture: types.optional(TransferCapture$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: types.string(),
+    createdOn: types.date(),
+    source: types.optional(TransferSource$inboundSchema),
+    destination: types.optional(TransferDestination$inboundSchema),
+    completedOn: types.optional(types.date()),
+    status: types.optional(TransferStatus$inboundSchema),
+    failureReason: types.optional(TransferFailureReason$inboundSchema),
+    amount: types.optional(Amount$inboundSchema),
+    description: types.optional(types.string()),
+    metadata: types.optional(z.record(types.string())),
+    facilitatorFee: types.optional(FacilitatorFee$inboundSchema),
+    moovFee: types.optional(types.number()),
+    moovFeeDecimal: types.optional(types.string()),
+    moovFeeDetails: types.optional(MoovFeeDetails$inboundSchema),
+    groupID: types.optional(types.string()),
+    cancellations: types.optional(z.array(Cancellation$inboundSchema)),
+    refundedAmount: types.optional(Amount$inboundSchema),
+    refunds: types.optional(z.array(CardAcquiringRefund$inboundSchema)),
+    disputedAmount: types.optional(Amount$inboundSchema),
+    disputes: types.optional(z.array(CardAcquiringDispute$inboundSchema)),
+    sweepID: types.optional(types.string()),
+    scheduleID: types.optional(types.string()),
+    occurrenceID: types.optional(types.string()),
+    paymentLinkCode: types.optional(types.string()),
+    foreignID: types.optional(types.string()),
+    lineItems: types.optional(TransferLineItems$inboundSchema),
+    amountDetails: types.optional(TransferAmountDetails$inboundSchema),
+    capture: types.optional(TransferCapture$inboundSchema),
+  })
+);
 /** @internal */
 export type CreatedTransfer$Outbound = {
   transferID: string;
@@ -237,36 +239,38 @@ export const CreatedTransfer$outboundSchema: z.ZodType<
   CreatedTransfer$Outbound,
   z.ZodTypeDef,
   CreatedTransfer
-> = z.object({
-  transferID: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  source: TransferSource$outboundSchema.optional(),
-  destination: TransferDestination$outboundSchema.optional(),
-  completedOn: z.date().transform(v => v.toISOString()).optional(),
-  status: TransferStatus$outboundSchema.optional(),
-  failureReason: TransferFailureReason$outboundSchema.optional(),
-  amount: Amount$outboundSchema.optional(),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  facilitatorFee: FacilitatorFee$outboundSchema.optional(),
-  moovFee: z.number().int().optional(),
-  moovFeeDecimal: z.string().optional(),
-  moovFeeDetails: MoovFeeDetails$outboundSchema.optional(),
-  groupID: z.string().optional(),
-  cancellations: z.array(Cancellation$outboundSchema).optional(),
-  refundedAmount: Amount$outboundSchema.optional(),
-  refunds: z.array(CardAcquiringRefund$outboundSchema).optional(),
-  disputedAmount: Amount$outboundSchema.optional(),
-  disputes: z.array(CardAcquiringDispute$outboundSchema).optional(),
-  sweepID: z.string().optional(),
-  scheduleID: z.string().optional(),
-  occurrenceID: z.string().optional(),
-  paymentLinkCode: z.string().optional(),
-  foreignID: z.string().optional(),
-  lineItems: TransferLineItems$outboundSchema.optional(),
-  amountDetails: TransferAmountDetails$outboundSchema.optional(),
-  capture: TransferCapture$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    source: TransferSource$outboundSchema.optional(),
+    destination: TransferDestination$outboundSchema.optional(),
+    completedOn: z.date().transform(v => v.toISOString()).optional(),
+    status: TransferStatus$outboundSchema.optional(),
+    failureReason: TransferFailureReason$outboundSchema.optional(),
+    amount: Amount$outboundSchema.optional(),
+    description: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+    facilitatorFee: FacilitatorFee$outboundSchema.optional(),
+    moovFee: z.number().int().optional(),
+    moovFeeDecimal: z.string().optional(),
+    moovFeeDetails: MoovFeeDetails$outboundSchema.optional(),
+    groupID: z.string().optional(),
+    cancellations: z.array(Cancellation$outboundSchema).optional(),
+    refundedAmount: Amount$outboundSchema.optional(),
+    refunds: z.array(CardAcquiringRefund$outboundSchema).optional(),
+    disputedAmount: Amount$outboundSchema.optional(),
+    disputes: z.array(CardAcquiringDispute$outboundSchema).optional(),
+    sweepID: z.string().optional(),
+    scheduleID: z.string().optional(),
+    occurrenceID: z.string().optional(),
+    paymentLinkCode: z.string().optional(),
+    foreignID: z.string().optional(),
+    lineItems: TransferLineItems$outboundSchema.optional(),
+    amountDetails: TransferAmountDetails$outboundSchema.optional(),
+    capture: TransferCapture$outboundSchema.optional(),
+  })
+);
 
 export function createdTransferToJSON(
   createdTransfer: CreatedTransfer,

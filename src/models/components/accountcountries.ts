@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,9 +20,11 @@ export const AccountCountries$inboundSchema: z.ZodType<
   AccountCountries,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  countries: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    countries: z.array(types.string()),
+  })
+);
 /** @internal */
 export type AccountCountries$Outbound = {
   countries: Array<string>;
@@ -33,9 +35,11 @@ export const AccountCountries$outboundSchema: z.ZodType<
   AccountCountries$Outbound,
   z.ZodTypeDef,
   AccountCountries
-> = z.object({
-  countries: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    countries: z.array(z.string()),
+  })
+);
 
 export function accountCountriesToJSON(
   accountCountries: AccountCountries,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -55,27 +56,31 @@ export const PatchAccountError$inboundSchema: z.ZodType<
   PatchAccountError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  profile: types.optional(components.CreateProfileError$inboundSchema),
-  metadata: types.optional(types.string()),
-  termsOfService: types.optional(components.TermsOfServiceError$inboundSchema),
-  foreignID: types.optional(types.string()),
-  customerSupport: types.optional(
-    components.CustomerSupportError$inboundSchema,
-  ),
-  settings: types.optional(components.CreateAccountSettings$inboundSchema),
-  error: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new PatchAccountError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    profile: types.optional(components.CreateProfileError$inboundSchema),
+    metadata: types.optional(types.string()),
+    termsOfService: types.optional(
+      components.TermsOfServiceError$inboundSchema,
+    ),
+    foreignID: types.optional(types.string()),
+    customerSupport: types.optional(
+      components.CustomerSupportError$inboundSchema,
+    ),
+    settings: types.optional(components.CreateAccountSettings$inboundSchema),
+    error: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new PatchAccountError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type PatchAccountError$Outbound = {
@@ -93,14 +98,17 @@ export const PatchAccountError$outboundSchema: z.ZodType<
   PatchAccountError$Outbound,
   z.ZodTypeDef,
   PatchAccountError
-> = z.instanceof(PatchAccountError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    profile: components.CreateProfileError$outboundSchema.optional(),
-    metadata: z.string().optional(),
-    termsOfService: components.TermsOfServiceError$outboundSchema.optional(),
-    foreignID: z.string().optional(),
-    customerSupport: components.CustomerSupportError$outboundSchema.optional(),
-    settings: components.CreateAccountSettings$outboundSchema.optional(),
-    error: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(PatchAccountError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      profile: components.CreateProfileError$outboundSchema.optional(),
+      metadata: z.string().optional(),
+      termsOfService: components.TermsOfServiceError$outboundSchema.optional(),
+      foreignID: z.string().optional(),
+      customerSupport: components.CustomerSupportError$outboundSchema
+        .optional(),
+      settings: components.CreateAccountSettings$outboundSchema.optional(),
+      error: z.string().optional(),
+    }))
+);

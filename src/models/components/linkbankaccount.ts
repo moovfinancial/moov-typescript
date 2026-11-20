@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { smartUnion } from "../../types/smartUnion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -43,12 +43,14 @@ export const LinkBankAccount$inboundSchema: z.ZodType<
   LinkBankAccount,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  BankAccountPayload$inboundSchema,
-  PlaidPayload$inboundSchema,
-  PlaidLinkPayload$inboundSchema,
-  MxPayload$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    BankAccountPayload$inboundSchema,
+    PlaidPayload$inboundSchema,
+    PlaidLinkPayload$inboundSchema,
+    MxPayload$inboundSchema,
+  ])
+);
 /** @internal */
 export type LinkBankAccount$Outbound =
   | BankAccountPayload$Outbound
@@ -61,12 +63,14 @@ export const LinkBankAccount$outboundSchema: z.ZodType<
   LinkBankAccount$Outbound,
   z.ZodTypeDef,
   LinkBankAccount
-> = smartUnion([
-  BankAccountPayload$outboundSchema,
-  PlaidPayload$outboundSchema,
-  PlaidLinkPayload$outboundSchema,
-  MxPayload$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    BankAccountPayload$outboundSchema,
+    PlaidPayload$outboundSchema,
+    PlaidLinkPayload$outboundSchema,
+    MxPayload$outboundSchema,
+  ])
+);
 
 export function linkBankAccountToJSON(
   linkBankAccount: LinkBankAccount,

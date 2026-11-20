@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -31,11 +31,13 @@ export const AchCreditStandardTransferPaymentMethod$inboundSchema: z.ZodType<
   AchCreditStandardTransferPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: types.string(),
-  paymentMethodType: types.literal("ach-credit-standard"),
-  bankAccount: TransferPaymentMethodsBankAccount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: types.string(),
+    paymentMethodType: types.literal("ach-credit-standard"),
+    bankAccount: TransferPaymentMethodsBankAccount$inboundSchema,
+  })
+);
 /** @internal */
 export type AchCreditStandardTransferPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -48,11 +50,13 @@ export const AchCreditStandardTransferPaymentMethod$outboundSchema: z.ZodType<
   AchCreditStandardTransferPaymentMethod$Outbound,
   z.ZodTypeDef,
   AchCreditStandardTransferPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("ach-credit-standard"),
-  bankAccount: TransferPaymentMethodsBankAccount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("ach-credit-standard"),
+    bankAccount: TransferPaymentMethodsBankAccount$outboundSchema,
+  })
+);
 
 export function achCreditStandardTransferPaymentMethodToJSON(
   achCreditStandardTransferPaymentMethod:

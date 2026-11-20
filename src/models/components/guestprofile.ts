@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,11 +34,13 @@ export const GuestProfile$inboundSchema: z.ZodType<
   GuestProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  phone: types.optional(PhoneNumber$inboundSchema),
-  email: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    phone: types.optional(PhoneNumber$inboundSchema),
+    email: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type GuestProfile$Outbound = {
   name: string;
@@ -51,11 +53,13 @@ export const GuestProfile$outboundSchema: z.ZodType<
   GuestProfile$Outbound,
   z.ZodTypeDef,
   GuestProfile
-> = z.object({
-  name: z.string(),
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+  })
+);
 
 export function guestProfileToJSON(guestProfile: GuestProfile): string {
   return JSON.stringify(GuestProfile$outboundSchema.parse(guestProfile));

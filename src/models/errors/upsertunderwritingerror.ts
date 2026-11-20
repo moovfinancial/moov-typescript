@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -97,38 +98,42 @@ export const UpsertUnderwritingError$inboundSchema: z.ZodType<
   UpsertUnderwritingError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  geographicReach: types.optional(types.string()),
-  businessPresence: types.optional(types.string()),
-  pendingLitigation: types.optional(types.string()),
-  volumeShareByCustomerType: types.optional(
-    components.VolumeShareByCustomerTypeError$inboundSchema,
-  ),
-  collectFunds: types.optional(components.CollectFundsError$inboundSchema),
-  moneyTransfer: types.optional(components.MoneyTransferError$inboundSchema),
-  sendFunds: types.optional(components.SendFundsError$inboundSchema),
-  averageMonthlyTransactionVolume: types.optional(types.string()),
-  error: types.optional(types.string()),
-  averageTransactionSize: types.optional(types.string()),
-  maxTransactionSize: types.optional(types.string()),
-  volumeByCustomerType: types.optional(
-    components.VolumeByCustomerTypeError$inboundSchema,
-  ),
-  cardVolumeDistribution: types.optional(
-    components.CardVolumeDistributionError$inboundSchema,
-  ),
-  fulfillment: types.optional(components.FulfillmentDetailsError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new UpsertUnderwritingError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    geographicReach: types.optional(types.string()),
+    businessPresence: types.optional(types.string()),
+    pendingLitigation: types.optional(types.string()),
+    volumeShareByCustomerType: types.optional(
+      components.VolumeShareByCustomerTypeError$inboundSchema,
+    ),
+    collectFunds: types.optional(components.CollectFundsError$inboundSchema),
+    moneyTransfer: types.optional(components.MoneyTransferError$inboundSchema),
+    sendFunds: types.optional(components.SendFundsError$inboundSchema),
+    averageMonthlyTransactionVolume: types.optional(types.string()),
+    error: types.optional(types.string()),
+    averageTransactionSize: types.optional(types.string()),
+    maxTransactionSize: types.optional(types.string()),
+    volumeByCustomerType: types.optional(
+      components.VolumeByCustomerTypeError$inboundSchema,
+    ),
+    cardVolumeDistribution: types.optional(
+      components.CardVolumeDistributionError$inboundSchema,
+    ),
+    fulfillment: types.optional(
+      components.FulfillmentDetailsError$inboundSchema,
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new UpsertUnderwritingError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type UpsertUnderwritingError$Outbound = {
@@ -159,24 +164,26 @@ export const UpsertUnderwritingError$outboundSchema: z.ZodType<
   UpsertUnderwritingError$Outbound,
   z.ZodTypeDef,
   UpsertUnderwritingError
-> = z.instanceof(UpsertUnderwritingError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    geographicReach: z.string().optional(),
-    businessPresence: z.string().optional(),
-    pendingLitigation: z.string().optional(),
-    volumeShareByCustomerType: components
-      .VolumeShareByCustomerTypeError$outboundSchema.optional(),
-    collectFunds: components.CollectFundsError$outboundSchema.optional(),
-    moneyTransfer: components.MoneyTransferError$outboundSchema.optional(),
-    sendFunds: components.SendFundsError$outboundSchema.optional(),
-    averageMonthlyTransactionVolume: z.string().optional(),
-    error: z.string().optional(),
-    averageTransactionSize: z.string().optional(),
-    maxTransactionSize: z.string().optional(),
-    volumeByCustomerType: components.VolumeByCustomerTypeError$outboundSchema
-      .optional(),
-    cardVolumeDistribution: components
-      .CardVolumeDistributionError$outboundSchema.optional(),
-    fulfillment: components.FulfillmentDetailsError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(UpsertUnderwritingError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      geographicReach: z.string().optional(),
+      businessPresence: z.string().optional(),
+      pendingLitigation: z.string().optional(),
+      volumeShareByCustomerType: components
+        .VolumeShareByCustomerTypeError$outboundSchema.optional(),
+      collectFunds: components.CollectFundsError$outboundSchema.optional(),
+      moneyTransfer: components.MoneyTransferError$outboundSchema.optional(),
+      sendFunds: components.SendFundsError$outboundSchema.optional(),
+      averageMonthlyTransactionVolume: z.string().optional(),
+      error: z.string().optional(),
+      averageTransactionSize: z.string().optional(),
+      maxTransactionSize: z.string().optional(),
+      volumeByCustomerType: components.VolumeByCustomerTypeError$outboundSchema
+        .optional(),
+      cardVolumeDistribution: components
+        .CardVolumeDistributionError$outboundSchema.optional(),
+      fulfillment: components.FulfillmentDetailsError$outboundSchema.optional(),
+    }))
+);

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -32,10 +33,14 @@ export const InstantBankFailureCode$inboundSchema: z.ZodType<
   InstantBankFailureCode,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(InstantBankFailureCode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(InstantBankFailureCode)
+);
 /** @internal */
 export const InstantBankFailureCode$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   InstantBankFailureCode
-> = openEnums.outboundSchema(InstantBankFailureCode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(InstantBankFailureCode)
+);

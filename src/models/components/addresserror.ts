@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -22,14 +22,16 @@ export const AddressError$inboundSchema: z.ZodType<
   AddressError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addressLine1: types.optional(types.string()),
-  addressLine2: types.optional(types.string()),
-  city: types.optional(types.string()),
-  stateOrProvince: types.optional(types.string()),
-  postalCode: types.optional(types.string()),
-  country: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLine1: types.optional(types.string()),
+    addressLine2: types.optional(types.string()),
+    city: types.optional(types.string()),
+    stateOrProvince: types.optional(types.string()),
+    postalCode: types.optional(types.string()),
+    country: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type AddressError$Outbound = {
   addressLine1?: string | undefined;
@@ -45,14 +47,16 @@ export const AddressError$outboundSchema: z.ZodType<
   AddressError$Outbound,
   z.ZodTypeDef,
   AddressError
-> = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  stateOrProvince: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLine1: z.string().optional(),
+    addressLine2: z.string().optional(),
+    city: z.string().optional(),
+    stateOrProvince: z.string().optional(),
+    postalCode: z.string().optional(),
+    country: z.string().optional(),
+  })
+);
 
 export function addressErrorToJSON(addressError: AddressError): string {
   return JSON.stringify(AddressError$outboundSchema.parse(addressError));

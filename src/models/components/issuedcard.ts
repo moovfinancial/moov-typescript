@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -101,22 +101,24 @@ export const IssuedCard$inboundSchema: z.ZodType<
   IssuedCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  issuedCardID: types.string(),
-  brand: CardBrand$inboundSchema,
-  lastFourCardNumber: types.string(),
-  expiration: CardExpiration$inboundSchema,
-  fundingWalletID: types.string(),
-  authorizedUserAccountID: types.optional(types.string()),
-  nickname: types.optional(types.string()),
-  metadata: types.optional(z.record(types.string())),
-  billingAddress: types.optional(Address$inboundSchema),
-  state: IssuedCardState$inboundSchema,
-  formFactor: IssuedCardFormFactor$inboundSchema,
-  controls: types.optional(IssuedControls$inboundSchema),
-  createdOn: types.date(),
-  updatedOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuedCardID: types.string(),
+    brand: CardBrand$inboundSchema,
+    lastFourCardNumber: types.string(),
+    expiration: CardExpiration$inboundSchema,
+    fundingWalletID: types.string(),
+    authorizedUserAccountID: types.optional(types.string()),
+    nickname: types.optional(types.string()),
+    metadata: types.optional(z.record(types.string())),
+    billingAddress: types.optional(Address$inboundSchema),
+    state: IssuedCardState$inboundSchema,
+    formFactor: IssuedCardFormFactor$inboundSchema,
+    controls: types.optional(IssuedControls$inboundSchema),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+  })
+);
 /** @internal */
 export type IssuedCard$Outbound = {
   issuedCardID: string;
@@ -140,22 +142,24 @@ export const IssuedCard$outboundSchema: z.ZodType<
   IssuedCard$Outbound,
   z.ZodTypeDef,
   IssuedCard
-> = z.object({
-  issuedCardID: z.string(),
-  brand: CardBrand$outboundSchema,
-  lastFourCardNumber: z.string(),
-  expiration: CardExpiration$outboundSchema,
-  fundingWalletID: z.string(),
-  authorizedUserAccountID: z.string().optional(),
-  nickname: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  billingAddress: Address$outboundSchema.optional(),
-  state: IssuedCardState$outboundSchema,
-  formFactor: IssuedCardFormFactor$outboundSchema,
-  controls: IssuedControls$outboundSchema.optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuedCardID: z.string(),
+    brand: CardBrand$outboundSchema,
+    lastFourCardNumber: z.string(),
+    expiration: CardExpiration$outboundSchema,
+    fundingWalletID: z.string(),
+    authorizedUserAccountID: z.string().optional(),
+    nickname: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+    billingAddress: Address$outboundSchema.optional(),
+    state: IssuedCardState$outboundSchema,
+    formFactor: IssuedCardFormFactor$outboundSchema,
+    controls: IssuedControls$outboundSchema.optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function issuedCardToJSON(issuedCard: IssuedCard): string {
   return JSON.stringify(IssuedCard$outboundSchema.parse(issuedCard));

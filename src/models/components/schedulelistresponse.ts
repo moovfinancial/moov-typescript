@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -56,23 +56,25 @@ export const ScheduleListResponse$inboundSchema: z.ZodType<
   ScheduleListResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  destinationAccountID: types.string(),
-  mode: Mode$inboundSchema,
-  occurrences: types.optional(z.array(OccurrencesResponse$inboundSchema)),
-  ownerAccountID: types.string(),
-  partnerAccountID: types.string(),
-  recur: types.optional(RecurResponse$inboundSchema),
-  scheduleID: types.string(),
-  sourceAccountID: types.string(),
-  createdOn: types.date(),
-  updatedOn: types.date(),
-  disabledOn: types.optional(types.date()),
-  sourceAccount: types.optional(PartialScheduleAccount$inboundSchema),
-  destinationAccount: types.optional(PartialScheduleAccount$inboundSchema),
-  partnerAccount: types.optional(PartialScheduleAccount$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    destinationAccountID: types.string(),
+    mode: Mode$inboundSchema,
+    occurrences: types.optional(z.array(OccurrencesResponse$inboundSchema)),
+    ownerAccountID: types.string(),
+    partnerAccountID: types.string(),
+    recur: types.optional(RecurResponse$inboundSchema),
+    scheduleID: types.string(),
+    sourceAccountID: types.string(),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+    disabledOn: types.optional(types.date()),
+    sourceAccount: types.optional(PartialScheduleAccount$inboundSchema),
+    destinationAccount: types.optional(PartialScheduleAccount$inboundSchema),
+    partnerAccount: types.optional(PartialScheduleAccount$inboundSchema),
+  })
+);
 /** @internal */
 export type ScheduleListResponse$Outbound = {
   description?: string | undefined;
@@ -97,23 +99,25 @@ export const ScheduleListResponse$outboundSchema: z.ZodType<
   ScheduleListResponse$Outbound,
   z.ZodTypeDef,
   ScheduleListResponse
-> = z.object({
-  description: z.string().optional(),
-  destinationAccountID: z.string(),
-  mode: Mode$outboundSchema,
-  occurrences: z.array(OccurrencesResponse$outboundSchema).optional(),
-  ownerAccountID: z.string(),
-  partnerAccountID: z.string(),
-  recur: RecurResponse$outboundSchema.optional(),
-  scheduleID: z.string(),
-  sourceAccountID: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-  sourceAccount: PartialScheduleAccount$outboundSchema.optional(),
-  destinationAccount: PartialScheduleAccount$outboundSchema.optional(),
-  partnerAccount: PartialScheduleAccount$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string().optional(),
+    destinationAccountID: z.string(),
+    mode: Mode$outboundSchema,
+    occurrences: z.array(OccurrencesResponse$outboundSchema).optional(),
+    ownerAccountID: z.string(),
+    partnerAccountID: z.string(),
+    recur: RecurResponse$outboundSchema.optional(),
+    scheduleID: z.string(),
+    sourceAccountID: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+    sourceAccount: PartialScheduleAccount$outboundSchema.optional(),
+    destinationAccount: PartialScheduleAccount$outboundSchema.optional(),
+    partnerAccount: PartialScheduleAccount$outboundSchema.optional(),
+  })
+);
 
 export function scheduleListResponseToJSON(
   scheduleListResponse: ScheduleListResponse,

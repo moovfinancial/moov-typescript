@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -91,21 +91,23 @@ export const BankAccount$inboundSchema: z.ZodType<
   BankAccount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bankAccountID: types.string(),
-  fingerprint: types.string(),
-  status: BankAccountStatus$inboundSchema,
-  holderName: types.string(),
-  holderType: BankAccountHolderType$inboundSchema,
-  bankName: types.string(),
-  bankAccountType: BankAccountType$inboundSchema,
-  routingNumber: types.string(),
-  lastFourAccountNumber: types.string(),
-  updatedOn: types.date(),
-  statusReason: types.optional(BankAccountStatusReason$inboundSchema),
-  exceptionDetails: types.optional(BankAccountException$inboundSchema),
-  paymentMethods: types.optional(z.array(BasicPaymentMethod$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bankAccountID: types.string(),
+    fingerprint: types.string(),
+    status: BankAccountStatus$inboundSchema,
+    holderName: types.string(),
+    holderType: BankAccountHolderType$inboundSchema,
+    bankName: types.string(),
+    bankAccountType: BankAccountType$inboundSchema,
+    routingNumber: types.string(),
+    lastFourAccountNumber: types.string(),
+    updatedOn: types.date(),
+    statusReason: types.optional(BankAccountStatusReason$inboundSchema),
+    exceptionDetails: types.optional(BankAccountException$inboundSchema),
+    paymentMethods: types.optional(z.array(BasicPaymentMethod$inboundSchema)),
+  })
+);
 /** @internal */
 export type BankAccount$Outbound = {
   bankAccountID: string;
@@ -128,21 +130,23 @@ export const BankAccount$outboundSchema: z.ZodType<
   BankAccount$Outbound,
   z.ZodTypeDef,
   BankAccount
-> = z.object({
-  bankAccountID: z.string(),
-  fingerprint: z.string(),
-  status: BankAccountStatus$outboundSchema,
-  holderName: z.string(),
-  holderType: BankAccountHolderType$outboundSchema,
-  bankName: z.string(),
-  bankAccountType: BankAccountType$outboundSchema,
-  routingNumber: z.string(),
-  lastFourAccountNumber: z.string(),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  statusReason: BankAccountStatusReason$outboundSchema.optional(),
-  exceptionDetails: BankAccountException$outboundSchema.optional(),
-  paymentMethods: z.array(BasicPaymentMethod$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bankAccountID: z.string(),
+    fingerprint: z.string(),
+    status: BankAccountStatus$outboundSchema,
+    holderName: z.string(),
+    holderType: BankAccountHolderType$outboundSchema,
+    bankName: z.string(),
+    bankAccountType: BankAccountType$outboundSchema,
+    routingNumber: z.string(),
+    lastFourAccountNumber: z.string(),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    statusReason: BankAccountStatusReason$outboundSchema.optional(),
+    exceptionDetails: BankAccountException$outboundSchema.optional(),
+    paymentMethods: z.array(BasicPaymentMethod$outboundSchema).optional(),
+  })
+);
 
 export function bankAccountToJSON(bankAccount: BankAccount): string {
   return JSON.stringify(BankAccount$outboundSchema.parse(bankAccount));

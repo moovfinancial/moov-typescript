@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -55,14 +55,16 @@ export const IssuedCardAuthorizationEvent$inboundSchema: z.ZodType<
   IssuedCardAuthorizationEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eventID: types.string(),
-  eventType: IssuedCardEventType$inboundSchema,
-  amount: types.string(),
-  result: IssuedCardAuthorizationEventResult$inboundSchema,
-  createdOn: types.date(),
-  declineReason: types.optional(IssuingDeclineReason$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventID: types.string(),
+    eventType: IssuedCardEventType$inboundSchema,
+    amount: types.string(),
+    result: IssuedCardAuthorizationEventResult$inboundSchema,
+    createdOn: types.date(),
+    declineReason: types.optional(IssuingDeclineReason$inboundSchema),
+  })
+);
 /** @internal */
 export type IssuedCardAuthorizationEvent$Outbound = {
   eventID: string;
@@ -78,14 +80,16 @@ export const IssuedCardAuthorizationEvent$outboundSchema: z.ZodType<
   IssuedCardAuthorizationEvent$Outbound,
   z.ZodTypeDef,
   IssuedCardAuthorizationEvent
-> = z.object({
-  eventID: z.string(),
-  eventType: IssuedCardEventType$outboundSchema,
-  amount: z.string(),
-  result: IssuedCardAuthorizationEventResult$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-  declineReason: IssuingDeclineReason$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventID: z.string(),
+    eventType: IssuedCardEventType$outboundSchema,
+    amount: z.string(),
+    result: IssuedCardAuthorizationEventResult$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+    declineReason: IssuingDeclineReason$outboundSchema.optional(),
+  })
+);
 
 export function issuedCardAuthorizationEventToJSON(
   issuedCardAuthorizationEvent: IssuedCardAuthorizationEvent,

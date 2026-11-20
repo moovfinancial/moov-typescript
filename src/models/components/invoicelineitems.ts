@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,9 +28,11 @@ export const InvoiceLineItems$inboundSchema: z.ZodType<
   InvoiceLineItems,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(InvoiceLineItem$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(InvoiceLineItem$inboundSchema),
+  })
+);
 /** @internal */
 export type InvoiceLineItems$Outbound = {
   items: Array<InvoiceLineItem$Outbound>;
@@ -41,9 +43,11 @@ export const InvoiceLineItems$outboundSchema: z.ZodType<
   InvoiceLineItems$Outbound,
   z.ZodTypeDef,
   InvoiceLineItems
-> = z.object({
-  items: z.array(InvoiceLineItem$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(InvoiceLineItem$outboundSchema),
+  })
+);
 
 export function invoiceLineItemsToJSON(
   invoiceLineItems: InvoiceLineItems,

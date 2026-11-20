@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,10 +27,12 @@ export const TransferACHAddendaRecord$inboundSchema: z.ZodType<
   TransferACHAddendaRecord,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  record: types.string(),
-  isMasked: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    record: types.string(),
+    isMasked: types.boolean(),
+  })
+);
 /** @internal */
 export type TransferACHAddendaRecord$Outbound = {
   record: string;
@@ -42,10 +44,12 @@ export const TransferACHAddendaRecord$outboundSchema: z.ZodType<
   TransferACHAddendaRecord$Outbound,
   z.ZodTypeDef,
   TransferACHAddendaRecord
-> = z.object({
-  record: z.string(),
-  isMasked: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    record: z.string(),
+    isMasked: z.boolean(),
+  })
+);
 
 export function transferACHAddendaRecordToJSON(
   transferACHAddendaRecord: TransferACHAddendaRecord,

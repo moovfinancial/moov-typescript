@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,12 +20,14 @@ export const CardVolumeDistributionError$inboundSchema: z.ZodType<
   CardVolumeDistributionError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ecommercePercentage: types.optional(types.string()),
-  cardPresentPercentage: types.optional(types.string()),
-  mailOrPhonePercentage: types.optional(types.string()),
-  debtRepaymentPercentage: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ecommercePercentage: types.optional(types.string()),
+    cardPresentPercentage: types.optional(types.string()),
+    mailOrPhonePercentage: types.optional(types.string()),
+    debtRepaymentPercentage: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type CardVolumeDistributionError$Outbound = {
   ecommercePercentage?: string | undefined;
@@ -39,12 +41,14 @@ export const CardVolumeDistributionError$outboundSchema: z.ZodType<
   CardVolumeDistributionError$Outbound,
   z.ZodTypeDef,
   CardVolumeDistributionError
-> = z.object({
-  ecommercePercentage: z.string().optional(),
-  cardPresentPercentage: z.string().optional(),
-  mailOrPhonePercentage: z.string().optional(),
-  debtRepaymentPercentage: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ecommercePercentage: z.string().optional(),
+    cardPresentPercentage: z.string().optional(),
+    mailOrPhonePercentage: z.string().optional(),
+    debtRepaymentPercentage: z.string().optional(),
+  })
+);
 
 export function cardVolumeDistributionErrorToJSON(
   cardVolumeDistributionError: CardVolumeDistributionError,

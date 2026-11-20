@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -28,10 +28,12 @@ export const GetTransferRequest$inboundSchema: z.ZodType<
   GetTransferRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: types.string(),
-  accountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: types.string(),
+    accountID: types.string(),
+  })
+);
 /** @internal */
 export type GetTransferRequest$Outbound = {
   transferID: string;
@@ -43,10 +45,12 @@ export const GetTransferRequest$outboundSchema: z.ZodType<
   GetTransferRequest$Outbound,
   z.ZodTypeDef,
   GetTransferRequest
-> = z.object({
-  transferID: z.string(),
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+    accountID: z.string(),
+  })
+);
 
 export function getTransferRequestToJSON(
   getTransferRequest: GetTransferRequest,
@@ -70,15 +74,17 @@ export const GetTransferResponse$inboundSchema: z.ZodType<
   GetTransferResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Transfer$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Transfer$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetTransferResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -90,15 +96,17 @@ export const GetTransferResponse$outboundSchema: z.ZodType<
   GetTransferResponse$Outbound,
   z.ZodTypeDef,
   GetTransferResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Transfer$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Transfer$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getTransferResponseToJSON(
   getTransferResponse: GetTransferResponse,

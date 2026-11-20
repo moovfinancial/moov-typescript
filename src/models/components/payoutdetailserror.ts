@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -33,13 +33,15 @@ export const PayoutDetailsError$inboundSchema: z.ZodType<
   PayoutDetailsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: types.optional(types.string()),
-  recipient: types.optional(PayoutRecipientError$inboundSchema),
-  metadata: types.optional(types.string()),
-  pushOptions: types.optional(PushOptionsError$inboundSchema),
-  feePaidBy: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: types.optional(types.string()),
+    recipient: types.optional(PayoutRecipientError$inboundSchema),
+    metadata: types.optional(types.string()),
+    pushOptions: types.optional(PushOptionsError$inboundSchema),
+    feePaidBy: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type PayoutDetailsError$Outbound = {
   allowedMethods?: string | undefined;
@@ -54,13 +56,15 @@ export const PayoutDetailsError$outboundSchema: z.ZodType<
   PayoutDetailsError$Outbound,
   z.ZodTypeDef,
   PayoutDetailsError
-> = z.object({
-  allowedMethods: z.string().optional(),
-  recipient: PayoutRecipientError$outboundSchema.optional(),
-  metadata: z.string().optional(),
-  pushOptions: PushOptionsError$outboundSchema.optional(),
-  feePaidBy: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.string().optional(),
+    recipient: PayoutRecipientError$outboundSchema.optional(),
+    metadata: z.string().optional(),
+    pushOptions: PushOptionsError$outboundSchema.optional(),
+    feePaidBy: z.string().optional(),
+  })
+);
 
 export function payoutDetailsErrorToJSON(
   payoutDetailsError: PayoutDetailsError,

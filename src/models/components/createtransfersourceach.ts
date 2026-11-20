@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -49,15 +49,17 @@ export const CreateTransferSourceACH$inboundSchema: z.ZodType<
   CreateTransferSourceACH,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  companyEntryDescription: types.optional(types.string()),
-  originatingCompanyName: types.optional(types.string()),
-  debitHoldPeriod: types.optional(DebitHoldPeriod$inboundSchema),
-  secCode: types.optional(SECCode$inboundSchema),
-  addenda: types.optional(
-    z.array(CreateTransferACHAddendaRecord$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyEntryDescription: types.optional(types.string()),
+    originatingCompanyName: types.optional(types.string()),
+    debitHoldPeriod: types.optional(DebitHoldPeriod$inboundSchema),
+    secCode: types.optional(SECCode$inboundSchema),
+    addenda: types.optional(
+      z.array(CreateTransferACHAddendaRecord$inboundSchema),
+    ),
+  })
+);
 /** @internal */
 export type CreateTransferSourceACH$Outbound = {
   companyEntryDescription?: string | undefined;
@@ -72,13 +74,15 @@ export const CreateTransferSourceACH$outboundSchema: z.ZodType<
   CreateTransferSourceACH$Outbound,
   z.ZodTypeDef,
   CreateTransferSourceACH
-> = z.object({
-  companyEntryDescription: z.string().optional(),
-  originatingCompanyName: z.string().optional(),
-  debitHoldPeriod: DebitHoldPeriod$outboundSchema.optional(),
-  secCode: SECCode$outboundSchema.optional(),
-  addenda: z.array(CreateTransferACHAddendaRecord$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyEntryDescription: z.string().optional(),
+    originatingCompanyName: z.string().optional(),
+    debitHoldPeriod: DebitHoldPeriod$outboundSchema.optional(),
+    secCode: SECCode$outboundSchema.optional(),
+    addenda: z.array(CreateTransferACHAddendaRecord$outboundSchema).optional(),
+  })
+);
 
 export function createTransferSourceACHToJSON(
   createTransferSourceACH: CreateTransferSourceACH,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -78,10 +78,12 @@ export const AllowedSchedule$inboundSchema: z.ZodType<
   AllowedSchedule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timezone: types.string(),
-  windows: z.array(ScheduleWindow$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timezone: types.string(),
+    windows: z.array(ScheduleWindow$inboundSchema),
+  })
+);
 /** @internal */
 export type AllowedSchedule$Outbound = {
   timezone: string;
@@ -93,10 +95,12 @@ export const AllowedSchedule$outboundSchema: z.ZodType<
   AllowedSchedule$Outbound,
   z.ZodTypeDef,
   AllowedSchedule
-> = z.object({
-  timezone: z.string(),
-  windows: z.array(ScheduleWindow$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timezone: z.string(),
+    windows: z.array(ScheduleWindow$outboundSchema),
+  })
+);
 
 export function allowedScheduleToJSON(
   allowedSchedule: AllowedSchedule,
@@ -118,17 +122,19 @@ export const IssuingControls$inboundSchema: z.ZodType<
   IssuingControls,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  singleUse: types.optional(types.boolean()),
-  velocityLimits: types.optional(z.array(IssuingVelocityLimit$inboundSchema)),
-  merchantCategoryRestrictions: types.optional(
-    MerchantCategoryRestrictions$inboundSchema,
-  ),
-  merchantRestrictions: types.optional(MerchantRestrictions$inboundSchema),
-  allowedSchedule: z.nullable(z.lazy(() => AllowedSchedule$inboundSchema))
-    .optional(),
-  expiresOn: z.nullable(types.date()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    singleUse: types.optional(types.boolean()),
+    velocityLimits: types.optional(z.array(IssuingVelocityLimit$inboundSchema)),
+    merchantCategoryRestrictions: types.optional(
+      MerchantCategoryRestrictions$inboundSchema,
+    ),
+    merchantRestrictions: types.optional(MerchantRestrictions$inboundSchema),
+    allowedSchedule: z.nullable(z.lazy(() => AllowedSchedule$inboundSchema))
+      .optional(),
+    expiresOn: z.nullable(types.date()).optional(),
+  })
+);
 /** @internal */
 export type IssuingControls$Outbound = {
   singleUse?: boolean | undefined;
@@ -146,16 +152,18 @@ export const IssuingControls$outboundSchema: z.ZodType<
   IssuingControls$Outbound,
   z.ZodTypeDef,
   IssuingControls
-> = z.object({
-  singleUse: z.boolean().optional(),
-  velocityLimits: z.array(IssuingVelocityLimit$outboundSchema).optional(),
-  merchantCategoryRestrictions: MerchantCategoryRestrictions$outboundSchema
-    .optional(),
-  merchantRestrictions: MerchantRestrictions$outboundSchema.optional(),
-  allowedSchedule: z.nullable(z.lazy(() => AllowedSchedule$outboundSchema))
-    .optional(),
-  expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    singleUse: z.boolean().optional(),
+    velocityLimits: z.array(IssuingVelocityLimit$outboundSchema).optional(),
+    merchantCategoryRestrictions: MerchantCategoryRestrictions$outboundSchema
+      .optional(),
+    merchantRestrictions: MerchantRestrictions$outboundSchema.optional(),
+    allowedSchedule: z.nullable(z.lazy(() => AllowedSchedule$outboundSchema))
+      .optional(),
+    expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  })
+);
 
 export function issuingControlsToJSON(
   issuingControls: IssuingControls,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,9 +24,11 @@ export const TaxIDUpdateEin$inboundSchema: z.ZodType<
   TaxIDUpdateEin,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  number: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    number: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type TaxIDUpdateEin$Outbound = {
   number?: string | undefined;
@@ -37,9 +39,11 @@ export const TaxIDUpdateEin$outboundSchema: z.ZodType<
   TaxIDUpdateEin$Outbound,
   z.ZodTypeDef,
   TaxIDUpdateEin
-> = z.object({
-  number: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    number: z.string().optional(),
+  })
+);
 
 export function taxIDUpdateEinToJSON(taxIDUpdateEin: TaxIDUpdateEin): string {
   return JSON.stringify(TaxIDUpdateEin$outboundSchema.parse(taxIDUpdateEin));
@@ -59,9 +63,11 @@ export const TaxIDUpdate$inboundSchema: z.ZodType<
   TaxIDUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ein: types.optional(z.lazy(() => TaxIDUpdateEin$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ein: types.optional(z.lazy(() => TaxIDUpdateEin$inboundSchema)),
+  })
+);
 /** @internal */
 export type TaxIDUpdate$Outbound = {
   ein?: TaxIDUpdateEin$Outbound | undefined;
@@ -72,9 +78,11 @@ export const TaxIDUpdate$outboundSchema: z.ZodType<
   TaxIDUpdate$Outbound,
   z.ZodTypeDef,
   TaxIDUpdate
-> = z.object({
-  ein: z.lazy(() => TaxIDUpdateEin$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ein: z.lazy(() => TaxIDUpdateEin$outboundSchema).optional(),
+  })
+);
 
 export function taxIDUpdateToJSON(taxIDUpdate: TaxIDUpdate): string {
   return JSON.stringify(TaxIDUpdate$outboundSchema.parse(taxIDUpdate));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -64,18 +64,20 @@ export const ResolutionLink$inboundSchema: z.ZodType<
   ResolutionLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  accountID: types.string(),
-  partnerAccountID: types.string(),
-  recipient: types.string(),
-  url: types.string(),
-  status: ResolutionLinkStatus$inboundSchema,
-  createdOn: types.date(),
-  updatedOn: types.date(),
-  disabledOn: types.optional(types.date()),
-  expiresOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    accountID: types.string(),
+    partnerAccountID: types.string(),
+    recipient: types.string(),
+    url: types.string(),
+    status: ResolutionLinkStatus$inboundSchema,
+    createdOn: types.date(),
+    updatedOn: types.date(),
+    disabledOn: types.optional(types.date()),
+    expiresOn: types.date(),
+  })
+);
 /** @internal */
 export type ResolutionLink$Outbound = {
   code: string;
@@ -95,18 +97,20 @@ export const ResolutionLink$outboundSchema: z.ZodType<
   ResolutionLink$Outbound,
   z.ZodTypeDef,
   ResolutionLink
-> = z.object({
-  code: z.string(),
-  accountID: z.string(),
-  partnerAccountID: z.string(),
-  recipient: z.string(),
-  url: z.string(),
-  status: ResolutionLinkStatus$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-  expiresOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string(),
+    accountID: z.string(),
+    partnerAccountID: z.string(),
+    recipient: z.string(),
+    url: z.string(),
+    status: ResolutionLinkStatus$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+    expiresOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function resolutionLinkToJSON(resolutionLink: ResolutionLink): string {
   return JSON.stringify(ResolutionLink$outboundSchema.parse(resolutionLink));

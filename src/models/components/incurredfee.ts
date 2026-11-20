@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -76,18 +76,20 @@ export const IncurredFee$inboundSchema: z.ZodType<
   IncurredFee,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  feeID: types.optional(types.string()),
-  accountID: types.optional(types.string()),
-  walletID: types.optional(types.string()),
-  createdOn: types.optional(types.date()),
-  feeName: types.optional(types.string()),
-  amount: types.optional(AmountDecimal$inboundSchema),
-  generatedBy: types.optional(GeneratedBy$inboundSchema),
-  feeGroup: types.optional(types.string()),
-  residualID: types.optional(types.string()),
-  feePaidBy: types.optional(FeePaidBy$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    feeID: types.optional(types.string()),
+    accountID: types.optional(types.string()),
+    walletID: types.optional(types.string()),
+    createdOn: types.optional(types.date()),
+    feeName: types.optional(types.string()),
+    amount: types.optional(AmountDecimal$inboundSchema),
+    generatedBy: types.optional(GeneratedBy$inboundSchema),
+    feeGroup: types.optional(types.string()),
+    residualID: types.optional(types.string()),
+    feePaidBy: types.optional(FeePaidBy$inboundSchema),
+  })
+);
 /** @internal */
 export type IncurredFee$Outbound = {
   feeID?: string | undefined;
@@ -107,18 +109,20 @@ export const IncurredFee$outboundSchema: z.ZodType<
   IncurredFee$Outbound,
   z.ZodTypeDef,
   IncurredFee
-> = z.object({
-  feeID: z.string().optional(),
-  accountID: z.string().optional(),
-  walletID: z.string().optional(),
-  createdOn: z.date().transform(v => v.toISOString()).optional(),
-  feeName: z.string().optional(),
-  amount: AmountDecimal$outboundSchema.optional(),
-  generatedBy: GeneratedBy$outboundSchema.optional(),
-  feeGroup: z.string().optional(),
-  residualID: z.string().optional(),
-  feePaidBy: FeePaidBy$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    feeID: z.string().optional(),
+    accountID: z.string().optional(),
+    walletID: z.string().optional(),
+    createdOn: z.date().transform(v => v.toISOString()).optional(),
+    feeName: z.string().optional(),
+    amount: AmountDecimal$outboundSchema.optional(),
+    generatedBy: GeneratedBy$outboundSchema.optional(),
+    feeGroup: z.string().optional(),
+    residualID: z.string().optional(),
+    feePaidBy: FeePaidBy$outboundSchema.optional(),
+  })
+);
 
 export function incurredFeeToJSON(incurredFee: IncurredFee): string {
   return JSON.stringify(IncurredFee$outboundSchema.parse(incurredFee));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -28,11 +28,13 @@ export const CardAcquiringDispute$inboundSchema: z.ZodType<
   CardAcquiringDispute,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  disputeID: types.string(),
-  createdOn: types.date(),
-  amount: Amount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    disputeID: types.string(),
+    createdOn: types.date(),
+    amount: Amount$inboundSchema,
+  })
+);
 /** @internal */
 export type CardAcquiringDispute$Outbound = {
   disputeID: string;
@@ -45,11 +47,13 @@ export const CardAcquiringDispute$outboundSchema: z.ZodType<
   CardAcquiringDispute$Outbound,
   z.ZodTypeDef,
   CardAcquiringDispute
-> = z.object({
-  disputeID: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  amount: Amount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    disputeID: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    amount: Amount$outboundSchema,
+  })
+);
 
 export function cardAcquiringDisputeToJSON(
   cardAcquiringDispute: CardAcquiringDispute,

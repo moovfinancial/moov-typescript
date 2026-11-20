@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -16,7 +16,7 @@ import {
 
 export type CreateReversal = {
   /**
-   * Amount to reverse.
+   * Amount to reverse. In v2026.10 and later, if omitted, the original transfer's full amount will be reversed.
    *
    * @remarks
    * Before v2026.10, specify the amount in integer cents.
@@ -35,10 +35,12 @@ export const CreateReversal$inboundSchema: z.ZodType<
   CreateReversal,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.number(),
-  amountDetails: types.optional(ReversalAmountDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.number(),
+    amountDetails: types.optional(ReversalAmountDetails$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateReversal$Outbound = {
   amount: number;
@@ -50,10 +52,12 @@ export const CreateReversal$outboundSchema: z.ZodType<
   CreateReversal$Outbound,
   z.ZodTypeDef,
   CreateReversal
-> = z.object({
-  amount: z.number().int(),
-  amountDetails: ReversalAmountDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.number().int(),
+    amountDetails: ReversalAmountDetails$outboundSchema.optional(),
+  })
+);
 
 export function createReversalToJSON(createReversal: CreateReversal): string {
   return JSON.stringify(CreateReversal$outboundSchema.parse(createReversal));

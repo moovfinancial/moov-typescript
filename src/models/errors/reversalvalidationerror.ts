@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -40,22 +41,24 @@ export const ReversalValidationError$inboundSchema: z.ZodType<
   ReversalValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(types.string()),
-  amountDetails: types.optional(
-    components.ReversalAmountDetailsValidationError$inboundSchema,
-  ),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ReversalValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(types.string()),
+    amountDetails: types.optional(
+      components.ReversalAmountDetailsValidationError$inboundSchema,
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ReversalValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ReversalValidationError$Outbound = {
@@ -70,10 +73,12 @@ export const ReversalValidationError$outboundSchema: z.ZodType<
   ReversalValidationError$Outbound,
   z.ZodTypeDef,
   ReversalValidationError
-> = z.instanceof(ReversalValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    amount: z.string().optional(),
-    amountDetails: components
-      .ReversalAmountDetailsValidationError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ReversalValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      amount: z.string().optional(),
+      amountDetails: components
+        .ReversalAmountDetailsValidationError$outboundSchema.optional(),
+    }))
+);

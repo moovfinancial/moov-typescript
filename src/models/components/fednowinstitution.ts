@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -28,11 +28,13 @@ export const FedNowInstitution$inboundSchema: z.ZodType<
   FedNowInstitution,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  routingNumber: types.string(),
-  services: FedNowServices$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    routingNumber: types.string(),
+    services: FedNowServices$inboundSchema,
+  })
+);
 /** @internal */
 export type FedNowInstitution$Outbound = {
   name: string;
@@ -45,11 +47,13 @@ export const FedNowInstitution$outboundSchema: z.ZodType<
   FedNowInstitution$Outbound,
   z.ZodTypeDef,
   FedNowInstitution
-> = z.object({
-  name: z.string(),
-  routingNumber: z.string(),
-  services: FedNowServices$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    routingNumber: z.string(),
+    services: FedNowServices$outboundSchema,
+  })
+);
 
 export function fedNowInstitutionToJSON(
   fedNowInstitution: FedNowInstitution,

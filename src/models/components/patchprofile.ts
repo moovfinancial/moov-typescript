@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -39,10 +39,12 @@ export const PatchProfile$inboundSchema: z.ZodType<
   PatchProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  individual: types.optional(PatchIndividual$inboundSchema),
-  business: types.optional(PatchBusiness$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    individual: types.optional(PatchIndividual$inboundSchema),
+    business: types.optional(PatchBusiness$inboundSchema),
+  })
+);
 /** @internal */
 export type PatchProfile$Outbound = {
   individual?: PatchIndividual$Outbound | undefined;
@@ -54,10 +56,12 @@ export const PatchProfile$outboundSchema: z.ZodType<
   PatchProfile$Outbound,
   z.ZodTypeDef,
   PatchProfile
-> = z.object({
-  individual: PatchIndividual$outboundSchema.optional(),
-  business: PatchBusiness$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    individual: PatchIndividual$outboundSchema.optional(),
+    business: PatchBusiness$outboundSchema.optional(),
+  })
+);
 
 export function patchProfileToJSON(patchProfile: PatchProfile): string {
   return JSON.stringify(PatchProfile$outboundSchema.parse(patchProfile));

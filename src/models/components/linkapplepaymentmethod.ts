@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -36,11 +36,13 @@ export const LinkApplePaymentMethod$inboundSchema: z.ZodType<
   LinkApplePaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  displayName: types.string(),
-  network: types.string(),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    displayName: types.string(),
+    network: types.string(),
+    type: types.string(),
+  })
+);
 /** @internal */
 export type LinkApplePaymentMethod$Outbound = {
   displayName: string;
@@ -53,11 +55,13 @@ export const LinkApplePaymentMethod$outboundSchema: z.ZodType<
   LinkApplePaymentMethod$Outbound,
   z.ZodTypeDef,
   LinkApplePaymentMethod
-> = z.object({
-  displayName: z.string(),
-  network: z.string(),
-  type: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    displayName: z.string(),
+    network: z.string(),
+    type: z.string(),
+  })
+);
 
 export function linkApplePaymentMethodToJSON(
   linkApplePaymentMethod: LinkApplePaymentMethod,

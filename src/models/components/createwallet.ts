@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -28,11 +28,13 @@ export const CreateWallet$inboundSchema: z.ZodType<
   CreateWallet,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  description: types.optional(types.string()),
-  metadata: types.optional(z.record(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    description: types.optional(types.string()),
+    metadata: types.optional(z.record(types.string())),
+  })
+);
 /** @internal */
 export type CreateWallet$Outbound = {
   name: string;
@@ -45,11 +47,13 @@ export const CreateWallet$outboundSchema: z.ZodType<
   CreateWallet$Outbound,
   z.ZodTypeDef,
   CreateWallet
-> = z.object({
-  name: z.string(),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+  })
+);
 
 export function createWalletToJSON(createWallet: CreateWallet): string {
   return JSON.stringify(CreateWallet$outboundSchema.parse(createWallet));

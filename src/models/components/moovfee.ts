@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -43,12 +43,14 @@ export type MoovFee = {
 
 /** @internal */
 export const MoovFee$inboundSchema: z.ZodType<MoovFee, z.ZodTypeDef, unknown> =
-  z.object({
-    accountID: types.string(),
-    transferParty: TransferParty$inboundSchema,
-    totalAmount: AmountDecimal$inboundSchema,
-    feeIDs: z.array(types.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      accountID: types.string(),
+      transferParty: TransferParty$inboundSchema,
+      totalAmount: AmountDecimal$inboundSchema,
+      feeIDs: z.array(types.string()),
+    })
+  );
 /** @internal */
 export type MoovFee$Outbound = {
   accountID: string;
@@ -62,12 +64,14 @@ export const MoovFee$outboundSchema: z.ZodType<
   MoovFee$Outbound,
   z.ZodTypeDef,
   MoovFee
-> = z.object({
-  accountID: z.string(),
-  transferParty: TransferParty$outboundSchema,
-  totalAmount: AmountDecimal$outboundSchema,
-  feeIDs: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferParty: TransferParty$outboundSchema,
+    totalAmount: AmountDecimal$outboundSchema,
+    feeIDs: z.array(z.string()),
+  })
+);
 
 export function moovFeeToJSON(moovFee: MoovFee): string {
   return JSON.stringify(MoovFee$outboundSchema.parse(moovFee));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,10 +18,12 @@ export const ACHPaymentDetailsError$inboundSchema: z.ZodType<
   ACHPaymentDetailsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  companyEntryDescription: types.optional(types.string()),
-  originatingCompanyName: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyEntryDescription: types.optional(types.string()),
+    originatingCompanyName: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ACHPaymentDetailsError$Outbound = {
   companyEntryDescription?: string | undefined;
@@ -33,10 +35,12 @@ export const ACHPaymentDetailsError$outboundSchema: z.ZodType<
   ACHPaymentDetailsError$Outbound,
   z.ZodTypeDef,
   ACHPaymentDetailsError
-> = z.object({
-  companyEntryDescription: z.string().optional(),
-  originatingCompanyName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyEntryDescription: z.string().optional(),
+    originatingCompanyName: z.string().optional(),
+  })
+);
 
 export function achPaymentDetailsErrorToJSON(
   achPaymentDetailsError: ACHPaymentDetailsError,

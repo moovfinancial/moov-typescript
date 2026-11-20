@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -31,11 +31,13 @@ export const PullFromGooglePayPaymentMethod$inboundSchema: z.ZodType<
   PullFromGooglePayPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: types.string(),
-  paymentMethodType: types.literal("pull-from-google-pay"),
-  googlePay: GooglePayResponse$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: types.string(),
+    paymentMethodType: types.literal("pull-from-google-pay"),
+    googlePay: GooglePayResponse$inboundSchema,
+  })
+);
 /** @internal */
 export type PullFromGooglePayPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -48,11 +50,13 @@ export const PullFromGooglePayPaymentMethod$outboundSchema: z.ZodType<
   PullFromGooglePayPaymentMethod$Outbound,
   z.ZodTypeDef,
   PullFromGooglePayPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("pull-from-google-pay"),
-  googlePay: GooglePayResponse$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("pull-from-google-pay"),
+    googlePay: GooglePayResponse$outboundSchema,
+  })
+);
 
 export function pullFromGooglePayPaymentMethodToJSON(
   pullFromGooglePayPaymentMethod: PullFromGooglePayPaymentMethod,

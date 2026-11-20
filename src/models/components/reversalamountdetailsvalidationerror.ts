@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -17,9 +17,11 @@ export const ReversalAmountDetailsValidationError$inboundSchema: z.ZodType<
   ReversalAmountDetailsValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  surcharge: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    surcharge: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ReversalAmountDetailsValidationError$Outbound = {
   surcharge?: string | undefined;
@@ -30,9 +32,11 @@ export const ReversalAmountDetailsValidationError$outboundSchema: z.ZodType<
   ReversalAmountDetailsValidationError$Outbound,
   z.ZodTypeDef,
   ReversalAmountDetailsValidationError
-> = z.object({
-  surcharge: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    surcharge: z.string().optional(),
+  })
+);
 
 export function reversalAmountDetailsValidationErrorToJSON(
   reversalAmountDetailsValidationError: ReversalAmountDetailsValidationError,

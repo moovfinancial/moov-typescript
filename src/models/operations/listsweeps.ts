@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -38,14 +38,16 @@ export const ListSweepsRequest$inboundSchema: z.ZodType<
   ListSweepsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  walletID: types.string(),
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-  status: types.optional(components.SweepStatus$inboundSchema),
-  statementDescriptor: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    walletID: types.string(),
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+    status: types.optional(components.SweepStatus$inboundSchema),
+    statementDescriptor: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ListSweepsRequest$Outbound = {
   accountID: string;
@@ -61,14 +63,16 @@ export const ListSweepsRequest$outboundSchema: z.ZodType<
   ListSweepsRequest$Outbound,
   z.ZodTypeDef,
   ListSweepsRequest
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  status: components.SweepStatus$outboundSchema.optional(),
-  statementDescriptor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    status: components.SweepStatus$outboundSchema.optional(),
+    statementDescriptor: z.string().optional(),
+  })
+);
 
 export function listSweepsRequestToJSON(
   listSweepsRequest: ListSweepsRequest,
@@ -92,15 +96,17 @@ export const ListSweepsResponse$inboundSchema: z.ZodType<
   ListSweepsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Sweep$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Sweep$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListSweepsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -112,15 +118,17 @@ export const ListSweepsResponse$outboundSchema: z.ZodType<
   ListSweepsResponse$Outbound,
   z.ZodTypeDef,
   ListSweepsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Sweep$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Sweep$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listSweepsResponseToJSON(
   listSweepsResponse: ListSweepsResponse,

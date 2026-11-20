@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -64,14 +64,18 @@ export const ProductRequest$inboundSchema: z.ZodType<
   ProductRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: types.string(),
-  description: types.optional(types.string()),
-  basePrice: AmountDecimal$inboundSchema,
-  images: types.optional(z.array(AssignProductImage$inboundSchema)),
-  optionGroups: types.optional(z.array(CreateProductOptionGroup$inboundSchema)),
-  categoryID: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: types.string(),
+    description: types.optional(types.string()),
+    basePrice: AmountDecimal$inboundSchema,
+    images: types.optional(z.array(AssignProductImage$inboundSchema)),
+    optionGroups: types.optional(
+      z.array(CreateProductOptionGroup$inboundSchema),
+    ),
+    categoryID: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ProductRequest$Outbound = {
   title: string;
@@ -87,14 +91,16 @@ export const ProductRequest$outboundSchema: z.ZodType<
   ProductRequest$Outbound,
   z.ZodTypeDef,
   ProductRequest
-> = z.object({
-  title: z.string(),
-  description: z.string().optional(),
-  basePrice: AmountDecimal$outboundSchema,
-  images: z.array(AssignProductImage$outboundSchema).optional(),
-  optionGroups: z.array(CreateProductOptionGroup$outboundSchema).optional(),
-  categoryID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    basePrice: AmountDecimal$outboundSchema,
+    images: z.array(AssignProductImage$outboundSchema).optional(),
+    optionGroups: z.array(CreateProductOptionGroup$outboundSchema).optional(),
+    categoryID: z.string().optional(),
+  })
+);
 
 export function productRequestToJSON(productRequest: ProductRequest): string {
   return JSON.stringify(ProductRequest$outboundSchema.parse(productRequest));

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -26,10 +27,14 @@ export const TerminalApplicationPlatform$inboundSchema: z.ZodType<
   TerminalApplicationPlatform,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(TerminalApplicationPlatform);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(TerminalApplicationPlatform)
+);
 /** @internal */
 export const TerminalApplicationPlatform$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   TerminalApplicationPlatform
-> = openEnums.outboundSchema(TerminalApplicationPlatform);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(TerminalApplicationPlatform)
+);

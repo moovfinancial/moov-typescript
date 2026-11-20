@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -40,22 +41,24 @@ export const ImageRequestValidationError$inboundSchema: z.ZodType<
   ImageRequestValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  image: types.optional(types.string()),
-  metadata: types.optional(
-    components.ImageMetadataValidationError$inboundSchema,
-  ),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ImageRequestValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    image: types.optional(types.string()),
+    metadata: types.optional(
+      components.ImageMetadataValidationError$inboundSchema,
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ImageRequestValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ImageRequestValidationError$Outbound = {
@@ -68,9 +71,12 @@ export const ImageRequestValidationError$outboundSchema: z.ZodType<
   ImageRequestValidationError$Outbound,
   z.ZodTypeDef,
   ImageRequestValidationError
-> = z.instanceof(ImageRequestValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    image: z.string().optional(),
-    metadata: components.ImageMetadataValidationError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ImageRequestValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      image: z.string().optional(),
+      metadata: components.ImageMetadataValidationError$outboundSchema
+        .optional(),
+    }))
+);

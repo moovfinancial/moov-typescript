@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -51,13 +51,17 @@ export const ScheduledTransferLineItemOption$inboundSchema: z.ZodType<
   ScheduledTransferLineItemOption,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  quantity: types.number(),
-  priceModifier: types.optional(AmountDecimal$inboundSchema),
-  group: types.optional(types.string()),
-  images: types.optional(z.array(ScheduledTransferImageMetadata$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    quantity: types.number(),
+    priceModifier: types.optional(AmountDecimal$inboundSchema),
+    group: types.optional(types.string()),
+    images: types.optional(
+      z.array(ScheduledTransferImageMetadata$inboundSchema),
+    ),
+  })
+);
 /** @internal */
 export type ScheduledTransferLineItemOption$Outbound = {
   name: string;
@@ -72,13 +76,15 @@ export const ScheduledTransferLineItemOption$outboundSchema: z.ZodType<
   ScheduledTransferLineItemOption$Outbound,
   z.ZodTypeDef,
   ScheduledTransferLineItemOption
-> = z.object({
-  name: z.string(),
-  quantity: z.number().int(),
-  priceModifier: AmountDecimal$outboundSchema.optional(),
-  group: z.string().optional(),
-  images: z.array(ScheduledTransferImageMetadata$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    quantity: z.number().int(),
+    priceModifier: AmountDecimal$outboundSchema.optional(),
+    group: z.string().optional(),
+    images: z.array(ScheduledTransferImageMetadata$outboundSchema).optional(),
+  })
+);
 
 export function scheduledTransferLineItemOptionToJSON(
   scheduledTransferLineItemOption: ScheduledTransferLineItemOption,

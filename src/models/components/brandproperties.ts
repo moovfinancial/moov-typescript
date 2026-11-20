@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,9 +25,11 @@ export const BrandProperties$inboundSchema: z.ZodType<
   BrandProperties,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  colors: BrandColors$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    colors: BrandColors$inboundSchema,
+  })
+);
 /** @internal */
 export type BrandProperties$Outbound = {
   colors: BrandColors$Outbound;
@@ -38,9 +40,11 @@ export const BrandProperties$outboundSchema: z.ZodType<
   BrandProperties$Outbound,
   z.ZodTypeDef,
   BrandProperties
-> = z.object({
-  colors: BrandColors$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    colors: BrandColors$outboundSchema,
+  })
+);
 
 export function brandPropertiesToJSON(
   brandProperties: BrandProperties,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,10 +25,12 @@ export const GetFileDetailsRequest$inboundSchema: z.ZodType<
   GetFileDetailsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  fileID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    fileID: types.string(),
+  })
+);
 /** @internal */
 export type GetFileDetailsRequest$Outbound = {
   accountID: string;
@@ -40,10 +42,12 @@ export const GetFileDetailsRequest$outboundSchema: z.ZodType<
   GetFileDetailsRequest$Outbound,
   z.ZodTypeDef,
   GetFileDetailsRequest
-> = z.object({
-  accountID: z.string(),
-  fileID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    fileID: z.string(),
+  })
+);
 
 export function getFileDetailsRequestToJSON(
   getFileDetailsRequest: GetFileDetailsRequest,
@@ -67,15 +71,17 @@ export const GetFileDetailsResponse$inboundSchema: z.ZodType<
   GetFileDetailsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.FileDetails$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.FileDetails$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetFileDetailsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -87,15 +93,17 @@ export const GetFileDetailsResponse$outboundSchema: z.ZodType<
   GetFileDetailsResponse$Outbound,
   z.ZodTypeDef,
   GetFileDetailsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.FileDetails$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.FileDetails$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getFileDetailsResponseToJSON(
   getFileDetailsResponse: GetFileDetailsResponse,

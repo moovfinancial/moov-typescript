@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -52,14 +52,16 @@ export const PaymentLinkPaymentDetailsUpdate$inboundSchema: z.ZodType<
   PaymentLinkPaymentDetailsUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: types.optional(
-    z.array(CollectionPaymentMethodType$inboundSchema),
-  ),
-  cardDetails: types.optional(CardPaymentDetails$inboundSchema),
-  achDetails: types.optional(ACHPaymentDetails$inboundSchema),
-  metadata: types.optional(z.record(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: types.optional(
+      z.array(CollectionPaymentMethodType$inboundSchema),
+    ),
+    cardDetails: types.optional(CardPaymentDetails$inboundSchema),
+    achDetails: types.optional(ACHPaymentDetails$inboundSchema),
+    metadata: types.optional(z.record(types.string())),
+  })
+);
 /** @internal */
 export type PaymentLinkPaymentDetailsUpdate$Outbound = {
   allowedMethods?: Array<string> | undefined;
@@ -73,13 +75,15 @@ export const PaymentLinkPaymentDetailsUpdate$outboundSchema: z.ZodType<
   PaymentLinkPaymentDetailsUpdate$Outbound,
   z.ZodTypeDef,
   PaymentLinkPaymentDetailsUpdate
-> = z.object({
-  allowedMethods: z.array(CollectionPaymentMethodType$outboundSchema)
-    .optional(),
-  cardDetails: CardPaymentDetails$outboundSchema.optional(),
-  achDetails: ACHPaymentDetails$outboundSchema.optional(),
-  metadata: z.record(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(CollectionPaymentMethodType$outboundSchema)
+      .optional(),
+    cardDetails: CardPaymentDetails$outboundSchema.optional(),
+    achDetails: ACHPaymentDetails$outboundSchema.optional(),
+    metadata: z.record(z.string()).optional(),
+  })
+);
 
 export function paymentLinkPaymentDetailsUpdateToJSON(
   paymentLinkPaymentDetailsUpdate: PaymentLinkPaymentDetailsUpdate,

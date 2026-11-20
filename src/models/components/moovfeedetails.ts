@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,12 +35,14 @@ export const MoovFeeDetails$inboundSchema: z.ZodType<
   MoovFeeDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardScheme: types.optional(types.string()),
-  interchange: types.optional(types.string()),
-  discount: types.optional(types.string()),
-  moovProcessing: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardScheme: types.optional(types.string()),
+    interchange: types.optional(types.string()),
+    discount: types.optional(types.string()),
+    moovProcessing: types.string(),
+  })
+);
 /** @internal */
 export type MoovFeeDetails$Outbound = {
   cardScheme?: string | undefined;
@@ -54,12 +56,14 @@ export const MoovFeeDetails$outboundSchema: z.ZodType<
   MoovFeeDetails$Outbound,
   z.ZodTypeDef,
   MoovFeeDetails
-> = z.object({
-  cardScheme: z.string().optional(),
-  interchange: z.string().optional(),
-  discount: z.string().optional(),
-  moovProcessing: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardScheme: z.string().optional(),
+    interchange: z.string().optional(),
+    discount: z.string().optional(),
+    moovProcessing: z.string(),
+  })
+);
 
 export function moovFeeDetailsToJSON(moovFeeDetails: MoovFeeDetails): string {
   return JSON.stringify(MoovFeeDetails$outboundSchema.parse(moovFeeDetails));

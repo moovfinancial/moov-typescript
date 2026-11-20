@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +19,13 @@ export const WebhookDataPaymentMethodDisabled$inboundSchema: z.ZodType<
   WebhookDataPaymentMethodDisabled,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  paymentMethodID: types.string(),
-  sourceID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    paymentMethodID: types.string(),
+    sourceID: types.string(),
+  })
+);
 /** @internal */
 export type WebhookDataPaymentMethodDisabled$Outbound = {
   accountID: string;
@@ -36,11 +38,13 @@ export const WebhookDataPaymentMethodDisabled$outboundSchema: z.ZodType<
   WebhookDataPaymentMethodDisabled$Outbound,
   z.ZodTypeDef,
   WebhookDataPaymentMethodDisabled
-> = z.object({
-  accountID: z.string(),
-  paymentMethodID: z.string(),
-  sourceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    paymentMethodID: z.string(),
+    sourceID: z.string(),
+  })
+);
 
 export function webhookDataPaymentMethodDisabledToJSON(
   webhookDataPaymentMethodDisabled: WebhookDataPaymentMethodDisabled,

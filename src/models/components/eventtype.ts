@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -31,11 +31,13 @@ export const EventType$inboundSchema: z.ZodType<
   EventType,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eventTypeID: types.string(),
-  type: types.string(),
-  description: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventTypeID: types.string(),
+    type: types.string(),
+    description: types.string(),
+  })
+);
 /** @internal */
 export type EventType$Outbound = {
   eventTypeID: string;
@@ -48,11 +50,13 @@ export const EventType$outboundSchema: z.ZodType<
   EventType$Outbound,
   z.ZodTypeDef,
   EventType
-> = z.object({
-  eventTypeID: z.string(),
-  type: z.string(),
-  description: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventTypeID: z.string(),
+    type: z.string(),
+    description: z.string(),
+  })
+);
 
 export function eventTypeToJSON(eventType: EventType): string {
   return JSON.stringify(EventType$outboundSchema.parse(eventType));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -37,13 +37,15 @@ export const ListWalletsRequest$inboundSchema: z.ZodType<
   ListWalletsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.optional(components.WalletStatus$inboundSchema),
-  walletType: types.optional(components.WalletType$inboundSchema),
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-  accountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.optional(components.WalletStatus$inboundSchema),
+    walletType: types.optional(components.WalletType$inboundSchema),
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+    accountID: types.string(),
+  })
+);
 /** @internal */
 export type ListWalletsRequest$Outbound = {
   status?: string | undefined;
@@ -58,13 +60,15 @@ export const ListWalletsRequest$outboundSchema: z.ZodType<
   ListWalletsRequest$Outbound,
   z.ZodTypeDef,
   ListWalletsRequest
-> = z.object({
-  status: components.WalletStatus$outboundSchema.optional(),
-  walletType: components.WalletType$outboundSchema.optional(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: components.WalletStatus$outboundSchema.optional(),
+    walletType: components.WalletType$outboundSchema.optional(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    accountID: z.string(),
+  })
+);
 
 export function listWalletsRequestToJSON(
   listWalletsRequest: ListWalletsRequest,
@@ -88,15 +92,17 @@ export const ListWalletsResponse$inboundSchema: z.ZodType<
   ListWalletsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Wallet$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Wallet$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListWalletsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -108,15 +114,17 @@ export const ListWalletsResponse$outboundSchema: z.ZodType<
   ListWalletsResponse$Outbound,
   z.ZodTypeDef,
   ListWalletsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Wallet$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Wallet$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listWalletsResponseToJSON(
   listWalletsResponse: ListWalletsResponse,

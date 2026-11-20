@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -57,18 +57,20 @@ export const TransferPaymentMethodsBankAccount$inboundSchema: z.ZodType<
   TransferPaymentMethodsBankAccount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bankAccountID: types.string(),
-  fingerprint: types.string(),
-  status: BankAccountStatus$inboundSchema,
-  holderName: types.string(),
-  holderType: BankAccountHolderType$inboundSchema,
-  bankName: types.string(),
-  bankAccountType: BankAccountType$inboundSchema,
-  routingNumber: types.string(),
-  lastFourAccountNumber: types.string(),
-  updatedOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bankAccountID: types.string(),
+    fingerprint: types.string(),
+    status: BankAccountStatus$inboundSchema,
+    holderName: types.string(),
+    holderType: BankAccountHolderType$inboundSchema,
+    bankName: types.string(),
+    bankAccountType: BankAccountType$inboundSchema,
+    routingNumber: types.string(),
+    lastFourAccountNumber: types.string(),
+    updatedOn: types.date(),
+  })
+);
 /** @internal */
 export type TransferPaymentMethodsBankAccount$Outbound = {
   bankAccountID: string;
@@ -88,18 +90,20 @@ export const TransferPaymentMethodsBankAccount$outboundSchema: z.ZodType<
   TransferPaymentMethodsBankAccount$Outbound,
   z.ZodTypeDef,
   TransferPaymentMethodsBankAccount
-> = z.object({
-  bankAccountID: z.string(),
-  fingerprint: z.string(),
-  status: BankAccountStatus$outboundSchema,
-  holderName: z.string(),
-  holderType: BankAccountHolderType$outboundSchema,
-  bankName: z.string(),
-  bankAccountType: BankAccountType$outboundSchema,
-  routingNumber: z.string(),
-  lastFourAccountNumber: z.string(),
-  updatedOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bankAccountID: z.string(),
+    fingerprint: z.string(),
+    status: BankAccountStatus$outboundSchema,
+    holderName: z.string(),
+    holderType: BankAccountHolderType$outboundSchema,
+    bankName: z.string(),
+    bankAccountType: BankAccountType$outboundSchema,
+    routingNumber: z.string(),
+    lastFourAccountNumber: z.string(),
+    updatedOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function transferPaymentMethodsBankAccountToJSON(
   transferPaymentMethodsBankAccount: TransferPaymentMethodsBankAccount,

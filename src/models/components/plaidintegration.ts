@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,9 +32,11 @@ export const PlaidIntegration$inboundSchema: z.ZodType<
   PlaidIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: types.string(),
+  })
+);
 /** @internal */
 export type PlaidIntegration$Outbound = {
   token: string;
@@ -45,9 +47,11 @@ export const PlaidIntegration$outboundSchema: z.ZodType<
   PlaidIntegration$Outbound,
   z.ZodTypeDef,
   PlaidIntegration
-> = z.object({
-  token: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string(),
+  })
+);
 
 export function plaidIntegrationToJSON(
   plaidIntegration: PlaidIntegration,

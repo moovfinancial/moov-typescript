@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -48,13 +48,15 @@ export const InvoicePaymentOptions$inboundSchema: z.ZodType<
   InvoicePaymentOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: types.optional(
-    z.array(CollectionPaymentMethodType$inboundSchema),
-  ),
-  cardDetails: types.optional(CardPaymentDetails$inboundSchema),
-  achDetails: types.optional(ACHPaymentDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: types.optional(
+      z.array(CollectionPaymentMethodType$inboundSchema),
+    ),
+    cardDetails: types.optional(CardPaymentDetails$inboundSchema),
+    achDetails: types.optional(ACHPaymentDetails$inboundSchema),
+  })
+);
 /** @internal */
 export type InvoicePaymentOptions$Outbound = {
   allowedMethods?: Array<string> | undefined;
@@ -67,12 +69,14 @@ export const InvoicePaymentOptions$outboundSchema: z.ZodType<
   InvoicePaymentOptions$Outbound,
   z.ZodTypeDef,
   InvoicePaymentOptions
-> = z.object({
-  allowedMethods: z.array(CollectionPaymentMethodType$outboundSchema)
-    .optional(),
-  cardDetails: CardPaymentDetails$outboundSchema.optional(),
-  achDetails: ACHPaymentDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(CollectionPaymentMethodType$outboundSchema)
+      .optional(),
+    cardDetails: CardPaymentDetails$outboundSchema.optional(),
+    achDetails: ACHPaymentDetails$outboundSchema.optional(),
+  })
+);
 
 export function invoicePaymentOptionsToJSON(
   invoicePaymentOptions: InvoicePaymentOptions,

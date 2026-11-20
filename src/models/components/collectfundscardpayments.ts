@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -47,13 +47,15 @@ export const CollectFundsCardPayments$inboundSchema: z.ZodType<
   CollectFundsCardPayments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardAcceptanceMethods: types.optional(CardAcceptanceMethods$inboundSchema),
-  currentlyAcceptsCards: types.optional(types.boolean()),
-  estimatedActivity: types.optional(EstimatedActivity$inboundSchema),
-  fulfillment: types.optional(Fulfillment$inboundSchema),
-  refundPolicy: types.optional(RefundPolicy$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardAcceptanceMethods: types.optional(CardAcceptanceMethods$inboundSchema),
+    currentlyAcceptsCards: types.optional(types.boolean()),
+    estimatedActivity: types.optional(EstimatedActivity$inboundSchema),
+    fulfillment: types.optional(Fulfillment$inboundSchema),
+    refundPolicy: types.optional(RefundPolicy$inboundSchema),
+  })
+);
 /** @internal */
 export type CollectFundsCardPayments$Outbound = {
   cardAcceptanceMethods?: CardAcceptanceMethods$Outbound | undefined;
@@ -68,13 +70,15 @@ export const CollectFundsCardPayments$outboundSchema: z.ZodType<
   CollectFundsCardPayments$Outbound,
   z.ZodTypeDef,
   CollectFundsCardPayments
-> = z.object({
-  cardAcceptanceMethods: CardAcceptanceMethods$outboundSchema.optional(),
-  currentlyAcceptsCards: z.boolean().optional(),
-  estimatedActivity: EstimatedActivity$outboundSchema.optional(),
-  fulfillment: Fulfillment$outboundSchema.optional(),
-  refundPolicy: RefundPolicy$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardAcceptanceMethods: CardAcceptanceMethods$outboundSchema.optional(),
+    currentlyAcceptsCards: z.boolean().optional(),
+    estimatedActivity: EstimatedActivity$outboundSchema.optional(),
+    fulfillment: Fulfillment$outboundSchema.optional(),
+    refundPolicy: RefundPolicy$outboundSchema.optional(),
+  })
+);
 
 export function collectFundsCardPaymentsToJSON(
   collectFundsCardPayments: CollectFundsCardPayments,

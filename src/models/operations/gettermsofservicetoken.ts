@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -31,10 +31,12 @@ export const GetTermsOfServiceTokenRequest$inboundSchema: z.ZodType<
   GetTermsOfServiceTokenRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  origin: types.optional(types.string()),
-  referer: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    origin: types.optional(types.string()),
+    referer: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type GetTermsOfServiceTokenRequest$Outbound = {
   origin?: string | undefined;
@@ -46,10 +48,12 @@ export const GetTermsOfServiceTokenRequest$outboundSchema: z.ZodType<
   GetTermsOfServiceTokenRequest$Outbound,
   z.ZodTypeDef,
   GetTermsOfServiceTokenRequest
-> = z.object({
-  origin: z.string().optional(),
-  referer: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    origin: z.string().optional(),
+    referer: z.string().optional(),
+  })
+);
 
 export function getTermsOfServiceTokenRequestToJSON(
   getTermsOfServiceTokenRequest: GetTermsOfServiceTokenRequest,
@@ -75,15 +79,17 @@ export const GetTermsOfServiceTokenResponse$inboundSchema: z.ZodType<
   GetTermsOfServiceTokenResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.TermsOfServiceToken$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.TermsOfServiceToken$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetTermsOfServiceTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -95,15 +101,17 @@ export const GetTermsOfServiceTokenResponse$outboundSchema: z.ZodType<
   GetTermsOfServiceTokenResponse$Outbound,
   z.ZodTypeDef,
   GetTermsOfServiceTokenResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.TermsOfServiceToken$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.TermsOfServiceToken$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getTermsOfServiceTokenResponseToJSON(
   getTermsOfServiceTokenResponse: GetTermsOfServiceTokenResponse,

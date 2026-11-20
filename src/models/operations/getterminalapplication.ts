@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -24,9 +24,11 @@ export const GetTerminalApplicationRequest$inboundSchema: z.ZodType<
   GetTerminalApplicationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  terminalApplicationID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: types.string(),
+  })
+);
 /** @internal */
 export type GetTerminalApplicationRequest$Outbound = {
   terminalApplicationID: string;
@@ -37,9 +39,11 @@ export const GetTerminalApplicationRequest$outboundSchema: z.ZodType<
   GetTerminalApplicationRequest$Outbound,
   z.ZodTypeDef,
   GetTerminalApplicationRequest
-> = z.object({
-  terminalApplicationID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: z.string(),
+  })
+);
 
 export function getTerminalApplicationRequestToJSON(
   getTerminalApplicationRequest: GetTerminalApplicationRequest,
@@ -65,15 +69,17 @@ export const GetTerminalApplicationResponse$inboundSchema: z.ZodType<
   GetTerminalApplicationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.TerminalApplication$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.TerminalApplication$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetTerminalApplicationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -85,15 +91,17 @@ export const GetTerminalApplicationResponse$outboundSchema: z.ZodType<
   GetTerminalApplicationResponse$Outbound,
   z.ZodTypeDef,
   GetTerminalApplicationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.TerminalApplication$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.TerminalApplication$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getTerminalApplicationResponseToJSON(
   getTerminalApplicationResponse: GetTerminalApplicationResponse,

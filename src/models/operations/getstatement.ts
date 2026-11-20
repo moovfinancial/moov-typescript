@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { smartUnion } from "../../types/smartUnion.js";
@@ -30,10 +30,12 @@ export const GetStatementRequest$inboundSchema: z.ZodType<
   GetStatementRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  statementID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    statementID: types.string(),
+  })
+);
 /** @internal */
 export type GetStatementRequest$Outbound = {
   accountID: string;
@@ -45,10 +47,12 @@ export const GetStatementRequest$outboundSchema: z.ZodType<
   GetStatementRequest$Outbound,
   z.ZodTypeDef,
   GetStatementRequest
-> = z.object({
-  accountID: z.string(),
-  statementID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    statementID: z.string(),
+  })
+);
 
 export function getStatementRequestToJSON(
   getStatementRequest: GetStatementRequest,
@@ -72,10 +76,12 @@ export const GetStatementResponseResult$inboundSchema: z.ZodType<
   GetStatementResponseResult,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  components.Statement$inboundSchema,
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    components.Statement$inboundSchema,
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 /** @internal */
 export type GetStatementResponseResult$Outbound =
   | components.Statement$Outbound
@@ -86,10 +92,12 @@ export const GetStatementResponseResult$outboundSchema: z.ZodType<
   GetStatementResponseResult$Outbound,
   z.ZodTypeDef,
   GetStatementResponseResult
-> = smartUnion([
-  components.Statement$outboundSchema,
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    components.Statement$outboundSchema,
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 
 export function getStatementResponseResultToJSON(
   getStatementResponseResult: GetStatementResponseResult,
@@ -113,18 +121,20 @@ export const GetStatementResponse$inboundSchema: z.ZodType<
   GetStatementResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: smartUnion([
-    components.Statement$inboundSchema,
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: smartUnion([
+      components.Statement$inboundSchema,
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetStatementResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -136,18 +146,20 @@ export const GetStatementResponse$outboundSchema: z.ZodType<
   GetStatementResponse$Outbound,
   z.ZodTypeDef,
   GetStatementResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: smartUnion([
-    components.Statement$outboundSchema,
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: smartUnion([
+      components.Statement$outboundSchema,
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getStatementResponseToJSON(
   getStatementResponse: GetStatementResponse,

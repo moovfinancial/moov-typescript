@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -46,15 +46,17 @@ export const CreateSweepConfig$inboundSchema: z.ZodType<
   CreateSweepConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  walletID: types.string(),
-  status: SweepConfigStatus$inboundSchema,
-  pushPaymentMethodID: types.string(),
-  pullPaymentMethodID: types.string(),
-  statementDescriptor: types.optional(types.string()),
-  minimumBalance: types.optional(types.string()),
-  schedule: types.optional(SweepConfigSchedule$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletID: types.string(),
+    status: SweepConfigStatus$inboundSchema,
+    pushPaymentMethodID: types.string(),
+    pullPaymentMethodID: types.string(),
+    statementDescriptor: types.optional(types.string()),
+    minimumBalance: types.optional(types.string()),
+    schedule: types.optional(SweepConfigSchedule$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateSweepConfig$Outbound = {
   walletID: string;
@@ -71,15 +73,17 @@ export const CreateSweepConfig$outboundSchema: z.ZodType<
   CreateSweepConfig$Outbound,
   z.ZodTypeDef,
   CreateSweepConfig
-> = z.object({
-  walletID: z.string(),
-  status: SweepConfigStatus$outboundSchema,
-  pushPaymentMethodID: z.string(),
-  pullPaymentMethodID: z.string(),
-  statementDescriptor: z.string().optional(),
-  minimumBalance: z.string().optional(),
-  schedule: SweepConfigSchedule$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletID: z.string(),
+    status: SweepConfigStatus$outboundSchema,
+    pushPaymentMethodID: z.string(),
+    pullPaymentMethodID: z.string(),
+    statementDescriptor: z.string().optional(),
+    minimumBalance: z.string().optional(),
+    schedule: SweepConfigSchedule$outboundSchema.optional(),
+  })
+);
 
 export function createSweepConfigToJSON(
   createSweepConfig: CreateSweepConfig,

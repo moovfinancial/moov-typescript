@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -50,12 +50,14 @@ export const CreateProductOption$inboundSchema: z.ZodType<
   CreateProductOption,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  description: types.optional(types.string()),
-  priceModifier: types.optional(AmountDecimal$inboundSchema),
-  images: types.optional(z.array(AssignProductImage$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    description: types.optional(types.string()),
+    priceModifier: types.optional(AmountDecimal$inboundSchema),
+    images: types.optional(z.array(AssignProductImage$inboundSchema)),
+  })
+);
 /** @internal */
 export type CreateProductOption$Outbound = {
   name: string;
@@ -69,12 +71,14 @@ export const CreateProductOption$outboundSchema: z.ZodType<
   CreateProductOption$Outbound,
   z.ZodTypeDef,
   CreateProductOption
-> = z.object({
-  name: z.string(),
-  description: z.string().optional(),
-  priceModifier: AmountDecimal$outboundSchema.optional(),
-  images: z.array(AssignProductImage$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string().optional(),
+    priceModifier: AmountDecimal$outboundSchema.optional(),
+    images: z.array(AssignProductImage$outboundSchema).optional(),
+  })
+);
 
 export function createProductOptionToJSON(
   createProductOption: CreateProductOption,

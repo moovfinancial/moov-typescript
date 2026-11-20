@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
@@ -65,9 +65,8 @@ export type GooglePayPaymentMethodData = {
 };
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Type));
 /** @internal */
 export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
   Type$inboundSchema;
@@ -77,12 +76,14 @@ export const GooglePayPaymentMethodData$inboundSchema: z.ZodType<
   GooglePayPaymentMethodData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.optional(Type$inboundSchema),
-  description: types.optional(types.string()),
-  info: GooglePayCardInfo$inboundSchema,
-  tokenizationData: GooglePayTokenizationData$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.optional(Type$inboundSchema),
+    description: types.optional(types.string()),
+    info: GooglePayCardInfo$inboundSchema,
+    tokenizationData: GooglePayTokenizationData$inboundSchema,
+  })
+);
 /** @internal */
 export type GooglePayPaymentMethodData$Outbound = {
   type?: string | undefined;
@@ -96,12 +97,14 @@ export const GooglePayPaymentMethodData$outboundSchema: z.ZodType<
   GooglePayPaymentMethodData$Outbound,
   z.ZodTypeDef,
   GooglePayPaymentMethodData
-> = z.object({
-  type: Type$outboundSchema.optional(),
-  description: z.string().optional(),
-  info: GooglePayCardInfo$outboundSchema,
-  tokenizationData: GooglePayTokenizationData$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: Type$outboundSchema.optional(),
+    description: z.string().optional(),
+    info: GooglePayCardInfo$outboundSchema,
+    tokenizationData: GooglePayTokenizationData$outboundSchema,
+  })
+);
 
 export function googlePayPaymentMethodDataToJSON(
   googlePayPaymentMethodData: GooglePayPaymentMethodData,

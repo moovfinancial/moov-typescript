@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const MerchantRestrictionsError$inboundSchema: z.ZodType<
   MerchantRestrictionsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mode: types.optional(types.string()),
-  merchants: types.optional(z.record(MerchantEntryError$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: types.optional(types.string()),
+    merchants: types.optional(z.record(MerchantEntryError$inboundSchema)),
+  })
+);
 /** @internal */
 export type MerchantRestrictionsError$Outbound = {
   mode?: string | undefined;
@@ -39,10 +41,12 @@ export const MerchantRestrictionsError$outboundSchema: z.ZodType<
   MerchantRestrictionsError$Outbound,
   z.ZodTypeDef,
   MerchantRestrictionsError
-> = z.object({
-  mode: z.string().optional(),
-  merchants: z.record(MerchantEntryError$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: z.string().optional(),
+    merchants: z.record(MerchantEntryError$outboundSchema).optional(),
+  })
+);
 
 export function merchantRestrictionsErrorToJSON(
   merchantRestrictionsError: MerchantRestrictionsError,

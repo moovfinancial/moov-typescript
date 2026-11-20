@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -21,10 +21,12 @@ export const AccountCapability$inboundSchema: z.ZodType<
   AccountCapability,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  capability: types.string(),
-  status: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    capability: types.string(),
+    status: types.string(),
+  })
+);
 /** @internal */
 export type AccountCapability$Outbound = {
   capability: string;
@@ -36,10 +38,12 @@ export const AccountCapability$outboundSchema: z.ZodType<
   AccountCapability$Outbound,
   z.ZodTypeDef,
   AccountCapability
-> = z.object({
-  capability: z.string(),
-  status: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    capability: z.string(),
+    status: z.string(),
+  })
+);
 
 export function accountCapabilityToJSON(
   accountCapability: AccountCapability,

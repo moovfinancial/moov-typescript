@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -28,14 +28,16 @@ export const CreateTransferConfigRequest$inboundSchema: z.ZodType<
   CreateTransferConfigRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  CreateTransferConfig: components.CreateTransferConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateTransferConfig": "createTransferConfig",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    CreateTransferConfig: components.CreateTransferConfig$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateTransferConfig": "createTransferConfig",
+    });
+  })
+);
 /** @internal */
 export type CreateTransferConfigRequest$Outbound = {
   accountID: string;
@@ -47,14 +49,16 @@ export const CreateTransferConfigRequest$outboundSchema: z.ZodType<
   CreateTransferConfigRequest$Outbound,
   z.ZodTypeDef,
   CreateTransferConfigRequest
-> = z.object({
-  accountID: z.string(),
-  createTransferConfig: components.CreateTransferConfig$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createTransferConfig: "CreateTransferConfig",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    createTransferConfig: components.CreateTransferConfig$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createTransferConfig: "CreateTransferConfig",
+    });
+  })
+);
 
 export function createTransferConfigRequestToJSON(
   createTransferConfigRequest: CreateTransferConfigRequest,
@@ -80,15 +84,17 @@ export const CreateTransferConfigResponse$inboundSchema: z.ZodType<
   CreateTransferConfigResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.TransferConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.TransferConfig$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateTransferConfigResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -100,15 +106,17 @@ export const CreateTransferConfigResponse$outboundSchema: z.ZodType<
   CreateTransferConfigResponse$Outbound,
   z.ZodTypeDef,
   CreateTransferConfigResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.TransferConfig$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.TransferConfig$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createTransferConfigResponseToJSON(
   createTransferConfigResponse: CreateTransferConfigResponse,

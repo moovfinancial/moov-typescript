@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -70,10 +70,12 @@ export const VolumeAmount$inboundSchema: z.ZodType<
   VolumeAmount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: types.string(),
-  valueDecimal: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: types.string(),
+    valueDecimal: types.string(),
+  })
+);
 /** @internal */
 export type VolumeAmount$Outbound = {
   currency: string;
@@ -85,10 +87,12 @@ export const VolumeAmount$outboundSchema: z.ZodType<
   VolumeAmount$Outbound,
   z.ZodTypeDef,
   VolumeAmount
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 
 export function volumeAmountToJSON(volumeAmount: VolumeAmount): string {
   return JSON.stringify(VolumeAmount$outboundSchema.parse(volumeAmount));
@@ -108,14 +112,16 @@ export const BillingSummaryDetails$inboundSchema: z.ZodType<
   BillingSummaryDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  volumeAmount: types.optional(z.lazy(() => VolumeAmount$inboundSchema)),
-  volumeCount: types.optional(types.number()),
-  feeAmount: types.optional(AmountDecimal$inboundSchema),
-  merchantFeesCollected: types.optional(AmountDecimal$inboundSchema),
-  partnerFeesAssessed: types.optional(AmountDecimal$inboundSchema),
-  netIncome: types.optional(AmountDecimal$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    volumeAmount: types.optional(z.lazy(() => VolumeAmount$inboundSchema)),
+    volumeCount: types.optional(types.number()),
+    feeAmount: types.optional(AmountDecimal$inboundSchema),
+    merchantFeesCollected: types.optional(AmountDecimal$inboundSchema),
+    partnerFeesAssessed: types.optional(AmountDecimal$inboundSchema),
+    netIncome: types.optional(AmountDecimal$inboundSchema),
+  })
+);
 /** @internal */
 export type BillingSummaryDetails$Outbound = {
   volumeAmount?: VolumeAmount$Outbound | undefined;
@@ -131,14 +137,16 @@ export const BillingSummaryDetails$outboundSchema: z.ZodType<
   BillingSummaryDetails$Outbound,
   z.ZodTypeDef,
   BillingSummaryDetails
-> = z.object({
-  volumeAmount: z.lazy(() => VolumeAmount$outboundSchema).optional(),
-  volumeCount: z.number().int().optional(),
-  feeAmount: AmountDecimal$outboundSchema.optional(),
-  merchantFeesCollected: AmountDecimal$outboundSchema.optional(),
-  partnerFeesAssessed: AmountDecimal$outboundSchema.optional(),
-  netIncome: AmountDecimal$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    volumeAmount: z.lazy(() => VolumeAmount$outboundSchema).optional(),
+    volumeCount: z.number().int().optional(),
+    feeAmount: AmountDecimal$outboundSchema.optional(),
+    merchantFeesCollected: AmountDecimal$outboundSchema.optional(),
+    partnerFeesAssessed: AmountDecimal$outboundSchema.optional(),
+    netIncome: AmountDecimal$outboundSchema.optional(),
+  })
+);
 
 export function billingSummaryDetailsToJSON(
   billingSummaryDetails: BillingSummaryDetails,

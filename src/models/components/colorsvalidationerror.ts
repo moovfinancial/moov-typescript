@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const ColorsValidationError$inboundSchema: z.ZodType<
   ColorsValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  light: types.optional(BrandColorValidationError$inboundSchema),
-  dark: types.optional(BrandColorValidationError$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    light: types.optional(BrandColorValidationError$inboundSchema),
+    dark: types.optional(BrandColorValidationError$inboundSchema),
+  })
+);
 /** @internal */
 export type ColorsValidationError$Outbound = {
   light?: BrandColorValidationError$Outbound | undefined;
@@ -39,10 +41,12 @@ export const ColorsValidationError$outboundSchema: z.ZodType<
   ColorsValidationError$Outbound,
   z.ZodTypeDef,
   ColorsValidationError
-> = z.object({
-  light: BrandColorValidationError$outboundSchema.optional(),
-  dark: BrandColorValidationError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    light: BrandColorValidationError$outboundSchema.optional(),
+    dark: BrandColorValidationError$outboundSchema.optional(),
+  })
+);
 
 export function colorsValidationErrorToJSON(
   colorsValidationError: ColorsValidationError,

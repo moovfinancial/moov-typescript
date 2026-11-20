@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -64,18 +64,20 @@ export const GooglePayBillingAddress$inboundSchema: z.ZodType<
   GooglePayBillingAddress,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  address1: types.optional(types.string()),
-  address2: types.optional(types.string()),
-  address3: types.optional(types.string()),
-  locality: types.optional(types.string()),
-  administrativeArea: types.optional(types.string()),
-  postalCode: types.optional(types.string()),
-  countryCode: types.optional(types.string()),
-  name: types.optional(types.string()),
-  phoneNumber: types.optional(types.string()),
-  sortingCode: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    address1: types.optional(types.string()),
+    address2: types.optional(types.string()),
+    address3: types.optional(types.string()),
+    locality: types.optional(types.string()),
+    administrativeArea: types.optional(types.string()),
+    postalCode: types.optional(types.string()),
+    countryCode: types.optional(types.string()),
+    name: types.optional(types.string()),
+    phoneNumber: types.optional(types.string()),
+    sortingCode: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type GooglePayBillingAddress$Outbound = {
   address1?: string | undefined;
@@ -95,18 +97,20 @@ export const GooglePayBillingAddress$outboundSchema: z.ZodType<
   GooglePayBillingAddress$Outbound,
   z.ZodTypeDef,
   GooglePayBillingAddress
-> = z.object({
-  address1: z.string().optional(),
-  address2: z.string().optional(),
-  address3: z.string().optional(),
-  locality: z.string().optional(),
-  administrativeArea: z.string().optional(),
-  postalCode: z.string().optional(),
-  countryCode: z.string().optional(),
-  name: z.string().optional(),
-  phoneNumber: z.string().optional(),
-  sortingCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    address1: z.string().optional(),
+    address2: z.string().optional(),
+    address3: z.string().optional(),
+    locality: z.string().optional(),
+    administrativeArea: z.string().optional(),
+    postalCode: z.string().optional(),
+    countryCode: z.string().optional(),
+    name: z.string().optional(),
+    phoneNumber: z.string().optional(),
+    sortingCode: z.string().optional(),
+  })
+);
 
 export function googlePayBillingAddressToJSON(
   googlePayBillingAddress: GooglePayBillingAddress,

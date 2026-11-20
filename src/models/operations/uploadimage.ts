@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,15 +25,17 @@ export const UploadImageRequest$inboundSchema: z.ZodType<
   UploadImageRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  ImageUploadRequestMultiPart:
-    components.ImageUploadRequestMultiPart$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "ImageUploadRequestMultiPart": "imageUploadRequestMultiPart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    ImageUploadRequestMultiPart:
+      components.ImageUploadRequestMultiPart$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "ImageUploadRequestMultiPart": "imageUploadRequestMultiPart",
+    });
+  })
+);
 /** @internal */
 export type UploadImageRequest$Outbound = {
   accountID: string;
@@ -45,15 +47,17 @@ export const UploadImageRequest$outboundSchema: z.ZodType<
   UploadImageRequest$Outbound,
   z.ZodTypeDef,
   UploadImageRequest
-> = z.object({
-  accountID: z.string(),
-  imageUploadRequestMultiPart:
-    components.ImageUploadRequestMultiPart$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    imageUploadRequestMultiPart: "ImageUploadRequestMultiPart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    imageUploadRequestMultiPart:
+      components.ImageUploadRequestMultiPart$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      imageUploadRequestMultiPart: "ImageUploadRequestMultiPart",
+    });
+  })
+);
 
 export function uploadImageRequestToJSON(
   uploadImageRequest: UploadImageRequest,
@@ -77,15 +81,17 @@ export const UploadImageResponse$inboundSchema: z.ZodType<
   UploadImageResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.ImageMetadata$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.ImageMetadata$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UploadImageResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -97,15 +103,17 @@ export const UploadImageResponse$outboundSchema: z.ZodType<
   UploadImageResponse$Outbound,
   z.ZodTypeDef,
   UploadImageResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.ImageMetadata$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.ImageMetadata$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function uploadImageResponseToJSON(
   uploadImageResponse: UploadImageResponse,

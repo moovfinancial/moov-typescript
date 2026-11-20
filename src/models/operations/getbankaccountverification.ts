@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,10 +25,12 @@ export const GetBankAccountVerificationRequest$inboundSchema: z.ZodType<
   GetBankAccountVerificationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  bankAccountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    bankAccountID: types.string(),
+  })
+);
 /** @internal */
 export type GetBankAccountVerificationRequest$Outbound = {
   accountID: string;
@@ -40,10 +42,12 @@ export const GetBankAccountVerificationRequest$outboundSchema: z.ZodType<
   GetBankAccountVerificationRequest$Outbound,
   z.ZodTypeDef,
   GetBankAccountVerificationRequest
-> = z.object({
-  accountID: z.string(),
-  bankAccountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    bankAccountID: z.string(),
+  })
+);
 
 export function getBankAccountVerificationRequestToJSON(
   getBankAccountVerificationRequest: GetBankAccountVerificationRequest,
@@ -69,15 +73,17 @@ export const GetBankAccountVerificationResponse$inboundSchema: z.ZodType<
   GetBankAccountVerificationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.BankAccountVerification$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.BankAccountVerification$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetBankAccountVerificationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -89,15 +95,17 @@ export const GetBankAccountVerificationResponse$outboundSchema: z.ZodType<
   GetBankAccountVerificationResponse$Outbound,
   z.ZodTypeDef,
   GetBankAccountVerificationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.BankAccountVerification$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.BankAccountVerification$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getBankAccountVerificationResponseToJSON(
   getBankAccountVerificationResponse: GetBankAccountVerificationResponse,

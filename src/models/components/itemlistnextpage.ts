@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,9 +20,11 @@ export const ItemListNextPage$inboundSchema: z.ZodType<
   ItemListNextPage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cursor: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: types.string(),
+  })
+);
 /** @internal */
 export type ItemListNextPage$Outbound = {
   cursor: string;
@@ -33,9 +35,11 @@ export const ItemListNextPage$outboundSchema: z.ZodType<
   ItemListNextPage$Outbound,
   z.ZodTypeDef,
   ItemListNextPage
-> = z.object({
-  cursor: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: z.string(),
+  })
+);
 
 export function itemListNextPageToJSON(
   itemListNextPage: ItemListNextPage,

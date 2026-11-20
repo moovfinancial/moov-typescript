@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,9 +23,11 @@ export const GetMerchantProcessingAgreementRequest$inboundSchema: z.ZodType<
   GetMerchantProcessingAgreementRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+  })
+);
 /** @internal */
 export type GetMerchantProcessingAgreementRequest$Outbound = {
   accountID: string;
@@ -36,9 +38,11 @@ export const GetMerchantProcessingAgreementRequest$outboundSchema: z.ZodType<
   GetMerchantProcessingAgreementRequest$Outbound,
   z.ZodTypeDef,
   GetMerchantProcessingAgreementRequest
-> = z.object({
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+  })
+);
 
 export function getMerchantProcessingAgreementRequestToJSON(
   getMerchantProcessingAgreementRequest: GetMerchantProcessingAgreementRequest,
@@ -65,15 +69,17 @@ export const GetMerchantProcessingAgreementResponse$inboundSchema: z.ZodType<
   GetMerchantProcessingAgreementResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.instanceof(ReadableStream<Uint8Array>),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.instanceof(ReadableStream<Uint8Array>),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetMerchantProcessingAgreementResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -85,15 +91,17 @@ export const GetMerchantProcessingAgreementResponse$outboundSchema: z.ZodType<
   GetMerchantProcessingAgreementResponse$Outbound,
   z.ZodTypeDef,
   GetMerchantProcessingAgreementResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.instanceof(ReadableStream<Uint8Array>),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.instanceof(ReadableStream<Uint8Array>),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getMerchantProcessingAgreementResponseToJSON(
   getMerchantProcessingAgreementResponse:

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,9 +25,11 @@ export const MXAuthorizationCode$inboundSchema: z.ZodType<
   MXAuthorizationCode,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authorizationCode: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationCode: types.string(),
+  })
+);
 /** @internal */
 export type MXAuthorizationCode$Outbound = {
   authorizationCode: string;
@@ -38,9 +40,11 @@ export const MXAuthorizationCode$outboundSchema: z.ZodType<
   MXAuthorizationCode$Outbound,
   z.ZodTypeDef,
   MXAuthorizationCode
-> = z.object({
-  authorizationCode: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationCode: z.string(),
+  })
+);
 
 export function mxAuthorizationCodeToJSON(
   mxAuthorizationCode: MXAuthorizationCode,

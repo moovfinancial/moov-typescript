@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -52,16 +52,18 @@ export const ListIssuedCardTransactionsRequest$inboundSchema: z.ZodType<
   ListIssuedCardTransactionsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-  issuedCardID: types.optional(types.string()),
-  authorizedUserAccountID: types.optional(types.string()),
-  merchantName: types.optional(types.string()),
-  startDateTime: types.optional(types.date()),
-  endDateTime: types.optional(types.date()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+    issuedCardID: types.optional(types.string()),
+    authorizedUserAccountID: types.optional(types.string()),
+    merchantName: types.optional(types.string()),
+    startDateTime: types.optional(types.date()),
+    endDateTime: types.optional(types.date()),
+  })
+);
 /** @internal */
 export type ListIssuedCardTransactionsRequest$Outbound = {
   accountID: string;
@@ -79,16 +81,18 @@ export const ListIssuedCardTransactionsRequest$outboundSchema: z.ZodType<
   ListIssuedCardTransactionsRequest$Outbound,
   z.ZodTypeDef,
   ListIssuedCardTransactionsRequest
-> = z.object({
-  accountID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  issuedCardID: z.string().optional(),
-  authorizedUserAccountID: z.string().optional(),
-  merchantName: z.string().optional(),
-  startDateTime: z.date().transform(v => v.toISOString()).optional(),
-  endDateTime: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    issuedCardID: z.string().optional(),
+    authorizedUserAccountID: z.string().optional(),
+    merchantName: z.string().optional(),
+    startDateTime: z.date().transform(v => v.toISOString()).optional(),
+    endDateTime: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function listIssuedCardTransactionsRequestToJSON(
   listIssuedCardTransactionsRequest: ListIssuedCardTransactionsRequest,
@@ -114,15 +118,17 @@ export const ListIssuedCardTransactionsResponse$inboundSchema: z.ZodType<
   ListIssuedCardTransactionsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.IssuedCardTransaction$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.IssuedCardTransaction$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListIssuedCardTransactionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -134,15 +140,17 @@ export const ListIssuedCardTransactionsResponse$outboundSchema: z.ZodType<
   ListIssuedCardTransactionsResponse$Outbound,
   z.ZodTypeDef,
   ListIssuedCardTransactionsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.IssuedCardTransaction$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.IssuedCardTransaction$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listIssuedCardTransactionsResponseToJSON(
   listIssuedCardTransactionsResponse: ListIssuedCardTransactionsResponse,

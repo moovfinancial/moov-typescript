@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,12 +32,14 @@ export const ManualTermsOfServiceUpdate$inboundSchema: z.ZodType<
   ManualTermsOfServiceUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  acceptedDate: types.optional(types.date()),
-  acceptedIP: types.optional(types.string()),
-  acceptedUserAgent: types.optional(types.string()),
-  acceptedDomain: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    acceptedDate: types.optional(types.date()),
+    acceptedIP: types.optional(types.string()),
+    acceptedUserAgent: types.optional(types.string()),
+    acceptedDomain: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ManualTermsOfServiceUpdate$Outbound = {
   acceptedDate?: string | undefined;
@@ -51,12 +53,14 @@ export const ManualTermsOfServiceUpdate$outboundSchema: z.ZodType<
   ManualTermsOfServiceUpdate$Outbound,
   z.ZodTypeDef,
   ManualTermsOfServiceUpdate
-> = z.object({
-  acceptedDate: z.date().transform(v => v.toISOString()).optional(),
-  acceptedIP: z.string().optional(),
-  acceptedUserAgent: z.string().optional(),
-  acceptedDomain: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    acceptedDate: z.date().transform(v => v.toISOString()).optional(),
+    acceptedIP: z.string().optional(),
+    acceptedUserAgent: z.string().optional(),
+    acceptedDomain: z.string().optional(),
+  })
+);
 
 export function manualTermsOfServiceUpdateToJSON(
   manualTermsOfServiceUpdate: ManualTermsOfServiceUpdate,
