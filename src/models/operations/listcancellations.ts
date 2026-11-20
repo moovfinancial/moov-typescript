@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -30,10 +30,12 @@ export const ListCancellationsRequest$inboundSchema: z.ZodType<
   ListCancellationsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+  })
+);
 /** @internal */
 export type ListCancellationsRequest$Outbound = {
   accountID: string;
@@ -45,10 +47,12 @@ export const ListCancellationsRequest$outboundSchema: z.ZodType<
   ListCancellationsRequest$Outbound,
   z.ZodTypeDef,
   ListCancellationsRequest
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+  })
+);
 
 export function listCancellationsRequestToJSON(
   listCancellationsRequest: ListCancellationsRequest,
@@ -72,15 +76,17 @@ export const ListCancellationsResponse$inboundSchema: z.ZodType<
   ListCancellationsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Cancellation$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Cancellation$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListCancellationsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -92,15 +98,17 @@ export const ListCancellationsResponse$outboundSchema: z.ZodType<
   ListCancellationsResponse$Outbound,
   z.ZodTypeDef,
   ListCancellationsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Cancellation$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Cancellation$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listCancellationsResponseToJSON(
   listCancellationsResponse: ListCancellationsResponse,

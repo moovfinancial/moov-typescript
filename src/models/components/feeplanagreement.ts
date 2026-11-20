@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -86,23 +86,27 @@ export const FeePlanAgreement$inboundSchema: z.ZodType<
   FeePlanAgreement,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agreementID: z.string(),
-  planID: z.string(),
-  accountID: z.string().optional(),
-  name: z.string(),
-  description: z.string().optional(),
-  acceptedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  status: FeePlanAgreementStatus$inboundSchema,
-  cardAcquiringModel: CardAcquiringModel$inboundSchema,
-  billableFees: z.array(BillableFee$inboundSchema),
-  minimumCommitment: MinimumCommitment$inboundSchema,
-  monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
-  priorAgreementID: z.string().optional(),
-  priorAgreementTerminatedOn: z.string().datetime({ offset: true }).transform(
-    v => new Date(v)
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agreementID: z.string(),
+    planID: z.string(),
+    accountID: z.string().optional(),
+    name: z.string(),
+    description: z.string().optional(),
+    acceptedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    status: FeePlanAgreementStatus$inboundSchema,
+    cardAcquiringModel: CardAcquiringModel$inboundSchema,
+    billableFees: z.array(BillableFee$inboundSchema),
+    minimumCommitment: MinimumCommitment$inboundSchema,
+    monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
+    priorAgreementID: z.string().optional(),
+    priorAgreementTerminatedOn: z.string().datetime({ offset: true }).transform(
+      v => new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type FeePlanAgreement$Outbound = {
   agreementID: string;
@@ -125,22 +129,24 @@ export const FeePlanAgreement$outboundSchema: z.ZodType<
   FeePlanAgreement$Outbound,
   z.ZodTypeDef,
   FeePlanAgreement
-> = z.object({
-  agreementID: z.string(),
-  planID: z.string(),
-  accountID: z.string().optional(),
-  name: z.string(),
-  description: z.string().optional(),
-  acceptedOn: z.date().transform(v => v.toISOString()),
-  status: FeePlanAgreementStatus$outboundSchema,
-  cardAcquiringModel: CardAcquiringModel$outboundSchema,
-  billableFees: z.array(BillableFee$outboundSchema),
-  minimumCommitment: MinimumCommitment$outboundSchema,
-  monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
-  priorAgreementID: z.string().optional(),
-  priorAgreementTerminatedOn: z.date().transform(v => v.toISOString())
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agreementID: z.string(),
+    planID: z.string(),
+    accountID: z.string().optional(),
+    name: z.string(),
+    description: z.string().optional(),
+    acceptedOn: z.date().transform(v => v.toISOString()),
+    status: FeePlanAgreementStatus$outboundSchema,
+    cardAcquiringModel: CardAcquiringModel$outboundSchema,
+    billableFees: z.array(BillableFee$outboundSchema),
+    minimumCommitment: MinimumCommitment$outboundSchema,
+    monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
+    priorAgreementID: z.string().optional(),
+    priorAgreementTerminatedOn: z.date().transform(v => v.toISOString())
+      .optional(),
+  })
+);
 
 export function feePlanAgreementToJSON(
   feePlanAgreement: FeePlanAgreement,

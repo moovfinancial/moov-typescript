@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type RevokeTokenRequestErrorData = {
@@ -39,24 +40,26 @@ export const RevokeTokenRequestError$inboundSchema: z.ZodType<
   RevokeTokenRequestError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: z.string().optional(),
-  token_type_hint: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    const remapped = remap$(v, {
-      "token_type_hint": "tokenTypeHint",
-    });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string().optional(),
+    token_type_hint: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      const remapped = remap$(v, {
+        "token_type_hint": "tokenTypeHint",
+      });
 
-    return new RevokeTokenRequestError(remapped, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+      return new RevokeTokenRequestError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type RevokeTokenRequestError$Outbound = {
@@ -69,15 +72,17 @@ export const RevokeTokenRequestError$outboundSchema: z.ZodType<
   RevokeTokenRequestError$Outbound,
   z.ZodTypeDef,
   RevokeTokenRequestError
-> = z.instanceof(RevokeTokenRequestError)
-  .transform(v => v.data$)
-  .pipe(
-    z.object({
-      token: z.string().optional(),
-      tokenTypeHint: z.string().optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        tokenTypeHint: "token_type_hint",
-      });
-    }),
-  );
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(RevokeTokenRequestError)
+    .transform(v => v.data$)
+    .pipe(
+      z.object({
+        token: z.string().optional(),
+        tokenTypeHint: z.string().optional(),
+      }).transform((v) => {
+        return remap$(v, {
+          tokenTypeHint: "token_type_hint",
+        });
+      }),
+    )
+);

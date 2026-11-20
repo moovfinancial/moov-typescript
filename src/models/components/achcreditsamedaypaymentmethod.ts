@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,11 +30,13 @@ export const AchCreditSameDayPaymentMethod$inboundSchema: z.ZodType<
   AchCreditSameDayPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("ach-credit-same-day"),
-  bankAccount: PaymentMethodsBankAccount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("ach-credit-same-day"),
+    bankAccount: PaymentMethodsBankAccount$inboundSchema,
+  })
+);
 /** @internal */
 export type AchCreditSameDayPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -47,11 +49,13 @@ export const AchCreditSameDayPaymentMethod$outboundSchema: z.ZodType<
   AchCreditSameDayPaymentMethod$Outbound,
   z.ZodTypeDef,
   AchCreditSameDayPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("ach-credit-same-day"),
-  bankAccount: PaymentMethodsBankAccount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("ach-credit-same-day"),
+    bankAccount: PaymentMethodsBankAccount$outboundSchema,
+  })
+);
 
 export function achCreditSameDayPaymentMethodToJSON(
   achCreditSameDayPaymentMethod: AchCreditSameDayPaymentMethod,

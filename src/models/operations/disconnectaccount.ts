@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,9 +21,11 @@ export const DisconnectAccountRequest$inboundSchema: z.ZodType<
   DisconnectAccountRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+  })
+);
 /** @internal */
 export type DisconnectAccountRequest$Outbound = {
   accountID: string;
@@ -34,9 +36,11 @@ export const DisconnectAccountRequest$outboundSchema: z.ZodType<
   DisconnectAccountRequest$Outbound,
   z.ZodTypeDef,
   DisconnectAccountRequest
-> = z.object({
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+  })
+);
 
 export function disconnectAccountRequestToJSON(
   disconnectAccountRequest: DisconnectAccountRequest,
@@ -60,13 +64,15 @@ export const DisconnectAccountResponse$inboundSchema: z.ZodType<
   DisconnectAccountResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DisconnectAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -77,13 +83,15 @@ export const DisconnectAccountResponse$outboundSchema: z.ZodType<
   DisconnectAccountResponse$Outbound,
   z.ZodTypeDef,
   DisconnectAccountResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function disconnectAccountResponseToJSON(
   disconnectAccountResponse: DisconnectAccountResponse,

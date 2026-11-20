@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,12 @@ export const WebhookDataWalletCreated$inboundSchema: z.ZodType<
   WebhookDataWalletCreated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+  })
+);
 /** @internal */
 export type WebhookDataWalletCreated$Outbound = {
   accountID: string;
@@ -32,10 +34,12 @@ export const WebhookDataWalletCreated$outboundSchema: z.ZodType<
   WebhookDataWalletCreated$Outbound,
   z.ZodTypeDef,
   WebhookDataWalletCreated
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+  })
+);
 
 export function webhookDataWalletCreatedToJSON(
   webhookDataWalletCreated: WebhookDataWalletCreated,

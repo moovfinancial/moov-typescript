@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -54,14 +54,16 @@ export const PatchIndividual$inboundSchema: z.ZodType<
   PatchIndividual,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: IndividualNameUpdate$inboundSchema.optional(),
-  phone: PhoneNumber$inboundSchema.optional(),
-  email: z.string().optional(),
-  address: AddressUpdate$inboundSchema.optional(),
-  birthDate: BirthDateUpdate$inboundSchema.optional(),
-  governmentID: GovernmentID$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualNameUpdate$inboundSchema.optional(),
+    phone: PhoneNumber$inboundSchema.optional(),
+    email: z.string().optional(),
+    address: AddressUpdate$inboundSchema.optional(),
+    birthDate: BirthDateUpdate$inboundSchema.optional(),
+    governmentID: GovernmentID$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type PatchIndividual$Outbound = {
   name?: IndividualNameUpdate$Outbound | undefined;
@@ -77,14 +79,16 @@ export const PatchIndividual$outboundSchema: z.ZodType<
   PatchIndividual$Outbound,
   z.ZodTypeDef,
   PatchIndividual
-> = z.object({
-  name: IndividualNameUpdate$outboundSchema.optional(),
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: AddressUpdate$outboundSchema.optional(),
-  birthDate: BirthDateUpdate$outboundSchema.optional(),
-  governmentID: GovernmentID$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualNameUpdate$outboundSchema.optional(),
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: AddressUpdate$outboundSchema.optional(),
+    birthDate: BirthDateUpdate$outboundSchema.optional(),
+    governmentID: GovernmentID$outboundSchema.optional(),
+  })
+);
 
 export function patchIndividualToJSON(
   patchIndividual: PatchIndividual,

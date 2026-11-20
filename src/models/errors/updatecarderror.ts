@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -59,26 +60,28 @@ export const UpdateCardError$inboundSchema: z.ZodType<
   UpdateCardError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  e2ee: components.End2EndEncryptionError$inboundSchema.optional(),
-  billingAddress: z.string().optional(),
-  expiration: z.string().optional(),
-  cardCvv: z.string().optional(),
-  cardOnFile: z.string().optional(),
-  merchantAccountID: z.string().optional(),
-  verifyName: z.string().optional(),
-  holderName: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new UpdateCardError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    e2ee: components.End2EndEncryptionError$inboundSchema.optional(),
+    billingAddress: z.string().optional(),
+    expiration: z.string().optional(),
+    cardCvv: z.string().optional(),
+    cardOnFile: z.string().optional(),
+    merchantAccountID: z.string().optional(),
+    verifyName: z.string().optional(),
+    holderName: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new UpdateCardError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type UpdateCardError$Outbound = {
@@ -97,15 +100,17 @@ export const UpdateCardError$outboundSchema: z.ZodType<
   UpdateCardError$Outbound,
   z.ZodTypeDef,
   UpdateCardError
-> = z.instanceof(UpdateCardError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    e2ee: components.End2EndEncryptionError$outboundSchema.optional(),
-    billingAddress: z.string().optional(),
-    expiration: z.string().optional(),
-    cardCvv: z.string().optional(),
-    cardOnFile: z.string().optional(),
-    merchantAccountID: z.string().optional(),
-    verifyName: z.string().optional(),
-    holderName: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(UpdateCardError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      e2ee: components.End2EndEncryptionError$outboundSchema.optional(),
+      billingAddress: z.string().optional(),
+      expiration: z.string().optional(),
+      cardCvv: z.string().optional(),
+      cardOnFile: z.string().optional(),
+      merchantAccountID: z.string().optional(),
+      verifyName: z.string().optional(),
+      holderName: z.string().optional(),
+    }))
+);

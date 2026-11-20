@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -75,16 +75,18 @@ export const UpdateCard$inboundSchema: z.ZodType<
   UpdateCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  e2ee: E2EETokenUpdate$inboundSchema.optional(),
-  billingAddress: UpdateCardAddress$inboundSchema.optional(),
-  expiration: UpdateCardExpiration$inboundSchema.optional(),
-  cardCvv: z.string().optional(),
-  cardOnFile: z.boolean().optional(),
-  merchantAccountID: z.string().optional(),
-  verifyName: z.boolean().optional(),
-  holderName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    e2ee: E2EETokenUpdate$inboundSchema.optional(),
+    billingAddress: UpdateCardAddress$inboundSchema.optional(),
+    expiration: UpdateCardExpiration$inboundSchema.optional(),
+    cardCvv: z.string().optional(),
+    cardOnFile: z.boolean().optional(),
+    merchantAccountID: z.string().optional(),
+    verifyName: z.boolean().optional(),
+    holderName: z.string().optional(),
+  })
+);
 /** @internal */
 export type UpdateCard$Outbound = {
   e2ee?: E2EETokenUpdate$Outbound | undefined;
@@ -102,16 +104,18 @@ export const UpdateCard$outboundSchema: z.ZodType<
   UpdateCard$Outbound,
   z.ZodTypeDef,
   UpdateCard
-> = z.object({
-  e2ee: E2EETokenUpdate$outboundSchema.optional(),
-  billingAddress: UpdateCardAddress$outboundSchema.optional(),
-  expiration: UpdateCardExpiration$outboundSchema.optional(),
-  cardCvv: z.string().optional(),
-  cardOnFile: z.boolean().optional(),
-  merchantAccountID: z.string().optional(),
-  verifyName: z.boolean().optional(),
-  holderName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    e2ee: E2EETokenUpdate$outboundSchema.optional(),
+    billingAddress: UpdateCardAddress$outboundSchema.optional(),
+    expiration: UpdateCardExpiration$outboundSchema.optional(),
+    cardCvv: z.string().optional(),
+    cardOnFile: z.boolean().optional(),
+    merchantAccountID: z.string().optional(),
+    verifyName: z.boolean().optional(),
+    holderName: z.string().optional(),
+  })
+);
 
 export function updateCardToJSON(updateCard: UpdateCard): string {
   return JSON.stringify(UpdateCard$outboundSchema.parse(updateCard));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -68,15 +68,17 @@ export const OnboardingInviteRequest$inboundSchema: z.ZodType<
   OnboardingInviteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  returnURL: z.string().optional(),
-  termsOfServiceURL: z.string().optional(),
-  scopes: z.array(ApplicationScope$inboundSchema),
-  grantScopes: z.array(ApplicationScope$inboundSchema).optional(),
-  capabilities: z.array(CapabilityID$inboundSchema),
-  feePlanCodes: z.array(z.string()),
-  prefill: CreateAccount$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    returnURL: z.string().optional(),
+    termsOfServiceURL: z.string().optional(),
+    scopes: z.array(ApplicationScope$inboundSchema),
+    grantScopes: z.array(ApplicationScope$inboundSchema).optional(),
+    capabilities: z.array(CapabilityID$inboundSchema),
+    feePlanCodes: z.array(z.string()),
+    prefill: CreateAccount$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type OnboardingInviteRequest$Outbound = {
   returnURL?: string | undefined;
@@ -93,15 +95,17 @@ export const OnboardingInviteRequest$outboundSchema: z.ZodType<
   OnboardingInviteRequest$Outbound,
   z.ZodTypeDef,
   OnboardingInviteRequest
-> = z.object({
-  returnURL: z.string().optional(),
-  termsOfServiceURL: z.string().optional(),
-  scopes: z.array(ApplicationScope$outboundSchema),
-  grantScopes: z.array(ApplicationScope$outboundSchema).optional(),
-  capabilities: z.array(CapabilityID$outboundSchema),
-  feePlanCodes: z.array(z.string()),
-  prefill: CreateAccount$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    returnURL: z.string().optional(),
+    termsOfServiceURL: z.string().optional(),
+    scopes: z.array(ApplicationScope$outboundSchema),
+    grantScopes: z.array(ApplicationScope$outboundSchema).optional(),
+    capabilities: z.array(CapabilityID$outboundSchema),
+    feePlanCodes: z.array(z.string()),
+    prefill: CreateAccount$outboundSchema.optional(),
+  })
+);
 
 export function onboardingInviteRequestToJSON(
   onboardingInviteRequest: OnboardingInviteRequest,

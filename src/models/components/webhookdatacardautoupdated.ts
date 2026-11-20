@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,11 +26,13 @@ export const WebhookDataCardAutoUpdated$inboundSchema: z.ZodType<
   WebhookDataCardAutoUpdated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardID: z.string(),
-  accountID: z.string(),
-  updateType: CardUpdateReason$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardID: z.string(),
+    accountID: z.string(),
+    updateType: CardUpdateReason$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataCardAutoUpdated$Outbound = {
   cardID: string;
@@ -43,11 +45,13 @@ export const WebhookDataCardAutoUpdated$outboundSchema: z.ZodType<
   WebhookDataCardAutoUpdated$Outbound,
   z.ZodTypeDef,
   WebhookDataCardAutoUpdated
-> = z.object({
-  cardID: z.string(),
-  accountID: z.string(),
-  updateType: CardUpdateReason$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardID: z.string(),
+    accountID: z.string(),
+    updateType: CardUpdateReason$outboundSchema,
+  })
+);
 
 export function webhookDataCardAutoUpdatedToJSON(
   webhookDataCardAutoUpdated: WebhookDataCardAutoUpdated,

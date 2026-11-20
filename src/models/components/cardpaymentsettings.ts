@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,9 +22,11 @@ export const CardPaymentSettings$inboundSchema: z.ZodType<
   CardPaymentSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  statementDescriptor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    statementDescriptor: z.string().optional(),
+  })
+);
 /** @internal */
 export type CardPaymentSettings$Outbound = {
   statementDescriptor?: string | undefined;
@@ -35,9 +37,11 @@ export const CardPaymentSettings$outboundSchema: z.ZodType<
   CardPaymentSettings$Outbound,
   z.ZodTypeDef,
   CardPaymentSettings
-> = z.object({
-  statementDescriptor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    statementDescriptor: z.string().optional(),
+  })
+);
 
 export function cardPaymentSettingsToJSON(
   cardPaymentSettings: CardPaymentSettings,

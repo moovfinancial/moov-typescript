@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -31,12 +31,14 @@ export const ScheduledTransferImageMetadata$inboundSchema: z.ZodType<
   ScheduledTransferImageMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  imageID: z.string(),
-  altText: z.string().optional(),
-  link: z.string(),
-  publicID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string(),
+    altText: z.string().optional(),
+    link: z.string(),
+    publicID: z.string(),
+  })
+);
 /** @internal */
 export type ScheduledTransferImageMetadata$Outbound = {
   imageID: string;
@@ -50,12 +52,14 @@ export const ScheduledTransferImageMetadata$outboundSchema: z.ZodType<
   ScheduledTransferImageMetadata$Outbound,
   z.ZodTypeDef,
   ScheduledTransferImageMetadata
-> = z.object({
-  imageID: z.string(),
-  altText: z.string().optional(),
-  link: z.string(),
-  publicID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string(),
+    altText: z.string().optional(),
+    link: z.string(),
+    publicID: z.string(),
+  })
+);
 
 export function scheduledTransferImageMetadataToJSON(
   scheduledTransferImageMetadata: ScheduledTransferImageMetadata,

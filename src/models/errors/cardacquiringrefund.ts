@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -63,24 +64,30 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   CardAcquiringRefund,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  refundID: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  status: components.RefundStatus$inboundSchema,
-  amount: components.Amount$inboundSchema,
-  cardDetails: components.RefundCardDetails$inboundSchema.optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CardAcquiringRefund(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refundID: z.string(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    status: components.RefundStatus$inboundSchema,
+    amount: components.Amount$inboundSchema,
+    cardDetails: components.RefundCardDetails$inboundSchema.optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CardAcquiringRefund(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CardAcquiringRefund$Outbound = {
@@ -97,13 +104,15 @@ export const CardAcquiringRefund$outboundSchema: z.ZodType<
   CardAcquiringRefund$Outbound,
   z.ZodTypeDef,
   CardAcquiringRefund
-> = z.instanceof(CardAcquiringRefund)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    refundID: z.string(),
-    createdOn: z.date().transform(v => v.toISOString()),
-    updatedOn: z.date().transform(v => v.toISOString()),
-    status: components.RefundStatus$outboundSchema,
-    amount: components.Amount$outboundSchema,
-    cardDetails: components.RefundCardDetails$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CardAcquiringRefund)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      refundID: z.string(),
+      createdOn: z.date().transform(v => v.toISOString()),
+      updatedOn: z.date().transform(v => v.toISOString()),
+      status: components.RefundStatus$outboundSchema,
+      amount: components.Amount$outboundSchema,
+      cardDetails: components.RefundCardDetails$outboundSchema.optional(),
+    }))
+);

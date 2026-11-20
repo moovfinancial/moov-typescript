@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,10 +23,12 @@ export const PatchTransfer$inboundSchema: z.ZodType<
   PatchTransfer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  metadata: z.nullable(z.record(z.string())).optional(),
-  foreignID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    metadata: z.nullable(z.record(z.string())).optional(),
+    foreignID: z.string().optional(),
+  })
+);
 /** @internal */
 export type PatchTransfer$Outbound = {
   metadata?: { [k: string]: string } | null | undefined;
@@ -38,10 +40,12 @@ export const PatchTransfer$outboundSchema: z.ZodType<
   PatchTransfer$Outbound,
   z.ZodTypeDef,
   PatchTransfer
-> = z.object({
-  metadata: z.nullable(z.record(z.string())).optional(),
-  foreignID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    metadata: z.nullable(z.record(z.string())).optional(),
+    foreignID: z.string().optional(),
+  })
+);
 
 export function patchTransferToJSON(patchTransfer: PatchTransfer): string {
   return JSON.stringify(PatchTransfer$outboundSchema.parse(patchTransfer));

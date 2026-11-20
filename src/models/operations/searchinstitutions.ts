@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,11 +34,13 @@ export const SearchInstitutionsRequest$inboundSchema: z.ZodType<
   SearchInstitutionsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  routingNumber: z.string().optional(),
-  limit: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    routingNumber: z.string().optional(),
+    limit: z.number().int().optional(),
+  })
+);
 /** @internal */
 export type SearchInstitutionsRequest$Outbound = {
   name?: string | undefined;
@@ -51,11 +53,13 @@ export const SearchInstitutionsRequest$outboundSchema: z.ZodType<
   SearchInstitutionsRequest$Outbound,
   z.ZodTypeDef,
   SearchInstitutionsRequest
-> = z.object({
-  name: z.string().optional(),
-  routingNumber: z.string().optional(),
-  limit: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    routingNumber: z.string().optional(),
+    limit: z.number().int().optional(),
+  })
+);
 
 export function searchInstitutionsRequestToJSON(
   searchInstitutionsRequest: SearchInstitutionsRequest,
@@ -79,15 +83,17 @@ export const SearchInstitutionsResponse$inboundSchema: z.ZodType<
   SearchInstitutionsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.InstitutionsSearchResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.InstitutionsSearchResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type SearchInstitutionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -99,15 +105,17 @@ export const SearchInstitutionsResponse$outboundSchema: z.ZodType<
   SearchInstitutionsResponse$Outbound,
   z.ZodTypeDef,
   SearchInstitutionsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.InstitutionsSearchResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.InstitutionsSearchResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function searchInstitutionsResponseToJSON(
   searchInstitutionsResponse: SearchInstitutionsResponse,

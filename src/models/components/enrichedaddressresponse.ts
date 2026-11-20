@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const EnrichedAddressResponse$inboundSchema: z.ZodType<
   EnrichedAddressResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  suggestions: z.array(AddressSuggestion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    suggestions: z.array(AddressSuggestion$inboundSchema),
+  })
+);
 /** @internal */
 export type EnrichedAddressResponse$Outbound = {
   suggestions: Array<AddressSuggestion$Outbound>;
@@ -35,9 +37,11 @@ export const EnrichedAddressResponse$outboundSchema: z.ZodType<
   EnrichedAddressResponse$Outbound,
   z.ZodTypeDef,
   EnrichedAddressResponse
-> = z.object({
-  suggestions: z.array(AddressSuggestion$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    suggestions: z.array(AddressSuggestion$outboundSchema),
+  })
+);
 
 export function enrichedAddressResponseToJSON(
   enrichedAddressResponse: EnrichedAddressResponse,

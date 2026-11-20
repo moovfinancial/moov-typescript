@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,12 @@ export const IssuingVelocityLimitError$inboundSchema: z.ZodType<
   IssuingVelocityLimitError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: z.string().optional(),
-  interval: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.string().optional(),
+    interval: z.string().optional(),
+  })
+);
 /** @internal */
 export type IssuingVelocityLimitError$Outbound = {
   amount?: string | undefined;
@@ -32,10 +34,12 @@ export const IssuingVelocityLimitError$outboundSchema: z.ZodType<
   IssuingVelocityLimitError$Outbound,
   z.ZodTypeDef,
   IssuingVelocityLimitError
-> = z.object({
-  amount: z.string().optional(),
-  interval: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.string().optional(),
+    interval: z.string().optional(),
+  })
+);
 
 export function issuingVelocityLimitErrorToJSON(
   issuingVelocityLimitError: IssuingVelocityLimitError,

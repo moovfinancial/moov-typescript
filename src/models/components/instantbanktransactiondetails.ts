@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -54,22 +54,26 @@ export const InstantBankTransactionDetails$inboundSchema: z.ZodType<
   InstantBankTransactionDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  network: InstantBankNetwork$inboundSchema,
-  status: InstantBankTransactionStatus$inboundSchema,
-  networkResponseCode: z.string().optional(),
-  failureCode: InstantBankFailureCode$inboundSchema.optional(),
-  endToEndID: z.string().optional(),
-  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  acceptedWithoutPostingOn: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    network: InstantBankNetwork$inboundSchema,
+    status: InstantBankTransactionStatus$inboundSchema,
+    networkResponseCode: z.string().optional(),
+    failureCode: InstantBankFailureCode$inboundSchema.optional(),
+    endToEndID: z.string().optional(),
+    initiatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    completedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    acceptedWithoutPostingOn: z.string().datetime({ offset: true }).transform(
+      v => new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type InstantBankTransactionDetails$Outbound = {
   network: string;
@@ -88,17 +92,20 @@ export const InstantBankTransactionDetails$outboundSchema: z.ZodType<
   InstantBankTransactionDetails$Outbound,
   z.ZodTypeDef,
   InstantBankTransactionDetails
-> = z.object({
-  network: InstantBankNetwork$outboundSchema,
-  status: InstantBankTransactionStatus$outboundSchema,
-  networkResponseCode: z.string().optional(),
-  failureCode: InstantBankFailureCode$outboundSchema.optional(),
-  endToEndID: z.string().optional(),
-  initiatedOn: z.date().transform(v => v.toISOString()).optional(),
-  completedOn: z.date().transform(v => v.toISOString()).optional(),
-  failedOn: z.date().transform(v => v.toISOString()).optional(),
-  acceptedWithoutPostingOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    network: InstantBankNetwork$outboundSchema,
+    status: InstantBankTransactionStatus$outboundSchema,
+    networkResponseCode: z.string().optional(),
+    failureCode: InstantBankFailureCode$outboundSchema.optional(),
+    endToEndID: z.string().optional(),
+    initiatedOn: z.date().transform(v => v.toISOString()).optional(),
+    completedOn: z.date().transform(v => v.toISOString()).optional(),
+    failedOn: z.date().transform(v => v.toISOString()).optional(),
+    acceptedWithoutPostingOn: z.date().transform(v => v.toISOString())
+      .optional(),
+  })
+);
 
 export function instantBankTransactionDetailsToJSON(
   instantBankTransactionDetails: InstantBankTransactionDetails,

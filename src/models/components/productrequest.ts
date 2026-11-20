@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -59,13 +59,15 @@ export const ProductRequest$inboundSchema: z.ZodType<
   ProductRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: z.string(),
-  description: z.string().optional(),
-  basePrice: AmountDecimal$inboundSchema,
-  images: z.array(AssignProductImage$inboundSchema).optional(),
-  optionGroups: z.array(CreateProductOptionGroup$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    basePrice: AmountDecimal$inboundSchema,
+    images: z.array(AssignProductImage$inboundSchema).optional(),
+    optionGroups: z.array(CreateProductOptionGroup$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type ProductRequest$Outbound = {
   title: string;
@@ -80,13 +82,15 @@ export const ProductRequest$outboundSchema: z.ZodType<
   ProductRequest$Outbound,
   z.ZodTypeDef,
   ProductRequest
-> = z.object({
-  title: z.string(),
-  description: z.string().optional(),
-  basePrice: AmountDecimal$outboundSchema,
-  images: z.array(AssignProductImage$outboundSchema).optional(),
-  optionGroups: z.array(CreateProductOptionGroup$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    basePrice: AmountDecimal$outboundSchema,
+    images: z.array(AssignProductImage$outboundSchema).optional(),
+    optionGroups: z.array(CreateProductOptionGroup$outboundSchema).optional(),
+  })
+);
 
 export function productRequestToJSON(productRequest: ProductRequest): string {
   return JSON.stringify(ProductRequest$outboundSchema.parse(productRequest));

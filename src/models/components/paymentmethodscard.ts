@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -137,25 +137,27 @@ export const PaymentMethodsCard$inboundSchema: z.ZodType<
   PaymentMethodsCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardID: z.string(),
-  fingerprint: z.string(),
-  brand: CardBrand$inboundSchema,
-  cardType: CardType$inboundSchema,
-  lastFourCardNumber: z.string(),
-  bin: z.string(),
-  expiration: CardExpiration$inboundSchema,
-  holderName: z.string().optional(),
-  billingAddress: CardAddress$inboundSchema,
-  cardVerification: CardVerification$inboundSchema,
-  issuer: z.string().optional(),
-  issuerCountry: z.string().optional(),
-  cardOnFile: z.boolean().optional(),
-  merchantAccountID: z.string().optional(),
-  cardAccountUpdater: CardAccountUpdater$inboundSchema.optional(),
-  domesticPushToCard: DomesticPushToCard$inboundSchema.optional(),
-  domesticPullFromCard: DomesticPullFromCard$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardID: z.string(),
+    fingerprint: z.string(),
+    brand: CardBrand$inboundSchema,
+    cardType: CardType$inboundSchema,
+    lastFourCardNumber: z.string(),
+    bin: z.string(),
+    expiration: CardExpiration$inboundSchema,
+    holderName: z.string().optional(),
+    billingAddress: CardAddress$inboundSchema,
+    cardVerification: CardVerification$inboundSchema,
+    issuer: z.string().optional(),
+    issuerCountry: z.string().optional(),
+    cardOnFile: z.boolean().optional(),
+    merchantAccountID: z.string().optional(),
+    cardAccountUpdater: CardAccountUpdater$inboundSchema.optional(),
+    domesticPushToCard: DomesticPushToCard$inboundSchema.optional(),
+    domesticPullFromCard: DomesticPullFromCard$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type PaymentMethodsCard$Outbound = {
   cardID: string;
@@ -182,25 +184,27 @@ export const PaymentMethodsCard$outboundSchema: z.ZodType<
   PaymentMethodsCard$Outbound,
   z.ZodTypeDef,
   PaymentMethodsCard
-> = z.object({
-  cardID: z.string(),
-  fingerprint: z.string(),
-  brand: CardBrand$outboundSchema,
-  cardType: CardType$outboundSchema,
-  lastFourCardNumber: z.string(),
-  bin: z.string(),
-  expiration: CardExpiration$outboundSchema,
-  holderName: z.string().optional(),
-  billingAddress: CardAddress$outboundSchema,
-  cardVerification: CardVerification$outboundSchema,
-  issuer: z.string().optional(),
-  issuerCountry: z.string().optional(),
-  cardOnFile: z.boolean().optional(),
-  merchantAccountID: z.string().optional(),
-  cardAccountUpdater: CardAccountUpdater$outboundSchema.optional(),
-  domesticPushToCard: DomesticPushToCard$outboundSchema.optional(),
-  domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardID: z.string(),
+    fingerprint: z.string(),
+    brand: CardBrand$outboundSchema,
+    cardType: CardType$outboundSchema,
+    lastFourCardNumber: z.string(),
+    bin: z.string(),
+    expiration: CardExpiration$outboundSchema,
+    holderName: z.string().optional(),
+    billingAddress: CardAddress$outboundSchema,
+    cardVerification: CardVerification$outboundSchema,
+    issuer: z.string().optional(),
+    issuerCountry: z.string().optional(),
+    cardOnFile: z.boolean().optional(),
+    merchantAccountID: z.string().optional(),
+    cardAccountUpdater: CardAccountUpdater$outboundSchema.optional(),
+    domesticPushToCard: DomesticPushToCard$outboundSchema.optional(),
+    domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
+  })
+);
 
 export function paymentMethodsCardToJSON(
   paymentMethodsCard: PaymentMethodsCard,

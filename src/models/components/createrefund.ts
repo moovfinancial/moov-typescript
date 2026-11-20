@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,9 +26,11 @@ export const CreateRefund$inboundSchema: z.ZodType<
   CreateRefund,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.number().int().optional(),
+  })
+);
 /** @internal */
 export type CreateRefund$Outbound = {
   amount?: number | undefined;
@@ -39,9 +41,11 @@ export const CreateRefund$outboundSchema: z.ZodType<
   CreateRefund$Outbound,
   z.ZodTypeDef,
   CreateRefund
-> = z.object({
-  amount: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.number().int().optional(),
+  })
+);
 
 export function createRefundToJSON(createRefund: CreateRefund): string {
   return JSON.stringify(CreateRefund$outboundSchema.parse(createRefund));

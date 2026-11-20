@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,11 +27,13 @@ export const WireServices$inboundSchema: z.ZodType<
   WireServices,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fundsTransferStatus: z.boolean(),
-  fundsSettlementOnlyStatus: z.boolean(),
-  bookEntrySecuritiesTransferStatus: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fundsTransferStatus: z.boolean(),
+    fundsSettlementOnlyStatus: z.boolean(),
+    bookEntrySecuritiesTransferStatus: z.boolean(),
+  })
+);
 /** @internal */
 export type WireServices$Outbound = {
   fundsTransferStatus: boolean;
@@ -44,11 +46,13 @@ export const WireServices$outboundSchema: z.ZodType<
   WireServices$Outbound,
   z.ZodTypeDef,
   WireServices
-> = z.object({
-  fundsTransferStatus: z.boolean(),
-  fundsSettlementOnlyStatus: z.boolean(),
-  bookEntrySecuritiesTransferStatus: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fundsTransferStatus: z.boolean(),
+    fundsSettlementOnlyStatus: z.boolean(),
+    bookEntrySecuritiesTransferStatus: z.boolean(),
+  })
+);
 
 export function wireServicesToJSON(wireServices: WireServices): string {
   return JSON.stringify(WireServices$outboundSchema.parse(wireServices));

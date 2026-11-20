@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const GetAdjustmentRequest$inboundSchema: z.ZodType<
   GetAdjustmentRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  adjustmentID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    adjustmentID: z.string(),
+  })
+);
 /** @internal */
 export type GetAdjustmentRequest$Outbound = {
   accountID: string;
@@ -39,10 +41,12 @@ export const GetAdjustmentRequest$outboundSchema: z.ZodType<
   GetAdjustmentRequest$Outbound,
   z.ZodTypeDef,
   GetAdjustmentRequest
-> = z.object({
-  accountID: z.string(),
-  adjustmentID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    adjustmentID: z.string(),
+  })
+);
 
 export function getAdjustmentRequestToJSON(
   getAdjustmentRequest: GetAdjustmentRequest,
@@ -66,15 +70,17 @@ export const GetAdjustmentResponse$inboundSchema: z.ZodType<
   GetAdjustmentResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Adjustment$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Adjustment$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetAdjustmentResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -86,15 +92,17 @@ export const GetAdjustmentResponse$outboundSchema: z.ZodType<
   GetAdjustmentResponse$Outbound,
   z.ZodTypeDef,
   GetAdjustmentResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Adjustment$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Adjustment$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getAdjustmentResponseToJSON(
   getAdjustmentResponse: GetAdjustmentResponse,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,10 +27,12 @@ export const ListAdjustmentsRequest$inboundSchema: z.ZodType<
   ListAdjustmentsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string().optional(),
+  })
+);
 /** @internal */
 export type ListAdjustmentsRequest$Outbound = {
   accountID: string;
@@ -42,10 +44,12 @@ export const ListAdjustmentsRequest$outboundSchema: z.ZodType<
   ListAdjustmentsRequest$Outbound,
   z.ZodTypeDef,
   ListAdjustmentsRequest
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string().optional(),
+  })
+);
 
 export function listAdjustmentsRequestToJSON(
   listAdjustmentsRequest: ListAdjustmentsRequest,
@@ -69,15 +73,17 @@ export const ListAdjustmentsResponse$inboundSchema: z.ZodType<
   ListAdjustmentsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Adjustment$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Adjustment$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListAdjustmentsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -89,15 +95,17 @@ export const ListAdjustmentsResponse$outboundSchema: z.ZodType<
   ListAdjustmentsResponse$Outbound,
   z.ZodTypeDef,
   ListAdjustmentsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Adjustment$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Adjustment$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listAdjustmentsResponseToJSON(
   listAdjustmentsResponse: ListAdjustmentsResponse,

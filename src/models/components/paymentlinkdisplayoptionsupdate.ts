@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -40,11 +40,13 @@ export const PaymentLinkDisplayOptionsUpdate$inboundSchema: z.ZodType<
   PaymentLinkDisplayOptionsUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
-  callToAction: CallToAction$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+    callToAction: CallToAction$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type PaymentLinkDisplayOptionsUpdate$Outbound = {
   title?: string | undefined;
@@ -57,11 +59,13 @@ export const PaymentLinkDisplayOptionsUpdate$outboundSchema: z.ZodType<
   PaymentLinkDisplayOptionsUpdate$Outbound,
   z.ZodTypeDef,
   PaymentLinkDisplayOptionsUpdate
-> = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
-  callToAction: CallToAction$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+    callToAction: CallToAction$outboundSchema.optional(),
+  })
+);
 
 export function paymentLinkDisplayOptionsUpdateToJSON(
   paymentLinkDisplayOptionsUpdate: PaymentLinkDisplayOptionsUpdate,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -60,14 +60,16 @@ export const ScheduledTransferLineItem$inboundSchema: z.ZodType<
   ScheduledTransferLineItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  basePrice: AmountDecimal$inboundSchema,
-  quantity: z.number().int(),
-  options: z.array(ScheduledTransferLineItemOption$inboundSchema).optional(),
-  productID: z.string().optional(),
-  images: z.array(ScheduledTransferImageMetadata$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    basePrice: AmountDecimal$inboundSchema,
+    quantity: z.number().int(),
+    options: z.array(ScheduledTransferLineItemOption$inboundSchema).optional(),
+    productID: z.string().optional(),
+    images: z.array(ScheduledTransferImageMetadata$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type ScheduledTransferLineItem$Outbound = {
   name: string;
@@ -83,14 +85,16 @@ export const ScheduledTransferLineItem$outboundSchema: z.ZodType<
   ScheduledTransferLineItem$Outbound,
   z.ZodTypeDef,
   ScheduledTransferLineItem
-> = z.object({
-  name: z.string(),
-  basePrice: AmountDecimal$outboundSchema,
-  quantity: z.number().int(),
-  options: z.array(ScheduledTransferLineItemOption$outboundSchema).optional(),
-  productID: z.string().optional(),
-  images: z.array(ScheduledTransferImageMetadata$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    basePrice: AmountDecimal$outboundSchema,
+    quantity: z.number().int(),
+    options: z.array(ScheduledTransferLineItemOption$outboundSchema).optional(),
+    productID: z.string().optional(),
+    images: z.array(ScheduledTransferImageMetadata$outboundSchema).optional(),
+  })
+);
 
 export function scheduledTransferLineItemToJSON(
   scheduledTransferLineItem: ScheduledTransferLineItem,

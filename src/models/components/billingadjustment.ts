@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,11 +36,13 @@ export const BillingAdjustment$inboundSchema: z.ZodType<
   BillingAdjustment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  feeName: z.string(),
-  count: z.number().int(),
-  amount: AmountDecimal$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    feeName: z.string(),
+    count: z.number().int(),
+    amount: AmountDecimal$inboundSchema,
+  })
+);
 /** @internal */
 export type BillingAdjustment$Outbound = {
   feeName: string;
@@ -53,11 +55,13 @@ export const BillingAdjustment$outboundSchema: z.ZodType<
   BillingAdjustment$Outbound,
   z.ZodTypeDef,
   BillingAdjustment
-> = z.object({
-  feeName: z.string(),
-  count: z.number().int(),
-  amount: AmountDecimal$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    feeName: z.string(),
+    count: z.number().int(),
+    amount: AmountDecimal$outboundSchema,
+  })
+);
 
 export function billingAdjustmentToJSON(
   billingAdjustment: BillingAdjustment,

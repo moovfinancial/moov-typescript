@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -40,12 +40,14 @@ export const BillingSummaryInterchange$inboundSchema: z.ZodType<
   BillingSummaryInterchange,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  visa: AmountDecimal$inboundSchema,
-  mastercard: AmountDecimal$inboundSchema,
-  discover: AmountDecimal$inboundSchema,
-  americanExpress: AmountDecimal$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    visa: AmountDecimal$inboundSchema,
+    mastercard: AmountDecimal$inboundSchema,
+    discover: AmountDecimal$inboundSchema,
+    americanExpress: AmountDecimal$inboundSchema,
+  })
+);
 /** @internal */
 export type BillingSummaryInterchange$Outbound = {
   visa: AmountDecimal$Outbound;
@@ -59,12 +61,14 @@ export const BillingSummaryInterchange$outboundSchema: z.ZodType<
   BillingSummaryInterchange$Outbound,
   z.ZodTypeDef,
   BillingSummaryInterchange
-> = z.object({
-  visa: AmountDecimal$outboundSchema,
-  mastercard: AmountDecimal$outboundSchema,
-  discover: AmountDecimal$outboundSchema,
-  americanExpress: AmountDecimal$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    visa: AmountDecimal$outboundSchema,
+    mastercard: AmountDecimal$outboundSchema,
+    discover: AmountDecimal$outboundSchema,
+    americanExpress: AmountDecimal$outboundSchema,
+  })
+);
 
 export function billingSummaryInterchangeToJSON(
   billingSummaryInterchange: BillingSummaryInterchange,

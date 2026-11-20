@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -42,15 +45,17 @@ export const GetPublicImageRequest$inboundSchema: z.ZodType<
   GetPublicImageRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "if-none-match": z.string().optional(),
-  publicID: z.string(),
-  size: z.string().default("400x400"),
-}).transform((v) => {
-  return remap$(v, {
-    "if-none-match": "ifNoneMatch",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "if-none-match": z.string().optional(),
+    publicID: z.string(),
+    size: z.string().default("400x400"),
+  }).transform((v) => {
+    return remap$(v, {
+      "if-none-match": "ifNoneMatch",
+    });
+  })
+);
 /** @internal */
 export type GetPublicImageRequest$Outbound = {
   "if-none-match"?: string | undefined;
@@ -63,15 +68,19 @@ export const GetPublicImageRequest$outboundSchema: z.ZodType<
   GetPublicImageRequest$Outbound,
   z.ZodTypeDef,
   GetPublicImageRequest
-> = z.object({
-  ifNoneMatch: z.string().optional(),
-  publicID: z.string(),
-  size: z.string().default("400x400"),
-}).transform((v) => {
-  return remap$(v, {
-    ifNoneMatch: "if-none-match",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ifNoneMatch: z.string().optional(),
+    publicID: z.string().refine(matchesPattern$("[A-Za-z0-9_-]{21}"), {
+      message: "Value must match pattern [A-Za-z0-9_-]{21}",
+    }),
+    size: z.string().default("400x400"),
+  }).transform((v) => {
+    return remap$(v, {
+      ifNoneMatch: "if-none-match",
+    });
+  })
+);
 
 export function getPublicImageRequestToJSON(
   getPublicImageRequest: GetPublicImageRequest,
@@ -95,11 +104,13 @@ export const GetPublicImageResponseResult$inboundSchema: z.ZodType<
   GetPublicImageResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 /** @internal */
 export type GetPublicImageResponseResult$Outbound =
   | ReadableStream<Uint8Array>
@@ -111,11 +122,13 @@ export const GetPublicImageResponseResult$outboundSchema: z.ZodType<
   GetPublicImageResponseResult$Outbound,
   z.ZodTypeDef,
   GetPublicImageResponseResult
-> = z.union([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 
 export function getPublicImageResponseResultToJSON(
   getPublicImageResponseResult: GetPublicImageResponseResult,
@@ -141,19 +154,21 @@ export const GetPublicImageResponse$inboundSchema: z.ZodType<
   GetPublicImageResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetPublicImageResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -169,19 +184,21 @@ export const GetPublicImageResponse$outboundSchema: z.ZodType<
   GetPublicImageResponse$Outbound,
   z.ZodTypeDef,
   GetPublicImageResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getPublicImageResponseToJSON(
   getPublicImageResponse: GetPublicImageResponse,

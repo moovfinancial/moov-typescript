@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -27,11 +27,13 @@ export const MoovWalletPaymentMethod$inboundSchema: z.ZodType<
   MoovWalletPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("moov-wallet"),
-  wallet: PaymentMethodsWallet$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("moov-wallet"),
+    wallet: PaymentMethodsWallet$inboundSchema,
+  })
+);
 /** @internal */
 export type MoovWalletPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -44,11 +46,13 @@ export const MoovWalletPaymentMethod$outboundSchema: z.ZodType<
   MoovWalletPaymentMethod$Outbound,
   z.ZodTypeDef,
   MoovWalletPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("moov-wallet"),
-  wallet: PaymentMethodsWallet$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("moov-wallet"),
+    wallet: PaymentMethodsWallet$outboundSchema,
+  })
+);
 
 export function moovWalletPaymentMethodToJSON(
   moovWalletPaymentMethod: MoovWalletPaymentMethod,

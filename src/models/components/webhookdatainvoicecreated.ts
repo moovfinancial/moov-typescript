@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,12 @@ export const WebhookDataInvoiceCreated$inboundSchema: z.ZodType<
   WebhookDataInvoiceCreated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  invoiceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    invoiceID: z.string(),
+  })
+);
 /** @internal */
 export type WebhookDataInvoiceCreated$Outbound = {
   accountID: string;
@@ -32,10 +34,12 @@ export const WebhookDataInvoiceCreated$outboundSchema: z.ZodType<
   WebhookDataInvoiceCreated$Outbound,
   z.ZodTypeDef,
   WebhookDataInvoiceCreated
-> = z.object({
-  accountID: z.string(),
-  invoiceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    invoiceID: z.string(),
+  })
+);
 
 export function webhookDataInvoiceCreatedToJSON(
   webhookDataInvoiceCreated: WebhookDataInvoiceCreated,

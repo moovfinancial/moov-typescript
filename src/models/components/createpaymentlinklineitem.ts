@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -63,14 +63,16 @@ export const CreatePaymentLinkLineItem$inboundSchema: z.ZodType<
   CreatePaymentLinkLineItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  basePrice: AmountDecimal$inboundSchema,
-  quantity: z.number().int(),
-  options: z.array(CreatePaymentLinkLineItemOption$inboundSchema).optional(),
-  imageIDs: z.array(z.string()).optional(),
-  productID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    basePrice: AmountDecimal$inboundSchema,
+    quantity: z.number().int(),
+    options: z.array(CreatePaymentLinkLineItemOption$inboundSchema).optional(),
+    imageIDs: z.array(z.string()).optional(),
+    productID: z.string().optional(),
+  })
+);
 /** @internal */
 export type CreatePaymentLinkLineItem$Outbound = {
   name: string;
@@ -86,14 +88,16 @@ export const CreatePaymentLinkLineItem$outboundSchema: z.ZodType<
   CreatePaymentLinkLineItem$Outbound,
   z.ZodTypeDef,
   CreatePaymentLinkLineItem
-> = z.object({
-  name: z.string(),
-  basePrice: AmountDecimal$outboundSchema,
-  quantity: z.number().int(),
-  options: z.array(CreatePaymentLinkLineItemOption$outboundSchema).optional(),
-  imageIDs: z.array(z.string()).optional(),
-  productID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    basePrice: AmountDecimal$outboundSchema,
+    quantity: z.number().int(),
+    options: z.array(CreatePaymentLinkLineItemOption$outboundSchema).optional(),
+    imageIDs: z.array(z.string()).optional(),
+    productID: z.string().optional(),
+  })
+);
 
 export function createPaymentLinkLineItemToJSON(
   createPaymentLinkLineItem: CreatePaymentLinkLineItem,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -20,13 +20,15 @@ export type TermsOfServiceError = {
 };
 
 /** @internal */
-export const Manual$inboundSchema: z.ZodType<Manual, z.ZodTypeDef, unknown> = z
-  .object({
-    acceptedDate: z.string().optional(),
-    acceptedDomain: z.string().optional(),
-    acceptedIP: z.string().optional(),
-    acceptedUserAgent: z.string().optional(),
-  });
+export const Manual$inboundSchema: z.ZodType<Manual, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      acceptedDate: z.string().optional(),
+      acceptedDomain: z.string().optional(),
+      acceptedIP: z.string().optional(),
+      acceptedUserAgent: z.string().optional(),
+    })
+  );
 /** @internal */
 export type Manual$Outbound = {
   acceptedDate?: string | undefined;
@@ -40,12 +42,14 @@ export const Manual$outboundSchema: z.ZodType<
   Manual$Outbound,
   z.ZodTypeDef,
   Manual
-> = z.object({
-  acceptedDate: z.string().optional(),
-  acceptedDomain: z.string().optional(),
-  acceptedIP: z.string().optional(),
-  acceptedUserAgent: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    acceptedDate: z.string().optional(),
+    acceptedDomain: z.string().optional(),
+    acceptedIP: z.string().optional(),
+    acceptedUserAgent: z.string().optional(),
+  })
+);
 
 export function manualToJSON(manual: Manual): string {
   return JSON.stringify(Manual$outboundSchema.parse(manual));
@@ -65,10 +69,12 @@ export const TermsOfServiceError$inboundSchema: z.ZodType<
   TermsOfServiceError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: z.string().optional(),
-  manual: z.lazy(() => Manual$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string().optional(),
+    manual: z.lazy(() => Manual$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type TermsOfServiceError$Outbound = {
   token?: string | undefined;
@@ -80,10 +86,12 @@ export const TermsOfServiceError$outboundSchema: z.ZodType<
   TermsOfServiceError$Outbound,
   z.ZodTypeDef,
   TermsOfServiceError
-> = z.object({
-  token: z.string().optional(),
-  manual: z.lazy(() => Manual$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string().optional(),
+    manual: z.lazy(() => Manual$outboundSchema).optional(),
+  })
+);
 
 export function termsOfServiceErrorToJSON(
   termsOfServiceError: TermsOfServiceError,

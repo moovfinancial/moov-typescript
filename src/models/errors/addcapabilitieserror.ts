@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type AddCapabilitiesErrorData = {
@@ -38,20 +39,22 @@ export const AddCapabilitiesError$inboundSchema: z.ZodType<
   AddCapabilitiesError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.string().optional(),
-  capabilities: z.record(z.string()).optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new AddCapabilitiesError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.string().optional(),
+    capabilities: z.record(z.string()).optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new AddCapabilitiesError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type AddCapabilitiesError$Outbound = {
@@ -64,9 +67,11 @@ export const AddCapabilitiesError$outboundSchema: z.ZodType<
   AddCapabilitiesError$Outbound,
   z.ZodTypeDef,
   AddCapabilitiesError
-> = z.instanceof(AddCapabilitiesError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.string().optional(),
-    capabilities: z.record(z.string()).optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(AddCapabilitiesError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      error: z.string().optional(),
+      capabilities: z.record(z.string()).optional(),
+    }))
+);

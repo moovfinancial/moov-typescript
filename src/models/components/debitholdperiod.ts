@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -21,7 +22,7 @@ export type DebitHoldPeriod = ClosedEnum<typeof DebitHoldPeriod>;
 /** @internal */
 export const DebitHoldPeriod$inboundSchema: z.ZodNativeEnum<
   typeof DebitHoldPeriod
-> = z.nativeEnum(DebitHoldPeriod);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DebitHoldPeriod));
 /** @internal */
 export const DebitHoldPeriod$outboundSchema: z.ZodNativeEnum<
   typeof DebitHoldPeriod

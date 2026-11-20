@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,10 +26,12 @@ export const TermsOfServicePayload$inboundSchema: z.ZodType<
   TermsOfServicePayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: z.string().optional(),
-  manual: ManualTermsOfService$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string().optional(),
+    manual: ManualTermsOfService$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type TermsOfServicePayload$Outbound = {
   token?: string | undefined;
@@ -41,10 +43,12 @@ export const TermsOfServicePayload$outboundSchema: z.ZodType<
   TermsOfServicePayload$Outbound,
   z.ZodTypeDef,
   TermsOfServicePayload
-> = z.object({
-  token: z.string().optional(),
-  manual: ManualTermsOfService$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string().optional(),
+    manual: ManualTermsOfService$outboundSchema.optional(),
+  })
+);
 
 export function termsOfServicePayloadToJSON(
   termsOfServicePayload: TermsOfServicePayload,

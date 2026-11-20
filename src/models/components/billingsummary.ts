@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -226,10 +226,12 @@ export const BillingSummaryVolumeAmount$inboundSchema: z.ZodType<
   BillingSummaryVolumeAmount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 /** @internal */
 export type BillingSummaryVolumeAmount$Outbound = {
   currency: string;
@@ -241,10 +243,12 @@ export const BillingSummaryVolumeAmount$outboundSchema: z.ZodType<
   BillingSummaryVolumeAmount$Outbound,
   z.ZodTypeDef,
   BillingSummaryVolumeAmount
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 
 export function billingSummaryVolumeAmountToJSON(
   billingSummaryVolumeAmount: BillingSummaryVolumeAmount,
@@ -268,16 +272,18 @@ export const CardAcquiring$inboundSchema: z.ZodType<
   CardAcquiring,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  volumeAmount: z.lazy(() => BillingSummaryVolumeAmount$inboundSchema)
-    .optional(),
-  volumeCount: z.number().int().optional(),
-  feeAmount: AmountDecimal$inboundSchema.optional(),
-  merchantFeesCollected: AmountDecimal$inboundSchema.optional(),
-  partnerFeesAssessed: AmountDecimal$inboundSchema.optional(),
-  netIncome: AmountDecimal$inboundSchema.optional(),
-  interchangeFees: BillingSummaryInterchange$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    volumeAmount: z.lazy(() => BillingSummaryVolumeAmount$inboundSchema)
+      .optional(),
+    volumeCount: z.number().int().optional(),
+    feeAmount: AmountDecimal$inboundSchema.optional(),
+    merchantFeesCollected: AmountDecimal$inboundSchema.optional(),
+    partnerFeesAssessed: AmountDecimal$inboundSchema.optional(),
+    netIncome: AmountDecimal$inboundSchema.optional(),
+    interchangeFees: BillingSummaryInterchange$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CardAcquiring$Outbound = {
   volumeAmount?: BillingSummaryVolumeAmount$Outbound | undefined;
@@ -294,16 +300,18 @@ export const CardAcquiring$outboundSchema: z.ZodType<
   CardAcquiring$Outbound,
   z.ZodTypeDef,
   CardAcquiring
-> = z.object({
-  volumeAmount: z.lazy(() => BillingSummaryVolumeAmount$outboundSchema)
-    .optional(),
-  volumeCount: z.number().int().optional(),
-  feeAmount: AmountDecimal$outboundSchema.optional(),
-  merchantFeesCollected: AmountDecimal$outboundSchema.optional(),
-  partnerFeesAssessed: AmountDecimal$outboundSchema.optional(),
-  netIncome: AmountDecimal$outboundSchema.optional(),
-  interchangeFees: BillingSummaryInterchange$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    volumeAmount: z.lazy(() => BillingSummaryVolumeAmount$outboundSchema)
+      .optional(),
+    volumeCount: z.number().int().optional(),
+    feeAmount: AmountDecimal$outboundSchema.optional(),
+    merchantFeesCollected: AmountDecimal$outboundSchema.optional(),
+    partnerFeesAssessed: AmountDecimal$outboundSchema.optional(),
+    netIncome: AmountDecimal$outboundSchema.optional(),
+    interchangeFees: BillingSummaryInterchange$outboundSchema.optional(),
+  })
+);
 
 export function cardAcquiringToJSON(cardAcquiring: CardAcquiring): string {
   return JSON.stringify(CardAcquiring$outboundSchema.parse(cardAcquiring));
@@ -323,10 +331,12 @@ export const BillingSummaryPlatformFees$inboundSchema: z.ZodType<
   BillingSummaryPlatformFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 /** @internal */
 export type BillingSummaryPlatformFees$Outbound = {
   currency: string;
@@ -338,10 +348,12 @@ export const BillingSummaryPlatformFees$outboundSchema: z.ZodType<
   BillingSummaryPlatformFees$Outbound,
   z.ZodTypeDef,
   BillingSummaryPlatformFees
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 
 export function billingSummaryPlatformFeesToJSON(
   billingSummaryPlatformFees: BillingSummaryPlatformFees,
@@ -365,10 +377,12 @@ export const BillingSummaryAdjustmentFees$inboundSchema: z.ZodType<
   BillingSummaryAdjustmentFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 /** @internal */
 export type BillingSummaryAdjustmentFees$Outbound = {
   currency: string;
@@ -380,10 +394,12 @@ export const BillingSummaryAdjustmentFees$outboundSchema: z.ZodType<
   BillingSummaryAdjustmentFees$Outbound,
   z.ZodTypeDef,
   BillingSummaryAdjustmentFees
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 
 export function billingSummaryAdjustmentFeesToJSON(
   billingSummaryAdjustmentFees: BillingSummaryAdjustmentFees,
@@ -409,10 +425,12 @@ export const OtherFees$inboundSchema: z.ZodType<
   OtherFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 /** @internal */
 export type OtherFees$Outbound = {
   currency: string;
@@ -424,10 +442,12 @@ export const OtherFees$outboundSchema: z.ZodType<
   OtherFees$Outbound,
   z.ZodTypeDef,
   OtherFees
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 
 export function otherFeesToJSON(otherFees: OtherFees): string {
   return JSON.stringify(OtherFees$outboundSchema.parse(otherFees));
@@ -447,25 +467,27 @@ export const BillingSummary$inboundSchema: z.ZodType<
   BillingSummary,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardAcquiring: z.lazy(() => CardAcquiring$inboundSchema).optional(),
-  ach: BillingSummaryDetails$inboundSchema.optional(),
-  instantPayments: BillingSummaryDetails$inboundSchema.optional(),
-  platformFees: z.lazy(() => BillingSummaryPlatformFees$inboundSchema)
-    .optional(),
-  accountFees: BillingSummaryDetails$inboundSchema.optional(),
-  adjustmentFees: z.lazy(() => BillingSummaryAdjustmentFees$inboundSchema)
-    .optional(),
-  otherFees: z.lazy(() => OtherFees$inboundSchema).optional(),
-  otherCardFees: BillingSummaryDetails$inboundSchema.optional(),
-  total: AmountDecimal$inboundSchema.optional(),
-  netIncomeSubtotal: BillingSummaryDetails$inboundSchema.optional(),
-  revenueShare: z.string().optional(),
-  residualSubtotal: AmountDecimal$inboundSchema.optional(),
-  monthlyPartnerCosts: PartnerFees$inboundSchema.optional(),
-  netPartnerPayment: AmountDecimal$inboundSchema.optional(),
-  totalNetPartnerPayment: AmountDecimal$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardAcquiring: z.lazy(() => CardAcquiring$inboundSchema).optional(),
+    ach: BillingSummaryDetails$inboundSchema.optional(),
+    instantPayments: BillingSummaryDetails$inboundSchema.optional(),
+    platformFees: z.lazy(() => BillingSummaryPlatformFees$inboundSchema)
+      .optional(),
+    accountFees: BillingSummaryDetails$inboundSchema.optional(),
+    adjustmentFees: z.lazy(() => BillingSummaryAdjustmentFees$inboundSchema)
+      .optional(),
+    otherFees: z.lazy(() => OtherFees$inboundSchema).optional(),
+    otherCardFees: BillingSummaryDetails$inboundSchema.optional(),
+    total: AmountDecimal$inboundSchema.optional(),
+    netIncomeSubtotal: BillingSummaryDetails$inboundSchema.optional(),
+    revenueShare: z.string().optional(),
+    residualSubtotal: AmountDecimal$inboundSchema.optional(),
+    monthlyPartnerCosts: PartnerFees$inboundSchema.optional(),
+    netPartnerPayment: AmountDecimal$inboundSchema.optional(),
+    totalNetPartnerPayment: AmountDecimal$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type BillingSummary$Outbound = {
   cardAcquiring?: CardAcquiring$Outbound | undefined;
@@ -490,25 +512,27 @@ export const BillingSummary$outboundSchema: z.ZodType<
   BillingSummary$Outbound,
   z.ZodTypeDef,
   BillingSummary
-> = z.object({
-  cardAcquiring: z.lazy(() => CardAcquiring$outboundSchema).optional(),
-  ach: BillingSummaryDetails$outboundSchema.optional(),
-  instantPayments: BillingSummaryDetails$outboundSchema.optional(),
-  platformFees: z.lazy(() => BillingSummaryPlatformFees$outboundSchema)
-    .optional(),
-  accountFees: BillingSummaryDetails$outboundSchema.optional(),
-  adjustmentFees: z.lazy(() => BillingSummaryAdjustmentFees$outboundSchema)
-    .optional(),
-  otherFees: z.lazy(() => OtherFees$outboundSchema).optional(),
-  otherCardFees: BillingSummaryDetails$outboundSchema.optional(),
-  total: AmountDecimal$outboundSchema.optional(),
-  netIncomeSubtotal: BillingSummaryDetails$outboundSchema.optional(),
-  revenueShare: z.string().optional(),
-  residualSubtotal: AmountDecimal$outboundSchema.optional(),
-  monthlyPartnerCosts: PartnerFees$outboundSchema.optional(),
-  netPartnerPayment: AmountDecimal$outboundSchema.optional(),
-  totalNetPartnerPayment: AmountDecimal$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardAcquiring: z.lazy(() => CardAcquiring$outboundSchema).optional(),
+    ach: BillingSummaryDetails$outboundSchema.optional(),
+    instantPayments: BillingSummaryDetails$outboundSchema.optional(),
+    platformFees: z.lazy(() => BillingSummaryPlatformFees$outboundSchema)
+      .optional(),
+    accountFees: BillingSummaryDetails$outboundSchema.optional(),
+    adjustmentFees: z.lazy(() => BillingSummaryAdjustmentFees$outboundSchema)
+      .optional(),
+    otherFees: z.lazy(() => OtherFees$outboundSchema).optional(),
+    otherCardFees: BillingSummaryDetails$outboundSchema.optional(),
+    total: AmountDecimal$outboundSchema.optional(),
+    netIncomeSubtotal: BillingSummaryDetails$outboundSchema.optional(),
+    revenueShare: z.string().optional(),
+    residualSubtotal: AmountDecimal$outboundSchema.optional(),
+    monthlyPartnerCosts: PartnerFees$outboundSchema.optional(),
+    netPartnerPayment: AmountDecimal$outboundSchema.optional(),
+    totalNetPartnerPayment: AmountDecimal$outboundSchema.optional(),
+  })
+);
 
 export function billingSummaryToJSON(billingSummary: BillingSummary): string {
   return JSON.stringify(BillingSummary$outboundSchema.parse(billingSummary));

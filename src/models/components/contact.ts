@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -19,9 +19,11 @@ export type Contact = {
 
 /** @internal */
 export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> =
-  z.object({
-    phone: PhoneNumber$inboundSchema.optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      phone: PhoneNumber$inboundSchema.optional(),
+    })
+  );
 /** @internal */
 export type Contact$Outbound = {
   phone?: PhoneNumber$Outbound | undefined;
@@ -32,9 +34,11 @@ export const Contact$outboundSchema: z.ZodType<
   Contact$Outbound,
   z.ZodTypeDef,
   Contact
-> = z.object({
-  phone: PhoneNumber$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phone: PhoneNumber$outboundSchema.optional(),
+  })
+);
 
 export function contactToJSON(contact: Contact): string {
   return JSON.stringify(Contact$outboundSchema.parse(contact));

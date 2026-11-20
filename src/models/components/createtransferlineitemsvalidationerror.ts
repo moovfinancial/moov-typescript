@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,10 +22,12 @@ export const CreateTransferLineItemsValidationError$inboundSchema: z.ZodType<
   CreateTransferLineItemsValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.record(CreateTransferLineItemValidationError$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.record(CreateTransferLineItemValidationError$inboundSchema)
+      .optional(),
+  })
+);
 /** @internal */
 export type CreateTransferLineItemsValidationError$Outbound = {
   items?:
@@ -38,10 +40,12 @@ export const CreateTransferLineItemsValidationError$outboundSchema: z.ZodType<
   CreateTransferLineItemsValidationError$Outbound,
   z.ZodTypeDef,
   CreateTransferLineItemsValidationError
-> = z.object({
-  items: z.record(CreateTransferLineItemValidationError$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.record(CreateTransferLineItemValidationError$outboundSchema)
+      .optional(),
+  })
+);
 
 export function createTransferLineItemsValidationErrorToJSON(
   createTransferLineItemsValidationError:

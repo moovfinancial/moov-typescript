@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,10 +30,12 @@ export const RequirementError$inboundSchema: z.ZodType<
   RequirementError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  requirement: RequirementID$inboundSchema,
-  errorCode: RequirementErrorCode$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requirement: RequirementID$inboundSchema,
+    errorCode: RequirementErrorCode$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type RequirementError$Outbound = {
   requirement: string;
@@ -45,10 +47,12 @@ export const RequirementError$outboundSchema: z.ZodType<
   RequirementError$Outbound,
   z.ZodTypeDef,
   RequirementError
-> = z.object({
-  requirement: RequirementID$outboundSchema,
-  errorCode: RequirementErrorCode$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requirement: RequirementID$outboundSchema,
+    errorCode: RequirementErrorCode$outboundSchema.optional(),
+  })
+);
 
 export function requirementErrorToJSON(
   requirementError: RequirementError,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,11 +23,13 @@ export type GovernmentID = {
 };
 
 /** @internal */
-export const Ssn$inboundSchema: z.ZodType<Ssn, z.ZodTypeDef, unknown> = z
-  .object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
-  });
+export const Ssn$inboundSchema: z.ZodType<Ssn, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      full: z.string().optional(),
+      lastFour: z.string().optional(),
+    })
+  );
 /** @internal */
 export type Ssn$Outbound = {
   full?: string | undefined;
@@ -35,11 +37,13 @@ export type Ssn$Outbound = {
 };
 
 /** @internal */
-export const Ssn$outboundSchema: z.ZodType<Ssn$Outbound, z.ZodTypeDef, Ssn> = z
-  .object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
-  });
+export const Ssn$outboundSchema: z.ZodType<Ssn$Outbound, z.ZodTypeDef, Ssn> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      full: z.string().optional(),
+      lastFour: z.string().optional(),
+    })
+  );
 
 export function ssnToJSON(ssn: Ssn): string {
   return JSON.stringify(Ssn$outboundSchema.parse(ssn));
@@ -55,11 +59,13 @@ export function ssnFromJSON(
 }
 
 /** @internal */
-export const Itin$inboundSchema: z.ZodType<Itin, z.ZodTypeDef, unknown> = z
-  .object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
-  });
+export const Itin$inboundSchema: z.ZodType<Itin, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      full: z.string().optional(),
+      lastFour: z.string().optional(),
+    })
+  );
 /** @internal */
 export type Itin$Outbound = {
   full?: string | undefined;
@@ -68,10 +74,12 @@ export type Itin$Outbound = {
 
 /** @internal */
 export const Itin$outboundSchema: z.ZodType<Itin$Outbound, z.ZodTypeDef, Itin> =
-  z.object({
-    full: z.string().optional(),
-    lastFour: z.string().optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      full: z.string().optional(),
+      lastFour: z.string().optional(),
+    })
+  );
 
 export function itinToJSON(itin: Itin): string {
   return JSON.stringify(Itin$outboundSchema.parse(itin));
@@ -91,10 +99,12 @@ export const GovernmentID$inboundSchema: z.ZodType<
   GovernmentID,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ssn: z.lazy(() => Ssn$inboundSchema).optional(),
-  itin: z.lazy(() => Itin$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ssn: z.lazy(() => Ssn$inboundSchema).optional(),
+    itin: z.lazy(() => Itin$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type GovernmentID$Outbound = {
   ssn?: Ssn$Outbound | undefined;
@@ -106,10 +116,12 @@ export const GovernmentID$outboundSchema: z.ZodType<
   GovernmentID$Outbound,
   z.ZodTypeDef,
   GovernmentID
-> = z.object({
-  ssn: z.lazy(() => Ssn$outboundSchema).optional(),
-  itin: z.lazy(() => Itin$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ssn: z.lazy(() => Ssn$outboundSchema).optional(),
+    itin: z.lazy(() => Itin$outboundSchema).optional(),
+  })
+);
 
 export function governmentIDToJSON(governmentID: GovernmentID): string {
   return JSON.stringify(GovernmentID$outboundSchema.parse(governmentID));
