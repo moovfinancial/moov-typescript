@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,12 +34,14 @@ export const PatchWallet$inboundSchema: z.ZodType<
   PatchWallet,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  status: WalletStatus$inboundSchema.optional(),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    status: WalletStatus$inboundSchema.optional(),
+    description: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+  })
+);
 /** @internal */
 export type PatchWallet$Outbound = {
   name?: string | undefined;
@@ -53,12 +55,14 @@ export const PatchWallet$outboundSchema: z.ZodType<
   PatchWallet$Outbound,
   z.ZodTypeDef,
   PatchWallet
-> = z.object({
-  name: z.string().optional(),
-  status: WalletStatus$outboundSchema.optional(),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    status: WalletStatus$outboundSchema.optional(),
+    description: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+  })
+);
 
 export function patchWalletToJSON(patchWallet: PatchWallet): string {
   return JSON.stringify(PatchWallet$outboundSchema.parse(patchWallet));

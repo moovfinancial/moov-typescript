@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -33,11 +33,13 @@ export const InstantBankCreditPaymentMethod$inboundSchema: z.ZodType<
   InstantBankCreditPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("instant-bank-credit"),
-  bankAccount: PaymentMethodsBankAccount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("instant-bank-credit"),
+    bankAccount: PaymentMethodsBankAccount$inboundSchema,
+  })
+);
 /** @internal */
 export type InstantBankCreditPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -50,11 +52,13 @@ export const InstantBankCreditPaymentMethod$outboundSchema: z.ZodType<
   InstantBankCreditPaymentMethod$Outbound,
   z.ZodTypeDef,
   InstantBankCreditPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("instant-bank-credit"),
-  bankAccount: PaymentMethodsBankAccount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("instant-bank-credit"),
+    bankAccount: PaymentMethodsBankAccount$outboundSchema,
+  })
+);
 
 export function instantBankCreditPaymentMethodToJSON(
   instantBankCreditPaymentMethod: InstantBankCreditPaymentMethod,

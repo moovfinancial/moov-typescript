@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -94,24 +94,28 @@ export const PartnerPricingAgreement$inboundSchema: z.ZodType<
   PartnerPricingAgreement,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agreementID: z.string(),
-  planID: z.string(),
-  accountID: z.string().optional(),
-  name: z.string(),
-  description: z.string().optional(),
-  acceptedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  status: FeePlanAgreementStatus$inboundSchema,
-  cardAcquiringModel: CardAcquiringModel$inboundSchema,
-  billableFees: z.array(BillableFee$inboundSchema),
-  minimumCommitment: MinimumCommitment$inboundSchema,
-  monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
-  priorAgreementID: z.string().optional(),
-  priorAgreementTerminatedOn: z.string().datetime({ offset: true }).transform(
-    v => new Date(v)
-  ).optional(),
-  revenueShare: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agreementID: z.string(),
+    planID: z.string(),
+    accountID: z.string().optional(),
+    name: z.string(),
+    description: z.string().optional(),
+    acceptedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    status: FeePlanAgreementStatus$inboundSchema,
+    cardAcquiringModel: CardAcquiringModel$inboundSchema,
+    billableFees: z.array(BillableFee$inboundSchema),
+    minimumCommitment: MinimumCommitment$inboundSchema,
+    monthlyPlatformFee: MonthlyPlatformFee$inboundSchema,
+    priorAgreementID: z.string().optional(),
+    priorAgreementTerminatedOn: z.string().datetime({ offset: true }).transform(
+      v => new Date(v)
+    ).optional(),
+    revenueShare: z.string(),
+  })
+);
 /** @internal */
 export type PartnerPricingAgreement$Outbound = {
   agreementID: string;
@@ -135,23 +139,25 @@ export const PartnerPricingAgreement$outboundSchema: z.ZodType<
   PartnerPricingAgreement$Outbound,
   z.ZodTypeDef,
   PartnerPricingAgreement
-> = z.object({
-  agreementID: z.string(),
-  planID: z.string(),
-  accountID: z.string().optional(),
-  name: z.string(),
-  description: z.string().optional(),
-  acceptedOn: z.date().transform(v => v.toISOString()),
-  status: FeePlanAgreementStatus$outboundSchema,
-  cardAcquiringModel: CardAcquiringModel$outboundSchema,
-  billableFees: z.array(BillableFee$outboundSchema),
-  minimumCommitment: MinimumCommitment$outboundSchema,
-  monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
-  priorAgreementID: z.string().optional(),
-  priorAgreementTerminatedOn: z.date().transform(v => v.toISOString())
-    .optional(),
-  revenueShare: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agreementID: z.string(),
+    planID: z.string(),
+    accountID: z.string().optional(),
+    name: z.string(),
+    description: z.string().optional(),
+    acceptedOn: z.date().transform(v => v.toISOString()),
+    status: FeePlanAgreementStatus$outboundSchema,
+    cardAcquiringModel: CardAcquiringModel$outboundSchema,
+    billableFees: z.array(BillableFee$outboundSchema),
+    minimumCommitment: MinimumCommitment$outboundSchema,
+    monthlyPlatformFee: MonthlyPlatformFee$outboundSchema,
+    priorAgreementID: z.string().optional(),
+    priorAgreementTerminatedOn: z.date().transform(v => v.toISOString())
+      .optional(),
+    revenueShare: z.string(),
+  })
+);
 
 export function partnerPricingAgreementToJSON(
   partnerPricingAgreement: PartnerPricingAgreement,

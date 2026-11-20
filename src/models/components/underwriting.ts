@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -97,22 +97,25 @@ export const Underwriting$inboundSchema: z.ZodType<
   Underwriting,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  averageTransactionSize: z.number().int().optional(),
-  maxTransactionSize: z.number().int().optional(),
-  averageMonthlyTransactionVolume: z.number().int().optional(),
-  status: UnderwritingStatus$inboundSchema.optional(),
-  volumeByCustomerType: VolumeByCustomerType$inboundSchema.optional(),
-  cardVolumeDistribution: CardVolumeDistribution$inboundSchema.optional(),
-  fulfillment: FulfillmentDetails$inboundSchema.optional(),
-  geographicReach: GeographicReach$inboundSchema.optional(),
-  businessPresence: BusinessPresence$inboundSchema.optional(),
-  pendingLitigation: PendingLitigation$inboundSchema.optional(),
-  volumeShareByCustomerType: VolumeShareByCustomerType$inboundSchema.optional(),
-  collectFunds: CollectFunds$inboundSchema.optional(),
-  moneyTransfer: MoneyTransfer$inboundSchema.optional(),
-  sendFunds: SendFunds$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    averageTransactionSize: z.number().int().optional(),
+    maxTransactionSize: z.number().int().optional(),
+    averageMonthlyTransactionVolume: z.number().int().optional(),
+    status: UnderwritingStatus$inboundSchema.optional(),
+    volumeByCustomerType: VolumeByCustomerType$inboundSchema.optional(),
+    cardVolumeDistribution: CardVolumeDistribution$inboundSchema.optional(),
+    fulfillment: FulfillmentDetails$inboundSchema.optional(),
+    geographicReach: GeographicReach$inboundSchema.optional(),
+    businessPresence: BusinessPresence$inboundSchema.optional(),
+    pendingLitigation: PendingLitigation$inboundSchema.optional(),
+    volumeShareByCustomerType: VolumeShareByCustomerType$inboundSchema
+      .optional(),
+    collectFunds: CollectFunds$inboundSchema.optional(),
+    moneyTransfer: MoneyTransfer$inboundSchema.optional(),
+    sendFunds: SendFunds$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type Underwriting$Outbound = {
   averageTransactionSize?: number | undefined;
@@ -136,23 +139,25 @@ export const Underwriting$outboundSchema: z.ZodType<
   Underwriting$Outbound,
   z.ZodTypeDef,
   Underwriting
-> = z.object({
-  averageTransactionSize: z.number().int().optional(),
-  maxTransactionSize: z.number().int().optional(),
-  averageMonthlyTransactionVolume: z.number().int().optional(),
-  status: UnderwritingStatus$outboundSchema.optional(),
-  volumeByCustomerType: VolumeByCustomerType$outboundSchema.optional(),
-  cardVolumeDistribution: CardVolumeDistribution$outboundSchema.optional(),
-  fulfillment: FulfillmentDetails$outboundSchema.optional(),
-  geographicReach: GeographicReach$outboundSchema.optional(),
-  businessPresence: BusinessPresence$outboundSchema.optional(),
-  pendingLitigation: PendingLitigation$outboundSchema.optional(),
-  volumeShareByCustomerType: VolumeShareByCustomerType$outboundSchema
-    .optional(),
-  collectFunds: CollectFunds$outboundSchema.optional(),
-  moneyTransfer: MoneyTransfer$outboundSchema.optional(),
-  sendFunds: SendFunds$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    averageTransactionSize: z.number().int().optional(),
+    maxTransactionSize: z.number().int().optional(),
+    averageMonthlyTransactionVolume: z.number().int().optional(),
+    status: UnderwritingStatus$outboundSchema.optional(),
+    volumeByCustomerType: VolumeByCustomerType$outboundSchema.optional(),
+    cardVolumeDistribution: CardVolumeDistribution$outboundSchema.optional(),
+    fulfillment: FulfillmentDetails$outboundSchema.optional(),
+    geographicReach: GeographicReach$outboundSchema.optional(),
+    businessPresence: BusinessPresence$outboundSchema.optional(),
+    pendingLitigation: PendingLitigation$outboundSchema.optional(),
+    volumeShareByCustomerType: VolumeShareByCustomerType$outboundSchema
+      .optional(),
+    collectFunds: CollectFunds$outboundSchema.optional(),
+    moneyTransfer: MoneyTransfer$outboundSchema.optional(),
+    sendFunds: SendFunds$outboundSchema.optional(),
+  })
+);
 
 export function underwritingToJSON(underwriting: Underwriting): string {
   return JSON.stringify(Underwriting$outboundSchema.parse(underwriting));

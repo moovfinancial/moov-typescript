@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,12 @@ export const VolumeByCustomerType$inboundSchema: z.ZodType<
   VolumeByCustomerType,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  businessToBusinessPercentage: z.number().int(),
-  consumerToBusinessPercentage: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    businessToBusinessPercentage: z.number().int(),
+    consumerToBusinessPercentage: z.number().int(),
+  })
+);
 /** @internal */
 export type VolumeByCustomerType$Outbound = {
   businessToBusinessPercentage: number;
@@ -32,10 +34,12 @@ export const VolumeByCustomerType$outboundSchema: z.ZodType<
   VolumeByCustomerType$Outbound,
   z.ZodTypeDef,
   VolumeByCustomerType
-> = z.object({
-  businessToBusinessPercentage: z.number().int(),
-  consumerToBusinessPercentage: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    businessToBusinessPercentage: z.number().int(),
+    consumerToBusinessPercentage: z.number().int(),
+  })
+);
 
 export function volumeByCustomerTypeToJSON(
   volumeByCustomerType: VolumeByCustomerType,

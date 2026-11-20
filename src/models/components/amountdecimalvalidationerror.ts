@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,12 @@ export const AmountDecimalValidationError$inboundSchema: z.ZodType<
   AmountDecimalValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string().optional(),
-  valueDecimal: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string().optional(),
+    valueDecimal: z.string().optional(),
+  })
+);
 /** @internal */
 export type AmountDecimalValidationError$Outbound = {
   currency?: string | undefined;
@@ -32,10 +34,12 @@ export const AmountDecimalValidationError$outboundSchema: z.ZodType<
   AmountDecimalValidationError$Outbound,
   z.ZodTypeDef,
   AmountDecimalValidationError
-> = z.object({
-  currency: z.string().optional(),
-  valueDecimal: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string().optional(),
+    valueDecimal: z.string().optional(),
+  })
+);
 
 export function amountDecimalValidationErrorToJSON(
   amountDecimalValidationError: AmountDecimalValidationError,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -38,12 +38,14 @@ export const ListInstitutionsRequest$inboundSchema: z.ZodType<
   ListInstitutionsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  routingNumber: z.string().optional(),
-  state: z.string().optional(),
-  limit: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    routingNumber: z.string().optional(),
+    state: z.string().optional(),
+    limit: z.number().int().optional(),
+  })
+);
 /** @internal */
 export type ListInstitutionsRequest$Outbound = {
   name?: string | undefined;
@@ -57,12 +59,14 @@ export const ListInstitutionsRequest$outboundSchema: z.ZodType<
   ListInstitutionsRequest$Outbound,
   z.ZodTypeDef,
   ListInstitutionsRequest
-> = z.object({
-  name: z.string().optional(),
-  routingNumber: z.string().optional(),
-  state: z.string().optional(),
-  limit: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    routingNumber: z.string().optional(),
+    state: z.string().optional(),
+    limit: z.number().int().optional(),
+  })
+);
 
 export function listInstitutionsRequestToJSON(
   listInstitutionsRequest: ListInstitutionsRequest,
@@ -86,15 +90,17 @@ export const ListInstitutionsResponse$inboundSchema: z.ZodType<
   ListInstitutionsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.FinancialInstitutions$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.FinancialInstitutions$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListInstitutionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -106,15 +112,17 @@ export const ListInstitutionsResponse$outboundSchema: z.ZodType<
   ListInstitutionsResponse$Outbound,
   z.ZodTypeDef,
   ListInstitutionsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.FinancialInstitutions$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.FinancialInstitutions$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listInstitutionsResponseToJSON(
   listInstitutionsResponse: ListInstitutionsResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -43,13 +43,15 @@ export const Occurrence$inboundSchema: z.ZodType<
   Occurrence,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceled: z.boolean().optional(),
-  occurrenceID: z.string().optional(),
-  runOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  runTransfer: CreateRunTransfer$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceled: z.boolean().optional(),
+    occurrenceID: z.string().optional(),
+    runOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    runTransfer: CreateRunTransfer$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type Occurrence$Outbound = {
   canceled?: boolean | undefined;
@@ -63,12 +65,14 @@ export const Occurrence$outboundSchema: z.ZodType<
   Occurrence$Outbound,
   z.ZodTypeDef,
   Occurrence
-> = z.object({
-  canceled: z.boolean().optional(),
-  occurrenceID: z.string().optional(),
-  runOn: z.date().transform(v => v.toISOString()).optional(),
-  runTransfer: CreateRunTransfer$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceled: z.boolean().optional(),
+    occurrenceID: z.string().optional(),
+    runOn: z.date().transform(v => v.toISOString()).optional(),
+    runTransfer: CreateRunTransfer$outboundSchema.optional(),
+  })
+);
 
 export function occurrenceToJSON(occurrence: Occurrence): string {
   return JSON.stringify(Occurrence$outboundSchema.parse(occurrence));

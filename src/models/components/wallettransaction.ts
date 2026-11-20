@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -92,29 +92,34 @@ export const WalletTransaction$inboundSchema: z.ZodType<
   WalletTransaction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  walletID: z.string(),
-  transactionID: z.string(),
-  transactionType: WalletTransactionType$inboundSchema,
-  sourceType: WalletTransactionSourceType$inboundSchema,
-  sourceID: z.string(),
-  status: WalletTransactionStatus$inboundSchema,
-  memo: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  currency: z.string(),
-  grossAmount: z.number().int(),
-  grossAmountDecimal: z.string(),
-  fee: z.number().int(),
-  feeIDs: z.array(z.string()).optional(),
-  feeDecimal: z.string(),
-  netAmount: z.number().int(),
-  netAmountDecimal: z.string(),
-  availableBalance: z.number().int().optional(),
-  availableBalanceDecimal: z.string().optional(),
-  sweepID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletID: z.string(),
+    transactionID: z.string(),
+    transactionType: WalletTransactionType$inboundSchema,
+    sourceType: WalletTransactionSourceType$inboundSchema,
+    sourceID: z.string(),
+    status: WalletTransactionStatus$inboundSchema,
+    memo: z.string(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    completedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    currency: z.string(),
+    grossAmount: z.number().int(),
+    grossAmountDecimal: z.string(),
+    fee: z.number().int(),
+    feeIDs: z.array(z.string()).optional(),
+    feeDecimal: z.string(),
+    netAmount: z.number().int(),
+    netAmountDecimal: z.string(),
+    availableBalance: z.number().int().optional(),
+    availableBalanceDecimal: z.string().optional(),
+    sweepID: z.string().optional(),
+  })
+);
 /** @internal */
 export type WalletTransaction$Outbound = {
   walletID: string;
@@ -144,28 +149,30 @@ export const WalletTransaction$outboundSchema: z.ZodType<
   WalletTransaction$Outbound,
   z.ZodTypeDef,
   WalletTransaction
-> = z.object({
-  walletID: z.string(),
-  transactionID: z.string(),
-  transactionType: WalletTransactionType$outboundSchema,
-  sourceType: WalletTransactionSourceType$outboundSchema,
-  sourceID: z.string(),
-  status: WalletTransactionStatus$outboundSchema,
-  memo: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  completedOn: z.date().transform(v => v.toISOString()).optional(),
-  currency: z.string(),
-  grossAmount: z.number().int(),
-  grossAmountDecimal: z.string(),
-  fee: z.number().int(),
-  feeIDs: z.array(z.string()).optional(),
-  feeDecimal: z.string(),
-  netAmount: z.number().int(),
-  netAmountDecimal: z.string(),
-  availableBalance: z.number().int().optional(),
-  availableBalanceDecimal: z.string().optional(),
-  sweepID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletID: z.string(),
+    transactionID: z.string(),
+    transactionType: WalletTransactionType$outboundSchema,
+    sourceType: WalletTransactionSourceType$outboundSchema,
+    sourceID: z.string(),
+    status: WalletTransactionStatus$outboundSchema,
+    memo: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    completedOn: z.date().transform(v => v.toISOString()).optional(),
+    currency: z.string(),
+    grossAmount: z.number().int(),
+    grossAmountDecimal: z.string(),
+    fee: z.number().int(),
+    feeIDs: z.array(z.string()).optional(),
+    feeDecimal: z.string(),
+    netAmount: z.number().int(),
+    netAmountDecimal: z.string(),
+    availableBalance: z.number().int().optional(),
+    availableBalanceDecimal: z.string().optional(),
+    sweepID: z.string().optional(),
+  })
+);
 
 export function walletTransactionToJSON(
   walletTransaction: WalletTransaction,

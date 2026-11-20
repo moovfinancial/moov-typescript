@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -44,14 +44,20 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   CardAcquiringRefund,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  refundID: z.string(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  status: RefundStatus$inboundSchema,
-  amount: Amount$inboundSchema,
-  cardDetails: RefundCardDetails$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refundID: z.string(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    status: RefundStatus$inboundSchema,
+    amount: Amount$inboundSchema,
+    cardDetails: RefundCardDetails$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CardAcquiringRefund$Outbound = {
   refundID: string;
@@ -67,14 +73,16 @@ export const CardAcquiringRefund$outboundSchema: z.ZodType<
   CardAcquiringRefund$Outbound,
   z.ZodTypeDef,
   CardAcquiringRefund
-> = z.object({
-  refundID: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  status: RefundStatus$outboundSchema,
-  amount: Amount$outboundSchema,
-  cardDetails: RefundCardDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refundID: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    status: RefundStatus$outboundSchema,
+    amount: Amount$outboundSchema,
+    cardDetails: RefundCardDetails$outboundSchema.optional(),
+  })
+);
 
 export function cardAcquiringRefundToJSON(
   cardAcquiringRefund: CardAcquiringRefund,

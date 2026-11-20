@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -64,22 +64,25 @@ export type Wallet = {
 };
 
 /** @internal */
-export const Wallet$inboundSchema: z.ZodType<Wallet, z.ZodTypeDef, unknown> = z
-  .object({
-    walletID: z.string(),
-    availableBalance: WalletAvailableBalance$inboundSchema,
-    partnerAccountID: z.string(),
-    name: z.string(),
-    status: WalletStatus$inboundSchema,
-    walletType: WalletType$inboundSchema,
-    description: z.string(),
-    metadata: z.record(z.string()).optional(),
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    closedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-  });
+export const Wallet$inboundSchema: z.ZodType<Wallet, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      walletID: z.string(),
+      availableBalance: WalletAvailableBalance$inboundSchema,
+      partnerAccountID: z.string(),
+      name: z.string(),
+      status: WalletStatus$inboundSchema,
+      walletType: WalletType$inboundSchema,
+      description: z.string(),
+      metadata: z.record(z.string()).optional(),
+      createdOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      closedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+    })
+  );
 /** @internal */
 export type Wallet$Outbound = {
   walletID: string;
@@ -99,18 +102,20 @@ export const Wallet$outboundSchema: z.ZodType<
   Wallet$Outbound,
   z.ZodTypeDef,
   Wallet
-> = z.object({
-  walletID: z.string(),
-  availableBalance: WalletAvailableBalance$outboundSchema,
-  partnerAccountID: z.string(),
-  name: z.string(),
-  status: WalletStatus$outboundSchema,
-  walletType: WalletType$outboundSchema,
-  description: z.string(),
-  metadata: z.record(z.string()).optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  closedOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletID: z.string(),
+    availableBalance: WalletAvailableBalance$outboundSchema,
+    partnerAccountID: z.string(),
+    name: z.string(),
+    status: WalletStatus$outboundSchema,
+    walletType: WalletType$outboundSchema,
+    description: z.string(),
+    metadata: z.record(z.string()).optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    closedOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function walletToJSON(wallet: Wallet): string {
   return JSON.stringify(Wallet$outboundSchema.parse(wallet));

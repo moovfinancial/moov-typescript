@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const GeographicReach = {
@@ -15,7 +16,7 @@ export type GeographicReach = ClosedEnum<typeof GeographicReach>;
 /** @internal */
 export const GeographicReach$inboundSchema: z.ZodNativeEnum<
   typeof GeographicReach
-> = z.nativeEnum(GeographicReach);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GeographicReach));
 /** @internal */
 export const GeographicReach$outboundSchema: z.ZodNativeEnum<
   typeof GeographicReach

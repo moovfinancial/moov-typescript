@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,11 +30,13 @@ export const CreateTransferDestinationACH$inboundSchema: z.ZodType<
   CreateTransferDestinationACH,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  companyEntryDescription: z.string().optional(),
-  originatingCompanyName: z.string().optional(),
-  addenda: z.array(CreateTransferACHAddendaRecord$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyEntryDescription: z.string().optional(),
+    originatingCompanyName: z.string().optional(),
+    addenda: z.array(CreateTransferACHAddendaRecord$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type CreateTransferDestinationACH$Outbound = {
   companyEntryDescription?: string | undefined;
@@ -47,11 +49,13 @@ export const CreateTransferDestinationACH$outboundSchema: z.ZodType<
   CreateTransferDestinationACH$Outbound,
   z.ZodTypeDef,
   CreateTransferDestinationACH
-> = z.object({
-  companyEntryDescription: z.string().optional(),
-  originatingCompanyName: z.string().optional(),
-  addenda: z.array(CreateTransferACHAddendaRecord$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyEntryDescription: z.string().optional(),
+    originatingCompanyName: z.string().optional(),
+    addenda: z.array(CreateTransferACHAddendaRecord$outboundSchema).optional(),
+  })
+);
 
 export function createTransferDestinationACHToJSON(
   createTransferDestinationACH: CreateTransferDestinationACH,

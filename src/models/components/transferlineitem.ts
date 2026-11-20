@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -60,14 +60,16 @@ export const TransferLineItem$inboundSchema: z.ZodType<
   TransferLineItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  basePrice: AmountDecimal$inboundSchema,
-  quantity: z.number().int(),
-  options: z.array(TransferLineItemOption$inboundSchema).optional(),
-  images: z.array(TransferLineItemImageMetadata$inboundSchema).optional(),
-  productID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    basePrice: AmountDecimal$inboundSchema,
+    quantity: z.number().int(),
+    options: z.array(TransferLineItemOption$inboundSchema).optional(),
+    images: z.array(TransferLineItemImageMetadata$inboundSchema).optional(),
+    productID: z.string().optional(),
+  })
+);
 /** @internal */
 export type TransferLineItem$Outbound = {
   name: string;
@@ -83,14 +85,16 @@ export const TransferLineItem$outboundSchema: z.ZodType<
   TransferLineItem$Outbound,
   z.ZodTypeDef,
   TransferLineItem
-> = z.object({
-  name: z.string(),
-  basePrice: AmountDecimal$outboundSchema,
-  quantity: z.number().int(),
-  options: z.array(TransferLineItemOption$outboundSchema).optional(),
-  images: z.array(TransferLineItemImageMetadata$outboundSchema).optional(),
-  productID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    basePrice: AmountDecimal$outboundSchema,
+    quantity: z.number().int(),
+    options: z.array(TransferLineItemOption$outboundSchema).optional(),
+    images: z.array(TransferLineItemImageMetadata$outboundSchema).optional(),
+    productID: z.string().optional(),
+  })
+);
 
 export function transferLineItemToJSON(
   transferLineItem: TransferLineItem,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const CollectFundsAch$inboundSchema: z.ZodType<
   CollectFundsAch,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  estimatedActivity: EstimatedActivity$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    estimatedActivity: EstimatedActivity$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CollectFundsAch$Outbound = {
   estimatedActivity?: EstimatedActivity$Outbound | undefined;
@@ -35,9 +37,11 @@ export const CollectFundsAch$outboundSchema: z.ZodType<
   CollectFundsAch$Outbound,
   z.ZodTypeDef,
   CollectFundsAch
-> = z.object({
-  estimatedActivity: EstimatedActivity$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    estimatedActivity: EstimatedActivity$outboundSchema.optional(),
+  })
+);
 
 export function collectFundsAchToJSON(
   collectFundsAch: CollectFundsAch,

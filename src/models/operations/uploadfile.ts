@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,15 +24,17 @@ export const UploadFileRequest$inboundSchema: z.ZodType<
   UploadFileRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  FileUploadRequestMultiPart:
-    components.FileUploadRequestMultiPart$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "FileUploadRequestMultiPart": "fileUploadRequestMultiPart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    FileUploadRequestMultiPart:
+      components.FileUploadRequestMultiPart$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "FileUploadRequestMultiPart": "fileUploadRequestMultiPart",
+    });
+  })
+);
 /** @internal */
 export type UploadFileRequest$Outbound = {
   accountID: string;
@@ -44,15 +46,17 @@ export const UploadFileRequest$outboundSchema: z.ZodType<
   UploadFileRequest$Outbound,
   z.ZodTypeDef,
   UploadFileRequest
-> = z.object({
-  accountID: z.string(),
-  fileUploadRequestMultiPart:
-    components.FileUploadRequestMultiPart$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    fileUploadRequestMultiPart: "FileUploadRequestMultiPart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    fileUploadRequestMultiPart:
+      components.FileUploadRequestMultiPart$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      fileUploadRequestMultiPart: "FileUploadRequestMultiPart",
+    });
+  })
+);
 
 export function uploadFileRequestToJSON(
   uploadFileRequest: UploadFileRequest,
@@ -76,15 +80,17 @@ export const UploadFileResponse$inboundSchema: z.ZodType<
   UploadFileResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.FileDetails$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.FileDetails$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UploadFileResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -96,15 +102,17 @@ export const UploadFileResponse$outboundSchema: z.ZodType<
   UploadFileResponse$Outbound,
   z.ZodTypeDef,
   UploadFileResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.FileDetails$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.FileDetails$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function uploadFileResponseToJSON(
   uploadFileResponse: UploadFileResponse,

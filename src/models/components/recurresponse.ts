@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,13 +34,15 @@ export const RecurResponse$inboundSchema: z.ZodType<
   RecurResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  recurrenceRule: z.string(),
-  runTransfer: RunTransfer$inboundSchema,
-  indefinite: z.boolean().optional(),
-  start: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    recurrenceRule: z.string(),
+    runTransfer: RunTransfer$inboundSchema,
+    indefinite: z.boolean().optional(),
+    start: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+  })
+);
 /** @internal */
 export type RecurResponse$Outbound = {
   recurrenceRule: string;
@@ -54,12 +56,14 @@ export const RecurResponse$outboundSchema: z.ZodType<
   RecurResponse$Outbound,
   z.ZodTypeDef,
   RecurResponse
-> = z.object({
-  recurrenceRule: z.string(),
-  runTransfer: RunTransfer$outboundSchema,
-  indefinite: z.boolean().optional(),
-  start: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    recurrenceRule: z.string(),
+    runTransfer: RunTransfer$outboundSchema,
+    indefinite: z.boolean().optional(),
+    start: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function recurResponseToJSON(recurResponse: RecurResponse): string {
   return JSON.stringify(RecurResponse$outboundSchema.parse(recurResponse));

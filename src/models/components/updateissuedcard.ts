@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -41,14 +41,16 @@ export const BillingAddress$inboundSchema: z.ZodType<
   BillingAddress,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  stateOrProvince: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLine1: z.string().optional(),
+    addressLine2: z.string().optional(),
+    city: z.string().optional(),
+    stateOrProvince: z.string().optional(),
+    postalCode: z.string().optional(),
+    country: z.string().optional(),
+  })
+);
 /** @internal */
 export type BillingAddress$Outbound = {
   addressLine1?: string | undefined;
@@ -64,14 +66,16 @@ export const BillingAddress$outboundSchema: z.ZodType<
   BillingAddress$Outbound,
   z.ZodTypeDef,
   BillingAddress
-> = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  stateOrProvince: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLine1: z.string().optional(),
+    addressLine2: z.string().optional(),
+    city: z.string().optional(),
+    stateOrProvince: z.string().optional(),
+    postalCode: z.string().optional(),
+    country: z.string().optional(),
+  })
+);
 
 export function billingAddressToJSON(billingAddress: BillingAddress): string {
   return JSON.stringify(BillingAddress$outboundSchema.parse(billingAddress));
@@ -91,13 +95,15 @@ export const UpdateIssuedCard$inboundSchema: z.ZodType<
   UpdateIssuedCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  state: UpdateIssuedCardState$inboundSchema.optional(),
-  nickname: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.record(z.string())).optional(),
-  billingAddress: z.nullable(z.lazy(() => BillingAddress$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    state: UpdateIssuedCardState$inboundSchema.optional(),
+    nickname: z.nullable(z.string()).optional(),
+    metadata: z.nullable(z.record(z.string())).optional(),
+    billingAddress: z.nullable(z.lazy(() => BillingAddress$inboundSchema))
+      .optional(),
+  })
+);
 /** @internal */
 export type UpdateIssuedCard$Outbound = {
   state?: string | undefined;
@@ -111,13 +117,15 @@ export const UpdateIssuedCard$outboundSchema: z.ZodType<
   UpdateIssuedCard$Outbound,
   z.ZodTypeDef,
   UpdateIssuedCard
-> = z.object({
-  state: UpdateIssuedCardState$outboundSchema.optional(),
-  nickname: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.record(z.string())).optional(),
-  billingAddress: z.nullable(z.lazy(() => BillingAddress$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    state: UpdateIssuedCardState$outboundSchema.optional(),
+    nickname: z.nullable(z.string()).optional(),
+    metadata: z.nullable(z.record(z.string())).optional(),
+    billingAddress: z.nullable(z.lazy(() => BillingAddress$outboundSchema))
+      .optional(),
+  })
+);
 
 export function updateIssuedCardToJSON(
   updateIssuedCard: UpdateIssuedCard,

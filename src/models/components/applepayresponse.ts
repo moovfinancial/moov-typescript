@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -71,15 +71,17 @@ export const ApplePayResponse$inboundSchema: z.ZodType<
   ApplePayResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  brand: CardBrand$inboundSchema,
-  cardType: CardType$inboundSchema,
-  cardDisplayName: z.string(),
-  fingerprint: z.string(),
-  expiration: CardExpiration$inboundSchema,
-  dynamicLastFour: z.string(),
-  issuerCountry: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    brand: CardBrand$inboundSchema,
+    cardType: CardType$inboundSchema,
+    cardDisplayName: z.string(),
+    fingerprint: z.string(),
+    expiration: CardExpiration$inboundSchema,
+    dynamicLastFour: z.string(),
+    issuerCountry: z.string().optional(),
+  })
+);
 /** @internal */
 export type ApplePayResponse$Outbound = {
   brand: string;
@@ -96,15 +98,17 @@ export const ApplePayResponse$outboundSchema: z.ZodType<
   ApplePayResponse$Outbound,
   z.ZodTypeDef,
   ApplePayResponse
-> = z.object({
-  brand: CardBrand$outboundSchema,
-  cardType: CardType$outboundSchema,
-  cardDisplayName: z.string(),
-  fingerprint: z.string(),
-  expiration: CardExpiration$outboundSchema,
-  dynamicLastFour: z.string(),
-  issuerCountry: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    brand: CardBrand$outboundSchema,
+    cardType: CardType$outboundSchema,
+    cardDisplayName: z.string(),
+    fingerprint: z.string(),
+    expiration: CardExpiration$outboundSchema,
+    dynamicLastFour: z.string(),
+    issuerCountry: z.string().optional(),
+  })
+);
 
 export function applePayResponseToJSON(
   applePayResponse: ApplePayResponse,

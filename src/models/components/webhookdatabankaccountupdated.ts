@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -42,13 +42,15 @@ export const WebhookDataBankAccountUpdated$inboundSchema: z.ZodType<
   WebhookDataBankAccountUpdated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bankAccountID: z.string(),
-  accountID: z.string(),
-  status: BankAccountStatus$inboundSchema,
-  statusReason: BankAccountStatusReason$inboundSchema,
-  exceptionDetails: BankAccountException$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bankAccountID: z.string(),
+    accountID: z.string(),
+    status: BankAccountStatus$inboundSchema,
+    statusReason: BankAccountStatusReason$inboundSchema,
+    exceptionDetails: BankAccountException$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type WebhookDataBankAccountUpdated$Outbound = {
   bankAccountID: string;
@@ -63,13 +65,15 @@ export const WebhookDataBankAccountUpdated$outboundSchema: z.ZodType<
   WebhookDataBankAccountUpdated$Outbound,
   z.ZodTypeDef,
   WebhookDataBankAccountUpdated
-> = z.object({
-  bankAccountID: z.string(),
-  accountID: z.string(),
-  status: BankAccountStatus$outboundSchema,
-  statusReason: BankAccountStatusReason$outboundSchema,
-  exceptionDetails: BankAccountException$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bankAccountID: z.string(),
+    accountID: z.string(),
+    status: BankAccountStatus$outboundSchema,
+    statusReason: BankAccountStatusReason$outboundSchema,
+    exceptionDetails: BankAccountException$outboundSchema.optional(),
+  })
+);
 
 export function webhookDataBankAccountUpdatedToJSON(
   webhookDataBankAccountUpdated: WebhookDataBankAccountUpdated,

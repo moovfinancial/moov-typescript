@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -68,25 +68,27 @@ export type Dispute = {
 
 /** @internal */
 export const Dispute$inboundSchema: z.ZodType<Dispute, z.ZodTypeDef, unknown> =
-  z.object({
-    disputeID: z.string(),
-    merchantAccountID: z.string(),
-    amount: Amount$inboundSchema,
-    networkReasonCode: z.string(),
-    networkReasonDescription: z.string().optional(),
-    transfer: DisputeTransferDetails$inboundSchema,
-    respondBy: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    status: DisputeStatus$inboundSchema,
-    phase: DisputePhase$inboundSchema,
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    submittedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      disputeID: z.string(),
+      merchantAccountID: z.string(),
+      amount: Amount$inboundSchema,
+      networkReasonCode: z.string(),
+      networkReasonDescription: z.string().optional(),
+      transfer: DisputeTransferDetails$inboundSchema,
+      respondBy: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      status: DisputeStatus$inboundSchema,
+      phase: DisputePhase$inboundSchema,
+      createdOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      submittedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+    })
+  );
 /** @internal */
 export type Dispute$Outbound = {
   disputeID: string;
@@ -107,19 +109,21 @@ export const Dispute$outboundSchema: z.ZodType<
   Dispute$Outbound,
   z.ZodTypeDef,
   Dispute
-> = z.object({
-  disputeID: z.string(),
-  merchantAccountID: z.string(),
-  amount: Amount$outboundSchema,
-  networkReasonCode: z.string(),
-  networkReasonDescription: z.string().optional(),
-  transfer: DisputeTransferDetails$outboundSchema,
-  respondBy: z.date().transform(v => v.toISOString()),
-  status: DisputeStatus$outboundSchema,
-  phase: DisputePhase$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-  submittedOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    disputeID: z.string(),
+    merchantAccountID: z.string(),
+    amount: Amount$outboundSchema,
+    networkReasonCode: z.string(),
+    networkReasonDescription: z.string().optional(),
+    transfer: DisputeTransferDetails$outboundSchema,
+    respondBy: z.date().transform(v => v.toISOString()),
+    status: DisputeStatus$outboundSchema,
+    phase: DisputePhase$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+    submittedOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function disputeToJSON(dispute: Dispute): string {
   return JSON.stringify(Dispute$outboundSchema.parse(dispute));

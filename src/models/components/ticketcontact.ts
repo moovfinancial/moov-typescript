@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,12 @@ export const TicketContact$inboundSchema: z.ZodType<
   TicketContact,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string(),
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    name: z.string().optional(),
+  })
+);
 /** @internal */
 export type TicketContact$Outbound = {
   email: string;
@@ -32,10 +34,12 @@ export const TicketContact$outboundSchema: z.ZodType<
   TicketContact$Outbound,
   z.ZodTypeDef,
   TicketContact
-> = z.object({
-  email: z.string(),
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    name: z.string().optional(),
+  })
+);
 
 export function ticketContactToJSON(ticketContact: TicketContact): string {
   return JSON.stringify(TicketContact$outboundSchema.parse(ticketContact));

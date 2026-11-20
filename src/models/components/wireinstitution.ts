@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,12 +34,14 @@ export const WireInstitution$inboundSchema: z.ZodType<
   WireInstitution,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  routingNumber: z.string(),
-  address: Address$inboundSchema.optional(),
-  services: WireServices$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    routingNumber: z.string(),
+    address: Address$inboundSchema.optional(),
+    services: WireServices$inboundSchema,
+  })
+);
 /** @internal */
 export type WireInstitution$Outbound = {
   name: string;
@@ -53,12 +55,14 @@ export const WireInstitution$outboundSchema: z.ZodType<
   WireInstitution$Outbound,
   z.ZodTypeDef,
   WireInstitution
-> = z.object({
-  name: z.string(),
-  routingNumber: z.string(),
-  address: Address$outboundSchema.optional(),
-  services: WireServices$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    routingNumber: z.string(),
+    address: Address$outboundSchema.optional(),
+    services: WireServices$outboundSchema,
+  })
+);
 
 export function wireInstitutionToJSON(
   wireInstitution: WireInstitution,

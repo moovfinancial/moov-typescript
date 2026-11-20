@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -23,11 +23,13 @@ export const WebhookDataInvoiceUpdated$inboundSchema: z.ZodType<
   WebhookDataInvoiceUpdated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  invoiceID: z.string(),
-  status: InvoiceStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    invoiceID: z.string(),
+    status: InvoiceStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataInvoiceUpdated$Outbound = {
   accountID: string;
@@ -40,11 +42,13 @@ export const WebhookDataInvoiceUpdated$outboundSchema: z.ZodType<
   WebhookDataInvoiceUpdated$Outbound,
   z.ZodTypeDef,
   WebhookDataInvoiceUpdated
-> = z.object({
-  accountID: z.string(),
-  invoiceID: z.string(),
-  status: InvoiceStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    invoiceID: z.string(),
+    status: InvoiceStatus$outboundSchema,
+  })
+);
 
 export function webhookDataInvoiceUpdatedToJSON(
   webhookDataInvoiceUpdated: WebhookDataInvoiceUpdated,

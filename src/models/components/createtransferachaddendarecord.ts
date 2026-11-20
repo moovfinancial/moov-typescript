@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type CreateTransferACHAddendaRecord = {
   /**
-   * The raw ACH addenda record. Must only contain valid NACHA characters
+   * The raw ACH addenda record. Must only contain valid NACHA characters. JSON is UTF-8. Moov originates each character as one byte in the Nacha file.
    */
   record: string;
 };
@@ -22,9 +22,11 @@ export const CreateTransferACHAddendaRecord$inboundSchema: z.ZodType<
   CreateTransferACHAddendaRecord,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  record: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    record: z.string(),
+  })
+);
 /** @internal */
 export type CreateTransferACHAddendaRecord$Outbound = {
   record: string;
@@ -35,9 +37,11 @@ export const CreateTransferACHAddendaRecord$outboundSchema: z.ZodType<
   CreateTransferACHAddendaRecord$Outbound,
   z.ZodTypeDef,
   CreateTransferACHAddendaRecord
-> = z.object({
-  record: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    record: z.string(),
+  })
+);
 
 export function createTransferACHAddendaRecordToJSON(
   createTransferACHAddendaRecord: CreateTransferACHAddendaRecord,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,12 @@ export const WebhookDataRepresentativeUpdated$inboundSchema: z.ZodType<
   WebhookDataRepresentativeUpdated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  representativeID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    representativeID: z.string(),
+  })
+);
 /** @internal */
 export type WebhookDataRepresentativeUpdated$Outbound = {
   accountID: string;
@@ -32,10 +34,12 @@ export const WebhookDataRepresentativeUpdated$outboundSchema: z.ZodType<
   WebhookDataRepresentativeUpdated$Outbound,
   z.ZodTypeDef,
   WebhookDataRepresentativeUpdated
-> = z.object({
-  accountID: z.string(),
-  representativeID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    representativeID: z.string(),
+  })
+);
 
 export function webhookDataRepresentativeUpdatedToJSON(
   webhookDataRepresentativeUpdated: WebhookDataRepresentativeUpdated,

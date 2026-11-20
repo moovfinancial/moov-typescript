@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -24,7 +25,9 @@ export type InstantBankTransactionStatus = ClosedEnum<
 /** @internal */
 export const InstantBankTransactionStatus$inboundSchema: z.ZodNativeEnum<
   typeof InstantBankTransactionStatus
-> = z.nativeEnum(InstantBankTransactionStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(InstantBankTransactionStatus)
+);
 /** @internal */
 export const InstantBankTransactionStatus$outboundSchema: z.ZodNativeEnum<
   typeof InstantBankTransactionStatus

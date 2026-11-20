@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,10 +28,12 @@ export const IssuingVelocityLimit$inboundSchema: z.ZodType<
   IssuingVelocityLimit,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: z.number().int(),
-  interval: IssuingIntervalLimit$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.number().int(),
+    interval: IssuingIntervalLimit$inboundSchema,
+  })
+);
 /** @internal */
 export type IssuingVelocityLimit$Outbound = {
   amount: number;
@@ -43,10 +45,12 @@ export const IssuingVelocityLimit$outboundSchema: z.ZodType<
   IssuingVelocityLimit$Outbound,
   z.ZodTypeDef,
   IssuingVelocityLimit
-> = z.object({
-  amount: z.number().int(),
-  interval: IssuingIntervalLimit$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.number().int(),
+    interval: IssuingIntervalLimit$outboundSchema,
+  })
+);
 
 export function issuingVelocityLimitToJSON(
   issuingVelocityLimit: IssuingVelocityLimit,

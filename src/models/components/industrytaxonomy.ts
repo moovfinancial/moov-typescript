@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -38,13 +38,15 @@ export const IndustryTaxonomy$inboundSchema: z.ZodType<
   IndustryTaxonomy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  industry: z.string(),
-  displayName: z.string(),
-  category: z.string(),
-  categoryDisplayName: z.string(),
-  defaultMcc: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    industry: z.string(),
+    displayName: z.string(),
+    category: z.string(),
+    categoryDisplayName: z.string(),
+    defaultMcc: z.string(),
+  })
+);
 /** @internal */
 export type IndustryTaxonomy$Outbound = {
   industry: string;
@@ -59,13 +61,15 @@ export const IndustryTaxonomy$outboundSchema: z.ZodType<
   IndustryTaxonomy$Outbound,
   z.ZodTypeDef,
   IndustryTaxonomy
-> = z.object({
-  industry: z.string(),
-  displayName: z.string(),
-  category: z.string(),
-  categoryDisplayName: z.string(),
-  defaultMcc: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    industry: z.string(),
+    displayName: z.string(),
+    category: z.string(),
+    categoryDisplayName: z.string(),
+    defaultMcc: z.string(),
+  })
+);
 
 export function industryTaxonomyToJSON(
   industryTaxonomy: IndustryTaxonomy,

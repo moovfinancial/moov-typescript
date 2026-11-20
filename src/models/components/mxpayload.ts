@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -43,9 +43,11 @@ export const MxPayload$inboundSchema: z.ZodType<
   MxPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mx: MXAuthorizationCode$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mx: MXAuthorizationCode$inboundSchema,
+  })
+);
 /** @internal */
 export type MxPayload$Outbound = {
   mx: MXAuthorizationCode$Outbound;
@@ -56,9 +58,11 @@ export const MxPayload$outboundSchema: z.ZodType<
   MxPayload$Outbound,
   z.ZodTypeDef,
   MxPayload
-> = z.object({
-  mx: MXAuthorizationCode$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mx: MXAuthorizationCode$outboundSchema,
+  })
+);
 
 export function mxPayloadToJSON(mxPayload: MxPayload): string {
   return JSON.stringify(MxPayload$outboundSchema.parse(mxPayload));

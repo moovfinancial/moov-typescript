@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -81,11 +81,13 @@ export type UpdateRepresentative = {
 };
 
 /** @internal */
-export const Phone$inboundSchema: z.ZodType<Phone, z.ZodTypeDef, unknown> = z
-  .object({
-    number: z.string().optional(),
-    countryCode: z.string().optional(),
-  });
+export const Phone$inboundSchema: z.ZodType<Phone, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      number: z.string().optional(),
+      countryCode: z.string().optional(),
+    })
+  );
 /** @internal */
 export type Phone$Outbound = {
   number?: string | undefined;
@@ -97,10 +99,12 @@ export const Phone$outboundSchema: z.ZodType<
   Phone$Outbound,
   z.ZodTypeDef,
   Phone
-> = z.object({
-  number: z.string().optional(),
-  countryCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    number: z.string().optional(),
+    countryCode: z.string().optional(),
+  })
+);
 
 export function phoneToJSON(phone: Phone): string {
   return JSON.stringify(Phone$outboundSchema.parse(phone));
@@ -120,14 +124,16 @@ export const UpdateRepresentativeAddress$inboundSchema: z.ZodType<
   UpdateRepresentativeAddress,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  stateOrProvince: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLine1: z.string().optional(),
+    addressLine2: z.string().optional(),
+    city: z.string().optional(),
+    stateOrProvince: z.string().optional(),
+    postalCode: z.string().optional(),
+    country: z.string().optional(),
+  })
+);
 /** @internal */
 export type UpdateRepresentativeAddress$Outbound = {
   addressLine1?: string | undefined;
@@ -143,14 +149,16 @@ export const UpdateRepresentativeAddress$outboundSchema: z.ZodType<
   UpdateRepresentativeAddress$Outbound,
   z.ZodTypeDef,
   UpdateRepresentativeAddress
-> = z.object({
-  addressLine1: z.string().optional(),
-  addressLine2: z.string().optional(),
-  city: z.string().optional(),
-  stateOrProvince: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLine1: z.string().optional(),
+    addressLine2: z.string().optional(),
+    city: z.string().optional(),
+    stateOrProvince: z.string().optional(),
+    postalCode: z.string().optional(),
+    country: z.string().optional(),
+  })
+);
 
 export function updateRepresentativeAddressToJSON(
   updateRepresentativeAddress: UpdateRepresentativeAddress,
@@ -176,11 +184,13 @@ export const UpdateRepresentativeBirthDate$inboundSchema: z.ZodType<
   UpdateRepresentativeBirthDate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+  })
+);
 /** @internal */
 export type UpdateRepresentativeBirthDate$Outbound = {
   day?: number | undefined;
@@ -193,11 +203,13 @@ export const UpdateRepresentativeBirthDate$outboundSchema: z.ZodType<
   UpdateRepresentativeBirthDate$Outbound,
   z.ZodTypeDef,
   UpdateRepresentativeBirthDate
-> = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+  })
+);
 
 export function updateRepresentativeBirthDateToJSON(
   updateRepresentativeBirthDate: UpdateRepresentativeBirthDate,
@@ -223,10 +235,12 @@ export const UpdateRepresentativeSsn$inboundSchema: z.ZodType<
   UpdateRepresentativeSsn,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 /** @internal */
 export type UpdateRepresentativeSsn$Outbound = {
   full?: string | undefined;
@@ -238,10 +252,12 @@ export const UpdateRepresentativeSsn$outboundSchema: z.ZodType<
   UpdateRepresentativeSsn$Outbound,
   z.ZodTypeDef,
   UpdateRepresentativeSsn
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 
 export function updateRepresentativeSsnToJSON(
   updateRepresentativeSsn: UpdateRepresentativeSsn,
@@ -265,10 +281,12 @@ export const UpdateRepresentativeItin$inboundSchema: z.ZodType<
   UpdateRepresentativeItin,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 /** @internal */
 export type UpdateRepresentativeItin$Outbound = {
   full?: string | undefined;
@@ -280,10 +298,12 @@ export const UpdateRepresentativeItin$outboundSchema: z.ZodType<
   UpdateRepresentativeItin$Outbound,
   z.ZodTypeDef,
   UpdateRepresentativeItin
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 
 export function updateRepresentativeItinToJSON(
   updateRepresentativeItin: UpdateRepresentativeItin,
@@ -307,10 +327,12 @@ export const UpdateRepresentativeGovernmentID$inboundSchema: z.ZodType<
   UpdateRepresentativeGovernmentID,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ssn: z.lazy(() => UpdateRepresentativeSsn$inboundSchema).optional(),
-  itin: z.lazy(() => UpdateRepresentativeItin$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ssn: z.lazy(() => UpdateRepresentativeSsn$inboundSchema).optional(),
+    itin: z.lazy(() => UpdateRepresentativeItin$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type UpdateRepresentativeGovernmentID$Outbound = {
   ssn?: UpdateRepresentativeSsn$Outbound | undefined;
@@ -322,10 +344,12 @@ export const UpdateRepresentativeGovernmentID$outboundSchema: z.ZodType<
   UpdateRepresentativeGovernmentID$Outbound,
   z.ZodTypeDef,
   UpdateRepresentativeGovernmentID
-> = z.object({
-  ssn: z.lazy(() => UpdateRepresentativeSsn$outboundSchema).optional(),
-  itin: z.lazy(() => UpdateRepresentativeItin$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ssn: z.lazy(() => UpdateRepresentativeSsn$outboundSchema).optional(),
+    itin: z.lazy(() => UpdateRepresentativeItin$outboundSchema).optional(),
+  })
+);
 
 export function updateRepresentativeGovernmentIDToJSON(
   updateRepresentativeGovernmentID: UpdateRepresentativeGovernmentID,
@@ -351,12 +375,14 @@ export const Responsibilities$inboundSchema: z.ZodType<
   Responsibilities,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  isController: z.boolean().optional(),
-  isOwner: z.boolean().optional(),
-  ownershipPercentage: z.number().int().optional(),
-  jobTitle: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isController: z.boolean().optional(),
+    isOwner: z.boolean().optional(),
+    ownershipPercentage: z.number().int().optional(),
+    jobTitle: z.string().optional(),
+  })
+);
 /** @internal */
 export type Responsibilities$Outbound = {
   isController?: boolean | undefined;
@@ -370,12 +396,14 @@ export const Responsibilities$outboundSchema: z.ZodType<
   Responsibilities$Outbound,
   z.ZodTypeDef,
   Responsibilities
-> = z.object({
-  isController: z.boolean().optional(),
-  isOwner: z.boolean().optional(),
-  ownershipPercentage: z.number().int().optional(),
-  jobTitle: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isController: z.boolean().optional(),
+    isOwner: z.boolean().optional(),
+    ownershipPercentage: z.number().int().optional(),
+    jobTitle: z.string().optional(),
+  })
+);
 
 export function responsibilitiesToJSON(
   responsibilities: Responsibilities,
@@ -399,21 +427,23 @@ export const UpdateRepresentative$inboundSchema: z.ZodType<
   UpdateRepresentative,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: IndividualNameUpdate$inboundSchema.optional(),
-  phone: z.nullable(z.lazy(() => Phone$inboundSchema)).optional(),
-  email: z.nullable(z.string()).optional(),
-  address: z.nullable(z.lazy(() => UpdateRepresentativeAddress$inboundSchema))
-    .optional(),
-  birthDate: z.nullable(
-    z.lazy(() => UpdateRepresentativeBirthDate$inboundSchema),
-  ).optional(),
-  governmentID: z.nullable(
-    z.lazy(() => UpdateRepresentativeGovernmentID$inboundSchema),
-  ).optional(),
-  responsibilities: z.nullable(z.lazy(() => Responsibilities$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualNameUpdate$inboundSchema.optional(),
+    phone: z.nullable(z.lazy(() => Phone$inboundSchema)).optional(),
+    email: z.nullable(z.string()).optional(),
+    address: z.nullable(z.lazy(() => UpdateRepresentativeAddress$inboundSchema))
+      .optional(),
+    birthDate: z.nullable(
+      z.lazy(() => UpdateRepresentativeBirthDate$inboundSchema),
+    ).optional(),
+    governmentID: z.nullable(
+      z.lazy(() => UpdateRepresentativeGovernmentID$inboundSchema),
+    ).optional(),
+    responsibilities: z.nullable(z.lazy(() => Responsibilities$inboundSchema))
+      .optional(),
+  })
+);
 /** @internal */
 export type UpdateRepresentative$Outbound = {
   name?: IndividualNameUpdate$Outbound | undefined;
@@ -430,21 +460,24 @@ export const UpdateRepresentative$outboundSchema: z.ZodType<
   UpdateRepresentative$Outbound,
   z.ZodTypeDef,
   UpdateRepresentative
-> = z.object({
-  name: IndividualNameUpdate$outboundSchema.optional(),
-  phone: z.nullable(z.lazy(() => Phone$outboundSchema)).optional(),
-  email: z.nullable(z.string()).optional(),
-  address: z.nullable(z.lazy(() => UpdateRepresentativeAddress$outboundSchema))
-    .optional(),
-  birthDate: z.nullable(
-    z.lazy(() => UpdateRepresentativeBirthDate$outboundSchema),
-  ).optional(),
-  governmentID: z.nullable(
-    z.lazy(() => UpdateRepresentativeGovernmentID$outboundSchema),
-  ).optional(),
-  responsibilities: z.nullable(z.lazy(() => Responsibilities$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualNameUpdate$outboundSchema.optional(),
+    phone: z.nullable(z.lazy(() => Phone$outboundSchema)).optional(),
+    email: z.nullable(z.string()).optional(),
+    address: z.nullable(
+      z.lazy(() => UpdateRepresentativeAddress$outboundSchema),
+    ).optional(),
+    birthDate: z.nullable(
+      z.lazy(() => UpdateRepresentativeBirthDate$outboundSchema),
+    ).optional(),
+    governmentID: z.nullable(
+      z.lazy(() => UpdateRepresentativeGovernmentID$outboundSchema),
+    ).optional(),
+    responsibilities: z.nullable(z.lazy(() => Responsibilities$outboundSchema))
+      .optional(),
+  })
+);
 
 export function updateRepresentativeToJSON(
   updateRepresentative: UpdateRepresentative,

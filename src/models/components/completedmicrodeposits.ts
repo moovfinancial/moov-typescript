@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -21,9 +21,11 @@ export const CompletedMicroDeposits$inboundSchema: z.ZodType<
   CompletedMicroDeposits,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: MicroDepositStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: MicroDepositStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type CompletedMicroDeposits$Outbound = {
   status: string;
@@ -34,9 +36,11 @@ export const CompletedMicroDeposits$outboundSchema: z.ZodType<
   CompletedMicroDeposits$Outbound,
   z.ZodTypeDef,
   CompletedMicroDeposits
-> = z.object({
-  status: MicroDepositStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: MicroDepositStatus$outboundSchema,
+  })
+);
 
 export function completedMicroDepositsToJSON(
   completedMicroDeposits: CompletedMicroDeposits,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -35,10 +35,12 @@ export const Settings$inboundSchema: z.ZodType<
   Settings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardPayment: CardPaymentSettings$inboundSchema.optional(),
-  achPayment: ACHPaymentSettings$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: CardPaymentSettings$inboundSchema.optional(),
+    achPayment: ACHPaymentSettings$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type Settings$Outbound = {
   cardPayment?: CardPaymentSettings$Outbound | undefined;
@@ -50,10 +52,12 @@ export const Settings$outboundSchema: z.ZodType<
   Settings$Outbound,
   z.ZodTypeDef,
   Settings
-> = z.object({
-  cardPayment: CardPaymentSettings$outboundSchema.optional(),
-  achPayment: ACHPaymentSettings$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: CardPaymentSettings$outboundSchema.optional(),
+    achPayment: ACHPaymentSettings$outboundSchema.optional(),
+  })
+);
 
 export function settingsToJSON(settings: Settings): string {
   return JSON.stringify(Settings$outboundSchema.parse(settings));

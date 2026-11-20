@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const PendingLitigation = {
@@ -23,7 +24,7 @@ export type PendingLitigation = ClosedEnum<typeof PendingLitigation>;
 /** @internal */
 export const PendingLitigation$inboundSchema: z.ZodNativeEnum<
   typeof PendingLitigation
-> = z.nativeEnum(PendingLitigation);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PendingLitigation));
 /** @internal */
 export const PendingLitigation$outboundSchema: z.ZodNativeEnum<
   typeof PendingLitigation

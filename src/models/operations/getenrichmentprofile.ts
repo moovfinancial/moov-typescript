@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,9 +23,11 @@ export const GetEnrichmentProfileRequest$inboundSchema: z.ZodType<
   GetEnrichmentProfileRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+  })
+);
 /** @internal */
 export type GetEnrichmentProfileRequest$Outbound = {
   email: string;
@@ -36,9 +38,11 @@ export const GetEnrichmentProfileRequest$outboundSchema: z.ZodType<
   GetEnrichmentProfileRequest$Outbound,
   z.ZodTypeDef,
   GetEnrichmentProfileRequest
-> = z.object({
-  email: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+  })
+);
 
 export function getEnrichmentProfileRequestToJSON(
   getEnrichmentProfileRequest: GetEnrichmentProfileRequest,
@@ -64,15 +68,17 @@ export const GetEnrichmentProfileResponse$inboundSchema: z.ZodType<
   GetEnrichmentProfileResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.EnrichedBusinessResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.EnrichedBusinessResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetEnrichmentProfileResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -84,15 +90,17 @@ export const GetEnrichmentProfileResponse$outboundSchema: z.ZodType<
   GetEnrichmentProfileResponse$Outbound,
   z.ZodTypeDef,
   GetEnrichmentProfileResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.EnrichedBusinessResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.EnrichedBusinessResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getEnrichmentProfileResponseToJSON(
   getEnrichmentProfileResponse: GetEnrichmentProfileResponse,

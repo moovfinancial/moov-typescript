@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -16,9 +16,11 @@ export const AssignProductImageValidationError$inboundSchema: z.ZodType<
   AssignProductImageValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  imageID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string().optional(),
+  })
+);
 /** @internal */
 export type AssignProductImageValidationError$Outbound = {
   imageID?: string | undefined;
@@ -29,9 +31,11 @@ export const AssignProductImageValidationError$outboundSchema: z.ZodType<
   AssignProductImageValidationError$Outbound,
   z.ZodTypeDef,
   AssignProductImageValidationError
-> = z.object({
-  imageID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string().optional(),
+  })
+);
 
 export function assignProductImageValidationErrorToJSON(
   assignProductImageValidationError: AssignProductImageValidationError,

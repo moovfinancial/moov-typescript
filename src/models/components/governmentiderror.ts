@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,10 +27,12 @@ export const GovernmentIDErrorSsn$inboundSchema: z.ZodType<
   GovernmentIDErrorSsn,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 /** @internal */
 export type GovernmentIDErrorSsn$Outbound = {
   full?: string | undefined;
@@ -42,10 +44,12 @@ export const GovernmentIDErrorSsn$outboundSchema: z.ZodType<
   GovernmentIDErrorSsn$Outbound,
   z.ZodTypeDef,
   GovernmentIDErrorSsn
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 
 export function governmentIDErrorSsnToJSON(
   governmentIDErrorSsn: GovernmentIDErrorSsn,
@@ -69,10 +73,12 @@ export const GovernmentIDErrorItin$inboundSchema: z.ZodType<
   GovernmentIDErrorItin,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 /** @internal */
 export type GovernmentIDErrorItin$Outbound = {
   full?: string | undefined;
@@ -84,10 +90,12 @@ export const GovernmentIDErrorItin$outboundSchema: z.ZodType<
   GovernmentIDErrorItin$Outbound,
   z.ZodTypeDef,
   GovernmentIDErrorItin
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 
 export function governmentIDErrorItinToJSON(
   governmentIDErrorItin: GovernmentIDErrorItin,
@@ -111,10 +119,12 @@ export const GovernmentIDError$inboundSchema: z.ZodType<
   GovernmentIDError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ssn: z.lazy(() => GovernmentIDErrorSsn$inboundSchema).optional(),
-  itin: z.lazy(() => GovernmentIDErrorItin$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ssn: z.lazy(() => GovernmentIDErrorSsn$inboundSchema).optional(),
+    itin: z.lazy(() => GovernmentIDErrorItin$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type GovernmentIDError$Outbound = {
   ssn?: GovernmentIDErrorSsn$Outbound | undefined;
@@ -126,10 +136,12 @@ export const GovernmentIDError$outboundSchema: z.ZodType<
   GovernmentIDError$Outbound,
   z.ZodTypeDef,
   GovernmentIDError
-> = z.object({
-  ssn: z.lazy(() => GovernmentIDErrorSsn$outboundSchema).optional(),
-  itin: z.lazy(() => GovernmentIDErrorItin$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ssn: z.lazy(() => GovernmentIDErrorSsn$outboundSchema).optional(),
+    itin: z.lazy(() => GovernmentIDErrorItin$outboundSchema).optional(),
+  })
+);
 
 export function governmentIDErrorToJSON(
   governmentIDError: GovernmentIDError,
