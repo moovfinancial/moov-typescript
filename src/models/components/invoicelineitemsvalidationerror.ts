@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const InvoiceLineItemsValidationError$inboundSchema: z.ZodType<
   InvoiceLineItemsValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.record(InvoiceLineItemValidationError$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.record(InvoiceLineItemValidationError$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type InvoiceLineItemsValidationError$Outbound = {
   items?: { [k: string]: InvoiceLineItemValidationError$Outbound } | undefined;
@@ -35,9 +37,11 @@ export const InvoiceLineItemsValidationError$outboundSchema: z.ZodType<
   InvoiceLineItemsValidationError$Outbound,
   z.ZodTypeDef,
   InvoiceLineItemsValidationError
-> = z.object({
-  items: z.record(InvoiceLineItemValidationError$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.record(InvoiceLineItemValidationError$outboundSchema).optional(),
+  })
+);
 
 export function invoiceLineItemsValidationErrorToJSON(
   invoiceLineItemsValidationError: InvoiceLineItemsValidationError,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const NotificationChannel = {
@@ -13,7 +14,7 @@ export type NotificationChannel = ClosedEnum<typeof NotificationChannel>;
 /** @internal */
 export const NotificationChannel$inboundSchema: z.ZodNativeEnum<
   typeof NotificationChannel
-> = z.nativeEnum(NotificationChannel);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NotificationChannel));
 /** @internal */
 export const NotificationChannel$outboundSchema: z.ZodNativeEnum<
   typeof NotificationChannel

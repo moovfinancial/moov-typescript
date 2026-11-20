@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { MoovError } from "./mooverror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -42,11 +42,13 @@ export class FileUploadValidationError extends MoovError {
 }
 
 /** @internal */
-export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
-  .object({
-    filename: z.string().optional(),
-    mimeType: z.string().optional(),
-  });
+export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      filename: z.string().optional(),
+      mimeType: z.string().optional(),
+    })
+  );
 /** @internal */
 export type FileT$Outbound = {
   filename?: string | undefined;
@@ -58,10 +60,12 @@ export const FileT$outboundSchema: z.ZodType<
   FileT$Outbound,
   z.ZodTypeDef,
   FileT
-> = z.object({
-  filename: z.string().optional(),
-  mimeType: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    filename: z.string().optional(),
+    mimeType: z.string().optional(),
+  })
+);
 
 export function fileToJSON(fileT: FileT): string {
   return JSON.stringify(FileT$outboundSchema.parse(fileT));
@@ -81,20 +85,22 @@ export const FileUploadValidationError$inboundSchema: z.ZodType<
   FileUploadValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  evidenceType: z.string().optional(),
-  file: z.lazy(() => FileT$inboundSchema).optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new FileUploadValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evidenceType: z.string().optional(),
+    file: z.lazy(() => FileT$inboundSchema).optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new FileUploadValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type FileUploadValidationError$Outbound = {
@@ -107,9 +113,11 @@ export const FileUploadValidationError$outboundSchema: z.ZodType<
   FileUploadValidationError$Outbound,
   z.ZodTypeDef,
   FileUploadValidationError
-> = z.instanceof(FileUploadValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    evidenceType: z.string().optional(),
-    file: z.lazy(() => FileT$outboundSchema).optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(FileUploadValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      evidenceType: z.string().optional(),
+      file: z.lazy(() => FileT$outboundSchema).optional(),
+    }))
+);

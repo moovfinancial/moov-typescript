@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,13 +32,15 @@ export const CreateTransferDestinationCard$inboundSchema: z.ZodType<
   CreateTransferDestinationCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dynamicDescriptor: z.string().optional(),
-  scheduledDeliveryOn: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  payoutType: CardPayoutType$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: z.string().optional(),
+    scheduledDeliveryOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    payoutType: CardPayoutType$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CreateTransferDestinationCard$Outbound = {
   dynamicDescriptor?: string | undefined;
@@ -51,11 +53,13 @@ export const CreateTransferDestinationCard$outboundSchema: z.ZodType<
   CreateTransferDestinationCard$Outbound,
   z.ZodTypeDef,
   CreateTransferDestinationCard
-> = z.object({
-  dynamicDescriptor: z.string().optional(),
-  scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
-  payoutType: CardPayoutType$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: z.string().optional(),
+    scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
+    payoutType: CardPayoutType$outboundSchema.optional(),
+  })
+);
 
 export function createTransferDestinationCardToJSON(
   createTransferDestinationCard: CreateTransferDestinationCard,

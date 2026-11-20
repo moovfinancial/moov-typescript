@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,14 +27,16 @@ export const LinkGooglePayTokenRequest$inboundSchema: z.ZodType<
   LinkGooglePayTokenRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  LinkGooglePay: components.LinkGooglePay$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "LinkGooglePay": "linkGooglePay",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    LinkGooglePay: components.LinkGooglePay$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "LinkGooglePay": "linkGooglePay",
+    });
+  })
+);
 /** @internal */
 export type LinkGooglePayTokenRequest$Outbound = {
   accountID: string;
@@ -46,14 +48,16 @@ export const LinkGooglePayTokenRequest$outboundSchema: z.ZodType<
   LinkGooglePayTokenRequest$Outbound,
   z.ZodTypeDef,
   LinkGooglePayTokenRequest
-> = z.object({
-  accountID: z.string(),
-  linkGooglePay: components.LinkGooglePay$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    linkGooglePay: "LinkGooglePay",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    linkGooglePay: components.LinkGooglePay$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      linkGooglePay: "LinkGooglePay",
+    });
+  })
+);
 
 export function linkGooglePayTokenRequestToJSON(
   linkGooglePayTokenRequest: LinkGooglePayTokenRequest,
@@ -77,15 +81,17 @@ export const LinkGooglePayTokenResponse$inboundSchema: z.ZodType<
   LinkGooglePayTokenResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.LinkedGooglePayPaymentMethod$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.LinkedGooglePayPaymentMethod$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type LinkGooglePayTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -97,15 +103,17 @@ export const LinkGooglePayTokenResponse$outboundSchema: z.ZodType<
   LinkGooglePayTokenResponse$Outbound,
   z.ZodTypeDef,
   LinkGooglePayTokenResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.LinkedGooglePayPaymentMethod$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.LinkedGooglePayPaymentMethod$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function linkGooglePayTokenResponseToJSON(
   linkGooglePayTokenResponse: LinkGooglePayTokenResponse,

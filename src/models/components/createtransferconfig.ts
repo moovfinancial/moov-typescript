@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const CreateTransferConfig$inboundSchema: z.ZodType<
   CreateTransferConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tipPresets: CreateTipPresets$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tipPresets: CreateTipPresets$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CreateTransferConfig$Outbound = {
   tipPresets?: CreateTipPresets$Outbound | undefined;
@@ -35,9 +37,11 @@ export const CreateTransferConfig$outboundSchema: z.ZodType<
   CreateTransferConfig$Outbound,
   z.ZodTypeDef,
   CreateTransferConfig
-> = z.object({
-  tipPresets: CreateTipPresets$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tipPresets: CreateTipPresets$outboundSchema.optional(),
+  })
+);
 
 export function createTransferConfigToJSON(
   createTransferConfig: CreateTransferConfig,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -42,7 +42,9 @@ export type GooglePayTokenizationData = {
 /** @internal */
 export const GooglePayTokenizationDataType$inboundSchema: z.ZodNativeEnum<
   typeof GooglePayTokenizationDataType
-> = z.nativeEnum(GooglePayTokenizationDataType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GooglePayTokenizationDataType)
+);
 /** @internal */
 export const GooglePayTokenizationDataType$outboundSchema: z.ZodNativeEnum<
   typeof GooglePayTokenizationDataType
@@ -53,10 +55,12 @@ export const GooglePayTokenizationData$inboundSchema: z.ZodType<
   GooglePayTokenizationData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: GooglePayTokenizationDataType$inboundSchema,
-  token: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: GooglePayTokenizationDataType$inboundSchema,
+    token: z.string(),
+  })
+);
 /** @internal */
 export type GooglePayTokenizationData$Outbound = {
   type: string;
@@ -68,10 +72,12 @@ export const GooglePayTokenizationData$outboundSchema: z.ZodType<
   GooglePayTokenizationData$Outbound,
   z.ZodTypeDef,
   GooglePayTokenizationData
-> = z.object({
-  type: GooglePayTokenizationDataType$outboundSchema,
-  token: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: GooglePayTokenizationDataType$outboundSchema,
+    token: z.string(),
+  })
+);
 
 export function googlePayTokenizationDataToJSON(
   googlePayTokenizationData: GooglePayTokenizationData,

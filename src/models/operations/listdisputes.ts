@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -65,28 +65,31 @@ export const ListDisputesRequest$inboundSchema: z.ZodType<
   ListDisputesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  startDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  endDateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  respondStartDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  respondEndDateTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  status: components.DisputeStatus$inboundSchema.optional(),
-  merchantAccountID: z.string().optional(),
-  cardholderAccountID: z.string().optional(),
-  disputeIDs: z.array(z.string()).optional(),
-  transferIDs: z.array(z.string()).optional(),
-  orderBy: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    startDateTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    endDateTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    respondStartDateTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    respondEndDateTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    status: components.DisputeStatus$inboundSchema.optional(),
+    merchantAccountID: z.string().optional(),
+    cardholderAccountID: z.string().optional(),
+    disputeIDs: z.array(z.string()).optional(),
+    transferIDs: z.array(z.string()).optional(),
+    orderBy: z.string().optional(),
+  })
+);
 /** @internal */
 export type ListDisputesRequest$Outbound = {
   accountID: string;
@@ -109,21 +112,23 @@ export const ListDisputesRequest$outboundSchema: z.ZodType<
   ListDisputesRequest$Outbound,
   z.ZodTypeDef,
   ListDisputesRequest
-> = z.object({
-  accountID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  startDateTime: z.date().transform(v => v.toISOString()).optional(),
-  endDateTime: z.date().transform(v => v.toISOString()).optional(),
-  respondStartDateTime: z.date().transform(v => v.toISOString()).optional(),
-  respondEndDateTime: z.date().transform(v => v.toISOString()).optional(),
-  status: components.DisputeStatus$outboundSchema.optional(),
-  merchantAccountID: z.string().optional(),
-  cardholderAccountID: z.string().optional(),
-  disputeIDs: z.array(z.string()).optional(),
-  transferIDs: z.array(z.string()).optional(),
-  orderBy: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    startDateTime: z.date().transform(v => v.toISOString()).optional(),
+    endDateTime: z.date().transform(v => v.toISOString()).optional(),
+    respondStartDateTime: z.date().transform(v => v.toISOString()).optional(),
+    respondEndDateTime: z.date().transform(v => v.toISOString()).optional(),
+    status: components.DisputeStatus$outboundSchema.optional(),
+    merchantAccountID: z.string().optional(),
+    cardholderAccountID: z.string().optional(),
+    disputeIDs: z.array(z.string()).optional(),
+    transferIDs: z.array(z.string()).optional(),
+    orderBy: z.string().optional(),
+  })
+);
 
 export function listDisputesRequestToJSON(
   listDisputesRequest: ListDisputesRequest,
@@ -147,15 +152,17 @@ export const ListDisputesResponse$inboundSchema: z.ZodType<
   ListDisputesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Dispute$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Dispute$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListDisputesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -167,15 +174,17 @@ export const ListDisputesResponse$outboundSchema: z.ZodType<
   ListDisputesResponse$Outbound,
   z.ZodTypeDef,
   ListDisputesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Dispute$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Dispute$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listDisputesResponseToJSON(
   listDisputesResponse: ListDisputesResponse,

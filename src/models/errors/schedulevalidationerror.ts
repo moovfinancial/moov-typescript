@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type ScheduleValidationErrorData = {
@@ -41,21 +42,23 @@ export const ScheduleValidationError$inboundSchema: z.ZodType<
   ScheduleValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  occurrences: z.record(z.string()).optional(),
-  recur: z.string().optional(),
-  description: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ScheduleValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    occurrences: z.record(z.string()).optional(),
+    recur: z.string().optional(),
+    description: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ScheduleValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ScheduleValidationError$Outbound = {
@@ -69,10 +72,12 @@ export const ScheduleValidationError$outboundSchema: z.ZodType<
   ScheduleValidationError$Outbound,
   z.ZodTypeDef,
   ScheduleValidationError
-> = z.instanceof(ScheduleValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    occurrences: z.record(z.string()).optional(),
-    recur: z.string().optional(),
-    description: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ScheduleValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      occurrences: z.record(z.string()).optional(),
+      recur: z.string().optional(),
+      description: z.string().optional(),
+    }))
+);

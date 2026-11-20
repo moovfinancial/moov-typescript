@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,9 +25,11 @@ export const CreateTransferAmountDetails$inboundSchema: z.ZodType<
   CreateTransferAmountDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tip: AmountDecimal$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tip: AmountDecimal$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CreateTransferAmountDetails$Outbound = {
   tip?: AmountDecimal$Outbound | undefined;
@@ -38,9 +40,11 @@ export const CreateTransferAmountDetails$outboundSchema: z.ZodType<
   CreateTransferAmountDetails$Outbound,
   z.ZodTypeDef,
   CreateTransferAmountDetails
-> = z.object({
-  tip: AmountDecimal$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tip: AmountDecimal$outboundSchema.optional(),
+  })
+);
 
 export function createTransferAmountDetailsToJSON(
   createTransferAmountDetails: CreateTransferAmountDetails,

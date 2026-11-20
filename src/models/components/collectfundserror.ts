@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -29,10 +29,12 @@ export const CollectFundsError$inboundSchema: z.ZodType<
   CollectFundsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ach: CollectFundsAchError$inboundSchema.optional(),
-  cardPayments: CollectFundsCardPaymentsError$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: CollectFundsAchError$inboundSchema.optional(),
+    cardPayments: CollectFundsCardPaymentsError$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CollectFundsError$Outbound = {
   ach?: CollectFundsAchError$Outbound | undefined;
@@ -44,10 +46,12 @@ export const CollectFundsError$outboundSchema: z.ZodType<
   CollectFundsError$Outbound,
   z.ZodTypeDef,
   CollectFundsError
-> = z.object({
-  ach: CollectFundsAchError$outboundSchema.optional(),
-  cardPayments: CollectFundsCardPaymentsError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: CollectFundsAchError$outboundSchema.optional(),
+    cardPayments: CollectFundsCardPaymentsError$outboundSchema.optional(),
+  })
+);
 
 export function collectFundsErrorToJSON(
   collectFundsError: CollectFundsError,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -43,12 +43,14 @@ export const InstitutionsSearchResponse$inboundSchema: z.ZodType<
   InstitutionsSearchResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ach: z.nullable(z.array(ACHInstitution$inboundSchema)),
-  rtp: z.nullable(z.array(RTPInstitution$inboundSchema)),
-  wire: z.nullable(z.array(WireInstitution$inboundSchema)),
-  fednow: z.nullable(z.array(FedNowInstitution$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: z.nullable(z.array(ACHInstitution$inboundSchema)),
+    rtp: z.nullable(z.array(RTPInstitution$inboundSchema)),
+    wire: z.nullable(z.array(WireInstitution$inboundSchema)),
+    fednow: z.nullable(z.array(FedNowInstitution$inboundSchema)),
+  })
+);
 /** @internal */
 export type InstitutionsSearchResponse$Outbound = {
   ach: Array<ACHInstitution$Outbound> | null;
@@ -62,12 +64,14 @@ export const InstitutionsSearchResponse$outboundSchema: z.ZodType<
   InstitutionsSearchResponse$Outbound,
   z.ZodTypeDef,
   InstitutionsSearchResponse
-> = z.object({
-  ach: z.nullable(z.array(ACHInstitution$outboundSchema)),
-  rtp: z.nullable(z.array(RTPInstitution$outboundSchema)),
-  wire: z.nullable(z.array(WireInstitution$outboundSchema)),
-  fednow: z.nullable(z.array(FedNowInstitution$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: z.nullable(z.array(ACHInstitution$outboundSchema)),
+    rtp: z.nullable(z.array(RTPInstitution$outboundSchema)),
+    wire: z.nullable(z.array(WireInstitution$outboundSchema)),
+    fednow: z.nullable(z.array(FedNowInstitution$outboundSchema)),
+  })
+);
 
 export function institutionsSearchResponseToJSON(
   institutionsSearchResponse: InstitutionsSearchResponse,

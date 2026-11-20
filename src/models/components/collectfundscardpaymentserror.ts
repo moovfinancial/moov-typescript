@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,13 +38,15 @@ export const CollectFundsCardPaymentsError$inboundSchema: z.ZodType<
   CollectFundsCardPaymentsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardAcceptanceMethods: CardAcceptanceMethodsError$inboundSchema.optional(),
-  currentlyAcceptsCards: z.string().optional(),
-  estimatedActivity: EstimatedActivityError$inboundSchema.optional(),
-  fulfillment: FulfillmentError$inboundSchema.optional(),
-  refundPolicy: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardAcceptanceMethods: CardAcceptanceMethodsError$inboundSchema.optional(),
+    currentlyAcceptsCards: z.string().optional(),
+    estimatedActivity: EstimatedActivityError$inboundSchema.optional(),
+    fulfillment: FulfillmentError$inboundSchema.optional(),
+    refundPolicy: z.string().optional(),
+  })
+);
 /** @internal */
 export type CollectFundsCardPaymentsError$Outbound = {
   cardAcceptanceMethods?: CardAcceptanceMethodsError$Outbound | undefined;
@@ -59,13 +61,15 @@ export const CollectFundsCardPaymentsError$outboundSchema: z.ZodType<
   CollectFundsCardPaymentsError$Outbound,
   z.ZodTypeDef,
   CollectFundsCardPaymentsError
-> = z.object({
-  cardAcceptanceMethods: CardAcceptanceMethodsError$outboundSchema.optional(),
-  currentlyAcceptsCards: z.string().optional(),
-  estimatedActivity: EstimatedActivityError$outboundSchema.optional(),
-  fulfillment: FulfillmentError$outboundSchema.optional(),
-  refundPolicy: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardAcceptanceMethods: CardAcceptanceMethodsError$outboundSchema.optional(),
+    currentlyAcceptsCards: z.string().optional(),
+    estimatedActivity: EstimatedActivityError$outboundSchema.optional(),
+    fulfillment: FulfillmentError$outboundSchema.optional(),
+    refundPolicy: z.string().optional(),
+  })
+);
 
 export function collectFundsCardPaymentsErrorToJSON(
   collectFundsCardPaymentsError: CollectFundsCardPaymentsError,

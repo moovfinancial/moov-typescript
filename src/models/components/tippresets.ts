@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -45,11 +45,13 @@ export const TipPresets$inboundSchema: z.ZodType<
   TipPresets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  calculationBasis: TipCalculationBasis$inboundSchema.optional(),
-  percentageOptions: z.array(z.number().int()).optional(),
-  fixedAmountOptions: z.array(AmountDecimal$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    calculationBasis: TipCalculationBasis$inboundSchema.optional(),
+    percentageOptions: z.array(z.number().int()).optional(),
+    fixedAmountOptions: z.array(AmountDecimal$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type TipPresets$Outbound = {
   calculationBasis?: string | undefined;
@@ -62,11 +64,13 @@ export const TipPresets$outboundSchema: z.ZodType<
   TipPresets$Outbound,
   z.ZodTypeDef,
   TipPresets
-> = z.object({
-  calculationBasis: TipCalculationBasis$outboundSchema.optional(),
-  percentageOptions: z.array(z.number().int()).optional(),
-  fixedAmountOptions: z.array(AmountDecimal$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    calculationBasis: TipCalculationBasis$outboundSchema.optional(),
+    percentageOptions: z.array(z.number().int()).optional(),
+    fixedAmountOptions: z.array(AmountDecimal$outboundSchema).optional(),
+  })
+);
 
 export function tipPresetsToJSON(tipPresets: TipPresets): string {
   return JSON.stringify(TipPresets$outboundSchema.parse(tipPresets));

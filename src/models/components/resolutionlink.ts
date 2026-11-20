@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -63,19 +63,28 @@ export const ResolutionLink$inboundSchema: z.ZodType<
   ResolutionLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: z.string(),
-  accountID: z.string(),
-  partnerAccountID: z.string(),
-  recipient: z.string(),
-  url: z.string(),
-  status: ResolutionLinkStatus$inboundSchema,
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  disabledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  expiresOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string(),
+    accountID: z.string(),
+    partnerAccountID: z.string(),
+    recipient: z.string(),
+    url: z.string(),
+    status: ResolutionLinkStatus$inboundSchema,
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    disabledOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    expiresOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 /** @internal */
 export type ResolutionLink$Outbound = {
   code: string;
@@ -95,18 +104,20 @@ export const ResolutionLink$outboundSchema: z.ZodType<
   ResolutionLink$Outbound,
   z.ZodTypeDef,
   ResolutionLink
-> = z.object({
-  code: z.string(),
-  accountID: z.string(),
-  partnerAccountID: z.string(),
-  recipient: z.string(),
-  url: z.string(),
-  status: ResolutionLinkStatus$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-  expiresOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string(),
+    accountID: z.string(),
+    partnerAccountID: z.string(),
+    recipient: z.string(),
+    url: z.string(),
+    status: ResolutionLinkStatus$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+    expiresOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function resolutionLinkToJSON(resolutionLink: ResolutionLink): string {
   return JSON.stringify(ResolutionLink$outboundSchema.parse(resolutionLink));

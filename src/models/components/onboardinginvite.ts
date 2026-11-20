@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -90,24 +90,29 @@ export const OnboardingInvite$inboundSchema: z.ZodType<
   OnboardingInvite,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: z.string(),
-  link: z.string(),
-  returnURL: z.string().optional(),
-  termsOfServiceURL: z.string().optional(),
-  scopes: z.array(ApplicationScope$inboundSchema),
-  grantScopes: z.array(ApplicationScope$inboundSchema).optional(),
-  capabilities: z.array(CapabilityID$inboundSchema),
-  feePlanCodes: z.array(z.string()),
-  redeemedAccountID: z.string().optional(),
-  prefill: CreateAccount$inboundSchema.optional(),
-  partner: OnboardingPartnerAccount$inboundSchema.optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  revokedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  redeemedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string(),
+    link: z.string(),
+    returnURL: z.string().optional(),
+    termsOfServiceURL: z.string().optional(),
+    scopes: z.array(ApplicationScope$inboundSchema),
+    grantScopes: z.array(ApplicationScope$inboundSchema).optional(),
+    capabilities: z.array(CapabilityID$inboundSchema),
+    feePlanCodes: z.array(z.string()),
+    redeemedAccountID: z.string().optional(),
+    prefill: CreateAccount$inboundSchema.optional(),
+    partner: OnboardingPartnerAccount$inboundSchema.optional(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    revokedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    redeemedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type OnboardingInvite$Outbound = {
   code: string;
@@ -131,22 +136,24 @@ export const OnboardingInvite$outboundSchema: z.ZodType<
   OnboardingInvite$Outbound,
   z.ZodTypeDef,
   OnboardingInvite
-> = z.object({
-  code: z.string(),
-  link: z.string(),
-  returnURL: z.string().optional(),
-  termsOfServiceURL: z.string().optional(),
-  scopes: z.array(ApplicationScope$outboundSchema),
-  grantScopes: z.array(ApplicationScope$outboundSchema).optional(),
-  capabilities: z.array(CapabilityID$outboundSchema),
-  feePlanCodes: z.array(z.string()),
-  redeemedAccountID: z.string().optional(),
-  prefill: CreateAccount$outboundSchema.optional(),
-  partner: OnboardingPartnerAccount$outboundSchema.optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  revokedOn: z.date().transform(v => v.toISOString()).optional(),
-  redeemedOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string(),
+    link: z.string(),
+    returnURL: z.string().optional(),
+    termsOfServiceURL: z.string().optional(),
+    scopes: z.array(ApplicationScope$outboundSchema),
+    grantScopes: z.array(ApplicationScope$outboundSchema).optional(),
+    capabilities: z.array(CapabilityID$outboundSchema),
+    feePlanCodes: z.array(z.string()),
+    redeemedAccountID: z.string().optional(),
+    prefill: CreateAccount$outboundSchema.optional(),
+    partner: OnboardingPartnerAccount$outboundSchema.optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    revokedOn: z.date().transform(v => v.toISOString()).optional(),
+    redeemedOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function onboardingInviteToJSON(
   onboardingInvite: OnboardingInvite,

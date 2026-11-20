@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -24,9 +24,11 @@ export const UpdateTicket$inboundSchema: z.ZodType<
   UpdateTicket,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: UpdateTicketStatus$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: UpdateTicketStatus$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type UpdateTicket$Outbound = {
   status?: string | undefined;
@@ -37,9 +39,11 @@ export const UpdateTicket$outboundSchema: z.ZodType<
   UpdateTicket$Outbound,
   z.ZodTypeDef,
   UpdateTicket
-> = z.object({
-  status: UpdateTicketStatus$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: UpdateTicketStatus$outboundSchema.optional(),
+  })
+);
 
 export function updateTicketToJSON(updateTicket: UpdateTicket): string {
   return JSON.stringify(UpdateTicket$outboundSchema.parse(updateTicket));

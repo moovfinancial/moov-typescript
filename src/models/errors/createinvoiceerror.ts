@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -62,28 +63,30 @@ export const CreateInvoiceError$inboundSchema: z.ZodType<
   CreateInvoiceError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customerAccountID: z.string().optional(),
-  customerEmail: z.string().optional(),
-  invoiceNumber: z.string().optional(),
-  description: z.string().optional(),
-  lineItems: components.CreateInvoiceLineItemsValidationError$inboundSchema
-    .optional(),
-  invoiceDate: z.string().optional(),
-  dueDate: z.string().optional(),
-  payment: components.InvoicePaymentOptionsError$inboundSchema.optional(),
-  taxAmount: components.AmountDecimalValidationError$inboundSchema.optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateInvoiceError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customerAccountID: z.string().optional(),
+    customerEmail: z.string().optional(),
+    invoiceNumber: z.string().optional(),
+    description: z.string().optional(),
+    lineItems: components.CreateInvoiceLineItemsValidationError$inboundSchema
+      .optional(),
+    invoiceDate: z.string().optional(),
+    dueDate: z.string().optional(),
+    payment: components.InvoicePaymentOptionsError$inboundSchema.optional(),
+    taxAmount: components.AmountDecimalValidationError$inboundSchema.optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateInvoiceError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CreateInvoiceError$Outbound = {
@@ -105,18 +108,20 @@ export const CreateInvoiceError$outboundSchema: z.ZodType<
   CreateInvoiceError$Outbound,
   z.ZodTypeDef,
   CreateInvoiceError
-> = z.instanceof(CreateInvoiceError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    customerAccountID: z.string().optional(),
-    customerEmail: z.string().optional(),
-    invoiceNumber: z.string().optional(),
-    description: z.string().optional(),
-    lineItems: components.CreateInvoiceLineItemsValidationError$outboundSchema
-      .optional(),
-    invoiceDate: z.string().optional(),
-    dueDate: z.string().optional(),
-    payment: components.InvoicePaymentOptionsError$outboundSchema.optional(),
-    taxAmount: components.AmountDecimalValidationError$outboundSchema
-      .optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CreateInvoiceError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      customerAccountID: z.string().optional(),
+      customerEmail: z.string().optional(),
+      invoiceNumber: z.string().optional(),
+      description: z.string().optional(),
+      lineItems: components.CreateInvoiceLineItemsValidationError$outboundSchema
+        .optional(),
+      invoiceDate: z.string().optional(),
+      dueDate: z.string().optional(),
+      payment: components.InvoicePaymentOptionsError$outboundSchema.optional(),
+      taxAmount: components.AmountDecimalValidationError$outboundSchema
+        .optional(),
+    }))
+);

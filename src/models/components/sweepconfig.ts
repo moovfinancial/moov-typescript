@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -67,19 +67,25 @@ export const SweepConfig$inboundSchema: z.ZodType<
   SweepConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sweepConfigID: z.string(),
-  walletID: z.string(),
-  status: SweepConfigStatus$inboundSchema,
-  pushPaymentMethod: SweepConfigPaymentMethod$inboundSchema,
-  pullPaymentMethod: SweepConfigPaymentMethod$inboundSchema,
-  minimumBalance: z.string().optional(),
-  statementDescriptor: z.string().optional(),
-  schedule: SweepConfigSchedule$inboundSchema.optional(),
-  lockedFields: z.array(z.string()).optional(),
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sweepConfigID: z.string(),
+    walletID: z.string(),
+    status: SweepConfigStatus$inboundSchema,
+    pushPaymentMethod: SweepConfigPaymentMethod$inboundSchema,
+    pullPaymentMethod: SweepConfigPaymentMethod$inboundSchema,
+    minimumBalance: z.string().optional(),
+    statementDescriptor: z.string().optional(),
+    schedule: SweepConfigSchedule$inboundSchema.optional(),
+    lockedFields: z.array(z.string()).optional(),
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 /** @internal */
 export type SweepConfig$Outbound = {
   sweepConfigID: string;
@@ -100,19 +106,21 @@ export const SweepConfig$outboundSchema: z.ZodType<
   SweepConfig$Outbound,
   z.ZodTypeDef,
   SweepConfig
-> = z.object({
-  sweepConfigID: z.string(),
-  walletID: z.string(),
-  status: SweepConfigStatus$outboundSchema,
-  pushPaymentMethod: SweepConfigPaymentMethod$outboundSchema,
-  pullPaymentMethod: SweepConfigPaymentMethod$outboundSchema,
-  minimumBalance: z.string().optional(),
-  statementDescriptor: z.string().optional(),
-  schedule: SweepConfigSchedule$outboundSchema.optional(),
-  lockedFields: z.array(z.string()).optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sweepConfigID: z.string(),
+    walletID: z.string(),
+    status: SweepConfigStatus$outboundSchema,
+    pushPaymentMethod: SweepConfigPaymentMethod$outboundSchema,
+    pullPaymentMethod: SweepConfigPaymentMethod$outboundSchema,
+    minimumBalance: z.string().optional(),
+    statementDescriptor: z.string().optional(),
+    schedule: SweepConfigSchedule$outboundSchema.optional(),
+    lockedFields: z.array(z.string()).optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function sweepConfigToJSON(sweepConfig: SweepConfig): string {
   return JSON.stringify(SweepConfig$outboundSchema.parse(sweepConfig));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -56,12 +56,14 @@ export const PaymentLinkPayoutDetails$inboundSchema: z.ZodType<
   PaymentLinkPayoutDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: z.array(DisbursementPaymentMethodType$inboundSchema),
-  recipient: PayoutRecipient$inboundSchema,
-  metadata: z.record(z.string()).optional(),
-  pushOptions: PushOptions$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(DisbursementPaymentMethodType$inboundSchema),
+    recipient: PayoutRecipient$inboundSchema,
+    metadata: z.record(z.string()).optional(),
+    pushOptions: PushOptions$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type PaymentLinkPayoutDetails$Outbound = {
   allowedMethods: Array<string>;
@@ -75,12 +77,14 @@ export const PaymentLinkPayoutDetails$outboundSchema: z.ZodType<
   PaymentLinkPayoutDetails$Outbound,
   z.ZodTypeDef,
   PaymentLinkPayoutDetails
-> = z.object({
-  allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema),
-  recipient: PayoutRecipient$outboundSchema,
-  metadata: z.record(z.string()).optional(),
-  pushOptions: PushOptions$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema),
+    recipient: PayoutRecipient$outboundSchema,
+    metadata: z.record(z.string()).optional(),
+    pushOptions: PushOptions$outboundSchema.optional(),
+  })
+);
 
 export function paymentLinkPayoutDetailsToJSON(
   paymentLinkPayoutDetails: PaymentLinkPayoutDetails,

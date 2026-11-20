@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -20,7 +21,7 @@ export type PushDeliverySpeed = ClosedEnum<typeof PushDeliverySpeed>;
 /** @internal */
 export const PushDeliverySpeed$inboundSchema: z.ZodNativeEnum<
   typeof PushDeliverySpeed
-> = z.nativeEnum(PushDeliverySpeed);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PushDeliverySpeed));
 /** @internal */
 export const PushDeliverySpeed$outboundSchema: z.ZodNativeEnum<
   typeof PushDeliverySpeed

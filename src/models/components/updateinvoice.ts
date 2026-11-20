@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -61,19 +61,21 @@ export const UpdateInvoice$inboundSchema: z.ZodType<
   UpdateInvoice,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: z.string().optional(),
-  lineItems: CreateInvoiceLineItemsUpdate$inboundSchema.optional(),
-  invoiceDate: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  dueDate: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  status: InvoiceStatus$inboundSchema.optional(),
-  payment: InvoicePaymentOptionsUpdate$inboundSchema.optional(),
-  taxAmount: AmountDecimalUpdate$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string().optional(),
+    lineItems: CreateInvoiceLineItemsUpdate$inboundSchema.optional(),
+    invoiceDate: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    dueDate: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    status: InvoiceStatus$inboundSchema.optional(),
+    payment: InvoicePaymentOptionsUpdate$inboundSchema.optional(),
+    taxAmount: AmountDecimalUpdate$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type UpdateInvoice$Outbound = {
   description?: string | undefined;
@@ -90,15 +92,18 @@ export const UpdateInvoice$outboundSchema: z.ZodType<
   UpdateInvoice$Outbound,
   z.ZodTypeDef,
   UpdateInvoice
-> = z.object({
-  description: z.string().optional(),
-  lineItems: CreateInvoiceLineItemsUpdate$outboundSchema.optional(),
-  invoiceDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  status: InvoiceStatus$outboundSchema.optional(),
-  payment: InvoicePaymentOptionsUpdate$outboundSchema.optional(),
-  taxAmount: AmountDecimalUpdate$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string().optional(),
+    lineItems: CreateInvoiceLineItemsUpdate$outboundSchema.optional(),
+    invoiceDate: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    status: InvoiceStatus$outboundSchema.optional(),
+    payment: InvoicePaymentOptionsUpdate$outboundSchema.optional(),
+    taxAmount: AmountDecimalUpdate$outboundSchema.optional(),
+  })
+);
 
 export function updateInvoiceToJSON(updateInvoice: UpdateInvoice): string {
   return JSON.stringify(UpdateInvoice$outboundSchema.parse(updateInvoice));

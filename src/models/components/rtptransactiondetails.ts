@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -46,20 +46,24 @@ export const RTPTransactionDetails$inboundSchema: z.ZodType<
   RTPTransactionDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: RTPTransactionStatus$inboundSchema.optional(),
-  networkResponseCode: z.string().optional(),
-  failureCode: RTPFailureCode$inboundSchema.optional(),
-  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  acceptedWithoutPostingOn: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: RTPTransactionStatus$inboundSchema.optional(),
+    networkResponseCode: z.string().optional(),
+    failureCode: RTPFailureCode$inboundSchema.optional(),
+    initiatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    completedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    acceptedWithoutPostingOn: z.string().datetime({ offset: true }).transform(
+      v => new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type RTPTransactionDetails$Outbound = {
   status?: string | undefined;
@@ -76,15 +80,18 @@ export const RTPTransactionDetails$outboundSchema: z.ZodType<
   RTPTransactionDetails$Outbound,
   z.ZodTypeDef,
   RTPTransactionDetails
-> = z.object({
-  status: RTPTransactionStatus$outboundSchema.optional(),
-  networkResponseCode: z.string().optional(),
-  failureCode: RTPFailureCode$outboundSchema.optional(),
-  initiatedOn: z.date().transform(v => v.toISOString()).optional(),
-  completedOn: z.date().transform(v => v.toISOString()).optional(),
-  failedOn: z.date().transform(v => v.toISOString()).optional(),
-  acceptedWithoutPostingOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: RTPTransactionStatus$outboundSchema.optional(),
+    networkResponseCode: z.string().optional(),
+    failureCode: RTPFailureCode$outboundSchema.optional(),
+    initiatedOn: z.date().transform(v => v.toISOString()).optional(),
+    completedOn: z.date().transform(v => v.toISOString()).optional(),
+    failedOn: z.date().transform(v => v.toISOString()).optional(),
+    acceptedWithoutPostingOn: z.date().transform(v => v.toISOString())
+      .optional(),
+  })
+);
 
 export function rtpTransactionDetailsToJSON(
   rtpTransactionDetails: RTPTransactionDetails,

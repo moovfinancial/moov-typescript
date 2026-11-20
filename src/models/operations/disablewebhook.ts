@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,9 +21,11 @@ export const DisableWebhookRequest$inboundSchema: z.ZodType<
   DisableWebhookRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  webhookID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: z.string(),
+  })
+);
 /** @internal */
 export type DisableWebhookRequest$Outbound = {
   webhookID: string;
@@ -34,9 +36,11 @@ export const DisableWebhookRequest$outboundSchema: z.ZodType<
   DisableWebhookRequest$Outbound,
   z.ZodTypeDef,
   DisableWebhookRequest
-> = z.object({
-  webhookID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: z.string(),
+  })
+);
 
 export function disableWebhookRequestToJSON(
   disableWebhookRequest: DisableWebhookRequest,
@@ -60,13 +64,15 @@ export const DisableWebhookResponse$inboundSchema: z.ZodType<
   DisableWebhookResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DisableWebhookResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -77,13 +83,15 @@ export const DisableWebhookResponse$outboundSchema: z.ZodType<
   DisableWebhookResponse$Outbound,
   z.ZodTypeDef,
   DisableWebhookResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function disableWebhookResponseToJSON(
   disableWebhookResponse: DisableWebhookResponse,

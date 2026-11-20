@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Mode, Mode$inboundSchema, Mode$outboundSchema } from "./mode.js";
@@ -57,10 +57,12 @@ export type OccurrencesResponse = {
 };
 
 /** @internal */
-export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
-  .object({
-    message: z.string().optional(),
-  });
+export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string().optional(),
+    })
+  );
 /** @internal */
 export type ErrorT$Outbound = {
   message?: string | undefined;
@@ -71,9 +73,11 @@ export const ErrorT$outboundSchema: z.ZodType<
   ErrorT$Outbound,
   z.ZodTypeDef,
   ErrorT
-> = z.object({
-  message: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    message: z.string().optional(),
+  })
+);
 
 export function errorToJSON(errorT: ErrorT): string {
   return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
@@ -93,22 +97,25 @@ export const OccurrencesResponse$inboundSchema: z.ZodType<
   OccurrencesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  scheduleID: z.string().optional(),
-  occurrenceID: z.string().optional(),
-  mode: Mode$inboundSchema.optional(),
-  generated: z.boolean().optional(),
-  indefinite: z.boolean().optional(),
-  canceledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  runOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  runTransfer: RunTransfer$inboundSchema,
-  ranOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  ranTransferID: z.string().optional(),
-  status: OccurrenceStatus$inboundSchema.optional(),
-  error: z.lazy(() => ErrorT$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scheduleID: z.string().optional(),
+    occurrenceID: z.string().optional(),
+    mode: Mode$inboundSchema.optional(),
+    generated: z.boolean().optional(),
+    indefinite: z.boolean().optional(),
+    canceledOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    runOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    runTransfer: RunTransfer$inboundSchema,
+    ranOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    ranTransferID: z.string().optional(),
+    status: OccurrenceStatus$inboundSchema.optional(),
+    error: z.lazy(() => ErrorT$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type OccurrencesResponse$Outbound = {
   scheduleID?: string | undefined;
@@ -130,20 +137,22 @@ export const OccurrencesResponse$outboundSchema: z.ZodType<
   OccurrencesResponse$Outbound,
   z.ZodTypeDef,
   OccurrencesResponse
-> = z.object({
-  scheduleID: z.string().optional(),
-  occurrenceID: z.string().optional(),
-  mode: Mode$outboundSchema.optional(),
-  generated: z.boolean().optional(),
-  indefinite: z.boolean().optional(),
-  canceledOn: z.date().transform(v => v.toISOString()).optional(),
-  runOn: z.date().transform(v => v.toISOString()),
-  runTransfer: RunTransfer$outboundSchema,
-  ranOn: z.date().transform(v => v.toISOString()).optional(),
-  ranTransferID: z.string().optional(),
-  status: OccurrenceStatus$outboundSchema.optional(),
-  error: z.lazy(() => ErrorT$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scheduleID: z.string().optional(),
+    occurrenceID: z.string().optional(),
+    mode: Mode$outboundSchema.optional(),
+    generated: z.boolean().optional(),
+    indefinite: z.boolean().optional(),
+    canceledOn: z.date().transform(v => v.toISOString()).optional(),
+    runOn: z.date().transform(v => v.toISOString()),
+    runTransfer: RunTransfer$outboundSchema,
+    ranOn: z.date().transform(v => v.toISOString()).optional(),
+    ranTransferID: z.string().optional(),
+    status: OccurrenceStatus$outboundSchema.optional(),
+    error: z.lazy(() => ErrorT$outboundSchema).optional(),
+  })
+);
 
 export function occurrencesResponseToJSON(
   occurrencesResponse: OccurrencesResponse,

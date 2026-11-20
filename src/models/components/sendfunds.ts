@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -43,12 +43,14 @@ export const SendFunds$inboundSchema: z.ZodType<
   SendFunds,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ach: SendFundsAch$inboundSchema.optional(),
-  pushToCard: SendFundsPushToCard$inboundSchema.optional(),
-  rtp: SendFundsRtp$inboundSchema.optional(),
-  instantBank: SendFundsInstantBank$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: SendFundsAch$inboundSchema.optional(),
+    pushToCard: SendFundsPushToCard$inboundSchema.optional(),
+    rtp: SendFundsRtp$inboundSchema.optional(),
+    instantBank: SendFundsInstantBank$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type SendFunds$Outbound = {
   ach?: SendFundsAch$Outbound | undefined;
@@ -62,12 +64,14 @@ export const SendFunds$outboundSchema: z.ZodType<
   SendFunds$Outbound,
   z.ZodTypeDef,
   SendFunds
-> = z.object({
-  ach: SendFundsAch$outboundSchema.optional(),
-  pushToCard: SendFundsPushToCard$outboundSchema.optional(),
-  rtp: SendFundsRtp$outboundSchema.optional(),
-  instantBank: SendFundsInstantBank$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: SendFundsAch$outboundSchema.optional(),
+    pushToCard: SendFundsPushToCard$outboundSchema.optional(),
+    rtp: SendFundsRtp$outboundSchema.optional(),
+    instantBank: SendFundsInstantBank$outboundSchema.optional(),
+  })
+);
 
 export function sendFundsToJSON(sendFunds: SendFunds): string {
   return JSON.stringify(SendFunds$outboundSchema.parse(sendFunds));

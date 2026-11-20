@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -65,26 +65,28 @@ export type Sweep = {
 };
 
 /** @internal */
-export const Sweep$inboundSchema: z.ZodType<Sweep, z.ZodTypeDef, unknown> = z
-  .object({
-    sweepID: z.string(),
-    status: SweepStatus$inboundSchema,
-    accruedAmount: z.string(),
-    residualBalance: z.string().optional(),
-    currency: z.string(),
-    accrualStartedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    accrualEndedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    pushPaymentMethodID: z.string().optional(),
-    pullPaymentMethodID: z.string().optional(),
-    transferID: z.string().optional(),
-    transferAmount: z.string().optional(),
-    statementDescriptor: z.string().optional(),
-    subtotals: z.array(SweepSubtotal$inboundSchema).optional(),
-  });
+export const Sweep$inboundSchema: z.ZodType<Sweep, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      sweepID: z.string(),
+      status: SweepStatus$inboundSchema,
+      accruedAmount: z.string(),
+      residualBalance: z.string().optional(),
+      currency: z.string(),
+      accrualStartedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      accrualEndedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      pushPaymentMethodID: z.string().optional(),
+      pullPaymentMethodID: z.string().optional(),
+      transferID: z.string().optional(),
+      transferAmount: z.string().optional(),
+      statementDescriptor: z.string().optional(),
+      subtotals: z.array(SweepSubtotal$inboundSchema).optional(),
+    })
+  );
 /** @internal */
 export type Sweep$Outbound = {
   sweepID: string;
@@ -107,21 +109,23 @@ export const Sweep$outboundSchema: z.ZodType<
   Sweep$Outbound,
   z.ZodTypeDef,
   Sweep
-> = z.object({
-  sweepID: z.string(),
-  status: SweepStatus$outboundSchema,
-  accruedAmount: z.string(),
-  residualBalance: z.string().optional(),
-  currency: z.string(),
-  accrualStartedOn: z.date().transform(v => v.toISOString()),
-  accrualEndedOn: z.date().transform(v => v.toISOString()).optional(),
-  pushPaymentMethodID: z.string().optional(),
-  pullPaymentMethodID: z.string().optional(),
-  transferID: z.string().optional(),
-  transferAmount: z.string().optional(),
-  statementDescriptor: z.string().optional(),
-  subtotals: z.array(SweepSubtotal$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sweepID: z.string(),
+    status: SweepStatus$outboundSchema,
+    accruedAmount: z.string(),
+    residualBalance: z.string().optional(),
+    currency: z.string(),
+    accrualStartedOn: z.date().transform(v => v.toISOString()),
+    accrualEndedOn: z.date().transform(v => v.toISOString()).optional(),
+    pushPaymentMethodID: z.string().optional(),
+    pullPaymentMethodID: z.string().optional(),
+    transferID: z.string().optional(),
+    transferAmount: z.string().optional(),
+    statementDescriptor: z.string().optional(),
+    subtotals: z.array(SweepSubtotal$outboundSchema).optional(),
+  })
+);
 
 export function sweepToJSON(sweep: Sweep): string {
   return JSON.stringify(Sweep$outboundSchema.parse(sweep));

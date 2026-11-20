@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -56,15 +56,17 @@ export const BillableFee$inboundSchema: z.ZodType<
   BillableFee,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  billableFeeID: z.string().optional(),
-  billableEvent: z.string().optional(),
-  feeName: z.string().optional(),
-  feeModel: FeeModel$inboundSchema,
-  feeCategory: FeeCategory$inboundSchema,
-  feeProperties: FeeProperties$inboundSchema.optional(),
-  feeConditions: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    billableFeeID: z.string().optional(),
+    billableEvent: z.string().optional(),
+    feeName: z.string().optional(),
+    feeModel: FeeModel$inboundSchema,
+    feeCategory: FeeCategory$inboundSchema,
+    feeProperties: FeeProperties$inboundSchema.optional(),
+    feeConditions: z.record(z.any()).optional(),
+  })
+);
 /** @internal */
 export type BillableFee$Outbound = {
   billableFeeID?: string | undefined;
@@ -81,15 +83,17 @@ export const BillableFee$outboundSchema: z.ZodType<
   BillableFee$Outbound,
   z.ZodTypeDef,
   BillableFee
-> = z.object({
-  billableFeeID: z.string().optional(),
-  billableEvent: z.string().optional(),
-  feeName: z.string().optional(),
-  feeModel: FeeModel$outboundSchema,
-  feeCategory: FeeCategory$outboundSchema,
-  feeProperties: FeeProperties$outboundSchema.optional(),
-  feeConditions: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    billableFeeID: z.string().optional(),
+    billableEvent: z.string().optional(),
+    feeName: z.string().optional(),
+    feeModel: FeeModel$outboundSchema,
+    feeCategory: FeeCategory$outboundSchema,
+    feeProperties: FeeProperties$outboundSchema.optional(),
+    feeConditions: z.record(z.any()).optional(),
+  })
+);
 
 export function billableFeeToJSON(billableFee: BillableFee): string {
   return JSON.stringify(BillableFee$outboundSchema.parse(billableFee));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -14,9 +14,13 @@ export type GetInvoiceRequest = {
   invoiceID: string;
 };
 
+export type GetInvoiceResponseResult =
+  | components.Invoice
+  | ReadableStream<Uint8Array>;
+
 export type GetInvoiceResponse = {
   headers: { [k: string]: Array<string> };
-  result: components.Invoice;
+  result: components.Invoice | ReadableStream<Uint8Array>;
 };
 
 /** @internal */
@@ -24,10 +28,12 @@ export const GetInvoiceRequest$inboundSchema: z.ZodType<
   GetInvoiceRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  invoiceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    invoiceID: z.string(),
+  })
+);
 /** @internal */
 export type GetInvoiceRequest$Outbound = {
   accountID: string;
@@ -39,10 +45,12 @@ export const GetInvoiceRequest$outboundSchema: z.ZodType<
   GetInvoiceRequest$Outbound,
   z.ZodTypeDef,
   GetInvoiceRequest
-> = z.object({
-  accountID: z.string(),
-  invoiceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    invoiceID: z.string(),
+  })
+);
 
 export function getInvoiceRequestToJSON(
   getInvoiceRequest: GetInvoiceRequest,
@@ -62,23 +70,73 @@ export function getInvoiceRequestFromJSON(
 }
 
 /** @internal */
+export const GetInvoiceResponseResult$inboundSchema: z.ZodType<
+  GetInvoiceResponseResult,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.Invoice$inboundSchema,
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
+/** @internal */
+export type GetInvoiceResponseResult$Outbound =
+  | components.Invoice$Outbound
+  | ReadableStream<Uint8Array>;
+
+/** @internal */
+export const GetInvoiceResponseResult$outboundSchema: z.ZodType<
+  GetInvoiceResponseResult$Outbound,
+  z.ZodTypeDef,
+  GetInvoiceResponseResult
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.Invoice$outboundSchema,
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
+
+export function getInvoiceResponseResultToJSON(
+  getInvoiceResponseResult: GetInvoiceResponseResult,
+): string {
+  return JSON.stringify(
+    GetInvoiceResponseResult$outboundSchema.parse(getInvoiceResponseResult),
+  );
+}
+export function getInvoiceResponseResultFromJSON(
+  jsonString: string,
+): SafeParseResult<GetInvoiceResponseResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetInvoiceResponseResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetInvoiceResponseResult' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetInvoiceResponse$inboundSchema: z.ZodType<
   GetInvoiceResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Invoice$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.union([
+      components.Invoice$inboundSchema,
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetInvoiceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
-  Result: components.Invoice$Outbound;
+  Result: components.Invoice$Outbound | ReadableStream<Uint8Array>;
 };
 
 /** @internal */
@@ -86,15 +144,20 @@ export const GetInvoiceResponse$outboundSchema: z.ZodType<
   GetInvoiceResponse$Outbound,
   z.ZodTypeDef,
   GetInvoiceResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Invoice$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.union([
+      components.Invoice$outboundSchema,
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getInvoiceResponseToJSON(
   getInvoiceResponse: GetInvoiceResponse,

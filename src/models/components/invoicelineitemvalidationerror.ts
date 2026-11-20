@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,14 +32,16 @@ export const InvoiceLineItemValidationError$inboundSchema: z.ZodType<
   InvoiceLineItemValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  productID: z.string().optional(),
-  name: z.string().optional(),
-  basePrice: AmountDecimalValidationError$inboundSchema.optional(),
-  options: z.record(InvoiceLineItemOptionValidationError$inboundSchema)
-    .optional(),
-  quantity: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    productID: z.string().optional(),
+    name: z.string().optional(),
+    basePrice: AmountDecimalValidationError$inboundSchema.optional(),
+    options: z.record(InvoiceLineItemOptionValidationError$inboundSchema)
+      .optional(),
+    quantity: z.string().optional(),
+  })
+);
 /** @internal */
 export type InvoiceLineItemValidationError$Outbound = {
   productID?: string | undefined;
@@ -56,14 +58,16 @@ export const InvoiceLineItemValidationError$outboundSchema: z.ZodType<
   InvoiceLineItemValidationError$Outbound,
   z.ZodTypeDef,
   InvoiceLineItemValidationError
-> = z.object({
-  productID: z.string().optional(),
-  name: z.string().optional(),
-  basePrice: AmountDecimalValidationError$outboundSchema.optional(),
-  options: z.record(InvoiceLineItemOptionValidationError$outboundSchema)
-    .optional(),
-  quantity: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    productID: z.string().optional(),
+    name: z.string().optional(),
+    basePrice: AmountDecimalValidationError$outboundSchema.optional(),
+    options: z.record(InvoiceLineItemOptionValidationError$outboundSchema)
+      .optional(),
+    quantity: z.string().optional(),
+  })
+);
 
 export function invoiceLineItemValidationErrorToJSON(
   invoiceLineItemValidationError: InvoiceLineItemValidationError,

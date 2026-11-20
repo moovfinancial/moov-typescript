@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -110,46 +110,48 @@ export type Invoice = {
 
 /** @internal */
 export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
-  z.object({
-    invoiceID: z.string(),
-    invoiceNumber: z.string(),
-    description: z.string().optional(),
-    customerAccountID: z.string(),
-    customerDisplayName: z.string(),
-    customerEmail: z.string(),
-    partnerAccountID: z.string(),
-    status: InvoiceStatus$inboundSchema,
-    lineItems: InvoiceLineItems$inboundSchema,
-    subtotalAmount: AmountDecimal$inboundSchema,
-    taxAmount: AmountDecimal$inboundSchema,
-    totalAmount: AmountDecimal$inboundSchema,
-    pendingAmount: AmountDecimal$inboundSchema,
-    paidAmount: AmountDecimal$inboundSchema,
-    refundedAmount: AmountDecimal$inboundSchema,
-    disputedAmount: AmountDecimal$inboundSchema,
-    paymentLinkCode: z.string().optional(),
-    paymentLinkURL: z.string().optional(),
-    payment: InvoicePaymentOptions$inboundSchema.optional(),
-    invoicePayments: z.array(InvoicePayment$inboundSchema).optional(),
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    invoiceDate: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    dueDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    sentOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    paidOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    canceledOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    disabledOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      invoiceID: z.string(),
+      invoiceNumber: z.string(),
+      description: z.string().optional(),
+      customerAccountID: z.string(),
+      customerDisplayName: z.string(),
+      customerEmail: z.string(),
+      partnerAccountID: z.string(),
+      status: InvoiceStatus$inboundSchema,
+      lineItems: InvoiceLineItems$inboundSchema,
+      subtotalAmount: AmountDecimal$inboundSchema,
+      taxAmount: AmountDecimal$inboundSchema,
+      totalAmount: AmountDecimal$inboundSchema,
+      pendingAmount: AmountDecimal$inboundSchema,
+      paidAmount: AmountDecimal$inboundSchema,
+      refundedAmount: AmountDecimal$inboundSchema,
+      disputedAmount: AmountDecimal$inboundSchema,
+      paymentLinkCode: z.string().optional(),
+      paymentLinkURL: z.string().optional(),
+      payment: InvoicePaymentOptions$inboundSchema.optional(),
+      invoicePayments: z.array(InvoicePayment$inboundSchema).optional(),
+      createdOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      invoiceDate: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      dueDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
+        .optional(),
+      sentOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+        .optional(),
+      paidOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+        .optional(),
+      canceledOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      disabledOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+    })
+  );
 /** @internal */
 export type Invoice$Outbound = {
   invoiceID: string;
@@ -186,35 +188,37 @@ export const Invoice$outboundSchema: z.ZodType<
   Invoice$Outbound,
   z.ZodTypeDef,
   Invoice
-> = z.object({
-  invoiceID: z.string(),
-  invoiceNumber: z.string(),
-  description: z.string().optional(),
-  customerAccountID: z.string(),
-  customerDisplayName: z.string(),
-  customerEmail: z.string(),
-  partnerAccountID: z.string(),
-  status: InvoiceStatus$outboundSchema,
-  lineItems: InvoiceLineItems$outboundSchema,
-  subtotalAmount: AmountDecimal$outboundSchema,
-  taxAmount: AmountDecimal$outboundSchema,
-  totalAmount: AmountDecimal$outboundSchema,
-  pendingAmount: AmountDecimal$outboundSchema,
-  paidAmount: AmountDecimal$outboundSchema,
-  refundedAmount: AmountDecimal$outboundSchema,
-  disputedAmount: AmountDecimal$outboundSchema,
-  paymentLinkCode: z.string().optional(),
-  paymentLinkURL: z.string().optional(),
-  payment: InvoicePaymentOptions$outboundSchema.optional(),
-  invoicePayments: z.array(InvoicePayment$outboundSchema).optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  invoiceDate: z.date().transform(v => v.toISOString()).optional(),
-  dueDate: z.date().transform(v => v.toISOString()).optional(),
-  sentOn: z.date().transform(v => v.toISOString()).optional(),
-  paidOn: z.date().transform(v => v.toISOString()).optional(),
-  canceledOn: z.date().transform(v => v.toISOString()).optional(),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    invoiceID: z.string(),
+    invoiceNumber: z.string(),
+    description: z.string().optional(),
+    customerAccountID: z.string(),
+    customerDisplayName: z.string(),
+    customerEmail: z.string(),
+    partnerAccountID: z.string(),
+    status: InvoiceStatus$outboundSchema,
+    lineItems: InvoiceLineItems$outboundSchema,
+    subtotalAmount: AmountDecimal$outboundSchema,
+    taxAmount: AmountDecimal$outboundSchema,
+    totalAmount: AmountDecimal$outboundSchema,
+    pendingAmount: AmountDecimal$outboundSchema,
+    paidAmount: AmountDecimal$outboundSchema,
+    refundedAmount: AmountDecimal$outboundSchema,
+    disputedAmount: AmountDecimal$outboundSchema,
+    paymentLinkCode: z.string().optional(),
+    paymentLinkURL: z.string().optional(),
+    payment: InvoicePaymentOptions$outboundSchema.optional(),
+    invoicePayments: z.array(InvoicePayment$outboundSchema).optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    invoiceDate: z.date().transform(v => v.toISOString()).optional(),
+    dueDate: z.date().transform(v => v.toISOString()).optional(),
+    sentOn: z.date().transform(v => v.toISOString()).optional(),
+    paidOn: z.date().transform(v => v.toISOString()).optional(),
+    canceledOn: z.date().transform(v => v.toISOString()).optional(),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function invoiceToJSON(invoice: Invoice): string {
   return JSON.stringify(Invoice$outboundSchema.parse(invoice));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -31,12 +31,14 @@ export const TransferLineItemImageMetadata$inboundSchema: z.ZodType<
   TransferLineItemImageMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  imageID: z.string(),
-  altText: z.string().optional(),
-  link: z.string(),
-  publicID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string(),
+    altText: z.string().optional(),
+    link: z.string(),
+    publicID: z.string(),
+  })
+);
 /** @internal */
 export type TransferLineItemImageMetadata$Outbound = {
   imageID: string;
@@ -50,12 +52,14 @@ export const TransferLineItemImageMetadata$outboundSchema: z.ZodType<
   TransferLineItemImageMetadata$Outbound,
   z.ZodTypeDef,
   TransferLineItemImageMetadata
-> = z.object({
-  imageID: z.string(),
-  altText: z.string().optional(),
-  link: z.string(),
-  publicID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string(),
+    altText: z.string().optional(),
+    link: z.string(),
+    publicID: z.string(),
+  })
+);
 
 export function transferLineItemImageMetadataToJSON(
   transferLineItemImageMetadata: TransferLineItemImageMetadata,

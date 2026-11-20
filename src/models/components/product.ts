@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -72,23 +72,25 @@ export type Product = {
 
 /** @internal */
 export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
-  z.object({
-    productID: z.string(),
-    title: z.string(),
-    description: z.string().optional(),
-    basePrice: AmountDecimal$inboundSchema,
-    optionGroups: z.array(ProductOptionGroup$inboundSchema).optional(),
-    images: z.array(ProductImageMetadata$inboundSchema).optional(),
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    updatedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    disabledOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      productID: z.string(),
+      title: z.string(),
+      description: z.string().optional(),
+      basePrice: AmountDecimal$inboundSchema,
+      optionGroups: z.array(ProductOptionGroup$inboundSchema).optional(),
+      images: z.array(ProductImageMetadata$inboundSchema).optional(),
+      createdOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      updatedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      disabledOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+    })
+  );
 /** @internal */
 export type Product$Outbound = {
   productID: string;
@@ -107,17 +109,19 @@ export const Product$outboundSchema: z.ZodType<
   Product$Outbound,
   z.ZodTypeDef,
   Product
-> = z.object({
-  productID: z.string(),
-  title: z.string(),
-  description: z.string().optional(),
-  basePrice: AmountDecimal$outboundSchema,
-  optionGroups: z.array(ProductOptionGroup$outboundSchema).optional(),
-  images: z.array(ProductImageMetadata$outboundSchema).optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    productID: z.string(),
+    title: z.string(),
+    description: z.string().optional(),
+    basePrice: AmountDecimal$outboundSchema,
+    optionGroups: z.array(ProductOptionGroup$outboundSchema).optional(),
+    images: z.array(ProductImageMetadata$outboundSchema).optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function productToJSON(product: Product): string {
   return JSON.stringify(Product$outboundSchema.parse(product));

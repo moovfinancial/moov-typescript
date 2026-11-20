@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,11 +18,13 @@ export const IndustryCodes$inboundSchema: z.ZodType<
   IndustryCodes,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  naics: z.string().optional(),
-  sic: z.string().optional(),
-  mcc: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    naics: z.string().optional(),
+    sic: z.string().optional(),
+    mcc: z.string().optional(),
+  })
+);
 /** @internal */
 export type IndustryCodes$Outbound = {
   naics?: string | undefined;
@@ -35,11 +37,13 @@ export const IndustryCodes$outboundSchema: z.ZodType<
   IndustryCodes$Outbound,
   z.ZodTypeDef,
   IndustryCodes
-> = z.object({
-  naics: z.string().optional(),
-  sic: z.string().optional(),
-  mcc: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    naics: z.string().optional(),
+    sic: z.string().optional(),
+    mcc: z.string().optional(),
+  })
+);
 
 export function industryCodesToJSON(industryCodes: IndustryCodes): string {
   return JSON.stringify(IndustryCodes$outboundSchema.parse(industryCodes));

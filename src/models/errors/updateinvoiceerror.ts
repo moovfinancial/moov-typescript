@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -54,26 +55,28 @@ export const UpdateInvoiceError$inboundSchema: z.ZodType<
   UpdateInvoiceError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: z.string().optional(),
-  lineItems: components.InvoiceLineItemsValidationError$inboundSchema
-    .optional(),
-  invoiceDate: z.string().optional(),
-  dueDate: z.string().optional(),
-  status: z.string().optional(),
-  payment: components.InvoicePaymentOptionsError$inboundSchema.optional(),
-  taxAmount: components.AmountDecimalValidationError$inboundSchema.optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new UpdateInvoiceError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string().optional(),
+    lineItems: components.InvoiceLineItemsValidationError$inboundSchema
+      .optional(),
+    invoiceDate: z.string().optional(),
+    dueDate: z.string().optional(),
+    status: z.string().optional(),
+    payment: components.InvoicePaymentOptionsError$inboundSchema.optional(),
+    taxAmount: components.AmountDecimalValidationError$inboundSchema.optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new UpdateInvoiceError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type UpdateInvoiceError$Outbound = {
@@ -91,16 +94,18 @@ export const UpdateInvoiceError$outboundSchema: z.ZodType<
   UpdateInvoiceError$Outbound,
   z.ZodTypeDef,
   UpdateInvoiceError
-> = z.instanceof(UpdateInvoiceError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    description: z.string().optional(),
-    lineItems: components.InvoiceLineItemsValidationError$outboundSchema
-      .optional(),
-    invoiceDate: z.string().optional(),
-    dueDate: z.string().optional(),
-    status: z.string().optional(),
-    payment: components.InvoicePaymentOptionsError$outboundSchema.optional(),
-    taxAmount: components.AmountDecimalValidationError$outboundSchema
-      .optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(UpdateInvoiceError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      description: z.string().optional(),
+      lineItems: components.InvoiceLineItemsValidationError$outboundSchema
+        .optional(),
+      invoiceDate: z.string().optional(),
+      dueDate: z.string().optional(),
+      status: z.string().optional(),
+      payment: components.InvoicePaymentOptionsError$outboundSchema.optional(),
+      taxAmount: components.AmountDecimalValidationError$outboundSchema
+        .optional(),
+    }))
+);

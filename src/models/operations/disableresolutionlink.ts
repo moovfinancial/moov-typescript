@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,10 +22,12 @@ export const DisableResolutionLinkRequest$inboundSchema: z.ZodType<
   DisableResolutionLinkRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  resolutionLinkCode: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    resolutionLinkCode: z.string(),
+  })
+);
 /** @internal */
 export type DisableResolutionLinkRequest$Outbound = {
   accountID: string;
@@ -37,10 +39,12 @@ export const DisableResolutionLinkRequest$outboundSchema: z.ZodType<
   DisableResolutionLinkRequest$Outbound,
   z.ZodTypeDef,
   DisableResolutionLinkRequest
-> = z.object({
-  accountID: z.string(),
-  resolutionLinkCode: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    resolutionLinkCode: z.string(),
+  })
+);
 
 export function disableResolutionLinkRequestToJSON(
   disableResolutionLinkRequest: DisableResolutionLinkRequest,
@@ -66,13 +70,15 @@ export const DisableResolutionLinkResponse$inboundSchema: z.ZodType<
   DisableResolutionLinkResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DisableResolutionLinkResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -83,13 +89,15 @@ export const DisableResolutionLinkResponse$outboundSchema: z.ZodType<
   DisableResolutionLinkResponse$Outbound,
   z.ZodTypeDef,
   DisableResolutionLinkResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function disableResolutionLinkResponseToJSON(
   disableResolutionLinkResponse: DisableResolutionLinkResponse,

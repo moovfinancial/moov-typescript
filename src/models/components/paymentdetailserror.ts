@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,12 +31,14 @@ export const PaymentDetailsError$inboundSchema: z.ZodType<
   PaymentDetailsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: z.string().optional(),
-  cardDetails: CardPaymentDetailsError$inboundSchema.optional(),
-  achDetails: ACHPaymentDetailsError$inboundSchema.optional(),
-  metadata: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.string().optional(),
+    cardDetails: CardPaymentDetailsError$inboundSchema.optional(),
+    achDetails: ACHPaymentDetailsError$inboundSchema.optional(),
+    metadata: z.string().optional(),
+  })
+);
 /** @internal */
 export type PaymentDetailsError$Outbound = {
   allowedMethods?: string | undefined;
@@ -50,12 +52,14 @@ export const PaymentDetailsError$outboundSchema: z.ZodType<
   PaymentDetailsError$Outbound,
   z.ZodTypeDef,
   PaymentDetailsError
-> = z.object({
-  allowedMethods: z.string().optional(),
-  cardDetails: CardPaymentDetailsError$outboundSchema.optional(),
-  achDetails: ACHPaymentDetailsError$outboundSchema.optional(),
-  metadata: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.string().optional(),
+    cardDetails: CardPaymentDetailsError$outboundSchema.optional(),
+    achDetails: ACHPaymentDetailsError$outboundSchema.optional(),
+    metadata: z.string().optional(),
+  })
+);
 
 export function paymentDetailsErrorToJSON(
   paymentDetailsError: PaymentDetailsError,

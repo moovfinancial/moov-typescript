@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,9 +23,11 @@ export const ListFilesRequest$inboundSchema: z.ZodType<
   ListFilesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+  })
+);
 /** @internal */
 export type ListFilesRequest$Outbound = {
   accountID: string;
@@ -36,9 +38,11 @@ export const ListFilesRequest$outboundSchema: z.ZodType<
   ListFilesRequest$Outbound,
   z.ZodTypeDef,
   ListFilesRequest
-> = z.object({
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+  })
+);
 
 export function listFilesRequestToJSON(
   listFilesRequest: ListFilesRequest,
@@ -62,15 +66,17 @@ export const ListFilesResponse$inboundSchema: z.ZodType<
   ListFilesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.FileDetails$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.FileDetails$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListFilesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -82,15 +88,17 @@ export const ListFilesResponse$outboundSchema: z.ZodType<
   ListFilesResponse$Outbound,
   z.ZodTypeDef,
   ListFilesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.FileDetails$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.FileDetails$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listFilesResponseToJSON(
   listFilesResponse: ListFilesResponse,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -28,7 +29,7 @@ export type TipCalculationBasis = ClosedEnum<typeof TipCalculationBasis>;
 /** @internal */
 export const TipCalculationBasis$inboundSchema: z.ZodNativeEnum<
   typeof TipCalculationBasis
-> = z.nativeEnum(TipCalculationBasis);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TipCalculationBasis));
 /** @internal */
 export const TipCalculationBasis$outboundSchema: z.ZodNativeEnum<
   typeof TipCalculationBasis

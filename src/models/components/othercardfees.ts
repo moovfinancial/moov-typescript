@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -44,13 +44,15 @@ export const OtherCardFees$inboundSchema: z.ZodType<
   OtherCardFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  disputes: BillingCountAndAmount$inboundSchema,
-  cardAccountUpdater: BillingCountAndAmount$inboundSchema,
-  cardVerification: BillingCountAndAmount$inboundSchema,
-  nameVerification: BillingCountAndAmount$inboundSchema,
-  total: BillingCountAndAmount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    disputes: BillingCountAndAmount$inboundSchema,
+    cardAccountUpdater: BillingCountAndAmount$inboundSchema,
+    cardVerification: BillingCountAndAmount$inboundSchema,
+    nameVerification: BillingCountAndAmount$inboundSchema,
+    total: BillingCountAndAmount$inboundSchema,
+  })
+);
 /** @internal */
 export type OtherCardFees$Outbound = {
   disputes: BillingCountAndAmount$Outbound;
@@ -65,13 +67,15 @@ export const OtherCardFees$outboundSchema: z.ZodType<
   OtherCardFees$Outbound,
   z.ZodTypeDef,
   OtherCardFees
-> = z.object({
-  disputes: BillingCountAndAmount$outboundSchema,
-  cardAccountUpdater: BillingCountAndAmount$outboundSchema,
-  cardVerification: BillingCountAndAmount$outboundSchema,
-  nameVerification: BillingCountAndAmount$outboundSchema,
-  total: BillingCountAndAmount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    disputes: BillingCountAndAmount$outboundSchema,
+    cardAccountUpdater: BillingCountAndAmount$outboundSchema,
+    cardVerification: BillingCountAndAmount$outboundSchema,
+    nameVerification: BillingCountAndAmount$outboundSchema,
+    total: BillingCountAndAmount$outboundSchema,
+  })
+);
 
 export function otherCardFeesToJSON(otherCardFees: OtherCardFees): string {
   return JSON.stringify(OtherCardFees$outboundSchema.parse(otherCardFees));

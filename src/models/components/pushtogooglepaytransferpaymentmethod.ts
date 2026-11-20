@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,11 +30,13 @@ export const PushToGooglePayTransferPaymentMethod$inboundSchema: z.ZodType<
   PushToGooglePayTransferPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("push-to-google-pay"),
-  googlePay: GooglePayResponse$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("push-to-google-pay"),
+    googlePay: GooglePayResponse$inboundSchema,
+  })
+);
 /** @internal */
 export type PushToGooglePayTransferPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -47,11 +49,13 @@ export const PushToGooglePayTransferPaymentMethod$outboundSchema: z.ZodType<
   PushToGooglePayTransferPaymentMethod$Outbound,
   z.ZodTypeDef,
   PushToGooglePayTransferPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("push-to-google-pay"),
-  googlePay: GooglePayResponse$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("push-to-google-pay"),
+    googlePay: GooglePayResponse$outboundSchema,
+  })
+);
 
 export function pushToGooglePayTransferPaymentMethodToJSON(
   pushToGooglePayTransferPaymentMethod: PushToGooglePayTransferPaymentMethod,

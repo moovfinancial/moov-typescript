@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -86,17 +86,19 @@ export const CreateAccount$inboundSchema: z.ZodType<
   CreateAccount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountType: CreateAccountType$inboundSchema,
-  profile: CreateProfile$inboundSchema,
-  metadata: z.record(z.string()).optional(),
-  termsOfService: TermsOfServicePayload$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  customerSupport: CustomerSupport$inboundSchema.optional(),
-  settings: Settings$inboundSchema.optional(),
-  capabilities: z.array(CapabilityID$inboundSchema).optional(),
-  mode: Mode$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountType: CreateAccountType$inboundSchema,
+    profile: CreateProfile$inboundSchema,
+    metadata: z.record(z.string()).optional(),
+    termsOfService: TermsOfServicePayload$inboundSchema.optional(),
+    foreignID: z.string().optional(),
+    customerSupport: CustomerSupport$inboundSchema.optional(),
+    settings: Settings$inboundSchema.optional(),
+    capabilities: z.array(CapabilityID$inboundSchema).optional(),
+    mode: Mode$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CreateAccount$Outbound = {
   accountType: string;
@@ -115,17 +117,19 @@ export const CreateAccount$outboundSchema: z.ZodType<
   CreateAccount$Outbound,
   z.ZodTypeDef,
   CreateAccount
-> = z.object({
-  accountType: CreateAccountType$outboundSchema,
-  profile: CreateProfile$outboundSchema,
-  metadata: z.record(z.string()).optional(),
-  termsOfService: TermsOfServicePayload$outboundSchema.optional(),
-  foreignID: z.string().optional(),
-  customerSupport: CustomerSupport$outboundSchema.optional(),
-  settings: Settings$outboundSchema.optional(),
-  capabilities: z.array(CapabilityID$outboundSchema).optional(),
-  mode: Mode$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountType: CreateAccountType$outboundSchema,
+    profile: CreateProfile$outboundSchema,
+    metadata: z.record(z.string()).optional(),
+    termsOfService: TermsOfServicePayload$outboundSchema.optional(),
+    foreignID: z.string().optional(),
+    customerSupport: CustomerSupport$outboundSchema.optional(),
+    settings: Settings$outboundSchema.optional(),
+    capabilities: z.array(CapabilityID$outboundSchema).optional(),
+    mode: Mode$outboundSchema.optional(),
+  })
+);
 
 export function createAccountToJSON(createAccount: CreateAccount): string {
   return JSON.stringify(CreateAccount$outboundSchema.parse(createAccount));

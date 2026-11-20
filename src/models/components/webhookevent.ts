@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -42,12 +42,16 @@ export const WebhookEvent$inboundSchema: z.ZodType<
   WebhookEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eventID: z.string(),
-  type: WebhookEventType$inboundSchema,
-  data: WebhookData$inboundSchema,
-  createdOn: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventID: z.string(),
+    type: WebhookEventType$inboundSchema,
+    data: WebhookData$inboundSchema,
+    createdOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 /** @internal */
 export type WebhookEvent$Outbound = {
   eventID: string;
@@ -61,12 +65,14 @@ export const WebhookEvent$outboundSchema: z.ZodType<
   WebhookEvent$Outbound,
   z.ZodTypeDef,
   WebhookEvent
-> = z.object({
-  eventID: z.string(),
-  type: WebhookEventType$outboundSchema,
-  data: WebhookData$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventID: z.string(),
+    type: WebhookEventType$outboundSchema,
+    data: WebhookData$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function webhookEventToJSON(webhookEvent: WebhookEvent): string {
   return JSON.stringify(WebhookEvent$outboundSchema.parse(webhookEvent));

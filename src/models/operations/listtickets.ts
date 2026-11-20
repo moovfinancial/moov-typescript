@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -38,13 +38,15 @@ export const ListTicketsRequest$inboundSchema: z.ZodType<
   ListTicketsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cursor: z.string().optional(),
-  count: z.number().int().optional(),
-  status: components.TicketStatus$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: z.string().optional(),
+    count: z.number().int().optional(),
+    status: components.TicketStatus$inboundSchema.optional(),
+    foreignID: z.string().optional(),
+    accountID: z.string(),
+  })
+);
 /** @internal */
 export type ListTicketsRequest$Outbound = {
   cursor?: string | undefined;
@@ -59,13 +61,15 @@ export const ListTicketsRequest$outboundSchema: z.ZodType<
   ListTicketsRequest$Outbound,
   z.ZodTypeDef,
   ListTicketsRequest
-> = z.object({
-  cursor: z.string().optional(),
-  count: z.number().int().optional(),
-  status: components.TicketStatus$outboundSchema.optional(),
-  foreignID: z.string().optional(),
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: z.string().optional(),
+    count: z.number().int().optional(),
+    status: components.TicketStatus$outboundSchema.optional(),
+    foreignID: z.string().optional(),
+    accountID: z.string(),
+  })
+);
 
 export function listTicketsRequestToJSON(
   listTicketsRequest: ListTicketsRequest,
@@ -89,10 +93,12 @@ export const ListTicketsResponseBody$inboundSchema: z.ZodType<
   ListTicketsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(components.Ticket$inboundSchema),
-  nextPage: components.ItemListNextPage$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(components.Ticket$inboundSchema),
+    nextPage: components.ItemListNextPage$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type ListTicketsResponseBody$Outbound = {
   items: Array<components.Ticket$Outbound>;
@@ -104,10 +110,12 @@ export const ListTicketsResponseBody$outboundSchema: z.ZodType<
   ListTicketsResponseBody$Outbound,
   z.ZodTypeDef,
   ListTicketsResponseBody
-> = z.object({
-  items: z.array(components.Ticket$outboundSchema),
-  nextPage: components.ItemListNextPage$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(components.Ticket$outboundSchema),
+    nextPage: components.ItemListNextPage$outboundSchema.optional(),
+  })
+);
 
 export function listTicketsResponseBodyToJSON(
   listTicketsResponseBody: ListTicketsResponseBody,
@@ -131,15 +139,17 @@ export const ListTicketsResponse$inboundSchema: z.ZodType<
   ListTicketsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.lazy(() => ListTicketsResponseBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.lazy(() => ListTicketsResponseBody$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListTicketsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -151,15 +161,17 @@ export const ListTicketsResponse$outboundSchema: z.ZodType<
   ListTicketsResponse$Outbound,
   z.ZodTypeDef,
   ListTicketsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.lazy(() => ListTicketsResponseBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.lazy(() => ListTicketsResponseBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listTicketsResponseToJSON(
   listTicketsResponse: ListTicketsResponse,

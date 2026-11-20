@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
 
@@ -46,23 +47,25 @@ export const CreateTicketError$inboundSchema: z.ZodType<
   CreateTicketError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: z.string().optional(),
-  body: z.string().optional(),
-  author: z.string().optional(),
-  contact: components.CreateTicketContactError$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateTicketError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string().optional(),
+    body: z.string().optional(),
+    author: z.string().optional(),
+    contact: components.CreateTicketContactError$inboundSchema.optional(),
+    foreignID: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateTicketError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CreateTicketError$Outbound = {
@@ -78,12 +81,14 @@ export const CreateTicketError$outboundSchema: z.ZodType<
   CreateTicketError$Outbound,
   z.ZodTypeDef,
   CreateTicketError
-> = z.instanceof(CreateTicketError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    title: z.string().optional(),
-    body: z.string().optional(),
-    author: z.string().optional(),
-    contact: components.CreateTicketContactError$outboundSchema.optional(),
-    foreignID: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CreateTicketError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      title: z.string().optional(),
+      body: z.string().optional(),
+      author: z.string().optional(),
+      contact: components.CreateTicketContactError$outboundSchema.optional(),
+      foreignID: z.string().optional(),
+    }))
+);

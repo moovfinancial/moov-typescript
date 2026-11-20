@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,9 +28,11 @@ export const CreateResolutionLink$inboundSchema: z.ZodType<
   CreateResolutionLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  recipient: ResolutionLinkRecipient$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    recipient: ResolutionLinkRecipient$inboundSchema,
+  })
+);
 /** @internal */
 export type CreateResolutionLink$Outbound = {
   recipient: ResolutionLinkRecipient$Outbound;
@@ -41,9 +43,11 @@ export const CreateResolutionLink$outboundSchema: z.ZodType<
   CreateResolutionLink$Outbound,
   z.ZodTypeDef,
   CreateResolutionLink
-> = z.object({
-  recipient: ResolutionLinkRecipient$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    recipient: ResolutionLinkRecipient$outboundSchema,
+  })
+);
 
 export function createResolutionLinkToJSON(
   createResolutionLink: CreateResolutionLink,

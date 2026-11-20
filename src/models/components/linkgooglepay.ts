@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -45,10 +45,12 @@ export const LinkGooglePay$inboundSchema: z.ZodType<
   LinkGooglePay,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  merchantAccountID: z.string(),
-  paymentMethodData: GooglePayPaymentMethodData$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    merchantAccountID: z.string(),
+    paymentMethodData: GooglePayPaymentMethodData$inboundSchema,
+  })
+);
 /** @internal */
 export type LinkGooglePay$Outbound = {
   merchantAccountID: string;
@@ -60,10 +62,12 @@ export const LinkGooglePay$outboundSchema: z.ZodType<
   LinkGooglePay$Outbound,
   z.ZodTypeDef,
   LinkGooglePay
-> = z.object({
-  merchantAccountID: z.string(),
-  paymentMethodData: GooglePayPaymentMethodData$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    merchantAccountID: z.string(),
+    paymentMethodData: GooglePayPaymentMethodData$outboundSchema,
+  })
+);
 
 export function linkGooglePayToJSON(linkGooglePay: LinkGooglePay): string {
   return JSON.stringify(LinkGooglePay$outboundSchema.parse(linkGooglePay));

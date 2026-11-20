@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,10 +26,9 @@ export const CreateRefundResponse$inboundSchema: z.ZodType<
   CreateRefundResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CardAcquiringRefund$inboundSchema,
-  AsyncCreatedRefund$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([CardAcquiringRefund$inboundSchema, AsyncCreatedRefund$inboundSchema])
+);
 /** @internal */
 export type CreateRefundResponse$Outbound =
   | CardAcquiringRefund$Outbound
@@ -40,10 +39,12 @@ export const CreateRefundResponse$outboundSchema: z.ZodType<
   CreateRefundResponse$Outbound,
   z.ZodTypeDef,
   CreateRefundResponse
-> = z.union([
-  CardAcquiringRefund$outboundSchema,
-  AsyncCreatedRefund$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CardAcquiringRefund$outboundSchema,
+    AsyncCreatedRefund$outboundSchema,
+  ])
+);
 
 export function createRefundResponseToJSON(
   createRefundResponse: CreateRefundResponse,

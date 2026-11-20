@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 /**
@@ -56,20 +57,22 @@ export const CreateResolutionLinkError$inboundSchema: z.ZodType<
   CreateResolutionLinkError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string().optional(),
-  phone: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateResolutionLinkError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string().optional(),
+    phone: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateResolutionLinkError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CreateResolutionLinkError$Outbound = {
@@ -82,9 +85,11 @@ export const CreateResolutionLinkError$outboundSchema: z.ZodType<
   CreateResolutionLinkError$Outbound,
   z.ZodTypeDef,
   CreateResolutionLinkError
-> = z.instanceof(CreateResolutionLinkError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    email: z.string().optional(),
-    phone: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CreateResolutionLinkError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      email: z.string().optional(),
+      phone: z.string().optional(),
+    }))
+);

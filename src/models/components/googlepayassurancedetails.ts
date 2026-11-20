@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,10 +26,12 @@ export const GooglePayAssuranceDetails$inboundSchema: z.ZodType<
   GooglePayAssuranceDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardHolderAuthenticated: z.boolean().optional(),
-  accountVerified: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardHolderAuthenticated: z.boolean().optional(),
+    accountVerified: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type GooglePayAssuranceDetails$Outbound = {
   cardHolderAuthenticated?: boolean | undefined;
@@ -41,10 +43,12 @@ export const GooglePayAssuranceDetails$outboundSchema: z.ZodType<
   GooglePayAssuranceDetails$Outbound,
   z.ZodTypeDef,
   GooglePayAssuranceDetails
-> = z.object({
-  cardHolderAuthenticated: z.boolean().optional(),
-  accountVerified: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardHolderAuthenticated: z.boolean().optional(),
+    accountVerified: z.boolean().optional(),
+  })
+);
 
 export function googlePayAssuranceDetailsToJSON(
   googlePayAssuranceDetails: GooglePayAssuranceDetails,

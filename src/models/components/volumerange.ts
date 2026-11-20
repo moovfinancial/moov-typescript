@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -40,12 +40,14 @@ export const VolumeRange$inboundSchema: z.ZodType<
   VolumeRange,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fromValue: z.number().int(),
-  toValue: z.number().int().optional(),
-  flatAmount: AmountDecimal$inboundSchema,
-  perUnitAmount: AmountDecimal$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fromValue: z.number().int(),
+    toValue: z.number().int().optional(),
+    flatAmount: AmountDecimal$inboundSchema,
+    perUnitAmount: AmountDecimal$inboundSchema,
+  })
+);
 /** @internal */
 export type VolumeRange$Outbound = {
   fromValue: number;
@@ -59,12 +61,14 @@ export const VolumeRange$outboundSchema: z.ZodType<
   VolumeRange$Outbound,
   z.ZodTypeDef,
   VolumeRange
-> = z.object({
-  fromValue: z.number().int(),
-  toValue: z.number().int().optional(),
-  flatAmount: AmountDecimal$outboundSchema,
-  perUnitAmount: AmountDecimal$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fromValue: z.number().int(),
+    toValue: z.number().int().optional(),
+    flatAmount: AmountDecimal$outboundSchema,
+    perUnitAmount: AmountDecimal$outboundSchema,
+  })
+);
 
 export function volumeRangeToJSON(volumeRange: VolumeRange): string {
   return JSON.stringify(VolumeRange$outboundSchema.parse(volumeRange));

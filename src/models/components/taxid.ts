@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,20 +19,24 @@ export type TaxID = {
 };
 
 /** @internal */
-export const Ein$inboundSchema: z.ZodType<Ein, z.ZodTypeDef, unknown> = z
-  .object({
-    number: z.string(),
-  });
+export const Ein$inboundSchema: z.ZodType<Ein, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      number: z.string(),
+    })
+  );
 /** @internal */
 export type Ein$Outbound = {
   number: string;
 };
 
 /** @internal */
-export const Ein$outboundSchema: z.ZodType<Ein$Outbound, z.ZodTypeDef, Ein> = z
-  .object({
-    number: z.string(),
-  });
+export const Ein$outboundSchema: z.ZodType<Ein$Outbound, z.ZodTypeDef, Ein> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      number: z.string(),
+    })
+  );
 
 export function einToJSON(ein: Ein): string {
   return JSON.stringify(Ein$outboundSchema.parse(ein));
@@ -48,10 +52,12 @@ export function einFromJSON(
 }
 
 /** @internal */
-export const TaxID$inboundSchema: z.ZodType<TaxID, z.ZodTypeDef, unknown> = z
-  .object({
-    ein: z.lazy(() => Ein$inboundSchema),
-  });
+export const TaxID$inboundSchema: z.ZodType<TaxID, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      ein: z.lazy(() => Ein$inboundSchema),
+    })
+  );
 /** @internal */
 export type TaxID$Outbound = {
   ein: Ein$Outbound;
@@ -62,9 +68,11 @@ export const TaxID$outboundSchema: z.ZodType<
   TaxID$Outbound,
   z.ZodTypeDef,
   TaxID
-> = z.object({
-  ein: z.lazy(() => Ein$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ein: z.lazy(() => Ein$outboundSchema),
+  })
+);
 
 export function taxIDToJSON(taxID: TaxID): string {
   return JSON.stringify(TaxID$outboundSchema.parse(taxID));

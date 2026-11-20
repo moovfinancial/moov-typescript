@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -31,12 +31,14 @@ export const IndividualName$inboundSchema: z.ZodType<
   IndividualName,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  firstName: z.string(),
-  middleName: z.string().optional(),
-  lastName: z.string(),
-  suffix: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: z.string(),
+    middleName: z.string().optional(),
+    lastName: z.string(),
+    suffix: z.string().optional(),
+  })
+);
 /** @internal */
 export type IndividualName$Outbound = {
   firstName: string;
@@ -50,12 +52,14 @@ export const IndividualName$outboundSchema: z.ZodType<
   IndividualName$Outbound,
   z.ZodTypeDef,
   IndividualName
-> = z.object({
-  firstName: z.string(),
-  middleName: z.string().optional(),
-  lastName: z.string(),
-  suffix: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: z.string(),
+    middleName: z.string().optional(),
+    lastName: z.string(),
+    suffix: z.string().optional(),
+  })
+);
 
 export function individualNameToJSON(individualName: IndividualName): string {
   return JSON.stringify(IndividualName$outboundSchema.parse(individualName));

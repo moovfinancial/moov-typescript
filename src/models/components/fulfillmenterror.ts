@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,10 +17,12 @@ export const FulfillmentError$inboundSchema: z.ZodType<
   FulfillmentError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  method: z.string().optional(),
-  timeframe: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    method: z.string().optional(),
+    timeframe: z.string().optional(),
+  })
+);
 /** @internal */
 export type FulfillmentError$Outbound = {
   method?: string | undefined;
@@ -32,10 +34,12 @@ export const FulfillmentError$outboundSchema: z.ZodType<
   FulfillmentError$Outbound,
   z.ZodTypeDef,
   FulfillmentError
-> = z.object({
-  method: z.string().optional(),
-  timeframe: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    method: z.string().optional(),
+    timeframe: z.string().optional(),
+  })
+);
 
 export function fulfillmentErrorToJSON(
   fulfillmentError: FulfillmentError,

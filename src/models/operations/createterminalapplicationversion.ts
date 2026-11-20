@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,15 +24,17 @@ export const CreateTerminalApplicationVersionRequest$inboundSchema: z.ZodType<
   CreateTerminalApplicationVersionRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  terminalApplicationID: z.string(),
-  TerminalApplicationVersion:
-    components.TerminalApplicationVersion$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "TerminalApplicationVersion": "terminalApplicationVersion",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: z.string(),
+    TerminalApplicationVersion:
+      components.TerminalApplicationVersion$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "TerminalApplicationVersion": "terminalApplicationVersion",
+    });
+  })
+);
 /** @internal */
 export type CreateTerminalApplicationVersionRequest$Outbound = {
   terminalApplicationID: string;
@@ -44,15 +46,17 @@ export const CreateTerminalApplicationVersionRequest$outboundSchema: z.ZodType<
   CreateTerminalApplicationVersionRequest$Outbound,
   z.ZodTypeDef,
   CreateTerminalApplicationVersionRequest
-> = z.object({
-  terminalApplicationID: z.string(),
-  terminalApplicationVersion:
-    components.TerminalApplicationVersion$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    terminalApplicationVersion: "TerminalApplicationVersion",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: z.string(),
+    terminalApplicationVersion:
+      components.TerminalApplicationVersion$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      terminalApplicationVersion: "TerminalApplicationVersion",
+    });
+  })
+);
 
 export function createTerminalApplicationVersionRequestToJSON(
   createTerminalApplicationVersionRequest:
@@ -85,15 +89,17 @@ export const CreateTerminalApplicationVersionResponse$inboundSchema: z.ZodType<
   CreateTerminalApplicationVersionResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.TerminalApplicationVersion$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.TerminalApplicationVersion$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateTerminalApplicationVersionResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -105,15 +111,17 @@ export const CreateTerminalApplicationVersionResponse$outboundSchema: z.ZodType<
   CreateTerminalApplicationVersionResponse$Outbound,
   z.ZodTypeDef,
   CreateTerminalApplicationVersionResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.TerminalApplicationVersion$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.TerminalApplicationVersion$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createTerminalApplicationVersionResponseToJSON(
   createTerminalApplicationVersionResponse:

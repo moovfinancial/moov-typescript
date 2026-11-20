@@ -8,8 +8,7 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
-import { pathToFunc } from "../lib/url.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -94,7 +93,11 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/images/{publicID}")(pathParams);
+  const pathResult = encodePath("/images/{publicID}", pathParams);
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const query = encodeFormQuery({
     "size": payload.size,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,11 +38,13 @@ export const SweepSubtotal$inboundSchema: z.ZodType<
   SweepSubtotal,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: WalletTransactionType$inboundSchema,
-  count: z.number().int(),
-  amount: AmountDecimal$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: WalletTransactionType$inboundSchema,
+    count: z.number().int(),
+    amount: AmountDecimal$inboundSchema,
+  })
+);
 /** @internal */
 export type SweepSubtotal$Outbound = {
   type: string;
@@ -55,11 +57,13 @@ export const SweepSubtotal$outboundSchema: z.ZodType<
   SweepSubtotal$Outbound,
   z.ZodTypeDef,
   SweepSubtotal
-> = z.object({
-  type: WalletTransactionType$outboundSchema,
-  count: z.number().int(),
-  amount: AmountDecimal$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: WalletTransactionType$outboundSchema,
+    count: z.number().int(),
+    amount: AmountDecimal$outboundSchema,
+  })
+);
 
 export function sweepSubtotalToJSON(sweepSubtotal: SweepSubtotal): string {
   return JSON.stringify(SweepSubtotal$outboundSchema.parse(sweepSubtotal));

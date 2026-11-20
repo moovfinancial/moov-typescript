@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type ListInvoicesValidationErrorData = {
@@ -64,26 +65,28 @@ export const ListInvoicesValidationError$inboundSchema: z.ZodType<
   ListInvoicesValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.string().optional(),
-  customerAccountID: z.string().optional(),
-  createdStartDateTime: z.string().optional(),
-  createdEndDateTime: z.string().optional(),
-  dueStartDateTime: z.string().optional(),
-  dueEndDateTime: z.string().optional(),
-  skip: z.string().optional(),
-  count: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ListInvoicesValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.string().optional(),
+    customerAccountID: z.string().optional(),
+    createdStartDateTime: z.string().optional(),
+    createdEndDateTime: z.string().optional(),
+    dueStartDateTime: z.string().optional(),
+    dueEndDateTime: z.string().optional(),
+    skip: z.string().optional(),
+    count: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ListInvoicesValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ListInvoicesValidationError$Outbound = {
@@ -102,15 +105,17 @@ export const ListInvoicesValidationError$outboundSchema: z.ZodType<
   ListInvoicesValidationError$Outbound,
   z.ZodTypeDef,
   ListInvoicesValidationError
-> = z.instanceof(ListInvoicesValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.string().optional(),
-    customerAccountID: z.string().optional(),
-    createdStartDateTime: z.string().optional(),
-    createdEndDateTime: z.string().optional(),
-    dueStartDateTime: z.string().optional(),
-    dueEndDateTime: z.string().optional(),
-    skip: z.string().optional(),
-    count: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ListInvoicesValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      status: z.string().optional(),
+      customerAccountID: z.string().optional(),
+      createdStartDateTime: z.string().optional(),
+      createdEndDateTime: z.string().optional(),
+      dueStartDateTime: z.string().optional(),
+      dueEndDateTime: z.string().optional(),
+      skip: z.string().optional(),
+      count: z.string().optional(),
+    }))
+);

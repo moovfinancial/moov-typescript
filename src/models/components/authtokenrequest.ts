@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -55,22 +55,24 @@ export const AuthTokenRequest$inboundSchema: z.ZodType<
   AuthTokenRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  grant_type: GrantType$inboundSchema,
-  client_id: z.string().optional(),
-  client_secret: z.string().optional(),
-  scope: z.string().optional(),
-  refresh_token: z.string().optional(),
-  client_type: OAuth2ClientType$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "grant_type": "grantType",
-    "client_id": "clientId",
-    "client_secret": "clientSecret",
-    "refresh_token": "refreshToken",
-    "client_type": "clientType",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    grant_type: GrantType$inboundSchema,
+    client_id: z.string().optional(),
+    client_secret: z.string().optional(),
+    scope: z.string().optional(),
+    refresh_token: z.string().optional(),
+    client_type: OAuth2ClientType$inboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "grant_type": "grantType",
+      "client_id": "clientId",
+      "client_secret": "clientSecret",
+      "refresh_token": "refreshToken",
+      "client_type": "clientType",
+    });
+  })
+);
 /** @internal */
 export type AuthTokenRequest$Outbound = {
   grant_type: string;
@@ -86,22 +88,24 @@ export const AuthTokenRequest$outboundSchema: z.ZodType<
   AuthTokenRequest$Outbound,
   z.ZodTypeDef,
   AuthTokenRequest
-> = z.object({
-  grantType: GrantType$outboundSchema,
-  clientId: z.string().optional(),
-  clientSecret: z.string().optional(),
-  scope: z.string().optional(),
-  refreshToken: z.string().optional(),
-  clientType: OAuth2ClientType$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    grantType: "grant_type",
-    clientId: "client_id",
-    clientSecret: "client_secret",
-    refreshToken: "refresh_token",
-    clientType: "client_type",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    grantType: GrantType$outboundSchema,
+    clientId: z.string().optional(),
+    clientSecret: z.string().optional(),
+    scope: z.string().optional(),
+    refreshToken: z.string().optional(),
+    clientType: OAuth2ClientType$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      grantType: "grant_type",
+      clientId: "client_id",
+      clientSecret: "client_secret",
+      refreshToken: "refresh_token",
+      clientType: "client_type",
+    });
+  })
+);
 
 export function authTokenRequestToJSON(
   authTokenRequest: AuthTokenRequest,

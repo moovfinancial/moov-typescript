@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -76,32 +76,39 @@ export const CardTransactionDetails$inboundSchema: z.ZodType<
   CardTransactionDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: CardTransactionStatus$inboundSchema.optional(),
-  failureCode: CardTransactionFailureCode$inboundSchema.optional(),
-  dynamicDescriptor: z.string().optional(),
-  scheduledDeliveryOn: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  transactionSource: TransactionSource$inboundSchema.optional(),
-  initiatedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  confirmedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  settledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  canceledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  completedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  deferredOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  interchangeQualification: z.string().optional(),
-  feeProgram: z.string().optional(),
-  authorizationCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: CardTransactionStatus$inboundSchema.optional(),
+    failureCode: CardTransactionFailureCode$inboundSchema.optional(),
+    dynamicDescriptor: z.string().optional(),
+    scheduledDeliveryOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    transactionSource: TransactionSource$inboundSchema.optional(),
+    initiatedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    confirmedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    settledOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    failedOn: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    canceledOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    completedOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    deferredOn: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    interchangeQualification: z.string().optional(),
+    feeProgram: z.string().optional(),
+    authorizationCode: z.string().optional(),
+  })
+);
 /** @internal */
 export type CardTransactionDetails$Outbound = {
   status?: string | undefined;
@@ -126,23 +133,25 @@ export const CardTransactionDetails$outboundSchema: z.ZodType<
   CardTransactionDetails$Outbound,
   z.ZodTypeDef,
   CardTransactionDetails
-> = z.object({
-  status: CardTransactionStatus$outboundSchema.optional(),
-  failureCode: CardTransactionFailureCode$outboundSchema.optional(),
-  dynamicDescriptor: z.string().optional(),
-  scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
-  transactionSource: TransactionSource$outboundSchema.optional(),
-  initiatedOn: z.date().transform(v => v.toISOString()).optional(),
-  confirmedOn: z.date().transform(v => v.toISOString()).optional(),
-  settledOn: z.date().transform(v => v.toISOString()).optional(),
-  failedOn: z.date().transform(v => v.toISOString()).optional(),
-  canceledOn: z.date().transform(v => v.toISOString()).optional(),
-  completedOn: z.date().transform(v => v.toISOString()).optional(),
-  deferredOn: z.date().transform(v => v.toISOString()).optional(),
-  interchangeQualification: z.string().optional(),
-  feeProgram: z.string().optional(),
-  authorizationCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: CardTransactionStatus$outboundSchema.optional(),
+    failureCode: CardTransactionFailureCode$outboundSchema.optional(),
+    dynamicDescriptor: z.string().optional(),
+    scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
+    transactionSource: TransactionSource$outboundSchema.optional(),
+    initiatedOn: z.date().transform(v => v.toISOString()).optional(),
+    confirmedOn: z.date().transform(v => v.toISOString()).optional(),
+    settledOn: z.date().transform(v => v.toISOString()).optional(),
+    failedOn: z.date().transform(v => v.toISOString()).optional(),
+    canceledOn: z.date().transform(v => v.toISOString()).optional(),
+    completedOn: z.date().transform(v => v.toISOString()).optional(),
+    deferredOn: z.date().transform(v => v.toISOString()).optional(),
+    interchangeQualification: z.string().optional(),
+    feeProgram: z.string().optional(),
+    authorizationCode: z.string().optional(),
+  })
+);
 
 export function cardTransactionDetailsToJSON(
   cardTransactionDetails: CardTransactionDetails,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -57,22 +57,24 @@ export type Webhook = {
 
 /** @internal */
 export const Webhook$inboundSchema: z.ZodType<Webhook, z.ZodTypeDef, unknown> =
-  z.object({
-    webhookID: z.string(),
-    url: z.string(),
-    status: WebhookStatus$inboundSchema,
-    eventTypes: z.array(WebhookEventType$inboundSchema),
-    description: z.string(),
-    createdOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    updatedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    lastUsedOn: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      webhookID: z.string(),
+      url: z.string(),
+      status: WebhookStatus$inboundSchema,
+      eventTypes: z.array(WebhookEventType$inboundSchema),
+      description: z.string(),
+      createdOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      updatedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      lastUsedOn: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+    })
+  );
 /** @internal */
 export type Webhook$Outbound = {
   webhookID: string;
@@ -90,16 +92,18 @@ export const Webhook$outboundSchema: z.ZodType<
   Webhook$Outbound,
   z.ZodTypeDef,
   Webhook
-> = z.object({
-  webhookID: z.string(),
-  url: z.string(),
-  status: WebhookStatus$outboundSchema,
-  eventTypes: z.array(WebhookEventType$outboundSchema),
-  description: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  lastUsedOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: z.string(),
+    url: z.string(),
+    status: WebhookStatus$outboundSchema,
+    eventTypes: z.array(WebhookEventType$outboundSchema),
+    description: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    lastUsedOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function webhookToJSON(webhook: Webhook): string {
   return JSON.stringify(Webhook$outboundSchema.parse(webhook));

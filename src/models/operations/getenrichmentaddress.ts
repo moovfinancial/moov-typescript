@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -78,21 +78,23 @@ export const GetEnrichmentAddressRequest$inboundSchema: z.ZodType<
   GetEnrichmentAddressRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  search: z.string(),
-  maxResults: z.number().int().optional(),
-  includeCities: z.string().optional(),
-  includeStates: z.string().optional(),
-  includeZipcodes: z.string().optional(),
-  excludeStates: z.string().optional(),
-  preferCities: z.string().optional(),
-  preferStates: z.string().optional(),
-  preferZipcodes: z.string().optional(),
-  preferRatio: z.number().int().optional(),
-  preferGeolocation: z.string().optional(),
-  selected: z.string().optional(),
-  source: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    search: z.string(),
+    maxResults: z.number().int().optional(),
+    includeCities: z.string().optional(),
+    includeStates: z.string().optional(),
+    includeZipcodes: z.string().optional(),
+    excludeStates: z.string().optional(),
+    preferCities: z.string().optional(),
+    preferStates: z.string().optional(),
+    preferZipcodes: z.string().optional(),
+    preferRatio: z.number().int().optional(),
+    preferGeolocation: z.string().optional(),
+    selected: z.string().optional(),
+    source: z.string().optional(),
+  })
+);
 /** @internal */
 export type GetEnrichmentAddressRequest$Outbound = {
   search: string;
@@ -115,21 +117,23 @@ export const GetEnrichmentAddressRequest$outboundSchema: z.ZodType<
   GetEnrichmentAddressRequest$Outbound,
   z.ZodTypeDef,
   GetEnrichmentAddressRequest
-> = z.object({
-  search: z.string(),
-  maxResults: z.number().int().optional(),
-  includeCities: z.string().optional(),
-  includeStates: z.string().optional(),
-  includeZipcodes: z.string().optional(),
-  excludeStates: z.string().optional(),
-  preferCities: z.string().optional(),
-  preferStates: z.string().optional(),
-  preferZipcodes: z.string().optional(),
-  preferRatio: z.number().int().optional(),
-  preferGeolocation: z.string().optional(),
-  selected: z.string().optional(),
-  source: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    search: z.string(),
+    maxResults: z.number().int().optional(),
+    includeCities: z.string().optional(),
+    includeStates: z.string().optional(),
+    includeZipcodes: z.string().optional(),
+    excludeStates: z.string().optional(),
+    preferCities: z.string().optional(),
+    preferStates: z.string().optional(),
+    preferZipcodes: z.string().optional(),
+    preferRatio: z.number().int().optional(),
+    preferGeolocation: z.string().optional(),
+    selected: z.string().optional(),
+    source: z.string().optional(),
+  })
+);
 
 export function getEnrichmentAddressRequestToJSON(
   getEnrichmentAddressRequest: GetEnrichmentAddressRequest,
@@ -155,15 +159,17 @@ export const GetEnrichmentAddressResponse$inboundSchema: z.ZodType<
   GetEnrichmentAddressResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.EnrichedAddressResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.EnrichedAddressResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetEnrichmentAddressResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -175,15 +181,17 @@ export const GetEnrichmentAddressResponse$outboundSchema: z.ZodType<
   GetEnrichmentAddressResponse$Outbound,
   z.ZodTypeDef,
   GetEnrichmentAddressResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.EnrichedAddressResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.EnrichedAddressResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getEnrichmentAddressResponseToJSON(
   getEnrichmentAddressResponse: GetEnrichmentAddressResponse,

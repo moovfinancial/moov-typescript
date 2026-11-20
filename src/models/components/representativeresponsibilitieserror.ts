@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,12 +19,14 @@ export const RepresentativeResponsibilitiesError$inboundSchema: z.ZodType<
   RepresentativeResponsibilitiesError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  isController: z.string().optional(),
-  isOwner: z.string().optional(),
-  ownershipPercentage: z.string().optional(),
-  jobTitle: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isController: z.string().optional(),
+    isOwner: z.string().optional(),
+    ownershipPercentage: z.string().optional(),
+    jobTitle: z.string().optional(),
+  })
+);
 /** @internal */
 export type RepresentativeResponsibilitiesError$Outbound = {
   isController?: string | undefined;
@@ -38,12 +40,14 @@ export const RepresentativeResponsibilitiesError$outboundSchema: z.ZodType<
   RepresentativeResponsibilitiesError$Outbound,
   z.ZodTypeDef,
   RepresentativeResponsibilitiesError
-> = z.object({
-  isController: z.string().optional(),
-  isOwner: z.string().optional(),
-  ownershipPercentage: z.string().optional(),
-  jobTitle: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isController: z.string().optional(),
+    isOwner: z.string().optional(),
+    ownershipPercentage: z.string().optional(),
+    jobTitle: z.string().optional(),
+  })
+);
 
 export function representativeResponsibilitiesErrorToJSON(
   representativeResponsibilitiesError: RepresentativeResponsibilitiesError,

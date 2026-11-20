@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,9 +19,11 @@ export const InvoiceTransferPayment$inboundSchema: z.ZodType<
   InvoiceTransferPayment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+  })
+);
 /** @internal */
 export type InvoiceTransferPayment$Outbound = {
   transferID: string;
@@ -32,9 +34,11 @@ export const InvoiceTransferPayment$outboundSchema: z.ZodType<
   InvoiceTransferPayment$Outbound,
   z.ZodTypeDef,
   InvoiceTransferPayment
-> = z.object({
-  transferID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+  })
+);
 
 export function invoiceTransferPaymentToJSON(
   invoiceTransferPayment: InvoiceTransferPayment,

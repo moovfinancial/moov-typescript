@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -14,9 +14,11 @@ export type CreateTransferAmountDetailsValidationError = {
 /** @internal */
 export const CreateTransferAmountDetailsValidationError$inboundSchema:
   z.ZodType<CreateTransferAmountDetailsValidationError, z.ZodTypeDef, unknown> =
-    z.object({
-      tip: z.string().optional(),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        tip: z.string().optional(),
+      })
+    );
 /** @internal */
 export type CreateTransferAmountDetailsValidationError$Outbound = {
   tip?: string | undefined;
@@ -28,9 +30,11 @@ export const CreateTransferAmountDetailsValidationError$outboundSchema:
     CreateTransferAmountDetailsValidationError$Outbound,
     z.ZodTypeDef,
     CreateTransferAmountDetailsValidationError
-  > = z.object({
-    tip: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      tip: z.string().optional(),
+    })
+  );
 
 export function createTransferAmountDetailsValidationErrorToJSON(
   createTransferAmountDetailsValidationError:

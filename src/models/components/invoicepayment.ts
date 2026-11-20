@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -49,13 +49,15 @@ export const InvoicePayment$inboundSchema: z.ZodType<
   InvoicePayment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  invoicePaymentID: z.string(),
-  invoicePaymentType: InvoicePaymentType$inboundSchema,
-  amount: AmountDecimal$inboundSchema,
-  transfer: InvoiceTransferPayment$inboundSchema.optional(),
-  external: InvoiceExternalPayment$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    invoicePaymentID: z.string(),
+    invoicePaymentType: InvoicePaymentType$inboundSchema,
+    amount: AmountDecimal$inboundSchema,
+    transfer: InvoiceTransferPayment$inboundSchema.optional(),
+    external: InvoiceExternalPayment$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type InvoicePayment$Outbound = {
   invoicePaymentID: string;
@@ -70,13 +72,15 @@ export const InvoicePayment$outboundSchema: z.ZodType<
   InvoicePayment$Outbound,
   z.ZodTypeDef,
   InvoicePayment
-> = z.object({
-  invoicePaymentID: z.string(),
-  invoicePaymentType: InvoicePaymentType$outboundSchema,
-  amount: AmountDecimal$outboundSchema,
-  transfer: InvoiceTransferPayment$outboundSchema.optional(),
-  external: InvoiceExternalPayment$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    invoicePaymentID: z.string(),
+    invoicePaymentType: InvoicePaymentType$outboundSchema,
+    amount: AmountDecimal$outboundSchema,
+    transfer: InvoiceTransferPayment$outboundSchema.optional(),
+    external: InvoiceExternalPayment$outboundSchema.optional(),
+  })
+);
 
 export function invoicePaymentToJSON(invoicePayment: InvoicePayment): string {
   return JSON.stringify(InvoicePayment$outboundSchema.parse(invoicePayment));

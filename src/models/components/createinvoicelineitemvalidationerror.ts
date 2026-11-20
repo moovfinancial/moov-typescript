@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,14 +34,16 @@ export const CreateInvoiceLineItemValidationError$inboundSchema: z.ZodType<
   CreateInvoiceLineItemValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  productID: z.string().optional(),
-  name: z.string().optional(),
-  basePrice: AmountDecimalValidationError$inboundSchema.optional(),
-  options: z.record(CreateInvoiceLineItemOptionValidationError$inboundSchema)
-    .optional(),
-  quantity: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    productID: z.string().optional(),
+    name: z.string().optional(),
+    basePrice: AmountDecimalValidationError$inboundSchema.optional(),
+    options: z.record(CreateInvoiceLineItemOptionValidationError$inboundSchema)
+      .optional(),
+    quantity: z.string().optional(),
+  })
+);
 /** @internal */
 export type CreateInvoiceLineItemValidationError$Outbound = {
   productID?: string | undefined;
@@ -58,14 +60,16 @@ export const CreateInvoiceLineItemValidationError$outboundSchema: z.ZodType<
   CreateInvoiceLineItemValidationError$Outbound,
   z.ZodTypeDef,
   CreateInvoiceLineItemValidationError
-> = z.object({
-  productID: z.string().optional(),
-  name: z.string().optional(),
-  basePrice: AmountDecimalValidationError$outboundSchema.optional(),
-  options: z.record(CreateInvoiceLineItemOptionValidationError$outboundSchema)
-    .optional(),
-  quantity: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    productID: z.string().optional(),
+    name: z.string().optional(),
+    basePrice: AmountDecimalValidationError$outboundSchema.optional(),
+    options: z.record(CreateInvoiceLineItemOptionValidationError$outboundSchema)
+      .optional(),
+    quantity: z.string().optional(),
+  })
+);
 
 export function createInvoiceLineItemValidationErrorToJSON(
   createInvoiceLineItemValidationError: CreateInvoiceLineItemValidationError,

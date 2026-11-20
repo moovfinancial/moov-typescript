@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type RefundValidationErrorData = {
@@ -44,20 +45,22 @@ export const RefundValidationError$inboundSchema: z.ZodType<
   RefundValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: z.string().optional(),
-  error: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new RefundValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.string().optional(),
+    error: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new RefundValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type RefundValidationError$Outbound = {
@@ -70,9 +73,11 @@ export const RefundValidationError$outboundSchema: z.ZodType<
   RefundValidationError$Outbound,
   z.ZodTypeDef,
   RefundValidationError
-> = z.instanceof(RefundValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    amount: z.string().optional(),
-    error: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(RefundValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      amount: z.string().optional(),
+      error: z.string().optional(),
+    }))
+);

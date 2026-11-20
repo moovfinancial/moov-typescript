@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,11 +36,13 @@ export const PartnerFees$inboundSchema: z.ZodType<
   PartnerFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  minimumCommitment: AmountDecimal$inboundSchema,
-  monthlyPlatform: AmountDecimal$inboundSchema,
-  total: AmountDecimal$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    minimumCommitment: AmountDecimal$inboundSchema,
+    monthlyPlatform: AmountDecimal$inboundSchema,
+    total: AmountDecimal$inboundSchema,
+  })
+);
 /** @internal */
 export type PartnerFees$Outbound = {
   minimumCommitment: AmountDecimal$Outbound;
@@ -53,11 +55,13 @@ export const PartnerFees$outboundSchema: z.ZodType<
   PartnerFees$Outbound,
   z.ZodTypeDef,
   PartnerFees
-> = z.object({
-  minimumCommitment: AmountDecimal$outboundSchema,
-  monthlyPlatform: AmountDecimal$outboundSchema,
-  total: AmountDecimal$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    minimumCommitment: AmountDecimal$outboundSchema,
+    monthlyPlatform: AmountDecimal$outboundSchema,
+    total: AmountDecimal$outboundSchema,
+  })
+);
 
 export function partnerFeesToJSON(partnerFees: PartnerFees): string {
   return JSON.stringify(PartnerFees$outboundSchema.parse(partnerFees));

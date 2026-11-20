@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -33,11 +33,13 @@ export const CardPresentPaymentPaymentMethod$inboundSchema: z.ZodType<
   CardPresentPaymentPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("card-present-payment"),
-  terminalCard: TerminalCard$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("card-present-payment"),
+    terminalCard: TerminalCard$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CardPresentPaymentPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -50,11 +52,13 @@ export const CardPresentPaymentPaymentMethod$outboundSchema: z.ZodType<
   CardPresentPaymentPaymentMethod$Outbound,
   z.ZodTypeDef,
   CardPresentPaymentPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("card-present-payment"),
-  terminalCard: TerminalCard$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("card-present-payment"),
+    terminalCard: TerminalCard$outboundSchema.optional(),
+  })
+);
 
 export function cardPresentPaymentPaymentMethodToJSON(
   cardPresentPaymentPaymentMethod: CardPresentPaymentPaymentMethod,

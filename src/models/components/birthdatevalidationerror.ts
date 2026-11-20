@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,11 +18,13 @@ export const BirthDateValidationError$inboundSchema: z.ZodType<
   BirthDateValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  day: z.string().optional(),
-  month: z.string().optional(),
-  year: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    day: z.string().optional(),
+    month: z.string().optional(),
+    year: z.string().optional(),
+  })
+);
 /** @internal */
 export type BirthDateValidationError$Outbound = {
   day?: string | undefined;
@@ -35,11 +37,13 @@ export const BirthDateValidationError$outboundSchema: z.ZodType<
   BirthDateValidationError$Outbound,
   z.ZodTypeDef,
   BirthDateValidationError
-> = z.object({
-  day: z.string().optional(),
-  month: z.string().optional(),
-  year: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    day: z.string().optional(),
+    month: z.string().optional(),
+    year: z.string().optional(),
+  })
+);
 
 export function birthDateValidationErrorToJSON(
   birthDateValidationError: BirthDateValidationError,

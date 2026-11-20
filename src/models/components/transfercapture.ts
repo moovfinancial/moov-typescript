@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,10 +26,12 @@ export const TransferCapture$inboundSchema: z.ZodType<
   TransferCapture,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authorizationID: z.string(),
-  captureID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: z.string(),
+    captureID: z.string(),
+  })
+);
 /** @internal */
 export type TransferCapture$Outbound = {
   authorizationID: string;
@@ -41,10 +43,12 @@ export const TransferCapture$outboundSchema: z.ZodType<
   TransferCapture$Outbound,
   z.ZodTypeDef,
   TransferCapture
-> = z.object({
-  authorizationID: z.string(),
-  captureID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: z.string(),
+    captureID: z.string(),
+  })
+);
 
 export function transferCaptureToJSON(
   transferCapture: TransferCapture,

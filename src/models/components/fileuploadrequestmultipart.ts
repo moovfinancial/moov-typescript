@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -44,15 +44,17 @@ export const FileUploadRequestMultiPartFile$inboundSchema: z.ZodType<
   FileUploadRequestMultiPartFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 /** @internal */
 export type FileUploadRequestMultiPartFile$Outbound = {
   fileName: string;
@@ -64,15 +66,17 @@ export const FileUploadRequestMultiPartFile$outboundSchema: z.ZodType<
   FileUploadRequestMultiPartFile$Outbound,
   z.ZodTypeDef,
   FileUploadRequestMultiPartFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function fileUploadRequestMultiPartFileToJSON(
   fileUploadRequestMultiPartFile: FileUploadRequestMultiPartFile,
@@ -98,11 +102,13 @@ export const FileUploadRequestMultiPart$inboundSchema: z.ZodType<
   FileUploadRequestMultiPart,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  file: z.lazy(() => FileUploadRequestMultiPartFile$inboundSchema),
-  filePurpose: FilePurpose$inboundSchema,
-  metadata: FileUploadMetadata$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => FileUploadRequestMultiPartFile$inboundSchema),
+    filePurpose: FilePurpose$inboundSchema,
+    metadata: FileUploadMetadata$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type FileUploadRequestMultiPart$Outbound = {
   file: FileUploadRequestMultiPartFile$Outbound | Blob;
@@ -115,13 +121,15 @@ export const FileUploadRequestMultiPart$outboundSchema: z.ZodType<
   FileUploadRequestMultiPart$Outbound,
   z.ZodTypeDef,
   FileUploadRequestMultiPart
-> = z.object({
-  file: z.lazy(() => FileUploadRequestMultiPartFile$outboundSchema).or(
-    blobLikeSchema,
-  ),
-  filePurpose: FilePurpose$outboundSchema,
-  metadata: FileUploadMetadata$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => FileUploadRequestMultiPartFile$outboundSchema).or(
+      blobLikeSchema,
+    ),
+    filePurpose: FilePurpose$outboundSchema,
+    metadata: FileUploadMetadata$outboundSchema.optional(),
+  })
+);
 
 export function fileUploadRequestMultiPartToJSON(
   fileUploadRequestMultiPart: FileUploadRequestMultiPart,

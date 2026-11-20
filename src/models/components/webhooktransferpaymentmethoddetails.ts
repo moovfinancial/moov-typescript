@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -20,10 +20,12 @@ export const WebhookTransferPaymentMethodDetails$inboundSchema: z.ZodType<
   WebhookTransferPaymentMethodDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  paymentMethodID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    paymentMethodID: z.string(),
+  })
+);
 /** @internal */
 export type WebhookTransferPaymentMethodDetails$Outbound = {
   accountID: string;
@@ -35,10 +37,12 @@ export const WebhookTransferPaymentMethodDetails$outboundSchema: z.ZodType<
   WebhookTransferPaymentMethodDetails$Outbound,
   z.ZodTypeDef,
   WebhookTransferPaymentMethodDetails
-> = z.object({
-  accountID: z.string(),
-  paymentMethodID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    paymentMethodID: z.string(),
+  })
+);
 
 export function webhookTransferPaymentMethodDetailsToJSON(
   webhookTransferPaymentMethodDetails: WebhookTransferPaymentMethodDetails,

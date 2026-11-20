@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -46,6 +46,10 @@ export type ACHFees = {
    */
   bankAccountVerification: BillingCountAndAmount;
   /**
+   * Fees for bank account risk verifications.
+   */
+  bankAccountRiskVerification?: BillingCountAndAmount | undefined;
+  /**
    * Total ACH fees.
    */
   total: BillingCountAndAmount;
@@ -53,16 +57,20 @@ export type ACHFees = {
 
 /** @internal */
 export const ACHFees$inboundSchema: z.ZodType<ACHFees, z.ZodTypeDef, unknown> =
-  z.object({
-    standardCredit: BillingCountAndAmount$inboundSchema,
-    sameDayCredit: BillingCountAndAmount$inboundSchema,
-    debits: BillingCountAndAmount$inboundSchema,
-    return: BillingCountAndAmount$inboundSchema,
-    unauthorizedReturn: BillingCountAndAmount$inboundSchema,
-    noticeOfChange: BillingCountAndAmount$inboundSchema,
-    bankAccountVerification: BillingCountAndAmount$inboundSchema,
-    total: BillingCountAndAmount$inboundSchema,
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      standardCredit: BillingCountAndAmount$inboundSchema,
+      sameDayCredit: BillingCountAndAmount$inboundSchema,
+      debits: BillingCountAndAmount$inboundSchema,
+      return: BillingCountAndAmount$inboundSchema,
+      unauthorizedReturn: BillingCountAndAmount$inboundSchema,
+      noticeOfChange: BillingCountAndAmount$inboundSchema,
+      bankAccountVerification: BillingCountAndAmount$inboundSchema,
+      bankAccountRiskVerification: BillingCountAndAmount$inboundSchema
+        .optional(),
+      total: BillingCountAndAmount$inboundSchema,
+    })
+  );
 /** @internal */
 export type ACHFees$Outbound = {
   standardCredit: BillingCountAndAmount$Outbound;
@@ -72,6 +80,7 @@ export type ACHFees$Outbound = {
   unauthorizedReturn: BillingCountAndAmount$Outbound;
   noticeOfChange: BillingCountAndAmount$Outbound;
   bankAccountVerification: BillingCountAndAmount$Outbound;
+  bankAccountRiskVerification?: BillingCountAndAmount$Outbound | undefined;
   total: BillingCountAndAmount$Outbound;
 };
 
@@ -80,16 +89,20 @@ export const ACHFees$outboundSchema: z.ZodType<
   ACHFees$Outbound,
   z.ZodTypeDef,
   ACHFees
-> = z.object({
-  standardCredit: BillingCountAndAmount$outboundSchema,
-  sameDayCredit: BillingCountAndAmount$outboundSchema,
-  debits: BillingCountAndAmount$outboundSchema,
-  return: BillingCountAndAmount$outboundSchema,
-  unauthorizedReturn: BillingCountAndAmount$outboundSchema,
-  noticeOfChange: BillingCountAndAmount$outboundSchema,
-  bankAccountVerification: BillingCountAndAmount$outboundSchema,
-  total: BillingCountAndAmount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    standardCredit: BillingCountAndAmount$outboundSchema,
+    sameDayCredit: BillingCountAndAmount$outboundSchema,
+    debits: BillingCountAndAmount$outboundSchema,
+    return: BillingCountAndAmount$outboundSchema,
+    unauthorizedReturn: BillingCountAndAmount$outboundSchema,
+    noticeOfChange: BillingCountAndAmount$outboundSchema,
+    bankAccountVerification: BillingCountAndAmount$outboundSchema,
+    bankAccountRiskVerification: BillingCountAndAmount$outboundSchema
+      .optional(),
+    total: BillingCountAndAmount$outboundSchema,
+  })
+);
 
 export function achFeesToJSON(achFees: ACHFees): string {
   return JSON.stringify(ACHFees$outboundSchema.parse(achFees));

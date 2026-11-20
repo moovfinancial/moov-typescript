@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -35,11 +35,13 @@ export type AchParticipant = {
 };
 
 /** @internal */
-export const Logo$inboundSchema: z.ZodType<Logo, z.ZodTypeDef, unknown> = z
-  .object({
-    name: z.string(),
-    url: z.string(),
-  });
+export const Logo$inboundSchema: z.ZodType<Logo, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+      url: z.string(),
+    })
+  );
 /** @internal */
 export type Logo$Outbound = {
   name: string;
@@ -48,10 +50,12 @@ export type Logo$Outbound = {
 
 /** @internal */
 export const Logo$outboundSchema: z.ZodType<Logo$Outbound, z.ZodTypeDef, Logo> =
-  z.object({
-    name: z.string(),
-    url: z.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+      url: z.string(),
+    })
+  );
 
 export function logoToJSON(logo: Logo): string {
   return JSON.stringify(Logo$outboundSchema.parse(logo));
@@ -71,21 +75,23 @@ export const AchParticipant$inboundSchema: z.ZodType<
   AchParticipant,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  achLocation: AchLocation$inboundSchema,
-  customerName: z.string(),
-  newRoutingNumber: z.string(),
-  officeCode: z.string(),
-  phoneNumber: z.string(),
-  recordTypeCode: z.string(),
-  revised: z.string(),
-  routingNumber: z.string(),
-  servicingFRBNumber: z.string(),
-  statusCode: z.string(),
-  viewCode: z.string(),
-  cleanName: z.string(),
-  logo: z.nullable(z.lazy(() => Logo$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    achLocation: AchLocation$inboundSchema,
+    customerName: z.string(),
+    newRoutingNumber: z.string(),
+    officeCode: z.string(),
+    phoneNumber: z.string(),
+    recordTypeCode: z.string(),
+    revised: z.string(),
+    routingNumber: z.string(),
+    servicingFRBNumber: z.string(),
+    statusCode: z.string(),
+    viewCode: z.string(),
+    cleanName: z.string(),
+    logo: z.nullable(z.lazy(() => Logo$inboundSchema)),
+  })
+);
 /** @internal */
 export type AchParticipant$Outbound = {
   achLocation: AchLocation$Outbound;
@@ -108,21 +114,23 @@ export const AchParticipant$outboundSchema: z.ZodType<
   AchParticipant$Outbound,
   z.ZodTypeDef,
   AchParticipant
-> = z.object({
-  achLocation: AchLocation$outboundSchema,
-  customerName: z.string(),
-  newRoutingNumber: z.string(),
-  officeCode: z.string(),
-  phoneNumber: z.string(),
-  recordTypeCode: z.string(),
-  revised: z.string(),
-  routingNumber: z.string(),
-  servicingFRBNumber: z.string(),
-  statusCode: z.string(),
-  viewCode: z.string(),
-  cleanName: z.string(),
-  logo: z.nullable(z.lazy(() => Logo$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    achLocation: AchLocation$outboundSchema,
+    customerName: z.string(),
+    newRoutingNumber: z.string(),
+    officeCode: z.string(),
+    phoneNumber: z.string(),
+    recordTypeCode: z.string(),
+    revised: z.string(),
+    routingNumber: z.string(),
+    servicingFRBNumber: z.string(),
+    statusCode: z.string(),
+    viewCode: z.string(),
+    cleanName: z.string(),
+    logo: z.nullable(z.lazy(() => Logo$outboundSchema)),
+  })
+);
 
 export function achParticipantToJSON(achParticipant: AchParticipant): string {
   return JSON.stringify(AchParticipant$outboundSchema.parse(achParticipant));

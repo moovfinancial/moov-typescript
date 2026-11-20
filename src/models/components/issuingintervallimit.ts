@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -19,7 +20,7 @@ export type IssuingIntervalLimit = ClosedEnum<typeof IssuingIntervalLimit>;
 /** @internal */
 export const IssuingIntervalLimit$inboundSchema: z.ZodNativeEnum<
   typeof IssuingIntervalLimit
-> = z.nativeEnum(IssuingIntervalLimit);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IssuingIntervalLimit));
 /** @internal */
 export const IssuingIntervalLimit$outboundSchema: z.ZodNativeEnum<
   typeof IssuingIntervalLimit

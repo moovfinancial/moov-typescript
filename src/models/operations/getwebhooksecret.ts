@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,9 +23,11 @@ export const GetWebhookSecretRequest$inboundSchema: z.ZodType<
   GetWebhookSecretRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  webhookID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: z.string(),
+  })
+);
 /** @internal */
 export type GetWebhookSecretRequest$Outbound = {
   webhookID: string;
@@ -36,9 +38,11 @@ export const GetWebhookSecretRequest$outboundSchema: z.ZodType<
   GetWebhookSecretRequest$Outbound,
   z.ZodTypeDef,
   GetWebhookSecretRequest
-> = z.object({
-  webhookID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: z.string(),
+  })
+);
 
 export function getWebhookSecretRequestToJSON(
   getWebhookSecretRequest: GetWebhookSecretRequest,
@@ -62,15 +66,17 @@ export const GetWebhookSecretResponse$inboundSchema: z.ZodType<
   GetWebhookSecretResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.WebhookSecret$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.WebhookSecret$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetWebhookSecretResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -82,15 +88,17 @@ export const GetWebhookSecretResponse$outboundSchema: z.ZodType<
   GetWebhookSecretResponse$Outbound,
   z.ZodTypeDef,
   GetWebhookSecretResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.WebhookSecret$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.WebhookSecret$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getWebhookSecretResponseToJSON(
   getWebhookSecretResponse: GetWebhookSecretResponse,

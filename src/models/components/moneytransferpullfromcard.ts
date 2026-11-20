@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const MoneyTransferPullFromCard$inboundSchema: z.ZodType<
   MoneyTransferPullFromCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  estimatedActivity: EstimatedActivity$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    estimatedActivity: EstimatedActivity$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type MoneyTransferPullFromCard$Outbound = {
   estimatedActivity?: EstimatedActivity$Outbound | undefined;
@@ -35,9 +37,11 @@ export const MoneyTransferPullFromCard$outboundSchema: z.ZodType<
   MoneyTransferPullFromCard$Outbound,
   z.ZodTypeDef,
   MoneyTransferPullFromCard
-> = z.object({
-  estimatedActivity: EstimatedActivity$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    estimatedActivity: EstimatedActivity$outboundSchema.optional(),
+  })
+);
 
 export function moneyTransferPullFromCardToJSON(
   moneyTransferPullFromCard: MoneyTransferPullFromCard,

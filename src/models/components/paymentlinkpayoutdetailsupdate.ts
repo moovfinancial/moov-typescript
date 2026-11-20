@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -56,13 +56,15 @@ export const PaymentLinkPayoutDetailsUpdate$inboundSchema: z.ZodType<
   PaymentLinkPayoutDetailsUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: z.array(DisbursementPaymentMethodType$inboundSchema)
-    .optional(),
-  recipient: PayoutRecipient$inboundSchema.optional(),
-  metadata: z.record(z.string()).optional(),
-  pushOptions: PushOptionsUpdate$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(DisbursementPaymentMethodType$inboundSchema)
+      .optional(),
+    recipient: PayoutRecipient$inboundSchema.optional(),
+    metadata: z.record(z.string()).optional(),
+    pushOptions: PushOptionsUpdate$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type PaymentLinkPayoutDetailsUpdate$Outbound = {
   allowedMethods?: Array<string> | undefined;
@@ -76,13 +78,15 @@ export const PaymentLinkPayoutDetailsUpdate$outboundSchema: z.ZodType<
   PaymentLinkPayoutDetailsUpdate$Outbound,
   z.ZodTypeDef,
   PaymentLinkPayoutDetailsUpdate
-> = z.object({
-  allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema)
-    .optional(),
-  recipient: PayoutRecipient$outboundSchema.optional(),
-  metadata: z.record(z.string()).optional(),
-  pushOptions: PushOptionsUpdate$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema)
+      .optional(),
+    recipient: PayoutRecipient$outboundSchema.optional(),
+    metadata: z.record(z.string()).optional(),
+    pushOptions: PushOptionsUpdate$outboundSchema.optional(),
+  })
+);
 
 export function paymentLinkPayoutDetailsUpdateToJSON(
   paymentLinkPayoutDetailsUpdate: PaymentLinkPayoutDetailsUpdate,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,11 +30,13 @@ export const PushToApplePayTransferPaymentMethod$inboundSchema: z.ZodType<
   PushToApplePayTransferPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("push-to-apple-pay"),
-  applePay: ApplePayResponse$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("push-to-apple-pay"),
+    applePay: ApplePayResponse$inboundSchema,
+  })
+);
 /** @internal */
 export type PushToApplePayTransferPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -47,11 +49,13 @@ export const PushToApplePayTransferPaymentMethod$outboundSchema: z.ZodType<
   PushToApplePayTransferPaymentMethod$Outbound,
   z.ZodTypeDef,
   PushToApplePayTransferPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("push-to-apple-pay"),
-  applePay: ApplePayResponse$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("push-to-apple-pay"),
+    applePay: ApplePayResponse$outboundSchema,
+  })
+);
 
 export function pushToApplePayTransferPaymentMethodToJSON(
   pushToApplePayTransferPaymentMethod: PushToApplePayTransferPaymentMethod,

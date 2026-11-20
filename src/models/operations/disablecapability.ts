@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -38,10 +38,12 @@ export const DisableCapabilityRequest$inboundSchema: z.ZodType<
   DisableCapabilityRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  capabilityID: components.CapabilityID$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    capabilityID: components.CapabilityID$inboundSchema,
+  })
+);
 /** @internal */
 export type DisableCapabilityRequest$Outbound = {
   accountID: string;
@@ -53,10 +55,12 @@ export const DisableCapabilityRequest$outboundSchema: z.ZodType<
   DisableCapabilityRequest$Outbound,
   z.ZodTypeDef,
   DisableCapabilityRequest
-> = z.object({
-  accountID: z.string(),
-  capabilityID: components.CapabilityID$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    capabilityID: components.CapabilityID$outboundSchema,
+  })
+);
 
 export function disableCapabilityRequestToJSON(
   disableCapabilityRequest: DisableCapabilityRequest,
@@ -80,13 +84,15 @@ export const DisableCapabilityResponse$inboundSchema: z.ZodType<
   DisableCapabilityResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DisableCapabilityResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -97,13 +103,15 @@ export const DisableCapabilityResponse$outboundSchema: z.ZodType<
   DisableCapabilityResponse$Outbound,
   z.ZodTypeDef,
   DisableCapabilityResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function disableCapabilityResponseToJSON(
   disableCapabilityResponse: DisableCapabilityResponse,

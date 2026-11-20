@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { MoovError } from "./mooverror.js";
 
 export type AuthTokenRequestErrorData = {
@@ -39,24 +40,26 @@ export const AuthTokenRequestError$inboundSchema: z.ZodType<
   AuthTokenRequestError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  scope: z.string().optional(),
-  refresh_token: z.string().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    const remapped = remap$(v, {
-      "refresh_token": "refreshToken",
-    });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scope: z.string().optional(),
+    refresh_token: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      const remapped = remap$(v, {
+        "refresh_token": "refreshToken",
+      });
 
-    return new AuthTokenRequestError(remapped, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+      return new AuthTokenRequestError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type AuthTokenRequestError$Outbound = {
@@ -69,15 +72,17 @@ export const AuthTokenRequestError$outboundSchema: z.ZodType<
   AuthTokenRequestError$Outbound,
   z.ZodTypeDef,
   AuthTokenRequestError
-> = z.instanceof(AuthTokenRequestError)
-  .transform(v => v.data$)
-  .pipe(
-    z.object({
-      scope: z.string().optional(),
-      refreshToken: z.string().optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        refreshToken: "refresh_token",
-      });
-    }),
-  );
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(AuthTokenRequestError)
+    .transform(v => v.data$)
+    .pipe(
+      z.object({
+        scope: z.string().optional(),
+        refreshToken: z.string().optional(),
+      }).transform((v) => {
+        return remap$(v, {
+          refreshToken: "refresh_token",
+        });
+      }),
+    )
+);

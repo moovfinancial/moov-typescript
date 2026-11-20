@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const GetPaymentMethodRequest$inboundSchema: z.ZodType<
   GetPaymentMethodRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: z.string(),
-  paymentMethodID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    paymentMethodID: z.string(),
+  })
+);
 /** @internal */
 export type GetPaymentMethodRequest$Outbound = {
   accountID: string;
@@ -39,10 +41,12 @@ export const GetPaymentMethodRequest$outboundSchema: z.ZodType<
   GetPaymentMethodRequest$Outbound,
   z.ZodTypeDef,
   GetPaymentMethodRequest
-> = z.object({
-  accountID: z.string(),
-  paymentMethodID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    paymentMethodID: z.string(),
+  })
+);
 
 export function getPaymentMethodRequestToJSON(
   getPaymentMethodRequest: GetPaymentMethodRequest,
@@ -66,15 +70,17 @@ export const GetPaymentMethodResponse$inboundSchema: z.ZodType<
   GetPaymentMethodResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.PaymentMethod$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.PaymentMethod$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetPaymentMethodResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -86,15 +92,17 @@ export const GetPaymentMethodResponse$outboundSchema: z.ZodType<
   GetPaymentMethodResponse$Outbound,
   z.ZodTypeDef,
   GetPaymentMethodResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.PaymentMethod$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.PaymentMethod$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getPaymentMethodResponseToJSON(
   getPaymentMethodResponse: GetPaymentMethodResponse,

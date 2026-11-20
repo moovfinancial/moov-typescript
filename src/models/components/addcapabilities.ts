@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,9 +30,11 @@ export const AddCapabilities$inboundSchema: z.ZodType<
   AddCapabilities,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  capabilities: z.array(CapabilityID$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    capabilities: z.array(CapabilityID$inboundSchema),
+  })
+);
 /** @internal */
 export type AddCapabilities$Outbound = {
   capabilities: Array<string>;
@@ -43,9 +45,11 @@ export const AddCapabilities$outboundSchema: z.ZodType<
   AddCapabilities$Outbound,
   z.ZodTypeDef,
   AddCapabilities
-> = z.object({
-  capabilities: z.array(CapabilityID$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    capabilities: z.array(CapabilityID$outboundSchema),
+  })
+);
 
 export function addCapabilitiesToJSON(
   addCapabilities: AddCapabilities,

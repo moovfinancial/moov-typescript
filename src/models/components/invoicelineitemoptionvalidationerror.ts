@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,12 +25,14 @@ export const InvoiceLineItemOptionValidationError$inboundSchema: z.ZodType<
   InvoiceLineItemOptionValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  group: z.string().optional(),
-  priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
-  quantity: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    group: z.string().optional(),
+    priceModifier: AmountDecimalValidationError$inboundSchema.optional(),
+    quantity: z.string().optional(),
+  })
+);
 /** @internal */
 export type InvoiceLineItemOptionValidationError$Outbound = {
   name?: string | undefined;
@@ -44,12 +46,14 @@ export const InvoiceLineItemOptionValidationError$outboundSchema: z.ZodType<
   InvoiceLineItemOptionValidationError$Outbound,
   z.ZodTypeDef,
   InvoiceLineItemOptionValidationError
-> = z.object({
-  name: z.string().optional(),
-  group: z.string().optional(),
-  priceModifier: AmountDecimalValidationError$outboundSchema.optional(),
-  quantity: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    group: z.string().optional(),
+    priceModifier: AmountDecimalValidationError$outboundSchema.optional(),
+    quantity: z.string().optional(),
+  })
+);
 
 export function invoiceLineItemOptionValidationErrorToJSON(
   invoiceLineItemOptionValidationError: InvoiceLineItemOptionValidationError,

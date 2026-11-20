@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,10 +38,12 @@ export const AdjustmentFees$inboundSchema: z.ZodType<
   AdjustmentFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(BillingAdjustment$inboundSchema),
-  total: BillingCountAndAmount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(BillingAdjustment$inboundSchema),
+    total: BillingCountAndAmount$inboundSchema,
+  })
+);
 /** @internal */
 export type AdjustmentFees$Outbound = {
   items: Array<BillingAdjustment$Outbound>;
@@ -53,10 +55,12 @@ export const AdjustmentFees$outboundSchema: z.ZodType<
   AdjustmentFees$Outbound,
   z.ZodTypeDef,
   AdjustmentFees
-> = z.object({
-  items: z.array(BillingAdjustment$outboundSchema),
-  total: BillingCountAndAmount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(BillingAdjustment$outboundSchema),
+    total: BillingCountAndAmount$outboundSchema,
+  })
+);
 
 export function adjustmentFeesToJSON(adjustmentFees: AdjustmentFees): string {
   return JSON.stringify(AdjustmentFees$outboundSchema.parse(adjustmentFees));

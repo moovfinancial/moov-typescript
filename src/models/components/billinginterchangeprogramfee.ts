@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Decimal as Decimal$ } from "../../types/decimal.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -49,14 +49,16 @@ export const BillingInterchangeProgramFee$inboundSchema: z.ZodType<
   BillingInterchangeProgramFee,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  programName: z.string(),
-  count: z.number().int(),
-  percentageRate: z.number().transform(v => new Decimal$(v)),
-  perItemRate: AmountDecimal$inboundSchema,
-  total: AmountDecimal$inboundSchema,
-  transferVolume: AmountDecimal$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    programName: z.string(),
+    count: z.number().int(),
+    percentageRate: z.number().transform(v => new Decimal$(v)),
+    perItemRate: AmountDecimal$inboundSchema,
+    total: AmountDecimal$inboundSchema,
+    transferVolume: AmountDecimal$inboundSchema,
+  })
+);
 /** @internal */
 export type BillingInterchangeProgramFee$Outbound = {
   programName: string;
@@ -72,16 +74,18 @@ export const BillingInterchangeProgramFee$outboundSchema: z.ZodType<
   BillingInterchangeProgramFee$Outbound,
   z.ZodTypeDef,
   BillingInterchangeProgramFee
-> = z.object({
-  programName: z.string(),
-  count: z.number().int(),
-  percentageRate: z.union([z.instanceof(Decimal$), z.number()]).transform(v =>
-    typeof v === "number" ? v : v.toNumber()
-  ),
-  perItemRate: AmountDecimal$outboundSchema,
-  total: AmountDecimal$outboundSchema,
-  transferVolume: AmountDecimal$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    programName: z.string(),
+    count: z.number().int(),
+    percentageRate: z.union([z.instanceof(Decimal$), z.number()]).transform(v =>
+      typeof v === "number" ? v : v.toNumber()
+    ),
+    perItemRate: AmountDecimal$outboundSchema,
+    total: AmountDecimal$outboundSchema,
+    transferVolume: AmountDecimal$outboundSchema,
+  })
+);
 
 export function billingInterchangeProgramFeeToJSON(
   billingInterchangeProgramFee: BillingInterchangeProgramFee,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -45,7 +45,7 @@ import {
 
 export type CreateTransfer = {
   /**
-   * Where funds for a transfer originate. For the source, you must include either a `paymentMethodID` or a `transferID`.
+   * Where funds for a transfer originate. For the source, you must include exactly one of `paymentMethodID`, `paymentToken`, or `transferID`.
    */
   source: CreateTransferSource;
   /**
@@ -85,18 +85,20 @@ export const CreateTransfer$inboundSchema: z.ZodType<
   CreateTransfer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  source: CreateTransferSource$inboundSchema,
-  destination: CreateTransferDestination$inboundSchema,
-  amount: Amount$inboundSchema,
-  facilitatorFee: FacilitatorFee$inboundSchema.optional(),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  salesTaxAmount: Amount$inboundSchema.optional(),
-  foreignID: z.string().optional(),
-  lineItems: CreateTransferLineItems$inboundSchema.optional(),
-  amountDetails: CreateTransferAmountDetails$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source: CreateTransferSource$inboundSchema,
+    destination: CreateTransferDestination$inboundSchema,
+    amount: Amount$inboundSchema,
+    facilitatorFee: FacilitatorFee$inboundSchema.optional(),
+    description: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+    salesTaxAmount: Amount$inboundSchema.optional(),
+    foreignID: z.string().optional(),
+    lineItems: CreateTransferLineItems$inboundSchema.optional(),
+    amountDetails: CreateTransferAmountDetails$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CreateTransfer$Outbound = {
   source: CreateTransferSource$Outbound;
@@ -116,18 +118,20 @@ export const CreateTransfer$outboundSchema: z.ZodType<
   CreateTransfer$Outbound,
   z.ZodTypeDef,
   CreateTransfer
-> = z.object({
-  source: CreateTransferSource$outboundSchema,
-  destination: CreateTransferDestination$outboundSchema,
-  amount: Amount$outboundSchema,
-  facilitatorFee: FacilitatorFee$outboundSchema.optional(),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  salesTaxAmount: Amount$outboundSchema.optional(),
-  foreignID: z.string().optional(),
-  lineItems: CreateTransferLineItems$outboundSchema.optional(),
-  amountDetails: CreateTransferAmountDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source: CreateTransferSource$outboundSchema,
+    destination: CreateTransferDestination$outboundSchema,
+    amount: Amount$outboundSchema,
+    facilitatorFee: FacilitatorFee$outboundSchema.optional(),
+    description: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+    salesTaxAmount: Amount$outboundSchema.optional(),
+    foreignID: z.string().optional(),
+    lineItems: CreateTransferLineItems$outboundSchema.optional(),
+    amountDetails: CreateTransferAmountDetails$outboundSchema.optional(),
+  })
+);
 
 export function createTransferToJSON(createTransfer: CreateTransfer): string {
   return JSON.stringify(CreateTransfer$outboundSchema.parse(createTransfer));
