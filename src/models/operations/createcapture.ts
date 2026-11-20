@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -36,17 +36,19 @@ export const CreateCaptureRequest$inboundSchema: z.ZodType<
   CreateCaptureRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "x-idempotency-key": types.string(),
-  accountID: types.string(),
-  transferID: types.string(),
-  CreateCapture: components.CreateCapture$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "x-idempotency-key": "xIdempotencyKey",
-    "CreateCapture": "createCapture",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "x-idempotency-key": types.string(),
+    accountID: types.string(),
+    transferID: types.string(),
+    CreateCapture: components.CreateCapture$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "x-idempotency-key": "xIdempotencyKey",
+      "CreateCapture": "createCapture",
+    });
+  })
+);
 /** @internal */
 export type CreateCaptureRequest$Outbound = {
   "x-idempotency-key": string;
@@ -60,17 +62,19 @@ export const CreateCaptureRequest$outboundSchema: z.ZodType<
   CreateCaptureRequest$Outbound,
   z.ZodTypeDef,
   CreateCaptureRequest
-> = z.object({
-  xIdempotencyKey: z.string(),
-  accountID: z.string(),
-  transferID: z.string(),
-  createCapture: components.CreateCapture$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    xIdempotencyKey: "x-idempotency-key",
-    createCapture: "CreateCapture",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xIdempotencyKey: z.string(),
+    accountID: z.string(),
+    transferID: z.string(),
+    createCapture: components.CreateCapture$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      xIdempotencyKey: "x-idempotency-key",
+      createCapture: "CreateCapture",
+    });
+  })
+);
 
 export function createCaptureRequestToJSON(
   createCaptureRequest: CreateCaptureRequest,
@@ -94,15 +98,17 @@ export const CreateCaptureResponse$inboundSchema: z.ZodType<
   CreateCaptureResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Capture$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Capture$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateCaptureResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -114,15 +120,17 @@ export const CreateCaptureResponse$outboundSchema: z.ZodType<
   CreateCaptureResponse$Outbound,
   z.ZodTypeDef,
   CreateCaptureResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Capture$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Capture$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createCaptureResponseToJSON(
   createCaptureResponse: CreateCaptureResponse,

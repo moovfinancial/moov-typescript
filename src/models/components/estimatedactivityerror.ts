@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +19,13 @@ export const EstimatedActivityError$inboundSchema: z.ZodType<
   EstimatedActivityError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  averageTransactionAmount: types.optional(types.string()),
-  maximumTransactionAmount: types.optional(types.string()),
-  monthlyVolumeRange: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    averageTransactionAmount: types.optional(types.string()),
+    maximumTransactionAmount: types.optional(types.string()),
+    monthlyVolumeRange: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type EstimatedActivityError$Outbound = {
   averageTransactionAmount?: string | undefined;
@@ -36,11 +38,13 @@ export const EstimatedActivityError$outboundSchema: z.ZodType<
   EstimatedActivityError$Outbound,
   z.ZodTypeDef,
   EstimatedActivityError
-> = z.object({
-  averageTransactionAmount: z.string().optional(),
-  maximumTransactionAmount: z.string().optional(),
-  monthlyVolumeRange: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    averageTransactionAmount: z.string().optional(),
+    maximumTransactionAmount: z.string().optional(),
+    monthlyVolumeRange: z.string().optional(),
+  })
+);
 
 export function estimatedActivityErrorToJSON(
   estimatedActivityError: EstimatedActivityError,

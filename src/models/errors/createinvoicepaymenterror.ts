@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -46,22 +47,26 @@ export const CreateInvoicePaymentError$inboundSchema: z.ZodType<
   CreateInvoicePaymentError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(components.AmountDecimalValidationError$inboundSchema),
-  foreignID: types.optional(types.string()),
-  description: types.optional(types.string()),
-  paymentDate: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateInvoicePaymentError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(
+      components.AmountDecimalValidationError$inboundSchema,
+    ),
+    foreignID: types.optional(types.string()),
+    description: types.optional(types.string()),
+    paymentDate: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateInvoicePaymentError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CreateInvoicePaymentError$Outbound = {
@@ -76,11 +81,13 @@ export const CreateInvoicePaymentError$outboundSchema: z.ZodType<
   CreateInvoicePaymentError$Outbound,
   z.ZodTypeDef,
   CreateInvoicePaymentError
-> = z.instanceof(CreateInvoicePaymentError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    amount: components.AmountDecimalValidationError$outboundSchema.optional(),
-    foreignID: z.string().optional(),
-    description: z.string().optional(),
-    paymentDate: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CreateInvoicePaymentError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      amount: components.AmountDecimalValidationError$outboundSchema.optional(),
+      foreignID: z.string().optional(),
+      description: z.string().optional(),
+      paymentDate: z.string().optional(),
+    }))
+);

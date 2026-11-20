@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -46,20 +46,22 @@ export class RepresentativeValidationError extends MoovError {
 }
 
 /** @internal */
-export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
-  .object({
-    name: types.optional(components.IndividualNameError$inboundSchema),
-    phone: types.optional(components.PhoneNumberError$inboundSchema),
-    email: types.optional(types.string()),
-    address: types.optional(components.AddressError$inboundSchema),
-    birthDate: types.optional(
-      components.BirthDateValidationError$inboundSchema,
-    ),
-    governmentID: types.optional(components.GovernmentIDError$inboundSchema),
-    responsibilities: types.optional(
-      components.RepresentativeResponsibilitiesError$inboundSchema,
-    ),
-  });
+export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: types.optional(components.IndividualNameError$inboundSchema),
+      phone: types.optional(components.PhoneNumberError$inboundSchema),
+      email: types.optional(types.string()),
+      address: types.optional(components.AddressError$inboundSchema),
+      birthDate: types.optional(
+        components.BirthDateValidationError$inboundSchema,
+      ),
+      governmentID: types.optional(components.GovernmentIDError$inboundSchema),
+      responsibilities: types.optional(
+        components.RepresentativeResponsibilitiesError$inboundSchema,
+      ),
+    })
+  );
 /** @internal */
 export type ErrorT$Outbound = {
   name?: components.IndividualNameError$Outbound | undefined;
@@ -78,16 +80,18 @@ export const ErrorT$outboundSchema: z.ZodType<
   ErrorT$Outbound,
   z.ZodTypeDef,
   ErrorT
-> = z.object({
-  name: components.IndividualNameError$outboundSchema.optional(),
-  phone: components.PhoneNumberError$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: components.AddressError$outboundSchema.optional(),
-  birthDate: components.BirthDateValidationError$outboundSchema.optional(),
-  governmentID: components.GovernmentIDError$outboundSchema.optional(),
-  responsibilities: components
-    .RepresentativeResponsibilitiesError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: components.IndividualNameError$outboundSchema.optional(),
+    phone: components.PhoneNumberError$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: components.AddressError$outboundSchema.optional(),
+    birthDate: components.BirthDateValidationError$outboundSchema.optional(),
+    governmentID: components.GovernmentIDError$outboundSchema.optional(),
+    responsibilities: components
+      .RepresentativeResponsibilitiesError$outboundSchema.optional(),
+  })
+);
 
 export function errorToJSON(errorT: ErrorT): string {
   return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
@@ -107,19 +111,21 @@ export const RepresentativeValidationError$inboundSchema: z.ZodType<
   RepresentativeValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => ErrorT$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new RepresentativeValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => ErrorT$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new RepresentativeValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type RepresentativeValidationError$Outbound = {
@@ -131,8 +137,10 @@ export const RepresentativeValidationError$outboundSchema: z.ZodType<
   RepresentativeValidationError$Outbound,
   z.ZodTypeDef,
   RepresentativeValidationError
-> = z.instanceof(RepresentativeValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.lazy(() => ErrorT$outboundSchema),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(RepresentativeValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      error: z.lazy(() => ErrorT$outboundSchema),
+    }))
+);

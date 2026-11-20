@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,10 +19,12 @@ export const CreatePaymentLinkAmountDetailsValidationError$inboundSchema:
     CreatePaymentLinkAmountDetailsValidationError,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    tax: types.optional(types.string()),
-    surcharge: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      tax: types.optional(types.string()),
+      surcharge: types.optional(types.string()),
+    })
+  );
 /** @internal */
 export type CreatePaymentLinkAmountDetailsValidationError$Outbound = {
   tax?: string | undefined;
@@ -35,10 +37,12 @@ export const CreatePaymentLinkAmountDetailsValidationError$outboundSchema:
     CreatePaymentLinkAmountDetailsValidationError$Outbound,
     z.ZodTypeDef,
     CreatePaymentLinkAmountDetailsValidationError
-  > = z.object({
-    tax: z.string().optional(),
-    surcharge: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      tax: z.string().optional(),
+      surcharge: z.string().optional(),
+    })
+  );
 
 export function createPaymentLinkAmountDetailsValidationErrorToJSON(
   createPaymentLinkAmountDetailsValidationError:

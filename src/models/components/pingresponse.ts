@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -37,11 +37,13 @@ export const PingResponse$inboundSchema: z.ZodType<
   PingResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  webhook: Webhook$inboundSchema,
-  requestBodySent: z.record(z.any()),
-  responseStatusCode: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhook: Webhook$inboundSchema,
+    requestBodySent: z.record(z.any()),
+    responseStatusCode: types.number(),
+  })
+);
 /** @internal */
 export type PingResponse$Outbound = {
   webhook: Webhook$Outbound;
@@ -54,11 +56,13 @@ export const PingResponse$outboundSchema: z.ZodType<
   PingResponse$Outbound,
   z.ZodTypeDef,
   PingResponse
-> = z.object({
-  webhook: Webhook$outboundSchema,
-  requestBodySent: z.record(z.any()),
-  responseStatusCode: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhook: Webhook$outboundSchema,
+    requestBodySent: z.record(z.any()),
+    responseStatusCode: z.number().int(),
+  })
+);
 
 export function pingResponseToJSON(pingResponse: PingResponse): string {
   return JSON.stringify(PingResponse$outboundSchema.parse(pingResponse));

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -49,23 +50,27 @@ export const UpdateIssuedCardError$inboundSchema: z.ZodType<
   UpdateIssuedCardError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  state: types.optional(types.string()),
-  nickname: types.optional(types.string()),
-  metadata: types.optional(types.string()),
-  billingAddress: types.optional(components.AddressError$inboundSchema),
-  controls: types.optional(components.UpdateIssuingControlsError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new UpdateIssuedCardError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    state: types.optional(types.string()),
+    nickname: types.optional(types.string()),
+    metadata: types.optional(types.string()),
+    billingAddress: types.optional(components.AddressError$inboundSchema),
+    controls: types.optional(
+      components.UpdateIssuingControlsError$inboundSchema,
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new UpdateIssuedCardError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type UpdateIssuedCardError$Outbound = {
@@ -81,12 +86,14 @@ export const UpdateIssuedCardError$outboundSchema: z.ZodType<
   UpdateIssuedCardError$Outbound,
   z.ZodTypeDef,
   UpdateIssuedCardError
-> = z.instanceof(UpdateIssuedCardError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    state: z.string().optional(),
-    nickname: z.string().optional(),
-    metadata: z.string().optional(),
-    billingAddress: components.AddressError$outboundSchema.optional(),
-    controls: components.UpdateIssuingControlsError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(UpdateIssuedCardError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      state: z.string().optional(),
+      nickname: z.string().optional(),
+      metadata: z.string().optional(),
+      billingAddress: components.AddressError$outboundSchema.optional(),
+      controls: components.UpdateIssuingControlsError$outboundSchema.optional(),
+    }))
+);

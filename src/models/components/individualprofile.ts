@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -49,14 +49,16 @@ export const IndividualProfile$inboundSchema: z.ZodType<
   IndividualProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: IndividualName$inboundSchema,
-  phone: types.optional(PhoneNumber$inboundSchema),
-  email: types.optional(types.string()),
-  address: types.optional(Address$inboundSchema),
-  birthDateProvided: types.optional(types.boolean()),
-  governmentIDProvided: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$inboundSchema,
+    phone: types.optional(PhoneNumber$inboundSchema),
+    email: types.optional(types.string()),
+    address: types.optional(Address$inboundSchema),
+    birthDateProvided: types.optional(types.boolean()),
+    governmentIDProvided: types.optional(types.boolean()),
+  })
+);
 /** @internal */
 export type IndividualProfile$Outbound = {
   name: IndividualName$Outbound;
@@ -72,14 +74,16 @@ export const IndividualProfile$outboundSchema: z.ZodType<
   IndividualProfile$Outbound,
   z.ZodTypeDef,
   IndividualProfile
-> = z.object({
-  name: IndividualName$outboundSchema,
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$outboundSchema.optional(),
-  birthDateProvided: z.boolean().optional(),
-  governmentIDProvided: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$outboundSchema,
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: Address$outboundSchema.optional(),
+    birthDateProvided: z.boolean().optional(),
+    governmentIDProvided: z.boolean().optional(),
+  })
+);
 
 export function individualProfileToJSON(
   individualProfile: IndividualProfile,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -52,14 +52,16 @@ export const CreateIndividualProfile$inboundSchema: z.ZodType<
   CreateIndividualProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: IndividualName$inboundSchema,
-  phone: types.optional(PhoneNumber$inboundSchema),
-  email: types.optional(types.string()),
-  address: types.optional(Address$inboundSchema),
-  birthDate: types.optional(BirthDate$inboundSchema),
-  governmentID: types.optional(GovernmentID$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$inboundSchema,
+    phone: types.optional(PhoneNumber$inboundSchema),
+    email: types.optional(types.string()),
+    address: types.optional(Address$inboundSchema),
+    birthDate: types.optional(BirthDate$inboundSchema),
+    governmentID: types.optional(GovernmentID$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateIndividualProfile$Outbound = {
   name: IndividualName$Outbound;
@@ -75,14 +77,16 @@ export const CreateIndividualProfile$outboundSchema: z.ZodType<
   CreateIndividualProfile$Outbound,
   z.ZodTypeDef,
   CreateIndividualProfile
-> = z.object({
-  name: IndividualName$outboundSchema,
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: Address$outboundSchema.optional(),
-  birthDate: BirthDate$outboundSchema.optional(),
-  governmentID: GovernmentID$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualName$outboundSchema,
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: Address$outboundSchema.optional(),
+    birthDate: BirthDate$outboundSchema.optional(),
+    governmentID: GovernmentID$outboundSchema.optional(),
+  })
+);
 
 export function createIndividualProfileToJSON(
   createIndividualProfile: CreateIndividualProfile,

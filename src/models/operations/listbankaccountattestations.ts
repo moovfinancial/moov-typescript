@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,10 +25,12 @@ export const ListBankAccountAttestationsRequest$inboundSchema: z.ZodType<
   ListBankAccountAttestationsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  bankAccountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    bankAccountID: types.string(),
+  })
+);
 /** @internal */
 export type ListBankAccountAttestationsRequest$Outbound = {
   accountID: string;
@@ -40,10 +42,12 @@ export const ListBankAccountAttestationsRequest$outboundSchema: z.ZodType<
   ListBankAccountAttestationsRequest$Outbound,
   z.ZodTypeDef,
   ListBankAccountAttestationsRequest
-> = z.object({
-  accountID: z.string(),
-  bankAccountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    bankAccountID: z.string(),
+  })
+);
 
 export function listBankAccountAttestationsRequestToJSON(
   listBankAccountAttestationsRequest: ListBankAccountAttestationsRequest,
@@ -70,15 +74,17 @@ export const ListBankAccountAttestationsResponse$inboundSchema: z.ZodType<
   ListBankAccountAttestationsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.BankAccountAttestationSummary$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.BankAccountAttestationSummary$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListBankAccountAttestationsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -90,15 +96,17 @@ export const ListBankAccountAttestationsResponse$outboundSchema: z.ZodType<
   ListBankAccountAttestationsResponse$Outbound,
   z.ZodTypeDef,
   ListBankAccountAttestationsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.BankAccountAttestationSummary$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.BankAccountAttestationSummary$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listBankAccountAttestationsResponseToJSON(
   listBankAccountAttestationsResponse: ListBankAccountAttestationsResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -31,11 +31,13 @@ export const ACHCreditOptions$inboundSchema: z.ZodType<
   ACHCreditOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  companyEntryDescription: types.optional(types.string()),
-  originatingCompanyName: types.optional(types.string()),
-  addenda: types.optional(z.array(TransferACHAddendaRecord$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyEntryDescription: types.optional(types.string()),
+    originatingCompanyName: types.optional(types.string()),
+    addenda: types.optional(z.array(TransferACHAddendaRecord$inboundSchema)),
+  })
+);
 /** @internal */
 export type ACHCreditOptions$Outbound = {
   companyEntryDescription?: string | undefined;
@@ -48,11 +50,13 @@ export const ACHCreditOptions$outboundSchema: z.ZodType<
   ACHCreditOptions$Outbound,
   z.ZodTypeDef,
   ACHCreditOptions
-> = z.object({
-  companyEntryDescription: z.string().optional(),
-  originatingCompanyName: z.string().optional(),
-  addenda: z.array(TransferACHAddendaRecord$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyEntryDescription: z.string().optional(),
+    originatingCompanyName: z.string().optional(),
+    addenda: z.array(TransferACHAddendaRecord$outboundSchema).optional(),
+  })
+);
 
 export function achCreditOptionsToJSON(
   achCreditOptions: ACHCreditOptions,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,12 +20,14 @@ export const WebhookDataAuthorizationExpiring$inboundSchema: z.ZodType<
   WebhookDataAuthorizationExpiring,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  merchantAccountID: types.string(),
-  partnerAccountID: types.string(),
-  authorizationID: types.string(),
-  expiresOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    merchantAccountID: types.string(),
+    partnerAccountID: types.string(),
+    authorizationID: types.string(),
+    expiresOn: types.date(),
+  })
+);
 /** @internal */
 export type WebhookDataAuthorizationExpiring$Outbound = {
   merchantAccountID: string;
@@ -39,12 +41,14 @@ export const WebhookDataAuthorizationExpiring$outboundSchema: z.ZodType<
   WebhookDataAuthorizationExpiring$Outbound,
   z.ZodTypeDef,
   WebhookDataAuthorizationExpiring
-> = z.object({
-  merchantAccountID: z.string(),
-  partnerAccountID: z.string(),
-  authorizationID: z.string(),
-  expiresOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    merchantAccountID: z.string(),
+    partnerAccountID: z.string(),
+    authorizationID: z.string(),
+    expiresOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function webhookDataAuthorizationExpiringToJSON(
   webhookDataAuthorizationExpiring: WebhookDataAuthorizationExpiring,

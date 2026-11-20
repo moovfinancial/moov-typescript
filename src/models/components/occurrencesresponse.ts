@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -58,10 +58,12 @@ export type OccurrencesResponse = {
 };
 
 /** @internal */
-export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
-  .object({
-    message: types.optional(types.string()),
-  });
+export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: types.optional(types.string()),
+    })
+  );
 /** @internal */
 export type ErrorT$Outbound = {
   message?: string | undefined;
@@ -72,9 +74,11 @@ export const ErrorT$outboundSchema: z.ZodType<
   ErrorT$Outbound,
   z.ZodTypeDef,
   ErrorT
-> = z.object({
-  message: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    message: z.string().optional(),
+  })
+);
 
 export function errorToJSON(errorT: ErrorT): string {
   return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
@@ -94,20 +98,22 @@ export const OccurrencesResponse$inboundSchema: z.ZodType<
   OccurrencesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  scheduleID: types.optional(types.string()),
-  occurrenceID: types.optional(types.string()),
-  mode: types.optional(Mode$inboundSchema),
-  generated: types.optional(types.boolean()),
-  indefinite: types.optional(types.boolean()),
-  canceledOn: types.optional(types.date()),
-  runOn: types.date(),
-  runTransfer: RunTransfer$inboundSchema,
-  ranOn: types.optional(types.date()),
-  ranTransferID: types.optional(types.string()),
-  status: types.optional(OccurrenceStatus$inboundSchema),
-  error: types.optional(z.lazy(() => ErrorT$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scheduleID: types.optional(types.string()),
+    occurrenceID: types.optional(types.string()),
+    mode: types.optional(Mode$inboundSchema),
+    generated: types.optional(types.boolean()),
+    indefinite: types.optional(types.boolean()),
+    canceledOn: types.optional(types.date()),
+    runOn: types.date(),
+    runTransfer: RunTransfer$inboundSchema,
+    ranOn: types.optional(types.date()),
+    ranTransferID: types.optional(types.string()),
+    status: types.optional(OccurrenceStatus$inboundSchema),
+    error: types.optional(z.lazy(() => ErrorT$inboundSchema)),
+  })
+);
 /** @internal */
 export type OccurrencesResponse$Outbound = {
   scheduleID?: string | undefined;
@@ -129,20 +135,22 @@ export const OccurrencesResponse$outboundSchema: z.ZodType<
   OccurrencesResponse$Outbound,
   z.ZodTypeDef,
   OccurrencesResponse
-> = z.object({
-  scheduleID: z.string().optional(),
-  occurrenceID: z.string().optional(),
-  mode: Mode$outboundSchema.optional(),
-  generated: z.boolean().optional(),
-  indefinite: z.boolean().optional(),
-  canceledOn: z.date().transform(v => v.toISOString()).optional(),
-  runOn: z.date().transform(v => v.toISOString()),
-  runTransfer: RunTransfer$outboundSchema,
-  ranOn: z.date().transform(v => v.toISOString()).optional(),
-  ranTransferID: z.string().optional(),
-  status: OccurrenceStatus$outboundSchema.optional(),
-  error: z.lazy(() => ErrorT$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scheduleID: z.string().optional(),
+    occurrenceID: z.string().optional(),
+    mode: Mode$outboundSchema.optional(),
+    generated: z.boolean().optional(),
+    indefinite: z.boolean().optional(),
+    canceledOn: z.date().transform(v => v.toISOString()).optional(),
+    runOn: z.date().transform(v => v.toISOString()),
+    runTransfer: RunTransfer$outboundSchema,
+    ranOn: z.date().transform(v => v.toISOString()).optional(),
+    ranTransferID: z.string().optional(),
+    status: OccurrenceStatus$outboundSchema.optional(),
+    error: z.lazy(() => ErrorT$outboundSchema).optional(),
+  })
+);
 
 export function occurrencesResponseToJSON(
   occurrencesResponse: OccurrencesResponse,

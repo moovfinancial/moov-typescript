@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,12 +34,14 @@ export const ACHDebitTransferProcessingDetails$inboundSchema: z.ZodType<
   ACHDebitTransferProcessingDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: ACHTransactionStatus$inboundSchema,
-  traceNumber: types.string(),
-  return: types.optional(ACHException$inboundSchema),
-  correction: types.optional(ACHException$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: ACHTransactionStatus$inboundSchema,
+    traceNumber: types.string(),
+    return: types.optional(ACHException$inboundSchema),
+    correction: types.optional(ACHException$inboundSchema),
+  })
+);
 /** @internal */
 export type ACHDebitTransferProcessingDetails$Outbound = {
   status: string;
@@ -53,12 +55,14 @@ export const ACHDebitTransferProcessingDetails$outboundSchema: z.ZodType<
   ACHDebitTransferProcessingDetails$Outbound,
   z.ZodTypeDef,
   ACHDebitTransferProcessingDetails
-> = z.object({
-  status: ACHTransactionStatus$outboundSchema,
-  traceNumber: z.string(),
-  return: ACHException$outboundSchema.optional(),
-  correction: ACHException$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: ACHTransactionStatus$outboundSchema,
+    traceNumber: z.string(),
+    return: ACHException$outboundSchema.optional(),
+    correction: ACHException$outboundSchema.optional(),
+  })
+);
 
 export function achDebitTransferProcessingDetailsToJSON(
   achDebitTransferProcessingDetails: ACHDebitTransferProcessingDetails,

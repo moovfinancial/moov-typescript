@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -43,21 +44,23 @@ export const CardMetadataRequestError$inboundSchema: z.ZodType<
   CardMetadataRequestError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: types.optional(types.string()),
-  e2ee: types.optional(components.End2EndEncryptionError$inboundSchema),
-  cardNumber: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CardMetadataRequestError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: types.optional(types.string()),
+    e2ee: types.optional(components.End2EndEncryptionError$inboundSchema),
+    cardNumber: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CardMetadataRequestError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CardMetadataRequestError$Outbound = {
@@ -71,10 +74,12 @@ export const CardMetadataRequestError$outboundSchema: z.ZodType<
   CardMetadataRequestError$Outbound,
   z.ZodTypeDef,
   CardMetadataRequestError
-> = z.instanceof(CardMetadataRequestError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.string().optional(),
-    e2ee: components.End2EndEncryptionError$outboundSchema.optional(),
-    cardNumber: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CardMetadataRequestError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      error: z.string().optional(),
+      e2ee: components.End2EndEncryptionError$outboundSchema.optional(),
+      cardNumber: z.string().optional(),
+    }))
+);

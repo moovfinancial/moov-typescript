@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,9 +20,11 @@ export const CompleteBankAccountVerification$inboundSchema: z.ZodType<
   CompleteBankAccountVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+  })
+);
 /** @internal */
 export type CompleteBankAccountVerification$Outbound = {
   code: string;
@@ -33,9 +35,11 @@ export const CompleteBankAccountVerification$outboundSchema: z.ZodType<
   CompleteBankAccountVerification$Outbound,
   z.ZodTypeDef,
   CompleteBankAccountVerification
-> = z.object({
-  code: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string(),
+  })
+);
 
 export function completeBankAccountVerificationToJSON(
   completeBankAccountVerification: CompleteBankAccountVerification,

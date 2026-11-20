@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,10 +32,12 @@ export const CapabilityRequirement$inboundSchema: z.ZodType<
   CapabilityRequirement,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currentlyDue: types.optional(z.array(RequirementID$inboundSchema)),
-  errors: types.optional(z.array(RequirementError$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currentlyDue: types.optional(z.array(RequirementID$inboundSchema)),
+    errors: types.optional(z.array(RequirementError$inboundSchema)),
+  })
+);
 /** @internal */
 export type CapabilityRequirement$Outbound = {
   currentlyDue?: Array<string> | undefined;
@@ -47,10 +49,12 @@ export const CapabilityRequirement$outboundSchema: z.ZodType<
   CapabilityRequirement$Outbound,
   z.ZodTypeDef,
   CapabilityRequirement
-> = z.object({
-  currentlyDue: z.array(RequirementID$outboundSchema).optional(),
-  errors: z.array(RequirementError$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currentlyDue: z.array(RequirementID$outboundSchema).optional(),
+    errors: z.array(RequirementError$outboundSchema).optional(),
+  })
+);
 
 export function capabilityRequirementToJSON(
   capabilityRequirement: CapabilityRequirement,

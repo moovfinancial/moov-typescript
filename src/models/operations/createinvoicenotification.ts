@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,15 +25,18 @@ export const CreateInvoiceNotificationRequest$inboundSchema: z.ZodType<
   CreateInvoiceNotificationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  invoiceID: types.string(),
-  CreateInvoiceNotification: components.CreateInvoiceNotification$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateInvoiceNotification": "createInvoiceNotification",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    invoiceID: types.string(),
+    CreateInvoiceNotification:
+      components.CreateInvoiceNotification$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateInvoiceNotification": "createInvoiceNotification",
+    });
+  })
+);
 /** @internal */
 export type CreateInvoiceNotificationRequest$Outbound = {
   accountID: string;
@@ -46,16 +49,18 @@ export const CreateInvoiceNotificationRequest$outboundSchema: z.ZodType<
   CreateInvoiceNotificationRequest$Outbound,
   z.ZodTypeDef,
   CreateInvoiceNotificationRequest
-> = z.object({
-  accountID: z.string(),
-  invoiceID: z.string(),
-  createInvoiceNotification:
-    components.CreateInvoiceNotification$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createInvoiceNotification: "CreateInvoiceNotification",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    invoiceID: z.string(),
+    createInvoiceNotification:
+      components.CreateInvoiceNotification$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createInvoiceNotification: "CreateInvoiceNotification",
+    });
+  })
+);
 
 export function createInvoiceNotificationRequestToJSON(
   createInvoiceNotificationRequest: CreateInvoiceNotificationRequest,
@@ -81,13 +86,15 @@ export const CreateInvoiceNotificationResponse$inboundSchema: z.ZodType<
   CreateInvoiceNotificationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type CreateInvoiceNotificationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -98,13 +105,15 @@ export const CreateInvoiceNotificationResponse$outboundSchema: z.ZodType<
   CreateInvoiceNotificationResponse$Outbound,
   z.ZodTypeDef,
   CreateInvoiceNotificationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function createInvoiceNotificationResponseToJSON(
   createInvoiceNotificationResponse: CreateInvoiceNotificationResponse,

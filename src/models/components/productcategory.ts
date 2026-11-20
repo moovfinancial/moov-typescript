@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -39,13 +39,15 @@ export const ProductCategory$inboundSchema: z.ZodType<
   ProductCategory,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  categoryID: types.string(),
-  name: types.string(),
-  fullName: types.string(),
-  level: types.number(),
-  parentID: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    categoryID: types.string(),
+    name: types.string(),
+    fullName: types.string(),
+    level: types.number(),
+    parentID: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ProductCategory$Outbound = {
   categoryID: string;
@@ -60,13 +62,15 @@ export const ProductCategory$outboundSchema: z.ZodType<
   ProductCategory$Outbound,
   z.ZodTypeDef,
   ProductCategory
-> = z.object({
-  categoryID: z.string(),
-  name: z.string(),
-  fullName: z.string(),
-  level: z.number().int(),
-  parentID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    categoryID: z.string(),
+    name: z.string(),
+    fullName: z.string(),
+    level: z.number().int(),
+    parentID: z.string().optional(),
+  })
+);
 
 export function productCategoryToJSON(
   productCategory: ProductCategory,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,10 +32,12 @@ export const CardAccountUpdater$inboundSchema: z.ZodType<
   CardAccountUpdater,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  updatedOn: types.optional(types.date()),
-  updateType: types.optional(CardUpdateReason$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    updatedOn: types.optional(types.date()),
+    updateType: types.optional(CardUpdateReason$inboundSchema),
+  })
+);
 /** @internal */
 export type CardAccountUpdater$Outbound = {
   updatedOn?: string | undefined;
@@ -47,10 +49,12 @@ export const CardAccountUpdater$outboundSchema: z.ZodType<
   CardAccountUpdater$Outbound,
   z.ZodTypeDef,
   CardAccountUpdater
-> = z.object({
-  updatedOn: z.date().transform(v => v.toISOString()).optional(),
-  updateType: CardUpdateReason$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    updatedOn: z.date().transform(v => v.toISOString()).optional(),
+    updateType: CardUpdateReason$outboundSchema.optional(),
+  })
+);
 
 export function cardAccountUpdaterToJSON(
   cardAccountUpdater: CardAccountUpdater,

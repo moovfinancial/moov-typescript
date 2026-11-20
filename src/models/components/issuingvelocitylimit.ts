@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -33,11 +33,13 @@ export const IssuingVelocityLimit$inboundSchema: z.ZodType<
   IssuingVelocityLimit,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(types.number()),
-  count: types.optional(types.number()),
-  interval: IssuingIntervalLimit$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(types.number()),
+    count: types.optional(types.number()),
+    interval: IssuingIntervalLimit$inboundSchema,
+  })
+);
 /** @internal */
 export type IssuingVelocityLimit$Outbound = {
   amount?: number | undefined;
@@ -50,11 +52,13 @@ export const IssuingVelocityLimit$outboundSchema: z.ZodType<
   IssuingVelocityLimit$Outbound,
   z.ZodTypeDef,
   IssuingVelocityLimit
-> = z.object({
-  amount: z.number().int().optional(),
-  count: z.number().int().optional(),
-  interval: IssuingIntervalLimit$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.number().int().optional(),
+    count: z.number().int().optional(),
+    interval: IssuingIntervalLimit$outboundSchema,
+  })
+);
 
 export function issuingVelocityLimitToJSON(
   issuingVelocityLimit: IssuingVelocityLimit,

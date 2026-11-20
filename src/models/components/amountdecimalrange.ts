@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -39,10 +39,12 @@ export const AmountDecimalRange$inboundSchema: z.ZodType<
   AmountDecimalRange,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  minimum: types.optional(AmountDecimal$inboundSchema),
-  maximum: types.optional(AmountDecimal$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    minimum: types.optional(AmountDecimal$inboundSchema),
+    maximum: types.optional(AmountDecimal$inboundSchema),
+  })
+);
 /** @internal */
 export type AmountDecimalRange$Outbound = {
   minimum?: AmountDecimal$Outbound | undefined;
@@ -54,10 +56,12 @@ export const AmountDecimalRange$outboundSchema: z.ZodType<
   AmountDecimalRange$Outbound,
   z.ZodTypeDef,
   AmountDecimalRange
-> = z.object({
-  minimum: AmountDecimal$outboundSchema.optional(),
-  maximum: AmountDecimal$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    minimum: AmountDecimal$outboundSchema.optional(),
+    maximum: AmountDecimal$outboundSchema.optional(),
+  })
+);
 
 export function amountDecimalRangeToJSON(
   amountDecimalRange: AmountDecimalRange,

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -80,38 +81,40 @@ export const TransferValidationError$inboundSchema: z.ZodType<
   TransferValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(types.string()),
-  source: types.optional(types.string()),
-  sourcePaymentMethodID: types.optional(types.string()),
-  destinationPaymentMethodID: types.optional(types.string()),
-  description: types.optional(types.string()),
-  "FacilitatorFee.TotalDecimal": types.optional(types.string()),
-  "FacilitatorFee.MarkupDecimal": types.optional(types.string()),
-  metadata: types.optional(types.string()),
-  foreignID: types.optional(types.string()),
-  lineItems: types.optional(
-    components.CreateTransferLineItemsValidationError$inboundSchema,
-  ),
-  amountDetails: types.optional(
-    components.CreateTransferAmountDetailsValidationError$inboundSchema,
-  ),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    const remapped = remap$(v, {
-      "FacilitatorFee.TotalDecimal": "facilitatorFeeTotalDecimal",
-      "FacilitatorFee.MarkupDecimal": "facilitatorFeeMarkupDecimal",
-    });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(types.string()),
+    source: types.optional(types.string()),
+    sourcePaymentMethodID: types.optional(types.string()),
+    destinationPaymentMethodID: types.optional(types.string()),
+    description: types.optional(types.string()),
+    "FacilitatorFee.TotalDecimal": types.optional(types.string()),
+    "FacilitatorFee.MarkupDecimal": types.optional(types.string()),
+    metadata: types.optional(types.string()),
+    foreignID: types.optional(types.string()),
+    lineItems: types.optional(
+      components.CreateTransferLineItemsValidationError$inboundSchema,
+    ),
+    amountDetails: types.optional(
+      components.CreateTransferAmountDetailsValidationError$inboundSchema,
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      const remapped = remap$(v, {
+        "FacilitatorFee.TotalDecimal": "facilitatorFeeTotalDecimal",
+        "FacilitatorFee.MarkupDecimal": "facilitatorFeeMarkupDecimal",
+      });
 
-    return new TransferValidationError(remapped, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+      return new TransferValidationError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type TransferValidationError$Outbound = {
@@ -137,27 +140,29 @@ export const TransferValidationError$outboundSchema: z.ZodType<
   TransferValidationError$Outbound,
   z.ZodTypeDef,
   TransferValidationError
-> = z.instanceof(TransferValidationError)
-  .transform(v => v.data$)
-  .pipe(
-    z.object({
-      amount: z.string().optional(),
-      source: z.string().optional(),
-      sourcePaymentMethodID: z.string().optional(),
-      destinationPaymentMethodID: z.string().optional(),
-      description: z.string().optional(),
-      facilitatorFeeTotalDecimal: z.string().optional(),
-      facilitatorFeeMarkupDecimal: z.string().optional(),
-      metadata: z.string().optional(),
-      foreignID: z.string().optional(),
-      lineItems: components
-        .CreateTransferLineItemsValidationError$outboundSchema.optional(),
-      amountDetails: components
-        .CreateTransferAmountDetailsValidationError$outboundSchema.optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        facilitatorFeeTotalDecimal: "FacilitatorFee.TotalDecimal",
-        facilitatorFeeMarkupDecimal: "FacilitatorFee.MarkupDecimal",
-      });
-    }),
-  );
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(TransferValidationError)
+    .transform(v => v.data$)
+    .pipe(
+      z.object({
+        amount: z.string().optional(),
+        source: z.string().optional(),
+        sourcePaymentMethodID: z.string().optional(),
+        destinationPaymentMethodID: z.string().optional(),
+        description: z.string().optional(),
+        facilitatorFeeTotalDecimal: z.string().optional(),
+        facilitatorFeeMarkupDecimal: z.string().optional(),
+        metadata: z.string().optional(),
+        foreignID: z.string().optional(),
+        lineItems: components
+          .CreateTransferLineItemsValidationError$outboundSchema.optional(),
+        amountDetails: components
+          .CreateTransferAmountDetailsValidationError$outboundSchema.optional(),
+      }).transform((v) => {
+        return remap$(v, {
+          facilitatorFeeTotalDecimal: "FacilitatorFee.TotalDecimal",
+          facilitatorFeeMarkupDecimal: "FacilitatorFee.MarkupDecimal",
+        });
+      }),
+    )
+);

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -28,11 +28,13 @@ export const CreateAuthorizationSimulation$inboundSchema: z.ZodType<
   CreateAuthorizationSimulation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  issuedCardID: types.string(),
-  amount: types.string(),
-  merchantData: types.optional(SimulationIssuingMerchantData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuedCardID: types.string(),
+    amount: types.string(),
+    merchantData: types.optional(SimulationIssuingMerchantData$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateAuthorizationSimulation$Outbound = {
   issuedCardID: string;
@@ -45,11 +47,13 @@ export const CreateAuthorizationSimulation$outboundSchema: z.ZodType<
   CreateAuthorizationSimulation$Outbound,
   z.ZodTypeDef,
   CreateAuthorizationSimulation
-> = z.object({
-  issuedCardID: z.string(),
-  amount: z.string(),
-  merchantData: SimulationIssuingMerchantData$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuedCardID: z.string(),
+    amount: z.string(),
+    merchantData: SimulationIssuingMerchantData$outboundSchema.optional(),
+  })
+);
 
 export function createAuthorizationSimulationToJSON(
   createAuthorizationSimulation: CreateAuthorizationSimulation,

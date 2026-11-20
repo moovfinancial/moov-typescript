@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -28,14 +28,16 @@ export const LinkApplePayTokenRequest$inboundSchema: z.ZodType<
   LinkApplePayTokenRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  LinkApplePay: components.LinkApplePay$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "LinkApplePay": "linkApplePay",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    LinkApplePay: components.LinkApplePay$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "LinkApplePay": "linkApplePay",
+    });
+  })
+);
 /** @internal */
 export type LinkApplePayTokenRequest$Outbound = {
   accountID: string;
@@ -47,14 +49,16 @@ export const LinkApplePayTokenRequest$outboundSchema: z.ZodType<
   LinkApplePayTokenRequest$Outbound,
   z.ZodTypeDef,
   LinkApplePayTokenRequest
-> = z.object({
-  accountID: z.string(),
-  linkApplePay: components.LinkApplePay$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    linkApplePay: "LinkApplePay",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    linkApplePay: components.LinkApplePay$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      linkApplePay: "LinkApplePay",
+    });
+  })
+);
 
 export function linkApplePayTokenRequestToJSON(
   linkApplePayTokenRequest: LinkApplePayTokenRequest,
@@ -78,15 +82,17 @@ export const LinkApplePayTokenResponse$inboundSchema: z.ZodType<
   LinkApplePayTokenResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.LinkedApplePayPaymentMethod$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.LinkedApplePayPaymentMethod$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type LinkApplePayTokenResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -98,15 +104,17 @@ export const LinkApplePayTokenResponse$outboundSchema: z.ZodType<
   LinkApplePayTokenResponse$Outbound,
   z.ZodTypeDef,
   LinkApplePayTokenResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.LinkedApplePayPaymentMethod$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.LinkedApplePayPaymentMethod$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function linkApplePayTokenResponseToJSON(
   linkApplePayTokenResponse: LinkApplePayTokenResponse,

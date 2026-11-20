@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,10 +34,12 @@ export const CardMetadataRequest$inboundSchema: z.ZodType<
   CardMetadataRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  e2ee: types.optional(E2EEToken$inboundSchema),
-  cardNumber: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    e2ee: types.optional(E2EEToken$inboundSchema),
+    cardNumber: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type CardMetadataRequest$Outbound = {
   e2ee?: E2EEToken$Outbound | undefined;
@@ -49,10 +51,12 @@ export const CardMetadataRequest$outboundSchema: z.ZodType<
   CardMetadataRequest$Outbound,
   z.ZodTypeDef,
   CardMetadataRequest
-> = z.object({
-  e2ee: E2EEToken$outboundSchema.optional(),
-  cardNumber: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    e2ee: E2EEToken$outboundSchema.optional(),
+    cardNumber: z.string().optional(),
+  })
+);
 
 export function cardMetadataRequestToJSON(
   cardMetadataRequest: CardMetadataRequest,

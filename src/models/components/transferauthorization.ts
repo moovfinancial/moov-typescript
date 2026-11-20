@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -57,6 +57,10 @@ export type TransferAuthorization = {
    * Expiration time for the approved authorization, when available.
    */
   expiresOn?: Date | undefined;
+  /**
+   * Whether the card network granted the extended authorization hold. Returned only when `options.cardPayment.isExtendedAuthorizationRequested` is `true`.
+   */
+  isExtendedAuthorizationGranted?: boolean | undefined;
 };
 
 /** @internal */
@@ -64,15 +68,18 @@ export const TransferAuthorization$inboundSchema: z.ZodType<
   TransferAuthorization,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authorizationID: types.string(),
-  requestedAmount: AmountDecimal$inboundSchema,
-  authorizedAmount: AmountDecimal$inboundSchema,
-  capturedAmount: AmountDecimal$inboundSchema,
-  capturableAmount: AmountDecimal$inboundSchema,
-  amountDetails: types.optional(TransferAmountDetails$inboundSchema),
-  expiresOn: types.optional(types.date()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: types.string(),
+    requestedAmount: AmountDecimal$inboundSchema,
+    authorizedAmount: AmountDecimal$inboundSchema,
+    capturedAmount: AmountDecimal$inboundSchema,
+    capturableAmount: AmountDecimal$inboundSchema,
+    amountDetails: types.optional(TransferAmountDetails$inboundSchema),
+    expiresOn: types.optional(types.date()),
+    isExtendedAuthorizationGranted: types.optional(types.boolean()),
+  })
+);
 /** @internal */
 export type TransferAuthorization$Outbound = {
   authorizationID: string;
@@ -82,6 +89,7 @@ export type TransferAuthorization$Outbound = {
   capturableAmount: AmountDecimal$Outbound;
   amountDetails?: TransferAmountDetails$Outbound | undefined;
   expiresOn?: string | undefined;
+  isExtendedAuthorizationGranted?: boolean | undefined;
 };
 
 /** @internal */
@@ -89,15 +97,18 @@ export const TransferAuthorization$outboundSchema: z.ZodType<
   TransferAuthorization$Outbound,
   z.ZodTypeDef,
   TransferAuthorization
-> = z.object({
-  authorizationID: z.string(),
-  requestedAmount: AmountDecimal$outboundSchema,
-  authorizedAmount: AmountDecimal$outboundSchema,
-  capturedAmount: AmountDecimal$outboundSchema,
-  capturableAmount: AmountDecimal$outboundSchema,
-  amountDetails: TransferAmountDetails$outboundSchema.optional(),
-  expiresOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: z.string(),
+    requestedAmount: AmountDecimal$outboundSchema,
+    authorizedAmount: AmountDecimal$outboundSchema,
+    capturedAmount: AmountDecimal$outboundSchema,
+    capturableAmount: AmountDecimal$outboundSchema,
+    amountDetails: TransferAmountDetails$outboundSchema.optional(),
+    expiresOn: z.date().transform(v => v.toISOString()).optional(),
+    isExtendedAuthorizationGranted: z.boolean().optional(),
+  })
+);
 
 export function transferAuthorizationToJSON(
   transferAuthorization: TransferAuthorization,

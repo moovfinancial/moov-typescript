@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -29,21 +29,23 @@ export const CreateDepositAccountRequest$inboundSchema: z.ZodType<
   CreateDepositAccountRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  "X-Source-System": components.SourceSystem$inboundSchema,
-  RequestBody: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Source-System": "xSourceSystem",
-    "RequestBody": "requestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    "X-Source-System": components.SourceSystem$inboundSchema,
+    RequestBody: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "X-Source-System": "xSourceSystem",
+      "RequestBody": "requestBody",
+    });
+  })
+);
 /** @internal */
 export type CreateDepositAccountRequest$Outbound = {
   accountID: string;
@@ -56,21 +58,23 @@ export const CreateDepositAccountRequest$outboundSchema: z.ZodType<
   CreateDepositAccountRequest$Outbound,
   z.ZodTypeDef,
   CreateDepositAccountRequest
-> = z.object({
-  accountID: z.string(),
-  xSourceSystem: components.SourceSystem$outboundSchema,
-  requestBody: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    xSourceSystem: "X-Source-System",
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    xSourceSystem: components.SourceSystem$outboundSchema,
+    requestBody: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      xSourceSystem: "X-Source-System",
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createDepositAccountRequestToJSON(
   createDepositAccountRequest: CreateDepositAccountRequest,
@@ -96,15 +100,17 @@ export const CreateDepositAccountResponse$inboundSchema: z.ZodType<
   CreateDepositAccountResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.DepositAccountIngestedResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.DepositAccountIngestedResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateDepositAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -116,15 +122,17 @@ export const CreateDepositAccountResponse$outboundSchema: z.ZodType<
   CreateDepositAccountResponse$Outbound,
   z.ZodTypeDef,
   CreateDepositAccountResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.DepositAccountIngestedResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.DepositAccountIngestedResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createDepositAccountResponseToJSON(
   createDepositAccountResponse: CreateDepositAccountResponse,

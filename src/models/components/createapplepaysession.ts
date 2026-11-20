@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const CreateApplePaySession$inboundSchema: z.ZodType<
   CreateApplePaySession,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  displayName: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    displayName: types.string(),
+  })
+);
 /** @internal */
 export type CreateApplePaySession$Outbound = {
   domain: string;
@@ -39,10 +41,12 @@ export const CreateApplePaySession$outboundSchema: z.ZodType<
   CreateApplePaySession$Outbound,
   z.ZodTypeDef,
   CreateApplePaySession
-> = z.object({
-  domain: z.string(),
-  displayName: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    displayName: z.string(),
+  })
+);
 
 export function createApplePaySessionToJSON(
   createApplePaySession: CreateApplePaySession,

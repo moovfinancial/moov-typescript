@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,10 +25,12 @@ export const SubmitDisputeEvidenceRequest$inboundSchema: z.ZodType<
   SubmitDisputeEvidenceRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  disputeID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    disputeID: types.string(),
+  })
+);
 /** @internal */
 export type SubmitDisputeEvidenceRequest$Outbound = {
   accountID: string;
@@ -40,10 +42,12 @@ export const SubmitDisputeEvidenceRequest$outboundSchema: z.ZodType<
   SubmitDisputeEvidenceRequest$Outbound,
   z.ZodTypeDef,
   SubmitDisputeEvidenceRequest
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+  })
+);
 
 export function submitDisputeEvidenceRequestToJSON(
   submitDisputeEvidenceRequest: SubmitDisputeEvidenceRequest,
@@ -69,15 +73,17 @@ export const SubmitDisputeEvidenceResponse$inboundSchema: z.ZodType<
   SubmitDisputeEvidenceResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Dispute$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Dispute$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type SubmitDisputeEvidenceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -89,15 +95,17 @@ export const SubmitDisputeEvidenceResponse$outboundSchema: z.ZodType<
   SubmitDisputeEvidenceResponse$Outbound,
   z.ZodTypeDef,
   SubmitDisputeEvidenceResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Dispute$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Dispute$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function submitDisputeEvidenceResponseToJSON(
   submitDisputeEvidenceResponse: SubmitDisputeEvidenceResponse,

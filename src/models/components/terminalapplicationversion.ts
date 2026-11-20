@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,9 +23,11 @@ export const TerminalApplicationVersion$inboundSchema: z.ZodType<
   TerminalApplicationVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  version: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: types.string(),
+  })
+);
 /** @internal */
 export type TerminalApplicationVersion$Outbound = {
   version: string;
@@ -36,9 +38,11 @@ export const TerminalApplicationVersion$outboundSchema: z.ZodType<
   TerminalApplicationVersion$Outbound,
   z.ZodTypeDef,
   TerminalApplicationVersion
-> = z.object({
-  version: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.string(),
+  })
+);
 
 export function terminalApplicationVersionToJSON(
   terminalApplicationVersion: TerminalApplicationVersion,

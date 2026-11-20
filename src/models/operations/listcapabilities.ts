@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -24,9 +24,11 @@ export const ListCapabilitiesRequest$inboundSchema: z.ZodType<
   ListCapabilitiesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+  })
+);
 /** @internal */
 export type ListCapabilitiesRequest$Outbound = {
   accountID: string;
@@ -37,9 +39,11 @@ export const ListCapabilitiesRequest$outboundSchema: z.ZodType<
   ListCapabilitiesRequest$Outbound,
   z.ZodTypeDef,
   ListCapabilitiesRequest
-> = z.object({
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+  })
+);
 
 export function listCapabilitiesRequestToJSON(
   listCapabilitiesRequest: ListCapabilitiesRequest,
@@ -63,15 +67,17 @@ export const ListCapabilitiesResponse$inboundSchema: z.ZodType<
   ListCapabilitiesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Capability$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Capability$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListCapabilitiesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -83,15 +89,17 @@ export const ListCapabilitiesResponse$outboundSchema: z.ZodType<
   ListCapabilitiesResponse$Outbound,
   z.ZodTypeDef,
   ListCapabilitiesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Capability$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Capability$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listCapabilitiesResponseToJSON(
   listCapabilitiesResponse: ListCapabilitiesResponse,

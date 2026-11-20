@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -30,10 +30,12 @@ export const DeleteAvatarSecurity$inboundSchema: z.ZodType<
   DeleteAvatarSecurity,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  username: types.optional(types.string()),
-  password: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    username: types.optional(types.string()),
+    password: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type DeleteAvatarSecurity$Outbound = {
   username?: string | undefined;
@@ -45,10 +47,12 @@ export const DeleteAvatarSecurity$outboundSchema: z.ZodType<
   DeleteAvatarSecurity$Outbound,
   z.ZodTypeDef,
   DeleteAvatarSecurity
-> = z.object({
-  username: z.string().optional(),
-  password: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    username: z.string().optional(),
+    password: z.string().optional(),
+  })
+);
 
 export function deleteAvatarSecurityToJSON(
   deleteAvatarSecurity: DeleteAvatarSecurity,
@@ -72,9 +76,11 @@ export const DeleteAvatarRequest$inboundSchema: z.ZodType<
   DeleteAvatarRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uniqueID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uniqueID: types.string(),
+  })
+);
 /** @internal */
 export type DeleteAvatarRequest$Outbound = {
   uniqueID: string;
@@ -85,9 +91,11 @@ export const DeleteAvatarRequest$outboundSchema: z.ZodType<
   DeleteAvatarRequest$Outbound,
   z.ZodTypeDef,
   DeleteAvatarRequest
-> = z.object({
-  uniqueID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uniqueID: z.string(),
+  })
+);
 
 export function deleteAvatarRequestToJSON(
   deleteAvatarRequest: DeleteAvatarRequest,
@@ -111,13 +119,15 @@ export const DeleteAvatarResponse$inboundSchema: z.ZodType<
   DeleteAvatarResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DeleteAvatarResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -128,13 +138,15 @@ export const DeleteAvatarResponse$outboundSchema: z.ZodType<
   DeleteAvatarResponse$Outbound,
   z.ZodTypeDef,
   DeleteAvatarResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function deleteAvatarResponseToJSON(
   deleteAvatarResponse: DeleteAvatarResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -72,27 +72,31 @@ export const CardBrandFees$inboundSchema: z.ZodType<
   CardBrandFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  interchange: types.optional(BillingCountAndAmount$inboundSchema),
-  interchangePrograms: types.optional(
-    z.array(BillingInterchangeProgramFee$inboundSchema),
-  ),
-  networkPassthrough: types.optional(BillingCountAndAmount$inboundSchema),
-  completedDomesticOnline: types.optional(BillingCountAndAmount$inboundSchema),
-  completedDomesticInPerson: types.optional(
-    BillingCountAndAmount$inboundSchema,
-  ),
-  completedInternationalOnline: types.optional(
-    BillingCountAndAmount$inboundSchema,
-  ),
-  completedInternationalInPerson: types.optional(
-    BillingCountAndAmount$inboundSchema,
-  ),
-  declines: types.optional(BillingCountAndAmount$inboundSchema),
-  refunds: types.optional(BillingCountAndAmount$inboundSchema),
-  cardCancellations: types.optional(BillingCountAndAmount$inboundSchema),
-  total: BillingCountAndAmount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    interchange: types.optional(BillingCountAndAmount$inboundSchema),
+    interchangePrograms: types.optional(
+      z.array(BillingInterchangeProgramFee$inboundSchema),
+    ),
+    networkPassthrough: types.optional(BillingCountAndAmount$inboundSchema),
+    completedDomesticOnline: types.optional(
+      BillingCountAndAmount$inboundSchema,
+    ),
+    completedDomesticInPerson: types.optional(
+      BillingCountAndAmount$inboundSchema,
+    ),
+    completedInternationalOnline: types.optional(
+      BillingCountAndAmount$inboundSchema,
+    ),
+    completedInternationalInPerson: types.optional(
+      BillingCountAndAmount$inboundSchema,
+    ),
+    declines: types.optional(BillingCountAndAmount$inboundSchema),
+    refunds: types.optional(BillingCountAndAmount$inboundSchema),
+    cardCancellations: types.optional(BillingCountAndAmount$inboundSchema),
+    total: BillingCountAndAmount$inboundSchema,
+  })
+);
 /** @internal */
 export type CardBrandFees$Outbound = {
   interchange?: BillingCountAndAmount$Outbound | undefined;
@@ -115,21 +119,24 @@ export const CardBrandFees$outboundSchema: z.ZodType<
   CardBrandFees$Outbound,
   z.ZodTypeDef,
   CardBrandFees
-> = z.object({
-  interchange: BillingCountAndAmount$outboundSchema.optional(),
-  interchangePrograms: z.array(BillingInterchangeProgramFee$outboundSchema)
-    .optional(),
-  networkPassthrough: BillingCountAndAmount$outboundSchema.optional(),
-  completedDomesticOnline: BillingCountAndAmount$outboundSchema.optional(),
-  completedDomesticInPerson: BillingCountAndAmount$outboundSchema.optional(),
-  completedInternationalOnline: BillingCountAndAmount$outboundSchema.optional(),
-  completedInternationalInPerson: BillingCountAndAmount$outboundSchema
-    .optional(),
-  declines: BillingCountAndAmount$outboundSchema.optional(),
-  refunds: BillingCountAndAmount$outboundSchema.optional(),
-  cardCancellations: BillingCountAndAmount$outboundSchema.optional(),
-  total: BillingCountAndAmount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    interchange: BillingCountAndAmount$outboundSchema.optional(),
+    interchangePrograms: z.array(BillingInterchangeProgramFee$outboundSchema)
+      .optional(),
+    networkPassthrough: BillingCountAndAmount$outboundSchema.optional(),
+    completedDomesticOnline: BillingCountAndAmount$outboundSchema.optional(),
+    completedDomesticInPerson: BillingCountAndAmount$outboundSchema.optional(),
+    completedInternationalOnline: BillingCountAndAmount$outboundSchema
+      .optional(),
+    completedInternationalInPerson: BillingCountAndAmount$outboundSchema
+      .optional(),
+    declines: BillingCountAndAmount$outboundSchema.optional(),
+    refunds: BillingCountAndAmount$outboundSchema.optional(),
+    cardCancellations: BillingCountAndAmount$outboundSchema.optional(),
+    total: BillingCountAndAmount$outboundSchema,
+  })
+);
 
 export function cardBrandFeesToJSON(cardBrandFees: CardBrandFees): string {
   return JSON.stringify(CardBrandFees$outboundSchema.parse(cardBrandFees));

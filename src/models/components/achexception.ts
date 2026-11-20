@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +19,13 @@ export const ACHException$inboundSchema: z.ZodType<
   ACHException,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.optional(types.string()),
-  reason: types.optional(types.string()),
-  description: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.optional(types.string()),
+    reason: types.optional(types.string()),
+    description: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ACHException$Outbound = {
   code?: string | undefined;
@@ -36,11 +38,13 @@ export const ACHException$outboundSchema: z.ZodType<
   ACHException$Outbound,
   z.ZodTypeDef,
   ACHException
-> = z.object({
-  code: z.string().optional(),
-  reason: z.string().optional(),
-  description: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string().optional(),
+    reason: z.string().optional(),
+    description: z.string().optional(),
+  })
+);
 
 export function achExceptionToJSON(achException: ACHException): string {
   return JSON.stringify(ACHException$outboundSchema.parse(achException));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -36,11 +36,13 @@ export const ScheduleWindow$inboundSchema: z.ZodType<
   ScheduleWindow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  days: z.array(IssuingScheduleDay$inboundSchema),
-  startTime: types.string(),
-  endTime: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    days: z.array(IssuingScheduleDay$inboundSchema),
+    startTime: types.string(),
+    endTime: types.string(),
+  })
+);
 /** @internal */
 export type ScheduleWindow$Outbound = {
   days: Array<string>;
@@ -53,11 +55,13 @@ export const ScheduleWindow$outboundSchema: z.ZodType<
   ScheduleWindow$Outbound,
   z.ZodTypeDef,
   ScheduleWindow
-> = z.object({
-  days: z.array(IssuingScheduleDay$outboundSchema),
-  startTime: z.string(),
-  endTime: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    days: z.array(IssuingScheduleDay$outboundSchema),
+    startTime: z.string(),
+    endTime: z.string(),
+  })
+);
 
 export function scheduleWindowToJSON(scheduleWindow: ScheduleWindow): string {
   return JSON.stringify(ScheduleWindow$outboundSchema.parse(scheduleWindow));

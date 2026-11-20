@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -45,22 +46,24 @@ export const ListWalletsValidationError$inboundSchema: z.ZodType<
   ListWalletsValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.optional(types.string()),
-  walletType: types.optional(types.string()),
-  skip: types.optional(types.string()),
-  count: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ListWalletsValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.optional(types.string()),
+    walletType: types.optional(types.string()),
+    skip: types.optional(types.string()),
+    count: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ListWalletsValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ListWalletsValidationError$Outbound = {
@@ -75,11 +78,13 @@ export const ListWalletsValidationError$outboundSchema: z.ZodType<
   ListWalletsValidationError$Outbound,
   z.ZodTypeDef,
   ListWalletsValidationError
-> = z.instanceof(ListWalletsValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: z.string().optional(),
-    walletType: z.string().optional(),
-    skip: z.string().optional(),
-    count: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ListWalletsValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      status: z.string().optional(),
+      walletType: z.string().optional(),
+      skip: z.string().optional(),
+      count: z.string().optional(),
+    }))
+);

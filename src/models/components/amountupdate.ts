@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -28,10 +28,12 @@ export const AmountUpdate$inboundSchema: z.ZodType<
   AmountUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: types.optional(types.string()),
-  value: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: types.optional(types.string()),
+    value: types.optional(types.number()),
+  })
+);
 /** @internal */
 export type AmountUpdate$Outbound = {
   currency?: string | undefined;
@@ -43,10 +45,12 @@ export const AmountUpdate$outboundSchema: z.ZodType<
   AmountUpdate$Outbound,
   z.ZodTypeDef,
   AmountUpdate
-> = z.object({
-  currency: z.string().optional(),
-  value: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string().optional(),
+    value: z.number().int().optional(),
+  })
+);
 
 export function amountUpdateToJSON(amountUpdate: AmountUpdate): string {
   return JSON.stringify(AmountUpdate$outboundSchema.parse(amountUpdate));

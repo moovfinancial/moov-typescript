@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -26,16 +26,18 @@ export const CompleteBankAccountVerificationRequest$inboundSchema: z.ZodType<
   CompleteBankAccountVerificationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  bankAccountID: types.string(),
-  CompleteBankAccountVerification:
-    components.CompleteBankAccountVerification$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CompleteBankAccountVerification": "completeBankAccountVerification",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    bankAccountID: types.string(),
+    CompleteBankAccountVerification:
+      components.CompleteBankAccountVerification$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CompleteBankAccountVerification": "completeBankAccountVerification",
+    });
+  })
+);
 /** @internal */
 export type CompleteBankAccountVerificationRequest$Outbound = {
   accountID: string;
@@ -49,16 +51,18 @@ export const CompleteBankAccountVerificationRequest$outboundSchema: z.ZodType<
   CompleteBankAccountVerificationRequest$Outbound,
   z.ZodTypeDef,
   CompleteBankAccountVerificationRequest
-> = z.object({
-  accountID: z.string(),
-  bankAccountID: z.string(),
-  completeBankAccountVerification:
-    components.CompleteBankAccountVerification$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    completeBankAccountVerification: "CompleteBankAccountVerification",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    bankAccountID: z.string(),
+    completeBankAccountVerification:
+      components.CompleteBankAccountVerification$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      completeBankAccountVerification: "CompleteBankAccountVerification",
+    });
+  })
+);
 
 export function completeBankAccountVerificationRequestToJSON(
   completeBankAccountVerificationRequest:
@@ -86,15 +90,17 @@ export const CompleteBankAccountVerificationResponse$inboundSchema: z.ZodType<
   CompleteBankAccountVerificationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.BankAccountVerification$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.BankAccountVerification$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CompleteBankAccountVerificationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -106,15 +112,17 @@ export const CompleteBankAccountVerificationResponse$outboundSchema: z.ZodType<
   CompleteBankAccountVerificationResponse$Outbound,
   z.ZodTypeDef,
   CompleteBankAccountVerificationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.BankAccountVerification$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.BankAccountVerification$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function completeBankAccountVerificationResponseToJSON(
   completeBankAccountVerificationResponse:

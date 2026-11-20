@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -24,9 +24,11 @@ export const ListSweepConfigsRequest$inboundSchema: z.ZodType<
   ListSweepConfigsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+  })
+);
 /** @internal */
 export type ListSweepConfigsRequest$Outbound = {
   accountID: string;
@@ -37,9 +39,11 @@ export const ListSweepConfigsRequest$outboundSchema: z.ZodType<
   ListSweepConfigsRequest$Outbound,
   z.ZodTypeDef,
   ListSweepConfigsRequest
-> = z.object({
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+  })
+);
 
 export function listSweepConfigsRequestToJSON(
   listSweepConfigsRequest: ListSweepConfigsRequest,
@@ -63,15 +67,17 @@ export const ListSweepConfigsResponse$inboundSchema: z.ZodType<
   ListSweepConfigsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.SweepConfig$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.SweepConfig$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListSweepConfigsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -83,15 +89,17 @@ export const ListSweepConfigsResponse$outboundSchema: z.ZodType<
   ListSweepConfigsResponse$Outbound,
   z.ZodTypeDef,
   ListSweepConfigsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.SweepConfig$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.SweepConfig$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listSweepConfigsResponseToJSON(
   listSweepConfigsResponse: ListSweepConfigsResponse,

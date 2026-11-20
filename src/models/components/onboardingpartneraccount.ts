@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,11 +32,13 @@ export const OnboardingPartnerAccount$inboundSchema: z.ZodType<
   OnboardingPartnerAccount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  accountMode: Mode$inboundSchema,
-  displayName: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    accountMode: Mode$inboundSchema,
+    displayName: types.string(),
+  })
+);
 /** @internal */
 export type OnboardingPartnerAccount$Outbound = {
   accountID: string;
@@ -49,11 +51,13 @@ export const OnboardingPartnerAccount$outboundSchema: z.ZodType<
   OnboardingPartnerAccount$Outbound,
   z.ZodTypeDef,
   OnboardingPartnerAccount
-> = z.object({
-  accountID: z.string(),
-  accountMode: Mode$outboundSchema,
-  displayName: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    accountMode: Mode$outboundSchema,
+    displayName: z.string(),
+  })
+);
 
 export function onboardingPartnerAccountToJSON(
   onboardingPartnerAccount: OnboardingPartnerAccount,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -71,15 +71,17 @@ export const PaymentLinkPayoutDetailsUpdate$inboundSchema: z.ZodType<
   PaymentLinkPayoutDetailsUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: types.optional(
-    z.array(DisbursementPaymentMethodType$inboundSchema),
-  ),
-  recipient: types.optional(PayoutRecipient$inboundSchema),
-  metadata: types.optional(z.record(types.string())),
-  pushOptions: types.optional(PushOptionsUpdate$inboundSchema),
-  feePaidBy: types.optional(z.record(FeePaidBy$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: types.optional(
+      z.array(DisbursementPaymentMethodType$inboundSchema),
+    ),
+    recipient: types.optional(PayoutRecipient$inboundSchema),
+    metadata: types.optional(z.record(types.string())),
+    pushOptions: types.optional(PushOptionsUpdate$inboundSchema),
+    feePaidBy: types.optional(z.record(FeePaidBy$inboundSchema)),
+  })
+);
 /** @internal */
 export type PaymentLinkPayoutDetailsUpdate$Outbound = {
   allowedMethods?: Array<string> | undefined;
@@ -94,14 +96,16 @@ export const PaymentLinkPayoutDetailsUpdate$outboundSchema: z.ZodType<
   PaymentLinkPayoutDetailsUpdate$Outbound,
   z.ZodTypeDef,
   PaymentLinkPayoutDetailsUpdate
-> = z.object({
-  allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema)
-    .optional(),
-  recipient: PayoutRecipient$outboundSchema.optional(),
-  metadata: z.record(z.string()).optional(),
-  pushOptions: PushOptionsUpdate$outboundSchema.optional(),
-  feePaidBy: z.record(FeePaidBy$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema)
+      .optional(),
+    recipient: PayoutRecipient$outboundSchema.optional(),
+    metadata: z.record(z.string()).optional(),
+    pushOptions: PushOptionsUpdate$outboundSchema.optional(),
+    feePaidBy: z.record(FeePaidBy$outboundSchema).optional(),
+  })
+);
 
 export function paymentLinkPayoutDetailsUpdateToJSON(
   paymentLinkPayoutDetailsUpdate: PaymentLinkPayoutDetailsUpdate,

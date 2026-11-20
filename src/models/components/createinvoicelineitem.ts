@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -55,13 +55,15 @@ export const CreateInvoiceLineItem$inboundSchema: z.ZodType<
   CreateInvoiceLineItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  basePrice: AmountDecimal$inboundSchema,
-  quantity: types.number(),
-  productID: types.optional(types.string()),
-  options: types.optional(z.array(CreateInvoiceLineItemOption$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    basePrice: AmountDecimal$inboundSchema,
+    quantity: types.number(),
+    productID: types.optional(types.string()),
+    options: types.optional(z.array(CreateInvoiceLineItemOption$inboundSchema)),
+  })
+);
 /** @internal */
 export type CreateInvoiceLineItem$Outbound = {
   name: string;
@@ -76,13 +78,15 @@ export const CreateInvoiceLineItem$outboundSchema: z.ZodType<
   CreateInvoiceLineItem$Outbound,
   z.ZodTypeDef,
   CreateInvoiceLineItem
-> = z.object({
-  name: z.string(),
-  basePrice: AmountDecimal$outboundSchema,
-  quantity: z.number().int(),
-  productID: z.string().optional(),
-  options: z.array(CreateInvoiceLineItemOption$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    basePrice: AmountDecimal$outboundSchema,
+    quantity: z.number().int(),
+    productID: z.string().optional(),
+    options: z.array(CreateInvoiceLineItemOption$outboundSchema).optional(),
+  })
+);
 
 export function createInvoiceLineItemToJSON(
   createInvoiceLineItem: CreateInvoiceLineItem,

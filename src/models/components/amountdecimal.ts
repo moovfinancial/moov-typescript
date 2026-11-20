@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -28,10 +28,12 @@ export const AmountDecimal$inboundSchema: z.ZodType<
   AmountDecimal,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: types.string(),
-  valueDecimal: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: types.string(),
+    valueDecimal: types.string(),
+  })
+);
 /** @internal */
 export type AmountDecimal$Outbound = {
   currency: string;
@@ -43,10 +45,12 @@ export const AmountDecimal$outboundSchema: z.ZodType<
   AmountDecimal$Outbound,
   z.ZodTypeDef,
   AmountDecimal
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 
 export function amountDecimalToJSON(amountDecimal: AmountDecimal): string {
   return JSON.stringify(AmountDecimal$outboundSchema.parse(amountDecimal));

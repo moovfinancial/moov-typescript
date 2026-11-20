@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const AllowedScheduleError$inboundSchema: z.ZodType<
   AllowedScheduleError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timezone: types.optional(types.string()),
-  windows: types.optional(z.record(ScheduleWindowError$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timezone: types.optional(types.string()),
+    windows: types.optional(z.record(ScheduleWindowError$inboundSchema)),
+  })
+);
 /** @internal */
 export type AllowedScheduleError$Outbound = {
   timezone?: string | undefined;
@@ -39,10 +41,12 @@ export const AllowedScheduleError$outboundSchema: z.ZodType<
   AllowedScheduleError$Outbound,
   z.ZodTypeDef,
   AllowedScheduleError
-> = z.object({
-  timezone: z.string().optional(),
-  windows: z.record(ScheduleWindowError$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timezone: z.string().optional(),
+    windows: z.record(ScheduleWindowError$outboundSchema).optional(),
+  })
+);
 
 export function allowedScheduleErrorToJSON(
   allowedScheduleError: AllowedScheduleError,

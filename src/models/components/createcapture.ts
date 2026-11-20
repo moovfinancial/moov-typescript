@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -78,16 +78,18 @@ export const CreateCapture$inboundSchema: z.ZodType<
   CreateCapture,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(AmountDecimal$inboundSchema),
-  isFinal: types.optional(types.boolean()),
-  description: types.optional(types.string()),
-  metadata: types.optional(z.record(types.string())),
-  foreignID: types.optional(types.string()),
-  lineItems: types.optional(CreateTransferLineItems$inboundSchema),
-  amountDetails: types.optional(CreateTransferAmountDetails$inboundSchema),
-  facilitatorFeeAmount: types.optional(AmountDecimal$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(AmountDecimal$inboundSchema),
+    isFinal: types.optional(types.boolean()),
+    description: types.optional(types.string()),
+    metadata: types.optional(z.record(types.string())),
+    foreignID: types.optional(types.string()),
+    lineItems: types.optional(CreateTransferLineItems$inboundSchema),
+    amountDetails: types.optional(CreateTransferAmountDetails$inboundSchema),
+    facilitatorFeeAmount: types.optional(AmountDecimal$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateCapture$Outbound = {
   amount?: AmountDecimal$Outbound | undefined;
@@ -105,16 +107,18 @@ export const CreateCapture$outboundSchema: z.ZodType<
   CreateCapture$Outbound,
   z.ZodTypeDef,
   CreateCapture
-> = z.object({
-  amount: AmountDecimal$outboundSchema.optional(),
-  isFinal: z.boolean().optional(),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  foreignID: z.string().optional(),
-  lineItems: CreateTransferLineItems$outboundSchema.optional(),
-  amountDetails: CreateTransferAmountDetails$outboundSchema.optional(),
-  facilitatorFeeAmount: AmountDecimal$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: AmountDecimal$outboundSchema.optional(),
+    isFinal: z.boolean().optional(),
+    description: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+    foreignID: z.string().optional(),
+    lineItems: CreateTransferLineItems$outboundSchema.optional(),
+    amountDetails: CreateTransferAmountDetails$outboundSchema.optional(),
+    facilitatorFeeAmount: AmountDecimal$outboundSchema.optional(),
+  })
+);
 
 export function createCaptureToJSON(createCapture: CreateCapture): string {
   return JSON.stringify(CreateCapture$outboundSchema.parse(createCapture));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,14 +25,16 @@ export const CreateInvoiceRequest$inboundSchema: z.ZodType<
   CreateInvoiceRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  CreateInvoice: components.CreateInvoice$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateInvoice": "createInvoice",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    CreateInvoice: components.CreateInvoice$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateInvoice": "createInvoice",
+    });
+  })
+);
 /** @internal */
 export type CreateInvoiceRequest$Outbound = {
   accountID: string;
@@ -44,14 +46,16 @@ export const CreateInvoiceRequest$outboundSchema: z.ZodType<
   CreateInvoiceRequest$Outbound,
   z.ZodTypeDef,
   CreateInvoiceRequest
-> = z.object({
-  accountID: z.string(),
-  createInvoice: components.CreateInvoice$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createInvoice: "CreateInvoice",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    createInvoice: components.CreateInvoice$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createInvoice: "CreateInvoice",
+    });
+  })
+);
 
 export function createInvoiceRequestToJSON(
   createInvoiceRequest: CreateInvoiceRequest,
@@ -75,15 +79,17 @@ export const CreateInvoiceResponse$inboundSchema: z.ZodType<
   CreateInvoiceResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Invoice$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Invoice$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateInvoiceResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -95,15 +101,17 @@ export const CreateInvoiceResponse$outboundSchema: z.ZodType<
   CreateInvoiceResponse$Outbound,
   z.ZodTypeDef,
   CreateInvoiceResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Invoice$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Invoice$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createInvoiceResponseToJSON(
   createInvoiceResponse: CreateInvoiceResponse,

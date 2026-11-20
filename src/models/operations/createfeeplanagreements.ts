@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,14 +25,16 @@ export const CreateFeePlanAgreementsRequest$inboundSchema: z.ZodType<
   CreateFeePlanAgreementsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  CreateFeePlanAgreement: components.CreateFeePlanAgreement$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateFeePlanAgreement": "createFeePlanAgreement",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    CreateFeePlanAgreement: components.CreateFeePlanAgreement$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateFeePlanAgreement": "createFeePlanAgreement",
+    });
+  })
+);
 /** @internal */
 export type CreateFeePlanAgreementsRequest$Outbound = {
   accountID: string;
@@ -44,14 +46,16 @@ export const CreateFeePlanAgreementsRequest$outboundSchema: z.ZodType<
   CreateFeePlanAgreementsRequest$Outbound,
   z.ZodTypeDef,
   CreateFeePlanAgreementsRequest
-> = z.object({
-  accountID: z.string(),
-  createFeePlanAgreement: components.CreateFeePlanAgreement$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createFeePlanAgreement: "CreateFeePlanAgreement",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    createFeePlanAgreement: components.CreateFeePlanAgreement$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createFeePlanAgreement: "CreateFeePlanAgreement",
+    });
+  })
+);
 
 export function createFeePlanAgreementsRequestToJSON(
   createFeePlanAgreementsRequest: CreateFeePlanAgreementsRequest,
@@ -77,15 +81,17 @@ export const CreateFeePlanAgreementsResponse$inboundSchema: z.ZodType<
   CreateFeePlanAgreementsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.FeePlanAgreement$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.FeePlanAgreement$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateFeePlanAgreementsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -97,15 +103,17 @@ export const CreateFeePlanAgreementsResponse$outboundSchema: z.ZodType<
   CreateFeePlanAgreementsResponse$Outbound,
   z.ZodTypeDef,
   CreateFeePlanAgreementsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.FeePlanAgreement$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.FeePlanAgreement$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createFeePlanAgreementsResponseToJSON(
   createFeePlanAgreementsResponse: CreateFeePlanAgreementsResponse,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -251,47 +252,55 @@ export const Transfer$inboundSchema: z.ZodType<
   Transfer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: types.string(),
-  transferType: components.TransferType$inboundSchema,
-  createdOn: types.date(),
-  source: components.TransferSource$inboundSchema,
-  destination: components.TransferDestination$inboundSchema,
-  completedOn: types.optional(types.date()),
-  status: components.TransferStatus$inboundSchema,
-  failureReason: types.optional(components.TransferFailureReason$inboundSchema),
-  amount: components.AmountDecimal$inboundSchema,
-  description: types.optional(types.string()),
-  metadata: types.optional(z.record(types.string())),
-  facilitatorFee: types.optional(components.FacilitatorFee$inboundSchema),
-  moovFee: types.optional(components.AmountDecimal$inboundSchema),
-  moovFeeDetails: types.optional(components.MoovFeeDetails$inboundSchema),
-  moovFees: types.optional(z.array(components.MoovFee$inboundSchema)),
-  groupID: types.optional(types.string()),
-  refundedAmount: types.optional(components.AmountDecimal$inboundSchema),
-  disputedAmount: types.optional(components.AmountDecimal$inboundSchema),
-  sweepID: types.optional(types.string()),
-  scheduleID: types.optional(types.string()),
-  occurrenceID: types.optional(types.string()),
-  paymentLinkCode: types.optional(types.string()),
-  foreignID: types.optional(types.string()),
-  lineItems: types.optional(components.TransferLineItems$inboundSchema),
-  invoiceID: types.optional(types.string()),
-  amountDetails: types.optional(components.TransferAmountDetails$inboundSchema),
-  authorization: types.optional(components.TransferAuthorization$inboundSchema),
-  options: components.TransferRailOptions$inboundSchema,
-  processingDetails: components.TransferProcessingDetails$inboundSchema,
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new Transfer(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: types.string(),
+    transferType: components.TransferType$inboundSchema,
+    createdOn: types.date(),
+    source: components.TransferSource$inboundSchema,
+    destination: components.TransferDestination$inboundSchema,
+    completedOn: types.optional(types.date()),
+    status: components.TransferStatus$inboundSchema,
+    failureReason: types.optional(
+      components.TransferFailureReason$inboundSchema,
+    ),
+    amount: components.AmountDecimal$inboundSchema,
+    description: types.optional(types.string()),
+    metadata: types.optional(z.record(types.string())),
+    facilitatorFee: types.optional(components.FacilitatorFee$inboundSchema),
+    moovFee: types.optional(components.AmountDecimal$inboundSchema),
+    moovFeeDetails: types.optional(components.MoovFeeDetails$inboundSchema),
+    moovFees: types.optional(z.array(components.MoovFee$inboundSchema)),
+    groupID: types.optional(types.string()),
+    refundedAmount: types.optional(components.AmountDecimal$inboundSchema),
+    disputedAmount: types.optional(components.AmountDecimal$inboundSchema),
+    sweepID: types.optional(types.string()),
+    scheduleID: types.optional(types.string()),
+    occurrenceID: types.optional(types.string()),
+    paymentLinkCode: types.optional(types.string()),
+    foreignID: types.optional(types.string()),
+    lineItems: types.optional(components.TransferLineItems$inboundSchema),
+    invoiceID: types.optional(types.string()),
+    amountDetails: types.optional(
+      components.TransferAmountDetails$inboundSchema,
+    ),
+    authorization: types.optional(
+      components.TransferAuthorization$inboundSchema,
+    ),
+    options: components.TransferRailOptions$inboundSchema,
+    processingDetails: components.TransferProcessingDetails$inboundSchema,
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new Transfer(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type Transfer$Outbound = {
@@ -331,36 +340,38 @@ export const Transfer$outboundSchema: z.ZodType<
   Transfer$Outbound,
   z.ZodTypeDef,
   Transfer
-> = z.instanceof(Transfer)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    transferID: z.string(),
-    transferType: components.TransferType$outboundSchema,
-    createdOn: z.date().transform(v => v.toISOString()),
-    source: components.TransferSource$outboundSchema,
-    destination: components.TransferDestination$outboundSchema,
-    completedOn: z.date().transform(v => v.toISOString()).optional(),
-    status: components.TransferStatus$outboundSchema,
-    failureReason: components.TransferFailureReason$outboundSchema.optional(),
-    amount: components.AmountDecimal$outboundSchema,
-    description: z.string().optional(),
-    metadata: z.record(z.string()).optional(),
-    facilitatorFee: components.FacilitatorFee$outboundSchema.optional(),
-    moovFee: components.AmountDecimal$outboundSchema.optional(),
-    moovFeeDetails: components.MoovFeeDetails$outboundSchema.optional(),
-    moovFees: z.array(components.MoovFee$outboundSchema).optional(),
-    groupID: z.string().optional(),
-    refundedAmount: components.AmountDecimal$outboundSchema.optional(),
-    disputedAmount: components.AmountDecimal$outboundSchema.optional(),
-    sweepID: z.string().optional(),
-    scheduleID: z.string().optional(),
-    occurrenceID: z.string().optional(),
-    paymentLinkCode: z.string().optional(),
-    foreignID: z.string().optional(),
-    lineItems: components.TransferLineItems$outboundSchema.optional(),
-    invoiceID: z.string().optional(),
-    amountDetails: components.TransferAmountDetails$outboundSchema.optional(),
-    authorization: components.TransferAuthorization$outboundSchema.optional(),
-    options: components.TransferRailOptions$outboundSchema,
-    processingDetails: components.TransferProcessingDetails$outboundSchema,
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(Transfer)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      transferID: z.string(),
+      transferType: components.TransferType$outboundSchema,
+      createdOn: z.date().transform(v => v.toISOString()),
+      source: components.TransferSource$outboundSchema,
+      destination: components.TransferDestination$outboundSchema,
+      completedOn: z.date().transform(v => v.toISOString()).optional(),
+      status: components.TransferStatus$outboundSchema,
+      failureReason: components.TransferFailureReason$outboundSchema.optional(),
+      amount: components.AmountDecimal$outboundSchema,
+      description: z.string().optional(),
+      metadata: z.record(z.string()).optional(),
+      facilitatorFee: components.FacilitatorFee$outboundSchema.optional(),
+      moovFee: components.AmountDecimal$outboundSchema.optional(),
+      moovFeeDetails: components.MoovFeeDetails$outboundSchema.optional(),
+      moovFees: z.array(components.MoovFee$outboundSchema).optional(),
+      groupID: z.string().optional(),
+      refundedAmount: components.AmountDecimal$outboundSchema.optional(),
+      disputedAmount: components.AmountDecimal$outboundSchema.optional(),
+      sweepID: z.string().optional(),
+      scheduleID: z.string().optional(),
+      occurrenceID: z.string().optional(),
+      paymentLinkCode: z.string().optional(),
+      foreignID: z.string().optional(),
+      lineItems: components.TransferLineItems$outboundSchema.optional(),
+      invoiceID: z.string().optional(),
+      amountDetails: components.TransferAmountDetails$outboundSchema.optional(),
+      authorization: components.TransferAuthorization$outboundSchema.optional(),
+      options: components.TransferRailOptions$outboundSchema,
+      processingDetails: components.TransferProcessingDetails$outboundSchema,
+    }))
+);

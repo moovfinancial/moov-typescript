@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,11 +24,13 @@ export const DeleteDisputeEvidenceFileRequest$inboundSchema: z.ZodType<
   DeleteDisputeEvidenceFileRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  disputeID: types.string(),
-  evidenceID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    disputeID: types.string(),
+    evidenceID: types.string(),
+  })
+);
 /** @internal */
 export type DeleteDisputeEvidenceFileRequest$Outbound = {
   accountID: string;
@@ -41,11 +43,13 @@ export const DeleteDisputeEvidenceFileRequest$outboundSchema: z.ZodType<
   DeleteDisputeEvidenceFileRequest$Outbound,
   z.ZodTypeDef,
   DeleteDisputeEvidenceFileRequest
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-  evidenceID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+    evidenceID: z.string(),
+  })
+);
 
 export function deleteDisputeEvidenceFileRequestToJSON(
   deleteDisputeEvidenceFileRequest: DeleteDisputeEvidenceFileRequest,
@@ -71,13 +75,15 @@ export const DeleteDisputeEvidenceFileResponse$inboundSchema: z.ZodType<
   DeleteDisputeEvidenceFileResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DeleteDisputeEvidenceFileResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -88,13 +94,15 @@ export const DeleteDisputeEvidenceFileResponse$outboundSchema: z.ZodType<
   DeleteDisputeEvidenceFileResponse$Outbound,
   z.ZodTypeDef,
   DeleteDisputeEvidenceFileResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function deleteDisputeEvidenceFileResponseToJSON(
   deleteDisputeEvidenceFileResponse: DeleteDisputeEvidenceFileResponse,

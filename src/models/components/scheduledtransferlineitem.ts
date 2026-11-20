@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -61,16 +61,20 @@ export const ScheduledTransferLineItem$inboundSchema: z.ZodType<
   ScheduledTransferLineItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  basePrice: AmountDecimal$inboundSchema,
-  quantity: types.number(),
-  options: types.optional(
-    z.array(ScheduledTransferLineItemOption$inboundSchema),
-  ),
-  productID: types.optional(types.string()),
-  images: types.optional(z.array(ScheduledTransferImageMetadata$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    basePrice: AmountDecimal$inboundSchema,
+    quantity: types.number(),
+    options: types.optional(
+      z.array(ScheduledTransferLineItemOption$inboundSchema),
+    ),
+    productID: types.optional(types.string()),
+    images: types.optional(
+      z.array(ScheduledTransferImageMetadata$inboundSchema),
+    ),
+  })
+);
 /** @internal */
 export type ScheduledTransferLineItem$Outbound = {
   name: string;
@@ -86,14 +90,16 @@ export const ScheduledTransferLineItem$outboundSchema: z.ZodType<
   ScheduledTransferLineItem$Outbound,
   z.ZodTypeDef,
   ScheduledTransferLineItem
-> = z.object({
-  name: z.string(),
-  basePrice: AmountDecimal$outboundSchema,
-  quantity: z.number().int(),
-  options: z.array(ScheduledTransferLineItemOption$outboundSchema).optional(),
-  productID: z.string().optional(),
-  images: z.array(ScheduledTransferImageMetadata$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    basePrice: AmountDecimal$outboundSchema,
+    quantity: z.number().int(),
+    options: z.array(ScheduledTransferLineItemOption$outboundSchema).optional(),
+    productID: z.string().optional(),
+    images: z.array(ScheduledTransferImageMetadata$outboundSchema).optional(),
+  })
+);
 
 export function scheduledTransferLineItemToJSON(
   scheduledTransferLineItem: ScheduledTransferLineItem,

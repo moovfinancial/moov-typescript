@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -41,18 +41,20 @@ export const IssuedCardTransaction$inboundSchema: z.ZodType<
   IssuedCardTransaction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardTransactionID: types.string(),
-  issuedCardID: types.string(),
-  lastFourCardNumber: types.optional(types.string()),
-  authorizedUserAccountID: types.optional(types.string()),
-  fundingWalletID: types.string(),
-  amount: types.string(),
-  authorizationID: types.optional(types.string()),
-  authorizedOn: types.date(),
-  merchantData: IssuingMerchantData$inboundSchema,
-  createdOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardTransactionID: types.string(),
+    issuedCardID: types.string(),
+    lastFourCardNumber: types.optional(types.string()),
+    authorizedUserAccountID: types.optional(types.string()),
+    fundingWalletID: types.string(),
+    amount: types.string(),
+    authorizationID: types.optional(types.string()),
+    authorizedOn: types.date(),
+    merchantData: IssuingMerchantData$inboundSchema,
+    createdOn: types.date(),
+  })
+);
 /** @internal */
 export type IssuedCardTransaction$Outbound = {
   cardTransactionID: string;
@@ -72,18 +74,20 @@ export const IssuedCardTransaction$outboundSchema: z.ZodType<
   IssuedCardTransaction$Outbound,
   z.ZodTypeDef,
   IssuedCardTransaction
-> = z.object({
-  cardTransactionID: z.string(),
-  issuedCardID: z.string(),
-  lastFourCardNumber: z.string().optional(),
-  authorizedUserAccountID: z.string().optional(),
-  fundingWalletID: z.string(),
-  amount: z.string(),
-  authorizationID: z.string().optional(),
-  authorizedOn: z.date().transform(v => v.toISOString()),
-  merchantData: IssuingMerchantData$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardTransactionID: z.string(),
+    issuedCardID: z.string(),
+    lastFourCardNumber: z.string().optional(),
+    authorizedUserAccountID: z.string().optional(),
+    fundingWalletID: z.string(),
+    amount: z.string(),
+    authorizationID: z.string().optional(),
+    authorizedOn: z.date().transform(v => v.toISOString()),
+    merchantData: IssuingMerchantData$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function issuedCardTransactionToJSON(
   issuedCardTransaction: IssuedCardTransaction,

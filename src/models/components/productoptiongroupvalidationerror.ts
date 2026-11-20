@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,13 +27,17 @@ export const ProductOptionGroupValidationError$inboundSchema: z.ZodType<
   ProductOptionGroupValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.optional(types.string()),
-  description: types.optional(types.string()),
-  minSelect: types.optional(types.string()),
-  maxSelect: types.optional(types.string()),
-  options: types.optional(z.record(ProductOptionValidationError$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.optional(types.string()),
+    description: types.optional(types.string()),
+    minSelect: types.optional(types.string()),
+    maxSelect: types.optional(types.string()),
+    options: types.optional(
+      z.record(ProductOptionValidationError$inboundSchema),
+    ),
+  })
+);
 /** @internal */
 export type ProductOptionGroupValidationError$Outbound = {
   name?: string | undefined;
@@ -48,13 +52,15 @@ export const ProductOptionGroupValidationError$outboundSchema: z.ZodType<
   ProductOptionGroupValidationError$Outbound,
   z.ZodTypeDef,
   ProductOptionGroupValidationError
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  minSelect: z.string().optional(),
-  maxSelect: z.string().optional(),
-  options: z.record(ProductOptionValidationError$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    minSelect: z.string().optional(),
+    maxSelect: z.string().optional(),
+    options: z.record(ProductOptionValidationError$outboundSchema).optional(),
+  })
+);
 
 export function productOptionGroupValidationErrorToJSON(
   productOptionGroupValidationError: ProductOptionGroupValidationError,

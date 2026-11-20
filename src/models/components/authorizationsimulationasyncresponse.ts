@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -17,9 +17,11 @@ export const AuthorizationSimulationAsyncResponse$inboundSchema: z.ZodType<
   AuthorizationSimulationAsyncResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authorizationID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: types.string(),
+  })
+);
 /** @internal */
 export type AuthorizationSimulationAsyncResponse$Outbound = {
   authorizationID: string;
@@ -30,9 +32,11 @@ export const AuthorizationSimulationAsyncResponse$outboundSchema: z.ZodType<
   AuthorizationSimulationAsyncResponse$Outbound,
   z.ZodTypeDef,
   AuthorizationSimulationAsyncResponse
-> = z.object({
-  authorizationID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: z.string(),
+  })
+);
 
 export function authorizationSimulationAsyncResponseToJSON(
   authorizationSimulationAsyncResponse: AuthorizationSimulationAsyncResponse,

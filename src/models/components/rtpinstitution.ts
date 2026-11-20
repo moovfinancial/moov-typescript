@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -28,11 +28,13 @@ export const RTPInstitution$inboundSchema: z.ZodType<
   RTPInstitution,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  routingNumber: types.string(),
-  services: RTPServices$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    routingNumber: types.string(),
+    services: RTPServices$inboundSchema,
+  })
+);
 /** @internal */
 export type RTPInstitution$Outbound = {
   name: string;
@@ -45,11 +47,13 @@ export const RTPInstitution$outboundSchema: z.ZodType<
   RTPInstitution$Outbound,
   z.ZodTypeDef,
   RTPInstitution
-> = z.object({
-  name: z.string(),
-  routingNumber: z.string(),
-  services: RTPServices$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    routingNumber: z.string(),
+    services: RTPServices$outboundSchema,
+  })
+);
 
 export function rtpInstitutionToJSON(rtpInstitution: RTPInstitution): string {
   return JSON.stringify(RTPInstitution$outboundSchema.parse(rtpInstitution));

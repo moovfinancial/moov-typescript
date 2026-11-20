@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -18,10 +19,12 @@ export const GeographicReach$inboundSchema: z.ZodType<
   GeographicReach,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GeographicReach);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(GeographicReach));
 /** @internal */
 export const GeographicReach$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   GeographicReach
-> = openEnums.outboundSchema(GeographicReach);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(GeographicReach)
+);

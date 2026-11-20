@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -51,13 +51,15 @@ export const TransferRailOptions$inboundSchema: z.ZodType<
   TransferRailOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardPayment: types.optional(CardPaymentOptions$inboundSchema),
-  pushToCard: types.optional(PushToCardOptions$inboundSchema),
-  pullFromCard: types.optional(PullFromCardOptions$inboundSchema),
-  achDebit: types.optional(ACHDebitOptions$inboundSchema),
-  achCredit: types.optional(ACHCreditOptions$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: types.optional(CardPaymentOptions$inboundSchema),
+    pushToCard: types.optional(PushToCardOptions$inboundSchema),
+    pullFromCard: types.optional(PullFromCardOptions$inboundSchema),
+    achDebit: types.optional(ACHDebitOptions$inboundSchema),
+    achCredit: types.optional(ACHCreditOptions$inboundSchema),
+  })
+);
 /** @internal */
 export type TransferRailOptions$Outbound = {
   cardPayment?: CardPaymentOptions$Outbound | undefined;
@@ -72,13 +74,15 @@ export const TransferRailOptions$outboundSchema: z.ZodType<
   TransferRailOptions$Outbound,
   z.ZodTypeDef,
   TransferRailOptions
-> = z.object({
-  cardPayment: CardPaymentOptions$outboundSchema.optional(),
-  pushToCard: PushToCardOptions$outboundSchema.optional(),
-  pullFromCard: PullFromCardOptions$outboundSchema.optional(),
-  achDebit: ACHDebitOptions$outboundSchema.optional(),
-  achCredit: ACHCreditOptions$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: CardPaymentOptions$outboundSchema.optional(),
+    pushToCard: PushToCardOptions$outboundSchema.optional(),
+    pullFromCard: PullFromCardOptions$outboundSchema.optional(),
+    achDebit: ACHDebitOptions$outboundSchema.optional(),
+    achCredit: ACHCreditOptions$outboundSchema.optional(),
+  })
+);
 
 export function transferRailOptionsToJSON(
   transferRailOptions: TransferRailOptions,

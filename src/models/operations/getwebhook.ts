@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -24,9 +24,11 @@ export const GetWebhookRequest$inboundSchema: z.ZodType<
   GetWebhookRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  webhookID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: types.string(),
+  })
+);
 /** @internal */
 export type GetWebhookRequest$Outbound = {
   webhookID: string;
@@ -37,9 +39,11 @@ export const GetWebhookRequest$outboundSchema: z.ZodType<
   GetWebhookRequest$Outbound,
   z.ZodTypeDef,
   GetWebhookRequest
-> = z.object({
-  webhookID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: z.string(),
+  })
+);
 
 export function getWebhookRequestToJSON(
   getWebhookRequest: GetWebhookRequest,
@@ -63,15 +67,17 @@ export const GetWebhookResponse$inboundSchema: z.ZodType<
   GetWebhookResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Webhook$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Webhook$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetWebhookResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -83,15 +89,17 @@ export const GetWebhookResponse$outboundSchema: z.ZodType<
   GetWebhookResponse$Outbound,
   z.ZodTypeDef,
   GetWebhookResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Webhook$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Webhook$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getWebhookResponseToJSON(
   getWebhookResponse: GetWebhookResponse,

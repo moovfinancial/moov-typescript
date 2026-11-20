@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -64,21 +65,23 @@ export const LinkGooglePayError$inboundSchema: z.ZodType<
   LinkGooglePayError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: types.optional(types.string()),
-  merchantAccountID: types.optional(types.string()),
-  paymentMethodData: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new LinkGooglePayError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: types.optional(types.string()),
+    merchantAccountID: types.optional(types.string()),
+    paymentMethodData: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new LinkGooglePayError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type LinkGooglePayError$Outbound = {
@@ -92,10 +95,12 @@ export const LinkGooglePayError$outboundSchema: z.ZodType<
   LinkGooglePayError$Outbound,
   z.ZodTypeDef,
   LinkGooglePayError
-> = z.instanceof(LinkGooglePayError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.string().optional(),
-    merchantAccountID: z.string().optional(),
-    paymentMethodData: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(LinkGooglePayError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      error: z.string().optional(),
+      merchantAccountID: z.string().optional(),
+      paymentMethodData: z.string().optional(),
+    }))
+);

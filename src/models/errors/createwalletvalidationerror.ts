@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -40,21 +41,23 @@ export const CreateWalletValidationError$inboundSchema: z.ZodType<
   CreateWalletValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.optional(types.string()),
-  description: types.optional(types.string()),
-  metadata: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateWalletValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.optional(types.string()),
+    description: types.optional(types.string()),
+    metadata: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateWalletValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CreateWalletValidationError$Outbound = {
@@ -68,10 +71,12 @@ export const CreateWalletValidationError$outboundSchema: z.ZodType<
   CreateWalletValidationError$Outbound,
   z.ZodTypeDef,
   CreateWalletValidationError
-> = z.instanceof(CreateWalletValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    name: z.string().optional(),
-    description: z.string().optional(),
-    metadata: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CreateWalletValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      name: z.string().optional(),
+      description: z.string().optional(),
+      metadata: z.string().optional(),
+    }))
+);

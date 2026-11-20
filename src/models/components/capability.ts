@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -61,16 +61,18 @@ export const Capability$inboundSchema: z.ZodType<
   Capability,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  capability: CapabilityID$inboundSchema,
-  accountID: types.string(),
-  status: CapabilityStatus$inboundSchema,
-  requirements: types.optional(CapabilityRequirement$inboundSchema),
-  disabledReason: types.optional(types.string()),
-  createdOn: types.date(),
-  updatedOn: types.date(),
-  disabledOn: types.optional(types.date()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    capability: CapabilityID$inboundSchema,
+    accountID: types.string(),
+    status: CapabilityStatus$inboundSchema,
+    requirements: types.optional(CapabilityRequirement$inboundSchema),
+    disabledReason: types.optional(types.string()),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+    disabledOn: types.optional(types.date()),
+  })
+);
 /** @internal */
 export type Capability$Outbound = {
   capability: string;
@@ -88,16 +90,18 @@ export const Capability$outboundSchema: z.ZodType<
   Capability$Outbound,
   z.ZodTypeDef,
   Capability
-> = z.object({
-  capability: CapabilityID$outboundSchema,
-  accountID: z.string(),
-  status: CapabilityStatus$outboundSchema,
-  requirements: CapabilityRequirement$outboundSchema.optional(),
-  disabledReason: z.string().optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    capability: CapabilityID$outboundSchema,
+    accountID: z.string(),
+    status: CapabilityStatus$outboundSchema,
+    requirements: CapabilityRequirement$outboundSchema.optional(),
+    disabledReason: z.string().optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function capabilityToJSON(capability: Capability): string {
   return JSON.stringify(Capability$outboundSchema.parse(capability));

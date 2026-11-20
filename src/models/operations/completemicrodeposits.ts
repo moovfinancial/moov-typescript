@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -26,15 +26,17 @@ export const CompleteMicroDepositsRequest$inboundSchema: z.ZodType<
   CompleteMicroDepositsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  bankAccountID: types.string(),
-  CompleteMicroDeposits: components.CompleteMicroDeposits$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CompleteMicroDeposits": "completeMicroDeposits",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    bankAccountID: types.string(),
+    CompleteMicroDeposits: components.CompleteMicroDeposits$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CompleteMicroDeposits": "completeMicroDeposits",
+    });
+  })
+);
 /** @internal */
 export type CompleteMicroDepositsRequest$Outbound = {
   accountID: string;
@@ -47,15 +49,17 @@ export const CompleteMicroDepositsRequest$outboundSchema: z.ZodType<
   CompleteMicroDepositsRequest$Outbound,
   z.ZodTypeDef,
   CompleteMicroDepositsRequest
-> = z.object({
-  accountID: z.string(),
-  bankAccountID: z.string(),
-  completeMicroDeposits: components.CompleteMicroDeposits$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    completeMicroDeposits: "CompleteMicroDeposits",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    bankAccountID: z.string(),
+    completeMicroDeposits: components.CompleteMicroDeposits$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      completeMicroDeposits: "CompleteMicroDeposits",
+    });
+  })
+);
 
 export function completeMicroDepositsRequestToJSON(
   completeMicroDepositsRequest: CompleteMicroDepositsRequest,
@@ -81,15 +85,17 @@ export const CompleteMicroDepositsResponse$inboundSchema: z.ZodType<
   CompleteMicroDepositsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.CompletedMicroDeposits$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.CompletedMicroDeposits$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CompleteMicroDepositsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -101,15 +107,17 @@ export const CompleteMicroDepositsResponse$outboundSchema: z.ZodType<
   CompleteMicroDepositsResponse$Outbound,
   z.ZodTypeDef,
   CompleteMicroDepositsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.CompletedMicroDeposits$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.CompletedMicroDeposits$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function completeMicroDepositsResponseToJSON(
   completeMicroDepositsResponse: CompleteMicroDepositsResponse,

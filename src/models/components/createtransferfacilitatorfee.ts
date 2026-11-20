@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -33,10 +33,12 @@ export const CreateTransferFacilitatorFee$inboundSchema: z.ZodType<
   CreateTransferFacilitatorFee,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  total: types.optional(AmountDecimal$inboundSchema),
-  markup: types.optional(AmountDecimal$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    total: types.optional(AmountDecimal$inboundSchema),
+    markup: types.optional(AmountDecimal$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateTransferFacilitatorFee$Outbound = {
   total?: AmountDecimal$Outbound | undefined;
@@ -48,10 +50,12 @@ export const CreateTransferFacilitatorFee$outboundSchema: z.ZodType<
   CreateTransferFacilitatorFee$Outbound,
   z.ZodTypeDef,
   CreateTransferFacilitatorFee
-> = z.object({
-  total: AmountDecimal$outboundSchema.optional(),
-  markup: AmountDecimal$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    total: AmountDecimal$outboundSchema.optional(),
+    markup: AmountDecimal$outboundSchema.optional(),
+  })
+);
 
 export function createTransferFacilitatorFeeToJSON(
   createTransferFacilitatorFee: CreateTransferFacilitatorFee,

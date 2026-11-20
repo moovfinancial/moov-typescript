@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,16 +25,18 @@ export const ListFeesFetchRequest$inboundSchema: z.ZodType<
   ListFeesFetchRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  ListFeesFetchRequest: types.optional(
-    components.ListFeesFetchRequest$inboundSchema,
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "ListFeesFetchRequest": "listFeesFetchRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    ListFeesFetchRequest: types.optional(
+      components.ListFeesFetchRequest$inboundSchema,
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "ListFeesFetchRequest": "listFeesFetchRequest",
+    });
+  })
+);
 /** @internal */
 export type ListFeesFetchRequest$Outbound = {
   accountID: string;
@@ -46,15 +48,17 @@ export const ListFeesFetchRequest$outboundSchema: z.ZodType<
   ListFeesFetchRequest$Outbound,
   z.ZodTypeDef,
   ListFeesFetchRequest
-> = z.object({
-  accountID: z.string(),
-  listFeesFetchRequest: components.ListFeesFetchRequest$outboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    listFeesFetchRequest: "ListFeesFetchRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    listFeesFetchRequest: components.ListFeesFetchRequest$outboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      listFeesFetchRequest: "ListFeesFetchRequest",
+    });
+  })
+);
 
 export function listFeesFetchRequestToJSON(
   listFeesFetchRequest: ListFeesFetchRequest,
@@ -78,15 +82,17 @@ export const ListFeesFetchResponse$inboundSchema: z.ZodType<
   ListFeesFetchResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.IncurredFee$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.IncurredFee$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListFeesFetchResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -98,15 +104,17 @@ export const ListFeesFetchResponse$outboundSchema: z.ZodType<
   ListFeesFetchResponse$Outbound,
   z.ZodTypeDef,
   ListFeesFetchResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.IncurredFee$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.IncurredFee$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listFeesFetchResponseToJSON(
   listFeesFetchResponse: ListFeesFetchResponse,

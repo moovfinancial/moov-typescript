@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -51,12 +51,14 @@ export const MerchantCategoryRestrictions$inboundSchema: z.ZodType<
   MerchantCategoryRestrictions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mode: IssuingControlsRestrictionMode$inboundSchema,
-  categories: types.optional(z.array(IssuingMerchantCategory$inboundSchema)),
-  customMCCs: types.optional(z.array(types.string())),
-  exemptMerchants: types.optional(z.array(MerchantEntry$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: IssuingControlsRestrictionMode$inboundSchema,
+    categories: types.optional(z.array(IssuingMerchantCategory$inboundSchema)),
+    customMCCs: types.optional(z.array(types.string())),
+    exemptMerchants: types.optional(z.array(MerchantEntry$inboundSchema)),
+  })
+);
 /** @internal */
 export type MerchantCategoryRestrictions$Outbound = {
   mode: string;
@@ -70,12 +72,14 @@ export const MerchantCategoryRestrictions$outboundSchema: z.ZodType<
   MerchantCategoryRestrictions$Outbound,
   z.ZodTypeDef,
   MerchantCategoryRestrictions
-> = z.object({
-  mode: IssuingControlsRestrictionMode$outboundSchema,
-  categories: z.array(IssuingMerchantCategory$outboundSchema).optional(),
-  customMCCs: z.array(z.string()).optional(),
-  exemptMerchants: z.array(MerchantEntry$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: IssuingControlsRestrictionMode$outboundSchema,
+    categories: z.array(IssuingMerchantCategory$outboundSchema).optional(),
+    customMCCs: z.array(z.string()).optional(),
+    exemptMerchants: z.array(MerchantEntry$outboundSchema).optional(),
+  })
+);
 
 export function merchantCategoryRestrictionsToJSON(
   merchantCategoryRestrictions: MerchantCategoryRestrictions,

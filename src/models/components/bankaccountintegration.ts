@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -37,13 +37,15 @@ export const BankAccountIntegration$inboundSchema: z.ZodType<
   BankAccountIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  holderName: types.string(),
-  holderType: BankAccountHolderType$inboundSchema,
-  accountNumber: types.string(),
-  bankAccountType: BankAccountType$inboundSchema,
-  routingNumber: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    holderName: types.string(),
+    holderType: BankAccountHolderType$inboundSchema,
+    accountNumber: types.string(),
+    bankAccountType: BankAccountType$inboundSchema,
+    routingNumber: types.string(),
+  })
+);
 /** @internal */
 export type BankAccountIntegration$Outbound = {
   holderName: string;
@@ -58,13 +60,15 @@ export const BankAccountIntegration$outboundSchema: z.ZodType<
   BankAccountIntegration$Outbound,
   z.ZodTypeDef,
   BankAccountIntegration
-> = z.object({
-  holderName: z.string(),
-  holderType: BankAccountHolderType$outboundSchema,
-  accountNumber: z.string(),
-  bankAccountType: BankAccountType$outboundSchema,
-  routingNumber: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    holderName: z.string(),
+    holderType: BankAccountHolderType$outboundSchema,
+    accountNumber: z.string(),
+    bankAccountType: BankAccountType$outboundSchema,
+    routingNumber: z.string(),
+  })
+);
 
 export function bankAccountIntegrationToJSON(
   bankAccountIntegration: BankAccountIntegration,

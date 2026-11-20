@@ -3,10 +3,16 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  CreateCardPaymentOptions,
+  CreateCardPaymentOptions$inboundSchema,
+  CreateCardPaymentOptions$Outbound,
+  CreateCardPaymentOptions$outboundSchema,
+} from "./createcardpaymentoptions.js";
 import {
   CreateTransferDestinationACH,
   CreateTransferDestinationACH$inboundSchema,
@@ -36,7 +42,10 @@ import {
  * Rail-specific options for a new transfer. Set only the key that matches the transfer's rail.
  */
 export type CreateTransferRailOptions = {
-  cardPayment?: CreateTransferSourceCard | undefined;
+  /**
+   * Options for a new `card-payment` transfer.
+   */
+  cardPayment?: CreateCardPaymentOptions | undefined;
   pushToCard?: CreateTransferDestinationCard | undefined;
   pullFromCard?: CreateTransferSourceCard | undefined;
   achDebit?: CreateTransferSourceACH | undefined;
@@ -48,16 +57,18 @@ export const CreateTransferRailOptions$inboundSchema: z.ZodType<
   CreateTransferRailOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardPayment: types.optional(CreateTransferSourceCard$inboundSchema),
-  pushToCard: types.optional(CreateTransferDestinationCard$inboundSchema),
-  pullFromCard: types.optional(CreateTransferSourceCard$inboundSchema),
-  achDebit: types.optional(CreateTransferSourceACH$inboundSchema),
-  achCredit: types.optional(CreateTransferDestinationACH$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: types.optional(CreateCardPaymentOptions$inboundSchema),
+    pushToCard: types.optional(CreateTransferDestinationCard$inboundSchema),
+    pullFromCard: types.optional(CreateTransferSourceCard$inboundSchema),
+    achDebit: types.optional(CreateTransferSourceACH$inboundSchema),
+    achCredit: types.optional(CreateTransferDestinationACH$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateTransferRailOptions$Outbound = {
-  cardPayment?: CreateTransferSourceCard$Outbound | undefined;
+  cardPayment?: CreateCardPaymentOptions$Outbound | undefined;
   pushToCard?: CreateTransferDestinationCard$Outbound | undefined;
   pullFromCard?: CreateTransferSourceCard$Outbound | undefined;
   achDebit?: CreateTransferSourceACH$Outbound | undefined;
@@ -69,13 +80,15 @@ export const CreateTransferRailOptions$outboundSchema: z.ZodType<
   CreateTransferRailOptions$Outbound,
   z.ZodTypeDef,
   CreateTransferRailOptions
-> = z.object({
-  cardPayment: CreateTransferSourceCard$outboundSchema.optional(),
-  pushToCard: CreateTransferDestinationCard$outboundSchema.optional(),
-  pullFromCard: CreateTransferSourceCard$outboundSchema.optional(),
-  achDebit: CreateTransferSourceACH$outboundSchema.optional(),
-  achCredit: CreateTransferDestinationACH$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: CreateCardPaymentOptions$outboundSchema.optional(),
+    pushToCard: CreateTransferDestinationCard$outboundSchema.optional(),
+    pullFromCard: CreateTransferSourceCard$outboundSchema.optional(),
+    achDebit: CreateTransferSourceACH$outboundSchema.optional(),
+    achCredit: CreateTransferDestinationACH$outboundSchema.optional(),
+  })
+);
 
 export function createTransferRailOptionsToJSON(
   createTransferRailOptions: CreateTransferRailOptions,

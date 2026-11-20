@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -42,19 +43,21 @@ export const FeePlanAgreementError$inboundSchema: z.ZodType<
   FeePlanAgreementError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  planID: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new FeePlanAgreementError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    planID: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new FeePlanAgreementError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type FeePlanAgreementError$Outbound = {
@@ -66,8 +69,10 @@ export const FeePlanAgreementError$outboundSchema: z.ZodType<
   FeePlanAgreementError$Outbound,
   z.ZodTypeDef,
   FeePlanAgreementError
-> = z.instanceof(FeePlanAgreementError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    planID: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(FeePlanAgreementError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      planID: z.string().optional(),
+    }))
+);

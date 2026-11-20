@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -41,11 +41,13 @@ export const PaymentLinkDisplayOptions$inboundSchema: z.ZodType<
   PaymentLinkDisplayOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: types.string(),
-  description: types.string(),
-  callToAction: CallToAction$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: types.string(),
+    description: types.string(),
+    callToAction: CallToAction$inboundSchema,
+  })
+);
 /** @internal */
 export type PaymentLinkDisplayOptions$Outbound = {
   title: string;
@@ -58,11 +60,13 @@ export const PaymentLinkDisplayOptions$outboundSchema: z.ZodType<
   PaymentLinkDisplayOptions$Outbound,
   z.ZodTypeDef,
   PaymentLinkDisplayOptions
-> = z.object({
-  title: z.string(),
-  description: z.string(),
-  callToAction: CallToAction$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string(),
+    description: z.string(),
+    callToAction: CallToAction$outboundSchema,
+  })
+);
 
 export function paymentLinkDisplayOptionsToJSON(
   paymentLinkDisplayOptions: PaymentLinkDisplayOptions,

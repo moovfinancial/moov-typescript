@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -24,9 +24,11 @@ export const CreateInvoiceNotification$inboundSchema: z.ZodType<
   CreateInvoiceNotification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channels: z.array(NotificationChannel$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channels: z.array(NotificationChannel$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateInvoiceNotification$Outbound = {
   channels: Array<string>;
@@ -37,9 +39,11 @@ export const CreateInvoiceNotification$outboundSchema: z.ZodType<
   CreateInvoiceNotification$Outbound,
   z.ZodTypeDef,
   CreateInvoiceNotification
-> = z.object({
-  channels: z.array(NotificationChannel$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channels: z.array(NotificationChannel$outboundSchema),
+  })
+);
 
 export function createInvoiceNotificationToJSON(
   createInvoiceNotification: CreateInvoiceNotification,

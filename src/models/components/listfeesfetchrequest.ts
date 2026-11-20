@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,9 +20,11 @@ export const ListFeesFetchRequest$inboundSchema: z.ZodType<
   ListFeesFetchRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  feeIDs: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    feeIDs: types.optional(z.array(types.string())),
+  })
+);
 /** @internal */
 export type ListFeesFetchRequest$Outbound = {
   feeIDs?: Array<string> | undefined;
@@ -33,9 +35,11 @@ export const ListFeesFetchRequest$outboundSchema: z.ZodType<
   ListFeesFetchRequest$Outbound,
   z.ZodTypeDef,
   ListFeesFetchRequest
-> = z.object({
-  feeIDs: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    feeIDs: z.array(z.string()).optional(),
+  })
+);
 
 export function listFeesFetchRequestToJSON(
   listFeesFetchRequest: ListFeesFetchRequest,

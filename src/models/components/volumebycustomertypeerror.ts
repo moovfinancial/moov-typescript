@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,10 +18,12 @@ export const VolumeByCustomerTypeError$inboundSchema: z.ZodType<
   VolumeByCustomerTypeError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  businessToBusinessPercentage: types.optional(types.string()),
-  consumerToBusinessPercentage: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    businessToBusinessPercentage: types.optional(types.string()),
+    consumerToBusinessPercentage: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type VolumeByCustomerTypeError$Outbound = {
   businessToBusinessPercentage?: string | undefined;
@@ -33,10 +35,12 @@ export const VolumeByCustomerTypeError$outboundSchema: z.ZodType<
   VolumeByCustomerTypeError$Outbound,
   z.ZodTypeDef,
   VolumeByCustomerTypeError
-> = z.object({
-  businessToBusinessPercentage: z.string().optional(),
-  consumerToBusinessPercentage: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    businessToBusinessPercentage: z.string().optional(),
+    consumerToBusinessPercentage: z.string().optional(),
+  })
+);
 
 export function volumeByCustomerTypeErrorToJSON(
   volumeByCustomerTypeError: VolumeByCustomerTypeError,

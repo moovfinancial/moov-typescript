@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -129,22 +129,24 @@ export const CreatePaymentLink$inboundSchema: z.ZodType<
   CreatePaymentLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  partnerAccountID: types.string(),
-  merchantPaymentMethodID: types.string(),
-  amount: types.optional(Amount$inboundSchema),
-  maxUses: types.optional(types.number()),
-  expiresOn: types.optional(types.date()),
-  display: PaymentLinkDisplayOptions$inboundSchema,
-  customer: types.optional(PaymentLinkCustomerOptions$inboundSchema),
-  payment: types.optional(PaymentLinkPaymentDetails$inboundSchema),
-  payout: types.optional(PaymentLinkPayoutDetails$inboundSchema),
-  customAmountPayment: types.optional(
-    PaymentLinkCustomAmountPaymentDetails$inboundSchema,
-  ),
-  lineItems: types.optional(CreatePaymentLinkLineItems$inboundSchema),
-  amountDetails: types.optional(CreatePaymentLinkAmountDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerAccountID: types.string(),
+    merchantPaymentMethodID: types.string(),
+    amount: types.optional(Amount$inboundSchema),
+    maxUses: types.optional(types.number()),
+    expiresOn: types.optional(types.date()),
+    display: PaymentLinkDisplayOptions$inboundSchema,
+    customer: types.optional(PaymentLinkCustomerOptions$inboundSchema),
+    payment: types.optional(PaymentLinkPaymentDetails$inboundSchema),
+    payout: types.optional(PaymentLinkPayoutDetails$inboundSchema),
+    customAmountPayment: types.optional(
+      PaymentLinkCustomAmountPaymentDetails$inboundSchema,
+    ),
+    lineItems: types.optional(CreatePaymentLinkLineItems$inboundSchema),
+    amountDetails: types.optional(CreatePaymentLinkAmountDetails$inboundSchema),
+  })
+);
 /** @internal */
 export type CreatePaymentLink$Outbound = {
   partnerAccountID: string;
@@ -168,21 +170,23 @@ export const CreatePaymentLink$outboundSchema: z.ZodType<
   CreatePaymentLink$Outbound,
   z.ZodTypeDef,
   CreatePaymentLink
-> = z.object({
-  partnerAccountID: z.string(),
-  merchantPaymentMethodID: z.string(),
-  amount: Amount$outboundSchema.optional(),
-  maxUses: z.number().int().optional(),
-  expiresOn: z.date().transform(v => v.toISOString()).optional(),
-  display: PaymentLinkDisplayOptions$outboundSchema,
-  customer: PaymentLinkCustomerOptions$outboundSchema.optional(),
-  payment: PaymentLinkPaymentDetails$outboundSchema.optional(),
-  payout: PaymentLinkPayoutDetails$outboundSchema.optional(),
-  customAmountPayment: PaymentLinkCustomAmountPaymentDetails$outboundSchema
-    .optional(),
-  lineItems: CreatePaymentLinkLineItems$outboundSchema.optional(),
-  amountDetails: CreatePaymentLinkAmountDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerAccountID: z.string(),
+    merchantPaymentMethodID: z.string(),
+    amount: Amount$outboundSchema.optional(),
+    maxUses: z.number().int().optional(),
+    expiresOn: z.date().transform(v => v.toISOString()).optional(),
+    display: PaymentLinkDisplayOptions$outboundSchema,
+    customer: PaymentLinkCustomerOptions$outboundSchema.optional(),
+    payment: PaymentLinkPaymentDetails$outboundSchema.optional(),
+    payout: PaymentLinkPayoutDetails$outboundSchema.optional(),
+    customAmountPayment: PaymentLinkCustomAmountPaymentDetails$outboundSchema
+      .optional(),
+    lineItems: CreatePaymentLinkLineItems$outboundSchema.optional(),
+    amountDetails: CreatePaymentLinkAmountDetails$outboundSchema.optional(),
+  })
+);
 
 export function createPaymentLinkToJSON(
   createPaymentLink: CreatePaymentLink,

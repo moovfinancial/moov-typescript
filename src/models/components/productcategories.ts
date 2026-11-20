@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,9 +25,11 @@ export const ProductCategories$inboundSchema: z.ZodType<
   ProductCategories,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  categories: z.array(ProductCategory$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    categories: z.array(ProductCategory$inboundSchema),
+  })
+);
 /** @internal */
 export type ProductCategories$Outbound = {
   categories: Array<ProductCategory$Outbound>;
@@ -38,9 +40,11 @@ export const ProductCategories$outboundSchema: z.ZodType<
   ProductCategories$Outbound,
   z.ZodTypeDef,
   ProductCategories
-> = z.object({
-  categories: z.array(ProductCategory$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    categories: z.array(ProductCategory$outboundSchema),
+  })
+);
 
 export function productCategoriesToJSON(
   productCategories: ProductCategories,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -37,10 +37,12 @@ export const MerchantRestrictions$inboundSchema: z.ZodType<
   MerchantRestrictions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mode: IssuingControlsRestrictionMode$inboundSchema,
-  merchants: z.array(MerchantEntry$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: IssuingControlsRestrictionMode$inboundSchema,
+    merchants: z.array(MerchantEntry$inboundSchema),
+  })
+);
 /** @internal */
 export type MerchantRestrictions$Outbound = {
   mode: string;
@@ -52,10 +54,12 @@ export const MerchantRestrictions$outboundSchema: z.ZodType<
   MerchantRestrictions$Outbound,
   z.ZodTypeDef,
   MerchantRestrictions
-> = z.object({
-  mode: IssuingControlsRestrictionMode$outboundSchema,
-  merchants: z.array(MerchantEntry$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: IssuingControlsRestrictionMode$outboundSchema,
+    merchants: z.array(MerchantEntry$outboundSchema),
+  })
+);
 
 export function merchantRestrictionsToJSON(
   merchantRestrictions: MerchantRestrictions,

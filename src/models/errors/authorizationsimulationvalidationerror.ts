@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -47,23 +48,25 @@ export const AuthorizationSimulationValidationError$inboundSchema: z.ZodType<
   AuthorizationSimulationValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  issuedCardID: types.optional(types.string()),
-  amount: types.optional(types.string()),
-  merchantData: types.optional(
-    components.SimulationIssuingMerchantDataValidationError$inboundSchema,
-  ),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new AuthorizationSimulationValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuedCardID: types.optional(types.string()),
+    amount: types.optional(types.string()),
+    merchantData: types.optional(
+      components.SimulationIssuingMerchantDataValidationError$inboundSchema,
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new AuthorizationSimulationValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type AuthorizationSimulationValidationError$Outbound = {
@@ -79,11 +82,13 @@ export const AuthorizationSimulationValidationError$outboundSchema: z.ZodType<
   AuthorizationSimulationValidationError$Outbound,
   z.ZodTypeDef,
   AuthorizationSimulationValidationError
-> = z.instanceof(AuthorizationSimulationValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    issuedCardID: z.string().optional(),
-    amount: z.string().optional(),
-    merchantData: components
-      .SimulationIssuingMerchantDataValidationError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(AuthorizationSimulationValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      issuedCardID: z.string().optional(),
+      amount: z.string().optional(),
+      merchantData: components
+        .SimulationIssuingMerchantDataValidationError$outboundSchema.optional(),
+    }))
+);

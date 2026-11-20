@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -55,29 +56,33 @@ export const UpdateInvoiceError$inboundSchema: z.ZodType<
   UpdateInvoiceError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  lineItems: types.optional(
-    components.InvoiceLineItemsValidationError$inboundSchema,
-  ),
-  invoiceDate: types.optional(types.string()),
-  dueDate: types.optional(types.string()),
-  status: types.optional(types.string()),
-  payment: types.optional(components.InvoicePaymentOptionsError$inboundSchema),
-  amountDetails: types.optional(
-    components.AmountDetailsValidationError$inboundSchema,
-  ),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new UpdateInvoiceError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    lineItems: types.optional(
+      components.InvoiceLineItemsValidationError$inboundSchema,
+    ),
+    invoiceDate: types.optional(types.string()),
+    dueDate: types.optional(types.string()),
+    status: types.optional(types.string()),
+    payment: types.optional(
+      components.InvoicePaymentOptionsError$inboundSchema,
+    ),
+    amountDetails: types.optional(
+      components.AmountDetailsValidationError$inboundSchema,
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new UpdateInvoiceError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type UpdateInvoiceError$Outbound = {
@@ -95,16 +100,18 @@ export const UpdateInvoiceError$outboundSchema: z.ZodType<
   UpdateInvoiceError$Outbound,
   z.ZodTypeDef,
   UpdateInvoiceError
-> = z.instanceof(UpdateInvoiceError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    description: z.string().optional(),
-    lineItems: components.InvoiceLineItemsValidationError$outboundSchema
-      .optional(),
-    invoiceDate: z.string().optional(),
-    dueDate: z.string().optional(),
-    status: z.string().optional(),
-    payment: components.InvoicePaymentOptionsError$outboundSchema.optional(),
-    amountDetails: components.AmountDetailsValidationError$outboundSchema
-      .optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(UpdateInvoiceError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      description: z.string().optional(),
+      lineItems: components.InvoiceLineItemsValidationError$outboundSchema
+        .optional(),
+      invoiceDate: z.string().optional(),
+      dueDate: z.string().optional(),
+      status: z.string().optional(),
+      payment: components.InvoicePaymentOptionsError$outboundSchema.optional(),
+      amountDetails: components.AmountDetailsValidationError$outboundSchema
+        .optional(),
+    }))
+);

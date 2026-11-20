@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,10 +18,12 @@ export const WebhookBillingStatementCreated$inboundSchema: z.ZodType<
   WebhookBillingStatementCreated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  statementID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    statementID: types.string(),
+  })
+);
 /** @internal */
 export type WebhookBillingStatementCreated$Outbound = {
   accountID: string;
@@ -33,10 +35,12 @@ export const WebhookBillingStatementCreated$outboundSchema: z.ZodType<
   WebhookBillingStatementCreated$Outbound,
   z.ZodTypeDef,
   WebhookBillingStatementCreated
-> = z.object({
-  accountID: z.string(),
-  statementID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    statementID: z.string(),
+  })
+);
 
 export function webhookBillingStatementCreatedToJSON(
   webhookBillingStatementCreated: WebhookBillingStatementCreated,

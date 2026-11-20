@@ -12,7 +12,7 @@ let value: Invoice = {
   customerDisplayName: "<value>",
   customerEmail: "jordan.lee@classbooker.dev",
   partnerAccountID: "<id>",
-  status: "unpaid",
+  status: "payment-pending",
   lineItems: {
     items: [
       {
@@ -102,7 +102,7 @@ let value: Invoice = {
       },
     },
   ],
-  createdOn: new Date("2026-09-26T00:29:13.992Z"),
+  createdOn: new Date("2026-10-21T06:03:06.321Z"),
 };
 ```
 

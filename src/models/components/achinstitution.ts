@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,12 +35,14 @@ export const ACHInstitution$inboundSchema: z.ZodType<
   ACHInstitution,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  routingNumber: types.string(),
-  address: types.optional(Address$inboundSchema),
-  contact: types.optional(Contact$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    routingNumber: types.string(),
+    address: types.optional(Address$inboundSchema),
+    contact: types.optional(Contact$inboundSchema),
+  })
+);
 /** @internal */
 export type ACHInstitution$Outbound = {
   name: string;
@@ -54,12 +56,14 @@ export const ACHInstitution$outboundSchema: z.ZodType<
   ACHInstitution$Outbound,
   z.ZodTypeDef,
   ACHInstitution
-> = z.object({
-  name: z.string(),
-  routingNumber: z.string(),
-  address: Address$outboundSchema.optional(),
-  contact: Contact$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    routingNumber: z.string(),
+    address: Address$outboundSchema.optional(),
+    contact: Contact$outboundSchema.optional(),
+  })
+);
 
 export function achInstitutionToJSON(achInstitution: ACHInstitution): string {
   return JSON.stringify(ACHInstitution$outboundSchema.parse(achInstitution));

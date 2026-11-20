@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -54,24 +55,26 @@ export const RequestCardError$inboundSchema: z.ZodType<
   RequestCardError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authorizedUserAccountID: types.optional(types.string()),
-  nickname: types.optional(types.string()),
-  metadata: types.optional(types.string()),
-  billingAddress: types.optional(components.AddressError$inboundSchema),
-  expiration: types.optional(components.CardExpirationError$inboundSchema),
-  controls: types.optional(components.IssuingControlsError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new RequestCardError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizedUserAccountID: types.optional(types.string()),
+    nickname: types.optional(types.string()),
+    metadata: types.optional(types.string()),
+    billingAddress: types.optional(components.AddressError$inboundSchema),
+    expiration: types.optional(components.CardExpirationError$inboundSchema),
+    controls: types.optional(components.IssuingControlsError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new RequestCardError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type RequestCardError$Outbound = {
@@ -88,13 +91,15 @@ export const RequestCardError$outboundSchema: z.ZodType<
   RequestCardError$Outbound,
   z.ZodTypeDef,
   RequestCardError
-> = z.instanceof(RequestCardError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    authorizedUserAccountID: z.string().optional(),
-    nickname: z.string().optional(),
-    metadata: z.string().optional(),
-    billingAddress: components.AddressError$outboundSchema.optional(),
-    expiration: components.CardExpirationError$outboundSchema.optional(),
-    controls: components.IssuingControlsError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(RequestCardError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      authorizedUserAccountID: z.string().optional(),
+      nickname: z.string().optional(),
+      metadata: z.string().optional(),
+      billingAddress: components.AddressError$outboundSchema.optional(),
+      expiration: components.CardExpirationError$outboundSchema.optional(),
+      controls: components.IssuingControlsError$outboundSchema.optional(),
+    }))
+);

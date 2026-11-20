@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -35,17 +35,19 @@ export const ListInvoicesRequest$inboundSchema: z.ZodType<
   ListInvoicesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-  status: types.optional(components.InvoiceStatus$inboundSchema),
-  customerAccountID: types.optional(types.string()),
-  createdStartDateTime: types.optional(types.date()),
-  createdEndDateTime: types.optional(types.date()),
-  dueStartDateTime: types.optional(types.date()),
-  dueEndDateTime: types.optional(types.date()),
-  accountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+    status: types.optional(components.InvoiceStatus$inboundSchema),
+    customerAccountID: types.optional(types.string()),
+    createdStartDateTime: types.optional(types.date()),
+    createdEndDateTime: types.optional(types.date()),
+    dueStartDateTime: types.optional(types.date()),
+    dueEndDateTime: types.optional(types.date()),
+    accountID: types.string(),
+  })
+);
 /** @internal */
 export type ListInvoicesRequest$Outbound = {
   skip?: number | undefined;
@@ -64,17 +66,19 @@ export const ListInvoicesRequest$outboundSchema: z.ZodType<
   ListInvoicesRequest$Outbound,
   z.ZodTypeDef,
   ListInvoicesRequest
-> = z.object({
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  status: components.InvoiceStatus$outboundSchema.optional(),
-  customerAccountID: z.string().optional(),
-  createdStartDateTime: z.date().transform(v => v.toISOString()).optional(),
-  createdEndDateTime: z.date().transform(v => v.toISOString()).optional(),
-  dueStartDateTime: z.date().transform(v => v.toISOString()).optional(),
-  dueEndDateTime: z.date().transform(v => v.toISOString()).optional(),
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    status: components.InvoiceStatus$outboundSchema.optional(),
+    customerAccountID: z.string().optional(),
+    createdStartDateTime: z.date().transform(v => v.toISOString()).optional(),
+    createdEndDateTime: z.date().transform(v => v.toISOString()).optional(),
+    dueStartDateTime: z.date().transform(v => v.toISOString()).optional(),
+    dueEndDateTime: z.date().transform(v => v.toISOString()).optional(),
+    accountID: z.string(),
+  })
+);
 
 export function listInvoicesRequestToJSON(
   listInvoicesRequest: ListInvoicesRequest,
@@ -98,15 +102,17 @@ export const ListInvoicesResponse$inboundSchema: z.ZodType<
   ListInvoicesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Invoice$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Invoice$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListInvoicesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -118,15 +124,17 @@ export const ListInvoicesResponse$outboundSchema: z.ZodType<
   ListInvoicesResponse$Outbound,
   z.ZodTypeDef,
   ListInvoicesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Invoice$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Invoice$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listInvoicesResponseToJSON(
   listInvoicesResponse: ListInvoicesResponse,

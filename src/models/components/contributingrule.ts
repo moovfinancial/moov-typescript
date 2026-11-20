@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,9 +23,11 @@ export const ContributingRule$inboundSchema: z.ZodType<
   ContributingRule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+  })
+);
 /** @internal */
 export type ContributingRule$Outbound = {
   name: string;
@@ -36,9 +38,11 @@ export const ContributingRule$outboundSchema: z.ZodType<
   ContributingRule$Outbound,
   z.ZodTypeDef,
   ContributingRule
-> = z.object({
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+  })
+);
 
 export function contributingRuleToJSON(
   contributingRule: ContributingRule,

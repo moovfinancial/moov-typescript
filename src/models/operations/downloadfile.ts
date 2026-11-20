@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { smartUnion } from "../../types/smartUnion.js";
@@ -37,10 +37,12 @@ export const DownloadFileRequest$inboundSchema: z.ZodType<
   DownloadFileRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  fileID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    fileID: types.string(),
+  })
+);
 /** @internal */
 export type DownloadFileRequest$Outbound = {
   accountID: string;
@@ -52,10 +54,12 @@ export const DownloadFileRequest$outboundSchema: z.ZodType<
   DownloadFileRequest$Outbound,
   z.ZodTypeDef,
   DownloadFileRequest
-> = z.object({
-  accountID: z.string(),
-  fileID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    fileID: z.string(),
+  })
+);
 
 export function downloadFileRequestToJSON(
   downloadFileRequest: DownloadFileRequest,
@@ -79,13 +83,15 @@ export const DownloadFileResponseResult$inboundSchema: z.ZodType<
   DownloadFileResponseResult,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 /** @internal */
 export type DownloadFileResponseResult$Outbound =
   | ReadableStream<Uint8Array>
@@ -99,13 +105,15 @@ export const DownloadFileResponseResult$outboundSchema: z.ZodType<
   DownloadFileResponseResult$Outbound,
   z.ZodTypeDef,
   DownloadFileResponseResult
-> = smartUnion([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 
 export function downloadFileResponseResultToJSON(
   downloadFileResponseResult: DownloadFileResponseResult,
@@ -129,21 +137,23 @@ export const DownloadFileResponse$inboundSchema: z.ZodType<
   DownloadFileResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: smartUnion([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: smartUnion([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type DownloadFileResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -160,21 +170,23 @@ export const DownloadFileResponse$outboundSchema: z.ZodType<
   DownloadFileResponse$Outbound,
   z.ZodTypeDef,
   DownloadFileResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: smartUnion([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: smartUnion([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function downloadFileResponseToJSON(
   downloadFileResponse: DownloadFileResponse,

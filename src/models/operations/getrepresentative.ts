@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -31,10 +31,12 @@ export const GetRepresentativeRequest$inboundSchema: z.ZodType<
   GetRepresentativeRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  representativeID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    representativeID: types.string(),
+  })
+);
 /** @internal */
 export type GetRepresentativeRequest$Outbound = {
   accountID: string;
@@ -46,10 +48,12 @@ export const GetRepresentativeRequest$outboundSchema: z.ZodType<
   GetRepresentativeRequest$Outbound,
   z.ZodTypeDef,
   GetRepresentativeRequest
-> = z.object({
-  accountID: z.string(),
-  representativeID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    representativeID: z.string(),
+  })
+);
 
 export function getRepresentativeRequestToJSON(
   getRepresentativeRequest: GetRepresentativeRequest,
@@ -73,15 +77,17 @@ export const GetRepresentativeResponse$inboundSchema: z.ZodType<
   GetRepresentativeResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Representative$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Representative$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetRepresentativeResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -93,15 +99,17 @@ export const GetRepresentativeResponse$outboundSchema: z.ZodType<
   GetRepresentativeResponse$Outbound,
   z.ZodTypeDef,
   GetRepresentativeResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Representative$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Representative$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getRepresentativeResponseToJSON(
   getRepresentativeResponse: GetRepresentativeResponse,

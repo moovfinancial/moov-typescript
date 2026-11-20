@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -103,23 +103,25 @@ export type Account = {
 
 /** @internal */
 export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
-  z.object({
-    accountID: types.string(),
-    mode: Mode$inboundSchema,
-    accountType: AccountType$inboundSchema,
-    displayName: types.string(),
-    profile: Profile$inboundSchema,
-    metadata: types.optional(z.record(types.string())),
-    termsOfService: types.optional(TermsOfService$inboundSchema),
-    capabilities: types.optional(z.array(AccountCapability$inboundSchema)),
-    verification: Verification$inboundSchema,
-    foreignID: types.optional(types.string()),
-    customerSupport: types.optional(CustomerSupport$inboundSchema),
-    settings: types.optional(Settings$inboundSchema),
-    createdOn: types.date(),
-    updatedOn: types.date(),
-    disconnectedOn: types.optional(types.date()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      accountID: types.string(),
+      mode: Mode$inboundSchema,
+      accountType: AccountType$inboundSchema,
+      displayName: types.string(),
+      profile: Profile$inboundSchema,
+      metadata: types.optional(z.record(types.string())),
+      termsOfService: types.optional(TermsOfService$inboundSchema),
+      capabilities: types.optional(z.array(AccountCapability$inboundSchema)),
+      verification: Verification$inboundSchema,
+      foreignID: types.optional(types.string()),
+      customerSupport: types.optional(CustomerSupport$inboundSchema),
+      settings: types.optional(Settings$inboundSchema),
+      createdOn: types.date(),
+      updatedOn: types.date(),
+      disconnectedOn: types.optional(types.date()),
+    })
+  );
 /** @internal */
 export type Account$Outbound = {
   accountID: string;
@@ -144,23 +146,25 @@ export const Account$outboundSchema: z.ZodType<
   Account$Outbound,
   z.ZodTypeDef,
   Account
-> = z.object({
-  accountID: z.string(),
-  mode: Mode$outboundSchema,
-  accountType: AccountType$outboundSchema,
-  displayName: z.string(),
-  profile: Profile$outboundSchema,
-  metadata: z.record(z.string()).optional(),
-  termsOfService: TermsOfService$outboundSchema.optional(),
-  capabilities: z.array(AccountCapability$outboundSchema).optional(),
-  verification: Verification$outboundSchema,
-  foreignID: z.string().optional(),
-  customerSupport: CustomerSupport$outboundSchema.optional(),
-  settings: Settings$outboundSchema.optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  disconnectedOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    mode: Mode$outboundSchema,
+    accountType: AccountType$outboundSchema,
+    displayName: z.string(),
+    profile: Profile$outboundSchema,
+    metadata: z.record(z.string()).optional(),
+    termsOfService: TermsOfService$outboundSchema.optional(),
+    capabilities: z.array(AccountCapability$outboundSchema).optional(),
+    verification: Verification$outboundSchema,
+    foreignID: z.string().optional(),
+    customerSupport: CustomerSupport$outboundSchema.optional(),
+    settings: Settings$outboundSchema.optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    disconnectedOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function accountToJSON(account: Account): string {
   return JSON.stringify(Account$outboundSchema.parse(account));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { smartUnion } from "../../types/smartUnion.js";
@@ -38,10 +38,12 @@ export const CreateReversalSimulationRequest$inboundSchema: z.ZodType<
   CreateReversalSimulationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  authorizationID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    authorizationID: types.string(),
+  })
+);
 /** @internal */
 export type CreateReversalSimulationRequest$Outbound = {
   accountID: string;
@@ -53,10 +55,12 @@ export const CreateReversalSimulationRequest$outboundSchema: z.ZodType<
   CreateReversalSimulationRequest$Outbound,
   z.ZodTypeDef,
   CreateReversalSimulationRequest
-> = z.object({
-  accountID: z.string(),
-  authorizationID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    authorizationID: z.string(),
+  })
+);
 
 export function createReversalSimulationRequestToJSON(
   createReversalSimulationRequest: CreateReversalSimulationRequest,
@@ -82,10 +86,12 @@ export const CreateReversalSimulationResponseResult$inboundSchema: z.ZodType<
   CreateReversalSimulationResponseResult,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  components.IssuedCardAuthorization$inboundSchema,
-  components.AuthorizationSimulationAsyncResponse$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    components.IssuedCardAuthorization$inboundSchema,
+    components.AuthorizationSimulationAsyncResponse$inboundSchema,
+  ])
+);
 /** @internal */
 export type CreateReversalSimulationResponseResult$Outbound =
   | components.IssuedCardAuthorization$Outbound
@@ -96,10 +102,12 @@ export const CreateReversalSimulationResponseResult$outboundSchema: z.ZodType<
   CreateReversalSimulationResponseResult$Outbound,
   z.ZodTypeDef,
   CreateReversalSimulationResponseResult
-> = smartUnion([
-  components.IssuedCardAuthorization$outboundSchema,
-  components.AuthorizationSimulationAsyncResponse$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    components.IssuedCardAuthorization$outboundSchema,
+    components.AuthorizationSimulationAsyncResponse$outboundSchema,
+  ])
+);
 
 export function createReversalSimulationResponseResultToJSON(
   createReversalSimulationResponseResult:
@@ -127,18 +135,20 @@ export const CreateReversalSimulationResponse$inboundSchema: z.ZodType<
   CreateReversalSimulationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: smartUnion([
-    components.IssuedCardAuthorization$inboundSchema,
-    components.AuthorizationSimulationAsyncResponse$inboundSchema,
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: smartUnion([
+      components.IssuedCardAuthorization$inboundSchema,
+      components.AuthorizationSimulationAsyncResponse$inboundSchema,
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateReversalSimulationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -152,18 +162,20 @@ export const CreateReversalSimulationResponse$outboundSchema: z.ZodType<
   CreateReversalSimulationResponse$Outbound,
   z.ZodTypeDef,
   CreateReversalSimulationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: smartUnion([
-    components.IssuedCardAuthorization$outboundSchema,
-    components.AuthorizationSimulationAsyncResponse$outboundSchema,
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: smartUnion([
+      components.IssuedCardAuthorization$outboundSchema,
+      components.AuthorizationSimulationAsyncResponse$outboundSchema,
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createReversalSimulationResponseToJSON(
   createReversalSimulationResponse: CreateReversalSimulationResponse,

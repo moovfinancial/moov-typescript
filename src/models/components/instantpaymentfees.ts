@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -61,17 +61,19 @@ export const InstantPaymentFees$inboundSchema: z.ZodType<
   InstantPaymentFees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rtpCreditTransaction: BillingCountAndAmount$inboundSchema,
-  rtpDecline: types.optional(BillingCountAndAmount$inboundSchema),
-  pushToCardTransaction: BillingCountAndAmount$inboundSchema,
-  pushToCardDecline: types.optional(BillingCountAndAmount$inboundSchema),
-  pullFromCardTransaction: BillingCountAndAmount$inboundSchema,
-  pullFromCardDecline: types.optional(BillingCountAndAmount$inboundSchema),
-  pullFromCardRefund: types.optional(BillingCountAndAmount$inboundSchema),
-  instantVerification: BillingCountAndAmount$inboundSchema,
-  total: BillingCountAndAmount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rtpCreditTransaction: BillingCountAndAmount$inboundSchema,
+    rtpDecline: types.optional(BillingCountAndAmount$inboundSchema),
+    pushToCardTransaction: BillingCountAndAmount$inboundSchema,
+    pushToCardDecline: types.optional(BillingCountAndAmount$inboundSchema),
+    pullFromCardTransaction: BillingCountAndAmount$inboundSchema,
+    pullFromCardDecline: types.optional(BillingCountAndAmount$inboundSchema),
+    pullFromCardRefund: types.optional(BillingCountAndAmount$inboundSchema),
+    instantVerification: BillingCountAndAmount$inboundSchema,
+    total: BillingCountAndAmount$inboundSchema,
+  })
+);
 /** @internal */
 export type InstantPaymentFees$Outbound = {
   rtpCreditTransaction: BillingCountAndAmount$Outbound;
@@ -90,17 +92,19 @@ export const InstantPaymentFees$outboundSchema: z.ZodType<
   InstantPaymentFees$Outbound,
   z.ZodTypeDef,
   InstantPaymentFees
-> = z.object({
-  rtpCreditTransaction: BillingCountAndAmount$outboundSchema,
-  rtpDecline: BillingCountAndAmount$outboundSchema.optional(),
-  pushToCardTransaction: BillingCountAndAmount$outboundSchema,
-  pushToCardDecline: BillingCountAndAmount$outboundSchema.optional(),
-  pullFromCardTransaction: BillingCountAndAmount$outboundSchema,
-  pullFromCardDecline: BillingCountAndAmount$outboundSchema.optional(),
-  pullFromCardRefund: BillingCountAndAmount$outboundSchema.optional(),
-  instantVerification: BillingCountAndAmount$outboundSchema,
-  total: BillingCountAndAmount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rtpCreditTransaction: BillingCountAndAmount$outboundSchema,
+    rtpDecline: BillingCountAndAmount$outboundSchema.optional(),
+    pushToCardTransaction: BillingCountAndAmount$outboundSchema,
+    pushToCardDecline: BillingCountAndAmount$outboundSchema.optional(),
+    pullFromCardTransaction: BillingCountAndAmount$outboundSchema,
+    pullFromCardDecline: BillingCountAndAmount$outboundSchema.optional(),
+    pullFromCardRefund: BillingCountAndAmount$outboundSchema.optional(),
+    instantVerification: BillingCountAndAmount$outboundSchema,
+    total: BillingCountAndAmount$outboundSchema,
+  })
+);
 
 export function instantPaymentFeesToJSON(
   instantPaymentFees: InstantPaymentFees,

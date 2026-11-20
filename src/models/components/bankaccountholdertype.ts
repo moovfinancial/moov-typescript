@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -24,10 +25,14 @@ export const BankAccountHolderType$inboundSchema: z.ZodType<
   BankAccountHolderType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(BankAccountHolderType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(BankAccountHolderType)
+);
 /** @internal */
 export const BankAccountHolderType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   BankAccountHolderType
-> = openEnums.outboundSchema(BankAccountHolderType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(BankAccountHolderType)
+);

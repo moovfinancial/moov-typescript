@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -51,13 +51,17 @@ export const TransferLineItemOption$inboundSchema: z.ZodType<
   TransferLineItemOption,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  quantity: types.number(),
-  priceModifier: types.optional(AmountDecimal$inboundSchema),
-  images: types.optional(z.array(TransferLineItemImageMetadata$inboundSchema)),
-  group: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    quantity: types.number(),
+    priceModifier: types.optional(AmountDecimal$inboundSchema),
+    images: types.optional(
+      z.array(TransferLineItemImageMetadata$inboundSchema),
+    ),
+    group: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type TransferLineItemOption$Outbound = {
   name: string;
@@ -72,13 +76,15 @@ export const TransferLineItemOption$outboundSchema: z.ZodType<
   TransferLineItemOption$Outbound,
   z.ZodTypeDef,
   TransferLineItemOption
-> = z.object({
-  name: z.string(),
-  quantity: z.number().int(),
-  priceModifier: AmountDecimal$outboundSchema.optional(),
-  images: z.array(TransferLineItemImageMetadata$outboundSchema).optional(),
-  group: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    quantity: z.number().int(),
+    priceModifier: AmountDecimal$outboundSchema.optional(),
+    images: z.array(TransferLineItemImageMetadata$outboundSchema).optional(),
+    group: z.string().optional(),
+  })
+);
 
 export function transferLineItemOptionToJSON(
   transferLineItemOption: TransferLineItemOption,

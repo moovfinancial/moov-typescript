@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -26,15 +26,17 @@ export const UpdateCardRequest$inboundSchema: z.ZodType<
   UpdateCardRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  cardID: types.string(),
-  UpdateCard: components.UpdateCard$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateCard": "updateCard",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    cardID: types.string(),
+    UpdateCard: components.UpdateCard$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "UpdateCard": "updateCard",
+    });
+  })
+);
 /** @internal */
 export type UpdateCardRequest$Outbound = {
   accountID: string;
@@ -47,15 +49,17 @@ export const UpdateCardRequest$outboundSchema: z.ZodType<
   UpdateCardRequest$Outbound,
   z.ZodTypeDef,
   UpdateCardRequest
-> = z.object({
-  accountID: z.string(),
-  cardID: z.string(),
-  updateCard: components.UpdateCard$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    updateCard: "UpdateCard",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    cardID: z.string(),
+    updateCard: components.UpdateCard$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      updateCard: "UpdateCard",
+    });
+  })
+);
 
 export function updateCardRequestToJSON(
   updateCardRequest: UpdateCardRequest,
@@ -79,15 +83,17 @@ export const UpdateCardResponse$inboundSchema: z.ZodType<
   UpdateCardResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Card$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Card$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpdateCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -99,15 +105,17 @@ export const UpdateCardResponse$outboundSchema: z.ZodType<
   UpdateCardResponse$Outbound,
   z.ZodTypeDef,
   UpdateCardResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Card$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Card$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function updateCardResponseToJSON(
   updateCardResponse: UpdateCardResponse,

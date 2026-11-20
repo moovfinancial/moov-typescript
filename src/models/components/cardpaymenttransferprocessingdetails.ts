@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -37,13 +37,15 @@ export const CardPaymentTransferProcessingDetails$inboundSchema: z.ZodType<
   CardPaymentTransferProcessingDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.optional(CardPaymentTransactionStatus$inboundSchema),
-  authorizationCode: types.optional(types.string()),
-  networkTransactionID: types.optional(types.string()),
-  failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
-  retrievalReferenceNumber: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.optional(CardPaymentTransactionStatus$inboundSchema),
+    authorizationCode: types.optional(types.string()),
+    networkTransactionID: types.optional(types.string()),
+    failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
+    retrievalReferenceNumber: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type CardPaymentTransferProcessingDetails$Outbound = {
   status?: string | undefined;
@@ -58,13 +60,15 @@ export const CardPaymentTransferProcessingDetails$outboundSchema: z.ZodType<
   CardPaymentTransferProcessingDetails$Outbound,
   z.ZodTypeDef,
   CardPaymentTransferProcessingDetails
-> = z.object({
-  status: CardPaymentTransactionStatus$outboundSchema.optional(),
-  authorizationCode: z.string().optional(),
-  networkTransactionID: z.string().optional(),
-  failureCode: CardTransactionFailureCode$outboundSchema.optional(),
-  retrievalReferenceNumber: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: CardPaymentTransactionStatus$outboundSchema.optional(),
+    authorizationCode: z.string().optional(),
+    networkTransactionID: z.string().optional(),
+    failureCode: CardTransactionFailureCode$outboundSchema.optional(),
+    retrievalReferenceNumber: z.string().optional(),
+  })
+);
 
 export function cardPaymentTransferProcessingDetailsToJSON(
   cardPaymentTransferProcessingDetails: CardPaymentTransferProcessingDetails,

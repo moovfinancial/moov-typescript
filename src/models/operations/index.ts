@@ -169,6 +169,7 @@ export * from "./listsweeps.js";
 export * from "./listterminalapplications.js";
 export * from "./listticketmessages.js";
 export * from "./listtickets.js";
+export * from "./listtransferevents.js";
 export * from "./listtransfers.js";
 export * from "./listwallets.js";
 export * from "./listwallettransactions.js";

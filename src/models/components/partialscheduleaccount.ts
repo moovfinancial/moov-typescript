@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +19,13 @@ export const PartialScheduleAccount$inboundSchema: z.ZodType<
   PartialScheduleAccount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  displayName: types.string(),
-  email: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    displayName: types.string(),
+    email: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type PartialScheduleAccount$Outbound = {
   accountID: string;
@@ -36,11 +38,13 @@ export const PartialScheduleAccount$outboundSchema: z.ZodType<
   PartialScheduleAccount$Outbound,
   z.ZodTypeDef,
   PartialScheduleAccount
-> = z.object({
-  accountID: z.string(),
-  displayName: z.string(),
-  email: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    displayName: z.string(),
+    email: z.string().optional(),
+  })
+);
 
 export function partialScheduleAccountToJSON(
   partialScheduleAccount: PartialScheduleAccount,

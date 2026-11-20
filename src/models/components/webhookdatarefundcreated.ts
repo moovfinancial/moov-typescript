@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +19,13 @@ export const WebhookDataRefundCreated$inboundSchema: z.ZodType<
   WebhookDataRefundCreated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  transferID: types.string(),
-  refundID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    transferID: types.string(),
+    refundID: types.string(),
+  })
+);
 /** @internal */
 export type WebhookDataRefundCreated$Outbound = {
   accountID: string;
@@ -36,11 +38,13 @@ export const WebhookDataRefundCreated$outboundSchema: z.ZodType<
   WebhookDataRefundCreated$Outbound,
   z.ZodTypeDef,
   WebhookDataRefundCreated
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-  refundID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+    refundID: z.string(),
+  })
+);
 
 export function webhookDataRefundCreatedToJSON(
   webhookDataRefundCreated: WebhookDataRefundCreated,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -36,11 +36,13 @@ export const ApplePayHeader$inboundSchema: z.ZodType<
   ApplePayHeader,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ephemeralPublicKey: types.optional(types.string()),
-  publicKeyHash: types.string(),
-  transactionId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ephemeralPublicKey: types.optional(types.string()),
+    publicKeyHash: types.string(),
+    transactionId: types.string(),
+  })
+);
 /** @internal */
 export type ApplePayHeader$Outbound = {
   ephemeralPublicKey?: string | undefined;
@@ -53,11 +55,13 @@ export const ApplePayHeader$outboundSchema: z.ZodType<
   ApplePayHeader$Outbound,
   z.ZodTypeDef,
   ApplePayHeader
-> = z.object({
-  ephemeralPublicKey: z.string().optional(),
-  publicKeyHash: z.string(),
-  transactionId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ephemeralPublicKey: z.string().optional(),
+    publicKeyHash: z.string(),
+    transactionId: z.string(),
+  })
+);
 
 export function applePayHeaderToJSON(applePayHeader: ApplePayHeader): string {
   return JSON.stringify(ApplePayHeader$outboundSchema.parse(applePayHeader));

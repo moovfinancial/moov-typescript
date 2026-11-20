@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -75,21 +75,23 @@ export const PatchBusiness$inboundSchema: z.ZodType<
   PatchBusiness,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  legalBusinessName: types.optional(types.string()),
-  doingBusinessAs: types.optional(types.string()),
-  businessType: types.optional(BusinessType$inboundSchema),
-  address: types.optional(AddressUpdate$inboundSchema),
-  phone: types.optional(PhoneNumber$inboundSchema),
-  email: types.optional(types.string()),
-  website: types.optional(types.string()),
-  description: types.optional(types.string()),
-  taxID: types.optional(TaxIDUpdate$inboundSchema),
-  ownersProvided: types.optional(types.boolean()),
-  industryCodes: types.optional(IndustryCodes$inboundSchema),
-  industry: types.optional(types.string()),
-  primaryRegulator: types.optional(PrimaryRegulator$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    legalBusinessName: types.optional(types.string()),
+    doingBusinessAs: types.optional(types.string()),
+    businessType: types.optional(BusinessType$inboundSchema),
+    address: types.optional(AddressUpdate$inboundSchema),
+    phone: types.optional(PhoneNumber$inboundSchema),
+    email: types.optional(types.string()),
+    website: types.optional(types.string()),
+    description: types.optional(types.string()),
+    taxID: types.optional(TaxIDUpdate$inboundSchema),
+    ownersProvided: types.optional(types.boolean()),
+    industryCodes: types.optional(IndustryCodes$inboundSchema),
+    industry: types.optional(types.string()),
+    primaryRegulator: types.optional(PrimaryRegulator$inboundSchema),
+  })
+);
 /** @internal */
 export type PatchBusiness$Outbound = {
   legalBusinessName?: string | undefined;
@@ -112,21 +114,23 @@ export const PatchBusiness$outboundSchema: z.ZodType<
   PatchBusiness$Outbound,
   z.ZodTypeDef,
   PatchBusiness
-> = z.object({
-  legalBusinessName: z.string().optional(),
-  doingBusinessAs: z.string().optional(),
-  businessType: BusinessType$outboundSchema.optional(),
-  address: AddressUpdate$outboundSchema.optional(),
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  website: z.string().optional(),
-  description: z.string().optional(),
-  taxID: TaxIDUpdate$outboundSchema.optional(),
-  ownersProvided: z.boolean().optional(),
-  industryCodes: IndustryCodes$outboundSchema.optional(),
-  industry: z.string().optional(),
-  primaryRegulator: PrimaryRegulator$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    legalBusinessName: z.string().optional(),
+    doingBusinessAs: z.string().optional(),
+    businessType: BusinessType$outboundSchema.optional(),
+    address: AddressUpdate$outboundSchema.optional(),
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    website: z.string().optional(),
+    description: z.string().optional(),
+    taxID: TaxIDUpdate$outboundSchema.optional(),
+    ownersProvided: z.boolean().optional(),
+    industryCodes: IndustryCodes$outboundSchema.optional(),
+    industry: z.string().optional(),
+    primaryRegulator: PrimaryRegulator$outboundSchema.optional(),
+  })
+);
 
 export function patchBusinessToJSON(patchBusiness: PatchBusiness): string {
   return JSON.stringify(PatchBusiness$outboundSchema.parse(patchBusiness));

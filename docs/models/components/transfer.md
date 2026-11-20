@@ -98,6 +98,7 @@ let value: Transfer = {
   options: {
     cardPayment: {
       dynamicDescriptor: "WhlBdy *Yoga 11-12",
+      captureMethod: "automatic",
     },
   },
   processingDetails: {

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -60,30 +61,32 @@ export const ProductRequestValidationError$inboundSchema: z.ZodType<
   ProductRequestValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: types.optional(types.string()),
-  description: types.optional(types.string()),
-  basePrice: types.optional(
-    components.AmountDecimalValidationError$inboundSchema,
-  ),
-  images: types.optional(
-    z.record(components.AssignProductImageValidationError$inboundSchema),
-  ),
-  optionGroups: types.optional(
-    z.record(components.ProductOptionGroupValidationError$inboundSchema),
-  ),
-  categoryID: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ProductRequestValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: types.optional(types.string()),
+    description: types.optional(types.string()),
+    basePrice: types.optional(
+      components.AmountDecimalValidationError$inboundSchema,
+    ),
+    images: types.optional(
+      z.record(components.AssignProductImageValidationError$inboundSchema),
+    ),
+    optionGroups: types.optional(
+      z.record(components.ProductOptionGroupValidationError$inboundSchema),
+    ),
+    categoryID: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ProductRequestValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ProductRequestValidationError$Outbound = {
@@ -104,18 +107,20 @@ export const ProductRequestValidationError$outboundSchema: z.ZodType<
   ProductRequestValidationError$Outbound,
   z.ZodTypeDef,
   ProductRequestValidationError
-> = z.instanceof(ProductRequestValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    title: z.string().optional(),
-    description: z.string().optional(),
-    basePrice: components.AmountDecimalValidationError$outboundSchema
-      .optional(),
-    images: z.record(
-      components.AssignProductImageValidationError$outboundSchema,
-    ).optional(),
-    optionGroups: z.record(
-      components.ProductOptionGroupValidationError$outboundSchema,
-    ).optional(),
-    categoryID: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ProductRequestValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      title: z.string().optional(),
+      description: z.string().optional(),
+      basePrice: components.AmountDecimalValidationError$outboundSchema
+        .optional(),
+      images: z.record(
+        components.AssignProductImageValidationError$outboundSchema,
+      ).optional(),
+      optionGroups: z.record(
+        components.ProductOptionGroupValidationError$outboundSchema,
+      ).optional(),
+      categoryID: z.string().optional(),
+    }))
+);

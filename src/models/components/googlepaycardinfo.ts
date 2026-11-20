@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
@@ -87,8 +87,8 @@ export type GooglePayCardInfo = {
 };
 
 /** @internal */
-export const CardNetwork$inboundSchema: z.ZodNativeEnum<typeof CardNetwork> = z
-  .nativeEnum(CardNetwork);
+export const CardNetwork$inboundSchema: z.ZodNativeEnum<typeof CardNetwork> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CardNetwork));
 /** @internal */
 export const CardNetwork$outboundSchema: z.ZodNativeEnum<typeof CardNetwork> =
   CardNetwork$inboundSchema;
@@ -96,7 +96,7 @@ export const CardNetwork$outboundSchema: z.ZodNativeEnum<typeof CardNetwork> =
 /** @internal */
 export const CardFundingSource$inboundSchema: z.ZodNativeEnum<
   typeof CardFundingSource
-> = z.nativeEnum(CardFundingSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CardFundingSource));
 /** @internal */
 export const CardFundingSource$outboundSchema: z.ZodNativeEnum<
   typeof CardFundingSource
@@ -107,13 +107,15 @@ export const GooglePayCardInfo$inboundSchema: z.ZodType<
   GooglePayCardInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardNetwork: CardNetwork$inboundSchema,
-  cardDetails: types.string(),
-  cardFundingSource: types.optional(CardFundingSource$inboundSchema),
-  billingAddress: types.optional(GooglePayBillingAddress$inboundSchema),
-  assuranceDetails: types.optional(GooglePayAssuranceDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardNetwork: CardNetwork$inboundSchema,
+    cardDetails: types.string(),
+    cardFundingSource: types.optional(CardFundingSource$inboundSchema),
+    billingAddress: types.optional(GooglePayBillingAddress$inboundSchema),
+    assuranceDetails: types.optional(GooglePayAssuranceDetails$inboundSchema),
+  })
+);
 /** @internal */
 export type GooglePayCardInfo$Outbound = {
   cardNetwork: string;
@@ -128,13 +130,15 @@ export const GooglePayCardInfo$outboundSchema: z.ZodType<
   GooglePayCardInfo$Outbound,
   z.ZodTypeDef,
   GooglePayCardInfo
-> = z.object({
-  cardNetwork: CardNetwork$outboundSchema,
-  cardDetails: z.string(),
-  cardFundingSource: CardFundingSource$outboundSchema.optional(),
-  billingAddress: GooglePayBillingAddress$outboundSchema.optional(),
-  assuranceDetails: GooglePayAssuranceDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardNetwork: CardNetwork$outboundSchema,
+    cardDetails: z.string(),
+    cardFundingSource: CardFundingSource$outboundSchema.optional(),
+    billingAddress: GooglePayBillingAddress$outboundSchema.optional(),
+    assuranceDetails: GooglePayAssuranceDetails$outboundSchema.optional(),
+  })
+);
 
 export function googlePayCardInfoToJSON(
   googlePayCardInfo: GooglePayCardInfo,

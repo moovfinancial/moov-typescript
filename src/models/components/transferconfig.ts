@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -36,10 +36,12 @@ export const TransferConfig$inboundSchema: z.ZodType<
   TransferConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tipPresets: types.optional(TipPresets$inboundSchema),
-  transferControls: types.optional(z.array(TransferControls$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tipPresets: types.optional(TipPresets$inboundSchema),
+    transferControls: types.optional(z.array(TransferControls$inboundSchema)),
+  })
+);
 /** @internal */
 export type TransferConfig$Outbound = {
   tipPresets?: TipPresets$Outbound | undefined;
@@ -51,10 +53,12 @@ export const TransferConfig$outboundSchema: z.ZodType<
   TransferConfig$Outbound,
   z.ZodTypeDef,
   TransferConfig
-> = z.object({
-  tipPresets: TipPresets$outboundSchema.optional(),
-  transferControls: z.array(TransferControls$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tipPresets: TipPresets$outboundSchema.optional(),
+    transferControls: z.array(TransferControls$outboundSchema).optional(),
+  })
+);
 
 export function transferConfigToJSON(transferConfig: TransferConfig): string {
   return JSON.stringify(TransferConfig$outboundSchema.parse(transferConfig));

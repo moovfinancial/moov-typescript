@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,10 +25,12 @@ export const AcceptDisputeRequest$inboundSchema: z.ZodType<
   AcceptDisputeRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  disputeID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    disputeID: types.string(),
+  })
+);
 /** @internal */
 export type AcceptDisputeRequest$Outbound = {
   accountID: string;
@@ -40,10 +42,12 @@ export const AcceptDisputeRequest$outboundSchema: z.ZodType<
   AcceptDisputeRequest$Outbound,
   z.ZodTypeDef,
   AcceptDisputeRequest
-> = z.object({
-  accountID: z.string(),
-  disputeID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    disputeID: z.string(),
+  })
+);
 
 export function acceptDisputeRequestToJSON(
   acceptDisputeRequest: AcceptDisputeRequest,
@@ -67,15 +71,17 @@ export const AcceptDisputeResponse$inboundSchema: z.ZodType<
   AcceptDisputeResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Dispute$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Dispute$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type AcceptDisputeResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -87,15 +93,17 @@ export const AcceptDisputeResponse$outboundSchema: z.ZodType<
   AcceptDisputeResponse$Outbound,
   z.ZodTypeDef,
   AcceptDisputeResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Dispute$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Dispute$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function acceptDisputeResponseToJSON(
   acceptDisputeResponse: AcceptDisputeResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
@@ -32,16 +32,18 @@ export type ImageUploadRequestMultiPart = {
 };
 
 /** @internal */
-export const Image$inboundSchema: z.ZodType<Image, z.ZodTypeDef, unknown> = z
-  .object({
-    fileName: types.string(),
-    content: z.union([
-      z.instanceof(ReadableStream<Uint8Array>),
-      z.instanceof(Blob),
-      z.instanceof(ArrayBuffer),
-      z.instanceof(Uint8Array),
-    ]),
-  });
+export const Image$inboundSchema: z.ZodType<Image, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      fileName: types.string(),
+      content: z.union([
+        z.instanceof(ReadableStream<Uint8Array>),
+        z.instanceof(Blob),
+        z.instanceof(ArrayBuffer),
+        z.instanceof(Uint8Array),
+      ]),
+    })
+  );
 /** @internal */
 export type Image$Outbound = {
   fileName: string;
@@ -53,15 +55,17 @@ export const Image$outboundSchema: z.ZodType<
   Image$Outbound,
   z.ZodTypeDef,
   Image
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function imageToJSON(image: Image): string {
   return JSON.stringify(Image$outboundSchema.parse(image));
@@ -81,10 +85,12 @@ export const ImageUploadRequestMultiPart$inboundSchema: z.ZodType<
   ImageUploadRequestMultiPart,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  image: z.lazy(() => Image$inboundSchema),
-  metadata: types.optional(ImageMetadataRequest$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    image: z.lazy(() => Image$inboundSchema),
+    metadata: types.optional(ImageMetadataRequest$inboundSchema),
+  })
+);
 /** @internal */
 export type ImageUploadRequestMultiPart$Outbound = {
   image: Image$Outbound | Blob;
@@ -96,10 +102,12 @@ export const ImageUploadRequestMultiPart$outboundSchema: z.ZodType<
   ImageUploadRequestMultiPart$Outbound,
   z.ZodTypeDef,
   ImageUploadRequestMultiPart
-> = z.object({
-  image: z.lazy(() => Image$outboundSchema).or(blobLikeSchema),
-  metadata: ImageMetadataRequest$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    image: z.lazy(() => Image$outboundSchema).or(blobLikeSchema),
+    metadata: ImageMetadataRequest$outboundSchema.optional(),
+  })
+);
 
 export function imageUploadRequestMultiPartToJSON(
   imageUploadRequestMultiPart: ImageUploadRequestMultiPart,

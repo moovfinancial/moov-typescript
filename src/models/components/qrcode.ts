@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -16,10 +16,12 @@ export type QRCode = {
 };
 
 /** @internal */
-export const QRCode$inboundSchema: z.ZodType<QRCode, z.ZodTypeDef, unknown> = z
-  .object({
-    qrCode: types.string(),
-  });
+export const QRCode$inboundSchema: z.ZodType<QRCode, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      qrCode: types.string(),
+    })
+  );
 /** @internal */
 export type QRCode$Outbound = {
   qrCode: string;
@@ -30,9 +32,11 @@ export const QRCode$outboundSchema: z.ZodType<
   QRCode$Outbound,
   z.ZodTypeDef,
   QRCode
-> = z.object({
-  qrCode: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    qrCode: z.string(),
+  })
+);
 
 export function qrCodeToJSON(qrCode: QRCode): string {
   return JSON.stringify(QRCode$outboundSchema.parse(qrCode));

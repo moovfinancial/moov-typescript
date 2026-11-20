@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,13 +27,15 @@ export const ApplePayMerchantDomains$inboundSchema: z.ZodType<
   ApplePayMerchantDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  displayName: types.string(),
-  domains: z.array(types.string()),
-  createdOn: types.date(),
-  updatedOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    displayName: types.string(),
+    domains: z.array(types.string()),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+  })
+);
 /** @internal */
 export type ApplePayMerchantDomains$Outbound = {
   accountID: string;
@@ -48,13 +50,15 @@ export const ApplePayMerchantDomains$outboundSchema: z.ZodType<
   ApplePayMerchantDomains$Outbound,
   z.ZodTypeDef,
   ApplePayMerchantDomains
-> = z.object({
-  accountID: z.string(),
-  displayName: z.string(),
-  domains: z.array(z.string()),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    displayName: z.string(),
+    domains: z.array(z.string()),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function applePayMerchantDomainsToJSON(
   applePayMerchantDomains: ApplePayMerchantDomains,

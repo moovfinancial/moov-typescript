@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
@@ -63,9 +63,8 @@ export type ReceiptRequest = {
 };
 
 /** @internal */
-export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
-  Kind,
-);
+export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Kind));
 /** @internal */
 export const Kind$outboundSchema: z.ZodNativeEnum<typeof Kind> =
   Kind$inboundSchema;
@@ -75,14 +74,16 @@ export const ReceiptRequest$inboundSchema: z.ZodType<
   ReceiptRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: Kind$inboundSchema,
-  email: types.optional(types.string()),
-  emailAccountID: types.optional(types.string()),
-  forTransferID: types.optional(types.string()),
-  forScheduleID: types.optional(types.string()),
-  forOccurrenceID: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: Kind$inboundSchema,
+    email: types.optional(types.string()),
+    emailAccountID: types.optional(types.string()),
+    forTransferID: types.optional(types.string()),
+    forScheduleID: types.optional(types.string()),
+    forOccurrenceID: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ReceiptRequest$Outbound = {
   kind: string;
@@ -98,14 +99,16 @@ export const ReceiptRequest$outboundSchema: z.ZodType<
   ReceiptRequest$Outbound,
   z.ZodTypeDef,
   ReceiptRequest
-> = z.object({
-  kind: Kind$outboundSchema,
-  email: z.string().optional(),
-  emailAccountID: z.string().optional(),
-  forTransferID: z.string().optional(),
-  forScheduleID: z.string().optional(),
-  forOccurrenceID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: Kind$outboundSchema,
+    email: z.string().optional(),
+    emailAccountID: z.string().optional(),
+    forTransferID: z.string().optional(),
+    forScheduleID: z.string().optional(),
+    forOccurrenceID: z.string().optional(),
+  })
+);
 
 export function receiptRequestToJSON(receiptRequest: ReceiptRequest): string {
   return JSON.stringify(ReceiptRequest$outboundSchema.parse(receiptRequest));

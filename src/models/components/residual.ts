@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -66,19 +66,21 @@ export const Residual$inboundSchema: z.ZodType<
   Residual,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  residualID: types.string(),
-  partnerAccountID: types.string(),
-  periodStart: types.date(),
-  periodEnd: types.date(),
-  merchantFees: AmountDecimal$inboundSchema,
-  partnerCost: AmountDecimal$inboundSchema,
-  netIncome: AmountDecimal$inboundSchema,
-  revenueShare: types.string(),
-  residualAmount: AmountDecimal$inboundSchema,
-  createdOn: types.date(),
-  updatedOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    residualID: types.string(),
+    partnerAccountID: types.string(),
+    periodStart: types.date(),
+    periodEnd: types.date(),
+    merchantFees: AmountDecimal$inboundSchema,
+    partnerCost: AmountDecimal$inboundSchema,
+    netIncome: AmountDecimal$inboundSchema,
+    revenueShare: types.string(),
+    residualAmount: AmountDecimal$inboundSchema,
+    createdOn: types.date(),
+    updatedOn: types.date(),
+  })
+);
 /** @internal */
 export type Residual$Outbound = {
   residualID: string;
@@ -99,19 +101,21 @@ export const Residual$outboundSchema: z.ZodType<
   Residual$Outbound,
   z.ZodTypeDef,
   Residual
-> = z.object({
-  residualID: z.string(),
-  partnerAccountID: z.string(),
-  periodStart: z.date().transform(v => v.toISOString()),
-  periodEnd: z.date().transform(v => v.toISOString()),
-  merchantFees: AmountDecimal$outboundSchema,
-  partnerCost: AmountDecimal$outboundSchema,
-  netIncome: AmountDecimal$outboundSchema,
-  revenueShare: z.string(),
-  residualAmount: AmountDecimal$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    residualID: z.string(),
+    partnerAccountID: z.string(),
+    periodStart: z.date().transform(v => v.toISOString()),
+    periodEnd: z.date().transform(v => v.toISOString()),
+    merchantFees: AmountDecimal$outboundSchema,
+    partnerCost: AmountDecimal$outboundSchema,
+    netIncome: AmountDecimal$outboundSchema,
+    revenueShare: z.string(),
+    residualAmount: AmountDecimal$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function residualToJSON(residual: Residual): string {
   return JSON.stringify(Residual$outboundSchema.parse(residual));

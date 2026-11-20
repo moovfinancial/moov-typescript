@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { smartUnion } from "../../types/smartUnion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,10 +27,12 @@ export const CreateRefundResponse$inboundSchema: z.ZodType<
   CreateRefundResponse,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  CardAcquiringRefund$inboundSchema,
-  AsyncCreatedRefund$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    CardAcquiringRefund$inboundSchema,
+    AsyncCreatedRefund$inboundSchema,
+  ])
+);
 /** @internal */
 export type CreateRefundResponse$Outbound =
   | CardAcquiringRefund$Outbound
@@ -41,10 +43,12 @@ export const CreateRefundResponse$outboundSchema: z.ZodType<
   CreateRefundResponse$Outbound,
   z.ZodTypeDef,
   CreateRefundResponse
-> = smartUnion([
-  CardAcquiringRefund$outboundSchema,
-  AsyncCreatedRefund$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    CardAcquiringRefund$outboundSchema,
+    AsyncCreatedRefund$outboundSchema,
+  ])
+);
 
 export function createRefundResponseToJSON(
   createRefundResponse: CreateRefundResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -82,18 +82,20 @@ export const ReceiptResponse$inboundSchema: z.ZodType<
   ReceiptResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  receiptID: types.string(),
-  createdBy: types.string(),
-  disabledOn: types.optional(types.date()),
-  kind: ReceiptKind$inboundSchema,
-  email: types.optional(types.string()),
-  emailAccountID: types.optional(types.string()),
-  forTransferID: types.optional(types.string()),
-  forScheduleID: types.optional(types.string()),
-  forOccurrenceID: types.optional(types.string()),
-  sentFor: types.optional(z.array(SentReceipt$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    receiptID: types.string(),
+    createdBy: types.string(),
+    disabledOn: types.optional(types.date()),
+    kind: ReceiptKind$inboundSchema,
+    email: types.optional(types.string()),
+    emailAccountID: types.optional(types.string()),
+    forTransferID: types.optional(types.string()),
+    forScheduleID: types.optional(types.string()),
+    forOccurrenceID: types.optional(types.string()),
+    sentFor: types.optional(z.array(SentReceipt$inboundSchema)),
+  })
+);
 /** @internal */
 export type ReceiptResponse$Outbound = {
   receiptID: string;
@@ -113,18 +115,20 @@ export const ReceiptResponse$outboundSchema: z.ZodType<
   ReceiptResponse$Outbound,
   z.ZodTypeDef,
   ReceiptResponse
-> = z.object({
-  receiptID: z.string(),
-  createdBy: z.string(),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-  kind: ReceiptKind$outboundSchema,
-  email: z.string().optional(),
-  emailAccountID: z.string().optional(),
-  forTransferID: z.string().optional(),
-  forScheduleID: z.string().optional(),
-  forOccurrenceID: z.string().optional(),
-  sentFor: z.array(SentReceipt$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    receiptID: z.string(),
+    createdBy: z.string(),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+    kind: ReceiptKind$outboundSchema,
+    email: z.string().optional(),
+    emailAccountID: z.string().optional(),
+    forTransferID: z.string().optional(),
+    forScheduleID: z.string().optional(),
+    forOccurrenceID: z.string().optional(),
+    sentFor: z.array(SentReceipt$outboundSchema).optional(),
+  })
+);
 
 export function receiptResponseToJSON(
   receiptResponse: ReceiptResponse,

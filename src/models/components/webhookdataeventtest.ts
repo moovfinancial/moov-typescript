@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,9 +20,11 @@ export const WebhookDataEventTest$inboundSchema: z.ZodType<
   WebhookDataEventTest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ping: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ping: types.boolean(),
+  })
+);
 /** @internal */
 export type WebhookDataEventTest$Outbound = {
   ping: boolean;
@@ -33,9 +35,11 @@ export const WebhookDataEventTest$outboundSchema: z.ZodType<
   WebhookDataEventTest$Outbound,
   z.ZodTypeDef,
   WebhookDataEventTest
-> = z.object({
-  ping: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ping: z.boolean(),
+  })
+);
 
 export function webhookDataEventTestToJSON(
   webhookDataEventTest: WebhookDataEventTest,

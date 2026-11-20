@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -29,10 +29,12 @@ export const BasicPaymentMethod$inboundSchema: z.ZodType<
   BasicPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: types.string(),
-  paymentMethodType: PaymentMethodType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: types.string(),
+    paymentMethodType: PaymentMethodType$inboundSchema,
+  })
+);
 /** @internal */
 export type BasicPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -44,10 +46,12 @@ export const BasicPaymentMethod$outboundSchema: z.ZodType<
   BasicPaymentMethod$Outbound,
   z.ZodTypeDef,
   BasicPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: PaymentMethodType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: PaymentMethodType$outboundSchema,
+  })
+);
 
 export function basicPaymentMethodToJSON(
   basicPaymentMethod: BasicPaymentMethod,

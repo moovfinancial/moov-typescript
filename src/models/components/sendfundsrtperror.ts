@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,9 +23,11 @@ export const SendFundsRtpError$inboundSchema: z.ZodType<
   SendFundsRtpError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  estimatedActivity: types.optional(EstimatedActivityError$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    estimatedActivity: types.optional(EstimatedActivityError$inboundSchema),
+  })
+);
 /** @internal */
 export type SendFundsRtpError$Outbound = {
   estimatedActivity?: EstimatedActivityError$Outbound | undefined;
@@ -36,9 +38,11 @@ export const SendFundsRtpError$outboundSchema: z.ZodType<
   SendFundsRtpError$Outbound,
   z.ZodTypeDef,
   SendFundsRtpError
-> = z.object({
-  estimatedActivity: EstimatedActivityError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    estimatedActivity: EstimatedActivityError$outboundSchema.optional(),
+  })
+);
 
 export function sendFundsRtpErrorToJSON(
   sendFundsRtpError: SendFundsRtpError,

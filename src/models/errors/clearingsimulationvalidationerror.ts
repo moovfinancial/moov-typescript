@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -36,19 +37,21 @@ export const ClearingSimulationValidationError$inboundSchema: z.ZodType<
   ClearingSimulationValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ClearingSimulationValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ClearingSimulationValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ClearingSimulationValidationError$Outbound = {
@@ -60,8 +63,10 @@ export const ClearingSimulationValidationError$outboundSchema: z.ZodType<
   ClearingSimulationValidationError$Outbound,
   z.ZodTypeDef,
   ClearingSimulationValidationError
-> = z.instanceof(ClearingSimulationValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    amount: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ClearingSimulationValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      amount: z.string().optional(),
+    }))
+);

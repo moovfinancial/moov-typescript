@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -28,10 +28,12 @@ export const GetFullIssuedCardRequest$inboundSchema: z.ZodType<
   GetFullIssuedCardRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  issuedCardID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    issuedCardID: types.string(),
+  })
+);
 /** @internal */
 export type GetFullIssuedCardRequest$Outbound = {
   accountID: string;
@@ -43,10 +45,12 @@ export const GetFullIssuedCardRequest$outboundSchema: z.ZodType<
   GetFullIssuedCardRequest$Outbound,
   z.ZodTypeDef,
   GetFullIssuedCardRequest
-> = z.object({
-  accountID: z.string(),
-  issuedCardID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    issuedCardID: z.string(),
+  })
+);
 
 export function getFullIssuedCardRequestToJSON(
   getFullIssuedCardRequest: GetFullIssuedCardRequest,
@@ -70,15 +74,17 @@ export const GetFullIssuedCardResponse$inboundSchema: z.ZodType<
   GetFullIssuedCardResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.FullIssuedCard$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.FullIssuedCard$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetFullIssuedCardResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -90,15 +96,17 @@ export const GetFullIssuedCardResponse$outboundSchema: z.ZodType<
   GetFullIssuedCardResponse$Outbound,
   z.ZodTypeDef,
   GetFullIssuedCardResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.FullIssuedCard$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.FullIssuedCard$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getFullIssuedCardResponseToJSON(
   getFullIssuedCardResponse: GetFullIssuedCardResponse,

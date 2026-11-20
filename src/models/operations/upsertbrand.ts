@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,14 +25,16 @@ export const UpsertBrandRequest$inboundSchema: z.ZodType<
   UpsertBrandRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  BrandProperties: components.BrandProperties$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "BrandProperties": "brandProperties",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    BrandProperties: components.BrandProperties$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "BrandProperties": "brandProperties",
+    });
+  })
+);
 /** @internal */
 export type UpsertBrandRequest$Outbound = {
   accountID: string;
@@ -44,14 +46,16 @@ export const UpsertBrandRequest$outboundSchema: z.ZodType<
   UpsertBrandRequest$Outbound,
   z.ZodTypeDef,
   UpsertBrandRequest
-> = z.object({
-  accountID: z.string(),
-  brandProperties: components.BrandProperties$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    brandProperties: "BrandProperties",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    brandProperties: components.BrandProperties$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      brandProperties: "BrandProperties",
+    });
+  })
+);
 
 export function upsertBrandRequestToJSON(
   upsertBrandRequest: UpsertBrandRequest,
@@ -75,15 +79,17 @@ export const UpsertBrandResponse$inboundSchema: z.ZodType<
   UpsertBrandResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.BrandProperties$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.BrandProperties$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpsertBrandResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -95,15 +101,17 @@ export const UpsertBrandResponse$outboundSchema: z.ZodType<
   UpsertBrandResponse$Outbound,
   z.ZodTypeDef,
   UpsertBrandResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.BrandProperties$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.BrandProperties$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function upsertBrandResponseToJSON(
   upsertBrandResponse: UpsertBrandResponse,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -32,10 +32,12 @@ export const UploadAvatarSecurity$inboundSchema: z.ZodType<
   UploadAvatarSecurity,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  username: types.optional(types.string()),
-  password: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    username: types.optional(types.string()),
+    password: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type UploadAvatarSecurity$Outbound = {
   username?: string | undefined;
@@ -47,10 +49,12 @@ export const UploadAvatarSecurity$outboundSchema: z.ZodType<
   UploadAvatarSecurity$Outbound,
   z.ZodTypeDef,
   UploadAvatarSecurity
-> = z.object({
-  username: z.string().optional(),
-  password: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    username: z.string().optional(),
+    password: z.string().optional(),
+  })
+);
 
 export function uploadAvatarSecurityToJSON(
   uploadAvatarSecurity: UploadAvatarSecurity,
@@ -74,14 +78,16 @@ export const UploadAvatarRequest$inboundSchema: z.ZodType<
   UploadAvatarRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uniqueID: types.string(),
-  AvatarUploadRequest: components.AvatarUploadRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "AvatarUploadRequest": "avatarUploadRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uniqueID: types.string(),
+    AvatarUploadRequest: components.AvatarUploadRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "AvatarUploadRequest": "avatarUploadRequest",
+    });
+  })
+);
 /** @internal */
 export type UploadAvatarRequest$Outbound = {
   uniqueID: string;
@@ -93,14 +99,16 @@ export const UploadAvatarRequest$outboundSchema: z.ZodType<
   UploadAvatarRequest$Outbound,
   z.ZodTypeDef,
   UploadAvatarRequest
-> = z.object({
-  uniqueID: z.string(),
-  avatarUploadRequest: components.AvatarUploadRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    avatarUploadRequest: "AvatarUploadRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uniqueID: z.string(),
+    avatarUploadRequest: components.AvatarUploadRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      avatarUploadRequest: "AvatarUploadRequest",
+    });
+  })
+);
 
 export function uploadAvatarRequestToJSON(
   uploadAvatarRequest: UploadAvatarRequest,
@@ -124,13 +132,15 @@ export const UploadAvatarResponse$inboundSchema: z.ZodType<
   UploadAvatarResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type UploadAvatarResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -141,13 +151,15 @@ export const UploadAvatarResponse$outboundSchema: z.ZodType<
   UploadAvatarResponse$Outbound,
   z.ZodTypeDef,
   UploadAvatarResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function uploadAvatarResponseToJSON(
   uploadAvatarResponse: UploadAvatarResponse,

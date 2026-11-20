@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -56,16 +56,18 @@ export const IssuedVelocityLimit$inboundSchema: z.ZodType<
   IssuedVelocityLimit,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(types.number()),
-  count: types.optional(types.number()),
-  interval: IssuingIntervalLimit$inboundSchema,
-  amountUsed: types.optional(types.number()),
-  amountRemaining: types.optional(types.number()),
-  countUsed: types.optional(types.number()),
-  countRemaining: types.optional(types.number()),
-  resetsOn: types.optional(types.date()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(types.number()),
+    count: types.optional(types.number()),
+    interval: IssuingIntervalLimit$inboundSchema,
+    amountUsed: types.optional(types.number()),
+    amountRemaining: types.optional(types.number()),
+    countUsed: types.optional(types.number()),
+    countRemaining: types.optional(types.number()),
+    resetsOn: types.optional(types.date()),
+  })
+);
 /** @internal */
 export type IssuedVelocityLimit$Outbound = {
   amount?: number | undefined;
@@ -83,16 +85,18 @@ export const IssuedVelocityLimit$outboundSchema: z.ZodType<
   IssuedVelocityLimit$Outbound,
   z.ZodTypeDef,
   IssuedVelocityLimit
-> = z.object({
-  amount: z.number().int().optional(),
-  count: z.number().int().optional(),
-  interval: IssuingIntervalLimit$outboundSchema,
-  amountUsed: z.number().int().optional(),
-  amountRemaining: z.number().int().optional(),
-  countUsed: z.number().int().optional(),
-  countRemaining: z.number().int().optional(),
-  resetsOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: z.number().int().optional(),
+    count: z.number().int().optional(),
+    interval: IssuingIntervalLimit$outboundSchema,
+    amountUsed: z.number().int().optional(),
+    amountRemaining: z.number().int().optional(),
+    countUsed: z.number().int().optional(),
+    countRemaining: z.number().int().optional(),
+    resetsOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function issuedVelocityLimitToJSON(
   issuedVelocityLimit: IssuedVelocityLimit,

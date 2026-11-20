@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -29,15 +29,17 @@ export const UpdatePaymentLinkRequest$inboundSchema: z.ZodType<
   UpdatePaymentLinkRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  paymentLinkCode: types.string(),
-  UpdatePaymentLink: components.UpdatePaymentLink$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdatePaymentLink": "updatePaymentLink",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    paymentLinkCode: types.string(),
+    UpdatePaymentLink: components.UpdatePaymentLink$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "UpdatePaymentLink": "updatePaymentLink",
+    });
+  })
+);
 /** @internal */
 export type UpdatePaymentLinkRequest$Outbound = {
   accountID: string;
@@ -50,15 +52,17 @@ export const UpdatePaymentLinkRequest$outboundSchema: z.ZodType<
   UpdatePaymentLinkRequest$Outbound,
   z.ZodTypeDef,
   UpdatePaymentLinkRequest
-> = z.object({
-  accountID: z.string(),
-  paymentLinkCode: z.string(),
-  updatePaymentLink: components.UpdatePaymentLink$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    updatePaymentLink: "UpdatePaymentLink",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    paymentLinkCode: z.string(),
+    updatePaymentLink: components.UpdatePaymentLink$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      updatePaymentLink: "UpdatePaymentLink",
+    });
+  })
+);
 
 export function updatePaymentLinkRequestToJSON(
   updatePaymentLinkRequest: UpdatePaymentLinkRequest,
@@ -82,15 +86,17 @@ export const UpdatePaymentLinkResponse$inboundSchema: z.ZodType<
   UpdatePaymentLinkResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.PaymentLink$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.PaymentLink$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpdatePaymentLinkResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -102,15 +108,17 @@ export const UpdatePaymentLinkResponse$outboundSchema: z.ZodType<
   UpdatePaymentLinkResponse$Outbound,
   z.ZodTypeDef,
   UpdatePaymentLinkResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.PaymentLink$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.PaymentLink$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function updatePaymentLinkResponseToJSON(
   updatePaymentLinkResponse: UpdatePaymentLinkResponse,

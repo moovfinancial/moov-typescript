@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -57,20 +58,22 @@ export const DuplicateCardError$inboundSchema: z.ZodType<
   DuplicateCardError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: types.string(),
-  existingCardID: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new DuplicateCardError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: types.string(),
+    existingCardID: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new DuplicateCardError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type DuplicateCardError$Outbound = {
@@ -83,9 +86,11 @@ export const DuplicateCardError$outboundSchema: z.ZodType<
   DuplicateCardError$Outbound,
   z.ZodTypeDef,
   DuplicateCardError
-> = z.instanceof(DuplicateCardError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.string(),
-    existingCardID: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(DuplicateCardError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      error: z.string(),
+      existingCardID: z.string().optional(),
+    }))
+);

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,9 +31,11 @@ export const CreateScheduledTransferLineItems$inboundSchema: z.ZodType<
   CreateScheduledTransferLineItems,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(CreateScheduledTransferLineItem$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(CreateScheduledTransferLineItem$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateScheduledTransferLineItems$Outbound = {
   items: Array<CreateScheduledTransferLineItem$Outbound>;
@@ -44,9 +46,11 @@ export const CreateScheduledTransferLineItems$outboundSchema: z.ZodType<
   CreateScheduledTransferLineItems$Outbound,
   z.ZodTypeDef,
   CreateScheduledTransferLineItems
-> = z.object({
-  items: z.array(CreateScheduledTransferLineItem$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(CreateScheduledTransferLineItem$outboundSchema),
+  })
+);
 
 export function createScheduledTransferLineItemsToJSON(
   createScheduledTransferLineItems: CreateScheduledTransferLineItems,

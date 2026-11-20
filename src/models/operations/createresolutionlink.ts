@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,14 +25,16 @@ export const CreateResolutionLinkRequest$inboundSchema: z.ZodType<
   CreateResolutionLinkRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  CreateResolutionLink: components.CreateResolutionLink$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateResolutionLink": "createResolutionLink",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    CreateResolutionLink: components.CreateResolutionLink$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateResolutionLink": "createResolutionLink",
+    });
+  })
+);
 /** @internal */
 export type CreateResolutionLinkRequest$Outbound = {
   accountID: string;
@@ -44,14 +46,16 @@ export const CreateResolutionLinkRequest$outboundSchema: z.ZodType<
   CreateResolutionLinkRequest$Outbound,
   z.ZodTypeDef,
   CreateResolutionLinkRequest
-> = z.object({
-  accountID: z.string(),
-  createResolutionLink: components.CreateResolutionLink$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createResolutionLink: "CreateResolutionLink",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    createResolutionLink: components.CreateResolutionLink$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createResolutionLink: "CreateResolutionLink",
+    });
+  })
+);
 
 export function createResolutionLinkRequestToJSON(
   createResolutionLinkRequest: CreateResolutionLinkRequest,
@@ -77,15 +81,17 @@ export const CreateResolutionLinkResponse$inboundSchema: z.ZodType<
   CreateResolutionLinkResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.ResolutionLink$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.ResolutionLink$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateResolutionLinkResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -97,15 +103,17 @@ export const CreateResolutionLinkResponse$outboundSchema: z.ZodType<
   CreateResolutionLinkResponse$Outbound,
   z.ZodTypeDef,
   CreateResolutionLinkResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.ResolutionLink$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.ResolutionLink$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createResolutionLinkResponseToJSON(
   createResolutionLinkResponse: CreateResolutionLinkResponse,

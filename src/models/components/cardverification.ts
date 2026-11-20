@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -52,12 +52,14 @@ export const CardVerification$inboundSchema: z.ZodType<
   CardVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cvv: CardVerificationResult$inboundSchema,
-  addressLine1: CardVerificationResult$inboundSchema,
-  postalCode: CardVerificationResult$inboundSchema,
-  accountName: types.optional(AccountNameVerification$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cvv: CardVerificationResult$inboundSchema,
+    addressLine1: CardVerificationResult$inboundSchema,
+    postalCode: CardVerificationResult$inboundSchema,
+    accountName: types.optional(AccountNameVerification$inboundSchema),
+  })
+);
 /** @internal */
 export type CardVerification$Outbound = {
   cvv: string;
@@ -71,12 +73,14 @@ export const CardVerification$outboundSchema: z.ZodType<
   CardVerification$Outbound,
   z.ZodTypeDef,
   CardVerification
-> = z.object({
-  cvv: CardVerificationResult$outboundSchema,
-  addressLine1: CardVerificationResult$outboundSchema,
-  postalCode: CardVerificationResult$outboundSchema,
-  accountName: AccountNameVerification$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cvv: CardVerificationResult$outboundSchema,
+    addressLine1: CardVerificationResult$outboundSchema,
+    postalCode: CardVerificationResult$outboundSchema,
+    accountName: AccountNameVerification$outboundSchema.optional(),
+  })
+);
 
 export function cardVerificationToJSON(
   cardVerification: CardVerification,

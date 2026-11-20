@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { smartUnion } from "../../types/smartUnion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,7 +27,9 @@ export const CreateTransferResponse$inboundSchema: z.ZodType<
   CreateTransferResponse,
   z.ZodTypeDef,
   unknown
-> = smartUnion([CreatedTransfer$inboundSchema, AsyncTransfer$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([CreatedTransfer$inboundSchema, AsyncTransfer$inboundSchema])
+);
 /** @internal */
 export type CreateTransferResponse$Outbound =
   | CreatedTransfer$Outbound
@@ -38,7 +40,9 @@ export const CreateTransferResponse$outboundSchema: z.ZodType<
   CreateTransferResponse$Outbound,
   z.ZodTypeDef,
   CreateTransferResponse
-> = smartUnion([CreatedTransfer$outboundSchema, AsyncTransfer$outboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([CreatedTransfer$outboundSchema, AsyncTransfer$outboundSchema])
+);
 
 export function createTransferResponseToJSON(
   createTransferResponse: CreateTransferResponse,

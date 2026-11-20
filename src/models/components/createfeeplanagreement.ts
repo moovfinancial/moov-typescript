@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,10 +34,12 @@ export const CreateFeePlanAgreement$inboundSchema: z.ZodType<
   CreateFeePlanAgreement,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  planID: types.string(),
-  priorAgreementID: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    planID: types.string(),
+    priorAgreementID: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type CreateFeePlanAgreement$Outbound = {
   planID: string;
@@ -49,10 +51,12 @@ export const CreateFeePlanAgreement$outboundSchema: z.ZodType<
   CreateFeePlanAgreement$Outbound,
   z.ZodTypeDef,
   CreateFeePlanAgreement
-> = z.object({
-  planID: z.string(),
-  priorAgreementID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    planID: z.string(),
+    priorAgreementID: z.string().optional(),
+  })
+);
 
 export function createFeePlanAgreementToJSON(
   createFeePlanAgreement: CreateFeePlanAgreement,

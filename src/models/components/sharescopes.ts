@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,10 +32,12 @@ export const ShareScopes$inboundSchema: z.ZodType<
   ShareScopes,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  principalAccountID: types.string(),
-  allowScopes: types.optional(z.array(ApplicationScope$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    principalAccountID: types.string(),
+    allowScopes: types.optional(z.array(ApplicationScope$inboundSchema)),
+  })
+);
 /** @internal */
 export type ShareScopes$Outbound = {
   principalAccountID: string;
@@ -47,10 +49,12 @@ export const ShareScopes$outboundSchema: z.ZodType<
   ShareScopes$Outbound,
   z.ZodTypeDef,
   ShareScopes
-> = z.object({
-  principalAccountID: z.string(),
-  allowScopes: z.array(ApplicationScope$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    principalAccountID: z.string(),
+    allowScopes: z.array(ApplicationScope$outboundSchema).optional(),
+  })
+);
 
 export function shareScopesToJSON(shareScopes: ShareScopes): string {
   return JSON.stringify(ShareScopes$outboundSchema.parse(shareScopes));

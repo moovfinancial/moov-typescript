@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,9 +20,11 @@ export const AssignProductImage$inboundSchema: z.ZodType<
   AssignProductImage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  imageID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: types.string(),
+  })
+);
 /** @internal */
 export type AssignProductImage$Outbound = {
   imageID: string;
@@ -33,9 +35,11 @@ export const AssignProductImage$outboundSchema: z.ZodType<
   AssignProductImage$Outbound,
   z.ZodTypeDef,
   AssignProductImage
-> = z.object({
-  imageID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string(),
+  })
+);
 
 export function assignProductImageToJSON(
   assignProductImage: AssignProductImage,

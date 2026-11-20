@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,10 +18,12 @@ export const FulfillmentDetailsError$inboundSchema: z.ZodType<
   FulfillmentDetailsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  shipmentDurationDays: types.optional(types.string()),
-  returnPolicy: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    shipmentDurationDays: types.optional(types.string()),
+    returnPolicy: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type FulfillmentDetailsError$Outbound = {
   shipmentDurationDays?: string | undefined;
@@ -33,10 +35,12 @@ export const FulfillmentDetailsError$outboundSchema: z.ZodType<
   FulfillmentDetailsError$Outbound,
   z.ZodTypeDef,
   FulfillmentDetailsError
-> = z.object({
-  shipmentDurationDays: z.string().optional(),
-  returnPolicy: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    shipmentDurationDays: z.string().optional(),
+    returnPolicy: z.string().optional(),
+  })
+);
 
 export function fulfillmentDetailsErrorToJSON(
   fulfillmentDetailsError: FulfillmentDetailsError,

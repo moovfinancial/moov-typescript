@@ -8,9 +8,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -25,8 +24,15 @@ import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
+export enum GetInvoiceAcceptEnum {
+  applicationJson = "application/json",
+  applicationPdf = "application/pdf",
+}
+
 /**
  * Retrieve an invoice by ID.
+ *
+ * Use the `Accept` header to specify the format of the response. Supported formats are `application/json` and `application/pdf`. The PDF does not include the payment link or QR code.
  *
  * To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
  * you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
@@ -34,7 +40,7 @@ import { Result } from "../types/fp.js";
 export function invoicesGetInvoice(
   client: MoovCore,
   request: operations.GetInvoiceRequest,
-  options?: RequestOptions,
+  options?: RequestOptions & { acceptHeaderOverride?: GetInvoiceAcceptEnum },
 ): APIPromise<
   Result<
     operations.GetInvoiceResponse,
@@ -58,7 +64,7 @@ export function invoicesGetInvoice(
 async function $do(
   client: MoovCore,
   request: operations.GetInvoiceRequest,
-  options?: RequestOptions,
+  options?: RequestOptions & { acceptHeaderOverride?: GetInvoiceAcceptEnum },
 ): Promise<
   [
     Result<
@@ -96,12 +102,18 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/accounts/{accountID}/invoices/{invoiceID}")(
+  const pathResult = encodePath(
+    "/accounts/{accountID}/invoices/{invoiceID}",
     pathParams,
   );
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const headers = new Headers(compactMap({
-    Accept: "application/json",
+    Accept: options?.acceptHeaderOverride
+      || "application/json;q=1, application/pdf;q=0",
   }));
 
   const securityInput = await extractSecurity(client._options.security);
@@ -165,6 +177,11 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, operations.GetInvoiceResponse$inboundSchema, {
+      hdrs: true,
+      key: "Result",
+    }),
+    M.stream(200, operations.GetInvoiceResponse$inboundSchema, {
+      ctype: "application/pdf",
       hdrs: true,
       key: "Result",
     }),

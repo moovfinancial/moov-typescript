@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -58,28 +59,32 @@ export const CreateAccountError$inboundSchema: z.ZodType<
   CreateAccountError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountType: types.optional(types.string()),
-  profile: types.optional(components.CreateProfileError$inboundSchema),
-  metadata: types.optional(types.string()),
-  termsOfService: types.optional(components.TermsOfServiceError$inboundSchema),
-  foreignID: types.optional(types.string()),
-  customerSupport: types.optional(
-    components.CustomerSupportError$inboundSchema,
-  ),
-  settings: types.optional(components.CreateAccountSettings$inboundSchema),
-  capabilities: types.optional(z.record(types.string())),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateAccountError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountType: types.optional(types.string()),
+    profile: types.optional(components.CreateProfileError$inboundSchema),
+    metadata: types.optional(types.string()),
+    termsOfService: types.optional(
+      components.TermsOfServiceError$inboundSchema,
+    ),
+    foreignID: types.optional(types.string()),
+    customerSupport: types.optional(
+      components.CustomerSupportError$inboundSchema,
+    ),
+    settings: types.optional(components.CreateAccountSettings$inboundSchema),
+    capabilities: types.optional(z.record(types.string())),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateAccountError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CreateAccountError$Outbound = {
@@ -98,15 +103,18 @@ export const CreateAccountError$outboundSchema: z.ZodType<
   CreateAccountError$Outbound,
   z.ZodTypeDef,
   CreateAccountError
-> = z.instanceof(CreateAccountError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    accountType: z.string().optional(),
-    profile: components.CreateProfileError$outboundSchema.optional(),
-    metadata: z.string().optional(),
-    termsOfService: components.TermsOfServiceError$outboundSchema.optional(),
-    foreignID: z.string().optional(),
-    customerSupport: components.CustomerSupportError$outboundSchema.optional(),
-    settings: components.CreateAccountSettings$outboundSchema.optional(),
-    capabilities: z.record(z.string()).optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CreateAccountError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      accountType: z.string().optional(),
+      profile: components.CreateProfileError$outboundSchema.optional(),
+      metadata: z.string().optional(),
+      termsOfService: components.TermsOfServiceError$outboundSchema.optional(),
+      foreignID: z.string().optional(),
+      customerSupport: components.CustomerSupportError$outboundSchema
+        .optional(),
+      settings: components.CreateAccountSettings$outboundSchema.optional(),
+      capabilities: z.record(z.string()).optional(),
+    }))
+);

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -96,20 +96,22 @@ export const CardMetadata$inboundSchema: z.ZodType<
   CardMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bin: types.string(),
-  brand: CardBrand$inboundSchema,
-  cardCategory: types.optional(types.string()),
-  cardType: CardType$inboundSchema,
-  commercial: types.optional(types.boolean()),
-  regulated: types.optional(types.boolean()),
-  issuer: types.optional(types.string()),
-  issuerCountry: types.optional(types.string()),
-  issuerPhone: types.optional(types.string()),
-  issuerURL: types.optional(types.string()),
-  domesticPullFromCard: types.optional(DomesticPullFromCard$inboundSchema),
-  domesticPushToCard: types.optional(DomesticPushToCard$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bin: types.string(),
+    brand: CardBrand$inboundSchema,
+    cardCategory: types.optional(types.string()),
+    cardType: CardType$inboundSchema,
+    commercial: types.optional(types.boolean()),
+    regulated: types.optional(types.boolean()),
+    issuer: types.optional(types.string()),
+    issuerCountry: types.optional(types.string()),
+    issuerPhone: types.optional(types.string()),
+    issuerURL: types.optional(types.string()),
+    domesticPullFromCard: types.optional(DomesticPullFromCard$inboundSchema),
+    domesticPushToCard: types.optional(DomesticPushToCard$inboundSchema),
+  })
+);
 /** @internal */
 export type CardMetadata$Outbound = {
   bin: string;
@@ -131,20 +133,22 @@ export const CardMetadata$outboundSchema: z.ZodType<
   CardMetadata$Outbound,
   z.ZodTypeDef,
   CardMetadata
-> = z.object({
-  bin: z.string(),
-  brand: CardBrand$outboundSchema,
-  cardCategory: z.string().optional(),
-  cardType: CardType$outboundSchema,
-  commercial: z.boolean().optional(),
-  regulated: z.boolean().optional(),
-  issuer: z.string().optional(),
-  issuerCountry: z.string().optional(),
-  issuerPhone: z.string().optional(),
-  issuerURL: z.string().optional(),
-  domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
-  domesticPushToCard: DomesticPushToCard$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bin: z.string(),
+    brand: CardBrand$outboundSchema,
+    cardCategory: z.string().optional(),
+    cardType: CardType$outboundSchema,
+    commercial: z.boolean().optional(),
+    regulated: z.boolean().optional(),
+    issuer: z.string().optional(),
+    issuerCountry: z.string().optional(),
+    issuerPhone: z.string().optional(),
+    issuerURL: z.string().optional(),
+    domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
+    domesticPushToCard: DomesticPushToCard$outboundSchema.optional(),
+  })
+);
 
 export function cardMetadataToJSON(cardMetadata: CardMetadata): string {
   return JSON.stringify(CardMetadata$outboundSchema.parse(cardMetadata));

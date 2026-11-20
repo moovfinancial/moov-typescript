@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -70,28 +70,30 @@ export const ListWalletTransactionsRequest$inboundSchema: z.ZodType<
   ListWalletTransactionsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-  walletID: types.string(),
-  transactionType: types.optional(
-    components.WalletTransactionType$inboundSchema,
-  ),
-  transactionTypes: types.optional(
-    z.array(components.WalletTransactionType$inboundSchema),
-  ),
-  sourceType: types.optional(
-    components.WalletTransactionSourceType$inboundSchema,
-  ),
-  sourceID: types.optional(types.string()),
-  status: types.optional(components.WalletTransactionStatus$inboundSchema),
-  createdStartDateTime: types.optional(types.date()),
-  createdEndDateTime: types.optional(types.date()),
-  completedStartDateTime: types.optional(types.date()),
-  completedEndDateTime: types.optional(types.date()),
-  sweepID: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+    walletID: types.string(),
+    transactionType: types.optional(
+      components.WalletTransactionType$inboundSchema,
+    ),
+    transactionTypes: types.optional(
+      z.array(components.WalletTransactionType$inboundSchema),
+    ),
+    sourceType: types.optional(
+      components.WalletTransactionSourceType$inboundSchema,
+    ),
+    sourceID: types.optional(types.string()),
+    status: types.optional(components.WalletTransactionStatus$inboundSchema),
+    createdStartDateTime: types.optional(types.date()),
+    createdEndDateTime: types.optional(types.date()),
+    completedStartDateTime: types.optional(types.date()),
+    completedEndDateTime: types.optional(types.date()),
+    sweepID: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ListWalletTransactionsRequest$Outbound = {
   accountID: string;
@@ -115,23 +117,26 @@ export const ListWalletTransactionsRequest$outboundSchema: z.ZodType<
   ListWalletTransactionsRequest$Outbound,
   z.ZodTypeDef,
   ListWalletTransactionsRequest
-> = z.object({
-  accountID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  walletID: z.string(),
-  transactionType: components.WalletTransactionType$outboundSchema.optional(),
-  transactionTypes: z.array(components.WalletTransactionType$outboundSchema)
-    .optional(),
-  sourceType: components.WalletTransactionSourceType$outboundSchema.optional(),
-  sourceID: z.string().optional(),
-  status: components.WalletTransactionStatus$outboundSchema.optional(),
-  createdStartDateTime: z.date().transform(v => v.toISOString()).optional(),
-  createdEndDateTime: z.date().transform(v => v.toISOString()).optional(),
-  completedStartDateTime: z.date().transform(v => v.toISOString()).optional(),
-  completedEndDateTime: z.date().transform(v => v.toISOString()).optional(),
-  sweepID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    walletID: z.string(),
+    transactionType: components.WalletTransactionType$outboundSchema.optional(),
+    transactionTypes: z.array(components.WalletTransactionType$outboundSchema)
+      .optional(),
+    sourceType: components.WalletTransactionSourceType$outboundSchema
+      .optional(),
+    sourceID: z.string().optional(),
+    status: components.WalletTransactionStatus$outboundSchema.optional(),
+    createdStartDateTime: z.date().transform(v => v.toISOString()).optional(),
+    createdEndDateTime: z.date().transform(v => v.toISOString()).optional(),
+    completedStartDateTime: z.date().transform(v => v.toISOString()).optional(),
+    completedEndDateTime: z.date().transform(v => v.toISOString()).optional(),
+    sweepID: z.string().optional(),
+  })
+);
 
 export function listWalletTransactionsRequestToJSON(
   listWalletTransactionsRequest: ListWalletTransactionsRequest,
@@ -157,15 +162,17 @@ export const ListWalletTransactionsResponse$inboundSchema: z.ZodType<
   ListWalletTransactionsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.WalletTransaction$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.WalletTransaction$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListWalletTransactionsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -177,15 +184,17 @@ export const ListWalletTransactionsResponse$outboundSchema: z.ZodType<
   ListWalletTransactionsResponse$Outbound,
   z.ZodTypeDef,
   ListWalletTransactionsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.WalletTransaction$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.WalletTransaction$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listWalletTransactionsResponseToJSON(
   listWalletTransactionsResponse: ListWalletTransactionsResponse,

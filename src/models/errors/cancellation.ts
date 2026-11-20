@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -49,21 +50,23 @@ export const Cancellation$inboundSchema: z.ZodType<
   Cancellation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cancellationID: types.string(),
-  status: components.CancellationStatus$inboundSchema,
-  createdOn: types.date(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new Cancellation(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cancellationID: types.string(),
+    status: components.CancellationStatus$inboundSchema,
+    createdOn: types.date(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new Cancellation(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type Cancellation$Outbound = {
@@ -77,10 +80,12 @@ export const Cancellation$outboundSchema: z.ZodType<
   Cancellation$Outbound,
   z.ZodTypeDef,
   Cancellation
-> = z.instanceof(Cancellation)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    cancellationID: z.string(),
-    status: components.CancellationStatus$outboundSchema,
-    createdOn: z.date().transform(v => v.toISOString()),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(Cancellation)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      cancellationID: z.string(),
+      status: components.CancellationStatus$outboundSchema,
+      createdOn: z.date().transform(v => v.toISOString()),
+    }))
+);

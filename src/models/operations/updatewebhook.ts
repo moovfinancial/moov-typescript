@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,14 +25,16 @@ export const UpdateWebhookRequest$inboundSchema: z.ZodType<
   UpdateWebhookRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  webhookID: types.string(),
-  UpdateWebhook: components.UpdateWebhook$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateWebhook": "updateWebhook",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: types.string(),
+    UpdateWebhook: components.UpdateWebhook$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "UpdateWebhook": "updateWebhook",
+    });
+  })
+);
 /** @internal */
 export type UpdateWebhookRequest$Outbound = {
   webhookID: string;
@@ -44,14 +46,16 @@ export const UpdateWebhookRequest$outboundSchema: z.ZodType<
   UpdateWebhookRequest$Outbound,
   z.ZodTypeDef,
   UpdateWebhookRequest
-> = z.object({
-  webhookID: z.string(),
-  updateWebhook: components.UpdateWebhook$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    updateWebhook: "UpdateWebhook",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhookID: z.string(),
+    updateWebhook: components.UpdateWebhook$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      updateWebhook: "UpdateWebhook",
+    });
+  })
+);
 
 export function updateWebhookRequestToJSON(
   updateWebhookRequest: UpdateWebhookRequest,
@@ -75,15 +79,17 @@ export const UpdateWebhookResponse$inboundSchema: z.ZodType<
   UpdateWebhookResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Webhook$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Webhook$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpdateWebhookResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -95,15 +101,17 @@ export const UpdateWebhookResponse$outboundSchema: z.ZodType<
   UpdateWebhookResponse$Outbound,
   z.ZodTypeDef,
   UpdateWebhookResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Webhook$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Webhook$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function updateWebhookResponseToJSON(
   updateWebhookResponse: UpdateWebhookResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,10 +27,12 @@ export const BankAccountAttestationEligibility$inboundSchema: z.ZodType<
   BankAccountAttestationEligibility,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  eligible: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    eligible: types.boolean(),
+  })
+);
 /** @internal */
 export type BankAccountAttestationEligibility$Outbound = {
   enabled: boolean;
@@ -42,10 +44,12 @@ export const BankAccountAttestationEligibility$outboundSchema: z.ZodType<
   BankAccountAttestationEligibility$Outbound,
   z.ZodTypeDef,
   BankAccountAttestationEligibility
-> = z.object({
-  enabled: z.boolean(),
-  eligible: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean(),
+    eligible: z.boolean(),
+  })
+);
 
 export function bankAccountAttestationEligibilityToJSON(
   bankAccountAttestationEligibility: BankAccountAttestationEligibility,

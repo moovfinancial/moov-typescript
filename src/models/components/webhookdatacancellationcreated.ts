@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,11 +24,13 @@ export const WebhookDataCancellationCreated$inboundSchema: z.ZodType<
   WebhookDataCancellationCreated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cancellationID: types.string(),
-  transferID: types.string(),
-  status: CancellationStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cancellationID: types.string(),
+    transferID: types.string(),
+    status: CancellationStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataCancellationCreated$Outbound = {
   cancellationID: string;
@@ -41,11 +43,13 @@ export const WebhookDataCancellationCreated$outboundSchema: z.ZodType<
   WebhookDataCancellationCreated$Outbound,
   z.ZodTypeDef,
   WebhookDataCancellationCreated
-> = z.object({
-  cancellationID: z.string(),
-  transferID: z.string(),
-  status: CancellationStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cancellationID: z.string(),
+    transferID: z.string(),
+    status: CancellationStatus$outboundSchema,
+  })
+);
 
 export function webhookDataCancellationCreatedToJSON(
   webhookDataCancellationCreated: WebhookDataCancellationCreated,

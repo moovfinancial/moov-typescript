@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -41,14 +41,16 @@ export const ListResidualFeesRequest$inboundSchema: z.ZodType<
   ListResidualFeesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-  accountID: types.string(),
-  residualID: types.string(),
-  startDateTime: types.optional(types.string()),
-  endDateTime: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+    accountID: types.string(),
+    residualID: types.string(),
+    startDateTime: types.optional(types.string()),
+    endDateTime: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ListResidualFeesRequest$Outbound = {
   skip?: number | undefined;
@@ -64,14 +66,16 @@ export const ListResidualFeesRequest$outboundSchema: z.ZodType<
   ListResidualFeesRequest$Outbound,
   z.ZodTypeDef,
   ListResidualFeesRequest
-> = z.object({
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  accountID: z.string(),
-  residualID: z.string(),
-  startDateTime: z.string().optional(),
-  endDateTime: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    accountID: z.string(),
+    residualID: z.string(),
+    startDateTime: z.string().optional(),
+    endDateTime: z.string().optional(),
+  })
+);
 
 export function listResidualFeesRequestToJSON(
   listResidualFeesRequest: ListResidualFeesRequest,
@@ -95,15 +99,17 @@ export const ListResidualFeesResponse$inboundSchema: z.ZodType<
   ListResidualFeesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.IncurredFee$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.IncurredFee$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListResidualFeesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -115,15 +121,17 @@ export const ListResidualFeesResponse$outboundSchema: z.ZodType<
   ListResidualFeesResponse$Outbound,
   z.ZodTypeDef,
   ListResidualFeesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.IncurredFee$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.IncurredFee$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listResidualFeesResponseToJSON(
   listResidualFeesResponse: ListResidualFeesResponse,

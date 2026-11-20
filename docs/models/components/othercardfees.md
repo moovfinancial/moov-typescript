@@ -9,28 +9,28 @@ import { OtherCardFees } from "@moovio/sdk/models/components";
 
 let value: OtherCardFees = {
   disputes: {
-    count: 788385,
-    amount: {
-      currency: "USD",
-      valueDecimal: "12.987654321",
-    },
-  },
-  cardAccountUpdater: {
     count: 558564,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  cardVerification: {
+  cardAccountUpdater: {
     count: 423830,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",
     },
   },
-  nameVerification: {
+  cardVerification: {
     count: 320188,
+    amount: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
+  nameVerification: {
+    count: 869953,
     amount: {
       currency: "USD",
       valueDecimal: "12.987654321",

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -91,19 +91,21 @@ export const UpdatePaymentLink$inboundSchema: z.ZodType<
   UpdatePaymentLink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(AmountUpdate$inboundSchema),
-  expiresOn: z.nullable(types.date()).optional(),
-  display: types.optional(PaymentLinkDisplayOptionsUpdate$inboundSchema),
-  customer: types.optional(PaymentLinkCustomerOptions$inboundSchema),
-  payment: types.optional(PaymentLinkPaymentDetailsUpdate$inboundSchema),
-  payout: types.optional(PaymentLinkPayoutDetailsUpdate$inboundSchema),
-  customAmountPayment: types.optional(
-    PaymentLinkCustomAmountPaymentDetailsUpdate$inboundSchema,
-  ),
-  lineItems: types.optional(CreatePaymentLinkLineItemsUpdate$inboundSchema),
-  amountDetails: types.optional(UpdatePaymentLinkAmountDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(AmountUpdate$inboundSchema),
+    expiresOn: z.nullable(types.date()).optional(),
+    display: types.optional(PaymentLinkDisplayOptionsUpdate$inboundSchema),
+    customer: types.optional(PaymentLinkCustomerOptions$inboundSchema),
+    payment: types.optional(PaymentLinkPaymentDetailsUpdate$inboundSchema),
+    payout: types.optional(PaymentLinkPayoutDetailsUpdate$inboundSchema),
+    customAmountPayment: types.optional(
+      PaymentLinkCustomAmountPaymentDetailsUpdate$inboundSchema,
+    ),
+    lineItems: types.optional(CreatePaymentLinkLineItemsUpdate$inboundSchema),
+    amountDetails: types.optional(UpdatePaymentLinkAmountDetails$inboundSchema),
+  })
+);
 /** @internal */
 export type UpdatePaymentLink$Outbound = {
   amount?: AmountUpdate$Outbound | undefined;
@@ -124,18 +126,20 @@ export const UpdatePaymentLink$outboundSchema: z.ZodType<
   UpdatePaymentLink$Outbound,
   z.ZodTypeDef,
   UpdatePaymentLink
-> = z.object({
-  amount: AmountUpdate$outboundSchema.optional(),
-  expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  display: PaymentLinkDisplayOptionsUpdate$outboundSchema.optional(),
-  customer: PaymentLinkCustomerOptions$outboundSchema.optional(),
-  payment: PaymentLinkPaymentDetailsUpdate$outboundSchema.optional(),
-  payout: PaymentLinkPayoutDetailsUpdate$outboundSchema.optional(),
-  customAmountPayment:
-    PaymentLinkCustomAmountPaymentDetailsUpdate$outboundSchema.optional(),
-  lineItems: CreatePaymentLinkLineItemsUpdate$outboundSchema.optional(),
-  amountDetails: UpdatePaymentLinkAmountDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: AmountUpdate$outboundSchema.optional(),
+    expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    display: PaymentLinkDisplayOptionsUpdate$outboundSchema.optional(),
+    customer: PaymentLinkCustomerOptions$outboundSchema.optional(),
+    payment: PaymentLinkPaymentDetailsUpdate$outboundSchema.optional(),
+    payout: PaymentLinkPayoutDetailsUpdate$outboundSchema.optional(),
+    customAmountPayment:
+      PaymentLinkCustomAmountPaymentDetailsUpdate$outboundSchema.optional(),
+    lineItems: CreatePaymentLinkLineItemsUpdate$outboundSchema.optional(),
+    amountDetails: UpdatePaymentLinkAmountDetails$outboundSchema.optional(),
+  })
+);
 
 export function updatePaymentLinkToJSON(
   updatePaymentLink: UpdatePaymentLink,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -124,12 +124,16 @@ export const UpdateIssuingControlsMerchantCategoryRestrictions$inboundSchema:
     UpdateIssuingControlsMerchantCategoryRestrictions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    mode: types.optional(IssuingControlsRestrictionMode$inboundSchema),
-    categories: types.optional(z.array(IssuingMerchantCategory$inboundSchema)),
-    customMCCs: types.optional(z.array(types.string())),
-    exemptMerchants: types.optional(z.array(MerchantEntry$inboundSchema)),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      mode: types.optional(IssuingControlsRestrictionMode$inboundSchema),
+      categories: types.optional(
+        z.array(IssuingMerchantCategory$inboundSchema),
+      ),
+      customMCCs: types.optional(z.array(types.string())),
+      exemptMerchants: types.optional(z.array(MerchantEntry$inboundSchema)),
+    })
+  );
 /** @internal */
 export type UpdateIssuingControlsMerchantCategoryRestrictions$Outbound = {
   mode?: string | undefined;
@@ -144,12 +148,14 @@ export const UpdateIssuingControlsMerchantCategoryRestrictions$outboundSchema:
     UpdateIssuingControlsMerchantCategoryRestrictions$Outbound,
     z.ZodTypeDef,
     UpdateIssuingControlsMerchantCategoryRestrictions
-  > = z.object({
-    mode: IssuingControlsRestrictionMode$outboundSchema.optional(),
-    categories: z.array(IssuingMerchantCategory$outboundSchema).optional(),
-    customMCCs: z.array(z.string()).optional(),
-    exemptMerchants: z.array(MerchantEntry$outboundSchema).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      mode: IssuingControlsRestrictionMode$outboundSchema.optional(),
+      categories: z.array(IssuingMerchantCategory$outboundSchema).optional(),
+      customMCCs: z.array(z.string()).optional(),
+      exemptMerchants: z.array(MerchantEntry$outboundSchema).optional(),
+    })
+  );
 
 export function updateIssuingControlsMerchantCategoryRestrictionsToJSON(
   updateIssuingControlsMerchantCategoryRestrictions:
@@ -182,10 +188,12 @@ export const UpdateIssuingControlsMerchantRestrictions$inboundSchema: z.ZodType<
   UpdateIssuingControlsMerchantRestrictions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mode: types.optional(IssuingControlsRestrictionMode$inboundSchema),
-  merchants: types.optional(z.array(MerchantEntry$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: types.optional(IssuingControlsRestrictionMode$inboundSchema),
+    merchants: types.optional(z.array(MerchantEntry$inboundSchema)),
+  })
+);
 /** @internal */
 export type UpdateIssuingControlsMerchantRestrictions$Outbound = {
   mode?: string | undefined;
@@ -198,10 +206,12 @@ export const UpdateIssuingControlsMerchantRestrictions$outboundSchema:
     UpdateIssuingControlsMerchantRestrictions$Outbound,
     z.ZodTypeDef,
     UpdateIssuingControlsMerchantRestrictions
-  > = z.object({
-    mode: IssuingControlsRestrictionMode$outboundSchema.optional(),
-    merchants: z.array(MerchantEntry$outboundSchema).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      mode: IssuingControlsRestrictionMode$outboundSchema.optional(),
+      merchants: z.array(MerchantEntry$outboundSchema).optional(),
+    })
+  );
 
 export function updateIssuingControlsMerchantRestrictionsToJSON(
   updateIssuingControlsMerchantRestrictions:
@@ -234,10 +244,12 @@ export const UpdateIssuingControlsAllowedSchedule$inboundSchema: z.ZodType<
   UpdateIssuingControlsAllowedSchedule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timezone: types.optional(types.string()),
-  windows: types.optional(z.array(ScheduleWindow$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timezone: types.optional(types.string()),
+    windows: types.optional(z.array(ScheduleWindow$inboundSchema)),
+  })
+);
 /** @internal */
 export type UpdateIssuingControlsAllowedSchedule$Outbound = {
   timezone?: string | undefined;
@@ -249,10 +261,12 @@ export const UpdateIssuingControlsAllowedSchedule$outboundSchema: z.ZodType<
   UpdateIssuingControlsAllowedSchedule$Outbound,
   z.ZodTypeDef,
   UpdateIssuingControlsAllowedSchedule
-> = z.object({
-  timezone: z.string().optional(),
-  windows: z.array(ScheduleWindow$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timezone: z.string().optional(),
+    windows: z.array(ScheduleWindow$outboundSchema).optional(),
+  })
+);
 
 export function updateIssuingControlsAllowedScheduleToJSON(
   updateIssuingControlsAllowedSchedule: UpdateIssuingControlsAllowedSchedule,
@@ -279,21 +293,21 @@ export const UpdateIssuingControls$inboundSchema: z.ZodType<
   UpdateIssuingControls,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  velocityLimits: types.optional(z.array(IssuingVelocityLimit$inboundSchema)),
-  merchantCategoryRestrictions: z.nullable(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    velocityLimits: types.optional(z.array(IssuingVelocityLimit$inboundSchema)),
+    merchantCategoryRestrictions: z.nullable(z.lazy(() =>
       UpdateIssuingControlsMerchantCategoryRestrictions$inboundSchema
-    ),
-  ).optional(),
-  merchantRestrictions: z.nullable(
-    z.lazy(() => UpdateIssuingControlsMerchantRestrictions$inboundSchema),
-  ).optional(),
-  allowedSchedule: z.nullable(
-    z.lazy(() => UpdateIssuingControlsAllowedSchedule$inboundSchema),
-  ).optional(),
-  expiresOn: z.nullable(types.date()).optional(),
-});
+    )).optional(),
+    merchantRestrictions: z.nullable(z.lazy(() =>
+      UpdateIssuingControlsMerchantRestrictions$inboundSchema
+    )).optional(),
+    allowedSchedule: z.nullable(z.lazy(() =>
+      UpdateIssuingControlsAllowedSchedule$inboundSchema
+    )).optional(),
+    expiresOn: z.nullable(types.date()).optional(),
+  })
+);
 /** @internal */
 export type UpdateIssuingControls$Outbound = {
   velocityLimits?: Array<IssuingVelocityLimit$Outbound> | undefined;
@@ -317,21 +331,23 @@ export const UpdateIssuingControls$outboundSchema: z.ZodType<
   UpdateIssuingControls$Outbound,
   z.ZodTypeDef,
   UpdateIssuingControls
-> = z.object({
-  velocityLimits: z.array(IssuingVelocityLimit$outboundSchema).optional(),
-  merchantCategoryRestrictions: z.nullable(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    velocityLimits: z.array(IssuingVelocityLimit$outboundSchema).optional(),
+    merchantCategoryRestrictions: z.nullable(z.lazy(() =>
       UpdateIssuingControlsMerchantCategoryRestrictions$outboundSchema
-    ),
-  ).optional(),
-  merchantRestrictions: z.nullable(
-    z.lazy(() => UpdateIssuingControlsMerchantRestrictions$outboundSchema),
-  ).optional(),
-  allowedSchedule: z.nullable(
-    z.lazy(() => UpdateIssuingControlsAllowedSchedule$outboundSchema),
-  ).optional(),
-  expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-});
+    )).optional(),
+    merchantRestrictions: z.nullable(z.lazy(() =>
+      UpdateIssuingControlsMerchantRestrictions$outboundSchema
+    )).optional(),
+    allowedSchedule: z.nullable(z.lazy(() =>
+      UpdateIssuingControlsAllowedSchedule$outboundSchema
+    )).optional(),
+    expiresOn: z.nullable(
+      z.date().transform(v => v.toISOString()),
+    ).optional(),
+  })
+);
 
 export function updateIssuingControlsToJSON(
   updateIssuingControls: UpdateIssuingControls,

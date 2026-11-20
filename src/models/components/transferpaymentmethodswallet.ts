@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,11 +32,13 @@ export const TransferPaymentMethodsWallet$inboundSchema: z.ZodType<
   TransferPaymentMethodsWallet,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  walletID: types.string(),
-  partnerAccountID: types.string(),
-  walletType: WalletType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletID: types.string(),
+    partnerAccountID: types.string(),
+    walletType: WalletType$inboundSchema,
+  })
+);
 /** @internal */
 export type TransferPaymentMethodsWallet$Outbound = {
   walletID: string;
@@ -49,11 +51,13 @@ export const TransferPaymentMethodsWallet$outboundSchema: z.ZodType<
   TransferPaymentMethodsWallet$Outbound,
   z.ZodTypeDef,
   TransferPaymentMethodsWallet
-> = z.object({
-  walletID: z.string(),
-  partnerAccountID: z.string(),
-  walletType: WalletType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    walletID: z.string(),
+    partnerAccountID: z.string(),
+    walletType: WalletType$outboundSchema,
+  })
+);
 
 export function transferPaymentMethodsWalletToJSON(
   transferPaymentMethodsWallet: TransferPaymentMethodsWallet,

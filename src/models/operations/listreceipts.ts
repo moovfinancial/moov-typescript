@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -27,9 +27,11 @@ export const ListReceiptsRequest$inboundSchema: z.ZodType<
   ListReceiptsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 /** @internal */
 export type ListReceiptsRequest$Outbound = {
   id: string;
@@ -40,9 +42,11 @@ export const ListReceiptsRequest$outboundSchema: z.ZodType<
   ListReceiptsRequest$Outbound,
   z.ZodTypeDef,
   ListReceiptsRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+  })
+);
 
 export function listReceiptsRequestToJSON(
   listReceiptsRequest: ListReceiptsRequest,
@@ -66,15 +70,17 @@ export const ListReceiptsResponse$inboundSchema: z.ZodType<
   ListReceiptsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.ReceiptResponse$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.ReceiptResponse$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListReceiptsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -86,15 +92,17 @@ export const ListReceiptsResponse$outboundSchema: z.ZodType<
   ListReceiptsResponse$Outbound,
   z.ZodTypeDef,
   ListReceiptsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.ReceiptResponse$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.ReceiptResponse$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listReceiptsResponseToJSON(
   listReceiptsResponse: ListReceiptsResponse,
