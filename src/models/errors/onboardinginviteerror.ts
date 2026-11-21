@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -50,23 +51,25 @@ export const OnboardingInviteError$inboundSchema: z.ZodType<
   OnboardingInviteError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  returnURL: types.optional(types.string()),
-  termsOfServiceURL: types.optional(types.string()),
-  scopes: types.optional(z.record(types.string())),
-  capabilities: types.optional(z.record(types.string())),
-  feePlanCodes: types.optional(z.record(types.string())),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new OnboardingInviteError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    returnURL: types.optional(types.string()),
+    termsOfServiceURL: types.optional(types.string()),
+    scopes: types.optional(z.record(types.string())),
+    capabilities: types.optional(z.record(types.string())),
+    feePlanCodes: types.optional(z.record(types.string())),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new OnboardingInviteError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type OnboardingInviteError$Outbound = {
@@ -82,12 +85,14 @@ export const OnboardingInviteError$outboundSchema: z.ZodType<
   OnboardingInviteError$Outbound,
   z.ZodTypeDef,
   OnboardingInviteError
-> = z.instanceof(OnboardingInviteError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    returnURL: z.string().optional(),
-    termsOfServiceURL: z.string().optional(),
-    scopes: z.record(z.string()).optional(),
-    capabilities: z.record(z.string()).optional(),
-    feePlanCodes: z.record(z.string()).optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(OnboardingInviteError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      returnURL: z.string().optional(),
+      termsOfServiceURL: z.string().optional(),
+      scopes: z.record(z.string()).optional(),
+      capabilities: z.record(z.string()).optional(),
+      feePlanCodes: z.record(z.string()).optional(),
+    }))
+);

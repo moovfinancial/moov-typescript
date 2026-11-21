@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -55,14 +55,16 @@ export const PatchIndividual$inboundSchema: z.ZodType<
   PatchIndividual,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.optional(IndividualNameUpdate$inboundSchema),
-  phone: types.optional(PhoneNumber$inboundSchema),
-  email: types.optional(types.string()),
-  address: types.optional(AddressUpdate$inboundSchema),
-  birthDate: types.optional(BirthDateUpdate$inboundSchema),
-  governmentID: types.optional(GovernmentID$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.optional(IndividualNameUpdate$inboundSchema),
+    phone: types.optional(PhoneNumber$inboundSchema),
+    email: types.optional(types.string()),
+    address: types.optional(AddressUpdate$inboundSchema),
+    birthDate: types.optional(BirthDateUpdate$inboundSchema),
+    governmentID: types.optional(GovernmentID$inboundSchema),
+  })
+);
 /** @internal */
 export type PatchIndividual$Outbound = {
   name?: IndividualNameUpdate$Outbound | undefined;
@@ -78,14 +80,16 @@ export const PatchIndividual$outboundSchema: z.ZodType<
   PatchIndividual$Outbound,
   z.ZodTypeDef,
   PatchIndividual
-> = z.object({
-  name: IndividualNameUpdate$outboundSchema.optional(),
-  phone: PhoneNumber$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: AddressUpdate$outboundSchema.optional(),
-  birthDate: BirthDateUpdate$outboundSchema.optional(),
-  governmentID: GovernmentID$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualNameUpdate$outboundSchema.optional(),
+    phone: PhoneNumber$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: AddressUpdate$outboundSchema.optional(),
+    birthDate: BirthDateUpdate$outboundSchema.optional(),
+    governmentID: GovernmentID$outboundSchema.optional(),
+  })
+);
 
 export function patchIndividualToJSON(
   patchIndividual: PatchIndividual,

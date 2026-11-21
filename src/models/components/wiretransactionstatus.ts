@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -25,10 +26,14 @@ export const WireTransactionStatus$inboundSchema: z.ZodType<
   WireTransactionStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(WireTransactionStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(WireTransactionStatus)
+);
 /** @internal */
 export const WireTransactionStatus$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   WireTransactionStatus
-> = openEnums.outboundSchema(WireTransactionStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(WireTransactionStatus)
+);

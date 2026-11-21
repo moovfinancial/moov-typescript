@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
@@ -26,15 +26,17 @@ export const AvatarUploadRequestFile$inboundSchema: z.ZodType<
   AvatarUploadRequestFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fileName: types.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: types.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 /** @internal */
 export type AvatarUploadRequestFile$Outbound = {
   fileName: string;
@@ -46,15 +48,17 @@ export const AvatarUploadRequestFile$outboundSchema: z.ZodType<
   AvatarUploadRequestFile$Outbound,
   z.ZodTypeDef,
   AvatarUploadRequestFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function avatarUploadRequestFileToJSON(
   avatarUploadRequestFile: AvatarUploadRequestFile,
@@ -78,9 +82,11 @@ export const AvatarUploadRequest$inboundSchema: z.ZodType<
   AvatarUploadRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  file: z.lazy(() => AvatarUploadRequestFile$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => AvatarUploadRequestFile$inboundSchema),
+  })
+);
 /** @internal */
 export type AvatarUploadRequest$Outbound = {
   file: AvatarUploadRequestFile$Outbound | Blob;
@@ -91,9 +97,13 @@ export const AvatarUploadRequest$outboundSchema: z.ZodType<
   AvatarUploadRequest$Outbound,
   z.ZodTypeDef,
   AvatarUploadRequest
-> = z.object({
-  file: z.lazy(() => AvatarUploadRequestFile$outboundSchema).or(blobLikeSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => AvatarUploadRequestFile$outboundSchema).or(
+      blobLikeSchema,
+    ),
+  })
+);
 
 export function avatarUploadRequestToJSON(
   avatarUploadRequest: AvatarUploadRequest,

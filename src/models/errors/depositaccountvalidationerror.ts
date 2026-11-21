@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -52,20 +53,22 @@ export const DepositAccountValidationError$inboundSchema: z.ZodType<
   DepositAccountValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sourceSystem: types.optional(types.string()),
-  body: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new DepositAccountValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sourceSystem: types.optional(types.string()),
+    body: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new DepositAccountValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type DepositAccountValidationError$Outbound = {
@@ -78,9 +81,11 @@ export const DepositAccountValidationError$outboundSchema: z.ZodType<
   DepositAccountValidationError$Outbound,
   z.ZodTypeDef,
   DepositAccountValidationError
-> = z.instanceof(DepositAccountValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    sourceSystem: z.string().optional(),
-    body: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(DepositAccountValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      sourceSystem: z.string().optional(),
+      body: z.string().optional(),
+    }))
+);

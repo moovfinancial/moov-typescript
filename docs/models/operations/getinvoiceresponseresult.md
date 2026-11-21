@@ -1,0 +1,115 @@
+# GetInvoiceResponseResult
+
+
+## Supported Types
+
+### `components.Invoice`
+
+```typescript
+const value: components.Invoice = {
+  invoiceID: "<id>",
+  invoiceNumber: "INV-1001",
+  customerAccountID: "<id>",
+  customerDisplayName: "<value>",
+  customerEmail: "jordan.lee@classbooker.dev",
+  partnerAccountID: "<id>",
+  status: "payment-pending",
+  lineItems: {
+    items: [
+      {
+        name: "<value>",
+        basePrice: {
+          currency: "USD",
+          valueDecimal: "12.987654321",
+        },
+        quantity: 200568,
+        options: [
+          {
+            name: "<value>",
+            quantity: 163512,
+            priceModifier: {
+              currency: "USD",
+              valueDecimal: "12.987654321",
+            },
+            images: [
+              {
+                imageID: "<id>",
+                link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+                publicID: "<id>",
+              },
+            ],
+          },
+        ],
+        images: [
+          {
+            imageID: "<id>",
+            link: "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g",
+            publicID: "<id>",
+          },
+        ],
+      },
+    ],
+  },
+  subtotalAmount: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  amountDetails: {
+    tax: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+    surcharge: {
+      currency: "USD",
+      valueDecimal: "12.987654321",
+    },
+  },
+  totalAmount: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  pendingAmount: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  paidAmount: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  refundedAmount: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  disputedAmount: {
+    currency: "USD",
+    valueDecimal: "12.987654321",
+  },
+  payment: {
+    cardDetails: {
+      dynamicDescriptor: "WhlBdy *Yoga 11-12",
+    },
+    achDetails: {
+      companyEntryDescription: "Gym dues",
+      originatingCompanyName: "Whole Body Fit",
+    },
+  },
+  invoicePayments: [
+    {
+      invoicePaymentID: "<id>",
+      invoicePaymentType: "external",
+      amount: {
+        currency: "USD",
+        valueDecimal: "12.987654321",
+      },
+    },
+  ],
+  createdOn: new Date("2026-10-21T06:03:06.321Z"),
+};
+```
+
+### `ReadableStream<Uint8Array>`
+
+```typescript
+const value: ReadableStream<Uint8Array> = await openAsBlob("example.file");
+```
+

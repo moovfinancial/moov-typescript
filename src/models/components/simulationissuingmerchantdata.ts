@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -44,15 +44,17 @@ export const SimulationIssuingMerchantData$inboundSchema: z.ZodType<
   SimulationIssuingMerchantData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  networkID: types.optional(types.string()),
-  name: types.optional(types.string()),
-  city: types.optional(types.string()),
-  country: types.optional(types.string()),
-  postalCode: types.optional(types.string()),
-  state: types.optional(types.string()),
-  mcc: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    networkID: types.optional(types.string()),
+    name: types.optional(types.string()),
+    city: types.optional(types.string()),
+    country: types.optional(types.string()),
+    postalCode: types.optional(types.string()),
+    state: types.optional(types.string()),
+    mcc: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type SimulationIssuingMerchantData$Outbound = {
   networkID?: string | undefined;
@@ -69,15 +71,17 @@ export const SimulationIssuingMerchantData$outboundSchema: z.ZodType<
   SimulationIssuingMerchantData$Outbound,
   z.ZodTypeDef,
   SimulationIssuingMerchantData
-> = z.object({
-  networkID: z.string().optional(),
-  name: z.string().optional(),
-  city: z.string().optional(),
-  country: z.string().optional(),
-  postalCode: z.string().optional(),
-  state: z.string().optional(),
-  mcc: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    networkID: z.string().optional(),
+    name: z.string().optional(),
+    city: z.string().optional(),
+    country: z.string().optional(),
+    postalCode: z.string().optional(),
+    state: z.string().optional(),
+    mcc: z.string().optional(),
+  })
+);
 
 export function simulationIssuingMerchantDataToJSON(
   simulationIssuingMerchantData: SimulationIssuingMerchantData,

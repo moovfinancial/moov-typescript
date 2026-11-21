@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,14 +34,16 @@ export const CustomAmountPaymentDetailsError$inboundSchema: z.ZodType<
   CustomAmountPaymentDetailsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: types.optional(types.string()),
-  cardDetails: types.optional(CardPaymentDetailsError$inboundSchema),
-  achDetails: types.optional(ACHPaymentDetailsError$inboundSchema),
-  metadata: types.optional(types.string()),
-  amountRange: types.optional(types.string()),
-  suggestedAmounts: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: types.optional(types.string()),
+    cardDetails: types.optional(CardPaymentDetailsError$inboundSchema),
+    achDetails: types.optional(ACHPaymentDetailsError$inboundSchema),
+    metadata: types.optional(types.string()),
+    amountRange: types.optional(types.string()),
+    suggestedAmounts: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type CustomAmountPaymentDetailsError$Outbound = {
   allowedMethods?: string | undefined;
@@ -57,14 +59,16 @@ export const CustomAmountPaymentDetailsError$outboundSchema: z.ZodType<
   CustomAmountPaymentDetailsError$Outbound,
   z.ZodTypeDef,
   CustomAmountPaymentDetailsError
-> = z.object({
-  allowedMethods: z.string().optional(),
-  cardDetails: CardPaymentDetailsError$outboundSchema.optional(),
-  achDetails: ACHPaymentDetailsError$outboundSchema.optional(),
-  metadata: z.string().optional(),
-  amountRange: z.string().optional(),
-  suggestedAmounts: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.string().optional(),
+    cardDetails: CardPaymentDetailsError$outboundSchema.optional(),
+    achDetails: ACHPaymentDetailsError$outboundSchema.optional(),
+    metadata: z.string().optional(),
+    amountRange: z.string().optional(),
+    suggestedAmounts: z.string().optional(),
+  })
+);
 
 export function customAmountPaymentDetailsErrorToJSON(
   customAmountPaymentDetailsError: CustomAmountPaymentDetailsError,

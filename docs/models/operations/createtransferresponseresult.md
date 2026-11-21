@@ -53,29 +53,28 @@ const value: components.CreateTransferResponse = {
       brand: "Visa",
       cardType: "credit",
       cardDisplayName: "Visa 1256",
+      issuerCountry: "US",
       fingerprint:
         "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
       expiration: {
         month: "01",
         year: "21",
       },
-      dynamicLastFour: "<value>",
-      issuerCountry: "US",
     },
     googlePay: {
       tokenID: "dcd471ec-7d5c-4016-865c-1e78c733bea2",
       brand: "Visa",
       cardType: "credit",
       cardDisplayName: "7419",
+      dynamicLastFour: "7419",
+      issuerCountry: "US",
+      authMethod: "PAN_ONLY",
       fingerprint:
         "9948962d92a1ce40c9f918cd9ece3a22bde62fb325a2f1fe2e833969de672ba3",
       expiration: {
         month: "01",
         year: "21",
       },
-      dynamicLastFour: "7419",
-      issuerCountry: "US",
-      authMethod: "PAN_ONLY",
     },
     terminalCard: {
       entryMode: "contactless",

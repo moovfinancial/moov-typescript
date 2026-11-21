@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -59,12 +59,14 @@ export const Verification$inboundSchema: z.ZodType<
   Verification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  verificationStatus: types.optional(AccountVerificationStatus$inboundSchema),
-  status: VerificationStatus$inboundSchema,
-  details: types.optional(VerificationStatusDetail$inboundSchema),
-  documents: types.optional(z.array(Document$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    verificationStatus: types.optional(AccountVerificationStatus$inboundSchema),
+    status: VerificationStatus$inboundSchema,
+    details: types.optional(VerificationStatusDetail$inboundSchema),
+    documents: types.optional(z.array(Document$inboundSchema)),
+  })
+);
 /** @internal */
 export type Verification$Outbound = {
   verificationStatus?: string | undefined;
@@ -78,12 +80,14 @@ export const Verification$outboundSchema: z.ZodType<
   Verification$Outbound,
   z.ZodTypeDef,
   Verification
-> = z.object({
-  verificationStatus: AccountVerificationStatus$outboundSchema.optional(),
-  status: VerificationStatus$outboundSchema,
-  details: VerificationStatusDetail$outboundSchema.optional(),
-  documents: z.array(Document$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    verificationStatus: AccountVerificationStatus$outboundSchema.optional(),
+    status: VerificationStatus$outboundSchema,
+    details: VerificationStatusDetail$outboundSchema.optional(),
+    documents: z.array(Document$outboundSchema).optional(),
+  })
+);
 
 export function verificationToJSON(verification: Verification): string {
   return JSON.stringify(Verification$outboundSchema.parse(verification));

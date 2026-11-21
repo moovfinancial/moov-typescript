@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,12 +32,14 @@ export const IndividualNameUpdate$inboundSchema: z.ZodType<
   IndividualNameUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  firstName: types.optional(types.string()),
-  middleName: types.optional(types.string()),
-  lastName: types.optional(types.string()),
-  suffix: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: types.optional(types.string()),
+    middleName: types.optional(types.string()),
+    lastName: types.optional(types.string()),
+    suffix: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type IndividualNameUpdate$Outbound = {
   firstName?: string | undefined;
@@ -51,12 +53,14 @@ export const IndividualNameUpdate$outboundSchema: z.ZodType<
   IndividualNameUpdate$Outbound,
   z.ZodTypeDef,
   IndividualNameUpdate
-> = z.object({
-  firstName: z.string().optional(),
-  middleName: z.string().optional(),
-  lastName: z.string().optional(),
-  suffix: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: z.string().optional(),
+    middleName: z.string().optional(),
+    lastName: z.string().optional(),
+    suffix: z.string().optional(),
+  })
+);
 
 export function individualNameUpdateToJSON(
   individualNameUpdate: IndividualNameUpdate,

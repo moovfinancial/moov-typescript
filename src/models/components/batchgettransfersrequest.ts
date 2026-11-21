@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,9 +20,11 @@ export const BatchGetTransfersRequest$inboundSchema: z.ZodType<
   BatchGetTransfersRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferIDs: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferIDs: z.array(types.string()),
+  })
+);
 /** @internal */
 export type BatchGetTransfersRequest$Outbound = {
   transferIDs: Array<string>;
@@ -33,9 +35,11 @@ export const BatchGetTransfersRequest$outboundSchema: z.ZodType<
   BatchGetTransfersRequest$Outbound,
   z.ZodTypeDef,
   BatchGetTransfersRequest
-> = z.object({
-  transferIDs: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferIDs: z.array(z.string()),
+  })
+);
 
 export function batchGetTransfersRequestToJSON(
   batchGetTransfersRequest: BatchGetTransfersRequest,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -45,17 +45,21 @@ export const UpdateIssuingControlsError$inboundSchema: z.ZodType<
   UpdateIssuingControlsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  velocityLimits: types.optional(
-    z.record(IssuingVelocityLimitError$inboundSchema),
-  ),
-  merchantCategoryRestrictions: types.optional(
-    MerchantCategoryRestrictionsError$inboundSchema,
-  ),
-  merchantRestrictions: types.optional(MerchantRestrictionsError$inboundSchema),
-  allowedSchedule: types.optional(AllowedScheduleError$inboundSchema),
-  expiresOn: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    velocityLimits: types.optional(
+      z.record(IssuingVelocityLimitError$inboundSchema),
+    ),
+    merchantCategoryRestrictions: types.optional(
+      MerchantCategoryRestrictionsError$inboundSchema,
+    ),
+    merchantRestrictions: types.optional(
+      MerchantRestrictionsError$inboundSchema,
+    ),
+    allowedSchedule: types.optional(AllowedScheduleError$inboundSchema),
+    expiresOn: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type UpdateIssuingControlsError$Outbound = {
   velocityLimits?:
@@ -74,14 +78,17 @@ export const UpdateIssuingControlsError$outboundSchema: z.ZodType<
   UpdateIssuingControlsError$Outbound,
   z.ZodTypeDef,
   UpdateIssuingControlsError
-> = z.object({
-  velocityLimits: z.record(IssuingVelocityLimitError$outboundSchema).optional(),
-  merchantCategoryRestrictions: MerchantCategoryRestrictionsError$outboundSchema
-    .optional(),
-  merchantRestrictions: MerchantRestrictionsError$outboundSchema.optional(),
-  allowedSchedule: AllowedScheduleError$outboundSchema.optional(),
-  expiresOn: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    velocityLimits: z.record(IssuingVelocityLimitError$outboundSchema)
+      .optional(),
+    merchantCategoryRestrictions:
+      MerchantCategoryRestrictionsError$outboundSchema.optional(),
+    merchantRestrictions: MerchantRestrictionsError$outboundSchema.optional(),
+    allowedSchedule: AllowedScheduleError$outboundSchema.optional(),
+    expiresOn: z.string().optional(),
+  })
+);
 
 export function updateIssuingControlsErrorToJSON(
   updateIssuingControlsError: UpdateIssuingControlsError,

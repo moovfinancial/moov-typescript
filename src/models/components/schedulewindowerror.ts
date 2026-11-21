@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +19,13 @@ export const ScheduleWindowError$inboundSchema: z.ZodType<
   ScheduleWindowError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  days: types.optional(types.string()),
-  startTime: types.optional(types.string()),
-  endTime: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    days: types.optional(types.string()),
+    startTime: types.optional(types.string()),
+    endTime: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type ScheduleWindowError$Outbound = {
   days?: string | undefined;
@@ -36,11 +38,13 @@ export const ScheduleWindowError$outboundSchema: z.ZodType<
   ScheduleWindowError$Outbound,
   z.ZodTypeDef,
   ScheduleWindowError
-> = z.object({
-  days: z.string().optional(),
-  startTime: z.string().optional(),
-  endTime: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    days: z.string().optional(),
+    startTime: z.string().optional(),
+    endTime: z.string().optional(),
+  })
+);
 
 export function scheduleWindowErrorToJSON(
   scheduleWindowError: ScheduleWindowError,

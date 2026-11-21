@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,10 +27,12 @@ export const CardExpiration$inboundSchema: z.ZodType<
   CardExpiration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  month: types.string(),
-  year: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    month: types.string(),
+    year: types.string(),
+  })
+);
 /** @internal */
 export type CardExpiration$Outbound = {
   month: string;
@@ -42,10 +44,12 @@ export const CardExpiration$outboundSchema: z.ZodType<
   CardExpiration$Outbound,
   z.ZodTypeDef,
   CardExpiration
-> = z.object({
-  month: z.string(),
-  year: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    month: z.string(),
+    year: z.string(),
+  })
+);
 
 export function cardExpirationToJSON(cardExpiration: CardExpiration): string {
   return JSON.stringify(CardExpiration$outboundSchema.parse(cardExpiration));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -45,18 +45,20 @@ export const FileDetails$inboundSchema: z.ZodType<
   FileDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fileID: types.string(),
-  fileName: types.string(),
-  accountID: types.string(),
-  filePurpose: FilePurpose$inboundSchema,
-  fileStatus: FileStatus$inboundSchema,
-  metadata: types.string(),
-  decisionReason: types.optional(types.string()),
-  fileSizeBytes: types.number(),
-  createdOn: types.date(),
-  updatedOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileID: types.string(),
+    fileName: types.string(),
+    accountID: types.string(),
+    filePurpose: FilePurpose$inboundSchema,
+    fileStatus: FileStatus$inboundSchema,
+    metadata: types.string(),
+    decisionReason: types.optional(types.string()),
+    fileSizeBytes: types.number(),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+  })
+);
 /** @internal */
 export type FileDetails$Outbound = {
   fileID: string;
@@ -76,18 +78,20 @@ export const FileDetails$outboundSchema: z.ZodType<
   FileDetails$Outbound,
   z.ZodTypeDef,
   FileDetails
-> = z.object({
-  fileID: z.string(),
-  fileName: z.string(),
-  accountID: z.string(),
-  filePurpose: FilePurpose$outboundSchema,
-  fileStatus: FileStatus$outboundSchema,
-  metadata: z.string(),
-  decisionReason: z.string().optional(),
-  fileSizeBytes: z.number().int(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileID: z.string(),
+    fileName: z.string(),
+    accountID: z.string(),
+    filePurpose: FilePurpose$outboundSchema,
+    fileStatus: FileStatus$outboundSchema,
+    metadata: z.string(),
+    decisionReason: z.string().optional(),
+    fileSizeBytes: z.number().int(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function fileDetailsToJSON(fileDetails: FileDetails): string {
   return JSON.stringify(FileDetails$outboundSchema.parse(fileDetails));

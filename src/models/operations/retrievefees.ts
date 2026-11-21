@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -49,16 +49,18 @@ export const RetrieveFeesRequest$inboundSchema: z.ZodType<
   RetrieveFeesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  transferID: types.optional(types.string()),
-  disputeID: types.optional(types.string()),
-  residualID: types.optional(types.string()),
-  startDateTime: types.optional(types.string()),
-  endDateTime: types.optional(types.string()),
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    transferID: types.optional(types.string()),
+    disputeID: types.optional(types.string()),
+    residualID: types.optional(types.string()),
+    startDateTime: types.optional(types.string()),
+    endDateTime: types.optional(types.string()),
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+  })
+);
 /** @internal */
 export type RetrieveFeesRequest$Outbound = {
   accountID: string;
@@ -76,16 +78,18 @@ export const RetrieveFeesRequest$outboundSchema: z.ZodType<
   RetrieveFeesRequest$Outbound,
   z.ZodTypeDef,
   RetrieveFeesRequest
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string().optional(),
-  disputeID: z.string().optional(),
-  residualID: z.string().optional(),
-  startDateTime: z.string().optional(),
-  endDateTime: z.string().optional(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string().optional(),
+    disputeID: z.string().optional(),
+    residualID: z.string().optional(),
+    startDateTime: z.string().optional(),
+    endDateTime: z.string().optional(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+  })
+);
 
 export function retrieveFeesRequestToJSON(
   retrieveFeesRequest: RetrieveFeesRequest,
@@ -109,15 +113,17 @@ export const RetrieveFeesResponse$inboundSchema: z.ZodType<
   RetrieveFeesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.IncurredFee$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.IncurredFee$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type RetrieveFeesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -129,15 +135,17 @@ export const RetrieveFeesResponse$outboundSchema: z.ZodType<
   RetrieveFeesResponse$Outbound,
   z.ZodTypeDef,
   RetrieveFeesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.IncurredFee$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.IncurredFee$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function retrieveFeesResponseToJSON(
   retrieveFeesResponse: RetrieveFeesResponse,

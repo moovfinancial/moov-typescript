@@ -3,13 +3,19 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  CreateTransferPaymentToken,
+  CreateTransferPaymentToken$inboundSchema,
+  CreateTransferPaymentToken$Outbound,
+  CreateTransferPaymentToken$outboundSchema,
+} from "./createtransferpaymenttoken.js";
 
 /**
- * Where funds for a transfer originate. For the source, you must include either a `paymentMethodID` or a `transferID`.
+ * Where funds for a transfer originate. For the source, you must include exactly one of `paymentMethodID`, `paymentToken`, or `transferID`.
  */
 export type CreateTransferSource = {
   /**
@@ -20,7 +26,14 @@ export type CreateTransferSource = {
    */
   transferID?: string | undefined;
   paymentMethodID?: string | undefined;
-  paymentToken?: string | undefined;
+  /**
+   * A single-use payment token to use as the transfer's source.
+   *
+   * @remarks
+   *
+   * The payment is authorized when the transfer is created.
+   */
+  paymentToken?: CreateTransferPaymentToken | undefined;
 };
 
 /** @internal */
@@ -28,16 +41,18 @@ export const CreateTransferSource$inboundSchema: z.ZodType<
   CreateTransferSource,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: types.optional(types.string()),
-  paymentMethodID: types.optional(types.string()),
-  paymentToken: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: types.optional(types.string()),
+    paymentMethodID: types.optional(types.string()),
+    paymentToken: types.optional(CreateTransferPaymentToken$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateTransferSource$Outbound = {
   transferID?: string | undefined;
   paymentMethodID?: string | undefined;
-  paymentToken?: string | undefined;
+  paymentToken?: CreateTransferPaymentToken$Outbound | undefined;
 };
 
 /** @internal */
@@ -45,11 +60,13 @@ export const CreateTransferSource$outboundSchema: z.ZodType<
   CreateTransferSource$Outbound,
   z.ZodTypeDef,
   CreateTransferSource
-> = z.object({
-  transferID: z.string().optional(),
-  paymentMethodID: z.string().optional(),
-  paymentToken: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string().optional(),
+    paymentMethodID: z.string().optional(),
+    paymentToken: CreateTransferPaymentToken$outboundSchema.optional(),
+  })
+);
 
 export function createTransferSourceToJSON(
   createTransferSource: CreateTransferSource,

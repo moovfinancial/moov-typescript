@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,9 +26,11 @@ export const GetAvatarRequest$inboundSchema: z.ZodType<
   GetAvatarRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uniqueID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uniqueID: types.string(),
+  })
+);
 /** @internal */
 export type GetAvatarRequest$Outbound = {
   uniqueID: string;
@@ -39,9 +41,11 @@ export const GetAvatarRequest$outboundSchema: z.ZodType<
   GetAvatarRequest$Outbound,
   z.ZodTypeDef,
   GetAvatarRequest
-> = z.object({
-  uniqueID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uniqueID: z.string(),
+  })
+);
 
 export function getAvatarRequestToJSON(
   getAvatarRequest: GetAvatarRequest,
@@ -65,15 +69,17 @@ export const GetAvatarResponse$inboundSchema: z.ZodType<
   GetAvatarResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.instanceof(ReadableStream<Uint8Array>),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.instanceof(ReadableStream<Uint8Array>),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetAvatarResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -85,15 +91,17 @@ export const GetAvatarResponse$outboundSchema: z.ZodType<
   GetAvatarResponse$Outbound,
   z.ZodTypeDef,
   GetAvatarResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.instanceof(ReadableStream<Uint8Array>),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.instanceof(ReadableStream<Uint8Array>),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getAvatarResponseToJSON(
   getAvatarResponse: GetAvatarResponse,

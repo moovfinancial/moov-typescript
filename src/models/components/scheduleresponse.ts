@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -47,20 +47,22 @@ export const ScheduleResponse$inboundSchema: z.ZodType<
   ScheduleResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  destinationAccountID: types.string(),
-  mode: Mode$inboundSchema,
-  occurrences: types.optional(z.array(OccurrencesResponse$inboundSchema)),
-  ownerAccountID: types.string(),
-  partnerAccountID: types.string(),
-  recur: types.optional(RecurResponse$inboundSchema),
-  scheduleID: types.string(),
-  sourceAccountID: types.string(),
-  createdOn: types.date(),
-  updatedOn: types.date(),
-  disabledOn: types.optional(types.date()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    destinationAccountID: types.string(),
+    mode: Mode$inboundSchema,
+    occurrences: types.optional(z.array(OccurrencesResponse$inboundSchema)),
+    ownerAccountID: types.string(),
+    partnerAccountID: types.string(),
+    recur: types.optional(RecurResponse$inboundSchema),
+    scheduleID: types.string(),
+    sourceAccountID: types.string(),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+    disabledOn: types.optional(types.date()),
+  })
+);
 /** @internal */
 export type ScheduleResponse$Outbound = {
   description?: string | undefined;
@@ -82,20 +84,22 @@ export const ScheduleResponse$outboundSchema: z.ZodType<
   ScheduleResponse$Outbound,
   z.ZodTypeDef,
   ScheduleResponse
-> = z.object({
-  description: z.string().optional(),
-  destinationAccountID: z.string(),
-  mode: Mode$outboundSchema,
-  occurrences: z.array(OccurrencesResponse$outboundSchema).optional(),
-  ownerAccountID: z.string(),
-  partnerAccountID: z.string(),
-  recur: RecurResponse$outboundSchema.optional(),
-  scheduleID: z.string(),
-  sourceAccountID: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string().optional(),
+    destinationAccountID: z.string(),
+    mode: Mode$outboundSchema,
+    occurrences: z.array(OccurrencesResponse$outboundSchema).optional(),
+    ownerAccountID: z.string(),
+    partnerAccountID: z.string(),
+    recur: RecurResponse$outboundSchema.optional(),
+    scheduleID: z.string(),
+    sourceAccountID: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function scheduleResponseToJSON(
   scheduleResponse: ScheduleResponse,

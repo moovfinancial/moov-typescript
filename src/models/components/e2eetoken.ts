@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,9 +27,11 @@ export const E2EEToken$inboundSchema: z.ZodType<
   E2EEToken,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: types.string(),
+  })
+);
 /** @internal */
 export type E2EEToken$Outbound = {
   token: string;
@@ -40,9 +42,11 @@ export const E2EEToken$outboundSchema: z.ZodType<
   E2EEToken$Outbound,
   z.ZodTypeDef,
   E2EEToken
-> = z.object({
-  token: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string(),
+  })
+);
 
 export function e2EETokenToJSON(e2EEToken: E2EEToken): string {
   return JSON.stringify(E2EEToken$outboundSchema.parse(e2EEToken));

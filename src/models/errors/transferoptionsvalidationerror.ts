@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -42,21 +43,23 @@ export const TransferOptionsValidationError$inboundSchema: z.ZodType<
   TransferOptionsValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(types.string()),
-  source: types.optional(types.string()),
-  destination: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new TransferOptionsValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(types.string()),
+    source: types.optional(types.string()),
+    destination: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new TransferOptionsValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type TransferOptionsValidationError$Outbound = {
@@ -70,10 +73,12 @@ export const TransferOptionsValidationError$outboundSchema: z.ZodType<
   TransferOptionsValidationError$Outbound,
   z.ZodTypeDef,
   TransferOptionsValidationError
-> = z.instanceof(TransferOptionsValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    amount: z.string().optional(),
-    source: z.string().optional(),
-    destination: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(TransferOptionsValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      amount: z.string().optional(),
+      source: z.string().optional(),
+      destination: z.string().optional(),
+    }))
+);

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -51,13 +51,15 @@ export const SendFunds$inboundSchema: z.ZodType<
   SendFunds,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ach: types.optional(SendFundsAch$inboundSchema),
-  pushToCard: types.optional(SendFundsPushToCard$inboundSchema),
-  rtp: types.optional(SendFundsRtp$inboundSchema),
-  instantBank: types.optional(SendFundsInstantBank$inboundSchema),
-  wire: types.optional(SendFundsWire$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: types.optional(SendFundsAch$inboundSchema),
+    pushToCard: types.optional(SendFundsPushToCard$inboundSchema),
+    rtp: types.optional(SendFundsRtp$inboundSchema),
+    instantBank: types.optional(SendFundsInstantBank$inboundSchema),
+    wire: types.optional(SendFundsWire$inboundSchema),
+  })
+);
 /** @internal */
 export type SendFunds$Outbound = {
   ach?: SendFundsAch$Outbound | undefined;
@@ -72,13 +74,15 @@ export const SendFunds$outboundSchema: z.ZodType<
   SendFunds$Outbound,
   z.ZodTypeDef,
   SendFunds
-> = z.object({
-  ach: SendFundsAch$outboundSchema.optional(),
-  pushToCard: SendFundsPushToCard$outboundSchema.optional(),
-  rtp: SendFundsRtp$outboundSchema.optional(),
-  instantBank: SendFundsInstantBank$outboundSchema.optional(),
-  wire: SendFundsWire$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: SendFundsAch$outboundSchema.optional(),
+    pushToCard: SendFundsPushToCard$outboundSchema.optional(),
+    rtp: SendFundsRtp$outboundSchema.optional(),
+    instantBank: SendFundsInstantBank$outboundSchema.optional(),
+    wire: SendFundsWire$outboundSchema.optional(),
+  })
+);
 
 export function sendFundsToJSON(sendFunds: SendFunds): string {
   return JSON.stringify(SendFunds$outboundSchema.parse(sendFunds));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,10 +34,12 @@ export const PullFromCardOptions$inboundSchema: z.ZodType<
   PullFromCardOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dynamicDescriptor: types.optional(types.string()),
-  transactionSource: types.optional(TransactionSource$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: types.optional(types.string()),
+    transactionSource: types.optional(TransactionSource$inboundSchema),
+  })
+);
 /** @internal */
 export type PullFromCardOptions$Outbound = {
   dynamicDescriptor?: string | undefined;
@@ -49,10 +51,12 @@ export const PullFromCardOptions$outboundSchema: z.ZodType<
   PullFromCardOptions$Outbound,
   z.ZodTypeDef,
   PullFromCardOptions
-> = z.object({
-  dynamicDescriptor: z.string().optional(),
-  transactionSource: TransactionSource$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: z.string().optional(),
+    transactionSource: TransactionSource$outboundSchema.optional(),
+  })
+);
 
 export function pullFromCardOptionsToJSON(
   pullFromCardOptions: PullFromCardOptions,

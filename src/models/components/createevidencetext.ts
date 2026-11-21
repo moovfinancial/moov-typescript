@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,10 +26,12 @@ export const CreateEvidenceText$inboundSchema: z.ZodType<
   CreateEvidenceText,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  text: types.string(),
-  evidenceType: EvidenceType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: types.string(),
+    evidenceType: EvidenceType$inboundSchema,
+  })
+);
 /** @internal */
 export type CreateEvidenceText$Outbound = {
   text: string;
@@ -41,10 +43,12 @@ export const CreateEvidenceText$outboundSchema: z.ZodType<
   CreateEvidenceText$Outbound,
   z.ZodTypeDef,
   CreateEvidenceText
-> = z.object({
-  text: z.string(),
-  evidenceType: EvidenceType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+    evidenceType: EvidenceType$outboundSchema,
+  })
+);
 
 export function createEvidenceTextToJSON(
   createEvidenceText: CreateEvidenceText,

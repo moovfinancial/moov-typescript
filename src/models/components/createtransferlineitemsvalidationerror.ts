@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,11 +23,13 @@ export const CreateTransferLineItemsValidationError$inboundSchema: z.ZodType<
   CreateTransferLineItemsValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: types.optional(
-    z.record(CreateTransferLineItemValidationError$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: types.optional(
+      z.record(CreateTransferLineItemValidationError$inboundSchema),
+    ),
+  })
+);
 /** @internal */
 export type CreateTransferLineItemsValidationError$Outbound = {
   items?:
@@ -40,10 +42,12 @@ export const CreateTransferLineItemsValidationError$outboundSchema: z.ZodType<
   CreateTransferLineItemsValidationError$Outbound,
   z.ZodTypeDef,
   CreateTransferLineItemsValidationError
-> = z.object({
-  items: z.record(CreateTransferLineItemValidationError$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.record(CreateTransferLineItemValidationError$outboundSchema)
+      .optional(),
+  })
+);
 
 export function createTransferLineItemsValidationErrorToJSON(
   createTransferLineItemsValidationError:

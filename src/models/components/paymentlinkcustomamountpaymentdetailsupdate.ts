@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -84,16 +84,18 @@ export const PaymentLinkCustomAmountPaymentDetailsUpdate$inboundSchema:
     PaymentLinkCustomAmountPaymentDetailsUpdate,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    allowedMethods: types.optional(
-      z.array(CollectionPaymentMethodType$inboundSchema),
-    ),
-    cardDetails: types.optional(CardPaymentDetails$inboundSchema),
-    achDetails: types.optional(ACHPaymentDetails$inboundSchema),
-    metadata: types.optional(z.record(types.string())),
-    amountRange: types.optional(AmountDecimalRangeUpdate$inboundSchema),
-    suggestedAmounts: types.optional(z.array(AmountDecimal$inboundSchema)),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      allowedMethods: types.optional(
+        z.array(CollectionPaymentMethodType$inboundSchema),
+      ),
+      cardDetails: types.optional(CardPaymentDetails$inboundSchema),
+      achDetails: types.optional(ACHPaymentDetails$inboundSchema),
+      metadata: types.optional(z.record(types.string())),
+      amountRange: types.optional(AmountDecimalRangeUpdate$inboundSchema),
+      suggestedAmounts: types.optional(z.array(AmountDecimal$inboundSchema)),
+    })
+  );
 /** @internal */
 export type PaymentLinkCustomAmountPaymentDetailsUpdate$Outbound = {
   allowedMethods?: Array<string> | undefined;
@@ -110,15 +112,17 @@ export const PaymentLinkCustomAmountPaymentDetailsUpdate$outboundSchema:
     PaymentLinkCustomAmountPaymentDetailsUpdate$Outbound,
     z.ZodTypeDef,
     PaymentLinkCustomAmountPaymentDetailsUpdate
-  > = z.object({
-    allowedMethods: z.array(CollectionPaymentMethodType$outboundSchema)
-      .optional(),
-    cardDetails: CardPaymentDetails$outboundSchema.optional(),
-    achDetails: ACHPaymentDetails$outboundSchema.optional(),
-    metadata: z.record(z.string()).optional(),
-    amountRange: AmountDecimalRangeUpdate$outboundSchema.optional(),
-    suggestedAmounts: z.array(AmountDecimal$outboundSchema).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      allowedMethods: z.array(CollectionPaymentMethodType$outboundSchema)
+        .optional(),
+      cardDetails: CardPaymentDetails$outboundSchema.optional(),
+      achDetails: ACHPaymentDetails$outboundSchema.optional(),
+      metadata: z.record(z.string()).optional(),
+      amountRange: AmountDecimalRangeUpdate$outboundSchema.optional(),
+      suggestedAmounts: z.array(AmountDecimal$outboundSchema).optional(),
+    })
+  );
 
 export function paymentLinkCustomAmountPaymentDetailsUpdateToJSON(
   paymentLinkCustomAmountPaymentDetailsUpdate:

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -36,10 +36,12 @@ export const PushOptionsUpdate$inboundSchema: z.ZodType<
   PushOptionsUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedSpeeds: types.optional(z.array(PushDeliverySpeed$inboundSchema)),
-  deferredBy: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedSpeeds: types.optional(z.array(PushDeliverySpeed$inboundSchema)),
+    deferredBy: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type PushOptionsUpdate$Outbound = {
   allowedSpeeds?: Array<string> | undefined;
@@ -51,10 +53,12 @@ export const PushOptionsUpdate$outboundSchema: z.ZodType<
   PushOptionsUpdate$Outbound,
   z.ZodTypeDef,
   PushOptionsUpdate
-> = z.object({
-  allowedSpeeds: z.array(PushDeliverySpeed$outboundSchema).optional(),
-  deferredBy: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedSpeeds: z.array(PushDeliverySpeed$outboundSchema).optional(),
+    deferredBy: z.string().optional(),
+  })
+);
 
 export function pushOptionsUpdateToJSON(
   pushOptionsUpdate: PushOptionsUpdate,

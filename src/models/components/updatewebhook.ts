@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -45,12 +45,14 @@ export const UpdateWebhook$inboundSchema: z.ZodType<
   UpdateWebhook,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: types.string(),
-  status: WebhookStatus$inboundSchema,
-  eventTypes: z.array(WebhookEventType$inboundSchema),
-  description: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: types.string(),
+    status: WebhookStatus$inboundSchema,
+    eventTypes: z.array(WebhookEventType$inboundSchema),
+    description: types.string(),
+  })
+);
 /** @internal */
 export type UpdateWebhook$Outbound = {
   url: string;
@@ -64,12 +66,14 @@ export const UpdateWebhook$outboundSchema: z.ZodType<
   UpdateWebhook$Outbound,
   z.ZodTypeDef,
   UpdateWebhook
-> = z.object({
-  url: z.string(),
-  status: WebhookStatus$outboundSchema,
-  eventTypes: z.array(WebhookEventType$outboundSchema),
-  description: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    status: WebhookStatus$outboundSchema,
+    eventTypes: z.array(WebhookEventType$outboundSchema),
+    description: z.string(),
+  })
+);
 
 export function updateWebhookToJSON(updateWebhook: UpdateWebhook): string {
   return JSON.stringify(UpdateWebhook$outboundSchema.parse(updateWebhook));

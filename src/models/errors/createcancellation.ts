@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { smartUnion } from "../../types/smartUnion.js";
 import {
@@ -30,7 +30,9 @@ export const CreateCancellationResponseBody$inboundSchema: z.ZodType<
   CreateCancellationResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([GenericError$inboundSchema, Cancellation$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([GenericError$inboundSchema, Cancellation$inboundSchema])
+);
 /** @internal */
 export type CreateCancellationResponseBody$Outbound =
   | GenericError$Outbound
@@ -41,7 +43,9 @@ export const CreateCancellationResponseBody$outboundSchema: z.ZodType<
   CreateCancellationResponseBody$Outbound,
   z.ZodTypeDef,
   unknown
-> = smartUnion([GenericError$outboundSchema, Cancellation$outboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([GenericError$outboundSchema, Cancellation$outboundSchema])
+);
 
 export function createCancellationResponseBodyToJSON(
   createCancellationResponseBody: CreateCancellationResponseBody,

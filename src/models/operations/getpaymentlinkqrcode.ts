@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { smartUnion } from "../../types/smartUnion.js";
@@ -33,10 +33,12 @@ export const GetPaymentLinkQRCodeRequest$inboundSchema: z.ZodType<
   GetPaymentLinkQRCodeRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  paymentLinkCode: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    paymentLinkCode: types.string(),
+  })
+);
 /** @internal */
 export type GetPaymentLinkQRCodeRequest$Outbound = {
   accountID: string;
@@ -48,10 +50,12 @@ export const GetPaymentLinkQRCodeRequest$outboundSchema: z.ZodType<
   GetPaymentLinkQRCodeRequest$Outbound,
   z.ZodTypeDef,
   GetPaymentLinkQRCodeRequest
-> = z.object({
-  accountID: z.string(),
-  paymentLinkCode: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    paymentLinkCode: z.string(),
+  })
+);
 
 export function getPaymentLinkQRCodeRequestToJSON(
   getPaymentLinkQRCodeRequest: GetPaymentLinkQRCodeRequest,
@@ -77,10 +81,12 @@ export const GetPaymentLinkQRCodeResponseResult$inboundSchema: z.ZodType<
   GetPaymentLinkQRCodeResponseResult,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  components.QRCode$inboundSchema,
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    components.QRCode$inboundSchema,
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 /** @internal */
 export type GetPaymentLinkQRCodeResponseResult$Outbound =
   | components.QRCode$Outbound
@@ -91,10 +97,12 @@ export const GetPaymentLinkQRCodeResponseResult$outboundSchema: z.ZodType<
   GetPaymentLinkQRCodeResponseResult$Outbound,
   z.ZodTypeDef,
   GetPaymentLinkQRCodeResponseResult
-> = smartUnion([
-  components.QRCode$outboundSchema,
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    components.QRCode$outboundSchema,
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 
 export function getPaymentLinkQRCodeResponseResultToJSON(
   getPaymentLinkQRCodeResponseResult: GetPaymentLinkQRCodeResponseResult,
@@ -121,18 +129,20 @@ export const GetPaymentLinkQRCodeResponse$inboundSchema: z.ZodType<
   GetPaymentLinkQRCodeResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: smartUnion([
-    components.QRCode$inboundSchema,
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: smartUnion([
+      components.QRCode$inboundSchema,
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetPaymentLinkQRCodeResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -144,18 +154,20 @@ export const GetPaymentLinkQRCodeResponse$outboundSchema: z.ZodType<
   GetPaymentLinkQRCodeResponse$Outbound,
   z.ZodTypeDef,
   GetPaymentLinkQRCodeResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: smartUnion([
-    components.QRCode$outboundSchema,
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: smartUnion([
+      components.QRCode$outboundSchema,
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getPaymentLinkQRCodeResponseToJSON(
   getPaymentLinkQRCodeResponse: GetPaymentLinkQRCodeResponse,

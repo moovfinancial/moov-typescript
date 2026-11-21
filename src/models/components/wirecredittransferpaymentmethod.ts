@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,11 +34,13 @@ export const WireCreditTransferPaymentMethod$inboundSchema: z.ZodType<
   WireCreditTransferPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: types.string(),
-  paymentMethodType: types.literal("wire-credit"),
-  bankAccount: TransferPaymentMethodsBankAccount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: types.string(),
+    paymentMethodType: types.literal("wire-credit"),
+    bankAccount: TransferPaymentMethodsBankAccount$inboundSchema,
+  })
+);
 /** @internal */
 export type WireCreditTransferPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -51,11 +53,13 @@ export const WireCreditTransferPaymentMethod$outboundSchema: z.ZodType<
   WireCreditTransferPaymentMethod$Outbound,
   z.ZodTypeDef,
   WireCreditTransferPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("wire-credit"),
-  bankAccount: TransferPaymentMethodsBankAccount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("wire-credit"),
+    bankAccount: TransferPaymentMethodsBankAccount$outboundSchema,
+  })
+);
 
 export function wireCreditTransferPaymentMethodToJSON(
   wireCreditTransferPaymentMethod: WireCreditTransferPaymentMethod,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -30,10 +30,12 @@ export const AmountDetailsUpdate$inboundSchema: z.ZodType<
   AmountDetailsUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tax: types.optional(AmountDecimalUpdate$inboundSchema),
-  surcharge: types.optional(AmountDecimalUpdate$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tax: types.optional(AmountDecimalUpdate$inboundSchema),
+    surcharge: types.optional(AmountDecimalUpdate$inboundSchema),
+  })
+);
 /** @internal */
 export type AmountDetailsUpdate$Outbound = {
   tax?: AmountDecimalUpdate$Outbound | undefined;
@@ -45,10 +47,12 @@ export const AmountDetailsUpdate$outboundSchema: z.ZodType<
   AmountDetailsUpdate$Outbound,
   z.ZodTypeDef,
   AmountDetailsUpdate
-> = z.object({
-  tax: AmountDecimalUpdate$outboundSchema.optional(),
-  surcharge: AmountDecimalUpdate$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tax: AmountDecimalUpdate$outboundSchema.optional(),
+    surcharge: AmountDecimalUpdate$outboundSchema.optional(),
+  })
+);
 
 export function amountDetailsUpdateToJSON(
   amountDetailsUpdate: AmountDetailsUpdate,

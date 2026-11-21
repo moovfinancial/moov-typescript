@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -138,25 +138,27 @@ export const TransferPaymentMethodsCard$inboundSchema: z.ZodType<
   TransferPaymentMethodsCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardID: types.string(),
-  fingerprint: types.string(),
-  brand: CardBrand$inboundSchema,
-  cardType: CardType$inboundSchema,
-  lastFourCardNumber: types.string(),
-  bin: types.string(),
-  expiration: CardExpiration$inboundSchema,
-  holderName: types.optional(types.string()),
-  billingAddress: CardAddress$inboundSchema,
-  cardVerification: CardVerification$inboundSchema,
-  issuer: types.optional(types.string()),
-  issuerCountry: types.optional(types.string()),
-  cardOnFile: types.optional(types.boolean()),
-  merchantAccountID: types.optional(types.string()),
-  cardAccountUpdater: types.optional(CardAccountUpdater$inboundSchema),
-  domesticPushToCard: types.optional(DomesticPushToCard$inboundSchema),
-  domesticPullFromCard: types.optional(DomesticPullFromCard$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardID: types.string(),
+    fingerprint: types.string(),
+    brand: CardBrand$inboundSchema,
+    cardType: CardType$inboundSchema,
+    lastFourCardNumber: types.string(),
+    bin: types.string(),
+    expiration: CardExpiration$inboundSchema,
+    holderName: types.optional(types.string()),
+    billingAddress: CardAddress$inboundSchema,
+    cardVerification: CardVerification$inboundSchema,
+    issuer: types.optional(types.string()),
+    issuerCountry: types.optional(types.string()),
+    cardOnFile: types.optional(types.boolean()),
+    merchantAccountID: types.optional(types.string()),
+    cardAccountUpdater: types.optional(CardAccountUpdater$inboundSchema),
+    domesticPushToCard: types.optional(DomesticPushToCard$inboundSchema),
+    domesticPullFromCard: types.optional(DomesticPullFromCard$inboundSchema),
+  })
+);
 /** @internal */
 export type TransferPaymentMethodsCard$Outbound = {
   cardID: string;
@@ -183,25 +185,27 @@ export const TransferPaymentMethodsCard$outboundSchema: z.ZodType<
   TransferPaymentMethodsCard$Outbound,
   z.ZodTypeDef,
   TransferPaymentMethodsCard
-> = z.object({
-  cardID: z.string(),
-  fingerprint: z.string(),
-  brand: CardBrand$outboundSchema,
-  cardType: CardType$outboundSchema,
-  lastFourCardNumber: z.string(),
-  bin: z.string(),
-  expiration: CardExpiration$outboundSchema,
-  holderName: z.string().optional(),
-  billingAddress: CardAddress$outboundSchema,
-  cardVerification: CardVerification$outboundSchema,
-  issuer: z.string().optional(),
-  issuerCountry: z.string().optional(),
-  cardOnFile: z.boolean().optional(),
-  merchantAccountID: z.string().optional(),
-  cardAccountUpdater: CardAccountUpdater$outboundSchema.optional(),
-  domesticPushToCard: DomesticPushToCard$outboundSchema.optional(),
-  domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardID: z.string(),
+    fingerprint: z.string(),
+    brand: CardBrand$outboundSchema,
+    cardType: CardType$outboundSchema,
+    lastFourCardNumber: z.string(),
+    bin: z.string(),
+    expiration: CardExpiration$outboundSchema,
+    holderName: z.string().optional(),
+    billingAddress: CardAddress$outboundSchema,
+    cardVerification: CardVerification$outboundSchema,
+    issuer: z.string().optional(),
+    issuerCountry: z.string().optional(),
+    cardOnFile: z.boolean().optional(),
+    merchantAccountID: z.string().optional(),
+    cardAccountUpdater: CardAccountUpdater$outboundSchema.optional(),
+    domesticPushToCard: DomesticPushToCard$outboundSchema.optional(),
+    domesticPullFromCard: DomesticPullFromCard$outboundSchema.optional(),
+  })
+);
 
 export function transferPaymentMethodsCardToJSON(
   transferPaymentMethodsCard: TransferPaymentMethodsCard,

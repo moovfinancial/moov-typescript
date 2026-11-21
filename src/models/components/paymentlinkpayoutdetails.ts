@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -71,13 +71,15 @@ export const PaymentLinkPayoutDetails$inboundSchema: z.ZodType<
   PaymentLinkPayoutDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedMethods: z.array(DisbursementPaymentMethodType$inboundSchema),
-  recipient: PayoutRecipient$inboundSchema,
-  metadata: types.optional(z.record(types.string())),
-  pushOptions: types.optional(PushOptions$inboundSchema),
-  feePaidBy: types.optional(z.record(FeePaidBy$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(DisbursementPaymentMethodType$inboundSchema),
+    recipient: PayoutRecipient$inboundSchema,
+    metadata: types.optional(z.record(types.string())),
+    pushOptions: types.optional(PushOptions$inboundSchema),
+    feePaidBy: types.optional(z.record(FeePaidBy$inboundSchema)),
+  })
+);
 /** @internal */
 export type PaymentLinkPayoutDetails$Outbound = {
   allowedMethods: Array<string>;
@@ -92,13 +94,15 @@ export const PaymentLinkPayoutDetails$outboundSchema: z.ZodType<
   PaymentLinkPayoutDetails$Outbound,
   z.ZodTypeDef,
   PaymentLinkPayoutDetails
-> = z.object({
-  allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema),
-  recipient: PayoutRecipient$outboundSchema,
-  metadata: z.record(z.string()).optional(),
-  pushOptions: PushOptions$outboundSchema.optional(),
-  feePaidBy: z.record(FeePaidBy$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedMethods: z.array(DisbursementPaymentMethodType$outboundSchema),
+    recipient: PayoutRecipient$outboundSchema,
+    metadata: z.record(z.string()).optional(),
+    pushOptions: PushOptions$outboundSchema.optional(),
+    feePaidBy: z.record(FeePaidBy$outboundSchema).optional(),
+  })
+);
 
 export function paymentLinkPayoutDetailsToJSON(
   paymentLinkPayoutDetails: PaymentLinkPayoutDetails,

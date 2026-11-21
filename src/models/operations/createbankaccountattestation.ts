@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -26,16 +26,18 @@ export const CreateBankAccountAttestationRequest$inboundSchema: z.ZodType<
   CreateBankAccountAttestationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  bankAccountID: types.string(),
-  CreateBankAccountAttestation:
-    components.CreateBankAccountAttestation$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateBankAccountAttestation": "createBankAccountAttestation",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    bankAccountID: types.string(),
+    CreateBankAccountAttestation:
+      components.CreateBankAccountAttestation$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateBankAccountAttestation": "createBankAccountAttestation",
+    });
+  })
+);
 /** @internal */
 export type CreateBankAccountAttestationRequest$Outbound = {
   accountID: string;
@@ -49,16 +51,18 @@ export const CreateBankAccountAttestationRequest$outboundSchema: z.ZodType<
   CreateBankAccountAttestationRequest$Outbound,
   z.ZodTypeDef,
   CreateBankAccountAttestationRequest
-> = z.object({
-  accountID: z.string(),
-  bankAccountID: z.string(),
-  createBankAccountAttestation:
-    components.CreateBankAccountAttestation$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createBankAccountAttestation: "CreateBankAccountAttestation",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    bankAccountID: z.string(),
+    createBankAccountAttestation:
+      components.CreateBankAccountAttestation$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createBankAccountAttestation: "CreateBankAccountAttestation",
+    });
+  })
+);
 
 export function createBankAccountAttestationRequestToJSON(
   createBankAccountAttestationRequest: CreateBankAccountAttestationRequest,
@@ -85,15 +89,17 @@ export const CreateBankAccountAttestationResponse$inboundSchema: z.ZodType<
   CreateBankAccountAttestationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.BankAccountAttestation$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.BankAccountAttestation$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateBankAccountAttestationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -105,15 +111,17 @@ export const CreateBankAccountAttestationResponse$outboundSchema: z.ZodType<
   CreateBankAccountAttestationResponse$Outbound,
   z.ZodTypeDef,
   CreateBankAccountAttestationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.BankAccountAttestation$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.BankAccountAttestation$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createBankAccountAttestationResponseToJSON(
   createBankAccountAttestationResponse: CreateBankAccountAttestationResponse,

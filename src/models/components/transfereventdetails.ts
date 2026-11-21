@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -112,31 +112,37 @@ export const TransferEventDetails$inboundSchema: z.ZodType<
   TransferEventDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transfer: types.optional(TransferEventTransferDetails$inboundSchema),
-  authorization: types.optional(
-    TransferEventAuthorizationDetails$inboundSchema,
-  ),
-  capture: types.optional(TransferEventCaptureDetails$inboundSchema),
-  refund: types.optional(TransferEventRefundDetails$inboundSchema),
-  cancellation: types.optional(TransferEventCancellationDetails$inboundSchema),
-  dispute: types.optional(TransferEventDisputeDetails$inboundSchema),
-  achCredit: types.optional(TransferEventACHDetails$inboundSchema),
-  achDebit: types.optional(TransferEventACHDetails$inboundSchema),
-  instantBankCredit: types.optional(
-    TransferEventInstantBankCreditDetails$inboundSchema,
-  ),
-  wireCredit: types.optional(TransferEventWireCreditDetails$inboundSchema),
-  cardPayment: types.optional(TransferEventCardPaymentDetails$inboundSchema),
-  pushToCard: types.optional(TransferEventPushToCardDetails$inboundSchema),
-  pullFromCard: types.optional(TransferEventPullFromCardDetails$inboundSchema),
-  walletCredit: types.optional(
-    TransferEventWalletTransactionDetails$inboundSchema,
-  ),
-  walletDebit: types.optional(
-    TransferEventWalletTransactionDetails$inboundSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transfer: types.optional(TransferEventTransferDetails$inboundSchema),
+    authorization: types.optional(
+      TransferEventAuthorizationDetails$inboundSchema,
+    ),
+    capture: types.optional(TransferEventCaptureDetails$inboundSchema),
+    refund: types.optional(TransferEventRefundDetails$inboundSchema),
+    cancellation: types.optional(
+      TransferEventCancellationDetails$inboundSchema,
+    ),
+    dispute: types.optional(TransferEventDisputeDetails$inboundSchema),
+    achCredit: types.optional(TransferEventACHDetails$inboundSchema),
+    achDebit: types.optional(TransferEventACHDetails$inboundSchema),
+    instantBankCredit: types.optional(
+      TransferEventInstantBankCreditDetails$inboundSchema,
+    ),
+    wireCredit: types.optional(TransferEventWireCreditDetails$inboundSchema),
+    cardPayment: types.optional(TransferEventCardPaymentDetails$inboundSchema),
+    pushToCard: types.optional(TransferEventPushToCardDetails$inboundSchema),
+    pullFromCard: types.optional(
+      TransferEventPullFromCardDetails$inboundSchema,
+    ),
+    walletCredit: types.optional(
+      TransferEventWalletTransactionDetails$inboundSchema,
+    ),
+    walletDebit: types.optional(
+      TransferEventWalletTransactionDetails$inboundSchema,
+    ),
+  })
+);
 /** @internal */
 export type TransferEventDetails$Outbound = {
   transfer?: TransferEventTransferDetails$Outbound | undefined;
@@ -163,24 +169,28 @@ export const TransferEventDetails$outboundSchema: z.ZodType<
   TransferEventDetails$Outbound,
   z.ZodTypeDef,
   TransferEventDetails
-> = z.object({
-  transfer: TransferEventTransferDetails$outboundSchema.optional(),
-  authorization: TransferEventAuthorizationDetails$outboundSchema.optional(),
-  capture: TransferEventCaptureDetails$outboundSchema.optional(),
-  refund: TransferEventRefundDetails$outboundSchema.optional(),
-  cancellation: TransferEventCancellationDetails$outboundSchema.optional(),
-  dispute: TransferEventDisputeDetails$outboundSchema.optional(),
-  achCredit: TransferEventACHDetails$outboundSchema.optional(),
-  achDebit: TransferEventACHDetails$outboundSchema.optional(),
-  instantBankCredit: TransferEventInstantBankCreditDetails$outboundSchema
-    .optional(),
-  wireCredit: TransferEventWireCreditDetails$outboundSchema.optional(),
-  cardPayment: TransferEventCardPaymentDetails$outboundSchema.optional(),
-  pushToCard: TransferEventPushToCardDetails$outboundSchema.optional(),
-  pullFromCard: TransferEventPullFromCardDetails$outboundSchema.optional(),
-  walletCredit: TransferEventWalletTransactionDetails$outboundSchema.optional(),
-  walletDebit: TransferEventWalletTransactionDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transfer: TransferEventTransferDetails$outboundSchema.optional(),
+    authorization: TransferEventAuthorizationDetails$outboundSchema.optional(),
+    capture: TransferEventCaptureDetails$outboundSchema.optional(),
+    refund: TransferEventRefundDetails$outboundSchema.optional(),
+    cancellation: TransferEventCancellationDetails$outboundSchema.optional(),
+    dispute: TransferEventDisputeDetails$outboundSchema.optional(),
+    achCredit: TransferEventACHDetails$outboundSchema.optional(),
+    achDebit: TransferEventACHDetails$outboundSchema.optional(),
+    instantBankCredit: TransferEventInstantBankCreditDetails$outboundSchema
+      .optional(),
+    wireCredit: TransferEventWireCreditDetails$outboundSchema.optional(),
+    cardPayment: TransferEventCardPaymentDetails$outboundSchema.optional(),
+    pushToCard: TransferEventPushToCardDetails$outboundSchema.optional(),
+    pullFromCard: TransferEventPullFromCardDetails$outboundSchema.optional(),
+    walletCredit: TransferEventWalletTransactionDetails$outboundSchema
+      .optional(),
+    walletDebit: TransferEventWalletTransactionDetails$outboundSchema
+      .optional(),
+  })
+);
 
 export function transferEventDetailsToJSON(
   transferEventDetails: TransferEventDetails,

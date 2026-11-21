@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -30,10 +30,12 @@ export const CreateProfileError$inboundSchema: z.ZodType<
   CreateProfileError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  individual: types.optional(CreateIndividualError$inboundSchema),
-  business: types.optional(CreateBusinessError$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    individual: types.optional(CreateIndividualError$inboundSchema),
+    business: types.optional(CreateBusinessError$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateProfileError$Outbound = {
   individual?: CreateIndividualError$Outbound | undefined;
@@ -45,10 +47,12 @@ export const CreateProfileError$outboundSchema: z.ZodType<
   CreateProfileError$Outbound,
   z.ZodTypeDef,
   CreateProfileError
-> = z.object({
-  individual: CreateIndividualError$outboundSchema.optional(),
-  business: CreateBusinessError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    individual: CreateIndividualError$outboundSchema.optional(),
+    business: CreateBusinessError$outboundSchema.optional(),
+  })
+);
 
 export function createProfileErrorToJSON(
   createProfileError: CreateProfileError,

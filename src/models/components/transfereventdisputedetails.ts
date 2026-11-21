@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -46,12 +46,14 @@ export const TransferEventDisputeDetails$inboundSchema: z.ZodType<
   TransferEventDisputeDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  disputeID: types.string(),
-  captureID: types.optional(types.string()),
-  phase: DisputePhase$inboundSchema,
-  status: DisputeStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    disputeID: types.string(),
+    captureID: types.optional(types.string()),
+    phase: DisputePhase$inboundSchema,
+    status: DisputeStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type TransferEventDisputeDetails$Outbound = {
   disputeID: string;
@@ -65,12 +67,14 @@ export const TransferEventDisputeDetails$outboundSchema: z.ZodType<
   TransferEventDisputeDetails$Outbound,
   z.ZodTypeDef,
   TransferEventDisputeDetails
-> = z.object({
-  disputeID: z.string(),
-  captureID: z.string().optional(),
-  phase: DisputePhase$outboundSchema,
-  status: DisputeStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    disputeID: z.string(),
+    captureID: z.string().optional(),
+    phase: DisputePhase$outboundSchema,
+    status: DisputeStatus$outboundSchema,
+  })
+);
 
 export function transferEventDisputeDetailsToJSON(
   transferEventDisputeDetails: TransferEventDisputeDetails,

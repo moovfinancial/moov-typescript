@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -31,12 +31,14 @@ export const WebhookDataCaptureUpdated$inboundSchema: z.ZodType<
   WebhookDataCaptureUpdated,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  transferID: types.string(),
-  captureID: types.string(),
-  status: CaptureStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    transferID: types.string(),
+    captureID: types.string(),
+    status: CaptureStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type WebhookDataCaptureUpdated$Outbound = {
   accountID: string;
@@ -50,12 +52,14 @@ export const WebhookDataCaptureUpdated$outboundSchema: z.ZodType<
   WebhookDataCaptureUpdated$Outbound,
   z.ZodTypeDef,
   WebhookDataCaptureUpdated
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-  captureID: z.string(),
-  status: CaptureStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+    captureID: z.string(),
+    status: CaptureStatus$outboundSchema,
+  })
+);
 
 export function webhookDataCaptureUpdatedToJSON(
   webhookDataCaptureUpdated: WebhookDataCaptureUpdated,

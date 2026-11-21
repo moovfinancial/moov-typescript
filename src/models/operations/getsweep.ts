@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -26,11 +26,13 @@ export const GetSweepRequest$inboundSchema: z.ZodType<
   GetSweepRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  walletID: types.string(),
-  sweepID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    walletID: types.string(),
+    sweepID: types.string(),
+  })
+);
 /** @internal */
 export type GetSweepRequest$Outbound = {
   accountID: string;
@@ -43,11 +45,13 @@ export const GetSweepRequest$outboundSchema: z.ZodType<
   GetSweepRequest$Outbound,
   z.ZodTypeDef,
   GetSweepRequest
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  sweepID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+    sweepID: z.string(),
+  })
+);
 
 export function getSweepRequestToJSON(
   getSweepRequest: GetSweepRequest,
@@ -69,15 +73,17 @@ export const GetSweepResponse$inboundSchema: z.ZodType<
   GetSweepResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Sweep$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Sweep$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetSweepResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -89,15 +95,17 @@ export const GetSweepResponse$outboundSchema: z.ZodType<
   GetSweepResponse$Outbound,
   z.ZodTypeDef,
   GetSweepResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Sweep$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Sweep$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getSweepResponseToJSON(
   getSweepResponse: GetSweepResponse,

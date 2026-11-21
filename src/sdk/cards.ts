@@ -7,6 +7,7 @@ import { cardsGet } from "../funcs/cardsGet.js";
 import { cardsGetMetadata } from "../funcs/cardsGetMetadata.js";
 import { cardsLink } from "../funcs/cardsLink.js";
 import { cardsList } from "../funcs/cardsList.js";
+import { cardsTokenize } from "../funcs/cardsTokenize.js";
 import { cardsUpdate } from "../funcs/cardsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -139,6 +140,26 @@ export class Cards extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetCardMetadataResponse> {
     return unwrapAsync(cardsGetMetadata(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Exchange card data for a single-use payment token. Use the token as `source.paymentToken.token` when
+   * [creating a transfer](https://docs.moov.io/api/money-movement/transfers/create/).
+   *
+   * Tokenizing does not link the card to an account, verify the card, or contact the card networks.
+   * The card is authorized when the transfer is created.
+   *
+   * Call this endpoint directly from the browser using Moov's card Drop, so card data never reaches your servers.
+   */
+  async tokenize(
+    request: components.CreatePaymentToken,
+    options?: RequestOptions,
+  ): Promise<operations.CreatePaymentTokenResponse> {
+    return unwrapAsync(cardsTokenize(
       this,
       request,
       options,

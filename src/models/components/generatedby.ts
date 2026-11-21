@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -43,14 +43,16 @@ export const GeneratedBy$inboundSchema: z.ZodType<
   GeneratedBy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: types.optional(types.string()),
-  cardID: types.optional(types.string()),
-  disputeID: types.optional(types.string()),
-  accountID: types.optional(types.string()),
-  bankAccountID: types.optional(types.string()),
-  invoiceID: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: types.optional(types.string()),
+    cardID: types.optional(types.string()),
+    disputeID: types.optional(types.string()),
+    accountID: types.optional(types.string()),
+    bankAccountID: types.optional(types.string()),
+    invoiceID: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type GeneratedBy$Outbound = {
   transferID?: string | undefined;
@@ -66,14 +68,16 @@ export const GeneratedBy$outboundSchema: z.ZodType<
   GeneratedBy$Outbound,
   z.ZodTypeDef,
   GeneratedBy
-> = z.object({
-  transferID: z.string().optional(),
-  cardID: z.string().optional(),
-  disputeID: z.string().optional(),
-  accountID: z.string().optional(),
-  bankAccountID: z.string().optional(),
-  invoiceID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string().optional(),
+    cardID: z.string().optional(),
+    disputeID: z.string().optional(),
+    accountID: z.string().optional(),
+    bankAccountID: z.string().optional(),
+    invoiceID: z.string().optional(),
+  })
+);
 
 export function generatedByToJSON(generatedBy: GeneratedBy): string {
   return JSON.stringify(GeneratedBy$outboundSchema.parse(generatedBy));

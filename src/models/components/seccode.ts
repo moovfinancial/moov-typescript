@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -22,7 +23,7 @@ export type SECCode = OpenEnum<typeof SECCode>;
 
 /** @internal */
 export const SECCode$inboundSchema: z.ZodType<SECCode, z.ZodTypeDef, unknown> =
-  openEnums.inboundSchema(SECCode);
+  /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(SECCode));
 /** @internal */
 export const SECCode$outboundSchema: z.ZodType<string, z.ZodTypeDef, SECCode> =
-  openEnums.outboundSchema(SECCode);
+  /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(SECCode));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -83,20 +83,22 @@ export type Capture = {
 
 /** @internal */
 export const Capture$inboundSchema: z.ZodType<Capture, z.ZodTypeDef, unknown> =
-  z.object({
-    captureID: types.string(),
-    amount: AmountDecimal$inboundSchema,
-    isFinal: types.boolean(),
-    status: CaptureStatus$inboundSchema,
-    createdOn: types.date(),
-    description: types.optional(types.string()),
-    metadata: types.optional(z.record(types.string())),
-    foreignID: types.optional(types.string()),
-    lineItems: types.optional(TransferLineItems$inboundSchema),
-    amountDetails: types.optional(TransferAmountDetails$inboundSchema),
-    facilitatorFeeAmount: types.optional(AmountDecimal$inboundSchema),
-    failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      captureID: types.string(),
+      amount: AmountDecimal$inboundSchema,
+      isFinal: types.boolean(),
+      status: CaptureStatus$inboundSchema,
+      createdOn: types.date(),
+      description: types.optional(types.string()),
+      metadata: types.optional(z.record(types.string())),
+      foreignID: types.optional(types.string()),
+      lineItems: types.optional(TransferLineItems$inboundSchema),
+      amountDetails: types.optional(TransferAmountDetails$inboundSchema),
+      facilitatorFeeAmount: types.optional(AmountDecimal$inboundSchema),
+      failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
+    })
+  );
 /** @internal */
 export type Capture$Outbound = {
   captureID: string;
@@ -118,20 +120,22 @@ export const Capture$outboundSchema: z.ZodType<
   Capture$Outbound,
   z.ZodTypeDef,
   Capture
-> = z.object({
-  captureID: z.string(),
-  amount: AmountDecimal$outboundSchema,
-  isFinal: z.boolean(),
-  status: CaptureStatus$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-  description: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  foreignID: z.string().optional(),
-  lineItems: TransferLineItems$outboundSchema.optional(),
-  amountDetails: TransferAmountDetails$outboundSchema.optional(),
-  facilitatorFeeAmount: AmountDecimal$outboundSchema.optional(),
-  failureCode: CardTransactionFailureCode$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    captureID: z.string(),
+    amount: AmountDecimal$outboundSchema,
+    isFinal: z.boolean(),
+    status: CaptureStatus$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+    description: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+    foreignID: z.string().optional(),
+    lineItems: TransferLineItems$outboundSchema.optional(),
+    amountDetails: TransferAmountDetails$outboundSchema.optional(),
+    facilitatorFeeAmount: AmountDecimal$outboundSchema.optional(),
+    failureCode: CardTransactionFailureCode$outboundSchema.optional(),
+  })
+);
 
 export function captureToJSON(capture: Capture): string {
   return JSON.stringify(Capture$outboundSchema.parse(capture));

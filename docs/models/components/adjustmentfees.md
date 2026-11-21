@@ -11,7 +11,7 @@ let value: AdjustmentFees = {
   items: [
     {
       feeName: "<value>",
-      count: 474711,
+      count: 923852,
       amount: {
         currency: "USD",
         valueDecimal: "12.987654321",

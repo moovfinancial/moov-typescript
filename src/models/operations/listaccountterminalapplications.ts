@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -24,9 +24,11 @@ export const ListAccountTerminalApplicationsRequest$inboundSchema: z.ZodType<
   ListAccountTerminalApplicationsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+  })
+);
 /** @internal */
 export type ListAccountTerminalApplicationsRequest$Outbound = {
   accountID: string;
@@ -37,9 +39,11 @@ export const ListAccountTerminalApplicationsRequest$outboundSchema: z.ZodType<
   ListAccountTerminalApplicationsRequest$Outbound,
   z.ZodTypeDef,
   ListAccountTerminalApplicationsRequest
-> = z.object({
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+  })
+);
 
 export function listAccountTerminalApplicationsRequestToJSON(
   listAccountTerminalApplicationsRequest:
@@ -67,15 +71,17 @@ export const ListAccountTerminalApplicationsResponse$inboundSchema: z.ZodType<
   ListAccountTerminalApplicationsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.AccountTerminalApplication$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.AccountTerminalApplication$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListAccountTerminalApplicationsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -87,15 +93,17 @@ export const ListAccountTerminalApplicationsResponse$outboundSchema: z.ZodType<
   ListAccountTerminalApplicationsResponse$Outbound,
   z.ZodTypeDef,
   ListAccountTerminalApplicationsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.AccountTerminalApplication$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.AccountTerminalApplication$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listAccountTerminalApplicationsResponseToJSON(
   listAccountTerminalApplicationsResponse:

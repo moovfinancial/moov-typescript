@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -40,12 +40,14 @@ export const AccountNameVerification$inboundSchema: z.ZodType<
   AccountNameVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  firstName: types.optional(CardVerificationResult$inboundSchema),
-  lastName: types.optional(CardVerificationResult$inboundSchema),
-  middleName: types.optional(CardVerificationResult$inboundSchema),
-  fullName: types.optional(CardVerificationResult$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: types.optional(CardVerificationResult$inboundSchema),
+    lastName: types.optional(CardVerificationResult$inboundSchema),
+    middleName: types.optional(CardVerificationResult$inboundSchema),
+    fullName: types.optional(CardVerificationResult$inboundSchema),
+  })
+);
 /** @internal */
 export type AccountNameVerification$Outbound = {
   firstName?: string | undefined;
@@ -59,12 +61,14 @@ export const AccountNameVerification$outboundSchema: z.ZodType<
   AccountNameVerification$Outbound,
   z.ZodTypeDef,
   AccountNameVerification
-> = z.object({
-  firstName: CardVerificationResult$outboundSchema.optional(),
-  lastName: CardVerificationResult$outboundSchema.optional(),
-  middleName: CardVerificationResult$outboundSchema.optional(),
-  fullName: CardVerificationResult$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: CardVerificationResult$outboundSchema.optional(),
+    lastName: CardVerificationResult$outboundSchema.optional(),
+    middleName: CardVerificationResult$outboundSchema.optional(),
+    fullName: CardVerificationResult$outboundSchema.optional(),
+  })
+);
 
 export function accountNameVerificationToJSON(
   accountNameVerification: AccountNameVerification,

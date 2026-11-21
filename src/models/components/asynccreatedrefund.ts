@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -39,13 +39,15 @@ export const AsyncCreatedRefund$inboundSchema: z.ZodType<
   AsyncCreatedRefund,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  refundID: types.string(),
-  createdOn: types.date(),
-  amount: AmountDecimal$inboundSchema,
-  captureID: types.optional(types.string()),
-  amountDetails: types.optional(RefundAmountDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refundID: types.string(),
+    createdOn: types.date(),
+    amount: AmountDecimal$inboundSchema,
+    captureID: types.optional(types.string()),
+    amountDetails: types.optional(RefundAmountDetails$inboundSchema),
+  })
+);
 /** @internal */
 export type AsyncCreatedRefund$Outbound = {
   refundID: string;
@@ -60,13 +62,15 @@ export const AsyncCreatedRefund$outboundSchema: z.ZodType<
   AsyncCreatedRefund$Outbound,
   z.ZodTypeDef,
   AsyncCreatedRefund
-> = z.object({
-  refundID: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  amount: AmountDecimal$outboundSchema,
-  captureID: z.string().optional(),
-  amountDetails: RefundAmountDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refundID: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    amount: AmountDecimal$outboundSchema,
+    captureID: z.string().optional(),
+    amountDetails: RefundAmountDetails$outboundSchema.optional(),
+  })
+);
 
 export function asyncCreatedRefundToJSON(
   asyncCreatedRefund: AsyncCreatedRefund,

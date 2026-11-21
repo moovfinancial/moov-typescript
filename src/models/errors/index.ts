@@ -22,6 +22,7 @@ export * from "./createcancellation.js";
 export * from "./createinvoiceerror.js";
 export * from "./createinvoicepaymenterror.js";
 export * from "./createpaymentlinkerror.js";
+export * from "./createpaymenttokenerror.js";
 export * from "./createresolutionlinkerror.js";
 export * from "./createsweepconfigerror.js";
 export * from "./createticketerror.js";

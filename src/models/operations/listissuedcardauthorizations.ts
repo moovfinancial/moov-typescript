@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -52,18 +52,20 @@ export const ListIssuedCardAuthorizationsRequest$inboundSchema: z.ZodType<
   ListIssuedCardAuthorizationsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-  issuedCardID: types.optional(types.string()),
-  authorizedUserAccountID: types.optional(types.string()),
-  startDateTime: types.optional(types.date()),
-  endDateTime: types.optional(types.date()),
-  statuses: types.optional(
-    z.array(components.IssuingAuthorizationStatus$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+    issuedCardID: types.optional(types.string()),
+    authorizedUserAccountID: types.optional(types.string()),
+    startDateTime: types.optional(types.date()),
+    endDateTime: types.optional(types.date()),
+    statuses: types.optional(
+      z.array(components.IssuingAuthorizationStatus$inboundSchema),
+    ),
+  })
+);
 /** @internal */
 export type ListIssuedCardAuthorizationsRequest$Outbound = {
   accountID: string;
@@ -81,17 +83,19 @@ export const ListIssuedCardAuthorizationsRequest$outboundSchema: z.ZodType<
   ListIssuedCardAuthorizationsRequest$Outbound,
   z.ZodTypeDef,
   ListIssuedCardAuthorizationsRequest
-> = z.object({
-  accountID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  issuedCardID: z.string().optional(),
-  authorizedUserAccountID: z.string().optional(),
-  startDateTime: z.date().transform(v => v.toISOString()).optional(),
-  endDateTime: z.date().transform(v => v.toISOString()).optional(),
-  statuses: z.array(components.IssuingAuthorizationStatus$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    issuedCardID: z.string().optional(),
+    authorizedUserAccountID: z.string().optional(),
+    startDateTime: z.date().transform(v => v.toISOString()).optional(),
+    endDateTime: z.date().transform(v => v.toISOString()).optional(),
+    statuses: z.array(components.IssuingAuthorizationStatus$outboundSchema)
+      .optional(),
+  })
+);
 
 export function listIssuedCardAuthorizationsRequestToJSON(
   listIssuedCardAuthorizationsRequest: ListIssuedCardAuthorizationsRequest,
@@ -118,15 +122,17 @@ export const ListIssuedCardAuthorizationsResponse$inboundSchema: z.ZodType<
   ListIssuedCardAuthorizationsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.IssuedCardAuthorization$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.IssuedCardAuthorization$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListIssuedCardAuthorizationsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -138,15 +144,17 @@ export const ListIssuedCardAuthorizationsResponse$outboundSchema: z.ZodType<
   ListIssuedCardAuthorizationsResponse$Outbound,
   z.ZodTypeDef,
   ListIssuedCardAuthorizationsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.IssuedCardAuthorization$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.IssuedCardAuthorization$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listIssuedCardAuthorizationsResponseToJSON(
   listIssuedCardAuthorizationsResponse: ListIssuedCardAuthorizationsResponse,

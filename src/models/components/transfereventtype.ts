@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -36,10 +37,14 @@ export const TransferEventType$inboundSchema: z.ZodType<
   TransferEventType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(TransferEventType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(TransferEventType)
+);
 /** @internal */
 export const TransferEventType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   TransferEventType
-> = openEnums.outboundSchema(TransferEventType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(TransferEventType)
+);

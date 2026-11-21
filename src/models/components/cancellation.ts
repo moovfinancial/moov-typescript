@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,11 +27,13 @@ export const Cancellation$inboundSchema: z.ZodType<
   Cancellation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cancellationID: types.string(),
-  status: CancellationStatus$inboundSchema,
-  createdOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cancellationID: types.string(),
+    status: CancellationStatus$inboundSchema,
+    createdOn: types.date(),
+  })
+);
 /** @internal */
 export type Cancellation$Outbound = {
   cancellationID: string;
@@ -44,11 +46,13 @@ export const Cancellation$outboundSchema: z.ZodType<
   Cancellation$Outbound,
   z.ZodTypeDef,
   Cancellation
-> = z.object({
-  cancellationID: z.string(),
-  status: CancellationStatus$outboundSchema,
-  createdOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cancellationID: z.string(),
+    status: CancellationStatus$outboundSchema,
+    createdOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function cancellationToJSON(cancellation: Cancellation): string {
   return JSON.stringify(Cancellation$outboundSchema.parse(cancellation));

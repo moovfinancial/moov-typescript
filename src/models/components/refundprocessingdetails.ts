@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,9 +23,13 @@ export const RefundProcessingDetails$inboundSchema: z.ZodType<
   RefundProcessingDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardPayment: types.optional(CardPaymentRefundProcessingDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: types.optional(
+      CardPaymentRefundProcessingDetails$inboundSchema,
+    ),
+  })
+);
 /** @internal */
 export type RefundProcessingDetails$Outbound = {
   cardPayment?: CardPaymentRefundProcessingDetails$Outbound | undefined;
@@ -36,9 +40,11 @@ export const RefundProcessingDetails$outboundSchema: z.ZodType<
   RefundProcessingDetails$Outbound,
   z.ZodTypeDef,
   RefundProcessingDetails
-> = z.object({
-  cardPayment: CardPaymentRefundProcessingDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: CardPaymentRefundProcessingDetails$outboundSchema.optional(),
+  })
+);
 
 export function refundProcessingDetailsToJSON(
   refundProcessingDetails: RefundProcessingDetails,

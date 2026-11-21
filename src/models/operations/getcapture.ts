@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -35,11 +35,13 @@ export const GetCaptureRequest$inboundSchema: z.ZodType<
   GetCaptureRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  transferID: types.string(),
-  captureID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    transferID: types.string(),
+    captureID: types.string(),
+  })
+);
 /** @internal */
 export type GetCaptureRequest$Outbound = {
   accountID: string;
@@ -52,11 +54,13 @@ export const GetCaptureRequest$outboundSchema: z.ZodType<
   GetCaptureRequest$Outbound,
   z.ZodTypeDef,
   GetCaptureRequest
-> = z.object({
-  accountID: z.string(),
-  transferID: z.string(),
-  captureID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    transferID: z.string(),
+    captureID: z.string(),
+  })
+);
 
 export function getCaptureRequestToJSON(
   getCaptureRequest: GetCaptureRequest,
@@ -80,15 +84,17 @@ export const GetCaptureResponse$inboundSchema: z.ZodType<
   GetCaptureResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Capture$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Capture$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetCaptureResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -100,15 +106,17 @@ export const GetCaptureResponse$outboundSchema: z.ZodType<
   GetCaptureResponse$Outbound,
   z.ZodTypeDef,
   GetCaptureResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Capture$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Capture$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getCaptureResponseToJSON(
   getCaptureResponse: GetCaptureResponse,

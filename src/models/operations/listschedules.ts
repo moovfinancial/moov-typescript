@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
@@ -32,8 +32,8 @@ export type ListSchedulesResponse = {
 };
 
 /** @internal */
-export const Hydrate$inboundSchema: z.ZodNativeEnum<typeof Hydrate> = z
-  .nativeEnum(Hydrate);
+export const Hydrate$inboundSchema: z.ZodNativeEnum<typeof Hydrate> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Hydrate));
 /** @internal */
 export const Hydrate$outboundSchema: z.ZodNativeEnum<typeof Hydrate> =
   Hydrate$inboundSchema;
@@ -43,12 +43,14 @@ export const ListSchedulesRequest$inboundSchema: z.ZodType<
   ListSchedulesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-  hydrate: types.optional(Hydrate$inboundSchema),
-  accountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+    hydrate: types.optional(Hydrate$inboundSchema),
+    accountID: types.string(),
+  })
+);
 /** @internal */
 export type ListSchedulesRequest$Outbound = {
   skip?: number | undefined;
@@ -62,12 +64,14 @@ export const ListSchedulesRequest$outboundSchema: z.ZodType<
   ListSchedulesRequest$Outbound,
   z.ZodTypeDef,
   ListSchedulesRequest
-> = z.object({
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  hydrate: Hydrate$outboundSchema.optional(),
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    hydrate: Hydrate$outboundSchema.optional(),
+    accountID: z.string(),
+  })
+);
 
 export function listSchedulesRequestToJSON(
   listSchedulesRequest: ListSchedulesRequest,
@@ -91,15 +95,17 @@ export const ListSchedulesResponse$inboundSchema: z.ZodType<
   ListSchedulesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.ScheduleListResponse$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.ScheduleListResponse$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListSchedulesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -111,15 +117,17 @@ export const ListSchedulesResponse$outboundSchema: z.ZodType<
   ListSchedulesResponse$Outbound,
   z.ZodTypeDef,
   ListSchedulesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.ScheduleListResponse$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.ScheduleListResponse$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listSchedulesResponseToJSON(
   listSchedulesResponse: ListSchedulesResponse,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -26,15 +26,17 @@ export const UpdateProductRequest$inboundSchema: z.ZodType<
   UpdateProductRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  productID: types.string(),
-  ProductRequest: components.ProductRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "ProductRequest": "productRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    productID: types.string(),
+    ProductRequest: components.ProductRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "ProductRequest": "productRequest",
+    });
+  })
+);
 /** @internal */
 export type UpdateProductRequest$Outbound = {
   accountID: string;
@@ -47,15 +49,17 @@ export const UpdateProductRequest$outboundSchema: z.ZodType<
   UpdateProductRequest$Outbound,
   z.ZodTypeDef,
   UpdateProductRequest
-> = z.object({
-  accountID: z.string(),
-  productID: z.string(),
-  productRequest: components.ProductRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    productRequest: "ProductRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    productID: z.string(),
+    productRequest: components.ProductRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      productRequest: "ProductRequest",
+    });
+  })
+);
 
 export function updateProductRequestToJSON(
   updateProductRequest: UpdateProductRequest,
@@ -79,15 +83,17 @@ export const UpdateProductResponse$inboundSchema: z.ZodType<
   UpdateProductResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Product$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Product$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpdateProductResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -99,15 +105,17 @@ export const UpdateProductResponse$outboundSchema: z.ZodType<
   UpdateProductResponse$Outbound,
   z.ZodTypeDef,
   UpdateProductResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Product$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Product$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function updateProductResponseToJSON(
   updateProductResponse: UpdateProductResponse,

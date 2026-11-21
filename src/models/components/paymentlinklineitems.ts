@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,9 +31,11 @@ export const PaymentLinkLineItems$inboundSchema: z.ZodType<
   PaymentLinkLineItems,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(PaymentLinkLineItem$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(PaymentLinkLineItem$inboundSchema),
+  })
+);
 /** @internal */
 export type PaymentLinkLineItems$Outbound = {
   items: Array<PaymentLinkLineItem$Outbound>;
@@ -44,9 +46,11 @@ export const PaymentLinkLineItems$outboundSchema: z.ZodType<
   PaymentLinkLineItems$Outbound,
   z.ZodTypeDef,
   PaymentLinkLineItems
-> = z.object({
-  items: z.array(PaymentLinkLineItem$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(PaymentLinkLineItem$outboundSchema),
+  })
+);
 
 export function paymentLinkLineItemsToJSON(
   paymentLinkLineItems: PaymentLinkLineItems,

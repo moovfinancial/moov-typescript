@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,10 +27,12 @@ export const AccountTerminalApplication$inboundSchema: z.ZodType<
   AccountTerminalApplication,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  terminalApplicationID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    terminalApplicationID: types.string(),
+  })
+);
 /** @internal */
 export type AccountTerminalApplication$Outbound = {
   accountID: string;
@@ -42,10 +44,12 @@ export const AccountTerminalApplication$outboundSchema: z.ZodType<
   AccountTerminalApplication$Outbound,
   z.ZodTypeDef,
   AccountTerminalApplication
-> = z.object({
-  accountID: z.string(),
-  terminalApplicationID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    terminalApplicationID: z.string(),
+  })
+);
 
 export function accountTerminalApplicationToJSON(
   accountTerminalApplication: AccountTerminalApplication,

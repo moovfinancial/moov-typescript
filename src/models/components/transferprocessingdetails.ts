@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -68,21 +68,25 @@ export const TransferProcessingDetails$inboundSchema: z.ZodType<
   TransferProcessingDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cardPayment: types.optional(
-    CardPaymentTransferProcessingDetails$inboundSchema,
-  ),
-  pushToCard: types.optional(PushToCardTransferProcessingDetails$inboundSchema),
-  pullFromCard: types.optional(
-    PullFromCardTransferProcessingDetails$inboundSchema,
-  ),
-  achDebit: types.optional(ACHDebitTransferProcessingDetails$inboundSchema),
-  achCredit: types.optional(ACHCreditTransferProcessingDetails$inboundSchema),
-  instantBankCredit: types.optional(
-    InstantBankCreditTransferProcessingDetails$inboundSchema,
-  ),
-  wire: types.optional(WireTransferProcessingDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: types.optional(
+      CardPaymentTransferProcessingDetails$inboundSchema,
+    ),
+    pushToCard: types.optional(
+      PushToCardTransferProcessingDetails$inboundSchema,
+    ),
+    pullFromCard: types.optional(
+      PullFromCardTransferProcessingDetails$inboundSchema,
+    ),
+    achDebit: types.optional(ACHDebitTransferProcessingDetails$inboundSchema),
+    achCredit: types.optional(ACHCreditTransferProcessingDetails$inboundSchema),
+    instantBankCredit: types.optional(
+      InstantBankCreditTransferProcessingDetails$inboundSchema,
+    ),
+    wire: types.optional(WireTransferProcessingDetails$inboundSchema),
+  })
+);
 /** @internal */
 export type TransferProcessingDetails$Outbound = {
   cardPayment?: CardPaymentTransferProcessingDetails$Outbound | undefined;
@@ -101,16 +105,19 @@ export const TransferProcessingDetails$outboundSchema: z.ZodType<
   TransferProcessingDetails$Outbound,
   z.ZodTypeDef,
   TransferProcessingDetails
-> = z.object({
-  cardPayment: CardPaymentTransferProcessingDetails$outboundSchema.optional(),
-  pushToCard: PushToCardTransferProcessingDetails$outboundSchema.optional(),
-  pullFromCard: PullFromCardTransferProcessingDetails$outboundSchema.optional(),
-  achDebit: ACHDebitTransferProcessingDetails$outboundSchema.optional(),
-  achCredit: ACHCreditTransferProcessingDetails$outboundSchema.optional(),
-  instantBankCredit: InstantBankCreditTransferProcessingDetails$outboundSchema
-    .optional(),
-  wire: WireTransferProcessingDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cardPayment: CardPaymentTransferProcessingDetails$outboundSchema.optional(),
+    pushToCard: PushToCardTransferProcessingDetails$outboundSchema.optional(),
+    pullFromCard: PullFromCardTransferProcessingDetails$outboundSchema
+      .optional(),
+    achDebit: ACHDebitTransferProcessingDetails$outboundSchema.optional(),
+    achCredit: ACHCreditTransferProcessingDetails$outboundSchema.optional(),
+    instantBankCredit: InstantBankCreditTransferProcessingDetails$outboundSchema
+      .optional(),
+    wire: WireTransferProcessingDetails$outboundSchema.optional(),
+  })
+);
 
 export function transferProcessingDetailsToJSON(
   transferProcessingDetails: TransferProcessingDetails,

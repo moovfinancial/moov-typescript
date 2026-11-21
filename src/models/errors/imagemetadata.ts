@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -90,25 +91,27 @@ export const ImageMetadata$inboundSchema: z.ZodType<
   ImageMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  imageID: types.string(),
-  publicID: types.string(),
-  altText: types.optional(types.string()),
-  link: types.string(),
-  createdOn: types.date(),
-  updatedOn: types.date(),
-  disabledOn: types.optional(types.date()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ImageMetadata(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: types.string(),
+    publicID: types.string(),
+    altText: types.optional(types.string()),
+    link: types.string(),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+    disabledOn: types.optional(types.date()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ImageMetadata(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type ImageMetadata$Outbound = {
@@ -126,14 +129,16 @@ export const ImageMetadata$outboundSchema: z.ZodType<
   ImageMetadata$Outbound,
   z.ZodTypeDef,
   ImageMetadata
-> = z.instanceof(ImageMetadata)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    imageID: z.string(),
-    publicID: z.string(),
-    altText: z.string().optional(),
-    link: z.string(),
-    createdOn: z.date().transform(v => v.toISOString()),
-    updatedOn: z.date().transform(v => v.toISOString()),
-    disabledOn: z.date().transform(v => v.toISOString()).optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(ImageMetadata)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      imageID: z.string(),
+      publicID: z.string(),
+      altText: z.string().optional(),
+      link: z.string(),
+      createdOn: z.date().transform(v => v.toISOString()),
+      updatedOn: z.date().transform(v => v.toISOString()),
+      disabledOn: z.date().transform(v => v.toISOString()).optional(),
+    }))
+);

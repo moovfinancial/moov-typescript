@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -94,30 +94,32 @@ export const AuthMethod$inboundSchema: z.ZodType<
   AuthMethod,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AuthMethod);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(AuthMethod));
 /** @internal */
 export const AuthMethod$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   AuthMethod
-> = openEnums.outboundSchema(AuthMethod);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(AuthMethod));
 
 /** @internal */
 export const GooglePayResponse$inboundSchema: z.ZodType<
   GooglePayResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tokenID: types.string(),
-  brand: CardBrand$inboundSchema,
-  cardType: CardType$inboundSchema,
-  cardDisplayName: types.string(),
-  fingerprint: types.string(),
-  expiration: CardExpiration$inboundSchema,
-  dynamicLastFour: types.string(),
-  issuerCountry: types.optional(types.string()),
-  authMethod: types.optional(AuthMethod$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tokenID: types.string(),
+    brand: CardBrand$inboundSchema,
+    cardType: CardType$inboundSchema,
+    cardDisplayName: types.string(),
+    fingerprint: types.string(),
+    expiration: CardExpiration$inboundSchema,
+    dynamicLastFour: types.string(),
+    issuerCountry: types.optional(types.string()),
+    authMethod: types.optional(AuthMethod$inboundSchema),
+  })
+);
 /** @internal */
 export type GooglePayResponse$Outbound = {
   tokenID: string;
@@ -136,17 +138,19 @@ export const GooglePayResponse$outboundSchema: z.ZodType<
   GooglePayResponse$Outbound,
   z.ZodTypeDef,
   GooglePayResponse
-> = z.object({
-  tokenID: z.string(),
-  brand: CardBrand$outboundSchema,
-  cardType: CardType$outboundSchema,
-  cardDisplayName: z.string(),
-  fingerprint: z.string(),
-  expiration: CardExpiration$outboundSchema,
-  dynamicLastFour: z.string(),
-  issuerCountry: z.string().optional(),
-  authMethod: AuthMethod$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tokenID: z.string(),
+    brand: CardBrand$outboundSchema,
+    cardType: CardType$outboundSchema,
+    cardDisplayName: z.string(),
+    fingerprint: z.string(),
+    expiration: CardExpiration$outboundSchema,
+    dynamicLastFour: z.string(),
+    issuerCountry: z.string().optional(),
+    authMethod: AuthMethod$outboundSchema.optional(),
+  })
+);
 
 export function googlePayResponseToJSON(
   googlePayResponse: GooglePayResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
@@ -77,9 +77,10 @@ export type CreateCardPaymentOptions = {
 
 /** @internal */
 export const CreateCardPaymentOptionsCaptureMethod$inboundSchema:
-  z.ZodNativeEnum<typeof CreateCardPaymentOptionsCaptureMethod> = z.nativeEnum(
-    CreateCardPaymentOptionsCaptureMethod,
-  );
+  z.ZodNativeEnum<typeof CreateCardPaymentOptionsCaptureMethod> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateCardPaymentOptionsCaptureMethod)
+    );
 /** @internal */
 export const CreateCardPaymentOptionsCaptureMethod$outboundSchema:
   z.ZodNativeEnum<typeof CreateCardPaymentOptionsCaptureMethod> =
@@ -90,15 +91,17 @@ export const CreateCardPaymentOptions$inboundSchema: z.ZodType<
   CreateCardPaymentOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dynamicDescriptor: types.optional(types.string()),
-  transactionSource: types.optional(TransactionSource$inboundSchema),
-  captureMethod: CreateCardPaymentOptionsCaptureMethod$inboundSchema.default(
-    "automatic",
-  ),
-  isExtendedAuthorizationRequested: types.optional(types.boolean()),
-  isEstimatedAuthorization: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: types.optional(types.string()),
+    transactionSource: types.optional(TransactionSource$inboundSchema),
+    captureMethod: CreateCardPaymentOptionsCaptureMethod$inboundSchema.default(
+      "automatic",
+    ),
+    isExtendedAuthorizationRequested: types.optional(types.boolean()),
+    isEstimatedAuthorization: types.optional(types.boolean()),
+  })
+);
 /** @internal */
 export type CreateCardPaymentOptions$Outbound = {
   dynamicDescriptor?: string | undefined;
@@ -113,15 +116,17 @@ export const CreateCardPaymentOptions$outboundSchema: z.ZodType<
   CreateCardPaymentOptions$Outbound,
   z.ZodTypeDef,
   CreateCardPaymentOptions
-> = z.object({
-  dynamicDescriptor: z.string().optional(),
-  transactionSource: TransactionSource$outboundSchema.optional(),
-  captureMethod: CreateCardPaymentOptionsCaptureMethod$outboundSchema.default(
-    "automatic",
-  ),
-  isExtendedAuthorizationRequested: z.boolean().optional(),
-  isEstimatedAuthorization: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: z.string().optional(),
+    transactionSource: TransactionSource$outboundSchema.optional(),
+    captureMethod: CreateCardPaymentOptionsCaptureMethod$outboundSchema.default(
+      "automatic",
+    ),
+    isExtendedAuthorizationRequested: z.boolean().optional(),
+    isEstimatedAuthorization: z.boolean().optional(),
+  })
+);
 
 export function createCardPaymentOptionsToJSON(
   createCardPaymentOptions: CreateCardPaymentOptions,

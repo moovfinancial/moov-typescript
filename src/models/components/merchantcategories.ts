@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,9 +25,11 @@ export const MerchantCategories$inboundSchema: z.ZodType<
   MerchantCategories,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  merchantCategories: z.array(MerchantCategory$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    merchantCategories: z.array(MerchantCategory$inboundSchema),
+  })
+);
 /** @internal */
 export type MerchantCategories$Outbound = {
   merchantCategories: Array<MerchantCategory$Outbound>;
@@ -38,9 +40,11 @@ export const MerchantCategories$outboundSchema: z.ZodType<
   MerchantCategories$Outbound,
   z.ZodTypeDef,
   MerchantCategories
-> = z.object({
-  merchantCategories: z.array(MerchantCategory$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    merchantCategories: z.array(MerchantCategory$outboundSchema),
+  })
+);
 
 export function merchantCategoriesToJSON(
   merchantCategories: MerchantCategories,

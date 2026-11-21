@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -31,10 +31,12 @@ export const MonthlyPlatformFee$inboundSchema: z.ZodType<
   MonthlyPlatformFee,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: types.string(),
-  valueDecimal: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: types.string(),
+    valueDecimal: types.string(),
+  })
+);
 /** @internal */
 export type MonthlyPlatformFee$Outbound = {
   currency: string;
@@ -46,10 +48,12 @@ export const MonthlyPlatformFee$outboundSchema: z.ZodType<
   MonthlyPlatformFee$Outbound,
   z.ZodTypeDef,
   MonthlyPlatformFee
-> = z.object({
-  currency: z.string(),
-  valueDecimal: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    valueDecimal: z.string(),
+  })
+);
 
 export function monthlyPlatformFeeToJSON(
   monthlyPlatformFee: MonthlyPlatformFee,

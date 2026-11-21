@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,13 +35,15 @@ export const Document$inboundSchema: z.ZodType<
   Document,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  documentID: types.string(),
-  type: DocumentType$inboundSchema,
-  contentType: types.string(),
-  parseErrors: types.optional(z.array(types.string())),
-  uploadedAt: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    documentID: types.string(),
+    type: DocumentType$inboundSchema,
+    contentType: types.string(),
+    parseErrors: types.optional(z.array(types.string())),
+    uploadedAt: types.date(),
+  })
+);
 /** @internal */
 export type Document$Outbound = {
   documentID: string;
@@ -56,13 +58,15 @@ export const Document$outboundSchema: z.ZodType<
   Document$Outbound,
   z.ZodTypeDef,
   Document
-> = z.object({
-  documentID: z.string(),
-  type: DocumentType$outboundSchema,
-  contentType: z.string(),
-  parseErrors: z.array(z.string()).optional(),
-  uploadedAt: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    documentID: z.string(),
+    type: DocumentType$outboundSchema,
+    contentType: z.string(),
+    parseErrors: z.array(z.string()).optional(),
+    uploadedAt: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function documentToJSON(document: Document): string {
   return JSON.stringify(Document$outboundSchema.parse(document));

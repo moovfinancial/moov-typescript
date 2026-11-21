@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -88,25 +88,29 @@ export const ListTransfersRequest$inboundSchema: z.ZodType<
   ListTransfersRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountIDs: types.optional(z.array(types.string())),
-  status: types.optional(components.TransferStatus$inboundSchema),
-  startDateTime: types.optional(types.date()),
-  endDateTime: types.optional(types.date()),
-  groupID: types.optional(types.string()),
-  scheduleID: types.optional(types.string()),
-  paymentLinkCode: types.optional(types.string()),
-  refunded: types.optional(types.boolean()),
-  disputed: types.optional(types.boolean()),
-  foreignID: types.optional(types.string()),
-  authorizationIDs: types.optional(z.array(types.string())),
-  invoiceIDs: types.optional(z.array(types.string())),
-  transferTypes: types.optional(z.array(components.TransferType$inboundSchema)),
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-  cursor: types.optional(types.string()),
-  accountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountIDs: types.optional(z.array(types.string())),
+    status: types.optional(components.TransferStatus$inboundSchema),
+    startDateTime: types.optional(types.date()),
+    endDateTime: types.optional(types.date()),
+    groupID: types.optional(types.string()),
+    scheduleID: types.optional(types.string()),
+    paymentLinkCode: types.optional(types.string()),
+    refunded: types.optional(types.boolean()),
+    disputed: types.optional(types.boolean()),
+    foreignID: types.optional(types.string()),
+    authorizationIDs: types.optional(z.array(types.string())),
+    invoiceIDs: types.optional(z.array(types.string())),
+    transferTypes: types.optional(
+      z.array(components.TransferType$inboundSchema),
+    ),
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+    cursor: types.optional(types.string()),
+    accountID: types.string(),
+  })
+);
 /** @internal */
 export type ListTransfersRequest$Outbound = {
   accountIDs?: Array<string> | undefined;
@@ -133,25 +137,27 @@ export const ListTransfersRequest$outboundSchema: z.ZodType<
   ListTransfersRequest$Outbound,
   z.ZodTypeDef,
   ListTransfersRequest
-> = z.object({
-  accountIDs: z.array(z.string()).optional(),
-  status: components.TransferStatus$outboundSchema.optional(),
-  startDateTime: z.date().transform(v => v.toISOString()).optional(),
-  endDateTime: z.date().transform(v => v.toISOString()).optional(),
-  groupID: z.string().optional(),
-  scheduleID: z.string().optional(),
-  paymentLinkCode: z.string().optional(),
-  refunded: z.boolean().optional(),
-  disputed: z.boolean().optional(),
-  foreignID: z.string().optional(),
-  authorizationIDs: z.array(z.string()).optional(),
-  invoiceIDs: z.array(z.string()).optional(),
-  transferTypes: z.array(components.TransferType$outboundSchema).optional(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-  cursor: z.string().optional(),
-  accountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountIDs: z.array(z.string()).optional(),
+    status: components.TransferStatus$outboundSchema.optional(),
+    startDateTime: z.date().transform(v => v.toISOString()).optional(),
+    endDateTime: z.date().transform(v => v.toISOString()).optional(),
+    groupID: z.string().optional(),
+    scheduleID: z.string().optional(),
+    paymentLinkCode: z.string().optional(),
+    refunded: z.boolean().optional(),
+    disputed: z.boolean().optional(),
+    foreignID: z.string().optional(),
+    authorizationIDs: z.array(z.string()).optional(),
+    invoiceIDs: z.array(z.string()).optional(),
+    transferTypes: z.array(components.TransferType$outboundSchema).optional(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+    cursor: z.string().optional(),
+    accountID: z.string(),
+  })
+);
 
 export function listTransfersRequestToJSON(
   listTransfersRequest: ListTransfersRequest,
@@ -175,15 +181,17 @@ export const ListTransfersResponse$inboundSchema: z.ZodType<
   ListTransfersResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.Transfer$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.Transfer$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListTransfersResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -195,15 +203,17 @@ export const ListTransfersResponse$outboundSchema: z.ZodType<
   ListTransfersResponse$Outbound,
   z.ZodTypeDef,
   ListTransfersResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.Transfer$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.Transfer$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listTransfersResponseToJSON(
   listTransfersResponse: ListTransfersResponse,

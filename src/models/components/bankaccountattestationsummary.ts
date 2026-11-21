@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,12 +35,14 @@ export const BankAccountAttestationSummary$inboundSchema: z.ZodType<
   BankAccountAttestationSummary,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attestationID: types.string(),
-  description: types.string(),
-  createdOn: types.date(),
-  attestedAt: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attestationID: types.string(),
+    description: types.string(),
+    createdOn: types.date(),
+    attestedAt: types.date(),
+  })
+);
 /** @internal */
 export type BankAccountAttestationSummary$Outbound = {
   attestationID: string;
@@ -54,14 +56,16 @@ export const BankAccountAttestationSummary$outboundSchema: z.ZodType<
   BankAccountAttestationSummary$Outbound,
   z.ZodTypeDef,
   BankAccountAttestationSummary
-> = z.object({
-  attestationID: z.string(),
-  description: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  attestedAt: z.date().transform(v =>
-    v.toISOString().slice(0, "YYYY-MM-DD".length)
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attestationID: z.string(),
+    description: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    attestedAt: z.date().transform(v =>
+      v.toISOString().slice(0, "YYYY-MM-DD".length)
+    ),
+  })
+);
 
 export function bankAccountAttestationSummaryToJSON(
   bankAccountAttestationSummary: BankAccountAttestationSummary,

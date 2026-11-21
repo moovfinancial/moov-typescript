@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -28,10 +28,12 @@ export const ListFeePlansRequest$inboundSchema: z.ZodType<
   ListFeePlansRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  planIDs: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    planIDs: types.optional(z.array(types.string())),
+  })
+);
 /** @internal */
 export type ListFeePlansRequest$Outbound = {
   accountID: string;
@@ -43,10 +45,12 @@ export const ListFeePlansRequest$outboundSchema: z.ZodType<
   ListFeePlansRequest$Outbound,
   z.ZodTypeDef,
   ListFeePlansRequest
-> = z.object({
-  accountID: z.string(),
-  planIDs: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    planIDs: z.array(z.string()).optional(),
+  })
+);
 
 export function listFeePlansRequestToJSON(
   listFeePlansRequest: ListFeePlansRequest,
@@ -70,15 +74,17 @@ export const ListFeePlansResponse$inboundSchema: z.ZodType<
   ListFeePlansResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.FeePlan$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.FeePlan$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListFeePlansResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -90,15 +96,17 @@ export const ListFeePlansResponse$outboundSchema: z.ZodType<
   ListFeePlansResponse$Outbound,
   z.ZodTypeDef,
   ListFeePlansResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.FeePlan$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.FeePlan$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listFeePlansResponseToJSON(
   listFeePlansResponse: ListFeePlansResponse,

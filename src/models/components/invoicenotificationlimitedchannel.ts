@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,10 +26,12 @@ export const InvoiceNotificationLimitedChannel$inboundSchema: z.ZodType<
   InvoiceNotificationLimitedChannel,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channel: NotificationChannel$inboundSchema,
-  availableOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel: NotificationChannel$inboundSchema,
+    availableOn: types.date(),
+  })
+);
 /** @internal */
 export type InvoiceNotificationLimitedChannel$Outbound = {
   channel: string;
@@ -41,10 +43,12 @@ export const InvoiceNotificationLimitedChannel$outboundSchema: z.ZodType<
   InvoiceNotificationLimitedChannel$Outbound,
   z.ZodTypeDef,
   InvoiceNotificationLimitedChannel
-> = z.object({
-  channel: NotificationChannel$outboundSchema,
-  availableOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel: NotificationChannel$outboundSchema,
+    availableOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function invoiceNotificationLimitedChannelToJSON(
   invoiceNotificationLimitedChannel: InvoiceNotificationLimitedChannel,

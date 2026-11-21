@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,10 +18,12 @@ export const WebhookDataRepresentativeDisabled$inboundSchema: z.ZodType<
   WebhookDataRepresentativeDisabled,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  representativeID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    representativeID: types.string(),
+  })
+);
 /** @internal */
 export type WebhookDataRepresentativeDisabled$Outbound = {
   accountID: string;
@@ -33,10 +35,12 @@ export const WebhookDataRepresentativeDisabled$outboundSchema: z.ZodType<
   WebhookDataRepresentativeDisabled$Outbound,
   z.ZodTypeDef,
   WebhookDataRepresentativeDisabled
-> = z.object({
-  accountID: z.string(),
-  representativeID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    representativeID: z.string(),
+  })
+);
 
 export function webhookDataRepresentativeDisabledToJSON(
   webhookDataRepresentativeDisabled: WebhookDataRepresentativeDisabled,

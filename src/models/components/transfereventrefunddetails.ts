@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -36,12 +36,14 @@ export const TransferEventRefundDetails$inboundSchema: z.ZodType<
   TransferEventRefundDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  refundID: types.string(),
-  captureID: types.optional(types.string()),
-  status: RefundStatus$inboundSchema,
-  failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refundID: types.string(),
+    captureID: types.optional(types.string()),
+    status: RefundStatus$inboundSchema,
+    failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
+  })
+);
 /** @internal */
 export type TransferEventRefundDetails$Outbound = {
   refundID: string;
@@ -55,12 +57,14 @@ export const TransferEventRefundDetails$outboundSchema: z.ZodType<
   TransferEventRefundDetails$Outbound,
   z.ZodTypeDef,
   TransferEventRefundDetails
-> = z.object({
-  refundID: z.string(),
-  captureID: z.string().optional(),
-  status: RefundStatus$outboundSchema,
-  failureCode: CardTransactionFailureCode$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refundID: z.string(),
+    captureID: z.string().optional(),
+    status: RefundStatus$outboundSchema,
+    failureCode: CardTransactionFailureCode$outboundSchema.optional(),
+  })
+);
 
 export function transferEventRefundDetailsToJSON(
   transferEventRefundDetails: TransferEventRefundDetails,

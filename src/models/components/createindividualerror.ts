@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -61,10 +61,12 @@ export const CreateIndividualErrorSsn$inboundSchema: z.ZodType<
   CreateIndividualErrorSsn,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  full: types.optional(types.string()),
-  lastFour: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: types.optional(types.string()),
+    lastFour: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type CreateIndividualErrorSsn$Outbound = {
   full?: string | undefined;
@@ -76,10 +78,12 @@ export const CreateIndividualErrorSsn$outboundSchema: z.ZodType<
   CreateIndividualErrorSsn$Outbound,
   z.ZodTypeDef,
   CreateIndividualErrorSsn
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 
 export function createIndividualErrorSsnToJSON(
   createIndividualErrorSsn: CreateIndividualErrorSsn,
@@ -103,10 +107,12 @@ export const CreateIndividualErrorItin$inboundSchema: z.ZodType<
   CreateIndividualErrorItin,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  full: types.optional(types.string()),
-  lastFour: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: types.optional(types.string()),
+    lastFour: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type CreateIndividualErrorItin$Outbound = {
   full?: string | undefined;
@@ -118,10 +124,12 @@ export const CreateIndividualErrorItin$outboundSchema: z.ZodType<
   CreateIndividualErrorItin$Outbound,
   z.ZodTypeDef,
   CreateIndividualErrorItin
-> = z.object({
-  full: z.string().optional(),
-  lastFour: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full: z.string().optional(),
+    lastFour: z.string().optional(),
+  })
+);
 
 export function createIndividualErrorItinToJSON(
   createIndividualErrorItin: CreateIndividualErrorItin,
@@ -145,10 +153,12 @@ export const CreateIndividualErrorGovernmentID$inboundSchema: z.ZodType<
   CreateIndividualErrorGovernmentID,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ssn: types.optional(z.lazy(() => CreateIndividualErrorSsn$inboundSchema)),
-  itin: types.optional(z.lazy(() => CreateIndividualErrorItin$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ssn: types.optional(z.lazy(() => CreateIndividualErrorSsn$inboundSchema)),
+    itin: types.optional(z.lazy(() => CreateIndividualErrorItin$inboundSchema)),
+  })
+);
 /** @internal */
 export type CreateIndividualErrorGovernmentID$Outbound = {
   ssn?: CreateIndividualErrorSsn$Outbound | undefined;
@@ -160,10 +170,12 @@ export const CreateIndividualErrorGovernmentID$outboundSchema: z.ZodType<
   CreateIndividualErrorGovernmentID$Outbound,
   z.ZodTypeDef,
   CreateIndividualErrorGovernmentID
-> = z.object({
-  ssn: z.lazy(() => CreateIndividualErrorSsn$outboundSchema).optional(),
-  itin: z.lazy(() => CreateIndividualErrorItin$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ssn: z.lazy(() => CreateIndividualErrorSsn$outboundSchema).optional(),
+    itin: z.lazy(() => CreateIndividualErrorItin$outboundSchema).optional(),
+  })
+);
 
 export function createIndividualErrorGovernmentIDToJSON(
   createIndividualErrorGovernmentID: CreateIndividualErrorGovernmentID,
@@ -189,16 +201,18 @@ export const CreateIndividualError$inboundSchema: z.ZodType<
   CreateIndividualError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.optional(IndividualNameError$inboundSchema),
-  phone: types.optional(PhoneNumberError$inboundSchema),
-  email: types.optional(types.string()),
-  address: types.optional(AddressError$inboundSchema),
-  birthDate: types.optional(BirthDateError$inboundSchema),
-  governmentID: types.optional(
-    z.lazy(() => CreateIndividualErrorGovernmentID$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.optional(IndividualNameError$inboundSchema),
+    phone: types.optional(PhoneNumberError$inboundSchema),
+    email: types.optional(types.string()),
+    address: types.optional(AddressError$inboundSchema),
+    birthDate: types.optional(BirthDateError$inboundSchema),
+    governmentID: types.optional(
+      z.lazy(() => CreateIndividualErrorGovernmentID$inboundSchema),
+    ),
+  })
+);
 /** @internal */
 export type CreateIndividualError$Outbound = {
   name?: IndividualNameError$Outbound | undefined;
@@ -214,15 +228,17 @@ export const CreateIndividualError$outboundSchema: z.ZodType<
   CreateIndividualError$Outbound,
   z.ZodTypeDef,
   CreateIndividualError
-> = z.object({
-  name: IndividualNameError$outboundSchema.optional(),
-  phone: PhoneNumberError$outboundSchema.optional(),
-  email: z.string().optional(),
-  address: AddressError$outboundSchema.optional(),
-  birthDate: BirthDateError$outboundSchema.optional(),
-  governmentID: z.lazy(() => CreateIndividualErrorGovernmentID$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: IndividualNameError$outboundSchema.optional(),
+    phone: PhoneNumberError$outboundSchema.optional(),
+    email: z.string().optional(),
+    address: AddressError$outboundSchema.optional(),
+    birthDate: BirthDateError$outboundSchema.optional(),
+    governmentID: z.lazy(() => CreateIndividualErrorGovernmentID$outboundSchema)
+      .optional(),
+  })
+);
 
 export function createIndividualErrorToJSON(
   createIndividualError: CreateIndividualError,

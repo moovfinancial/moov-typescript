@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -57,15 +57,17 @@ export const TerminalApplication$inboundSchema: z.ZodType<
   TerminalApplication,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  terminalApplicationID: types.string(),
-  status: TerminalApplicationStatus$inboundSchema,
-  platform: TerminalApplicationPlatform$inboundSchema,
-  appBundleID: types.optional(types.string()),
-  packageName: types.optional(types.string()),
-  sha256Digest: types.optional(types.string()),
-  versionCode: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: types.string(),
+    status: TerminalApplicationStatus$inboundSchema,
+    platform: TerminalApplicationPlatform$inboundSchema,
+    appBundleID: types.optional(types.string()),
+    packageName: types.optional(types.string()),
+    sha256Digest: types.optional(types.string()),
+    versionCode: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type TerminalApplication$Outbound = {
   terminalApplicationID: string;
@@ -82,15 +84,17 @@ export const TerminalApplication$outboundSchema: z.ZodType<
   TerminalApplication$Outbound,
   z.ZodTypeDef,
   TerminalApplication
-> = z.object({
-  terminalApplicationID: z.string(),
-  status: TerminalApplicationStatus$outboundSchema,
-  platform: TerminalApplicationPlatform$outboundSchema,
-  appBundleID: z.string().optional(),
-  packageName: z.string().optional(),
-  sha256Digest: z.string().optional(),
-  versionCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terminalApplicationID: z.string(),
+    status: TerminalApplicationStatus$outboundSchema,
+    platform: TerminalApplicationPlatform$outboundSchema,
+    appBundleID: z.string().optional(),
+    packageName: z.string().optional(),
+    sha256Digest: z.string().optional(),
+    versionCode: z.string().optional(),
+  })
+);
 
 export function terminalApplicationToJSON(
   terminalApplication: TerminalApplication,

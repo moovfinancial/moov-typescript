@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -57,20 +58,22 @@ export const BankAccountAttestationValidationError$inboundSchema: z.ZodType<
   BankAccountAttestationValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attestedAt: types.optional(types.string()),
-  description: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new BankAccountAttestationValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attestedAt: types.optional(types.string()),
+    description: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new BankAccountAttestationValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type BankAccountAttestationValidationError$Outbound = {
@@ -83,9 +86,11 @@ export const BankAccountAttestationValidationError$outboundSchema: z.ZodType<
   BankAccountAttestationValidationError$Outbound,
   z.ZodTypeDef,
   BankAccountAttestationValidationError
-> = z.instanceof(BankAccountAttestationValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    attestedAt: z.string().optional(),
-    description: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(BankAccountAttestationValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      attestedAt: z.string().optional(),
+      description: z.string().optional(),
+    }))
+);

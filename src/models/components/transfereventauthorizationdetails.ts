@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,11 +32,13 @@ export const TransferEventAuthorizationDetails$inboundSchema: z.ZodType<
   TransferEventAuthorizationDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authorizationID: types.string(),
-  status: TransferEventAuthorizationStatus$inboundSchema,
-  failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: types.string(),
+    status: TransferEventAuthorizationStatus$inboundSchema,
+    failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
+  })
+);
 /** @internal */
 export type TransferEventAuthorizationDetails$Outbound = {
   authorizationID: string;
@@ -49,11 +51,13 @@ export const TransferEventAuthorizationDetails$outboundSchema: z.ZodType<
   TransferEventAuthorizationDetails$Outbound,
   z.ZodTypeDef,
   TransferEventAuthorizationDetails
-> = z.object({
-  authorizationID: z.string(),
-  status: TransferEventAuthorizationStatus$outboundSchema,
-  failureCode: CardTransactionFailureCode$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizationID: z.string(),
+    status: TransferEventAuthorizationStatus$outboundSchema,
+    failureCode: CardTransactionFailureCode$outboundSchema.optional(),
+  })
+);
 
 export function transferEventAuthorizationDetailsToJSON(
   transferEventAuthorizationDetails: TransferEventAuthorizationDetails,

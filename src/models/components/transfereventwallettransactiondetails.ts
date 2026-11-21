@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -38,13 +38,15 @@ export const TransferEventWalletTransactionDetails$inboundSchema: z.ZodType<
   TransferEventWalletTransactionDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  walletID: types.string(),
-  transactionID: types.string(),
-  transactionType: WalletTransactionType$inboundSchema,
-  captureID: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    walletID: types.string(),
+    transactionID: types.string(),
+    transactionType: WalletTransactionType$inboundSchema,
+    captureID: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type TransferEventWalletTransactionDetails$Outbound = {
   accountID: string;
@@ -59,13 +61,15 @@ export const TransferEventWalletTransactionDetails$outboundSchema: z.ZodType<
   TransferEventWalletTransactionDetails$Outbound,
   z.ZodTypeDef,
   TransferEventWalletTransactionDetails
-> = z.object({
-  accountID: z.string(),
-  walletID: z.string(),
-  transactionID: z.string(),
-  transactionType: WalletTransactionType$outboundSchema,
-  captureID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    walletID: z.string(),
+    transactionID: z.string(),
+    transactionType: WalletTransactionType$outboundSchema,
+    captureID: z.string().optional(),
+  })
+);
 
 export function transferEventWalletTransactionDetailsToJSON(
   transferEventWalletTransactionDetails: TransferEventWalletTransactionDetails,

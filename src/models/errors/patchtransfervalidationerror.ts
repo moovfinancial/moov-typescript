@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import { MoovError } from "./mooverror.js";
 
@@ -39,20 +40,22 @@ export const PatchTransferValidationError$inboundSchema: z.ZodType<
   PatchTransferValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  metadata: types.optional(types.string()),
-  foreignID: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new PatchTransferValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    metadata: types.optional(types.string()),
+    foreignID: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new PatchTransferValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type PatchTransferValidationError$Outbound = {
@@ -65,9 +68,11 @@ export const PatchTransferValidationError$outboundSchema: z.ZodType<
   PatchTransferValidationError$Outbound,
   z.ZodTypeDef,
   PatchTransferValidationError
-> = z.instanceof(PatchTransferValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    metadata: z.string().optional(),
-    foreignID: z.string().optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(PatchTransferValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      metadata: z.string().optional(),
+      foreignID: z.string().optional(),
+    }))
+);

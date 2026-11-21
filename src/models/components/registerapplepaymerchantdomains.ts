@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const RegisterApplePayMerchantDomains$inboundSchema: z.ZodType<
   RegisterApplePayMerchantDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  displayName: types.optional(types.string()),
-  domains: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    displayName: types.optional(types.string()),
+    domains: types.optional(z.array(types.string())),
+  })
+);
 /** @internal */
 export type RegisterApplePayMerchantDomains$Outbound = {
   displayName?: string | undefined;
@@ -39,10 +41,12 @@ export const RegisterApplePayMerchantDomains$outboundSchema: z.ZodType<
   RegisterApplePayMerchantDomains$Outbound,
   z.ZodTypeDef,
   RegisterApplePayMerchantDomains
-> = z.object({
-  displayName: z.string().optional(),
-  domains: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    displayName: z.string().optional(),
+    domains: z.array(z.string()).optional(),
+  })
+);
 
 export function registerApplePayMerchantDomainsToJSON(
   registerApplePayMerchantDomains: RegisterApplePayMerchantDomains,

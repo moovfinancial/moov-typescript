@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -46,11 +46,13 @@ export type Profile = {
 
 /** @internal */
 export const Profile$inboundSchema: z.ZodType<Profile, z.ZodTypeDef, unknown> =
-  z.object({
-    individual: types.optional(IndividualProfile$inboundSchema),
-    business: types.optional(BusinessProfile$inboundSchema),
-    guest: types.optional(GuestProfile$inboundSchema),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      individual: types.optional(IndividualProfile$inboundSchema),
+      business: types.optional(BusinessProfile$inboundSchema),
+      guest: types.optional(GuestProfile$inboundSchema),
+    })
+  );
 /** @internal */
 export type Profile$Outbound = {
   individual?: IndividualProfile$Outbound | undefined;
@@ -63,11 +65,13 @@ export const Profile$outboundSchema: z.ZodType<
   Profile$Outbound,
   z.ZodTypeDef,
   Profile
-> = z.object({
-  individual: IndividualProfile$outboundSchema.optional(),
-  business: BusinessProfile$outboundSchema.optional(),
-  guest: GuestProfile$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    individual: IndividualProfile$outboundSchema.optional(),
+    business: BusinessProfile$outboundSchema.optional(),
+    guest: GuestProfile$outboundSchema.optional(),
+  })
+);
 
 export function profileToJSON(profile: Profile): string {
   return JSON.stringify(Profile$outboundSchema.parse(profile));

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -37,19 +38,21 @@ export const BrandValidationError$inboundSchema: z.ZodType<
   BrandValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  colors: types.optional(components.ColorsValidationError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new BrandValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    colors: types.optional(components.ColorsValidationError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new BrandValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type BrandValidationError$Outbound = {
@@ -61,8 +64,10 @@ export const BrandValidationError$outboundSchema: z.ZodType<
   BrandValidationError$Outbound,
   z.ZodTypeDef,
   BrandValidationError
-> = z.instanceof(BrandValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    colors: components.ColorsValidationError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(BrandValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      colors: components.ColorsValidationError$outboundSchema.optional(),
+    }))
+);

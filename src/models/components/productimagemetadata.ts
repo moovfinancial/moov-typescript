@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -32,12 +32,14 @@ export const ProductImageMetadata$inboundSchema: z.ZodType<
   ProductImageMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  imageID: types.string(),
-  altText: types.optional(types.string()),
-  link: types.string(),
-  publicID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: types.string(),
+    altText: types.optional(types.string()),
+    link: types.string(),
+    publicID: types.string(),
+  })
+);
 /** @internal */
 export type ProductImageMetadata$Outbound = {
   imageID: string;
@@ -51,12 +53,14 @@ export const ProductImageMetadata$outboundSchema: z.ZodType<
   ProductImageMetadata$Outbound,
   z.ZodTypeDef,
   ProductImageMetadata
-> = z.object({
-  imageID: z.string(),
-  altText: z.string().optional(),
-  link: z.string(),
-  publicID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageID: z.string(),
+    altText: z.string().optional(),
+    link: z.string(),
+    publicID: z.string(),
+  })
+);
 
 export function productImageMetadataToJSON(
   productImageMetadata: ProductImageMetadata,

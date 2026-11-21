@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
 import { MoovError } from "./mooverror.js";
@@ -70,32 +71,36 @@ export const CaptureValidationError$inboundSchema: z.ZodType<
   CaptureValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: types.optional(components.AmountDecimalValidationError$inboundSchema),
-  isFinal: types.optional(types.string()),
-  description: types.optional(types.string()),
-  facilitatorFeeAmount: types.optional(
-    components.AmountDecimalValidationError$inboundSchema,
-  ),
-  metadata: types.optional(types.string()),
-  foreignID: types.optional(types.string()),
-  lineItems: types.optional(
-    components.CreateTransferLineItemsValidationError$inboundSchema,
-  ),
-  amountDetails: types.optional(
-    components.CreateTransferAmountDetailsValidationError$inboundSchema,
-  ),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CaptureValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(
+      components.AmountDecimalValidationError$inboundSchema,
+    ),
+    isFinal: types.optional(types.string()),
+    description: types.optional(types.string()),
+    facilitatorFeeAmount: types.optional(
+      components.AmountDecimalValidationError$inboundSchema,
+    ),
+    metadata: types.optional(types.string()),
+    foreignID: types.optional(types.string()),
+    lineItems: types.optional(
+      components.CreateTransferLineItemsValidationError$inboundSchema,
+    ),
+    amountDetails: types.optional(
+      components.CreateTransferAmountDetailsValidationError$inboundSchema,
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CaptureValidationError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CaptureValidationError$Outbound = {
@@ -120,18 +125,20 @@ export const CaptureValidationError$outboundSchema: z.ZodType<
   CaptureValidationError$Outbound,
   z.ZodTypeDef,
   CaptureValidationError
-> = z.instanceof(CaptureValidationError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    amount: components.AmountDecimalValidationError$outboundSchema.optional(),
-    isFinal: z.string().optional(),
-    description: z.string().optional(),
-    facilitatorFeeAmount: components.AmountDecimalValidationError$outboundSchema
-      .optional(),
-    metadata: z.string().optional(),
-    foreignID: z.string().optional(),
-    lineItems: components.CreateTransferLineItemsValidationError$outboundSchema
-      .optional(),
-    amountDetails: components
-      .CreateTransferAmountDetailsValidationError$outboundSchema.optional(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CaptureValidationError)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      amount: components.AmountDecimalValidationError$outboundSchema.optional(),
+      isFinal: z.string().optional(),
+      description: z.string().optional(),
+      facilitatorFeeAmount: components
+        .AmountDecimalValidationError$outboundSchema.optional(),
+      metadata: z.string().optional(),
+      foreignID: z.string().optional(),
+      lineItems: components
+        .CreateTransferLineItemsValidationError$outboundSchema.optional(),
+      amountDetails: components
+        .CreateTransferAmountDetailsValidationError$outboundSchema.optional(),
+    }))
+);

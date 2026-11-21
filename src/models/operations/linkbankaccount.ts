@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -34,16 +34,18 @@ export const LinkBankAccountRequest$inboundSchema: z.ZodType<
   LinkBankAccountRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "x-wait-for": types.optional(components.BankAccountWaitFor$inboundSchema),
-  accountID: types.string(),
-  LinkBankAccount: components.LinkBankAccount$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "x-wait-for": "xWaitFor",
-    "LinkBankAccount": "linkBankAccount",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "x-wait-for": types.optional(components.BankAccountWaitFor$inboundSchema),
+    accountID: types.string(),
+    LinkBankAccount: components.LinkBankAccount$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "x-wait-for": "xWaitFor",
+      "LinkBankAccount": "linkBankAccount",
+    });
+  })
+);
 /** @internal */
 export type LinkBankAccountRequest$Outbound = {
   "x-wait-for"?: string | undefined;
@@ -56,16 +58,18 @@ export const LinkBankAccountRequest$outboundSchema: z.ZodType<
   LinkBankAccountRequest$Outbound,
   z.ZodTypeDef,
   LinkBankAccountRequest
-> = z.object({
-  xWaitFor: components.BankAccountWaitFor$outboundSchema.optional(),
-  accountID: z.string(),
-  linkBankAccount: components.LinkBankAccount$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    xWaitFor: "x-wait-for",
-    linkBankAccount: "LinkBankAccount",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xWaitFor: components.BankAccountWaitFor$outboundSchema.optional(),
+    accountID: z.string(),
+    linkBankAccount: components.LinkBankAccount$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      xWaitFor: "x-wait-for",
+      linkBankAccount: "LinkBankAccount",
+    });
+  })
+);
 
 export function linkBankAccountRequestToJSON(
   linkBankAccountRequest: LinkBankAccountRequest,
@@ -89,15 +93,17 @@ export const LinkBankAccountResponse$inboundSchema: z.ZodType<
   LinkBankAccountResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.BankAccount$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.BankAccount$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type LinkBankAccountResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -109,15 +115,17 @@ export const LinkBankAccountResponse$outboundSchema: z.ZodType<
   LinkBankAccountResponse$Outbound,
   z.ZodTypeDef,
   LinkBankAccountResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.BankAccount$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.BankAccount$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function linkBankAccountResponseToJSON(
   linkBankAccountResponse: LinkBankAccountResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -31,10 +31,12 @@ export const TransferEventPushToCardDetails$inboundSchema: z.ZodType<
   TransferEventPushToCardDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: PushToCardTransactionStatus$inboundSchema,
-  failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: PushToCardTransactionStatus$inboundSchema,
+    failureCode: types.optional(CardTransactionFailureCode$inboundSchema),
+  })
+);
 /** @internal */
 export type TransferEventPushToCardDetails$Outbound = {
   status: string;
@@ -46,10 +48,12 @@ export const TransferEventPushToCardDetails$outboundSchema: z.ZodType<
   TransferEventPushToCardDetails$Outbound,
   z.ZodTypeDef,
   TransferEventPushToCardDetails
-> = z.object({
-  status: PushToCardTransactionStatus$outboundSchema,
-  failureCode: CardTransactionFailureCode$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: PushToCardTransactionStatus$outboundSchema,
+    failureCode: CardTransactionFailureCode$outboundSchema.optional(),
+  })
+);
 
 export function transferEventPushToCardDetailsToJSON(
   transferEventPushToCardDetails: TransferEventPushToCardDetails,

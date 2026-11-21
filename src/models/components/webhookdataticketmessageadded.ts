@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +19,13 @@ export const WebhookDataTicketMessageAdded$inboundSchema: z.ZodType<
   WebhookDataTicketMessageAdded,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  ticketID: types.string(),
-  foreignID: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    ticketID: types.string(),
+    foreignID: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type WebhookDataTicketMessageAdded$Outbound = {
   accountID: string;
@@ -36,11 +38,13 @@ export const WebhookDataTicketMessageAdded$outboundSchema: z.ZodType<
   WebhookDataTicketMessageAdded$Outbound,
   z.ZodTypeDef,
   WebhookDataTicketMessageAdded
-> = z.object({
-  accountID: z.string(),
-  ticketID: z.string(),
-  foreignID: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    ticketID: z.string(),
+    foreignID: z.string().optional(),
+  })
+);
 
 export function webhookDataTicketMessageAddedToJSON(
   webhookDataTicketMessageAdded: WebhookDataTicketMessageAdded,

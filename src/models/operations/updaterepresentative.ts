@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -32,15 +32,17 @@ export const UpdateRepresentativeRequest$inboundSchema: z.ZodType<
   UpdateRepresentativeRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  representativeID: types.string(),
-  UpdateRepresentative: components.UpdateRepresentative$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateRepresentative": "updateRepresentative",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    representativeID: types.string(),
+    UpdateRepresentative: components.UpdateRepresentative$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "UpdateRepresentative": "updateRepresentative",
+    });
+  })
+);
 /** @internal */
 export type UpdateRepresentativeRequest$Outbound = {
   accountID: string;
@@ -53,15 +55,17 @@ export const UpdateRepresentativeRequest$outboundSchema: z.ZodType<
   UpdateRepresentativeRequest$Outbound,
   z.ZodTypeDef,
   UpdateRepresentativeRequest
-> = z.object({
-  accountID: z.string(),
-  representativeID: z.string(),
-  updateRepresentative: components.UpdateRepresentative$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    updateRepresentative: "UpdateRepresentative",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    representativeID: z.string(),
+    updateRepresentative: components.UpdateRepresentative$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      updateRepresentative: "UpdateRepresentative",
+    });
+  })
+);
 
 export function updateRepresentativeRequestToJSON(
   updateRepresentativeRequest: UpdateRepresentativeRequest,
@@ -87,15 +91,17 @@ export const UpdateRepresentativeResponse$inboundSchema: z.ZodType<
   UpdateRepresentativeResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.Representative$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.Representative$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type UpdateRepresentativeResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -107,15 +113,17 @@ export const UpdateRepresentativeResponse$outboundSchema: z.ZodType<
   UpdateRepresentativeResponse$Outbound,
   z.ZodTypeDef,
   UpdateRepresentativeResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.Representative$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.Representative$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function updateRepresentativeResponseToJSON(
   updateRepresentativeResponse: UpdateRepresentativeResponse,

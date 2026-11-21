@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -26,11 +26,13 @@ export const ListImageMetadataRequest$inboundSchema: z.ZodType<
   ListImageMetadataRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  skip: types.optional(types.number()),
-  count: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    skip: types.optional(types.number()),
+    count: types.optional(types.number()),
+  })
+);
 /** @internal */
 export type ListImageMetadataRequest$Outbound = {
   accountID: string;
@@ -43,11 +45,13 @@ export const ListImageMetadataRequest$outboundSchema: z.ZodType<
   ListImageMetadataRequest$Outbound,
   z.ZodTypeDef,
   ListImageMetadataRequest
-> = z.object({
-  accountID: z.string(),
-  skip: z.number().int().optional(),
-  count: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    skip: z.number().int().optional(),
+    count: z.number().int().optional(),
+  })
+);
 
 export function listImageMetadataRequestToJSON(
   listImageMetadataRequest: ListImageMetadataRequest,
@@ -71,15 +75,17 @@ export const ListImageMetadataResponse$inboundSchema: z.ZodType<
   ListImageMetadataResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.array(components.ImageMetadata$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.array(components.ImageMetadata$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type ListImageMetadataResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -91,15 +97,17 @@ export const ListImageMetadataResponse$outboundSchema: z.ZodType<
   ListImageMetadataResponse$Outbound,
   z.ZodTypeDef,
   ListImageMetadataResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: z.array(components.ImageMetadata$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.array(components.ImageMetadata$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function listImageMetadataResponseToJSON(
   listImageMetadataResponse: ListImageMetadataResponse,

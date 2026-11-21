@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,10 +34,12 @@ export const TransferEventInstantBankCreditDetails$inboundSchema: z.ZodType<
   TransferEventInstantBankCreditDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: InstantBankTransactionStatus$inboundSchema,
-  failureCode: types.optional(InstantBankFailureCode$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: InstantBankTransactionStatus$inboundSchema,
+    failureCode: types.optional(InstantBankFailureCode$inboundSchema),
+  })
+);
 /** @internal */
 export type TransferEventInstantBankCreditDetails$Outbound = {
   status: string;
@@ -49,10 +51,12 @@ export const TransferEventInstantBankCreditDetails$outboundSchema: z.ZodType<
   TransferEventInstantBankCreditDetails$Outbound,
   z.ZodTypeDef,
   TransferEventInstantBankCreditDetails
-> = z.object({
-  status: InstantBankTransactionStatus$outboundSchema,
-  failureCode: InstantBankFailureCode$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: InstantBankTransactionStatus$outboundSchema,
+    failureCode: InstantBankFailureCode$outboundSchema.optional(),
+  })
+);
 
 export function transferEventInstantBankCreditDetailsToJSON(
   transferEventInstantBankCreditDetails: TransferEventInstantBankCreditDetails,

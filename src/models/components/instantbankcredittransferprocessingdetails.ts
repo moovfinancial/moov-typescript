@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -43,13 +43,15 @@ export type InstantBankCreditTransferProcessingDetails = {
 /** @internal */
 export const InstantBankCreditTransferProcessingDetails$inboundSchema:
   z.ZodType<InstantBankCreditTransferProcessingDetails, z.ZodTypeDef, unknown> =
-    z.object({
-      status: InstantBankTransactionStatus$inboundSchema,
-      network: InstantBankNetwork$inboundSchema,
-      networkResponseCode: types.optional(types.string()),
-      failureCode: types.optional(InstantBankFailureCode$inboundSchema),
-      endToEndID: types.optional(types.string()),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        status: InstantBankTransactionStatus$inboundSchema,
+        network: InstantBankNetwork$inboundSchema,
+        networkResponseCode: types.optional(types.string()),
+        failureCode: types.optional(InstantBankFailureCode$inboundSchema),
+        endToEndID: types.optional(types.string()),
+      })
+    );
 /** @internal */
 export type InstantBankCreditTransferProcessingDetails$Outbound = {
   status: string;
@@ -65,13 +67,15 @@ export const InstantBankCreditTransferProcessingDetails$outboundSchema:
     InstantBankCreditTransferProcessingDetails$Outbound,
     z.ZodTypeDef,
     InstantBankCreditTransferProcessingDetails
-  > = z.object({
-    status: InstantBankTransactionStatus$outboundSchema,
-    network: InstantBankNetwork$outboundSchema,
-    networkResponseCode: z.string().optional(),
-    failureCode: InstantBankFailureCode$outboundSchema.optional(),
-    endToEndID: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: InstantBankTransactionStatus$outboundSchema,
+      network: InstantBankNetwork$outboundSchema,
+      networkResponseCode: z.string().optional(),
+      failureCode: InstantBankFailureCode$outboundSchema.optional(),
+      endToEndID: z.string().optional(),
+    })
+  );
 
 export function instantBankCreditTransferProcessingDetailsToJSON(
   instantBankCreditTransferProcessingDetails:

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -50,13 +50,15 @@ export const TransferEvent$inboundSchema: z.ZodType<
   TransferEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eventID: types.string(),
-  eventType: TransferEventType$inboundSchema,
-  amount: AmountDecimal$inboundSchema,
-  details: TransferEventDetails$inboundSchema,
-  occurredOn: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventID: types.string(),
+    eventType: TransferEventType$inboundSchema,
+    amount: AmountDecimal$inboundSchema,
+    details: TransferEventDetails$inboundSchema,
+    occurredOn: types.date(),
+  })
+);
 /** @internal */
 export type TransferEvent$Outbound = {
   eventID: string;
@@ -71,13 +73,15 @@ export const TransferEvent$outboundSchema: z.ZodType<
   TransferEvent$Outbound,
   z.ZodTypeDef,
   TransferEvent
-> = z.object({
-  eventID: z.string(),
-  eventType: TransferEventType$outboundSchema,
-  amount: AmountDecimal$outboundSchema,
-  details: TransferEventDetails$outboundSchema,
-  occurredOn: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eventID: z.string(),
+    eventType: TransferEventType$outboundSchema,
+    amount: AmountDecimal$outboundSchema,
+    details: TransferEventDetails$outboundSchema,
+    occurredOn: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function transferEventToJSON(transferEvent: TransferEvent): string {
   return JSON.stringify(TransferEvent$outboundSchema.parse(transferEvent));

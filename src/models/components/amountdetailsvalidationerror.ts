@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,10 +18,12 @@ export const AmountDetailsValidationError$inboundSchema: z.ZodType<
   AmountDetailsValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tax: types.optional(types.string()),
-  surcharge: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tax: types.optional(types.string()),
+    surcharge: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type AmountDetailsValidationError$Outbound = {
   tax?: string | undefined;
@@ -33,10 +35,12 @@ export const AmountDetailsValidationError$outboundSchema: z.ZodType<
   AmountDetailsValidationError$Outbound,
   z.ZodTypeDef,
   AmountDetailsValidationError
-> = z.object({
-  tax: z.string().optional(),
-  surcharge: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tax: z.string().optional(),
+    surcharge: z.string().optional(),
+  })
+);
 
 export function amountDetailsValidationErrorToJSON(
   amountDetailsValidationError: AmountDetailsValidationError,

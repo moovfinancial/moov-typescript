@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,9 +28,11 @@ export const CreateInvoiceLineItems$inboundSchema: z.ZodType<
   CreateInvoiceLineItems,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(CreateInvoiceLineItem$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(CreateInvoiceLineItem$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateInvoiceLineItems$Outbound = {
   items: Array<CreateInvoiceLineItem$Outbound>;
@@ -41,9 +43,11 @@ export const CreateInvoiceLineItems$outboundSchema: z.ZodType<
   CreateInvoiceLineItems$Outbound,
   z.ZodTypeDef,
   CreateInvoiceLineItems
-> = z.object({
-  items: z.array(CreateInvoiceLineItem$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(CreateInvoiceLineItem$outboundSchema),
+  })
+);
 
 export function createInvoiceLineItemsToJSON(
   createInvoiceLineItems: CreateInvoiceLineItems,

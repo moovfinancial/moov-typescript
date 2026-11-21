@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,10 +34,12 @@ export const TransferEventWireCreditDetails$inboundSchema: z.ZodType<
   TransferEventWireCreditDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: WireTransactionStatus$inboundSchema,
-  failureCode: types.optional(WireFailureCode$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: WireTransactionStatus$inboundSchema,
+    failureCode: types.optional(WireFailureCode$inboundSchema),
+  })
+);
 /** @internal */
 export type TransferEventWireCreditDetails$Outbound = {
   status: string;
@@ -49,10 +51,12 @@ export const TransferEventWireCreditDetails$outboundSchema: z.ZodType<
   TransferEventWireCreditDetails$Outbound,
   z.ZodTypeDef,
   TransferEventWireCreditDetails
-> = z.object({
-  status: WireTransactionStatus$outboundSchema,
-  failureCode: WireFailureCode$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: WireTransactionStatus$outboundSchema,
+    failureCode: WireFailureCode$outboundSchema.optional(),
+  })
+);
 
 export function transferEventWireCreditDetailsToJSON(
   transferEventWireCreditDetails: TransferEventWireCreditDetails,

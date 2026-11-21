@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -31,11 +31,13 @@ export const RtpCreditTransferPaymentMethod$inboundSchema: z.ZodType<
   RtpCreditTransferPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: types.string(),
-  paymentMethodType: types.literal("rtp-credit"),
-  bankAccount: TransferPaymentMethodsBankAccount$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: types.string(),
+    paymentMethodType: types.literal("rtp-credit"),
+    bankAccount: TransferPaymentMethodsBankAccount$inboundSchema,
+  })
+);
 /** @internal */
 export type RtpCreditTransferPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -48,11 +50,13 @@ export const RtpCreditTransferPaymentMethod$outboundSchema: z.ZodType<
   RtpCreditTransferPaymentMethod$Outbound,
   z.ZodTypeDef,
   RtpCreditTransferPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: z.literal("rtp-credit"),
-  bankAccount: TransferPaymentMethodsBankAccount$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: z.literal("rtp-credit"),
+    bankAccount: TransferPaymentMethodsBankAccount$outboundSchema,
+  })
+);
 
 export function rtpCreditTransferPaymentMethodToJSON(
   rtpCreditTransferPaymentMethod: RtpCreditTransferPaymentMethod,

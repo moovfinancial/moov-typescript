@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -26,10 +27,14 @@ export const PendingLitigation$inboundSchema: z.ZodType<
   PendingLitigation,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PendingLitigation);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(PendingLitigation)
+);
 /** @internal */
 export const PendingLitigation$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   PendingLitigation
-> = openEnums.outboundSchema(PendingLitigation);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(PendingLitigation)
+);

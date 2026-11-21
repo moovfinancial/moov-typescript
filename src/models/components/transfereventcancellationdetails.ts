@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,10 +26,12 @@ export const TransferEventCancellationDetails$inboundSchema: z.ZodType<
   TransferEventCancellationDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cancellationID: types.string(),
-  status: CancellationStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cancellationID: types.string(),
+    status: CancellationStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type TransferEventCancellationDetails$Outbound = {
   cancellationID: string;
@@ -41,10 +43,12 @@ export const TransferEventCancellationDetails$outboundSchema: z.ZodType<
   TransferEventCancellationDetails$Outbound,
   z.ZodTypeDef,
   TransferEventCancellationDetails
-> = z.object({
-  cancellationID: z.string(),
-  status: CancellationStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cancellationID: z.string(),
+    status: CancellationStatus$outboundSchema,
+  })
+);
 
 export function transferEventCancellationDetailsToJSON(
   transferEventCancellationDetails: TransferEventCancellationDetails,

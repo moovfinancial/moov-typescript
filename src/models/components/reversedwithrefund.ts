@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,9 +25,11 @@ export const ReversedWithRefund$inboundSchema: z.ZodType<
   ReversedWithRefund,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  refund: CardAcquiringRefund$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refund: CardAcquiringRefund$inboundSchema,
+  })
+);
 /** @internal */
 export type ReversedWithRefund$Outbound = {
   refund: CardAcquiringRefund$Outbound;
@@ -38,9 +40,11 @@ export const ReversedWithRefund$outboundSchema: z.ZodType<
   ReversedWithRefund$Outbound,
   z.ZodTypeDef,
   ReversedWithRefund
-> = z.object({
-  refund: CardAcquiringRefund$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refund: CardAcquiringRefund$outboundSchema,
+  })
+);
 
 export function reversedWithRefundToJSON(
   reversedWithRefund: ReversedWithRefund,

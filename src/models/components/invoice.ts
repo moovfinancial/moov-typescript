@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -117,35 +117,37 @@ export type Invoice = {
 
 /** @internal */
 export const Invoice$inboundSchema: z.ZodType<Invoice, z.ZodTypeDef, unknown> =
-  z.object({
-    invoiceID: types.string(),
-    invoiceNumber: types.string(),
-    description: types.optional(types.string()),
-    customerAccountID: types.string(),
-    customerDisplayName: types.string(),
-    customerEmail: types.string(),
-    partnerAccountID: types.string(),
-    status: InvoiceStatus$inboundSchema,
-    lineItems: InvoiceLineItems$inboundSchema,
-    subtotalAmount: AmountDecimal$inboundSchema,
-    amountDetails: types.optional(AmountDetails$inboundSchema),
-    totalAmount: AmountDecimal$inboundSchema,
-    pendingAmount: AmountDecimal$inboundSchema,
-    paidAmount: AmountDecimal$inboundSchema,
-    refundedAmount: AmountDecimal$inboundSchema,
-    disputedAmount: AmountDecimal$inboundSchema,
-    paymentLinkCode: types.optional(types.string()),
-    paymentLinkURL: types.optional(types.string()),
-    payment: types.optional(InvoicePaymentOptions$inboundSchema),
-    invoicePayments: types.optional(z.array(InvoicePayment$inboundSchema)),
-    createdOn: types.date(),
-    invoiceDate: types.optional(types.date()),
-    dueDate: types.optional(types.date()),
-    sentOn: types.optional(types.date()),
-    paidOn: types.optional(types.date()),
-    canceledOn: types.optional(types.date()),
-    disabledOn: types.optional(types.date()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      invoiceID: types.string(),
+      invoiceNumber: types.string(),
+      description: types.optional(types.string()),
+      customerAccountID: types.string(),
+      customerDisplayName: types.string(),
+      customerEmail: types.string(),
+      partnerAccountID: types.string(),
+      status: InvoiceStatus$inboundSchema,
+      lineItems: InvoiceLineItems$inboundSchema,
+      subtotalAmount: AmountDecimal$inboundSchema,
+      amountDetails: types.optional(AmountDetails$inboundSchema),
+      totalAmount: AmountDecimal$inboundSchema,
+      pendingAmount: AmountDecimal$inboundSchema,
+      paidAmount: AmountDecimal$inboundSchema,
+      refundedAmount: AmountDecimal$inboundSchema,
+      disputedAmount: AmountDecimal$inboundSchema,
+      paymentLinkCode: types.optional(types.string()),
+      paymentLinkURL: types.optional(types.string()),
+      payment: types.optional(InvoicePaymentOptions$inboundSchema),
+      invoicePayments: types.optional(z.array(InvoicePayment$inboundSchema)),
+      createdOn: types.date(),
+      invoiceDate: types.optional(types.date()),
+      dueDate: types.optional(types.date()),
+      sentOn: types.optional(types.date()),
+      paidOn: types.optional(types.date()),
+      canceledOn: types.optional(types.date()),
+      disabledOn: types.optional(types.date()),
+    })
+  );
 /** @internal */
 export type Invoice$Outbound = {
   invoiceID: string;
@@ -182,35 +184,37 @@ export const Invoice$outboundSchema: z.ZodType<
   Invoice$Outbound,
   z.ZodTypeDef,
   Invoice
-> = z.object({
-  invoiceID: z.string(),
-  invoiceNumber: z.string(),
-  description: z.string().optional(),
-  customerAccountID: z.string(),
-  customerDisplayName: z.string(),
-  customerEmail: z.string(),
-  partnerAccountID: z.string(),
-  status: InvoiceStatus$outboundSchema,
-  lineItems: InvoiceLineItems$outboundSchema,
-  subtotalAmount: AmountDecimal$outboundSchema,
-  amountDetails: AmountDetails$outboundSchema.optional(),
-  totalAmount: AmountDecimal$outboundSchema,
-  pendingAmount: AmountDecimal$outboundSchema,
-  paidAmount: AmountDecimal$outboundSchema,
-  refundedAmount: AmountDecimal$outboundSchema,
-  disputedAmount: AmountDecimal$outboundSchema,
-  paymentLinkCode: z.string().optional(),
-  paymentLinkURL: z.string().optional(),
-  payment: InvoicePaymentOptions$outboundSchema.optional(),
-  invoicePayments: z.array(InvoicePayment$outboundSchema).optional(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  invoiceDate: z.date().transform(v => v.toISOString()).optional(),
-  dueDate: z.date().transform(v => v.toISOString()).optional(),
-  sentOn: z.date().transform(v => v.toISOString()).optional(),
-  paidOn: z.date().transform(v => v.toISOString()).optional(),
-  canceledOn: z.date().transform(v => v.toISOString()).optional(),
-  disabledOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    invoiceID: z.string(),
+    invoiceNumber: z.string(),
+    description: z.string().optional(),
+    customerAccountID: z.string(),
+    customerDisplayName: z.string(),
+    customerEmail: z.string(),
+    partnerAccountID: z.string(),
+    status: InvoiceStatus$outboundSchema,
+    lineItems: InvoiceLineItems$outboundSchema,
+    subtotalAmount: AmountDecimal$outboundSchema,
+    amountDetails: AmountDetails$outboundSchema.optional(),
+    totalAmount: AmountDecimal$outboundSchema,
+    pendingAmount: AmountDecimal$outboundSchema,
+    paidAmount: AmountDecimal$outboundSchema,
+    refundedAmount: AmountDecimal$outboundSchema,
+    disputedAmount: AmountDecimal$outboundSchema,
+    paymentLinkCode: z.string().optional(),
+    paymentLinkURL: z.string().optional(),
+    payment: InvoicePaymentOptions$outboundSchema.optional(),
+    invoicePayments: z.array(InvoicePayment$outboundSchema).optional(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    invoiceDate: z.date().transform(v => v.toISOString()).optional(),
+    dueDate: z.date().transform(v => v.toISOString()).optional(),
+    sentOn: z.date().transform(v => v.toISOString()).optional(),
+    paidOn: z.date().transform(v => v.toISOString()).optional(),
+    canceledOn: z.date().transform(v => v.toISOString()).optional(),
+    disabledOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function invoiceToJSON(invoice: Invoice): string {
   return JSON.stringify(Invoice$outboundSchema.parse(invoice));

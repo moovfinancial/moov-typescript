@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +19,13 @@ export const CardAcceptanceMethodsError$inboundSchema: z.ZodType<
   CardAcceptanceMethodsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  inPersonPercentage: types.optional(types.string()),
-  mailOrPhonePercentage: types.optional(types.string()),
-  onlinePercentage: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inPersonPercentage: types.optional(types.string()),
+    mailOrPhonePercentage: types.optional(types.string()),
+    onlinePercentage: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type CardAcceptanceMethodsError$Outbound = {
   inPersonPercentage?: string | undefined;
@@ -36,11 +38,13 @@ export const CardAcceptanceMethodsError$outboundSchema: z.ZodType<
   CardAcceptanceMethodsError$Outbound,
   z.ZodTypeDef,
   CardAcceptanceMethodsError
-> = z.object({
-  inPersonPercentage: z.string().optional(),
-  mailOrPhonePercentage: z.string().optional(),
-  onlinePercentage: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inPersonPercentage: z.string().optional(),
+    mailOrPhonePercentage: z.string().optional(),
+    onlinePercentage: z.string().optional(),
+  })
+);
 
 export function cardAcceptanceMethodsErrorToJSON(
   cardAcceptanceMethodsError: CardAcceptanceMethodsError,

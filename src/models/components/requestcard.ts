@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -39,13 +39,15 @@ export const RequestCard$inboundSchema: z.ZodType<
   RequestCard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authorizedUserAccountID: types.optional(types.string()),
-  nickname: types.optional(types.string()),
-  metadata: types.optional(z.record(types.string())),
-  billingAddress: types.optional(Address$inboundSchema),
-  controls: types.optional(IssuingControls$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizedUserAccountID: types.optional(types.string()),
+    nickname: types.optional(types.string()),
+    metadata: types.optional(z.record(types.string())),
+    billingAddress: types.optional(Address$inboundSchema),
+    controls: types.optional(IssuingControls$inboundSchema),
+  })
+);
 /** @internal */
 export type RequestCard$Outbound = {
   authorizedUserAccountID?: string | undefined;
@@ -60,13 +62,15 @@ export const RequestCard$outboundSchema: z.ZodType<
   RequestCard$Outbound,
   z.ZodTypeDef,
   RequestCard
-> = z.object({
-  authorizedUserAccountID: z.string().optional(),
-  nickname: z.string().optional(),
-  metadata: z.record(z.string()).optional(),
-  billingAddress: Address$outboundSchema.optional(),
-  controls: IssuingControls$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authorizedUserAccountID: z.string().optional(),
+    nickname: z.string().optional(),
+    metadata: z.record(z.string()).optional(),
+    billingAddress: Address$outboundSchema.optional(),
+    controls: IssuingControls$outboundSchema.optional(),
+  })
+);
 
 export function requestCardToJSON(requestCard: RequestCard): string {
   return JSON.stringify(RequestCard$outboundSchema.parse(requestCard));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,10 +24,12 @@ export const PushToCardOptions$inboundSchema: z.ZodType<
   PushToCardOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dynamicDescriptor: types.optional(types.string()),
-  scheduledDeliveryOn: types.optional(types.date()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: types.optional(types.string()),
+    scheduledDeliveryOn: types.optional(types.date()),
+  })
+);
 /** @internal */
 export type PushToCardOptions$Outbound = {
   dynamicDescriptor?: string | undefined;
@@ -39,10 +41,12 @@ export const PushToCardOptions$outboundSchema: z.ZodType<
   PushToCardOptions$Outbound,
   z.ZodTypeDef,
   PushToCardOptions
-> = z.object({
-  dynamicDescriptor: z.string().optional(),
-  scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dynamicDescriptor: z.string().optional(),
+    scheduledDeliveryOn: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function pushToCardOptionsToJSON(
   pushToCardOptions: PushToCardOptions,

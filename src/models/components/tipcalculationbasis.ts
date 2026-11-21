@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -31,10 +32,14 @@ export const TipCalculationBasis$inboundSchema: z.ZodType<
   TipCalculationBasis,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(TipCalculationBasis);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(TipCalculationBasis)
+);
 /** @internal */
 export const TipCalculationBasis$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   TipCalculationBasis
-> = openEnums.outboundSchema(TipCalculationBasis);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(TipCalculationBasis)
+);

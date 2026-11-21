@@ -25,6 +25,7 @@ export * from "./createinvoicenotification.js";
 export * from "./createinvoicepayment.js";
 export * from "./createonboardinginvite.js";
 export * from "./createpaymentlink.js";
+export * from "./createpaymenttoken.js";
 export * from "./createproduct.js";
 export * from "./createreceipts.js";
 export * from "./createrepresentative.js";

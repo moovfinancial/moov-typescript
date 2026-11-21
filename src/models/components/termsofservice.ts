@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,10 +27,12 @@ export const TermsOfService$inboundSchema: z.ZodType<
   TermsOfService,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  acceptedDate: types.date(),
-  acceptedIP: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    acceptedDate: types.date(),
+    acceptedIP: types.string(),
+  })
+);
 /** @internal */
 export type TermsOfService$Outbound = {
   acceptedDate: string;
@@ -42,10 +44,12 @@ export const TermsOfService$outboundSchema: z.ZodType<
   TermsOfService$Outbound,
   z.ZodTypeDef,
   TermsOfService
-> = z.object({
-  acceptedDate: z.date().transform(v => v.toISOString()),
-  acceptedIP: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    acceptedDate: z.date().transform(v => v.toISOString()),
+    acceptedIP: z.string(),
+  })
+);
 
 export function termsOfServiceToJSON(termsOfService: TermsOfService): string {
   return JSON.stringify(TermsOfService$outboundSchema.parse(termsOfService));

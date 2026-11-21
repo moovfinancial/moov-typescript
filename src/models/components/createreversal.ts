@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -22,14 +22,14 @@ import {
 
 export type CreateReversal = {
   /**
-   * Amount to reverse.
+   * Amount to reverse. In v2026.10 and later, if omitted, the original transfer's full amount will be reversed.
    *
    * @remarks
    * Before v2026.10, specify the amount in integer cents.
    * For supported auth-capture `card-payment` reversals in v2026.10 and later, a transfer with no captures uses the full `capturableAmount`.
    * For those transfers with one final capture, a cancellation uses the full capture amount, while a refund may be partial.
    */
-  amount: AmountDecimal;
+  amount?: AmountDecimal | undefined;
   /**
    * Breakdown of the reversed amount.
    */
@@ -41,13 +41,15 @@ export const CreateReversal$inboundSchema: z.ZodType<
   CreateReversal,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: AmountDecimal$inboundSchema,
-  amountDetails: types.optional(ReversalAmountDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: types.optional(AmountDecimal$inboundSchema),
+    amountDetails: types.optional(ReversalAmountDetails$inboundSchema),
+  })
+);
 /** @internal */
 export type CreateReversal$Outbound = {
-  amount: AmountDecimal$Outbound;
+  amount?: AmountDecimal$Outbound | undefined;
   amountDetails?: ReversalAmountDetails$Outbound | undefined;
 };
 
@@ -56,10 +58,12 @@ export const CreateReversal$outboundSchema: z.ZodType<
   CreateReversal$Outbound,
   z.ZodTypeDef,
   CreateReversal
-> = z.object({
-  amount: AmountDecimal$outboundSchema,
-  amountDetails: ReversalAmountDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: AmountDecimal$outboundSchema.optional(),
+    amountDetails: ReversalAmountDetails$outboundSchema.optional(),
+  })
+);
 
 export function createReversalToJSON(createReversal: CreateReversal): string {
   return JSON.stringify(CreateReversal$outboundSchema.parse(createReversal));

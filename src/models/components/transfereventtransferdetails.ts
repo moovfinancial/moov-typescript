@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -24,9 +24,11 @@ export const TransferEventTransferDetails$inboundSchema: z.ZodType<
   TransferEventTransferDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: TransferStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: TransferStatus$inboundSchema,
+  })
+);
 /** @internal */
 export type TransferEventTransferDetails$Outbound = {
   status: string;
@@ -37,9 +39,11 @@ export const TransferEventTransferDetails$outboundSchema: z.ZodType<
   TransferEventTransferDetails$Outbound,
   z.ZodTypeDef,
   TransferEventTransferDetails
-> = z.object({
-  status: TransferStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: TransferStatus$outboundSchema,
+  })
+);
 
 export function transferEventTransferDetailsToJSON(
   transferEventTransferDetails: TransferEventTransferDetails,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -31,10 +31,12 @@ export const GetIssuedCardActivityRequest$inboundSchema: z.ZodType<
   GetIssuedCardActivityRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    id: types.string(),
+  })
+);
 /** @internal */
 export type GetIssuedCardActivityRequest$Outbound = {
   accountID: string;
@@ -46,10 +48,12 @@ export const GetIssuedCardActivityRequest$outboundSchema: z.ZodType<
   GetIssuedCardActivityRequest$Outbound,
   z.ZodTypeDef,
   GetIssuedCardActivityRequest
-> = z.object({
-  accountID: z.string(),
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    id: z.string(),
+  })
+);
 
 export function getIssuedCardActivityRequestToJSON(
   getIssuedCardActivityRequest: GetIssuedCardActivityRequest,
@@ -75,15 +79,17 @@ export const GetIssuedCardActivityResponse$inboundSchema: z.ZodType<
   GetIssuedCardActivityResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.IssuedCardActivity$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.IssuedCardActivity$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetIssuedCardActivityResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -95,15 +101,17 @@ export const GetIssuedCardActivityResponse$outboundSchema: z.ZodType<
   GetIssuedCardActivityResponse$Outbound,
   z.ZodTypeDef,
   GetIssuedCardActivityResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.IssuedCardActivity$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.IssuedCardActivity$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getIssuedCardActivityResponseToJSON(
   getIssuedCardActivityResponse: GetIssuedCardActivityResponse,

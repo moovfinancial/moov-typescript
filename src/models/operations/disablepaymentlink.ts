@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,10 +26,12 @@ export const DisablePaymentLinkRequest$inboundSchema: z.ZodType<
   DisablePaymentLinkRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  paymentLinkCode: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    paymentLinkCode: types.string(),
+  })
+);
 /** @internal */
 export type DisablePaymentLinkRequest$Outbound = {
   accountID: string;
@@ -41,10 +43,12 @@ export const DisablePaymentLinkRequest$outboundSchema: z.ZodType<
   DisablePaymentLinkRequest$Outbound,
   z.ZodTypeDef,
   DisablePaymentLinkRequest
-> = z.object({
-  accountID: z.string(),
-  paymentLinkCode: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    paymentLinkCode: z.string(),
+  })
+);
 
 export function disablePaymentLinkRequestToJSON(
   disablePaymentLinkRequest: DisablePaymentLinkRequest,
@@ -68,13 +72,15 @@ export const DisablePaymentLinkResponse$inboundSchema: z.ZodType<
   DisablePaymentLinkResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type DisablePaymentLinkResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -85,13 +91,15 @@ export const DisablePaymentLinkResponse$outboundSchema: z.ZodType<
   DisablePaymentLinkResponse$Outbound,
   z.ZodTypeDef,
   DisablePaymentLinkResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function disablePaymentLinkResponseToJSON(
   disablePaymentLinkResponse: DisablePaymentLinkResponse,

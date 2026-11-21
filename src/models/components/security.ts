@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -18,10 +18,12 @@ export const Security$inboundSchema: z.ZodType<
   Security,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  username: types.optional(types.string()),
-  password: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    username: types.optional(types.string()),
+    password: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type Security$Outbound = {
   username?: string | undefined;
@@ -33,10 +35,12 @@ export const Security$outboundSchema: z.ZodType<
   Security$Outbound,
   z.ZodTypeDef,
   Security
-> = z.object({
-  username: z.string().optional(),
-  password: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    username: z.string().optional(),
+    password: z.string().optional(),
+  })
+);
 
 export function securityToJSON(security: Security): string {
   return JSON.stringify(Security$outboundSchema.parse(security));

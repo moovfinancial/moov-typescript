@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -22,9 +22,11 @@ export const PutTransferConfig$inboundSchema: z.ZodType<
   PutTransferConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tipPresets: PutTipPresets$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tipPresets: PutTipPresets$inboundSchema,
+  })
+);
 /** @internal */
 export type PutTransferConfig$Outbound = {
   tipPresets: PutTipPresets$Outbound;
@@ -35,9 +37,11 @@ export const PutTransferConfig$outboundSchema: z.ZodType<
   PutTransferConfig$Outbound,
   z.ZodTypeDef,
   PutTransferConfig
-> = z.object({
-  tipPresets: PutTipPresets$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tipPresets: PutTipPresets$outboundSchema,
+  })
+);
 
 export function putTransferConfigToJSON(
   putTransferConfig: PutTransferConfig,

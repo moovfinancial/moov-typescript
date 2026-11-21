@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -40,12 +40,14 @@ export const DepositAccountIngestedResponse$inboundSchema: z.ZodType<
   DepositAccountIngestedResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  moovAccountID: types.string(),
-  sourceSystem: SourceSystem$inboundSchema,
-  sourceAccountID: types.string(),
-  ingestedAt: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    moovAccountID: types.string(),
+    sourceSystem: SourceSystem$inboundSchema,
+    sourceAccountID: types.string(),
+    ingestedAt: types.date(),
+  })
+);
 /** @internal */
 export type DepositAccountIngestedResponse$Outbound = {
   moovAccountID: string;
@@ -59,12 +61,14 @@ export const DepositAccountIngestedResponse$outboundSchema: z.ZodType<
   DepositAccountIngestedResponse$Outbound,
   z.ZodTypeDef,
   DepositAccountIngestedResponse
-> = z.object({
-  moovAccountID: z.string(),
-  sourceSystem: SourceSystem$outboundSchema,
-  sourceAccountID: z.string(),
-  ingestedAt: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    moovAccountID: z.string(),
+    sourceSystem: SourceSystem$outboundSchema,
+    sourceAccountID: z.string(),
+    ingestedAt: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function depositAccountIngestedResponseToJSON(
   depositAccountIngestedResponse: DepositAccountIngestedResponse,

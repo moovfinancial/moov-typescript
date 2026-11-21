@@ -57,6 +57,13 @@ Only use this endpoint if you have provided Moov with a copy of your PCI attesta
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/card-metadata.read` scope.
+* [tokenize](#tokenize) - Exchange card data for a single-use payment token. Use the token as `source.paymentToken.token` when
+[creating a transfer](https://docs.moov.io/api/money-movement/transfers/create/).
+
+Tokenizing does not link the card to an account, verify the card, or contact the card networks.
+The card is authorized when the transfer is created.
+
+Call this endpoint directly from the browser using Moov's card Drop, so card data never reaches your servers.
 
 ## link
 
@@ -624,3 +631,122 @@ run();
 | errors.GenericError             | 400, 409                        | application/json                |
 | errors.CardMetadataRequestError | 422                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
+
+## tokenize
+
+Exchange card data for a single-use payment token. Use the token as `source.paymentToken.token` when
+[creating a transfer](https://docs.moov.io/api/money-movement/transfers/create/).
+
+Tokenizing does not link the card to an account, verify the card, or contact the card networks.
+The card is authorized when the transfer is created.
+
+Call this endpoint directly from the browser using Moov's card Drop, so card data never reaches your servers.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="createPaymentToken" method="post" path="/tokenize" -->
+```typescript
+import { Moov } from "@moovio/sdk";
+
+const moov = new Moov({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const result = await moov.cards.tokenize({
+    card: {
+      cardNumber: "4111111111111111",
+      cardCvv: "123",
+      expiration: {
+        month: "01",
+        year: "21",
+      },
+      holderName: "Jules Jackson",
+      billingAddress: {
+        addressLine1: "123 Main Street",
+        addressLine2: "Apt 302",
+        city: "Boulder",
+        stateOrProvince: "CO",
+        postalCode: "80301",
+        country: "US",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { MoovCore } from "@moovio/sdk/core.js";
+import { cardsTokenize } from "@moovio/sdk/funcs/cardsTokenize.js";
+
+// Use `MoovCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const moov = new MoovCore({
+  security: {
+    username: "",
+    password: "",
+  },
+});
+
+async function run() {
+  const res = await cardsTokenize(moov, {
+    card: {
+      cardNumber: "4111111111111111",
+      cardCvv: "123",
+      expiration: {
+        month: "01",
+        year: "21",
+      },
+      holderName: "Jules Jackson",
+      billingAddress: {
+        addressLine1: "123 Main Street",
+        addressLine2: "Apt 302",
+        city: "Boulder",
+        stateOrProvince: "CO",
+        postalCode: "80301",
+        country: "US",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("cardsTokenize failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.CreatePaymentToken](../../models/components/createpaymenttoken.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.CreatePaymentTokenResponse](../../models/operations/createpaymenttokenresponse.md)\>**
+
+### Errors
+
+| Error Type                     | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.GenericError            | 400, 409                       | application/json               |
+| errors.CreatePaymentTokenError | 422                            | application/json               |
+| errors.APIError                | 4XX, 5XX                       | \*/\*                          |

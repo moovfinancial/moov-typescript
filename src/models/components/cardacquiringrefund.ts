@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -56,16 +56,18 @@ export const CardAcquiringRefund$inboundSchema: z.ZodType<
   CardAcquiringRefund,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  refundID: types.string(),
-  createdOn: types.date(),
-  updatedOn: types.date(),
-  status: RefundStatus$inboundSchema,
-  amount: AmountDecimal$inboundSchema,
-  captureID: types.optional(types.string()),
-  amountDetails: types.optional(RefundAmountDetails$inboundSchema),
-  processingDetails: RefundProcessingDetails$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refundID: types.string(),
+    createdOn: types.date(),
+    updatedOn: types.date(),
+    status: RefundStatus$inboundSchema,
+    amount: AmountDecimal$inboundSchema,
+    captureID: types.optional(types.string()),
+    amountDetails: types.optional(RefundAmountDetails$inboundSchema),
+    processingDetails: RefundProcessingDetails$inboundSchema,
+  })
+);
 /** @internal */
 export type CardAcquiringRefund$Outbound = {
   refundID: string;
@@ -83,16 +85,18 @@ export const CardAcquiringRefund$outboundSchema: z.ZodType<
   CardAcquiringRefund$Outbound,
   z.ZodTypeDef,
   CardAcquiringRefund
-> = z.object({
-  refundID: z.string(),
-  createdOn: z.date().transform(v => v.toISOString()),
-  updatedOn: z.date().transform(v => v.toISOString()),
-  status: RefundStatus$outboundSchema,
-  amount: AmountDecimal$outboundSchema,
-  captureID: z.string().optional(),
-  amountDetails: RefundAmountDetails$outboundSchema.optional(),
-  processingDetails: RefundProcessingDetails$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refundID: z.string(),
+    createdOn: z.date().transform(v => v.toISOString()),
+    updatedOn: z.date().transform(v => v.toISOString()),
+    status: RefundStatus$outboundSchema,
+    amount: AmountDecimal$outboundSchema,
+    captureID: z.string().optional(),
+    amountDetails: RefundAmountDetails$outboundSchema.optional(),
+    processingDetails: RefundProcessingDetails$outboundSchema,
+  })
+);
 
 export function cardAcquiringRefundToJSON(
   cardAcquiringRefund: CardAcquiringRefund,

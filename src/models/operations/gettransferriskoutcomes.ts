@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -34,14 +34,16 @@ export const GetTransferRiskOutcomesRequest$inboundSchema: z.ZodType<
   GetTransferRiskOutcomesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: types.string(),
-  "X-Account-ID": types.optional(types.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "X-Account-ID": "xAccountID",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: types.string(),
+    "X-Account-ID": types.optional(types.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "X-Account-ID": "xAccountID",
+    });
+  })
+);
 /** @internal */
 export type GetTransferRiskOutcomesRequest$Outbound = {
   transferID: string;
@@ -53,14 +55,16 @@ export const GetTransferRiskOutcomesRequest$outboundSchema: z.ZodType<
   GetTransferRiskOutcomesRequest$Outbound,
   z.ZodTypeDef,
   GetTransferRiskOutcomesRequest
-> = z.object({
-  transferID: z.string(),
-  xAccountID: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xAccountID: "X-Account-ID",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+    xAccountID: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      xAccountID: "X-Account-ID",
+    });
+  })
+);
 
 export function getTransferRiskOutcomesRequestToJSON(
   getTransferRiskOutcomesRequest: GetTransferRiskOutcomesRequest,
@@ -86,15 +90,17 @@ export const GetTransferRiskOutcomesResponse$inboundSchema: z.ZodType<
   GetTransferRiskOutcomesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.PartnerRiskOutcomesResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.PartnerRiskOutcomesResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetTransferRiskOutcomesResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -106,15 +112,17 @@ export const GetTransferRiskOutcomesResponse$outboundSchema: z.ZodType<
   GetTransferRiskOutcomesResponse$Outbound,
   z.ZodTypeDef,
   GetTransferRiskOutcomesResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.PartnerRiskOutcomesResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.PartnerRiskOutcomesResponse$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getTransferRiskOutcomesResponseToJSON(
   getTransferRiskOutcomesResponse: GetTransferRiskOutcomesResponse,

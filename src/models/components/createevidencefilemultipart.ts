@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
@@ -35,16 +35,18 @@ export type CreateEvidenceFileMultiPart = {
 };
 
 /** @internal */
-export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
-  .object({
-    fileName: types.string(),
-    content: z.union([
-      z.instanceof(ReadableStream<Uint8Array>),
-      z.instanceof(Blob),
-      z.instanceof(ArrayBuffer),
-      z.instanceof(Uint8Array),
-    ]),
-  });
+export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      fileName: types.string(),
+      content: z.union([
+        z.instanceof(ReadableStream<Uint8Array>),
+        z.instanceof(Blob),
+        z.instanceof(ArrayBuffer),
+        z.instanceof(Uint8Array),
+      ]),
+    })
+  );
 /** @internal */
 export type FileT$Outbound = {
   fileName: string;
@@ -56,15 +58,17 @@ export const FileT$outboundSchema: z.ZodType<
   FileT$Outbound,
   z.ZodTypeDef,
   FileT
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function fileToJSON(fileT: FileT): string {
   return JSON.stringify(FileT$outboundSchema.parse(fileT));
@@ -84,10 +88,12 @@ export const CreateEvidenceFileMultiPart$inboundSchema: z.ZodType<
   CreateEvidenceFileMultiPart,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  file: z.lazy(() => FileT$inboundSchema),
-  evidenceType: EvidenceType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => FileT$inboundSchema),
+    evidenceType: EvidenceType$inboundSchema,
+  })
+);
 /** @internal */
 export type CreateEvidenceFileMultiPart$Outbound = {
   file: FileT$Outbound | Blob;
@@ -99,10 +105,12 @@ export const CreateEvidenceFileMultiPart$outboundSchema: z.ZodType<
   CreateEvidenceFileMultiPart$Outbound,
   z.ZodTypeDef,
   CreateEvidenceFileMultiPart
-> = z.object({
-  file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema),
-  evidenceType: EvidenceType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema),
+    evidenceType: EvidenceType$outboundSchema,
+  })
+);
 
 export function createEvidenceFileMultiPartToJSON(
   createEvidenceFileMultiPart: CreateEvidenceFileMultiPart,

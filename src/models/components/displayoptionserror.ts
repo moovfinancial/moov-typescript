@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +19,13 @@ export const DisplayOptionsError$inboundSchema: z.ZodType<
   DisplayOptionsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: types.optional(types.string()),
-  description: types.optional(types.string()),
-  callToAction: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: types.optional(types.string()),
+    description: types.optional(types.string()),
+    callToAction: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type DisplayOptionsError$Outbound = {
   title?: string | undefined;
@@ -36,11 +38,13 @@ export const DisplayOptionsError$outboundSchema: z.ZodType<
   DisplayOptionsError$Outbound,
   z.ZodTypeDef,
   DisplayOptionsError
-> = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
-  callToAction: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+    callToAction: z.string().optional(),
+  })
+);
 
 export function displayOptionsErrorToJSON(
   displayOptionsError: DisplayOptionsError,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -39,11 +39,13 @@ export const LinkedGooglePayPaymentMethod$inboundSchema: z.ZodType<
   LinkedGooglePayPaymentMethod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paymentMethodID: types.string(),
-  paymentMethodType: PaymentMethodType$inboundSchema,
-  googlePay: GooglePayResponse$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: types.string(),
+    paymentMethodType: PaymentMethodType$inboundSchema,
+    googlePay: GooglePayResponse$inboundSchema,
+  })
+);
 /** @internal */
 export type LinkedGooglePayPaymentMethod$Outbound = {
   paymentMethodID: string;
@@ -56,11 +58,13 @@ export const LinkedGooglePayPaymentMethod$outboundSchema: z.ZodType<
   LinkedGooglePayPaymentMethod$Outbound,
   z.ZodTypeDef,
   LinkedGooglePayPaymentMethod
-> = z.object({
-  paymentMethodID: z.string(),
-  paymentMethodType: PaymentMethodType$outboundSchema,
-  googlePay: GooglePayResponse$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paymentMethodID: z.string(),
+    paymentMethodType: PaymentMethodType$outboundSchema,
+    googlePay: GooglePayResponse$outboundSchema,
+  })
+);
 
 export function linkedGooglePayPaymentMethodToJSON(
   linkedGooglePayPaymentMethod: LinkedGooglePayPaymentMethod,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -28,9 +28,11 @@ export const TransferFeePaidBy$inboundSchema: z.ZodType<
   TransferFeePaidBy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  payout: types.optional(FeePaidBy$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    payout: types.optional(FeePaidBy$inboundSchema),
+  })
+);
 /** @internal */
 export type TransferFeePaidBy$Outbound = {
   payout?: string | undefined;
@@ -41,9 +43,11 @@ export const TransferFeePaidBy$outboundSchema: z.ZodType<
   TransferFeePaidBy$Outbound,
   z.ZodTypeDef,
   TransferFeePaidBy
-> = z.object({
-  payout: FeePaidBy$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    payout: FeePaidBy$outboundSchema.optional(),
+  })
+);
 
 export function transferFeePaidByToJSON(
   transferFeePaidBy: TransferFeePaidBy,

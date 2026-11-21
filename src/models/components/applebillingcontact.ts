@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -44,13 +44,15 @@ export const AppleBillingContact$inboundSchema: z.ZodType<
   AppleBillingContact,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addressLines: types.optional(z.array(types.string())),
-  locality: types.optional(types.string()),
-  postalCode: types.optional(types.string()),
-  administrativeArea: types.optional(types.string()),
-  countryCode: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLines: types.optional(z.array(types.string())),
+    locality: types.optional(types.string()),
+    postalCode: types.optional(types.string()),
+    administrativeArea: types.optional(types.string()),
+    countryCode: types.optional(types.string()),
+  })
+);
 /** @internal */
 export type AppleBillingContact$Outbound = {
   addressLines?: Array<string> | undefined;
@@ -65,13 +67,15 @@ export const AppleBillingContact$outboundSchema: z.ZodType<
   AppleBillingContact$Outbound,
   z.ZodTypeDef,
   AppleBillingContact
-> = z.object({
-  addressLines: z.array(z.string()).optional(),
-  locality: z.string().optional(),
-  postalCode: z.string().optional(),
-  administrativeArea: z.string().optional(),
-  countryCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addressLines: z.array(z.string()).optional(),
+    locality: z.string().optional(),
+    postalCode: z.string().optional(),
+    administrativeArea: z.string().optional(),
+    countryCode: z.string().optional(),
+  })
+);
 
 export function appleBillingContactToJSON(
   appleBillingContact: AppleBillingContact,

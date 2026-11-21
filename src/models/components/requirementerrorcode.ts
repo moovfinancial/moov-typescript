@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -33,10 +34,14 @@ export const RequirementErrorCode$inboundSchema: z.ZodType<
   RequirementErrorCode,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(RequirementErrorCode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(RequirementErrorCode)
+);
 /** @internal */
 export const RequirementErrorCode$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   RequirementErrorCode
-> = openEnums.outboundSchema(RequirementErrorCode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(RequirementErrorCode)
+);

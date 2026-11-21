@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -37,10 +37,12 @@ export const PartnerRiskOutcomesResponse$inboundSchema: z.ZodType<
   PartnerRiskOutcomesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferID: types.string(),
-  contributingRules: z.array(ContributingRule$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: types.string(),
+    contributingRules: z.array(ContributingRule$inboundSchema),
+  })
+);
 /** @internal */
 export type PartnerRiskOutcomesResponse$Outbound = {
   transferID: string;
@@ -52,10 +54,12 @@ export const PartnerRiskOutcomesResponse$outboundSchema: z.ZodType<
   PartnerRiskOutcomesResponse$Outbound,
   z.ZodTypeDef,
   PartnerRiskOutcomesResponse
-> = z.object({
-  transferID: z.string(),
-  contributingRules: z.array(ContributingRule$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transferID: z.string(),
+    contributingRules: z.array(ContributingRule$outboundSchema),
+  })
+);
 
 export function partnerRiskOutcomesResponseToJSON(
   partnerRiskOutcomesResponse: PartnerRiskOutcomesResponse,

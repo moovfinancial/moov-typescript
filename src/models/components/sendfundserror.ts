@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -51,13 +51,15 @@ export const SendFundsError$inboundSchema: z.ZodType<
   SendFundsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ach: types.optional(SendFundsAchError$inboundSchema),
-  pushToCard: types.optional(SendFundsPushToCardError$inboundSchema),
-  rtp: types.optional(SendFundsRtpError$inboundSchema),
-  instantBank: types.optional(SendFundsInstantBankError$inboundSchema),
-  wire: types.optional(SendFundsWireError$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: types.optional(SendFundsAchError$inboundSchema),
+    pushToCard: types.optional(SendFundsPushToCardError$inboundSchema),
+    rtp: types.optional(SendFundsRtpError$inboundSchema),
+    instantBank: types.optional(SendFundsInstantBankError$inboundSchema),
+    wire: types.optional(SendFundsWireError$inboundSchema),
+  })
+);
 /** @internal */
 export type SendFundsError$Outbound = {
   ach?: SendFundsAchError$Outbound | undefined;
@@ -72,13 +74,15 @@ export const SendFundsError$outboundSchema: z.ZodType<
   SendFundsError$Outbound,
   z.ZodTypeDef,
   SendFundsError
-> = z.object({
-  ach: SendFundsAchError$outboundSchema.optional(),
-  pushToCard: SendFundsPushToCardError$outboundSchema.optional(),
-  rtp: SendFundsRtpError$outboundSchema.optional(),
-  instantBank: SendFundsInstantBankError$outboundSchema.optional(),
-  wire: SendFundsWireError$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ach: SendFundsAchError$outboundSchema.optional(),
+    pushToCard: SendFundsPushToCardError$outboundSchema.optional(),
+    rtp: SendFundsRtpError$outboundSchema.optional(),
+    instantBank: SendFundsInstantBankError$outboundSchema.optional(),
+    wire: SendFundsWireError$outboundSchema.optional(),
+  })
+);
 
 export function sendFundsErrorToJSON(sendFundsError: SendFundsError): string {
   return JSON.stringify(SendFundsError$outboundSchema.parse(sendFundsError));

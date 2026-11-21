@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,10 +23,12 @@ export const InitiateMicroDepositsRequest$inboundSchema: z.ZodType<
   InitiateMicroDepositsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  bankAccountID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    bankAccountID: types.string(),
+  })
+);
 /** @internal */
 export type InitiateMicroDepositsRequest$Outbound = {
   accountID: string;
@@ -38,10 +40,12 @@ export const InitiateMicroDepositsRequest$outboundSchema: z.ZodType<
   InitiateMicroDepositsRequest$Outbound,
   z.ZodTypeDef,
   InitiateMicroDepositsRequest
-> = z.object({
-  accountID: z.string(),
-  bankAccountID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    bankAccountID: z.string(),
+  })
+);
 
 export function initiateMicroDepositsRequestToJSON(
   initiateMicroDepositsRequest: InitiateMicroDepositsRequest,
@@ -67,13 +71,15 @@ export const InitiateMicroDepositsResponse$inboundSchema: z.ZodType<
   InitiateMicroDepositsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+    });
+  })
+);
 /** @internal */
 export type InitiateMicroDepositsResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -84,13 +90,15 @@ export const InitiateMicroDepositsResponse$outboundSchema: z.ZodType<
   InitiateMicroDepositsResponse$Outbound,
   z.ZodTypeDef,
   InitiateMicroDepositsResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+    });
+  })
+);
 
 export function initiateMicroDepositsResponseToJSON(
   initiateMicroDepositsResponse: InitiateMicroDepositsResponse,

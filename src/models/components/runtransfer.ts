@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -50,15 +50,17 @@ export const RunTransfer$inboundSchema: z.ZodType<
   RunTransfer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  amount: Amount$inboundSchema,
-  salesTaxAmount: types.optional(Amount$inboundSchema),
-  destination: SchedulePaymentMethod$inboundSchema,
-  partnerAccountID: types.string(),
-  source: SchedulePaymentMethod$inboundSchema,
-  description: types.string(),
-  lineItems: types.optional(ScheduledTransferLineItems$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: Amount$inboundSchema,
+    salesTaxAmount: types.optional(Amount$inboundSchema),
+    destination: SchedulePaymentMethod$inboundSchema,
+    partnerAccountID: types.string(),
+    source: SchedulePaymentMethod$inboundSchema,
+    description: types.string(),
+    lineItems: types.optional(ScheduledTransferLineItems$inboundSchema),
+  })
+);
 /** @internal */
 export type RunTransfer$Outbound = {
   amount: Amount$Outbound;
@@ -75,15 +77,17 @@ export const RunTransfer$outboundSchema: z.ZodType<
   RunTransfer$Outbound,
   z.ZodTypeDef,
   RunTransfer
-> = z.object({
-  amount: Amount$outboundSchema,
-  salesTaxAmount: Amount$outboundSchema.optional(),
-  destination: SchedulePaymentMethod$outboundSchema,
-  partnerAccountID: z.string(),
-  source: SchedulePaymentMethod$outboundSchema,
-  description: z.string(),
-  lineItems: ScheduledTransferLineItems$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    amount: Amount$outboundSchema,
+    salesTaxAmount: Amount$outboundSchema.optional(),
+    destination: SchedulePaymentMethod$outboundSchema,
+    partnerAccountID: z.string(),
+    source: SchedulePaymentMethod$outboundSchema,
+    description: z.string(),
+    lineItems: ScheduledTransferLineItems$outboundSchema.optional(),
+  })
+);
 
 export function runTransferToJSON(runTransfer: RunTransfer): string {
   return JSON.stringify(RunTransfer$outboundSchema.parse(runTransfer));

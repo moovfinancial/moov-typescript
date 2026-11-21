@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -28,10 +28,12 @@ export const GetIssuedCardTransactionRequest$inboundSchema: z.ZodType<
   GetIssuedCardTransactionRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  cardTransactionID: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    cardTransactionID: types.string(),
+  })
+);
 /** @internal */
 export type GetIssuedCardTransactionRequest$Outbound = {
   accountID: string;
@@ -43,10 +45,12 @@ export const GetIssuedCardTransactionRequest$outboundSchema: z.ZodType<
   GetIssuedCardTransactionRequest$Outbound,
   z.ZodTypeDef,
   GetIssuedCardTransactionRequest
-> = z.object({
-  accountID: z.string(),
-  cardTransactionID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    cardTransactionID: z.string(),
+  })
+);
 
 export function getIssuedCardTransactionRequestToJSON(
   getIssuedCardTransactionRequest: GetIssuedCardTransactionRequest,
@@ -72,15 +76,17 @@ export const GetIssuedCardTransactionResponse$inboundSchema: z.ZodType<
   GetIssuedCardTransactionResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.IssuedCardTransaction$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.IssuedCardTransaction$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type GetIssuedCardTransactionResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -92,15 +98,17 @@ export const GetIssuedCardTransactionResponse$outboundSchema: z.ZodType<
   GetIssuedCardTransactionResponse$Outbound,
   z.ZodTypeDef,
   GetIssuedCardTransactionResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.IssuedCardTransaction$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.IssuedCardTransaction$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function getIssuedCardTransactionResponseToJSON(
   getIssuedCardTransactionResponse: GetIssuedCardTransactionResponse,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,9 +20,11 @@ export const ACHPaymentSettings$inboundSchema: z.ZodType<
   ACHPaymentSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  companyName: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyName: types.string(),
+  })
+);
 /** @internal */
 export type ACHPaymentSettings$Outbound = {
   companyName: string;
@@ -33,9 +35,11 @@ export const ACHPaymentSettings$outboundSchema: z.ZodType<
   ACHPaymentSettings$Outbound,
   z.ZodTypeDef,
   ACHPaymentSettings
-> = z.object({
-  companyName: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    companyName: z.string(),
+  })
+);
 
 export function achPaymentSettingsToJSON(
   achPaymentSettings: ACHPaymentSettings,

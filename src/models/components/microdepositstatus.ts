@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const MicroDepositStatus = {
@@ -13,7 +14,7 @@ export type MicroDepositStatus = ClosedEnum<typeof MicroDepositStatus>;
 /** @internal */
 export const MicroDepositStatus$inboundSchema: z.ZodNativeEnum<
   typeof MicroDepositStatus
-> = z.nativeEnum(MicroDepositStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(MicroDepositStatus));
 /** @internal */
 export const MicroDepositStatus$outboundSchema: z.ZodNativeEnum<
   typeof MicroDepositStatus

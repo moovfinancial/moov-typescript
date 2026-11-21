@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { smartUnion } from "../../types/smartUnion.js";
@@ -39,15 +39,17 @@ export const CreateClearingSimulationRequest$inboundSchema: z.ZodType<
   CreateClearingSimulationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  authorizationID: types.string(),
-  CreateClearingSimulation: components.CreateClearingSimulation$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateClearingSimulation": "createClearingSimulation",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    authorizationID: types.string(),
+    CreateClearingSimulation: components.CreateClearingSimulation$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateClearingSimulation": "createClearingSimulation",
+    });
+  })
+);
 /** @internal */
 export type CreateClearingSimulationRequest$Outbound = {
   accountID: string;
@@ -60,15 +62,18 @@ export const CreateClearingSimulationRequest$outboundSchema: z.ZodType<
   CreateClearingSimulationRequest$Outbound,
   z.ZodTypeDef,
   CreateClearingSimulationRequest
-> = z.object({
-  accountID: z.string(),
-  authorizationID: z.string(),
-  createClearingSimulation: components.CreateClearingSimulation$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createClearingSimulation: "CreateClearingSimulation",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    authorizationID: z.string(),
+    createClearingSimulation:
+      components.CreateClearingSimulation$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createClearingSimulation: "CreateClearingSimulation",
+    });
+  })
+);
 
 export function createClearingSimulationRequestToJSON(
   createClearingSimulationRequest: CreateClearingSimulationRequest,
@@ -94,10 +99,12 @@ export const CreateClearingSimulationResponseResult$inboundSchema: z.ZodType<
   CreateClearingSimulationResponseResult,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  components.IssuedCardAuthorization$inboundSchema,
-  components.AuthorizationSimulationAsyncResponse$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    components.IssuedCardAuthorization$inboundSchema,
+    components.AuthorizationSimulationAsyncResponse$inboundSchema,
+  ])
+);
 /** @internal */
 export type CreateClearingSimulationResponseResult$Outbound =
   | components.IssuedCardAuthorization$Outbound
@@ -108,10 +115,12 @@ export const CreateClearingSimulationResponseResult$outboundSchema: z.ZodType<
   CreateClearingSimulationResponseResult$Outbound,
   z.ZodTypeDef,
   CreateClearingSimulationResponseResult
-> = smartUnion([
-  components.IssuedCardAuthorization$outboundSchema,
-  components.AuthorizationSimulationAsyncResponse$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    components.IssuedCardAuthorization$outboundSchema,
+    components.AuthorizationSimulationAsyncResponse$outboundSchema,
+  ])
+);
 
 export function createClearingSimulationResponseResultToJSON(
   createClearingSimulationResponseResult:
@@ -139,18 +148,20 @@ export const CreateClearingSimulationResponse$inboundSchema: z.ZodType<
   CreateClearingSimulationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: smartUnion([
-    components.IssuedCardAuthorization$inboundSchema,
-    components.AuthorizationSimulationAsyncResponse$inboundSchema,
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: smartUnion([
+      components.IssuedCardAuthorization$inboundSchema,
+      components.AuthorizationSimulationAsyncResponse$inboundSchema,
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateClearingSimulationResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -164,18 +175,20 @@ export const CreateClearingSimulationResponse$outboundSchema: z.ZodType<
   CreateClearingSimulationResponse$Outbound,
   z.ZodTypeDef,
   CreateClearingSimulationResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: smartUnion([
-    components.IssuedCardAuthorization$outboundSchema,
-    components.AuthorizationSimulationAsyncResponse$outboundSchema,
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: smartUnion([
+      components.IssuedCardAuthorization$outboundSchema,
+      components.AuthorizationSimulationAsyncResponse$outboundSchema,
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createClearingSimulationResponseToJSON(
   createClearingSimulationResponse: CreateClearingSimulationResponse,

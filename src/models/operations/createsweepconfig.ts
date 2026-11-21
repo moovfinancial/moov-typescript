@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import * as components from "../components/index.js";
@@ -25,14 +25,16 @@ export const CreateSweepConfigRequest$inboundSchema: z.ZodType<
   CreateSweepConfigRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountID: types.string(),
-  CreateSweepConfig: components.CreateSweepConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "CreateSweepConfig": "createSweepConfig",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: types.string(),
+    CreateSweepConfig: components.CreateSweepConfig$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "CreateSweepConfig": "createSweepConfig",
+    });
+  })
+);
 /** @internal */
 export type CreateSweepConfigRequest$Outbound = {
   accountID: string;
@@ -44,14 +46,16 @@ export const CreateSweepConfigRequest$outboundSchema: z.ZodType<
   CreateSweepConfigRequest$Outbound,
   z.ZodTypeDef,
   CreateSweepConfigRequest
-> = z.object({
-  accountID: z.string(),
-  createSweepConfig: components.CreateSweepConfig$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createSweepConfig: "CreateSweepConfig",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountID: z.string(),
+    createSweepConfig: components.CreateSweepConfig$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createSweepConfig: "CreateSweepConfig",
+    });
+  })
+);
 
 export function createSweepConfigRequestToJSON(
   createSweepConfigRequest: CreateSweepConfigRequest,
@@ -75,15 +79,17 @@ export const CreateSweepConfigResponse$inboundSchema: z.ZodType<
   CreateSweepConfigResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.SweepConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Headers": "headers",
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.SweepConfig$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
 /** @internal */
 export type CreateSweepConfigResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -95,15 +101,17 @@ export const CreateSweepConfigResponse$outboundSchema: z.ZodType<
   CreateSweepConfigResponse$Outbound,
   z.ZodTypeDef,
   CreateSweepConfigResponse
-> = z.object({
-  headers: z.record(z.array(z.string())),
-  result: components.SweepConfig$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    headers: "Headers",
-    result: "Result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: components.SweepConfig$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
 
 export function createSweepConfigResponseToJSON(
   createSweepConfigResponse: CreateSweepConfigResponse,

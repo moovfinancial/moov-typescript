@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as types from "../../types/primitives.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -28,10 +28,12 @@ export const Fulfillment$inboundSchema: z.ZodType<
   Fulfillment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  method: types.optional(FulfillmentMethod$inboundSchema),
-  timeframe: types.optional(FulfillmentTimeframe$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    method: types.optional(FulfillmentMethod$inboundSchema),
+    timeframe: types.optional(FulfillmentTimeframe$inboundSchema),
+  })
+);
 /** @internal */
 export type Fulfillment$Outbound = {
   method?: string | undefined;
@@ -43,10 +45,12 @@ export const Fulfillment$outboundSchema: z.ZodType<
   Fulfillment$Outbound,
   z.ZodTypeDef,
   Fulfillment
-> = z.object({
-  method: FulfillmentMethod$outboundSchema.optional(),
-  timeframe: FulfillmentTimeframe$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    method: FulfillmentMethod$outboundSchema.optional(),
+    timeframe: FulfillmentTimeframe$outboundSchema.optional(),
+  })
+);
 
 export function fulfillmentToJSON(fulfillment: Fulfillment): string {
   return JSON.stringify(Fulfillment$outboundSchema.parse(fulfillment));
